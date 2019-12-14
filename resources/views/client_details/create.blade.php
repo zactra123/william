@@ -1,10 +1,6 @@
-@extends('layouts.app')
-<style>
-    .font {
-        font-family: "Times New Roman", Times, serif;
-        font-size: large;
-    }
-</style>
+@extends('layouts.client')
+
+
 @section('content')
     @if (Session::get('bad'))
         <div >

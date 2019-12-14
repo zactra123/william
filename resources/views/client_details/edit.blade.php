@@ -1,29 +1,15 @@
-@extends('layouts.app')
-<style>
-    .font {
-        font-family: "Times New Roman", Times, serif;
-        font-size: large;
-    }
-    .card_header {
-        padding: 0.75rem 1.25rem;
-        margin-bottom: 0;
-        background-color: #A9A9A9;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-    }
+@extends('layouts.client')
 
 
-</style>
 @section('content')
-
 
 
     <div class="container fon">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card_header font"> Please check your details!!!  </div>
-
                     <div class="card-body">
+                        <h1>Your Details</h1>
                         {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
                         @csrf

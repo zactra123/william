@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>Homepage</title>
+    <title>Credit Report</title>
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
     <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -68,8 +68,6 @@
                             </li>
                         @endguest
                     </ul>
-                    {{--<a href="#"><i class="fa fa-user"></i> Register</a>--}}
-                    {{--<a href="#"><i class="fa fa-lock"></i> Login</a>--}}
                 </nav> <!-- .member-navigation -->
             </div> <!-- .container -->
         </div> <!-- .top-header -->

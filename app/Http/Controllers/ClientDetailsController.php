@@ -41,15 +41,13 @@ class ClientDetailsController extends Controller
         if (empty($request['driver_license']) || empty($request['social_security'])) {
        return redirect('client/details/create ')->with('error','Please upload both files');
         }
-        // Todo: Check file extensions to be valid. Get valid extensions from OCR documentation
-        // Todo: Find the site design like https://www.exceedloans.com/
-        // Todo: Try to find free VPN for connecting CA
+
         $imagesDriverLicense = $request->file("driver_license");
         $imagesSocialSecurity = $request->file("social_security");
 
-        $imageExtension = ['PDF', 'GIF', 'PNG', 'JPG', 'TIF', 'BMP'];
-        $driverLicenseExtension = $imagesDriverLicense->getClientOriginalExtension();
-        $socialSecurityExtension = $imagesSocialSecurity->getClientOriginalExtension();
+        $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+        $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+        $socialSecurityExtension = strtolower($imagesSocialSecurity->getClientOriginalExtension());
 
         if(!in_array($driverLicenseExtension, $imageExtension)|| !in_array($socialSecurityExtension, $imageExtension)){
             return redirect('client/details/create ')->with('error','Please upload the correct file format (PDF, GIF, PNG, JPG, TIF, BMP)');
@@ -69,30 +67,31 @@ class ClientDetailsController extends Controller
 
         $driverLicenseSize = \Image::make($pathDriverLicense)->filesize();
         $socialSecuritySize = \Image::make($pathSocialSecurity)->filesize();
-
-        if($driverLicenseSize > 1073741824){
-
-           $draftPath = $clientDetailsData->resizeImage($path, $nameDriverLicense);
-
-            $textDriverLicense = $clientDetailsData->getImageData($draftPath);
-            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
-        }else{
-
-            $textDriverLicense = $clientDetailsData->getImageData($pathDriverLicense);
-            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
-        }
-
-        if($socialSecuritySize > 1073741824){
-            $draftPath = $clientDetailsData->resizeImage($path, $nameSocialSecurity);
-
-            $textSocialSecurity = $clientDetailsData->getImageData($draftPath);
-            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
-        }else{
-
-            $textSocialSecurity = $clientDetailsData->getImageData($pathSocialSecurity);
-            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
-        }
-
+        // Todo: Move this part of script to service
+//        if($driverLicenseSize > 1073741824){
+//
+//           $draftPath = $clientDetailsData->resizeImage($path, $nameDriverLicense);
+//
+//            $textDriverLicense = $clientDetailsData->getImageData($draftPath);
+//            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
+//        }else{
+//
+//            $textDriverLicense = $clientDetailsData->getImageData($pathDriverLicense);
+//            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
+//        }
+//
+//        if($socialSecuritySize > 1073741824){
+//            $draftPath = $clientDetailsData->resizeImage($path, $nameSocialSecurity);
+//
+//            $textSocialSecurity = $clientDetailsData->getImageData($draftPath);
+//            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
+//        }else{
+//
+//            $textSocialSecurity = $clientDetailsData->getImageData($pathSocialSecurity);
+//            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
+//        }
+        $resultDriverLicense = [];
+        $resultSocialSecurity = [];
 
 
         $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
@@ -104,7 +103,7 @@ class ClientDetailsController extends Controller
 
         $clientAttachmentData = [
             [
-                'user_id'=>$userId,
+                'user_id'=> $userId,
                 'path'=>$pathDriverLicense,
                 'file_name'=> $nameDriverLicense,
                 'name' =>'DL',
@@ -118,12 +117,13 @@ class ClientDetailsController extends Controller
                 'type'=>$socialSecurityExtension
             ]
         ];
-
-        if(empty(ClientAttachment::where('user_id',$userId )->first())){
-            ClientAttachment::create($clientAttachmentData);
-        }else{
-            ClientAttachment::where('user_id',$userId)->update($clientAttachmentData);
-        }
+        // Todo: Client can have more than one attachment
+        ClientAttachment::insert($clientAttachmentData);
+//        if(empty(ClientAttachment::where('user_id',$userId )->first())){
+//            ClientAttachment::create($clientAttachmentData);
+//        }else{
+//            ClientAttachment::where('user_id',$userId)->update($clientAttachmentData);
+//        }
 
         if(empty(ClientDetail::where('user_id',$userId )->first())){
             ClientDetail::create($clientData);

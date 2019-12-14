@@ -19,8 +19,8 @@ class CreateClientAttachmentTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('path');
             $table->string('file_name');
-            $table->enum('name');
-            $table->enum('type',['DL', 'SS', 'CK TU','CK EF','EX','TU AD', 'TU PH']);
+            $table->string('name');
+            $table->enum('type',['DL', 'SS', 'CK TU', 'CK EF', 'EX', 'TU AD', 'TU PH']);
 
             $table->timestamps();
         });

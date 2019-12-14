@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('contacts', 'HomePageController@contacts')->name('contacts');
-Route::get('about-us', 'HomePageController@about')->name('about-us');
+Route::get('contacts', 'PagesController@contacts')->name('contacts');
+Route::get('about-us', 'PagesController@about')->name('about-us');
 
 
 Auth::routes();
