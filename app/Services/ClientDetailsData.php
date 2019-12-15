@@ -6,6 +6,48 @@ class ClientDetailsData
 {
     private $OCR_URL = "https://api.ocr.space/parse/image";
 
+
+    public function getImageDriverLicense($path, $name)
+    {
+        $driverLicenseSize = \Image::make($path)->filesize();
+
+        if($driverLicenseSize > 1073741824){
+
+            $draftPath = $this->resizeImage($path, $name);
+
+            $textDriverLicense = $this->getImageData($draftPath);
+            $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+        }else{
+
+            $textDriverLicense = $this->getImageData($path);
+            $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+        }
+
+        return $resultDriverLicense;
+
+
+    }
+
+    public function getImageSocialSecurity($path, $name)
+    {
+        $socialSecuritySize = \Image::make($path)->filesize();
+
+
+        if($socialSecuritySize > 1073741824){
+            $draftPath = $this->resizeImage($path, $name);
+
+            $textSocialSecurity = $this->getImageData($draftPath);
+            $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
+        }else{
+
+            $textSocialSecurity = $this->getImageData($path);
+            $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
+        }
+
+        return $resultSocialSecurity;
+
+    }
+
     public function getImageData($input)
     {
         $client = new \GuzzleHttp\Client();
@@ -36,6 +78,7 @@ class ClientDetailsData
 
 
             $response =  json_decode($r->getBody(),true);
+
             if($response['ParsedResults'][0]['ErrorMessage'] == "") {
 
                 foreach($response['ParsedResults'] as $pareValue) {
@@ -62,7 +105,7 @@ class ClientDetailsData
         $result = [];
 
         // remove draft file
-        preg_match("/(dob|bos|pos|cow|von|noe|BOB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})/im", $text, $dob);
+        preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})/im", $text, $dob);
         preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $text, $sex);
         preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
@@ -96,18 +139,24 @@ class ClientDetailsData
         //Todo: Add social security regex
 
         $result = [];
-        preg_match("/[0-9]{3}.([0-9]{2}).[0-9]{4}/im", $text, $ssn);
-        preg_match("/(FOR\n)+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
+        preg_match("/[0-9]{3}.+([0-9]{2}|[0-9]{2}.)+[0-9]{4}/im", $text, $ssn);
+        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
 
         if (isset($ssn[0])) {
             $result['ssn'] = $ssn[0];
         }
         if (isset($name[0])) {
 
-            $full_name = explode(' ', str_replace("FOR\n","",$name[0]));
+
+
+            $full_name = count(explode(' ', str_replace("FOR\n","",$name[0])))<2
+                ?explode("\n", str_replace("FOR\n","",$name[0]))
+                :explode(' ', str_replace("FOR\n","",$name[0]));
+
             $result['first_name'] = $full_name[0];
             $result['last_name'] = count($full_name) > 2 ? $full_name[2] : $full_name[1];
         }
+
         return $result;
     }
 

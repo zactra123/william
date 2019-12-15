@@ -39,9 +39,15 @@ Route::group(['prefix'=> 'admin'], function(){
 
 });
 
+
 Route::group(['prefix' =>'client/details'], function() {
+    Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
+    Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
+    Route::get('credentials-edit', 'ClientDetailsController@credentialsEdit')->name('client.credentialsEdit');
+    Route::put('credentials-update', 'ClientDetailsController@credentialsUpdate')->name('client.credentialsUpdate');
+    Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
     Route::resource('/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
-    Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.upload.pdf');
+
 
 //    Route::get('/details', 'ClientDetailsController@create')->name('createInfo');
 //    Route::post('/save-info', 'ClientDetailsController@store')->name('storeInfo');

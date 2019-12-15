@@ -8,15 +8,18 @@
     <title>Homepage</title>
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Loading main css file -->
-    <link rel="stylesheet" href="css/css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <!--[if lt IE 9]>
-    <script src="js/js/ie-support/html5.js"></script>
-    <script src="js/js/ie-support/respond.js"></script>
-    <![endif]-->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
+
+
+    <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
+    <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
+
 
 </head>
 
@@ -25,49 +28,11 @@
 <div id="site-content">
 
     <header class="site-header">
-        <div class="top-header">
-            <div class="container">
-                <a href="tel:80049123441">Call Us: (800) 49123441</a>
-
-                <nav class="member-navigation pull-right">
-
-                    @if (Route::has('login'))
-                        <div class="top-right links">
-                            @auth
-
-                                @if(Auth::user()->role == 'client')
-                                    @if(empty(Auth::user()->clientDetails))
-                                        <a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a>
-                                    @else
-                                        <a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a>
-                                    @endif
-                                @elseif((Auth::user()->role == 'admin'))
-
-                                    <a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a>
-                                @else
-
-                                    <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a>
-                                @endif
-                            @else
-                                <a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a>
-
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                    {{--<a href="#"><i class="fa fa-user"></i> Register</a>--}}
-                    {{--<a href="#"><i class="fa fa-lock"></i> Login</a>--}}
-                </nav> <!-- .member-navigation -->
-            </div> <!-- .container -->
-        </div> <!-- .top-header -->
-
         <div class="bottom-header">
             <div class="container">
                 <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
-                    <h1 class="site-title">Company <span>Name</span></h1>
+                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                    <h1 class="site-title">Better <span>Credit</span></h1>
                     <h2 class="site-description">Tagline goes here</h2>
                 </a> <!-- #branding -->
 
@@ -78,6 +43,33 @@
                         <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
                         <li class="menu-item"><a href="">Services</a></li>
                         <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
+
+                        @if (Route::has('login'))
+                            @auth
+
+                                @if(Auth::user()->role == 'client')
+                                    @if(empty(Auth::user()->clientDetails))
+                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    @else
+                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    @endif
+                                @elseif((Auth::user()->role == 'admin'))
+
+                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
+                                @else
+
+                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
+                                @endif
+                            @else
+                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
+
+                                @if (Route::has('register'))
+                                    <li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>
+                                    @endif
+                                    @endauth
+                                    @endif
+
+                        </li>
                     </ul>
                 </nav> <!-- .main-navigation -->
             </div> <!-- .container -->
@@ -102,7 +94,7 @@
                 <div class="col-md-6">
 
                     <div class=" branding">
-                        <img src="images/logo-footer.png" alt="Site title" class="logo-icon">
+                        <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon">
                         <h1 class="site-title"><a href="#">Company <span>Name</span></a></h1>
                         <h2 class="site-description">Tagline goes here</h2>
                     </div> <!-- .branding -->
@@ -134,9 +126,9 @@
 
 </div> <!-- #site-content -->
 
-<script src="js/js/jquery-1.11.1.min.js"></script>
-<script src="js/js/plugins.js"></script>
-<script src="js/js/app.js"></script>
+<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('js/js/plugins.js')}}"></script>
+<script src="{{asset('js/js/app.js')}}"></script>
 
 </body>
 

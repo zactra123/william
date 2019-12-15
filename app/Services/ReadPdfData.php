@@ -20,7 +20,7 @@ class ReadPdfData
         }elseif(strpos($data, 'creditreport/equifax')) {
             return 'CK EF';
         }elseif(strpos($data, 'Experian')){
-            return 'EX ';
+            return 'EX';
         }elseif(strpos($data, 'TransUnion Credit Monitoring')){
             if(strpos($data, 'Account Number')){
                 return 'TU AD';
@@ -81,13 +81,12 @@ class ReadPdfData
                 'balance' =>str_replace("Balance ", "", $balance[$i]),
                 'highest_balance' =>str_replace("Highest Balance ", "", $highestBalance[$i]),
                 'payment_status' =>str_replace("Payment Status ", "", $paymentStatus[$i]),
-                'worst_Payment_Status' =>str_replace("Worst Payment Status ", "", $worstPaymentStatus[$i]),
+                'worst_payment_status' =>str_replace("Worst Payment Status ", "", $worstPaymentStatus[$i]),
                 'date_of_last_payment' =>str_replace("Date of Last Payment ", "", $dateOfLastPayment[$i]),
                 'amount_past_due' =>str_replace("Amount Past Due ", "", $amountPastDue[$i]),
                 'times_days_late' =>str_replace("Times 30/60/90 Days Late ", "", $times[$i]),
                 'remarks' =>str_replace("Remarks ", "", $remarks[$i]),
                 'creditor_contact_details' => $creditorContactDetails[$i],
-
 
             ];
         }
@@ -99,15 +98,16 @@ class ReadPdfData
         $textEx =new Pdf($this->PDF_TO_TEXT);
         $textEx  ->setPdf($path);
         $dataEx = $textEx->setOptions(['raw', 'f 1'])->text();
+//        dd($dataEx);
+        $dataArrayEX = explode("Date of Rep" , $dataEx);
 
-        $dataArrayEX = explode('ACCOUNT DETAILS', $dataEx);
 
         $dataCreditDetailsExperian= [];
 
         foreach($dataArrayEX as $key => $value){
 
-            if( preg_match('/Account Name\s.*/', $value, $accountName)){
-
+            if(preg_match('/Account Name\s.*/', $value, $accountName) ){
+                preg_match('/ort:\s.*/', $value, $dateOfReport);
                 preg_match('/Account Name\s.*/', $value, $accountName);
                 preg_match('/Account #\s.*/',$value,  $accountNumber);
                 preg_match('/Original Creditor\s.*/',$value, $originalCreditor);
@@ -182,6 +182,7 @@ class ReadPdfData
 
                 $dataCreditDetailsExperian[] =[
 
+                    'date_of_report' => str_replace(["ort: ", "\r"],"",$dateOfReport[0]),
                     'account_name' =>str_replace("Account Name ", "", $accountName[0]),
                     'account_number' =>str_replace("Account # ", "", $accountNumber[0]),
                     'original_creditor' =>str_replace("Original Creditor ", "", $originalCreditor[0]),
@@ -210,7 +211,8 @@ class ReadPdfData
             }
 
         }
-        return $dataCreditDetailsExperian;
+
+         return $dataCreditDetailsExperian;
 
     }
 
@@ -282,28 +284,44 @@ class ReadPdfData
         $textUnion->setPdf($path);
         $dataUnion = $textUnion->setOptions(['raw', 'f 1'])->text();
 
+
         $dataUnionForAccount = explode('Revolving', $dataUnion);
 
-        preg_match_all('/(^[A-Z1,\/]{2,}+[A-Z\s]{1,})+[\$ 0-9]{2,}+[0-9\/]{2}[0-9\/]{2}[0-9\/]/m', $dataUnionForAccount[1], $accountNameUnion);
-
+        preg_match_all('/(^[A-Z1,\/]{2,}+[A-Z\s]{1,}+[\$ 0-9]{2,}+[0-9\/]{2}[0-9\/]{2}[0-9\/])/m', $dataUnionForAccount[1], $accountNameUnion);
+        dd($accountNameUnion);
         $dataPaymentHistory = explode('Payment Status ',$dataUnion );
 
         $regex = '/Jan [0-9]{4} [A-Z]{1,}|Feb [0-9]{4} [A-Z]{1,}|Mar [0-9]{4} [A-Z]{1,}|Apr [0-9]{4} [A-Z]{1,}|May [0-9]{4} [A-Z]{1,}|Jun [0-9]{4} [A-Z]{1,}|Jul [0-9]{4} [A-Z]{1,}|Aug [0-9]{4} [A-Z]{1,}|Sep [0-9]{4} [A-Z]{1,}|Oct [0-9]{4} [A-Z]{1,}|Nov [0-9]{4} [A-Z]{1,}|Dec[0-9]{4} [A-Z]{1,}/';
-        $unionPaymentHistory = [];
 
-
+        $transUnionPaymentHistory = [];
         foreach($dataPaymentHistory  as $key => $value){
-
 
             if($key != 0){
 
+                preg_match('/Past Due Amount\s.*[0-9]/m', $value, $pastDueAmount);
+                preg_match('/30 Days -\s.*/m', $value, $thirtyDays);
+                preg_match('/60 Days -\s.*/m', $value, $sixtyDays);
+                preg_match('/90 Days -\s.*/m', $value, $ninetyDays);
+
                 preg_match_all($regex, $value, $history);
-                $unionPaymentHistory[] = $history[0];
+
+                $transUnionPaymentHistory[] = [
+                    'past_due_amount' =>str_replace("Past Due Amount ", "", $pastDueAmount[0]),
+                    'late_payment' => str_replace(["30 Days - ", "\r"], "",$thirtyDays[0]).'/'.
+                        str_replace(["60 Days - ", "\r"], "",$sixtyDays[0]).'/'.str_replace(["90 Days - ", "\r"], "",$ninetyDays[0]),
+                    'payment_history' =>$history[0]
+                ];
+
             };
-
-
         }
-        return null;
+        dd($accountNameUnion[1], count($transUnionPaymentHistory),$transUnionPaymentHistory );
+        if(count($accountNameUnion[1]) != count($transUnionPaymentHistory)){
+            return false;
+        };
+        for($i = 0; $i <= count($transUnionPaymentHistory)-1; $i++ ){
+            $transUnionPaymentHistory[$i]['account_name'] =$accountNameUnion[1][$i];
+        }
+        return $transUnionPaymentHistory;
     }
 
     function get_string_between($string, $start, $end){

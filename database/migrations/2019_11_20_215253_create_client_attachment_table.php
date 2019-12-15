@@ -17,10 +17,10 @@ class CreateClientAttachmentTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->enum('category',['DL', 'SS', 'CK TU', 'CK EF', 'EX', 'TU AD', 'TU PH']);
             $table->string('path');
             $table->string('file_name');
-            $table->string('name');
-            $table->enum('type',['DL', 'SS', 'CK TU', 'CK EF', 'EX', 'TU AD', 'TU PH']);
+            $table->string('type');
 
             $table->timestamps();
         });

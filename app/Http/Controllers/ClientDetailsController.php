@@ -11,6 +11,7 @@ use App\ClientDetail;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ClientDetailsData;
 use App\ClientAttachment;
+use App\Credential;
 
 
 class ClientDetailsController extends Controller
@@ -64,34 +65,8 @@ class ClientDetailsController extends Controller
         $pathDriverLicense = public_path() . '/' . $path . '/'. $nameDriverLicense;
         $pathSocialSecurity = public_path() . '/' . $path . '/'. $nameSocialSecurity;
 
-
-        $driverLicenseSize = \Image::make($pathDriverLicense)->filesize();
-        $socialSecuritySize = \Image::make($pathSocialSecurity)->filesize();
-        // Todo: Move this part of script to service
-//        if($driverLicenseSize > 1073741824){
-//
-//           $draftPath = $clientDetailsData->resizeImage($path, $nameDriverLicense);
-//
-//            $textDriverLicense = $clientDetailsData->getImageData($draftPath);
-//            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
-//        }else{
-//
-//            $textDriverLicense = $clientDetailsData->getImageData($pathDriverLicense);
-//            $resultDriverLicense = $clientDetailsData->dirverLicenseProcessing($textDriverLicense);
-//        }
-//
-//        if($socialSecuritySize > 1073741824){
-//            $draftPath = $clientDetailsData->resizeImage($path, $nameSocialSecurity);
-//
-//            $textSocialSecurity = $clientDetailsData->getImageData($draftPath);
-//            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
-//        }else{
-//
-//            $textSocialSecurity = $clientDetailsData->getImageData($pathSocialSecurity);
-//            $resultSocialSecurity = $clientDetailsData->socialSecurityProccessing($textSocialSecurity);
-//        }
-        $resultDriverLicense = [];
-        $resultSocialSecurity = [];
+        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense);
+        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity);
 
 
         $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
@@ -101,29 +76,46 @@ class ClientDetailsController extends Controller
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
         $clientData['user_id'] = $userId;
 
+
+
+
+
         $clientAttachmentData = [
             [
                 'user_id'=> $userId,
                 'path'=>$pathDriverLicense,
                 'file_name'=> $nameDriverLicense,
-                'name' =>'DL',
+                'category' =>'DL',
                 'type'=>$driverLicenseExtension
             ],
             [
                 'user_id'=>$userId,
                 'path'=>$pathSocialSecurity,
                 'file_name'=> $nameSocialSecurity,
-                'name'=>'SS',
+                'category'=>'SS',
                 'type'=>$socialSecurityExtension
             ]
         ];
-        // Todo: Client can have more than one attachment
-        ClientAttachment::insert($clientAttachmentData);
-//        if(empty(ClientAttachment::where('user_id',$userId )->first())){
-//            ClientAttachment::create($clientAttachmentData);
-//        }else{
-//            ClientAttachment::where('user_id',$userId)->update($clientAttachmentData);
-//        }
+
+
+
+//+        // Todo: Client can have more than one attachment
+//        ClientAttachment::insert($clientAttachmentData);
+        if(empty(ClientAttachment::where('user_id',$userId )->first())){
+            ClientAttachment::insert($clientAttachmentData);
+        }elseif(empty(ClientAttachment::where('user_id',$userId )->where('category', 'DL')->first())){
+
+            ClientAttachment::insert($clientAttachmentData[0]);
+            ClientAttachment::where('user_id',$userId)->where('category', 'SS')->update($clientAttachmentData[1]);
+        }elseif(empty(ClientAttachment::where('user_id',$userId )->where('category', 'SS')->first())){
+
+            ClientAttachment::insert($clientAttachmentData[1]);
+            ClientAttachment::where('user_id',$userId)->where('category', 'DL')->update($clientAttachmentData[0]);
+        }else{
+            ClientAttachment::where('user_id',$userId)->where('category', 'DL')->update($clientAttachmentData[0]);
+            ClientAttachment::where('user_id',$userId)->where('category', 'SS')->update($clientAttachmentData[1]);
+
+        }
 
         if(empty(ClientDetail::where('user_id',$userId )->first())){
             ClientDetail::create($clientData);
@@ -282,7 +274,6 @@ class ClientDetailsController extends Controller
     public function uploadPdf(Request $request, ReadPdfData $readPdfData)
     {
 
-
         $userId = Auth::user()->id;
         if (empty($request['credit_report']) ) {
             return redirect('client/details/index ')->with('error','Please upload files');
@@ -298,28 +289,30 @@ class ClientDetailsController extends Controller
         $pdfCreditReport->move(public_path() . '/' . $path, $nameCreditReport);
 
         $getCreditCompanyName = $readPdfData->getCreditCompanyName($pathCreditReport);
+
+
         if($getCreditCompanyName == null){
             return redirect('client/details/index ')->with('error','Please upload files');
-        }elseif($getCreditCompanyName = 'CK TU'){
+        }elseif($getCreditCompanyName == 'CK TU'){
             $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport);
-        }elseif($getCreditCompanyName = 'CK EF'){
+        }elseif($getCreditCompanyName == 'CK EF'){
             $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport);
-        }elseif($getCreditCompanyName = 'EX'){
+        }elseif($getCreditCompanyName == 'EX'){
             $dataEX = $readPdfData->getExprianData($pathCreditReport);
-        }elseif($getCreditCompanyName = 'TU AD'){
+        }elseif($getCreditCompanyName =='TU AD'){
             $dataTUAD = $readPdfData->getTransUnionAccountDetailsData($pathCreditReport);
         }else{
             $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($pathCreditReport);
         }
 
-
+        dd('dasdasd');
 
 
         $clientAttachmentData = [
              'user_id'=>$userId,
              'path'=>$pathCreditReport,
              'file_name'=> $nameCreditReport,
-             'name' =>$getCreditCompanyName,
+             'category' =>$getCreditCompanyName,
              'type'=>$fileType
         ];
 
@@ -329,6 +322,42 @@ class ClientDetailsController extends Controller
 
     }
 
+    public function credentials()
+    {
+
+        return view('client_details.create-credentials');
+    }
+
+    public function credentialsStore(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $data = $request['client'];
+        $data['user_id'] = $userId;
+
+        if(empty(Credential::where('user_id', $userId)->first())){
+            Credential::create($data);
+        }else{
+            Credential::where('user_id', $userId)->update($data);
+        }
+
+        return redirect('client/details');
+    }
+
+    public function credentialsEdit()
+    {
+        $userId = Auth::user()->id;
+        $credential = Credential::where('user_id', $userId)->first();
+        return view('client_details.edit-credentials', compact( 'credential'));
+    }
+
+    public function credentialsUpdate(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $data = $request['client'];
+        $data['user_id'] = $userId;
+        Credential::where('user_id', $userId)->update($data);
+        return redirect('client/details');
+    }
 
 
 
