@@ -22,6 +22,7 @@ class CreateCreditReportsTable extends Migration
             $table->date('date_of_reported');
             $table->string('account_name');
             $table->string('account_number');
+            $table->string('original_creditor');
             $table->string('company_sold');
             $table->string('account_type');
             $table->string('account_status');
@@ -42,8 +43,8 @@ class CreateCreditReportsTable extends Migration
             $table->text('contact_information');
             $table->date('close_date');
             $table->string('worst_payment_status');
-            $table->json('date_lates');
-            $table->json('payment_history');
+            $table->text('date_lates');
+            $table->text('payment_history');
 
             $table->timestamps();
         });
