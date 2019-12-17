@@ -20,6 +20,7 @@ class AdminsController extends Controller
     public function create()
     {
 
+
         return view('owner.admin.create');
 
     }

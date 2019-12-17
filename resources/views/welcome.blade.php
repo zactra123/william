@@ -123,51 +123,26 @@
 
         <div class="fullwidth-block feature-section">
             <div class="container">
+
                 <div class="row">
+                    @foreach($pageContents as $contents)
                     <div class="col-md-4">
-                        <div class="feature wow fadeInUp">
+                        <div class="feature wow fadeInUp" style="height: 400px">
                             <div class="feature-title">
                                 <i class="icon-customer-service"></i>
-                                <h2 class="title">A Brilliant Credit Repair Option</h2>
-                                <small class="subtitle">Nulla eros odio dolor</small>
+                                <h2 class="title">{{$contents->title}}</h2>
+                                {{--<small class="subtitle">Nulla eros odio dolor</small>--}}
                             </div>
                             <div class="feature-summary">
-                                <p>Credit problems can result in very high interest rates, and prevent one from
-                                    getting a loan. Credit problems can also affect one’s employment opportunities,
-                                    and ability to buy or rent a home. Exceed Credit Services Repair Program can
-                                    help avoid such unwanted situations caused by credit problems, by eliminating
-                                    credit reporting errors.</p>
+                              <?php echo htmlspecialchars_decode(htmlspecialchars($contents->sub_content, ENT_QUOTES));  ?>
+
                             </div>
-                            <a href="#" class="button">More info</a>
+                            <a href="{{route('more.information', $contents->id )}}" class="button">More info</a>
                         </div> <!-- .feature -->
                     </div> <!-- .col-md-4 -->
-                    <div class="col-md-4">
-                        <div class="feature wow fadeInUp" data-wow-delay=".2s">
-                            <div class="feature-title">
-                                <i class="icon-server-lock"></i>
-                                <h2 class="title">Customer Services</h2>
-                                <small class="subtitle">Nulla eros odio dolor</small>
-                            </div>
-                            <div class="feature-summary">
-                                <p>Chocolate caramels unerdwear.com lemon drops. Powder chupa chups pastry macaroon wafer chocolate cake sweet roll croissant jelly</p>
-                            </div>
-                            <a href="#" class="button">More info</a>
-                        </div> <!-- .feature -->
-                    </div> <!-- .col-md-4 -->
-                    <div class="col-md-4">
-                        <div class="feature wow fadeInUp" data-wow-delay=".4s">
-                            <div class="feature-title">
-                                <i class="icon-bar-chart-up"></i>
-                                <h2 class="title">Customer Services</h2>
-                                <small class="subtitle">Nulla eros odio dolor</small>
-                            </div>
-                            <div class="feature-summary">
-                                <p>Chocolate caramels unerdwear.com lemon drops. Powder chupa chups pastry macaroon wafer chocolate cake sweet roll croissant jelly</p>
-                            </div>
-                            <a href="#" class="button">More info</a>
-                        </div> <!-- .feature -->
-                    </div> <!-- .col-md-4 -->
+                    @endforeach
                 </div> <!-- .row -->
+
             </div> <!-- .container -->
         </div> <!-- .feature-section -->
 

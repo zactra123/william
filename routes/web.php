@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::get('/', 'PagesController@welcome' );
+Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Route::get('about-us', 'PagesController@about')->name('about-us');
@@ -24,6 +26,14 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::group(['prefix'=>'owner'], function(){
+
+    Route::get('home-page-content', 'Owner\SuperAdminsController@homePageContent')->name('owner.home.content');
+    Route::get('create/home-page-content', 'Owner\SuperAdminsController@homePageContentCreate')->name('owner.home.content.create');
+    Route::post('create/home-page-content', 'Owner\SuperAdminsController@homePageContentStore')->name('owner.home.content.store');
+    Route::get('view/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentShow')->name('owner.home.content.show');
+    Route::get('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentEdit')->name('owner.home.content.edit');
+    Route::put('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentUpdate')->name('owner.home.content.update');
+    Route::delete('delete/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentDestroy')->name('owner.home.content.destroy');
 
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner']);
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');

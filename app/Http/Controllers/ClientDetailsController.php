@@ -276,7 +276,7 @@ class ClientDetailsController extends Controller
 
         $userId = Auth::user()->id;
         if (empty($request['credit_report']) ) {
-            return redirect('client/details/index ')->with('error','Please upload files');
+            return redirect('client/details')->with('error','Please upload files');
         }
 
         $pdfCreditReport = $request->file("credit_report");
@@ -292,17 +292,29 @@ class ClientDetailsController extends Controller
 
 
         if($getCreditCompanyName == null){
-            return redirect('client/details/index ')->with('error','Please upload files');
-        }elseif($getCreditCompanyName == 'CK TU'){
-            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport);
+            return redirect('client/details')->with('error','Please upload files');
+        }
+
+        $clientAttachmentData = [
+            'user_id'=>$userId,
+            'path'=>$pathCreditReport,
+            'file_name'=> $nameCreditReport,
+            'category' =>$getCreditCompanyName,
+            'type'=>$fileType
+        ];
+
+        $attachmentId = ClientAttachment::create($clientAttachmentData)->id;
+
+        if($getCreditCompanyName == 'CK TU'){
+            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport, $userId, $attachmentId);
         }elseif($getCreditCompanyName == 'CK EF'){
-            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport);
+            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport, $userId, $attachmentId);
         }elseif($getCreditCompanyName == 'EX'){
-            $dataEX = $readPdfData->getExprianData($pathCreditReport);
+            $dataEX = $readPdfData->getExprianData($pathCreditReport, $userId, $attachmentId);
         }elseif($getCreditCompanyName =='TU AD'){
-            $dataTUAD = $readPdfData->getTransUnionAccountDetailsData($pathCreditReport);
+            $dataTUAD = $readPdfData->getTransUnionAccountDetailsData($pathCreditReport, $userId, $attachmentId);
         }else{
-            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($pathCreditReport);
+            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($pathCreditReport, $userId, $attachmentId);
         }
 
         dd('dasdasd');

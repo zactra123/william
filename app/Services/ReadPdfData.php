@@ -14,7 +14,6 @@ class ReadPdfData
         $text  ->setPdf($path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
-
         if(strpos($data, 'creditreport/transunion')){
             return 'CK TU';
         }elseif(strpos($data, 'creditreport/equifax')) {
@@ -28,7 +27,7 @@ class ReadPdfData
         }else{return null;}
     }
 
-    public function getCreditKarmaData($path)
+    public function getCreditKarmaData($path, $userId, $attachmentId)
     {
         $text =new Pdf($this->PDF_TO_TEXT);
         $text  ->setPdf($path);
@@ -37,24 +36,24 @@ class ReadPdfData
         $dataArray = explode(PHP_EOL, $data);
         $creditorContactDetails =[];
 
-        $lastReport = array_values(preg_grep('/^Last Reported\s.*/', $dataArray));
-        $creditorName = array_values(preg_grep('/^Creditor Name\s.*/', $dataArray));
-        $accountType = array_values(preg_grep('/^Account Type\s.*/', $dataArray));
-        $accountStatus = array_values(preg_grep('/^Account Status\s.*/', $dataArray));
-        $openDate = array_values(preg_grep('/^Opened Date\s.*/', $dataArray));
-        $closeDate = array_values( preg_grep('/^Closed Date\s.*/', $dataArray));
-        $limit = array_values(preg_grep('/^Limit\s.*/', $dataArray));
-        $term = array_values(preg_grep('/^Term\s.*/', $dataArray));
-        $monthlyPayment = array_values(preg_grep('/^Monthly Payment\s.*/', $dataArray));
-        $responsibility = array_values(preg_grep('/^Responsibility\s.*/', $dataArray));
-        $balance = array_values(preg_grep('/^Balance\s.*/', $dataArray));
-        $highestBalance = array_values(preg_grep('/^Highest Balance\s.*/', $dataArray));
-        $paymentStatus = array_values(preg_grep('/^Payment Status\s.*/', $dataArray));
-        $worstPaymentStatus = array_values(preg_grep('/^Worst Payment Status\s.*/', $dataArray));
-        $dateOfLastPayment = array_values(preg_grep('/^Date of Last Payment\s.*/', $dataArray));
-        $amountPastDue = array_values(preg_grep('/^Amount Past Due\s.*/', $dataArray));
-        $times = array_values(preg_grep('/^Times\s.*/', $dataArray));
-        $remarks = array_values(preg_grep('/^Remarks\s.*/', $dataArray));
+        $lastReportArray = array_values(preg_grep('/^Last Reported\s.*/', $dataArray));
+        $creditorNameArray = array_values(preg_grep('/^Creditor Name\s.*/', $dataArray));
+        $accountTypeArray = array_values(preg_grep('/^Account Type\s.*/', $dataArray));
+        $accountStatusArray = array_values(preg_grep('/^Account Status\s.*/', $dataArray));
+        $openDateArray = array_values(preg_grep('/^Opened Date\s.*/', $dataArray));
+        $closeDateArray = array_values( preg_grep('/^Closed Date\s.*/', $dataArray));
+        $limitArray = array_values(preg_grep('/^Limit\s.*/', $dataArray));
+        $termArray = array_values(preg_grep('/^Term\s.*/', $dataArray));
+        $monthlyPaymentArray = array_values(preg_grep('/^Monthly Payment\s.*/', $dataArray));
+        $responsibilityArray = array_values(preg_grep('/^Responsibility\s.*/', $dataArray));
+        $balanceArray = array_values(preg_grep('/^Balance\s.*/', $dataArray));
+        $highestBalanceArray = array_values(preg_grep('/^Highest Balance\s.*/', $dataArray));
+        $paymentStatusArray = array_values(preg_grep('/^Payment Status\s.*/', $dataArray));
+        $worstPaymentStatusArray = array_values(preg_grep('/^Worst Payment Status\s.*/', $dataArray));
+        $dateOfLastPaymentArray = array_values(preg_grep('/^Date of Last Payment\s.*/', $dataArray));
+        $amountPastDueArray = array_values(preg_grep('/^Amount Past Due\s.*/', $dataArray));
+        $timesArray = array_values(preg_grep('/^Times\s.*/', $dataArray));
+        $remarksArray = array_values(preg_grep('/^Remarks\s.*/', $dataArray));
 
         foreach ( $dataArray as $key => $value) {
 
@@ -66,39 +65,91 @@ class ReadPdfData
             }
         }
         $dataCreditKarma = [];
-        for($i=0; $i<=count($lastReport)-1; $i++){
+        for($i=0; $i<=count($lastReportArray)-1; $i++){
+
+            $timesExplode = explode('/',str_replace("Times 30/60/90 Days Late ", "", $timesArray[$i]));
+            $timesDaysLate = [
+                '30'=>$timesExplode[0],
+                '60'=>$timesExplode[1],
+                '90'=>$timesExplode[2],
+            ];
+
+            //date format
+            $openDate = date("d-m-Y", strtotime(str_replace("Opened Date ", "", $openDateArray[$i])));
+            $lastReport = date("d-m-Y", strtotime(str_replace("Last Reported ", "", $lastReportArray[$i])));
+            $dateOfLastPayment = date("d-m-Y", strtotime(str_replace("Date of Last Payment ", "", $dateOfLastPaymentArray[$i])));
+            $closeDate = date("d-m-Y", strtotime(str_replace("Closed Date ", "", $closeDateArray[$i])));
+
             $dataCreditKarma[$i] = [
-                'last_reported' =>str_replace("Last Reported ", "", $lastReport[$i]),
-                'creditor_name' =>str_replace("Creditor Name ", "", $creditorName[$i]),
-                'account_type' =>str_replace("Account Type ", "", $accountType[$i]),
-                'account_status' =>str_replace("Account Status ", "", $accountStatus[$i]),
-                'open_date' =>str_replace("Opened Date ", "", $openDate[$i]),
-                'close_date' =>str_replace("Closed Date ", "", $closeDate[$i]),
-                'limit' =>str_replace("Limit ", "", $limit[$i]),
-                'term' =>str_replace("Term ", "", $term[$i]),
-                'monthly_payment' =>str_replace("Monthly Payment ", "", $monthlyPayment[$i]),
-                'responsibility' =>str_replace("Responsibility ", "", $responsibility[$i]),
-                'balance' =>str_replace("Balance ", "", $balance[$i]),
-                'highest_balance' =>str_replace("Highest Balance ", "", $highestBalance[$i]),
-                'payment_status' =>str_replace("Payment Status ", "", $paymentStatus[$i]),
-                'worst_payment_status' =>str_replace("Worst Payment Status ", "", $worstPaymentStatus[$i]),
-                'date_of_last_payment' =>str_replace("Date of Last Payment ", "", $dateOfLastPayment[$i]),
-                'amount_past_due' =>str_replace("Amount Past Due ", "", $amountPastDue[$i]),
-                'times_days_late' =>str_replace("Times 30/60/90 Days Late ", "", $times[$i]),
-                'remarks' =>str_replace("Remarks ", "", $remarks[$i]),
-                'creditor_contact_details' => $creditorContactDetails[$i],
+                'user_id' => $userId,
+                'attachment_id' => $attachmentId,
+
+//              'last_reported'
+                'date_of_reported' =>$lastReport,
+
+//              'creditor_name'
+                'account_name'=> str_replace("Creditor Name ", "", $creditorNameArray[$i]),
+
+//               account_type
+                'account_type' =>str_replace("Account Type ", "", $accountTypeArray[$i]),
+
+//               account_status
+                'account_status' =>str_replace("Account Status ", "", $accountStatusArray[$i]),
+
+//              'open_date'
+                'date_opened' =>$openDate,
+
+                'close_date' => $closeDate,
+
+//              'limit'
+                'credit_limit' =>str_replace("Limit ", "", $limitArray[$i]),
+
+//              'term'
+                'terms'=>str_replace("Term ", "", $termArray[$i]),
+
+//               monthly_payment
+                'monthly_payment' =>str_replace("Monthly Payment ", "", $monthlyPaymentArray[$i]),
+
+//              responsibility
+                'responsibility' =>str_replace("Responsibility ", "", $responsibilityArray[$i]),
+
+//              balance
+                'balance' =>str_replace("Balance ", "", $balanceArray[$i]),
+
+//               highest_balance
+                'highest_balance' =>str_replace("Highest Balance ", "", $highestBalanceArray[$i]),
+
+//              payment_status
+                'payment_status' =>str_replace("Payment Status ", "", $paymentStatusArray[$i]),
+
+                'worst_payment_status' =>str_replace("Worst Payment Status ", "", $worstPaymentStatusArray[$i]),
+
+//              'date_of_last_payment'
+                'balance_updated' => $dateOfLastPayment,
+
+//              'amount_past_due'
+                'past_due_amount'=>str_replace("Amount Past Due ", "", $amountPastDueArray[$i]),
+
+//              'times_days_late'
+                'days_late'=> $timesDaysLate,
+
+//              'remarks'
+                'comments'=>str_replace("Remarks ", "", $remarksArray[$i]),
+
+//              'creditor_contact_details'
+                'contact_information' => $creditorContactDetails[$i],
 
             ];
         }
+
         return $dataCreditKarma;
     }
 
-    public function getExprianData($path)
+    public function getExprianData($path, $userId, $attachmentId)
     {
         $textEx =new Pdf($this->PDF_TO_TEXT);
         $textEx  ->setPdf($path);
         $dataEx = $textEx->setOptions(['raw', 'f 1'])->text();
-//        dd($dataEx);
         $dataArrayEX = explode("Date of Rep" , $dataEx);
 
 
@@ -180,32 +231,84 @@ class ReadPdfData
                     ];
                 }
 
+                //date format
+                $dateOfReportDateFormat = date("d-m-Y", strtotime(str_replace(["ort: ", "\r"],"",$dateOfReport[0])));
+                $dateOpenedDateFormat = date("d-m-Y", strtotime(str_replace("Date Opened ", "", $dateOpened[0])));
+                $balanceUpdatedDateFormat = date("d-m-Y", strtotime(str_replace(["Balance Updated ", "Balance\r\n", "Updated\r\n"], "", $balanceUpdated[0])));
+
+
                 $dataCreditDetailsExperian[] =[
+                    'user_id' => $userId,
+                    'attachment_id' => $attachmentId,
 
-                    'date_of_report' => str_replace(["ort: ", "\r"],"",$dateOfReport[0]),
+//                   date_of_reported
+                    'date_of_report' => $dateOfReportDateFormat,
+
+//                   account_name
                     'account_name' =>str_replace("Account Name ", "", $accountName[0]),
-                    'account_number' =>str_replace("Account # ", "", $accountNumber[0]),
-                    'original_creditor' =>str_replace("Original Creditor ", "", $originalCreditor[0]),
-                    'company_sold' =>str_replace("Company Sold ", "", $companySold[0]),
-                    'account_type' =>str_replace("Account Type ", "", $accountType[0]),
-                    'date_opened' =>str_replace("Date Opened ", "", $dateOpened[0]),
-                    'account_status' =>str_replace("Account Status! ", "", $actualStatus[0]),
-                    'payment_status' => str_replace( "\r\n","",$paymentStatus),
-                    'status_updated' =>str_replace("Status Updated ", "", $statusUpdated[0]),
-                    'balance' =>str_replace("Balance ", "", $balance[0]),
-                    'balance_updated' =>str_replace(["Balance Updated ", "Balance\r\n", "Updated\r\n"], "", $balanceUpdated[0]),
-                    'original_balance' =>!empty($originalBalance)?str_replace("Original Balance ", "", $originalBalance[0]):'',
-                    'credit_limit' =>!empty($creditLimit)?str_replace("Credit Limit ", "", $creditLimit[0]):'',
-                    'monthly_payment' =>str_replace(["Monthly Payment ", "Monthly\r\n", "Payment\r\n"], "", $monthlyPayment[0]),
-                    'past_due_amount' =>str_replace(["Past Due Amount ", "Past Due\r\n", "Amount\r\n"], "", $pastDueAmount[0]),
-                    'highest_balance' =>str_replace("Highest Balance ", "", $highestBalance[0]),
-                    'terms' => str_replace("Terms ", "", $terms[0]),
-                    'responsibility' =>str_replace("Responsibility ", "", $responsibility[0]),
-                    'your_statement' =>str_replace("Your Statement ", "", $yourStatement[0]),
-                    'comments' =>str_replace( "\r\n"," ",$comments),
-                    'contact_information' => str_replace( "\r\n","",$contactInformation),
-                    'payment_history' => $paymentHistory,
 
+//                   account_number
+                    'account_number' =>str_replace("Account # ", "", $accountNumber[0]),
+
+//                   original_creditor
+                    'original_creditor'=>str_replace("Original Creditor ", "", $originalCreditor[0]),
+
+//                  company_sold
+                    'company_sold' =>str_replace("Company Sold ", "", $companySold[0]),
+
+//                  account_type
+                    'account_type' =>str_replace("Account Type ", "", $accountType[0]),
+
+//                   date_opened
+                    'date_opened' =>$dateOpenedDateFormat,
+
+//                   account_status
+                    'account_status' =>str_replace("Account Status! ", "", $actualStatus[0]),
+
+//                   payment_status
+                    'payment_status' => str_replace( "\r\n","",$paymentStatus),
+
+//                   status_updated
+                    'status_updated' =>str_replace("Status Updated ", "", $statusUpdated[0]),
+
+//                   balance
+                    'balance' =>str_replace("Balance ", "", $balance[0]),
+
+//                   balance_updated
+                    'balance_updated' =>$balanceUpdatedDateFormat,
+
+//                   original_balance
+                    'original_balance' =>!empty($originalBalance)?str_replace("Original Balance ", "", $originalBalance[0]):'',
+
+//                   credit_limit
+                    'credit_limit' =>!empty($creditLimit)?str_replace("Credit Limit ", "", $creditLimit[0]):'',
+
+//                   monthly_payment
+                    'monthly_payment' =>str_replace(["Monthly Payment ", "Monthly\r\n", "Payment\r\n"], "", $monthlyPayment[0]),
+
+//                   past_due_amount
+                    'past_due_amount' =>str_replace(["Past Due Amount ", "Past Due\r\n", "Amount\r\n"], "", $pastDueAmount[0]),
+
+//                   highest_balance
+                    'highest_balance' =>str_replace("Highest Balance ", "", $highestBalance[0]),
+
+//                   terms
+                    'terms' => str_replace("Terms ", "", $terms[0]),
+
+//                   responsibility
+                    'responsibility' =>str_replace("Responsibility ", "", $responsibility[0]),
+
+//                   your_statement
+                    'your_statement' =>str_replace("Your Statement ", "", $yourStatement[0]),
+
+//                   comments
+                    'comments' =>str_replace( "\r\n"," ",$comments),
+
+//                   contact_information
+                    'contact_information' => str_replace( "\r\n","",$contactInformation),
+
+//                   payment_history
+                    'payment_history' => $paymentHistory,
                 ];
 
             }
@@ -216,7 +319,7 @@ class ReadPdfData
 
     }
 
-    public function getTransUnionAccountDetailsData($path)
+    public function getTransUnionAccountDetailsData($path, $userId, $attachmentId)
     {
         $textTrans =new Pdf($this->PDF_TO_TEXT);
         $textTrans  ->setPdf($path);
@@ -251,49 +354,80 @@ class ReadPdfData
 
                 $dataArrayTransAD[] = [
 
-                    'account_name' => $accountNameTrans[1][$count],
-                    'account_number' => str_replace(["mber ","\r"], "", $accountNumber[0]),
-                    'condition' => str_replace(["Condition ", "\r"], "", $condition[0]),
-                    'responsibility' => str_replace(["Responsibility ", "\r"], "", $responsibility[0]),
-                    'current_balance' => str_replace("Current Balance ", "", $currentBalance[0]),
-                    'original_balance' => str_replace("Original Balance ", "", $originalBalance[0]),
-                    'limit' => str_replace("Limit ", "", $limit[0]),
-                    'monthly_payment' =>str_replace("Monthly Payment ", "", $monthlyPayment[0]),
-                    'last_payment' => str_replace("Last Payment ", "", $lastPayment[0]),
-                    'status' => str_replace("Status ", "", $status[0]),
-                    'loan_term' => str_replace("Loan Term ", "", $loanTerm[0]),
-                    'loan_Type' => str_replace("Loan Type ", "", $loanType[0]),
-                    'opened' => str_replace("Opened ", "", $opened[0]),
-                    'reported' => str_replace("Reported ", "", $reported[0]),
-                    'remarks' => str_replace("Remarks ", "", $remarks[0]),
-                    'creditor_information' => str_replace("\r\n", ' ', $creditorInformation),
+                    'user_id' => $userId,
+                    'attachment_id' => $attachmentId,
 
+//                  account_name
+                    'account_name' => $accountNameTrans[1][$count],
+
+//                  account_number
+                    'account_number' => str_replace(["mber ","\r"], "", $accountNumber[0]),
+
+//                  'condition'
+                    'account_status' => str_replace(["Condition ", "\r"], "", $condition[0]),
+
+//                  'responsibility'
+                    'responsibility' => str_replace(["Responsibility ", "\r"], "", $responsibility[0]),
+
+//                  'current_balance'
+                    'balance' => str_replace("Current Balance ", "", $currentBalance[0]),
+
+//                  'original_balance'
+                    'original_balance'=> str_replace("Original Balance ", "", $originalBalance[0]),
+
+//                  'limit'
+                    'credit_limit' => str_replace("Limit ", "", $limit[0]),
+
+//                  'monthly_payment'
+                    'monthly_payment' =>str_replace("Monthly Payment ", "", $monthlyPayment[0]),
+
+//                  'last_payment'
+                    'balance_updated' => str_replace("Last Payment ", "", $lastPayment[0]),
+
+//                  'status'
+                    'payment_status' => str_replace("Status ", "", $status[0]),
+
+//                  'loan_term'
+                    'terms' => str_replace("Loan Term ", "", $loanTerm[0]),
+
+//                  account_type
+                    'loan_Type' => str_replace("Loan Type ", "", $loanType[0]),
+
+//                  'opened'
+                    'date_opened' => str_replace("Opened ", "", $opened[0]),
+
+//                  date_of_reported
+                    'reported' => str_replace("Reported ", "", $reported[0]),
+
+//                  'remarks'
+                    'comments'=> str_replace("Remarks ", "", $remarks[0]),
+
+//                  'creditor_information'
+                    'contact_information' => str_replace("\r\n", ' ', $creditorInformation),
                 ];
 
                 $count++;
-
             }
         }
         return $dataArrayTransAD;
 
     }
 
-    public function getTransUnionPaymentHistoryData($path)
+    public function getTransUnionPaymentHistoryData($path, $userId, $attachmentId)
     {
         $textUnion =new Pdf($this->PDF_TO_TEXT);
         $textUnion->setPdf($path);
         $dataUnion = $textUnion->setOptions(['raw', 'f 1'])->text();
 
-
         $dataUnionForAccount = explode('Revolving', $dataUnion);
 
         preg_match_all('/(^[A-Z1,\/]{2,}+[A-Z\s]{1,}+[\$ 0-9]{2,}+[0-9\/]{2}[0-9\/]{2}[0-9\/])/m', $dataUnionForAccount[1], $accountNameUnion);
-        dd($accountNameUnion);
         $dataPaymentHistory = explode('Payment Status ',$dataUnion );
 
         $regex = '/Jan [0-9]{4} [A-Z]{1,}|Feb [0-9]{4} [A-Z]{1,}|Mar [0-9]{4} [A-Z]{1,}|Apr [0-9]{4} [A-Z]{1,}|May [0-9]{4} [A-Z]{1,}|Jun [0-9]{4} [A-Z]{1,}|Jul [0-9]{4} [A-Z]{1,}|Aug [0-9]{4} [A-Z]{1,}|Sep [0-9]{4} [A-Z]{1,}|Oct [0-9]{4} [A-Z]{1,}|Nov [0-9]{4} [A-Z]{1,}|Dec[0-9]{4} [A-Z]{1,}/';
 
         $transUnionPaymentHistory = [];
+
         foreach($dataPaymentHistory  as $key => $value){
 
             if($key != 0){
@@ -304,17 +438,26 @@ class ReadPdfData
                 preg_match('/90 Days -\s.*/m', $value, $ninetyDays);
 
                 preg_match_all($regex, $value, $history);
+               $paymentHistory = [];
+               foreach($history[0] as $value){
+                  $explode =  explode(' ', $value);
+                   $paymentHistory[$explode[1]][$explode[0]] = $explode[2];
+               }
 
                 $transUnionPaymentHistory[] = [
+                    'user_id' => $userId,
+                    'attachment_id' => $attachmentId,
                     'past_due_amount' =>str_replace("Past Due Amount ", "", $pastDueAmount[0]),
-                    'late_payment' => str_replace(["30 Days - ", "\r"], "",$thirtyDays[0]).'/'.
-                        str_replace(["60 Days - ", "\r"], "",$sixtyDays[0]).'/'.str_replace(["90 Days - ", "\r"], "",$ninetyDays[0]),
-                    'payment_history' =>$history[0]
+                    'late_payment' => [
+                        '30' => str_replace(["30 Days - ", "\r"], "",$thirtyDays[0]),
+                        '60' => str_replace(["60 Days - ", "\r"], "",$sixtyDays[0]),
+                        '90' => str_replace(["90 Days - ", "\r"], "",$ninetyDays[0]),
+                    ],
+                    'payment_history' =>$paymentHistory
                 ];
-
             };
         }
-        dd($accountNameUnion[1], count($transUnionPaymentHistory),$transUnionPaymentHistory );
+
         if(count($accountNameUnion[1]) != count($transUnionPaymentHistory)){
             return false;
         };

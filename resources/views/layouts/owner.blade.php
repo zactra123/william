@@ -1,89 +1,111 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Credit Report</title>
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
+    <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- Loading main css file -->
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
+
+
+    <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
+    <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
+
+
+
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+<div id="site-content">
+
+    <header class="site-header">
+
+
+        <div class="bottom-header">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a href="{{ url('/') }}" class="branding pull-left">
+                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                    <h1 class="site-title">Company <span>Name</span></h1>
+                    <h2 class="site-description">Tagline goes here</h2>
+                </a> <!-- #branding -->
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('owner.index')}}" role="button">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('owner.admin.list')}}" role="button">Admin List</a>
+                <nav class="main-navigation pull-right ">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
 
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="{{ route('owner.client.list')}}" role="button">User List</a>
-                        </li>
-                    </ul>
+                        <li class="menu-item"><a  href="{{ route('owner.admin.list')}}">Admin Lis</a></li>
+                        <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
+                        <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
+                        <li class="menu-item"><a href="{{route('owner.home.content')}}">Home Page Content</a></li>
+                        <li class="menu-item">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->email }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->email }} <span class="caret"></span>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+
+                                    </div>
+
+                                </li>
+
+
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+                </nav> <!-- .main-navigation -->
+            </div> <!-- .container -->
+        </div> <!-- .bottom-header -->
+    </header> <!-- .site-header -->
+    @include('helpers/flash')
+    <main class="py-4">
+
+
+        @yield('content')
+
+
+
+    </main>
+
+    <!-- .content -->
+
+
+
+</div> <!-- #site-content -->
+
+<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('js/js/plugins.js')}}"></script>
+<script src="{{asset('js/js/app.js')}}"></script>
+
 </body>
+
 </html>
+
