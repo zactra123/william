@@ -79,45 +79,48 @@
     <main class="content">
         <div class="slider">
             <ul class="slides">
+                @foreach($pageContentUp as $contentUp)
                 <li>
                     <div class="container">
                         <img src="dummy/server.jpg" alt="">
                         <div class="slide-caption">
-                            <h2 class="slide-title">Duis aute reprehenderit</h2>
-                            <small class="slide-subtitle">Nemo enom ipsam voluptatem voluptas</small>
+                            <h2 class="slide-title">{{$contentUp->title}}</h2>
+                            {{--<small class="slide-subtitle">Nemo enom ipsam voluptatem voluptas</small>--}}
                             <div class="slide-summary">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, illum laborum odit est quibusdam, molestias quaerat qui, eveniet voluptate debitis, earum dolorem. Fuga maxime fugit excepturi, saepe fugiat quisquam quia!</p>
+                                <?php echo htmlspecialchars_decode(htmlspecialchars($contentUp->sub_content, ENT_QUOTES));  ?>
+
                             </div>
-                            <a href="" class="button">Read More</a>
+                            <a href="{{route('more.information', $contentUp->url )}}" class="button">Read More</a>
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="container">
-                        <img src="dummy/server.jpg" alt="">
-                        <div class="slide-caption">
-                            <h2 class="slide-title">Rerehenderit aute duis consetetur</h2>
-                            <small class="slide-subtitle">Ipsam voluptas nemo enim</small>
-                            <div class="slide-summary">
-                                <p>Perspiciatis quo, aspernatur similique? Cumque quidem ipsa et. Nobis officia error nam veritatis culpa ut ullam maxime in ad hic, earum repudiandae?</p>
-                            </div>
-                            <a href="" class="button">Read More</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="container">
-                        <img src="dummy/server.jpg" alt="">
-                        <div class="slide-caption">
-                            <h2 class="slide-title">Aliqquam nibh quam iaculis</h2>
-                            <small class="slide-subtitle">Augue dui fringilla ipsum hendrerit felis accumsan</small>
-                            <div class="slide-summary">
-                                <p>Sapiente porro, laudantium consectetur doloremque. Explicabo, esse, expedita. Animi dolorum aliquid nihil necessitatibus itaque quis architecto, fuga rerum.</p>
-                            </div>
-                            <a href="" class="button">Read More</a>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
+                {{--<li>--}}
+                    {{--<div class="container">--}}
+                        {{--<img src="dummy/server.jpg" alt="">--}}
+                        {{--<div class="slide-caption">--}}
+                            {{--<h2 class="slide-title">Rerehenderit aute duis consetetur</h2>--}}
+                            {{--<small class="slide-subtitle">Ipsam voluptas nemo enim</small>--}}
+                            {{--<div class="slide-summary">--}}
+                                {{--<p>Perspiciatis quo, aspernatur similique? Cumque quidem ipsa et. Nobis officia error nam veritatis culpa ut ullam maxime in ad hic, earum repudiandae?</p>--}}
+                            {{--</div>--}}
+                            {{--<a href="" class="button">Read More</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<div class="container">--}}
+                        {{--<img src="dummy/server.jpg" alt="">--}}
+                        {{--<div class="slide-caption">--}}
+                            {{--<h2 class="slide-title">Aliqquam nibh quam iaculis</h2>--}}
+                            {{--<small class="slide-subtitle">Augue dui fringilla ipsum hendrerit felis accumsan</small>--}}
+                            {{--<div class="slide-summary">--}}
+                                {{--<p>Sapiente porro, laudantium consectetur doloremque. Explicabo, esse, expedita. Animi dolorum aliquid nihil necessitatibus itaque quis architecto, fuga rerum.</p>--}}
+                            {{--</div>--}}
+                            {{--<a href="" class="button">Read More</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</li>--}}
             </ul> <!-- .slides -->
         </div> <!-- .slider -->
 
@@ -125,19 +128,19 @@
             <div class="container">
 
                 <div class="row">
-                    @foreach($pageContents as $contents)
-                    <div class="col-md-4">
-                        <div class="feature wow fadeInUp" style="height: 400px">
+                    @foreach($pageContentDown as $contentDown)
+                    <div class="col-md-3">
+                        <div class="feature wow fadeInUp" style="height: 550px">
                             <div class="feature-title">
                                 <i class="icon-customer-service"></i>
-                                <h2 class="title">{{$contents->title}}</h2>
+                                <h2 class="title">{{$contentDown->title}}</h2>
                                 {{--<small class="subtitle">Nulla eros odio dolor</small>--}}
                             </div>
                             <div class="feature-summary">
-                              <?php echo htmlspecialchars_decode(htmlspecialchars($contents->sub_content, ENT_QUOTES));  ?>
+                              <?php echo htmlspecialchars_decode(htmlspecialchars($contentDown->sub_content, ENT_QUOTES));  ?>
 
                             </div>
-                            <a href="{{route('more.information', $contents->id )}}" class="button">More info</a>
+                            <a href="{{route('more.information', $contentDown->url )}}" class="button">More info</a>
                         </div> <!-- .feature -->
                     </div> <!-- .col-md-4 -->
                     @endforeach

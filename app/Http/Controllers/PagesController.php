@@ -9,14 +9,16 @@ class PagesController extends Controller
 {
     public function welcome()
     {
-        $pageContents = HomePageContent::all();
+        $pageContentUp = HomePageContent::where('category', 1)->get();
+        $pageContentDown = HomePageContent::where('category', 2)->get();
 
-        return view('welcome', compact('pageContents'));
+
+        return view('welcome', compact('pageContentUp', 'pageContentDown'));
     }
 
-    public function moreInformation($id)
+    public function moreInformation($url)
     {
-        $contents = HomePageContent::where('id', $id)
+        $contents = HomePageContent::where('url', $url)
             ->get();
 
         return view('more-information', compact('contents'));
