@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'sendmail' => '/usr/sbin/sendmail -bs',
+    'sendmail' => '/usr/sbin/sendmail -t',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,8 +140,7 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
-
-
+    'pretend' => false,
 
 
 ];
