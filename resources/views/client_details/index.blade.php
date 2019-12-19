@@ -48,3 +48,22 @@
 
 
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('INPUT[type="file"]').change(function () {
+            var ext = this.value.match(/\.(.+)$/)[1];
+            console.log(ext);
+            switch (ext) {
+                case 'pdf':
+                case 'PDF':
+                    $('#uploadButton').attr('disabled', false);
+                    break;
+                default:
+                    alert('This is not an allowed file type.');
+                    this.value = '';
+            }
+        });
+    })
+</script>

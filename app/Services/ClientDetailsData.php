@@ -7,9 +7,13 @@ class ClientDetailsData
     private $OCR_URL = "https://api.ocr.space/parse/image";
 
 
-    public function getImageDriverLicense($path, $name)
+    public function getImageDriverLicense($path, $name, $extension)
     {
-        $driverLicenseSize = \Image::make($path)->filesize();
+        $driverLicenseSize = false;
+
+        if($extension != 'pdf'){
+            $driverLicenseSize = \Image::make($path)->filesize();
+        }
 
         if($driverLicenseSize > 1073741824){
 
@@ -18,9 +22,15 @@ class ClientDetailsData
             $textDriverLicense = $this->getImageData($draftPath);
             $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
         }else{
+            if($extension == 'pdf' ){
+                $textDriverLicense = $this->getPdfData($path);
+                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+            }else{
+                $textDriverLicense = $this->getImageData($path);
+                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+            }
 
-            $textDriverLicense = $this->getImageData($path);
-            $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+
         }
 
         return $resultDriverLicense;
@@ -28,10 +38,13 @@ class ClientDetailsData
 
     }
 
-    public function getImageSocialSecurity($path, $name)
+    public function getImageSocialSecurity($path, $name, $extension)
     {
-        $socialSecuritySize = \Image::make($path)->filesize();
+        $socialSecuritySize = false;
 
+        if($extension != 'pdf'){
+            $socialSecuritySize = \Image::make($path)->filesize();
+        }
 
         if($socialSecuritySize > 1073741824){
             $draftPath = $this->resizeImage($path, $name);
@@ -39,9 +52,15 @@ class ClientDetailsData
             $textSocialSecurity = $this->getImageData($draftPath);
             $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
         }else{
+            if($extension == 'pdf' ){
+                $textSocialSecurity = $this->getPdfData($path);
+                $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
+            }else{
+                $textSocialSecurity = $this->getImageData($path);
+                $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
+            }
 
-            $textSocialSecurity = $this->getImageData($path);
-            $resultSocialSecurity = $this->socialSecurityProccessing($textSocialSecurity);
+
         }
 
         return $resultSocialSecurity;
@@ -79,12 +98,66 @@ class ClientDetailsData
 
             $response =  json_decode($r->getBody(),true);
 
+
             if($response['ParsedResults'][0]['ErrorMessage'] == "") {
 
                 foreach($response['ParsedResults'] as $pareValue) {
                     return $pareValue['ParsedText'];
                 }
             } else {
+
+                return ["error" => 400, "message" => $response['ParsedResults']['ErrorMessage']];
+//                header('HTTP/1.0 400 Forbidden');
+//                dd($response['ParsedResults']['ErrorMessage']);
+            }
+        } catch(Exception $err) {
+            return ["error" => 403, "message" => $err->getMessage()];
+//            header('HTTP/1.0 403 Forbidden');
+//            return $err->getMessage();
+        }
+    }
+
+    public function getPdfData($input)
+    {
+
+
+        $client = new \GuzzleHttp\Client();
+
+        $fileData = fopen($input, 'r');
+        try {
+            $r = $client->request('POST', $this->OCR_URL,[
+                'headers' => ['apiKey' => env("OCR_API_KEY")],
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'contents' => $fileData
+                    ],
+                    [
+                        'name' => 'OCREngine',
+                        'contents' => 1
+                    ],
+                    [
+                        'name' => "detectOrientation",
+                        "contents" => "true"
+                    ],
+                    [
+                        'name' => 'scale',
+                        'contents' => 'true'
+                    ]
+                ]
+            ], ['file' => $fileData]);
+
+
+            $response =  json_decode($r->getBody(),true);
+
+
+            if($response['ParsedResults'][0]['ErrorMessage'] == "") {
+
+                foreach($response['ParsedResults'] as $pareValue) {
+                    return $pareValue['ParsedText'];
+                }
+            } else {
+
                 return ["error" => 400, "message" => $response['ParsedResults']['ErrorMessage']];
 //                header('HTTP/1.0 400 Forbidden');
 //                dd($response['ParsedResults']['ErrorMessage']);

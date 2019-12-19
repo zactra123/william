@@ -43,8 +43,10 @@ class ClientDetailsController extends Controller
        return redirect('client/details/create ')->with('error','Please upload both files');
         }
 
+
         $imagesDriverLicense = $request->file("driver_license");
         $imagesSocialSecurity = $request->file("social_security");
+
 
         $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
         $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
@@ -65,9 +67,10 @@ class ClientDetailsController extends Controller
         $pathDriverLicense = public_path() . '/' . $path . '/'. $nameDriverLicense;
         $pathSocialSecurity = public_path() . '/' . $path . '/'. $nameSocialSecurity;
 
-        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense);
-        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity);
+        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
+        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity,$socialSecurityExtension);
 
+//        dd($imagesDriverLicense, '123',$imagesSocialSecurity);
 
         $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
         $clientData =  $resultDriverLicense;
@@ -75,9 +78,6 @@ class ClientDetailsController extends Controller
         User::where('id', $userId)->update($user);
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
         $clientData['user_id'] = $userId;
-
-
-
 
 
         $clientAttachmentData = [
@@ -97,9 +97,7 @@ class ClientDetailsController extends Controller
             ]
         ];
 
-
-
-//+        // Todo: Client can have more than one attachment
+//
 //        ClientAttachment::insert($clientAttachmentData);
         if(empty(ClientAttachment::where('user_id',$userId )->first())){
             ClientAttachment::insert($clientAttachmentData);
@@ -171,7 +169,7 @@ class ClientDetailsController extends Controller
 
             ClientDetail::where('id', $id)->update($clientDetails);
             $client = $id;
-            return redirect(route('client.details.edit', compact('client')))->with('success', "your data saved");
+            return redirect(route('client.details.index'))->with('success', "your data saved");
 
 
         }
@@ -277,6 +275,8 @@ class ClientDetailsController extends Controller
         $userId = Auth::user()->id;
         if (empty($request['credit_report']) ) {
             return redirect('client/details')->with('error','Please upload files');
+        }elseif( $request->file("credit_report")->getClientOriginalExtension() != 'pdf'){
+            return redirect('client/details')->with('error','Please upload files');
         }
 
         $pdfCreditReport = $request->file("credit_report");
@@ -336,6 +336,10 @@ class ClientDetailsController extends Controller
 
     public function credentials()
     {
+        if(Credential::where('user_id',Auth::user()->id)->first()){
+            return redirect('client/details/credentials-edit');
+
+        }
 
         return view('client_details.create-credentials');
     }
