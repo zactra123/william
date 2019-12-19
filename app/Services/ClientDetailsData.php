@@ -74,7 +74,7 @@ class ClientDetailsData
         $fileData = fopen($input, 'r');
         try {
             $r = $client->request('POST', $this->OCR_URL,[
-                'headers' => ['apiKey' => env("OCR_API_KEY")],
+                'headers' => ['apiKey' => '0c6334d53188957'],
                 'multipart' => [
                     [
                         'name' => 'file',
@@ -126,7 +126,7 @@ class ClientDetailsData
         $fileData = fopen($input, 'r');
         try {
             $r = $client->request('POST', $this->OCR_URL,[
-                'headers' => ['apiKey' => env("OCR_API_KEY")],
+                'headers' => ['apiKey' => '0c6334d53188957'],
                 'multipart' => [
                     [
                         'name' => 'file',
