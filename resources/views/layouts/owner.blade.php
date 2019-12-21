@@ -45,7 +45,7 @@
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
 
-                        <li class="menu-item"><a  href="{{ route('owner.admin.list')}}">Admin Lis</a></li>
+
                         <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
                         <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
                         <li class="menu-item"><a href="{{route('owner.home.content')}}">Home Page Content</a></li>

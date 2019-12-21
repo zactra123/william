@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.owner')
 
 @section('content')
     <div class="container">
         <div class="row">
-          <a href="{{route('owner.index')}}">Back</a>
+          <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
         </div>
 
         @foreach ($errors->all() as $error)
@@ -13,7 +13,7 @@
         @endforeach
 
         <div class="card-body">
-            {!! Form::open(['route' => ['owner.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+            {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
             <div class="form-group row">
                 <label for="first name" class="col-md-4 col-form-label text-md-right"> First name</label>
                 <div class="col-md-6">

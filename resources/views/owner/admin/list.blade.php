@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <a href="{{ route('owner.admin.create')}}"> Create Admin </a>
-
-            </div>
+        <div class="row justify-content-end">
+            <a class="btn btn-success" href="{{ route('owner.admin.create')}}" role="button">Create Admin</a>
         </div>
+
+        <div class="row justify-content-center">
+
         <div class="row">
             <label class="dasd">Admins</label>
             <table class="table">

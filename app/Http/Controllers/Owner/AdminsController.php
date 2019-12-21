@@ -27,6 +27,7 @@ class AdminsController extends Controller
 
     public function store(Request $request)
     {
+
         $admin = $request->admin;
         $admin ['password_confirmation'] = $admin['password'];
         $validation =  Validator::make($admin, [
