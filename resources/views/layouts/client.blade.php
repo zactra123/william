@@ -44,7 +44,7 @@
                 <nav class="main-navigation pull-right ">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="">News</a></li>
+                        <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
                         <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
                         <li class="menu-item"><a href="">Services</a></li>
                         <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
@@ -60,7 +60,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                         <a  href="{{route('client.details.edit',Auth::user()->id)}}">Edit your detail</a>
-                                        <a  href="{{route('client.credentials')}}"> Credentials</a>
+                                        <a  href="{{route('client.credentials')}}">Credentials</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

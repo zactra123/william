@@ -181,93 +181,10 @@ class ClientDetailsController extends Controller
 
     }
 
-    // Process Driver license
-    // change image to black&withe
-    // get data(DOB, Address, SEX)
-    // remove draft image
-    // return data
-    private function processDL($path)
+    public function uploadCreditReports()
     {
-        $response = [];
-        //make draft path if not exists
-        if (!is_dir(public_path() . '/' . $path . '/draft')) {
-            mkdir( public_path() . '/' . $path . '/draft', 0777);
-        }
-        $draft_path = public_path() . '/' . $path . '/draft/driver_license.jpeg';
-        $image = \Image::make(public_path() . '/' . $path . 'driver_license.jpeg')
-//            ->blur(2)
-//            ->sharpen()
-            ->greyscale()
-            ->brightness(15);
-        $image->save($draft_path);
-
-//        $data = \OCR::scan( public_path() . '/' . $path. 'driver_license.jpeg');
-        $data = \OCR::scan( $draft_path);
-        // remove draft file
-        preg_match("/(dob|bos|pos|cow|von|noe)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})/im", $data, $dob);
-        preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $data, $sex);
-        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $data, $address);
-        if (isset($dob[3])) {
-            $response['dob'] =  $dob[3];
-        }
-        if (isset($sex[3])) {
-            $response['sex'] =  $sex[3];
-        }
-        if (isset($address[0])) {
-            // Get state
-            preg_match_all('/[A-Z]{2}/m', $address[0], $match);
-            $response["state"] = $match[0][count($match[0])-1];
-            // Get zip code
-            $zip = explode($response['state'], $address[0]);
-            $response["zip"] = $zip[count($zip)-1];
-            // Get City and Address
-            preg_match_all('/[^\n]+/m', $address[0], $match);
-            $response['city'] = !empty($match[0][1]) ? str_replace([$response["state"], $response["zip"]], '' , $match[0][1] ): null;
-            $response['address'] = !empty($match[0][0]) ? $match[0][0] : $address[0];
-        }
-        return $response;
+        return view('client_details.upload-credit-reports');
     }
-
-    // Process Driver license
-    // change image to black&withe
-    // get data(SSN, FullName)
-    // remove draft image
-    // return data
-    private function processSS($path)
-    {
-        $response = [];
-
-        //make draft path if not exists
-        if (!is_dir(public_path() . '/' . $path . '/draft')) {
-            mkdir( public_path() . '/' . $path . '/draft', 0777);
-        }
-
-        $draft_path = public_path() . '/' . $path . '/draft/social_security.jpeg';
-
-        $image = \Image::make(public_path() . '/' . $path . 'social_security.jpeg')
-            ->greyscale()
-            ->brightness(15)
-            ->contrast(32)
-            ->blur(1.5);
-        $image->save($draft_path);
-
-        $data = \OCR::scan($draft_path);
-        // remove draft file
-        preg_match("/[0-9]{3}.([0-9]{2}).[0-9]{4}/im", $data, $ssn);
-        preg_match("/(^(.{1,3}\s|))+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $data, $name);
-        if (isset($ssn[0])) {
-            $response['ssn'] = $ssn[0];
-        }
-
-        if (isset($name[0])) {
-            $full_name = explode(' ', $name[0]);
-            $response['first_name'] = $full_name[0];
-            $response['last_name'] = count($full_name) > 2 ? $full_name[2] : $full_name[1];
-        }
-        return $response;
-
-    }
-
 
     public function uploadPdf(Request $request, ReadPdfData $readPdfData)
     {
@@ -336,12 +253,9 @@ class ClientDetailsController extends Controller
 
     public function credentials()
     {
-        if(Credential::where('user_id',Auth::user()->id)->first()){
-            return redirect('client/details/credentials-edit');
-
-        }
-
-        return view('client_details.create-credentials');
+        $userId = Auth::user()->id;
+        $credential = Credential::where('user_id', $userId)->first();
+        return view('client_details.create-credentials', compact( 'credential'));
     }
 
     public function credentialsStore(Request $request)
@@ -358,23 +272,5 @@ class ClientDetailsController extends Controller
 
         return redirect('client/details');
     }
-
-    public function credentialsEdit()
-    {
-        $userId = Auth::user()->id;
-        $credential = Credential::where('user_id', $userId)->first();
-        return view('client_details.edit-credentials', compact( 'credential'));
-    }
-
-    public function credentialsUpdate(Request $request)
-    {
-        $userId = Auth::user()->id;
-        $data = $request['client'];
-        $data['user_id'] = $userId;
-        Credential::where('user_id', $userId)->update($data);
-        return redirect('client/details');
-    }
-
-
 
 }
