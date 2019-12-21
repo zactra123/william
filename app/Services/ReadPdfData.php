@@ -8,24 +8,7 @@ class ReadPdfData
 
     private $PDF_TO_TEXT = 'C:\xampp\htdocs\ccc\pdftotext.exe';
 
-    public function getCreditCompanyName($path)
-    {
-        $text =new Pdf($this->PDF_TO_TEXT);
-        $text  ->setPdf($path);
-        $data = $text->setOptions(['raw', 'f 1'])->text();
 
-        if(strpos($data, 'creditreport/transunion')){
-            return 'CK TU';
-        }elseif(strpos($data, 'creditreport/equifax')) {
-            return 'CK EF';
-        }elseif(strpos($data, 'Experian')){
-            return 'EX';
-        }elseif(strpos($data, 'TransUnion Credit Monitoring')){
-            if(strpos($data, 'Account Number')){
-                return 'TU AD';
-            }else{return 'TU PH';}
-        }else{return null;}
-    }
 
     public function getCreditKarmaData($path, $userId, $attachmentId)
     {

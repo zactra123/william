@@ -10,6 +10,7 @@ use App\User;
 use App\ClientDetail;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ClientDetailsData;
+use App\Services\CreditReportUpload;
 use App\ClientAttachment;
 use App\Credential;
 
@@ -186,10 +187,27 @@ class ClientDetailsController extends Controller
         return view('client_details.upload-credit-reports');
     }
 
-    public function uploadPdf(Request $request, ReadPdfData $readPdfData)
+    public function uploadPdf(Request $request, ReadPdfData $readPdfData, CreditReportUpload $creditReportUpload)
     {
 
+
+        if (empty($request->file())) {
+            return redirect('client/details')->with('error','Please upload files');
+        }
+
+        $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
+
+        if($validationUploadPdf[0] == 'error'){
+            return redirect('client/details')->with('error', $validationUploadPdf[1]);
+        }
+
         $userId = Auth::user()->id;
+
+        $moveUploadFile = $creditReportUpload->moveUploadFile($userId,$request['credit_report'], $validationUploadPdf[2]);
+
+
+
+
         if (empty($request['credit_report']) ) {
             return redirect('client/details')->with('error','Please upload files');
         }elseif( $request->file("credit_report")->getClientOriginalExtension() != 'pdf'){
