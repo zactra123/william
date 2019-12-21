@@ -123,6 +123,8 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'ocr_key' => env('OCR_API_KEY', 'hello_world'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
