@@ -13,7 +13,6 @@ use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
 use App\ClientAttachment;
 use App\Credential;
-use Symfony\Component\DomCrawler\Crawler;
 
 class ClientDetailsController extends Controller
 {
