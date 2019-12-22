@@ -125,6 +125,7 @@ return [
 
     'ocr_key' => env('OCR_API_KEY', 'hello_world'),
 
+    'pdf_to_text' => env('PDF_TO_TEXT_PATH'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

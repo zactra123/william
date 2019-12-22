@@ -13,7 +13,7 @@ use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
 use App\ClientAttachment;
 use App\Credential;
-
+use Symfony\Component\DomCrawler\Crawler;
 
 class ClientDetailsController extends Controller
 {
@@ -98,8 +98,6 @@ class ClientDetailsController extends Controller
             ]
         ];
 
-//
-//        ClientAttachment::insert($clientAttachmentData);
         if(empty(ClientAttachment::where('user_id',$userId )->first())){
             ClientAttachment::insert($clientAttachmentData);
         }elseif(empty(ClientAttachment::where('user_id',$userId )->where('category', 'DL')->first())){
@@ -190,80 +188,49 @@ class ClientDetailsController extends Controller
     public function uploadPdf(Request $request, ReadPdfData $readPdfData, CreditReportUpload $creditReportUpload)
     {
 
-
         if (empty($request->file())) {
-            return redirect('client/details')->with('error','Please upload files');
+            return redirect('/client/details/upload-credit-reports')->with('error','Please upload files');
         }
 
         $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
 
         if($validationUploadPdf[0] == 'error'){
-            return redirect('client/details')->with('error', $validationUploadPdf[1]);
+            return redirect('/client/details/upload-credit-reports')->with('error', $validationUploadPdf[1]);
         }
 
         $userId = Auth::user()->id;
 
-        $moveUploadFile = $creditReportUpload->moveUploadFile($userId,$request['credit_report'], $validationUploadPdf[2]);
+        $moveUploadFile = $creditReportUpload->moveUploadFile($userId,$request['credit_report'], $validationUploadPdf[1]);
 
+//        @Todo: get data from second transunion pdf file
+//        @Todo: CreditKarma payment history
 
-
-
-        if (empty($request['credit_report']) ) {
-            return redirect('client/details')->with('error','Please upload files');
-        }elseif( $request->file("credit_report")->getClientOriginalExtension() != 'pdf'){
-            return redirect('client/details')->with('error','Please upload files');
+        $clientReports = [];
+        if (count($moveUploadFile) > 1) {
+            $clientReports = $readPdfData->getTransUnionAccountDetailsData($moveUploadFile[0]);
+            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($moveUploadFile[1]);
+            // Merge Payment History to Client Reports Data
+            foreach($clientReports as $key => &$clientReport){
+                $clientReport = array_merge($clientReport, $dataTUPH[$key]);
+            }
+        } else{
+            switch ($moveUploadFile[0]->category){
+                case "CK TU":
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile[0]);
+                    break;
+                case "CK EF":
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile[0]);
+                    break;
+                case "EX":
+                    $clientReports = $readPdfData->getExprianData($moveUploadFile[0]);
+                    break;
+                default:
+                    return redirect('/client/details/upload-credit-reports')->with('error',"Error message: case when file is not known");
+                    break;
+            }
         }
-
-        $pdfCreditReport = $request->file("credit_report");
-
-        $nameCreditReport = date('YmdHis') .'_'.$pdfCreditReport->getClientOriginalName();
-
-        $path = 'files/client/details/image/'. $userId.'/creditReport';
-        $fileType = $pdfCreditReport->getClientOriginalExtension();
-        $pathCreditReport = public_path() . '/' . $path . '/'. $nameCreditReport;
-        $pdfCreditReport->move(public_path() . '/' . $path, $nameCreditReport);
-
-        $getCreditCompanyName = $readPdfData->getCreditCompanyName($pathCreditReport);
-
-
-        if($getCreditCompanyName == null){
-            return redirect('client/details')->with('error','Please upload files');
-        }
-
-        $clientAttachmentData = [
-            'user_id'=>$userId,
-            'path'=>$pathCreditReport,
-            'file_name'=> $nameCreditReport,
-            'category' =>$getCreditCompanyName,
-            'type'=>$fileType
-        ];
-
-        $attachmentId = ClientAttachment::create($clientAttachmentData)->id;
-
-        if($getCreditCompanyName == 'CK TU'){
-            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport, $userId, $attachmentId);
-        }elseif($getCreditCompanyName == 'CK EF'){
-            $dataCK = $readPdfData->getCreditKarmaData($pathCreditReport, $userId, $attachmentId);
-        }elseif($getCreditCompanyName == 'EX'){
-            $dataEX = $readPdfData->getExprianData($pathCreditReport, $userId, $attachmentId);
-        }elseif($getCreditCompanyName =='TU AD'){
-            $dataTUAD = $readPdfData->getTransUnionAccountDetailsData($pathCreditReport, $userId, $attachmentId);
-        }else{
-            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($pathCreditReport, $userId, $attachmentId);
-        }
-
-        dd('dasdasd');
-
-
-        $clientAttachmentData = [
-             'user_id'=>$userId,
-             'path'=>$pathCreditReport,
-             'file_name'=> $nameCreditReport,
-             'category' =>$getCreditCompanyName,
-             'type'=>$fileType
-        ];
-
-        ClientAttachment::create($clientAttachmentData);
+        dd($clientReport);
+        ClientReports::insert($clientReports);
 
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");
 

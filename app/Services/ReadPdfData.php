@@ -6,14 +6,10 @@ use Spatie\PdfToText\Pdf;
 class ReadPdfData
 {
 
-    private $PDF_TO_TEXT = 'C:\xampp\htdocs\ccc\pdftotext.exe';
-
-
-
-    public function getCreditKarmaData($path, $userId, $attachmentId)
+    public function getCreditKarmaData($attachment)
     {
-        $text =new Pdf($this->PDF_TO_TEXT);
-        $text  ->setPdf($path);
+        $text =new Pdf(config("pdf_to_text"));
+        $text->setPdf($attachment->path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
         $dataArray = explode(PHP_EOL, $data);
@@ -64,8 +60,8 @@ class ReadPdfData
             $closeDate = date("d-m-Y", strtotime(str_replace("Closed Date ", "", $closeDateArray[$i])));
 
             $dataCreditKarma[$i] = [
-                'user_id' => $userId,
-                'attachment_id' => $attachmentId,
+                'user_id' => $attachment->user_id,
+                'attachment_id' => $attachment->id,
 
 //              'last_reported'
                 'date_of_reported' =>$lastReport,
@@ -128,10 +124,10 @@ class ReadPdfData
         return $dataCreditKarma;
     }
 
-    public function getExprianData($path, $userId, $attachmentId)
+    public function getExprianData($attachment)
     {
-        $textEx =new Pdf($this->PDF_TO_TEXT);
-        $textEx  ->setPdf($path);
+        $textEx = new Pdf(config("pdf_to_text"));
+        $textEx->setPdf($attachment->id);
         $dataEx = $textEx->setOptions(['raw', 'f 1'])->text();
         $dataArrayEX = explode("Date of Rep" , $dataEx);
 
@@ -221,8 +217,8 @@ class ReadPdfData
 
 
                 $dataCreditDetailsExperian[] =[
-                    'user_id' => $userId,
-                    'attachment_id' => $attachmentId,
+                    'user_id' => $attachment->user_id,
+                    'attachment_id' => $attachment->id,
 
 //                   date_of_reported
                     'date_of_report' => $dateOfReportDateFormat,
@@ -302,20 +298,22 @@ class ReadPdfData
 
     }
 
-    public function getTransUnionAccountDetailsData($path, $userId, $attachmentId)
+    public function getTransUnionAccountDetailsData($attachment)
     {
-        $textTrans =new Pdf($this->PDF_TO_TEXT);
-        $textTrans  ->setPdf($path);
+        $textTrans = new Pdf(config("pdf_to_text"));
+        $textTrans->setPdf($attachment->path);
         $dataTrans = $textTrans->setOptions(['raw', 'f 1'])->text();
 
         $dataArrayTrans = explode('Account Nu',$dataTrans);
         $dataAccountName = explode('Revolving', $dataTrans);
 
+
         preg_match_all('/([A-Z1,\/]{2,}+[A-Z\s]{1,})+[\$ 0-9]{1,}+[0-9\/]{2}[0-9\/]{2}[0-9\/]/', $dataAccountName[1], $accountNameTrans);
 
         $dataArrayTransAD =[];
         $count = 0;
-        foreach($dataArrayTrans as $value) {
+        array_shift($dataArrayTrans);
+        foreach($dataArrayTrans as $key => $value) {
 
             if (preg_match('/mber\s.*/', $value, $accountNumber)) {
 
@@ -337,8 +335,8 @@ class ReadPdfData
 
                 $dataArrayTransAD[] = [
 
-                    'user_id' => $userId,
-                    'attachment_id' => $attachmentId,
+                    'user_id' => $attachment->user_id,
+                    'attachment_id' => $attachment->id,
 
 //                  account_name
                     'account_name' => $accountNameTrans[1][$count],
@@ -396,15 +394,16 @@ class ReadPdfData
 
     }
 
-    public function getTransUnionPaymentHistoryData($path, $userId, $attachmentId)
+    public function getTransUnionPaymentHistoryData($attachment)
     {
-        $textUnion =new Pdf($this->PDF_TO_TEXT);
-        $textUnion->setPdf($path);
+        $textUnion = new Pdf(config("pdf_to_text"));
+        $textUnion->setPdf($attachment->path);
         $dataUnion = $textUnion->setOptions(['raw', 'f 1'])->text();
 
         $dataUnionForAccount = explode('Revolving', $dataUnion);
 
-        preg_match_all('/(^[A-Z1,\/]{2,}+[A-Z\s]{1,}+[\$ 0-9]{2,}+[0-9\/]{2}[0-9\/]{2}[0-9\/])/m', $dataUnionForAccount[1], $accountNameUnion);
+        preg_match_all('/(^[A-Z0-9,\/-]{2,}+[A-Z\s]{1,})+([\$ 0-9]{1,}+[0-9\/]{2}[0-9\/]{2}[0-9\/])/m', $dataUnionForAccount[1], $accountNameUnion);
+
         $dataPaymentHistory = explode('Payment Status ',$dataUnion );
 
         $regex = '/Jan [0-9]{4} [A-Z]{1,}|Feb [0-9]{4} [A-Z]{1,}|Mar [0-9]{4} [A-Z]{1,}|Apr [0-9]{4} [A-Z]{1,}|May [0-9]{4} [A-Z]{1,}|Jun [0-9]{4} [A-Z]{1,}|Jul [0-9]{4} [A-Z]{1,}|Aug [0-9]{4} [A-Z]{1,}|Sep [0-9]{4} [A-Z]{1,}|Oct [0-9]{4} [A-Z]{1,}|Nov [0-9]{4} [A-Z]{1,}|Dec[0-9]{4} [A-Z]{1,}/';
@@ -428,32 +427,30 @@ class ReadPdfData
                }
 
                 $transUnionPaymentHistory[] = [
-                    'user_id' => $userId,
-                    'attachment_id' => $attachmentId,
                     'past_due_amount' =>str_replace("Past Due Amount ", "", $pastDueAmount[0]),
                     'late_payment' => [
                         '30' => str_replace(["30 Days - ", "\r"], "",$thirtyDays[0]),
                         '60' => str_replace(["60 Days - ", "\r"], "",$sixtyDays[0]),
                         '90' => str_replace(["90 Days - ", "\r"], "",$ninetyDays[0]),
                     ],
-                    'payment_history' =>$paymentHistory
+                    'payment_history' => $paymentHistory
                 ];
-            };
+            }
         }
 
-        if(count($accountNameUnion[1]) != count($transUnionPaymentHistory)){
-            return false;
-        };
+//        if(count($accountNameUnion[1]) != count($transUnionPaymentHistory)){
+//            return false;
+//        };
         for($i = 0; $i <= count($transUnionPaymentHistory)-1; $i++ ){
-            $transUnionPaymentHistory[$i]['account_name'] =$accountNameUnion[1][$i];
+            $transUnionPaymentHistory[$i]['account_name'] = $accountNameUnion[1][$i];
         }
         return $transUnionPaymentHistory;
     }
 
     public function getExperianReport($path, $userId, $attachmentId)
     {
-        $text =new Pdf($this->PDF_TO_TEXT);
-        $text  ->setPdf($path);
+        $text = new Pdf($this->PDF_TO_TEXT);
+        $text->setPdf($path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
 
