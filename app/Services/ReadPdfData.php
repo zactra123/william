@@ -450,14 +450,170 @@ class ReadPdfData
         return $transUnionPaymentHistory;
     }
 
+    public function getExperianReport($path, $userId, $attachmentId)
+    {
+        $text =new Pdf($this->PDF_TO_TEXT);
+        $text  ->setPdf($path);
+        $data = $text->setOptions(['raw', 'f 1'])->text();
+
+
+        $data = explode('Account name', $data);
+        $dataReport = [];
+        array_shift($data);
+        foreach($data as $key=>$value){
+
+            $acountName = str_replace("\r\n", '', $this->get_account_name($value,'Account number' ));
+            if (empty($acountName)){
+                continue;
+            }
+            $dataReport[$key]["user_id"] = $userId;
+            $dataReport[$key]["attachment_id"] = $attachmentId;
+
+
+            $dataReport[$key]["account_name"] = $acountName;
+            $dataReport[$key]["account_number"]  = str_replace("\r\n", '',$this->get_string_between($value, 'Account number', 'Recent balance' ));
+            $dataReport[$key]["recent_balance"] = str_replace("\r\n", '',$this->get_string_between($value, 'Recent balance', 'Date opened' ));
+            $dataReport[$key]["date_opened"] = str_replace("\r\n", '',$this->get_string_between($value, 'Date opened', 'Status' ));
+            $dataReport[$key]["type"] = str_replace("\r\n", '',$this->get_string_between($value, 'Type', 'Terms' ));
+            $dataReport[$key]["terms"] = str_replace("\r\n", '',$this->get_string_between($value, 'Terms', 'On record until' ));
+            $dataReport[$key]["on_record_until"] = str_replace("\r\n", '',$this->get_string_between($value, 'On record until', 'Credit limit ' ));
+            $dataReport[$key]["credit_limit"] = str_replace("\r\n", '',$this->get_string_between($value, 'original amount', 'High balance' ));
+            $dataReport[$key]["highest_balance"] = str_replace("\r\n", '',$this->get_string_between($value, 'High balance', 'Monthly payment' ));
+            $dataReport[$key]["mountly_payment"] = str_replace("\r\n", '',$this->get_string_between($value, 'Monthly payment', 'Recent payment' ));
+            $dataReport[$key]["recent_payment"] = str_replace("\r\n", '',$this->get_string_between($value, "Recent payment\r\namount", 'Date of status' ));
+            $dataReport[$key]["date_of_status"] = str_replace("\r\n", '',$this->get_string_between($value, "Date of status", 'First reported' ));
+            $dataReport[$key]["first_reported"] = str_replace("\r\n", '',$this->get_string_between($value, "First reported", 'Responsibility' ));
+            $dataReport[$key]["sold_to"] = $soldTo = str_replace("\r\n", '',$this->get_string_between($value, "Sold to", 'Type' ));
+            $dataReport[$key]["original_creditor"] = $originalCreditor = str_replace("\r\n", '',$this->get_string_between($value, "Original creditor", 'Type' ));
+            $dataReport[$key]["mortgage_identification_number"] = $mortgageIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Mortgage identification number", 'Type' ));
+
+            $addressIdentificationNumber = null;
+            if($soldTo != null){
+                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Sold to' ));
+            }elseif($originalCreditor != null){
+                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Original creditor' ));
+            }elseif($mortgageIdentificationNumber != null ){
+                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Mortgage identification number' ));
+            }else{
+                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Type'));
+            }
+            $dataReport[$key]["address_identification_number"] = $addressIdentificationNumber;
+
+            $statusAddress =str_replace("\r\n", ' ',$this->get_string_between($value, "Status", 'Address identification number' ));
+            preg_match('/[A-Z]{2,}+(.*)$/',$statusAddress, $address );
+            $dataReport[$key]["address"] = $address[0];
+            $statusText = str_replace([ $address[0],' + Dispute'], '', $statusAddress);
+            $pattern = '/(Closed|Account|Transferred|Foreclosed|Collection|Open|Paid)+(.*)$/';
+            preg_match($pattern,$statusText, $status );
+            $dataReport[$key]["status"] = $status[0];
+
+            $commentOther = $this->get_string_between($value, "Comment", null);
+
+            $patternBalanceHistory = '/[A-z]{3} 20[0-9]{2}: \$[0-9]{1,},[0-9]{1,} \/\s([A-z]{3}\s[0-9]{2},\s20[0-9]{2}|No data)\s\/\s(\$[0-9]{1,},[0-9]{1,}|\$[0-9]{1,}|No data)\s\/\s(\$[0-9]{1,},[0-9]{1,}|\$[0-9]{1,}|No data)/';
+            $patternPaymentHistoryGuide = '/(30|60|90|120|150|180)\sdays past due as of(.*)\r/';
+            $patternChargeOfOther = '/(Charge Off|Foreclosure|Collection).*/';
+
+            $comment = null;
+            $responsibility = null;
+            $historyGuide = [];
+            if($commentOther != null) {
+                $commentText = str_replace("\r\n", ' ', $commentOther);
+                preg_match('/[0-9]{4}\s[A-z]{3}+(.*)$/', $commentText, $removedPart);
+                $comment = str_replace($removedPart[0], '', $commentText);
+                $responsibility = str_replace("\r\n", ' ', $this->get_string_between($value, "Responsibility", 'Comment'));
+                preg_match_all($patternBalanceHistory, $commentOther, $balanceHistory);
+                preg_match_all($patternPaymentHistoryGuide, $commentOther, $historyGuide);
+                $historyGuide = !empty($historyGuide[0]) ? $historyGuide[0] : [];
+                preg_match($patternChargeOfOther, $commentOther, $chargeOffOther);
+                $end = isset($historyGuide[0][0])?$historyGuide[0][0]: 'The following';
+                if(isset($chargeOffOther[1])){
+                    $chargeAndOther = $chargeOffOther[1]. str_replace("\r\n", ' ', $this->get_string_between($commentOther, $chargeOffOther[1], $end ));
+                    if (!empty($chargeAndOther)) {
+                        array_push($historyGuide, $chargeAndOther);
+                    }
+                    $endPaymentHistory = isset($chargeOffOther[1])?$chargeOffOther[1]:$end;
+                    $paymentHistoryAll =$this->get_account_name($removedPart[0], $endPaymentHistory);
+                }else{
+                    $paymentHistoryAll =$this->get_account_name($removedPart[0], $end);
+                }
+            }else{
+                $responsibilityOther = str_replace("\r\n", ' ', $this->get_string_between($value, "Responsibility", null));
+                $responsibilityText = str_replace("\r\n", ' ', $responsibilityOther);
+                preg_match('/20[0-9]{2}\s[A-z]{3}+(.*)$/', $responsibilityText, $removedPart);
+                $responsibility = str_replace($removedPart[0], '', $responsibilityText);
+
+                preg_match_all($patternBalanceHistory, $responsibilityOther, $balanceHistory);
+                preg_match_all($patternPaymentHistoryGuide, $responsibilityOther, $historyGuide);
+                preg_match($patternChargeOfOther, $responsibilityOther, $chargeOffOther );
+                $historyGuide = !empty($historyGuide[0]) ? $historyGuide[0] : [];
+                $end = isset($historyGuide[0][0])?$historyGuide[0][0]: 'The following';
+
+                if(isset($chargeOffOther[1])){
+                    $chargeAndOther = $chargeOffOther[1]. str_replace("\r\n", ' ', $this->get_string_between($commentOther, $chargeOffOther[1], $end ));
+                    if (!empty($chargeAndOther)) {
+                        array_push($historyGuide, $chargeAndOther);
+                    }
+                    $endPaymentHistory = isset($chargeOffOther[1])?$chargeOffOther[1]:$end;
+                    $paymentHistoryAll =$this->get_account_name($removedPart[0], $endPaymentHistory);
+
+                }else{
+                    $paymentHistoryAll =$this->get_account_name($removedPart[0], $end);
+                }
+            }
+
+            $dataReport[$key]["balance_history"] = !empty($balanceHistory[0]) ? $balanceHistory[0] : null;
+            $dataReport[$key]["history_guide"] = $historyGuide;
+            $dataReport[$key]["comment"] = $comment;
+            $dataReport[$key]["responsibility"] = $responsibility;
+
+            $year = null;
+            $paymentHistory= [];
+            $month = null;
+
+            foreach(explode(' ', trim($paymentHistoryAll))as $value){
+
+                preg_match('/20[0-9]{2}/', $value, $matchYear);
+                preg_match('/[A-z]{3}/', $value, $matchMonth);
+                if (isset($matchYear[0])) {
+                    $year = $matchYear[0];
+                    continue;
+                }
+                if (isset($matchMonth[0])) {
+                    $month = $matchMonth[0];
+                    continue;
+                }
+                $paymentHistory [$year][$month]  = $value;
+            }
+            $dataReport[$key]["payment_history"] = $paymentHistory;
+
+        }
+
+        return $dataReport;
+    }
+
+
+
+
     function get_string_between($string, $start, $end){
         $string = ' ' . $string;
         $ini = strpos($string, $start);
         if ($ini == 0) return '';
         $ini += strlen($start);
-        $len = strpos($string, $end, $ini) - $ini;
+        if($end == null){
+            $len = strlen($string) - $ini;
+        }else{
+            $len = strpos($string, $end, $ini) - $ini;
+        }
+
         return substr($string, $ini, $len);
     }
+
+    function get_account_name($string, $end){
+
+        $len = strpos($string, $end);
+        return substr($string,  0, $len);
+    }
+
 
     function get_string($string, $start, $end){
         $string = ' ' . $string;
