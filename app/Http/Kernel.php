@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         //add new middleware for client, admin and super admin
         'client' => \App\Http\Middleware\Client::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'affiliate' => \App\Http\Middleware\Affiliate::class,
         'superadmin' => \App\Http\Middleware\SuperAdmin::class,
 
     ];

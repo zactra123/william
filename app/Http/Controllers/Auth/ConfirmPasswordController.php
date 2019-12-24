@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 class ConfirmPasswordController extends Controller
@@ -25,7 +26,40 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo;
+    public function redirectTo()
+    {
+
+        switch(Auth::user()->role){
+            case 'admin':
+                $this->redirectTo = 'admin';
+                return $this->redirectTo;
+                break;
+            case 'super admin':
+                $this->redirectTo = '/owner';
+                return $this->redirectTo;
+                break;
+            case 'affiliate':
+                $this->redirectTo = '/affiliate';
+                return $this->redirectTo;
+                break;
+            case 'client':
+                if(empty(auth()->user()->clientDetails)){
+                    $this->redirectTo = '/client/details/create';
+                    return $this->redirectTo;
+                    break;
+                }else{
+                    $this->redirectTo = '/client/details';
+                    return $this->redirectTo;
+                    break;
+                }
+            default:
+                $this->redirectTo = '/login';
+                return $this->redirectTo;
+        }
+
+        // return $next($request);
+    }
 
     /**
      * Create a new controller instance.

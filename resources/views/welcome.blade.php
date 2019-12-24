@@ -53,6 +53,8 @@
                                         @elseif((Auth::user()->role == 'admin'))
 
                                             <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
+                                        @elseif((Auth::user()->role == 'affiliate'))
+                                            <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>Home</a></li>
                                         @else
 
                                             <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>

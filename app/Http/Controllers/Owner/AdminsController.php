@@ -38,7 +38,7 @@ class AdminsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return view('owner.create')->withErrors($validation);
+            return view('owner.admin.create')->withErrors($validation);
         }
 
         User::create([

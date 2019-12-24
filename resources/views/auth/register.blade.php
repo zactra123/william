@@ -3,6 +3,47 @@
 @section('content')
 
 
+    <style>
+        .tab-selector {
+            background-color:  #0c71c3;
+            /*border-color:#1a41ad;*/
+            color: #FFFFFF;
+            font-size: large;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            font-size: large;
+        }
+        .tab-selector:hover{
+            background-color: #FFFFFF;
+            color:#0c71c3;
+        }
+
+        .tab-selector.active {
+            background-color:  #FFFFFF;
+            color:#0c71c3;
+        }
+        .card-header{
+
+            border-bottom: none;
+        }
+        .pdf-upload{
+            display: none
+        }
+        .pdf-upload.active{
+            display: block;
+        }
+
+
+
+    </style>
+
+
     <div class="page-content">
         <div class="fullwidth-block">
 
@@ -10,12 +51,22 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">Registration</div>
+                            <div class="card-header">
+
+                                <div class="w-100 btn-group btn-group-toggle" data-toggle="buttons">
+
+                                    <button type="button" class="btn tab-selector active" data-target="client-tab" id="client">REGISTER AS CLIENT</button>
+
+
+                                    <button type="button" class="btn tab-selector" data-target="affiliate-tab" id="affiliate">REGISTER AS AFFILIATE</button>
+
+                                </div>
+
+                            </div>
 
                             <div class="card-body">
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
-
 
 
                                     <div class="form-group row">
@@ -30,6 +81,21 @@
                                     </span>
                                             @enderror
                                         </div>
+                                    </div>
+
+                                    <div class="pdf-upload affiliate-tab">
+
+
+
+                                        <input type="hidden" name="role" class="form-control" value="affiliate">
+
+                                    </div>
+                                    <div class="pdf-upload client-tab">
+
+
+
+                                        <input type="hidden" name="role" class="form-control" value="client">
+
                                     </div>
 
                                     <div class="form-group row">
@@ -73,3 +139,25 @@
 
 
 @endsection
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.tab-selector').click(function(){
+            var tab = $(this).attr("data-target");
+
+            $('.tab-selector').removeClass("active");
+            $('.pdf-upload').removeClass("active");
+            $('.pdf-upload input').prop("disabled", true);
+            $("." + tab).addClass("active");
+            $("." + tab+ " input").prop("disabled", false);
+
+
+        })
+
+
+
+    })
+
+</script>
