@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 class VerificationController extends Controller
 {
@@ -23,18 +25,30 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
 
-    public function verify(Request $request)
+    public function verify(Request $request, $id)
     {
-        if (! $this->guard()->onceUsingId($request->route('id'))) {
+        $signuture = $request->signature;
+        if (! $this->guard()->onceUsingId($id)) {
             throw new AuthorizationException;
         }
         $user = $this->guard()->user();
+        if (empty($user->password)) {
+            if($request->isMethod("POST")) {
+                $this->validator($request->all())->validate();
+                $user->update(['password'=> Hash::make($request->password)]);
+
+            }else {
+                return view("auth.passwords.setup", compact("id", "signuture"));
+            }
+        }
+
         if ($user->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
+        Auth::login($user, true);
         return redirect($this->redirectPath())->with('verified', true);
     }
     /**
@@ -92,5 +106,18 @@ class VerificationController extends Controller
     protected function guard()
     {
         return Auth::guard();
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
     }
 }

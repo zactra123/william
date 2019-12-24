@@ -59,7 +59,7 @@ class AffiliatesController extends Controller
 
         $affiliateId = Auth::user()->id;
 
-        $user =   User::create([
+        $user = User::create([
 
             'email'=> $request->email,
 

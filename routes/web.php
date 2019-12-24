@@ -24,6 +24,7 @@ Route::get('about-us', 'PagesController@about')->name('about-us');
 
 Auth::routes();
 Auth::routes(['verify' => true]);
+Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 
 Route::group(['prefix'=>'owner'], function(){
 
