@@ -4,7 +4,7 @@
 @section('content')
     @if (Session::get('bad'))
         <div >
-            <a href="{{route('client.details.edit', Auth::user()->id)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+            <a href="{{route('affiliate.editClientDetails', $clientId)}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
                 Skip,  go to the next step
             </a>
 

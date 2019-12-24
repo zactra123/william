@@ -53,11 +53,11 @@ Route::group(['prefix'=> 'admin'], function(){
 Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
-    Route::get('store-client', 'AffiliatesController@storeClient')->name('affiliate.store.client');
+    Route::post('store-client', 'AffiliatesController@storeClient')->name('affiliate.store.client');
     Route::get('client-details/{client}', 'AffiliatesController@addClientDetails')->name('affiliate.addClientDetails');
     Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
-    Route::get('client-details/edit', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
-    Route::put('client-create/update', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
+    Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
+    Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
     Route::resource('/', 'AffiliatesController')->names('affiliate')->parameters([''=>'affiliate'])->only('index');
 });
 

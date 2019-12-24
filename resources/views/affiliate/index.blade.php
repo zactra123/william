@@ -23,7 +23,7 @@
                         <tr>
 
                             <td>{{$client->user->first_name != null ?$client->user->first_name : "-"}}</td>
-                            <td>{{$client->user->first_name != null ?$client->user->first_name : "-"}}</td>
+                            <td>{{$client->user->first_name != null ?$client->user->last_name : "-"}}</td>
                             <td>{{$client->user->email}}</td>
                             <td>
 
