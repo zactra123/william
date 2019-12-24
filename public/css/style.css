@@ -261,7 +261,7 @@ table {
   border-radius: 20px;
   color: white;
   text-decoration: none;
-  background-color: #152559;
+  background-color: #0c71c3;
   line-height: normal;
   border: none;
   outline: none;
@@ -334,7 +334,10 @@ table {
   opacity: 0;
 }
 .slider .slide-title {
-  color: #152559;
+  color: #3366ff;
+  /*#33cccc;*/
+  /*#3366ff*/
+  /*color: #0c71c3;*/
   margin: 0 0 10px;
   font-size: 55px;
   font-size: 3.4375em;

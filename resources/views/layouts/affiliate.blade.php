@@ -32,10 +32,13 @@
 
     <header class="site-header">
 
-
         <div class="bottom-header">
             <div class="container">
-                <a href="{{ url('/') }}" class="branding pull-left">
+                @if(Auth::user()->role == 'affiliate')
+                    <a href="{{ url('/affiliate') }}" class="branding pull-left">
+                @else
+                    <a href="{{ url('/') }}"  class="branding pull-left">
+                @endif
                     <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
                     <h1 class="site-title">Company <span>Name</span></h1>
                     <h2 class="site-description">Tagline goes here</h2>

@@ -31,11 +31,18 @@
 <div id="site-content">
 
     <header class="site-header">
-
-
         <div class="bottom-header">
             <div class="container">
-                <a href="{{ url('/') }}" class="branding pull-left">
+
+            @if(Auth::user()->role == 'client')
+                 @if(empty(Auth::user()->clientDetails))
+                     <a href="{{ url('/client/details/create') }}" class="branding pull-left">
+                 @else
+                    <a href="{{ url('/client/details') }}"  class="branding pull-left">
+                 @endif
+            @else
+                <a href="{{ url('/') }}"  class="branding pull-left">
+            @endif
                     <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
                     <h1 class="site-title">Company <span>Name</span></h1>
                     <h2 class="site-description">Tagline goes here</h2>
@@ -44,10 +51,8 @@
                 <nav class="main-navigation pull-right ">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
-                        <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
-                        <li class="menu-item"><a href="">Services</a></li>
-                        <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
+                        {{--<li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>--}}
+
                         <li class="menu-item">
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
@@ -117,10 +122,7 @@
                 <div class="col-md-6 align-right">
 
                     <nav class="footer-navigation">
-                        <a href="#">News</a>
-                        <a href="#">About us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Contact</a>
+
                     </nav> <!-- .footer-navigation -->
 
                     <div class="social-links">

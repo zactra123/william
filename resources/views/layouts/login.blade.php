@@ -66,8 +66,8 @@
                                 @if (Route::has('register'))
                                     <li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>
                                     @endif
-                                    @endauth
-                                    @endif
+                            @endauth
+                        @endif
 
                         </li>
                     </ul>
