@@ -11146,3 +11146,7 @@ a.text-dark:focus {
   text-transform: capitalize;
   text-align: center;
 }
+
+.content{
+  min-height: 100vh;
+}

@@ -1,6 +1,24 @@
 @extends('layouts.login')
 
 @section('content')
+    <style>
+        .head{
+            background-color:  #0c71c3;
+            /*border-color:#1a41ad;*/
+            color: #FFFFFF;
+            font-size: large;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            font-size: large;
+            padding: 0.375rem 0.75rem;
+        }
+    </style>
 
     <div class="page-content">
         <div class="fullwidth-block">
@@ -8,7 +26,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header"><p> {{ __('Login') }} </p></div>
+                            <div class="card-header"><div class="head"> {{ __('Login') }} </div></div>
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf

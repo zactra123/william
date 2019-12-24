@@ -85,7 +85,7 @@
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
     @include('helpers/flash')
-    <main class="py-4">
+    <main class="content">
 
 
         @yield('content')
