@@ -38,7 +38,6 @@ class ClientDetailsController extends Controller
     public function store(Request $request)
     {
         $data = $request->client;
-
         $validation = Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -61,6 +60,7 @@ class ClientDetailsController extends Controller
             $id = Auth::user()->id;
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
+            $clientDetails["user_id"] = $id;
 
             User::where('id', $id)->update($user);
 
@@ -78,19 +78,21 @@ class ClientDetailsController extends Controller
     public function edit($id, Request $request)
     {
         $user = Auth::user();
-
-        $uploadUserDetail = Auth::user();
-
-//        $uploadUserDetail =    UploadClientDetail::where('id',$user->id )->first();
-
-        return view('client_details.edit', compact('user', 'uploadUserDetail'));
+        $uploadUserDetail = UploadClientDetail::where('user_id',$user->id )->first();
+        if (!empty($uploadUserDetail)) {
+            return view('client_details.edit_with_upload_data', compact('user', 'uploadUserDetail'));
+        }
+        return view('client_details.edit', compact('user'));
     }
 
     public function update(Request $request)
     {
-        dd($request->all());
 
         $data = $request->client;
+        $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
+        $id = Auth::user()->id;
+        $uploaded = UploadClientDetail::where("user_id", $id);
+
 
         $validation = Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -106,18 +108,21 @@ class ClientDetailsController extends Controller
 
 
         if ($validation->fails()) {
-
+            if(!empty($uploaded)) {
+                return view('client_details.edit_with_upload_data')->withErrors($validation);
+            }
             return view('client_details.create')->withErrors($validation);
         } else {
 
 
-            $id = Auth::user()->id;
             $user = Arr::only($request->client, ['first_name', 'last_name']);
-            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
+            $clientDetails = Arr::except($request->client, ['first_name', 'last_name', 'sex_uploaded']);
 
             User::where('id', $id)->update($user);
 
-            ClientDetail::where('id', $id)->update($clientDetails);
+            $d = ClientDetail::where('user_id', $id)->update($clientDetails);
+
+            $uploaded->delete();
             $client = $id;
             return redirect(route('client.details.index'))->with('success', "your data saved");
 
@@ -160,7 +165,7 @@ class ClientDetailsController extends Controller
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
 
-        $userId = Auth::user()->id;
+        $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()
                 ->withInput()
@@ -180,7 +185,7 @@ class ClientDetailsController extends Controller
             return redirect('client/details/create ')->with('error','Please upload the correct file format (PDF, GIF, PNG, JPG, TIF, BMP)');
         }
 
-        $path = "files/client/details/image/". $userId."/";
+        $path = "files/client/details/image/". $client."/";
 
         $nameDriverLicense = 'driver_license.'.$driverLicenseExtension;
         $nameSocialSecurity ='social_security.'.$socialSecurityExtension;
@@ -200,20 +205,20 @@ class ClientDetailsController extends Controller
         $clientData =  $resultDriverLicense;
         $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
-        $clientData['user_id'] = $userId;
+        $clientData['user_id'] = $client;
 
 
 
         $clientAttachmentData = [
             [
-                'user_id'=> $userId,
+                'user_id'=> $client,
                 'path'=>$pathDriverLicense,
                 'file_name'=> $nameDriverLicense,
                 'category' =>'DL',
                 'type'=>$driverLicenseExtension
             ],
             [
-                'user_id'=>$userId,
+                'user_id'=>$client,
                 'path'=>$pathSocialSecurity,
                 'file_name'=> $nameSocialSecurity,
                 'category'=>'SS',
@@ -221,37 +226,35 @@ class ClientDetailsController extends Controller
             ]
         ];
 
-        if(empty(ClientAttachment::where('user_id',$userId )->first())){
+        if(empty(ClientAttachment::where('user_id',$client )->first())){
             ClientAttachment::insert($clientAttachmentData);
-        }elseif(empty(ClientAttachment::where('user_id',$userId )->where('category', 'DL')->first())){
+        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'DL')->first())){
 
             ClientAttachment::insert($clientAttachmentData[0]);
-            ClientAttachment::where('user_id',$userId)->where('category', 'SS')->update($clientAttachmentData[1]);
-        }elseif(empty(ClientAttachment::where('user_id',$userId )->where('category', 'SS')->first())){
+            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
+        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'SS')->first())){
 
             ClientAttachment::insert($clientAttachmentData[1]);
-            ClientAttachment::where('user_id',$userId)->where('category', 'DL')->update($clientAttachmentData[0]);
+            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
         }else{
-            ClientAttachment::where('user_id',$userId)->where('category', 'DL')->update($clientAttachmentData[0]);
-            ClientAttachment::where('user_id',$userId)->where('category', 'SS')->update($clientAttachmentData[1]);
+            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
+            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
 
         }
 
-
-        $client = $userId;
-        if(empty(ClientDetail::where('user_id',$userId )->first())){
-            User::where('id', $userId)->update($user);
+        if(empty(ClientDetail::where('user_id',$client )->first())){
+            User::where('id', $client)->update($user);
             ClientDetail::create($clientData);
         }else{
-
             UploadClientDetail::insert(array_merge($user, $clientData));
             return redirect(route('client.details.edit', compact('client')));
         }
 
-        if(count($resultDriverLicense) != 6 || count($resultSocialSecurity) != 3){
-            $request->session()->put('bad',true);
-            return redirect('client/details/create ')->with('error','Please upload images more clearly');
-        }
+//        @Todo: fix redirection
+//        if(count($resultDriverLicense) != 6 || count($resultSocialSecurity) != 3){
+//            $request->session()->put('bad',true);
+//            return redirect('client/details/create ')->with('error','Please upload images more clearly');
+//        }
 
 
         return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
