@@ -12,12 +12,15 @@
     <!-- Loading main css file -->
     <link rel="stylesheet" href="css/css/animate.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
     <!--[if lt IE 9]>
     <script src="js/js/ie-support/html5.js"></script>
     <script src="js/js/ie-support/respond.js"></script>
-    <![endif]-->
 
+    <![endif]-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
         .up-color{
@@ -26,6 +29,14 @@
             /*#33cccc;*/
             /*#3366ff*/
             /*#0c71c3;*/
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            font-size: 9px;
+            font-family: "Roboto Slab", serif;
+        }
+        body{
+            font-family:"Roboto Slab", serif; ;
         }
 
     </style>
@@ -38,48 +49,60 @@
     <header class="site-header">
         <div class="bottom-header">
             <div class="container">
+
                 <a href="{{ url('/') }}" class="branding pull-left">
                     <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
                     <h1 class="site-title">Better <span>Credit</span></h1>
                     <h2 class="site-description">Tagline goes here</h2>
                 </a> <!-- #branding -->
-
                 <nav class="main-navigation pull-right">
-                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+
                     <ul class="menu">
-                        <li class="menu-item"><a href="">News</a></li>
-                        <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
-                        <li class="menu-item"><a href="">Services</a></li>
-                        <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
+                        <li class="menu-item"><a href="">WHAT WE DO</a></li>
+                        <li class="menu-item"><a href="">HOW IT WORKS</a></li>
+                        <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
+                        <li class="menu-item"><a href="">FREE CREDIT REPAIR</a></li>
+                        <li class="menu-item"><a href="">FAQs</a></li>
+                        <li class="menu-item"><a href="{{route('whoWeAre')}}">WHO WE ARE</a></li>
+                        <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
+                        <li class="menu-item"><a href="">CONTACT US</a></li>
 
-                            @if (Route::has('login'))
-                                    @auth
+                        @if (Route::has('login'))
+                             @auth
 
-                                        @if(Auth::user()->role == 'client')
-                                            @if(empty(Auth::user()->clientDetails))
-                                                <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
-                                            @else
-                                                <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
-                                            @endif
-                                        @elseif((Auth::user()->role == 'admin'))
-
-                                            <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
-                                        @elseif((Auth::user()->role == 'affiliate'))
-                                            <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>Home</a></li>
-                                        @else
-
-                                            <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
-                                        @endif
+                                 @if(Auth::user()->role == 'client')
+                                    @if(empty(Auth::user()->clientDetails))
+                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
                                     @else
+                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    @endif
+                                 @elseif((Auth::user()->role == 'admin'))
+                                        <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
+                                 @elseif((Auth::user()->role == 'affiliate'))
+                                        <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>Home</a></li>
+                                 @else
+                                         <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
+                                 @endif
+                        @else
                                         <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
 
                                         @if (Route::has('register'))
-                                            <li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>
-                                        @endif
-                                    @endauth
-                            @endif
+                                            {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
 
-                        </li>
+                                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Registration</a>
+                                        <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                            <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
+                                            <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                        @endif
+                              @endauth
+                        @endif
+
+
                     </ul>
 
                 </nav> <!-- .main-navigation -->

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
 
@@ -39,37 +40,17 @@
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="">News</a></li>
-                        <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
-                        <li class="menu-item"><a href="">Services</a></li>
-                        <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
+                        <li class="menu-item"><a href="">WHAT WE DO</a></li>
+                        <li class="menu-item"><a href="">HOW IT WORKS</a></li>
+                        <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
+                        <li class="menu-item"><a href="">FREE CREDIT REPAIR</a></li>
+                        <li class="menu-item"><a href="">FAQs</a></li>
+                        <li class="menu-item"><a href="{{route('whoWeAre')}}">WHO WE ARE</a></li>
+                        <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
+                        <li class="menu-item"><a href="">CONTACT US</a></li>
 
-                        @if (Route::has('login'))
-                            @auth
 
-                                @if(Auth::user()->role == 'client')
-                                    @if(empty(Auth::user()->clientDetails))
-                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
-                                    @else
-                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
-                                    @endif
-                                @elseif((Auth::user()->role == 'admin'))
 
-                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
-                                @else
-
-                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
-                                @endif
-                            @else
-                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
-
-                                @if (Route::has('register'))
-                                    <li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>
-                                    @endif
-                            @endauth
-                        @endif
-
-                        </li>
                     </ul>
                 </nav> <!-- .main-navigation -->
             </div> <!-- .container -->

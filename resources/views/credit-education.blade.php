@@ -1,0 +1,69 @@
+<style>
+    .fullwidth-block {
+        font-family: "Times New Roman";
+        font-size: larger;
+
+    }
+    .sidebar{
+
+        font-size: 16px;
+        color: #fff;
+        background-color: #0c71c3;
+    }
+    .color{
+        color: white;
+        margin-left: 2% ;
+    }
+
+</style>
+@extends('layouts.login')
+
+@section('content')
+
+
+
+ <div class="row justify-content-right">
+
+
+      <div class="col-2 sidebar align-content-center">
+         @foreach($contents as  $content)
+             @if($content->id%2==0 )
+              <p><a href="{{route('credit.educationInfo', $content->url )}}" class="font-bolt color"> {{$content->title}}</a></p><hr>
+              @endif
+         @endforeach
+
+      </div>
+      <div class="col-8 justify-content-center">
+
+         <div class="fullwidth-block slide-down">
+             <div class="container fon">
+
+                     @if(isset($moreInfo))
+                         @foreach($moreInfo as $info)
+                             <h1>{{$info->title}}</h1><br/>
+                         <div class="row justify-content-center">
+                             <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+                         </div>
+                         @endforeach
+                     @endif
+
+             </div>
+
+         </div>
+     </div>
+     <div class="col-2 sidebar align-content-center">
+         @foreach($contents as $content)
+             @if($content->id%2!=0 )
+             <p><a href="{{route('credit.educationInfo', $content->url )}}" class="font-bolt color"> {{$content->title}}</a></p><hr>
+              @endif
+         @endforeach
+
+     </div>
+
+ </div>
+
+
+
+
+
+@endsection

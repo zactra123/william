@@ -18,11 +18,33 @@ class PagesController extends Controller
 
     public function moreInformation($url)
     {
-        $contents = HomePageContent::where('url', $url)
+
+
+        $content = HomePageContent::where('url', $url)
             ->get();
 
-        return view('more-information', compact('contents'));
+        return view('more-information', compact('contents', 'content'));
 
+    }
+
+
+    public function creditEducation()
+    {
+        $contents = HomePageContent::all();
+       return view('credit-education', compact('contents'));
+    }
+
+    public function creditEducationInfo($url)
+    {
+        $contents = HomePageContent::all();
+        $moreInfo = HomePageContent::where('url', $url)
+            ->get();
+        return view('credit-education', compact('moreInfo', 'contents'));
+    }
+
+    public function whoWeAre()
+    {
+        return view('who-we-are')  ;
     }
 
 

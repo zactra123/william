@@ -17,6 +17,9 @@
 
 Route::get('/', 'PagesController@welcome' );
 Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
+Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
+Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
+Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Route::get('about-us', 'PagesController@about')->name('about-us');
@@ -24,6 +27,8 @@ Route::get('about-us', 'PagesController@about')->name('about-us');
 
 Auth::routes();
 Auth::routes(['verify' => true]);
+
+Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')->name('register.Affiliate');
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 
 Route::group(['prefix'=>'owner'], function(){
@@ -66,6 +71,8 @@ Route::group(['prefix'=> 'affiliate'], function(){
 Route::group(['prefix' =>'client/details'], function() {
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
+    Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');
+    Route::post('add/driver-license-social-security', 'ClientDetailsController@storeDlSs')->name('client.storeDriverSocial');
 //    Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
 //    Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
     Route::resource('/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);

@@ -3,45 +3,45 @@
 @section('content')
 
 
-    {{--<style>--}}
-        {{--.tab-selector {--}}
-            {{--background-color:  #0c71c3;--}}
-            {{--/*border-color:#1a41ad;*/--}}
-            {{--color: #FFFFFF;--}}
-            {{--font-size: large;--}}
-            {{--display: -webkit-box;--}}
-            {{--display: -webkit-flex;--}}
-            {{--display: -ms-flexbox;--}}
-            {{--display: flex;--}}
-            {{---webkit-box-pack: center;--}}
-            {{---webkit-justify-content: center;--}}
-            {{---ms-flex-pack: center;--}}
-            {{--justify-content: center;--}}
-            {{--font-size: large;--}}
-        {{--}--}}
-        {{--.tab-selector:hover{--}}
-            {{--background-color: #FFFFFF;--}}
-            {{--color:#0c71c3;--}}
-        {{--}--}}
+    <style>
+        .tab-selector {
+            background-color:  #0c71c3;
+            /*border-color:#1a41ad;*/
+            color: #FFFFFF;
+            font-size: large;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            font-size: large;
+        }
+        .tab-selector:hover{
+            background-color: #FFFFFF;
+            color:#0c71c3;
+        }
 
-        {{--.tab-selector.active {--}}
-            {{--background-color:  #FFFFFF;--}}
-            {{--color:#0c71c3;--}}
-        {{--}--}}
-        {{--.card-header{--}}
+        .tab-selector.active {
+            background-color:  #FFFFFF;
+            color:#0c71c3;
+        }
+        .card-header{
 
-            {{--border-bottom: none;--}}
-        {{--}--}}
-        {{--.pdf-upload{--}}
-            {{--display: none--}}
-        {{--}--}}
-        {{--.pdf-upload.active{--}}
-            {{--display: block;--}}
-        {{--}--}}
+            border-bottom: none;
+        }
+        .pdf-upload{
+            display: none
+        }
+        .pdf-upload.active{
+            display: block;
+        }
 
 
 
-    {{--</style>--}}
+    </style>
 
 
     <div class="page-content">
@@ -55,13 +55,13 @@
 
                                 {{--<div class="w-100 btn-group btn-group-toggle" data-toggle="buttons">--}}
 
-                                    {{--<button type="button" class="btn tab-selector active" data-target="client-tab" id="client">REGISTER AS CLIENT</button>--}}
+                                {{--<button type="button" class="btn tab-selector active" data-target="client-tab" id="client">REGISTER AS CLIENT</button>--}}
 
 
-                                    {{--<button type="button" class="btn tab-selector" data-target="affiliate-tab" id="affiliate">REGISTER AS AFFILIATE</button>--}}
+                                {{--<button type="button" class="btn tab-selector" data-target="affiliate-tab" id="affiliate">REGISTER AS AFFILIATE</button>--}}
 
                                 {{--</div>--}}
-                                <div class="head"> <p>REGISTER AS CLIENT</p></div>
+                                <div class="head"> <p>REGISTER AS AFFILIATE</p></div>
                             </div>
 
                             <div class="card-body">
@@ -92,9 +92,7 @@
                                     </div>
                                     <div class="pdf-upload client-tab">
 
-
-
-                                        <input type="hidden" name="role" class="form-control" value="client">
+                                        <input type="hidden" name="role" class="form-control" value="affiliate">
 
                                     </div>
 
@@ -143,21 +141,21 @@
 
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
 {{--<script>--}}
-    {{--$(document).ready(function () {--}}
-        {{--$('.tab-selector').click(function(){--}}
-            {{--var tab = $(this).attr("data-target");--}}
+{{--$(document).ready(function () {--}}
+{{--$('.tab-selector').click(function(){--}}
+{{--var tab = $(this).attr("data-target");--}}
 
-            {{--$('.tab-selector').removeClass("active");--}}
-            {{--$('.pdf-upload').removeClass("active");--}}
-            {{--$('.pdf-upload input').prop("disabled", true);--}}
-            {{--$("." + tab).addClass("active");--}}
-            {{--$("." + tab+ " input").prop("disabled", false);--}}
-
-
-        {{--})--}}
+{{--$('.tab-selector').removeClass("active");--}}
+{{--$('.pdf-upload').removeClass("active");--}}
+{{--$('.pdf-upload input').prop("disabled", true);--}}
+{{--$("." + tab).addClass("active");--}}
+{{--$("." + tab+ " input").prop("disabled", false);--}}
 
 
+{{--})--}}
 
-    {{--})--}}
+
+
+{{--})--}}
 
 {{--</script>--}}

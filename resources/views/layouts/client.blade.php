@@ -22,7 +22,28 @@
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <style>
+        .up-color{
+            background-color: #0c71c3;
+
+            /*#33cccc;*/
+            /*#3366ff*/
+            /*#0c71c3;*/
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            font-size: 9px;
+            font-family: "Roboto Slab", serif;
+        }
+        body{
+            font-family:"Roboto Slab", serif; ;
+        }
+
+    </style>
 
 </head>
 
@@ -53,37 +74,28 @@
                     <ul class="menu">
                         {{--<li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>--}}
 
-                        <li class="menu-item">
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
+                        @if(!empty(Auth::user()->clientDetails))
+                            <li class="menu-item"><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit your details</a></li>
+                        @else
+                            <li class="menu-item"><a href="{{route('client.details.create')}}">Add your Details</a></li>
+                       @endif
+                        <li class="menu-item"><a href="{{route('client.addDriverSocial')}}">Upload Driver Licnse & Social Security</a></li>
 
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->email }} <span class="caret"></span>
-                                        </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                        <a  href="{{route('client.details.edit',Auth::user()->id)}}">Edit your detail</a>
-                                        <a  href="{{route('client.credentials')}}">Credentials</a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                        <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->email }}<span class="caret"></span></a>
+                            <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                <li><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit your detail</a></li>
+                                <li><a href="{{route('client.credentials')}}">Credentials</a></li>
+                                <li><a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-
-
-
-                                    </div>
-
-                                    </li>
+                                        {{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
 
                             </ul>
-
                         </li>
 
                     </ul>
