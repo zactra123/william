@@ -53,6 +53,18 @@
                         <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
                         <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
                         <li class="menu-item"><a href="{{route('owner.home.content')}}">Home Page Content</a></li>
+
+                        <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs</a>
+                            <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                <li><a href="{{route('owner.faqs.index')}}"> View FAQs</a></li>
+                                <li><a href="{{route('owner.faqs.create')}}"> Add FAQs</a></li>
+
+                                <li><a href="{{route('owner.faqs.question')}}">Question</a></li>
+
+                            </ul>
+                        </li>
+
+
                         <li class="menu-item">
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->

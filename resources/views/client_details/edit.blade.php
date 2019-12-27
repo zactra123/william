@@ -110,7 +110,7 @@
                             <div class="col-md-7">
                                 {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
                             </div>
-                            <span><i class="fa fa-minus"></i></span>
+                            
                         </div>
 
 
@@ -119,8 +119,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Submit
                                 </button>
-
-
                             </div>
                         </div>
                         {!! Form::close() !!}

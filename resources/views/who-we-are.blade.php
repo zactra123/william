@@ -8,8 +8,8 @@
 
         <div class="breadcrumbs">
             <div class="container">
-                <a href="index.html">Home</a> &rarr;
-                <a href="#">About Us</a>
+                <a href="{{url('/')}}">Home</a> &rarr;
+                <a href="{{url('who-we-are')}}">who we are</a>
             </div>
         </div>
 

@@ -20,9 +20,12 @@ Route::get('more-information/{url}', 'PagesController@moreInformation')->name('m
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
+Route::get('faqs', 'PagesController@faqs')->name('faqs');
+Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
+
+
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
-Route::get('about-us', 'PagesController@about')->name('about-us');
 
 
 Auth::routes();
@@ -41,11 +44,15 @@ Route::group(['prefix'=>'owner'], function(){
     Route::put('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentUpdate')->name('owner.home.content.update');
     Route::delete('delete/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentDestroy')->name('owner.home.content.destroy');
 
-    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner']);
+    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
-    Route::resource('admin', 'Owner\AdminsController')->names('owner.admin');
-    Route::resource('client', 'Owner\ClientsController')->names('owner.client');
+    Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
+    Route::resource('client', 'Owner\ClientsController')->names('owner.client')->except('show');;
+
+    Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
+    Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
+    Route::delete('faqs/question/delete/{id}', 'Owner\FaqsController@questiondelete');
 
 
 });
@@ -64,6 +71,8 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
     Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
     Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
+    Route::get('client-details/dl-ss/{client}', 'AffiliatesController@addDLSS')->name('affiliate.addDLSS');
+    Route::post('client-details/create/dl-ss/{client}', 'AffiliatesController@storeDLSS')->name('affiliate.storeDLSS');
     Route::resource('/', 'AffiliatesController')->names('affiliate')->parameters([''=>'affiliate'])->only('index');
 });
 

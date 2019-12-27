@@ -17,10 +17,10 @@ class Credential extends Model
         'ck_password',
         'ex_login',
         'ex_password',
+        'ex_question',
+        'ex_answer',
         'tu_login',
         'tu_password',
-
-
     ];
 
     public function user()

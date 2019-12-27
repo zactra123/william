@@ -12,6 +12,7 @@ use App\ClientAttachment;
 use App\Services\ClientDetailsData;
 use Illuminate\Support\Arr;
 use App\ClientDetail;
+use App\UploadClientDetail;
 
 
 
@@ -60,9 +61,7 @@ class AffiliatesController extends Controller
         $affiliateId = Auth::user()->id;
 
         $user = User::create([
-
             'email'=> $request->email,
-
         ]);
 
         $userId = $user->id;
@@ -77,16 +76,126 @@ class AffiliatesController extends Controller
         return view('affiliate.create-client');
 
     }
-
     public function addClientDetails($client)
     {
 
-        $clientId = $client;
-        return view('affiliate.create-client-detail', compact('clientId'));
+        return view('affiliate.create-client-detail', compact('client'));
+
+    }
+    public function storeClientDetails(Request $request, $id)
+    {
+
+        $affiliate = Affiliate::where('id', $affiliateId)->first();
+
+        $clientId = User::where('id', $affiliate->user_id)->first();
+
+
+        $data = $request->client;
+        $validation = Validator::make($data, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'dob' => ['required'],
+            'sex'=> ['required'],
+            'ssn'=> ['required', 'string', 'max:255'],
+            'state'=> ['required', 'string', 'max:255'],
+            'city'=> ['required', 'string', 'max:255'],
+            'address'=> ['required', 'string', 'max:255'],
+            'zip'=> ['required', 'string', 'max:255'],
+        ]);
+
+
+        if ($validation->fails()) {
+
+            return view('affiliate.addClientDetails')->withErrors($validation);
+        } else {
+
+
+            $user = Arr::only($request->client, ['first_name', 'last_name']);
+            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
+            $clientDetails["user_id"] = $id;
+
+            User::where('id', $clientId->id)->update($user);
+
+            if(empty(ClientDetail::where('user_id',$clientId->id )->first())){
+                ClientDetail::create($clientDetails);
+            }else{
+                ClientDetail::where('user_id',$clientId->id)->update($clientDetails);
+            }
+
+
+            return redirect(route('affiliate.index'))->with('success', "your data saved");
+        }
     }
 
-    public function storeClientDetails(Request $request,ClientDetailsData $clientDetailsData, $id)
+    public function editClientDetails($affiliateId)
     {
+
+        $affiliate = Affiliate::where('id', $affiliateId)->first();
+
+        $user = User::where('id', $affiliate->user_id)->first();
+
+        $uploadUserDetail = UploadClientDetail::where('user_id',$user->id )->first();
+
+
+        if (!empty($uploadUserDetail)) {
+            return view('affiliate.edit-with-upload-data', compact('user', 'uploadUserDetail'));
+        }
+        return view('affiliate.edit-client-detail', compact('user'));
+
+
+    }
+
+    public function updateClientDetails(Request $request, $id)
+    {
+        $data = $request->client;
+        $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
+
+        $uploaded = UploadClientDetail::where("user_id", $id);
+
+        $validation = Validator::make($data, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'dob' => ['required'],
+            'sex'=> ['required'],
+            'ssn'=> ['required', 'string', 'max:255'],
+            'state'=> ['required', 'string', 'max:255'],
+            'city'=> ['required', 'string', 'max:255'],
+            'address'=> ['required', 'string', 'max:255'],
+            'zip'=> ['required', 'string', 'max:255'],
+        ]);
+
+
+        if ($validation->fails()) {
+
+            return view('affiliate.editClientDetails')->withErrors($validation);
+        } else {
+
+
+
+            $user = Arr::only($request->client, ['first_name', 'last_name']);
+            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
+
+            User::where('id', $id)->update($user);
+
+            ClientDetail::where('id', $id)->update($clientDetails);
+
+            $uploaded->delete();
+            return redirect(route('affiliate.index'))->with('success', "your data saved");
+
+
+        }
+    }
+
+    public function addDLSS($client)
+    {
+        $clientId = $client;
+        return view('affiliate.create-client-dl-ss', compact('clientId'));
+    }
+
+
+    public function storeDLSS(Request $request,ClientDetailsData $clientDetailsData, $id)
+    {
+
 
         $client = Affiliate::where('id', $id)->first();
 
@@ -171,74 +280,28 @@ class AffiliatesController extends Controller
         }
 
 
-
         if(empty(ClientDetail::where('user_id', $clientId)->first())){
             ClientDetail::create($clientData);
         }else{
-            ClientDetail::where('user_id',$clientId)->update($clientData);
+            $affiliate =$id;
+
+            UploadClientDetail::insert(array_merge($user, $clientData));
+            return redirect(route('affiliate.editClientDetails', compact('affiliate')));
         }
 
 
-        if(count($resultDriverLicense) != 6 || count($resultSocialSecurity) != 3){
-            $request->session()->put('bad',true);
-            return redirect()->back()
-                ->withInput()
-                ->with('error','Please upload images more clearly');
-        }
+//        if(count($resultDriverLicense) != 6 || count($resultSocialSecurity) != 3){
+//            $request->session()->put('bad',true);
+//            return redirect()->back()
+//                ->withInput()
+//                ->with('error','Please upload images more clearly');
+//        }
         $affiliate = $id;
         return redirect(route('affiliate.editClientDetails', compact('affiliate')))->with('success', "Please check your client data");
 
     }
 
-    public function editClientDetails( $affiliateId)
-    {
 
-       $affiliate = Affiliate::where('id', $affiliateId)->first();
-
-       $user = User::where('id', $affiliate->user_id)->first();
-
-        return view('affiliate.edit-client-detail', compact('user'));
-
-    }
-
-    public function updateClientDetails(Request $request, $id)
-    {
-        $data = $request->client;
-
-
-
-        $validation = Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'dob' => ['required'],
-            'sex'=> ['required'],
-            'ssn'=> ['required', 'string', 'max:255'],
-            'state'=> ['required', 'string', 'max:255'],
-            'city'=> ['required', 'string', 'max:255'],
-            'address'=> ['required', 'string', 'max:255'],
-            'zip'=> ['required', 'string', 'max:255'],
-        ]);
-
-
-        if ($validation->fails()) {
-
-            return view('client_details.create')->withErrors($validation);
-        } else {
-
-
-
-            $user = Arr::only($request->client, ['first_name', 'last_name']);
-            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
-
-            User::where('id', $id)->update($user);
-
-            ClientDetail::where('id', $id)->update($clientDetails);
-            $client = $id;
-            return redirect(route('affiliate.index'))->with('success', "your data saved");
-
-
-        }
-    }
 
 
 

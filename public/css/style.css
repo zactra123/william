@@ -598,7 +598,9 @@ address {
 form input:not([type="submit"]), form textarea {
   padding: 10px 20px;
   border-radius: 20px;
-  border: 2px solid #dedfe2;
+
+  /*border: 2px solid #dedfe2;*/
+  border: 2px solid #0c71c3;
   font-family: inherit;
   font-size: 14px;
   font-size: 0.875em;
@@ -2500,9 +2502,10 @@ hr.spacer {
 }
 
 .page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6 {
-  color: #152559;
+  color: #0c71c3;
   margin: 0 0 10px;
   line-height: normal;
+
 }
 
 .widget {

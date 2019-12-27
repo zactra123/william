@@ -44,15 +44,9 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 'client':
-                if(empty(auth()->user()->clientDetails)){
-                    $this->redirectTo = '/client/details/create';
-                    return $this->redirectTo;
-                    break;
-                }else{
-                    $this->redirectTo = '/client/details';
-                    return $this->redirectTo;
-                    break;
-                }
+                $this->redirectTo = '/client/details';
+                return $this->redirectTo;
+                break;
             default:
                 $this->redirectTo = '/login';
                 return $this->redirectTo;

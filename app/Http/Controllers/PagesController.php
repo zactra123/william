@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HomePageContent;
+use App\Question;
+use Illuminate\Support\Facades\Validator;
+use App\Faq;
 
 class PagesController extends Controller
 {
@@ -18,13 +21,10 @@ class PagesController extends Controller
 
     public function moreInformation($url)
     {
-
-
         $content = HomePageContent::where('url', $url)
             ->get();
 
         return view('more-information', compact('contents', 'content'));
-
     }
 
 
@@ -47,6 +47,37 @@ class PagesController extends Controller
         return view('who-we-are')  ;
     }
 
+    public function faqs(Request $request)
+    {
+
+        if($request->method() =='GET'){
+
+            $faqs = Faq::all();
+
+            return view('faqs', compact('faqs'));
+        }
+
+        if($request->post()){
+
+            $validation = Validator::make($request->except('_token'), [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'question' => ['required', 'string', 'max:255'],
+
+            ]);
+            if ($validation->fails()) {
+
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }else{
+                Question::create($request->except('_token'));
+                return redirect()->back()
+                    ->withInput()
+                    ->with('success','Your email has been successfully sent');
+            }
+        }
+    }
 
     public function contacts()
     {
@@ -54,8 +85,5 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function about()
-    {
-        return view('about-us');
-    }
+
 }

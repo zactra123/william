@@ -45,6 +45,15 @@
                                 {{Form::label('client[ex_password]', 'Password')}}
                                 {{ Form::text('client[ex_password]', !empty($credential->ex_password) ? $credential->ex_password : old('client.ex_password'), ['class' => 'form-control m-input', 'placeholder' => 'Enter your Experian password']) }}
                             </div>
+                            <div class="form-group font">
+                                {{Form::label('client[ex_question]', 'Question')}}
+                                {{ Form::text('client[ex_question]', !empty($credential->ex_question) ? $credential->ex_question : old('client.ex_question'), ['class' => 'form-control m-input', 'placeholder' => 'Enter your Experian question']) }}
+
+                            </div>
+                            <div class="form-group font">
+                                {{Form::label('client[ex_answer]', 'Answer')}}
+                                {{ Form::text('client[ex_answer]', !empty($credential->ex_answer) ? $credential->ex_answer : old('client.ex_answer'), ['class' => 'form-control m-input', 'placeholder' => 'Enter your Experian answer']) }}
+                            </div>
                         </div>
                         <div>
                             <h4>Trans Union</h4>

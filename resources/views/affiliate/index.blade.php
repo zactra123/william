@@ -4,10 +4,10 @@
 
 
 
-        <div class="row justify-content-center">
+        <div class="page-content">
 
-            <div class="row">
-                <label class="">Cilient List</label>
+            <div class="row mr-0 ml-0">
+                <label class="">Client List</label>
                 <table class="table">
                     <thead>
                     <tr>
@@ -27,12 +27,16 @@
                             <td>{{$client->user->email}}</td>
                             <td>
 
-                                <a class="btn btn-secondary" href="{{route('affiliate.addClientDetails',  $client->id)}}"
+                                <a class="btn btn-secondary" href="{{route('affiliate.addDLSS',  $client->id)}}"
                                    role="button">Add Social Security and Driver License</a>
 
-                                @if($client->user->first_name != null)
-                                    <a class="btn btn-secondary" href="{{route('affiliate.editClientDetails', $client->id)}}"
-                                       role="button">Edit Social Security and Driver License</a>
+
+                                @if(empty($client->user->clientDetails))
+                                    <a class="btn btn-secondary" href="{{route('affiliate.addClientDetails', $client->id)}}"
+                                       role="button">Add Client Details</a>
+                                @else
+                                <a class="btn btn-secondary" href="{{route('affiliate.editClientDetails', $client->id)}}"
+                                       role="button">Edit Client Details</a>
                                 @endif
 
                             </td>
