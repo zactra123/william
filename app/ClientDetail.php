@@ -20,6 +20,9 @@ class ClientDetail extends Model
         'city' => 'required',
         'address' =>'required',
         'zip' => 'required',
+        'phone_number' => 'required',
+        'referred_by' => 'required',
+        'business_name' => 'required',
     ];
 
     protected $fillable = [
@@ -31,6 +34,9 @@ class ClientDetail extends Model
         'city',
         'address',
         'zip',
+        'phone_number',
+        'referred_by',
+        'business_name',
 
     ];
 

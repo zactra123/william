@@ -48,6 +48,7 @@ class ClientDetailsController extends Controller
             'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
+            'phone_number'=> ['required', 'string', 'max:255'],
         ]);
 
 
@@ -104,6 +105,7 @@ class ClientDetailsController extends Controller
             'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
+            'phone_number'=> ['required', 'string', 'max:255'],
         ]);
 
 

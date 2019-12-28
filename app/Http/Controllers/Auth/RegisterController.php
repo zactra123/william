@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
-
+use App\ClientDetail;
 class RegisterController extends Controller
 {
     /*
@@ -60,10 +60,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
+//        dd($data);
 
         return Validator::make($data, [
-
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'dob' => ['required'],
+            'sex'=> ['required'],
+            'ssn'=> ['required', 'string', 'max:255'],
+            'state'=> ['required', 'string', 'max:255'],
+            'city'=> ['required', 'string', 'max:255'],
+            'address'=> ['required', 'string', 'max:255'],
+            'zip'=> ['required', 'string', 'max:255'],
+            'phone_number'=> ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -78,14 +87,33 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
-
+       $user =   User::create([
+            'first_name'=>$data['first_name'],
+            'last_name'=>$data['last_name'],
             'email' => $data['email'],
             'role'=>$data['role'],
             'password' => Hash::make($data['password']),
         ]);
-    }
 
+       $id = $user->id;
+       ClientDetail::create([
+            'user_id' => $id,
+            'phone_number'=>$data['phone_number'],
+            'address'=>$data['address'],
+            'city'=>$data['city'],
+            'state'=> $data['state'],
+            'zip'=>$data['zip'],
+            'dob'=>$data['dob'],
+            'sex'=> $data['sex'],
+            'ssn'=> $data['ssn'],
+            'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
+            'business_name'=>isset($data['business_name'])?$data['business_name']:null,
+        ]);
+
+
+
+        return $user;
+    }
 
 
 }

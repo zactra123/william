@@ -14,7 +14,7 @@
                         @method('PUT')
                         @csrf
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>
 
                             <div class="col-md-8">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>
 
                             <div class="col-md-8">
@@ -31,8 +31,53 @@
 
                             </div>
                         </div>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>
 
-                        <div class="form-group row font">
+                            <div class="col-md-8">
+                                {{ Form::text('client[phone_number]', $user->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Enter your phone_number']) }}
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right"> Street   Address:  </label>
+
+                            <div class="col-md-8">
+                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">  City:  </label>
+
+                            <div class="col-md-8">
+                                {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>
+
+                            <div class="col-md-8">
+                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
+
+                            <div class="col-md-8">
+                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>
 
                             <div class="col-md-8">
@@ -40,9 +85,8 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  SEX:  </label>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">  Gender:  </label>
 
                             <div class="col-md-8">
                                 <label for="password" class="col-md-4 col-form-label text-md-center">  Male:  </label>
@@ -70,7 +114,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>
 
                             <div class="col-md-8">
@@ -78,39 +122,13 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>
-
-                            <div class="col-md-8">
-                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  City:  </label>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right"> Referred by:  </label>
 
                             <div class="col-md-8">
-                                {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
+                                {{ Form::text('client[referred_by]', $user->clientDetails->referred_by, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
+
                             </div>
-                        </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">   Address:  </label>
-
-                            <div class="col-md-6">
-                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
-
-                            <div class="col-md-7">
-                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
-                            </div>
-                            
                         </div>
 
 

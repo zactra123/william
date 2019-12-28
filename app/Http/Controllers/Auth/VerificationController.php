@@ -27,12 +27,14 @@ class VerificationController extends Controller
 
     public function verify(Request $request, $id)
     {
+
         $signuture = $request->signature;
         if (! $this->guard()->onceUsingId($id)) {
             throw new AuthorizationException;
         }
         $user = $this->guard()->user();
-        if (empty($user->password)) {
+        if (!empty($user->password)) {
+
             if($request->isMethod("POST")) {
                 $this->validator($request->all())->validate();
                 $user->update(['password'=> Hash::make($request->password)]);

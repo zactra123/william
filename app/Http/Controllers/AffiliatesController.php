@@ -82,15 +82,15 @@ class AffiliatesController extends Controller
         return view('affiliate.create-client-detail', compact('client'));
 
     }
-    public function storeClientDetails(Request $request, $id)
+    public function storeClientDetails(Request $request, $client)
     {
 
-        $affiliate = Affiliate::where('id', $affiliateId)->first();
+        $affiliate = Affiliate::where('id', $client)->first();
 
         $clientId = User::where('id', $affiliate->user_id)->first();
 
-
         $data = $request->client;
+
         $validation = Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -101,27 +101,28 @@ class AffiliatesController extends Controller
             'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
+            'phone_number'=> ['required', 'string', 'max:255'],
         ]);
+
+
 
 
         if ($validation->fails()) {
 
-            return view('affiliate.addClientDetails')->withErrors($validation);
+            return view('affiliate.create-client-detail', compact('client'))->withErrors($validation);
         } else {
-
 
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
-            $clientDetails["user_id"] = $id;
+            $clientDetails["user_id"] = $clientId->id;
 
-            User::where('id', $clientId->id)->update($user);
 
             if(empty(ClientDetail::where('user_id',$clientId->id )->first())){
                 ClientDetail::create($clientDetails);
+                User::where('id', $clientId->id)->update($user);
             }else{
                 ClientDetail::where('user_id',$clientId->id)->update($clientDetails);
             }
-
 
             return redirect(route('affiliate.index'))->with('success', "your data saved");
         }

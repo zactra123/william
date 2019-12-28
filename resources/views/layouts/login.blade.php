@@ -22,6 +22,7 @@
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
 
+
 </head>
 
 <body>

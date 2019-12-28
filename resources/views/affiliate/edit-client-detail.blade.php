@@ -9,11 +9,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <h1>Your Details</h1>
+                        <h1>Edit Client Details</h1>
                         {!! Form::open(['route' => ['affiliate.updateClientDetails', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
                         @csrf
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>
 
                             <div class="col-md-6">
@@ -21,17 +21,20 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>
-
                             <div class="col-md-6">
                                 {{ Form::text('client[last_name]', $user->last_name, ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
-
+                            </div>
+                        </div>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Phone number : </label>
+                            <div class="col-md-6">
+                                {{ Form::text('client[phone_number]', $user->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
                             </div>
                         </div>
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>
 
                             <div class="col-md-6">
@@ -40,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">  SEX:  </label>
 
                             <div class="col-md-8">
@@ -69,7 +72,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>
 
                             <div class="col-md-6">
@@ -77,41 +80,34 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Street   Address:  </label>
 
                             <div class="col-md-6">
-                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-
+                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
                             </div>
                         </div>
-
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">  City:  </label>
 
                             <div class="col-md-6">
                                 {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
                             </div>
                         </div>
-
-                        <div class="form-group row font">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">   Address:  </label>
+                        <div class="form-group row m-1">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>
 
                             <div class="col-md-6">
-                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
+                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
                             </div>
                         </div>
-
-                        <div class="form-group row font">
+                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
 
                             <div class="col-md-6">
                                 {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
                             </div>
                         </div>
-
-
                         <div class="form-group row mb-0 font">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -127,6 +123,56 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('.ssn').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+                if((val.length > 3) && (val.length < 6)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 5) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 2) + '-';
+                    val = val.substr(5);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 11);
+            });
+
+            $('#phone_number').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+
+                if (val.length > 5) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(5);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
+            });
+
+
+
+        })
+
+
+    </script>
+
+
 
 @endsection
 

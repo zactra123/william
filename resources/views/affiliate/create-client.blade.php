@@ -21,10 +21,10 @@
             justify-content: center;
             font-size: large;
         }
-        .tab-selector:hover{
-            background-color: #FFFFFF;
-            color:#0c71c3;
-        }
+        /*.tab-selector:hover{*/
+            /*background-color: #FFFFFF;*/
+            /*color:#0c71c3;*/
+        /*}*/
 
         .tab-selector.active {
             background-color:  #FFFFFF;
@@ -40,6 +40,7 @@
         .pdf-upload.active{
             display: block;
         }
+
 
 
 
@@ -63,7 +64,7 @@
 
                                 <div class="w-100 btn-group btn-group-toggle tab-selector" data-toggle="buttons">
 
-                                   <h1>  ADD CLIENT </h1>
+                                     ADD CLIENT
 
                                 </div>
 
