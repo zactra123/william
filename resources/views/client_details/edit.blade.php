@@ -18,7 +18,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>
 
                             <div class="col-md-8">
-                                {{ Form::text('client[first_name]', $user->first_name, ['class' => 'form-control m-input', 'placeholder' => 'Enter your first name']) }}
+                                {{ Form::text('client[first_name]', $user->first_name, ['class' => 'form-control m-input',   'placeholder' => 'Enter your first name']) }}
 
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>
 
                             <div class="col-md-8">
-                                {{ Form::text('client[phone_number]', $user->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Enter your phone_number']) }}
+                                {{ Form::text('client[phone_number]', $user->clientDetails->phone_number, ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter your phone_number']) }}
 
                             </div>
                         </div>
@@ -44,10 +44,10 @@
 
 
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"> Street   Address:  </label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right"> Street Address:  </label>
 
                             <div class="col-md-8">
-                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
+                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
                             </div>
                         </div>
 
@@ -118,7 +118,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>
 
                             <div class="col-md-8">
-                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
+                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter your SSN']) }}
 
                             </div>
                         </div>
@@ -145,12 +145,69 @@
             </div>
         </div>
     </div>
-
-
 @endsection
-@section('scripts')
 
-@endsection
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64O3yXsW-fjpr2xcRm0udIDiy4v-2WPA&libraries=places">
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
+            $('.ssn').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+                if((val.length > 3) && (val.length < 6)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 5) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 2) + '-';
+                    val = val.substr(5);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 11);
+            });
+
+            $('#phone_number').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(6);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
+            });
+
+
+
+        })
+
+
+
+
+    </script>
+
+
+
+
 
 
 

@@ -240,15 +240,18 @@
                     this.value = val;
                 }
 
-                if (val.length > 5) {
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
                     newVal += val.substr(0, 3) + '-';
                     newVal += val.substr(3, 3) + '-';
-                    val = val.substr(5);
+                    val = val.substr(6);
                 }
                 newVal += val;
                 this.value = newVal.substring(0, 12);
             });
-
 
 
         })

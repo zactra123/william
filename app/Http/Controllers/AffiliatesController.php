@@ -105,8 +105,6 @@ class AffiliatesController extends Controller
         ]);
 
 
-
-
         if ($validation->fails()) {
 
             return view('affiliate.create-client-detail', compact('client'))->withErrors($validation);
@@ -241,7 +239,7 @@ class AffiliatesController extends Controller
         $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
         $clientData =  $resultDriverLicense;
         $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
-        User::where('id', $clientId)->update($user);
+
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
         $clientData['user_id'] = $clientId;
 
@@ -282,6 +280,7 @@ class AffiliatesController extends Controller
 
 
         if(empty(ClientDetail::where('user_id', $clientId)->first())){
+            User::where('id', $clientId)->update($user);
             ClientDetail::create($clientData);
         }else{
             $affiliate =$id;
