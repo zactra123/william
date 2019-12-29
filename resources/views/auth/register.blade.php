@@ -81,7 +81,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
-                                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="Street address">
+                                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Street address">
                                         </div>
                                     </div>
                                     <div class="form-group row m-1">
@@ -205,9 +205,13 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64O3yXsW-fjpr2xcRm0udIDiy4v-2WPA&libraries=places">
+
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
-
+        new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
         $('.ssn').keyup(function() {
 
             var val = this.value.replace(/\D/g, '');
