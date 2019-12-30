@@ -56,7 +56,7 @@
                     <h2 class="site-description">Tagline goes here</h2>
                 </a> <!-- #branding -->
                 <nav class="main-navigation pull-right">
-
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
                         <li class="menu-item"><a href="">WHAT WE DO</a></li>
                         <li class="menu-item"><a href="">HOW IT WORKS</a></li>

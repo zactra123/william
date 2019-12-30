@@ -62,15 +62,10 @@
 
                                     <div class="form-group row m-1">
                                         <div class="col-md-11">
-                                            <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" placeholder="First name">
+                                            <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
                                         </div>
                                     </div>
-                                    <div class="form-group row m-1">
 
-                                        <div class="col-md-11 mt-0">
-                                            <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autocomplete="first_name" placeholder="Last name">
-                                        </div>
-                                    </div>
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
@@ -81,20 +76,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
-                                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Street address">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row m-1">
-
-                                        <div class="col-md-11">
-                                            <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autocomplete="city" placeholder="City">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row m-1">
-
-                                        <div class="col-md-11">
-                                            <input id="state" type="text" class="form-control" name="state" value="{{ old('state') }}" required autocomplete="state" placeholder="State">
+                                            <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Address">
                                         </div>
                                     </div>
 
@@ -115,7 +97,7 @@
 
                                         <div class="col-md-11">
 
-                                            <input placeholder="Date of birth" name = 'dob' class="form-control" type="text" onfocus="(this.type='date')"  id="date">
+                                            <input placeholder="Date of birth" name = 'dob' class="form-control" type="text" id="date">
 
                                         </div>
                                     </div>
@@ -210,8 +192,27 @@
 
 </script>
 <script type="text/javascript">
+
+
+
     $(document).ready(function(){
         new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
+
+
+        $('#date').focus(function () {
+
+            this.type='date';
+        });
+        $('#date').click(function () {
+            this.type='date';
+        })  ;
+        $('#date').blur(function () {
+            if(this.value==''){this.type='text'};
+        });
+
+
+
+
         $('.ssn').keyup(function() {
 
             var val = this.value.replace(/\D/g, '');

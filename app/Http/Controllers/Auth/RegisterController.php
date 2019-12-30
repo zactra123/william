@@ -63,13 +63,10 @@ class RegisterController extends Controller
 //        dd($data);
 
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'full_name' => ['required', 'string', 'max:255'],
             'dob' => ['required'],
             'sex'=> ['required'],
             'ssn'=> ['required', 'string', 'max:255'],
-            'state'=> ['required', 'string', 'max:255'],
-            'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
             'phone_number'=> ['required', 'string', 'max:255'],
@@ -87,9 +84,28 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-       $user =   User::create([
-            'first_name'=>$data['first_name'],
-            'last_name'=>$data['last_name'],
+       $fullName = explode(' ', $data['full_name']);
+       if(count($fullName)==1){
+           return redirect()->back()
+               ->withInput()
+               ->with('error','Please enter Your First and Last name');
+       }elseif(count($fullName)==2){
+           $first_name = $fullName[0];
+           $last_name = $fullName[1];
+       }else{
+
+           $first_name = $fullName[0];
+           $last_name = $fullName[1];
+           for($i=2; $i<count($fullName); $i++){
+               $last_name = $last_name + $fullName[$i];
+           }
+
+       }
+
+
+        $user =   User::create([
+            'first_name'=>$first_name,
+            'last_name'=>$last_name,
             'email' => $data['email'],
             'role'=>$data['role'],
             'password' => Hash::make($data['password']),
@@ -100,8 +116,8 @@ class RegisterController extends Controller
             'user_id' => $id,
             'phone_number'=>$data['phone_number'],
             'address'=>$data['address'],
-            'city'=>$data['city'],
-            'state'=> $data['state'],
+            'city'=>null,
+            'state'=> null,
             'zip'=>$data['zip'],
             'dob'=>$data['dob'],
             'sex'=> $data['sex'],
@@ -109,8 +125,6 @@ class RegisterController extends Controller
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             'business_name'=>isset($data['business_name'])?$data['business_name']:null,
         ]);
-
-
 
         return $user;
     }
