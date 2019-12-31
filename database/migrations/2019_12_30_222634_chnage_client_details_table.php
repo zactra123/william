@@ -13,11 +13,8 @@ class ChnageClientDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::table('client_details', function($table)
-        {
-            $table->string('city')->nullable()->change();
-            $table->string('state')->nullable()->change();
-        });
+        DB::statement('ALTER TABLE client_details MODIFY `city` VARCHAR(191)');
+        DB::statement('ALTER TABLE client_details MODIFY `state` VARCHAR(191)');
     }
 
     /**
@@ -27,9 +24,6 @@ class ChnageClientDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('client_details', function (Blueprint $table) {
-            $table->string('city')->nullable(false)->change();
-            $table->string('state')->nullable(false)->change();
-        });
+
     }
 }
