@@ -88,24 +88,10 @@
                             </div>
                         </div>
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  City:  </label>
-
-                            <div class="col-md-6">
-                                {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
-                            </div>
-                        </div>
-                        <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>
-
-                            <div class="col-md-6">
-                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-                            </div>
-                        </div>
-                        <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
 
                             <div class="col-md-6">
-                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
+                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip', 'placeholder' => 'Enter your zip']) }}
                             </div>
                         </div>
                         <div class="form-group row mb-0 font">
@@ -136,8 +122,37 @@
 
 </script>
 <script type="text/javascript">
+
+
+
     $(document).ready(function(){
-        new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
+        autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            for (var i = 0; i < place.address_components.length; i++) {
+                for (var j = 0; j < place.address_components[i].types.length; j++) {
+                    if (place.address_components[i].types[j] == "postal_code") {
+                        $("#zip").val(place.address_components[i].long_name);
+
+                    }
+                }
+            }
+        });
+
+        $('#date').focus(function () {
+
+            this.type='date';
+        });
+        $('#date').click(function () {
+            this.type='date';
+        })  ;
+        $('#date').blur(function () {
+            if(this.value==''){this.type='text'};
+        });
+
+
+
+
         $('.ssn').keyup(function() {
 
             var val = this.value.replace(/\D/g, '');
@@ -178,7 +193,12 @@
             newVal += val;
             this.value = newVal.substring(0, 12);
         });
+
+
     })
+
+
+
 
 </script>
 

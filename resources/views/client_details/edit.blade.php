@@ -52,23 +52,6 @@
                         </div>
 
 
-{{--                        <div class="form-group row m-1">--}}
-{{--                            <label for="password" class="col-md-4 col-form-label text-md-right">  City:  </label>--}}
-
-{{--                            <div class="col-md-8">--}}
-{{--                                {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group row m-1">--}}
-{{--                            <label for="password" class="col-md-4 col-form-label text-md-right">  State:  </label>--}}
-
-{{--                            <div class="col-md-8">--}}
-{{--                                {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}--}}
-
-{{--                            </div>--}}
-{{--                        </div>--}}
-
                         <div class="form-group row m-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
 

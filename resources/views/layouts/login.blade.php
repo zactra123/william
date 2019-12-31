@@ -21,23 +21,39 @@
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
+    <style>
+        .up-color{
+            background-color: #0c71c3;
 
+            /*#33cccc;*/
+            /*#3366ff*/
+            /*#0c71c3;*/
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            font-size: 9px;
+            font-family: "Roboto Slab", serif;
+        }
+        body{
+            font-family:"Roboto Slab", serif; ;
+        }
+
+    </style>
 
 </head>
 
 <body>
-
 <div id="site-content">
 
     <header class="site-header">
         <div class="bottom-header">
-            <div class="container">
+            <div class="container pl-0">
+
                 <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                    <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
                     <h1 class="site-title">Better <span>Credit</span></h1>
                     <h2 class="site-description">Tagline goes here</h2>
                 </a> <!-- #branding -->
-
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
@@ -50,10 +66,44 @@
                         <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
                         <li class="menu-item"><a href="">CONTACT US</a></li>
 
+                        @if (Route::has('login'))
+                            @auth
 
+                                @if(Auth::user()->role == 'client')
+                                    @if(empty(Auth::user()->clientDetails))
+                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    @else
+                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    @endif
+                                @elseif((Auth::user()->role == 'admin'))
+                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
+                                @elseif((Auth::user()->role == 'affiliate'))
+                                    <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>Home</a></li>
+                                @else
+                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
+                                @endif
+                            @else
+                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
+
+                                @if (Route::has('register'))
+                                    {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
+
+                                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Registration</a>
+                                        <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                            <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
+                                            <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                @endif
+                            @endauth
+                        @endif
 
 
                     </ul>
+
                 </nav> <!-- .main-navigation -->
             </div> <!-- .container -->
         </div> <!-- .bottom-header -->

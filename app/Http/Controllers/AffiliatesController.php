@@ -28,7 +28,6 @@ class AffiliatesController extends Controller
 
     public function index()
     {
-
         $affiliateId = Auth::user()->id;
 
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
@@ -97,8 +96,6 @@ class AffiliatesController extends Controller
             'dob' => ['required'],
             'sex'=> ['required'],
             'ssn'=> ['required', 'string', 'max:255'],
-            'state'=> ['required', 'string', 'max:255'],
-            'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
             'phone_number'=> ['required', 'string', 'max:255'],
@@ -141,7 +138,6 @@ class AffiliatesController extends Controller
         }
         return view('affiliate.edit-client-detail', compact('user'));
 
-
     }
 
     public function updateClientDetails(Request $request, $id)
@@ -157,8 +153,6 @@ class AffiliatesController extends Controller
             'dob' => ['required'],
             'sex'=> ['required'],
             'ssn'=> ['required', 'string', 'max:255'],
-            'state'=> ['required', 'string', 'max:255'],
-            'city'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
         ]);
@@ -176,11 +170,10 @@ class AffiliatesController extends Controller
 
             User::where('id', $id)->update($user);
 
-            ClientDetail::where('id', $id)->update($clientDetails);
+            ClientDetail::where('user_id', $id)->update($clientDetails);
 
             $uploaded->delete();
             return redirect(route('affiliate.index'))->with('success', "your data saved");
-
 
         }
     }
@@ -194,12 +187,9 @@ class AffiliatesController extends Controller
 
     public function storeDLSS(Request $request,ClientDetailsData $clientDetailsData, $id)
     {
-
-
         $client = Affiliate::where('id', $id)->first();
 
         $clientId = $client->user_id;
-
 
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()
