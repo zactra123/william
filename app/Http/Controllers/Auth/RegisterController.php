@@ -96,7 +96,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+
        $fullName = explode(' ', $data['full_name']);
        if(count($fullName)==1){
            return redirect()->back()
