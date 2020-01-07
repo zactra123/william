@@ -60,19 +60,32 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-//        dd($data);
 
-        return Validator::make($data, [
-            'full_name' => ['required', 'string', 'max:255'],
-            'dob' => ['required'],
-            'sex'=> ['required'],
-            'ssn'=> ['required', 'string', 'max:255'],
-            'address'=> ['required', 'string', 'max:255'],
-            'zip'=> ['required', 'string', 'max:255'],
-            'phone_number'=> ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        if($data['role']!='affiliate'){
+            return Validator::make($data, [
+                'full_name' => ['required', 'string', 'max:255'],
+                'dob' =>['required'],
+                'sex'=> ['required'],
+                'ssn'=> ['required', 'string', 'max:255'],
+                'address'=> ['required', 'string', 'max:255'],
+                'zip'=> ['required', 'string', 'max:255'],
+                'phone_number'=> ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        }else{
+            return Validator::make($data, [
+                'full_name' => ['required', 'string', 'max:255'],
+                'dob' =>['required'],
+                'ssn'=> ['required', 'string', 'max:255'],
+                'address'=> ['required', 'string', 'max:255'],
+                'zip'=> ['required', 'string', 'max:255'],
+                'phone_number'=> ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        }
+
     }
 
     /**
@@ -83,7 +96,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        dd($data);
        $fullName = explode(' ', $data['full_name']);
        if(count($fullName)==1){
            return redirect()->back()
@@ -120,7 +133,7 @@ class RegisterController extends Controller
             'state'=> null,
             'zip'=>$data['zip'],
             'dob'=>$data['dob'],
-            'sex'=> $data['sex'],
+            'sex'=>isset($data['sex'])?$data['sex']: null ,
             'ssn'=> $data['ssn'],
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             'business_name'=>isset($data['business_name'])?$data['business_name']:null,

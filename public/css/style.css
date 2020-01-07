@@ -2225,7 +2225,7 @@ body {
 }
 .main-navigation .menu .menu-item {
   float: left;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .main-navigation .menu .menu-item:last-child {
   padding-right: 0;

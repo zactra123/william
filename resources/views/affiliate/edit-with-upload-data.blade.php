@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-group row font justify-content-center">
                             <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  SEX:  </label>
+                                <label for="password" class="row col-form-label text-md-right"> Gender:  </label>
                                 <div class="col-md-10">
                                     <label for="a" class=" col-form-label text-md-center">  Male:
                                         {{Form::radio('client[sex]','M', $user->clientDetails->sex=='M')}}
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  SEX(From Documents):  </label>
+                                <label for="password" class="row col-form-label text-md-right">  Gender(From Documents):  </label>
                                 <div class="col-md-10">
                                     <label for="a" class=" col-form-label text-md-center">  Male:
                                         {{Form::radio('client[sex_uploaded]','M', $uploadUserDetail->sex=='M')}}
@@ -133,83 +133,6 @@
 
                         </div>
 
-                        <div class="form-group row font justify-content-center">
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  State:  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  State(From Documents):  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[state]', $uploadUserDetail->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row font justify-content-center">
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right"> SSN:  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right"> SSN(From Documents):  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[ssn]', $uploadUserDetail->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row font justify-content-center">
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  State:  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[state]', $user->clientDetails->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  State(From Documents):  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[state]', $uploadUserDetail->state, ['class' => 'form-control m-input', 'placeholder' => 'Enter your state']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row font justify-content-center">
-
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  City:  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[city]', $user->clientDetails->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-                            <div class="col-md-4 tab-selector">
-                                <label for="password" class="row col-form-label text-md-right">  City(From Documents):  </label>
-                                <div class="col-md-10">
-                                    {{ Form::text('client[city]', $uploadUserDetail->city, ['class' => 'form-control m-input', 'placeholder' => 'Enter your city']) }}
-                                </div>
-                                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
-                            </div>
-
-                        </div>
 
                         <div class="form-group row font justify-content-center">
 
@@ -248,7 +171,6 @@
                             </div>
 
                         </div>
-
 
                         <div class="form-group row mb-0 font">
                             <div class="offset-md-5">

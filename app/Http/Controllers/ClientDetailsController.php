@@ -21,7 +21,6 @@ class ClientDetailsController extends Controller
     {
         $this->middleware(['auth', 'verified']);
         $this->middleware('client', ['except' => 'store']);
-
     }
 
     public function index()
@@ -31,10 +30,9 @@ class ClientDetailsController extends Controller
 
     public function create()
     {
-
         return view('client_details.create');
-
     }
+
     public function store(Request $request)
     {
         $data = $request->client;
@@ -49,12 +47,10 @@ class ClientDetailsController extends Controller
             'phone_number'=> ['required', 'string', 'max:255'],
         ]);
 
-
         if ($validation->fails()) {
 
             return view('client_details.create')->withErrors($validation);
         } else {
-
 
             $id = Auth::user()->id;
             $user = Arr::only($request->client, ['first_name', 'last_name']);
@@ -68,7 +64,6 @@ class ClientDetailsController extends Controller
             }else{
                 ClientDetail::where('user_id',$id)->update($clientDetails);
             }
-
 
             return redirect(route('client.details.index'))->with('success', "your data saved");
         }
@@ -92,7 +87,6 @@ class ClientDetailsController extends Controller
         $id = Auth::user()->id;
         $uploaded = UploadClientDetail::where("user_id", $id);
 
-
         $validation = Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -104,14 +98,12 @@ class ClientDetailsController extends Controller
             'phone_number'=> ['required', 'string', 'max:255'],
         ]);
 
-
         if ($validation->fails()) {
             if(!empty($uploaded)) {
                 return view('client_details.edit_with_upload_data')->withErrors($validation);
             }
             return view('client_details.create')->withErrors($validation);
         } else {
-
 
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name', 'sex_uploaded']);
@@ -127,8 +119,6 @@ class ClientDetailsController extends Controller
 
         }
     }
-
-
 
     public function credentials()
     {
@@ -162,13 +152,13 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
-
         $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()
                 ->withInput()
                 ->with('error','Please upload both files');
         }
+
 
 
         $imagesDriverLicense = $request->file("driver_license");
@@ -244,6 +234,7 @@ class ClientDetailsController extends Controller
             User::where('id', $client)->update($user);
             ClientDetail::create($clientData);
         }else{
+
             UploadClientDetail::insert(array_merge($user, $clientData));
             return redirect(route('client.details.edit', compact('client')));
         }
@@ -310,7 +301,7 @@ class ClientDetailsController extends Controller
                     break;
             }
         }
-        dd($clientReport);
+
         ClientReports::insert($clientReports);
 
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");

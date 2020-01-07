@@ -71,24 +71,24 @@
 
                                 @if(Auth::user()->role == 'client')
                                     @if(empty(Auth::user()->clientDetails))
-                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
+                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>HOME</a></li>
                                     @else
-                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
+                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>HOME</a></li>
                                     @endif
                                 @elseif((Auth::user()->role == 'admin'))
-                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @elseif((Auth::user()->role == 'affiliate'))
-                                    <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @else
-                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
+                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @endif
                             @else
-                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
+                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i> LOGIN</a></li>
 
                                 @if (Route::has('register'))
                                     {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
 
-                                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Registration</a>
+                                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> REGISTRATIONS</a>
                                         <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
                                             <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
                                             <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>

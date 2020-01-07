@@ -53,7 +53,7 @@
                         <div class="card">
                             <div class="card-header">
 
-                                <div class="head"> <p>REGISTER AS AFFILIATE</p></div>
+                                <div class="head m-2"> REGISTER AS AFFILIATE</div>
                             </div>
 
                             <div class="card-body ">
@@ -63,6 +63,18 @@
                                     <div class="form-group row m-1">
                                         <div class="col-md-11">
                                             <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
+                                            @error('full_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row m-1">
+
+                                        <div class="col-md-11">
+                                            <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="Business name (if any)">
                                         </div>
                                     </div>
 
@@ -70,6 +82,11 @@
 
                                         <div class="col-md-11">
                                             <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone number">
+                                            @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
 
                                         </div>
                                     </div>
@@ -77,6 +94,11 @@
 
                                         <div class="col-md-11">
                                             <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="Address">
+                                            @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -85,12 +107,22 @@
 
                                         <div class="col-md-11">
                                             <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}" required autocomplete="zip" placeholder="Zip code">
+                                            @error('zip')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
                                             <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number">
+                                            @error('ssn')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -99,30 +131,14 @@
                                         <div class="col-md-11">
 
                                             <input placeholder="Date of birth" name = 'dob' class="form-control" type="text" id="date">
-
+                                            @error('dob')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     {{--Form::input('date', 'date', null, ['class' => 'form-control', 'placeholder' => 'Date']);--}}
-                                    <div class="form-group row m-0">
-                                        <label for="gender" class="col-md-2 col-form-label text-md-center">  Gender:  </label>
-
-                                        <div class="col-md-10">
-                                            <label for="male" class="col-md-2 col-form-label">  Male:  </label>
-                                            <label for="Sex" class="col-md-1 m-1 col-form-label ">
-                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M')}}
-                                            </label>
-
-                                            <label for="female" class="col-md-3 col-form-label text-md-right">  Female:  </label>
-                                            <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F')}}
-                                            </label>
-                                            <label for="other" class="col-md-2 col-form-label text-md-center">  Other:  </label>
-                                            <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O')}}
-                                            </label>
-                                        </div>
-
-                                    </div>
 
                                     <div class="form-group row m-1">
 
@@ -160,12 +176,6 @@
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                         </div>
                                     </div>
-                                    <div class="form-group row m-1">
-
-                                        <div class="col-md-11">
-                                            <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="Business name (if any)">
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-9 offset-md-5">
@@ -185,7 +195,6 @@
     </div>
 
 @endsection
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64O3yXsW-fjpr2xcRm0udIDiy4v-2WPA&libraries=places">
@@ -196,7 +205,7 @@
 
 
     $(document).ready(function(){
-        autocomplete = new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
+        autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
             for (var i = 0; i < place.address_components.length; i++) {
@@ -272,6 +281,3 @@
 
 
 </script>
-
-
-

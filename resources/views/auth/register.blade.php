@@ -2,47 +2,54 @@
 
 @section('content')
 
+    <style>
+        /*.tab-selector {*/
+            /*background-color:  #0c71c3;*/
+            /*!*border-color:#1a41ad;*!*/
+            /*color: #FFFFFF;*/
+            /*font-size: large;*/
+            /*display: -webkit-box;*/
+            /*display: -webkit-flex;*/
+            /*display: -ms-flexbox;*/
+            /*display: flex;*/
+            /*-webkit-box-pack: center;*/
+            /*-webkit-justify-content: center;*/
+            /*-ms-flex-pack: center;*/
+            /*justify-content: center;*/
+            /*font-size: large;*/
+        /*}*/
+        /*.tab-selector:hover{*/
+            /*background-color: #FFFFFF;*/
+            /*color:#0c71c3;*/
+        /*}*/
 
-    {{--<style>--}}
-        {{--.tab-selector {--}}
-            {{--background-color:  #0c71c3;--}}
-            {{--/*border-color:#1a41ad;*/--}}
-            {{--color: #FFFFFF;--}}
-            {{--font-size: large;--}}
-            {{--display: -webkit-box;--}}
-            {{--display: -webkit-flex;--}}
-            {{--display: -ms-flexbox;--}}
-            {{--display: flex;--}}
-            {{---webkit-box-pack: center;--}}
-            {{---webkit-justify-content: center;--}}
-            {{---ms-flex-pack: center;--}}
-            {{--justify-content: center;--}}
-            {{--font-size: large;--}}
-        {{--}--}}
-        {{--.tab-selector:hover{--}}
-            {{--background-color: #FFFFFF;--}}
-            {{--color:#0c71c3;--}}
-        {{--}--}}
+        /*.tab-selector.active {*/
+            /*background-color:  #FFFFFF;*/
+            /*color:#0c71c3;*/
+        /*}*/
+        /*.card-header{*/
 
-        {{--.tab-selector.active {--}}
-            {{--background-color:  #FFFFFF;--}}
-            {{--color:#0c71c3;--}}
-        {{--}--}}
-        {{--.card-header{--}}
+            /*border-bottom: none;*/
+        /*}*/
+        /*.pdf-upload{*/
+            /*display: none*/
+        /*}*/
+        /*.pdf-upload.active{*/
+            /*display: block;*/
+        /*}*/
 
-            {{--border-bottom: none;--}}
-        {{--}--}}
-        {{--.pdf-upload{--}}
-            {{--display: none--}}
-        {{--}--}}
-        {{--.pdf-upload.active{--}}
-            {{--display: block;--}}
-        {{--}--}}
+        @media (max-width: 768px) {
+            label {
+                display:unset;
+            }
+        }
+        @media (max-width: 768px) {
+            .col-form-label {
+                margin-right: 5px;
+            }
+        }
 
-
-
-    {{--</style>--}}
-
+    </style>
 
     <div class="page-content">
         <div class="fullwidth-block">
@@ -53,7 +60,7 @@
                         <div class="card">
                             <div class="card-header">
 
-                                <div class="head"> <p>REGISTER AS CLIENT</p></div>
+                                <div class="head m-2">REGISTER AS CLIENT</div>
                             </div>
 
                             <div class="card-body ">
@@ -63,33 +70,61 @@
                                     <div class="form-group row m-1">
                                         <div class="col-md-11">
                                             <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
+                                            @error('full_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
+
                                     </div>
 
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
                                             <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone number">
-
+                                            @error('phone_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
+
                                     </div>
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
                                             <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Address">
+                                            @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
+
                                     </div>
 
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
                                             <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}" required autocomplete="zip" placeholder="Zip code">
+                                            @error('zip')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
+
                                     </div>
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
                                             <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number">
+                                            @error('zip')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -98,30 +133,40 @@
                                         <div class="col-md-11">
 
                                             <input placeholder="Date of birth" name = 'dob' class="form-control" type="text" id="date">
-
+                                            @error('dob')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
+
                                     </div>
                                     {{--Form::input('date', 'date', null, ['class' => 'form-control', 'placeholder' => 'Date']);--}}
-                                    <div class="form-group row m-1">
-                                        <label for="gender" class="col-md-2 col-form-label text-md-center">  Gender:  </label>
-
+                                    <div class="form-group row m-1 gender">
+                                        <div class="col-md-2">
+                                            <label for="gender" class="col-form-label text-md-center">  Gender:  </label>
+                                        </div>
                                         <div class="col-md-10">
-                                            <label for="male" class="col-md-2 col-form-label">  Male:  </label>
-                                            <label for="Sex" class="col-md-1 m-1 col-form-label ">
-                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M')}}
+                                            <label for="male" class="col-md-3 col-form-label">  Male:
+                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'form-check-input'])}}
                                             </label>
 
-                                            <label for="female" class="col-md-3 col-form-label text-md-right">  Female:  </label>
-                                            <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F')}}
+                                            <label for="female" class="col-md-3  col-form-label ">  Female:
+                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input'])}}
                                             </label>
-                                            <label for="other" class="col-md-2 col-form-label text-md-center">  Other:  </label>
-                                            <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O')}}
+                                            <label for="other" class="col-md-3  col-form-label text-md-center ml-1">  Other:
+                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input'])}}
                                             </label>
                                         </div>
+                                        @error('sex')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
 
                                     </div>
+
+
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11 ">
@@ -129,8 +174,8 @@
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -161,7 +206,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
-                                            <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}" r autocomplete="ssn" placeholder="Referred By (if any)">
+                                            <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}" autocomplete="referred_by" placeholder="Referred By (if any)">
                                         </div>
                                     </div>
 
