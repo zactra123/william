@@ -98,7 +98,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64O3yXsW-fjpr2xcRm0udIDiy4v-2WPA&libraries=places">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
 </script>
 <script type="text/javascript">
