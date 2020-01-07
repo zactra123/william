@@ -117,7 +117,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
-                                            <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number">
+                                            <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number or EIN">
                                             @error('ssn')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
