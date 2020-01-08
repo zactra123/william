@@ -12,7 +12,7 @@
     }
     @media (max-width: 768px) {
         .sidebar{
-            font-size: 7.5px;
+            font-size: 8px;
         }
         .fullwidth-block {
             font-size: 12px;

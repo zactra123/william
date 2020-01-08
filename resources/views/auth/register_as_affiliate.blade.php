@@ -53,7 +53,7 @@
                         <div class="card">
                             <div class="card-header">
 
-                                <div class="head m-2"> REGISTER AS AFFILIATE</div>
+                                <div class="head m-2">AFFILIATE REGISTRATION</div>
                             </div>
 
                             <div class="card-body ">

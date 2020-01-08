@@ -20,7 +20,7 @@ class HomePageContent extends Seeder
                 'category' => 1,
                 'title' =>'A Brilliant Credit Repair Option',
                 'sub_content' =>'<p>Credit problems can result in very high interest rates, and prevent one from getting a loan. Credit problems can also affect one&rsquo;s employment opportunities, and ability to buy or rent a home.</p>',
-                'content' =>'<p>Credit problems can result in very high interest rates, and prevent one from getting a loan. Credit problems can also affect one&rsquo;s employment opportunities, and ability to buy or rent a home. Exceed Credit Services Repair Program can help avoid such unwanted situations caused by credit problems, by eliminating credit reporting errors. </p>
+                'content' =>'<p>Credit problems can result in very high interest rates, and prevent one from getting a loan. Credit problems can also affect one&rsquo;s employment opportunities, and ability to buy or rent a home. Better Credit Services Repair Program can help avoid such unwanted situations caused by credit problems, by eliminating credit reporting errors. </p>
                 <p>While credit reporting mistakes are common, it can be difficult to discover and resolve them if you don&rsquo;t know the laws that control the credit reporting industry and its partakers. This credit repair tutorial will show you some of the consumer protection laws that makes credit repair successful.</p>
                 <p>Different factors affect and can be used advantageously to enhance credit scores. Some of these factors involve common sense, while others are more technical. This tutorial will examine many ways in which you can enhance your credit score, and make your credit desirable to potential lenders, insurers, landlords, and employers.</p>
                 <p>Credit repair is legal if it is done pursuant to the governing laws. You cannot request deletion or update of accurate and verifiable credit information. You may, however, dispute information that is at least partially inaccurate, incomplete, misleading, obsolete or does not otherwise reflect up to date information. </p>' ,
@@ -52,7 +52,7 @@ class HomePageContent extends Seeder
             [
                 'url' => 'let\'s-multiply',
                 'category' => 1,
-                'title' =>'Let&rsquo;s Multiply',
+                'title' =>'Let\'s Multiply',
                 'sub_content' =>'Investing $329 monthly over the next ten years in an account that earns 5% will give you $51,000. Over the next 20 years, this number will increase to $135,000.',
                 'content'=>'<p>Investing $329 monthly over the next ten years in an account that earns 5% will give you $51,000. Over the next 20 years, this number will increase to $135,000.</p>',
 
@@ -61,7 +61,7 @@ class HomePageContent extends Seeder
             [
                 'url' => 'furthermore',
                 'category' => 1,
-                'title' => 'Furthermore',
+                'title' => 'Further more',
                 'sub_content' =>'The financial benefits of credit repair are not restricted to just mortgages and automobile loans; they also impact credit cards and other debts, as well as employment and insurance. It all makes sense! Are you ready to get more information?',
                 'content'=> '<p>The financial benefits of credit repair are not restricted to just mortgages and automobile loans; they also impact credit cards and other debts, as well as employment and insurance. It all makes sense! Are you ready to get more information?</p>
 
@@ -124,7 +124,7 @@ class HomePageContent extends Seeder
             [
                 'url' => 'chexsystems',
                 'category' => 2,
-                'title' =>'ChexSystems',
+                'title' =>'Chex Systems',
                 'sub_content'=>'ChexSystems, according to their website, &ldquo;is comprised of member financial institutions that regularly contribute information on mishandled checking and savings accounts to a central location.',
                 'content'=>'<p>ChexSystems, according to their website, &ldquo;is comprised of member financial institutions that regularly contribute information on mishandled checking and savings accounts to a central location. ChexSystems shares this information among member institutions to help them assess the risk of opening new accounts.&rdquo; ChexSystems reports contain information about bounced checks and unresolved insufficient funds charges, which may be considered by banks when opening new accounts.</p>',
 
@@ -133,7 +133,7 @@ class HomePageContent extends Seeder
 
                 'url' => 'chexsystems-and-credit-repair',
                 'category' => 2,
-                'title' =>'ChexSystems and Credit Repair',
+                'title' =>'Chex Systems and Credit Repair',
                 'sub_content'=>'Fair Credit Reporting Act (FCRA) defines ChexSystems as a national credit bureau that must agree will all FCRA requirements. ',
                 'content'=>'<p>Fair Credit Reporting Act (FCRA) defines ChexSystems as a national credit bureau that must agree will all FCRA requirements. This includes providing a free yearly report &ndash; which can be easily ordered on their website. It also includes processing disputes, and allowing the use of security alerts to avoid identity theft.</p>',
 
@@ -183,7 +183,7 @@ class HomePageContent extends Seeder
             [
                 'url' => 'how-to-get-fico-scores-it-quite-a-task',
                 'category' => 2,
-                'title' =>'How to Get FICO Scores &ndash; It&rsquo;s quite a task',
+                'title' =>'How to Get FICO Scores - It\'s quite a task',
                 'sub_content'=>'Consumer can purchase their FICO scores by visiting MyFico.com, which is owned by Fair Isaac Corporation.',
                 'content'=>'<p>Consumer can purchase their FICO scores by visiting MyFico.com, which is owned by Fair Isaac Corporation. Equifax FICO score can now be purchased from Equifax.com also. Unless you are friendly with a mortgage broker or an auto finance manager, you will not be able to access to all three of your credit scores to either benchmark your credit repair progress, or to preview your scores before applying for a loan. </p>',
 
@@ -406,7 +406,7 @@ class HomePageContent extends Seeder
             [
                 'url' => 'learn-to-rebuild-your-credit-&ndash;-disputes-are-not-enough',
                 'category' => 2,
-                'title' =>'Learn to Rebuild Your Credit &ndash; Disputes Are Not Enough',
+                'title' =>'Learn to Rebuild Your Credit - Disputes Are Not Enough',
                 'sub_content'=>'<p>Credit repair produces great results that help to remove errors on a timely basis, but this alone will likely not be enough to increase your credit score. </p>',
                 'content'=>'<p>Credit repair produces great results that help to remove errors on a timely basis, but this alone will likely not be enough to increase your credit score. </p>',
 
@@ -475,7 +475,7 @@ class HomePageContent extends Seeder
                 'title' =>'Become a Member of a Monitoring Service',
                 'sub_content'=>'This is by far one of the most important approaches to monitoring and maintaining your credit repair progress.',
                 'content'=>'<p>This is by far one of the most important approaches to monitoring and maintaining your credit repair progress. Having a monitoring service gives you the opportunity to be notified of the slightest change in your credit file and on your accounts. Most monitoring services are available at a relatively affordable membership fee or free of cost such as CreditKarma.com This way, you are sure you will not be caught unawares by any change during your credit repair progress. Nothing is perfect and in credit reports mistakes do occur. You should be prepared to see accounts deleted and errors reported on your credit report. This is why becoming a member of a monitoring service is crucial. As a member, you will be notified of any issues and you can take necessary measures to rectify them.&nbsp;</p>
-                <p>At Exceed Credit Services, our goal is to help you find the best methods to improve your credit scores and achieve your credit and financial goals. If you have any questions on how to go about resolving your credit issues and how our program can help, you can reach out to us and we will do our best to help you!&nbsp;&nbsp;</p>',
+                <p>At Better Credit Services, our goal is to help you find the best methods to improve your credit scores and achieve your credit and financial goals. If you have any questions on how to go about resolving your credit issues and how our program can help, you can reach out to us and we will do our best to help you!&nbsp;&nbsp;</p>',
             ]
 
         ]);
