@@ -34,6 +34,10 @@
             font-size: 9px;
             font-family: "Roboto Slab", serif;
         }
+
+        .registration{
+            text-align: center;
+        }
         body{
             font-family:"Roboto Slab", serif; ;
         }
@@ -89,7 +93,7 @@
                                     {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
 
                                     <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> REGISTRATIONS</a>
-                                        <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                        <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
                                             <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
                                             <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>
 

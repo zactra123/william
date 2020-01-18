@@ -1,50 +1,60 @@
 @extends('layouts.owner')
 
 @section('content')
-    <div class="container">
+    <div class="page-content">
         <div class="row justify-content-center">
-            <div class="row">
-                <label class="dasd">Users List</label>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($users as $key=> $user)
-                        <tr>
-                            <th scope="row">{{$key+1}}</th>
-                            <td>{{$user['first_name']}}</td>
-                            <td>{{$user['last_name']}}</td>
-                            <td>{{$user['email']}}</td>
-                            <td>
+            <div class="col-md-10">
+                <div class="card">
 
-                                <a class="btn btn-secondary" href="{{ route('owner.client.show',$user['id'])}}"
-                                   role="button">View</a>
+                    <div class="card-header">
+                      <labelclass="header"></Users List
+                    </div>
+                    <div class="card-body">
+                      <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First name</th>
+                                    <th scope="col">Last name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($users as $key=> $user)
+                                    <tr>
+                                        <th scope="row">{{$key+1}}</th>
+                                        <td>{{$user['first_name']}}</td>
+                                        <td>{{$user['last_name']}}</td>
+                                        <td>{{$user['email']}}</td>
+                                        <td>
 
-                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                            <a class="btn btn-secondary" href="{{ route('owner.client.show',$user['id'])}}"
+                                               role="button">View</a>
 
-                                <button class="btn btn-primary delete" data-id="{{ $user['id'] }}" >Delete </button>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-
-                                {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
-
-                            </td>
-                        </tr>
-                    @endforeach
+                                            <button class="btn btn-primary delete" data-id="{{ $user['id'] }}" >Delete </button>
 
 
-                    </tbody>
-                </table>
+
+                                            {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
+                                </tbody>
+                            </table>
+                    </div>
+
+                </div>
             </div>
-
         </div>
+
+
+
 
     </div>
 @endsection

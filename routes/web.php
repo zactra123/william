@@ -48,7 +48,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
-    Route::resource('client', 'Owner\ClientsController')->names('owner.client')->except('show');;
+    Route::resource('client', 'Owner\ClientsController')->names('owner.client');
 
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');

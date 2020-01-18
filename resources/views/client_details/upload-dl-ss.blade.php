@@ -19,7 +19,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header font"> Upload files </div>
+                            <div class="card-header">
+                                <div class="head m-2"> ADD CLIENT </div>
+                            </div>
 
                             <div class="card-body">
                                 {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}

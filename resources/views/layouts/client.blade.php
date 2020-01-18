@@ -34,6 +34,9 @@
             /*#3366ff*/
             /*#0c71c3;*/
         }
+        .registration{
+            text-align: center;
+        }
         .dropdown:hover .dropdown-menu {
             display: block;
             font-size: 9px;
@@ -83,7 +86,7 @@
 
 
                         <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->email }}<span class="caret"></span></a>
-                            <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                            <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
                                 <li><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit your detail</a></li>
                                 <li><a href="{{route('client.credentials')}}">Credentials</a></li>
                                 <li><a href="{{ route('logout') }}"

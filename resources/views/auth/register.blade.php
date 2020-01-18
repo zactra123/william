@@ -59,8 +59,8 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
-
                                 <div class="head m-2">CLIENT REGISTRATION</div>
+
                             </div>
 
                             <div class="card-body ">
