@@ -50,7 +50,12 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function scopeClients($query)
     {
-        return $query->where('role',  'client');
+        return $query->where('users.role',  'client');
+    }
+
+    public function affilate()
+    {
+        return $this->belongsTo('App\User','affiliates', 'user_id', 'affiliate_id');
     }
 
     public function clientDetails()
@@ -70,5 +75,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    public function full_name()
+    {
+        return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
 
+    }
 }

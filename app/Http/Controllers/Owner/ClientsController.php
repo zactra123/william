@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Auth;
 use App\Client_detail;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class ClientsController extends Controller
 {
@@ -37,9 +38,10 @@ class ClientsController extends Controller
     {
         dd($userId);
     }
-    public function show(Request $request)
+    public function show($id)
     {
-        dd('dasdas');
+        $client = User::clients()->find($id);
+        return view('owner.client.show', compact( 'client'));
     }
 
     public function update(Request $request)
@@ -50,13 +52,11 @@ class ClientsController extends Controller
 
     public function list()
     {
-
-        $users = DB::table('users')
+        $users = User::clients()
             ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
-            ->where('users.role', 'client')
             ->get();
 
         return view('owner.client.list', compact( 'users'));
