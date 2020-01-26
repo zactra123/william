@@ -33,7 +33,7 @@
                                     <td>{{$user->full_name?? "-"}}</td>
                                     <td>
 
-                                        <a class="btn btn-secondary" href="#"
+                                        <a class="btn btn-secondary" href="{{route('admin.client.profile', $user->id)}}"
                                            role="button"><span class="fa fa-file"></span></a>
                                     </td>
                                 </tr>
