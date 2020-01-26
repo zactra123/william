@@ -7,7 +7,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                      <labelclass="header"></Users List
+                        <label class="header m-2">Users List</label>
                     </div>
                     <div class="card-body">
                       <table class="table">
@@ -17,24 +17,28 @@
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Affiliate Full name</th>
+
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $key=> $user)
+
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
-                                        <td>{{$user['first_name']}}</td>
-                                        <td>{{$user['last_name']}}</td>
-                                        <td>{{$user['email']}}</td>
+                                        <td>{{$user->first_name}}</td>
+                                        <td>{{$user->last_name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->full_name?? "-"}}</td>
                                         <td>
 
-                                            <a class="btn btn-secondary" href="{{ route('owner.client.show',$user['id'])}}"
-                                               role="button">View</a>
+                                            <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
+                                               role="button"><span class="fa fa-file"></span></a>
 
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                            <button class="btn btn-primary delete" data-id="{{ $user['id'] }}" >Delete </button>
+                                            <button class="btn btn-danger delete" data-id="{{ $user->id}}" ><span class="fa fa-trash-o"></span> </button>
 
 
 

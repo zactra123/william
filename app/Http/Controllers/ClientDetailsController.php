@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -23,8 +24,10 @@ class ClientDetailsController extends Controller
         $this->middleware('client', ['except' => 'store']);
     }
 
-    public function index()
+    public function index(Escrow $escrow)
     {
+
+
         return view('client_details.index');
     }
 
@@ -81,7 +84,6 @@ class ClientDetailsController extends Controller
 
     public function update(Request $request)
     {
-
         $data = $request->client;
         $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
         $id = Auth::user()->id;

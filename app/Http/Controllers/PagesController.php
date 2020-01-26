@@ -44,7 +44,13 @@ class PagesController extends Controller
 
     public function whoWeAre()
     {
-        return view('who-we-are')  ;
+        return view('who-we-are');
+    }
+
+    public function howItWorks()
+    {
+
+        return view('how-it-works');
     }
 
     public function faqs(Request $request)

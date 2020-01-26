@@ -53,5 +53,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\ClientAttachment');
     }
 
+    public function adminSpecifications()
+    {
+        return $this->belongsToMany('App\NegativeType', 'admin_specifications', 'user_id', 'negative_types_id');
+    }
+
+
 
 }

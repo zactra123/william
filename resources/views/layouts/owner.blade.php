@@ -52,6 +52,7 @@
 
                         <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
                         <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
+                        <li class="menu-item"><a href="{{ route('owner.affiliate.list')}}" >Affiliate List</a></li>
                         <li class="menu-item"><a href="{{route('owner.home.content')}}">Home Page Content</a></li>
 
                         <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown">FAQs</a>

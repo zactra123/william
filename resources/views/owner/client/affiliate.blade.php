@@ -1,20 +1,13 @@
 @extends('layouts.owner')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-end m-2">
-            <a class="btn btn-success" href="{{ route('owner.admin.create')}}" role="button">
-                Create Admin
-            </a>
-        </div>
-
-
+    <div class="page-content">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
 
                     <div class="card-header">
-                        <label class="header m-2">Admins List</label>
+                        <label class="header m-2">Affiliates List</label>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -24,26 +17,31 @@
                                 <th scope="col">First name</th>
                                 <th scope="col">Last name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Negative Type</th>
+                                <th scope="col">Client Number</th>
                                 <th scope="col">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($admins as $key=> $admin)
+                            @foreach($users as $key=> $user)
                                 <tr>
                                     <th scope="row">{{$key+1}}</th>
-                                    <td>{{$admin['first_name']}}</td>
-                                    <td>{{$admin['last_name']}}</td>
-                                    <td>{{$admin['email']}}</td>
-                                    <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
+                                    <td>{{$user->first_name}}</td>
+                                    <td>{{$user->last_name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->client}}</td>
                                     <td>
+                                        <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
+                                           role="button"><span class="fa fa-file"></span></a>
 
-                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><span class="fa fa-pencil"></span></a>
-
-                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><span class="fa fa-trash-o"></span></button>
                                         <meta name="csrf-token" content="{{ csrf_token() }}">
-                                    </td>
 
+                                        <button class="btn btn-danger delete" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button>
+
+
+
+                                        {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
+
+                                    </td>
                                 </tr>
                             @endforeach
 
@@ -57,8 +55,10 @@
         </div>
 
 
-@endsection
 
+
+    </div>
+@endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -75,7 +75,7 @@
 
                     $.ajax(
                         {
-                            url: "/owner/admin/" + id,
+                            url: "/owner/client/" + id,
                             type: 'DELETE',
                             data: {
                                 "id": id,

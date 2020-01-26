@@ -61,8 +61,7 @@
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="">WHAT WE DO</a></li>
-                        <li class="menu-item"><a href="">HOW IT WORKS</a></li>
+                        <li class="menu-item"><a href="{{route('howItWorks')}}">HOW IT WORKS</a></li>
                         <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
                         <li class="menu-item"><a href="">FREE CREDIT REPAIR</a></li>
                         <li class="menu-item"><a href="{{route('faqs')}}">FAQs</a></li>
@@ -142,10 +141,13 @@
                 <div class="col-md-6 align-right">
 
                     <nav class="footer-navigation">
-                        <a href="#">News</a>
-                        <a href="#">About us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Contact</a>
+                        <a href="{{route('howItWorks')}}">HOW IT WORKS</a>
+                        <a href="{{route('credit.education')}}">CREDIT EDUCTION</a>
+                        <a href="">FREE CREDIT REPAIR</a>
+                        <a href="{{route('faqs')}}">FAQs</a>
+                        <a href="{{route('whoWeAre')}}">WHO WE ARE</a>
+                        <a href="">CREDIT RESOURCES</a>
+                        <a href="">CONTACT US</a>
                     </nav> <!-- .footer-navigation -->
 
                     <div class="social-links">

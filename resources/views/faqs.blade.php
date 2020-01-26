@@ -9,7 +9,7 @@
     <div class="breadcrumbs">
         <div class="container">
             <a href="{{url('/')}}">Home</a> &rarr;
-            <a href="{{url('who-we-are')}}">who we are</a>
+            <a href="#">FAQs</a>
         </div>
     </div>
 

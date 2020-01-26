@@ -20,4 +20,6 @@ class Affiliate extends Model
     {
         return $this->belongsTo('App\user');
     }
+
+
 }

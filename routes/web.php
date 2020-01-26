@@ -18,6 +18,7 @@
 Route::get('/', 'PagesController@welcome' );
 Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
+Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
@@ -47,6 +48,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
+    Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
 
@@ -59,6 +61,9 @@ Route::group(['prefix'=>'owner'], function(){
 
 Route::group(['prefix'=> 'admin'], function(){
     Route::resource('/', 'AdminsController')->names('admin')->parameters([''=>'admin']);
+
+    Route::get('client/list', 'AdminsController@list')->name('admin.client.list');
+    Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
 
 });
 

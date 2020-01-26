@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\NegativeType;
+use App\AdminSpecification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AdminsController extends Controller
 {
@@ -16,13 +19,12 @@ class AdminsController extends Controller
         $this->middleware(['auth', 'superadmin']);
     }
 
-
     public function create()
     {
-
-
-        return view('owner.admin.create');
-
+        $negativeType = NegativeType::all()
+            ->pluck('name', 'id')
+            ->toArray();
+        return view('owner.admin.create', compact('negativeType'));
     }
 
     public function store(Request $request)
@@ -34,23 +36,41 @@ class AdminsController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'negative_types' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         if ($validation->fails()){
-            return view('owner.admin.create')->withErrors($validation);
+            $negativeType = NegativeType::all()
+                ->pluck('name', 'id')
+                ->toArray();
+            return view('owner.admin.create', compact('negativeType'))->withErrors($validation);
         }
 
-        User::create([
+        $userId = User::create([
             'first_name' => $admin['first_name'],
             'last_name' => $admin['last_name'],
             'email' => $admin['email'],
             'password' => Hash::make($admin['password']),
             'role'=>'admin',
-        ]);
+        ])->id;
+
+        foreach($admin['negative_types'] as $negativeTypes){
+            AdminSpecification::create([
+                'user_id' => $userId,
+                'negative_types_id' => $negativeTypes,
+            ]);
+        }
 
         return redirect('owner/admin/list');
     }
+
+    public function edit(Request $request)
+    {
+        dd($request);
+
+    }
+
 
     public function destroy(Request $request)
     {
@@ -69,10 +89,10 @@ class AdminsController extends Controller
 
     public function list()
     {
+
         $admins = User::where('role', 'admin')
-            ->select('id', 'first_name', 'last_name', 'email')
-            ->get()
-            ->toArray();
+            ->get();
+
         return view('owner.admin.list', compact( 'admins'));
 
     }
