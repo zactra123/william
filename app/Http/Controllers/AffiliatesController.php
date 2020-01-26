@@ -75,12 +75,14 @@ class AffiliatesController extends Controller
         return view('affiliate.create-client');
 
     }
+
     public function addClientDetails($client)
     {
 
         return view('affiliate.create-client-detail', compact('client'));
 
     }
+
     public function storeClientDetails(Request $request, $client)
     {
 

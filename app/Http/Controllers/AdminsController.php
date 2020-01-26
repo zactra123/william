@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminsController extends Controller
@@ -43,6 +44,16 @@ class AdminsController extends Controller
             ->groupBy('users.id')
             ->get();
         return view('admin.affiliate-list', compact('users'));
+    }
+
+    public function clientProfile($clientId)
+    {
+       $client = User::where('id',$clientId)->first();
+
+
+       return view('admin.client-profile', compact('client'));
+
+
     }
 
 

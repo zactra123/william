@@ -83,6 +83,7 @@
                             },
                             success: function () {
                                 console.log("it Works");
+                                location.reload()
                             }
                         });
                 }

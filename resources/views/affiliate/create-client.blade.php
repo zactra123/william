@@ -54,7 +54,6 @@
 
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
-
                         <div class="card">
                             <div class="card-header">
                                 <div class="head m-2"> ADD CLIENT </div>
