@@ -49,6 +49,7 @@
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                                 <ul class="menu">
 
+                                    <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
                                     <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
                                     <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
                                     <li class="menu-item">

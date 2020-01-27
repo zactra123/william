@@ -48,7 +48,7 @@ class AdminsController extends Controller
 
     public function clientProfile($clientId)
     {
-       $client = User::where('id',$clientId)->first();
+        $client = User::clients()->find($clientId);
 
 
        return view('admin.client-profile', compact('client'));

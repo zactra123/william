@@ -63,12 +63,13 @@ Route::group(['prefix'=>'owner'], function(){
 });
 
 Route::group(['prefix'=> 'admin'], function(){
-    Route::resource('/', 'AdminsController')->names('admin')->parameters([''=>'admin']);
-
+    Route::resource('/', 'AdminsController')->names('admin')->parameters([''=>'admin'])->except('show');
     Route::get('client/list', 'AdminsController@list')->name('admin.client.list');
     Route::get('client/{client}/profile', 'AdminsController@clientProfile')->name('admin.client.profile');
-
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
+
+
+    Route::resource('message', 'MessagesController')->names('admin.message');
 
 });
 
