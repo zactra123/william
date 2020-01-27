@@ -11,18 +11,7 @@
                             <div class="card-body">
                                 <div>
                                     <div class="pb-1">
-                                        <a href="#" class="btn"> View my message</a>
-                                    </div>
-                                    <div class="pb-1">
-                                        <a href="#" class="btn"> Pending  message</a>
-                                    </div>
-                                    <div class="pb-1">
-
-                                    </div>
-
-
-                                    <div class="pb-1">
-                                        <a href="#" class="btn"> Write new message</a>                                        <form method="POST" action="{{ route('admin.message.store') }}">
+                                        <span  class="btn text-primary"> Write new message</span>                                        <form method="POST" action="{{ route('admin.message.store') }}">
                                             @csrf
                                             <div class="form-group row m-1">
                                                 <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
@@ -63,8 +52,27 @@
                         <div class="card vh-100">
 
                             <div class="card-body">
-                                <div class="row h-70 border border-primary rounded">
-                                    <div class="col-md-12 border border-primary rounded">
+                                <div class="row h-75 border border-primary ">
+                                    <div class="col-md-12 border border-primary ">
+                                        <div class="row p-2 ">
+                                            <div class="list-group list-group-horizontal col-md-6">
+                                                {{--@Todo: append active class to the filter that is used--}}
+                                                <a class="list-group-item list-group-item-action p-1 active" href="{{route("admin.message.index")}}" >All Messages</a>
+                                                <a class="list-group-item list-group-item-action p-1"  href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
+                                                <a class="list-group-item list-group-item-action p-1"  href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="row float-right">
+                                                    <form class="form-inline">
+                                                        <div class="form-group  row m-1">
+                                                            {{--@Todo: Set up searched value --}}
+                                                            <input  name="term" class="form-control" type="text">
+                                                        </div>
+                                                        <button class="btn btn-primary"><i class="fa fa-search">  </i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <table class="table table-hover">
                                             <thead>
                                             <tr>
@@ -73,10 +81,12 @@
                                                 <th scope="col">Phone number</th>
                                                 <th scope="col">Call date</th>
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Created at</th>
                                                 <th scope="col">Details</th>
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            {{--@Todo: on click to table row expect buttons get message history with ajax and show in the bottom--}}
                                             @foreach($messages as $message)
                                                 <tr>
                                                     <th scope="row"></th>
@@ -84,14 +94,17 @@
                                                     <td>{{$message->phone_number}}</td>
                                                     <td>{{$message->call_date}}</td>
                                                     <td>{{$message->completed==0?'Pending':'Completed'}}</td>
+                                                    <td>{{date("g:ia jS F Y",strtotime($message->created_at))}}</td>
                                                     <td>
-                                                        <a class="btn btn-secondary" href="{{ route('admin.message.show',$message->id)}}"
-                                                           role="button"><span class="fa fa-file"></span></a>
+                                                        {{--@Todo: show only when message is not completed --}}
+                                                        {{--@Todo: on click make te message completed --}}
+                                                        <a class="btn btn-success" href="{{ route('admin.message.show',$message->id)}}"
+                                                           role="button"><span class="fa fa-check"></span></a>
 
-                                                        @if(auth()->user()->id == $message->user_id)
-                                                            <a class="btn btn-secondary" href="{{ route('admin.message.edit',$message->id)}}"
-                                                               role="button"><span class="fa fa-pencil"></span></a>
-                                                        @endif
+                                                        <button class="btn btn-secondary" data-toggle="modal"
+                                                                data-target="#favoritesModal"
+                                                           role="button"><span class="fa fa-pencil"></span></button>
+
                                                     </td>
 
                                                 </tr>
@@ -120,6 +133,40 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+{{--    @Todo: add notes for message--}}
+    <div class="modal fade" id="favoritesModal"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">The Sun Also Rises</h4>
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Please confirm you would like to add
+                        <b><span id="fav-title">The Sun Also Rises</span></b>
+                        to your favorites list.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal">Cancel</button>
+                    <span class="pull-right">
+          <button type="button" class="btn btn-primary">
+            Add a Note
+          </button>
+        </span>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Message;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-       $messages = Message::paginate(5);
-       return view ('admin.message.index', compact('messages'));
+        $messages = Message::orderBy('created_at', 'desc');
+        if ($request->type == 'completed' || $request->type == 'pending'){
+            $messages = $messages->where('completed', $request->type == 'completed');
+        }
+
+        if ($request->term) {
+            $messages = $messages->whereRaw("`name` LIKE  '%". $request->term ."%'")
+                            ->orWhereRaw("`phone_number` LIKE '%". $request->term ."%'");
+        }
+        $messages = $messages->paginate(5);
+        return view ('admin.message.index', compact('messages'));
     }
 
     public function store(Request $request)
@@ -24,10 +34,9 @@ class MessagesController extends Controller
             'full_name' => ['required', 'string', 'max:255'],
             'call_date' => ['required'],
             'phone_number'=> ['required', 'string', 'max:255'],
-            'question'=> ['required', 'string', 'max:255'],
+            'question'=> ['required', 'string'],
 
         ]);
-
 
         if ($validation->fails()) {
             return redirect()->back()
@@ -43,7 +52,7 @@ class MessagesController extends Controller
                 'call_date' => $message['call_date'],
                 'question' => $message['question'],
             ]);
-            return view ('admin.message.index', compact('messages'));
+           return redirect()->route('admin.message.index');
         }
 
     }
