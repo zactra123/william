@@ -69,6 +69,9 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
 
 
+    Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
+    Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
+
     Route::resource('message', 'MessagesController')->names('admin.message');
 
 });

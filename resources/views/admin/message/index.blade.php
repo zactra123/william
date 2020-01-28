@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-
+    <style>
+        .pagination{
+            justify-content: center;
+        }
+    </style>
     <div class="page-content pt-4">
         <div class="page-content">
             <div class="container">
@@ -11,7 +15,8 @@
                             <div class="card-body">
                                 <div>
                                     <div class="pb-1">
-                                        <span  class="btn text-primary"> Write new message</span>                                        <form method="POST" action="{{ route('admin.message.store') }}">
+                                        <span  class="btn text-primary"> Write new message</span>
+                                            <form method="POST" action="{{ route('admin.message.store') }}">
                                             @csrf
                                             <div class="form-group row m-1">
                                                 <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
@@ -49,24 +54,22 @@
                         </div>
                     </aside>
                     <div class="col-md-9">
-                        <div class="card vh-100">
+                        <div class="card ">
 
                             <div class="card-body">
-                                <div class="row h-75 border border-primary ">
-                                    <div class="col-md-12 border border-primary ">
+                                <div class="row h-100  ">
+                                    <div class="col-md-12 ">
                                         <div class="row p-2 ">
                                             <div class="list-group list-group-horizontal col-md-6">
-                                                {{--@Todo: append active class to the filter that is used--}}
-                                                <a class="list-group-item list-group-item-action p-1 active" href="{{route("admin.message.index")}}" >All Messages</a>
-                                                <a class="list-group-item list-group-item-action p-1"  href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
-                                                <a class="list-group-item list-group-item-action p-1"  href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
+                                                <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
+                                                <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
+                                                <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
                                             </div>
                                             <div class="col-md-6 ">
                                                 <div class="row float-right">
                                                     <form class="form-inline">
                                                         <div class="form-group  row m-1">
-                                                            {{--@Todo: Set up searched value --}}
-                                                            <input  name="term" class="form-control" type="text">
+                                                              <input id ='search' name="term" class="form-control" type="text">
                                                         </div>
                                                         <button class="btn btn-primary"><i class="fa fa-search">  </i></button>
                                                     </form>
@@ -81,7 +84,6 @@
                                                 <th scope="col">Phone number</th>
                                                 <th scope="col">Call date</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Created at</th>
                                                 <th scope="col">Details</th>
                                             </tr>
                                             </thead>
@@ -94,35 +96,40 @@
                                                     <td>{{$message->phone_number}}</td>
                                                     <td>{{$message->call_date}}</td>
                                                     <td>{{$message->completed==0?'Pending':'Completed'}}</td>
-                                                    <td>{{date("g:ia jS F Y",strtotime($message->created_at))}}</td>
                                                     <td>
-                                                        {{--@Todo: show only when message is not completed --}}
-                                                        {{--@Todo: on click make te message completed --}}
-                                                        <a class="btn btn-success" href="{{ route('admin.message.show',$message->id)}}"
-                                                           role="button"><span class="fa fa-check"></span></a>
 
-                                                        <button class="btn btn-secondary" data-toggle="modal"
-                                                                data-target="#favoritesModal"
-                                                           role="button"><span class="fa fa-pencil"></span></button>
+                                                        @if($message->completed == 0)
+                                                            <button class="btn btn-success" id = "message-completed"
+                                                                    data-target ={{$message->id}}>
+                                                                <span class="fa fa-check"></span>
+                                                            </button>
+                                                            <meta name="csrf-token" compelted-token="{{ csrf_token() }}">
+                                                        @endif
+
+                                                         <button class="btn btn-secondary modalViewMessage"
+                                                                 data-toggle="modal" role="button"
+                                                                 data-target ={{$message->id}} >
+                                                             <span class="fa fa-file"></span>
+                                                         </button>
+
+
+                                                        <button class="btn btn-secondary modalAddNote"
+                                                                data-toggle="modal" role="button"
+                                                                data-target ={{$message->id}}>
+                                                            <span class="fa fa-pencil"></span>
+                                                        </button>
 
                                                     </td>
 
                                                 </tr>
                                             @endforeach
-                                            {{ $messages->links() }}
                                             </tbody>
                                         </table>
-
+                                            {{ $messages->links( ) }}
                                     </div>
 
                                 </div>
-                                <div class="row h-25 border border-primary rounded">
-                                    <div class="col-md-12 border border-primary rounded">
 
-
-                                    </div>
-
-                                </div>
 
                             </div>
 
@@ -135,53 +142,171 @@
 
         </div>
     </div>
-{{--    @Todo: add notes for message--}}
-    <div class="modal fade" id="favoritesModal"
-         tabindex="-1" role="dialog"
-         aria-labelledby="favoritesModalLabel">
+
+    <div class="modal fade" id="favoritesModal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"
-                        id="favoritesModalLabel">The Sun Also Rises</h4>
-                    <button type="button" class="close"
-                            data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="favoritesModalLabel">Message details</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Close</span> </button>
                 </div>
                 <div class="modal-body">
-                    <p>
-                        Please confirm you would like to add
-                        <b><span id="fav-title">The Sun Also Rises</span></b>
-                        to your favorites list.
-                    </p>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal">Cancel</button>
-                    <span class="pull-right">
-          <button type="button" class="btn btn-primary">
-            Add a Note
-          </button>
-        </span>
+
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addNotes" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="favoritesModalLabel">Add note</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">Close</span> </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.message.note') }}">
+                        @csrf
+
+                        <div class="message_id">
+                            <input type="hidden" name="message_id" id="messageId" >
+
+                        </div>
+
+                        <div class="form-group row m-1">
+
+                            <textarea name="notes" id=""></textarea>
+
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-9 offset-md-5">
+                                <button type="submit" class="btn btn-primary">
+                                    Add note
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 @endsection
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-</script>
 <script type="text/javascript">
 
-
-
     $(document).ready(function(){
+
+        var url = $(location).attr('search');
+        if(url.search("pending")== 6){
+            $('.tab-selector').removeClass("active");
+            $(".pending" ).addClass("active");
+        }else if (url.search("completed")== 6){
+            $('.tab-selector').removeClass("active");
+            $(".completed" ).addClass("active");
+        }else if(url.search("term")== 1){
+            var res = url.replace("?term=",'');
+            $('.tab-selector').removeClass("active");
+            $('#search').val(res);
+        };
+
+
+        $('#message-completed').click(function(){
+            var  id = $(this).attr("data-target")
+            var token = $("meta[name='csrf-token']").attr("compelted-token");
+
+            bootbox.confirm("Do you want to complete this message?", function (result) {
+                console.log(result);
+                if (result) {
+
+                    $.ajax({
+                        url: "message/completed",
+                        method:"POST",
+                        data:{id:id, _token: token},
+                        success: function () {
+                            console.log("it Works");
+                            location.reload()
+                        },
+
+                        error:function (err,state) {
+                            console.log(err)
+                        }
+                    });
+                }
+            })
+        });
+
+        $('.modalViewMessage').click(function(){
+            var  id = $(this).attr("data-target")
+            $.ajax({
+                url: "message/"+id,
+                method:"GET",
+                data:{id:id, },
+                success:function (results) {
+                    let result=JSON.parse(results);
+                    if(result.success){
+
+                        html='<div class="form-group row">';
+
+                        for( let val in result.data){
+                            if(val == 'message'){
+                                html+= '<label class="col-md-12 col-form-label" >'+
+                                    result.data[val]['phone_number']+'</lable>';
+                                html+= '<label class="col-md-12 col-form-label" >'+
+                                    result.data[val]['name']+'</lable>';
+                                html+= '<label class="col-md-12 col-form-label" >'+
+                                    result.data[val]['question']+'</lable>';
+                            }else if (val == 'notes' && result.data[val]!= '') {
+                               html += '<table class="table table-hover"> <thead> <tr> <th >#</th><th >date</th>' +
+                                   '<th>Note</th> </tr> </thead> <tbody><tr> ';
+
+                               for( let value in result.data[val]){
+                                    html +='<th scope="row"></th><td>'+ result.data[val][value]['created_at'] +
+                                        '</td><td>'+ result.data[val][value]['notes']+'</td></tr>'
+
+                               }
+
+                               html+= '</tbody> </table>'
+                            }
+                            console.log('erevi chishta');
+                            html+= '</div>';
+                            $("#favoritesModal .modal-body").html(html)
+                            $('#favoritesModal').modal('show');
+
+                        }
+
+                    }
+
+                },
+
+                error:function (err,state) {
+                    console.log(err)
+                }
+            });
+
+        })
+
+
+        $('.modalAddNote').click(function(){
+            var  id = $(this).attr("data-target")
+
+            $('#messageId').val(id);
+            $('#addNotes').modal('show');
+
+        })
+
 
         $('#date').focus(function () {
 
@@ -215,11 +340,11 @@
             this.value = newVal.substring(0, 12);
         });
 
-
-
+        $('#addNotes').on('hidden.bs.modal', function () {
+                $('#addNotes textarea').val("");
+        })
     })
 
-
-
-
 </script>
+
+

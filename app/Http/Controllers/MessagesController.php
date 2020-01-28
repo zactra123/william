@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Message;
 use Auth;
+use App\QuestionNote;
 use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
     public function index(Request $request)
     {
+
+
         $messages = Message::orderBy('created_at', 'desc');
         if ($request->type == 'completed' || $request->type == 'pending'){
             $messages = $messages->where('completed', $request->type == 'completed');
@@ -26,6 +29,7 @@ class MessagesController extends Controller
 
     public function store(Request $request)
     {
+
         $messages = Message::paginate(5);
         $userId = Auth::user()->id;
         $message = $request->except('_token');
@@ -96,20 +100,64 @@ class MessagesController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-            $message = Message::where('id', $id)->get();
-            return ;
+        $id = $request->id;
+        $message = Message::where('id', $id)->first();
+        $notes = QuestionNote::where('message_id', $id)->get();
+
+        $data = [
+            'message' => $message,
+            'notes' => $notes,
+        ];
+
+
+
+       echo json_encode(['success'=>1,'data'=>$data]);
+       return;
+
+    }
+    public function messageCompleted(Request $request)
+    {
+        $messageId = $request->id;
+        Message::where('id', $messageId)
+            ->update(['completed' => 1]);
+
+        return response()->json(['status' => 'success']);
 
     }
 
-    public function myMessage()
+    public function addNote(Request $request)
     {
         $userId = Auth::user()->id;
+        $note = $request->except('_token');
+        $note['user_id'] = $userId;
 
-        $messages = Message::where('user_id', $userId)->paginate(5);
-        return ;
+        $validation = Validator::make($note, [
+            'user_id' => ['required'],
+            'message_id' => ['required'],
+            'notes'=> ['required', 'string'],
+
+        ]);
+
+        if ($validation->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validation);
+
+        }else{
+
+            QuestionNote::create($note);
+            return redirect()->route('admin.message.index');
+        }
+
+
+
     }
+
+
+
+
 
 
 
