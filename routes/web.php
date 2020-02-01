@@ -71,8 +71,16 @@ Route::group(['prefix'=> 'admin'], function(){
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
     Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
-
     Route::resource('message', 'MessagesController')->names('admin.message');
+
+
+    Route::get('appointment','AppointmentsController@index')->name('admin.appointment.index');
+    Route::post('appointment/create','AppointmentsController@create')->name('admin.appointment.create');
+    Route::post('appointment/update','AppointmentsController@update')->name('admin.appointment.update');
+    Route::post('appointment/delete','AppointmentsController@destroy')->name('admin.appointment.destroy');
+
+
+
 
 });
 

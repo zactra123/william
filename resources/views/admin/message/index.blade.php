@@ -298,7 +298,6 @@
 
         })
 
-
         $('.modalAddNote').click(function(){
             var  id = $(this).attr("data-target")
 
