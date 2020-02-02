@@ -10,6 +10,8 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
     <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Loading main css file -->
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -34,49 +36,49 @@
 
 
         <div class="bottom-header">
-            <div class="container">
+            <div class="container" id="app">
                 @if(Auth::user()->role == 'admin')
-                    <a href="{{ url('/admin') }}" class="branding pull-left">
-                        @else
-                            <a href="{{ url('/') }}"  class="branding pull-left">
-                                @endif
-                                <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
-                                <h1 class="site-title">Company <span>Name</span></h1>
-                                <h2 class="site-description">Tagline goes here</h2>
-                            </a> <!-- #branding -->
+                    <a href="{{ url('/admin') }}" class="branding pull-left"></a>
+                @else
+                    <a href="{{ url('/') }}"  class="branding pull-left">
+                        @endif
+                        <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                        <h1 class="site-title">Company <span>Name</span></h1>
+                        <h2 class="site-description">Tagline goes here</h2>
+                    </a> <!-- #branding -->
 
-                            <nav class="main-navigation pull-right ">
-                                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                                <ul class="menu">
+                    <nav class="main-navigation pull-right ">
+                        <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                        <ul class="menu">
 
-                                    <li class="menu-item"><a href="{{route('admin.appointment.index')}}" >Appointment</a></li>
-                                    <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
-                                    <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
-                                    <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
-                                    <li class="menu-item">
-                                        <ul class="navbar-nav ml-auto">
-                                            <!-- Authentication Links -->
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                    {{ Auth::user()->email }} <span class="caret"></span>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                                    </a>
+                            <li class="menu-item"><a href="{{route('admin.appointment.index')}}" >Appointment</a></li>
+                            <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
+                            <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
+                            <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
+                            <li class="menu-item">
+                                <ul class="navbar-nav ml-auto">
+                                    <!-- Authentication Links -->
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->email }} <span class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
 
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
                                     </li>
                                 </ul>
+                            </li>
+                        </ul>
 
-                            </nav> <!-- .main-navigation -->
+                    </nav> <!-- .main-navigation -->
             </div> <!-- .container -->
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
@@ -91,6 +93,27 @@
     </main>
 
     <!-- .content -->
+    <div class="modal fad" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="appointmentDetailsModalLabel">Appiontments</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>You have <span class="apointments-count"></span> appiontments in the next 10 mintes</div>
+                    <div class="appointments-info">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="{{route("admin.appointment.index")}}">More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -100,6 +123,33 @@
 <script src="{{asset('js/js/plugins.js')}}"></script>
 <script src="{{asset('js/js/app.js')}}"></script>
 
+
+
+<script>
+$(document).ready(function(){
+    setInterval(getAppiontments(), 10 * 60 * 1000);
+});
+
+getAppiontments = function(){
+    $.ajax({
+        url: "/admin/getNotifications",
+        type: "get",
+        success: function(result){
+            if (result.length > 0) {
+                console.log(result.length)
+                $("#appointmentNotifier .apointments-count").text(result.length)
+                $("#appointmentNotifier .appointments-info").text()
+                $.each( result, function(i, e){
+                    var appointment = '<div class="text-primary">'+ e.name + '</div>';
+                    $("#appointmentNotifier .appointments-info").append(appointment)
+                });
+                $("#appointmentNotifier").modal("show");
+            }
+        }
+    })
+}
+
+</script>
 </body>
 
 </html>

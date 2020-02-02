@@ -39,12 +39,22 @@ class AppointmentsController extends Controller
         return view('admin.appointment.index');
     }
 
+    public function show($id)
+    {
+        $appointment = Appointment::find($id);
+
+        if (empty($appointment)) {
+            return Response::json(["error" => "Not Found"], 404);
+        }
+        return Response::json($appointment);
+    }
+
+
 
     public function create(Request $request)
     {
 
         $insertArr = [
-
             'name' => $request->title,
             'time' => $request->time,
             'start_date' => $request->start_date,
@@ -62,13 +72,12 @@ class AppointmentsController extends Controller
 
 
         ]);
-
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
 
         }else {
-
             $insertArr['user_id']=Auth::user()->id;
+            $insertArr["start_date"] = $insertArr["start_date"] . " " . $insertArr["time"];
 
             $appointment = Appointment::create($insertArr);
             return Response::json($appointment);
@@ -89,11 +98,13 @@ class AppointmentsController extends Controller
     }
 
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $event = Event::where('id',$request->id)->delete();
+        if (Appointment::find($id)->delete()) {
+            return Response::json(["success" => true]);
+        }
 
-        return Response::json($event);
+        return Response::json(["error"=> "Not Found"], 404);
     }
 
 

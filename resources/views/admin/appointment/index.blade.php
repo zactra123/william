@@ -5,17 +5,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10">
-
-
-
                 <div class="container">
                     <div class="response">
 
                     </div>
                     <div id='calendar' class="card">
-
-
-
                     </div>
                 </div>
 
@@ -32,7 +26,7 @@
 
                                 <form method="post" action="{{route('admin.appointment.create')}}">
                                     @csrf
-                                    <input type="hidden" id="start_date">
+                                    <input type="hidden" name="start_date" id="start_date">
                                     <div class="time_id">
                                         <input type="time" name="time" id="timeId" placeholder="Time">
 
@@ -59,17 +53,38 @@
                                             </button>
                                         </div>
                                     </div>
-
-
+                                </form>
                             </div>
                             <div class="modal-footer">
 
                             </div>
-
-                            </form>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="modal fad" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="appointmentDetailsModalLabel">Appointment details</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-mobile-phone pr-1"></i>Phone Number:</span><span id="appointment-phone"></span></div>
+                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-calendar pr-1"></i>Date:</span><span id="appointment-date"></span></div>
+                                <div class="overflow-auto h-25 border rounded border-primary pb-3 appointment-desc" id="appointment-description">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-danger remove-appointment"><i class="fa fa-trash-o"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
             </div>
@@ -94,6 +109,9 @@
             background-color: #333333;
             opacity:0.8; // I ADDED THIS LINE
         }
+        .appointment-desc{
+            max-height: 150px;
+        }
     </style>
 
 
@@ -101,14 +119,11 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             var calendar = $('#calendar').fullCalendar({
                 editable: true,
                 events: "appointment",
@@ -116,20 +131,17 @@
                 displayEventTime: true,
                 editable: true,
                 eventRender: function (event, element, view) {
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = false;
-                    }
+                    element.text(event.title);
                 },
                 selectable: true,
                 selectHelper: true,
-
-
                 select: function (start, end, allDay) {
-                    start_date = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss")
-                    if ( new Date(start_date).getTime() < new Date().getTime()) {
-                        alert("can't add appointment in the past")
+                    start_date = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                    end_date = $.fullCalendar.formatDate(end, "Y-MM-DD");
+                    console.log(new Date(start_date).getTime()+86400001,     new Date(end_date).getTime())
+                    if(new Date(start_date).getTime()+86400001 < new Date(end_date).getTime()){
+                        alert("can't add appointment in the past");
+                        calendar.fullCalendar( 'unselect' );
                         return false;
                     }
                     $('#appointments').modal('show');
@@ -137,61 +149,58 @@
 
                     calendar.fullCalendar('unselect');
                 },
-
-                // eventDrop: function (event, delta) {
-                //     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                //     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                //     $.ajax({
-                //         url: SITEURL + 'fullcalendar/update',
-                //         data: 'title=' + event.title + '&amp;start=' + start + '&amp;end=' + end + '&amp;id=' + event.id,
-                //         type: "POST",
-                //         success: function (response) {
-                //             displayMessage("Updated Successfully");
-                //         }
-                //     });
-                // },
-
-
                 eventClick: function (event) {
-                    //ajax vercnenq appoinment event.id-ov
-                    //modalov cuyc tanq appointment detailse
-                    // meje delete button karanq dnenq, ira click jsov brnenq ajaxov jnjenq
-                    $('#appointments').modal('show');
-
-
-                    // var deleteMsg = confirm("Do you really want to delete?");
-                    if (deleteMsg) {
-                        $.ajax({
-                            type: "POST",
-                            url: '/fullcalendar/delete',
-                            data: "&amp;id=" + event.id,
-                            success: function (response) {
-                                if(parseInt(response) > 0) {
-                                    $('#calendar').fullCalendar('removeEvents', event.id);
-                                    displayMessage("Deleted Successfully");
-                                }
-                            }
-                        });
-                    }
+                    $.ajax({
+                        type: 'GET',
+                        url: "/admin/appointment/"+ event.id,
+                        success: function (results) {
+                            $("#appointmentDetailsModalLabel").text(results.title);
+                            $("#appointment-description").text(results.description);
+                            $("#appointment-phone").text(results.phone_number);
+                            $("#appointment-date").text(results.start_date);
+                            $(".remove-appointment").attr("data-id", results.id);
+                            $('#appointmentDetails').modal('show');
+                        },
+                        error:function (err, state) {
+                          console.log(err)
+                        }
+                    })
                 }
 
             });
 
+            $('.remove-appointment').click(function(){
+                var id = $(this).attr("data-id");
+                $("#appointmentDetails").modal("hide");
+                bootbox.confirm("Do you really want to delete record?", function (result) {
+                    if (result) {
+                        $.ajax(
+                            {
+                                url: "/admin/appointment/" + id,
+                                type: 'DELETE',
+                                data:{
+                                   " _token": $("meta[name='csrf-token']").attr("content")
+                                },
+                                success: function () {
+                                    calendar.fullCalendar('removeEvents', id);
+                                    displayMessage("Deleted Successfully");
+                                }
+                            });
+                    }
+                })
+            })
+
             $("#appointments form").submit(function(e){
-                e.preventDefault()
-                var form = $(this).serializeArray()
-                var token = form[0]['value'];
-                var time = form[1]['value'];
-                var title = form[2]['value'];
-                var description = form[3]['value']
-                var phone_number = form[4]['value']
-                var start_date =  $("#start_date").val()
+                e.preventDefault();
+                var form = $(this).serializeArray(), data={};
+                $.each(form, function(index, el){
+                    data[el.name] = el.value
+                });
 
                 $.ajax({
                     url: "/admin/appointment/create",
                     type:"POST",
-                    data:{time:time, title:title, description:description, phone_number:phone_number,
-                        start_date:start_date, _token:token},
+                    data: data,
                     success: function (results) {
 
                         calendar.fullCalendar('renderEvent',
@@ -203,7 +212,7 @@
                                 end: results['start_date'],
                                 allDay: true
                             },
-                            true
+                            'stick'
                         );
                         $("#appointments form")[0].reset()
                         $('#appointments').modal('hide');

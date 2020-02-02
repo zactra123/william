@@ -51,7 +51,7 @@
 
     <header class="site-header">
         <div class="bottom-header">
-            <div class="container pl-0">
+            <div class="container pl-0" id="app">
 
                 <a href="{{ url('/') }}" class="branding pull-left">
                     <img src="images/logo-icon.png" alt="Site title" class="logo-icon">

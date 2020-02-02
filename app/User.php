@@ -53,9 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('users.role',  'client');
     }
 
-    public function affilate()
+    public function affiliate()
     {
-        return $this->belongsTo('App\User','affiliates', 'user_id', 'affiliate_id');
+        return $this->belongsTo('App\User', 'user_id', 'affiliate_id');
     }
 
     public function clientDetails()

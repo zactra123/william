@@ -67,6 +67,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('client/list', 'AdminsController@list')->name('admin.client.list');
     Route::get('client/{client}/profile', 'AdminsController@clientProfile')->name('admin.client.profile');
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
+    Route::get('getNotifications', 'AdminsController@getNotifications');
 
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
@@ -75,9 +76,10 @@ Route::group(['prefix'=> 'admin'], function(){
 
 
     Route::get('appointment','AppointmentsController@index')->name('admin.appointment.index');
+    Route::get('appointment/{id}','AppointmentsController@show')->name('admin.appointment.show');
     Route::post('appointment/create','AppointmentsController@create')->name('admin.appointment.create');
     Route::post('appointment/update','AppointmentsController@update')->name('admin.appointment.update');
-    Route::post('appointment/delete','AppointmentsController@destroy')->name('admin.appointment.destroy');
+    Route::delete('appointment/{id}','AppointmentsController@destroy')->name('admin.appointment.destroy');
 
 
 
