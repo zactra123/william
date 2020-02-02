@@ -38,10 +38,10 @@
         <div class="bottom-header">
             <div class="container" id="app">
                 @if(Auth::user()->role == 'admin')
-                    <a href="{{ url('/admin') }}" class="branding pull-left"></a>
+                    <a href="{{ url('/admin') }}" class="branding pull-left">
                 @else
                     <a href="{{ url('/') }}"  class="branding pull-left">
-                        @endif
+                @endif
                         <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
                         <h1 class="site-title">Company <span>Name</span></h1>
                         <h2 class="site-description">Tagline goes here</h2>
