@@ -31,7 +31,7 @@
                                     <td>{{$user->client}}</td>
                                     <td>
 
-                                        <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
+                                        <a class="btn btn-secondary" href="#"
                                            role="button"><span class="fa fa-file"></span></a>
 
                                     </td>

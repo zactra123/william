@@ -67,6 +67,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('client/list', 'AdminsController@list')->name('admin.client.list');
     Route::get('client/{client}/profile', 'AdminsController@clientProfile')->name('admin.client.profile');
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
+    Route::post('client/report-number', 'AdminsController@clientReportNumber')->name('admin.client.report_number');
     Route::get('getNotifications', 'AdminsController@getNotifications');
 
 

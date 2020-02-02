@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Auth;
-use App\Client_detail;
 use Illuminate\Support\Facades\DB;
 use App\User;
 
@@ -40,7 +39,8 @@ class ClientsController extends Controller
     }
     public function show($id)
     {
-        $client = User::clients()->find($id);
+        $client = User::find($id);
+
         return view('owner.client.show', compact( 'client'));
     }
 

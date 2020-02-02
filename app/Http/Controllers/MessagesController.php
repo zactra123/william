@@ -111,8 +111,6 @@ class MessagesController extends Controller
             'notes' => $notes,
         ];
 
-
-
        echo json_encode(['success'=>1,'data'=>$data]);
        return;
 

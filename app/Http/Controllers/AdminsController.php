@@ -5,6 +5,7 @@ use App\Appointment;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\ClientDetail;
 use Illuminate\Http\Request;
 use Response;
 
@@ -21,10 +22,8 @@ class AdminsController extends Controller
         return view('admin.index');
     }
 
-
     public function list()
     {
-
         $users = DB::table('users')
             ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
@@ -56,6 +55,20 @@ class AdminsController extends Controller
 
        return view('admin.client-profile', compact('client'));
 
+
+    }
+
+    public function clientReportNumber(Request $request)
+    {
+        $data = [
+            $request->name => $request->value,
+        ];
+
+        ClientDetail::where('user_id', $request->user_id)->update($data);
+
+
+        echo json_encode(['success'=>1,'data'=>$data]);
+        return;
 
     }
 

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -53,9 +54,25 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->where('users.role',  'client');
     }
 
-    public function affiliate()
+
+    public function affiliateFullName()
     {
-        return $this->belongsTo('App\User', 'user_id', 'affiliate_id');
+        $affiliate = DB::table('users')
+            ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
+            ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
+            ->where('users.id', $this->id)
+            ->select(DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
+            ->first();
+
+        $full_name = $affiliate->full_name?$affiliate->full_name:null;
+
+        return $full_name;
+    }
+
+
+    public function affilate()
+    {
+        return $this->belongsTo('App\User','affiliates', 'user_id', 'affiliate_id');
     }
 
     public function clientDetails()
@@ -78,6 +95,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function full_name()
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
-
     }
 }
