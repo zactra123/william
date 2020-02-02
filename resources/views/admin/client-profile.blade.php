@@ -102,7 +102,7 @@
                                     </div>
 
                                     <div class="pb-1">
-                                        {{$client->clientDetails->referred_by?$client->clientDetails->referred_by:$client->affiliateFullName()?$client->affiliateFullName():'REFERRED BY'}}
+                                        {{$client->referredBy()}}
                                         {{--<input class="form-control border-primary client_info" value="{{$client->clientDetails->referred_by??"-"}}" type="text" placeholder="REFERRED by" readonly>--}}
                                     </div>
 

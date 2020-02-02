@@ -69,6 +69,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $full_name;
     }
 
+    public function referredBy()
+    {
+        $referredBy = 'Referred By';
+        if(!empty($this->clientDetails) && !empty($this->clientDetails->referred_by)){
+            $referredBy = $this->clientDetails->referred_by;
+
+        }elseif($this->affiliateFullName()!= null){
+            $referredBy = $this->affiliateFullName();
+        }
+        return $referredBy;
+    }
+
 
     public function affilate()
     {
