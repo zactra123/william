@@ -3,13 +3,12 @@
 @section('content')
     <div class="container">
 
-        <div class="row justify-content-end">
-            <a class="btn btn-success" href="{{route('owner.home.content.create')}}" role="button">Crete Content</a>
-        </div>
-        <div class="row">
-        <div class="row justify-content-center">
-
-                <label class="dasd">Users List</label>
+        <div class="page-content">
+        <div class="row justify-content-center pt-2">
+            <div class="card ">
+                <div class="row m-0 p-2">
+                    <a class="btn btn-success" href="{{route('owner.home.content.create')}}" role="button">Crete Content</a>
+                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -30,22 +29,23 @@
                             <td><?php echo htmlspecialchars_decode(htmlspecialchars($content->sub_content, ENT_QUOTES));  ?></td>
                             <td>
 
-                                <a class="btn btn-secondary" href="{{route('owner.home.content.show', $content->url)}}"
-                                   role="button">View</a>
-                                <a class="btn btn-outline-success" href="{{route('owner.home.content.edit', $content->url)}}"
-                                   role="button">Edit</a>
+                                <a class="btn btn-default" href="{{route('owner.home.content.show', $content->url)}}"
+                                   role="button"><span class="fa fa-file-o"></span></a>
+                                <a class="btn btn-default" href="{{route('owner.home.content.edit', $content->url)}}"
+                                   role="button"><span class="fa fa-pencil"></span></a>
                                 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                <button class="btn btn-primary delete" data-id="{{ $content->url}}" >Delete </button>
+                                <button class="btn btn-danger " data-id="{{ $content->url}}" ><span class="fa fa-trash-o"></span> </button>
 
                             </td>
                         </tr>
                     @endforeach
-                    {{ $contents->links() }}
-
-
                     </tbody>
                 </table>
+                {{ $contents->links() }}
+            </div>
+
+
             </div>
 
         </div>

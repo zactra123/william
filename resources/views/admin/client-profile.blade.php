@@ -49,6 +49,33 @@
         border-radius: 6px 0 6px 6px;
     }
 
+    .internal{
+        display: block;
+        width: 100%;
+        height: calc(1.6em + 0.75rem + 2px);
+        font-size: 0.7rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #495057;
+        background-color: #fff;
+        border: 0px solid #ced4da;
+        border-right: 1px solid #ced4da;
+    }
+
+    .external{
+        display: block;
+        width: 100%;
+        height: calc(1.6em + 0.75rem + 2px);
+        /*padding: 0.375rem 0.75rem;*/
+        font-size: 0.7rem;
+        /*font-weight: 400;*/
+        /*line-height: 1.6;*/
+        color: #495057;
+        background-color: #fff;
+        /*background-clip: padding-box;*/
+        border: 0px solid #ced4da;
+    }
+
 
 </style>
 
@@ -56,54 +83,107 @@
 @section('content')
 
     <div class="page-content pt-4">
-        <div class="page-content">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <aside class="sidebar col-md-3 p-0">
+        <div class="page-content p-0 mr-0 ml-0">
+            {{--<div class="container">--}}
+                <div class="row mr-0 ml-0">
+                    <aside class="sidebar col-md-3  pl-2">
                         <div class="card ">
                             <div class="card-body">
                                 <div>
-                                    <div class="pb-1 mr-0">
-                                        {{$client->full_name()}}
-                                        {{--<input class="form-control border-primary"  value="" type="text" placeholder="Client Name" readonly>--}}
+                                    <div class="pl-3 row border-bottom">
+
+                                        <input class="external report" name="full_name"  value="{{$client->full_name()==" "?null:$client->full_name()}}" type="text" placeholder="FULL NAME" >
                                     </div>
-                                    <div class="pb-1">
-                                        {{$client->clientDetails->address??"-"}}
-                                        {{--<input class="form-control border-primary " value="{{$client->clientDetails->address??"-"}}" type="text" placeholder="Client Address" readonly>--}}
+                                    <div class="pl-3 row border-bottom">
+
+                                        <input class="external report" name="full_address" value="{{$client->clientDetails->address??null}}" type="text" placeholder="FULL ADDRESS" >
                                     </div>
-                                    <div class="pb-1">
-                                        {{$client->clientDetails->phone_number??"-"}} | {{$client->email??"-"}}
-                                        {{--<input class="form-control border-primary " value="{{$client->clientDetails->phone_number??"-"}} | {{$client->email??"-"}}" type="text" placeholder="Client Email" readonly>--}}
+                                    <div class="pb-1 row border-bottom">
+                                        <input class="col-5 internal" name="phone_number" value="{{$client->clientDetails->phone_number??null}}" type="text" placeholder="PHONE NUMBER">
+                                        <input class="col-7 external" value="{{$client->email}}" type="text" placeholder="Client Email" readonly>
                                     </div>
 
-                                    <div class="pb-1">
-                                        {{$client->clientDetails->ssn??"-"}} | {{date("jS F Y",strtotime($client->clientDetails->dob??"-"))}}
-                                        {{--<input class="form-control border-primary " value="{{$client->clientDetails->ssn??"-"}} | {{date("jS F Y",strtotime($client->clientDetails->dob??"-"))}}" type="text" placeholder="Client Name" readonly>--}}
+                                    <div class="pb-1 row border-bottom">
+                                        <input class="col-4  report internal" value="{{$client->clientDetails->ssn??null}}" type="text" placeholder="SSN" readonly >
+                                        <input class="col-6  report external" value="{{date("jS F Y",strtotime($client->clientDetails->dob??null))}}" type="text" placeholder="DOB" readonly >
+
+                                       {{--<input class="form-control border-primary " value="{{$client->clientDetails->ssn??"-"}} | {{date("jS F Y",strtotime($client->clientDetails->dob??"-"))}}" type="text" placeholder="Client Name" readonly>--}}
                                     </div>
 
-                                    <div class="report_number" id="report_number">
+                                    <div class="report_number " id="report_number">
                                         <input   type="hidden" value="{{$client->id}}" id="client_id" >
                                         <meta name="csrf-token" compelted-token="{{ csrf_token() }}">
-                                        <div class="pb-1">
-                                            <input class="form-control border-primary report"  name="ex_number" value="" type="text" placeholder="EX# ************" >
+                                        <div class="pb-1 row border-bottom">
+                                            <input class="col-4  report internal"  name="ex_number" value="" type="text" placeholder="EX# ************" >
+                                            <input class="col-4  report internal"  name="eq_number" value="" type="text" placeholder="EQ# ************" >
+                                            <input class="col-4  report external"  name="tu_number" value="" type="text" placeholder="TU# ************" >
                                         </div>
-                                        <div class="pb-1">
-                                            <input class="form-control border-primary report"  name="eq_number" value="" type="text" placeholder="EQ# ************" >
-                                        </div>
-                                        <div class="pb-1">
-                                            <input class="form-control border-primary report"  name="tu_number" value="" type="text" placeholder="TU# ************" >
-                                        </div>
-                                        <div class="pb-1">
-                                            <input class="form-control border-primary report"  name="ftc_number" value="" type="text" placeholder="FTC# ************">
-                                        </div>
-                                        <div class="pb-1">
-                                            <input class="form-control border-primary report" name="dr_number" value="" type="text" placeholder="DR# ************" >
+                                        <div class="pb-1 row border-bottom">
+                                            <input class="col-4   report internal"  name="ftc_number" value="" type="text" placeholder="FTC# ************">
+                                            <input class="col-4  report external" name="dr_number" value="" type="text" placeholder="DR# ************" >
                                         </div>
                                     </div>
 
-                                    <div class="pb-1">
-                                        {{$client->referredBy()}}
-                                        {{--<input class="form-control border-primary client_info" value="{{$client->clientDetails->referred_by??"-"}}" type="text" placeholder="REFERRED by" readonly>--}}
+
+                                    @if($client->clientDetails != null)
+
+                                        <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
+
+                                            <div class="col-2 m-0 p-0">
+                                                <label>Gender:</label>
+                                            </div>
+                                            <div class="col-10 ">
+                                                @if($client->clientDetails->sex == "M")
+                                                <div class="row">
+                                                    <label class="col-4 m-0 p-0">  Male
+                                                        <input type="radio" name="sex" value="M" checked>
+                                                    </label>
+                                                </div>
+                                                @elseif($client->clientDetails->sex == "F")
+                                                    <div class="row">
+                                                        <label class="col-4 m-0 p-0">  Female
+                                                            <input type="radio" name="sex" value="F" checked>
+                                                        </label>
+                                                    </div>
+                                                @else
+                                                    <div class="row">
+                                                        <label class="col-4 m-0 p-0">  Other
+                                                            <input type="radio" name="sex" value="O" checked>
+                                                        </label>
+                                                    </div>
+                                                @endif
+                                        </div>
+
+
+                                        @else
+
+                                            <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
+
+                                                    <div class="col-2 m-0 p-0">
+                                                        <label>Gender:</label>
+                                                    </div>
+                                                    <div class="col-10 ">
+                                                        <div class="row">
+                                                            <label class="col-4 m-0 p-0">  Male
+                                                                <input type="radio" name="sex" value="M">
+                                                            </label>
+                                                            <label class="col-4 m-0 p-0">  Female
+                                                                <input type="radio" name="sex" value="F">
+                                                            </label>
+                                                            <label class="col-4 m-0 p-0">  Other
+                                                                <input type="radio" name="sex" value="F">
+                                                            </label>
+
+
+                                                        </div>
+
+                                                    </div>
+                                            </div>
+
+                                    @endif
+
+                                    <div class="pt-2  pb-2 pl-3 row external ">
+                                        REFFERED BY {{$client->referredBy()}}
                                     </div>
 
                                     <div class="btn-group float-right">
@@ -251,7 +331,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            {{--</div>--}}
 
         </div>
     </div>

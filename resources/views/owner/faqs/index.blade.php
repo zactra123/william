@@ -2,38 +2,44 @@
 
 @section('content')
     <div class="page content mr-0 ml-0">
-        <div class="row mr-0 ml-0">
-            <label class="dasd">FAQs</label>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Question</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($faqs as $key=> $faq)
-                    <tr>
-                        <th scope="row">{{$key+1}}</th>
-                        <td>{{$faq->title}}</td>
-                        <td>{{$faq->description}}</td>
-                        <td>
+        <div class="container">
 
-                            <a class="btn btn-secondary" href="{{ route('owner.faqs.edit',$faq->id)}}"
-                               role="button"><i class="fa fa-edit"></i></a>
-                            <meta name="csrf-token" content="{{ csrf_token() }}">
-                            <button class="btn btn-primary delete" data-id="{{ $faq->id }}">Delete </button>
+            <div class="row justify-content-center pt-2">
+                <div class="card">
+                    <div class="row mr-0 ml-0">
+                        <label class="dasd">FAQs</label>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($faqs as $key=> $faq)
+                                <tr>
+                                    <th scope="row">{{$key+1}}</th>
+                                    <td>{{$faq->title}}</td>
+                                    <td>{{$faq->description}}</td>
+                                    <td>
 
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                        <a class="btn btn-secondary" href="{{ route('owner.faqs.edit',$faq->id)}}"
+                                           role="button"><span class="fa fa-pencil"></span></a>
+                                        <meta name="csrf-token" content="{{ csrf_token() }}">
+                                        <button class="btn btn-danger delete" data-id="{{ $faq->id }}"><span class="fa fa-trash-o"></span> </button>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-
     </div>
 @endsection
 
