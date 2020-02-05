@@ -60,12 +60,36 @@ class AdminsController extends Controller
 
     public function clientReportNumber(Request $request)
     {
-        $data = [
-            $request->name => $request->value,
-        ];
 
-        ClientDetail::where('user_id', $request->user_id)->update($data);
+        $data = $request->except('_token');
 
+        $fullName = explode(' ',$data['full_name']);
+        $firstName = $fullName['0'];
+        $lastName = !emtpy($fullName['1'])?$fullName['1']:"";
+
+        $update = User::where('id', $data['user_id'])->update([
+            'first_name'=>$firstName,
+            'full_name'=>$lastName
+        ]);
+
+        $updateClient = ClientDetail::where('user_id', $data['user_id'])
+            ->update([
+                'sex' =>$data['sex'],
+                'address' => $data['address'],
+                'phone_number'=> $data['phone_number'],
+
+            ]);
+
+//        @Todo: haskanal vortex enq pahum report numbernere
+//        ReportNumber::cretae([
+//
+//            'user_id'=>$data['user_id'],
+//            'ex_number'=>$data['ex_number'],
+//            'eq_number'=>$data['eq_number'],
+//            'tu_number'=>$data['tu_number'],
+//            'ftc_number'=>$data['ftc_number'],
+//            'dr_number'=>$data['dr_number'],
+//        ]);
 
         echo json_encode(['success'=>1,'data'=>$data]);
         return;

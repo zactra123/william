@@ -89,41 +89,40 @@
                     <aside class="sidebar col-md-3  pl-2">
                         <div class="card ">
                             <div class="card-body">
-                                <div>
+
                                     <div class="pl-3 row border-bottom">
 
-                                        <input class="external report" name="full_name"  value="{{$client->full_name()==" "?null:$client->full_name()}}" type="text" placeholder="FULL NAME" >
+                                        <input class="external client" name="full_name" id="full_name"  value="{{$client->full_name()==" "?null:$client->full_name()}}" type="text" placeholder="FULL NAME" >
                                     </div>
                                     <div class="pl-3 row border-bottom">
 
-                                        <input class="external report" name="full_address" value="{{$client->clientDetails->address??null}}" type="text" placeholder="FULL ADDRESS" >
+                                        <input class="external client" name="full_address" id="full_address" value="{{$client->clientDetails->address??null}}" type="text" placeholder="FULL ADDRESS" >
                                     </div>
                                     <div class="pb-1 row border-bottom">
-                                        <input class="col-5 internal" name="phone_number" value="{{$client->clientDetails->phone_number??null}}" type="text" placeholder="PHONE NUMBER">
-                                        <input class="col-7 external" value="{{$client->email}}" type="text" placeholder="Client Email" readonly>
+                                        <input class="col-5 internal client" name="phone_number" id="phone_number" value="{{$client->clientDetails->phone_number??null}}" type="text" placeholder="PHONE NUMBER">
+                                        <input class="col-7 external client" value="{{$client->email}}" type="text" placeholder="Client Email" readonly>
                                     </div>
 
                                     <div class="pb-1 row border-bottom">
-                                        <input class="col-4  report internal" value="{{$client->clientDetails->ssn??null}}" type="text" placeholder="SSN" readonly >
-                                        <input class="col-6  report external" value="{{date("jS F Y",strtotime($client->clientDetails->dob??null))}}" type="text" placeholder="DOB" readonly >
+                                        <input class="col-4   internal" value="{{$client->clientDetails->ssn??null}}" type="text" placeholder="SSN" readonly >
+                                        <input class="col-6   external" value="{{date("jS F Y",strtotime($client->clientDetails->dob??null))}}" type="text" placeholder="DOB" readonly >
 
                                        {{--<input class="form-control border-primary " value="{{$client->clientDetails->ssn??"-"}} | {{date("jS F Y",strtotime($client->clientDetails->dob??"-"))}}" type="text" placeholder="Client Name" readonly>--}}
                                     </div>
 
                                     <div class="report_number " id="report_number">
                                         <input   type="hidden" value="{{$client->id}}" id="client_id" >
-                                        <meta name="csrf-token" compelted-token="{{ csrf_token() }}">
+
                                         <div class="pb-1 row border-bottom">
-                                            <input class="col-4  report internal"  name="ex_number" value="" type="text" placeholder="EX# ************" >
-                                            <input class="col-4  report internal"  name="eq_number" value="" type="text" placeholder="EQ# ************" >
-                                            <input class="col-4  report external"  name="tu_number" value="" type="text" placeholder="TU# ************" >
+                                            <input class="col-4 client report internal"  name="ex_number" id="ex" value="" type="text" data-target="EX# " placeholder="EX# ************" >
+                                            <input class="col-4 client  report internal"  name="eq_number" id="eq" value="" type="text" data-target="EQ# " placeholder="EQ# ************" >
+                                            <input class="col-4 client   report external"  name="tu_number" id="tu" value="" type="text" data-target="TU# "placeholder="TU# ************" >
                                         </div>
                                         <div class="pb-1 row border-bottom">
-                                            <input class="col-4   report internal"  name="ftc_number" value="" type="text" placeholder="FTC# ************">
-                                            <input class="col-4  report external" name="dr_number" value="" type="text" placeholder="DR# ************" >
+                                            <input class="col-4  client report  internal"  name="ftc_number" id="ftc"  value="" type="text" data-target="FTC# " placeholder="FTC# ************">
+                                            <input class="col-4  client  report external" name="dr_number" id="dr" value="" type="text" data-target="DR# " placeholder="DR# ************" >
                                         </div>
                                     </div>
-
 
                                     @if($client->clientDetails != null)
 
@@ -136,60 +135,65 @@
                                                 @if($client->clientDetails->sex == "M")
                                                 <div class="row">
                                                     <label class="col-4 m-0 p-0">  Male
-                                                        <input type="radio" name="sex" value="M" checked>
+                                                        <input type="radio" name="sex" class="sex" value="M" checked>
                                                     </label>
                                                 </div>
                                                 @elseif($client->clientDetails->sex == "F")
                                                     <div class="row">
                                                         <label class="col-4 m-0 p-0">  Female
-                                                            <input type="radio" name="sex" value="F" checked>
+                                                            <input type="radio" name="sex" class="sex" value="F" checked>
                                                         </label>
                                                     </div>
                                                 @else
                                                     <div class="row">
                                                         <label class="col-4 m-0 p-0">  Other
-                                                            <input type="radio" name="sex" value="O" checked>
+                                                            <input type="radio" name="sex"  class="sex" value="O" checked>
                                                         </label>
                                                     </div>
                                                 @endif
                                         </div>
+                                        </div>
+                                    @else
+                                        <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
 
-
-                                        @else
-
-                                            <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
-
-                                                    <div class="col-2 m-0 p-0">
+                                            <div class="col-2 m-0 p-0">
                                                         <label>Gender:</label>
                                                     </div>
-                                                    <div class="col-10 ">
+                                            <div class="col-10 ">
                                                         <div class="row">
                                                             <label class="col-4 m-0 p-0">  Male
-                                                                <input type="radio" name="sex" value="M">
+                                                                <input type="radio" name="sex" class="sex" value="M">
                                                             </label>
                                                             <label class="col-4 m-0 p-0">  Female
-                                                                <input type="radio" name="sex" value="F">
+                                                                <input type="radio" name="sex" class="sex" value="F">
                                                             </label>
                                                             <label class="col-4 m-0 p-0">  Other
-                                                                <input type="radio" name="sex" value="F">
+                                                                <input type="radio" name="sex" class="sex" value="F">
                                                             </label>
 
 
                                                         </div>
 
                                                     </div>
-                                            </div>
+                                        </div>
 
                                     @endif
-
-                                    <div class="pt-2  pb-2 pl-3 row external ">
-                                        REFFERED BY {{$client->referredBy()}}
+                                    <div class="pt-2  pb-2 pl-3 row external">
+                                         REFFERED BY {{$client->referredBy()}}
                                     </div>
 
-                                    <div class="btn-group float-right">
-                                        <button class="btn btn-primary ">Print</button>
+
+                                    <div class=" pt-2  pb-2 row justify-content-right">
+                                        <div class="btn-group float-right">
+                                            <button class="btn btn-success" id="save" style="display:none"> Save</button>
+                                        </div>
+                                        <div class="btn-group float-right">
+
+                                            <button class="btn btn-primary ">Print</button>
+                                        </div>
                                     </div>
-                                </div>
+
+
                             </div>
                         </div>
                     </aside>
@@ -335,30 +339,63 @@
 
         </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $('.report').keyup(function() {
+        $('#phone_number').keyup(function() {
+
             var val = this.value.replace(/\D/g, '');
             var newVal = '';
+            if(val.length > 4) {
+                this.value = val;
+            }
 
+            if((val.length > 3) && (val.length <7)) {
+                newVal += val.substr(0, 3) + '-';
+                val = val.substr(3);
+            }
+            if (val.length > 6) {
+                newVal += val.substr(0, 3) + '-';
+                newVal += val.substr(3, 3) + '-';
+                val = val.substr(6);
+            }
             newVal += val;
-            this.value = newVal.substring(0, 11);
+            this.value = newVal.substring(0, 12);
+        });
+
+        $('.report').keyup(function() {
+            var  report_name = $(this).attr("data-target");
+            var val = this.value.replace(/\D/g, '');
+            var newVal = report_name;
+            newVal += val;
+            this.value = newVal.substring(0, 15);
         });
 
         $(document).ready(function(){
 
-            $("#report_number input").change(function(){
+            $('.client').change(function(){
+                console.log("test")
+                $("#save").show()
+            })
 
-                var client_id = $('#client_id').val()
-                var name = this.name
-                var value =  $(this).val()
-                var token = $("meta[name='csrf-token']").attr("compelted-token");
+            $("#save").click( function (){
+                var token = "<?= csrf_token()?>";
+                var client_id = $('#client_id').val();
+                var full_name = $('#full_name').val();
+                var full_address = $('#full_address').val();
+                var phone_number = $('#phone_number').val();
+                var ex_number =  $('#ex').val()
+                var eq_number =   $('#eq').val()
+                var tu_number =  $("#tu").val()
+                var ftc_number = $("#ftc").val()
+                var dr_number = $("#dr").val();
+                var sex =  $(".sex").val();
 
                 $.ajax({
                     url: "<?= route('admin.client.report_number');?>",
                     method:"POST",
-                    data:{user_id:client_id, name:name, value:value, _token:token},
+                    data:{user_id:client_id,  _token:token,full_name, address:full_address,
+                        phone_number:phone_number,ex_number:ex_number, eq_number:eq_number, tu_number:tu_number,
+                        ftc_number:ftc_number, dr_number:dr_number, sex:sex},
                     success: function () {
                         console.log("it Works");
 
@@ -370,6 +407,7 @@
                 });
 
             })
+
         })
 
 
