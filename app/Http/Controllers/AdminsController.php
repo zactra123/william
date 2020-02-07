@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Appointment;
+use App\Message;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -98,9 +98,10 @@ class AdminsController extends Controller
 
     public function getNotifications()
     {
-        $appointments = Appointment::where("start_date", ">", date("Y-m-d H:i:s"))
-            ->where("start_date", "<", date("Y-m-d H:i:s", strtotime("+10 minutes")))
+        $appointments = Message::where("call_date", ">", date("Y-m-d H:i:s"))
+            ->where("call_date", "<", date("Y-m-d H:i:s", strtotime("+10 minutes")))
             ->get();
+
 
         return Response::json($appointments);
     }

@@ -69,8 +69,13 @@
                         <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
                         <li class="menu-item"><a href="">CONTACT US</a></li>
 
+
+
+
                         @if (Route::has('login'))
                             @auth
+
+
 
                                 @if(Auth::user()->role == 'client')
                                     @if(empty(Auth::user()->clientDetails))
@@ -80,6 +85,8 @@
                                     @endif
                                 @elseif((Auth::user()->role == 'admin'))
                                     <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
+                                @elseif((Auth::user()->role == 'receptionist'))
+                                    <li class="menu-item"><a href="{{ url('receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @elseif((Auth::user()->role == 'affiliate'))
                                     <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @else

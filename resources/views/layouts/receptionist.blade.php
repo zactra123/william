@@ -37,8 +37,8 @@
 
         <div class="bottom-header">
             <div class="container" id="app">
-                @if(Auth::user()->role == 'admin')
-                    <a href="{{ url('/admin') }}" class="branding pull-left">
+                @if(Auth::user()->role == 'receptionist')
+                    <a href="{{ url('receptionist/message') }}" class="branding pull-left">
                 @else
                     <a href="{{ url('/') }}"  class="branding pull-left">
                 @endif
@@ -51,9 +51,7 @@
                         <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                         <ul class="menu">
 
-                            <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
+                            <li class="menu-item"><a href="{{ route('receptionist.message.index')}}" >Messages</a></li>
                             <li class="menu-item">
                                 <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
@@ -108,7 +106,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-success" href="{{route("admin.message.index")}}">More Info</a>
+                    <a class="btn btn-success" href="{{route("receptionist.message.index")}}">More Info</a>
                 </div>
             </div>
         </div>
@@ -131,7 +129,7 @@ $(document).ready(function(){
 
 getAppiontments = function(){
     $.ajax({
-        url: "/admin/getNotifications",
+        url: "/receptionist/getNotifications",
         type: "get",
         success: function(result){
             if (result.length > 0) {

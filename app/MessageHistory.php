@@ -3,15 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Message extends Model
+class MessageHistory extends Model
 {
-    use SoftDeletes;
-
-    protected $table = 'messages';
+    protected $table = 'message_histories';
 
     protected $fillable = [
+        'message_id',
         'user_id',
         'name',
         'phone_number',

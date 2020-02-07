@@ -21,6 +21,7 @@ class AdminsController extends Controller
 
     public function create()
     {
+
         $negativeType = NegativeType::all()
             ->pluck('name', 'id')
             ->toArray();
@@ -144,6 +145,8 @@ class AdminsController extends Controller
         return view('owner.admin.list', compact( 'admins'));
 
     }
+
+
 
 
 

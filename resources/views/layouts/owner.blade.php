@@ -54,6 +54,7 @@
 
                         <li class="menu-item"><a href="{{ route('owner.reports.index')}}">Reports</a></li>
                         <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
+                        <li class="menu-item"><a href="{{ route('owner.receptionist.list')}}">Receptionist</a></li>
                         <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
                         <li class="menu-item"><a href="{{ route('owner.affiliate.list')}}" >Affiliate List</a></li>
                         <li class="menu-item"><a href="{{route('owner.home.content')}}">Home Page Content</a></li>

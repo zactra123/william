@@ -47,9 +47,11 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
+    Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
+    Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');;
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
 
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
@@ -73,19 +75,36 @@ Route::group(['prefix'=> 'admin'], function(){
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
     Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
-    Route::resource('message', 'MessagesController')->names('admin.message');
 
-
-    Route::get('appointment','AppointmentsController@index')->name('admin.appointment.index');
-    Route::get('appointment/{id}','AppointmentsController@show')->name('admin.appointment.show');
-    Route::post('appointment/create','AppointmentsController@create')->name('admin.appointment.create');
-    Route::post('appointment/update','AppointmentsController@update')->name('admin.appointment.update');
-    Route::delete('appointment/{id}','AppointmentsController@destroy')->name('admin.appointment.destroy');
-
+    Route::put('message/update','MessagesController@update')->name('admin.message.update');
+    Route::get('message','MessagesController@index')->name('admin.message.index');
+    Route::get('message/{id}','MessagesController@show')->name('admin.message.show');
+    Route::post('message/create','MessagesController@create')->name('admin.message.create');
+    Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
 
 
 
 });
+
+Route::group(['prefix'=> 'receptionist'], function(){
+
+    Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
+    Route::post('message/note', 'Receptionist\MessagesController@addNote')->name('receptionist.message.note');
+
+    Route::put('message/update','Receptionist\MessagesController@update')->name('receptionist.message.update');
+    Route::get('message','Receptionist\MessagesController@index')->name('receptionist.message.index');
+    Route::get('message/{id}','Receptionist\MessagesController@show')->name('receptionist.message.show');
+    Route::post('message/create','Receptionist\MessagesController@create')->name('receptionist.message.create');
+    Route::delete('message/{id}','Receptionist\MessagesController@destroy')->name('receptionist.message.destroy');
+
+
+
+});
+
+
+
+
+
 
 
 Route::group(['prefix'=> 'affiliate'], function(){

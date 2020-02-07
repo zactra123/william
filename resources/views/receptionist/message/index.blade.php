@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.receptionist')
 
 @section('content')
 
@@ -9,9 +9,9 @@
                     <div class="row justify-content-center">
 
                         <div class="list-group list-group-horizontal col-md-6">
-                            <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
-                            <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
-                            <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("receptionist.message.index")}}" >All Messages</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("receptionist.message.index", ["type" => "pending"])}}">Pending</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("receptionist.message.index", ["type" => "completed"])}}">Completed</a>
                         </div>
                     </div>
                     <div class="response">
@@ -32,11 +32,22 @@
                             <div class="modal-body">
                                 <div class="d-none text-danger text-center font-italic" > All fields are required</div>
 
-                                <form method="post" action="{{route('admin.message.create')}}">
+                                <form method="post" action="{{route('receptionist.message.create')}}">
                                     @csrf
                                     <input type="hidden" name="start_date" id="start_date">
 
+                                    <div class="admin_id m-1">
 
+                                        <select class="selectAdmin" name="admin_id">
+                                            <option value=''>SELECT ADMIN</option>
+                                            @foreach($admins as $id => $admin)
+                                                <option value={{$id}}>{{$admin}}</option>
+                                            @endforeach
+                                        </select>
+
+
+
+                                    </div>
                                     <div class="full_name_id m-1">
                                         <input type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
 
@@ -101,11 +112,11 @@
                                 </div>
                                 <div class="overflow-auto h-25 border rounded pb-3 appointment-desc" id="appointment-description">
                                 </div>
-                                <div class="note overflow-auto" id="noteId">
+                                <div class="note .overflow-vertical" id="noteId">
                                 </div>
 
                                 <div class="addNote">
-                                    <form method="POST" action="{{ route('admin.message.note') }}">
+                                    <form method="POST" action="{{ route('receptionist.message.note') }}">
                                         @csrf
                                         <div class="message_id">
                                             <input type="hidden" name="message_id" id="messageId" >
@@ -125,7 +136,7 @@
 
                                 <div id="buttonCompleted"></div>
 
-
+                                <button class="btn btn-primary add-note">ADD NOTE</button>
                             </div>
 
                             <div class="modal-footer">
@@ -149,6 +160,20 @@
                                     @csrf
 
 
+
+
+                                    <div class="admin_id m-1">
+
+                                        <select class="selectAdmin" name="admin_id" id="oldAdminId">
+                                            <option value=''>SELECT ADMIN</option>
+                                            @foreach($admins as $id => $admin)
+                                                <option value={{$id}}>{{$admin}}</option>
+                                            @endforeach
+                                        </select>
+
+
+
+                                    </div>
                                     <div class="full_name_id m-1">
                                         <input type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
 
@@ -257,7 +282,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
             var calendar = $('#calendar').fullCalendar({
                 editable: true,
                 events: "message",
@@ -289,7 +313,7 @@
                 eventClick: function (event) {
                     $.ajax({
                         type: 'GET',
-                        url: "/admin/message/"+ event.id,
+                        url: "/receptionist/message/"+ event.id,
                         success: function (results) {
 
                             $("#appointmentDetailsModalLabel").text(results.message.title);
@@ -313,16 +337,15 @@
                             $("#buttonCompleted").html(button);
 
                             html='<div class="form-group row">';
-                            html += '<div><h5>Notes</h5></div>' +
-                                '<ul class="list-group w-100">';
+                            html += '<table class="table table-hover"> <thead> <tr> <th></th><th>NOTES</th> </tr> </thead> <tbody><tr> ';
 
                             for( let val in results.note){
                                 console.log(results.note[val])
-                                html +='<li class="list-group-item"><span class="text-primary">'+ results.note[val]['created_at'] +
-                                    '</span> '+ results.note[val]['notes']+'</li>'
+                                html +='<th scope="row"></th><td>'+ results.note[val]['created_at'] +
+                                    '</td><td>'+ results.note[val]['notes']+'</td></tr>'
 
                             }
-                            html+= '</ul>'
+                            html+= '</tbody> </table>'
                             $("#noteId").html(html);
                             $("#messageId").val(results.message.id);
 
@@ -363,12 +386,15 @@
             });
 
 
+
+
+
             $('.edit-appointment').click(function(){
                 var id = $(this).attr("data-id");
 
                 $.ajax({
                     type: 'GET',
-                    url: "/admin/message/"+ id,
+                    url: "/receptionist/message/"+ id,
                     success: function (results) {
                         var date = results.message.call_date.split(" ");
                         console.log(date);
@@ -404,19 +430,17 @@
                 });
 
                 $.ajax({
-                    url:  "/admin/message/update",
+                    url:  "/receptionist/message/update",
                     type:"PUT",
                     data: data,
                     success: function (results) {
-
-                        var date = results.call_date.split(" ");
                         calendar.fullCalendar('renderEvent',
                             {
 
                                 id: results['id'],
-                                title: results['title'],
-                                start: date[0],
-                                end: date[0],
+                                title: results['name'],
+                                start: results['start_date'],
+                                end: results['start_date'],
                                 allDay: true
                             },
                             'stick'
@@ -445,17 +469,18 @@
                 });
 
                 $.ajax({
-                    url: "/admin/message/create",
+                    url: "/receptionist/message/create",
                     type:"POST",
                     data: data,
                     success: function (results) {
-                        var date = results.call_date.split(" ");
+
                         calendar.fullCalendar('renderEvent',
                             {
+
                                 id: results['id'],
-                                title: results['title'],
-                                start: date[0],
-                                end: date[0],
+                                title: results['name'],
+                                start: results['start_date'],
+                                end: results['start_date'],
                                 allDay: true
                             },
                             'stick'
@@ -473,32 +498,28 @@
 
 
             })
-
-            $('.remove-appointment').click(function(){
-                var id = $(this).attr("data-id");
-                $("#appointmentDetails").modal("hide");
-                bootbox.confirm("Do you really want to delete record?", function (result) {
-                    if (result) {
-                        $.ajax(
-                            {
-                                url: "/admin/message/" + id,
-                                type: 'DELETE',
-                                data:{
-                                    " _token": $("meta[name='csrf-token']").attr("content")
-                                },
-                                success: function () {
-                                    calendar.fullCalendar('removeEvents', id);
-                                    displayMessage("Deleted Successfully");
-                                }
-                            });
-                    }
-                })
-            })
-
-
         });
 
-
+        $('.remove-appointment').click(function(){
+            var id = $(this).attr("data-id");
+            $("#appointmentDetails").modal("hide");
+            bootbox.confirm("Do you really want to delete record?", function (result) {
+                if (result) {
+                    $.ajax(
+                        {
+                            url: "/receptionist/message/" + id,
+                            type: 'DELETE',
+                            data:{
+                                " _token": $("meta[name='csrf-token']").attr("content")
+                            },
+                            success: function () {
+                                calendar.fullCalendar('removeEvents', id);
+                                displayMessage("Deleted Successfully");
+                            }
+                        });
+                }
+            })
+        })
 
 
         $('#phoneNumberId').keyup(function() {

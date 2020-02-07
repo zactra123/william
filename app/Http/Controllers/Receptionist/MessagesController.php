@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Receptionist;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -9,7 +10,6 @@ use Response;
 use Auth;
 use App\User;
 use App\Message;
-use App\MessageHistory;
 use App\QuestionNote;
 
 
@@ -18,37 +18,50 @@ use App\QuestionNote;
 class MessagesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'receptionist']);
+    }
+
+
+
     public function index(Request $request)
     {
+
+        $admins = User::where('role', 'admin')
+            ->select('id', DB::raw('CONCAT(last_name, " ",first_name) AS full_name'))
+            ->pluck('full_name', 'id');
+
+
         if(request()->ajax())
         {
 
+            $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
 
 
-
-            $messages = Message::whereDate('call_date', '>=', $request->start)
-                                    ->whereDate('call_date', '<=', $request->end);
+            $messages = Message::whereDate('call_date', '>=', $start)->get();
             if ($request->type == 'completed' || $request->type == 'pending'){
                 $messages = $messages->where('completed', $request->type == 'completed');
             }
-            $messages = $messages->select("id", "title", "call_date as start", "call_date as end")->get()->toArray();
-//
-//            $data =[];
-//
-//            foreach($messages as $message){
-//                $data[]=[
-//                    'id'=>$message->id,
-//                    'title'=>$message->title,
-//                    'start'=>$message->call_date,
-//                    'end'=>$message->call_date
-//                ];
-//            }
-            return Response::json($messages);
+
+            $data =[];
+
+            foreach($messages as $message){
+                $data[]=[
+                    'id'=>$message->id,
+                    'title'=>$message->title,
+                    'start'=>$message->call_date,
+                    'end'=>$message->call_date
+                ];
+            }
+            return Response::json($data);
         }
 
 
-        return view('admin.message.index');
+        return view('receptionist.message.index',compact('admins'));
     }
+
+
 
 
     public function show($id)
@@ -58,6 +71,7 @@ class MessagesController extends Controller
         if (empty($message)) {
             return Response::json(["error" => "Not Found"], 404);
         }
+
 
         $data= [
             "message" => $message,
@@ -87,14 +101,16 @@ class MessagesController extends Controller
             'description'=> ['required'],
             'phone_number'=> ['required'],
 
+
         ]);
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
 
         }else {
-            $insertArr['user_id']= Auth::user()->id;
+            $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $insertArr["start_date"] . " " . $insertArr["time"];
+
             $message = Message::create($insertArr);
             return Response::json($message);
 
@@ -123,7 +139,7 @@ class MessagesController extends Controller
             return Response::json(["error"=>"All fields are required"], 400);
 
         }else {
-            $insertArr['user_id']= Auth::user()->id;
+            $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
 
@@ -152,13 +168,17 @@ class MessagesController extends Controller
             unset($messageHistory['id']);
 
             MessageHistory::create($messageHistory);
-            Message::find($id)->delete();
 
             return Response::json(["success" => true]);
         }
 
         return Response::json(["error"=> "Not Found"], 404);
     }
+
+
+
+
+
 
 
     public function messageCompleted(Request $request)
@@ -198,6 +218,16 @@ class MessagesController extends Controller
 
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

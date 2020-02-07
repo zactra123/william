@@ -13,11 +13,11 @@ class AddRoleUsersTable extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE users CHANGE COLUMN role role ENUM('super admin', 'admin', 'receptionist' 'client', 'affiliate') DEFAULT 'client'");
+        DB::statement("ALTER TABLE users CHANGE COLUMN role role ENUM('super admin', 'admin', 'client', 'affiliate', 'receptionist') DEFAULT 'client'");
     }
 
     public function down()
     {
-        DB::statement("ALTER TABLE users CHANGE COLUMN role role ENUM('super admin', 'admin', 'receptionist', 'client', 'affiliate') DEFAULT 'client' ");
+        DB::statement("ALTER TABLE users CHANGE COLUMN role role ENUM('super admin', 'admin', 'client', 'affiliate', 'receptionist') DEFAULT 'client' ");
     }
 }
