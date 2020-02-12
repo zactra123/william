@@ -47,12 +47,15 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
+    Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
+
     Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
     Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');;
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
+    Route::post('client/report-number', 'ClientsController@clientReportNumber')->name('owner.client.report_number');
 
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
@@ -62,6 +65,18 @@ Route::group(['prefix'=>'owner'], function(){
     Route::group(["prefix" => "report"], function(){
         Route::get('/', 'Owner\ReportsController@index')->name("owner.reports.index");
     });
+
+
+    Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
+    Route::post('message/note', 'Owner\MessagesController@addNote')->name('owner.message.note');
+
+    Route::put('message/update','Owner\MessagesController@update')->name('owner.message.update');
+    Route::get('message','Owner\MessagesController@index')->name('owner.message.index');
+    Route::get('message/{id}','Owner\MessagesController@show')->name('owner.message.show');
+    Route::post('message/create','Owner\MessagesController@create')->name('owner.message.create');
+    Route::delete('message/{id}','Owner\MessagesController@destroy')->name('owner.message.destroy');
+    Route::post('message/user/data','Owner\MessagesController@userData')->name('owner.message.userData');
+
 });
 
 Route::group(['prefix'=> 'admin'], function(){
@@ -126,8 +141,8 @@ Route::group(['prefix' =>'client/details'], function() {
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
     Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');
     Route::post('add/driver-license-social-security', 'ClientDetailsController@storeDlSs')->name('client.storeDriverSocial');
-//    Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
-//    Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
+    Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
+    Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
     Route::resource('/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 
 

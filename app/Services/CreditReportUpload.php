@@ -8,28 +8,31 @@ class CreditReportUpload
 {
     public function getValidCreditReportName($path)
     {
-        $text =new Pdf(config('pdf_to_text'));
+//        $text =new Pdf(config('pdf_to_text'));
+        $text =new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $text  ->setPdf($path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
         if(strpos($data, 'creditreport/transunion')){
             return ['name' => 'CK TU'];
         }elseif(strpos($data, 'creditreport/equifax')) {
-            return ["name" =>'CK EQ'];
+            return ["name" =>'CK EF'];
+            return ["name" =>'CK EF'];
         }elseif(strpos($data, 'Experian')){
             return ["name"=>'EX'];
         }elseif(strpos($data, 'onlinedispute.transunion')){
             return ["name"=>'TU'];
         } elseif(strpos($data, 'TransUnion Credit Monitoring')) {
+
             if (strpos($data, 'Account Number')) {
                 // Check All Account rows are expanded
                 $dataArrayTrans = explode('Account Nu',$data);
                 $dataAccountName = explode('Revolving', $data);
                 array_shift($dataArrayTrans);
                 preg_match_all('/([A-Z1,\/]{2,}+[A-Z\s]{1,})+[\$ 0-9]{1,}+[0-9\/]{2}[0-9\/]{2}[0-9\/]/', $dataAccountName[1], $accountNameTrans);
-                if (count($dataArrayTrans) != count($accountNameTrans[1])){
-                    return ["name" => 'TU AD', "error" => "Please expand all Account rows in Trans Union Account details pdf"];
-                }
+//                if (count($dataArrayTrans) != count($accountNameTrans[1])){
+//                    return ["name" => 'TU AD', "error" => "Please expand all Account rows in Trans Union Account details pdf"];
+//                }
 
                 return ["name" => 'TU AD', "accounts" => count($accountNameTrans[1])];
             } elseif (strpos($data, "Past Due Amount")) {
@@ -38,9 +41,9 @@ class CreditReportUpload
                 preg_match_all('/(^[A-Z0-9,\/-]{2,}+[A-Z\s]{1,})+([\$ 0-9]{1,}+[0-9\/]{2}[0-9\/]{2}[0-9\/])/m', $dataUnionForAccount[1], $accountNameTrans);
                 $dataPaymentHistory = explode('Payment Status ', $data );
                 array_shift($dataPaymentHistory);
-                if ($accountNameTrans[1] != count($dataPaymentHistory)) {
-                    return ["name" => 'TU PH', "error" => "Please expand all Account rows in Trans Union payment history pdf"];
-                }
+//                if ($accountNameTrans[1] != count($dataPaymentHistory)) {
+//                    dd($data); return ["name" => 'TU PH', "error" => "Please expand all Account rows in Trans Union payment history pdf"];
+//                }
                 return ["name" =>'TU PH', "accounts" => count($accountNameTrans[1])];
             }
         } else {
@@ -55,8 +58,8 @@ class CreditReportUpload
 
             if($files['credit_karma']->getClientOriginalExtension() == 'pdf'){
                 $creditReport = $this->getValidCreditReportName($files['credit_karma']->path());
-                if($creditReport["name"] == 'CK TU' || $creditReport["name"] == 'CK EQ' ){
-                    return  ['success', $creditReport];
+                if($creditReport["name"] == 'CK TU' || $creditReport["name"] == 'CK EF' ){
+                    return  ['success', $creditReport['name']];
                 }else{
                     return  ['error','Please upload Credit Karma report'];
                 }
@@ -64,8 +67,10 @@ class CreditReportUpload
                 return ['error','Please upload pdf file format'];
             }
         } elseif(isset($files['experian'])) {
+            dd($files['experian']->path());
+
             if($files['experian']->getClientOriginalExtension() == 'pdf'){
-                $creditReport = $this->getValidCreditReportName($files['experian']->path());
+                 $creditReport = $this->getValidCreditReportName($files['experian']->path());dd($files);
                 if ($creditReport["name"] == 'EX') {
                     return  ['success','EX'];
                 } else {
@@ -134,6 +139,7 @@ class CreditReportUpload
 
     public function moveUploadFile($userId, $files, $category)
     {
+
         if($category == "TU"){
             return $this->twoFileMove($userId, $files);
 
@@ -145,6 +151,7 @@ class CreditReportUpload
 
     public function oneFileMove($userId, $files, $category)
     {
+
         $pdfCreditReport =[];
         if(isset($files['credit_karma'])){
             $pdfCreditReport = $files['credit_karma'];
@@ -161,16 +168,18 @@ class CreditReportUpload
 
         $pathCreditReport = public_path() . '/' . $path . '/'. $nameCreditReport;
 
+
         $attachment = ClientAttachment::create([
-            'user_id'=>$userId,
-            'path'=>$pathCreditReport,
-            'file_name'=> $nameCreditReport,
-            'category' =>$category,
-            'type'=>'pdf'
+            'user_id' => $userId,
+            'path' => $pathCreditReport,
+            'file_name' => $nameCreditReport,
+            'category' => $category,
+            'type'=> 'pdf'
         ]);
 
-        return ["attachments" => [$attachment]];
 
+
+        return ["attachments" => [$attachment]];
     }
 
     public function twoFileMove($userId, $files)

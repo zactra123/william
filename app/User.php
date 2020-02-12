@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function referredBy()
     {
-        $referredBy = 'Referred By';
+        $referredBy = ' ';
         if(!empty($this->clientDetails) && !empty($this->clientDetails->referred_by)){
             $referredBy = $this->clientDetails->referred_by;
 
@@ -90,6 +90,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function clientDetails()
     {
         return $this->hasOne('App\ClientDetail');
+    }
+
+    public function ipAddress()
+    {
+        return $this->hasMany('App\AllowedIp');
     }
 
 

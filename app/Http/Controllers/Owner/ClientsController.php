@@ -20,33 +20,71 @@ class ClientsController extends Controller
 
     public function index()
     {
-        dd('dasdas');
+        dd('not work yet');
     }
 
 
     public function create()
     {
-        dd('dasdas');
+        dd('not work yet');
     }
     public function store(Request $request)
     {
-        dd('dasdas');
+        dd('not work yet');
     }
 
     public function destroy($userId)
     {
         dd($userId);
     }
-    public function show($id)
+    public function show($clientId)
     {
-        $client = User::find($id);
+        $client = User::clients()->find($clientId);
 
-        return view('owner.client.show', compact( 'client'));
+        return view('owner.client.client-profile', compact('client'));
+    }
+
+    public function clientReportNumber(Request $request)
+    {
+
+        $data = $request->except('_token');
+
+        $fullName = explode(' ',$data['full_name']);
+        $firstName = $fullName['0'];
+        $lastName = !emtpy($fullName['1'])?$fullName['1']:"";
+
+        $update = User::where('id', $data['user_id'])->update([
+            'first_name'=>$firstName,
+            'full_name'=>$lastName
+        ]);
+
+        $updateClient = ClientDetail::where('user_id', $data['user_id'])
+            ->update([
+                'sex' =>$data['sex'],
+                'address' => $data['address'],
+                'phone_number'=> $data['phone_number'],
+
+            ]);
+
+//        @Todo: haskanal vortex enq pahum report numbernere
+//        ReportNumber::cretae([
+//
+//            'user_id'=>$data['user_id'],
+//            'ex_number'=>$data['ex_number'],
+//            'eq_number'=>$data['eq_number'],
+//            'tu_number'=>$data['tu_number'],
+//            'ftc_number'=>$data['ftc_number'],
+//            'dr_number'=>$data['dr_number'],
+//        ]);
+
+        echo json_encode(['success'=>1,'data'=>$data]);
+        return;
+
     }
 
     public function update(Request $request)
     {
-        dd('in update');
+        dd('not work yet');
 
     }
 

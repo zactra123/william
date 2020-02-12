@@ -125,7 +125,6 @@
 
                                 <div id="buttonCompleted"></div>
 
-
                             </div>
 
                             <div class="modal-footer">
@@ -147,7 +146,6 @@
                             <div class="modal-body ">
                                 <form method="PUT" action="" id="updateMessageId">
                                     @csrf
-
 
                                     <div class="full_name_id m-1">
                                         <input type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
@@ -235,8 +233,6 @@
             max-height: 150px;
         }
     </style>
-
-
 
     <script type="text/javascript">
 
@@ -432,8 +428,6 @@
                 });
 
 
-
-
             })
 
 
@@ -497,8 +491,6 @@
 
 
         });
-
-
 
 
         $('#phoneNumberId').keyup(function() {

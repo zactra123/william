@@ -68,14 +68,14 @@ class AdminsController extends Controller
         $lastName = !emtpy($fullName['1'])?$fullName['1']:"";
 
         $update = User::where('id', $data['user_id'])->update([
-            'first_name'=>$firstName,
-            'full_name'=>$lastName
+            'first_name'=> strtoupper($firstName),
+            'full_name'=> strtoupper($lastName)
         ]);
 
         $updateClient = ClientDetail::where('user_id', $data['user_id'])
             ->update([
                 'sex' =>$data['sex'],
-                'address' => $data['address'],
+                'address' => strtoupper($data['address']),
                 'phone_number'=> $data['phone_number'],
 
             ]);

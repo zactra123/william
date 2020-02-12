@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.owner')
 
 @section('content')
 
@@ -7,17 +7,17 @@
             <div class="col-10">
                 <div class="container">
                     <div class="row justify-content-center">
-
                         <div class="list-group list-group-horizontal col-md-6">
-                            <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.appointment.index")}}" >All Messages</a>
-                            <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.appointment.index", ["type" => "pending"])}}">Pending</a>
-                            <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("admin.appointment.index", ["type" => "completed"])}}">Completed</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
+                            <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
                         </div>
                     </div>
                     <div class="response">
 
                     </div>
                     <div id='calendar' class="card">
+
                     </div>
                 </div>
 
@@ -30,33 +30,18 @@
                                     <span aria-hidden="true">Close</span> </button>
                             </div>
                             <div class="modal-body">
-                                <div class="d-none text-danger text-center font-italic" >All fields are required</div>
+                                <div class="d-none text-danger text-center font-italic" > All fields are required</div>
 
-                                    <form method="post" action="{{route('admin.appointment.create')}}">
+                                <form method="post" action="{{route('admin.message.create')}}">
                                     @csrf
                                     <input type="hidden" name="start_date" id="start_date">
-
-                                    <div class="admin_id m-1">
-
-                                          <select class="selectAdmin" name="admin_id">
-                                              <option value=''>SELECT ADMIN</option>
-                                              @foreach($admins as $id => $admin)
-                                                  <option value={{$id}}>{{$admin}}</option>
-                                              @endforeach
-                                          </select>
-
-
-
+                                    <div class="phone_number_id m-1">
+                                        <input type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
                                     </div>
                                     <div class="full_name_id m-1">
                                         <input type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
 
                                     </div>
-
-                                    <div class="phone_number_id m-1">
-                                        <input type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
-                                    </div>
-
                                     <div class="email_id m-1">
                                         <input type="email" name="email" id="emailId" placeholder="EMAIL">
                                     </div>
@@ -69,8 +54,6 @@
                                         <input type="text" name="title" id="titleId" placeholder="TITLE">
 
                                     </div>
-
-
                                     <div class="form-group row m-1">
 
                                         <textarea name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
@@ -93,7 +76,6 @@
                     </div>
                 </div>
 
-
                 <div class="modal fad" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -105,17 +87,17 @@
                             </div>
                             <div class="modal-body">
                                 <div><span class="text-primary pr-1 pb-3">FULL NAME</span><span id="appointment-full_name"></span></div>
-                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-mobile-phone pr-1"></i>Phone Number:</span><span id="appointment-phone"></span></div>
+                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-mobile-phone pr-1"></i>PHONE NUMBER:</span><span id="appointment-phone"></span></div>
                                 <div><span class="text-primary pr-1 pb-3">EMAIL:</span><span id="appointment-email"></span></div>
-                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-calendar pr-1"></i>Date:</span><span id="appointment-date"></span></div>
-                                <div class="overflow-auto h-25 border rounded border-primary pb-3 appointment-title" id="appointment-title">
+                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-calendar pr-1"></i>DATE:</span><span id="appointment-date"></span></div>
+                                <div class="overflow-auto h-25  pr-1   pb-3 appointment-title" id="appointment-title">
                                 </div>
-                                <div class="overflow-auto h-25 border rounded border-primary pb-3 appointment-desc" id="appointment-description">
+                                <div class="overflow-auto h-25 border rounded pb-3 appointment-desc" id="appointment-description">
                                 </div>
-                                <div class="note" id="noteId">
+                                <div class="note overflow-auto" id="noteId">
                                 </div>
 
-                                <div class="addNote" style="display: none;">
+                                <div class="addNote">
                                     <form method="POST" action="{{ route('admin.message.note') }}">
                                         @csrf
                                         <div class="message_id">
@@ -136,7 +118,6 @@
 
                                 <div id="buttonCompleted"></div>
 
-                                <button class="btn btn-primary add-note">ADD NOTE</button>
                             </div>
 
                             <div class="modal-footer">
@@ -159,29 +140,14 @@
                                 <form method="PUT" action="" id="updateMessageId">
                                     @csrf
 
-
-
-
-                                    <div class="admin_id m-1">
-
-                                        <select class="selectAdmin" name="admin_id" id="oldAdminId">
-                                            <option value=''>SELECT ADMIN</option>
-                                            @foreach($admins as $id => $admin)
-                                                <option value={{$id}}>{{$admin}}</option>
-                                            @endforeach
-                                        </select>
-
-
-
+                                    <div class="phone_number_id m-1">
+                                        <input type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
                                     </div>
                                     <div class="full_name_id m-1">
                                         <input type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
 
                                     </div>
                                     <input type="hidden" name="id" id="editMessageId" >
-                                    <div class="phone_number_id m-1">
-                                        <input type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
-                                    </div>
 
                                     <div class="email_id m-1">
                                         <input type="email" name="email" id="oldEmailId" placeholder="EMAIL">
@@ -217,13 +183,13 @@
                                 </form>
                             </div>
 
-                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
     </div>
 
 
@@ -245,7 +211,6 @@
             outline: none;
             transition: .3s ease;
         }
-
         .modal-backdrop {
             position: fixed;
             top: 0;
@@ -261,8 +226,6 @@
         }
     </style>
 
-
-
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -276,17 +239,15 @@
                 $(".completed" ).addClass("active");
             };
 
-
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             var calendar = $('#calendar').fullCalendar({
                 editable: true,
-                events: "appointment",
+                events: "message",
                 disableDragging: true,
                 displayEventTime: true,
                 editable: true,
@@ -303,7 +264,7 @@
                     end_date = $.fullCalendar.formatDate(end, "Y-MM-DD");
                     console.log(new Date(start_date).getTime()+86400001,     new Date(end_date).getTime())
                     if(new Date(start_date).getTime()+86400001 < new Date(end_date).getTime()){
-                        alert("can't add appointment in the past");
+                        alert("can't add message in the past");
                         calendar.fullCalendar( 'unselect' );
                         return false;
                     }
@@ -315,51 +276,51 @@
                 eventClick: function (event) {
                     $.ajax({
                         type: 'GET',
-                        url: "/admin/appointment/"+ event.id,
+                        url: "/admin/message/"+ event.id,
                         success: function (results) {
 
-                            $("#appointmentDetailsModalLabel").text(results.appointment.title);
-                            $("#appointment-full_name").text(results.appointment.name);
-                            $("#appointment-phone").text(results.appointment.phone_number);
-                            $("#appointment-email").text(results.appointment.email);
+                            $("#appointmentDetailsModalLabel").text(results.message.title);
+                            $("#appointment-full_name").text(results.message.name);
+                            $("#appointment-phone").text(results.message.phone_number);
+                            $("#appointment-email").text(results.message.email);
 
-                            $("#appointment-title").text(results.appointment.title);
-                            $("#appointment-description").text(results.appointment.description);
+                            $("#appointment-title").text(results.message.title);
+                            $("#appointment-description").text(results.message.description);
 
-                            $("#appointment-date").text(results.appointment.call_date);
+                            $("#appointment-date").text(results.message.call_date);
 
                             button ='';
 
-                            if(results.appointment.completed == 0){
+                            if(results.message.completed == 0){
 
                                 button += '<button class="btn btn-success" id="message-completed" data-target =';
-                                button +=   results.appointment.id+'><span class="fa fa-check"></span></button>'
+                                button +=   results.message.id+'><span class="fa fa-check"></span></button>'
 
                             }
                             $("#buttonCompleted").html(button);
 
                             html='<div class="form-group row">';
-                            html += '<table class="table table-hover"> <thead> <tr> <th >#</th><th >date</th>' +
-                                '<th>Note</th> </tr> </thead> <tbody><tr> ';
+                            html += '<div><h5>Notes</h5></div>' +
+                                '<ul class="list-group w-100">';
 
                             for( let val in results.note){
                                 console.log(results.note[val])
-                                html +='<th scope="row"></th><td>'+ results.note[val]['created_at'] +
-                                    '</td><td>'+ results.note[val]['notes']+'</td></tr>'
+                                html +='<li class="list-group-item"><span class="text-primary">'+ results.note[val]['created_at'] +
+                                    '</span> '+ results.note[val]['notes']+'</li>'
 
                             }
-                            html+= '</tbody> </table>'
+                            html+= '</ul>'
                             $("#noteId").html(html);
-                            $("#messageId").val(results.appointment.id);
+                            $("#messageId").val(results.message.id);
 
-                            $(".edit-appointment").attr("data-id", results.appointment.id);
+                            $(".edit-appointment").attr("data-id", results.message.id);
 
-                            $(".remove-appointment").attr("data-id",  results.appointment.id);
+                            $(".remove-appointment").attr("data-id",  results.message.id);
 
                             $('#appointmentDetails').modal('show');
                         },
                         error:function (err, state) {
-                          console.log(err)
+                            console.log(err)
                         }
                     })
                 }
@@ -369,55 +330,49 @@
             $('#buttonCompleted').click(function(){
                 var  id = $("#message-completed").attr("data-target")
 
-                        var token = "<?= csrf_token()?>";
-                        console.log(id);
-                        $.ajax({
-                            url: "message/completed",
-                            method:"POST",
-                            data:{id:id, _token: token},
-                            success: function () {
-                                console.log("it Works");
-                                location.reload()
-                            },
+                var token = "<?= csrf_token()?>";
+                console.log(id);
+                $.ajax({
+                    url: "message/completed",
+                    method:"POST",
+                    data:{id:id, _token: token},
+                    success: function () {
+                        console.log("it Works");
+                        location.reload()
+                    },
 
-                            error:function (err,state) {
-                                console.log(err)
-                            }
-                        });
+                    error:function (err,state) {
+                        console.log(err)
+                    }
+                });
 
 
             });
-
-
-            $('.add-note').click(function(){
-                $(".addNote").show()
-            })
-
 
             $('.edit-appointment').click(function(){
                 var id = $(this).attr("data-id");
 
                 $.ajax({
                     type: 'GET',
-                    url: "/admin/appointment/"+ id,
+                    url: "/admin/message/"+ id,
                     success: function (results) {
-                        var date = results.appointment.call_date.split(" ");
+                        var date = results.message.call_date.split(" ");
                         console.log(date);
 
                         $("#appointmentDetails").modal("hide");
 
-                        $("#oldAdminId").val(results.appointment.user_id);
-                        $("#oldFullNameId").val(results.appointment.name);
-                        $("#oldPhoneNumberId").val(results.appointment.phone_number);
-                        $("#oldEmailId").val(results.appointment.email);
+                        $("#oldAdminId").val(results.message.user_id);
+                        $("#oldFullNameId").val(results.message.name);
+                        $("#oldPhoneNumberId").val(results.message.phone_number);
+                        $("#oldEmailId").val(results.message.email);
                         $("#oldDateId").val( date[0]);
                         $("#oldTimeId").val(date[1]);
-                        $("#oldTitleId").val(results.appointment.title);
-                        $("#editMessageId").val(results.appointment.id);
-                        $("#oldDescriptionId").val(results.appointment.description);
+                        $("#oldTitleId").val(results.message.title);
+                        $("#editMessageId").val(results.message.id);
+                        $("#oldDescriptionId").val(results.message.description);
 
                         $('#updateMessage').modal('show');
-                        console.log(results.appointment.call_date);
+                        console.log(results.message.call_date);
                     },
                     error:function (err, state) {
                         console.log(err)
@@ -425,7 +380,6 @@
                 })
 
             })
-
 
             $("#updateMessage form").submit(function(e){
                 e.preventDefault();
@@ -435,24 +389,26 @@
                 });
 
                 $.ajax({
-                    url:  "/admin/appointment/update",
+                    url:  "/admin/message/update",
                     type:"PUT",
                     data: data,
                     success: function (results) {
+
+                        var date = results.call_date.split(" ");
                         calendar.fullCalendar('renderEvent',
                             {
 
                                 id: results['id'],
-                                title: results['name'],
-                                start: results['start_date'],
-                                end: results['start_date'],
+                                title: results['title'],
+                                start: date[0],
+                                end: date[0],
                                 allDay: true
                             },
                             'stick'
                         );
                         $("#updateMessage form")[0].reset()
                         $('#updateMessage').modal('hide');
-                   },
+                    },
 
                     error:function (err, state) {
                         console.log(JSON.parse(err.responseText))
@@ -461,10 +417,7 @@
                 });
 
 
-
-
             })
-
 
             $("#appointments form").submit(function(e){
                 e.preventDefault();
@@ -474,19 +427,17 @@
                 });
 
                 $.ajax({
-                    url: "/admin/appointment/create",
+                    url: "/admin/message/create",
                     type:"POST",
                     data: data,
                     success: function (results) {
-                        console.log(results);
+                        var date = results.call_date.split(" ");
                         calendar.fullCalendar('renderEvent',
                             {
-
-
                                 id: results['id'],
                                 title: results['title'],
-                                start: results['call_date'],
-                                end: results['call_date'],
+                                start: date[0],
+                                end: date[0],
                                 allDay: true
                             },
                             'stick'
@@ -504,31 +455,77 @@
 
 
             })
+
+            $('.remove-appointment').click(function(){
+                var id = $(this).attr("data-id");
+                $("#appointmentDetails").modal("hide");
+                bootbox.confirm("Do you really want to delete record?", function (result) {
+                    if (result) {
+                        $.ajax(
+                            {
+                                url: "/admin/message/" + id,
+                                type: 'DELETE',
+                                data:{
+                                    " _token": $("meta[name='csrf-token']").attr("content")
+                                },
+                                success: function () {
+                                    calendar.fullCalendar('removeEvents', id);
+                                    displayMessage("Deleted Successfully");
+                                }
+                            });
+                    }
+                })
+            })
+
+            $('#phoneNumberId').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(6);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
+
+                if(newVal.length == 12){
+                    var token = "<?= csrf_token()?>";
+                    $.ajax({
+                        url: "message/user/data",
+                        method:"POST",
+                        data:{phone_number:newVal, _token: token},
+                        success: function (result) {
+                            if(result!=''){
+
+                                $('#fullNameId').val(result.full_name);
+                                $('#emailId').val(result.email);
+                            }
+                        },
+
+                        error:function (err,state) {
+                            console.log(err)
+                        }
+                    });
+                }
+
+            });
+
+
         });
 
-        $('.remove-appointment').click(function(){
-            var id = $(this).attr("data-id");
-            $("#appointmentDetails").modal("hide");
-            bootbox.confirm("Do you really want to delete record?", function (result) {
-                if (result) {
-                    $.ajax(
-                        {
-                            url: "/admin/appointment/" + id,
-                            type: 'DELETE',
-                            data:{
-                                " _token": $("meta[name='csrf-token']").attr("content")
-                            },
-                            success: function () {
-                                calendar.fullCalendar('removeEvents', id);
-                                displayMessage("Deleted Successfully");
-                            }
-                        });
-                }
-            })
-        })
 
 
-        $('#phoneNumberId').keyup(function() {
+
+        $('#oldPhoneNumberId').keyup(function() {
 
             var val = this.value.replace(/\D/g, '');
             var newVal = '';
@@ -548,6 +545,7 @@
             newVal += val;
             this.value = newVal.substring(0, 12);
         });
+
 
         function displayMessage(message) {
             $(".response").html("<div class='success'>"+message+"</div>");

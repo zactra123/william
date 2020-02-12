@@ -112,11 +112,15 @@ class AffiliatesController extends Controller
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
             $clientDetails["user_id"] = $clientId->id;
+            $clientDetails["address"] = strtoupper($clientDetails["address"]);
 
 
             if(empty(ClientDetail::where('user_id',$clientId->id )->first())){
                 ClientDetail::create($clientDetails);
-                User::where('id', $clientId->id)->update($user);
+                User::where('id', $clientId->id)->update([
+                    'first_name' => strtoupper($user['first_name']),
+                    'last_name' => strtoupper($user['last_name'])
+                ]);
             }else{
                 ClientDetail::where('user_id',$clientId->id)->update($clientDetails);
             }
@@ -169,8 +173,12 @@ class AffiliatesController extends Controller
 
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
+            $clientDetails['address'] = strtoupper($clientDetails['address']);
 
-            User::where('id', $id)->update($user);
+            User::where('id', $id)->update([
+                'first_name' => strtoupper($user['first_name']),
+                'last_name' => strtoupper($user['last_name'])
+            ]);
 
             ClientDetail::where('user_id', $id)->update($clientDetails);
 

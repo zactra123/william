@@ -8,7 +8,8 @@ class ReadPdfData
 
     public function getCreditKarmaData($attachment)
     {
-        $text =new Pdf(config("pdf_to_text"));
+//        $text =new Pdf(config("pdf_to_text"));
+        $text =new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $text->setPdf($attachment->path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
@@ -126,8 +127,11 @@ class ReadPdfData
 
     public function getExprianData($attachment)
     {
-        $textEx = new Pdf(config("pdf_to_text"));
-        $textEx->setPdf($attachment->id);
+
+//        dd('kkkk',$attachment);
+//        $textEx = new Pdf(config("pdf_to_text"));
+        $textEx = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
+        $textEx->setPdf($attachment->path);
         $dataEx = $textEx->setOptions(['raw', 'f 1'])->text();
         $dataArrayEX = explode("Date of Rep" , $dataEx);
 
@@ -300,7 +304,8 @@ class ReadPdfData
 
     public function getTransUnionAccountDetailsData($attachment)
     {
-        $textTrans = new Pdf(config("pdf_to_text"));
+//        $textTrans = new Pdf(config("pdf_to_text"));
+        $textTrans = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $textTrans->setPdf($attachment->path);
         $dataTrans = $textTrans->setOptions(['raw', 'f 1'])->text();
 
@@ -396,7 +401,8 @@ class ReadPdfData
 
     public function getTransUnionPaymentHistoryData($attachment)
     {
-        $textUnion = new Pdf(config("pdf_to_text"));
+//        $textUnion = new Pdf(config("pdf_to_text"));
+        $textUnion = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $textUnion->setPdf($attachment->path);
         $dataUnion = $textUnion->setOptions(['raw', 'f 1'])->text();
 
@@ -449,7 +455,8 @@ class ReadPdfData
 
     public function getExperianReport($path, $userId, $attachmentId)
     {
-        $text = new Pdf($this->PDF_TO_TEXT);
+//        $text = new Pdf(config('pdf_to_text'));
+        $text = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $text->setPdf($path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
 

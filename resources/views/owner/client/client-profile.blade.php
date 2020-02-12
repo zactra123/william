@@ -1,4 +1,5 @@
-@extends('layouts.admin')
+
+@extends('layouts.owner')
 
 <style>
     .dropdown-submenu {
@@ -102,7 +103,6 @@
                                         <input class="col-5 internal client" name="phone_number" id="phone_number" value="{{$client->clientDetails->phone_number??null}}" type="text" placeholder="PHONE NUMBER">
                                         <input class="col-7 external client" value="{{$client->email}}" type="text" placeholder="Client Email" readonly>
                                     </div>
-
                                     <div class="pb-1 row border-bottom">
                                         <input class="col-4   internal" value="{{$client->clientDetails->ssn??null}}" type="text" placeholder="SSN" readonly >
                                         <input class="col-6   external" value="{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):null}}" type="text" placeholder="DOB" readonly >
@@ -129,7 +129,7 @@
                                         <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
 
                                             <div class="col-2 m-0 p-0">
-                                                <label>GENDER:</label>
+                                                <label>Gender:</label>
                                             </div>
                                             <div class="col-10 ">
                                                 @if($client->clientDetails->sex == "M")
@@ -157,7 +157,7 @@
                                         <div class="pb-1 pt-2 row  mr-0 ml-0 external border-bottom">
 
                                             <div class="col-2 m-0 p-0">
-                                                        <label>Gender:</label>
+                                                        <label>GENDER:</label>
                                                     </div>
                                             <div class="col-10 ">
                                                         <div class="row">
@@ -403,7 +403,7 @@
                 var sex =  $(".sex").val();
 
                 $.ajax({
-                    url: "<?= route('admin.client.report_number');?>",
+                    url: "<?= route('owner.client.report_number');?>",
                     method:"POST",
                     data:{user_id:client_id,  _token:token,full_name, address:full_address,
                         phone_number:phone_number,ex_number:ex_number, eq_number:eq_number, tu_number:tu_number,

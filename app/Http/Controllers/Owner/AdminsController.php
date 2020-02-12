@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\AllowedIp;
 use App\NegativeType;
 use App\AdminSpecification;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +53,14 @@ class AdminsController extends Controller
             'role'=>'admin',
         ]);
 
+        foreach($admin['ip_address'] as $ipAddress){
+
+            AllowedIp::create([
+                'user_id'=> $user->id,
+                'ip_address' => $ipAddress
+            ]);
+       }
+
         $userId = $user->id;
 
         foreach($admin['negative_types'] as $negativeTypes){
@@ -81,6 +90,8 @@ class AdminsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $ipAddress = $request->admin['ip_address'];
+
         $admin = $request->admin;
         $admin['id'] = $id;
 
@@ -97,12 +108,11 @@ class AdminsController extends Controller
                 ->withErrors($validation);
         }
 
-        User::where('id', $admin->id)
+        User::where('id', $admin['id'])
             ->update([
                 'first_name' => $admin['first_name'],
                 'last_name' => $admin['last_name'],
                 'email' => $admin['email'],
-                'password' => Hash::make($admin['password']),
                 'role'=>'admin',
         ]);
 
@@ -114,6 +124,22 @@ class AdminsController extends Controller
                 'negative_types_id' => $negativeTypes,
             ]);
         }
+        if(isset($request->admin['ip_address_new'])){
+            foreach($request->admin['ip_id']  as $key =>$id){
+
+                if( AllowedIp::where('id', $id)->first()!= null){
+                    AllowedIp::where('id', $id)->update(['ip_address'=>$ipAddress[$key]]);
+                }
+            }
+        }
+        if(isset($request->admin['ip_address_new'])){
+            foreach($request->admin['ip_address_new'] as $newIp){
+                AllowedIp::create([
+                    'user_id'=> $admin['id'],
+                    'ip_address'=> $newIp
+                ]);
+            }
+        }
 
         return redirect('owner/admin/list');
     }
@@ -124,6 +150,7 @@ class AdminsController extends Controller
         try {
             User::where('id', $id)->delete();
             AdminSpecification::where('user_id', $id)->delete();
+            AllowedIp::where('user_id', $id)->delete();
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
         }
@@ -146,8 +173,18 @@ class AdminsController extends Controller
 
     }
 
+    public function deleteIp(Request $request)
+    {
+       $id = $request->id;
 
+        try {
+            AllowedIp::where('id', $id)->delete();
 
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
 
+        return response()->json(['status' => 'success']);
+    }
 
 }

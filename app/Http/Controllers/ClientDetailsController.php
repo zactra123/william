@@ -264,8 +264,7 @@ class ClientDetailsController extends Controller
 
         if (empty($request->file())) {
             return redirect('/client/details/upload-credit-reports')->with('error','Please upload files');
-        }
-
+        } dd($request['credit_report']);
         $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
 
         if($validationUploadPdf[0] == 'error'){
@@ -279,31 +278,32 @@ class ClientDetailsController extends Controller
 //        @Todo: get data from second transunion pdf file
 //        @Todo: CreditKarma payment history
 
+
         $clientReports = [];
         if (count($moveUploadFile) > 1) {
-            $clientReports = $readPdfData->getTransUnionAccountDetailsData($moveUploadFile[0]);
-            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($moveUploadFile[1]);
+            $clientReports = $readPdfData->getTransUnionAccountDetailsData($moveUploadFile['attachments'][0]);
+            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($moveUploadFile['attachments'][1]);
             // Merge Payment History to Client Reports Data
             foreach($clientReports as $key => &$clientReport){
                 $clientReport = array_merge($clientReport, $dataTUPH[$key]);
             }
         } else{
-            switch ($moveUploadFile[0]->category){
+            switch ($moveUploadFile['attachments'][0]->category){
                 case "CK TU":
-                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile[0]);
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
                     break;
                 case "CK EF":
-                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile[0]);
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
                     break;
                 case "EX":
-                    $clientReports = $readPdfData->getExprianData($moveUploadFile[0]);
+                    $clientReports = $readPdfData->getExprianData($moveUploadFile['attachments'][0]);
                     break;
                 default:
                     return redirect('/client/details/upload-credit-reports')->with('error',"Error message: case when file is not known");
                     break;
             }
         }
-
+dd($clientReports);
         ClientReports::insert($clientReports);
 
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");

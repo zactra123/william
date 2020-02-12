@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\AllowedIp;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class ReceptionistsController extends Controller
     {
         $receptionist = $request->receptionist;
 
+
         $validation =  Validator::make($receptionist, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -42,6 +44,13 @@ class ReceptionistsController extends Controller
             'email' => $receptionist['email'],
             'role'=>'receptionist',
         ]);
+        foreach($receptionist['ip_address'] as $ipAddress){
+
+            AllowedIp::create([
+                'user_id'=>$user->id,
+                'ip_address' => $ipAddress,
+            ]);
+        }
 
 
 

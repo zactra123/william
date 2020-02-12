@@ -139,10 +139,11 @@
         })
 
         $('input[type="file"]').change(function () {
-            var ext = this.value.match(/\.(.+)$/)[1];
+            var ext = this.value.split(".");
 
-            switch (ext) {
-                case 'pdf':
+
+            switch (ext[ext.length - 1]) {
+                case 'pdf':we
                 case 'PDF':
                     $('#uploadButton').attr('disabled', false);
                     break;

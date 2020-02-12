@@ -8,8 +8,6 @@
         }
 
     </style>
-
-
     <div class="container">
         <div class="row m-2">
           <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
@@ -29,47 +27,65 @@
                 @csrf
 
                 <div class="form-group row m-1">
-                    <label for="first name" class="col-md-4 col-form-label text-md-right"> First name</label>
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         {{ Form::text('admin[first_name]', $admin->first_name, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-group row m-1">
-                    <label for="last name" class="col-md-4 col-form-label text-md-right"> Last name</label>
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         {{ Form::text('admin[last_name]', $admin->last_name, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-group row m-1">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         {{ Form::email('admin[email]', $admin->email, ['class' => 'form-control',  'required autocomplete'=>"email"]) }}
 
                     </div>
                 </div>
 
                 <div class="form-group row m-1">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">Negative Types</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         {{ Form::select('admin[negative_types][]',$negativeType, $admin->adminSpecifications->pluck('id')->all(), ['class' => 'form-control',  'required autocomplete'=>"negative_types", 'multiple' => 'multiple']) }}
 
                     </div>
                 </div>
+                @foreach($admin->ipAddress as $value)
+                <div class="form-group row m-1" id="delete-{{$value->id}}">
+                    <div class="col-md-12">
+                        <div class="row pl-3">
+                            {{ Form::text('admin[ip_address][]', $value->ip_address, ['class' => 'form-control col-8', 'placeholder'=>'IP ADDRESS']) }}
+                            <input type="hidden" name="admin[ip_id][]" class="form-control" value = {{$value->id}}>
+                            <div class="pl-3 col-2">
+                                <input class="ip-address form-control btn btn-primary " type="button" data-target={{$value->id}} value="Delete"/>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div id="newIp">
+                </div>
+                <div class="form-group row m-1">
+                    <div class="col-md-2">
+                        <input class="form-control btn btn-primary add-ip-address" type="button" value="Add"/>
+
+                    </div>
+                </div>
+
+
 
 
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
-                            Create admin
+                            Update
                         </button>
                     </div>
                 </div>
-
-
                 {!! Form::close() !!}
-
             </div>
         </div>
 
@@ -78,4 +94,51 @@
 
 @endsection
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
 
+            $(document).ready(function () {
+                var i=0;
+
+                $(".add-ip-address").on('click', function(){
+                    i++
+
+                    console.log('llll')
+
+                    var newDiv = "<div class='form-group row m-1' id='delete-"+i+"'><div class='col-md-10'><div class='row pl-3'>"
+                    var addIp = "<input type='text' name=admin[ip_address_new][] class = 'form-control col-10' placeholder = 'IP ADDRESS'>"
+                    addIp +=  '<div class="pl-3 col-2"> <input class="delete-ip-address form-control btn btn-primary " type="button" data-target="'+i+'" value="Delete"/></div>'
+                    newDiv += addIp + "</div></div></div>";+
+                        $("#newIp").append(newDiv);
+
+                })
+
+                $(document).delegate('.delete-ip-address', 'click', function(){
+                    var  deleteId = $(this).attr("data-target")
+                    console.log(deleteId);
+
+                    $( "div" ).remove( '#delete-'+deleteId );
+
+                });
+                $('.ip-address').click( function(){
+                    var  deleteId = $(this).attr("data-target")
+                    $( "div" ).remove( '#delete-'+deleteId );
+                    var token = "<?= csrf_token()?>";
+                    $.ajax(
+                        {
+                            url: "delete/ip-address/" + deleteId,
+                            type: 'DELETE',
+                            data: {
+                                "id": deleteId,
+                                "_token": token,
+                            },
+                            success: function () {
+                                console.log("it Works");
+                            }
+                        });
+
+                });
+
+
+            })
+        </script>
