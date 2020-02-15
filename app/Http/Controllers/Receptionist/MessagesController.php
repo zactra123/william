@@ -23,8 +23,6 @@ class MessagesController extends Controller
         $this->middleware(['auth', 'receptionist']);
     }
 
-
-
     public function index(Request $request)
     {
 
@@ -60,8 +58,6 @@ class MessagesController extends Controller
 
         return view('receptionist.message.index',compact('admins'));
     }
-
-
 
 
     public function show($id)
@@ -175,12 +171,6 @@ class MessagesController extends Controller
         return Response::json(["error"=> "Not Found"], 404);
     }
 
-
-
-
-
-
-
     public function messageCompleted(Request $request)
     {
         $messageId = $request->id;
@@ -220,15 +210,11 @@ class MessagesController extends Controller
     }
 
 
+    public function liveChat()
+    {
+        return view('receptionist.live-chat.index');
 
-
-
-
-
-
-
-
-
+    }
 
 
 }
