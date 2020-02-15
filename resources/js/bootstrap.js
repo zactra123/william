@@ -59,7 +59,7 @@ window.Echo = new Echo({
 // });
 
 
-window.Echo.join("LiveChat.1")
-    .listen("LiveChat", function(e){
-        console.log(e)
-    })
+// window.Echo.join("LiveChat.1")
+//     .listen("LiveChat", function(e){
+//         console.log(e)
+//     })

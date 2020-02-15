@@ -13,6 +13,7 @@
     <!-- Loading main css file -->
     <link rel="stylesheet" href="css/css/animate.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
     <!--[if lt IE 9]>
     <script src="js/js/ie-support/html5.js"></script>
@@ -292,7 +293,7 @@
             {{--</div> <!-- .container -->--}}
         {{--</div> <!-- .fullwidth-block -->--}}
     </main> <!-- .content -->
-
+    @include('helpers/chat-box')
     <footer class="site-footer wow fadeInUp">
         <div class="container">
 

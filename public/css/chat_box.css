@@ -1,0 +1,117 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #0c71c3;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  opacity: 0.95;
+  position: fixed;
+  bottom: 23px;
+  right: 20px;
+  width: 280px;
+  z-index: 100;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  width: 100%;
+  max-width: 360px;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+
+.chat-content {
+  height: 250px;
+  background-color: white;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  background: #f1f1f1;
+  resize: none;
+  border: none;
+  min-height: auto !important;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #0c71c3;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  /*width: 100%;*/
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+.message {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 10px 1px 10px 10px;
+  width: fit-content;
+  float: right;
+
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+  margin: 10px 10px 10px 1px;
+  float: left;
+}
+
+/* Clear floats */
+.message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
