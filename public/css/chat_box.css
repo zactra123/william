@@ -33,6 +33,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .chat-content {
   height: 250px;
   background-color: white;
+  overflow-y: scroll;
 }
 
 /* Add styles to the form container */

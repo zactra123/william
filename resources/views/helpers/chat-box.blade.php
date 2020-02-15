@@ -13,6 +13,24 @@
             <p>Hey! I'm fine. Thanks for asking!</p>
             <span class="time-left">11:01</span>
         </div>
+        <div class="message">
+            <p>Hello. How are you today?</p>
+            <span class="time-right">11:00</span>
+        </div>
+
+        <div class="message darker">
+            <p>Hey! I'm fine. Thanks for asking!</p>
+            <span class="time-left">11:01</span>
+        </div>
+        <div class="message">
+            <p>Hello. How are you today?</p>
+            <span class="time-right">11:00</span>
+        </div>
+
+        <div class="message darker">
+            <p>Hey! I'm fine. Thanks for asking!</p>
+            <span class="time-left">11:01</span>
+        </div>
     </div>
     <form action="/action_page.php" class="form-container">
 
