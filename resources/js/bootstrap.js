@@ -38,13 +38,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 window.bootbox = require('bootbox');
 
-// import Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
+window.Echo = new Echo({
+    // authEndpoint : window.location.origin + '/public/broadcasting/auth',
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    wsHost: window.location.hostname,
+    wsPort: 6001,
+    disableStats: true,
+    encrypted: false
+});
+
+
+// window.Echo.channel('Messages')
+// .listen('MessageReminder', (e) => {
+//     console.log(e)
 // });
+
+
+window.Echo.join("LiveChat.1")
+    .listen("LiveChat", function(e){
+        console.log(e)
+    })

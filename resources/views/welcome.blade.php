@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
     <title>Homepage</title>
@@ -48,7 +49,7 @@
 
     <header class="site-header">
         <div class="bottom-header">
-            <div class="container">
+            <div class="container" id="app">
 
                 <a href="{{ url('/') }}" class="branding pull-left">
                     <img src="images/logo-icon.png" alt="Site title" class="logo-icon">

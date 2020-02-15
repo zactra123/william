@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageReminder;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;
@@ -12,6 +13,7 @@ class PagesController extends Controller
 {
     public function welcome()
     {
+        broadcast(new MessageReminder("inch ka?"));
         $pageContentUp = HomePageContent::where('category', 1)->get();
         $pageContentDown = HomePageContent::where('category', 2)->get();
 

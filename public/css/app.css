@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  /*font-family: "Nunito", sans-serif;*/
+  font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -2194,7 +2194,6 @@ select.form-control:focus::-ms-value {
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
   font-size: inherit;
-  color:#002044;
   line-height: 1.6;
 }
 
@@ -3063,7 +3062,6 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #3490dc;
   border-color: #3490dc;
-  border: 30px;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -5046,10 +5044,9 @@ input[type=button].btn-block {
 }
 
 .card-header {
+  padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #0c71c3;
-  text-align: center;
-  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -11103,51 +11100,3 @@ a.text-dark:focus {
   }
 }
 
-.files input {
-  outline-offset: -10px;
-  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-  transition: outline-offset .15s ease-in-out, background-color .15s linear;
-  padding: 120px 0px 85px 35%  !important;
-  text-align: center !important;
-  margin: 0;
-  width: 100% !important;
-}
-.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
-  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-  transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
-}
-.files{ position:relative}
-.files:after {  pointer-events: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 50px;
-  right: 0;
-  height: 56px;
-  content: "";
-  background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
-  display: block;
-  margin: 0 auto;
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-.color input{ background-color:#f1f1f1;}
-.files:before {
-  position: absolute;
-  bottom: 0px;
-  left: 0;  pointer-events: none;
-  width: 100%;
-  right: 0;
-  height: 57px;
-  content: " or drag it here. ";
-  display: block;
-  margin: 0 auto;
-  color: #37a6d4;
-  font-weight: 600;
-  text-transform: capitalize;
-  text-align: center;
-}
-
-.content{
-  min-height: 100vh;
-}
