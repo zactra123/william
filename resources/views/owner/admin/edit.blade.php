@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 @foreach($admin->ipAddress as $value)
-                <div class="form-group row m-1" id="delete-{{$value->id}}">
+                <div class="form-group row m-1">
                     <div class="col-md-12">
                         <div class="row pl-3">
                             {{ Form::text('admin[ip_address][]', $value->ip_address, ['class' => 'form-control col-8', 'placeholder'=>'IP ADDRESS']) }}
@@ -98,31 +98,24 @@
         <script>
 
             $(document).ready(function () {
-                var i=0;
-
                 $(".add-ip-address").on('click', function(){
-                    i++
 
-                    console.log('llll')
 
-                    var newDiv = "<div class='form-group row m-1' id='delete-"+i+"'><div class='col-md-10'><div class='row pl-3'>"
+                    var newDiv = "<div class='form-group row m-1' ><div class='col-md-10'><div class='row pl-3'>"
                     var addIp = "<input type='text' name=admin[ip_address_new][] class = 'form-control col-10' placeholder = 'IP ADDRESS'>"
-                    addIp +=  '<div class="pl-3 col-2"> <input class="delete-ip-address form-control btn btn-primary " type="button" data-target="'+i+'" value="Delete"/></div>'
+                    addIp +=  '<div class="pl-3 col-2"> <input class="delete-ip-address form-control btn btn-primary " type="button" value="Delete"/></div>'
                     newDiv += addIp + "</div></div></div>";+
                         $("#newIp").append(newDiv);
 
-                })
+                });
 
                 $(document).delegate('.delete-ip-address', 'click', function(){
-                    var  deleteId = $(this).attr("data-target")
-                    console.log(deleteId);
-
-                    $( "div" ).remove( '#delete-'+deleteId );
+                    $(this ).parents('.form-group').remove();
 
                 });
+
                 $('.ip-address').click( function(){
-                    var  deleteId = $(this).attr("data-target")
-                    $( "div" ).remove( '#delete-'+deleteId );
+                    var  deleteId = $(this).attr("data-target");
                     var token = "<?= csrf_token()?>";
                     $.ajax(
                         {
@@ -133,8 +126,9 @@
                                 "_token": token,
                             },
                             success: function () {
+                                $(this).parents(".form-group").remove();
                                 console.log("it Works");
-                            }
+                            }.bind(this)
                         });
 
                 });

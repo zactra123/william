@@ -88,7 +88,6 @@ class AdminsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $ipAddress = $request->admin['ip_address'];
 
         $admin = $request->admin;
         $admin['id'] = $id;
@@ -122,11 +121,11 @@ class AdminsController extends Controller
                 'negative_types_id' => $negativeTypes,
             ]);
         }
-        if(isset($request->admin['ip_address_new'])){
+        if(isset($request->admin['ip_address'])){
             foreach($request->admin['ip_id']  as $key =>$id){
 
                 if( AllowedIp::where('id', $id)->first()!= null){
-                    AllowedIp::where('id', $id)->update(['ip_address'=>$ipAddress[$key]]);
+                    AllowedIp::where('id', $id)->update(['ip_address'=> $request->admin['ip_address'][$key]]);
                 }
             }
         }

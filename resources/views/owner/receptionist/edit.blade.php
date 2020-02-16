@@ -46,8 +46,8 @@
                     <div class="form-group row m-1" id="delete-{{$value->id}}">
                         <div class="col-md-12">
                             <div class="row pl-3">
-                                {{ Form::text('admin[ip_address][]', $value->ip_address, ['class' => 'form-control col-9', 'placeholder'=>'IP ADDRESS']) }}
-                                <input type="hidden" name="admin[ip_id][]" class="form-control" value = {{$value->id}}>
+                                {{ Form::text('receptionist[ip_address][]', $value->ip_address, ['class' => 'form-control col-9', 'placeholder'=>'IP ADDRESS']) }}
+                                <input type="hidden" name="receptionist[ip_id][]" class="form-control" value = {{$value->id}}>
                                 <div class="pl-3 col-2">
                                     <input class="ip-address form-control btn btn-primary " type="button" data-target={{$value->id}} value="Delete"/>
 
@@ -94,28 +94,20 @@
                 var i=0;
 
                 $(".add-ip-address").on('click', function(){
-                    i++
-
-                    console.log('llll')
-
-                    var newDiv = "<div class='form-group row m-1' id='delete-"+i+"'><div class='col-md-12'><div class='row pl-3'>"
-                    var addIp = "<input type='text' name=admin[ip_address_new][] class = 'form-control col-9' placeholder = 'IP ADDRESS'>"
-                    addIp +=  '<div class="pl-3 col-2"> <input class="delete-ip-address form-control btn btn-primary " type="button" data-target="'+i+'" value="Delete"/></div>'
+                    var newDiv = "<div class='form-group row m-1'><div class='col-md-12'><div class='row pl-3'>"
+                    var addIp = "<input type='text' name=receptionist[ip_address_new][] class = 'form-control col-9' placeholder = 'IP ADDRESS'>"
+                    addIp +=  '<div class="pl-3 col-2"> <input class="delete-ip-address form-control btn btn-primary " type="button" value="Delete"/></div>'
                     newDiv += addIp + "</div></div></div>";+
                         $("#newIp").append(newDiv);
 
                 })
 
                 $(document).delegate('.delete-ip-address', 'click', function(){
-                    var  deleteId = $(this).attr("data-target")
-                    console.log(deleteId);
-
-                    $( "div" ).remove( '#delete-'+deleteId );
+                    $(this).parents(".form-group").delete()
 
                 });
                 $('.ip-address').click( function(){
                     var  deleteId = $(this).attr("data-target")
-                    $( "div" ).remove( '#delete-'+deleteId );
                     var token = "<?= csrf_token()?>";
                     $.ajax(
                         {
@@ -126,8 +118,9 @@
                                 "_token": token,
                             },
                             success: function () {
+                                $(this).parents(".form-group").delete();
                                 console.log("it Works");
-                            }
+                            }.bind(this)
                         });
 
                 });

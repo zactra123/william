@@ -71,8 +71,7 @@ class ReceptionistsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $receptionist = $request->admin;
-        $receptionist['id'] = $id;
+        $receptionist = $request->receptionist;
 
         $validation =  Validator::make($receptionist, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -86,13 +85,31 @@ class ReceptionistsController extends Controller
                 ->withErrors($validation);
         }
 
-        User::where('id', $receptionist->id)
+        User::where('id', $id)
             ->update([
                 'first_name' => $receptionist['first_name'],
                 'last_name' => $receptionist['last_name'],
                 'email' => $receptionist['email'],
                 'role'=>'receptionist',
             ]);
+
+        if(!empty($receptionist["ip_id"])){
+            foreach($request->receptionist['ip_id']  as $key => $ip_id){
+
+                if( AllowedIp::where('id', $ip_id)->first()!= null){
+                    AllowedIp::where('id', $ip_id)->update(['ip_address'=> $receptionist['ip_address'][$key]]);
+                }
+            }
+        }
+
+        if(!empty($receptionist["ip_address_new"])) {
+            foreach($receptionist['ip_address_new'] as $newIp){
+                AllowedIp::create([
+                    'user_id'=> $id,
+                    'ip_address'=> $newIp
+                ]);
+            }
+        }
 
 
         return redirect('owner/receptionist/list');
