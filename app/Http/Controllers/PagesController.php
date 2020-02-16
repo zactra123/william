@@ -8,6 +8,7 @@ use App\HomePageContent;
 use App\Question;
 use Illuminate\Support\Facades\Validator;
 use App\Faq;
+use App\Guest;
 
 class PagesController extends Controller
 {
@@ -91,6 +92,17 @@ class PagesController extends Controller
     {
 
         return view('contact');
+    }
+
+    public function identifyUser(Request $request)
+    {
+//        $user = User::firstOrCreate(array('name' => 'John'));
+        $guest = Guest::firstOrCreate(["email" => $request->email]);
+        dd($guest);
+        $guest->full_name = !empty($request->full_name) ? $request->full_name : $guest->full_name;
+        $guest->phone = !empty($request->phone) ? $request->phone : $guest->phone;
+        $guest->save();
+        dd($guest);
     }
 
 

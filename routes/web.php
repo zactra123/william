@@ -23,6 +23,7 @@ Route::get('credit-education', 'PagesController@creditEducation')->name('credit.
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
 Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
+Route::post('/identify-user', 'PagesController@identifyUser');
 
 
 
