@@ -58,8 +58,7 @@
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="">WHAT WE DO</a></li>
-                        <li class="menu-item"><a href="">HOW IT WORKS</a></li>
+                        <li class="menu-item"><a href="{{route('howItWorks')}}">HOW IT WORKS</a></li>
                         <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
                         <li class="menu-item"><a href="">FREE CREDIT REPAIR</a></li>
                         <li class="menu-item"><a href="{{route('faqs')}}">FAQs</a></li>
@@ -80,6 +79,8 @@
                                         <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
                                  @elseif((Auth::user()->role == 'affiliate'))
                                         <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
+                                @elseif((Auth::user()->role == 'receptionist'))
+                                        <li class="menu-item"><a href="{{ url('/receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
                                  @else
                                          <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>HOME</a></li>
                                  @endif
@@ -97,11 +98,9 @@
                                         </ul>
                                     </li>
 
-
                                         @endif
                               @endauth
                         @endif
-
 
                     </ul>
 

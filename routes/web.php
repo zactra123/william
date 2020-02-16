@@ -48,6 +48,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
+    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\Receptionist@deleteIp')->name('owner.receptionist.deleteIp');
 
     Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
@@ -96,6 +97,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('message/{id}','MessagesController@show')->name('admin.message.show');
     Route::post('message/create','MessagesController@create')->name('admin.message.create');
     Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
+    Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
 
 
 
@@ -111,7 +113,7 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::get('message/{id}','Receptionist\MessagesController@show')->name('receptionist.message.show');
     Route::post('message/create','Receptionist\MessagesController@create')->name('receptionist.message.create');
     Route::delete('message/{id}','Receptionist\MessagesController@destroy')->name('receptionist.message.destroy');
-
+    Route::post('message/user/data','Receptionist\MessagesController@userData')->name('receptionist.message.userData');
 
 
 });

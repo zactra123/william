@@ -98,7 +98,6 @@ class ReceptionistsController extends Controller
         return redirect('owner/receptionist/list');
     }
 
-
     public function destroy($id)
     {
         try {
@@ -111,8 +110,6 @@ class ReceptionistsController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-
-
     public function list()
     {
         $receptionists = User::where('role', 'receptionist')
@@ -120,5 +117,19 @@ class ReceptionistsController extends Controller
 
         return view('owner.receptionist.list', compact( 'receptionists'));
 
+    }
+
+    public function deleteIp(Request $request)
+    {
+        $id = $request->id;
+
+        try {
+            AllowedIp::where('id', $id)->delete();
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

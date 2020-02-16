@@ -44,46 +44,39 @@
                                                 <option value={{$id}}>{{$admin}}</option>
                                             @endforeach
                                         </select>
-
-
-
-                                    </div>
-                                    <div class="full_name_id m-1">
-                                        <input type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
-
                                     </div>
 
                                     <div class="phone_number_id m-1">
                                         <input type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
                                     </div>
 
-                                    <div class="email_id m-1">
+                                   <div class="full_name_id m-1">
+                                        <input type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
+                                   </div>
+
+                                   <div class="email_id m-1">
                                         <input type="email" name="email" id="emailId" placeholder="EMAIL">
-                                    </div>
+                                   </div>
 
-                                    <div class="time_id m-1">
+                                   <div class="time_id m-1">
                                         <input type="time" name="time" id="timeId" placeholder="TIME">
+                                   </div>
 
-                                    </div>
-                                    <div class="title_id m-1">
+                                   <div class="title_id m-1">
                                         <input type="text" name="title" id="titleId" placeholder="TITLE">
+                                   </div>
 
-                                    </div>
+                                   <div class="form-group row m-1">
+                                    <textarea name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
+                                   </div>
 
-
-                                    <div class="form-group row m-1">
-
-                                        <textarea name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
-
-                                    </div>
-
-                                    <div class="form-group row mb-0">
+                                   <div class="form-group row mb-0">
                                         <div class="col-md-9 offset-md-5">
                                             <button type="submit" class="btn btn-primary">
                                                 ADD MESSAGE
                                             </button>
                                         </div>
-                                    </div>
+                                   </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -158,9 +151,6 @@
                             <div class="modal-body ">
                                 <form method="PUT" action="" id="updateMessageId">
                                     @csrf
-
-
-
 
                                     <div class="admin_id m-1">
 
@@ -266,7 +256,6 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
             var url = $(location).attr('search');
             if(url.search("pending")== 6){
                 $('.tab-selector').removeClass("active");
@@ -275,7 +264,6 @@
                 $('.tab-selector').removeClass("active");
                 $(".completed" ).addClass("active");
             };
-
 
             $.ajaxSetup({
                 headers: {
@@ -385,10 +373,6 @@
 
             });
 
-
-
-
-
             $('.edit-appointment').click(function(){
                 var id = $(this).attr("data-id");
 
@@ -460,7 +444,6 @@
 
             })
 
-
             $("#appointments form").submit(function(e){
                 e.preventDefault();
                 var form = $(this).serializeArray(), data={};
@@ -498,31 +481,75 @@
 
 
             })
+
+            $('#phoneNumberId').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(6);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
+
+                if(newVal.length == 12){
+                    var token = "<?= csrf_token()?>";
+                    $.ajax({
+                        url: "message/user/data",
+                        method:"POST",
+                        data:{phone_number:newVal, _token: token},
+                        success: function (result) {
+                            if(result!=''){
+
+                                $('#fullNameId').val(result.full_name);
+                                $('#emailId').val(result.email);
+                            }
+                        },
+
+                        error:function (err,state) {
+                            console.log(err)
+                        }
+                    });
+                }
+
+            });
+
+            $('.remove-appointment').click(function(){
+                var id = $(this).attr("data-id");
+                $("#appointmentDetails").modal("hide");
+                bootbox.confirm("Do you really want to delete record?", function (result) {
+                    if (result) {
+                        $.ajax(
+                            {
+                                url: "/receptionist/message/" + id,
+                                type: 'DELETE',
+                                data:{
+                                    " _token": $("meta[name='csrf-token']").attr("content")
+                                },
+                                success: function () {
+                                    calendar.fullCalendar('removeEvents', id);
+                                    displayMessage("Deleted Successfully");
+                                }
+                            });
+                    }
+                })
+            })
         });
 
-        $('.remove-appointment').click(function(){
-            var id = $(this).attr("data-id");
-            $("#appointmentDetails").modal("hide");
-            bootbox.confirm("Do you really want to delete record?", function (result) {
-                if (result) {
-                    $.ajax(
-                        {
-                            url: "/receptionist/message/" + id,
-                            type: 'DELETE',
-                            data:{
-                                " _token": $("meta[name='csrf-token']").attr("content")
-                            },
-                            success: function () {
-                                calendar.fullCalendar('removeEvents', id);
-                                displayMessage("Deleted Successfully");
-                            }
-                        });
-                }
-            })
-        })
 
 
-        $('#phoneNumberId').keyup(function() {
+
+        $('#oldPhoneNumberId').keyup(function() {
 
             var val = this.value.replace(/\D/g, '');
             var newVal = '';

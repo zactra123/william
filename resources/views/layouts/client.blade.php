@@ -78,7 +78,7 @@
                 <nav class="main-navigation pull-right ">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
+                        {{--<li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>--}}
 
                         @if(!empty(Auth::user()->clientDetails))
                             <li class="menu-item"><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit your details</a></li>

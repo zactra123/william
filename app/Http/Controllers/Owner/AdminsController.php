@@ -8,9 +8,7 @@ use App\User;
 use App\AllowedIp;
 use App\NegativeType;
 use App\AdminSpecification;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class AdminsController extends Controller
 {
@@ -143,7 +141,6 @@ class AdminsController extends Controller
 
         return redirect('owner/admin/list');
     }
-
 
     public function destroy($id)
     {

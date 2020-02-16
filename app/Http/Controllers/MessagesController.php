@@ -138,6 +138,7 @@ class MessagesController extends Controller
             unset($messageHistory['id']);
 
             MessageHistory::create($messageHistory);
+
             Message::find($id)->delete();
 
             return Response::json(["success" => true]);
@@ -185,6 +186,19 @@ class MessagesController extends Controller
 
     }
 
+    public function userData(Request $request)
+    {
+        $phoneNumber = $request->phone_number;
+        $data = DB::table('users')
+            ->leftJoin('client_details as cd', 'cd.user_id','=', 'users.id')
+            ->whereIn('users.role', ['client', 'affiliate'])
+            ->where('cd.phone_number', $phoneNumber)
+            ->select('users.email as email', DB::raw('CONCAT(users.last_name, " ",users.first_name) AS full_name'))
+            ->first();
 
+        $data = $data!= null?$data:'';
+
+        return Response::json($data);
+    }
 
 }

@@ -102,11 +102,4 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
 @endsection

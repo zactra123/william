@@ -69,14 +69,8 @@
                         <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
                         <li class="menu-item"><a href="">CONTACT US</a></li>
 
-
-
-
                         @if (Route::has('login'))
                             @auth
-
-
-
                                 @if(Auth::user()->role == 'client')
                                     @if(empty(Auth::user()->clientDetails))
                                         <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>HOME</a></li>
@@ -85,8 +79,9 @@
                                     @endif
                                 @elseif((Auth::user()->role == 'admin'))
                                     <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                @elseif((Auth::user()->role == 'receptionist'))
-                                    <li class="menu-item"><a href="{{ url('receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
+                                @elseif(Auth::user()->role == 'receptionist')
+
+                                    <li class="menu-item"><a href="{{ url('/receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @elseif((Auth::user()->role == 'affiliate'))
                                     <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
                                 @else
@@ -110,8 +105,6 @@
                                 @endif
                             @endauth
                         @endif
-
-
                     </ul>
 
                 </nav> <!-- .main-navigation -->
@@ -120,16 +113,10 @@
     </header> <!-- .site-header -->
     @include('helpers/flash')
     <main class="content">
-
-
-            @yield('content')
-
-
+         @yield('content')
 
     </main>
-
      <!-- .content -->
-
     <footer class="site-footer wow fadeInUp">
         <div class="container">
 

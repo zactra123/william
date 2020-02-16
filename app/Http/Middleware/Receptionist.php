@@ -22,13 +22,14 @@ class Receptionist
             return redirect()->route('login');
         }
         elseif ( Auth::user()->role != 'receptionist'){
-            return redirect()->to('/');
+        return redirect()->to('/');
         }
-//        $allowed_ip = AllowedIp::where("user_id", Auth::user()->id)->where("ip_address", $request->ip())->first();
-//        if (!$allowed_ip){
-////            logout
-//            return redirect()->route('login');
-//        }
+        $allowed_ip = AllowedIp::where("user_id", Auth::user()->id)->where("ip_address", $request->ip())->first();
+
+        if (!$allowed_ip && env("APP_ENV") != "local"){
+//            logout
+            return redirect()->route('login');
+        }
         return $next($request);
     }
 

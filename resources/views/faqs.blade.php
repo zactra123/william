@@ -3,9 +3,6 @@
 
 @section('content')
 
-
-
-
     <div class="breadcrumbs">
         <div class="container">
             <a href="{{url('/')}}">Home</a> &rarr;
@@ -29,8 +26,6 @@
                                     <div class="align-right">
                                         <label for="password" class="col-md-1 show title1-{{$faq->id}}" style="display: block">   <i class="fa fa-arrow-down"></i>  </label>
                                         <label for="password" class="col-md-1 hide title2-{{$faq->id}}" style="display: none">   <i class="fa fa-arrow-up"></i>  </label>
-
-
                                     </div>
                                 </div>
                                 <div class="card-body hideShow desc-{{$faq->id}}" style="display: none">

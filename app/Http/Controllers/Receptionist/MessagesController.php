@@ -10,10 +10,8 @@ use Response;
 use Auth;
 use App\User;
 use App\Message;
+use App\MessageHistory;
 use App\QuestionNote;
-
-
-
 
 class MessagesController extends Controller
 {
@@ -22,8 +20,6 @@ class MessagesController extends Controller
     {
         $this->middleware(['auth', 'receptionist']);
     }
-
-
 
     public function index(Request $request)
     {
@@ -60,9 +56,6 @@ class MessagesController extends Controller
 
         return view('receptionist.message.index',compact('admins'));
     }
-
-
-
 
     public function show($id)
     {
@@ -166,20 +159,14 @@ class MessagesController extends Controller
             $messageHistory = $messageHistory->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
             unset($messageHistory['id']);
-
             MessageHistory::create($messageHistory);
+            Message::find($id)->delete();
 
             return Response::json(["success" => true]);
         }
 
         return Response::json(["error"=> "Not Found"], 404);
     }
-
-
-
-
-
-
 
     public function messageCompleted(Request $request)
     {
@@ -220,6 +207,20 @@ class MessagesController extends Controller
     }
 
 
+    public function userData(Request $request)
+    {
+        $phoneNumber = $request->phone_number;
+        $data = DB::table('users')
+            ->leftJoin('client_details as cd', 'cd.user_id','=', 'users.id')
+            ->whereIn('users.role', ['client', 'affiliate'])
+            ->where('cd.phone_number', $phoneNumber)
+            ->select('users.email as email', DB::raw('CONCAT(users.last_name, " ",users.first_name) AS full_name'))
+            ->first();
+
+        $data = $data!= null?$data:'';
+
+        return Response::json($data);
+    }
 
 
 

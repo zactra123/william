@@ -489,30 +489,52 @@
                 })
             })
 
+            $('#phoneNumberId').keyup(function() {
+
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
+
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(6);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
+
+                if(newVal.length == 12){
+                    var token = "<?= csrf_token()?>";
+                    $.ajax({
+                        url: "message/user/data",
+                        method:"POST",
+                        data:{phone_number:newVal, _token: token},
+                        success: function (result) {
+                            if(result!=''){
+
+                                $('#fullNameId').val(result.full_name);
+                                $('#emailId').val(result.email);
+                            }
+                        },
+
+                        error:function (err,state) {
+                            console.log(err)
+                        }
+                    });
+                }
+
+            });
+
 
         });
 
 
-        $('#phoneNumberId').keyup(function() {
-
-            var val = this.value.replace(/\D/g, '');
-            var newVal = '';
-            if(val.length > 4) {
-                this.value = val;
-            }
-
-            if((val.length > 3) && (val.length <7)) {
-                newVal += val.substr(0, 3) + '-';
-                val = val.substr(3);
-            }
-            if (val.length > 6) {
-                newVal += val.substr(0, 3) + '-';
-                newVal += val.substr(3, 3) + '-';
-                val = val.substr(6);
-            }
-            newVal += val;
-            this.value = newVal.substring(0, 12);
-        });
 
         function displayMessage(message) {
             $(".response").html("<div class='success'>"+message+"</div>");

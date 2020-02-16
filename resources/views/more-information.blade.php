@@ -14,7 +14,6 @@
             @foreach($contents as $content)
                 <h1>{{$content->title}}</h1>
                 <?php echo htmlspecialchars_decode(htmlspecialchars($content->content, ENT_QUOTES));  ?>
-
              @endforeach
             </div>
         </div>
