@@ -32,6 +32,12 @@ Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Auth::routes();
 Auth::routes(['verify' => true]);
 
+Route::get('/facebook/redirect', 'SocialAuthController@redirect');
+Route::get('/facebook/callback', 'SocialAuthController@callback');
+
+Route::get('/google/redirect', 'SocialAuthController@redirectGoogle');
+Route::get('/google/callback', 'SocialAuthController@callbackGoogle');
+
 Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')->name('register.Affiliate');
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 

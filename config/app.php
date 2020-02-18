@@ -184,6 +184,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Laravel\Socialite\Facades\Socialite::class,
+
     ],
 
     /*
@@ -236,6 +238,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'OCR' => Alimranahmed\LaraOCR\Facades\OCR::class,
         'Image' =>Intervention\Image\Facades\Image::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 
