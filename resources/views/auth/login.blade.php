@@ -18,6 +18,18 @@
             font-size: large;
             padding: 0.375rem 0.75rem;
         }
+        .or-seperator {
+            margin: 20px 0 10px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .or-seperator i {
+            padding: 0 10px;
+            background: #f7f7f7;
+            position: relative;
+            top: -11px;
+            z-index: 1;
+        }
     </style>
 
     <div class="page-content">
@@ -30,6 +42,11 @@
                             <div class="card-body">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+                                    <div class="text-center social-btn">
+                                        <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                                        <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with <b>Google</b></a>
+                                    </div>
+                                    <div class="or-seperator"><i>or</i></div>
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-11">
