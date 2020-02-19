@@ -78,47 +78,4 @@
         </form>
     </div>
 </div>
-
-
-<script>
-    identifyUser = function(guest) {
-        return new Promise(function(resolve, reject) {
-            $.ajax({
-                url: '/identify-user',
-                type: "POST",
-                data: guest,
-                success: function(response) {
-                    resolve(response)
-                },
-                error: function(error) {
-                    console.log(error)
-                }
-            })
-        })
-    };
-
-    $(document).ready(function(){
-        $(".open-chatbox-btn").click(function(){
-            $(".chat-popup").show();
-            $(this).hide();
-        });
-
-
-        $(".not-defined-user form").submit(function(e) {
-            e.preventDefault();
-            form = $(this).serializeArray();
-            data = {};
-            $.each(form, function(key, el){
-                data[el.name] = el.value;
-            });
-
-            identifyUser(data)
-                .then(function(result){
-                    console.log(result)
-                })
-                .catch(function(error){
-                    console.log(err)
-                })
-        })
-    })
-</script>
+<script src="{{ asset('js/guest-chat-box.js?v=2') }}" defer></script>

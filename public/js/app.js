@@ -61962,13 +61962,6 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__["default"]({
   wsPort: 6001,
   disableStats: true,
   encrypted: false
-}); // window.Echo.channel('Messages')
-// .listen('MessageReminder', (e) => {
-//     console.log(e)
-// });
-
-window.Echo.join("LiveChat.1").listen("LiveChat", function (e) {
-  console.log(e);
 });
 
 /***/ }),

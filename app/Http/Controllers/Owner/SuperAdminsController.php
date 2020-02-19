@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\HomePageContent;
 use Illuminate\Support\Facades\Validator;
+use App\Events\LiveChat;
+
 
 class SuperAdminsController extends Controller
 {
@@ -17,8 +19,11 @@ class SuperAdminsController extends Controller
         $this->middleware(['auth', 'superadmin']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $user = User::find(1);
+        broadcast(new LiveChat(["message" => $request->message, "user" => "affilate" ], $user));
+        dd($request->message);
 
 
         return view('owner.index');

@@ -34,6 +34,6 @@ class LiveChat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PresenceChannel('LiveChat.'.$this->user->id);
+        return new Channel('LiveChat.'.$this->user->id);
     }
 }

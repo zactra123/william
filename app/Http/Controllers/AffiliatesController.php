@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\LiveChat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -27,11 +26,8 @@ class AffiliatesController extends Controller
         $this->middleware(['auth', 'verified' ,'affiliate']);
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $user = User::find(1);
-        broadcast(new LiveChat(["mesage" => $request->message, "user" => "affilate" ], $user));
-        dd($request->message);
         $affiliateId = Auth::user()->id;
 
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
