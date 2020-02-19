@@ -36,7 +36,7 @@ class SocialAuthController extends Controller
         ])->user();
 
 
-
+dd($facebookUser);
         $account = SocialAccount::where('provider','facebook')
             ->where('provider_user_id',$facebookUser->user['id'])
             ->first();
@@ -61,11 +61,13 @@ class SocialAuthController extends Controller
                 'last_name'=> $facebookUser->user['last_name'],
                 'role'=>'client'
             ]);
+            if(isset($facebookUser->user['birthday'])){
+                ClientDetail::create([
+                    'user_id' => $user->id,
+                    'dob' => $facebookUser->user['birthday']
+                ]);
+            }
 
-            ClientDetail::create([
-                'user_id' => $user->id,
-                'dob' => $facebookUser->user['birthday']
-            ]);
 
             $user->sendEmailVerificationNotification();
 
