@@ -36,7 +36,6 @@ class SocialAuthController extends Controller
         ])->user();
 
 
-dd($facebookUser);
         $account = SocialAccount::where('provider','facebook')
             ->where('provider_user_id',$facebookUser->user['id'])
             ->first();
