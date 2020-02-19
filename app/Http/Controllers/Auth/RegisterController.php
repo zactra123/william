@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use Session;
 use App\ClientDetail;
 class RegisterController extends Controller
 {
@@ -138,7 +140,7 @@ class RegisterController extends Controller
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             'business_name'=>isset($data['business_name'])?$data['business_name']:null,
         ]);
-
+        Session::flash('success', 'Congrats! You just did something really wise');
         return $user;
     }
 

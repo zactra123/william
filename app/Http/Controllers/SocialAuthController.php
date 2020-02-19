@@ -4,7 +4,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Socialite;
-use App\Services\SocialAccountService;
+use App\User;
+use App\ClientDetail;
+use App\SocialAccount;
+use Illuminate\Auth\Events\Verified;
 
 class SocialAuthController extends Controller
 {
@@ -26,18 +29,55 @@ class SocialAuthController extends Controller
      *
      * @return callback URL from facebook
      */
-    public function callback(SocialAccountService $service)
+    public function callback()
     {
-        $facebook_user = Socialite::driver('facebook')->fields([
+        $facebookUser = Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
         ])->user();
-        dd($facebook_user);
-        $user = $service->createOrGetUser(Socialite::driver('facebook')->fields([
-            'first_name', 'last_name', 'email', 'gender', 'birthday'
-        ])->user());
-        dd('asdasd', $user);
-        auth()->login($user);
-        return redirect()->to('/home');
+
+
+
+        $account = SocialAccount::where('provider','facebook')
+            ->where('provider_user_id',$facebookUser->user['id'])
+            ->first();
+
+        if (!$account) {
+
+            $user = User::where('email', $facebookUser->user['email'])->first();
+            if ($user) {
+
+                return redirect()->to('/login')
+                    ->withErrors(['error'=> "User with this mail was already registered!!"]);
+            }
+
+            $account = new SocialAccount([
+                'provider_user_id' => $facebookUser->user['id'],
+                'provider' => 'facebook'
+            ]);
+
+            $user = User::create([
+                'email' => $facebookUser->user['email'],
+                'first_name' => $facebookUser->user['first_name'],
+                'last_name'=> $facebookUser->user['last_name'],
+                'role'=>'client'
+            ]);
+
+            ClientDetail::create([
+                'user_id' => $user->id,
+                'dob' => $facebookUser->user['birthday']
+            ]);
+
+            $user->sendEmailVerificationNotification();
+
+            $account->user()->associate($user);
+            $account->save();
+
+            auth()->login($account->user);
+            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+        }
+
+        auth()->login($account->user);
+        return redirect()->to('/client/details');
     }
 
 
@@ -46,30 +86,47 @@ class SocialAuthController extends Controller
     {
         return Socialite::driver('google')->redirect();
 
-//        return Socialite::driver('google')->fields([
-//            'first_name', 'last_name', 'email', 'gender', 'birthday'
-//        ])->scopes([
-//            'email', 'user_birthday'
-//        ])->redirect();
     }
 
-
-    public function callbackGoogle(SocialFacebookAccountService $service)
+    public function callbackGoogle()
     {
+        $googleUser = Socialite::driver('google')->user();
 
-        $google_user = Socialite::driver('google')->user();
-        dd($google_user);
+        $account = SocialAccount::where('provider','google')
+            ->where('provider_user_id',$googleUser->user['id'])
+            ->first();
+        if (!$account) {
+            $account = new SocialAccount([
+                'provider_user_id' => $googleUser->user['id'],
+                'provider' => 'google'
+            ]);
+            $user = User::where('email', $googleUser->user['email'])->first();
+            if ($user) {
+                return redirect()->to('/login')
+                    ->withErrors(['error'=> "User with this mail was already registered!!"]);
+            }
 
-//        $google_user = Socialite::driver('google')->fields([
-//            'first_name', 'last_name', 'email', 'gender', 'birthday'
-//        ])->user();
-//        dd($google_user);
-//        $user = $service->createOrGetUser(Socialite::driver('google')->fields([
-//            'first_name', 'last_name', 'email', 'gender', 'birthday'
-//        ])->user());
-//        dd('asdasd', $user);
-//        auth()->login($user);
-//        return redirect()->to('/home');
+            $user = User::create([
+                'email' => $googleUser->user['email'],
+                'first_name' => $googleUser->user['given_name'],
+                'last_name'=> $googleUser->user['family_name'],
+                'role'=>'client'
+            ]);
+
+            if ($user->markEmailAsVerified()) {
+                event(new Verified($user));
+            }
+
+            $account->user()->associate($user);
+            $account->save();
+            auth()->login($account->user);
+            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+        }
+
+        auth()->login($account->user);
+        return redirect()->to('/client/details');
+
+
     }
 
 
