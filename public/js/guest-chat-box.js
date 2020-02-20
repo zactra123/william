@@ -8,12 +8,13 @@ identifyUser = function(guest) {
                 resolve(response)
             },
             error: function(error) {
-                console.log(error)
+                console.log(error);
                 reject(error)
             }
         })
     })
 };
+
 postNewMessage = function(guest, message) {
     return new Promise(function(resolve, reject){
         $.ajax({
@@ -46,16 +47,24 @@ getChatMessages = function(guest) {
         })
     });
 };
+//
+// connectToChannel = function(guest) {
+//     window.Echo.channel("LiveChat.guest_"+ guest)
+//         .listen("LiveChat", function(e){
+//             console.log(e)
+//         })
+// };
 
-connectToChannel = function(guest) {
-    window.Echo.channel("LiveChat.guest_1")
-        .listen("LiveChat", function(e){
-            console.log(e)
-        })
+
+addMessageToChat = function(message) {
+
 };
 
 $(document).ready(function(){
+    // connectToChannel(1)
     $(".open-chatbox-btn").click(function(){
+        $(this).data("guestId");
+        //yete data guest id uni  minagmic cuyc enq tallis defined-user
         $(".chat-popup").show();
         $(this).hide();
     });
@@ -73,7 +82,8 @@ $(document).ready(function(){
 
         identifyUser(data)
             .then(function(result){
-                connectToChannel(result.id)
+                addMessageToChat(result.message)
+                // connectToChannel(result.id)
             })
             .catch(function(error){
                 console.log(err)

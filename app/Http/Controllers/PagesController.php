@@ -92,24 +92,5 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function identifyUser(Request $request)
-    {
-        $guest = Guest::create([
-            "full_name" => $request->full_name,
-            "email" => $request->email,
-            "phone" => $request->phone
-        ]);
-        $request->session()->put("guest", $guest->id);
-
-        $message = Chat::create([
-            "message" => $request->message,
-            "recipient_type" => "Guest",
-            "recipient_id" => $guest->id,
-            "type" => "to"
-        ]);
-
-        
-    }
-
 
 }
