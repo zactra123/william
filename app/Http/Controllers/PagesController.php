@@ -94,13 +94,21 @@ class PagesController extends Controller
 
     public function identifyUser(Request $request)
     {
-//        $user = User::firstOrCreate(array('name' => 'John'));
-        $guest = Guest::firstOrCreate(["email" => $request->email]);
-        dd($guest);
-        $guest->full_name = !empty($request->full_name) ? $request->full_name : $guest->full_name;
-        $guest->phone = !empty($request->phone) ? $request->phone : $guest->phone;
-        $guest->save();
-        dd($guest);
+        $guest = Guest::create([
+            "full_name" => $request->full_name,
+            "email" => $request->email,
+            "phone" => $request->phone
+        ]);
+        $request->session()->put("guest", $guest->id);
+
+        $message = Chat::create([
+            "message" => $request->message,
+            "recipient_type" => "Guest",
+            "recipient_id" => $guest->id,
+            "type" => "to"
+        ]);
+
+        
     }
 
 

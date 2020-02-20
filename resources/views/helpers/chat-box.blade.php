@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/chat_box.css">
 
-<button class="open-button open-chatbox-btn" >Chat</button>
+<button class="open-button open-chatbox-btn" data-guest-id="{{Session::get("guest")}}" >Chat</button>
 
 <div class="chat-popup">
     <div class="not-defined-user">
