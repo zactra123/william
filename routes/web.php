@@ -23,7 +23,6 @@ Route::get('credit-education', 'PagesController@creditEducation')->name('credit.
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
 Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
-Route::post('/identify-user', 'PagesController@identifyUser');
 
 
 
@@ -158,7 +157,11 @@ Route::group(['prefix' =>'client/details'], function() {
 
 
 
-
+Route::group(["prefix" => 'chat'], function(){
+    Route::post('/identify-user', 'ChatsController@identifyUser');
+    Route::get('/get-chat-messages', 'ChatsController@getChatMessages');
+    Route::post('/new-message', 'ChatsController@postNewMessage');
+});
 
 
 

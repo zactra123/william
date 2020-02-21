@@ -1,6 +1,6 @@
     <link rel="stylesheet" href="/css/chat_box.css">
 
-    <button class="open-button open-chatbox-btn" data-guest-id="{{Session::get("guest")}}" >Chat</button>
+    <button class="open-button open-chatbox-btn" data-user-id="{{"id"}}" data-guest-id="{{Session::get("guest")}}" >Chat</button>
 
     <div class="chat-popup">
         <div class="not-defined-user">
@@ -38,33 +38,6 @@
         </div>
         <div class="defined-user">
             <div class="chat-content">
-                <div class="message">
-                    <p>Hello. How are you today?</p>
-                    <span class="time-right">11:00</span>
-                </div>
-
-                <div class="message darker">
-                    <p>Hey! I'm fine. Thanks for asking!</p>
-                    <span class="time-left">11:01</span>
-                </div>
-                <div class="message">
-                    <p>Hello. How are you today?</p>
-                    <span class="time-right">11:00</span>
-                </div>
-
-                <div class="message darker">
-                    <p>Hey! I'm fine. Thanks for asking!</p>
-                    <span class="time-left">11:01</span>
-                </div>
-                <div class="message">
-                    <p>Hello. How are you today?</p>
-                    <span class="time-right">11:00</span>
-                </div>
-
-                <div class="message darker">
-                    <p>Hey! I'm fine. Thanks for asking!</p>
-                    <span class="time-left">11:01</span>
-                </div>
             </div>
             <form class="form-container">
 
@@ -79,3 +52,16 @@
         </div>
     </div>
     <script src="{{ asset('js/guest-chat-box.js?v=2') }}" defer></script>
+
+<script id="chat-message-to-admin-template" type="text/html">
+    <div class="message" data-message-id="{message-id}">
+        <p>{message}</p>
+        <span class="time-right">{time}</span>
+    </div>
+</script>
+<script id="chat-message-from-admin-template" type="text/html">
+    <div class="message darker" data-message-id="{data-message-id}">
+        <p>{message}</p>
+        <span class="time-left">{time}</span>
+    </div>
+</script>

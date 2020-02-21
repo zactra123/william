@@ -1,7 +1,11 @@
+
+
+
+
 identifyUser = function(guest) {
     return new Promise(function(resolve, reject) {
         $.ajax({
-            url: '/identify-user',
+            url: '/chat/identify-user',
             type: "POST",
             data: guest,
             success: function(response) {
@@ -15,13 +19,15 @@ identifyUser = function(guest) {
     })
 };
 
-postNewMessage = function(guest, message) {
+postNewMessage = function(recipient, message) {
     return new Promise(function(resolve, reject){
         $.ajax({
-            url: "/guest/" + guest + "/new-messages",
+            url: "/chat/new-message",
             type: "POST",
             data: {
-                message: message
+                message: message,
+                recipient_type: type,
+                recipient_id: recipient
             },
             success: function(response) {
                 resolve(response)
@@ -34,10 +40,14 @@ postNewMessage = function(guest, message) {
     })
 };
 
-getChatMessages = function(guest) {
+getChatMessages = function(recipient, type) {
     return new Promise(function(resolve, reject) {
         $.ajax({
-            url: "/guest/" + guest + "/get-chat-messages",
+            url: "/chat/get-chat-messages",
+            data: {
+                id: recipient,
+                type: type
+            },
             success: function(response){
                 resolve(response)
             },
@@ -57,14 +67,28 @@ getChatMessages = function(guest) {
 
 
 addMessageToChat = function(message) {
-
+    var message_template = $("#chat-message-to-admin-template").html();
+    if (message.type == 'from') {
+        message_template = $("#chat-message-to-admin-template").html();
+    }
+    message_template = message_template.replace(/{message}/g, message.message)
+                                        .replace(/{time}/g, '11:00')//petqa poxvi
+                                        .replace(/{message-id}/g, message.id)
+    $(".chat-content").append(message_template);
 };
 
 $(document).ready(function(){
     // connectToChannel(1)
     $(".open-chatbox-btn").click(function(){
-        $(this).data("guestId");
-        //yete data guest id uni  minagmic cuyc enq tallis defined-user
+        guest = $(this).data("guestId");
+        if(guest != '') {
+            getChatMessages(guest, "Guest")
+                .then(function(result){
+                    console.log(result)
+                })
+            $(".not-defined-user").hide();
+            $(".defined-user").show();
+        }
         $(".chat-popup").show();
         $(this).hide();
     });
@@ -82,11 +106,14 @@ $(document).ready(function(){
 
         identifyUser(data)
             .then(function(result){
+                console.log(result.message)
                 addMessageToChat(result.message)
+                $(".not-defined-user").hide();
+                $(".defined-user").show();
                 // connectToChannel(result.id)
             })
             .catch(function(error){
-                console.log(err)
+                console.log(error)
             })
     })
     })

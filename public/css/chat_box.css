@@ -92,7 +92,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin: 10px 1px 10px 10px;
   width: fit-content;
   float: right;
-
+  min-width: 51%;
 }
 
 /* Darker chat container */

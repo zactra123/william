@@ -44,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include users with client role.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -52,6 +52,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeClients($query)
     {
         return $query->where('users.role',  'client');
+    }
+
+    /**
+     * Scope a query to only include users with receptionist role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeReceptionists($query)
+    {
+        return $query->where('users.role',  'receptionist');
     }
 
 
