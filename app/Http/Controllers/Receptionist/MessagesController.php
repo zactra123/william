@@ -210,11 +210,7 @@ class MessagesController extends Controller
     }
 
 
-    public function liveChat()
-    {
-        return view('receptionist.live-chat.index');
 
-    }
 
 
 }

@@ -17,6 +17,17 @@ class Chat extends Model
         "type"
     ];
 
+    public function guest()
+    {
+        return $this->belongsTo('App\Guest','recipient_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo('App\User','recipient_id', 'id');
+
+    }
+
 
 
 }
