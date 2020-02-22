@@ -10,7 +10,6 @@ use App\HomePageContent;
 use Illuminate\Support\Facades\Validator;
 use App\Events\LiveChat;
 
-
 class SuperAdminsController extends Controller
 {
 
@@ -21,10 +20,6 @@ class SuperAdminsController extends Controller
 
     public function index(Request $request)
     {
-        $user = User::find(1);
-        broadcast(new LiveChat(["message" => $request->message, "user" => "affilate" ], $user));
-        dd($request->message);
-
 
         return view('owner.index');
     }

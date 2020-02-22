@@ -57,37 +57,56 @@ getChatMessages = function(recipient, type) {
         })
     });
 };
-//
-// connectToChannel = function(guest) {
-//     window.Echo.channel("LiveChat.guest_"+ guest)
-//         .listen("LiveChat", function(e){
-//             console.log(e)
-//         })
-// };
 
+connectToChannel = function(recipient, type) {
+    window.Echo.channel(`LiveChat.${type}_${recipient}`)
+        .listen("LiveChat", function(e){
+            console.log(e)
+        })
+};
+
+addAllMessages = function (data){
+    return $.each(data , function(index, message){
+        addMessageToChat(message);
+    });
+
+};
 
 addMessageToChat = function(message) {
+    var message_date = new Date(message.created_at);
+    var time = message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
     var message_template = $("#chat-message-to-admin-template").html();
     if (message.type == 'from') {
-        message_template = $("#chat-message-to-admin-template").html();
+        message_template = $("#chat-message-from-admin-template").html();
     }
     message_template = message_template.replace(/{message}/g, message.message)
-                                        .replace(/{time}/g, '11:00')//petqa poxvi
-                                        .replace(/{message-id}/g, message.id)
+                                        .replace(/{time}/g, time)
+                                        .replace(/{message-id}/g, message.id);
     $(".chat-content").append(message_template);
 };
 
 $(document).ready(function(){
-    // connectToChannel(1)
     $(".open-chatbox-btn").click(function(){
-        guest = $(this).data("guestId");
-        if(guest != '') {
-            getChatMessages(guest, "Guest")
+        var guest = $(this).data("guestId"),
+            user = $(this).data('userId');
+        if(guest != '' || user != '') {
+            var type = guest != ''? "guest" : "user",
+                recipient =  guest != '' ? guest : user;
+            getChatMessages(recipient, type)
                 .then(function(result){
-                    console.log(result)
+                    return addAllMessages(result.messages)
                 })
-            $(".not-defined-user").hide();
-            $(".defined-user").show();
+                .then(function(){
+                    connectToChannel(recipient, type);
+                    return true;
+                })
+                .then(function(data){
+                    $(".not-defined-user").hide();
+                    $(".defined-user").show();
+                    $(".chat-popup").show();
+                    $(this).hide();
+                }.bind(this));
+            return false
         }
         $(".chat-popup").show();
         $(this).hide();
@@ -103,11 +122,9 @@ $(document).ready(function(){
         $.each(form, function(key, el){
             data[el.name] = el.value;
         });
-
         identifyUser(data)
             .then(function(result){
-                console.log(result.message)
-                addMessageToChat(result.message)
+                addMessageToChat(result.message);
                 $(".not-defined-user").hide();
                 $(".defined-user").show();
                 // connectToChannel(result.id)
@@ -116,5 +133,9 @@ $(document).ready(function(){
                 console.log(error)
             })
     })
-    })
+
+    $(".form-container").submit(function(){
+       console.log("asdasd")
+    });
+});
 
