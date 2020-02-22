@@ -25,6 +25,10 @@
         max-height: 90%;
         overflow-y: auto;
     }
+    .chatMessage:hover{
+        background-color: #adafb8;
+    }
+
 </style>
 @section('content')
 
@@ -38,26 +42,35 @@
                             @foreach($chats as $chat)
 
                                 @if($chat->type == "User")
-                                    <div class="list-group-item chatMessage" data-id={{$chat->id}} data-type={{$chat->type}}>
+                                    <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
+                                         data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
                                         <div class="row">
-                                            <span>{{$chat->user_full_name}}</span>
-                                            <span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>{{$chat->message}}</span>
+                                            <span class="pl-2"><h3>{{$chat->user_full_name}}</h3></span>
+                                            @if($chat->message != 0)
+                                            <span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
+
+                                                </i>{{$chat->message}}</span>
+                                            @endif
                                         </div>
 
                                         <div class="row">
-                                            <span>{{$chat->type}}</span>
+                                            <span class="pl-2">{{$chat->type}}</span>
                                         </div>
                                     </div>
 
                                 @elseif($chat->type == "Guest")
-                                    <div class="list-group-item chatMessage" data-id={{$chat->id}} data-type={{$chat->type}}>
+                                    <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
+                                         data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
                                         <div class="row">
-                                            <span>{{$chat->full_name}}</span>
-                                            <span class="pl-2">   <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                              {{$chat->message}}</span>
+                                            <span class="pl-2"><h3>{{$chat->full_name}}</h3></span>
+                                            @if($chat->message != 0)
+                                                <span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
+
+                                                </i>{{$chat->message}}</span>
+                                            @endif
                                         </div>
                                         <div class="row">
-                                            <span>{{$chat->type}}</span>
+                                            <span class="pl-2">{{$chat->type}}</span>
                                         </div>
 
                                     </div>
@@ -123,6 +136,8 @@ $(document).ready(function () {
         var type = $(this).attr("data-type");
         var token = "<?= csrf_token()?>";
 
+
+
         $.ajax({
             url: "live-chat/chat-message",
             method:"POST",
@@ -150,18 +165,28 @@ $(document).ready(function () {
 
                     if(result.chats[val]['type'] == 'User'){
 
-                        chatListHtml += '<div class="list-group-item chatMessage" data-id='+result.chats[val]['id']
-                        chatListHtml +=  ' data-type='+result.chats[val]['type']+ '> <div class="row"><span>'
-                        chatListHtml += result.chats[val]['user_full_name']+'</span><span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
-                        chatListHtml += result.chats[val]['message']+'</span> </div> <div class="row"> <span>'+result.chats[val]['type']
+                        chatListHtml += '<div class="list-group-item chatMessage" id='+result.chats[val]['type']+ result.chats[val]['id']+' data-id='+result.chats[val]['id']
+                        chatListHtml +=  ' data-type='+result.chats[val]['type']+ '> <div class="row"><span><h3>'
+                        chatListHtml += result.chats[val]['user_full_name']+'</h3></span>'
+                        if(result.chats[val]['message'] != 0){
+                            chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
+                            chatListHtml += result.chats[val]['message']+'</span>'
+                        }
+
+                        chatListHtml += '</div> <div class="row"> <span>'+result.chats[val]['type']
                         chatListHtml += '</span></div></div>'
 
 
                     }else{
-                        chatListHtml += '<div class="list-group-item chatMessage" data-id='+result.chats[val]['id']
-                        chatListHtml +=  ' data-type='+result.chats[val]['type']+ '> <div class="row"><span>'
-                        chatListHtml += result.chats[val]['full_name']+'</span><span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
-                        chatListHtml += result.chats[val]['message']+'</span> </div> <div class="row"> <span>'+result.chats[val]['type']
+                        chatListHtml += '<div class="list-group-item chatMessage" id='+result.chats[val]['type']+ result.chats[val]['id']+' data-id='+result.chats[val]['id']
+                        chatListHtml +=  ' data-type='+result.chats[val]['type']+ '> <div class="row"><span><h3>'
+                        chatListHtml += result.chats[val]['full_name']+'</h3></span>'
+                        if(result.chats[val]['message'] != 0){
+                            chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
+                            chatListHtml += result.chats[val]['message']+'</span>'
+                        }
+
+                        chatListHtml += '</div> <div class="row"> <span>'+result.chats[val]['type']
                         chatListHtml += '</span></div></div>'
                     }
                 }
@@ -169,37 +194,23 @@ $(document).ready(function () {
                 chatListHtml += '</div>'
 
                 $("#showChatMessage").html(html);
-
                 $("#chatListId").html(chatListHtml);
-
-
                 $("#recipientId").val(result.recipient.id);
                 $("#recipientType").val(result.recipient.type);
-
-
-
                 $("#chatAnswer").show()
+                $("#"+type+id).css('background-color', '#adafb8')
 
             },
-
-
 
             error:function (err,state) {
                 console.log(err)
             }
         });
 
-
-
-
-
-
-
     })
 
     $("#chatAnswer form").submit(function(e){
         e.preventDefault();
-
 
         var form = $(this).serializeArray(), data={};
         $.each(form, function(index, el){
@@ -210,10 +221,7 @@ $(document).ready(function () {
             type:"POST",
             data: data,
             success: function (result) {
-
                 html='<div>';
-
-
                 for( let val in result.chatMessage){
 
                     if(result.chatMessage[val]['type'] == 'to'){
@@ -230,24 +238,18 @@ $(document).ready(function () {
                 html+= '</div>'
                 $("#showChatMessage").html(html);
 
-
                 $("#recipientId").val(result.recipient.id);
                 $("#recipientType").val(result.recipient.type);
 
                 $("#chatAnswer form")[0].reset()
 
-
                 $("#chatAnswer").show()
-
-
             },
 
             error:function (err, state) {
 
             }
         });
-
-
 
     })
 
