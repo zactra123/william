@@ -2,8 +2,8 @@
 
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use Socialite;
+use Illuminate\Http\Request;
 use App\User;
 use App\ClientDetail;
 use App\SocialAccount;
@@ -16,8 +16,9 @@ class SocialAuthController extends Controller
      *
      * @return void
      */
-    public function redirect()
+    public function redirect(Request $request)
     {
+
         return Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
         ])->scopes([
@@ -44,9 +45,9 @@ class SocialAuthController extends Controller
 
             $user = User::where('email', $facebookUser->user['email'])->first();
             if ($user) {
-
+//                dd('es usery arten login exaca');
                 return redirect()->to('/login')
-                    ->withErrors(['error'=> "User with this mail was already registered!!"]);
+                    ->withErrors("User with this mail was already registered!!");
             }
 
             $account = new SocialAccount([
