@@ -126,12 +126,7 @@
     </header> <!-- .site-header -->
     @include('helpers/flash')
     <main class="content">
-
-
-            @yield('content')
-
-
-
+        @yield('content')
     </main>
 
      <!-- .content -->
@@ -178,9 +173,9 @@
 
 </div> <!-- #site-content -->
 
-<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('js/js/plugins.js')}}"></script>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('/js/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('/js/js/plugins.js')}}"></script>
+<script src="{{asset('/js/js/app.js')}}"></script>
 
 </body>
 
