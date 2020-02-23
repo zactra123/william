@@ -2,6 +2,7 @@
 connectToChannel = function (user) {
     window.Echo.channel(`ReceptionistLiveChat.${user}`)
         .listen("ReceptionistLiveChat", function(e){
+            //Stexa petq sarqel
             console.log(e)
             if (true){
                 addMessageToChat(e.message)
