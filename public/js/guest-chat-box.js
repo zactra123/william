@@ -1,7 +1,3 @@
-
-
-
-
 identifyUser = function(guest) {
     return new Promise(function(resolve, reject) {
         $.ajax({
@@ -86,18 +82,23 @@ addMessageToChat = function(message) {
 };
 
 $(document).ready(function(){
+    recipient = {
+        id: '',
+        type: '',
+    };
+
     $(".open-chatbox-btn").click(function(){
         var guest = $(this).data("guestId"),
             user = $(this).data('userId');
         if(guest != '' || user != '') {
-            var type = guest != ''? "guest" : "user",
-                recipient =  guest != '' ? guest : user;
+            this.recipient.type = guest != ''? "guest" : "user";
+            this.recipient.id =  guest != '' ? guest : user;
             getChatMessages(recipient, type)
                 .then(function(result){
                     return addAllMessages(result.messages)
                 })
                 .then(function(){
-                    connectToChannel(recipient, type);
+                    connectToChannel(this.recipient.id, this.recipient.type);
                     return true;
                 })
                 .then(function(data){
@@ -105,37 +106,51 @@ $(document).ready(function(){
                     $(".defined-user").show();
                     $(".chat-popup").show();
                     $(this).hide();
+                    connectToChannel(this.recipient.id,this.recipient.type)
                 }.bind(this));
             return false
         }
         $(".chat-popup").show();
         $(this).hide();
     });
+    $('.us-phone').mask('(000) 000-0000');
+    $(".not-defined-user form").validate({
+        rules: {
+            "email": {
+                required: true,
+                email: true
+            },
+            "message":{
+                required: true
+            },
+            phone: {
 
-    //validate js avelacnel
-    //stugel vor emaile u message partadir lracrac lini
-    //
-    $(".not-defined-user form").submit(function(e) {
-        e.preventDefault();
-        form = $(this).serializeArray();
-        data = {};
-        $.each(form, function(key, el){
-            data[el.name] = el.value;
-        });
-        identifyUser(data)
-            .then(function(result){
-                addMessageToChat(result.message);
-                $(".not-defined-user").hide();
-                $(".defined-user").show();
-                // connectToChannel(result.id)
-            })
-            .catch(function(error){
-                console.log(error)
-            })
-    })
+            }
+        },
+        submitHandler: function(form) {
+            event.preventDefault()
+            form_data = $(form).serializeArray();
+            data = {};
+            $.each(form_data, function(key, el){
+                data[el.name] = el.value;
+            });
+
+            identifyUser(data)
+                .then(function(result){
+                    addMessageToChat(result.message);
+                    $(".not-defined-user").hide();
+                    $(".defined-user").show();
+                    // connectToChannel(result.id)
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+        }
+    });
 
     $(".form-container").submit(function(){
        console.log("asdasd")
+
     });
 
     $(".close-chat").click(function(){

@@ -36,16 +36,13 @@
 
 
         <div class="bottom-header">
-            <div class="container" id="app">
-                @if(Auth::user()->role == 'receptionist')
-                    <a href="{{ url('receptionist/message') }}" class="branding pull-left">
-                @else
-                    <a href="{{ url('/') }}"  class="branding pull-left">
-                @endif
-                        <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
-                        <h1 class="site-title">Company <span>Name</span></h1>
-                        <h2 class="site-description">Tagline goes here</h2>
-                    </a> <!-- #branding -->
+            <div class="container" id="app" data-user-id="{{Auth::id()}}">
+
+                <a href="{{ Auth::user()->role == 'receptionist' ? url('receptionist/message')  : url('/') }}" class="branding pull-left">
+                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                    <h1 class="site-title">Company <span>Name</span></h1>
+                    <h2 class="site-description">Tagline goes here</h2>
+                </a> <!-- #branding -->
 
                     <nav class="main-navigation pull-right ">
                         <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
@@ -117,37 +114,40 @@
 
 </div> <!-- #site-content -->
 
-<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('js/js/plugins.js')}}"></script>
-<script src="{{asset('js/js/app.js')}}"></script>
+<script src="{{asset('/js/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{asset('/js/js/plugins.js')}}"></script>
+<script src="{{asset('/js/js/app.js')}}"></script>
+<script src="{{asset('/js/receptionist/live-chat.js')}}"></script>
 
 
 
 <script>
-$(document).ready(function(){
-    setInterval(getAppiontments(), 10 * 60 * 1000);
-});
-
-getAppiontments = function(){
-    $.ajax({
-        url: "/receptionist/getNotifications",
-        type: "get",
-        success: function(result){
-            if (result.length > 0) {
-                console.log(result.length)
-                $("#appointmentNotifier .apointments-count").text(result.length)
-                $("#appointmentNotifier .appointments-info").text()
-                $.each( result, function(i, e){
-                    var appointment = '<div class="text-primary">'+ e.name + '</div>';
-                    $("#appointmentNotifier .appointments-info").append(appointment)
-                });
-                $("#appointmentNotifier").modal("show");
-            }
-        }
-    })
-}
+// $(document).ready(function(){
+//     setInterval(getAppiontments(), 10 * 60 * 1000);
+// });
+//
+// getAppiontments = function(){
+//     // $.ajax({
+//     //     url: "/receptionist/getNotifications",
+//     //     type: "get",
+//     //     success: function(result){
+//     //         if (result.length > 0) {
+//     //             console.log(result.length)
+//     //             $("#appointmentNotifier .apointments-count").text(result.length)
+//     //             $("#appointmentNotifier .appointments-info").text()
+//     //             $.each( result, function(i, e){
+//     //                 var appointment = '<div class="text-primary">'+ e.name + '</div>';
+//     //                 $("#appointmentNotifier .appointments-info").append(appointment)
+//     //             });
+//     //             $("#appointmentNotifier").modal("show");
+//     //         }
+//     //     }
+//     // })
+// }
 
 </script>
+
+
 </body>
 
 </html>

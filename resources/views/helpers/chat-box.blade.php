@@ -33,7 +33,7 @@
 
                 <div class="form-group row m-1">
                     <div class="col-md-11">
-                        <input id="phone" type="text" class="form-control" name="phone" required placeholder="Phone Number">
+                        <input id="phone" type="text" class="form-control us-phone" name="phone" placeholder="Phone Number">
 
                     </div>
                 </div>
@@ -78,7 +78,9 @@
         </form>
     </div>
 </div>
-<script src="{{ asset('js/guest-chat-box.js?v=2') }}" defer></script>
+<script src="{{ asset('/js/lib/jquery.validate.min.js') }}" defer></script>
+<script src="{{ asset('/js/lib/jquery.mask.min.js') }}" defer></script>
+<script src="{{ asset('/js/guest-chat-box.js?v=2') }}" defer></script>
 
 <script id="chat-message-to-admin-template" type="text/html">
     <div class="message" data-message-id="{message-id}">

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\Chat;
 use Illuminate\Http\Request;
-use App\Events\LiveChat;
+use App\Events\ReceptionistLiveChat;
 use Response;
 use App\User;
 
@@ -93,8 +93,9 @@ class ChatsController extends Controller
      *  received params ["recipient_type","recipient_id","message"]
      *  returned response the created message
      */
-    public function postNewMessage($id)
+    public function postNewMessage(Request $requests)
     {
+        dd($requests->all());
 
     }
 }
