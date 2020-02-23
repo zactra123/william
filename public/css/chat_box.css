@@ -29,22 +29,30 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: white;
   bottom: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;
+  /*border: 3px solid #f1f1f1;*/
   z-index: 9;
 }
 
 .chat-content {
   height: 250px;
   background-color: white;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.chat-content.initial {
+  height: 100px;
 }
 
 /* Add styles to the form container */
 .not-defined-user .form-container{
   background-color: white;
 }
+.chat-popup .card-header{
+  background-color: #0c71c3;
+  color: #fff;
+}
 .defined-user .form-container {
-  max-width: 300px;
+  /*max-width: 300px;*/
   padding: 10px;
   background-color: white;
 }
@@ -121,4 +129,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .time-left {
   float: left;
   color: #999;
+}
+.comment-text-area {
+  position: relative;
+  float: left;
+  width: calc(100%);
+  height: 75%;
+}
+.textinput {
+  position: relative;
+  float:left;
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: 1px solid #f0f0f0;
+}
+
+.sendChatMessage {
+  background-color: #bbb;
+  display: block;
+  margin: 5px 0 22px 0 ;
+  padding: 10px;
+  height: 75%;
 }

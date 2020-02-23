@@ -137,5 +137,10 @@ $(document).ready(function(){
     $(".form-container").submit(function(){
        console.log("asdasd")
     });
+
+    $(".close-chat").click(function(){
+        $(".chat-popup").hide();
+        $(".open-button").show();
+    })
 });
 

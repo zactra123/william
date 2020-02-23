@@ -31,7 +31,6 @@
 @section('content')
     <div class="row ml-0 mr-0">
 
-
         <div class="col-2 sidebar ml-0 mr-0">
             @foreach($contents as  $content)
                 @if($content->id%2==0 )

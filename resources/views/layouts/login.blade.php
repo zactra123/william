@@ -13,13 +13,17 @@
     <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{--    <script src="{{ asset('js/app.js?v=2') }}" defer></script>--}}
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/app.js?v=2') }}" defer></script>
 
 
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
         .up-color{
@@ -41,6 +45,8 @@
         body{
             font-family:"Roboto Slab", serif; ;
         }
+
+
 
     </style>
 
