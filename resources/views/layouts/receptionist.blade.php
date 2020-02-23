@@ -21,9 +21,10 @@
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
 
 
-    <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
-    <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
-
+    <script src="{{asset('/js/js/ie-support/html5.js')}}"></script>
+    <script src="{{asset('/js/js/ie-support/respond.js')}}"></script>
+    <script src="{{asset('/js/js/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{asset('/js/js/plugins.js')}}"></script>
 
 
 </head>
@@ -114,8 +115,6 @@
 
 </div> <!-- #site-content -->
 
-<script src="{{asset('/js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('/js/js/plugins.js')}}"></script>
 <script src="{{asset('/js/js/app.js')}}"></script>
 <script src="{{asset('/js/receptionist/live-chat.js')}}"></script>
 

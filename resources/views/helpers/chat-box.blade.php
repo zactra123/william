@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/chat_box.css">
 
-<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" >Chat</button>
-{{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{4}}" >Chat</button>--}}
+{{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" >Chat</button>--}}
+<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{7}}" >Chat</button>
 
 <div class="chat-popup">
     <div class="not-defined-user">
@@ -65,11 +65,11 @@
                 <div class="form-group row m-1">
                     <div class="col-md-10 m-0 p-0">
                         <div class="comment-text-area">
-                            <textarea class="textinput" placeholder="Type message.." name="msg" required></textarea>
+                            <textarea class="textinput" placeholder="Type message.." name="message" ></textarea>
                         </div>
                     </div>
                     <div class="col-md-2  p-1">
-                        <button type="button" class="btn m-0 sendChatMessage" onclick="closeForm()">send</button>
+                        <button type="submit" class="btn m-0 sendChatMessage">send</button>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
     </div>
 </script>
 <script id="chat-message-from-admin-template" type="text/html">
-    <div class="message darker" data-message-id="{data-message-id}">
+    <div class="message darker" data-message-id="{message-id}">
         <p>{message}</p>
         <span class="time-left">{time}</span>
     </div>

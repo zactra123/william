@@ -108,6 +108,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\AllowedIp');
     }
 
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');
+    }
+
 
     public function clientAttachments()
     {

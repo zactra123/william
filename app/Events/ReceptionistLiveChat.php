@@ -2,6 +2,8 @@
 
 namespace App\Events;
 
+use App\Chat;
+use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -22,7 +24,11 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function __construct($data)
     {
+        $admin = User::find($data->user_id);
 
+        $recipients_lists = Chat::chatList($data->user_id);
+
+        dd("asdasd",$recipients_lists);
     }
 
     /**

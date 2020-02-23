@@ -6,6 +6,7 @@ use App\Guest;
 use App\Chat;
 use Illuminate\Http\Request;
 use App\Events\ReceptionistLiveChat;
+use Illuminate\Support\Facades\Broadcast;
 use Response;
 use App\User;
 
@@ -95,7 +96,21 @@ class ChatsController extends Controller
      */
     public function postNewMessage(Request $requests)
     {
-        dd($requests->all());
+       if ($requests->recipient_type == "guest") {
+           $last_message = Chat::where("recipient_type", $requests->recipient_type)
+               ->where("recipient_id", $requests->recipient_id)
+               ->first();
+
+           $new_message = Chat::create([
+               "recipient_type" => $requests->recipient_type,
+               "recipient_id" => $requests->recipient_id,
+               "message" => $requests->message,
+               "user_id" => $last_message->user_id
+           ]);
+
+           \broadcast(new ReceptionistLiveChat($new_message));
+           return Response::json(["messages" => $new_message]);
+       }
 
     }
 }

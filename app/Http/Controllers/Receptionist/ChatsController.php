@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Receptionist;
 
+use App\Events\LiveChat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -61,19 +62,20 @@ class ChatsController extends Controller
     public function create(Request $request)
     {
         $userId = Auth::user()->id;
-        Chat::create([
+        $new_message = Chat::create([
             "message" => $request->answer,
             "recipient_type" => $request->recipient_type,
             "recipient_id" => $request->recipient_id,
             "user_id" => $userId,
             "type" => "from"
         ]);
+        broadcast(new LiveChat($new_message));
 
         $chatMessage =  Chat::where('recipient_type', $request->recipient_type)
             ->where('recipient_id', $request->recipient_id);
 
 
-        $updateChatMessageStatus = $chatMessage ->update(['unread'=>false]);
+        $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
         $chatMessage = $chatMessage->get();
 
         $chats = $this->chatList($userId);
@@ -85,7 +87,6 @@ class ChatsController extends Controller
             'recipient' =>$recipientData,
             'chats' => $chats
         ] ;
-
 
         return Response::json($data);
 

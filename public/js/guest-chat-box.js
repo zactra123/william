@@ -21,9 +21,10 @@ postNewMessage = function(recipient, message) {
             url: "/chat/new-message",
             type: "POST",
             data: {
+                "_token": $("meta[name='csrf-token']").attr("content"),
                 message: message,
-                recipient_type: type,
-                recipient_id: recipient
+                recipient_type: recipient.type,
+                recipient_id: recipient.id
             },
             success: function(response) {
                 resolve(response)
@@ -57,7 +58,7 @@ getChatMessages = function(recipient, type) {
 connectToChannel = function(recipient, type) {
     window.Echo.channel(`LiveChat.${type}_${recipient}`)
         .listen("LiveChat", function(e){
-            console.log(e)
+            addMessageToChat(e.message);
         })
 };
 
@@ -69,6 +70,9 @@ addAllMessages = function (data){
 };
 
 addMessageToChat = function(message) {
+    if ($(".chat-content").find(`[data-message-id='${message.id}']`).length > 0){
+        return false;
+    }
     var message_date = new Date(message.created_at);
     var time = message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
     var message_template = $("#chat-message-to-admin-template").html();
@@ -91,14 +95,14 @@ $(document).ready(function(){
         var guest = $(this).data("guestId"),
             user = $(this).data('userId');
         if(guest != '' || user != '') {
-            this.recipient.type = guest != ''? "guest" : "user";
-            this.recipient.id =  guest != '' ? guest : user;
-            getChatMessages(recipient, type)
+            recipient.type = user != ''? "user" : "guest";
+            recipient.id =  guest != '' ? guest : user;
+            getChatMessages(recipient.id, recipient.type)
                 .then(function(result){
                     return addAllMessages(result.messages)
                 })
                 .then(function(){
-                    connectToChannel(this.recipient.id, this.recipient.type);
+                    connectToChannel(recipient.id, recipient.type);
                     return true;
                 })
                 .then(function(data){
@@ -106,7 +110,7 @@ $(document).ready(function(){
                     $(".defined-user").show();
                     $(".chat-popup").show();
                     $(this).hide();
-                    connectToChannel(this.recipient.id,this.recipient.type)
+                    connectToChannel(recipient.id, recipient.type)
                 }.bind(this));
             return false
         }
@@ -128,7 +132,7 @@ $(document).ready(function(){
             }
         },
         submitHandler: function(form) {
-            event.preventDefault()
+            event.preventDefault();
             form_data = $(form).serializeArray();
             data = {};
             $.each(form_data, function(key, el){
@@ -148,8 +152,13 @@ $(document).ready(function(){
         }
     });
 
-    $(".form-container").submit(function(){
-       console.log("asdasd")
+    $(".defined-user form").submit(function(e){
+        e.preventDefault();
+        var message = $(this).find(".textinput").val();
+        postNewMessage(recipient, message)
+            .then(function(data){
+                console.log(data)
+            })
 
     });
 
