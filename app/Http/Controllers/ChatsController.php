@@ -9,6 +9,9 @@ use App\Events\LiveChat;
 use Response;
 use App\User;
 
+use Active;
+
+
 
 class ChatsController extends Controller
 {
@@ -23,7 +26,32 @@ class ChatsController extends Controller
      */
     public function identifyUser(Request $request)
     {
-        $receptionist = User::receptionists()->get()->random();
+
+        $actives = Active::usersWithinMinutes(60)->get();
+        $receptionistId = [];
+        foreach($actives as $users){
+            if($users->user->role == 'receptionist'){
+                $receptionistId[] = $users->user->id;
+            }
+        }
+
+        $timeInterval  = date('Y-m-d H:i:s',  strtotime("-1 day"));
+
+        $chatUserId =Chat::where('created_at','>',$timeInterval)
+            ->distinct('user_id')
+            ->pluck('user_id')->toArray();
+
+
+        $dif = array_diff($receptionistId, $chatUserId);
+
+        if(!empty($dif))
+        {
+           $userId =  $dif[array_rand($dif)];
+        }else{
+            $userId = $receptionistId[array_rand($receptionistId)];
+        }
+
+
         $guest = Guest::create([
             "full_name" => $request->full_name,
             "email" => $request->email,
@@ -35,7 +63,7 @@ class ChatsController extends Controller
             "message" => $request->message,
             "recipient_type" => "Guest",
             "recipient_id" => $guest->id,
-            "user_id" => $receptionist->id,
+            "user_id" => $userId,
             "type" => "to"
         ]);
 

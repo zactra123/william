@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea24735b18b1d0bd8d7042b5e973f9aa",
+    "content-hash": "2281b6974c431d6486bbf3ea32cf0505",
     "packages": [
         {
             "name": "alimranahmed/laraocr",
@@ -1263,6 +1263,56 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "joshrainwater/active-users",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joshrainwater/active-users.git",
+                "reference": "5c5904162238d0d989728fcf5c63cfe0f9449608"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joshrainwater/active-users/zipball/5c5904162238d0d989728fcf5c63cfe0f9449608",
+                "reference": "5c5904162238d0d989728fcf5c63cfe0f9449608",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.6|~5.7|~5.8|~6.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.7",
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rainwater\\Active\\ActiveServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rainwater\\Active\\": "src/Active"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Package for easily retrieving a list of active users and guests that are currently online.",
+            "homepage": "https://github.com/joshrainwater/active-users",
+            "keywords": [
+                "active uesrs",
+                "laravel",
+                "online activity",
+                "php"
+            ],
+            "time": "2019-09-11T15:06:47+00:00"
         },
         {
             "name": "laravel/framework",

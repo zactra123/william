@@ -14,6 +14,7 @@ use App\Chat;
 
 
 
+
 class ChatsController extends Controller
 {
 
@@ -24,8 +25,10 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
-       $userId  = Auth::user()->id;
-       $chats = $this->chatList($userId);
+
+
+        $userId  = Auth::user()->id;
+        $chats = $this->chatList($userId);
 
         return view('receptionist.live-chat.index', compact('chats'));
     }
