@@ -67,7 +67,7 @@ class ChatsController extends Controller
             "user_id" => $userId,
             "type" => "to"
         ]);
-
+        broadcast(new ReceptionistLiveChat($message));
         return Response::json(["guest"=> $guest, "message" => $message]);
     }
 
@@ -108,7 +108,7 @@ class ChatsController extends Controller
                "user_id" => $last_message->user_id
            ]);
 
-           \broadcast(new ReceptionistLiveChat($new_message));
+           broadcast(new ReceptionistLiveChat($new_message));
            return Response::json(["messages" => $new_message]);
        }
 

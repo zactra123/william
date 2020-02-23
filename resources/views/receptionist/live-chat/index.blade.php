@@ -157,6 +157,29 @@
 
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
 
-<script>
+<script id="receptionist-question-template" type="text/html">
+    <div class="row  pt-2" data-message-id="{message-id}">
+        <div class="col-6  align-left message">
+            <div class="row">{message}</div>
+            <div class="row">{time}</div>
+        </div>
+    </div>
+</script>
 
+<script id="receptionist-answer-template" type="text/html">
+    <div class="row  pt-2" data-message-id="{message-id}">
+        <div class="col-6 offset-6 align-left message darker">
+            <div class="row">{message}</div>
+            <div class="row">{time}</div>
+        </div>
+    </div>
+</script>
+
+<script id="receptionist-recipient-template" type="text/html">
+    <div class="row  pt-2" data-message-id="{message-id}">
+        <div class="col-6 offset-6 align-left message darker">
+            <div class="row">{message}</div>
+            <div class="row">{time}</div>
+        </div>
+    </div>
 </script>

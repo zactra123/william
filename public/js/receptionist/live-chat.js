@@ -3,7 +3,26 @@ connectToChannel = function (user) {
     window.Echo.channel(`ReceptionistLiveChat.${user}`)
         .listen("ReceptionistLiveChat", function(e){
             console.log(e)
+            if (true){
+                addMessageToChat(e.message)
+            }
         })
+};
+
+addMessageToChat = function(message) {
+    if ($("#showChatMessage").find(`[data-message-id='${message.id}']`).length > 0){
+        return false;
+    }
+    var message_date = new Date(message['created_at']);
+    var message_template = $("#receptionist-question-template").html();
+    var time = message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
+    if (message.type != 'to') {
+        message_template = $("#receptionist-answer-template").html()
+    }
+    message_template = message_template.replace(/{message}/g, message.message)
+                                        .replace(/{time}/g, time)
+                                        .replace(/{message-id}/g, message.id);
+    $("#showChatMessage").append(message_template);
 };
 
 $(document).ready(function(){
@@ -19,26 +38,12 @@ $(document).ready(function(){
             data:{id:id, type:type, _token: token},
             success: function (result) {
 
-                html='<div class="chat-content">';
+                // html='<div class="chat-content">';
+                $("#showChatMessage").html("")
                 for( let val in result.chatMessage){
-
-                    var message_date = new Date(result.chatMessage[val]['created_at']);
-
-                    if(result.chatMessage[val]['type'] == 'to'){
-                        html += '<div class="row  pt-2" ><div class="col-6  align-left message"><div class="row">'
-                        html +=  result.chatMessage[val]['message']+'</div><div class="row">'
-                        html += message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
-                        html +=  '</div></div></div>'
-
-                    }else{
-                        html += '<div class="row  pt-2" ><div class="col-6 offset-6 align-left message darker" ><div class="row">'
-                        html +=  result.chatMessage[val]['message']+'</div><div class="row">'
-                        html += message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
-                        html +=  '</div></div></div>'
-                    }
+                    addMessageToChat(result.chatMessage[val])
                 }
-                html+= '</div>'
-                console.log(result)
+                // html+= '</div>'
                 chatListHtml = '<div>';
                 for( let val in result.chats){
 

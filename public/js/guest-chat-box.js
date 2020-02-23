@@ -64,6 +64,7 @@ connectToChannel = function(recipient, type) {
 
 addAllMessages = function (data){
     return $.each(data , function(index, message){
+        $(".chat-content").html("");
         addMessageToChat(message);
     });
 
