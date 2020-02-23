@@ -3,10 +3,14 @@ connectToChannel = function (user) {
     window.Echo.channel(`ReceptionistLiveChat.${user}`)
         .listen("ReceptionistLiveChat", function(e){
             //Stexa petq sarqel
-            console.log(e)
+            console.log(e);
+            // misht metq nkarel noric koxqi liste
+            // petqa noric activ nshel en vor activ er exel
             if (true){
+                //stex petqa mtni en vaxt yerb ira chatna active
                 addMessageToChat(e.message)
             }
+            //verevi chati koxqe endhanur unreads-e avelacnel 
         })
 };
 
