@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Chat;
 use App\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -17,6 +16,8 @@ class ReceptionistLiveChat implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $recipient_lists;
+    public $unreads;
     /**
      * Create a new event instance.
      *
@@ -24,11 +25,12 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function __construct($data)
     {
+
         $admin = User::find($data->user_id);
+        $this->message = $data;
+        $this->recipient_lists = $admin->chat_list();
+        $this->unreads = array_sum(array_map('intval',array_column($this->recipient_lists, "message")));
 
-        $recipients_lists = Chat::chatList($data->user_id);
-
-        dd("asdasd",$recipients_lists);
     }
 
     /**
@@ -38,6 +40,7 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('ReceptionistLiveChat');
+//        dd("ReceptionistLiveChat.{$this->message->user_id}");
+        return new Channel("ReceptionistLiveChat.{$this->message->user_id}");
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ReceptionistLiveChat implements ShouldBroadcast
+class LiveChat implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,7 +22,6 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function __construct($data)
     {
-        dd($data);
         $this->message = $data;
 
     }

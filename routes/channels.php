@@ -20,6 +20,6 @@ Broadcast::channel('LiveChat.{id}', function ($id) {
 });
 
 
-Broadcast::channel('ReceptionistLiveChat', function(){
+Broadcast::channel('ReceptionistLiveChat.{id}', function($id){
     return true;
 });

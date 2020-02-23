@@ -1,11 +1,9 @@
 
-connectToChannel = function () {
-    connectToChannel = function(user) {
-        window.Echo.channel(`ReceptionistLiveChat.user_${user}`)
-            .listen("LiveChat", function(e){
-                console.log(e)
-            })
-    };
+connectToChannel = function (user) {
+    window.Echo.channel(`ReceptionistLiveChat.${user}`)
+        .listen("ReceptionistLiveChat", function(e){
+            console.log(e)
+        })
 };
 
 $(document).ready(function(){
