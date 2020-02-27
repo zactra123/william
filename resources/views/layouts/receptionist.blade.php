@@ -49,7 +49,18 @@
                         <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                         <ul class="menu">
 
-                            <li class="menu-item"><a href="{{ route('receptionist.liveChat.index')}}" >Chat</a></li>
+                            <li class="menu-item">
+                                <a href="{{ route('receptionist.liveChat.index')}}" >Chat
+                                    <span id="allMessageCount">
+
+
+                                    @if(isset($unreads) && empty($unreads))
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>{{$unreds}}
+                                    @endif
+                                    </span>
+                                </a>
+
+                            </li>
                             <li class="menu-item"><a href="{{ route('receptionist.message.index')}}" >Messages</a></li>
                             <li class="menu-item">
                                 <ul class="navbar-nav ml-auto">

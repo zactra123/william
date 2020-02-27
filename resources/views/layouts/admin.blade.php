@@ -25,7 +25,6 @@
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
 
-
 </head>
 
 <body>
@@ -37,47 +36,46 @@
 
         <div class="bottom-header">
             <div class="container" id="app">
-                @if(Auth::user()->role == 'admin')
-                    <a href="{{ url('/admin') }}" class="branding pull-left">
-                @else
-                    <a href="{{ url('/') }}"  class="branding pull-left">
-                @endif
-                        <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
-                        <h1 class="site-title">Company <span>Name</span></h1>
-                        <h2 class="site-description">Tagline goes here</h2>
-                    </a> <!-- #branding -->
+                <a href="{{Auth::user()->role == 'admin' ? url('/admin') : url('/)}}" class="branding pull-left">
 
-                    <nav class="main-navigation pull-right ">
-                        <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                        <ul class="menu">
+                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
+                    <h1 class="site-title">Company <span>Name</span></h1>
+                    <h2 class="site-description">Tagline goes here</h2>
+                </a> <!-- #branding -->
 
-                            <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
-                            <li class="menu-item">
-                                <ul class="navbar-nav ml-auto">
-                                    <!-- Authentication Links -->
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->email }} <span class="caret"></span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                <nav class="main-navigation pull-right ">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+
+                        <li class="menu-item"><a href="{{ route('admin.message.index')}}">Messages</a></li>
+                        <li class="menu-item"><a href="{{ route('admin.client.list')}}">User List</a></li>
+                        <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}">Affiliate List</a></li>
+                        <li class="menu-item">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->email }} <span class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
+                                            {{ __('Logout') }}
+                                        </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                    </nav> <!-- .main-navigation -->
+                </nav> <!-- .main-navigation -->
             </div> <!-- .container -->
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
@@ -88,11 +86,11 @@
         @yield('content')
 
 
-
     </main>
 
     <!-- .content -->
-    <div class="modal fad" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+    <div class="modal fad" id="appointmentNotifier" tabindex="-1" role="dialog"
+         aria-labelledby="appointmentDetailsModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,7 +113,6 @@
     </div>
 
 
-
 </div> <!-- #site-content -->
 
 <script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
@@ -123,30 +120,29 @@
 <script src="{{asset('js/js/app.js')}}"></script>
 
 
-
 <script>
-$(document).ready(function(){
-    setInterval(getAppiontments(), 10 * 60 * 1000);
-});
+    $(document).ready(function () {
+        setInterval(getAppiontments(), 10 * 60 * 1000);
+    });
 
-getAppiontments = function(){
-    $.ajax({
-        url: "/admin/getNotifications",
-        type: "get",
-        success: function(result){
-            if (result.length > 0) {
-                console.log(result.length)
-                $("#appointmentNotifier .apointments-count").text(result.length)
-                $("#appointmentNotifier .appointments-info").text()
-                $.each( result, function(i, e){
-                    var appointment = '<div class="text-primary">'+ e.name + '</div>';
-                    $("#appointmentNotifier .appointments-info").append(appointment)
-                });
-                $("#appointmentNotifier").modal("show");
+    getAppiontments = function () {
+        $.ajax({
+            url: "/admin/getNotifications",
+            type: "get",
+            success: function (result) {
+                if (result.length > 0) {
+                    console.log(result.length)
+                    $("#appointmentNotifier .apointments-count").text(result.length)
+                    $("#appointmentNotifier .appointments-info").text()
+                    $.each(result, function (i, e) {
+                        var appointment = '<div class="text-primary">' + e.name + '</div>';
+                        $("#appointmentNotifier .appointments-info").append(appointment)
+                    });
+                    $("#appointmentNotifier").modal("show");
+                }
             }
-        }
-    })
-}
+        })
+    }
 
 </script>
 </body>

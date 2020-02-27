@@ -26,12 +26,9 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
-
-
-        $userId  = Auth::user()->id;
-        $chats = $this->chatList($userId);
-
-        return view('receptionist.live-chat.index', compact('chats'));
+        $chats = Auth::user()->chat_list();
+        $unreads = array_sum(array_map('intval',array_column($chats, "message")));
+        return view('receptionist.live-chat.index', compact('chats', 'unreads'));
     }
 
     public function show(Request $request)
@@ -44,8 +41,7 @@ class ChatsController extends Controller
        $chatMessage = $chatMessage->get();
        $recipientData = ['id'=> $request->id, 'type' =>$request->type];
 
-       $userId  = Auth::user()->id;
-       $chats = $this->chatList($userId);
+        $chats = Auth::user()->chat_list();
 
        $data = [
            'chatMessage' =>$chatMessage,
@@ -61,12 +57,13 @@ class ChatsController extends Controller
 
     public function create(Request $request)
     {
-        $userId = Auth::user()->id;
+        $user = Auth::user();
+
         $new_message = Chat::create([
             "message" => $request->answer,
             "recipient_type" => $request->recipient_type,
             "recipient_id" => $request->recipient_id,
-            "user_id" => $userId,
+            "user_id" => $user->id,
             "type" => "from"
         ]);
         broadcast(new LiveChat($new_message));
@@ -78,7 +75,7 @@ class ChatsController extends Controller
         $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
         $chatMessage = $chatMessage->get();
 
-        $chats = $this->chatList($userId);
+        $chats =$user->chat_list();
 
 
         $recipientData = ['id'=> $request->recipient_id, 'type' =>$request->recipient_type];
@@ -92,32 +89,11 @@ class ChatsController extends Controller
 
     }
 
-
-    private function chatList($userId)
+    public function unreads(Request $request)
     {
-
-        $chats = DB::table('chat')
-            ->leftJoin('guest', function($join)
-            {
-                $join->on('chat.recipient_id', '=', 'guest.id');
-                $join->on('chat.recipient_type','=', DB::raw("'Guest'"));
-            })
-            ->leftJoin('users', function($join)
-            {
-                $join->on('chat.recipient_id', '=', 'users.id');
-                $join->on('chat.recipient_type','=', DB::raw("'User'"));
-            })
-            ->groupBy(['recipient_id', 'recipient_type'])
-            ->where('chat.user_id', $userId)
-            ->select('recipient_id as id', 'recipient_type as type', 'guest.full_name as full_name',
-                DB::raw('CONCAT(users.last_name, " ",users.first_name) AS user_full_name'),
-
-                DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
-            ->get()->toArray();
-
-
-        return $chats;
+        $chats = Auth::user()->chat_list();
+        $unreads = array_sum(array_map('intval',array_column($chats, "message")));
+        return Response::json($unreads);
     }
-
 
 }

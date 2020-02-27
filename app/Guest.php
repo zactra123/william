@@ -9,7 +9,7 @@ class Guest extends Model
     protected $table = 'guest';
 
     protected $fillable = [
-        'name',
+        'full_name',
         'email',
         'phone'
     ];

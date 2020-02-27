@@ -16,9 +16,6 @@ class PagesController extends Controller
 {
     public function welcome()
     {
-        $ch = Chat::find(5);
-        broadcast(new ReceptionistLiveChat($ch));
-        dd('asd');
         $pageContentUp = HomePageContent::where('category', 1)->get();
         $pageContentDown = HomePageContent::where('category', 2)->get();
 

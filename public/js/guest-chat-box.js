@@ -71,6 +71,7 @@ addAllMessages = function (data){
 };
 
 addMessageToChat = function(message) {
+
     if ($(".chat-content").find(`[data-message-id='${message.id}']`).length > 0){
         return false;
     }
@@ -101,10 +102,6 @@ $(document).ready(function(){
             getChatMessages(recipient.id, recipient.type)
                 .then(function(result){
                     return addAllMessages(result.messages)
-                })
-                .then(function(){
-                    connectToChannel(recipient.id, recipient.type);
-                    return true;
                 })
                 .then(function(data){
                     $(".not-defined-user").hide();
@@ -145,7 +142,11 @@ $(document).ready(function(){
                     addMessageToChat(result.message);
                     $(".not-defined-user").hide();
                     $(".defined-user").show();
-                    // connectToChannel(result.id)
+
+                    recipient.id = result.guest.id;
+                    recipient.type = 'guest';
+
+                    connectToChannel(result.guest.id, "guest")
                 })
                 .catch(function(error){
                     console.log(error)
@@ -158,7 +159,8 @@ $(document).ready(function(){
         var message = $(this).find(".textinput").val();
         postNewMessage(recipient, message)
             .then(function(data){
-                console.log(data)
+                addMessageToChat(data.messages);
+                $(".defined-user form")[0].reset();
             })
 
     });

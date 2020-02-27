@@ -113,6 +113,7 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::delete('message/{id}','Receptionist\MessagesController@destroy')->name('receptionist.message.destroy');
 
     Route::get('live-chat','Receptionist\ChatsController@index')->name('receptionist.liveChat.index');
+    Route::get('live-chat/unreads','Receptionist\ChatsController@unreads')->name('receptionist.liveChat.unreads');
     Route::post('live-chat/chat-message','Receptionist\ChatsController@show')->name('receptionist.liveChat.show');
     Route::post('live-chat/answer','Receptionist\ChatsController@create')->name('receptionist.liveChat.create');
 

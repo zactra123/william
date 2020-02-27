@@ -37,11 +37,9 @@ class ChatsController extends Controller
         }
 
         $timeInterval  = date('Y-m-d H:i:s',  strtotime("-1 day"));
-
         $chatUserId =Chat::where('created_at','>',$timeInterval)
             ->distinct('user_id')
             ->pluck('user_id')->toArray();
-
 
         $dif = array_diff($receptionistId, $chatUserId);
 
@@ -51,7 +49,6 @@ class ChatsController extends Controller
         }else{
             $userId = $receptionistId[array_rand($receptionistId)];
         }
-
 
         $guest = Guest::create([
             "full_name" => $request->full_name,
@@ -107,7 +104,6 @@ class ChatsController extends Controller
                "message" => $requests->message,
                "user_id" => $last_message->user_id
            ]);
-
            broadcast(new ReceptionistLiveChat($new_message));
            return Response::json(["messages" => $new_message]);
        }
