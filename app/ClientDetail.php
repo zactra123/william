@@ -20,6 +20,7 @@ class ClientDetail extends Model
         'city' => 'required',
         'address' =>'required',
         'zip' => 'required',
+        'expiration' => 'required',
         'phone_number' => 'required',
         'referred_by' => 'required',
         'business_name' => 'required',
@@ -34,10 +35,10 @@ class ClientDetail extends Model
         'city',
         'address',
         'zip',
+        'expiration',
         'phone_number',
         'referred_by',
         'business_name',
-
     ];
 
     public function user()

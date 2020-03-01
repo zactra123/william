@@ -19,6 +19,7 @@ class UploadClientDetail extends Model
         'city' => 'required',
         'address' =>'required',
         'zip' => 'required',
+        'expiration'
 
     ];
 

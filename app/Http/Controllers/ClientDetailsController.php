@@ -161,8 +161,6 @@ class ClientDetailsController extends Controller
                 ->with('error','Please upload both files');
         }
 
-
-
         $imagesDriverLicense = $request->file("driver_license");
         $imagesSocialSecurity = $request->file("social_security");
 

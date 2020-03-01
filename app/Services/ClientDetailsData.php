@@ -182,6 +182,22 @@ class ClientDetailsData
         preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $text, $sex);
         preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
+        preg_match_all("/([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $expiration);
+
+        if(isset($expiration[0])){
+            $expirationDate = null;
+            foreach($expiration[0] as $ex){
+
+                list($month, $day, $year) = explode('/', str_replace(['/','-'],'/',$ex));
+                $a =  mktime(0, 0, 0, $month, $day, $year);
+                $expirationDate = $a > strtotime($expirationDate) ? $ex : $expirationDate;
+
+            }
+
+            $result["expiration"] = $expirationDate;
+        }
+
+
         if (isset($dob[3])) {
             $result['dob'] =  $dob[3];
         }
@@ -197,6 +213,7 @@ class ClientDetailsData
             $zip = explode($result['state'], $address[0]);
             $result["zip"] = $zip[count($zip)-1];
             $result["address"] = str_replace([ $result["zip"], $result["state"], "\n", ','],'', $address[0]);
+
 
             //old code
 //            // Get City and Address
