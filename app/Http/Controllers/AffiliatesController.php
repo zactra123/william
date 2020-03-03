@@ -20,7 +20,6 @@ use App\UploadClientDetail;
 class AffiliatesController extends Controller
 {
 
-
     public function __construct()
     {
         $this->middleware(['auth', 'verified' ,'affiliate']);
@@ -72,7 +71,7 @@ class AffiliatesController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return view('affiliate.create-client');
+        return redirect(route('affiliate.index'))->with('success', "You created  new customer");
 
     }
 

@@ -19,29 +19,27 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header font"> Upload files </div>
+                            <div class="card-header p-4"> Please upload client document </div>
 
                             <div class="card-body">
                                 {!! Form::open(['route'=>['affiliate.storeDLSS', $clientId],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
                                 @csrf
 
-                                <div class="form-group row font">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">  Upload Driver License <br> or Identification card</label>
+                                <div class="pdf-upload karma-tab active">
 
-                                    <div class="col-md-6 font">
-                                        {{ Form::file('driver_license') }}
-
+                                    <div class="form-group files">
+                                        <label>Upload Client Driver License or Identification card </label>
+                                        <input type="file" name="driver_license" class="form-control" multiple="">
                                     </div>
                                 </div>
 
-                                <div class="form-group row font">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right font"> Upload Social security  </label>
+                                <div class="pdf-upload karma-tab active">
 
-                                    <div class="col-md-6 font">
-                                        {{ Form::file('social_security') }}
+                                    <div class="form-group files">
+                                        <label>Upload Client Social Security </label>
+                                        <input type="file" name="social_security" class="form-control" multiple="">
                                     </div>
                                 </div>
-
 
 
                                 <div class="form-group row mb-0 font">

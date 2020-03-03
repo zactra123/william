@@ -40,6 +40,8 @@ class ClientDetailsData
 
     public function getImageSocialSecurity($path, $name, $extension)
     {
+
+
         $socialSecuritySize = false;
 
         if($extension != 'pdf'){
@@ -174,11 +176,10 @@ class ClientDetailsData
     // $result is Array with ["dob", "address", "city", "state", "zip", "sex"]
     public function dirverLicenseProcessing($text)
     {
-        //Todo: Add driver license regex
-        $result = [];
 
+        $result = [];
         // remove draft file
-        preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})/im", $text, $dob);
+        preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $dob);
         preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $text, $sex);
         preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
@@ -186,17 +187,24 @@ class ClientDetailsData
 
         if(isset($expiration[0])){
             $expirationDate = null;
+            $newDob =  null;
+            $toDay =strtotime(date("d/m/y")) ;
             foreach($expiration[0] as $ex){
-
                 list($month, $day, $year) = explode('/', str_replace(['/','-'],'/',$ex));
                 $a =  mktime(0, 0, 0, $month, $day, $year);
                 $expirationDate = $a > strtotime($expirationDate) ? $ex : $expirationDate;
+                if($toDay > $a){
+                    $toDay = $a;
+                    $newDob = $ex;
+                };
 
             }
 
             $result["expiration"] = $expirationDate;
-        }
 
+            $result["new_dob"] = $newDob;
+
+        }
 
         if (isset($dob[3])) {
             $result['dob'] =  $dob[3];
@@ -229,18 +237,15 @@ class ClientDetailsData
     // $result is Array with ["ssn", "first_name", "last_name"]
     public function socialSecurityProccessing($text)
     {
-        //Todo: Add social security regex
-
         $result = [];
         preg_match("/[0-9]{3}.+([0-9]{2}|[0-9]{2}.)+[0-9]{4}/im", $text, $ssn);
-        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
+        preg_match("/FOR\n+([A-Z]{1,}\s.*)/m", $text, $name);
+//        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
 
         if (isset($ssn[0])) {
             $result['ssn'] = $ssn[0];
         }
-        if (isset($name[0])) {
-
-
+        if (isset($name[1])) {
 
             $full_name = count(explode(' ', str_replace("FOR\n","",$name[0])))<2
                 ?explode("\n", str_replace("FOR\n","",$name[0]))

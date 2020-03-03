@@ -38,6 +38,7 @@ class AdminsController extends Controller
             'negative_types' => ['required'],
         ]);
 
+
         if ($validation->fails()){
             $negativeType = NegativeType::all()
                 ->pluck('name', 'id')
@@ -51,15 +52,17 @@ class AdminsController extends Controller
             'role'=>'admin',
         ]);
 
+        $userId = $user->id;
+
         foreach($admin['ip_address'] as $ipAddress){
 
             AllowedIp::create([
-                'user_id'=> $user->id,
+                'user_id'=> $userId,
                 'ip_address' => $ipAddress
             ]);
        }
 
-        $userId = $user->id;
+
 
         foreach($admin['negative_types'] as $negativeTypes){
             AdminSpecification::create([

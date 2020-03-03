@@ -99,7 +99,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-       $fullName = explode(' ', $data['full_name']);
+       $fullName = explode(' ', strtoupper($data['full_name']));
+
        if(count($fullName)==1){
            return redirect()->back()
                ->withInput()
@@ -108,11 +109,10 @@ class RegisterController extends Controller
            $first_name = $fullName[0];
            $last_name = $fullName[1];
        }else{
-
            $first_name = $fullName[0];
            $last_name = $fullName[1];
-           for($i=2; $i<count($fullName); $i++){
-               $last_name = $last_name + $fullName[$i];
+           for($i=2; $i <= count($fullName)-1; $i++){
+               $last_name = $last_name." ".$fullName[$i];
            }
 
        }

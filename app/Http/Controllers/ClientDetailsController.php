@@ -131,6 +131,7 @@ class ClientDetailsController extends Controller
 
     public function credentialsStore(Request $request)
     {
+
         $userId = Auth::user()->id;
         $data = $request['client'];
         $data['user_id'] = $userId;
@@ -154,6 +155,7 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
+
         $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()

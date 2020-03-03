@@ -3,67 +3,60 @@
 
 @section('content')
 
-
     <div class="container fon">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-7 pt-2">
                 <div class="card">
+                    <div class="card-header">Your Details</div>
                     <div class="card-body">
-                        <h1>Your Details</h1>
                         {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
                         @csrf
-
                         <div class="form-group row m-1">
-                            <label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>
-
-                            <div class="col-md-8">
-                                {{ Form::text('client[first_name]', $user->first_name, ['class' => 'form-control m-input',   'placeholder' => 'Enter your first name']) }}
+                            {{--<label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>--}}
+                            <div class="col-md-12">
+                                {{ Form::text('client[first_name]', strtoupper($user->first_name), ['class' => 'form-control m-input',   'placeholder' => 'Enter your first name']) }}
 
                             </div>
                         </div>
 
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>--}}
 
-                            <div class="col-md-8">
-                                {{ Form::text('client[last_name]', $user->last_name, ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
+                            <div class="col-md-12">
+                                {{ Form::text('client[last_name]', strtoupper($user->last_name), ['class' => 'form-control m-input', 'placeholder' => 'Enter your last & middle name']) }}
 
                             </div>
                         </div>
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>--}}
 
-                            <div class="col-md-8">
-                                {{ Form::text('client[phone_number]', $user->clientDetails->phone_number, ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter your phone_number']) }}
+                            <div class="col-md-12">
+                                {{ Form::text('client[phone_number]', strtoupper($user->clientDetails->phone_number), ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter your phone_number']) }}
 
                             </div>
                         </div>
-
-
-
-
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"> Street Address:  </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right"> Street Address:  </label>--}}
 
-                            <div class="col-md-8">
-                                {{ Form::text('client[address]', $user->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
+                            <div class="col-md-12">
+                                {{ Form::text('client[address]', strtoupper($user->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
                             </div>
                         </div>
 
 
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>--}}
 
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip', 'id' => 'zip']) }}
                             </div>
                             
                         </div>
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>--}}
 
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 {{ Form::date('client[dob]', $user->clientDetails->dob, ['class' => 'form-control m-input']) }}
 
                             </div>
@@ -98,18 +91,18 @@
                         </div>
 
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>--}}
 
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter your SSN']) }}
 
                             </div>
                         </div>
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right"> Referred by:  </label>
+                            {{--<label for="password" class="col-md-4 col-form-label text-md-right"> Referred by:  </label>--}}
 
-                            <div class="col-md-8">
-                                {{ Form::text('client[referred_by]', $user->clientDetails->referred_by, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
+                            <div class="col-md-12">
+                                {{ Form::text('client[referred_by]', strtoupper($user->clientDetails->referred_by), ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
 
                             </div>
                         </div>

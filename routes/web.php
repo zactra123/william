@@ -54,9 +54,10 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
-    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\Receptionist@deleteIp')->name('owner.receptionist.deleteIp');
 
+    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
     Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
+
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;

@@ -78,10 +78,10 @@
                 <nav class="main-navigation pull-right ">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        {{--<li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>--}}
+                        <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
 
                         @if(!empty(Auth::user()->clientDetails))
-                            <li class="menu-item"><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit your details</a></li>
+                            <li class="menu-item"><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit details</a></li>
                         @else
                             <li class="menu-item"><a href="{{route('client.details.create')}}">Add your Details</a></li>
                        @endif
@@ -90,7 +90,7 @@
 
                         <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->email }}<span class="caret"></span></a>
                             <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
-                                <li><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit your detail</a></li>
+                                <li><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit details</a></li>
                                 <li><a href="{{route('client.credentials')}}">Credentials</a></li>
                                 <li><a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
