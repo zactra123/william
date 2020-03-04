@@ -39,7 +39,9 @@
             text-align: center;
         }
         body{
-            font-family:"Roboto Slab", serif; ;
+            background-image: url("/images/logo-icon.png");
+            background-size: 200px;
+            font-family:"Roboto Slab", serif;
         }
 
     </style>
@@ -54,10 +56,9 @@
             <div class="container pl-0" id="app">
 
                 <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
-                    <h1 class="site-title">Better <span>Credit</span></h1>
-                    <h2 class="site-description">Tagline goes here</h2>
-                </a> <!-- #branding -->
+                    <img src="images/logo-icon.png" alt="Site title" style="width: 100px" class="logo-icon">
+
+                </a>
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
@@ -124,12 +125,11 @@
                 <div class="col-md-6">
 
                     <div class=" branding">
-                        <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon">
-                        <h1 class="site-title"><a href="#">Company <span>Name</span></a></h1>
-                        <h2 class="site-description">Tagline goes here</h2>
+                        <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon" style="width: 100px">
+                        <h1 class="site-title"><a href="#">Better Credit Fix</a></h1>
                     </div> <!-- .branding -->
 
-                    <p class="copy">Copyright 2014 Company name. designed by Themezy. All rights reserved</p>
+                    <p class="copy">Copyright 2020</p>
                 </div>
 
                 <div class="col-md-6 align-right">

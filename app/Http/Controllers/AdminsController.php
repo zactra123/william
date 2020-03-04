@@ -19,7 +19,20 @@ class AdminsController extends Controller
     public function index()
     {
 
-        return view('admin.index');
+        if(request()->ajax())
+        {
+            $messages = Message::whereDate('call_date', '>=', $request->start)
+                ->whereDate('call_date', '<=', $request->end);
+            if ($request->type == 'completed' || $request->type == 'pending'){
+                $messages = $messages->where('completed', $request->type == 'completed');
+            }
+            $messages = $messages->select("id", "title", "call_date as start", "call_date as end")->get()->toArray();
+
+            return Response::json($messages);
+        }
+
+
+        return view('admin.message.index');
     }
 
     public function list()
@@ -30,7 +43,7 @@ class AdminsController extends Controller
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
             ->where('users.role', 'client')
-            ->get();
+            ->paginate(10);
 
         return view('admin.user-list', compact( 'users'));
 
@@ -44,7 +57,7 @@ class AdminsController extends Controller
                 'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
             ->where('role', 'affiliate')
             ->groupBy('users.id')
-            ->get();
+            ->paginate(10);
         return view('admin.affiliate-list', compact('users'));
     }
 

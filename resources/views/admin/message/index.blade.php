@@ -4,10 +4,9 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-12 pt-4">
                 <div class="container">
                     <div class="row justify-content-center">
-
                         <div class="list-group list-group-horizontal col-md-6">
                             <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
                             <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
@@ -15,9 +14,10 @@
                         </div>
                     </div>
                     <div class="response">
-
                     </div>
-                    <div id='calendar' class="card">
+                </div>
+                <div class="container pt-2">
+                    <div id='calendar' class="card pt-2" >
                     </div>
                 </div>
 
@@ -197,7 +197,6 @@
 
         </div>
     </div>
-    </div>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -228,6 +227,11 @@
             z-index: 1030;
             background-color: #333333;
             opacity:0.8; // I ADDED THIS LINE
+        }
+
+        .modal-content {
+            
+            width: 150%;
         }
         .appointment-desc{
             max-height: 150px;

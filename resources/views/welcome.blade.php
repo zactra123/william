@@ -51,9 +51,8 @@
             <div class="container">
 
                 <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
-                    <h1 class="site-title">Better <span>Credit</span></h1>
-                    <h2 class="site-description">Tagline goes here</h2>
+                    <img src="images/logo-icon.png" alt="Site title" style="width: 100px" class="logo-icon">
+
                 </a> <!-- #branding -->
                 <nav class="main-navigation pull-right">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>

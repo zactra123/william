@@ -42,12 +42,11 @@
                 @else
                     <a href="{{ url('/') }}"  class="branding pull-left">
                 @endif
-                        <img src="{{asset('images/logo-icon.png')}}" alt="Site title" class="logo-icon">
-                        <h1 class="site-title">Company <span>Name</span></h1>
-                        <h2 class="site-description">Tagline goes here</h2>
-                    </a> <!-- #branding -->
+                    <img src="images/logo-icon.png" alt="Site title" style="width: 100px" class="logo-icon">
 
-                    <nav class="main-navigation pull-right ">
+                </a>
+
+                        <nav class="main-navigation pull-right ">
                         <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                         <ul class="menu">
 
