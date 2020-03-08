@@ -126,7 +126,7 @@
 
                     <div class=" branding">
                         <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon" style="width: 100px">
-                        <h1 class="site-title"><a href="#">Better Credit Fix</a></h1>
+                        <h1 class="site-title"><a href="#">{{env('PROJECT')}}</a></h1>
                     </div> <!-- .branding -->
 
                     <p class="copy">Copyright 2020</p>
@@ -143,14 +143,6 @@
                         <a href="">CREDIT RESOURCES</a>
                         <a href="">CONTACT US</a>
                     </nav> <!-- .footer-navigation -->
-
-                    <div class="social-links">
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-                    </div> <!-- .social-links -->
-
                 </div>
             </div>
 

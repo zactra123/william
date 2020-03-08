@@ -3,11 +3,9 @@
 
 @section('content')
 
-
     <div class="page-content">
         <div class="fullwidth-block">
             <div class="container fon">
-                <div class="row justify-content-center">
                 <div class="card m-0">
                             <div class="breadcrumbs">
                                 <div class="container">

@@ -2,7 +2,6 @@
 @extends('layouts.login')
 
 @section('content')
-
     <div class="page-content">
         <div class="fullwidth-block">
             <div class="container fon">
@@ -15,10 +14,10 @@
                             </div>
                         </div>
                         <div class="container">
-                                    <h1> Better Credit Fix is a credit restoration firm. </h1>
+                                    <h1> {{env('PROJECT')}} </h1>
 
                                     <p style="text-align: justify">
-                                        Better Credit Fix is a credit restoration firm bonded and registered with the US Department of
+                                        {{env('PROJECT')}} is a credit restoration firm bonded and registered with the US Department of
                                         Justice with 18 years of experience in helping our clients repair their credit and gain their
                                         second chance. Over 95 percent of our business comes from referrals—which reflects our tireless
                                         devotion to customer service and the robust solutions we implement for our clients to improve
@@ -40,17 +39,17 @@
                                         issues.
                                     </p>
 
-                                    <h1> Why Choose Better Credit Fix?</h1>
+                                    <h1> Why Choose {{env('PROJECT')}}?</h1>
                                     <p style="text-align: justify">
-                                        Better Credit Fix is a company devoted to truly helping our clients achieve financial freedom.
+                                        {{env('PROJECT')}} is a company devoted to truly helping our clients achieve financial freedom.
                                         We know the stress that bankruptcies, foreclosures, and other financial hardships can create—and
                                         we are proud to help others escape those stressful situations and their effects. Our devotion to
                                         our customers is the first thing that sets us apart from others.
                                     </p>
 
                                     <p style="text-align: justify">
-                                        Our expertise and unique approach to credit repair is the second thing which makes Better Credit
-                                        Fix the best choice for credit repair. Unlike other firms, we also offer the following:
+                                        Our expertise and unique approach to credit repair is the second thing which makes {{env('PROJECT')}}
+                                         the best choice for credit repair. Unlike other firms, we also offer the following:
 
                                     <ul>
                                         <li>

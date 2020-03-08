@@ -8,6 +8,15 @@ use App\User;
 use App\ClientDetail;
 use Illuminate\Http\Request;
 use Response;
+use PDF;
+
+//
+
+use Twilio\Rest\Client;
+use Validator;
+
+
+
 
 class AdminsController extends Controller
 {
@@ -70,6 +79,78 @@ class AdminsController extends Controller
 
 
     }
+
+    public function printPdfClientProfile($id)
+    {
+
+        $client = User::clients()->find($id);
+
+        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
+
+        $pdf = $pdf->setPaper('a4', 'portrait');
+
+        return  $pdf->stream('client-profile'.$id.'.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
+
+        return $pdf->download('client-profile'.$id.'.pdf');
+
+    }
+
+
+//Twilio
+    public function sendSms( Request $request )
+    {
+
+        $sid    = env( 'TWILIO_SID' );
+        $token  = env( 'TWILIO_AUTH_TOKEN' );
+        $client = new Client( $sid, $token );
+
+        //test
+
+//        $ok = $client->messages->create(
+//            '+374 93 050093',
+//            [
+////                'from' => '+15005550006',
+//                'from' => env( 'TWILIO_NUMBER' ),
+//                'body' => "Hello world",
+//            ]
+//        );
+//
+//        dd($ok );
+        $validator = Validator::make($request->all(), [
+            'numbers' => 'required',
+            'message' => 'required'
+        ]);
+
+        if ( $validator->passes() ) {
+
+            $numbers_in_arrays = explode( ',' , $request->input( 'numbers' ) );
+
+            $message = $request->input( 'message' );
+            $count = 0;
+
+            foreach( $numbers_in_arrays as $number )
+            {
+                $count++;
+
+                $client->messages->create(
+                    $number,
+                    [
+                        'from' => env( 'TWILIO_FROM' ),
+                        'body' => $message,
+                    ]
+                );
+            }
+
+            return back()->with( 'success', $count . " messages sent!" );
+
+        } else {
+            return back()->withErrors( $validator );
+        }
+    }
+
+
+
 
     public function clientReportNumber(Request $request)
     {

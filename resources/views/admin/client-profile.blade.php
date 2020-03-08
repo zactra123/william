@@ -188,8 +188,9 @@
                                             <button class="btn btn-success" id="save" style="display:none"> Save</button>
                                         </div>
                                         <div class="btn-group float-right">
+                                            <a href="{{route('admin.client.profilePdf',$client->id)}}" class="btn btn-primary print">PRINT</a>
 
-                                            <button class="btn btn-primary print ">Print</button>
+                                            {{--<button class="btn btn-primary print" data-id="{{$client->id}}">Print</button>--}}
                                         </div>
                                     </div>
 
@@ -340,12 +341,6 @@
         </div>
     </div>
 
-    <div id="print-me">
-
-
-
-    </div>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -369,9 +364,6 @@
             newVal += val;
             this.value = newVal.substring(0, 12);
         });
-
-
-
 
 
         $('.report').keyup(function() {
@@ -419,6 +411,23 @@
                 });
 
             })
+
+            // $('.print').click(function(){
+            //     var id  = $(this).attr("data-id");
+            //     $.ajax({
+            //         url: "/admin/client-profile-print/"+id,
+            //         method:"GET",
+            //         success: function () {
+            //             console.log("it Works");
+            //
+            //         },
+            //
+            //         error:function (err,state) {
+            //             console.log(err)
+            //         }
+            //     });
+            //
+            // })
 
         })
 

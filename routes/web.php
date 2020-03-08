@@ -95,6 +95,9 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::post('client/report-number', 'AdminsController@clientReportNumber')->name('admin.client.report_number');
     Route::get('getNotifications', 'AdminsController@getNotifications');
 
+    Route::get('client-profile-print/{id}', 'AdminsController@printPdfClientProfile')->name('admin.client.profilePdf');
+
+
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
     Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
