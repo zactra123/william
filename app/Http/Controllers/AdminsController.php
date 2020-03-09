@@ -80,8 +80,11 @@ class AdminsController extends Controller
     {
 
         $client = User::clients()->find($id);
-
         $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
+        return $pdf->download('invoice.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
+
+        dd($client);
 
         $pdf = $pdf->setPaper('a4', 'portrait');
 
