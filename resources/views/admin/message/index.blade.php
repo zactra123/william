@@ -199,7 +199,7 @@
     </div>
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    {{--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
@@ -236,6 +236,8 @@
         .appointment-desc{
             max-height: 150px;
         }
+
+
     </style>
 
     <script type="text/javascript">
@@ -250,7 +252,6 @@
                 $('.tab-selector').removeClass("active");
                 $(".completed" ).addClass("active");
             };
-
 
             $.ajaxSetup({
                 headers: {
@@ -359,13 +360,10 @@
                     }
                 });
 
-
             });
-
 
             $('.edit-appointment').click(function(){
                 var id = $(this).attr("data-id");
-
                 $.ajax({
                     type: 'GET',
                     url: "/admin/message/"+ id,
@@ -395,14 +393,12 @@
 
             })
 
-
             $("#updateMessage form").submit(function(e){
                 e.preventDefault();
                 var form = $(this).serializeArray(), data={};
                 $.each(form, function(index, el){
                     data[el.name] = el.value
                 });
-
                 $.ajax({
                     url:  "/admin/message/update",
                     type:"PUT",
@@ -424,13 +420,11 @@
                         $("#updateMessage form")[0].reset()
                         $('#updateMessage').modal('hide');
                     },
-
                     error:function (err, state) {
                         console.log(JSON.parse(err.responseText))
                         $("#updateMessage .text-danger").removeClass("d-none")
                     }
                 });
-
 
             })
 
@@ -441,7 +435,6 @@
                 $.each(form, function(index, el){
                     data[el.name] = el.value
                 });
-
                 $.ajax({
                     url: "/admin/message/create",
                     type:"POST",
@@ -461,14 +454,11 @@
                         $("#appointments form")[0].reset()
                         $('#appointments').modal('hide');
                     },
-
                     error:function (err, state) {
                         console.log(JSON.parse(err.responseText))
                         $("#appointments .text-danger").removeClass("d-none")
                     }
                 });
-
-
 
             })
 
@@ -535,25 +525,13 @@
 
             });
 
-
         });
-
-
 
         function displayMessage(message) {
             $(".response").html("<div class='success'>"+message+"</div>");
             setInterval(function() { $(".success").fadeOut(); }, 1000);
         }
-
-
-
     </script>
-
-
-
-
-
-
 
 @endsection
 

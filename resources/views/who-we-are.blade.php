@@ -6,11 +6,11 @@
         <div class="fullwidth-block">
             <div class="container fon">
                 <div class="row justify-content-center">
-                    <div class="card">
+                    <div class="card pb-4">
                         <div class="breadcrumbs">
                             <div class="container">
                                 <a href="{{url('/')}}">Home</a> &rarr;
-                                <a href="#">who we are</a>
+                                <a href="#">WHO WE ARE</a>
                             </div>
                         </div>
                         <div class="container">

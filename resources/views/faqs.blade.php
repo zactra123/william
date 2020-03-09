@@ -6,7 +6,7 @@
     <div class="page-content">
         <div class="fullwidth-block">
             <div class="container fon">
-                <div class="card m-0">
+                <div class="card m-0 pb-4">
                             <div class="breadcrumbs">
                                 <div class="container">
                                     <a href="{{url('/')}}">Home</a> &rarr;

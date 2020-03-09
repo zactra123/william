@@ -38,7 +38,7 @@
                     <div class="breadcrumbs">
                         <div class="container">
                             <a href="{{url('/')}}">Home</a> &rarr;
-                            <a href="{{url('credit-education')}}">credit education</a>
+                            <a href="{{url('credit-education')}}">CREDIT EDUCATION</a>
                         </div>
                     </div>
                     <div class="container">

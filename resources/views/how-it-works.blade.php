@@ -3,17 +3,15 @@
 
 @section('content')
 
-
-
     <div class="page-content">
         <div class="fullwidth-block">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="card">
+                    <div class="card pb-4">
                             <div class="breadcrumbs">
                                 <div class="container">
                                     <a href="{{url('/')}}">Home</a> &rarr;
-                                    <a href="#">how it works</a>
+                                    <a href="#">HOW IT WORKS</a>
                                 </div>
                             </div>
 

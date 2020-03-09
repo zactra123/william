@@ -259,6 +259,7 @@
         .appointment-desc{
             max-height: 150px;
         }
+
     </style>
 
 

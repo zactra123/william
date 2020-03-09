@@ -10,13 +10,9 @@ use Illuminate\Http\Request;
 use Response;
 use PDF;
 
-//
-
+//Twilio
 use Twilio\Rest\Client;
 use Validator;
-
-
-
 
 class AdminsController extends Controller
 {

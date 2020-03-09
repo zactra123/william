@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>Credit Report</title>
+    <title>Admin</title>
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
     <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
 
@@ -42,41 +41,40 @@
                 @else
                     <a href="{{ url('/') }}"  class="branding pull-left">
                 @endif
-                    <img src="images/logo-icon.png" alt="Site title" style="width: 100px" class="logo-icon">
-
+                    <img src="{{asset('images/logo-icon.png')}}" alt="Site title" style="width: 100px" class="logo-icon">
                 </a>
 
                         <nav class="main-navigation pull-right ">
                         <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                        <ul class="menu">
+                    <ul class="menu">
 
-                            <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
-                            <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
-                            <li class="menu-item">
-                                <ul class="navbar-nav ml-auto">
-                                    <!-- Authentication Links -->
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->email }} <span class="caret"></span>
+                        <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
+                        <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
+                        <li class="menu-item"><a href="{{ route('admin.affiliate.list')}}" >Affiliate List</a></li>
+                        <li class="menu-item">
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->email }} <span class="caret"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                    </nav> <!-- .main-navigation -->
+                </nav> <!-- .main-navigation -->
             </div> <!-- .container -->
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
