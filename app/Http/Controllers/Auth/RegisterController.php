@@ -117,6 +117,11 @@ class RegisterController extends Controller
 
        }
 
+       $addressPart = explode(',', str_replace(', USA','',$data['address']));
+
+       $fullStreet =  explode(' ', $addressPart[0]);
+       $number = $fullStreet[0];
+       $street = trim(str_replace($fullStreet[0], '',$addressPart[0]));
 
         $user =   User::create([
             'first_name'=>$first_name,
@@ -126,13 +131,16 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-       $id = $user->id;
+
+        $id = $user->id;
        ClientDetail::create([
             'user_id' => $id,
             'phone_number'=>$data['phone_number'],
             'address'=>$data['address'],
-            'city'=>null,
-            'state'=> null,
+            'number'=>$number,
+            'name'=> $street,
+            'city'=>isset($addressPart[1])?trim($addressPart[1]):null,
+            'state'=> isset($addressPart[2])?trim($addressPart[2]):null,
             'zip'=>$data['zip'],
             'dob'=>$data['dob'],
             'sex'=>isset($data['sex'])?$data['sex']: null ,

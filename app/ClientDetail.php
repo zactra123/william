@@ -31,6 +31,8 @@ class ClientDetail extends Model
         'ssn',
         'dob',
         'sex',
+        'number',
+        'name',
         'state',
         'city',
         'address',

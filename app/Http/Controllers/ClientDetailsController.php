@@ -26,8 +26,6 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
-
-
         return view('client_details.index');
     }
 
@@ -75,6 +73,7 @@ class ClientDetailsController extends Controller
     public function edit($id, Request $request)
     {
         $user = Auth::user();
+
         $uploadUserDetail = UploadClientDetail::where('user_id',$user->id )->first();
         if (!empty($uploadUserDetail)) {
             return view('client_details.edit_with_upload_data', compact('user', 'uploadUserDetail'));
@@ -84,6 +83,7 @@ class ClientDetailsController extends Controller
 
     public function update(Request $request)
     {
+
         $data = $request->client;
         $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
         $id = Auth::user()->id;
@@ -97,12 +97,13 @@ class ClientDetailsController extends Controller
             'ssn'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
             'zip'=> ['required', 'string', 'max:255'],
-            'phone_number'=> ['required', 'string', 'max:255'],
         ]);
 
         if ($validation->fails()) {
             if(!empty($uploaded)) {
-                return view('client_details.edit_with_upload_data')->withErrors($validation);
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
             }
             return view('client_details.create')->withErrors($validation);
         } else {
@@ -110,14 +111,24 @@ class ClientDetailsController extends Controller
             $user = Arr::only($request->client, ['first_name', 'last_name']);
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name', 'sex_uploaded']);
 
-            User::where('id', $id)->update($user);
+            $fullAddress =explode(',', str_replace([", USA", ",USA"],'', $data['address']));
+
+            preg_match("/([0-9]{1,})/im", $fullAddress[0], $number);
+            $clientDetails ["number"] = $number[0];
+            $clientDetails['name'] = trim(str_replace($number[0],'',$fullAddress[0]));
+            $clientDetails['city'] = isset($fullAddress[1])?trim($fullAddress[1]):null;
+            $clientDetails['name'] = isset($fullAddress[2])?trim($fullAddress[1]):null;
+
+            User::where('id', $id)->update([
+                'first_name' => strtoupper($user['first_name']),
+                'last_name' => strtoupper($user['last_name'])
+            ]);
 
             $d = ClientDetail::where('user_id', $id)->update($clientDetails);
 
             $uploaded->delete();
             $client = $id;
             return redirect(route('client.details.index'))->with('success', "your data saved");
-
 
         }
     }

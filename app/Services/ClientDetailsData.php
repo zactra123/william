@@ -179,10 +179,16 @@ class ClientDetailsData
 
         $result = [];
         // remove draft file
+        $addressCityStateRegex = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
+        MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
+        $addressStreetRegex = '/[0-9]{1,}.+?\b[A-Z]{2}+(\.|,|)$/im';
+
+//        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
+
         preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $dob);
         preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $text, $sex);
-        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
-
+        preg_match($addressStreetRegex, $text, $addressStreet);
+        preg_match("$addressCityStateRegex", $text, $addressCityState);
         preg_match_all("/([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $expiration);
 
         if(isset($expiration[0])){
@@ -199,10 +205,8 @@ class ClientDetailsData
                 };
 
             }
-
             $result["expiration"] = $expirationDate;
-
-            $result["new_dob"] = $newDob;
+            $result['dob'] = $newDob;
 
         }
 
@@ -212,22 +216,18 @@ class ClientDetailsData
         if (isset($sex[3])) {
             $result['sex'] =  $sex[3];
         }
-        if (isset($address[0])) {
+        if (isset($addressCityState[0]) && isset($addressStreet[0])) {
             // Get state
-            preg_match_all('/[A-Z]{2}/m', $address[0], $match);
+            preg_match_all('/[A-Z]{2}/m', $addressCityState[0], $match);
 
             $result["state"] = $match[0][count($match[0])-1];
-            // Get zip code
-            $zip = explode($result['state'], $address[0]);
+            $zip = explode($result['state'], $addressCityState[0]);
             $result["zip"] = $zip[count($zip)-1];
-            $result["address"] = str_replace([ $result["zip"], $result["state"], "\n", ','],'', $address[0]);
-
-
-            //old code
-//            // Get City and Address
-//            preg_match_all('/[^\n]+/m', $address[0], $match);
-//            $result['city'] = !empty($match[0][1]) ? str_replace([$result["state"], $result["zip"]], '' , $match[0][1] ): null;
-//            $result['address'] = !empty($match[0][0]) ? $match[0][0] : $address[0];
+            $result ["city"] = str_replace([', ', ' , '], '', $zip[0]);
+            $result["address"] = $addressStreet[0].', '. $result ["city"].', '.$result["state"];
+            preg_match("/([0-9]{1,})/im", $addressStreet[0], $number);
+            $result ["number"] = $number[0];
+            $result['name'] = trim(str_replace($number[0],'',$addressStreet[0]));
         }
         return $result;
     }
