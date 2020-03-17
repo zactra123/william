@@ -7,24 +7,24 @@ use App\HomePageContent;
 use App\Question;
 use Illuminate\Support\Facades\Validator;
 use App\Faq;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
     public function welcome()
     {
-        $pageContentUp = HomePageContent::where('category', 1)->get();
-        $pageContentDown = HomePageContent::where('category', 2)->get();
+        $pageContentUp = DB::table('home_pages')->get();
 
-
-        return view('welcome', compact('pageContentUp', 'pageContentDown'));
+        return view('welcome', compact('pageContentUp'));
     }
 
     public function moreInformation($url)
     {
-        $content = HomePageContent::where('url', $url)
+        $contents = DB::table('home_pages')->where('url', $url)
             ->get();
 
-        return view('more-information', compact('contents', 'content'));
+
+        return view('more-information', compact('contents'));
     }
 
 
@@ -87,9 +87,23 @@ class PagesController extends Controller
 
     public function contacts()
     {
-
         return view('contact');
     }
 
+    public function creditRepiarResouces()
+    {
+
+        return view('credit-resources');
+    }
+
+    public function creditFreeRepiar()
+    {
+        return view('free-credit-repair');
+    }
+
+    public function pravicyPolicy()
+    {
+        return view('privacy-policy');
+    }
 
 }

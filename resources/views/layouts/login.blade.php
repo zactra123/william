@@ -64,11 +64,11 @@
                     <ul class="menu">
                         <li class="menu-item"><a href="{{route('howItWorks')}}">HOW IT WORKS</a></li>
                         <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
-                        <li class="menu-item"><a href="">FREE CREDIT REPAIR</a></li>
+                        <li class="menu-item"><a href="{{route('credit.free.repair')}}">FREE CREDIT REPAIR</a></li>
                         <li class="menu-item"><a href="{{route('faqs')}}">FAQs</a></li>
                         <li class="menu-item"><a href="{{route('whoWeAre')}}">WHO WE ARE</a></li>
-                        <li class="menu-item"><a href="">CREDIT RESOURCES</a></li>
-                        <li class="menu-item"><a href="">CONTACT US</a></li>
+                        <li class="menu-item"><a href="{{route('credit.repair')}}">CREDIT RESOURCES</a></li>
+                        <li class="menu-item"><a href="{{route('contact')}}">CONTACT US</a></li>
 
                         @if (Route::has('login'))
                             @auth

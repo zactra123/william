@@ -19,6 +19,12 @@ Route::get('/', 'PagesController@welcome' );
 Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
+
+Route::get('contact', 'PagesController@contacts')->name('contact');
+Route::get('credit-repair-resources', 'PagesController@creditRepiarResouces')->name('credit.repair');
+Route::get('free-credit-repair', 'PagesController@creditFreeRepiar')->name('credit.free.repair');
+Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
+
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
