@@ -18,16 +18,17 @@
                                         <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
                                              data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
                                             <div class="row">
-                                                <span class="pl-2"><h3>{{$chat->full_name}}</h3></span>
+                                                <span class="pl-2"><h3>{{$chat->full_name??"FULL NAME"}}</h3></span>
                                                 @if($chat->message != 0)
-                                                    <span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
+                                                    <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
 
-                                                </i>{{$chat->message}}</span>
+                                                </i>{{$chat->message}}</h3>
                                                 @endif
                                             </div>
 
                                             <div class="row">
                                                 <span class="pl-2">{{$chat->type}}</span>
+                                                <span class="pl-2">{{$chat->email}}</span>
                                             </div>
                                         </div>
 
@@ -41,8 +42,8 @@
 
             <div class="col-md-9">
                 <div class="card m-0 p-0">
-                    <div class="card-body scrollDiv">
-                        <div class="card-body " id="showChatMessage">
+                    <div  id="scrollingDiv" class="card-body scrollDiv">
+                        <div class="card-body " id="showChatMessage"  >
 
                         </div>
 
@@ -83,6 +84,8 @@
 @endsection
 
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+
+
 
 <script id="receptionist-question-template" type="text/html">
     <div class="row  pt-2" data-message-id="{message-id}">

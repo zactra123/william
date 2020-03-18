@@ -50,15 +50,15 @@
                         <ul class="menu">
 
                             <li class="menu-item">
-                                <a href="{{ route('receptionist.liveChat.index')}}" >Chat
-                                    <span id="allMessageCount">
-
-
-                                    @if(isset($unreads) && empty($unreads))
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>{{$unreds}}
-                                    @endif
+                                <a href="{{ route('receptionist.liveChat.index')}}" > <span>Chat</span>
+                                    <span class="pl-1">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
+                                    @if(isset($unreads) && empty($unreads))
+                                        <span id="allMessageCount" class="pl-1"> {{$unreads}}</span>
+                                    @endif
                                 </a>
+
 
                             </li>
                             <li class="menu-item"><a href="{{ route('receptionist.message.index')}}" >Messages</a></li>

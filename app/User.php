@@ -145,6 +145,7 @@ class User extends Authenticatable implements MustVerifyEmail
             })
             ->groupBy(['recipient_id', 'recipient_type'])
             ->where('chat.user_id', $this->id)
+            ->orderBy('chat.created_at', 'DESC')
             ->select('recipient_id as id', 'recipient_type as type',
                 DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.full_name ELSE CONCAT(users.last_name, " ",users.first_name ) END AS full_name'),
                 DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),

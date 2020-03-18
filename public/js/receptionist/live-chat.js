@@ -4,7 +4,7 @@ connectToChannel = function (user) {
 
             var id = $('.active-user').attr('data-id');
             var type = $('.active-user').attr('data-type');
-            var messageCount = '<i class="fa fa-envelope" aria-hidden="true"></i>'
+            var messageCount = ' '
             messageCount += e.unreads
 
 
@@ -25,6 +25,7 @@ connectToChannel = function (user) {
         })
 };
 
+
 addMessageToChat = function(message) {
 
     if ($("#showChatMessage").find(`[data-message-id='${message.id}']`).length > 0){
@@ -41,6 +42,8 @@ addMessageToChat = function(message) {
                                         .replace(/{time}/g, time)
                                         .replace(/{message-id}/g, message.id);
     $("#showChatMessage").append(message_template);
+    $('#scrollingDiv').scrollTop($('#scrollingDiv')[0].scrollHeight);
+
 };
 
 
@@ -55,21 +58,19 @@ addChatUserList = function(chatUserList) {
     }
 
     chatListHtml += '</div> <div class="row"> <span>'+chatUserList.type
-    chatListHtml += '</span></div></div>'
+    chatListHtml += '</span>   <span class="pl-2">'+chatUserList.email+'</span></div></div>'
     return chatListHtml
 
 };
 
 
-
 $(document).ready(function(){
-
     $.ajax({
         url: "live-chat/unreads",
         method: "GET",
 
         success: function (result) {
-            var messageCount = '<i class="fa fa-envelope" aria-hidden="true"></i>'
+            var messageCount = ' '
             messageCount += result
             $("#allMessageCount").html(messageCount)
         },
@@ -144,6 +145,7 @@ $(document).ready(function(){
                 }
                 html+= '</div>'
                 $("#showChatMessage").html(html);
+                $('#scrollingDiv').scrollTop($('#scrollingDiv')[0].scrollHeight);
 
                 $("#recipientId").val(result.recipient.id);
                 $("#recipientType").val(result.recipient.type);
