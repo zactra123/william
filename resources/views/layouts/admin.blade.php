@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
 

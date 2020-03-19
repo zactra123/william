@@ -12,6 +12,9 @@
     <!-- Loading main css file -->
     <link rel="stylesheet" href="css/css/animate.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js?v=2') }}" defer></script>
     <!--[if lt IE 9]>
     <script src="js/js/ie-support/html5.js"></script>
@@ -48,63 +51,65 @@
 
     <header class="site-header">
         <div class="bottom-header">
-            <div class="container">
 
-                <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="images/logo-icon.png" alt="Site title" style="width: 100px" class="logo-icon">
+            <a href="{{ url('/') }}" class="branding pull-left m-0 pl-4">
+                <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
 
-                </a> <!-- #branding -->
-                <nav class="main-navigation pull-right">
-                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                    <ul class="menu">
-                        <li class="menu-item"><a href="{{route('howItWorks')}}">HOW IT WORKS</a></li>
-                        <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
-                        <li class="menu-item"><a href="{{route('howItWorks')}}">FREE CREDIT REPAIR</a></li>
-                        <li class="menu-item"><a href="{{route('faqs')}}">FAQs</a></li>
-                        <li class="menu-item"><a href="{{route('whoWeAre')}}">WHO WE ARE</a></li>
-                        <li class="menu-item"><a href="{{route('credit.repair')}}">CREDIT RESOURCES</a></li>
-                        <li class="menu-item"><a href="{{route('contact')}}">CONTACT US</a></li>
+            </a>
+            <nav class="main-navigation pull-right">
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <li class="menu-item"><a href="{{route('howItWorks')}}">HOW IT WORKS</a></li>
+                    <li class="menu-item"><a href="{{route('credit.education')}}">CREDIT EDUCTION</a></li>
+                    <li class="menu-item"><a href="{{route('howItWorks')}}">FREE CREDIT REPAIR</a></li>
+                    <li class="menu-item"><a href="{{route('faqs')}}">FAQs</a></li>
+                    <li class="menu-item"><a href="{{route('whoWeAre')}}">WHO WE ARE</a></li>
+                    <li class="menu-item"><a href="{{route('credit.repair')}}">CREDIT RESOURCES</a></li>
+                    <li class="menu-item"><a href="{{route('contact')}}">CONTACT US</a></li>
 
-                        @if (Route::has('login'))
-                             @auth
+                    @if (Route::has('login'))
+                        @auth
 
-                                 @if(Auth::user()->role == 'client')
-                                    @if(empty(Auth::user()->clientDetails))
-                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                    @else
-                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                    @endif
-                                 @elseif((Auth::user()->role == 'admin'))
-                                        <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                 @elseif((Auth::user()->role == 'affiliate'))
-                                        <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                @elseif((Auth::user()->role == 'receptionist'))
-                                        <li class="menu-item"><a href="{{ url('/receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                 @else
-                                         <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>HOME</a></li>
-                                 @endif
+                            @if(Auth::user()->role == 'client')
+                                @if(empty(Auth::user()->clientDetails))
+                                    <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>HOME</a></li>
+                                @else
+                                    <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>HOME</a></li>
+                                @endif
+                            @elseif((Auth::user()->role == 'admin'))
+                                <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>HOME</a></li>
+                            @elseif((Auth::user()->role == 'affiliate'))
+                                <li class="menu-item"><a href="{{ url('/affiliate') }}"><i class="fa fa-user"></i>HOME</a></li>
+                            @elseif((Auth::user()->role == 'receptionist'))
+                                <li class="menu-item"><a href="{{ url('/receptionist/message') }}"><i class="fa fa-user"></i>HOME</a></li>
+                            @else
+                                <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>HOME</a></li>
+                            @endif
                         @else
-                                        <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i> LOGIN</a></li>
+                            <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i> LOGIN</a></li>
 
-                                        @if (Route::has('register'))
-                                            {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
+                            @if (Route::has('register'))
+                                {{--<li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>--}}
 
-                                    <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> REGISTRATIONS</a>
-                                        <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
-                                            <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
-                                            <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>
+                                <li class="dropdown menu-item"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> REGISTRATIONS</a>
+                                    <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
+                                        <li><a href="{{ route('register') }}">REGISTER AS CLIENT</a></li>
+                                        <li><a href="{{route('register.Affiliate')}}">REGISTER AS AFFILIATE</a></li>
 
-                                        </ul>
-                                    </li>
+                                    </ul>
+                                </li>
 
-                                        @endif
-                              @endauth
-                        @endif
+                            @endif
+                        @endauth
+                    @endif
 
-                    </ul>
+                </ul>
 
-                </nav> <!-- .main-navigation -->
-            </div> <!-- .container -->
+            </nav>
+{{--            <div class="container m-0">--}}
+
+{{-- <!-- .main-navigation -->--}}
+{{--            </div> <!-- .container -->--}}
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
 
@@ -172,11 +177,11 @@
                 <div class="col-md-6">
 
                     <div class=" branding">
-                        <img src="images/logo-footer.png" alt="Site title" class="logo-icon" width="100px">
+                        <img src="images/logo-footer.png" alt="Site title" class="logo-icon" width="200px">
 
                     </div> <!-- .branding -->
 
-                    <p class="copy">Copyright 2020d</p>
+                    <p class="copy">Copyright 2020</p>
                 </div>
 
                 <div class="col-md-6 align-right">
