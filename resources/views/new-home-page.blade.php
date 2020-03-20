@@ -204,7 +204,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-2 circle">dadasda</div>
-                                    <div class="col-2 circle-v"><img src="images/arrow.png" alt="Site title" style="height: 200px"></div>
+                                    <div class="col-2 circle-v"><img src="images/arrow.png" alt="Site title" style="height: 50px"></div>
                                     <div class="col-2 circle">dadasda</div>
                                     <div class="col-2 circle-v">dadasda</div>
                                     <div class="col-2 circle">dadasda</div>
