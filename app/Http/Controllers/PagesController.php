@@ -15,7 +15,8 @@ class PagesController extends Controller
     {
         $pageContentUp = DB::table('home_pages')->get();
 
-        return view('welcome', compact('pageContentUp'));
+//        return view('welcome', compact('pageContentUp'));
+        return view('new-home-page', compact('pageContentUp'));
     }
 
     public function moreInformation($url)

@@ -2252,7 +2252,6 @@ body {
           transition: .2s ease;
 }
 .main-navigation .menu .menu-item a:after {
-  content: "|";
   position: absolute;
   right: -20px;
   font-weight: 100;
@@ -2384,7 +2383,7 @@ hr.spacer {
 }
 
 .site-footer {
-  background-color: #292c35;
+  /*background-color: #292c35;*/
   padding: 60px 0;
   color: #aaacb5;
 }
