@@ -142,9 +142,6 @@
             background-color: #13317f;
             position: relative;
         }
-        .dark-section{
-
-        }
         .content {
             padding: 50px 0px;
         }
@@ -353,7 +350,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ligth-section">
+            <div class="light-section">
                 <div class="container content">
                     <div class="row">
 
@@ -407,7 +404,7 @@
                     </div> <!-- .row -->
                 </div>
             </div>
-            <div class="ligth-section">
+            <div class="light-section">
                 <div class="container content bg-content">
 
                     <div class="square">
