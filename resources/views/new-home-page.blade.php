@@ -90,43 +90,10 @@
             content: "styl";
         }
 
-        .title-image{
-            background-image: url("/images/bg-401.png");
-            background-repeat: no-repeat;
-            background-size: 100% 30%;
-        }
         .footer-title{
             color:black;
             font-size: 14px;
             font-weight: bold;
-        }
-        .chat-search{
-            background-color: #000080;
-            height: 50px;
-        }
-
-        .circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            font-size: 14px;
-            color: #fff;
-            line-height: 200px;
-            text-align: center;
-            background: darkgrey;
-
-        }
-        .circle-v {
-            background-image: url("/images/arrow.png");
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            font-size: 14px;
-            color: #fff;
-            line-height: 200px;
-            text-align: center;
-            background: transparent;
-
         }
         .logo-icon {
             height: 160px;
@@ -142,7 +109,7 @@
             background-color: #13317f;
             position: relative;
         }
-        .content {
+        .content-container   {
             padding: 50px 0px;
         }
         .bg-content {
@@ -233,6 +200,18 @@
         .step{
             display:none
         }
+
+
+        .site-footer {
+            position: relative;
+            padding: 0px;
+        }
+        .site-footer svg{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
     </style>
 
 </head>
@@ -351,7 +330,7 @@
                 </div>
             </div>
             <div class="light-section">
-                <div class="container content">
+                <div class="container content-container">
                     <div class="row">
 
                         <div class="col-md-12">
@@ -405,7 +384,7 @@
                 </div>
             </div>
             <div class="light-section">
-                <div class="container content bg-content">
+                <div class="container content-container bg-content">
 
                     <div class="square">
                         <div class="hide"></div>
@@ -510,9 +489,24 @@
         </div>
     </main>
     <!-- .content -->
-    <footer class="site-footer  pt-4">
-        <div class="title-image">
-            <div class="container  pt-5 m-0">
+    <footer class="site-footer">
+        <svg height="auto" width="100%">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgb(100, 164, 249);stop-opacity:1" />
+                    <stop offset="5%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.9" />
+                    <stop offset="10%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.8" />
+                    <stop offset="15%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.7" />
+                    <stop offset="20%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.6" />
+                    <stop offset="25%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.50" />
+                    <stop offset="35%" style="stop-color:rgb(100, 164, 249);stop-opacity:0.25" />
+                    <stop offset="45%" style="stop-color:rgb(100, 164, 249);stop-opacity:0" />
+                    <stop offset="100%" style="stop-color:rgb(100, 164, 249);stop-opacity:0" />
+                </linearGradient>
+            </defs>
+            <rect  width="100%" height="100%" y="0" x="0" fill="url(#grad1)" />
+        </svg>
+        <div class="container content-container">
 
             <div class="row m-1">
                 <div class="col-md-8 m-0 pl-3">
@@ -548,7 +542,7 @@
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>
                         <div class="social-links">
-                            <div class="row  pt-2"><a  href=""><i class="fa fa-facebook"></i></a></div>
+                            <div class="row  pt-2"><a href=""><i class="fa fa-facebook"></i></a></div>
                             <div class="row pt-2"><a href=""><i class="fa fa-twitter"></i></a></div>
                         </div>
 
@@ -559,12 +553,7 @@
                 </div>
             </div>
 
-            </div>
-
-            <div class="row m-0 chat-search wow fadeInUp"></div>
         </div>
-
-
     </footer> <!-- .site-footer -->
 
 </div> <!-- #site-content -->
