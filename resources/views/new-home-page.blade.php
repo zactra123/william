@@ -266,12 +266,12 @@
 
         }
         .category {
-
-            background: #15178b;
             width: 75%;
             height: 80%;
             color: #fff;
             font-size: 1rem;
+            position: absolute;
+            top: 0;
         }
 
         .numberOk{
@@ -349,9 +349,11 @@
             }
 
             .category {
+                background: #15178b;
                 margin-left: 30px;
                 text-align: center;
                 font-size: 2vw;
+                position: relative;
             }
 
         }
@@ -614,6 +616,7 @@
                                     </span>
                             </div> <!-- .col-md-3 -->
                             <div class="col-md-3">
+                                <img class="w-100 mediaChat" src="/images/content.svg">
                                 <div class="category">
                                     <ul class="pt-3">
                                         <li >Bankruptcies</li>
