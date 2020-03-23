@@ -278,6 +278,18 @@
             font-size: 4rem;
         }
 
+        .search-box{
+            background-color: #13317f;
+            width: 100%;
+            height: 75px;
+            position: relative;
+
+        }
+        .search-box-text{
+            font-size: 1rem;
+            color: #ffffff;
+            margin-left:25px;
+        }
 
         @media(max-width: 768px){
             .signup{
@@ -542,7 +554,7 @@
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
                         <div class="col-md-6">
-                            <div class="featurealign-items-center">
+                            <div class="feature align-items-center">
                                 <a href="" class="btn  btn-outline-dark align-content-center">SIGN UP ONLINE </a>
 
                             </div> <!-- .feature -->
@@ -551,6 +563,23 @@
                     </div> <!-- .row -->
                 </div>
             </div>
+            <div class="light-section ">
+                <div class="search-box">
+                    <div class="container content-container">
+                        <div class="row">
+                            <span class="search-box-text" >
+                                What to know more about credit repair
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
             <div class="light-section">
                 <div class="third-content">
                     {{--                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"--}}
@@ -566,7 +595,6 @@
                     {{--                        </defs>--}}
                     {{--                        <rect  width="100%" height="100%" y="0" x="0" fill="url(#gradient)"/>--}}
                     {{--                    </svg>--}}
-
 
                     <div class="container content-container bg-content work-more">
 
@@ -610,10 +638,145 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+
+            <div class="light-section">
+                <div class="container content-container bg-content">
+                    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+                        <!--Controls-->
+{{--                        <div class="controls-top">--}}
+{{--                            <a class="btn-floating" href="#multi-item-example" data-slide="prev">--}}
+{{--                                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>--}}
+{{--                                <i class=" fa-chevron-circle-left"></i>--}}
+{{--                            </a>--}}
+{{--                            <a class="btn-floating" href="#multi-item-example" data-slide="next"><i--}}
+{{--                                    class="fas fa-chevron-right"></i></a>--}}
+{{--                        </div>--}}
+                        <!--/.Controls-->
+                        <!--Indicators-->
+{{--                        <ol class="carousel-indicators">--}}
+{{--                            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>--}}
+{{--                            <li data-target="#multi-item-example" data-slide-to="1"></li>--}}
+{{--                            <li data-target="#multi-item-example" data-slide-to="2"></li>--}}
+{{--                        </ol>--}}
+                        <!--/.Indicators-->
+
+                        <!--Slides-->
+                        <div class="carousel-inner" role="listbox">
+
+                            <!--First slide-->
+                            <div class="carousel-item active">
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--/.First slide-->
+
+                            <!--Second slide-->
+                            <div class="carousel-item">
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--/.Second slide-->
+
+                            <!--Third slide-->
+                            <div class="carousel-item">
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card title</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                card's content.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
 
                 </div>
 
             </div>
+
             <div class="light-section">
                 <div class="container content-container bg-content">
 
