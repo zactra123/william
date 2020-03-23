@@ -552,6 +552,69 @@
                 </div>
             </div>
             <div class="light-section">
+                <div class="third-content">
+                    {{--                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"--}}
+                    {{--                         width="100%" height="100%"--}}
+                    {{--                         preserveAspectRatio="xMidYMid meet">--}}
+                    {{--                        <defs>--}}
+                    {{--                            <linearGradient spreadMethod="pad" id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">--}}
+                    {{--                                <stop offset="0%" style="stop-color:rgb(19, 49, 127);stop-opacity:1;" />--}}
+                    {{--                                <stop offset="15%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.7;" />--}}
+                    {{--                                <stop offset="30%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.5;" />--}}
+                    {{--                                <stop offset="100" style="stop-color:rgb(19, 49, 127);stop-opacity:0;" />--}}
+                    {{--                            </linearGradient>--}}
+                    {{--                        </defs>--}}
+                    {{--                        <rect  width="100%" height="100%" y="0" x="0" fill="url(#gradient)"/>--}}
+                    {{--                    </svg>--}}
+
+
+                    <div class="container content-container bg-content work-more">
+
+                        <div class="row">
+                            <div class="col-md-3 work-more">
+
+
+                                <p class="">
+                                    number of items corrected
+                                    <span class="numberOk">40</span>
+                                </p>
+                            </div> <!-- .col-md-3 -->
+
+                            <div class="col-md-3 ">
+                                    <span class="including">
+                                        Including
+                                    </span>
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3">
+                                <div class="category">
+                                    <ul class="pt-3">
+                                        <li >Bankruptcies</li>
+                                        <li >Foreclosure</li>
+                                        <li >Repossession</li>
+                                        <li >Judgments</li>
+                                    </ul>
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3 mediaChat">
+                                <div class="align-items-center">
+                                    <a href="" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
+
+                                </div> <!-- .feature -->
+                                <div class="featurealign-items-center">
+                                    <a href="" class="btn  btn-primary signup-chat">CHAT WHITE EXPERT </a>
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="light-section">
                 <div class="container content-container bg-content">
 
                     <div class="square">
@@ -653,109 +716,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-
-            <div class="light-section">
-                <div class="third-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                         width="100%" height="100%"
-                         preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <linearGradient spreadMethod="pad" id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:rgb(19, 49, 127);stop-opacity:1;" />
-                                <stop offset="15%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.7;" />
-                                <stop offset="30%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.5;" />
-                                <stop offset="100" style="stop-color:rgb(19, 49, 127);stop-opacity:0;" />
-                            </linearGradient>
-                        </defs>
-                        <rect  width="100%" height="100%" y="0" x="0" fill="url(#gradient)"/>
-                    </svg>
-
-
-                    <div class="container content-container bg-content work-more">
-
-                        <div class="row">
-                            <div class="col-md-3 work-more">
-
-
-                                <p class="">
-                                        number of items corrected
-                                    <span class="numberOk">40</span>
-                                </p>
-                            </div> <!-- .col-md-3 -->
-
-
-
-
-
-                            <div class="col-md-3 ">
-                                    <span class="including">
-                                        Including
-                                    </span>
-                            </div> <!-- .col-md-3 -->
-                            <div class="col-md-3">
-                                <div class="category">
-                                    <ul class="pt-3">
-                                        <li >Bankruptcies</li>
-                                        <li >Foreclosure</li>
-                                        <li >Repossession</li>
-                                        <li >Judgments</li>
-                                    </ul>
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-                            <div class="col-md-3 mediaChat">
-                                <div class="align-items-center">
-                                    <a href="" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
-
-                                </div> <!-- .feature -->
-                                <div class="featurealign-items-center">
-                                    <a href="" class="btn  btn-primary signup-chat">CHAT WHITE EXPERT </a>
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-            </div>
-            <div class="light-section">
-                <div class="container content-container bg-content ">
-
-                        <div class="row">
-
-                            <div class="col-md-3">
-                                <div class="feature">
-                                    <img src="images/p-3.png"  class="float-left" >
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-                            <div class="col-md-3 ">
-                                <div class="feature">
-                                    <img src="images/p-2.png"  class="float-left"  >
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-                            <div class="col-md-3 ">
-                                <div class="feature">
-                                    <img src="images/p-1.png"   class="float-left mt-3">
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-                            <div class="col-md-3">
-                                <div class="feature">
-                                    <img src="images/p-4.png"  class="float-left" >
-
-                                </div> <!-- .feature -->
-                            </div> <!-- .col-md-3 -->
-
-                        </div>
-                    </div>
-
-
             </div>
 
         </div>
