@@ -29,11 +29,9 @@
             font-family: "Roboto Slab", serif;
         }
 
-        .registration{
-            text-align: center;
-        }
         .base-header{
             background-image: url("/images/header-notScroll.png");
+            background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
             position: fixed;
@@ -47,9 +45,9 @@
 
         body{
             background-color: #e2ebf4;
-            /*background-size: 1000px;*/
             font-family:"Roboto Slab", serif;
         }
+
         .btn-primary-outline,.btn-primary-outline:hover {
             background-color: transparent;
             border: 2px solid;
@@ -59,24 +57,29 @@
             box-shadow: none;
             border-radius: 0rem;
         }
+
         .brand{
             padding-left: 25px;
         }
+
         .company{
             color: white;
             font-size: 1rem;
         }
+
         .slogan{
             color: #538cde;
             font-size: 0.95rem;
             text-align: justify;
 
         }
+
         .slogan:after {
             content: "";
             display: inline-flex;
             width: 100%;
         }
+
         .main-navigation .menu .menu-item a {
             padding: 5px 0;
             display: block;
@@ -90,17 +93,25 @@
             content: "styl";
         }
 
+        .sign-hide{
+            display: none;
+        }
+
+
+
         .footer-title{
             color:black;
             font-size: 14px;
             font-weight: bold;
         }
+
         .logo-icon {
             height: 160px;
             padding-bottom: 30px !important;
             margin-left: 15px;
             float: left;
         }
+
         .content{
             padding-top: 110px;
         }
@@ -109,12 +120,24 @@
             background-color: #13317f;
             position: relative;
         }
+
         .content-container   {
             padding: 50px 0px;
         }
+
         .bg-content {
             background-image: url("/images/bg2.png");
         }
+        .third-content {
+            background-image: url("/images/bg-40.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            /*position: fixed;*/
+            width: 100%;
+            height: 250px;
+        }
+
+
         .carousel-inner svg {
             position: absolute;
             top: 0;
@@ -122,13 +145,15 @@
         }
 
         .square {
-            /*border: 1px solid gray;*/
+            position: relative;
             text-align: center;
             width: 80vw;
-            height: 20vw;
+            height: 17.5vw;
             margin: auto;
-            margin-bottom: 10vw;
+            margin-bottom: 2.5vw;
         }
+
+
 
         .hide {
             background-color: transparent;
@@ -151,14 +176,10 @@
             border-color: #8bc3fe;
             max-height: 100vw;
             max-width: 100vw;
-
-            font-size: 1vw;
+            font-size: 12px;
             color: black;
             line-height: 100%;
             text-align: center;
-
-
-
             float: left;
             padding: 2.5%;
             margin: auto;
@@ -180,25 +201,36 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 0 2vw 20vw 2vw;
+            border-width: 0 1.5vw 12vw 1.5vw;
             border-color: transparent transparent white transparent;
             position: absolute;
             top: 105%;
-            left: 30%;
+            left: 28%;
         }
         .arrow-small {
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 0px 1vw 11vw 1vw;
+            border-width: 0px 1vw 3vw 1vw;
             border-color: transparent transparent #ffffff transparent;
             position: absolute;
-            top: 103%;
+            top: 102%;
             left: 38%;
         }
 
         .step{
             display:none
+        }
+
+        .excall{
+            margin-top: 3%;
+            margin-left: 26%;
+        }
+
+
+        .card{
+            margin-left: 12.5%;
+            margin-right: 12.5%;
         }
 
 
@@ -210,6 +242,113 @@
             position: absolute;
             top: 0;
             left: 0;
+        }
+        .signup-chat{
+            width: 95%;
+            margin:2.5%;
+        }
+        .btn-dark-blue{
+            color: #fff;
+            background-color: #15178b;
+            border-color: #15178b;
+        }
+        .including{
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #15178b;
+        }
+        .work-more{
+            content:"";
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 1rem;
+
+        }
+        .category {
+
+            background: #15178b;
+            width: 75%;
+            height: 80%;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .numberOk{
+            font-size: 4rem;
+        }
+
+
+        @media(max-width: 768px){
+            .signup{
+                display:none
+            }
+            .sign-hide{
+                display: block;
+            }
+            .circle-text{
+                display: none;
+            }
+            .step-number{
+                font-size: 6px;
+                font-weight: bold;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .company{
+                margin-top: 10px;
+                font-size: 10px;
+            }
+            .slogan{
+                font-size: 10px;
+            }
+
+            .main-navigation .menu .menu-item a{
+                color: blue;
+            }
+            .square{
+                width: 100vw;
+                height: 26vw;
+            }
+            .arrow-up{
+                border-width: 0px 1.5vw 17vw 1.5vw;
+
+            }
+            .feature{
+                margin-left: 25%;
+                margin-right: 25%;
+            }
+            .mediaChat{
+                display: none;
+            }
+            .work-more{
+                font-size: 3vw;
+
+            }
+            .including{
+
+                font-size: 4vw;
+                font-weight: bold;
+                color: #15178b;
+            }
+            .content-container {
+                padding: 20px 0px;
+            }
+
+            .category {
+                margin-left: 30px;
+                text-align: center;
+                font-size: 2vw;
+            }
+
+        }
+
+        @media (min-width: 992px) {
+            .square {
+                max-width: 960px;
+                max-height: 250px;
+            }
         }
 
     </style>
@@ -225,7 +364,7 @@
               <div class="col-12 justify-content-center">
                 <img src="images/logo-footer.png" alt="Site title" class="logo-icon branding ">
                   <div class="row pt-2 ">
-                      <div class="col-12 pull-right">
+                      <div class="col-12 pull-right signup">
                           <div class="pull-right">
                               @if (Route::has('login'))
                                   @auth
@@ -248,12 +387,7 @@
                                       <a class="btn btn-primary-outline " class="btn btn-primary-outline " href="{{ route('login') }}"> SIGN IN </a>
 
                                       @if (Route::has('register'))
-                                          <a href="#" class="dropdown-toggle ml-5 btn btn-primary-outline" data-toggle="dropdown">Registration</a>
-                                          <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
-                                              <li><a href="{{ route('register') }}">SIGN UP AS CLIENT</a></li>
-                                              <li><a href="{{route('register.Affiliate')}}">SIGN UP AS AFFILIATE</a></li>
-
-                                          </ul>
+                                          <a class="btn btn-primary-outline registration" class="btn btn-primary-outline " href="{{ route('register') }}"> REGISTRATION </a>
                                       @endif
                                   @endauth
                               @endif
@@ -273,6 +407,40 @@
                                   <li class="menu-item"><a href="{{route('whoWeAre')}}">Who we are</a></li>
                                   <li class="menu-item"><a href="{{route('howItWorks')}}">How it works</a></li>
                                   <li class="menu-item"><a href="{{route('credit.education')}}">Education center</a></li>
+
+                                  @if (Route::has('login'))
+                                      @auth
+                                          @if(Auth::user()->role == 'client')
+                                              @if(empty(Auth::user()->clientDetails))
+                                                  <li class="menu-item sign-hide"> <a href="{{ url('/client/details/create') }}"> Home </a></li>
+                                              @else
+                                                  <li class="menu-item sign-hide"><a class="sign-hide" href="{{ url('/client/details') }}"> Home </a></li>
+                                              @endif
+                                          @elseif((Auth::user()->role == 'admin'))
+                                              <li class="menu-item sign-hide"><a class="sign-hide"href="{{ url('/admin') }}"> Home </a></li>
+                                          @elseif((Auth::user()->role == 'affiliate'))
+                                              <li class="menu-item sign-hide"> <a class="sign-hide" href="{{ url('/affiliate') }}"> Home </a></li>
+                                          @elseif((Auth::user()->role == 'receptionist'))
+                                              <li class="menu-item sign-hide"><a class="sign-hide" href="{{ url('/receptionist/message') }}"> Home </a></li>
+                                          @else
+                                              <li class="menu-item sign-hide"><a class="sign-hide" href="{{ url('/owner') }}"> Home </a></li>
+                                          @endif
+                                      @else
+                                          <li class="menu-item sign-hide"><a class="sign-hide" class="btn btn-primary-outline " href="{{ route('login') }}"> SIGN IN </a></li>
+
+                                          @if (Route::has('register'))
+                                              <li class="menu-item sign-hide"> <a class="sign-hide" class="btn btn-primary-outline " href="{{ route('register') }}"> REGISTRATION </a></li>
+
+                                              {{--                                          <a href="{{ route('register') }}" class="dropdown-toggle ml-5 btn btn-primary-outline" data-toggle="dropdown">Registration</a>--}}
+                                              {{--                                          <ul id="products-menu" class="dropdown-menu clearfix" role="menu">--}}
+                                              {{--                                              <li><a href="{{ route('register') }}">SIGN UP AS CLIENT</a></li>--}}
+                                              {{--                                              <li><a href="{{route('register.Affiliate')}}">SIGN UP AS AFFILIATE</a></li>--}}
+
+                                              {{--                                          </ul>--}}
+                                          @endif
+                                      @endauth
+                                  @endif
+
 
                               </ul>
                           </nav>
@@ -334,14 +502,12 @@
                     <div class="row">
 
                         <div class="col-md-12">
-                            <div class="feature">
                                 <h3> We partner with all three credit bureaus: TansUnion, Equfax and Expirian</h3>
                                 <p>
                                     We work with credit bureaus and your creditors to challenge the negative report
                                     items that affect your credit score, We'll ensure your credit history up to-date
                                     accurate and reflects you honestly.
                                 </p>
-                            </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
                         <div class="col-md-3">
                             <div class="feature">
@@ -349,15 +515,15 @@
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-3">
+                        <div class="col-md-3 ">
                             <div class="feature">
-                                <img src="images/p-2.png"  class="float-left" >
+                                <img src="images/p-2.png"  class="float-left"  >
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-3">
+                        <div class="col-md-3 ">
                             <div class="feature">
-                                <img src="images/p-1.png"  class="float-left" >
+                                <img src="images/p-1.png"   class="float-left mt-3">
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
@@ -367,15 +533,17 @@
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-6">
-                            <div class="feature mt-2">
-                                <button class=" btn btn-primary float-right"> Call ‎1855855977 </button>
+
+
+                        <div class="col-md-3 offset-md-3">
+                            <div class="feature excall">
+                                <a href="tel:1-855-855-9797" class="btn btn-primary">Call 1-855-855-9797</a>
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
                         <div class="col-md-6">
-                            <div class="feature mt-2">
-                                <a href="" class="btn  btn-outline-dark float-left">SIGN UP ONLINE </a>
+                            <div class="featurealign-items-center">
+                                <a href="" class="btn  btn-outline-dark align-content-center">SIGN UP ONLINE </a>
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
@@ -389,23 +557,23 @@
                     <div class="square">
                         <div class="hide"></div>
                         <div class="circle 1">
-                            1
-                            <p class="pt-2">Registration</p>
+                            <span class="step-number"> 1</span>
+                            <p class="pt-2 circle-text">Registration</p>
                             <img src="images/arrow.png"  class="circle-arrow" >
                             <div class="arrow-up step step-1"></div>
                         </div>
                         <div class="hide"></div>
                         <div class="circle 3">
-                            3
-                            <p class="pt-2">Review &  Approval-</p>
-                            <p class="pt-2"> Contract </p>
+                            <span class="step-number">3</span>
+                            <p class="pt-2 circle-text">Review &  Approval-</p>
+                            <p class="pt-2 circle-text"> Contract </p>
                             <img src="images/arrow.png"  class="circle-arrow" >
                             <div class="arrow-up step step-3"></div>
                         </div>
                         <div class="hide"></div>
                         <div class="circle 5">
-                            5
-                            <p class="pt-2"> We Get To Work</p>
+                            <span class="step-number">3</span>
+                            <p class="pt-2 circle-text"> We Get To Work</p>
                             <img src="images/arrow.png"  class="circle-arrow" >
                             <div class="arrow-up step step-5"></div>
                         </div>
@@ -416,24 +584,24 @@
                         <div class="hide"></div>
                         <div class="hide"></div>
                         <div class="circle 2">
-                            2
-                            <p class="pt-2"> Auditing</p>
+                            <span class="step-number">2</span>
+                            <p class="pt-2 circle-text"> Auditing</p>
                             <img src="images/arrow1.png"  class="circle-arrow-1" >
                             <div class="arrow-small step step-2"></div>
                         </div>
                         <div class="hide"></div>
                         <div class="circle 4">
-                            4
-                            <p class="pt-2">Payment</p>
+                            <span class="step-number">4</span>
+                            <p class="pt-2 circle-text">Payment</p>
                             <img src="images/arrow1.png"  class="circle-arrow-1" >
                             <div class="arrow-small step step-4"></div>
 
                         </div>
                         <div class="hide"></div>
                         <div class="circle 6">
-                            6
-                            <p class="pt-2">Payment</p>
-                            <p>Disbursement</p>
+                            <span class="step-number">6</span>
+                            <p class="pt-2 circle-text">Payment</p>
+                            <p class="circle-text"> Disbursement</p>
                             <div class="arrow-small step step-6"></div>
                         </div>
                         <div class="red"></div>
@@ -486,6 +654,110 @@
                     </div>
                 </div>
             </div>
+
+            <div class="light-section">
+                <div class="third-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                         width="100%" height="100%"
+                         preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <linearGradient spreadMethod="pad" id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgb(19, 49, 127);stop-opacity:1;" />
+                                <stop offset="15%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.7;" />
+                                <stop offset="30%" style="stop-color:rgb(19, 49, 127);stop-opacity:0.5;" />
+                                <stop offset="100" style="stop-color:rgb(19, 49, 127);stop-opacity:0;" />
+                            </linearGradient>
+                        </defs>
+                        <rect  width="100%" height="100%" y="0" x="0" fill="url(#gradient)"/>
+                    </svg>
+
+
+                    <div class="container content-container bg-content work-more">
+
+                        <div class="row">
+                            <div class="col-md-3 work-more">
+
+
+                                <p class="">
+                                        number of items corrected
+                                    <span class="numberOk">40</span>
+                                </p>
+                            </div> <!-- .col-md-3 -->
+
+
+
+
+
+                            <div class="col-md-3 ">
+                                    <span class="including">
+                                        Including
+                                    </span>
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3">
+                                <div class="category">
+                                    <ul class="pt-3">
+                                        <li >Bankruptcies</li>
+                                        <li >Foreclosure</li>
+                                        <li >Repossession</li>
+                                        <li >Judgments</li>
+                                    </ul>
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3 mediaChat">
+                                <div class="align-items-center">
+                                    <a href="" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
+
+                                </div> <!-- .feature -->
+                                <div class="featurealign-items-center">
+                                    <a href="" class="btn  btn-primary signup-chat">CHAT WHITE EXPERT </a>
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="light-section">
+                <div class="container content-container bg-content ">
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <img src="images/p-3.png"  class="float-left" >
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3 ">
+                                <div class="feature">
+                                    <img src="images/p-2.png"  class="float-left"  >
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3 ">
+                                <div class="feature">
+                                    <img src="images/p-1.png"   class="float-left mt-3">
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+                            <div class="col-md-3">
+                                <div class="feature">
+                                    <img src="images/p-4.png"  class="float-left" >
+
+                                </div> <!-- .feature -->
+                            </div> <!-- .col-md-3 -->
+
+                        </div>
+                    </div>
+
+
+            </div>
+
         </div>
     </main>
     <!-- .content -->
@@ -571,7 +843,7 @@
     // // Slider End
 
 
-        $('.circle').click(function(){
+        $('.circle').on('click mouseover', function(){
             var className = (this).className;
             var show = className.replace('circle ', '');
             console.log(show);
