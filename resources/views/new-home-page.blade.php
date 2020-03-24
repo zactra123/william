@@ -280,17 +280,22 @@
 
         .search-box{
             background-color: #13317f;
+            border:3px solid #3490dc;
             width: 100%;
             height: 75px;
             position: relative;
 
         }
         .search-box-text{
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #ffffff;
-            margin-left:25px;
+            margin-top:20px;
         }
 
+        .btn-search-box{
+            background-color: transparent;
+            color: #ffffff;
+        }
         @media(max-width: 768px){
             .signup{
                 display:none
@@ -304,6 +309,10 @@
             .step-number{
                 font-size: 6px;
                 font-weight: bold;
+            }
+            .search-box {
+
+                height: 200px;
             }
         }
 
@@ -567,10 +576,30 @@
             </div>
             <div class="light-section ">
                 <div class="search-box">
-                    <div class="container content-container">
+                    <div class="container ">
                         <div class="row">
-                            <span class="search-box-text" >
+                            <span class="search-box-text p-2" >
                                 What to know more about credit repair
+                            </span>
+
+                            <form action="#" method="GET" role="search" class="search-box-text">
+                                @csrf
+                                <div class="input-group m-0 ">
+                                    <input type="text" class="form-control rounded-0" name="search"
+                                           placeholder="Type your key word">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-search-box">
+                                            SEARCH EDUCATION CENTER <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+
+                                </div>
+                            </form>
+                            <span class="search-box-text " >
+                                <button type="submit" class="btn btn-search-box">
+                                       CHAT WITH EXPERT <i class="fa  fa-comment-o" aria-hidden="true"></i>
+                                </button>
                             </span>
 
                         </div>
