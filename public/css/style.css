@@ -286,12 +286,13 @@ table {
 }
 
 .breadcrumbs {
-  background: #f6f7f9;
+  /*background: #f6f7f9;*/
   padding: 10px;
   font-size: 14px;
   font-size: 0.875em;
   color: #aeb0b9;
   font-weight: 300;
+    margin-top:100px;
 }
 .breadcrumbs a {
   color: #aeb0b9;

@@ -374,6 +374,16 @@
             }
         }
 
+        .text-block {
+            position: absolute;
+            bottom: 35%;
+            right: 35%;
+            background-color: transparent;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
     </style>
 
 </head>
@@ -488,12 +498,27 @@
                         <div class="carousel-inner">
                             <div class="carousel-item img-overlay-wrap active ">
                                 <img class="d-block w-100" src="/images/slider-1.jpg" alt="First slide">
+                                <div class="text-block">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
+
                                 <img class="d-block w-100" src="/images/slider-2.jpg" alt="Second slide">
+                                <div class="text-block">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
+
                                 <img class="d-block w-100" src="/images/slider-3.jpg" alt="Third slide">
+                                <div class="text-block justify-content-end">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
+
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                  width="100%" height="100%"
@@ -945,11 +970,13 @@
                         <div class="row"><a href="">Affiliates</a></div>
                         <div class="row"><a href="">Careers</a></div>
                         <div class="row"><a href="">Newsroom</a></div>
-                        <div class="row"><a href="">Contact us</a></div>
+                        <div class="row"><a href="{{route('contact')}}">Contact us</a></div>
                     </div>
                     <div class="col-md-4 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">HOW IT WORKS</span></div>
                         <div class="row"><a href="">Credit Repair Process</a></div>
+                        <div class="row"><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></div>
+                        <div class="row"><a href="{{route('credit.repair')}}">Credit Resources</a></div>
                         <div class="row"><a href="">What You Get</a></div>
                         <div class="row"><a href="{{route('faqs')}}">Frequently Asked Questions</a></div>
                         <div class="row"><a href="{{route('pravicy')}}">Privacy Policy</a></div>
