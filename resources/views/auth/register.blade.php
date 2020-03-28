@@ -3,41 +3,6 @@
 @section('content')
 
     <style>
-        /*.tab-selector {*/
-            /*background-color:  #0c71c3;*/
-            /*!*border-color:#1a41ad;*!*/
-            /*color: #FFFFFF;*/
-            /*font-size: large;*/
-            /*display: -webkit-box;*/
-            /*display: -webkit-flex;*/
-            /*display: -ms-flexbox;*/
-            /*display: flex;*/
-            /*-webkit-box-pack: center;*/
-            /*-webkit-justify-content: center;*/
-            /*-ms-flex-pack: center;*/
-            /*justify-content: center;*/
-            /*font-size: large;*/
-        /*}*/
-        /*.tab-selector:hover{*/
-            /*background-color: #FFFFFF;*/
-            /*color:#0c71c3;*/
-        /*}*/
-
-        /*.tab-selector.active {*/
-            /*background-color:  #FFFFFF;*/
-            /*color:#0c71c3;*/
-        /*}*/
-        /*.card-header{*/
-
-            /*border-bottom: none;*/
-        /*}*/
-        /*.pdf-upload{*/
-            /*display: none*/
-        /*}*/
-        /*.pdf-upload.active{*/
-            /*display: block;*/
-        /*}*/
-
         @media (max-width: 768px) {
             label {
                 display:unset;
@@ -47,6 +12,12 @@
             .col-form-label {
                 margin-right: 5px;
             }
+        }
+        .card {
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+        .error{
+            color: #e3342f;
         }
 
     </style>
@@ -58,15 +29,12 @@
                 <div class="row justify-content-center">
                     <div class="col-md-7">
                         <div class="card">
-                            <div class="card-header">
-                                <div class="head m-2">CLIENT REGISTRATION</div>
-                            </div>
                             <div class="card-body ">
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                     @csrf
                                     <div class="form-group row m-1">
                                         <div class="col-md-12">
-                                            <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="First and Last name">
+                                            <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="Full Name">
                                             @error('full_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -227,90 +195,11 @@
 
 @endsection
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
 </script>
-<script type="text/javascript">
 
-
-
-    $(document).ready(function(){
-        autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var place = autocomplete.getPlace();
-            for (var i = 0; i < place.address_components.length; i++) {
-                for (var j = 0; j < place.address_components[i].types.length; j++) {
-                    if (place.address_components[i].types[j] == "postal_code") {
-                        $("#zip").val(place.address_components[i].long_name);
-
-                    }
-                }
-            }
-        });
-
-        $('#date').focus(function () {
-
-            this.type='date';
-        });
-        $('#date').click(function () {
-            this.type='date';
-        })  ;
-        $('#date').blur(function () {
-            if(this.value==''){this.type='text'};
-        });
-
-
-
-
-        $('.ssn').keyup(function() {
-
-            var val = this.value.replace(/\D/g, '');
-            var newVal = '';
-            if(val.length > 4) {
-                this.value = val;
-            }
-            if((val.length > 3) && (val.length < 6)) {
-                newVal += val.substr(0, 3) + '-';
-                val = val.substr(3);
-            }
-            if (val.length > 5) {
-                newVal += val.substr(0, 3) + '-';
-                newVal += val.substr(3, 2) + '-';
-                val = val.substr(5);
-            }
-            newVal += val;
-            this.value = newVal.substring(0, 11);
-        });
-
-        $('#phone_number').keyup(function() {
-
-            var val = this.value.replace(/\D/g, '');
-            var newVal = '';
-            if(val.length > 4) {
-                this.value = val;
-            }
-
-            if((val.length > 3) && (val.length <7)) {
-                newVal += val.substr(0, 3) + '-';
-                val = val.substr(3);
-            }
-            if (val.length > 6) {
-                newVal += val.substr(0, 3) + '-';
-                newVal += val.substr(3, 3) + '-';
-                val = val.substr(6);
-            }
-            newVal += val;
-            this.value = newVal.substring(0, 12);
-        });
-
-
-
-    })
-
-
-
-
-</script>
+<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+<script src="{{ asset('js/site/clients/registration.js?v=2') }}" defer></script>

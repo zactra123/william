@@ -835,8 +835,7 @@
             </div>
 
             <div class="light-section">
-                <div class="container content-container bg-content">
-
+                <div class="container content-container">
                     <div class="square">
                         <div class="hide"></div>
                         <div class="circle 1">

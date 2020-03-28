@@ -292,7 +292,7 @@
     </main>
     <!-- .content -->
     <footer class="site-footer">
-        <svg height="auto" width="100%">
+        <svg height="100%" width="100%">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" style="stop-color:rgb(100, 164, 249);stop-opacity:1" />

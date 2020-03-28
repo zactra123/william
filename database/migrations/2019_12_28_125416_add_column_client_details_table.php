@@ -15,8 +15,8 @@ class AddColumnClientDetailsTable extends Migration
     {
         Schema::table('client_details', function (Blueprint $table) {
             $table->string('phone_number');
-            $table->string('business_name')->default(null);
-            $table->string('referred_by')->default(null);
+            $table->string('business_name')->nullable()->default(null);
+            $table->string('referred_by')->nullable()->default(null);
         });
     }
 
