@@ -55,7 +55,8 @@ $(document).ready(function($){
                 email: true
             },
             "password": {
-                required: true
+                required: true,
+                minlength: 8
             },
             "password_confirmation": {
                 required: true,
