@@ -45,11 +45,9 @@
 
     </style>
 
-
-    <div class="page-content">
-        <div class="fullwidth-block">   
-            <div class="row justify-content-center"  >
-                <div class="col-md-8">
+        <div class="fullwidth-block">
+            <div class="row justify-content-center mt-4"  >
+                <div class="col-md-11">
                     <div class="card">
                         <div class="card-header">
                             <div class="w-100 btn-group btn-group-toggle" data-toggle="buttons">
@@ -70,55 +68,53 @@
                         <div class="card-body">
                             {!! Form::open(['route'=>['client.uploadPdf'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
                             @csrf
-                                <div class="pdf-upload karma-tab active">
+                            <div class="pdf-upload karma-tab active">
 
-                                    <div class="form-group files">
+                                <div class="form-group files">
 
-                                        <input type="file" name="credit_report[credit_karma]" class="form-control" multiple="">
-                                    </div>
+                                    <input type="file" name="credit_report[credit_karma]" class="form-control" multiple="">
+                                </div>
+                            </div>
+
+                            <div class="pdf-upload experian-tab">
+
+                                <div class="form-group files">
+                                    <label>Upload Your File </label>
+                                    <input type="file" name="credit_report[experian]" class="form-control" multiple="">
+                                </div>
+                            </div>
+                            <div class="pdf-upload tu-tab">
+
+                                <div class="form-group files">
+                                    <label>Upload Your File </label>
+                                    <input type="file" name="credit_report[tu][client_details]" class="form-control" multiple="">
+                                </div>
+                                <div class="form-group files">
+                                    <label>Upload Your File </label>
+                                    <input type="file" name="credit_report[tu][payment_history]" class="form-control" multiple="">
+                                </div>
+                            </div>
+                            <div class="pdf-upload tu-online-tab">
+                                <div class="form-group files">
+                                    <label>Upload Your File </label>
+                                    <input type="file" name="credit_report[tu_online]" class="form-control" multiple="">
                                 </div>
 
-                                <div class="pdf-upload experian-tab">
-
-                                    <div class="form-group files">
-                                        <label>Upload Your File </label>
-                                        <input type="file" name="credit_report[experian]" class="form-control" multiple="">
-                                    </div>
+                            </div>
+                            <div class="form-group row mb-0 font">
+                                <div class="col-md-8 offset-md-5">
+                                    <button type="submit" class="btn btn-uploadBtn">
+                                        Upload
+                                    </button>
                                 </div>
-                                <div class="pdf-upload tu-tab">
-
-                                    <div class="form-group files">
-                                        <label>Upload Your File </label>
-                                        <input type="file" name="credit_report[tu][client_details]" class="form-control" multiple="">
-                                    </div>
-                                    <div class="form-group files">
-                                        <label>Upload Your File </label>
-                                        <input type="file" name="credit_report[tu][payment_history]" class="form-control" multiple="">
-                                    </div>
-                                </div>
-                                <div class="pdf-upload tu-online-tab">
-                                    <div class="form-group files">
-                                        <label>Upload Your File </label>
-                                        <input type="file" name="credit_report[tu_online]" class="form-control" multiple="">
-                                    </div>
-
-                                </div>
-                                <div class="form-group row mb-0 font">
-                                    <div class="col-md-8 offset-md-5">
-                                        <button type="submit" class="btn btn-uploadBtn">
-                                            Upload
-                                        </button>
-                                    </div>
-                                </div>
+                            </div>
                             {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
+
             </div>
-
-
-    </div>
-    </div>
+        </div>
 
 
 @endsection

@@ -3,9 +3,10 @@
 
 @section('content')
 
-    <div class="container fon">
+
+    <div class="fullwidth-block">
         <div class="row justify-content-center">
-            <div class="col-md-7 pt-2">
+            <div class="col-md-11 pt-2">
                 <div class="card">
                     <div class="card-header">Your Details</div>
                     <div class="card-body">
@@ -51,7 +52,7 @@
                             <div class="col-md-12">
                                 {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip', 'id' => 'zip']) }}
                             </div>
-                            
+
                         </div>
                         <div class="form-group row m-1">
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>--}}
@@ -121,6 +122,14 @@
             </div>
         </div>
     </div>
+
+
+
+{{--    <div class="container fon">--}}
+{{--        <div class="row justify-content-center">--}}
+{{--   --}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

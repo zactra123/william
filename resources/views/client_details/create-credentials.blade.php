@@ -11,10 +11,9 @@
         }
     </style>
 
-
-    <div class="container fon">
-        <div class="row pt-4 justify-content-center">
-            <div class="col-md-8">
+    <div class="fullwidth-block">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header">
                         <h1>Credentials</h1>
@@ -73,6 +72,16 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+{{--    <div class="container fon">--}}
+{{--        <div class="row pt-4 justify-content-center">--}}
+{{--           --}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
 @endsection

@@ -2,11 +2,9 @@
 
 
 @section('content')
-
-
-    <div class="container fon">
+    <div class="fullwidth-block">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-body">
                         <h1>Add Your Details</h1>
@@ -96,6 +94,13 @@
             </div>
         </div>
     </div>
+
+
+{{--    <div class="container fon">--}}
+{{--        <div class="row justify-content-center">--}}
+{{--            --}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
 
