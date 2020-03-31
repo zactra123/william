@@ -80,9 +80,11 @@
 
                                 <div class="form-group files">
                                     <label>Upload Your Social Security </label>
-                                    <input type="file" name="social_security" class="form-control" multiple="">
+                                    <input type="file" name="social_security" class="m-form m-form--label-align-right" multiple="">
                                 </div>
                             </div>
+
+
 
 
                             <div class="form-group row mb-0 font">
@@ -168,6 +170,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+    $('.file-upload').file_upload();
+
     $(document).ready(function () {
         $('INPUT[type="file"]').change(function () {
             var ext = this.value.match(/\.(.+)$/)[1];

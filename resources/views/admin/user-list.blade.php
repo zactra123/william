@@ -1,25 +1,24 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="page-content">
-        <div class="row justify-content-center">
-            <div class="col-md-10 pt-2">
+    <div class="row justify-content-center mt-5 pt-5 ">
+            <div class="col-md-11 pt-2">
                 <div class="card">
 
                     <div class="card-header">
-                        <label class="header m-2">Users List</label>
+                        <label class="header m-2">USER LIST</label>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First name</th>
-                                <th scope="col">Last name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Affiliate Full name</th>
+                                <th scope="col">FIRST NAME</th>
+                                <th scope="col">LAST NAME</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">AFFILIATE FULL NAME </th>
 
-                                <th scope="col">Action</th>
+                                <th scope="col">ACTION</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,9 +46,4 @@
                 </div>
             </div>
         </div>
-
-
-
-
-    </div>
 @endsection

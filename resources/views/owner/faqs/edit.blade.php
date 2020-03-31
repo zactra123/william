@@ -4,9 +4,9 @@
 @section('content')
 
 
-    <div class="container fon">
+    <div class="container mt-5 pt-5  fon">
         <div class="row justify-content-center pt-2">
-            <div class="col-md-8">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-body">
                         <h1>Edit FAQs</h1>

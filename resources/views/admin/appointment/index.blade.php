@@ -2,12 +2,11 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container  mt-5 ">
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-11">
                 <div class="container">
                     <div class="row justify-content-center">
-
                         <div class="list-group list-group-horizontal col-md-6">
                             <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.appointment.index")}}" >All Messages</a>
                             <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.appointment.index", ["type" => "pending"])}}">Pending</a>
@@ -15,8 +14,9 @@
                         </div>
                     </div>
                     <div class="response">
-
                     </div>
+                </div>
+                <div class="container">
                     <div id='calendar' class="card">
                     </div>
                 </div>

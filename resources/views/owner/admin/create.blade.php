@@ -9,8 +9,8 @@
 
     </style>
 
-    <div class="container">
-        <div class="row m-2">
+    <div class="container pt-5 mt-5">
+        <div class="row m-2 pt-4">
           <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
         </div>
 
@@ -20,7 +20,7 @@
 
         @endforeach
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-11">
 
                 <div class="card">
                     <div class="card-header">

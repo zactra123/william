@@ -12,7 +12,7 @@
     </style>
 
 
-    <div class="container">
+    <div class="container mt-5 pt-5">
         <div class="row m-2">
           <a class="btn btn-success"  href="{{route('owner.receptionist.list')}}">Back</a>
         </div>
@@ -24,7 +24,7 @@
         @endforeach
 
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-11">
 
                 <div class="card">
                     <div class="card-header">

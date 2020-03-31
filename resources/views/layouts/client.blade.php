@@ -21,6 +21,11 @@
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <style>
 
         .dropdown:hover .dropdown-menu {
@@ -232,14 +237,14 @@
                                     <li class="menu-item">
                                         @if(Auth::user()->role == 'client')
                                             @if(empty(Auth::user()->clientDetails))
-                                                <a href="{{ url('/client/details/create') }}" class="branding pull-left">
+                                                <a href="{{ url('/client/details/create') }}" class="branding pull-left">Home</a>
                                             @else
-                                                <a href="{{ url('/client/details') }}"  class="branding pull-left">
+                                                <a href="{{ url('/client/details') }}"  class="branding pull-left">Home</a>
                                             @endif
                                         @else
-                                            <a href="{{ url('/') }}"  class="branding pull-left">
+                                            <a href="{{ url('/') }}"  class="branding pull-left">Home</a>
                                         @endif
-                                        Home
+
                                     </li>
                                     <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
 
