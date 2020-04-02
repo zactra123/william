@@ -34,7 +34,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
-            position: fixed;
+            /*position: fixed;*/
             width: 100%;
             height: 250px;
         }
@@ -111,14 +111,15 @@
         }
 
         .content{
-            padding-top: 110px;
+            /*padding-top: 110px;*/
+            margin-top: -100px;
         }
 
 
 
-        .content-container   {
-            padding: 50px 0px;
-        }
+        /*.content-container   {*/
+        /*    padding: 50px 0px;*/
+        /*}*/
 
         .bg-content {
             background-image: url("/images/bg2.png");
@@ -179,6 +180,8 @@
 
 
 
+
+
     </style>
 
 </head>
@@ -230,7 +233,7 @@
                         <div class="col-12">
                             <nav class="main-navigation mr-0 pull-left">
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                                <ul class="menu">s
+                                <ul class="menu">
                                     <li class="menu-item"><a href="{{ url('/') }}">Home</a></li>
                                     <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
                                     <li class="menu-item"><a href="{{route('howItWorks')}}">How it works</a></li>
