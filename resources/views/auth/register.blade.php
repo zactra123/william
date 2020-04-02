@@ -12,6 +12,14 @@
             .col-form-label {
                 margin-right: 5px;
             }
+            .gender{
+                font-size: 11px;
+            }
+            .form-check-input {
+                position: absolute;
+                margin-top: 0.2rem;
+                margin-left: -1.5rem;
+            }
         }
         .card {
             box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
@@ -107,30 +115,6 @@
 
                                     </div>
                                     {{--Form::input('date', 'date', null, ['class' => 'form-control', 'placeholder' => 'Date']);--}}
-                                    <div class="form-group row m-1 gender">
-                                        <div class="col-md-2">
-                                            <label for="gender" class="col-form-label text-md-center">  Gender:  </label>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <label for="male" class="col-md-3 col-form-label">  Male:
-                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'form-check-input'])}}
-                                            </label>
-
-                                            <label for="female" class="col-md-3  col-form-label ">  Female:
-                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input'])}}
-                                            </label>
-                                            <label for="other" class="col-md-3  col-form-label text-md-center ml-1">  Other:
-                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input'])}}
-                                            </label>
-                                        </div>
-                                        @error('sex')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-
-                                    </div>
-
 
                                     <div class="form-group row m-1">
 
@@ -174,7 +158,29 @@
                                             <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}" autocomplete="referred_by" placeholder="Referred By (if any)">
                                         </div>
                                     </div>
+                                    <div class="form-group row m-1 gender">
+                                        <div class="col-md-2">
+                                            <label for="gender" class="col-form-label text-md-center">  Gender  </label>
+                                        </div>
+                                        <div class="col-md-10 m-0">
+                                            <label for="male" class="col-md-4 col-form-label">  Male:
+                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'form-check-input'])}}
+                                            </label>
 
+                                            <label for="female" class="col-md-3  col-form-label ">  Female:
+                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input '])}}
+                                            </label>
+                                            <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
+                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input float-left'])}}
+                                            </label>
+                                        </div>
+                                        @error('sex')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                    </div>
                                     <div class="form-group row mb-0">
                                         <div class="col-md-9 offset-md-5">
                                             <button type="submit" class="btn btn-primary">

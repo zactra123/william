@@ -437,7 +437,7 @@
                               <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                               <ul class="menu">
                                   <li class="menu-item"><a href="{{ url('/') }}">Home</a></li>
-                                  <li class="menu-item"><a href="{{route('whoWeAre')}}">Who we are</a></li>
+                                  <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
                                   <li class="menu-item"><a href="{{route('howItWorks')}}">How it works</a></li>
                                   <li class="menu-item"><a href="{{route('credit.education')}}">Education center</a></li>
 
@@ -550,34 +550,31 @@
                     <div class="row">
 
                         <div class="col-md-12">
-                                <h3> We partner with all three credit bureaus: TansUnion, Equfax and Expirian</h3>
-                                <p>
-                                    We work with credit bureaus and your creditors to challenge the negative report
-                                    items that affect your credit score, We'll ensure your credit history up to-date
-                                    accurate and reflects you honestly.
+                                <h3> We work with all three major credit reporting agencies: Experian, Equifax, and
+                                    TransUnion
+                                </h3>
+                                <p class="m-2">
+                                    We work with credit bureaus and your creditors to challenge the inaccurate credit
+                                    reporting that affects your credit score and financial fitness. We'll ensure your
+                                    credit history reflects accurate information.
                                 </p>
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-3">
-                            <div class="feature">
-                                <img src="images/p-3.png"  class="float-left" >
+                        <div class="col-md-4">
+                            <div class="feature excall">
+                                <img src="images/p-3.png">
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-3 ">
-                            <div class="feature">
-                                <img src="images/p-2.png"  class="float-left"  >
+                        <div class="col-md-4">
+                            <div class="feature excall">
+                                <img src="images/p-2.png" >
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
-                        <div class="col-md-3 ">
-                            <div class="feature">
-                                <img src="images/p-1.png"   class="float-left mt-3">
 
-                            </div> <!-- .feature -->
-                        </div> <!-- .col-md-3 -->
-                        <div class="col-md-3">
-                            <div class="feature">
-                                <img src="images/p-4.png"  class="float-left" >
+                        <div class="col-md-4">
+                            <div class="feature excall">
+                                <img src="images/p-4.png" >
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
@@ -590,7 +587,7 @@
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
                         <div class="col-md-6">
-                            <div class="feature align-items-center">
+                            <div class="feature align-items-center mt-2">
                                 <a href="" class="btn  btn-outline-dark align-content-center">SIGN UP ONLINE </a>
 
                             </div> <!-- .feature -->
@@ -686,7 +683,7 @@
                                     <a href="" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
 
                                 </div> <!-- .feature -->
-                                <div class="featurealign-items-center">
+                                <div class="feature align-items-center">
                                     <a href="" class="btn  btn-primary signup-chat">CHAT WHITE EXPERT </a>
 
                                 </div> <!-- .feature -->
@@ -964,19 +961,19 @@
                     <div class="col-md-3 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title"> HOW WE ARE</span></div>
                         <div class="row"><a href="{{route('whoWeAre')}}">About us</a></div>
-                        <div class="row"><a href="">Facebook</a></div>
-                        <div class="row"><a href="">Twitter</a></div>
-                        <div class="row"><a href="">Affiliates</a></div>
-                        <div class="row"><a href="">Careers</a></div>
-                        <div class="row"><a href="">Newsroom</a></div>
+                        <div class="row"><a href="" target="_blank">Facebook</a></div>
+                        <div class="row"><a href="" target="_blank">Twitter</a></div>
+                        <div class="row"><a href="" >Affiliates</a></div>
+                        <div class="row"><a href="" >Careers</a></div>
+                        <div class="row"><a href="" >Newsroom</a></div>
                         <div class="row"><a href="{{route('contact')}}">Contact us</a></div>
                     </div>
                     <div class="col-md-4 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">HOW IT WORKS</span></div>
-                        <div class="row"><a href="">Credit Repair Process</a></div>
+                        <div class="row"><a href="" target="_blank">Credit Repair Process</a></div>
                         <div class="row"><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></div>
                         <div class="row"><a href="{{route('credit.repair')}}">Credit Resources</a></div>
-                        <div class="row"><a href="">What You Get</a></div>
+                        <div class="row"><a href="" target="_blank">What You Get</a></div>
                         <div class="row"><a href="{{route('faqs')}}">Frequently Asked Questions</a></div>
                         <div class="row"><a href="{{route('pravicy')}}">Privacy Policy</a></div>
                         <div class="row"><a href="">Text Message Terms</a></div>
@@ -984,13 +981,13 @@
                     </div>
                     <div class="col-md-3 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">EDUCATION</span></div>
-                        <div class="row"><a href="">CreditRepair.com Blog </a></div>
+                        <div class="row"><a href="" target="_blank">CreditRepair.com Blog </a></div>
                         <div class="row"><a href="">Credit Improvement</a></div>
                         <div class="row"><a href="">Debt Solution</a></div>
-                        <div class="row"><a href="">Identity Theft</a></div>
+                        <div class="row"><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></div>
                         <div class="row"><a href="">Loon Center</a></div>
                         <div class="row"><a href="">Saving Center</a></div>
-                        <div class="row"><a href="">Score Estimator </a></div>
+                        <div class="row"><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator </a></div>
                     </div>
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>
