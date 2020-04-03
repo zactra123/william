@@ -195,6 +195,7 @@
 <body>
 <div id="site-content">
 
+
     <header class="site-header">
         <div class="base-header {{--h-shadow--}}">
             <div class="container pl-0" id="app">
@@ -242,9 +243,9 @@
                             <nav class="main-navigation mr-0 pull-left">
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                                 <ul class="menu">
-                                    <li class="menu-item who-we-are"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-                                    <li class="menu-item how-it-works"><a href="{{route('howItWorks')}}">How It Works</a></li>
-                                    <li class="menu-item credit-education"><a href="{{route('credit.education')}}">Education Center</a></li>
+                                    <li class="menu-item {{strpos(request()->getPathInfo(), 'who-we-are')? "active-page" : ''}}"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
+                                    <li class="menu-item {{strpos(request()->getPathInfo(), 'how-it-works')? "active-page" : ''}}"><a href="{{route('howItWorks')}}">How It Works</a></li>
+                                    <li class="menu-item {{strpos(request()->getPathInfo(), 'credit-education')? "active-page" : ''}}"><a href="{{route('credit.education')}}">Education Center</a></li>
 
                                     @if (Route::has('login'))
                                         @auth
