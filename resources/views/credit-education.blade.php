@@ -57,7 +57,7 @@
                                 @endforeach
                             @else
                                 <div class="credit-education-logo">
-                                    <img src="{{asset('images/logo-footer.png')}}" width="100%" >
+                                    <img src="{{asset('/images/logo-footer.png')}}" width="100%" >
                                 </div>
                             @endif
 

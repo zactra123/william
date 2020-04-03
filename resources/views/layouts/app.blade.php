@@ -127,7 +127,7 @@
                 <div class="col-md-6 m-0 pl-3">
 
                     <div class=" branding m-0">
-                        <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon m-0">
+                        <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon m-0">
 
                     </div> <!-- .branding -->
 

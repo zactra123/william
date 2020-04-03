@@ -195,7 +195,7 @@
         <div class="base-header {{--h-shadow--}}">
             <div class="container pl-0" id="app">
                 <div class="col-12 justify-content-center">
-                    <img src="{{asset('images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
+                    <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
                     <div class="row pt-2 ">
                         <div class="col-12 pull-right signup">
                             <div class="pull-right">
