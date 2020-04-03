@@ -742,8 +742,8 @@
 
                                     </div>
                                     <div class="row category-padding">
-                                        <div class="col-8  pl-4"><li>Mortgage Negatives Repossessions</li></div>
-                                        <div class="col-4  pl-4"><li>Repossessions</li></div>
+                                        <div class="col-5  pl-4"><li>Mortgage Negatives</li></div>
+                                        <div class="col-7  pl-4"><li>Repossessions</li></div>
                                     </div>
 
                                 </div> <!-- .feature -->
