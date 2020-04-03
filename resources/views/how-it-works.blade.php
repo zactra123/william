@@ -3,15 +3,9 @@
 
 @section('content')
 
-    <div class="breadcrumbs">
-        <div class="container">
-            <a href="{{url('/')}}">Home</a> &rarr;
-            <a href="#">HOW IT WORKS</a>
-        </div>
-    </div>
 
 
-    <div class="container">
+    <div class=" mt-5 pt-5">
 
         <p style="text-align: justify">
             When you decide to hire our firm for your credit restoration needs, we direct you to register and create an

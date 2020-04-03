@@ -193,7 +193,9 @@
         <div class="base-header {{--h-shadow--}}">
             <div class="container pl-0" id="app">
                 <div class="col-12 justify-content-center">
+                    <a href="{{ url('/') }}">
                     <img src="images/logo-footer.png" alt="Site title" class="logo-icon branding ">
+                    </a>
                     <div class="row pt-2 ">
                         <div class="col-12 pull-right signup">
                             <div class="pull-right">
@@ -234,7 +236,7 @@
                             <nav class="main-navigation mr-0 pull-left">
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                                 <ul class="menu">
-                                    <li class="menu-item"><a href="{{ url('/') }}">Home</a></li>
+
                                     <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
                                     <li class="menu-item"><a href="{{route('howItWorks')}}">How it works</a></li>
                                     <li class="menu-item"><a href="{{route('credit.education')}}">Education center</a></li>

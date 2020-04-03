@@ -3,12 +3,7 @@
 
 @section('content')
 
-    <div class="breadcrumbs">
-    <div class="container">
-        <a href="{{url('/')}}">Home</a> &rarr;
-        <a href="#">FAQs</a>
-    </div>
-    </div>
+
 
     <div id="site-content">
 

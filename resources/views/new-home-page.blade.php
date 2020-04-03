@@ -125,6 +125,10 @@
             padding: 50px 0px;
         }
 
+        .content-including   {
+            padding: 10px 0px;
+        }
+
         .bg-content {
             background-image: url("/images/bg2.png");
         }
@@ -253,7 +257,7 @@
             border-color: #15178b;
         }
         .including{
-            font-size: 3.5rem;
+            font-size: 3vw;
             font-weight: bold;
             color: #15178b;
         }
@@ -269,13 +273,18 @@
             width: 75%;
             height: 80%;
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.7rem;
             position: absolute;
             top: 0;
+        }
+        .category-padding{
+            padding-top: 1rem;
         }
 
         .numberOk{
             font-size: 4rem;
+            margin:0;
+            padding-top: 0;
         }
 
         .search-box{
@@ -296,7 +305,7 @@
             background-color: transparent;
             color: #ffffff;
         }
-        @media(max-width: 768px){
+        @media(max-width: 1000px){
             .signup{
                 display:none
             }
@@ -314,9 +323,23 @@
 
                 height: 200px;
             }
+            .mediaChat{
+                display: none;
+            }
+            .category {
+                background: #15178b;
+                height: 100%;
+                margin-left: 30px;
+                /*text-align: center;*/
+                font-size: 1vw;
+                position: relative;
+            }
+            .category-padding{
+                padding-top: 1rem;
+            }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 500px) {
             .company{
                 margin-top: 10px;
                 font-size: 10px;
@@ -348,8 +371,8 @@
 
             }
             .including{
-
-                font-size: 4vw;
+                margin-top: 0;
+                font-size: 3vw;
                 font-weight: bold;
                 color: #15178b;
             }
@@ -359,10 +382,20 @@
 
             .category {
                 background: #15178b;
+                height: 100%;
                 margin-left: 30px;
-                text-align: center;
-                font-size: 2vw;
+                /*text-align: center;*/
+                font-size: 3vw;
                 position: relative;
+            }
+            .category-padding{
+                padding-top: 0.2rem;
+            }
+
+            .numberOk{
+                font-size: 2.5rem;
+                margin:0;
+                padding-top: 0;
             }
 
         }
@@ -395,7 +428,9 @@
         <div class="base-header {{--h-shadow--}}">
           <div class="container pl-0" id="app">
               <div class="col-12 justify-content-center">
-                <img src="images/logo-footer.png" alt="Site title" class="logo-icon branding ">
+                  <a href="{{ url('/') }}">
+                        <img src="images/logo-footer.png" alt="Site title" class="logo-icon branding ">
+                  </a>
                   <div class="row pt-2 ">
                       <div class="col-12 pull-right signup">
                           <div class="pull-right">
@@ -436,10 +471,9 @@
                           <nav class="main-navigation mr-0 pull-left">
                               <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                               <ul class="menu">
-                                  <li class="menu-item"><a href="{{ url('/') }}">Home</a></li>
                                   <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-                                  <li class="menu-item"><a href="{{route('howItWorks')}}">How it works</a></li>
-                                  <li class="menu-item"><a href="{{route('credit.education')}}">Education center</a></li>
+                                  <li class="menu-item"><a href="{{route('howItWorks')}}"> How It Works</a></li>
+                                  <li class="menu-item"><a href="{{route('credit.education')}}">Education Center</a></li>
 
                                   @if (Route::has('login'))
                                       @auth
@@ -494,6 +528,8 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item img-overlay-wrap active ">
@@ -514,6 +550,24 @@
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-3.jpg" alt="Third slide">
+                                <div class="text-block justify-content-end">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
+
+                            </div>
+                            <div class="carousel-item img-overlay-wrap">
+
+                                <img class="d-block w-100" src="/images/slider-4.png" alt="Fourth slide">
+                                <div class="text-block justify-content-end">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
+
+                            </div>
+                            <div class="carousel-item img-overlay-wrap">
+
+                                <img class="d-block w-100" src="/images/slider-5.png" alt="Fifth slide">
                                 <div class="text-block justify-content-end">
                                     <h4>Nature</h4>
                                     <p>What a beautiful sunrise</p>
@@ -649,32 +703,48 @@
                     {{--                        <rect  width="100%" height="100%" y="0" x="0" fill="url(#gradient)"/>--}}
                     {{--                    </svg>--}}
 
-                    <div class="container content-container bg-content work-more">
+                    <div class="container content-including bg-content work-more">
 
                         <div class="row">
                             <div class="col-md-3 work-more">
-
-
-                                <p class="">
-                                    number of items corrected
-                                    <span class="numberOk">40</span>
+                                <p class="m-0 p-0">
+                                    Number of Inaccuracies Corrected/Removed
                                 </p>
+                                <span class="numberOk p-0 m-0">40</span>
                             </div> <!-- .col-md-3 -->
 
-                            <div class="col-md-3 ">
+                            <div class="col-md-3 m-0">
                                     <span class="including">
                                         Including
                                     </span>
                             </div> <!-- .col-md-3 -->
                             <div class="col-md-3">
-                                <img class="w-100 mediaChat" src="/images/content.svg">
-                                <div class="category">
-                                    <ul class="pt-3">
-                                        <li >Bankruptcies</li>
-                                        <li >Foreclosure</li>
-                                        <li >Repossession</li>
-                                        <li >Judgments</li>
-                                    </ul>
+                                <img class="w-100 mediaChat" height="320px" src="/images/content.svg">
+                                <div class="category text-justify">
+                                    <div class="row category-padding">
+                                        <div class="col-5 pl-4"> <li>Bankruptcies</li></div>
+                                        <div class="col-7 pl-4"><li>Charge Offs</li></div>
+
+                                    </div>
+                                    <div class="row  category-padding">
+                                        <div class="col-5  pl-4"><li>Collections</li></div>
+                                        <div class="col-7  pl-4"><li>Late Remarks</li></div>
+
+                                    </div>
+                                    <div class="row  category-padding">
+                                        <div class="col-5  pl-4"><li>Inquiries</li></div>
+                                        <div class="col-7  pl-4"><li>Student Loans</li></div>
+
+                                    </div>
+                                    <div class="row  category-padding">
+                                        <div class="col-5  pl-4"><li>Judgments</li></div>
+                                        <div class="col-7  pl-4"><li>Fraud Accounts</li></div>
+
+                                    </div>
+                                    <div class="row category-padding">
+                                        <div class="col-8  pl-4"><li>Mortgage Negatives Repossessions</li></div>
+                                        <div class="col-4  pl-4"><li>Repossessions</li></div>
+                                    </div>
 
                                 </div> <!-- .feature -->
                             </div> <!-- .col-md-3 -->
@@ -684,7 +754,7 @@
 
                                 </div> <!-- .feature -->
                                 <div class="feature align-items-center">
-                                    <a href="" class="btn  btn-primary signup-chat">CHAT WHITE EXPERT </a>
+                                    <a href="" class="btn  btn-primary signup-chat">CHAT WITH EXPERT </a>
 
                                 </div> <!-- .feature -->
                             </div> <!-- .col-md-3 -->

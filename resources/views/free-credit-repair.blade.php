@@ -3,12 +3,7 @@
 
 @section('content')
 
-    <div class="breadcrumbs">
-        <div class="container">
-            <a href="{{url('/')}}">Home</a> &rarr;
-            <a href="#">FREE CREDIT REPAIR</a>
-        </div>
-    </div>
+
 
     <div id="site-content">
 
@@ -84,10 +79,7 @@
                 dispute the error.
             </p>
             <p style="text-align: justify">
-                One of the main reasons this is an often missed tip to keeping your credit healthy is
-                because consumers don’t want to deal with the hassle of being put on long holds, dealing
-                with credit documents and trying to prove the errors on your report. This is were a
-                credit companies like Better Credit Fix can help!
+                One of the main reasons this is an often Prudent  can help!
 
             </p>
 

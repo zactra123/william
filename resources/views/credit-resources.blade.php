@@ -7,12 +7,7 @@
         <div class="fullwidth-block">
             <div class="container fon">
                 <div class="card m-0 pb-4">
-                    <div class="breadcrumbs">
-                        <div class="container">
-                            <a href="{{url('/')}}">Home</a> &rarr;
-                            <a href="#">CREDIT RESOURCES</a>
-                        </div>
-                    </div>
+
 
                     <div id="site-content">
 
