@@ -24,6 +24,10 @@
         color: white;
         /*margin-left: 5% ;*/
     }
+    credit-education-logo{
+        dispay:show;
+    }
+
 
 </style>
 @extends('layouts.login')
@@ -44,7 +48,6 @@
 
                     <div class="fullwidth-block slide-down">
                         <div class="container">
-
                             @if(isset($moreInfo))
                                 @foreach($moreInfo as $info)
                                     <h1>{{$info->title}}</h1><br/>
@@ -52,6 +55,10 @@
                                         <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
                                     </div>
                                 @endforeach
+                            @else
+                                <div class="credit-education-logo">
+                                    <img src="{{asset('images/logo-footer.png')}}" width="100%" >
+                                </div>
                             @endif
 
                         </div>

@@ -35,7 +35,7 @@
 
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-body ">
                                 <form method="POST" id="client-registration-form" action="{{ route('register') }}">
@@ -55,7 +55,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-12">
-                                            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone number">
+                                            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone Number">
                                             @error('phone_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -80,7 +80,7 @@
                                     <div class="form-group row m-1">
 
                                         <div class="col-md-12">
-                                            <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}" required autocomplete="zip" placeholder="Zip code">
+                                            <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}" required autocomplete="zip" placeholder="Zip Code">
                                             @error('zip')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -105,7 +105,7 @@
 
                                         <div class="col-md-12">
 
-                                            <input placeholder="Date of birth" name = 'dob' class="form-control" type="text" id="date">
+                                            <input placeholder="Date of Birth" name = 'dob' class="form-control" type="text" id="date">
                                             @error('dob')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -162,16 +162,16 @@
                                         <div class="col-md-2">
                                             <label for="gender" class="col-form-label text-md-center">  Gender  </label>
                                         </div>
-                                        <div class="col-md-10 m-0">
-                                            <label for="male" class="col-md-4 col-form-label">  Male:
+                                        <div class="col-md-10 m-0 p-0">
+                                            <label for="male" class="col-md-3 col-form-label">Male:
                                                 {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'form-check-input'])}}
                                             </label>
 
-                                            <label for="female" class="col-md-3  col-form-label ">  Female:
+                                            <label for="female" class="col-md-3  col-form-label ">Female:
                                                 {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input '])}}
                                             </label>
-                                            <label for="other" class="col-md-4  col-form-label  ml-1">  Non-Binary:
-                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input float-left'])}}
+                                            <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
+                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input '])}}
                                             </label>
                                         </div>
                                         @error('sex')
