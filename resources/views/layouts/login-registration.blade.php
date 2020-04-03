@@ -117,9 +117,9 @@
 
 
 
-        /*.content-container   {*/
-        /*    padding: 50px 0px;*/
-        /*}*/
+        .content-container   {
+            padding: 50px 0px;
+        }
 
         .bg-content {
             background-image: url("/images/bg2.png");

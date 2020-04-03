@@ -34,7 +34,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
-            position: fixed;
+            /*position: fixed;*/
             width: 100%;
             height: 250px;
         }
@@ -84,7 +84,7 @@
             padding: 5px 0;
             display: block;
             text-decoration: none;
-            color: white;
+            color: #01a6d4;
             font-size: 14px;
             position: relative;
             border-left: 1px solid transparent;
@@ -92,6 +92,15 @@
             transition: .2s ease;
             content: "styl";
         }
+
+
+
+        .active-page {
+            color: #01a6d4;
+            border-bottom: 2px solid #01a6d4;
+
+        }
+
 
         .sign-hide{
             display: none;
@@ -111,9 +120,9 @@
         }
 
         .content{
-            padding-top: 110px;
+            /*padding-top: 110px;*/
+            margin-top: -100px;
         }
-
 
 
         .content-container   {
@@ -233,9 +242,9 @@
                             <nav class="main-navigation mr-0 pull-left">
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                                 <ul class="menu">
-                                    <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-                                    <li class="menu-item"><a href="{{route('howItWorks')}}">How It Works</a></li>
-                                    <li class="menu-item"><a href="{{route('credit.education')}}">Education Center</a></li>
+                                    <li class="menu-item who-we-are"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
+                                    <li class="menu-item how-it-works"><a href="{{route('howItWorks')}}">How It Works</a></li>
+                                    <li class="menu-item credit-education"><a href="{{route('credit.education')}}">Education Center</a></li>
 
                                     @if (Route::has('login'))
                                         @auth
@@ -368,10 +377,19 @@
 <script>
 
 
+
+
     $(document).ready(function(){
         //    Slider Start
         $('.carousel').carousel()
         // // Slider End
+
+        var location =window.location.pathname.replace(/\\|\//g,'')
+
+        $('.'+location).addClass('active-page')
+
+
+        console.log(location,'fsdfsdf');
 
 
         $('.circle').on('click mouseover', function(){

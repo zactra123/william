@@ -170,7 +170,7 @@
                                             <label for="female" class="col-md-3  col-form-label ">  Female:
                                                 {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input '])}}
                                             </label>
-                                            <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
+                                            <label for="other" class="col-md-4  col-form-label  ml-1">  Non-Binary:
                                                 {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input float-left'])}}
                                             </label>
                                         </div>

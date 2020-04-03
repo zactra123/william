@@ -34,7 +34,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
-            position: fixed;
+            /*position: fixed;*/
             width: 100%;
             height: 250px;
         }
@@ -113,7 +113,8 @@
         }
 
         .content{
-            padding-top: 110px;
+            /*padding-top: 110px;*/
+            margin-top: -120px;
         }
 
         .dark-section {
