@@ -15,7 +15,7 @@
 
     <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/app.js?v=2') }}"></script>
 
 
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
@@ -541,43 +541,63 @@
                         <div class="carousel-inner">
                             <div class="carousel-item img-overlay-wrap active ">
                                 <img class="d-block w-100" src="/images/slider-1.jpg" alt="First slide">
-                                <div class="text-block">
-                                    <h4>{{$slogans['0']->author}}</h4>
-                                    <p>{{$slogans['0']->slogan}}</p>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><i class="fa fa-quote-left"></i>
+                                        <span class="font-italic">{{$slogans['0']->slogan}}</span>
+                                        <i class="fa fa-quote-right"></i></h5>
+                                    <p>
+                                        {{$slogans['0']->author}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-2.jpg" alt="Second slide">
-                                <div class="text-block">
-                                    <h4>{{$slogans['1']->author}}</h4>
-                                    <p>{{$slogans['1']->slogan}}</p>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><i class="fa fa-quote-left"></i>
+                                        <span class="font-italic">{{$slogans['1']->slogan}}</span>
+                                        <i class="fa fa-quote-right"></i></h5>
+                                    <p>
+                                        {{$slogans['1']->author}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-3.jpg" alt="Third slide">
-                                <div class="text-block justify-content-end">
-                                    <h4>{{$slogans['2']->author}}</h4>
-                                    <p>{{$slogans['2']->slogan}}</p>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><i class="fa fa-quote-left"></i>
+                                        <span class="font-italic">{{$slogans['2']->slogan}}</span>
+                                        <i class="fa fa-quote-right"></i></h5>
+                                    <p>
+                                        {{$slogans['2']->author}}
+                                    </p>
                                 </div>
 
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-4.png" alt="Fourth slide">
-                                <div class="text-block justify-content-end">
-                                    <h4>{{$slogans['3']->author}}</h4>
-                                    <p>{{$slogans['3']->slogan}}</p>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><i class="fa fa-quote-left"></i>
+                                        <span class="font-italic">{{$slogans['3']->slogan}}</span>
+                                        <i class="fa fa-quote-right"></i></h5>
+                                    <p>
+                                        {{$slogans['3']->author}}
+                                    </p>
                                 </div>
 
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-5.png" alt="Fifth slide">
-                                <div class="text-block justify-content-end">
-                                    <h4>{{$slogans['4']->author}}</h4>
-                                    <p>{{$slogans['4']->slogan}}</p>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><i class="fa fa-quote-left"></i>
+                                        <span class="font-italic">{{$slogans['4']->slogan}}</span>
+                                        <i class="fa fa-quote-right"></i></h5>
+                                    <p>
+                                        {{$slogans['4']->author}}
+                                    </p>
                                 </div>
 
                             </div>
@@ -1008,7 +1028,7 @@
     </main>
     <!-- .content -->
     <footer class="site-footer">
-        <svg height="auto" width="100%">
+        <svg height="100%" width="100%">
             <defs>
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" style="stop-color:rgb(100, 164, 249);stop-opacity:1" />
@@ -1077,10 +1097,6 @@
     </footer> <!-- .site-footer -->
 
 </div> <!-- #site-content -->
-
-<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('js/js/plugins.js')}}"></script>
-<script src="{{asset('js/js/app.js')}}"></script>
 
 <script>
 

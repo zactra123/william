@@ -2410,6 +2410,12 @@ img.pull-left, img.pull-right {
     -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
     transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
 }
+.pdf-upload{
+  display: none
+}
+.pdf-upload.active{
+  display: block;
+}
 .files{ position:relative}
 .files:after {  pointer-events: none;
     position: absolute;
@@ -2581,7 +2587,7 @@ hr.spacer {
   text-align: center;
 }
 
-.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6 {
+.page-content h1, .page-content h2, .page-content h3, .page-content h4 {
   color: #0c71c3;
   margin: 0 0 10px;
   line-height: normal;
