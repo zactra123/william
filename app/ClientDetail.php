@@ -41,6 +41,7 @@ class ClientDetail extends Model
         'phone_number',
         'referred_by',
         'business_name',
+        'registration_steps',
     ];
 
     public function user()

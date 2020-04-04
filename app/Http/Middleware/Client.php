@@ -24,9 +24,13 @@ class Client
        } elseif ( Auth::user()->role != 'client') {
             return redirect()->to('/');
        }
-//       elseif(empty(auth()->user()->clientDetails) && $request->path() != "client/details/create"){
-//           return redirect()->to('client/details/create');
-//       }
+
+       if($request->path() != "client/registration-steps"){
+           if (auth()->user()->clientDetails->registration_steps != 'finished')
+           return redirect()->to('client/registration-steps');
+       }
+
+
         return $next($request);
     }
 }

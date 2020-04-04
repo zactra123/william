@@ -27,6 +27,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request, $id)
     {
+
         $signuture = $request->signature;
         if (! $this->guard()->onceUsingId($id)) {
             throw new AuthorizationException;
@@ -34,8 +35,6 @@ class VerificationController extends Controller
         $user = $this->guard()->user();
 
         if (empty($user->password)) {
-
-
             if($request->isMethod("POST")) {
                 $this->validator($request->all())->validate();
                 $user->update(['password'=> Hash::make($request->password)]);
@@ -48,9 +47,17 @@ class VerificationController extends Controller
         if ($user->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
+
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
+        if ($user->hasVerifiedEmail()) {
+            if ($user->role == "client") {
+                $user->clientDetails->update(["registration_steps" => "documents"]);
+            }
+        }
+
+
         Auth::login($user, true);
         return redirect($this->redirectPath())->with('verified', true);
     }
@@ -78,7 +85,7 @@ class VerificationController extends Controller
                 break;
             case 'client':
                 if(empty(auth()->user()->clientDetails)){
-                    $this->redirectTo = '/client/details/create';
+                    $this->redirectTo = 'client/registration-steps';
                     return $this->redirectTo;
                     break;
                 }else{

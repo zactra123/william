@@ -154,14 +154,15 @@ Route::group(['prefix'=> 'affiliate'], function(){
 });
 
 
-Route::group(['prefix' =>'client/details'], function() {
+Route::group(['prefix' =>'client'], function() {
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
     Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');
     Route::post('add/driver-license-social-security', 'ClientDetailsController@storeDlSs')->name('client.storeDriverSocial');
     Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
     Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
-    Route::resource('/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
+    Route::get('registration-steps', 'ClientDetailsController@create')->name('registration_steps');
+    Route::resource('/details', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 
 
 //    Route::get('/details', 'ClientDetailsController@create')->name('createInfo');

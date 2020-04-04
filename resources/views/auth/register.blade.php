@@ -21,11 +21,21 @@
                 margin-left: -1.5rem;
             }
         }
-        .card {
-            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
-        }
         .error{
             color: #e3342f;
+        }
+
+        .or-seperator {
+            margin: 20px 0 10px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .or-seperator i {
+            padding: 0 10px;
+            background: #f7f7f7;
+            position: relative;
+            top: -11px;
+            z-index: 1;
         }
 
     </style>
@@ -40,6 +50,11 @@
                             <div class="card-body ">
                                 <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                     @csrf
+                                    <div class="text-center social-btn">
+                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with <b>Google</b></a>
+                                    </div>
+                                    <div class="or-seperator"><i>or</i></div>
                                     <div class="form-group row m-1">
                                         <div class="col-md-12">
                                             <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="Full Name">

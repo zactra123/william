@@ -752,7 +752,7 @@
                             </div> <!-- .col-md-3 -->
                             <div class="col-md-3 mediaChat">
                                 <div class="align-items-center">
-                                    <a href="" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
+                                    <a href="{{ route('register') }}" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
 
                                 </div> <!-- .feature -->
                                 <div class="feature align-items-center">
