@@ -715,17 +715,17 @@
                                 <span class="numberOk p-0 m-0">40</span>
                             </div> <!-- .col-md-3 -->
 
-                            <div class="col-md-3 m-0">
+                            <div class="col-md-2 m-0">
                                     <span class="including">
                                         Including
                                     </span>
                             </div> <!-- .col-md-3 -->
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <img class="w-100 mediaChat" height="320px" src="/images/content.svg">
-                                <div class="category text-justify">
+                                <div class="category text-justify pl-3">
                                     <div class="row category-padding">
                                         <div class="col-5 pl-4"> <li>Bankruptcies</li></div>
-                                        <div class="col-7 pl-4"><li>Charge Offs</li></div>
+                                        <div class="col-7 pl-4"><li>Mortgage Negatives</li></div>
 
                                     </div>
                                     <div class="row  category-padding">
@@ -744,7 +744,7 @@
 
                                     </div>
                                     <div class="row category-padding">
-                                        <div class="col-5  pl-4"><li>Mortgage Negatives</li></div>
+                                        <div class="col-5  pl-4"><li>Charge Offs</li></div>
                                         <div class="col-7  pl-4"><li>Repossessions</li></div>
                                     </div>
 
