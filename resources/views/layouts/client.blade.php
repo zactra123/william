@@ -39,7 +39,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
-            position: fixed;
+            /*position: fixed;*/
             width: 100%;
             height: 250px;
         }
@@ -116,7 +116,7 @@
         }
 
         .content{
-            padding-top: 110px;
+            /*padding-top: 110px;*/
         }
 
 
@@ -281,13 +281,14 @@
             </div> <!-- .container -->
         </div> <!-- .bottom-header -->
     </header> <!-- .site-header -->
-    @include('helpers/flash')
+
     <main class="content">
 
         <div class="page-content">
 
             <div class="light-section">
                 <div class="container content-container bg-content">
+                    @include('helpers/flash')
                     @yield('content')
                 </div>
             </div>

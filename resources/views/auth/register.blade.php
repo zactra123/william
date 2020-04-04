@@ -199,13 +199,16 @@
     </div>
 
 
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
+
+    </script>
+
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/site/clients/registration.js?v=2') }}" defer></script>
+
 @endsection
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
-</script>
-
-<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
-<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-<script src="{{ asset('js/site/clients/registration.js?v=2') }}" defer></script>
