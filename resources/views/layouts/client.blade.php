@@ -21,7 +21,7 @@
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+{{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -159,7 +159,6 @@
             }
 
         }
-
         @media (max-width: 400px) {
             .company{
                 margin-top: 10px;
@@ -179,23 +178,32 @@
 
 
         }
-
-
-
-
-
     </style>
 
 </head>
 
 <body>
 <div id="site-content">
-
     <header class="site-header">
         <div class="base-header {{--h-shadow--}}">
             <div class="container pl-0" id="app">
                 <div class="col-12 justify-content-center">
-                    <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
+                    @if(Auth::user()->role == 'client')
+                        @if(empty(Auth::user()->clientDetails))
+                            <a href="{{ url('/client/details/create') }}" class="branding pull-left">
+                                <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
+                            </a>
+                        @else
+                            <a href="{{ url('/client/details') }}"  class="branding pull-left">
+                                <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ url('/') }}"  class="branding pull-left">
+                            <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
+                        </a>
+                    @endif
+
                     <div class="row pt-2 ">
                         <div class="col-12 pull-right signup">
                             <div class="pull-right">
@@ -204,8 +212,6 @@
                                     <ul class="menu">
                                         <li class="dropdown menu-item "><a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ Auth::user()->email }}<span class="caret"></span></a>
                                             <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
-                                                <li class="menu-item "><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit details</a></li>
-                                                <li class="menu-item "><a href="{{route('client.credentials')}}">Credentials</a></li>
                                                 <li class="menu-item "><a href="{{ route('logout') }}"
                                                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -234,32 +240,19 @@
                                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 
                                 <ul class="menu">
-                                    <li class="menu-item">
-                                        @if(Auth::user()->role == 'client')
-                                            @if(empty(Auth::user()->clientDetails))
-                                                <a href="{{ url('/client/details/create') }}" class="branding pull-left">Home</a>
-                                            @else
-                                                <a href="{{ url('/client/details') }}"  class="branding pull-left">Home</a>
-                                            @endif
-                                        @else
-                                            <a href="{{ url('/') }}"  class="branding pull-left">Home</a>
-                                        @endif
-
-                                    </li>
-                                    <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>
+                                    {{--                                    <li class="menu-item"><a href="{{route('client.uploadCreditReports')}}">Upload Credit Reports</a></li>--}}
 
                                     @if(!empty(Auth::user()->clientDetails))
                                         <li class="menu-item"><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit details</a></li>
                                     @else
                                         <li class="menu-item"><a href="{{route('client.details.create')}}">Add your Details</a></li>
                                     @endif
-                                    <li class="menu-item"><a href="{{route('client.addDriverSocial')}}">Upload Driver Licnse & Social Security</a></li>
+                                    <li class="menu-item"><a href="{{route('client.addDriverSocial')}}">Upload DL & SS </a></li>
+                                    <li class="menu-item"><a href="{{route('client.credentials')}}">Credentials</a></li>
 
-
-                                    <li class="dropdown menu-item sign-hide"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->email }}<span class="caret"></span></a>
+                                    <li class="dropdown menu-item sign-hide"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->email }}<span class="caret"></span></a>
                                         <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
-                                            <li class="menu-item sign-hide"><a href="{{route('client.details.edit',Auth::user()->id)}}">Edit details</a></li>
-                                            <li class="menu-item sign-hide"><a href="{{route('client.credentials')}}">Credentials</a></li>
+
                                             <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

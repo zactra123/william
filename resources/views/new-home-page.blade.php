@@ -85,12 +85,13 @@
             display: block;
             text-decoration: none;
             color: white;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 400;
             position: relative;
             border-left: 1px solid transparent;
-            -webkit-transition: .2s ease;
+            /*-webkit-transition: .2s ease;*/
             transition: .2s ease;
-            content: "styl";
+            /*content: "styl";*/
         }
 
         .sign-hide{

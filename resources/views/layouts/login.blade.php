@@ -84,21 +84,21 @@
             padding: 5px 0;
             display: block;
             text-decoration: none;
-            color: #01a6d4;
-            font-size: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
             position: relative;
             border-left: 1px solid transparent;
-            -webkit-transition: .2s ease;
+            /*-webkit-transition: .2s ease;*/
             transition: .2s ease;
-            content: "styl";
+            /*content: "styl";*/
         }
 
 
 
-        .active-page {
+        .active-page  {
             color: #01a6d4;
             border-bottom: 2px solid #01a6d4;
-
         }
 
 
@@ -183,10 +183,6 @@
 
 
         }
-
-
-
-
 
     </style>
 

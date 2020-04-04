@@ -4,28 +4,29 @@
 @section('content')
     <div class="fullwidth-block">
         <div class="row justify-content-center">
-            <div class="col-md-11">
+            <div class="col-md-8">
                 <div class="card">
+                    <div class="card-header">  <h1>Add Your Details</h1></div>
                     <div class="card-body">
-                        <h1>Add Your Details</h1>
+
                         {!! Form::open(['route' => ['client.details.store'], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
 
                         @csrf
                         <div class="form-group row m-1">
 
                             <div class="col-md-11">
-                                {{ Form::text('client[first_name]', $user->first_name??'', ['class' => 'form-control m-input', 'placeholder' => 'First name']) }}
+                                {{ Form::text('client[first_name]', $user->first_name??'', ['class' => 'form-control m-input', 'placeholder' => 'First Name']) }}
 
                             </div>
                         </div>
                         <div class="form-group row m-1">
                             <div class="col-md-11">
-                                {{ Form::text('client[last_name]', $user->last_name??'', ['class' => 'form-control m-input', 'placeholder' => 'Last name']) }}
+                                {{ Form::text('client[last_name]', $user->last_name??'', ['class' => 'form-control m-input', 'placeholder' => 'Last Name']) }}
                             </div>
                         </div>
                         <div class="form-group row m-1">
                             <div class="col-md-11">
-                                <input id="phone_number" type="text" class="form-control phone" name="client[phone_number]" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone number">
+                                <input id="phone_number" type="text" class="form-control phone" name="client[phone_number]" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone Number">
 
                             </div>
                         </div>
@@ -37,7 +38,7 @@
 
                         <div class="form-group row m-1">
                             <div class="col-md-11">
-                                {{ Form::text('client[zip]', $user->clientDetails->zip??'', ['class' => 'form-control m-input', 'id'=>'zip', 'placeholder' => 'Zip code']) }}
+                                {{ Form::text('client[zip]', $user->clientDetails->zip??'', ['class' => 'form-control m-input', 'id'=>'zip', 'placeholder' => 'Zip Code']) }}
                             </div>
                         </div>
 
@@ -49,24 +50,6 @@
 
 
                         <div class="form-group row m-1">
-                            <label for="gender" class="col-md-2 col-form-label text-md-center">  Gender:  </label>
-                            <div class="col-md-10">
-                                <label for="male" class="col-md-2 col-form-label">  Male:  </label>
-                                <label for="Sex" class="col-md-1 m-1 col-form-label ">
-                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex??''=='M')}}
-                                </label>
-
-                                <label for="female" class="col-md-3 col-form-label text-md-right">  Female:  </label>
-                                <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex??''=='F')}}
-                                </label>
-                                <label for="other" class="col-md-2 col-form-label text-md-center">  Other:  </label>
-                                <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex??''=='O')}}
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group row m-1">
                             <div class="col-md-11">
                                 {{ Form::text('client[ssn]', $user->clientDetails->ssn??'', ['class' => 'form-control ssn', 'id'=>'ssn', 'placeholder' => 'Social Security']) }}
                             </div>
@@ -74,15 +57,34 @@
                         <div class="form-group row m-1">
 
                             <div class="col-md-11">
-                                <input id="referred_by" type="text" class="form-control" name="client[referred_by]" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="Referred By (if any)">
+                                <input id="referred_by" type="text" class="form-control" name="client[referred_by]" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="Referred by (if any)">
                             </div>
                         </div>
+                        <div class="form-group row m-1 gender">
+                            <div class="col-md-2">
+                                <label for="gender" class="col-form-label text-md-center">  Gender  </label>
+                            </div>
+                            <div class="col-md-10 m-0 p-0">
+                                <label for="male" class="col-md-3 col-form-label">Male:
+                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex??''=='M',  ['class'=>'form-check-input'] )}}
 
+                                </label>
+
+                                <label for="female" class="col-md-3  col-form-label ">Female:
+                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex??''=='F',['class'=>'form-check-input '])}}
+
+                                </label>
+                                <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
+                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input '])}}
+
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0 font">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    Save
                                 </button>
 
 

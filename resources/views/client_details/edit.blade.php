@@ -6,9 +6,9 @@
 
     <div class="fullwidth-block">
         <div class="row justify-content-center">
-            <div class="col-md-11 pt-2">
+            <div class="col-md-8 pt-2">
                 <div class="card">
-                    <div class="card-header">Your Details</div>
+                    <div class="card-header"><h1>Edit Your Details</h1></div>
                     <div class="card-body">
                         {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
@@ -16,7 +16,7 @@
                         <div class="form-group row m-1">
                             {{--<label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>--}}
                             <div class="col-md-12">
-                                {{ Form::text('client[first_name]', strtoupper($user->first_name), ['class' => 'form-control m-input',   'placeholder' => 'Enter your first name']) }}
+                                {{ Form::text('client[first_name]', strtoupper($user->first_name), ['class' => 'form-control m-input',   'placeholder' => 'Enter Your First Name']) }}
 
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[last_name]', strtoupper($user->last_name), ['class' => 'form-control m-input', 'placeholder' => 'Enter your last & middle name']) }}
+                                {{ Form::text('client[last_name]', strtoupper($user->last_name), ['class' => 'form-control m-input', 'placeholder' => 'Enter Your Middle & Last Name']) }}
 
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[phone_number]', strtoupper($user->clientDetails->phone_number), ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter your phone_number']) }}
+                                {{ Form::text('client[phone_number]', strtoupper($user->clientDetails->phone_number), ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter Your Phone Number']) }}
 
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> Street Address:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[address]', strtoupper($user->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
+                                {{ Form::text('client[address]', strtoupper($user->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter Your Address']) }}
                             </div>
                         </div>
 
@@ -63,39 +63,10 @@
                             </div>
                         </div>
                         <div class="form-group row m-1">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  Gender:  </label>
-
-                            <div class="col-md-8">
-                                <label for="password" class="col-md-4 col-form-label text-md-center">  Male:  </label>
-
-                                <label for="password" class="col-md-4 col-form-label text-md-center">  Female:  </label>
-
-                                <label for="password" class="col-md-4 col-form-label text-md-center">  Other:  </label>
-
-                            </div>
-                            <label for="password" class="col-md-4 col-form-label text-md-right">  </label>
-                            <div class="col-md-8">
-
-                                <label for="Sex" class="col-md-4 col-form-label text-md-center">
-                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex=='M')}}
-                                </label>
-
-                                <label for="Sex" class="col-md-4 col-form-label text-md-center">
-                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex=='F')}}
-                                </label>
-
-                                <label for="Sex" class="col-md-4 col-form-label text-md-center">
-                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex=='O')}}
-                                </label>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row m-1">
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter your SSN']) }}
+                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter Your SSN']) }}
 
                             </div>
                         </div>
@@ -103,16 +74,40 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> Referred by:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[referred_by]', strtoupper($user->clientDetails->referred_by), ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
+                                {{ Form::text('client[referred_by]', strtoupper($user->clientDetails->referred_by), ['class' => 'form-control m-input', 'placeholder' => 'Enter Referred by (if any)']) }}
 
                             </div>
                         </div>
+
+                        <div class="form-group row m-1 gender">
+                            <div class="col-md-2">
+                                <label for="gender" class="col-form-label text-md-center">  Gender  </label>
+                            </div>
+                            <div class="col-md-10 m-0 p-0">
+                                <label for="male" class="col-md-3 col-form-label">Male:
+                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex=='M',  ['class'=>'form-check-input'] )}}
+
+                                </label>
+
+                                <label for="female" class="col-md-3  col-form-label ">Female:
+                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex=='F',['class'=>'form-check-input '])}}
+
+                                </label>
+                                <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
+                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex=='O', ['class'=>'form-check-input '])}}
+
+                                </label>
+                            </div>
+
+
+                        </div>
+
 
 
                         <div class="form-group row mb-0 font">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Submit
+                                    Update
                                 </button>
                             </div>
                         </div>
