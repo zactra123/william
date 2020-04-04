@@ -1,42 +1,36 @@
-<style>
-    .fullwidth-block {
-        font-family: "Times New Roman";
-        font-size: larger;
 
-    }
-    .sidebar{
-
-        font-size: 14px;
-        color: #fff;
-        background-color: #0c71c3;
-    }
-    @media (max-width: 768px) {
-        .sidebar{
-            font-size: 8px;
-        }
-        .fullwidth-block {
-            font-size: 12px;
-
-        }
-    }
-
-    .color{
-        color: white;
-        /*margin-left: 5% ;*/
-    }
-    credit-education-logo{
-        dispay:show;
-    }
-
-
-</style>
 @extends('layouts.login')
 
 @section('content')
 
-
-        <div class="container mt-7 pt-7">
-            <div class="row mt-5 pt-5">
+    <style>
+        .fullwidth-block {
+            font-family: "Times New Roman";
+            font-size: larger;
+        }
+        .sidebar{
+            font-size: 14px;
+            color: #fff;
+            background-color: #0c71c3;
+        }
+        @media (max-width: 768px) {
+            .sidebar{
+                font-size: 8px;
+            }
+            .fullwidth-block {
+                font-size: 12px;
+            }
+        }
+        .color{
+            color: white;
+            /*margin-left: 5% ;*/
+        }
+        credit-education-logo{
+            dispay:show;
+        }
+    </style>
+        <div class="container mt-4 pt-4">
+            <div class="row ">
                 <div class="col-2 sidebar ml-0 mr-0">
                     @foreach($contents as  $content)
                         @if($content->id%2==0 )

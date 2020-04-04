@@ -34,7 +34,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-color: rgba(0, 0, 0, 0);
-            /*position: fixed;*/
+            position: absolute;
             width: 100%;
             height: 250px;
         }
@@ -114,8 +114,7 @@
         }
 
         .content{
-            /*padding-top: 110px;*/
-            margin-top: -120px;
+            padding-top: 120px;
         }
 
         .dark-section {
@@ -339,6 +338,12 @@
             .category-padding{
                 padding-top: 1rem;
             }
+            .base-header{
+                width: 100%;
+                height: 175px;
+            }
+
+
         }
 
         @media (max-width: 500px) {
@@ -537,24 +542,24 @@
                             <div class="carousel-item img-overlay-wrap active ">
                                 <img class="d-block w-100" src="/images/slider-1.jpg" alt="First slide">
                                 <div class="text-block">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
+                                    <h4>{{$slogans['0']->author}}</h4>
+                                    <p>{{$slogans['0']->slogan}}</p>
                                 </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-2.jpg" alt="Second slide">
                                 <div class="text-block">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
+                                    <h4>{{$slogans['1']->author}}</h4>
+                                    <p>{{$slogans['1']->slogan}}</p>
                                 </div>
                             </div>
                             <div class="carousel-item img-overlay-wrap">
 
                                 <img class="d-block w-100" src="/images/slider-3.jpg" alt="Third slide">
                                 <div class="text-block justify-content-end">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
+                                    <h4>{{$slogans['2']->author}}</h4>
+                                    <p>{{$slogans['2']->slogan}}</p>
                                 </div>
 
                             </div>
@@ -562,8 +567,8 @@
 
                                 <img class="d-block w-100" src="/images/slider-4.png" alt="Fourth slide">
                                 <div class="text-block justify-content-end">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
+                                    <h4>{{$slogans['3']->author}}</h4>
+                                    <p>{{$slogans['3']->slogan}}</p>
                                 </div>
 
                             </div>
@@ -571,8 +576,8 @@
 
                                 <img class="d-block w-100" src="/images/slider-5.png" alt="Fifth slide">
                                 <div class="text-block justify-content-end">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
+                                    <h4>{{$slogans['4']->author}}</h4>
+                                    <p>{{$slogans['4']->slogan}}</p>
                                 </div>
 
                             </div>
@@ -674,11 +679,7 @@
 
                                 </div>
                             </form>
-                            <span class="search-box-text " >
-                                <button type="submit" class="btn btn-search-box">
-                                       CHAT WITH EXPERT <i class="fa  fa-comment-o" aria-hidden="true"></i>
-                                </button>
-                            </span>
+
 
                         </div>
                     </div>
@@ -755,10 +756,7 @@
                                     <a href="{{ route('register') }}" class="btn  btn-dark-blue signup-chat">SIGN UP TODAY </a>
 
                                 </div> <!-- .feature -->
-                                <div class="feature align-items-center">
-                                    <a href="" class="btn  btn-primary signup-chat">CHAT WITH EXPERT </a>
 
-                                </div> <!-- .feature -->
                             </div> <!-- .col-md-3 -->
 
                         </div>
@@ -1057,7 +1055,7 @@
                         <div class="row"><a href="">Credit Improvement</a></div>
                         <div class="row"><a href="">Debt Solution</a></div>
                         <div class="row"><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></div>
-                        <div class="row"><a href="">Loon Center</a></div>
+                        <div class="row"><a href="">Loan Center</a></div>
                         <div class="row"><a href="">Saving Center</a></div>
                         <div class="row"><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator </a></div>
                     </div>

@@ -146,6 +146,8 @@
                 display: block;
             }
 
+
+
         }
         @media (max-width: 400px) {
             .company{

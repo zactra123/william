@@ -15,8 +15,12 @@ class PagesController extends Controller
     {
         $pageContentUp = DB::table('home_pages')->get();
 
-//        return view('welcome', compact('pageContentUp'));
-        return view('new-home-page', compact('pageContentUp'));
+        $slogans = Db::table('slogans')
+            ->inRandomOrder()
+            ->limit(5)
+            ->select('slogan','author')->get()->toArray();
+
+        return view('new-home-page', compact('pageContentUp', 'slogans'));
     }
 
     public function moreInformation($url)

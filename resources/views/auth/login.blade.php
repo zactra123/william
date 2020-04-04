@@ -36,7 +36,7 @@
         <div class="fullwidth-block">
             <div class="container fon">
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="card">
                             {{--<div class="card-header"><div class="head"> {{ __('Login') }} </div></div>--}}
                             <div class="card-body">
