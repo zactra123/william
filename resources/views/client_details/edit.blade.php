@@ -2,6 +2,30 @@
 
 
 @section('content')
+    <style>
+        .gender{
+            font-size: 13px;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        @media (max-width: 1000px) {
+
+            .gender{
+                font-size: 11px;
+            }
+            .gender-check {
+                position: absolute;
+                margin-top: 0.2rem;
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+            }
+        }
+
+
+    </style>
 
 
     <div class="fullwidth-block">
@@ -79,26 +103,25 @@
                             </div>
                         </div>
 
-                        <div class="form-group row m-1 gender">
-                            <div class="col-md-2">
-                                <label for="gender" class="col-form-label text-md-center">  Gender  </label>
+                        <div class="gender row text-justify">
+                            <div class="col-md-3 pr-0 mr-0 text-md-right ">
+                                <label for="gender" class="text-md-right">Gender</label>
                             </div>
-                            <div class="col-md-10 m-0 p-0">
-                                <label for="male" class="col-md-3 col-form-label">Male:
-                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex=='M',  ['class'=>'form-check-input'] )}}
-
+                            <div class="col-md-9 text-md-right">
+                                <label for="male" class="col-md-3  text-md-center">
+                                    Male:
+                                    {{Form::radio('client[sex]','M', $user->clientDetails->sex??''=='M', ['class'=>'gender-check float-left '])}}
                                 </label>
 
-                                <label for="female" class="col-md-3  col-form-label ">Female:
-                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex=='F',['class'=>'form-check-input '])}}
-
+                                <label for="female" class="col-md-3 text-md-center">
+                                    Female:
+                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex??''=='F',['class'=>'gender-check '])}}
                                 </label>
-                                <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
-                                    {{Form::radio('client[sex]','O', $user->clientDetails->sex=='O', ['class'=>'form-check-input '])}}
-
+                                <label for="other" class="col-md-3 text-md-center">
+                                    Non-Binary:
+                                    {{Form::radio('client[sex]','F', $user->clientDetails->sex??''=='O', ['class'=>'gender-check '])}}
                                 </label>
                             </div>
-
 
                         </div>
 
