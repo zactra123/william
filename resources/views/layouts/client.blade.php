@@ -15,7 +15,7 @@
 
     <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/app.js?v=2') }}"></script>
 
 
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
@@ -347,29 +347,6 @@
 
 </div> <!-- #site-content -->
 
-<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('js/js/plugins.js')}}"></script>
-<script src="{{asset('js/js/app.js')}}"></script>
-
-<script>
-
-
-    $(document).ready(function(){
-        //    Slider Start
-        $('.carousel').carousel()
-        // // Slider End
-
-
-        $('.circle').on('click mouseover', function(){
-            var className = (this).className;
-            var show = className.replace('circle ', '');
-            console.log(show);
-
-            $('.step').css('display','none');
-            $('.step-'+show).css('display','block');
-        })
-    })
-</script>
 
 </body>
 

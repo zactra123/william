@@ -15,12 +15,13 @@
 
     <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/app.js?v=2') }}"></script>
 
 
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
-
+    <script src="{{asset('js/js/plugins.js')}}"></script>
+    <script src="{{asset('js/js/app.js')}}"></script>
     <style>
 
         .dropdown:hover .dropdown-menu {
@@ -364,10 +365,6 @@
     </footer> <!-- .site-footer -->
 
 </div> <!-- #site-content -->
-
-<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('js/js/plugins.js')}}"></script>
-<script src="{{asset('js/js/app.js')}}"></script>
 
 <script>
 

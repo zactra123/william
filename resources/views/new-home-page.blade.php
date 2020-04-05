@@ -20,7 +20,8 @@
 
     <script src="{{asset('js/js/ie-support/html5.js')}}"></script>
     <script src="{{asset('js/js/ie-support/respond.js')}}"></script>
-
+    <script src="{{asset('js/js/plugins.js')}}"></script>
+    <script src="{{asset('js/js/app.js')}}"></script>
     <style>
 
         .dropdown:hover .dropdown-menu {
