@@ -2649,3 +2649,6 @@ hr.spacer {
   font-weight: 500;
   font-style: normal;
 }
+.error{
+  color: #e3342f;
+}

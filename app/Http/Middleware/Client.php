@@ -24,8 +24,7 @@ class Client
        } elseif ( Auth::user()->role != 'client') {
             return redirect()->to('/');
        }
-
-       if($request->path() != "client/registration-steps"){
+       if($request->path() != "client/registration-steps" && $request->method() =='GET'){
            if (auth()->user()->clientDetails->registration_steps != 'finished')
            return redirect()->to('client/registration-steps');
        }

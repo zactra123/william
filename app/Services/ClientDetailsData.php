@@ -100,7 +100,6 @@ class ClientDetailsData
 
             $response =  json_decode($r->getBody(),true);
 
-
             if($response['ParsedResults'][0]['ErrorMessage'] == "") {
 
                 foreach($response['ParsedResults'] as $pareValue) {
@@ -109,13 +108,10 @@ class ClientDetailsData
             } else {
 
                 return ["error" => 400, "message" => $response['ParsedResults']['ErrorMessage']];
-//                header('HTTP/1.0 400 Forbidden');
-//                dd($response['ParsedResults']['ErrorMessage']);
+
             }
         } catch(Exception $err) {
             return ["error" => 403, "message" => $err->getMessage()];
-//            header('HTTP/1.0 403 Forbidden');
-//            return $err->getMessage();
         }
     }
 
@@ -152,7 +148,6 @@ class ClientDetailsData
 
             $response =  json_decode($r->getBody(),true);
 
-
             if($response['ParsedResults'][0]['ErrorMessage'] == "") {
 
                 foreach($response['ParsedResults'] as $pareValue) {
@@ -185,7 +180,7 @@ class ClientDetailsData
 
 //        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
-        preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $dob);
+        preg_match("/(dob|bos|pos|cow|von|noe|BOB|2OB|boa)+(| )([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(dob|bos|pos|cow|von|noe|BOB|2OB)+(| )(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $dob);
         preg_match("/(sex|sec|sex.)+(| |i)(m|f)/im", $text, $sex);
         preg_match($addressStreetRegex, $text, $addressStreet);
         preg_match("$addressCityStateRegex", $text, $addressCityState);
@@ -216,15 +211,20 @@ class ClientDetailsData
         if (isset($sex[3])) {
             $result['sex'] =  $sex[3];
         }
-        if (isset($addressCityState[0]) && isset($addressStreet[0])) {
-            // Get state
+
+        if (isset($addressCityState[0])){
             preg_match_all('/[A-Z]{2}/m', $addressCityState[0], $match);
 
             $result["state"] = $match[0][count($match[0])-1];
             $zip = explode($result['state'], $addressCityState[0]);
             $result["zip"] = $zip[count($zip)-1];
             $result ["city"] = str_replace([', ', ' , '], '', $zip[0]);
-            $result["address"] = $addressStreet[0].', '. $result ["city"].', '.$result["state"];
+        }
+
+        if (isset($addressStreet[0])) {
+            $city = isset($result["city"]) ?:"";
+            $state = isset($result["state"])?:"";
+            $result["address"] = $addressStreet[0].', '. $city.', '.$state;
             preg_match("/([0-9]{1,})/im", $addressStreet[0], $number);
             $result ["number"] = $number[0];
             $result['name'] = trim(str_replace($number[0],'',$addressStreet[0]));

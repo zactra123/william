@@ -21,10 +21,6 @@
                 margin-left: -1.5rem;
             }
         }
-        .error{
-            color: #e3342f;
-        }
-
         .or-seperator {
             margin: 20px 0 10px;
             text-align: center;

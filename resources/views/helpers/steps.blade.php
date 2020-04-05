@@ -53,12 +53,12 @@
                     </li>
                     <li role="presentation" class="{{$documents}}">
                         <a href="#document" aria-controls="document" role="tab" data-toggle="tab">
-                            <i class="fa fa-files-o" aria-hidden="true"></i>
+                            <i class="fa fa-id-card" aria-hidden="true"></i>
                             <p>DOCUMENTS</p>
                         </a></li>
                     <li role="presentation " class="{{$credentials}}">
                         <a href="#credentials" aria-controls="optimization" role="tab" data-toggle="tab">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <i class="fa fa-key" aria-hidden="true"></i>
                             <p>CREDENTIALS</p>
                         </a>
                     </li>

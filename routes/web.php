@@ -162,7 +162,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
     Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
     Route::get('registration-steps', 'ClientDetailsController@create')->name('registration_steps');
-    Route::resource('/details', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
+    Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 
 
 //    Route::get('/details', 'ClientDetailsController@create')->name('createInfo');

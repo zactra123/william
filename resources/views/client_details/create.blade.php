@@ -6,9 +6,8 @@
         <div class="fullwidth-block">
             @include("helpers.steps")
             <div class="row justify-content-center">
-                    <div class="card">
 
-                    </div>
+               @include("client_details.registration_steps.{$client->clientDetails->registration_steps}")
             </div>
         </div>
     </div>

@@ -115,7 +115,6 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-
                             <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="100%" >
                         </div>
                         <div class="col-6">
@@ -155,10 +154,9 @@
         $('#correct_form').modal('show');
         $('.document-form').click(function(){
             $('#correct_form').modal('show');
-        })
+        });
         $('INPUT[type="file"]').change(function () {
             var ext = this.value.match(/\.(.+)$/)[1];
-            console.log(ext);
             switch (ext) {
                 case 'jpg':
                 case 'jpeg':
@@ -171,7 +169,7 @@
                     $('#uploadButton').attr('disabled', false);
                     break;
                 default:
-                    alert('This is not an allowed file type.');
+                    alert('Please Upload valid document in selected format(jpeg/png/pdf)');
                     this.value = '';
             }
         });

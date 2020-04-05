@@ -148,7 +148,6 @@ class RegisterController extends Controller
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             'business_name'=>isset($data['business_name'])?$data['business_name']:null,
         ]);
-        Session::flash('success', 'Congrats! You just did something really wise');
         return $user;
     }
 

@@ -29,9 +29,17 @@ class ClientDetailsController extends Controller
         return view('client_details.index');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('client_details.create');
+        $client = Auth::user();
+
+        if($client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2){
+            if ($request->skip) {
+                $client->clientDetails->update(["registration_steps" => "credentials"]);
+            }
+        }
+        $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
+        return view('client_details.create', compact('client', 'uploadUserDetail'));
     }
 
     public function store(Request $request)
@@ -152,6 +160,10 @@ class ClientDetailsController extends Controller
         }else{
             Credential::where('user_id', $userId)->update($data);
         }
+        $clientDetails = ClientDetail::where('user_id', $userId)->first();
+        if (!empty($clientDetails) && $clientDetails->registration_steps =='credentials'){
+            $clientDetails->update(["registration_steps" => "review"]);
+        }
 
         return redirect('client/details');
     }
@@ -183,7 +195,7 @@ class ClientDetailsController extends Controller
         $socialSecurityExtension = strtolower($imagesSocialSecurity->getClientOriginalExtension());
 
         if(!in_array($driverLicenseExtension, $imageExtension)|| !in_array($socialSecurityExtension, $imageExtension)){
-            return redirect('client/details/create ')->with('error','Please upload the correct file format (PDF, GIF, PNG, JPG, TIF, BMP)');
+            return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
         }
 
         $path = "files/client/details/image/". $client."/";
@@ -200,64 +212,60 @@ class ClientDetailsController extends Controller
         $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
         $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity,$socialSecurityExtension);
 
-//        dd($imagesDriverLicense, '123',$imagesSocialSecurity);
-
-        $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
-        $clientData =  $resultDriverLicense;
-        $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
-        $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
-        $clientData['user_id'] = $client;
-
-
-
-        $clientAttachmentData = [
-            [
-                'user_id'=> $client,
-                'path'=>$pathDriverLicense,
-                'file_name'=> $nameDriverLicense,
-                'category' =>'DL',
-                'type'=>$driverLicenseExtension
-            ],
-            [
-                'user_id'=>$client,
-                'path'=>$pathSocialSecurity,
-                'file_name'=> $nameSocialSecurity,
-                'category'=>'SS',
-                'type'=>$socialSecurityExtension
-            ]
-        ];
-
-        if(empty(ClientAttachment::where('user_id',$client )->first())){
-            ClientAttachment::insert($clientAttachmentData);
-        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'DL')->first())){
-
-            ClientAttachment::insert($clientAttachmentData[0]);
-            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
-        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'SS')->first())){
-
-            ClientAttachment::insert($clientAttachmentData[1]);
-            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
-        }else{
-            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
-            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
-
-        }
-
-        if(empty(ClientDetail::where('user_id',$client )->first())){
-            User::where('id', $client)->update($user);
-            ClientDetail::create($clientData);
-        }else{
-
-            UploadClientDetail::insert(array_merge($user, $clientData));
-            return redirect(route('client.details.edit', compact('client')));
-        }
-
-//        @Todo: fix redirection
-//        if(count($resultDriverLicense) != 6 || count($resultSocialSecurity) != 3){
-//            $request->session()->put('bad',true);
-//            return redirect('client/details/create ')->with('error','Please upload images more clearly');
+////        $user = Arr::only($resultSocialSecurity,  ['first_name', 'last_name']);
+////        $clientData =  $resultDriverLicense;
+////        $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
+////        $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d',strtotime($clientData['dob'])) : '';
+////        $clientData['user_id'] = $client;
+////
+////
+////
+////        $clientAttachmentData = [
+////            [
+////                'user_id'=> $client,
+////                'path'=>$pathDriverLicense,
+////                'file_name'=> $nameDriverLicense,
+////                'category' =>'DL',
+////                'type'=>$driverLicenseExtension
+////            ],
+////            [
+////                'user_id'=>$client,
+////                'path'=>$pathSocialSecurity,
+////                'file_name'=> $nameSocialSecurity,
+////                'category'=>'SS',
+////                'type'=>$socialSecurityExtension
+////            ]
+////        ];
+//
+//        if(empty(ClientAttachment::where('user_id',$client )->first())){
+//            ClientAttachment::insert($clientAttachmentData);
+//        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'DL')->first())){
+//
+//            ClientAttachment::insert($clientAttachmentData[0]);
+//            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
+//        }elseif(empty(ClientAttachment::where('user_id',$client )->where('category', 'SS')->first())){
+//
+//            ClientAttachment::insert($clientAttachmentData[1]);
+//            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
+//        }else{
+//            ClientAttachment::where('user_id',$client)->where('category', 'DL')->update($clientAttachmentData[0]);
+//            ClientAttachment::where('user_id',$client)->where('category', 'SS')->update($clientAttachmentData[1]);
+//
 //        }
-
+//        $c = Auth::user()->id;
+//        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
+//            $request->session()->put('bad',true);
+//        }elseif ($c->clientDetails->registration_steps =='documents') {
+//            $c->clientDetails->update(['credentials']);
+//        }
+//        $request->session()->put('bad',true);
+//
+//        if(empty(ClientDetail::where('user_id',$client )->first())){
+//            User::where('id', $client)->update($user);
+//            ClientDetail::create($clientData);
+//        }else{
+//            UploadClientDetail::insert(array_merge($user, $clientData));
+//        }
 
         return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
 
@@ -275,7 +283,7 @@ class ClientDetailsController extends Controller
 
         if (empty($request->file())) {
             return redirect('/client/details/upload-credit-reports')->with('error','Please upload files');
-        } dd($request['credit_report']);
+        }
         $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
 
         if($validationUploadPdf[0] == 'error'){
@@ -314,7 +322,6 @@ class ClientDetailsController extends Controller
                     break;
             }
         }
-dd($clientReports);
         ClientReports::insert($clientReports);
 
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");
