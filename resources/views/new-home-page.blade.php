@@ -544,9 +544,9 @@
                                 <img class="d-block w-100" src="/images/slider-1.jpg" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5><i class="fa fa-quote-left"></i>
-                                        <span class="font-italic">{{$slogans['0']->slogan}}</span>
+                                        <span class="font-italic font-weight-bold">{{$slogans['0']->slogan}}</span>
                                         <i class="fa fa-quote-right"></i></h5>
-                                    <p>
+                                    <p class="font-weight-bolder">
                                         {{$slogans['0']->author}}
                                     </p>
                                 </div>
@@ -556,9 +556,9 @@
                                 <img class="d-block w-100" src="/images/slider-2.jpg" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5><i class="fa fa-quote-left"></i>
-                                        <span class="font-italic">{{$slogans['1']->slogan}}</span>
+                                        <span class="font-italic font-weight-bolder">{{$slogans['1']->slogan}}</span>
                                         <i class="fa fa-quote-right"></i></h5>
-                                    <p>
+                                    <p class="font-weight-bolder">
                                         {{$slogans['1']->author}}
                                     </p>
                                 </div>
@@ -568,9 +568,9 @@
                                 <img class="d-block w-100" src="/images/slider-3.jpg" alt="Third slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5><i class="fa fa-quote-left"></i>
-                                        <span class="font-italic">{{$slogans['2']->slogan}}</span>
+                                        <span class="font-italic font-weight-bolder">{{$slogans['2']->slogan}}</span>
                                         <i class="fa fa-quote-right"></i></h5>
-                                    <p>
+                                    <p class="font-weight-bolder">
                                         {{$slogans['2']->author}}
                                     </p>
                                 </div>
@@ -581,9 +581,9 @@
                                 <img class="d-block w-100" src="/images/slider-4.png" alt="Fourth slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5><i class="fa fa-quote-left"></i>
-                                        <span class="font-italic">{{$slogans['3']->slogan}}</span>
+                                        <span class="font-italic font-weight-bolder">{{$slogans['3']->slogan}}</span>
                                         <i class="fa fa-quote-right"></i></h5>
-                                    <p>
+                                    <p class="font-weight-bolder">
                                         {{$slogans['3']->author}}
                                     </p>
                                 </div>
@@ -594,9 +594,9 @@
                                 <img class="d-block w-100" src="/images/slider-5.png" alt="Fifth slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5><i class="fa fa-quote-left"></i>
-                                        <span class="font-italic">{{$slogans['4']->slogan}}</span>
+                                        <span class="font-italic font-weight-bolder">{{$slogans['4']->slogan}}</span>
                                         <i class="fa fa-quote-right"></i></h5>
-                                    <p>
+                                    <p class="font-weight-bolder">
                                         {{$slogans['4']->author}}
                                     </p>
                                 </div>
