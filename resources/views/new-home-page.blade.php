@@ -341,7 +341,7 @@
             }
             .base-header{
                 width: 100%;
-                height: 175px;
+                height: 200px;
             }
 
 
@@ -479,9 +479,9 @@
                           <nav class="main-navigation mr-0 pull-left">
                               <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                               <ul class="menu">
-                                  <li class="menu-item"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-                                  <li class="menu-item"><a href="{{route('howItWorks')}}"> How It Works</a></li>
-                                  <li class="menu-item"><a href="{{route('credit.education')}}">Education Center</a></li>
+                                  <li class="menu-item {{strpos(request()->getPathInfo(), 'who-we-are')? "active-page" : ''}}"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
+                                  <li class="menu-item {{strpos(request()->getPathInfo(), 'how-it-works')? "active-page" : ''}}"><a href="{{route('howItWorks')}}">How It Works</a></li>
+                                  <li class="menu-item {{strpos(request()->getPathInfo(), 'credit-education')? "active-page" : ''}}"><a href="{{route('credit.education')}}">Credit Education</a></li>
 
                                   @if (Route::has('login'))
                                       @auth
@@ -1083,8 +1083,8 @@
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>
                         <div class="social-links">
-                            <div class="row  pt-2"><a href=""><i class="fa fa-facebook"></i></a></div>
-                            <div class="row pt-2"><a href=""><i class="fa fa-twitter"></i></a></div>
+                            <div class="row  pt-2"><a href=""><i class="fab fa-facebook-f"></i></a></div>
+                            <div class="row pt-2"><a href=""><i class="fab fa-twitter"></i></a></div>
                         </div>
 
                     </div>

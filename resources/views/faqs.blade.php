@@ -5,9 +5,9 @@
 
 
 
-    <div id="site-content">
+    <div class="mt-5 pt-5" id="site-content">
 
-        <div class="row mr-0 ml-0">
+        <div class="row  mr-0 ml-0">
             <div class="col-md-8 pl-4">
                 <h1>FAQs</h1>
                 @foreach($faqs as $faq)

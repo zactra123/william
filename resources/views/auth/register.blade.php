@@ -3,24 +3,33 @@
 @section('content')
 
     <style>
-        @media (max-width: 768px) {
+
+        .gender{
+            font-size: 13px;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        @media (max-width: 1000px) {
             label {
                 display:unset;
-            }
-        }
-        @media (max-width: 768px) {
-            .col-form-label {
-                margin-right: 5px;
             }
             .gender{
                 font-size: 11px;
             }
-            .form-check-input {
+            .gender-check {
                 position: absolute;
                 margin-top: 0.2rem;
                 margin-left: -1.5rem;
+                margin-right: -1.5rem;
             }
         }
+
+
+
+
         .or-seperator {
             margin: 20px 0 10px;
             text-align: center;
@@ -47,8 +56,8 @@
                                 <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                     @csrf
                                     <div class="text-center social-btn">
-                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
-                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with <b>Google</b></a>
+                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fab fa-facebook-f"></i> Sign in with <b>Facebook</b></a>
+                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fab fa-google-plus-g" ></i> Sign in with <b>Google</b></a>
                                     </div>
                                     <div class="or-seperator"><i>or</i></div>
                                     <div class="form-group row m-1">
@@ -169,22 +178,29 @@
                                             <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}" autocomplete="referred_by" placeholder="Referred By (if any)">
                                         </div>
                                     </div>
-                                    <div class="form-group row m-1 gender">
-                                        <div class="col-md-2">
-                                            <label for="gender" class="col-form-label text-md-center">  Gender  </label>
+                                    <div class="gender row text-justify">
+                                        <div class="col-md-3 pr-0 mr-0 text-md-right ">
+                                            <label for="gender" class="text-md-right">Gender</label>
                                         </div>
-                                        <div class="col-md-10 m-0 p-0">
-                                            <label for="male" class="col-md-3 col-form-label">Male:
-                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'form-check-input'])}}
+                                        <div class="col-md-9 text-md-right">
+                                            <label for="male" class="col-md-3  text-md-center">
+                                                Male:
+                                                {{Form::radio('sex','M', $user->clientDetails->sex??''=='M', ['class'=>'gender-check float-left '])}}
                                             </label>
 
-                                            <label for="female" class="col-md-3  col-form-label ">Female:
-                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'form-check-input '])}}
+                                            <label for="female" class="col-md-3 text-md-center">
+                                                Female:
+                                                {{Form::radio('sex','O', $user->clientDetails->sex??''=='F',['class'=>'gender-check '])}}
                                             </label>
-                                            <label for="other" class="col-md-3  col-form-label  ml-1">  Non-Binary:
-                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'form-check-input '])}}
+                                            <label for="other" class="col-md-3 text-md-center">
+                                                Non-Binary:
+                                                {{Form::radio('sex','F', $user->clientDetails->sex??''=='O', ['class'=>'gender-check '])}}
                                             </label>
                                         </div>
+
+
+
+
                                         @error('sex')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -192,6 +208,7 @@
                                         @enderror
 
                                     </div>
+
                                     <div class="form-group row mb-0">
                                         <div class="col-md-9 offset-md-5">
                                             <button type="submit" class="btn btn-primary">

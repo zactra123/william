@@ -33,11 +33,11 @@
                                         <td>
 
                                             <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
-                                               role="button"><span class="fa fa-file"></span></a>
+                                               role="button"><i class="fa fa-file-text"></i></a>
 
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                            <button class="btn btn-danger delete" data-id="{{ $user->id}}" ><span class="fa fa-trash-o"></span> </button>
+                                            <button class="btn btn-danger delete" data-id="{{ $user->id}}" ><i class="fa fa-trash"></i> </button>
 
 
 

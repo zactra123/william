@@ -2381,6 +2381,7 @@ img.pull-left, img.pull-right {
     display: block;
     text-align: center;
   }
+
 }
 
 @media (min-width: 576px) {
@@ -2390,10 +2391,11 @@ img.pull-left, img.pull-right {
     }
 }
 
-.form-check-input {
+.gender-check {
     position: absolute;
     margin-top: 0.3rem;
-    margin-left: -2.75rem;
+    margin-left: -1.7rem;
+    margin-right: -1.7rem;
 }
 
 

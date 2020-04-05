@@ -75,6 +75,8 @@ Route::group(['prefix'=>'owner'], function(){
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
     Route::delete('faqs/question/delete/{id}', 'Owner\FaqsController@questiondelete');
 
+    Route::resource('slogans', 'Owner\SlogansController')->names('owner.slogans')->except(['show','update','edit']);
+
     //Reports actions
     Route::group(["prefix" => "report"], function(){
         Route::get('/', 'Owner\ReportsController@index')->name("owner.reports.index");

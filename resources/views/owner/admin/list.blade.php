@@ -42,9 +42,9 @@
                                     <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
                                     <td>
 
-                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><span class="fa fa-pencil"></span></a>
+                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-alt"></i></a>
 
-                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><span class="fa fa-trash-o"></span></button>
+                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash"></i></button>
                                         <meta name="csrf-token" content="{{ csrf_token() }}">
                                     </td>
 

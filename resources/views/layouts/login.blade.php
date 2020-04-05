@@ -245,7 +245,7 @@
                                 <ul class="menu">
                                     <li class="menu-item {{strpos(request()->getPathInfo(), 'who-we-are')? "active-page" : ''}}"><a href="{{route('whoWeAre')}}">Who We Are</a></li>
                                     <li class="menu-item {{strpos(request()->getPathInfo(), 'how-it-works')? "active-page" : ''}}"><a href="{{route('howItWorks')}}">How It Works</a></li>
-                                    <li class="menu-item {{strpos(request()->getPathInfo(), 'credit-education')? "active-page" : ''}}"><a href="{{route('credit.education')}}">Education Center</a></li>
+                                    <li class="menu-item {{strpos(request()->getPathInfo(), 'credit-education')? "active-page" : ''}}"><a href="{{route('credit.education')}}">Credit Education</a></li>
 
                                     @if (Route::has('login'))
                                         @auth
@@ -326,17 +326,19 @@
                     <div class="col-md-3 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title"> HOW WE ARE</span></div>
                         <div class="row"><a href="{{route('whoWeAre')}}">About us</a></div>
-                        <div class="row"><a href="">Facebook</a></div>
-                        <div class="row"><a href="">Twitter</a></div>
-                        <div class="row"><a href="">Affiliates</a></div>
-                        <div class="row"><a href="">Careers</a></div>
-                        <div class="row"><a href="">Newsroom</a></div>
+                        <div class="row"><a href="" target="_blank">Facebook</a></div>
+                        <div class="row"><a href="" target="_blank">Twitter</a></div>
+                        <div class="row"><a href="" >Affiliates</a></div>
+                        <div class="row"><a href="" >Careers</a></div>
+                        <div class="row"><a href="" >Newsroom</a></div>
                         <div class="row"><a href="{{route('contact')}}">Contact us</a></div>
                     </div>
                     <div class="col-md-4 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">HOW IT WORKS</span></div>
-                        <div class="row"><a href="">Credit Repair Process</a></div>
-                        <div class="row"><a href="">What You Get</a></div>
+                        <div class="row"><a href="" target="_blank">Credit Repair Process</a></div>
+                        <div class="row"><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></div>
+                        <div class="row"><a href="{{route('credit.repair')}}">Credit Resources</a></div>
+                        <div class="row"><a href="" target="_blank">What You Get</a></div>
                         <div class="row"><a href="{{route('faqs')}}">Frequently Asked Questions</a></div>
                         <div class="row"><a href="{{route('pravicy')}}">Privacy Policy</a></div>
                         <div class="row"><a href="">Text Message Terms</a></div>
@@ -344,19 +346,19 @@
                     </div>
                     <div class="col-md-3 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">EDUCATION</span></div>
-                        <div class="row"><a href="">CreditRepair.com Blog </a></div>
+                        <div class="row"><a href="" target="_blank">CreditRepair.com Blog </a></div>
                         <div class="row"><a href="">Credit Improvement</a></div>
                         <div class="row"><a href="">Debt Solution</a></div>
-                        <div class="row"><a href="">Identity Theft</a></div>
-                        <div class="row"><a href="">Loon Center</a></div>
+                        <div class="row"><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></div>
+                        <div class="row"><a href="">Loan Center</a></div>
                         <div class="row"><a href="">Saving Center</a></div>
-                        <div class="row"><a href="">Score Estimator </a></div>
+                        <div class="row"><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator </a></div>
                     </div>
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>
                         <div class="social-links">
-                            <div class="row  pt-2"><a href=""><i class="fa fa-facebook"></i></a></div>
-                            <div class="row pt-2"><a href=""><i class="fa fa-twitter"></i></a></div>
+                            <div class="row  pt-2"><a href=""><i class="fab fa-facebook-f"></i></a></div>
+                            <div class="row pt-2"><a href=""><i class="fab fa-twitter"></i></a></div>
                         </div>
 
                     </div>

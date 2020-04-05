@@ -29,12 +29,12 @@
                                 <td>
 
                                     <a class="btn btn-default" href="{{route('owner.home.content.show', $content->url)}}"
-                                       role="button"><span class="fa fa-file-o"></span></a>
+                                       role="button"><i class="fa fa-file-text"></i></a>
                                     <a class="btn btn-default" href="{{route('owner.home.content.edit', $content->url)}}"
-                                       role="button"><span class="fa fa-pencil"></span></a>
+                                       role="button"><span class="fa fa-pencil-alt"></span></a>
                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                    <button class="btn btn-danger " data-id="{{ $content->url}}" ><span class="fa fa-trash-o"></span> </button>
+                                    <button class="btn btn-danger " data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
 
                                 </td>
                             </tr>

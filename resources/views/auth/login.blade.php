@@ -43,8 +43,8 @@
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="text-center social-btn">
-                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
-                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with <b>Google</b></a>
+                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fab fa-facebook-f"></i> Sign in with <b>Facebook</b></a>
+                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fab fa-google-plus-g"></i> Sign in with <b>Google</b></a>
                                     </div>
                                     <div class="or-seperator"><i>or</i></div>
                                     <div class="form-group row m-1">
