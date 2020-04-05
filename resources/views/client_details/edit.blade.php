@@ -34,22 +34,13 @@
                 <div class="card">
                     <div class="card-header"><h1>Edit Your Details</h1></div>
                     <div class="card-body">
-                        {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                        {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right', "id"=>"client-details-form"]) !!}
                         @method('PUT')
                         @csrf
                         <div class="form-group row m-1">
                             {{--<label for="email" class="col-md-4 col-form-label text-md-right"> First Name: </label>--}}
                             <div class="col-md-12">
-                                {{ Form::text('client[first_name]', strtoupper($user->first_name), ['class' => 'form-control m-input',   'placeholder' => 'Enter Your First Name']) }}
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row m-1">
-                            {{--<label for="password" class="col-md-4 col-form-label text-md-right">Last Name : </label>--}}
-
-                            <div class="col-md-12">
-                                {{ Form::text('client[last_name]', strtoupper($user->last_name), ['class' => 'form-control m-input', 'placeholder' => 'Enter Your Middle & Last Name']) }}
+                                {{ Form::text('client[full_name]', $user->full_name(), ['class' => 'form-control m-input',   'placeholder' => 'Enter Your First Name', ]) }}
 
                             </div>
                         </div>
@@ -57,7 +48,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right">Phone Number : </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[phone_number]', strtoupper($user->clientDetails->phone_number), ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter Your Phone Number']) }}
+                                {{ Form::text('client[phone_number]', strtoupper($user->clientDetails->phone_number), ['class' => 'form-control m-input', 'id'=>'phone_number', 'placeholder' => 'Enter Your Phone Number', ]) }}
 
                             </div>
                         </div>
@@ -65,7 +56,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> Street Address:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[address]', strtoupper($user->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter Your Address']) }}
+                                {{ Form::text('client[address]', strtoupper($user->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter Your Address', ]) }}
                             </div>
                         </div>
 
@@ -74,7 +65,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right">   Zip code:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip', 'id' => 'zip']) }}
+                                {{ Form::text('client[zip]', $user->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip', 'id' => 'zip', ]) }}
                             </div>
 
                         </div>
@@ -82,7 +73,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> DOB:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::date('client[dob]', $user->clientDetails->dob, ['class' => 'form-control m-input']) }}
+                                {{ Form::date('client[dob]', $user->clientDetails->dob, ['class' => 'form-control m-input', ]) }}
 
                             </div>
                         </div>
@@ -90,7 +81,7 @@
                             {{--<label for="password" class="col-md-4 col-form-label text-md-right"> SSN:  </label>--}}
 
                             <div class="col-md-12">
-                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter Your SSN']) }}
+                                {{ Form::text('client[ssn]', $user->clientDetails->ssn, ['class' => 'form-control ssn', 'placeholder' => 'Enter Your SSN', ]) }}
 
                             </div>
                         </div>
@@ -141,20 +132,13 @@
         </div>
     </div>
 
-
-
-{{--    <div class="container fon">--}}
-{{--        <div class="row justify-content-center">--}}
-{{--   --}}
-{{--        </div>--}}
-{{--    </div>--}}
-@endsection
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
     </script>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             autocomplete = new google.maps.places.Autocomplete($("#address")[0], {types: ['geocode']});
@@ -168,49 +152,41 @@
                     }
                 }
             });
+            $(".ssn").mask("999-99-9999");
+            $('#phone_number').mask('(000) 000-0000');
 
-            $('.ssn').keyup(function() {
-
-                var val = this.value.replace(/\D/g, '');
-                var newVal = '';
-                if(val.length > 4) {
-                    this.value = val;
+            $("#client-details-form").validate({
+                rules:{
+                    "client[full_name]": {
+                        required: true
+                    },
+                    "client[phone_number]": {
+                        required: true
+                    },
+                    "client[address]": {
+                        required: true
+                    },
+                    "client[zip]": {
+                        required: true
+                    },
+                    "client[ssn]": {
+                        required: true
+                    },
+                    "client[dob]": {
+                        required: true
+                    },
+                    "client[sex]": {
+                        required: true
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    if (element.attr("name") == "client[sex]") {
+                        error.insertAfter($(element).closest("div"));
+                    } else {
+                        error.insertAfter(element);
+                    }
                 }
-                if((val.length > 3) && (val.length < 6)) {
-                    newVal += val.substr(0, 3) + '-';
-                    val = val.substr(3);
-                }
-                if (val.length > 5) {
-                    newVal += val.substr(0, 3) + '-';
-                    newVal += val.substr(3, 2) + '-';
-                    val = val.substr(5);
-                }
-                newVal += val;
-                this.value = newVal.substring(0, 11);
-            });
-
-            $('#phone_number').keyup(function() {
-
-                var val = this.value.replace(/\D/g, '');
-                var newVal = '';
-                if(val.length > 4) {
-                    this.value = val;
-                }
-
-                if((val.length > 3) && (val.length <7)) {
-                    newVal += val.substr(0, 3) + '-';
-                    val = val.substr(3);
-                }
-                if (val.length > 6) {
-                    newVal += val.substr(0, 3) + '-';
-                    newVal += val.substr(3, 3) + '-';
-                    val = val.substr(6);
-                }
-                newVal += val;
-                this.value = newVal.substring(0, 12);
-            });
-
-
+            })
 
         })
 
@@ -218,11 +194,7 @@
 
 
     </script>
-
-
-
-
-
+@endsection
 
 
 

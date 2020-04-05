@@ -2654,3 +2654,7 @@ hr.spacer {
 .error{
   color: #e3342f;
 }
+.alert{
+  position: fixed !important;
+  right: 0;
+}
