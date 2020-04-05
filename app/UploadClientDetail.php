@@ -25,4 +25,8 @@ class UploadClientDetail extends Model
 
     ];
 
+    public function full_name()
+    {
+        return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
 }

@@ -94,6 +94,9 @@ class ClientDetailsController extends Controller
 
         $data = $request->client;
         $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
+        $full_name = explode(" ", $data["full_name"]);
+        $data["first_name"] = array_shift($full_name);
+        $data["last_name"] = implode(" ", $full_name);
         $id = Auth::user()->id;
         $uploaded = UploadClientDetail::where("user_id", $id);
 
@@ -116,8 +119,8 @@ class ClientDetailsController extends Controller
             return view('client_details.create')->withErrors($validation);
         } else {
 
-            $user = Arr::only($request->client, ['first_name', 'last_name']);
-            $clientDetails = Arr::except($request->client, ['first_name', 'last_name', 'sex_uploaded']);
+            $user = Arr::only($data, ['first_name', 'last_name']);
+            $clientDetails = Arr::except($data, ['full_name','first_name', 'last_name', 'sex_uploaded']);
 
             $fullAddress =explode(',', str_replace([", USA", ",USA"],'', $data['address']));
 
@@ -126,16 +129,15 @@ class ClientDetailsController extends Controller
             $clientDetails['name'] = trim(str_replace($number[0],'',$fullAddress[0]));
             $clientDetails['city'] = isset($fullAddress[1])?trim($fullAddress[1]):null;
             $clientDetails['name'] = isset($fullAddress[2])?trim($fullAddress[1]):null;
+            $clientDetails['registration_steps'] = "finished";
 
             User::where('id', $id)->update([
                 'first_name' => strtoupper($user['first_name']),
                 'last_name' => strtoupper($user['last_name'])
             ]);
 
-            $d = ClientDetail::where('user_id', $id)->update($clientDetails);
-
+            ClientDetail::where('user_id', $id)->update($clientDetails);
             $uploaded->delete();
-            $client = $id;
             return redirect(route('client.details.index'))->with('success', "your data saved");
 
         }
