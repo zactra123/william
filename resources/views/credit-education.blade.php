@@ -13,6 +13,20 @@
             color: #fff;
             background-color: #0c71c3;
         }
+        .credit-logo{
+            width: 100%;
+            height: auto;
+
+        }
+        .credit-education-logo{
+            position: fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+
         @media (max-width: 768px) {
             .sidebar{
                 font-size: 8px;
@@ -20,17 +34,21 @@
             .fullwidth-block {
                 font-size: 12px;
             }
+
+            .credit-education-logo {
+                top: 30%;
+            }
+
         }
         .color{
             color: white;
             /*margin-left: 5% ;*/
         }
-        credit-education-logo{
-            dispay:show;
-        }
+
+
     </style>
-        <div class="container mt-4 pt-4">
-            <div class="row ">
+        <div class="container mt-5 pt-2">
+            <div class="row mt-4">
                 <div class="col-2 sidebar ml-0 mr-0">
                     @foreach($contents as  $content)
                         @if($content->id%2==0 )
@@ -39,25 +57,29 @@
                     @endforeach
                 </div>
                 <div class="col-8">
-
-                    <div class="fullwidth-block slide-down">
-                        <div class="container">
-                            @if(isset($moreInfo))
+                    @if(isset($moreInfo))
+                        <div class="fullwidth-block slide-down">
+                            <div class="container">
                                 @foreach($moreInfo as $info)
-                                    <h1>{{$info->title}}</h1><br/>
+                                    <h1>{{$info->title}}</h1>
                                     <div class="row justify-content-center">
                                         <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
                                     </div>
                                 @endforeach
-                            @else
-                                <div class="credit-education-logo">
-                                    <img src="{{asset('/images/logo-footer.png')}}" width="100%" >
-                                </div>
-                            @endif
+                            </div>
+                        </div>
+                    @else
+                        <div class="fullwidth-block slide-down">
+
+                            <div class="credit-education-logo">
+                                <img class="credit-logo" src="{{asset('/images/logo-footer.png')}}">
+                            </div>
 
                         </div>
 
-                    </div>
+                   @endif
+
+
 
                 </div>
                 <div class="col-2 sidebar">
