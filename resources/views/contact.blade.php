@@ -6,11 +6,11 @@
 
             <div class="container mt-5 pt-5">
                 <p class="who-font" style="text-align: justify">
-                    <span class="font-italic">PRUDENT CREDIT SOLUTIONS</span> was created to help make fixing your credit
-                    a hassle-free task. We help you dispute any errors showing on your report, negotiate any bad debts
+                    <span class="font-italic">PRUDENT CREDIT SOLUTIONS</span> created to help make fixing your credit a
+                    hassle-free task. We help you dispute any errors showing on your report, negotiate any bad debts,
                     and their repayment schedules, and then we’ll point you in the right direction to ensure you keep
-                      the upward trend of a growing credit score! With us, you have a fighting chance to get our credit
-                    back into tip top shape!
+                    the upward trend of a growing credit score! With us, you have a fighting chance to get our credit
+                    back into tip-top shape!
                 </p>
 
                 <h1>Contact Us</h1>
