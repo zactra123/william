@@ -659,7 +659,7 @@
                                     <span class="input-group-btn">
 
                                         <button type="submit" class="btn btn-search-box">
-                                            SEARCH EDUCATION CENTER <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                            SEARCH EDUCATION CENTER <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                         </button>
                                     </span>
 
