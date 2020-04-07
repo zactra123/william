@@ -2,16 +2,27 @@
 @extends('layouts.login')
 
 @section('content')
-
     <style>
-        .fullwidth-block {
-            font-family: "Times New Roman";
-            font-size: larger;
+
+
+        /*.card {*/
+        /*    min-height: 90vh !important;*/
+        /*    max-height: 100vh !important;*/
+        /*}*/
+        .chatList {
+            min-height: 90vh !important;
+            max-height: 100vh !important;
         }
-        .sidebar{
-            font-size: 14px;
-            color: #fff;
-            background-color: #0c71c3;
+
+        .chatMessage:hover{
+            background-color: #adafb8;
+        }
+
+        .scrollDiv {
+            height:auto;
+            max-height:150%;
+            overflow:auto;
+
         }
         .credit-logo{
 
@@ -19,87 +30,82 @@
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
-            background-attachment:fixed;
 
-        }
-
-        .credit-education-logo{
-            position: fixed;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
 
         }
 
 
-        @media (max-width: 768px) {
-            .sidebar{
-                font-size: 8px;
-            }
-            .fullwidth-block {
-                font-size: 12px;
-            }
-
-            .credit-education-logo {
-                top: 30%;
-            }
-
-        }
-        .color{
-            color: white;
-            /*margin-left: 5% ;*/
+        /* Darker chat container */
+        .darker {
+            border-color: #ccc;
+            background-color: #ddd;
+            margin: 10px 10px 10px 1px;
+            float: left;
         }
 
-
+        .list-group-item.active-user{
+            background-color: #adafb8
+        }
     </style>
-        <div class="container mt-5 pt-2">
-            <div class="row mt-4">
-                <div class="col-2 sidebar ml-0 mr-0">
-                    @foreach($contents as  $content)
-                        @if($content->id%2==0 )
-                            <p><a href="{{route('credit.educationInfo', $content->url )}}" class="font-bolt color"> {{$content->title}}</a></p><hr>
-                        @endif
-                    @endforeach
-                </div>
 
-                @if(isset($moreInfo))
-                <div class="col-8">
-                    <div class="fullwidth-block slide-down">
-                        <div class="container">
-                            @foreach($moreInfo as $info)
-                                <h1>{{$info->title}}</h1>
-                                <div class="row justify-content-center">
-                                    <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+    <div class="pt-3 mt-5">
+        <div class="page-content">
+            <div class="row justify-content-center m-0">
+                <aside class="sidebar col-md-3 scrollDiv">
+                    <div class="sidebar__content">
+                        <div class="side-nav list-group">
+                            <div class="card ">
+                                <div class="chatList scrollDiv" id="chatListId">
+                                    @foreach($contents as $content)
+                                        <div class="list-group-item chatMessage ">
+                                            <div class="row">
+                                            <span class="pl-2">
+                                                <a href="{{route('credit.educationInfo', $content->url )}}" class="font-bolt color">
+                                                    {{$content->title}}</a>
+                                            </span>
+
+                                            </div>
+                                        </div>
+
+                                    @endforeach
+
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
-                @else
-                <div class="col-8 credit-logo">
-                    <div class="fullwidth-block slide-down">
+                </aside>
 
-{{--                            <div class="credit-education-logo">--}}
-{{--                                <img class="credit-logo" src="{{asset('/images/logo-footer.png')}}">--}}
-{{--                            </div>--}}
+                @if(isset($moreInfo))
+                    <div class="col-9 mt-0 pt-0 credit-logo">
+                        <div class="fullwidth-block mt-0 pt-0">
+
+                            @foreach($moreInfo as $info)
+                                <div class="card pr-3 pl-3">
+                                    <h1>{{$info->title}}</h1>
+
+                                    <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                @else
+                    <div class="col-8 credit-logo">
+
+                        <div class="credit-education-logo">
+
+                        </div>
 
                     </div>
-                </div>
 
-               @endif
+                @endif
 
-                <div class="col-2 sidebar">
-                    @foreach($contents as $content)
-                        @if($content->id%2!=0 )
-                            <p><a href="{{route('credit.educationInfo', $content->url )}}" class="font-bolt color"> {{$content->title}}</a></p><hr>
-                        @endif
-                    @endforeach
 
-                </div>
             </div>
-
         </div>
-
-
+    </div>
 
 @endsection
+
