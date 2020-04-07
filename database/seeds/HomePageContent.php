@@ -113,7 +113,7 @@ class HomePageContent extends Seeder
                 'category' => 2,
                 'title' =>'A Little History',
                 'sub_content'=>'In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers.',
-                'content'=>'<p>In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers. In 1995, credit scores became part of everyday financing when Fannie Mae and Freddie Mac, the mortgage giants, asked creditors to include the use of FICO credit scores in their approval decisions. Fair Isaac Corporation reported a revenue of over $881 million dollars in the year 2016, and trades on the New York Stock Exchange under the Symbol FIC. </p>',
+                'content'=>'<p>In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers. In 1995, credit scores became part of everyday financing when Fannie Mae and Freddie Mac, the mortgage giants, asked creditors to include the use of FICO credit scores in their approval decisions. Fair Isaac Corporation reported a revenue of over $1.16 Billion dollars in the year 2019, and trades on the New York Stock Exchange under the Symbol FIC. </p>',
 
             ],
 
