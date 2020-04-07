@@ -99,7 +99,7 @@
             display: none;
         }
 
-        .footer-title{
+        .footer-title, .footer-title a{
             color:black;
             font-size: 14px;
             font-weight: bold;
@@ -319,35 +319,54 @@
             <div class="row m-1">
                 <div class="col-md-8 m-0 pl-3">
                     <div class="col-md-3 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title"> HOW WE ARE</span></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('whoWeAre')}}">WHO WE ARE</a>
+                            </span>
+                        </div>
                         <div class="row"><a href="{{route('whoWeAre')}}">About us</a></div>
-                        <div class="row"><a href="" target="_blank">Facebook</a></div>
-                        <div class="row"><a href="" target="_blank">Twitter</a></div>
+                        <div class="row"><a href="">Facebook</a></div>
+                        <div class="row"><a href="">Twitter</a></div>
                         <div class="row"><a href="" >Affiliates</a></div>
                         <div class="row"><a href="" >Careers</a></div>
                         <div class="row"><a href="" >Newsroom</a></div>
                         <div class="row"><a href="{{route('contact')}}">Contact us</a></div>
                     </div>
                     <div class="col-md-4 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title">HOW IT WORKS</span></div>
-                        <div class="row"><a href="" target="_blank">Credit Repair Process</a></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('howItWorks')}}">HOW IT WORKS</a>
+                            </span>
+                        </div>
+                        <div class="row"><a href="">Legality of the Credit Repair</a></div>
                         <div class="row"><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></div>
                         <div class="row"><a href="{{route('credit.repair')}}">Credit Resources</a></div>
-                        <div class="row"><a href="" target="_blank">What You Get</a></div>
+                        <div class="row"><a href="">What You Get</a></div>
                         <div class="row"><a href="{{route('faqs')}}">Frequently Asked Questions</a></div>
-                        <div class="row"><a href="{{route('pravicy')}}">Privacy Policy</a></div>
+                        <div class="row"><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></div>
                         <div class="row"><a href="">Text Message Terms</a></div>
-                        <div class="row"><a href="">Terms Of Use</a></div>
                     </div>
                     <div class="col-md-3 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title">EDUCATION</span></div>
-                        <div class="row"><a href="" target="_blank">CreditRepair.com Blog </a></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('credit.education')}}">CREDIT EDUCATION</a>
+                            </span>
+                        </div>
+                        <div class="row"><a href="">PrudentCredit.com Blog</a></div>
                         <div class="row"><a href="">Credit Improvement</a></div>
                         <div class="row"><a href="">Debt Solution</a></div>
-                        <div class="row"><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></div>
+                        <div class="row">
+                            <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
+                                Identity Theft
+                            </a>
+                        </div>
                         <div class="row"><a href="">Loan Center</a></div>
                         <div class="row"><a href="">Saving Center</a></div>
-                        <div class="row"><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator </a></div>
+                        <div class="row">
+                            <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
+                                Score Estimator
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>

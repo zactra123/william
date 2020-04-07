@@ -14,7 +14,7 @@
             credit, and enhance borrowing power for your personal or professional needs.
         </p>
         <p class="pr-4 pl-4 who-font"  style="text-align: justify">
-            Our firm is a registered and bonded, and is in full compliance with the Credit Repair Organization Act.
+            Our firm is a registered and bonded, and is in full compliance with the Credit Repair Organizations Act.
         </p>
         <p class="pr-4 pl-4 who-font"  style="text-align: justify">
             At Prudent Credit Solutions, we are genuinely devoted to helping our clients to achieve their reasonable
@@ -49,7 +49,7 @@
             Our expertise and unique approach to credit restoration is the second thing that makes us the best choice
             for your all credit correction needs.
 
-
         </p>
+
     </div>
 @endsection

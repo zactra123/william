@@ -27,20 +27,26 @@
                         <h1>Address</h1>
                         <address>
                             <p  class="who-font font-italic" >PRUDENT CREDIT SOLUTIONS</p>
-                            <p>Address</p>
-                            <p>Phone: +1 932 349 313 <br>info@prudentcredit.com</p>
+                            <p>5800 S. Eastern Ave., Commerce, CA 90040</p>
+                            <p>Phone: <a href="tel:1-844-337-8336">
+                                    <i class="fa fa-phone-alt" aria-hidden="true"></i>
+                                    1-844-337-8336
+                                </a>
+                            </p>
+                            <p>info@prudentcredit.com</p>
                         </address>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9" id="contactForm">
                         <h1>Contact Form</h1>
-                        <form action="#">
+                        <form action="#" >
                             <div class="row">
+                                @csrf
                                 <div class="col-md-4">
-                                    <p ><input type="text" placeholder="Your name..."></p>
-                                    <p ><input type="email" placeholder="Email..."></p>
+                                    <p ><input name="contact[name]" type="text" placeholder="Your name..." required></p>
+                                    <p ><input name="contact[email]" type="email" placeholder="Email..." required></p>
                                 </div>
                                 <div class="col-md-8">
-                                    <p ><textarea name="" id=""></textarea></p>
+                                    <p ><textarea name="contact[text]" id="" required></textarea></p>
                                     <input type="submit" class="button pull-right" value="Send Messages">
                                 </div>
                             </div>
@@ -52,5 +58,34 @@
         </div>
 
 
+<script>
+    $("#contactForm form").submit(function(e){
+        e.preventDefault();
+        var form = $(this).serializeArray(), data={};
+        $.each(form, function(index, el){
+            data[el.name] = el.value
+        });
+        console.log(data)
 
+        $.ajax({
+            url: "/contact/send-message",
+            type:"POST",
+            data: data,
+            success: function (results) {
+
+                bootbox.alert("Your email has been successfully sent")
+                $("#contactForm form")[0].reset()
+
+            },
+
+            error:function (err, state) {
+                console.log(JSON.parse(err.responseText))
+                $("#appointments .text-danger").removeClass("d-none")
+            }
+        });
+
+
+
+    })
+</script>
 @endsection

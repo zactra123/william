@@ -39,6 +39,7 @@
             width: 100%;
             height: 250px;
         }
+
         .base-header.h-shadow{
             box-shadow: rgba(52, 144, 220, 0.51) 0px 10px 25px 10px;
             background-color: rgba(52, 140, 220, 0.45);
@@ -99,9 +100,7 @@
             display: none;
         }
 
-
-
-        .footer-title{
+        .footer-title, .footer-title a{
             color:black;
             font-size: 14px;
             font-weight: bold;
@@ -134,6 +133,7 @@
         .bg-content {
             background-image: url("/images/bg2.png");
         }
+
         .third-content {
             background-image: url("/images/bg-40.png");
             background-repeat: no-repeat;
@@ -143,90 +143,52 @@
             height: 250px;
         }
 
-
         .carousel-inner svg {
             position: absolute;
             top: 0;
             left: 0;
         }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
 
-        .square {
+        .video-wrapper {
             position: relative;
-            text-align: center;
-            width: 80vw;
-            height: 17.5vw;
-            margin: auto;
-            margin-bottom: 2.5vw;
         }
 
-
-
-        .hide {
-            background-color: transparent;
-            height: 50%;
-            width:12.5%;
-            max-height: 100vw;
-            max-width: 100vw;
-            float: left;
-            padding: 0;
-            margin: auto;
+        .video-wrapper > video {
+            width: 100%;
+            vertical-align: middle;
         }
 
-        .circle {
-            position: relative;
-            background-color: #e2ebf4;
-            height: 50%;
-            width: 12.5%;
-            border-radius: 50%;
-            border-style: solid;
-            border-color: #8bc3fe;
-            max-height: 100vw;
-            max-width: 100vw;
-            font-size: 12px;
-            color: black;
-            line-height: 100%;
-            text-align: center;
-            float: left;
-            padding: 2.5%;
-            margin: auto;
+        .video-wrapper > video.has-media-controls-hidden::-webkit-media-controls {
+            display: none;
         }
-        .circle-arrow{
+
+        .video-overlay-play-button {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 10px calc(50% - 50px);
             position: absolute;
-            top: 88%;
-            left: 83%;
-            width: 35%;
-        }
-        .circle-arrow-1{
-            position: absolute;
-            bottom: 80%;
-            left: 89%;
-            width: 35%;
+            top: 0;
+            left: 0;
+            display: block;
+            opacity: 0.95;
+            cursor: pointer;
+            background-image: linear-gradient(transparent, #000);
+            transition: opacity 150ms;
         }
 
-        .arrow-up {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 1.5vw 12vw 1.5vw;
-            border-color: transparent transparent white transparent;
-            position: absolute;
-            top: 105%;
-            left: 28%;
-        }
-        .arrow-small {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0px 1vw 3vw 1vw;
-            border-color: transparent transparent #ffffff transparent;
-            position: absolute;
-            top: 102%;
-            left: 38%;
+        .video-overlay-play-button:hover {
+            opacity: 1;
         }
 
-        .step{
-            display:none
+        .video-overlay-play-button.is-hidden {
+            display: none;
         }
+
 
         .excall{
             margin-top: 3%;
@@ -258,11 +220,7 @@
             background-color: #15178b;
             border-color: #15178b;
         }
-        .including{
-            font-size: 3vw;
-            font-weight: bold;
-            color: #15178b;
-        }
+
         .work-more{
             content:"";
             width: 100%;
@@ -287,6 +245,13 @@
             font-size: 4rem;
             margin:0;
             padding-top: 0;
+        }
+
+        .including{
+            margin-top: 20%;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #15178b;
         }
 
         .search-box{
@@ -380,7 +345,7 @@
             }
             .including{
                 margin-top: 0;
-                font-size: 3vw;
+                font-size:1.25rem;
                 font-weight: bold;
                 color: #15178b;
             }
@@ -664,7 +629,7 @@
 
                         <div class="col-md-3 offset-md-3">
                             <div class="feature excall">
-                                <a href="tel:1-855-855-9797" class="btn btn-primary">Call 1-855-855-9797</a>
+                                <a href="tel:1-844-337-8336" class="btn btn-primary">Call 1-844-337-8336</a>
 
                             </div> <!-- .feature -->
                         </div> <!-- .col-md-3 -->
@@ -924,104 +889,18 @@
 
             <div class="light-section">
                 <div class="container content-container">
-                    <div class="square">
-                        <div class="hide"></div>
-                        <div class="circle 1">
-                            <span class="step-number"> 1</span>
-                            <p class="pt-2 circle-text">Registration</p>
-                            <img src="images/arrow.png"  class="circle-arrow" >
-                            <div class="arrow-up step step-1"></div>
-                        </div>
-                        <div class="hide"></div>
-                        <div class="circle 3">
-                            <span class="step-number">3</span>
-                            <p class="pt-2 circle-text">Review &  Approval-</p>
-                            <p class="pt-2 circle-text"> Contract </p>
-                            <img src="images/arrow.png"  class="circle-arrow" >
-                            <div class="arrow-up step step-3"></div>
-                        </div>
-                        <div class="hide"></div>
-                        <div class="circle 5">
-                            <span class="step-number">3</span>
-                            <p class="pt-2 circle-text"> We Get To Work</p>
-                            <img src="images/arrow.png"  class="circle-arrow" >
-                            <div class="arrow-up step step-5"></div>
-                        </div>
-                        <div class="hide"></div>
-                        <div class="hide"></div>
-                        <!--2nd -->
 
-                        <div class="hide"></div>
-                        <div class="hide"></div>
-                        <div class="circle 2">
-                            <span class="step-number">2</span>
-                            <p class="pt-2 circle-text"> Auditing</p>
-                            <img src="images/arrow1.png"  class="circle-arrow-1" >
-                            <div class="arrow-small step step-2"></div>
-                        </div>
-                        <div class="hide"></div>
-                        <div class="circle 4">
-                            <span class="step-number">4</span>
-                            <p class="pt-2 circle-text">Payment</p>
-                            <img src="images/arrow1.png"  class="circle-arrow-1" >
-                            <div class="arrow-small step step-4"></div>
+                    <div class="video-wrapper">
+                        <svg class="video-overlay-play-button" viewBox="0 0 200 200" alt="Play video">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" stroke="#fff"/>
+                            <polygon points="70, 55 70, 145 145, 100" fill="#fff"/>
+                        </svg>
 
-                        </div>
-                        <div class="hide"></div>
-                        <div class="circle 6">
-                            <span class="step-number">6</span>
-                            <p class="pt-2 circle-text">Payment</p>
-                            <p class="circle-text"> Disbursement</p>
-                            <div class="arrow-small step step-6"></div>
-                        </div>
-                        <div class="red"></div>
+                        <video id="videoId" controls controlsList="nodownload" class="has-media-controls-hidden">
+                            <source src="{{asset('/images/howItWorks.mp4')}}" type="video/mp4">
+                        </video>
                     </div>
-                    <div class="card p-4  step step-1">
-                        <p style="text-align: justify">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.
-                        </p>
-                    </div>
-                    <div class="card p-4 step step-2">
-                        <p style="text-align: justify">
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                            like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </div>
-                    <div class="card p-4  step step-3">
-                        <p style="text-align: justify">
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                    </div>
-                    <div class="card p-4  step step-4">
-                        <p style="text-align: justify">
-                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
-                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                            also reproduced in their exact original form, accompanied by English versions from the 1914
-                            translation by H. Rackham.
-                        </p>
-                    </div>
-                    <div class="card p-4 step step-5">
-                        <p style="text-align: justify">
-                            There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even slightly believable.
-                        </p>
-                    </div>
-                    <div class="card p-4 step step-6">
-                        <p style="text-align: justify">
-                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default
-                            model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various versions have evolved over the years, sometimes by accident, sometimes on
-                            purpose (injected humour and the like).
-                        </p>
-                    </div>
+
                 </div>
             </div>
 
@@ -1050,35 +929,54 @@
             <div class="row m-1">
                 <div class="col-md-8 m-0 pl-3">
                     <div class="col-md-3 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title"> HOW WE ARE</span></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('whoWeAre')}}">WHO WE ARE</a>
+                            </span>
+                        </div>
                         <div class="row"><a href="{{route('whoWeAre')}}">About us</a></div>
-                        <div class="row"><a href="" target="_blank">Facebook</a></div>
-                        <div class="row"><a href="" target="_blank">Twitter</a></div>
+                        <div class="row"><a href="">Facebook</a></div>
+                        <div class="row"><a href="">Twitter</a></div>
                         <div class="row"><a href="" >Affiliates</a></div>
                         <div class="row"><a href="" >Careers</a></div>
                         <div class="row"><a href="" >Newsroom</a></div>
                         <div class="row"><a href="{{route('contact')}}">Contact us</a></div>
                     </div>
                     <div class="col-md-4 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title">HOW IT WORKS</span></div>
-                        <div class="row"><a href="" target="_blank">Credit Repair Process</a></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('howItWorks')}}">HOW IT WORKS</a>
+                            </span>
+                        </div>
+                        <div class="row"><a href="{{route('legalityCreditRepair')}}">Legality of the Credit Repair</a></div>
                         <div class="row"><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></div>
                         <div class="row"><a href="{{route('credit.repair')}}">Credit Resources</a></div>
-                        <div class="row"><a href="" target="_blank">What You Get</a></div>
+                        <div class="row"><a href="">What You Get</a></div>
                         <div class="row"><a href="{{route('faqs')}}">Frequently Asked Questions</a></div>
-                        <div class="row"><a href="{{route('pravicy')}}">Privacy Policy</a></div>
+                        <div class="row"><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></div>
                         <div class="row"><a href="">Text Message Terms</a></div>
-                        <div class="row"><a href="">Terms Of Use</a></div>
                     </div>
                     <div class="col-md-3 m-0 pl-3">
-                        <div class="row pb-5"><span class="footer-title">EDUCATION</span></div>
-                        <div class="row"><a href="" target="_blank">CreditRepair.com Blog </a></div>
+                        <div class="row pb-5">
+                            <span class="footer-title">
+                                <a href="{{route('credit.education')}}">CREDIT EDUCATION</a>
+                            </span>
+                        </div>
+                        <div class="row"><a href="">PrudentCredit.com Blog</a></div>
                         <div class="row"><a href="">Credit Improvement</a></div>
                         <div class="row"><a href="">Debt Solution</a></div>
-                        <div class="row"><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></div>
+                        <div class="row">
+                            <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
+                                Identity Theft
+                            </a>
+                        </div>
                         <div class="row"><a href="">Loan Center</a></div>
                         <div class="row"><a href="">Saving Center</a></div>
-                        <div class="row"><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator </a></div>
+                        <div class="row">
+                            <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
+                                Score Estimator
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-2 m-0 pl-3">
                         <div class="row pb-5"><span class="footer-title">FIND US</span></div>
@@ -1103,11 +1001,19 @@
 
 
     $(document).ready(function(){
+
+        $('.video-overlay-play-button').click(function () {
+
+            $('#videoId')[0].play();
+            $(this).hide();
+            $('#videoId').removeClass('has-media-controls-hidden');
+        })
+        $('#videoId').click(function() {
+            !this.paused ? $('.video-overlay-play-button').show():  $('.video-overlay-play-button').hide()
+        })
     //    Slider Start
         $('.carousel').carousel()
     // // Slider End
-
-
         $('.circle').on('click mouseover', function(){
             var className = (this).className;
             var show = className.replace('circle ', '');

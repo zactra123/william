@@ -14,10 +14,15 @@
             background-color: #0c71c3;
         }
         .credit-logo{
-            width: 100%;
-            height: auto;
+
+            background-image: url('/images/logo-footer.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            background-attachment:fixed;
 
         }
+
         .credit-education-logo{
             position: fixed;
             top: 55%;
@@ -56,32 +61,33 @@
                         @endif
                     @endforeach
                 </div>
+
+                @if(isset($moreInfo))
                 <div class="col-8">
-                    @if(isset($moreInfo))
-                        <div class="fullwidth-block slide-down">
-                            <div class="container">
-                                @foreach($moreInfo as $info)
-                                    <h1>{{$info->title}}</h1>
-                                    <div class="row justify-content-center">
-                                        <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
-                                    </div>
-                                @endforeach
-                            </div>
+                    <div class="fullwidth-block slide-down">
+                        <div class="container">
+                            @foreach($moreInfo as $info)
+                                <h1>{{$info->title}}</h1>
+                                <div class="row justify-content-center">
+                                    <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+                                </div>
+                            @endforeach
                         </div>
-                    @else
-                        <div class="fullwidth-block slide-down">
-
-                            <div class="credit-education-logo">
-                                <img class="credit-logo" src="{{asset('/images/logo-footer.png')}}">
-                            </div>
-
-                        </div>
-
-                   @endif
-
-
-
+                    </div>
                 </div>
+                @else
+                <div class="col-8 credit-logo">
+                    <div class="fullwidth-block slide-down">
+
+{{--                            <div class="credit-education-logo">--}}
+{{--                                <img class="credit-logo" src="{{asset('/images/logo-footer.png')}}">--}}
+{{--                            </div>--}}
+
+                    </div>
+                </div>
+
+               @endif
+
                 <div class="col-2 sidebar">
                     @foreach($contents as $content)
                         @if($content->id%2!=0 )

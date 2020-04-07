@@ -20,11 +20,12 @@ Route::get('more-information/{url}', 'PagesController@moreInformation')->name('m
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
 
+Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
 Route::get('contact', 'PagesController@contacts')->name('contact');
+Route::post('contact/send-message', 'PagesController@contactsSendMessage')->name('contact.sendMessage');
 Route::get('credit-repair-resources', 'PagesController@creditRepiarResouces')->name('credit.repair');
 Route::get('free-credit-repair', 'PagesController@creditFreeRepiar')->name('credit.free.repair');
 Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
-
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');

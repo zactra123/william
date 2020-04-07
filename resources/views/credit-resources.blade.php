@@ -12,6 +12,7 @@
                     <div id="site-content">
 
                         <div class="container">
+                            <p class="who-font font-italic">Credit Resources</p>
                             <p style="text-align: justify">
                                 Need some trusted resources to help keep your credit it tip top shape? Or perhaps you’d
                                 like to educate yourself on how to improve your score? Having the right tools with a
@@ -60,8 +61,6 @@
             </div>
         </div>
     </div>
-    </div>
-
 
 
 

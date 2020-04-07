@@ -2,6 +2,17 @@
 @extends('layouts.login')
 
 @section('content')
+    <style>
+        .hideShow{
+            display: none;
+            text-align: justify;
+            color: #0c71c3;
+        }
+        .faqs-title {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+    </style>
 
 
 
@@ -14,15 +25,15 @@
 
                     <div class="row ml-0 mr-0">
 
-                        {{$faq->title}}
+                        <span class="faqs-title">{{$faq->title}}</span>
                         <div class="align-right">
-                            <label for="password" class="col-md-1 show title1-{{$faq->id}}" style="display: block">   <i class="fa fa-arrow-down"></i>  </label>
-                            <label for="password" class="col-md-1 hide title2-{{$faq->id}}" style="display: none">   <i class="fa fa-arrow-up"></i>  </label>
+                            <label class="col-md-1 show title1-{{$faq->id}}" style="display: block">   <i class="fa fa-arrow-down"></i>  </label>
+                            <label class="col-md-1 hide title2-{{$faq->id}}" style="display: none">   <i class="fa fa-arrow-up"></i>  </label>
                         </div>
                     </div>
-                    <div class="card-body hideShow desc-{{$faq->id}}" style="display: none">
+                    <div class="card-body pt-0 m-0 hideShow desc-{{$faq->id}}" >
 
-                        {{$faq->description}}
+                       {{$faq->description}}
                     </div>
 
 
@@ -51,9 +62,6 @@
     </div>
 
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
 
@@ -62,6 +70,10 @@
                 $className = (this).className;
                 $show = $className.replace('col-md-1 show title1-', '');
 
+
+                $('.hideShow').css('display','none');
+                $('.hide').css('display','none');
+                $('.show').css('display','block');
                 $('.desc-'+$show).css('display','block');
                 $('.title1-'+$show).css('display','none');
                 $('.title2-'+$show).css('display','block');

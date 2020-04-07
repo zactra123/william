@@ -7,6 +7,7 @@ use App\HomePageContent;
 use App\Question;
 use Illuminate\Support\Facades\Validator;
 use App\Faq;
+use App\ContactMessage;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -35,37 +36,40 @@ class PagesController extends Controller
 
     public function creditEducation()
     {
+        $title = 'Credit Education';
         $contents = HomePageContent::all();
-       return view('credit-education', compact('contents'));
+       return view('credit-education', compact('contents','title'));
     }
 
     public function creditEducationInfo($url)
     {
+        $title = 'Credit Education';
         $contents = HomePageContent::all();
         $moreInfo = HomePageContent::where('url', $url)
             ->get();
-        return view('credit-education', compact('moreInfo', 'contents'));
+        return view('credit-education', compact('moreInfo', 'contents','title'));
     }
 
     public function whoWeAre()
     {
-        return view('who-we-are');
+        $title = 'Who We Are';
+        return view('who-we-are', compact('title'));
     }
 
     public function howItWorks()
     {
-
-        return view('how-it-works');
+        $title = 'How It Works';
+        return view('how-it-works', compact('title'));
     }
 
     public function faqs(Request $request)
     {
-
+        $title = 'FAQs';
         if($request->method() =='GET'){
 
             $faqs = Faq::all();
 
-            return view('faqs', compact('faqs'));
+            return view('faqs', compact('faqs', 'title'));
         }
 
         if($request->post()){
@@ -92,23 +96,55 @@ class PagesController extends Controller
 
     public function contacts()
     {
-        return view('contact');
+        $title = 'Contacts us';
+        return view('contact', compact('title'));
+    }
+
+    public function contactsSendMessage(Request $request)
+    {
+
+        $validation = Validator::make($request->contact, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'text' => ['required', 'string', 'max:255'],
+
+        ]);
+        if ($validation->fails()) {
+
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validation);
+        }else{
+           
+            ContactMessage::create($request->contact);
+            return redirect()->back()
+                ->withInput()
+                ->with('success','Your email has been successfully sent');
+        }
     }
 
     public function creditRepiarResouces()
     {
-
-        return view('credit-resources');
+        $title = 'Credit Resources';
+        return view('credit-resources', compact('title'));
     }
 
     public function creditFreeRepiar()
     {
-        return view('free-credit-repair');
+        $title = 'Free Credit Repair';
+        return view('free-credit-repair', compact('title'));
+    }
+
+    public function legalityCreditRepair()
+    {
+        $title = 'Legality of the Credit Repair';
+        return view('legality-credit-repair',compact('title'));
     }
 
     public function pravicyPolicy()
     {
-        return view('privacy-policy');
+        $title = 'Privacy Policy';
+        return view('privacy-policy', compact('title'));
     }
 
 }
