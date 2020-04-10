@@ -45,8 +45,10 @@ class ChatsController extends Controller
         if(!empty($dif))
         {
            $userId =  $dif[array_rand($dif)];
-        }else{
+        }elseif (!empty($dif)) {
             $userId = $receptionistId[array_rand($receptionistId)];
+        } else {
+            $userId = User::where("role", 'receptionist')->orderByRaw("RAND()")->first()->id;
         }
 
         $user = User::where('email', $request->get('email'))->first();
