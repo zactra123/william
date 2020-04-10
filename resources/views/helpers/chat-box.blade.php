@@ -3,6 +3,7 @@
 <button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" >Chat</button>
 {{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{7}}" >Chat</button>--}}
 
+
 <div class="chat-popup">
     <div class="not-defined-user">
         <div class="card-header">
