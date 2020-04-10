@@ -13,9 +13,6 @@ use App\Chat;
 
 
 
-
-
-
 class ChatsController extends Controller
 {
 
@@ -27,6 +24,7 @@ class ChatsController extends Controller
     public function index(Request $request)
     {
         $chats = Auth::user()->chat_list();
+
         $unreads = array_sum(array_map('intval',array_column($chats, "message")));
         return view('receptionist.live-chat.index', compact('chats', 'unreads'));
     }

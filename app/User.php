@@ -147,7 +147,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('chat.user_id', $this->id)
             ->orderBy('chat.created_at', 'DESC')
             ->select('recipient_id as id', 'recipient_type as type',
-                DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.full_name ELSE CONCAT(users.last_name, " ",users.first_name ) END AS full_name'),
+                DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.full_name ELSE CONCAT(users.first_name, " ",users.last_name ) END AS full_name'),
                 DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
 
                 DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
