@@ -154,7 +154,7 @@ class ChatsController extends Controller
                 "recipient_id" => $requests->recipient_id,
                 "message" => $requests->message,
                 "user_id" => $last_message->user_id,
-                "private" => $requests->recipient_type == 'user'?true:false,
+                "private" => $requests->recipient_type == 'user'? true:false,
             ]);
 
         }

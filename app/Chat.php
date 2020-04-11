@@ -15,7 +15,8 @@ class Chat extends Model
         "recipient_type",
         "recipient_id",
         "user_id",
-        "type"
+        "type",
+        "private"
     ];
 
     public function guest()

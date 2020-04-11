@@ -21,7 +21,6 @@
                                                 <span class="pl-2"><h3>{{$chat->full_name??"FULL NAME"}}</h3></span>
                                                 @if($chat->message != 0)
                                                     <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
-
                                                 </i>{{$chat->message}}</h3>
                                                 @endif
                                             </div>

@@ -66,15 +66,15 @@ class ChatsController extends Controller
         ]);
         broadcast(new LiveChat($new_message));
 
-        $chatMessage =  Chat::where('recipient_type', $request->recipient_type)
-            ->where('recipient_id', $request->recipient_id);
+        $chatMessage =  Auth::user()
+            ->chatMessages(["type" =>$request->recipient_type, "id" => $request->recipient_id])
+            ->select("chat.*");
 
 
         $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
+
         $chatMessage = $chatMessage->get();
-
         $chats =$user->chat_list();
-
 
         $recipientData = ['id'=> $request->recipient_id, 'type' =>$request->recipient_type];
         $data = [

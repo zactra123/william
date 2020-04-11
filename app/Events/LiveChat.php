@@ -24,6 +24,7 @@ class LiveChat implements ShouldBroadcast
     {
         $this->message = $data;
 
+
     }
 
     /**

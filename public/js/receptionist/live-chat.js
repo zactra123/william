@@ -7,12 +7,14 @@ connectToChannel = function (user) {
             var messageCount = ' '
             messageCount += e.unreads
 
+            console.log(e.message['recipient_id'] , id, e.message['recipient_type'] , type , e.message);
 
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == type){
-
+                console.log('ashxatuma bayc chi nakrum!!!!!');
                 addMessageToChat(e.message)
             }
 
+            console.log('ashxatuma bayc chi nakrum');
             chatListHtml = '';
 
             $.each(e.recipient_lists, function( index, value ) {
@@ -166,5 +168,5 @@ $(document).ready(function(){
     if (user != ''){
         connectToChannel(user)
     }
-    console.log(user)
+    console.log(user, 'hhhhh');
 });
