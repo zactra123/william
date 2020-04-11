@@ -113,6 +113,31 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Chat');
     }
 
+    public function chatMessages($params)
+    {
+        if ($params["type"] == "User"){
+            return $this->hasMany('App\Chat')
+                ->leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
+                ->where(
+                        ["recipient_type" => "User",
+                            "recipient_id"=> $params["id"]
+                        ]
+                    )
+                ->orWhere([
+                    "recipient_type"=> "'Guest'",
+                    "guest.user_id"=> $params["id"]
+                ]);
+        }else {
+            return $this->hasMany('App\Chat')
+                ->leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
+                ->where(
+                    ["recipient_type" => "Guest",
+                        "recipient_id" => $params["id"]
+                    ]
+                );
+        }
+    }
+
 
     public function clientAttachments()
     {
@@ -129,6 +154,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
     }
+
 
     public function chat_list()
     {

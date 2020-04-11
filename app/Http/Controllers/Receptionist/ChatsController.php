@@ -31,10 +31,10 @@ class ChatsController extends Controller
 
     public function show(Request $request)
     {
-       $chatMessage =  Chat::where('recipient_type', $request->type)
-            ->where('recipient_id', $request->id);
 
-       $updateChatMessageStatus = $chatMessage ->update(['unread'=>false]);
+       $chatMessage =  Auth::user()->chatMessages($request->only("type", "id"))->select("chat.*");
+
+       $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
 
        $chatMessage = $chatMessage->get();
        $recipientData = ['id'=> $request->id, 'type' =>$request->type];
