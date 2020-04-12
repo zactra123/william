@@ -47,6 +47,7 @@ class ReceptionistLiveChat implements ShouldBroadcast
 
         $admin = User::find($data->user_id);
         $this->recipient_lists = $admin->chat_list();
+
         $this->unreads = array_sum(array_map('intval',array_column($this->recipient_lists, "message")));
 
 

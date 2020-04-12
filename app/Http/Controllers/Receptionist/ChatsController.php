@@ -55,15 +55,26 @@ class ChatsController extends Controller
 
     public function create(Request $request)
     {
-        $user = Auth::user();
 
-        $new_message = Chat::create([
-            "message" => $request->answer,
-            "recipient_type" => $request->recipient_type,
-            "recipient_id" => $request->recipient_id,
-            "user_id" => $user->id,
-            "type" => "from"
-        ]);
+        $user = Auth::user();
+        if(isset($request->private)){
+            $new_message = Chat::create([
+                "message" => $request->answer,
+                "recipient_type" => $request->recipient_type,
+                "recipient_id" => $request->recipient_id,
+                "user_id" => $user->id,
+                "type" => "from"
+            ]);
+        }else{
+            $guest = DB::table('guest')->where('user_id', $request->recipient_id)->first();
+            $new_message = Chat::create([
+                "message" => $request->answer,
+                "recipient_type" =>'Guest',
+                "recipient_id" => $guest->id,
+                "user_id" => $user->id,
+                "type" => "from"
+            ]);
+        }
         broadcast(new LiveChat($new_message));
 
         $chatMessage =  Auth::user()

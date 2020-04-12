@@ -54,12 +54,22 @@
 
                         {!! Form::open(['route' =>['receptionist.liveChat.create'], 'method' => 'POST', 'class' => 'v-100 p-2 m-1']) !!}
                         @csrf
-                        <div class="row v-100 m-0" style="height: 10%">
+                        <div class="row mb-2 privateCheckBox">
 
-                            <div class="col-11  v-100 m-0">
+                            <div class="col-2 pull-left  v-100 m-0 mb-2">
+                                <label>Private Message</label>
+                                <input class="form-check-input" type="checkbox" name="private"  value="private">
+
+                            </div>
+
+                        </div>
+                        <div class="row" style="height: 10%">
+
+
+                            <div class="col-10  v-100 m-0">
                                 <input type="hidden" name="recipient_id" id="recipientId" >
                                 <input type="hidden" name="recipient_type" id="recipientType" >
-
+                                <input class="form-check-input" type="checkbox" name="private"  {{ old('private') ? 'checked' : '' }}>
                                 <div class="comment-text-area">
                                     <textarea class="textinput"  name="answer" placeholder="Comment"></textarea>
                                 </div>

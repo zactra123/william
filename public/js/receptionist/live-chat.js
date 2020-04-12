@@ -11,7 +11,7 @@ connectToChannel = function (user) {
 
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == type){
                 console.log('ashxatuma bayc chi nakrum!!!!!');
-                addMessageToChat(e.message)
+                c(e.message)
             }
 
             console.log('ashxatuma bayc chi nakrum');
@@ -100,6 +100,10 @@ $(document).ready(function(){
                 $.each(result.chats, function( index, value ) {
                     chatListHtml +=  addChatUserList(value);
                 });
+                console.log(type);
+                if(type == "Guest"){
+                    $(".privateCheckBox").hide();
+                }else{ $(".privateCheckBox").show();}
 
                 $("#chatListId").html(chatListHtml);
                 $("#recipientId").val(result.recipient.id);

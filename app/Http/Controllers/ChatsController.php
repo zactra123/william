@@ -9,7 +9,8 @@ use App\Events\ReceptionistLiveChat;
 use Illuminate\Support\Facades\Broadcast;
 use Response;
 use App\User;
-
+use Illuminate\Support\Facades\DB;
+use Auth;
 use Active;
 
 
@@ -95,10 +96,35 @@ class ChatsController extends Controller
      */
     public function getChatMessages(Request $request)
     {
-        dd($request->all());
-        $messages = Chat::where("recipient_type", $request->type)
-                        ->where("recipient_id", $request->id)
-                        ->get()->toArray();
+
+        if(!empty(Auth::user())){
+
+            $messages = DB::table('chat')
+                ->leftJoin('guest', function($join)
+                {
+                    $join->on('chat.recipient_id', '=', 'guest.id')
+                        ->where('guest.user_id', Auth::user()->id);
+                    $join->on('chat.recipient_type','=', DB::raw("'Guest'"))
+                        ->where('guest.user_id', Auth::user()->id);
+                })
+                ->leftJoin('users', function($join)
+                {
+                    $join->on('chat.recipient_id', '=', 'users.id')
+                        ->where('users.id', Auth::user()->id);
+                    $join->on('chat.recipient_type','=', DB::raw("'User'"))
+                        ->where('users.id', Auth::user()->id);;
+                })
+                ->select('chat.*')
+                ->get()->toArray();
+
+
+        }else{
+            $messages = Chat::where("recipient_type", $request->type)
+                ->where("recipient_id", $request->id)
+                ->get()->toArray();
+        }
+
+
         return Response::json(["messages" => $messages]);
     }
 
