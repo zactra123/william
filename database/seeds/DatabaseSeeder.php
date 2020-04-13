@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             $this->call(FAQsTableSeeder::class);
             $this->call(NegativeTypesTableSeeder::class);
             $this->call(UserTableSeeder::class);
-            $this->call(TransUnionCodesSeeder::class);
             $this->call(SloganSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
