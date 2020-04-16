@@ -34,7 +34,7 @@ class SocialAuthController extends Controller
     {
         $facebookUser = Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
-        ])->user();
+        ])->stateless()->user();
 
 
         $account = SocialAccount::where('provider','facebook')
@@ -101,7 +101,7 @@ class SocialAuthController extends Controller
     public function callbackGoogle()
     {
 
-        $googleUser = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->stateless()->user();
 
         $account = SocialAccount::where('provider','google')
             ->where('provider_user_id',$googleUser->user['id'])
