@@ -169,7 +169,7 @@
                 <div class="col-12 justify-content-center">
                     @if(Auth::user()->role == 'client')
                         @if(empty(Auth::user()->clientDetails))
-                            <a href="{{ url('/client/details/create') }}" class="branding pull-left">
+                            <a href="{{ url('/client/registration-steps') }}" class="branding pull-left">
                                 <img src="{{asset('/images/logo-footer.png')}}" alt="Site title" class="logo-icon branding ">
                             </a>
                         @else

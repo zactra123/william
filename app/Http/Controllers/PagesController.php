@@ -41,14 +41,14 @@ class PagesController extends Controller
        return view('credit-education', compact('contents','title'));
     }
 
-    public function creditEducationInfo($url)
-    {
-        $title = 'Credit Education';
-        $contents = HomePageContent::all();
-        $moreInfo = HomePageContent::where('url', $url)
-            ->get();
-        return view('credit-education', compact('moreInfo', 'contents','title'));
-    }
+//    public function creditEducationInfo($url)
+//    {
+//        $title = 'Credit Education';
+//        $contents = HomePageContent::all();
+//        $moreInfo = HomePageContent::where('url', $url)
+//            ->get();
+//        return view('credit-education', compact('moreInfo', 'contents','title'));
+//    }
 
     public function whoWeAre()
     {
@@ -115,7 +115,7 @@ class PagesController extends Controller
                 ->withInput()
                 ->withErrors($validation);
         }else{
-           
+
             ContactMessage::create($request->contact);
             return redirect()->back()
                 ->withInput()

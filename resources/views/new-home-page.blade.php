@@ -411,7 +411,7 @@
                                   @auth
                                       @if(Auth::user()->role == 'client')
                                           @if(empty(Auth::user()->clientDetails))
-                                              <a class="btn btn-primary-outline "  href="{{ url('/client/details/create') }}"> Home </a>
+                                              <a class="btn btn-primary-outline "  href="{{ url('/client/registration-steps') }}"> Home </a>
                                           @else
                                               <a class="btn btn-primary-outline " href="{{ url('/client/details') }}"> Home </a>
                                           @endif

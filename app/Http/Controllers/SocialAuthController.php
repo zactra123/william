@@ -45,7 +45,6 @@ class SocialAuthController extends Controller
 
             $user = User::where('email', $facebookUser->user['email'])->first();
             if ($user) {
-//                dd('es usery arten login exaca');
                 return redirect()->to('/login')
                     ->withErrors("User with this mail was already registered!!");
             }
@@ -64,18 +63,27 @@ class SocialAuthController extends Controller
             if(isset($facebookUser->user['birthday'])){
                 ClientDetail::create([
                     'user_id' => $user->id,
-                    'dob' => $facebookUser->user['birthday']
+                    'dob' => $facebookUser->user['birthday'],
+                    'registration_steps' => 'documents'
+
+                ]);
+            }else{
+                ClientDetail::create([
+                    'user_id' => $user->id,
+                    'registration_steps' => 'documents'
                 ]);
             }
 
+            if ($user->markEmailAsVerified()) {
+                event(new Verified($user));
+            }
 
-            $user->sendEmailVerificationNotification();
 
             $account->user()->associate($user);
             $account->save();
 
             auth()->login($account->user);
-            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+            return redirect()->to('/client/registration-steps')->with('success','Congrats! You just did something really wise');
         }
 
         auth()->login($account->user);
@@ -92,6 +100,7 @@ class SocialAuthController extends Controller
 
     public function callbackGoogle()
     {
+
         $googleUser = Socialite::driver('google')->user();
 
         $account = SocialAccount::where('provider','google')
@@ -103,7 +112,10 @@ class SocialAuthController extends Controller
                 'provider' => 'google'
             ]);
             $user = User::where('email', $googleUser->user['email'])->first();
+
+
             if ($user) {
+
                 return redirect()->to('/login')
                     ->withErrors(['error'=> "User with this mail was already registered!!"]);
             }
@@ -114,19 +126,33 @@ class SocialAuthController extends Controller
                 'last_name'=> $googleUser->user['family_name'],
                 'role'=>'client'
             ]);
+            ClientDetail::create([
+                'user_id' => $user->id,
+                'registration_steps'=> 'documents',
+
+            ]);
 
             if ($user->markEmailAsVerified()) {
                 event(new Verified($user));
             }
 
+
             $account->user()->associate($user);
             $account->save();
             auth()->login($account->user);
-            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+
+            return redirect()->to('/client/registration-steps')->with('success','Congrats! You just did something really wise');
         }
 
         auth()->login($account->user);
-        return redirect()->to('/client/details');
+        if (empty(auth()->user()->clientDetails)){
+
+            return redirect()->to('/client/registration-steps');
+        }else{
+            return redirect()->to('/client/details');
+        }
+
+
 
 
     }
