@@ -14,6 +14,14 @@
 
         }
 
+        .active{
+            background-color: #ffffff;
+
+        }
+        .title{
+            font-size: 1.2rem;
+        }
+
         .chatList {
             min-height: 90vh !important;
             max-height: 100vh !important;
@@ -21,8 +29,7 @@
         .scrollDiv {
             height:auto;
             max-height:150%;
-            overflow:auto;
-
+            overflow-y: auto;
         }
         .scrollDiv::-webkit-scrollbar {
             width: 6px;
@@ -31,12 +38,16 @@
         }
 
 
+
         @media (max-width: 768px) {
             .sidebar{
                 font-size: 8px;
             }
             .fullwidth-block {
                 font-size: 12px;
+            }
+            .title{
+                font-size: 0.85rem;
             }
 
 
@@ -51,16 +62,18 @@
                 <div class="chatList scrollDiv sidebar " id="chatListId">
                 @foreach($contents as  $content)
 
-                    <h3><a href="#{{$content->url}}" class="font-bolt color"> {{$content->title}}</a></h3><hr>
+                    <a href="#{{$content->url}}" class="font-bolt title" data-target="{{$content->id}}"> {{$content->title}}</a><hr>
                 @endforeach
                 </div>
             </div>
             <div class="col-9">
                 <div class="chatList scrollDiv container">
                     @foreach($contents as $info)
-                        <h1 id="{{$info->url}}">{{$info->title}}</h1>
-                        <div class="row justify-content-center">
-                            <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+                        <div class="section" id="section{{$info->id}}">
+                            <h1 id="{{$info->url}}">{{$info->title}}</h1>
+                            <div class="row justify-content-center m-0 p-0">
+                                <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -73,7 +86,19 @@
 
     </div>
 
+    <script>
+        $(document).ready(function () {
+            $('.title').click(function(){
+                var tab = $(this).attr("data-target");
+                console.log(tab);
+                $('.section').removeClass("active");
+                $("#section"+tab ).addClass("active");
+            })
 
+
+        })
+
+    </script>
 
 @endsection
 
