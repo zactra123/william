@@ -56,8 +56,8 @@ class SocialAuthController extends Controller
 
             $user = User::create([
                 'email' => $facebookUser->user['email'],
-                'first_name' => $facebookUser->user['first_name'],
-                'last_name'=> $facebookUser->user['last_name'],
+                'first_name' => $facebookUser->user['first_name']?? '',
+                'last_name'=> $facebookUser->user['last_name']?? '',
                 'role'=>'client'
             ]);
             if(isset($facebookUser->user['birthday'])){
@@ -122,8 +122,8 @@ class SocialAuthController extends Controller
 
             $user = User::create([
                 'email' => $googleUser->user['email'],
-                'first_name' => $googleUser->user['given_name'],
-                'last_name'=> $googleUser->user['family_name'],
+                'first_name' => $googleUser->user['given_name'] ?? '',
+                'last_name'=> $googleUser->user['family_name'] ?? '',
                 'role'=>'client'
             ]);
             ClientDetail::create([
