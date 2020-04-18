@@ -26,11 +26,16 @@ $(document).ready(function($){
     $(".ssn").mask("999-99-9999");
     $('#phone_number').mask('(000) 000-0000');
 
+    $.validator.addMethod("valid_full_name", function(value, element) {
+        return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
+    }, "Please write your full name in this pattern first name middle name last name!!");
+
 
     $('#client-registration-form').validate({
         rules: {
             "full_name": {
-                required: true
+                required: true,
+                valid_full_name:true,
             },
             "phone_number": {
                 required: true

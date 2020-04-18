@@ -175,6 +175,10 @@
             return $("[name='" +element.name+ "']").length < 2;
         }, "Please choose one of the options");
 
+        $.validator.addMethod("valid_address", function(value, element) {
+            return !!value.match(/^\d+\s[A-z\s.\,]+(\.)?/g);
+        }, "Not valid address format.");
+
         $("#clientDetailsForm").validate({
             rules: {
                 "client[full_name]": {
@@ -191,7 +195,8 @@
                 },
                 "client[address]": {
                     required:true,
-                    one_option: true
+                    one_option: true,
+                    valid_address: true
                 },
                 "client[zip]": {
                     required:true,

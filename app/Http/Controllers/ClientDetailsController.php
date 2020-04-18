@@ -258,10 +258,10 @@ class ClientDetailsController extends Controller
         if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
             $request->session()->put('bad',true);
         }elseif ($c->clientDetails->registration_steps =='documents') {
-            $c->clientDetails->update(['credentials']);
+            $c->clientDetails->update(['registration_steps'=>'credentials']);
         }
 //        $request->session()->put('bad',true);
- 
+
 
         if(empty(ClientDetail::where('user_id',$client )->first())){
             User::where('id', $client)->update($user);
@@ -269,7 +269,6 @@ class ClientDetailsController extends Controller
         }else{
             UploadClientDetail::insert(array_merge($user, $clientData));
         }
-
         return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
 
     }
