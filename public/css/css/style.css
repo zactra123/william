@@ -20,7 +20,7 @@ body {
   font-size: 15px;
   line-height: 25px;
   font-weight: 400;
-  color: #6a6a6a;
+  color: #061d31;
   background-color: #ffffff;
   overflow-x: hidden; }
   body.dark-layout {
@@ -38,7 +38,7 @@ body {
           color: #4a4a4a; }
 
 html {
-  font-family: "Poppins", sans-serif; }
+  font-family: "Poppins", sans-serif;scroll-behavior: smooth; }
 
 html,
 body {
@@ -2803,7 +2803,7 @@ textarea, select {
         Secure-Section STYLE
 ============================================================ */
 .secure-section {
-  background: url(/images/secure-bg.jpg) no-repeat center top;
+  background: url(../images/secure-bg.jpg) no-repeat center top;
   background-size: cover;
   background-attachment: fixed;
   padding: 80px 0; }
@@ -6698,12 +6698,12 @@ textarea, select {
 /* =========================================================
         SubPage-STYLE
 ============================================================ */
-.subPage .header-title {
-  background: url(../images/header-bg.jpg) no-repeat center top;
+.subPage .header-title, .homePageFour .header-title {
+  background: url(/images/header-bg.jpg) no-repeat center top;
   background-size: cover;
   background-attachment: fixed; }
   @media only screen and (max-width: 767px) {
-    .subPage .header-title {
+    .subPage .header-title, .homePageFour .header-title {
       background-attachment: inherit; } }
 .subPage .header-section .top-bar {
   min-height: 50px;
@@ -8116,3 +8116,150 @@ textarea, select {
 .navbar-brand{height: auto;}
 .navbar-brand img{width: 80%;}
 .footer-wrapper img{width: 70%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================
+        Muhaimin Shihab | Custom CSS
+========================================*/
+
+.ms-user-account {
+    width: 100%;
+    padding: 50px 0 50px;
+    overflow: hidden;
+}
+
+.ms-user-account .ms-ua-box {
+    width: 100%;
+    padding: 40px 15px;
+    background-color: #f2f0f0;
+    border-radius: 8px;
+}
+
+.ms-user-account .ms-ua-title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.ms-user-account .ms-ua-title h3 {
+  font-size: 50px;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 8px 0;
+  background-color: #061d31;
+  color: #ffffff;
+}
+
+.ms-user-account .ms-ua-box input, .ms-user-account .ms-ua-box select {
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
+.ms-user-account .ms-us-sp:last-child {
+    text-align: right;
+}
+
+.ms-user-account .ms-ua-social {
+  width: 100%;
+  border: 1px solid #ef1515;
+  background-color: #ef1515;
+  padding: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.ms-user-account .ms-ua-social.msuas-last {
+    background-color: #4267b2;
+    border-color: #4267b2;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+@media (max-width: 992px) {
+    .ms-us-sp {
+        text-align: center !important;
+    }
+
+    .ms-us-sp:last-child {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+.ms-edu {
+    width: 100%;
+    padding: 50px 0 50px;
+    overflow: hidden;
+}
+
+.ms-working {
+    width: 100%;
+    padding: 50px 0 50px;
+    overflow: hidden;
+}
+.tab-content>.active{padding-top: 100px;}
+
+/* width */
+.ms-edu-tab ::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.ms-edu-tab ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.ms-edu-tab ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.ms-edu-tab ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.ms-edu-tab-content #nav-tabs-wrapper{max-height: 90vh;overflow-y: auto;}
+.ms-edu-mobile{display: none;}
+@media (max-width: 768px) {
+    .ms-edu,
+    .ms-working,
+    .ms-user-account {
+        padding-top: 100px;
+    }
+    .ms-edu-mobile{display: block;}
+    .ms-edu-desktop{display: none;}
+    .ms-edu-tab-content #nav-tabs-wrapper{max-height: 50vh;}
+    .ms-edu-mobile .nav>li>a:focus, .ms-edu-mobile .nav>li>a:hover{background-color: #3D68B2;color: white;}
+}
+.ms-edu-mobile .modal-content{max-height: 100vh;overflow-y: auto;}
+.ms-edu-mobile .modal-dialog-centered{    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    min-height: calc(100% - 1rem);}
+
+
+

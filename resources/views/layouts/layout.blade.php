@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="index.html"><img src="images/logo-icon.png" alt="image"></a>
+                            <a class="navbar-brand" href="{{url('/e')}}"><img src="images/logo-icon.png" alt="image"></a>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -74,18 +74,46 @@
         <nav class="navbar navbar-inverse hidden-sm hidden-xs">
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Who We Are</a></li>
-                    <li><a href="#">How It Works</a></li>
-                    <li><a href="#">Credit Education</a></li>
-
-
-
+                    <li><a href="{{url('/')}}">Home</a></li>
+                    <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>
+                    <li><a href="{{route('howItWorks')}}">How It Works</a></li>
+                    <li><a href="{{route('credit.education')}}">Credit Education</a></li>
                 </ul>
 
+
+
+
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><img src="{{asset('images/user.png')}}" alt="">Login</a></li>
-                    <li><a href="#"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
+
+                    @if (Route::has('login'))
+                        @auth
+                            @if(Auth::user()->role == 'client')
+                                @if(empty(Auth::user()->clientDetails))
+                                    <li><a href="{{ url('/client/details/create') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                                @else
+                                    <li><a href="{{ url('/client/details') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                                @endif
+                            @elseif((Auth::user()->role == 'admin'))
+                                <li><a href="{{ url('/admin') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                            @elseif((Auth::user()->role == 'affiliate'))
+                                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                            @elseif((Auth::user()->role == 'receptionist'))
+                                <li><a href="{{ url('/receptionist/message') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                            @else
+                                <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                            @endif
+                        @else
+                            <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a></li>
+
+
+                            @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
+
+                            @endif
+                        @endauth
+                    @endif
+
                 </ul>
 
                 <ul class="nav navbar-nav social-icon pull-right">
@@ -162,7 +190,12 @@
                         <ul class="wrapper-option">
                             <li><a href="#">Careers</a></li>
                             <li><a href="#">Newsroom</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{route('contact')}}">Contact Us</a></li>
+                            <li><a href="{{route('credit.repair')}}">Credit Resources</a></li>
+                            <li><a href="{{route('legalityCreditRepair')}}">Legality of the Credit Repair</a></li>
+                            <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
+                            <li><a href="{{route('faqs')}}">Frequently Asked Questions</a></li>
+                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
                         </ul> <!-- wrapper-option -->
                     </div> <!-- footer-wrapper -->
                 </div>
@@ -182,17 +215,17 @@
 
 
 <!-- Off-Canvas View Only -->
-<span class="menu-toggle navbar visible-xs visible-sm"><i class="fa fa-bars" aria-hidden="true"></i></span>
+<span class="menu-toggle navbar visible-xs visible-sm "><i class="fa fa-bars" aria-hidden="true"></i></span>
 
 <div id="offcanvas-menu" class="visible-xs visible-sm">
 
     <span class="close-menu"><i class="fa fa-times" aria-hidden="true"></i></span>
 
     <ul class="menu-wrapper">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Who We Are</a></li>
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Credit Education</a></li>
+        <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>
+        <li><a href="{{route('howItWorks')}}">How It Works</a></li>
+        <li><a href="{{route('credit.education')}}">Credit Education</a></li>
     </ul> <!-- menu-wrapper -->
 </div>
 <!-- Off-Canvas View Only -->
@@ -202,9 +235,8 @@
 </div> <!-- totop -->
 
 <script src="{{ asset('js/app.js?v=2') }}"></script>
-{{--<script src="{{ asset('js/app.js?v=2') }}"></script>--}}
 {{--<script src="assets/js/jquery.js"></script>--}}
-{{--<script src="assets/bootstrap/js/bootstrap.min.js"></script>--}}
+{{--<script src="{{ asset('js/js/bootstrap/js/bootstrap.min.js') }}"></script>--}}
 {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 
 

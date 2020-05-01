@@ -1,113 +1,58 @@
 
-@extends('layouts.login')
+@extends('layouts.layout')
 
 
 @section('content')
-    <style>
-        video {
-            max-width: 100%;
-            height: auto;
 
-        }
-
-        .content-container{
-            padding-right: 2.5%;
-            padding-left: 2.5%;
-        }
-
-        .video-wrapper {
-            position: relative;
-
-        }
-
-        .video-wrapper > video {
-            width: 100%;
-            vertical-align: middle;
-
-        }
-
-        .video-wrapper > video.has-media-controls-hidden::-webkit-media-controls {
-            display: none;
-        }
-
-        .video-overlay-play-button {
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            padding: 10px calc(50% - 50px);
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            opacity: 0.95;
-            cursor: pointer;
-            background-image: linear-gradient(transparent, #000);
-            transition: opacity 150ms;
-
-        }
-
-        .video-overlay-play-button:hover {
-            opacity: 1;
-        }
-
-        .video-overlay-play-button.is-hidden {
-            display: none;
-        }
-    </style>
-
-
-
-
-    <div class="how-it-font pt-5">
-
-        <p class="p-4"     style="text-align: justify">
-            When you decide to hire our firm for your credit restoration needs, we direct you to register and create an
-            account. Then, with your help and authorization, our proprietary software scans and conducts credit audit
-            on your credit reports by searching for incomplete, unverifiable, misleading, frivolous, erroneous, obsolete,
-            inaccurate, unauthorized or fraudulent information. Next, you review our findings and sign the credit
-            restoration contract and simultaneously apply for a personal loan account with Exceed Capital Lending.
-            Now, we go to work, and you sit back, relax, and expect to hear some good news. Lastly, we will notify you
-            and Exceed Capital Lending once an item or items have been corrected/removed from your credit report for the
-            payment disbursement for the completed work.
-
-        </p>
-
-
-    </div>
-    <div class="light-section">
-        <div class="container content-container ">
-
-            <div class="video-wrapper">
-                <svg class="video-overlay-play-button" viewBox="0 0 200 200" alt="Play video">
-                    <circle cx="100" cy="100" r="90" fill="none" stroke-width="15" stroke="#fff"/>
-                    <polygon points="70, 55 70, 145 145, 100" fill="#fff"/>
-                </svg>
-
-                <video id="videoId" controls controlsList="nodownload" class="has-media-controls-hidden">
-                    <source src="{{asset('/images/howItWorks.mp4')}}" type="video/mp4">
-                </video>
-            </div>
-
+    <section class="header-title section-padding">
+        <div class="container text-center">
+            <h2 class="title">How It Works</h2>
+            <span class="sub-title"><a href="index.html">Home</a> &gt; How It Works</span>
         </div>
-    </div>
+    </section>
 
 
 
-    <script>
+    <!-- Working Area -->
+    <section class="ms-working working-section section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>About Company</h2>
+                <div class="border-2"></div>
+            </div> <!-- section-title -->
 
-        $(document).ready(function(){
+            <div class="section-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <div class="wrapper-content">
+                            <p class="p-4"     style="text-align: justify">
+                                When you decide to hire our firm for your credit restoration needs, we direct you to register and create an
+                                account. Then, with your help and authorization, our proprietary software scans and conducts credit audit
+                                on your credit reports by searching for incomplete, unverifiable, misleading, frivolous, erroneous, obsolete,
+                                inaccurate, unauthorized or fraudulent information. Next, you review our findings and sign the credit
+                                restoration contract and simultaneously apply for a personal loan account with Exceed Capital Lending.
+                                Now, we go to work, and you sit back, relax, and expect to hear some good news. Lastly, we will notify you
+                                and Exceed Capital Lending once an item or items have been corrected/removed from your credit report for the
+                                payment disbursement for the completed work.
 
-            $('.video-overlay-play-button').click(function () {
+                            </p>
 
-                $('#videoId')[0].play();
-                $(this).hide();
-                $('#videoId').removeClass('has-media-controls-hidden');
-            })
-            $('#videoId').click(function() {
-                !this.paused ? $('.video-overlay-play-button').show():  $('.video-overlay-play-button').hide()
-            })
+{{--                            <a href="#" class="btn btn-primary">Read More</a>--}}
+                        </div>
+                    </div>
 
-        })
-    </script>
+                    <div class="col-md-5">
+                        <div class="video-wrapper">
+                            <video controls="">
+                                <source src="{{asset('images/howItWorks.mp4')}}" type="video/mp4">
+                            </video>
+                        </div> <!-- video-wrapper -->
+                    </div>
+                </div>
+            </div> <!-- section-wrapper -->
+        </div>
+    </section>
+
+
 
 @endsection

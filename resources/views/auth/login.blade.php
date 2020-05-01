@@ -1,112 +1,97 @@
-@extends('layouts.login-registration')
+@extends('layouts.layout')
 
 @section('content')
-    <style>
-        .head{
-            background-color:  #0c71c3;
-            /*border-color:#1a41ad;*/
-            color: #FFFFFF;
-            font-size: large;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            font-size: large;
-            padding: 0.375rem 0.75rem;
-        }
-        .or-seperator {
-            margin: 20px 0 10px;
-            text-align: center;
-            border-top: 1px solid #ccc;
-        }
-        .or-seperator i {
-            padding: 0 10px;
-            background: #f7f7f7;
-            position: relative;
-            top: -11px;
-            z-index: 1;
-        }
-    </style>
 
-    <div class="page-content">
-        <div class="fullwidth-block">
-            <div class="container fon">
-                <div class="row justify-content-center">
-                    <div class="col-md-7">
-                        <div class="card">
-                            {{--<div class="card-header"><div class="head"> {{ __('Login') }} </div></div>--}}
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="text-center social-btn">
-                                        <a href="{{route('facebook.login')}}" class="btn btn-primary btn-block"><i class="fab fa-facebook-f"></i> Sign in with <b>Facebook</b></a>
-                                        <a href="{{route('google.login')}}" class="btn btn-danger btn-block"><i class="fab fa-google-plus-g"></i> Sign in with <b>Google</b></a>
-                                    </div>
-                                    <div class="or-seperator"><i>or</i></div>
-                                    <div class="form-group row m-1">
 
-                                        <div class="col-md-11">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address" autofocus>
 
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
+    <section class="header-title section-padding">
+        <div class="container text-center">
+            <h2 class="title">Login</h2>
+            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Login</span>
+        </div>
+    </section>
+
+
+
+    <!-- Login Area Start -->
+    <section class="ms-user-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12"></div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="ms-ua-box">
+                        <div class="ms-ua-title">
+                            <h3>Login</h3>
+                        </div>
+                        <div class="ms-ua-form">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" placeholder="E-Mail Address"  autofocus>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row m-1">
-                                        <div class="col-md-11">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password" autocomplete="current-password">
-
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                            @enderror
+                                    @enderror
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-12 ms-us-sp">
+                                        <div class="form-group form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label for="checkbox">Remember Me!</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 col-xs-12 ms-us-sp">
+
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                                            </a>
+                                        @endif
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="submit" value="Login" class="ms-ua-submit">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 text-center">
+                                        <div class="ms-ua-social">
+                                            <a href="{{route('facebook.login')}}"style="color: white" > Register with <i class="fa fa-google"></i></a>
                                         </div>
                                     </div>
-
-                                    <div class="form-group row m-1">
-                                        <div class="col-md-8 offset-md-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                                <label class="form-check-label " for="remember">
-                                                    {{ __('Remember Me') }}
-                                                </label>
-                                            </div>
+                                    <div class="col-md-6 col-sm-12 text-center">
+                                        <div class="ms-ua-social msuas-last">
+                                            <a href="{{route('google.login')}}" style="color: white">Register with <i class="fa fa-facebook-f"></i></a>
                                         </div>
                                     </div>
-
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Login') }}
-                                            </button>
-
-                                            @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    {{ __('Forgot Your Password?') }}
-                                                </a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
 
-    </div>
+
+
+
+
+
+
 
 
 
