@@ -23,6 +23,7 @@
                         </div>
                         <div class="ms-ua-form">
                             <form method="POST" id="client-registration-form" action="{{ route('register') }}">
+                                @csrf
                                 <div class="form-group">
                                     <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="Full Name">
                                     @error('full_name')
@@ -107,19 +108,19 @@
 
                                 </div>
                                 <div class="col"><input type="submit" value="Register" class="ms-ua-submit"></div>
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12 text-center">
-                                        <div class="ms-ua-social">
-                                            <a href="{{route('facebook.login')}}"style="color: white" > Register with <i class="fa fa-google"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 text-center">
-                                        <div class="ms-ua-social msuas-last">
-                                            <a href="{{route('google.login')}}" style="color: white">Register with <i class="fa fa-facebook-f"></i></a>
-                                        </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 text-center">
+                                    <div class="ms-ua-social">
+                                        <a href="{{route('facebook.login')}}"style="color: white" > Register with <i class="fa fa-google"></i></a>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="col-md-6 col-sm-12 text-center">
+                                    <div class="ms-ua-social msuas-last">
+                                        <a href="{{route('google.login')}}" style="color: white">Register with <i class="fa fa-facebook-f"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
