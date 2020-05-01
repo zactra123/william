@@ -18,21 +18,21 @@
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="center" data-hoffset="0"
                              data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'> Welcome to
+                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'> {{$slogans['0']->author}}
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="center" data-hoffset="0"
                              data-y="top" data-voffset="360"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Prudent Credit Solutions
+                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['0']->slogan}}
                         </div>
 
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption sfr tp-resizeme letter-space-4"
                              data-x="center" data-hoffset="0"
                              data-y="center" data-voffset="180"
-                             data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'><a href="#." class="el-btn-regular slider-btn-left btn btn-primary">About Us</a>
+                             data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'><a href="{{route('whoWeAre')}}" class="el-btn-regular slider-btn-left btn btn-primary">About Us</a>
                         </div>
                     </li>
 
@@ -43,14 +43,14 @@
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>To solve your credit problems
+                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['1']->author}}
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="360"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Prudent Credit Solutions
+                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['1']->slogan}}
                         </div>
                     </li>
 
@@ -61,14 +61,14 @@
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Lorem ipsum dolor sit amet.
+                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['2']->slogan}}
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="360"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Lorem ipsum.
+                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['2']->author}}
                         </div>
                     </li>
 
@@ -79,14 +79,14 @@
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>consectetur adipisicing elit. Reprehenderit, nam.
+                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['3']->author}}
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="360"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>adipisicing elit.
+                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['3']->slogan}}
                         </div>
                     </li>
 
@@ -97,14 +97,14 @@
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Lorem ipsum dolor sit amet.
+                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['4']->slogan}}
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                              data-x="left" data-hoffset="0"
                              data-y="top" data-voffset="360"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>Lorem ipsum.
+                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['4']->author}}
                         </div>
                     </li>
 
@@ -449,7 +449,7 @@
                                     <img src="{{asset('images/t2.jpg')}}" alt="image">
 
                                     <div class="content">
-                                        <h3>Larry Barry</h3>
+                                        <h3>Larry Barry123</h3>
                                         <span class="position">CEO, Finance World</span>
                                         <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>
 
@@ -490,9 +490,11 @@
                         <a class="right carousel-control" href="#research-carousel" role="button" data-slide="next"><img src="{{asset('images/right-angel.png')}}" alt=""></a>
 
                         <div class="link text-center">
-                            <a href="testimonial.html" class="btn btn-primary"><i class="fa fa-th" aria-hidden="true"></i> View All</a>
+                            <a href="#" class="btn btn-primary"><i class="fa fa-th" aria-hidden="true"></i> View All</a>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

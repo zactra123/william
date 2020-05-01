@@ -141,7 +141,7 @@
                         <ul class="location">
                             <li><i class="fa fa-home" aria-hidden="true"></i>
                                 <div class="content">
-                                    555 Main St, Salt Lake City, <br> UT 84101
+                                    5800 S. Eastern Ave., Commerce, CA 90040 <br> CA 90040
                                 </div>
                             </li>
 
@@ -160,7 +160,7 @@
                     </div> <!-- footer-wrapper -->
                 </div>
 
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-3 col-sm-4">
                     <div class="footer-wrapper">
                         <h3>About</h3>
 
@@ -175,22 +175,23 @@
                     </div> <!-- footer-wrapper -->
                 </div>
 
-                <div class="col-md-3 col-md-offset-1 col-sm-4">
+                <div class="col-md-4 col-md-offset-1 col-sm-4">
                     <div class="footer-wrapper last-wrapper">
                         <h3>Navigation</h3>
 
                         <ul class="wrapper-option clearfix">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">How It Works</a></li>
-                            <li><a href="#">Credit Education</a></li>
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{route('whoWeAre')}}">About</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Newsroom</a></li>
                             <li><a href="#">Affiliates</a></li>
+                            <li><a href="{{route('howItWorks')}}">How It Works</a></li>
+                            <li><a href="{{route('credit.education')}}">Credit Education</a></li>
                         </ul> <!-- wrapper-option -->
 
                         <ul class="wrapper-option">
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Newsroom</a></li>
                             <li><a href="{{route('contact')}}">Contact Us</a></li>
+
                             <li><a href="{{route('credit.repair')}}">Credit Resources</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Legality of the Credit Repair</a></li>
                             <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
