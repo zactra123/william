@@ -21,7 +21,7 @@ class PagesController extends Controller
             ->limit(5)
             ->select('slogan','author')->get()->toArray();
 
-        return view('new-home-page', compact('pageContentUp', 'slogans'));
+        return view('new-home-page1', compact('pageContentUp', 'slogans'));
     }
 
     public function moreInformation($url)

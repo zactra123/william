@@ -1,104 +1,192 @@
-@extends('layouts.login')
+@extends('layouts.layout')
 
 @section('content')
 
     <style>
-        .fullwidth-block {
-            font-family: "Times New Roman";
-            font-size: larger;
+        .modal {
+            position: fixed;
+            top: 150px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1050;
+
+            outline: 0;
         }
-        .sidebar{
+        .modal.in .modal-dialog {
 
-            font-size: 14px;
-            color: #fff;
-
-        }
-
-        .active{
-            background-color: #ffffff;
-
-        }
-        .title{
-            font-size: 1.2rem;
+            transform: translate(0,0);
         }
 
-        .chatList {
-            min-height: 90vh !important;
-            max-height: 100vh !important;
+        .fade {
+            transition: opacity .15s linear;
         }
-        .scrollDiv {
-            height:auto;
-            max-height:150%;
-            overflow-y: auto;
+        .in {
+            opacity: 1;
         }
-        .scrollDiv::-webkit-scrollbar {
-            width: 6px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-            background-color:transparent;
-        }
+        .modal-dialog {
 
-
-
-        @media (max-width: 768px) {
-            .sidebar{
-                font-size: 8px;
-            }
-            .fullwidth-block {
-                font-size: 12px;
-            }
-            .title{
-                font-size: 0.85rem;
-            }
-
+            transition: transform .3s ease-out;
 
         }
 
-
+        .modal-body {
+            position: relative;
+            width: auto;
+            margin: 10px;
+        }
 
     </style>
-    <div class="container mt-5 pt-2">
-        <div class="row mt-4">
-            <div class="col-3  ml-0 mr-0">
-                <div class="chatList scrollDiv sidebar " id="chatListId">
-                @foreach($contents as  $content)
 
-                    <a href="#{{$content->url}}" class="font-bolt title" data-target="{{$content->id}}"> {{$content->title}}</a><hr>
-                @endforeach
+
+    <section class="header-title section-padding">
+        <div class="container text-center">
+            <h2 class="title">Credit Education</h2>
+            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Credit Education</span>
+        </div>
+    </section>
+
+    <!-- Credit Education -->
+    <section class="ms-working working-section section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Financial Scenarior</h2>
+                <div class="border-2"></div>
+            </div> <!-- section-title -->
+
+            <div class="section-wrapper text-center">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="wrapper-content">
+                            <img width="100%" src="{{asset('images/chart1.jpg')}}" alt="">
+                            <h4 style="font-size: 20px">Credit & Payment Ratio</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="wrapper-content">
+                            <img width="100%" src="{{asset('images/chart2.png')}}" alt="">
+                            <h4 style="font-size: 20px">Credit & Debit History</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="wrapper-content">
+                            <img width="100%" src="{{asset('images/chart3.jpg')}}" alt="">
+                            <h4 style="font-size: 20px">Account Blance Ratio</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="wrapper-content">
+                            <img width="100%" src="{{asset('images/chart4.jpg')}}" alt="">
+                            <h4 style="font-size: 20px">Length of Credit Ratio</h4>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- section-wrapper -->
+        </div>
+    </section>
+
+    <section class="ms-edu ms-edu-desktop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 ms-edu-tab">
+                    <div class="ms-edu-tab-content">
+                        <!--<a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Tabs</a>-->
+                        <ul id="nav-tabs-wrapper" class="nav nav-tabs nav-pills nav-stacked well">
+                            @foreach($contents as  $content)
+                            <li class="{{$content->id==1?'active':''}}"><a href="#{{$content->url}}" data-toggle="tab">{{$content->title}}</a></li>
+
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="tab-content">
+                        @foreach($contents as $info)
+                        <div role="tabpanel" class="tab-pane fade in {{$info->id==1?'active':''}}" id="{{$info->url}}">
+                            <h3>{{$info->title}}</h3>
+                            <p><?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?></p>
+
+                        </div>
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
-            <div class="col-9">
-                <div class="chatList scrollDiv container">
-                    @foreach($contents as $info)
-                        <div class="section" id="section{{$info->id}}">
-                            <h1 id="{{$info->url}}">{{$info->title}}</h1>
-                            <div class="row justify-content-center m-0 p-0">
-                                <?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?>
+        </div>
+    </section>
+
+    <section class="ms-edu ms-edu-mobile">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 ms-edu-tab">
+                    <div class="ms-edu-tab-content">
+                        <!--<a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Tabs</a>-->
+                        <ul class="nav nav-tabs nav-pills nav-stacked well">
+                            @foreach($contents as  $content)
+                            <li><a href="#{{$content->url}}-1" data-toggle="modal">{{$content->title}}</a></li>
+
+                            @endforeach
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="tab-content">
+                        @foreach($contents as  $content)
+                        <div class="modal fade" id="{{$content->url}}-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3>{{$content->title}}</h3>
+                                        <p><?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
+
+                    </div>
                 </div>
-
             </div>
-
-
-
         </div>
+    </section>
 
-    </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.title').click(function(){
-                var tab = $(this).attr("data-target");
-                console.log(tab);
-                $('.section').removeClass("active");
-                $("#section"+tab ).addClass("active");
-            })
+        $(document).ready(function(){
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
 
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
 
-        })
+                    // Store hash
+                    var hash = this.hash;
+                    $(hash).addClass('in')
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 500, function(){
 
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+
+            $("li").on('click', function(event) {
+                $("li").removeClass('active')
+                $(this).addClass('active')
+
+            });
+        });
     </script>
+
+
 
 @endsection
 
