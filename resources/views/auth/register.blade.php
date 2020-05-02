@@ -118,12 +118,12 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 text-center">
                                     <div class="ms-ua-social">
-                                        <a href="{{route('facebook.login')}}"style="color: white" > Register with <i class="fa fa-google"></i></a>
+                                        <a href="{{route('google.login')}}"style="color: white" > Register with <i class="fa fa-google"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12 text-center">
                                     <div class="ms-ua-social msuas-last">
-                                        <a href="{{route('google.login')}}" style="color: white">Register with <i class="fa fa-facebook-f"></i></a>
+                                        <a href="{{route('facebook.login')}}" style="color: white">Register with <i class="fa fa-facebook-f"></i></a>
                                     </div>
                                 </div>
                             </div>
