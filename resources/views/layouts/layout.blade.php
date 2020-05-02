@@ -167,7 +167,7 @@
                         <ul class="location">
                             <li><i class="fa fa-home" aria-hidden="true"></i>
                                 <div class="content">
-                                    5800 S. Eastern Ave., Commerce, CA 90040 <br> CA 90040
+                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
                                 </div>
                             </li>
 
