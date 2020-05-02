@@ -9,8 +9,9 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <title>Home - PRUDENT CREDIT SOLUTION</title>
+
     <!-- fav icon -->
-{{--    <link href="assets/images/favicon.png" rel="shortcut icon" type="image/png">--}}
+    <link rel="icon" href="{{ URL::asset('/css/logo.ico') }}" type="image/x-icon"/>
 
 <!-- Bootstrap -->
     <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -53,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="{{url('/e')}}"><img src="images/logo-icon.png" alt="image"></a>
+                            <a class="navbar-brand" href="{{url('/e')}}"><img src="/images/logo-icon.png" alt="image"></a>
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -89,11 +90,7 @@
                     @if (Route::has('login'))
                         @auth
                             @if(Auth::user()->role == 'client')
-                                @if(empty(Auth::user()->clientDetails))
-                                    <li><a href="{{ url('/client/details/create') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
-                                @else
-                                    <li><a href="{{ url('/client/details') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
-                                @endif
+                                @include('helpers.urls.logged_in_client')
                             @elseif((Auth::user()->role == 'admin'))
                                 <li><a href="{{ url('/admin') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
                             @elseif((Auth::user()->role == 'affiliate'))
