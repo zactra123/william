@@ -61,34 +61,34 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <p class="text-justify font-weight-bold"> Incorrect form upload  Driver License or Identification Card</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <p class="text-justify font-weight-bold">Correct form upload  Driver License or Identification Card</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="100%" >
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <img class="m-1" src="{{asset('/images/correct-dl.png')}}"  width="100%">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <p class="text-justify font-weight-bold"> Incorrect form upload Social Security</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <p class="text-justify font-weight-bold">Correct form upload  Social Security</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <img class="m-1" src="{{asset('/images/incorrect-ss.png')}}"  width="100%">
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <img  class="m-1" src="{{asset('/images/correct-ss.png')}}"  width="100%">
                     </div>
                 </div>
