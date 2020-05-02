@@ -1,54 +1,60 @@
-<div class="card">
-    @if(Session::get('bad'))
-        <?php Session::forget('bad');?>
-    <div class="text-danger text-center">
-        <p>
-            Some data can't be picked by script from your uploaded documents:
-        </p>
-    </div>
-    @endif
-    <div class=" text-center">
-        <p> Please be careful on uploading your documents.
-            <a class="text-primary font-italic" data-toggle="modal" data-target="#correct_form">See correct image examples</a>
-        </p>
-    </div>
-
-    <div class="card-body">
-        {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
-
-        @csrf
-        <div class="pdf-upload karma-tab active">
-
-            <div class="form-group files">
-                <label>Upload Your Driver License or Identification card </label>
-                <input type="file" name="driver_license" class="form-control" multiple="">
-            </div>
-        </div>
-
-        <div class="pdf-upload karma-tab active">
-
-            <div class="form-group files">
-                <label>Upload Your Social Security </label>
-                <input type="file" name="social_security" class="m-form m-form--label-align-right" multiple="">
-            </div>
-        </div>
-        <div class="form-group row mb-0 font">
-            <div class="col-md-8 offset-md-5">
-                <button type="submit" class="btn btn-primary">
-                    Upload
-                </button>
-            </div>
-        </div>
-        {!! Form::close() !!}
-
-    </div>
-{{--    if both documents are uploaded--}}
-    @if( $client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2)
-        <p class="text-right">If you sure that your uploaded documents are readable you can
-            <a class="text-info" href="{{route("registration_steps",["skip"=>true])}}">skip this step <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-        </p>
-    @endif
+<style>
+    .form-group label{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    @media (max-width: 576px) {
+        .form-group label{
+            white-space: inherit;
+        }
+        .files:after {
+            top: 80px;
+        }
+    }
+</style>
+@if(Session::get('bad'))
+    <?php Session::forget('bad');?>
+<div class="text-danger text-center">
+    <p>
+        Some data can't be picked by script from your uploaded documents:
+    </p>
 </div>
+@endif
+<div class=" text-center">
+    <p> Please be careful on uploading your documents.
+        <a class="text-primary font-italic" data-toggle="modal" data-target="#correct_form">See correct image examples</a>
+    </p>
+</div>
+
+{!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
+
+    @csrf
+    <div class="pdf-upload karma-tab active">
+        <div class="col-sm-6 form-group files">
+            <label title="Upload Your Driver License or Identification card">
+                Upload Your Driver License or Identification card
+            </label>
+            <input type="file" name="driver_license" >
+        </div>
+        <div class="col-sm-6 form-group files">
+            <label title="Upload Your Social Security">
+                Upload Your Social Security
+            </label>
+            <input type="file" name="social_security">
+        </div>
+    </div>
+    <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+{!! Form::close() !!}
+
+
+{{--    if both documents are uploaded--}}
+@if( $client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2)
+    <p class="text-right">If you sure that your uploaded documents are readable you can
+        <a class="text-info" href="{{route("registration_steps",["skip"=>true])}}">skip this step <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+    </p>
+@endif
+
 
 
 <div class="modal fad" id="correct_form" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
