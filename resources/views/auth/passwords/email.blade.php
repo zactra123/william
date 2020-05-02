@@ -11,16 +11,16 @@
     </section>
 
 
-
-    <!-- Login Area Start -->
     <section class="ms-user-account">
-        <div class="container fon">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header"><div class="head">{{ __('Reset Password') }}</div></div>
-
-                        <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12"></div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="ms-ua-box">
+                        <div class="ms-ua-title">
+                            <h3>{{ __('Reset Password') }}</h3>
+                        </div>
+                        <div class="ms-ua-form">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -43,13 +43,9 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <input type="submit" value="{{ __('Send Password Reset Link') }}" class="ms-ua-submit">
 
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Send Password Reset Link') }}
-                                        </button>
-                                    </div>
                                 </div>
                             </form>
                         </div>
