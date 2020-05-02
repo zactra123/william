@@ -3,38 +3,10 @@
 @section('content')
 
     <style>
-        .modal {
-            position: fixed;
-            top: 150px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1050;
-
-            outline: 0;
-        }
-        .modal.in .modal-dialog {
-
-            transform: translate(0,0);
-        }
-
-        .fade {
-            transition: opacity .15s linear;
-        }
-        .in {
-            opacity: 1;
-        }
-        .modal-dialog {
-
-            transition: transform .3s ease-out;
-
-        }
-
         .modal-body {
-            position: relative;
-            width: auto;
-            margin: 10px;
+          max-height: 500px;
         }
+
 
     </style>
 
@@ -151,36 +123,21 @@
         </div>
     </section>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            // Add smooth scrolling to all links
             $("a").on('click', function(event) {
-
-                // Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
-                    // Prevent default anchor click behavior
                     event.preventDefault();
 
-                    // Store hash
                     var hash = this.hash;
-                    $(hash).addClass('in')
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 500, function(){
-
-                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        console.log(window.location.hash)
                         window.location.hash = hash;
                     });
-                } // End if
-            });
-
-            $("li").on('click', function(event) {
-                $("li").removeClass('active')
-                $(this).addClass('active')
-
+                }
             });
         });
     </script>

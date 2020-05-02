@@ -32,6 +32,35 @@
     <!-- style-css -->
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
+    <script src="{{ asset('js/app.js?v=2') }}"></script>
+    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
+    {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
+
+
+    <script src="{{asset('js/js/portfolio.js')}}"></script>
+    <script src="{{asset('js/js/wow.js')}}"></script>
+    <script src="{{asset('js/js/lightbox.js')}}"></script>
+    <script src="{{asset('owl-carrosel/owl.carousel.min.js')}}"></script>
+{{--<script src="{{asset('js/js/jquery-ui.js')}}"></script>--}}
+
+
+
+<!-- Revolution Slider -->
+    <script src="{{asset('js/revolution/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{asset('js/revolution/jquery.themepunch.tools.min.js')}}"></script>
+
+    <!-- Revolution Extensions -->
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.actions.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.carousel.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.kenburn.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.layeranimation.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.migration.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.navigation.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>--}}
+
+    <script src="{{asset('js/js/script.js')}}"></script>
 </head>
 <body class="homePageFour">
 <!-- start preloader -->
@@ -219,7 +248,7 @@
 
 
 <!-- Off-Canvas View Only -->
-<span class="menu-toggle navbar visible-xs visible-sm "><i class="fa fa-bars" aria-hidden="true"></i></span>
+<span class="menu-toggle navbar visible-xs visible-sm sticky"><i class="fa fa-bars" aria-hidden="true"></i></span>
 
 <div id="offcanvas-menu" class="visible-xs visible-sm">
 
@@ -238,36 +267,6 @@
     <i class="fa fa-chevron-up"></i>
 </div> <!-- totop -->
 
-<script src="{{ asset('js/app.js?v=2') }}"></script>
-{{--<script src="assets/js/jquery.js"></script>--}}
-{{--<script src="{{ asset('js/js/bootstrap/js/bootstrap.min.js') }}"></script>--}}
-{{--<script src="assets/js/jquery.inview.min.js"></script>--}}
-
-
-<script src="{{asset('js/js/portfolio.js')}}"></script>
-<script src="{{asset('js/js/wow.js')}}"></script>
-<script src="{{asset('js/js/lightbox.js')}}"></script>
-<script src="{{asset('owl-carrosel/owl.carousel.min.js')}}"></script>
-{{--<script src="{{asset('js/js/jquery-ui.js')}}"></script>--}}
-
-
-
-<!-- Revolution Slider -->
-<script src="{{asset('js/revolution/jquery.themepunch.revolution.min.js')}}"></script>
-<script src="{{asset('js/revolution/jquery.themepunch.tools.min.js')}}"></script>
-
-<!-- Revolution Extensions -->
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.actions.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.kenburn.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.migration.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.navigation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>
-
-<script src="{{asset('js/js/script.js')}}"></script>
 </body>
 
 </html>
