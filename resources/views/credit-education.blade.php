@@ -50,36 +50,35 @@
     <section class="ms-working working-section section-padding">
         <div class="container">
             <div class="section-title text-center">
-                <h2>Financial Scenarior</h2>
+                <h2>Credit Score Pie Chart</h2>
                 <div class="border-2"></div>
             </div> <!-- section-title -->
 
             <div class="section-wrapper text-center">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
+                <div class="row justify-content-center">
+
                         <div class="wrapper-content">
-                            <img width="100%" src="{{asset('images/chart1.jpg')}}" alt="">
-                            <h4 style="font-size: 20px">Credit & Payment Ratio</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="wrapper-content">
-                            <img width="100%" src="{{asset('images/chart2.png')}}" alt="">
-                            <h4 style="font-size: 20px">Credit & Debit History</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="wrapper-content">
-                            <img width="100%" src="{{asset('images/chart3.jpg')}}" alt="">
-                            <h4 style="font-size: 20px">Account Blance Ratio</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="wrapper-content">
-                            <img width="100%" src="{{asset('images/chart4.jpg')}}" alt="">
-                            <h4 style="font-size: 20px">Length of Credit Ratio</h4>
-                        </div>
-                    </div>
+                            <img width="55%" src="{{asset('images/chart1.jpg')}}"  w alt="">
+
+
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart2.png')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Credit & Debit History</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart3.jpg')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Account Blance Ratio</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart4.jpg')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Length of Credit Ratio</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div> <!-- section-wrapper -->
         </div>

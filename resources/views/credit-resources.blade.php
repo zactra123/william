@@ -1,5 +1,5 @@
 
-@extends('layouts.login')
+@extends('layouts.layout')
 
 @section('content')
 
@@ -59,4 +59,7 @@
 
                 </div> <!-- section-title -->
 
+            </div>
+        </div>
+    </section>
 @endsection

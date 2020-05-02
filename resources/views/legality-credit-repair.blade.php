@@ -193,7 +193,7 @@
                     </p>
                     <p style="text-align: justify">
                         1.	File a complaint with the Federal Trade Commission at
-                        <a href="https://www.ftccomplaintassistant.gov/" >https://www.ftccomplaintassistant.gov/</a>
+                        <a href="https://www.ftccomplaintassistant.gov/" target="_blank">https://www.ftccomplaintassistant.gov/</a>
                     </p>
                     <p style="text-align: justify">
                         2.	Then contact your state Attorney General's office to file a complaint with that office as well.

@@ -41,7 +41,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Current Address">
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Current Street Address">
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -67,7 +67,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="dob" class="form-control" id="dob" placeholder="Date Of birth">
+                                    <input placeholder="Date of Birth" name = 'dob' class="form-control" type="text" id="date">
+                                    @error('dob')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+{{--                                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="dob" class="form-control" id="dob" placeholder="Date Of birth">--}}
                                 </div>
                                 <div class="form-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">

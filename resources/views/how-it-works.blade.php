@@ -16,10 +16,10 @@
     <!-- Working Area -->
     <section class="ms-working working-section section-padding">
         <div class="container">
-            <div class="section-title text-center">
-                <h2>About Company</h2>
-                <div class="border-2"></div>
-            </div> <!-- section-title -->
+{{--            <div class="section-title text-center">--}}
+{{--                <h2>About Company</h2>--}}
+{{--                <div class="border-2"></div>--}}
+{{--            </div> <!-- section-title -->--}}
 
             <div class="section-wrapper">
                 <div class="row align-items-center">

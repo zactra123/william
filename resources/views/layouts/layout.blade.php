@@ -60,7 +60,7 @@
                     <div class="col-md-8">
                         <div class="header-left-bar pull-right">
                             <ul class="contact-wrapper">
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9 am - 7 pm</li>
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
                                 <li><i class="fa fa-mobile" aria-hidden="true"></i> +1-844-337-8336</li>
                                 <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@bettercreditfix.com</li>
                             </ul>
@@ -150,50 +150,56 @@
 
                             <li><i class="fa fa-clock-o" aria-hidden="true"></i>
                                 <div class="content">
-                                    Working Hours: <br> Mon-Fri (9 am - 8 pm)
+                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
                             </li>
                         </ul>
                     </div> <!-- footer-wrapper -->
                 </div>
 
-                <div class="col-md-3 col-sm-4">
-                    <div class="footer-wrapper">
-                        <h3>About</h3>
+                <div class="col-md-2 col-sm-4">
+{{--                    <div class="footer-wrapper">--}}
+{{--                        <h3>About</h3>--}}
 
-                        <p>We have over 18 years of experience in the credit repair industry.As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.</p>
+{{--                        <p>We have over 18 years of experience in the credit repair industry.As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.</p>--}}
 
-                        <ul class="social-icon">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div> <!-- footer-wrapper -->
+{{--                        <ul class="social-icon">--}}
+{{--                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+{{--                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+{{--                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>--}}
+{{--                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div> <!-- footer-wrapper -->--}}
                 </div>
 
-                <div class="col-md-4 col-md-offset-1 col-sm-4">
+                <div class="col-md-5 col-md-offset-1 col-sm-4">
                     <div class="footer-wrapper last-wrapper">
                         <h3>Navigation</h3>
 
                         <ul class="wrapper-option clearfix">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="{{route('whoWeAre')}}">About</a></li>
+                            <li><a href="{{route('contact')}}">Contact Us</a></li>
                             <li><a href="#">Careers</a></li>
                             <li><a href="#">Newsroom</a></li>
                             <li><a href="#">Affiliates</a></li>
-                            <li><a href="{{route('howItWorks')}}">How It Works</a></li>
-                            <li><a href="{{route('credit.education')}}">Credit Education</a></li>
+                            <li><a href="{{route('faqs')}}">Frequently Asked Questions</a></li>
+                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
                         </ul> <!-- wrapper-option -->
 
                         <ul class="wrapper-option">
-                            <li><a href="{{route('contact')}}">Contact Us</a></li>
-
                             <li><a href="{{route('credit.repair')}}">Credit Resources</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Legality of the Credit Repair</a></li>
                             <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
-                            <li><a href="{{route('faqs')}}">Frequently Asked Questions</a></li>
-                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
+                            <li>
+                                <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
+                                    Score Estimator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
+                                    Identity Theft
+                                </a>
+                            </li>
                         </ul> <!-- wrapper-option -->
                     </div> <!-- footer-wrapper -->
                 </div>
