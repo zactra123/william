@@ -302,6 +302,34 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-wrapper">
+                        <div class="wrapper-content">
+                            <h3><a href="#">Mixed Files</a></h3>
+                        </div>
+
+                        <div class="hover">
+                            <span class="hover-one"></span>
+                            <span class="hover-two"></span>
+                            <span class="hover-three"></span>
+                            <span class="hover-four"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-wrapper">
+                        <div class="wrapper-content">
+                            <h3><a href="#">General Delinquencies</a></h3>
+                        </div>
+
+                        <div class="hover">
+                            <span class="hover-one"></span>
+                            <span class="hover-two"></span>
+                            <span class="hover-three"></span>
+                            <span class="hover-four"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="{{url('/e')}}"><img src="/images/logo-icon.png" alt="image"></a>
+                            <a class="navbar-brand" href="{{url('/')}}"><img src="/images/logo-icon.png" alt="image"></a>
                         </div>
                     </div>
                     <div class="col-md-8">
