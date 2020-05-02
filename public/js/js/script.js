@@ -521,7 +521,7 @@ jQuery(function ($) {
     //      WHEN WINDOW LOAD
     // -------------------------------------------------------------
 
-        $(window).on("load", function() {
+        $(document).ready(function(){
 
             preloader();
 
@@ -534,7 +534,6 @@ jQuery(function ($) {
             progressBar();
 
         })
-
 
 
     // -------------------------------------------------------------
