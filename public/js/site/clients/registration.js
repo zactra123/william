@@ -40,12 +40,6 @@ $(document).ready(function($){
             "phone_number": {
                 required: true
             },
-            "address": {
-                required: true
-            },
-            "zip": {
-                required: true
-            },
             "ssn": {
                 required: true
             },

@@ -95,7 +95,9 @@
 </div>
 <script>
     $(document).ready(function () {
-
+        //on submit
+        // $('#preloader').css('background-color', 'transparent');
+        // $('#preloader').show()
         $('#correct_form').modal('show');
         $('.document-form').click(function(){
             $('#correct_form').modal('show');

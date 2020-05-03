@@ -40,18 +40,10 @@
                                             </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"     placeholder="Current Street Address">
-                                    @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
-                                </div>
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
-                                        <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}" required autocomplete="zip" placeholder="Zip Code">
-                                        @error('zip')
+                                        <input placeholder="Date of Birth" name = 'dob' class="form-control" type="text" id="date">
+                                        @error('dob')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -59,21 +51,12 @@
                                     </div>
                                     <div class="col-sm-6 form-group">
                                         <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number">
-                                        @error('zip')
+                                        @error('ssn')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <input placeholder="Date of Birth" name = 'dob' class="form-control" type="text" id="date">
-                                    @error('dob')
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
-{{--                                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="dob" class="form-control" id="dob" placeholder="Date Of birth">--}}
                                 </div>
                                 <div class="form-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">

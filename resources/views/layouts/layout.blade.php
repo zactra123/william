@@ -50,15 +50,15 @@
     <script src="{{asset('js/revolution/jquery.themepunch.tools.min.js')}}"></script>
 
     <!-- Revolution Extensions -->
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.actions.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.carousel.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.kenburn.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.layeranimation.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.migration.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.navigation.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>--}}
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.actions.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.carousel.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.kenburn.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.migration.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.navigation.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>
 
     <script src="{{asset('js/js/script.js')}}"></script>
 </head>
@@ -104,15 +104,16 @@
         <nav class="navbar navbar-inverse hidden-sm hidden-xs">
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-                    <li><a href="{{route('howItWorks')}}">How It Works</a></li>
-                    <li><a href="{{route('credit.education')}}">Credit Education</a></li>
+                    @if(Auth::user())
+                        @if(Auth::user()->role == 'client')
+                            @include('helpers.urls.nav_bar_client')
+                        @else
+
+                        @endif
+                    @else
+                        @include('helpers.urls.nav_bar_guest')
+                    @endif
                 </ul>
-
-
-
-
 
                 <ul class="nav navbar-nav navbar-right">
 

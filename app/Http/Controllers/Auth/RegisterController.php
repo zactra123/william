@@ -69,8 +69,6 @@ class RegisterController extends Controller
                 'dob' =>['required'],
                 'sex'=> ['required'],
                 'ssn'=> ['required', 'string', 'max:255'],
-                'address'=> ['required', 'string', 'max:255'],
-                'zip'=> ['required', 'string', 'max:255'],
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
