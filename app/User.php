@@ -92,6 +92,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\ClientDetail');
     }
 
+    public function credentials()
+    {
+        return $this->hasOne('App\Credential');
+    }
+
     public function ipAddress()
     {
         return $this->hasMany('App\AllowedIp');

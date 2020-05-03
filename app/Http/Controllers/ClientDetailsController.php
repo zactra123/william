@@ -83,13 +83,13 @@ class ClientDetailsController extends Controller
 
     public function edit($id, Request $request)
     {
-        $user = Auth::user();
+        $client = Auth::user();
 
-        $uploadUserDetail = UploadClientDetail::where('user_id',$user->id )->first();
+        $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
         if (!empty($uploadUserDetail)) {
-            return view('client_details.edit_with_upload_data', compact('user', 'uploadUserDetail'));
+            return view('client_details.edit_with_upload_data', compact('client', 'uploadUserDetail'));
         }
-        return view('client_details.edit', compact('user'));
+        return view('client_details.edit', compact('client'));
     }
 
     public function update(Request $request)
@@ -148,9 +148,8 @@ class ClientDetailsController extends Controller
 
     public function credentials()
     {
-        $userId = Auth::user()->id;
-        $credential = Credential::where('user_id', $userId)->first();
-        return view('client_details.create-credentials', compact( 'credential'));
+        $client = Auth::user();
+        return view('client_details.create-credentials', compact( 'client'));
     }
 
     public function credentialsStore(Request $request)
@@ -175,7 +174,8 @@ class ClientDetailsController extends Controller
 
     public function addDlSs()
     {
-        return view('client_details.upload-dl-ss');
+        $client = Auth::user();
+        return view('client_details.upload-dl-ss', compact("client"));
     }
     //create or update for client details
 
