@@ -50,7 +50,7 @@
 
 
 
-{!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
+{!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
 
     @csrf
     <div class="pdf-upload karma-tab active">
@@ -67,7 +67,7 @@
             <input type="file" name="social_security">
         </div>
     </div>
-    <div class="col"><input type="submit" value="Upload" class="ms-ua-submit" id="doc_sub"></div>
+    <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
 {!! Form::close() !!}
 
 

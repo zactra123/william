@@ -26,7 +26,8 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
-        return view('client_details.index');
+        $client = Auth::user();
+        return view('client_details.index', compact('client'));
     }
 
     public function create(Request $request)
@@ -44,7 +45,7 @@ class ClientDetailsController extends Controller
         return view('client_details.create', compact('client', 'uploadUserDetail'));
     }
 
-public function store(Request $request)
+    public function store(Request $request)
     {
         $data = $request->client;
         $validation = Validator::make($data, [
