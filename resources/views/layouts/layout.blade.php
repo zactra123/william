@@ -256,10 +256,37 @@
     <span class="close-menu"><i class="fa fa-times" aria-hidden="true"></i></span>
 
     <ul class="menu-wrapper">
-        <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>
-        <li><a href="{{route('howItWorks')}}">How It Works</a></li>
-        <li><a href="{{route('credit.education')}}">Credit Education</a></li>
+
+        @if(Auth::user())
+            @if(Auth::user()->role == 'client')
+                @include('helpers.urls.nav_bar_client')
+                <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+
+            @else
+
+            @endif
+        @else
+            @include('helpers.urls.nav_bar_guest')
+            <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a>
+            <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
+
+        @endif
+
+
+{{--        <li><a href="{{url('/')}}">Home</a></li>--}}
+{{--        <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>--}}
+{{--        <li><a href="{{route('howItWorks')}}">How It Works</a></li>--}}
+{{--        <li><a href="{{route('credit.education')}}">Credit Education</a></li>--}}
+
+
+
     </ul> <!-- menu-wrapper -->
 </div>
 <!-- Off-Canvas View Only -->

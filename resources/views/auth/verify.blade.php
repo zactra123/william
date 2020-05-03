@@ -19,12 +19,13 @@
                             </div>
                         @endif
 
-                        {{ __('Before proceeding, please check your email for a verification link.') }}
-                        {{ __('If you did not receive the email') }},
+
                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                             @csrf
-                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                            Before proceeding, please check your email for the verification link.
+                            If you did not receive the email, please click<button type="submit" value="here" class="btn btn-link p-0 m-0 align-baseline">here</button>to request again.
                         </form>
+
                     </div>
                 </div>
             </div>

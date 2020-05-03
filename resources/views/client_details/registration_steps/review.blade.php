@@ -68,41 +68,7 @@
             </div>
 
         </div>
-        <div class="form-group row font justify-content-center">
 
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 ">   Current Street Address:  </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
-                </div>
-                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 ">Current Street Address:(From Documents):</label>
-                <div class="col-md-11">
-                    {{ Form::text('client[address]', $uploadUserDetail->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}
-                </div>
-                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-        </div>
-        <div class="form-group row font justify-content-center">
-
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 ">   Zip code:  </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
-                </div>
-                <label for="password" class="col-md-1 " >   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 ">   Zip code(From Documents):  </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[zip]', $uploadUserDetail->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}
-                </div>
-                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-        </div>
         <div class="form-group row font justify-content-center">
             <div class="col-md-6 tab-selector ">
                 <label for="password" class="col-md-12 ">  Gender:  </label>
@@ -123,6 +89,41 @@
 
         </div>
 
+        <div class="form-group row font justify-content-center">
+
+            {{--            <div class="col-md-6 tab-selector">--}}
+            {{--                <label for="password" class="col-md-12 ">   Current Street Address:  </label>--}}
+            {{--                <div class="col-md-11">--}}
+            {{--                    {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}--}}
+            {{--                </div>--}}
+            {{--                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>--}}
+            {{--            </div>--}}
+
+            <div class="col-md-12 tab-selector">
+                <label for="password" class="col-md-12 ">Current Street Address:(From Documents):</label>
+                <div class="col-md-12">
+                    {{ Form::text('client[address]', $uploadUserDetail->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group row font justify-content-center">
+
+            {{--            <div class="col-md-6 tab-selector">--}}
+            {{--                <label for="password" class="col-md-12 ">   Zip code:  </label>--}}
+            {{--                <div class="col-md-11">--}}
+            {{--                    {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}--}}
+            {{--                </div>--}}
+            {{--                <label for="password" class="col-md-1 " >   <i class="fa fa-minus-circle remove-data"></i>  </label>--}}
+            {{--            </div>--}}
+            <div class="col-md-12 tab-selector">
+                <label for="password" class="col-md-12 ">   Zip code(From Documents):  </label>
+                <div class="col-md-12">
+                    {{ Form::text('client[zip]', $uploadUserDetail->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'Enter your zip']) }}
+                </div>
+            </div>
+        </div>
+
         <div class="form-group row mb-0 font">
             <div class="col-md-offset-5">
                 <button type="button" class="btn btn-outline-info cancel-changes">
@@ -137,10 +138,33 @@
     </div>
 </div>
 
+
+
+<script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
+
+</script>
+
+
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
 <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+
 <script>
     $(document).ready(function(){
+
+        autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            for (var i = 0; i < place.address_components.length; i++) {
+                for (var j = 0; j < place.address_components[i].types.length; j++) {
+                    if (place.address_components[i].types[j] == "postal_code") {
+                        $("#zip").val(place.address_components[i].long_name);
+
+                    }
+                }
+            }
+        });
+
+
         $(".cancel-changes").click(function(){
             location.reload()
         });

@@ -21,11 +21,34 @@
     </p>
 </div>
 @endif
-<div class=" text-center">
-    <p> Please be careful on uploading your documents.
-        <a class="text-primary font-italic" data-toggle="modal" data-target="#correct_form">See correct image examples</a>
-    </p>
+
+
+<div class="row">
+    <div class="col-md-6 m-0">
+        <p class="text-justify font-weight-bold"> <h3>Incorrect</h3></p>
+        <div class="col-md-12" style="margin-bottom: 10px">
+            <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="100%" >
+        </div>
+
+
+
+        <div class="col-md-12 m-0">
+            <img  src="{{asset('/images/incorrect-ss.png')}}"  width="100%">
+        </div>
+    </div>
+    <div class="col-md-6 m-0">
+        <p class="text-justify font-weight-bold"> <h3>Correct</h3> </p>
+        <div class="col-md-12">
+            <img  src="{{asset('/images/correct-dl.png')}}"  width="100%">
+        </div>
+
+        <div class="col-md-12" style="margin-top: 20px">
+            <img   class="m-1" src="{{asset('/images/correct-ss.png')}}"  width="100%">
+        </div>
+    </div>
 </div>
+
+
 
 {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
 
@@ -44,7 +67,7 @@
             <input type="file" name="social_security">
         </div>
     </div>
-    <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+    <div class="col"><input type="submit" value="Upload" class="ms-ua-submit" id="doc_sub"></div>
 {!! Form::close() !!}
 
 
@@ -57,44 +80,14 @@
 
 
 
-<div class="modal fad" id="correct_form" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="favoritesModalLabel">Document Correct Form</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span> </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 m-0">
-                        <p class="text-justify font-weight-bold"> Incorrect form upload  Driver License or Identification Card</p>
-                        <div class="col-md-12 m-0">
-                            <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="100%" >
-                        </div>
-                        <p class="text-justify font-weight-bold"> Incorrect form upload Social Security</p>
-                        <div class="col-md-12 m-0">
-                            <img  src="{{asset('/images/incorrect-ss.png')}}"  width="100%">
-                        </div>
-                    </div>
-                    <div class="col-md-6 m-0">
-                        <p class="text-justify font-weight-bold">Correct form upload  Driver License or Identification Card</p>
-                        <div class="col-md-12">
-                            <img  src="{{asset('/images/correct-dl.png')}}"  width="100%">
-                        </div>
-                        <p class="text-justify font-weight-bold">Correct form upload  Social Security</p>
-                        <div class="col-md-12" style="margin-top: 20px">
-                            <img   class="m-1" src="{{asset('/images/correct-ss.png')}}"  width="100%">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 <script>
     $(document).ready(function () {
+
+        $("#doc_sunb").submit(function( event ) {
+            $('#preloader').css('background-color', 'transparent');
+            $('#preloader').show()
+        });
+
         //on submit
         // $('#preloader').css('background-color', 'transparent');
         // $('#preloader').show()

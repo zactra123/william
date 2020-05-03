@@ -74,12 +74,11 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]);
         }else{
+            dd('client');
             return Validator::make($data, [
                 'full_name' => ['required', 'string', 'max:255'],
                 'dob' =>['required'],
                 'ssn'=> ['required', 'string', 'max:255'],
-                'address'=> ['required', 'string', 'max:255'],
-                'zip'=> ['required', 'string', 'max:255'],
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -115,11 +114,18 @@ class RegisterController extends Controller
 
        }
 
-       $addressPart = explode(',', str_replace(', USA','',$data['address']));
 
-       $fullStreet =  explode(' ', $addressPart[0]);
-       $number = $fullStreet[0];
-       $street = trim(str_replace($fullStreet[0], '',$addressPart[0]));
+
+//       $addressPart = explode(',', str_replace(', USA','',$data['address']));
+//       $fullStreet =  explode(' ', $addressPart[0]);
+//       $number = $fullStreet[0];
+//       $street = trim(str_replace($fullStreet[0], '',$addressPart[0]));
+//        'address'=>$data['address'];
+//        'number'=>$number;
+//        'name'=> $street;
+//        'city'=>isset($addressPart[1])?trim($addressPart[1]):null;
+//        'state'=> isset($addressPart[2])?trim($addressPart[2]):null;
+//        'zip'=>$data['zip'];
 
         $user =   User::create([
             'first_name'=>$first_name,
@@ -134,12 +140,6 @@ class RegisterController extends Controller
        ClientDetail::create([
             'user_id' => $id,
             'phone_number'=>$data['phone_number'],
-            'address'=>$data['address'],
-            'number'=>$number,
-            'name'=> $street,
-            'city'=>isset($addressPart[1])?trim($addressPart[1]):null,
-            'state'=> isset($addressPart[2])?trim($addressPart[2]):null,
-            'zip'=>$data['zip'],
             'dob'=>$data['dob'],
             'sex'=>isset($data['sex'])?$data['sex']: null ,
             'ssn'=> $data['ssn'],

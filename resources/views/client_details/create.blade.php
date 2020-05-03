@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
 
+
+
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "Registration Steps", 'route' => ["Home"=> '#', "Registration Steps"=> "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "Registration Steps", 'route' => ["Home"=> '#', $client->clientDetails->registration_steps =="credentials" ?"Credit Bureau Login Credentials":"Registration Steps" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">

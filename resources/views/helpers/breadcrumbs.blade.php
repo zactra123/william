@@ -3,9 +3,8 @@
         <h2 class="title">{{$title}}</h2>
         <span class="sub-title">
             @foreach($route as $name => $url)
-                @if ($name != $title)
+                @if ($name != array_key_last($route))
                 <a href="{{$url}}">{{$name}}</a>
-
                     &gt;
                 @else
                     {{$name}}

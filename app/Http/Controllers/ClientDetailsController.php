@@ -31,6 +31,8 @@ class ClientDetailsController extends Controller
 
     public function create(Request $request)
     {
+
+
         $client = Auth::user();
 
         if($client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2){
@@ -42,7 +44,7 @@ class ClientDetailsController extends Controller
         return view('client_details.create', compact('client', 'uploadUserDetail'));
     }
 
-    public function store(Request $request)
+public function store(Request $request)
     {
         $data = $request->client;
         $validation = Validator::make($data, [
@@ -180,6 +182,7 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
+
         $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()
@@ -203,6 +206,7 @@ class ClientDetailsController extends Controller
 
         $nameDriverLicense = 'driver_license.'.$driverLicenseExtension;
         $nameSocialSecurity ='social_security.'.$socialSecurityExtension;
+
 
         $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
         $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
