@@ -22,7 +22,7 @@ class SocialAuthController extends Controller
         return Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
         ])->scopes([
-            'email', 'birthday'
+            'email'
         ])->redirect();
     }
     /**
