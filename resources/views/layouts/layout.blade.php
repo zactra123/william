@@ -90,7 +90,7 @@
                         <div class="header-left-bar pull-right">
                             <ul class="contact-wrapper">
                                 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
-                                <li><i class="fa fa-mobile" aria-hidden="true"></i> +1-844-337-8336</li>
+                                <li><i class="fa fa-mobile" aria-hidden="true"></i> 1-844-337-8336</li>
                                 <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentcredit.com</li>
                             </ul>
                         </div> <!-- header-left-bar -->
@@ -174,7 +174,12 @@
 
                             <li><i class="fa fa-phone" aria-hidden="true"></i>
                                 <div class="content">
-                                    +1-844-337-8336
+                                    1-844-337-8336
+                                </div>
+                            </li>
+                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                <div class="content">
+                                    info@prudentcredit.com
                                 </div>
                             </li>
 

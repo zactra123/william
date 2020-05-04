@@ -17,10 +17,10 @@ class PagesController extends Controller
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogans = Db::table('slogans')
+            ->whereRaw('LENGTH(slogan) < 70')
             ->inRandomOrder()
             ->limit(5)
             ->select('slogan','author')->get()->toArray();
-
         return view('new-home-page1', compact('pageContentUp', 'slogans'));
     }
 

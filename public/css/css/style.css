@@ -1541,10 +1541,10 @@ textarea, select {
           line-height: 30px !important;
           font-size: 16px !important; } }
   .slider-section #rev_slider_4 .font-extra-bold {
-    font-size: 48px !important;
+    font-size: 36px !important;
     font-weight: 700 !important;
     line-height: 90px !important;
-    color: #FFFFFF;
+    /*color: #FFFFFF;*/
     margin: 14px 0 15px !important; }
     @media (min-width: 992px) and (max-width: 1199px) {
       .slider-section #rev_slider_4 .font-extra-bold {
