@@ -32,8 +32,6 @@ class ClientDetailsController extends Controller
 
     public function create(Request $request)
     {
-
-
         $client = Auth::user();
 
         if($client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2){
@@ -94,7 +92,6 @@ class ClientDetailsController extends Controller
 
     public function update(Request $request)
     {
-
         $data = $request->client;
         $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
         $full_name = explode(" ", $data["full_name"]);
@@ -121,11 +118,12 @@ class ClientDetailsController extends Controller
             }
             return view('client_details.create')->withErrors($validation);
         } else {
-
             $user = Arr::only($data, ['first_name', 'last_name']);
             $clientDetails = Arr::except($data, ['full_name','first_name', 'last_name', 'sex_uploaded']);
 
             $fullAddress =explode(',', str_replace([", USA", ",USA"],'', $data['address']));
+            $client_details = ClientDetail::where('user_id', $id)->first();
+            $registration_steps = $client_details->registration_steps;
 
             preg_match("/([0-9]{1,})/im", $fullAddress[0], $number);
             $clientDetails ["number"] = $number[0];
@@ -138,9 +136,11 @@ class ClientDetailsController extends Controller
                 'first_name' => strtoupper($user['first_name']),
                 'last_name' => strtoupper($user['last_name'])
             ]);
-
-            ClientDetail::where('user_id', $id)->update($clientDetails);
+            $client_details->update($clientDetails);
             $uploaded->delete();
+            if ($registration_steps == 'review'){
+                return redirect(route('client.details.create'));
+            }
             return redirect(route('client.details.index'))->with('success', "your data saved");
 
         }

@@ -29,6 +29,10 @@
         background-position: center;
 
     }
+    .drag-over{
+        background-color: sty;
+    }
+
     button, input {
         font-size: 25px;
         font-weight: 900;
@@ -91,6 +95,20 @@
         $("#doc_sunb").submit(function( event ) {
             $('#preloader').css('background-color', 'transparent');
             $('#preloader').show()
+        });
+
+         $('.driver_license').bind('dragover', function(){
+           console.log('xxx')
+             $(this).addClass('drag-over');
+        });
+        $('.driver_license').bind('dragleave', function(){
+            $(this).removeClass('drag-over');
+        });
+        $('.social_security').bind('dragover', function(){
+            $(this).addClass('drag-over');
+        });
+        $('.social_security').bind('dragleave', function(){
+            $(this).removeClass('drag-over');
         });
 
         //on submit
