@@ -328,10 +328,4 @@ class ClientDetailsController extends Controller
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");
 
     }
-
-    public function profile()
-    {
-        return view('client_details.client-profile');
-    }
-
 }

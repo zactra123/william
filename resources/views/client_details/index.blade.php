@@ -1,21 +1,24 @@
 @extends('layouts.layout')
 
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "Registration Steps", 'route' => ["Home"=> '#', $client->clientDetails->registration_steps =="credentials" ?"Credit Bureau Login Credentials":"Registration Steps" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
-                        @include('helpers.steps')
 
-                        @include("client_details.registration_steps.{$client->clientDetails->registration_steps}")
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+                            normal distribution of letters, as opposed to using 'Content here, content here', making it
+                            look like readable English. Many desktop publishing packages and web page editors now use
+                            Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+                            web sites still in their infancy. Various versions have evolved over the years, sometimes
+                            by accident, sometimes on purpose (injected humour and the like).</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
 @endsection
