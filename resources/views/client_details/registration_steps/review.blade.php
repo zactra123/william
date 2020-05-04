@@ -6,8 +6,7 @@
 
 <div class="card w-75">
     <div class="text-center">
-        <p>We found some differences between document data, and your filled data.</p>
-        <p class="text-info">Please review your personal data</p>
+        <p class="text-info"><h3>PLEASE REVIEW YOUR PERSONAL DATA AND MAKE CHANGES IF NECESSARY</h3></p>
     </div>
     <div class="card-body ">
         {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
@@ -15,120 +14,61 @@
         @csrf
         <div class="form-group row font justify-content-center">
 
-            <div class="col-md-6 tab-selector">
-                <label for="last_name" class="col-md-12 ">Last Name : </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
-                </div>
-                <label for="password" class="col-md-1" data-target="client-last_name">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-            <div class="col-md-6 tab-selector">
-                <label for="uploaded_last_name">Last Name(From Documents): </label>
-                <div class="col-md-11" class="col-md-12 ">
+            <div class="col-md-12 tab-selector">
+                <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
+                <div class="col-md-12" class="col-md-12 ">
                     {{ Form::text('client[full_name]', $uploadUserDetail->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
                 </div>
-                <label for="password" class="col-md-1" data-target="upload-last_name">   <i class="fa fa-minus-circle remove-data"></i>  </label>
             </div>
 
         </div>
 
         <div class="form-group row font justify-content-center">
-            <div class="col-md-6 tab-selector">
-                <label for="dob" class="col-md-12 "> DOB:</label>
-                <div class="col-md-11">
-                    {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input']) }}
-                </div>
-                <label for="password" class="col-md-1" data-target="client-dob">   <i class="fa fa-minus-circle"></i>  </label>
-            </div>
-            <div class="col-md-6 tab-selector">
-                <label for="uploaded_dob" class="col-md-12 "> DOB(From Documents):  </label>
-                <div class="col-md-11">
-                    {{ Form::date('client[dob]', $uploadUserDetail->dob, ['class' => 'form-control m-input']) }}
-                </div>
-                <label for="password" class="col-md-1" data-target="upload-dob">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-        </div>
-        <div class="form-group row font justify-content-center">
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 " > SSN:  </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
-                </div>
-                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-            <div class="col-md-6 tab-selector">
-                <label for="password" class="col-md-12 "> SSN(From Documents):  </label>
-                <div class="col-md-11">
-                    {{ Form::text('client[ssn]', $uploadUserDetail->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
-                </div>
-                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-        </div>
-
-        <div class="form-group row font justify-content-center">
-            <div class="col-md-6 tab-selector ">
-                <label for="password" class="col-md-12 ">  Gender:  </label>
-
-                <div class="col-md-11 sex_options">
-                    {{ Form::select('client[sex]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
-                </div>
-                <label for="password" class="col-md-1" data-target="client-dob">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-            <div class="col-md-6 tab-selector">
-                <label for="password"  class="col-md-12 ">  Gender(From Documents):  </label>
-                <div class="col-md-11 sex_options">
-                    {{ Form::select('client[sex_uploaded]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $uploadUserDetail->sex, ['class'=>'col-md-10  form-control']) }}
-                     </div>
-                <label for="password" class="col-md-1" data-target="client-dob">   <i class="fa fa-minus-circle remove-data"></i>  </label>
-            </div>
-
-        </div>
-
-        <div class="form-group row font justify-content-center">
-
-            {{--            <div class="col-md-6 tab-selector">--}}
-            {{--                <label for="password" class="col-md-12 ">   Current Street Address:  </label>--}}
-            {{--                <div class="col-md-11">--}}
-            {{--                    {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'placeholder' => 'Enter your address']) }}--}}
-            {{--                </div>--}}
-            {{--                <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle remove-data"></i>  </label>--}}
-            {{--            </div>--}}
 
             <div class="col-md-12 tab-selector">
-                <label for="password" class="col-md-12 ">Current Street Address:(From Documents):</label>
+                <label for="uploaded_dob" class="col-md-12 "> DATE OF BIRTH :  </label>
+                <div class="col-md-12">
+                    {{ Form::date('client[dob]', $uploadUserDetail->dob, ['class' => 'form-control m-input']) }}
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group row font justify-content-center">
+            <div class="col-md-12 tab-selector">
+                <label for="password" class="col-md-12 "> SOCIAL SECURITY NUMBER:  </label>
+                <div class="col-md-12">
+                    {{ Form::text('client[ssn]', $uploadUserDetail->ssn, ['class' => 'form-control m-input', 'placeholder' => 'Enter your SSN']) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row font justify-content-center">
+            <div class="col-md-12 tab-selector">
+                <label for="password" class="col-md-12 ">CURRENT STREET ADDRESS:</label>
                 <div class="col-md-12">
                     {{ Form::text('client[address]', $uploadUserDetail->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
                 </div>
-
             </div>
         </div>
         <div class="form-group row font justify-content-center">
-
-            {{--            <div class="col-md-6 tab-selector">--}}
-            {{--                <label for="password" class="col-md-12 ">   Zip code:  </label>--}}
-            {{--                <div class="col-md-11">--}}
-            {{--                    {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'placeholder' => 'Enter your zip']) }}--}}
-            {{--                </div>--}}
-            {{--                <label for="password" class="col-md-1 " >   <i class="fa fa-minus-circle remove-data"></i>  </label>--}}
-            {{--            </div>--}}
             <div class="col-md-12 tab-selector">
-                <label for="password" class="col-md-12 ">   Zip code(From Documents):  </label>
+                <label for="password" class="col-md-12 ">   ZIP CODE:  </label>
                 <div class="col-md-12">
                     {{ Form::text('client[zip]', $uploadUserDetail->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'Enter your zip']) }}
                 </div>
             </div>
         </div>
+        <div class="form-group row font justify-content-center">
+            <div class="col-md-12 tab-selector">
+                <label for="password"  class="col-md-12 ">  GENDER</label>
+                <div class="col-md-12 sex_options">
+                    {{ Form::select('client[sex_uploaded]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $uploadUserDetail->sex, ['class'=>'col-md-10  form-control']) }}
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-group row mb-0 font">
             <div class="col-md-offset-5">
-                <button type="button" class="btn btn-outline-info cancel-changes">
-                    Cancel
-                </button>
                 <button type="submit" class="btn btn-primary">
                     Submit
                 </button>

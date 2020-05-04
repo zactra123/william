@@ -91,7 +91,7 @@
                             <ul class="contact-wrapper">
                                 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
                                 <li><i class="fa fa-mobile" aria-hidden="true"></i> +1-844-337-8336</li>
-                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@bettercreditfix.com</li>
+                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentcredit.com</li>
                             </ul>
                         </div> <!-- header-left-bar -->
                     </div>

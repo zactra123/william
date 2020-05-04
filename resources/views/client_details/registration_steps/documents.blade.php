@@ -12,6 +12,27 @@
             top: 80px;
         }
     }
+    .driver_license {
+        background-image: url(/images/correct-dl.png);
+        display: block;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    .social_security {
+
+        background-image: url(/images/correct-ss.png);
+        display: block;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+    }
+    button, input {
+        font-size: 25px;
+        font-weight: 900;
+    }
 </style>
 @if(Session::get('bad'))
     <?php Session::forget('bad');?>
@@ -24,47 +45,31 @@
 
 
 <div class="row">
-    <div class="col-md-6 m-0">
-        <p class="text-justify font-weight-bold"> <h3>Incorrect</h3></p>
-        <div class="col-md-12" style="margin-bottom: 10px">
-            <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="100%" >
+    <div class="col-md-12 m-0">
+         <h3 style="text-align: center;font-weight: 900">Incorrect</h3>
+        <div class="col-md-6 justify-content-center" style="margin-bottom: 10px; text-align: center">
+            <img class="m-1" src="{{asset('/images/incorrect-dl.png')}}" width="75%" >
         </div>
-
-
-
-        <div class="col-md-12 m-0">
-            <img  src="{{asset('/images/incorrect-ss.png')}}"  width="100%">
-        </div>
-    </div>
-    <div class="col-md-6 m-0">
-        <p class="text-justify font-weight-bold"> <h3>Correct</h3> </p>
-        <div class="col-md-12">
-            <img  src="{{asset('/images/correct-dl.png')}}"  width="100%">
-        </div>
-
-        <div class="col-md-12" style="margin-top: 20px">
-            <img   class="m-1" src="{{asset('/images/correct-ss.png')}}"  width="100%">
+        <div class="col-md-6 text-md-center" style="text-align: center">
+            <img  src="{{asset('/images/incorrect-ss.png')}}"  width="75%">
         </div>
     </div>
 </div>
-
-
-
 {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
 
     @csrf
     <div class="pdf-upload karma-tab active">
         <div class="col-sm-6 form-group files">
-            <label title="Upload Your Driver License or Identification card">
+            <label title="Upload Your Driver License or Identification card" style="text-align: center;font-weight: 900; font-size: 16px">
                 Upload Your Driver License or Identification card
             </label>
-            <input type="file" name="driver_license" >
+            <input class="driver_license" type="file" name="driver_license"  class="driver_license">
         </div>
         <div class="col-sm-6 form-group files">
             <label title="Upload Your Social Security">
                 Upload Your Social Security
             </label>
-            <input type="file" name="social_security">
+            <input class="social_security" type="file" name="social_security">
         </div>
     </div>
     <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>

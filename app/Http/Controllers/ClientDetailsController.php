@@ -179,8 +179,6 @@ class ClientDetailsController extends Controller
     }
     //create or update for client details
 
-
-
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
 
@@ -278,8 +276,6 @@ class ClientDetailsController extends Controller
 
     }
 
-
-
     public function uploadCreditReports()
     {
         return view('client_details.upload-credit-reports');
@@ -331,6 +327,11 @@ class ClientDetailsController extends Controller
 
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");
 
+    }
+
+    public function profile()
+    {
+        return view('client_details.client-profile');
     }
 
 }

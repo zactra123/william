@@ -62,19 +62,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
         if($data['role']!='affiliate'){
             return Validator::make($data, [
-                'full_name' => ['required', 'string', 'max:255'],
-                'dob' =>['required'],
                 'sex'=> ['required'],
-                'ssn'=> ['required', 'string', 'max:255'],
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]);
         }else{
-            dd('client');
             return Validator::make($data, [
                 'full_name' => ['required', 'string', 'max:255'],
                 'dob' =>['required'],
@@ -95,59 +90,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-       $fullName = explode(' ', strtoupper($data['full_name']));
-
-       if(count($fullName)==1){
-           return redirect()->back()
-               ->withInput()
-               ->with('error','Please enter Your First and Last name');
-       }elseif(count($fullName)==2){
-           $first_name = $fullName[0];
-           $last_name = $fullName[1];
-       }else{
-           $first_name = $fullName[0];
-           $last_name = $fullName[1];
-           for($i=2; $i <= count($fullName)-1; $i++){
-               $last_name = $last_name." ".$fullName[$i];
-           }
-
-       }
-
-
-
-//       $addressPart = explode(',', str_replace(', USA','',$data['address']));
-//       $fullStreet =  explode(' ', $addressPart[0]);
-//       $number = $fullStreet[0];
-//       $street = trim(str_replace($fullStreet[0], '',$addressPart[0]));
-//        'address'=>$data['address'];
-//        'number'=>$number;
-//        'name'=> $street;
-//        'city'=>isset($addressPart[1])?trim($addressPart[1]):null;
-//        'state'=> isset($addressPart[2])?trim($addressPart[2]):null;
-//        'zip'=>$data['zip'];
-
         $user =   User::create([
-            'first_name'=>$first_name,
-            'last_name'=>$last_name,
             'email' => $data['email'],
             'role'=>$data['role'],
             'password' => Hash::make($data['password']),
         ]);
 
-
-        $id = $user->id;
+       $id = $user->id;
        ClientDetail::create([
             'user_id' => $id,
             'phone_number'=>$data['phone_number'],
-            'dob'=>$data['dob'],
             'sex'=>isset($data['sex'])?$data['sex']: null ,
-            'ssn'=> $data['ssn'],
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             'business_name'=>isset($data['business_name'])?$data['business_name']:null,
         ]);
         return $user;
     }
-
 
 }

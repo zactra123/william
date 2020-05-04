@@ -25,43 +25,18 @@
                             <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}" required autocomplete="full_name" placeholder="Full Name">
-                                    @error('full_name')
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone Number">
-                                    @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 form-group">
-                                        <input placeholder="Date of Birth" name = 'dob' class="form-control" type="text" id="date">
-                                        @error('dob')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-sm-6 form-group">
-                                        <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="Social Security Number">
-                                        @error('ssn')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">
 
                                     @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone Number">
+                                    @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

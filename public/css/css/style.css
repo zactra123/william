@@ -8288,11 +8288,11 @@ input[type="submit"] {
     position: absolute;
     top: 60px;
     left: 0;
-    width: 50px;
+    width: 70px;
     right: 0;
-    height: 56px;
+    height: 76px;
     content: "";
-    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+    background-image: url(/images/upload.png);
     display: block;
     margin: 0 auto;
     background-size: 100%;
@@ -8309,8 +8309,9 @@ input[type="submit"] {
     content: " or drag it here. ";
     display: block;
     margin: 0 auto;
-    color: #37a6d4;
-    font-weight: 600;
+    color: #341d31;
+    font-weight: 900;
+    font-size: 20px;
     text-transform: capitalize;
     text-align: center;
 }

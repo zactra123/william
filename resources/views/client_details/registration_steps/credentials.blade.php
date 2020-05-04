@@ -2,7 +2,8 @@
     <div class=" text-center    ">
         <p >
             Please provide the following credit bureau/monitoring services login credentials. If you do not have one or
-            any of them, please register and provide us with login credentials.
+            any of them, please register and provide us with login credentials.I will provide you with requested login
+            credentials in a timely manner CLICK TO SUBMIT.
         </p>
     </div>
 
@@ -10,86 +11,83 @@
         {!! Form::open(['route' => ['client.credentialsStore'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right', 'id'=>'client-credentials']) !!}
         @csrf
         <div class="col-sm-12">
-            <label><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="140"> <a href="https://www.creditkarma.com/signup/" target="_blank">Click here to register</a></label>
+            <label><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="140"> If You are Not Register <a href="https://www.creditkarma.com/signup/" target="_blank">Click here to register</a></label>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[ck_login]', !empty($client->credentials->ck_login) ? $client->credentials->ck_login : old('client.ck_login'), ['class' => 'form-control m-input', 'placeholder' => 'Login']) }}
+                {{ Form::text('client[ck_login]', !empty($client->credentials->ck_login) ? $client->credentials->ck_login : old('client.ck_login'), ['class' => 'form-control m-input', 'placeholder' => 'LOGIN EMAIL']) }}
             </div>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[ck_password]', !empty($client->credentials->ck_password) ? $client->credentials->ck_password  : old('client.ck_password'), ['class' => 'form-control m-input', 'placeholder' => 'Password']) }}
+                {{ Form::text('client[ck_password]', !empty($client->credentials->ck_password) ? $client->credentials->ck_password  : old('client.ck_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
             </div>
         </div>
         <div class="col-sm-12">
-            <label> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="140"> <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">Click here to register</a></label>
+            <label> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="140"> If You are Not Register  <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">Click here to register</a></label>
             <div class="form-group m-1  font">
-                {{ Form::text('client[ex_login]', !empty($client->credentials->ex_login) ? $client->credentials->ex_login : old('client.ex_login'), ['class' => 'form-control m-input', 'placeholder' => 'Login']) }}
+                {{ Form::text('client[ex_login]', !empty($client->credentials->ex_login) ? $client->credentials->ex_login : old('client.ex_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
             </div>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[ex_password]', !empty($client->credentials->ex_password) ? $client->credentials->ex_password : old('client.ex_password'), ['class' => 'form-control m-input', 'placeholder' => 'Password']) }}
+                {{ Form::text('client[ex_password]', !empty($client->credentials->ex_password) ? $client->credentials->ex_password : old('client.ex_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
             </div>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[ex_question]', !empty($client->credentials->ex_question) ? $client->credentials->ex_question : old('client.ex_question'), ['class' => 'form-control m-input', 'placeholder' => 'Question']) }}
+                {{ Form::text('client[ex_question]', !empty($client->credentials->ex_question) ? $client->credentials->ex_question : old('client.ex_question'), ['class' => 'form-control m-input', 'placeholder' => 'ANSWER TO SEQURITY QUESTION']) }}
             </div>
             <div class="form-group m-1  font">
-                {{ Form::text('client[ex_answer]', !empty($client->credentials->ex_answer) ? $client->credentials->ex_answer : old('client.ex_answer'), ['class' => 'form-control m-input', 'placeholder' => 'Answer']) }}
-            </div>
-            <div class="form-group m-1  font">
-                {{ Form::text('client[ex_pin]', !empty($client->credentials->ex_pin) ? $client->credentials->ex_pin : old('client.ex_pin'), ['class' => 'form-control m-input', 'placeholder' => 'Pin Number']) }}
+                {{ Form::text('client[ex_pin]', !empty($client->credentials->ex_pin) ? $client->credentials->ex_pin : old('client.ex_pin'), ['class' => 'form-control m-input', 'placeholder' => 'PIN NUMBER']) }}
             </div>
         </div>
         <div class="col-sm-12">
-            <label> <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"> <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">Click here to register</a></label>
+            <label> <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"> If You are Not Register  <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">Click here to register</a></label>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[tu_login]', !empty($client->credentials->tu_login) ? $client->credentials->tu_login : old('client.tu_login'), ['class' => 'form-control m-input', 'placeholder' => 'Login']) }}
+                {{ Form::text('client[tu_login]', !empty($client->credentials->tu_login) ? $client->credentials->tu_login : old('client.tu_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
 
             </div>
             <div class="form-group m-1  font">
-                {{ Form::text('client[tu_password]', !empty($client->credentials->tu_password) ? $client->credentials->tu_password : old('client.tu_password'), ['class' => 'form-control m-input', 'placeholder' => 'Password']) }}
+                {{ Form::text('client[tu_password]', !empty($client->credentials->tu_password) ? $client->credentials->tu_password : old('client.tu_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
             </div>
         </div>
         <div class="col-sm-12">
-            <label> <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"><a href="https://www.equifax.com/personal/" target="_blank">Click here to register</a></label>
+            <label> <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">  If You are Not Register  <a href="https://www.equifax.com/personal/" target="_blank">Click here to register</a></label>
             <div class="form-group  m-1 font">
-                {{ Form::text('client[eq_login]', !empty($client->credentials->eq_login) ? $client->credentials->eq_login : old('client.eq_login'), ['class' => 'form-control m-input', 'placeholder' => 'Login']) }}
+                {{ Form::text('client[eq_login]', !empty($client->credentials->eq_login) ? $client->credentials->eq_login : old('client.eq_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
 
             </div>
             <div class="form-group m-1  font">
-                {{ Form::text('client[eq_password]', !empty($client->credentials->eq_password) ? $client->credentials->eq_password : old('client.eq_password'), ['class' => 'form-control m-input', 'placeholder' => 'Password']) }}
+                {{ Form::text('client[eq_password]', !empty($client->credentials->eq_password) ? $client->credentials->eq_password : old('client.eq_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
             </div>
         </div>
         <div class="col"><input type="submit" value="Submit" class="ms-ua-submit"></div>
         {!! Form::close() !!}
     </div>
-</div>
-<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-<script>
-    $(document).ready(function(){
-        $("#client-credentials").validate({
-            rules: {
-                "client[tu_login]": {
-                    required: true
-                },
-                "client[tu_password]": {
-                    required: true
-                },
-                "client[ex_login]": {
-                    required: true
-                },
-                "client[ex_password]": {
-                    required: true
-                },
-                "client[ex_question]": {
-                    required: true
-                },
-                "client[ex_answer]": {
-                    required: true
-                },
-                "client[ck_login]": {
-                    required: true
-                },
-                "client[ck_password]": {
-                    required: true
-                },
-            }
-        })
-    });
-</script>
+{{--</div>--}}
+{{--<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>--}}
+{{--<script>--}}
+{{--    $(document).ready(function(){--}}
+{{--        $("#client-credentials").validate({--}}
+{{--            rules: {--}}
+{{--                "client[tu_login]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[tu_password]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ex_login]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ex_password]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ex_question]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ex_answer]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ck_login]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--                "client[ck_password]": {--}}
+{{--                    required: true--}}
+{{--                },--}}
+{{--            }--}}
+{{--        })--}}
+{{--    });--}}
+{{--</script>--}}

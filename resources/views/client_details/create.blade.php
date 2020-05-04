@@ -1,29 +1,203 @@
 @extends('layouts.layout')
 
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "Registration Steps", 'route' => ["Home"=> '#', $client->clientDetails->registration_steps =="credentials" ?"Credit Bureau Login Credentials":"Registration Steps" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Add details" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
-                        @include('helpers.steps')
 
-                        @include("client_details.registration_steps.{$client->clientDetails->registration_steps}")
+                        <div class="card w-75">
+                            <div class="text-center">
+                                <p class="text-info"><h3>PLEASE REVIEW YOUR PERSONAL DATA AND MAKE CHANGES IF NECESSARY</h3></p>
+                            </div>
+                            <div class="card-body ">
+                                {!! Form::open(['route' => ['client.details.store'], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                                @csrf
+                                <div class="form-group row font justify-content-center">
+
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
+                                        <div class="col-md-12" class="col-md-12 ">
+                                            {{ Form::text('client[full_name]', old('client[full_name]'), ['class' => 'form-control m-input', 'placeholder' => 'ENTER FULL NAME']) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row font justify-content-center">
+
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
+                                        <div class="col-md-12" class="col-md-12 ">
+                                            {{ Form::text('client[phone_number]',  old('client[phone_number]'), ['class' => 'form-control m-input', 'placeholder' => 'ENTER PHONE NUMBER']) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row font justify-content-center">
+
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="uploaded_dob" class="col-md-12 "> DATE OF BIRTH :  </label>
+                                        <div class="col-md-12">
+                                            {{ Form::date('client[dob]', old('client[dob]'), ['class' => 'form-control m-input']) }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row font justify-content-center">
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="password" class="col-md-12 "> SOCIAL SECURITY NUMBER:  </label>
+                                        <div class="col-md-12">
+                                            {{ Form::text('client[ssn]',old('client[ssn]'), ['class' => 'form-control m-input ssn', 'placeholder' => 'ENTER YOUR  SOCIAL SECURITY NUMBER']) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row font justify-content-center">
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="password" class="col-md-12 ">CURRENT STREET ADDRESS:</label>
+                                        <div class="col-md-12">
+                                            {{ Form::text('client[address]', old('client[address]'), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'ENTER YOUR CURRENT STREET ADDRESS']) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row font justify-content-center">
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="password" class="col-md-12 ">   ZIP CODE:  </label>
+                                        <div class="col-md-12">
+                                            {{ Form::text('client[zip]',old('client[zip]'), ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'ENTER YOUR ZIP CODE']) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row font justify-content-center">
+                                    <div class="col-md-12 tab-selector">
+                                        <label for="password"  class="col-md-12 ">  GENDER</label>
+                                        <div class="col-md-12 sex_options">
+                                            <select class="form-control" name="gender" id="gender">
+                                                <option disabled="disabled" selected="selected">Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                                <option value="O">Non-Binary</option>
+                                            </select>
+
+
+                                            {{ Form::select('client[sex]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row mb-0 font">
+                                    <div class="col-md-offset-5">
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if (place.address_components[i].types[j] == "postal_code") {
+                            $("#zip").val(place.address_components[i].long_name);
+
+                        }
+                    }
+                }
+            });
+
+
+            $(".ssn").mask("999-99-9999");
+            $('#phone_number').mask('(000) 000-0000');
+
+
+            $(".cancel-changes").click(function(){
+                location.reload()
+            });
+
+            $('.tab-selector i').click(function(){
+                $parent = $(this).parents(".form-group")
+                $parent.removeClass("has-error");
+                $parent.next(".warning-message").remove();
+                $(this).parents(".tab-selector").remove();
+                $parent.children(".tab-selector").find(".col-md-1").remove()
+            });
+
+            $.validator.addMethod("one_option", function(value, element) {
+                if (element.name.indexOf("sex") != -1){
+                    return $(".sex_options").length < 2
+                }
+                return $("[name='" +element.name+ "']").length < 2;
+            }, "Please choose one of the options");
+
+            $.validator.addMethod("valid_address", function(value, element) {
+                return !!value.match(/^\d+\s[A-z\s.\,]+(\.)?/g);
+            }, "Not valid address format.");
+
+            $("#clientDetailsForm").validate({
+                rules: {
+                    "client[full_name]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[dob]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[ssn]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[address]": {
+                        required:true,
+                        one_option: true,
+                        valid_address: true
+                    },
+                    "client[zip]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[sex]": {
+                        required:   true,
+                        one_option: true
+                    },
+                    "client[sex_uploaded]": {
+                        required:true
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element).parents(".form-group"));
+                }
+            })
+        })
+
+    </script>
+
 @endsection
-
-
-
-
-
-
-
-
-
 
