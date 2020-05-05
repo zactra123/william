@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\User;
 class VerificationController extends Controller
 {
     /*
@@ -112,6 +113,33 @@ class VerificationController extends Controller
 //        $this->middleware('auth');
 //        $this->middleware('signed')->only('verify');
 //        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resend(Request $request)
+    {
+
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect($this->redirectPath());
+        }
+       $email_count =  Auth::user()->email_count;
+        if($email_count<3){
+            $email_count = $email_count +1;
+            User::where('id', Auth::user()->id)->update(['email_count'=> $email_count]);
+
+            $request->user()->sendEmailVerificationNotification();
+
+            return back()->with('resent', true);
+        }else{
+            return back()->with('unread', true);
+        }
+
     }
 
     protected function guard()

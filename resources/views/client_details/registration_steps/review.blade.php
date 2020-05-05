@@ -16,9 +16,8 @@
         <div class="form-group row font justify-content-center">
 
             <div class="col-md-12 tab-selector">
-                <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
                 <div class="col-md-12" class="col-md-12 ">
-                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input',  'placeholder' => 'FULL NAME']) }}
                 </div>
             </div>
 
@@ -27,16 +26,14 @@
         <div class="form-group row font justify-content-center">
 
             <div class="col-md-12 tab-selector">
-                <label for="uploaded_dob" class="col-md-12 "> DATE OF BIRTH :  </label>
                 <div class="col-md-12">
-                    {{ Form::date('client[dob]', !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME' ]) }}
+                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name='client[dob]' class="form-control m-input" id="dob"  value ="{{ !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob}}" placeholder ="DATE OF BIRTH">
                 </div>
             </div>
 
         </div>
         <div class="form-group row font justify-content-center">
             <div class="col-md-12 tab-selector">
-                <label for="password" class="col-md-12 "> SOCIAL SECURITY NUMBER:  </label>
                 <div class="col-md-12">
                     {{ Form::text('client[ssn]', !empty($uploadUserDetail) ? $uploadUserDetail->ssn :  $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
                 </div>
@@ -44,7 +41,6 @@
         </div>
         <div class="form-group row font justify-content-center">
             <div class="col-md-12 tab-selector">
-                <label for="password" class="col-md-12 ">CURRENT STREET ADDRESS:</label>
                 <div class="col-md-12">
                     {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->address :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                 </div>
@@ -52,7 +48,6 @@
         </div>
         <div class="form-group row font justify-content-center">
             <div class="col-md-12 tab-selector">
-                <label for="password" class="col-md-12 ">   ZIP CODE:  </label>
                 <div class="col-md-12">
                     {{ Form::text('client[zip]',  !empty($uploadUserDetail) ? $uploadUserDetail->zip :  $client->clientDetails->ssn, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'ZIP CODE']) }}
                 </div>
@@ -60,9 +55,8 @@
         </div>
         <div class="form-group row font justify-content-center">
             <div class="col-md-12 tab-selector">
-                <label for="password"  class="col-md-12 ">  GENDER</label>
                 <div class="col-md-12 sex_options">
-                    {{ Form::select('client[sex_uploaded]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : $client->clientDetails->sex , ['class'=>'col-md-10  form-control']) }}
+                    {{ Form::select('client[sex_uploaded]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : $client->clientDetails->sex , ['class'=>'col-md-10  form-control']) }}
                 </div>
             </div>
         </div>

@@ -18,6 +18,12 @@
                                 {{ __('A fresh verification link has been sent to your email address.') }}
                             </div>
                         @endif
+                        @if (session('unread'))
+                            <div class="alert alert-success" role="alert">
+                                {{ __('Please use different email.') }}
+                            </div>
+                        @endif
+
 
 
                         <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
