@@ -156,7 +156,8 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Bankruptcies</a></h3>
+                            <h3><a href="#bankruptcies" data-toggle="modal">Bankruptcies</a></h3>
+{{--                            <li><a href="#{{$content->url}}-1" data-toggle="modal">{{$content->title}}</a></li>--}}
                         </div>
 
                         <div class="hover">
@@ -171,7 +172,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Mortgage Negatives</a></h3>
+                            <h3><a  href="#mortgage" data-toggle="modal">Mortgage Negatives</a></h3>
                         </div>
 
                         <div class="hover">
@@ -186,7 +187,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Collections</a></h3>
+                            <h3><a href="#collections" data-toggle="modal">Collections</a></h3>
                         </div>
 
                         <div class="hover">
@@ -201,7 +202,7 @@
                 <div class="col-md-3 col-sm-6 ">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Late Remarks</a></h3>
+                            <h3><a href="#late" data-toggle="modal">Late Remarks</a></h3>
                         </div>
 
                         <div class="hover">
@@ -216,7 +217,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Inquiries</a></h3>
+                            <h3><a href="#inquiries" data-toggle="modal">Inquiries</a></h3>
                         </div>
 
                         <div class="hover">
@@ -231,7 +232,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Student Loans</a></h3>
+                            <h3><a href="#student" data-toggle="modal">Student Loans</a></h3>
                         </div>
 
                         <div class="hover">
@@ -246,7 +247,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Judgments</a></h3>
+                            <h3><a href="#judgments" data-toggle="modal">Judgments</a></h3>
                         </div>
 
                         <div class="hover">
@@ -261,7 +262,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Fraud Accounts</a></h3>
+                            <h3><a href="#fraud" data-toggle="modal">Fraud Accounts</a></h3>
                         </div>
 
                         <div class="hover">
@@ -276,7 +277,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Charge Offs</a></h3>
+                            <h3><a href="#charge" data-toggle="modal">Charge Offs</a></h3>
                         </div>
 
                         <div class="hover">
@@ -291,7 +292,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Repossessions</a></h3>
+                            <h3><a href="#repossessions" data-toggle="modal">Repossessions</a></h3>
                         </div>
 
                         <div class="hover">
@@ -305,7 +306,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">Mixed Files</a></h3>
+                            <h3><a href="#mixed" data-toggle="modal">Mixed Files</a></h3>
                         </div>
 
                         <div class="hover">
@@ -319,7 +320,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#">General Delinquencies</a></h3>
+                            <h3><a href="#general" data-toggle="modal">General Delinquencies</a></h3>
                         </div>
 
                         <div class="hover">
@@ -531,6 +532,239 @@
             <a href="#" class="btn btn-primary pull-right">Know More</a>
         </div>
     </section> <!-- secure-section -->
+
+    <div class="modal fade" id="bankruptcies" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Bankruptcy</h3>
+                    <p style="text-align: justify">
+                        Bankruptcy is a court proceeding in which a judge and court trustee examine the assets and
+                        liabilities of individuals and businesses who can’t pay their bills and decide whether to
+                        discharge those debts so they are no longer legally required to pay them. Bankruptcy will have
+                        a devastating impact on your credit health. The exact effects will vary. But according to the
+                        top-scoring model FICO, filing for bankruptcy can send a good credit score of 700 or above
+                        plummeting by at least 200 points. If your score is a bit lower—around 680—you can lose between
+                        130 and 150 points.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="mixed" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Mixed Files</h3>
+                    <p style="text-align: justify">
+                        A mixed credit file occurs whenever a CRA inadvertently commingles the credit
+                        histories of two different individuals into a single report. The result is a credit report
+                        that contains information belonging to two different consumers, bundled together as if those
+                        two people were the same person.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="inquiries" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Inquiries</h3>
+                    <p style="text-align: justify">
+                        An inquiry refers to a request to look at your credit file and falls into one of two
+                        camps: hard or soft. A credit inquiry occurs when you apply for a credit card or loan and permit
+                        the issuer or lender to check your credit. Some inquiries, such as soft inquiries, do not affect
+                        your credit score, but others, such as hard inquiries can lower your credit score. In general,
+                        hard credit inquiries have a small impact on your FICO Scores. For most people, one additional
+                        hard credit inquiry will take less than five points off their FICO Scores. For perspective, the
+                        full range for FICO Scores is 300-850. Hard Inquiries can have a greater impact if you have few
+                        accounts or short credit history.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="charge" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Charge Offs</h3>
+                    <p style="text-align: justify">
+                        A charge-off is a declaration by a creditor (usually a credit card account) that an
+                        amount of debt is unlikely to be collected. This occurs when a consumer becomes severely
+                        delinquent on a debt. Traditionally, creditors make this declaration at the point of six months
+                        without payment. If you have a loan marked as charged off, it will hurt your credit score
+                        drastically. A charge-off will remain on your credit report for seven years. Even if an account
+                        is charged off, you still owe the money. And, as it turns out, it may even make it more
+                        challenging to repay the debt afterward.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="mortgage" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Mortgage Negatives</h3>
+                    <p style="text-align: justify">
+                        A delinquent mortgage is a home loan for which the borrower has failed to
+                        make payments as required in the loan documents. A mortgage will be considered delinquent or
+                        late when a scheduled payment is not made on or before the due date. If the borrower can't bring
+                        the payments on a delinquent mortgage current within a certain time period, the lender may begin
+                        foreclosure proceedings. A lender may also offer a borrower a number of options to help prevent
+                        foreclosure when a mortgage becomes delinquent.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="student" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Student Loans</h3>
+                    <p style="text-align: justify">
+                        Some borrowers may not realize it, but student loan debt is a personal financial
+                        liability that needs to be viewed like any other financial obligation – and with the same sense
+                        of urgency as other payments. The reality is that missing student loan payments can hold you
+                        back financially, just like missing credit card or car payments will. A student loan is
+                        considered delinquent the first day after you miss a payment; if the delinquency lasts more
+                        than 90 days, your loan servicer, which handles the billing and other services for your loan,
+                        will report it to the three major national credit bureaus, which will lower your credit score.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="repossessions" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Repossessions</h3>
+                    <p style="text-align: justify">
+                         The simple definition of repossession is reclaiming ownership of something that
+                        has not been paid off but still has value. In most cases, cars are the primary asset involved in
+                        repossession, but it could be real estate, jewelry, artwork, or any tangible asset that can be
+                        sold to recoup money for the unpaid loan balance. In all, a repo could cause a 100-point drop
+                        in your credit score, Sanford says. And late payments, collections, and public records generally
+                        all stay on your credit for about seven years, according to
+                        <a href="myFICO.com" target="_blank">myFICO.com.</a> You can stop a repo. The
+                        key is to communicate with the lender.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="collections" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Collections</h3>
+                    <p style="text-align: justify">
+                         Once an account is sold to a collection agency, the collection account can then be
+                        reported as a separate account on your credit report. Collection accounts have a significant
+                        negative impact on your credit scores. Collections can appear from unsecured accounts, such as
+                        credit cards and personal loans. Collections have a negative effect on your credit score. The
+                        older a collection is, the less it hurts you. Collections remain on your credit report for seven
+                        years past the date of delinquency. In the newest versions of FICO® and VantageScore®, paid
+                        collections don't hurt your score but unpaid collections do.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="judgments" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Judgments</h3>
+                    <p style="text-align: justify"
+                         A judgment is a court order that is the decision in a lawsuit. If a judgment is
+                        entered against you, a debt collector will have stronger tools, like garnishment, to collect
+                        the debt. Judgments are no longer factored into credit scores, though they are still public r
+                        ecords and can still impact your ability to qualify for credit or loans. Lenders may still check
+                        to see whether any outstanding judgments against a potential borrower exist.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="late" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Late Payment Remarks</h3>
+                    <p style="text-align: justify">
+                         If you're late paying a bill, your creditor might report it to the consumer
+                        credit bureaus — and that could hurt your credit. But you might be able to get the late payment
+                        removed if you paid on time or other factors are present, or if it's more than seven years old.
+                        On-time payments are the biggest factor affecting your credit score, so missing a payment can
+                        sting. If you have otherwise spotless credit, a payment that's more than 30 days past due can
+                        knock as many as 100 points off your credit score. If your score is already low, it won't hurt
+                        it as much but will still do damage.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="fraud" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Fraud Accounts</h3>
+                    <p style="text-align: justify">
+                         Fraudulent accounts can damage your credit scores, mainly because the identity
+                        thief is highly unlikely to make any payments on the account. So, in addition to reporting the
+                        fraud to the credit card issuer and the police, dispute the unauthorized account with the credit
+                        bureaus. While having your credit card or debit card account information stolen can undeniably
+                        be quite frustrating, the good news is that fraudulent charges generally will not impact your
+                        credit reports and scores at all.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{{--    <script>--}}
+{{--        $(document).ready(function(){--}}
+{{--            $("a").on('click', function(event) {--}}
+{{--                if (this.hash !== "") {--}}
+{{--                    event.preventDefault();--}}
+
+{{--                    var hash = this.hash;--}}
+
+{{--                    $('html, body').animate({--}}
+{{--                        scrollTop: $(hash).offset().top--}}
+{{--                    }, 500, function(){--}}
+{{--                        console.log(window.location.hash)--}}
+{{--                        window.location.hash = hash;--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 
 
 

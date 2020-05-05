@@ -8261,18 +8261,17 @@ input[type="submit"] {
     align-items: center;
     min-height: calc(100% - 1rem);}
 
-
-
-
 .files input {
-    outline-offset: -10px;
-    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    padding: 120px 0px 85px 35%  !important;
-    text-align: center !important;
-    margin: 0;
-    width: 100% !important;
+    display: inline-block;
+    width: 100%;
+    padding: 250px 0 0 35%;
+    height: 100px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 .files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
     -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
     transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
@@ -8284,35 +8283,7 @@ input[type="submit"] {
     display: block;
 }
 .files{ position:relative}
-.files:after {  pointer-events: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 70px;
-    right: 0;
-    height: 76px;
-    content: "";
-    background-image: url(/images/upload.png);
-    display: block;
-    margin: 0 auto;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
+
 .color input{ background-color:#f1f1f1;}
-.files:before {
-    position: absolute;
-    bottom: 0px;
-    left: 0;  pointer-events: none;
-    width: 100%;
-    right: 0;
-    height: 57px;
-    content: " or drag it here. ";
-    display: block;
-    margin: 0 auto;
-    color: #341d31;
-    font-weight: 900;
-    font-size: 20px;
-    text-transform: capitalize;
-    text-align: center;
-}
+
 

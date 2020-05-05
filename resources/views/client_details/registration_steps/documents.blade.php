@@ -18,19 +18,90 @@
         background-size: 80%;
         background-repeat: no-repeat;
         background-position: center;
-
     }
     .social_security {
-
         background-image: url(/images/correct-ss.png);
         display: block;
         background-size: 80%;
         background-repeat: no-repeat;
         background-position: center;
+    }
+    .driver_license:after, .social_security:after {  pointer-events: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 70px;
+        right: 0;
+        height: 76px;
+        content: "";
+        background-image: url(/images/upload.png);
+        display: block;
+        margin: 0 auto;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .driver_license:before, .social_security:before {
+        position: absolute;
+        bottom: 0px;
+        left: 0;  pointer-events: none;
+        width: 100%;
+        right: 0;
+        height: 57px;
+        content: "choose or drag it here. ";
+        display: block;
+        margin: 0 auto;
+        color: #341d31;
+        font-weight: 900;
+        font-size: 20px;
+        text-transform: capitalize;
+        text-align: center;
+    }
+
+    .driver_dropp, .social_dropp {
+        display: block;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .driver_dropp:before {
+        position: absolute;
+        bottom: 0px;
+        left: 0;  pointer-events: none;
+        width: 100%;
+        right: 0;
+        height: 57px;
+        content: "ID IS ATTACHED ";
+        display: block;
+        margin: 0 auto;
+        color: #341d31;
+        font-weight: 900;
+        font-size: 20px;
+        text-transform: capitalize;
+        text-align: center;
+    }
+    .social_dropp:before {
+        position: absolute;
+        bottom: 0px;
+        left: 0;  pointer-events: none;
+        width: 100%;
+        right: 0;
+        height: 57px;
+        content: "SSC IS ATTACHED";
+        display: block;
+        margin: 0 auto;
+        color: #341d31;
+        font-weight: 900;
+        font-size: 20px;
+        text-transform: capitalize;
+        text-align: center;
+    }
+
+    .pdf_icon{
+        background-image: url(/images/pdf_icon.png);
 
     }
     .drag-over{
-        background-color: sty;
+        background-color: #2196f3;
     }
 
     button, input {
@@ -67,16 +138,17 @@
             <label title="Upload Your Driver License or Identification card" style="text-align: center;font-weight: 900; font-size: 16px">
                 Upload Your Driver License or Identification card
             </label>
-            <input class="driver_license" type="file" name="driver_license"  class="driver_license">
+            <input class="driver_license" type="file" name="driver_license"  id="driver_license">
         </div>
         <div class="col-sm-6 form-group files">
             <label title="Upload Your Social Security">
                 Upload Your Social Security
             </label>
-            <input class="social_security" type="file" name="social_security">
+            <input class="social_security" type="file" name="social_security"  id="social_security" >
         </div>
     </div>
     <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+
 {!! Form::close() !!}
 
 
@@ -87,19 +159,59 @@
     </p>
 @endif
 
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
 
 <script>
+
+
     $(document).ready(function () {
 
-        $("#doc_sunb").submit(function( event ) {
-            $('#preloader').css('background-color', 'transparent');
-            $('#preloader').show()
+        $("#driver_license").change(function(e) {
+            $(this).removeClass('driver_license')
+
+            $(this).removeClass('driver_dropp')
+            var file = e.target.files[0]
+            if(file.type == "application/pdf"){
+                $(this).addClass('driver_dropp')
+                $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
+            }else{
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $(".driver_dropp").css('background-image','url('+ event.target.result +')');
+                }
+                reader.readAsDataURL(file);
+            }
+
+            $(this).removeClass('driver_license')
+            $(this).addClass('driver_dropp')
+           // $(".driver_dropp").css('background-image',file)
         });
 
-         $('.driver_license').bind('dragover', function(){
-           console.log('xxx')
-             $(this).addClass('drag-over');
+        $("#social_security").change(function(e) {
+            $(this).removeClass('social_dropp')
+            var file = e.target.files[0]
+
+            if(file.type == "application/pdf"){
+                $(this).addClass('socia_dropp')
+                $(".socia_dropp").css('background-image', 'url("/images/pdf_icon.png")');
+            }else{
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $(".social_dropp").css('background-image','url('+ event.target.result +')');
+                }
+                reader.readAsDataURL(file);
+            }
+            $(this).removeClass('social_security')
+            $(this).addClass('social_dropp')
+           // $(".driver_dropp").css('background-image',file)
+        });
+
+        $('.driver_license').bind('dragover', function(){
+            console.log('xxx')
+            $(this).addClass('drag-over');
         });
         $('.driver_license').bind('dragleave', function(){
             $(this).removeClass('drag-over');
@@ -110,6 +222,15 @@
         $('.social_security').bind('dragleave', function(){
             $(this).removeClass('drag-over');
         });
+
+
+
+        $("#doc_sunb").submit(function( event ) {
+            $('#preloader').css('background-color', 'transparent');
+            $('#preloader').show()
+        });
+
+
 
         //on submit
         // $('#preloader').css('background-color', 'transparent');
