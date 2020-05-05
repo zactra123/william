@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APSocialiteP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
