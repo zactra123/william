@@ -328,4 +328,14 @@ class ClientDetailsController extends Controller
         return redirect(route('client.details.index'))->with('success', "Your report uploaded");
 
     }
+
+    public function continue()
+    {
+        $client = Auth::user();
+        ClientDetail::where('user_id', $client->id)->update(['registration_steps'=>'review']);
+
+
+        $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
+        return view('client_details.create', compact('client', 'uploadUserDetail'));
+    }
 }

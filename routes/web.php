@@ -158,6 +158,7 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
 
 Route::group(['prefix' =>'client'], function() {
+    Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
     Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');

@@ -27,7 +27,7 @@
 
             <div class="col-md-12 tab-selector">
                 <div class="col-md-12">
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name='client[dob]' class="form-control m-input" id="dob"  value ="{{ !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob}}" placeholder ="DATE OF BIRTH">
+                    <input placeholder="DATE OF BIRTH" name='client[dob]' class="form-control m-input" type="text" id="date" value ="{{ !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob}}">
                 </div>
             </div>
 
@@ -102,6 +102,17 @@
 
         $(".ssn").mask("999-99-9999");
         $('#phone_number').mask('(000) 000-0000');
+
+        $('#date').focus(function () {
+
+            this.type='date';
+        });
+        $('#date').click(function () {
+            this.type='date';
+        })  ;
+        $('#date').blur(function () {
+            if(this.value==''){this.type='text'};
+        });
 
 
 

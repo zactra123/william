@@ -1,7 +1,7 @@
 <div class="card w-75">
     <div class=" text-center    ">
         <p >
-            I will provide you the requested login credentials in a timely manner CLICK TO  CONTINUE.
+            I will provide you the requested login credentials in a timely manner <a href="{{route('client.continue')}}">CLICK TO  CONTINUE.</a>
         </p>
     </div>
 
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="col"><input type="submit" value="{{!empty($client->credentials)?"Submit":"Continue"}}" class="ms-ua-submit"></div>
+        <div class="col"><input type="submit" value="Submit" class="ms-ua-submit"></div>
         {!! Form::close() !!}
     </div>
 {{--</div>--}}
