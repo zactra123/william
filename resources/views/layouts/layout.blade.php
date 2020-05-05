@@ -213,17 +213,20 @@
 
                         <ul class="wrapper-option clearfix">
                             <li><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="{{route('contact')}}">Contact Us</a></li>
+{{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
                             <li><a href="#">Careers</a></li>
+                            <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
+                            <li><a href="{{route('credit.repair')}}">Resources</a></li>
                             <li><a href="#">Newsroom</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="{{route('faqs')}}">Frequently Asked Questions</a></li>
-                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
+{{--                            <li><a href="#">Affiliates</a></li>--}}
+
+
                         </ul> <!-- wrapper-option -->
 
-                        <ul class="wrapper-option">
-                            <li><a href="{{route('credit.repair')}}">Credit Resources</a></li>
-                            <li><a href="{{route('legalityCreditRepair')}}">Legality of the Credit Repair</a></li>
+
+
+                        <ul class="wrapper-option " style="padding-left: 20px">
+                            <li><a href="{{route('faqs')}}">FAQ</a></li>
                             <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
                             <li>
                                 <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
@@ -235,6 +238,7 @@
                                     Identity Theft
                                 </a>
                             </li>
+                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
                         </ul> <!-- wrapper-option -->
                     </div> <!-- footer-wrapper -->
                 </div>

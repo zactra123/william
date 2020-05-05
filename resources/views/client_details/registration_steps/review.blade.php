@@ -6,7 +6,8 @@
 
 <div class="card w-75">
     <div class="text-center">
-        <h3>PLEASE REVIEW YOUR PERSONAL DATA AND MAKE CHANGES IF NECESSARY</h3>
+        <h3>PLEASE VERIFY YOUR INFORMATION AND MAKE CHANGES IF NECESSARY</h3>
+
     </div>
     <div class="card-body ">
         {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
@@ -17,7 +18,7 @@
             <div class="col-md-12 tab-selector">
                 <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
                 <div class="col-md-12" class="col-md-12 ">
-                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Enter your last name']) }}
+                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
                 </div>
             </div>
 
@@ -28,7 +29,7 @@
             <div class="col-md-12 tab-selector">
                 <label for="uploaded_dob" class="col-md-12 "> DATE OF BIRTH :  </label>
                 <div class="col-md-12">
-                    {{ Form::date('client[dob]', !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input']) }}
+                    {{ Form::date('client[dob]', !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME' ]) }}
                 </div>
             </div>
 
@@ -37,7 +38,7 @@
             <div class="col-md-12 tab-selector">
                 <label for="password" class="col-md-12 "> SOCIAL SECURITY NUMBER:  </label>
                 <div class="col-md-12">
-                    {{ Form::text('client[ssn]', !empty($uploadUserDetail) ? $uploadUserDetail->ssn :  $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'Enter your SSN']) }}
+                    {{ Form::text('client[ssn]', !empty($uploadUserDetail) ? $uploadUserDetail->ssn :  $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
                 </div>
             </div>
         </div>
@@ -45,7 +46,7 @@
             <div class="col-md-12 tab-selector">
                 <label for="password" class="col-md-12 ">CURRENT STREET ADDRESS:</label>
                 <div class="col-md-12">
-                    {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->address :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Enter your address']) }}
+                    {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->address :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                 </div>
             </div>
         </div>
@@ -53,7 +54,7 @@
             <div class="col-md-12 tab-selector">
                 <label for="password" class="col-md-12 ">   ZIP CODE:  </label>
                 <div class="col-md-12">
-                    {{ Form::text('client[zip]',  !empty($uploadUserDetail) ? $uploadUserDetail->zip :  $client->clientDetails->ssn, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'Enter your zip']) }}
+                    {{ Form::text('client[zip]',  !empty($uploadUserDetail) ? $uploadUserDetail->zip :  $client->clientDetails->ssn, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'ZIP CODE']) }}
                 </div>
             </div>
         </div>

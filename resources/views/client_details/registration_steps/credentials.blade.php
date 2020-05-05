@@ -1,9 +1,7 @@
 <div class="card w-75">
     <div class=" text-center    ">
         <p >
-            Please provide the following credit bureau/monitoring services login credentials. If you do not have one or
-            any of them, please register and provide us with login credentials.I will provide you with requested login
-            credentials in a timely manner CLICK TO SUBMIT.
+            I will provide you the requested login credentials in a timely manner CLICK TO  CONTINUE.
         </p>
     </div>
 
@@ -54,7 +52,8 @@
                 {{ Form::text('client[eq_password]', !empty($client->credentials->eq_password) ? $client->credentials->eq_password : old('client.eq_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
             </div>
         </div>
-        <div class="col"><input type="submit" value="Submit" class="ms-ua-submit"></div>
+
+        <div class="col"><input type="submit" value="{{!empty($client->credentials)?"Submit":"Continue"}}" class="ms-ua-submit"></div>
         {!! Form::close() !!}
     </div>
 {{--</div>--}}
