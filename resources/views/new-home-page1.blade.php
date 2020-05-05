@@ -694,7 +694,7 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h3>Judgments</h3>
-                    <p style="text-align: justify"
+                    <p style="text-align: justify">
                          A judgment is a court order that is the decision in a lawsuit. If a judgment is
                         entered against you, a debt collector will have stronger tools, like garnishment, to collect
                         the debt. Judgments are no longer factored into credit scores, though they are still public r
