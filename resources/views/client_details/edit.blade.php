@@ -21,9 +21,9 @@
                                 <div class="form-group row font justify-content-center">
 
                                     <div class="col-md-12 tab-selector">
-                                        <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
+
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'ENTER FULL NAME']) }}
+                                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
                                         </div>
                                     </div>
 
@@ -31,9 +31,9 @@
                                 <div class="form-group row font justify-content-center">
 
                                     <div class="col-md-12 tab-selector">
-                                        <label for="uploaded_last_name" class="col-md-12 ">FULL NAME: </label>
+
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'ENTER PHONE NUMBER']) }}
+                                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
                                         </div>
                                     </div>
 
@@ -42,42 +42,39 @@
                                 <div class="form-group row font justify-content-center">
 
                                     <div class="col-md-12 tab-selector">
-                                        <label for="uploaded_dob" class="col-md-12 "> DATE OF BIRTH :  </label>
+
                                         <div class="col-md-12">
-                                            {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input']) }}
+                                            {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
-                                        <label for="password" class="col-md-12 "> SOCIAL SECURITY NUMBER:  </label>
+
                                         <div class="col-md-12">
-                                            {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'ENTER YOUR  SOCIAL SECURITY NUMBER']) }}
+                                            {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
-                                        <label for="password" class="col-md-12 ">CURRENT STREET ADDRESS:</label>
                                         <div class="col-md-12">
-                                            {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'ENTER YOUR CURRENT STREET ADDRESS']) }}
+                                            {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
-                                        <label for="password" class="col-md-12 ">   ZIP CODE:  </label>
                                         <div class="col-md-12">
-                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'ENTER YOUR ZIP CODE']) }}
+                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'YOUR ZIP CODE']) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
-                                        <label for="password"  class="col-md-12 ">  GENDER</label>
                                         <div class="col-md-12 sex_options">
-                                            {{ Form::select('client[sex]', ['M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
+                                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
                                         </div>
                                     </div>
                                 </div>
