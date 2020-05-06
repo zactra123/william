@@ -336,6 +336,6 @@ class ClientDetailsController extends Controller
 
 
         $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
-        return view('client_details.create', compact('client', 'uploadUserDetail'));
+        return redirect (route('client.details.create'));
     }
 }
