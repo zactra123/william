@@ -526,13 +526,6 @@
         </div>
     </section>
 
-    <section class="secure-section">
-        <div class="container">
-            <h2>We plan to make your business secure & reliable</h2>
-            <a href="#" class="btn btn-primary pull-right">Know More</a>
-        </div>
-    </section> <!-- secure-section -->
-
     <div class="modal fade" id="bankruptcies" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

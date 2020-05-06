@@ -28,11 +28,7 @@
             <div class="col-md-12 tab-selector">
                 <div class="col-md-12">
 
-                    @if(!empty($uploadUserDetail) || $uploadUserDetail->dob != null ||  $client->clientDetails->dob != null)
-                    {{ Form::date('client[dob]', !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
-                    @else
-                    <input placeholder="DATE OF BIRTH" name='client[dob]' class="form-control m-input" type="text" id="date" value ="{{ !empty($uploadUserDetail) ? $uploadUserDetail->dob : $client->clientDetails->dob}}">
-                    @endif
+                    {{ Form::date('client[dob]', !empty($uploadUserDetail) && !empty($uploadUserDetail->dob) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
                 </div>
             </div>
 
