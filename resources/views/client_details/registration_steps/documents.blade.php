@@ -138,19 +138,19 @@
             <label title="Upload Your Driver License or Identification card" style="text-align: center;font-weight: 900; font-size: 16px">
                 Upload Your Driver License or Identification card
             </label>
-            <input class="driver_license" type="file" name="driver_license"  id="driver_license">
+            <input class="driver_license file-box" type="file" name="driver_license"  id="driver_license">
         </div>
         <div class="col-sm-6 form-group files">
             <label title="Upload Your Social Security">
                 Upload Your Social Security
             </label>
-            <input class="social_security" type="file" name="social_security"  id="social_security" >
+            <input class="social_security file-box" type="file" name="social_security"  id="social_security" >
         </div>
     </div>
     <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
 
 {!! Form::close() !!}
-
+<canvas class="hidden" id="pdfViewer"></canvas>
 
 {{--    if both documents are uploaded--}}
 @if( $client->clientAttachments->whereIn("category", ["DL","SS"])->count() == 2)
@@ -161,8 +161,54 @@
 
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 
-
 <script>
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+    $(".file-box").on("change", function(e){
+        var file = e.target.files[0]
+        var _this = this
+        if(file.type == "application/pdf"){
+            var fileReader = new FileReader();
+            fileReader.onload = function() {
+                var pdfData = new Uint8Array(this.result);
+                var loadingTask = pdfjsLib.getDocument({data: pdfData});
+                loadingTask.promise.then(function(pdf) {
+                    console.log('PDF loaded');
+
+                    // Fetch the first page
+                    var pageNumber = 1;
+                    pdf.getPage(pageNumber).then(function(page) {
+                        console.log('Page loaded');
+
+                        var scale = 1.5;
+                        var viewport = page.getViewport({scale: scale});
+
+                        // Prepare canvas using PDF page dimensions
+                        var canvas = $("#pdfViewer")[0];
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        var renderTask = page.render(renderContext);
+                        renderTask.promise.then(function () {
+                            console.log(canvas.toDataURL("image/png", 0.8))
+                            $(_this).css('background-image', 'url("'+ $('#pdfViewer').get(0).toDataURL("image/jpeg", 0.8) +'")');
+                            $(_this).css('background-size', '200px');
+
+                        });
+                    });
+                }, function (reason) {
+                    console.error(reason);
+                });
+            };
+            fileReader.readAsArrayBuffer(file);
+        }
+    });
 
 
     $(document).ready(function () {
@@ -174,7 +220,7 @@
             var file = e.target.files[0]
             if(file.type == "application/pdf"){
                 $(this).addClass('driver_dropp')
-                $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
+                // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
             }else{
                 var reader = new FileReader();
 
@@ -195,7 +241,6 @@
 
             if(file.type == "application/pdf"){
                 $(this).addClass('socia_dropp')
-                $(".socia_dropp").css('background-image', 'url("/images/pdf_icon.png")');
             }else{
                 var reader = new FileReader();
 
