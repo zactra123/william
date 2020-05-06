@@ -14,18 +14,14 @@ class ChangeUploadClientDetailsNullable extends Migration
     public function up()
     {
 
-        Schema::table('upload_client_details', function (Blueprint $table) {
-            $table->string('first_name')->nullable()->change();
-            $table->string('last_name')->nullable()->change();
-            $table->date('dob')->nullable()->change();
-            $table->string('ssn')->nullable()->change();
-            $table->string('state')->nullable()->change();
-            $table->string('city')->nullable()->change();
-            $table->string('address')->nullable()->change();
-            $table->string('zip')->nullable()->change();
-        });
-
-
+        DB::statement("alter table upload_client_details modify first_name varchar(191) null;");
+        DB::statement("alter table upload_client_details modify last_name varchar(191) null;");
+        DB::statement("alter table upload_client_details modify dob date null;");
+        DB::statement("alter table upload_client_details modify ssn varchar(191) null;");
+        DB::statement("alter table upload_client_details modify state varchar(191) null;");
+        DB::statement("alter table upload_client_details modify city varchar(191) null;");
+        DB::statement("alter table upload_client_details modify address varchar(191) null;");
+        DB::statement("alter table upload_client_details modify zip varchar(191) null;");
     }
 
     /**
@@ -35,16 +31,5 @@ class ChangeUploadClientDetailsNullable extends Migration
      */
     public function down()
     {
-        Schema::table('upload_client_details', function (Blueprint $table) {
-            $table->dropColumn('first_name');
-            $table->dropColumn('last_name');
-            $table->dropColumn('dob');
-            $table->dropColumn('ssn');
-            $table->dropColumn('state');
-            $table->dropColumn('city');
-            $table->dropColumn('address');
-            $table->dropColumn('zip');
-        });
-
     }
 }
