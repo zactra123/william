@@ -320,7 +320,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="service-wrapper">
                         <div class="wrapper-content">
-                            <h3><a href="#general" data-toggle="modal">General Delinquencies</a></h3>
+                            <h3><a href="#chexsystems" data-toggle="modal">ChexSystems</a></h3>
                         </div>
 
                         <div class="hover">
@@ -740,6 +740,21 @@
                         be quite frustrating, the good news is that fraudulent charges generally will not impact your
                         credit reports and scores at all.
 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="chexsystems" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>ChexSystems</h3>
+                    <p style="text-align: justify">
+                        ChexSystems reports are a record of your bank account history.
+                        Depending on the type of account activity or public record that's been reported,
+                        a negative mark could remain on your ChexSystems report for up to 10 years.
                     </p>
                 </div>
             </div>
