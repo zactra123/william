@@ -85,7 +85,7 @@ class ClientDetailsController extends Controller
 
         $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
         if (!empty($uploadUserDetail)) {
-            return view('client_details.edit_with_upload_data', compact('client', 'uploadUserDetail'));
+            return view('client_details.edit', compact('client'));
         }
         return view('client_details.edit', compact('client'));
     }
@@ -107,10 +107,10 @@ class ClientDetailsController extends Controller
             'sex'=> ['required'],
             'ssn'=> ['required', 'string', 'max:255'],
             'address'=> ['required', 'string', 'max:255'],
-            'zip'=> ['required', 'string', 'max:255'],
         ]);
 
         if ($validation->fails()) {
+
             if(!empty($uploaded)) {
                 return redirect()->back()
                     ->withInput()
@@ -118,10 +118,18 @@ class ClientDetailsController extends Controller
             }
             return view('client_details.create')->withErrors($validation);
         } else {
-            $user = Arr::only($data, ['first_name', 'last_name']);
+
+           $user = Arr::only($data, ['first_name', 'last_name']);
             $clientDetails = Arr::except($data, ['full_name','first_name', 'last_name', 'sex_uploaded']);
 
-            $fullAddress =explode(',', str_replace([", USA", ",USA"],'', $data['address']));
+
+            $fullAddress =explode(',', str_replace([", USA", ",USA"],'', strtoupper($data['address'])));
+            if(isset($fullAddress[2])){
+                preg_match('/[A-Z]{2}/m', $fullAddress[2], $match);
+                $state = isset($match[0])?$match[0]:null;
+                $zip = str_replace([$state,' '],'',  $fullAddress[2]);
+            }
+
             $client_details = ClientDetail::where('user_id', $id)->first();
             $registration_steps = $client_details->registration_steps;
 
@@ -129,7 +137,9 @@ class ClientDetailsController extends Controller
             $clientDetails ["number"] = $number[0];
             $clientDetails['name'] = trim(str_replace($number[0],'',$fullAddress[0]));
             $clientDetails['city'] = isset($fullAddress[1])?trim($fullAddress[1]):null;
-            $clientDetails['name'] = isset($fullAddress[2])?trim($fullAddress[1]):null;
+            $clientDetails['state'] = isset($state)?$state:null;
+            $clientDetails['zip'] = isset($zip)?$zip:null;
+            $clientDetails['address'] = strtoupper($data['address']);
             $clientDetails['registration_steps'] = "finished";
 
             User::where('id', $id)->update([
@@ -210,8 +220,10 @@ class ClientDetailsController extends Controller
         $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
         $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
 
-        $pathDriverLicense = public_path() . '/' . $path . '/'. $nameDriverLicense;
-        $pathSocialSecurity = public_path() . '/' . $path . '/'. $nameSocialSecurity;
+        $pathDriverLicense = public_path() . '/' . $path . $nameDriverLicense;
+        $pathSocialSecurity = public_path() . '/' . $path . $nameSocialSecurity;
+
+
 
         $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
         $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity,$socialSecurityExtension);

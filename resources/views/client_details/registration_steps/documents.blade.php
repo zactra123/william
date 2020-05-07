@@ -160,6 +160,9 @@
 @endif
 
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+<script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
 
 <script>
     var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -196,7 +199,7 @@
                         };
                         var renderTask = page.render(renderContext);
                         renderTask.promise.then(function () {
-                            console.log(canvas.toDataURL("image/png", 0.8))
+                            // console.log(canvas.toDataURL("image/png", 0.8))
                             $(_this).css('background-image', 'url("'+ $('#pdfViewer').get(0).toDataURL("image/jpeg", 0.8) +'")');
                             $(_this).css('background-size', '200px');
 
@@ -210,8 +213,35 @@
         }
     });
 
-
     $(document).ready(function () {
+
+        $.validator.addMethod('filesize', function (value, element) {
+            console.log(element.files[0].type);
+            if(element.files[0].type == "application/pdf"){
+                return this.optional(element) || (element.files[0].size <= 1048576)
+            }else{
+                return this.optional(element) || (element.files[0].size <= 10485760)
+            }
+
+        }, 'File size must be less than 1mb');
+
+        $("#doc_sunb").validate({
+            rules: {
+                "social_security": {
+                    required:true,
+                    filesize : 1073741824,
+                },
+                "driver_license[dob]": {
+                    required:true,
+                    filesize : true,
+                },
+
+            },
+
+            errorPlacement: function(error, element) {
+                error.insertAfter($(element).parents(".form-group"));
+            }
+        })
 
         $("#driver_license").change(function(e) {
             $(this).removeClass('driver_license')
@@ -303,4 +333,8 @@
             }
         });
     })
+
+
+
+
 </script>

@@ -6,7 +6,6 @@ class ClientDetailsData
 {
     private $OCR_URL = "https://api.ocr.space/parse/image";
 
-
     public function getImageDriverLicense($path, $name, $extension)
     {
         $driverLicenseSize = false;
@@ -15,7 +14,7 @@ class ClientDetailsData
             $driverLicenseSize = \Image::make($path)->filesize();
         }
 
-        if($driverLicenseSize > 1073741824){
+        if($driverLicenseSize > 1048576){
 
             $draftPath = $this->resizeImage($path, $name);
 
@@ -48,7 +47,7 @@ class ClientDetailsData
             $socialSecuritySize = \Image::make($path)->filesize();
         }
 
-        if($socialSecuritySize > 1073741824){
+        if($socialSecuritySize > 1048576){
             $draftPath = $this->resizeImage($path, $name);
 
             $textSocialSecurity = $this->getImageData($draftPath);
@@ -124,7 +123,7 @@ class ClientDetailsData
         $fileData = fopen($input, 'r');
         try {
             $r = $client->request('POST', $this->OCR_URL,[
-                'headers' => ['apiKey' => '0c6334d53188957'],
+                'headers' => ['apiKey' =>config('app.ocr_key')],
                 'multipart' => [
                     [
                         'name' => 'file',
@@ -132,7 +131,7 @@ class ClientDetailsData
                     ],
                     [
                         'name' => 'OCREngine',
-                        'contents' => 1
+                        'contents' => 2
                     ],
                     [
                         'name' => "detectOrientation",
@@ -186,7 +185,6 @@ class ClientDetailsData
         preg_match("$addressCityStateRegex", $text, $addressCityState);
         preg_match_all("/([0-9]{2}\/[0-9]{2}\/[0-9]{4})|(([0-9]{2}\-[0-9]{2}\-[0-9]{4}))/im", $text, $expiration);
 
-
         if(isset($expiration[0])){
             $expirationDate = null;
             $newDob =  null;
@@ -222,12 +220,13 @@ class ClientDetailsData
         }
 
         if (isset($addressStreet[0])) {
-            $city = isset($result["city"]) ?$result["city"]:"";
-            $state = isset($result["state"])?$result["state"]:"";
-            $result["address"] = str_replace("\r", "", $addressStreet[0]).', '. $city.', '.$state;
+//            $city = isset($result["city"]) ?$result["city"]:"";
+//            $state = isset($result["state"])?$result["state"]:"";
+            $state = isset($addressCityState[0])?strtoupper($addressCityState[0]):"";
+            $result["address"] = strtoupper(str_replace("\r", "", $addressStreet[0])).', '. $state;
             preg_match("/([0-9]{1,})/im", $addressStreet[0], $number);
             $result ["number"] = $number[0];
-            $result['name'] = trim(str_replace($number[0],'',$addressStreet[0]));
+            $result['name'] = trim(strtoupper(str_replace($number[0],'',$addressStreet[0])));
         }
         return $result;
     }
@@ -238,9 +237,12 @@ class ClientDetailsData
     public function socialSecurityProccessing($text)
     {
         $result = [];
-        preg_match("/[0-9]{3}.+([0-9]{2}|[0-9]{2}.)+[0-9]{4}/im", $text, $ssn);
-        preg_match("/FOR\n+([A-Z]{1,}\s.*)/m", $text, $name);
+//        preg_match("/[0-9]{3}.+([0-9]{2}|[0-9]{2}.)+[0-9]{4}/im", $text, $ssn);
+        preg_match("/^[0-9]{3,}+[-0-9a-z ,'\/.]{3,9}$/im", $text, $ssn);
+        preg_match("/OR\n+([A-Z]{1,}\s.*)/m", $text, $name);
 //        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
+
+
 
         if (isset($ssn[0])) {
             $result['ssn'] = $ssn[0];
@@ -248,37 +250,37 @@ class ClientDetailsData
         if (isset($name[1])) {
 
             $full_name = count(explode(' ', str_replace("FOR\n","",$name[0])))<2
-                ?explode("\n", str_replace("FOR\n","",$name[0]))
-                :explode(' ', str_replace("FOR\n","",$name[0]));
+                ?explode("\n", str_replace("OR\n","",$name[0]))
+                :explode(' ', str_replace("OR\n","",$name[0]));
 
-            $result['first_name'] = $full_name[0];
-            $result['last_name'] = count($full_name) > 2 ? $full_name[2] : $full_name[1];
+            $result['first_name'] = strtoupper($full_name[0]);
+            $result['last_name'] = count($full_name) > 2 ? strtoupper($full_name[2]) : strtoupper($full_name[1]);
         }
+
+
+
         return $result;
     }
-
 
     //resize image for ocr
     public function  resizeImage($path, $name)
     {
-        if (!is_dir(public_path() . '/' . $path . '/draft')) {
-            mkdir(public_path() . '/' . $path . '/draft', 0777);
+        if (!is_dir(str_replace('/'.$name,'',$path). '/draft')) {
+            mkdir(str_replace('/'.$name,'',$path) . '/draft', 0777);
         }
-
         //path for resize image
-        $draft_path = public_path() . '/' . $path . '/draft/' . $name;
+        $draft_path =str_replace('/'.$name,'',$path). '/draft/' . $name;
 
         //resize image width and height
-        $height = \Image::make(public_path() . '/' . $path . '/' . $name)->height();
-        $width = \Image::make(public_path() . '/' . $path . '/' . $name)->width();
-        $img = \Image::make(public_path() . '/' . $path . '/' . $name);
+        $height = \Image::make($path)->height();
+        $width = \Image::make($path)->width();
+        $img = \Image::make($path);
 
         // resize image to fixed size
         $img->resize($width / 2, $height / 2);
 
         $img->save($draft_path);
-
-        if (\Image::make($draft_path)->filesize() < 1073741824) {
+        if (\Image::make($draft_path)->filesize() < 1048576) {
             return $draft_path;
         } else {
             return null;

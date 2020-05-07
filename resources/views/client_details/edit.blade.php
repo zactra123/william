@@ -60,17 +60,17 @@
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
                                         <div class="col-md-12">
-                                            {{ Form::text('client[address]', $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                                            {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row font justify-content-center">
-                                    <div class="col-md-12 tab-selector">
-                                        <div class="col-md-12">
-                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'YOUR ZIP CODE']) }}
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="form-group row font justify-content-center">--}}
+{{--                                    <div class="col-md-12 tab-selector">--}}
+{{--                                        <div class="col-md-12">--}}
+{{--                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'YOUR ZIP CODE']) }}--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
                                         <div class="col-md-12 sex_options">
@@ -113,6 +113,7 @@
             autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
+                $("#address").val(place.formatted_address)
                 for (var i = 0; i < place.address_components.length; i++) {
                     for (var j = 0; j < place.address_components[i].types.length; j++) {
                         if (place.address_components[i].types[j] == "postal_code") {
@@ -122,6 +123,7 @@
                     }
                 }
             });
+
 
 
             $(".ssn").mask("999-99-9999");
