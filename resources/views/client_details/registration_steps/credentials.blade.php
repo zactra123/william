@@ -29,7 +29,7 @@
                 {{ Form::text('client[ex_question]', !empty($client->credentials->ex_question) ? $client->credentials->ex_question : old('client.ex_question'), ['class' => 'form-control m-input', 'placeholder' => 'ANSWER TO SEQURITY QUESTION']) }}
             </div>
             <div class="form-group m-1  font">
-                {{ Form::text('client[ex_pin]', !empty($client->credentials->ex_pin) ? $client->credentials->ex_pin : old('client.ex_pin'), ['class' => 'form-control m-input', 'placeholder' => 'PIN NUMBER']) }}
+                {{ Form::text('client[ex_pin]', !empty($client->credentials->ex_pin) ? $client->credentials->ex_pin : old('client.ex_pin'), ['class' => 'form-control m-input', 'placeholder' => '4-DIGIT PIN NUMBER']) }}
             </div>
         </div>
         <div class="col-sm-12">

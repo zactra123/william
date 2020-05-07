@@ -270,9 +270,13 @@ class ClientDetailsController extends Controller
         }
         $c = Auth::user();
 
-        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
-            $request->session()->put('bad',true);
-        }elseif ($c->clientDetails->registration_steps =='documents') {
+//        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
+//            $request->session()->put('bad',true);
+//        }elseif ($c->clientDetails->registration_steps =='documents') {
+//            $c->clientDetails->update(['registration_steps'=>'credentials']);
+//        }
+
+        if ($c->clientDetails->registration_steps =='documents') {
             $c->clientDetails->update(['registration_steps'=>'credentials']);
         }
 //        $request->session()->put('bad',true);
