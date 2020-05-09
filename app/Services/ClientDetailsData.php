@@ -245,20 +245,17 @@ class ClientDetailsData
 //        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
 
 
-
         if (isset($ssn[0])) {
-            $result['ssn'] = $ssn[0];
+            $result['ssn'] =$res = preg_replace("/[^0-9.]/", "", $ssn[0]);
         }
         if (isset($name[1])) {
 
-            $full_name = count(explode(' ', str_replace("FOR\n","",$name[0])))<2
-                ?explode("\n", str_replace("OR\n","",$name[0]))
-                :explode(' ', str_replace("OR\n","",$name[0]));
-
+            $full_name = count(explode(' ', str_replace("\n"," ",$name[1])))<2
+                ?explode("\n", str_replace("\n"," ",$name[1]))
+                :explode(' ', str_replace("\n"," ",$name[1]));
             $result['first_name'] = strtoupper($full_name[0]);
             $result['last_name'] = count($full_name) > 2 ? strtoupper($full_name[2]) : strtoupper($full_name[1]);
         }
-
 
 
         return $result;
