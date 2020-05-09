@@ -138,7 +138,7 @@
         }, "Please choose one of the options");
 
         $.validator.addMethod("valid_address", function(value, element) {
-            return !!value.match(/^\d+\s[A-z\s.\,]+(\.)?/g);
+            return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
         }, "Not valid address format.");
 
         $("#clientDetailsForm").validate({

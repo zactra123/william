@@ -175,7 +175,8 @@ class ClientDetailsData
         // remove draft file
         $addressCityStateRegex = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
         MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
-        $addressStreetRegex = "/[0-9]{1,}.+?[A-Z]{2,}+[-A-Z0-9 ,#'\/.\\r]{3,50}$/im";
+//        $addressStreetRegex = "/[0-9]{1,}.+?[A-Z]{2,}+[-A-Z0-9 ,#'\/.\\r]{3,50}$/im";
+        $addressStreetRegex = "/[0-9]{1,}+[-A-Z0-9 ,#'\/.\\r]{3,50}$/im";
 
 //        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
@@ -201,6 +202,7 @@ class ClientDetailsData
             }
             $result["expiration"] = $expirationDate;
             $result['dob'] = $newDob;
+
 
         }
 
