@@ -239,8 +239,8 @@ class ClientDetailsData
     {
         $result = [];
 //        preg_match("/[0-9]{3}.+([0-9]{2}|[0-9]{2}.)+[0-9]{4}/im", $text, $ssn);
-        preg_match("/^[0-9]{2,}+[-0-9a-z ,'\/.]{3,9}$/im", $text, $ssn);
-        preg_match("/OR\n+([A-Z]{1,}\s.*)/m", $text, $name);
+        preg_match("/^[0-9]{2,}+[-0-9a-z \s]{3,9}$|^[A-Z]{1}+[0-9]{2,4}+[-0-9a-z \s]{3,9}$/im", $text, $ssn);
+        preg_match("/OR\n|NUM.*\n+([A-Z]{1,}\s.*)/m", $text, $name);
 //        preg_match("/^[A-Z\\n]{2,}+[-A-Z\s\,\\n]{2,}$/m", $text, $name);
 //        preg_match("/FOR\n+([A-Z]{1,}\s([A-Z]{1,}|.|)+(\s[A-Z]{1,}|\r\[A-Z]{1,}|))/m", $text, $name);
 
