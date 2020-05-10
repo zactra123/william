@@ -10,11 +10,9 @@ connectToChannel = function (user) {
             console.log(e.message['recipient_id'] , id, e.message['recipient_type'] , type , e.message);
 
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == type){
-                console.log('ashxatuma bayc chi nakrum!!!!!');
                 c(e.message)
             }
 
-            console.log('ashxatuma bayc chi nakrum');
             chatListHtml = '';
 
             $.each(e.recipient_lists, function( index, value ) {
@@ -22,16 +20,15 @@ connectToChannel = function (user) {
             });
 
             $("#chatListId").html(chatListHtml);
-            $("#"+type+id).addClass('active-user')
+            $("#"+type+id).addClass('active-user');
             $("#allMessageCount").html(messageCount)
         })
 };
 
 
 addMessageToChat = function(message) {
-
+    console.log(message)
     if ($("#showChatMessage").find(`[data-message-id='${message.id}']`).length > 0){
-
         return false;
     }
     var message_date = new Date(message['created_at']);
@@ -94,7 +91,6 @@ $(document).ready(function(){
             data:{id:id, type:type, _token: token},
             success: function (result) {
 
-                console.log(result);
 
                 $("#showChatMessage").html("")
                 $.each(result.chatMessage, function( index, value ) {

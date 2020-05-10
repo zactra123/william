@@ -199,8 +199,9 @@
         </div>
     </div>
 </div>
-
-@include('helpers.chat-box')
+@if (!Route::has('login') || Auth::user()->role == 'client')
+    @include('helpers.chat-box')
+@endif
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
