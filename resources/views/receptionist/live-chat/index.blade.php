@@ -135,13 +135,4 @@
         </div>
     </script>
 
-
-
-
-
 @endsection
-
-
-
-
-
