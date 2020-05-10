@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\User;
 class VerificationController extends Controller
 {
     /*
@@ -27,6 +28,7 @@ class VerificationController extends Controller
 
     public function verify(Request $request, $id)
     {
+
         $signuture = $request->signature;
         if (! $this->guard()->onceUsingId($id)) {
             throw new AuthorizationException;
@@ -34,8 +36,6 @@ class VerificationController extends Controller
         $user = $this->guard()->user();
 
         if (empty($user->password)) {
-
-
             if($request->isMethod("POST")) {
                 $this->validator($request->all())->validate();
                 $user->update(['password'=> Hash::make($request->password)]);
@@ -48,9 +48,17 @@ class VerificationController extends Controller
         if ($user->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
+
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
+        if ($user->hasVerifiedEmail()) {
+            if ($user->role == "client") {
+                $user->clientDetails->update(["registration_steps" => "documents"]);
+            }
+        }
+
+
         Auth::login($user, true);
         return redirect($this->redirectPath())->with('verified', true);
     }
@@ -78,7 +86,7 @@ class VerificationController extends Controller
                 break;
             case 'client':
                 if(empty(auth()->user()->clientDetails)){
-                    $this->redirectTo = '/client/details/create';
+                    $this->redirectTo = 'client/registration-steps';
                     return $this->redirectTo;
                     break;
                 }else{
@@ -101,9 +109,37 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
+
 //        $this->middleware('auth');
 //        $this->middleware('signed')->only('verify');
 //        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resend(Request $request)
+    {
+
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect($this->redirectPath());
+        }
+       $email_count =  Auth::user()->email_count;
+        if($email_count<3){
+            $email_count = $email_count +1;
+            User::where('id', Auth::user()->id)->update(['email_count'=> $email_count]);
+
+            $request->user()->sendEmailVerificationNotification();
+
+            return back()->with('resent', true);
+        }else{
+            return back()->with('unread', true);
+        }
+
     }
 
     protected function guard()

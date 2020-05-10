@@ -6,10 +6,12 @@
 
     <div class="container fon">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 pt-4">
                 <div class="card">
+                    <div class="card-header">  <h1>Add Client Details</h1> </div>
+
                     <div class="card-body">
-                        <h1>Add Your Details</h1>
+
                         {!! Form::open(['route' => ['affiliate.storeClientDetails', $client], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
 
                         @csrf

@@ -69,50 +69,6 @@ class HomePageContent extends Seeder
 
             ],
 
-
-            [
-                'url' => 'finding-credit-reporting-mistakes',
-                'category' => 1,
-                'title' => 'Finding Credit Reporting Mistakes',
-                'sub_content' =>'U.S. Public Interest Research Groups (PIRG) Studies. Credit reporting mistakes are very common.',
-                'content'=>'<p><strong><span style="font-size:12.0pt;line-height:107%;font-family:\'Times New Roman\',\'serif\';">U.S. Public Interest Research Groups (PIRG) Studies</span></strong></p>
-                <p>Credit reporting mistakes are very common. According to different studies conducted by the PIRG, 79% of all the credit reports available contain mistakes. Some of those mistakes have little effect on the consumer&rsquo;s credit report and score, but 60% of the reports containing mistakes will effect the consumer&rsquo;s credit worthiness, resulting in high premiums and interest rates on loans, or denial of credit and financing completely. </p>
-                <p><strong><span style="font-size:12.0pt;line-height:107%;font-family:\'Times New Roman\',\'serif\';">The Truth</span></strong></p>
-                <p>Sadly, errors are generally more common on the credit reports of individuals who have had credit issues previously. Thus, those who have experienced problems with their credit, need to keep a close watch on their credit reports. </p>
-                <p><strong><span style="font-size:12.0pt;line-height:107%;font-family:\'Times New Roman\',\'serif\';">Vigilance is the Key</span></strong></p>
-                <p>It is important to stay alert to avoid credit reporting errors. Even after your credit repair services are complete. You should monitor your credit on regular basis in order to stay informed of any changes and immediately deal with any mistakes that may occur from time to time.&nbsp;</p>',
-
-            ],
-            [
-                'url' => 'the-mighty-three',
-                'category' => 1,
-                'title' =>'The Mighty Three',
-                'sub_content'=>' Experian, Equifax, and TransUnion make up the Mighty Three consumer reporting agencies. They were not always in control of the credit world. Two decades ago, there were more than twelve credit reporting companies that supplied data to creditors. Some worked nationally, while others collected and sold regional data.</p>',
-                'content'=>'<p> Experian, Equifax, and TransUnion make up the Mighty Three consumer reporting agencies. They were not always in control of the credit world. Two decades ago, there were more than twelve credit reporting companies that supplied data to creditors. Some worked nationally, while others collected and sold regional data. Mergers and market evolution brought about the mighty three today. Apart from the mighty three, there are still others, and some of the are essential. We will discuss them in the next part of this learning exercise.</p>',
-            ],
-            [
-                'url' => 'the-credit-enterprise',
-                'category' => 1,
-                'title' =>'The Credit Enterprise' ,
-                'sub_content'=>'The consumer reporting agencies are private organizations and are not owned by the government. They are set up to make profit by collecting, managing, sorting, packaging, marketing and selling credit data.',
-                'content'=>'<p>The consumer reporting agencies are private organizations and are not owned by the government. They are set up to make profit by collecting, managing, sorting, packaging, marketing and selling credit data. This data is used for marketing purposes. Their customers are lenders that use the data to give out loans. The data is used for marketing purposes. The consumer market has grown in a large scale as consumers came to know the importance of credit.</p>',
-            ],
-            [
-                'url' => 'the-credit-repair-view',
-                'category' => 1,
-                'title' =>'The Credit Repair View',
-                'sub_content'=>'From credit repair perspective, the credit organizations are not harmful. They are just part of the society. They do a good job as they manage the data of over 200 million Americans. ',
-                'content'=>'<p>From credit repair perspective, the credit organizations are not harmful. They are just part of the society. They do a good job as they manage the data of over 200 million Americans. As a company that engages in credit repair, our aim is to work within the system to correct our customers credit issues efficiently.</p>',
-
-            ],
-            [
-                'url' => 'other-credit-companies',
-                'category' => 1,
-                'title' =>'Other Credit Companies',
-                'sub_content'=>'Here are two other credit companies worth mentioning apart from Experian, Equifax, and TransUnion.',
-                'content'=>'<p>Here are two other credit companies worth mentioning apart from Experian, Equifax, and TransUnion.</p>',
-
-            ],
             [
                 'url' => 'innovis',
                 'category' => 2,
@@ -157,7 +113,7 @@ class HomePageContent extends Seeder
                 'category' => 2,
                 'title' =>'A Little History',
                 'sub_content'=>'In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers.',
-                'content'=>'<p>In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers. In 1995, credit scores became part of everyday financing when Fannie Mae and Freddie Mac, the mortgage giants, asked creditors to include the use of FICO credit scores in their approval decisions. Fair Isaac Corporation reported a revenue of over $881 million dollars in the year 2016, and trades on the New York Stock Exchange under the Symbol FIC. </p>',
+                'content'=>'<p>In the 1950s the FICO credit-scoring model was created by two Stanford University researchers, Bill Fair and Earl Isaac. In 1989, the automated FICO scores were first availed and used by the credit card issuers. In 1995, credit scores became part of everyday financing when Fannie Mae and Freddie Mac, the mortgage giants, asked creditors to include the use of FICO credit scores in their approval decisions. Fair Isaac Corporation reported a revenue of over $1.16 Billion dollars in the year 2019, and trades on the New York Stock Exchange under the Symbol FIC. </p>',
 
             ],
 

@@ -6,8 +6,8 @@
             font-size:100% !important;
         }
     </style>
-    <div class="container pt-4">
-        <div class="page-content">
+    <div class="container pt-5">
+        <div class="page-content pt-5">
             <div class="row justify-content-center">
                 @include("owner/report/reports_sidebar")
                 <div class="col-md-9">

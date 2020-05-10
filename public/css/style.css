@@ -4,7 +4,7 @@
  * Email: info@themezy.com
  * URL: http://themezy.com
  */
-/*=========================================== 
+/*===========================================
  * Importing CSS Libraries
  *===========================================*/
 article,
@@ -286,12 +286,13 @@ table {
 }
 
 .breadcrumbs {
-  background: #f6f7f9;
+  /*background: #f6f7f9;*/
   padding: 10px;
   font-size: 14px;
   font-size: 0.875em;
   color: #aeb0b9;
   font-weight: 300;
+    margin-top:100px;
 }
 .breadcrumbs a {
   color: #aeb0b9;
@@ -2082,8 +2083,17 @@ body {
   font-size: 16px;
   font-weight: 300;
   line-height: 30px;
-  color: #7d808c;
+  color: #1c1d1f;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: left;
+    background-color: #f8fafc;
 }
+
+
+
+
 @media screen and (max-width: 480px) {
   body {
     font-size: 14px;
@@ -2183,8 +2193,8 @@ body {
 .main-navigation .menu-toggle {
   display: none;
   background: none;
-  padding: 10px;
-  margin-top: 10px;
+  /*padding: 10px;*/
+  /*margin-top: 10px;*/
   border: none;
   outline: none;
 }
@@ -2245,14 +2255,13 @@ body {
   text-decoration: none;
   color: inherit;
   font-weight: 300;
-  font-size: 9px;
+  font-size: 13px;
   position: relative;
   border-bottom: 1px solid transparent;
   -webkit-transition: .2s ease;
           transition: .2s ease;
 }
 .main-navigation .menu .menu-item a:after {
-  content: "|";
   position: absolute;
   right: -20px;
   font-weight: 100;
@@ -2372,6 +2381,85 @@ img.pull-left, img.pull-right {
     display: block;
     text-align: center;
   }
+
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 700px;
+        margin: 1.75rem auto;
+    }
+}
+
+.gender-check {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -1.7rem;
+    margin-right: -1.7rem;
+}
+
+
+.files input {
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%  !important;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+}
+.pdf-upload{
+  display: none
+}
+.pdf-upload.active{
+  display: block;
+}
+.files{ position:relative}
+.files:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+    position: absolute;
+    bottom: 0px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #37a6d4;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.content{
+    min-height: 100vh;
+}
+
+.card-header {
+    margin-bottom: 0;
+    background-color: #0c71c3;
+    text-align: center;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 hr {
@@ -2384,7 +2472,7 @@ hr.spacer {
 }
 
 .site-footer {
-  background-color: #292c35;
+  /*background-color: #292c35;*/
   padding: 60px 0;
   color: #aaacb5;
 }
@@ -2501,7 +2589,7 @@ hr.spacer {
   text-align: center;
 }
 
-.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6 {
+.page-content h1, .page-content h2, .page-content h3, .page-content h4 {
   color: #0c71c3;
   margin: 0 0 10px;
   line-height: normal;
@@ -2562,4 +2650,11 @@ hr.spacer {
 .widget blockquote cite {
   font-weight: 500;
   font-style: normal;
+}
+.error{
+  color: #e3342f;
+}
+.alert{
+  position: fixed !important;
+  right: 0;
 }

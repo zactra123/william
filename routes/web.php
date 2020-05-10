@@ -19,6 +19,13 @@ Route::get('/', 'PagesController@welcome' );
 Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
+
+Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
+Route::get('contact', 'PagesController@contacts')->name('contact');
+Route::post('contact/send-message', 'PagesController@contactsSendMessage')->name('contact.sendMessage');
+Route::get('credit-repair-resources', 'PagesController@creditRepiarResouces')->name('credit.repair');
+Route::get('free-credit-repair', 'PagesController@creditFreeRepiar')->name('credit.free.repair');
+Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
@@ -31,6 +38,12 @@ Route::get('contacts', 'PagesController@contacts')->name('contacts');
 
 Auth::routes();
 Auth::routes(['verify' => true]);
+
+Route::get('/facebook/redirect', 'SocialAuthController@redirect')->name('facebook.login');
+Route::get('/facebook/callback', 'SocialAuthController@callback');
+
+Route::get('/google/redirect', 'SocialAuthController@redirectGoogle')->name('google.login');
+Route::get('/google/callback', 'SocialAuthController@callbackGoogle');
 
 Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')->name('register.Affiliate');
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
@@ -49,7 +62,9 @@ Route::group(['prefix'=>'owner'], function(){
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
 
+    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
     Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
+
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
@@ -60,6 +75,8 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
     Route::delete('faqs/question/delete/{id}', 'Owner\FaqsController@questiondelete');
+
+    Route::resource('slogans', 'Owner\SlogansController')->names('owner.slogans')->except(['show','update','edit']);
 
     //Reports actions
     Route::group(["prefix" => "report"], function(){
@@ -87,6 +104,9 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::post('client/report-number', 'AdminsController@clientReportNumber')->name('admin.client.report_number');
     Route::get('getNotifications', 'AdminsController@getNotifications');
 
+    Route::get('client-profile-print/{id}', 'AdminsController@printPdfClientProfile')->name('admin.client.profilePdf');
+
+
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
     Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
@@ -96,6 +116,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::get('message/{id}','MessagesController@show')->name('admin.message.show');
     Route::post('message/create','MessagesController@create')->name('admin.message.create');
     Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
+    Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
 
 
 
@@ -111,6 +132,7 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::get('message/{id}','Receptionist\MessagesController@show')->name('receptionist.message.show');
     Route::post('message/create','Receptionist\MessagesController@create')->name('receptionist.message.create');
     Route::delete('message/{id}','Receptionist\MessagesController@destroy')->name('receptionist.message.destroy');
+    Route::post('message/user/data','Receptionist\MessagesController@userData')->name('receptionist.message.userData');
 
     Route::get('live-chat','Receptionist\ChatsController@index')->name('receptionist.liveChat.index');
     Route::get('live-chat/unreads','Receptionist\ChatsController@unreads')->name('receptionist.liveChat.unreads');
@@ -140,14 +162,17 @@ Route::group(['prefix'=> 'affiliate'], function(){
 });
 
 
-Route::group(['prefix' =>'client/details'], function() {
+Route::group(['prefix' =>'client'], function() {
+    Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
     Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');
     Route::post('add/driver-license-social-security', 'ClientDetailsController@storeDlSs')->name('client.storeDriverSocial');
     Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
     Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
-    Route::resource('/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
+    Route::get('registration-steps', 'ClientDetailsController@create')->name('registration_steps');
+    Route::get('profile', 'ClientDetailsController@profile')->name('client.profile');
+    Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 
 
 //    Route::get('/details', 'ClientDetailsController@create')->name('createInfo');

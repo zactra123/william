@@ -8,10 +8,10 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Question</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">EMAI</th>
+                    <th scope="col">QUESTION</th>
+                    <th scope="col">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -158,6 +158,7 @@ class MessagesController extends Controller
             unset($messageHistory['id']);
 
             MessageHistory::create($messageHistory);
+            Message::find($id)->delete();
 
             return Response::json(["success" => true]);
         }
@@ -215,6 +216,4 @@ class MessagesController extends Controller
 
         return Response::json($data);
     }
-
-
 }

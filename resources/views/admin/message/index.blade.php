@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 
+
+
 @section('content')
 
-    <div class="container">
+    <div class="container mt-5 ">
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-11 pt-4">
                 <div class="container">
                     <div class="row justify-content-center">
-
                         <div class="list-group list-group-horizontal col-md-6">
                             <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
                             <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
@@ -15,9 +16,10 @@
                         </div>
                     </div>
                     <div class="response">
-
                     </div>
-                    <div id='calendar' class="card">
+                </div>
+                <div class="container pt-2">
+                    <div id='calendar' class="card pt-2" >
                     </div>
                 </div>
 
@@ -197,7 +199,6 @@
 
         </div>
     </div>
-    </div>
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -229,9 +230,16 @@
             background-color: #333333;
             opacity:0.8; // I ADDED THIS LINE
         }
+
+        .modal-content {
+
+            width: 150%;
+        }
         .appointment-desc{
             max-height: 150px;
         }
+
+
     </style>
 
     <script type="text/javascript">
@@ -246,7 +254,6 @@
                 $('.tab-selector').removeClass("active");
                 $(".completed" ).addClass("active");
             };
-
 
             $.ajaxSetup({
                 headers: {
@@ -355,13 +362,10 @@
                     }
                 });
 
-
             });
-
 
             $('.edit-appointment').click(function(){
                 var id = $(this).attr("data-id");
-
                 $.ajax({
                     type: 'GET',
                     url: "/admin/message/"+ id,
@@ -391,14 +395,12 @@
 
             })
 
-
             $("#updateMessage form").submit(function(e){
                 e.preventDefault();
                 var form = $(this).serializeArray(), data={};
                 $.each(form, function(index, el){
                     data[el.name] = el.value
                 });
-
                 $.ajax({
                     url:  "/admin/message/update",
                     type:"PUT",
@@ -420,13 +422,11 @@
                         $("#updateMessage form")[0].reset()
                         $('#updateMessage').modal('hide');
                     },
-
                     error:function (err, state) {
                         console.log(JSON.parse(err.responseText))
                         $("#updateMessage .text-danger").removeClass("d-none")
                     }
                 });
-
 
             })
 
@@ -437,7 +437,6 @@
                 $.each(form, function(index, el){
                     data[el.name] = el.value
                 });
-
                 $.ajax({
                     url: "/admin/message/create",
                     type:"POST",
@@ -457,14 +456,11 @@
                         $("#appointments form")[0].reset()
                         $('#appointments').modal('hide');
                     },
-
                     error:function (err, state) {
                         console.log(JSON.parse(err.responseText))
                         $("#appointments .text-danger").removeClass("d-none")
                     }
                 });
-
-
 
             })
 
@@ -489,45 +485,55 @@
                 })
             })
 
+            $('#phoneNumberId').keyup(function() {
 
-        });
+                var val = this.value.replace(/\D/g, '');
+                var newVal = '';
+                if(val.length > 4) {
+                    this.value = val;
+                }
 
+                if((val.length > 3) && (val.length <7)) {
+                    newVal += val.substr(0, 3) + '-';
+                    val = val.substr(3);
+                }
+                if (val.length > 6) {
+                    newVal += val.substr(0, 3) + '-';
+                    newVal += val.substr(3, 3) + '-';
+                    val = val.substr(6);
+                }
+                newVal += val;
+                this.value = newVal.substring(0, 12);
 
-        $('#phoneNumberId').keyup(function() {
+                if(newVal.length == 12){
+                    var token = "<?= csrf_token()?>";
+                    $.ajax({
+                        url: "message/user/data",
+                        method:"POST",
+                        data:{phone_number:newVal, _token: token},
+                        success: function (result) {
+                            if(result!=''){
 
-            var val = this.value.replace(/\D/g, '');
-            var newVal = '';
-            if(val.length > 4) {
-                this.value = val;
-            }
+                                $('#fullNameId').val(result.full_name);
+                                $('#emailId').val(result.email);
+                            }
+                        },
 
-            if((val.length > 3) && (val.length <7)) {
-                newVal += val.substr(0, 3) + '-';
-                val = val.substr(3);
-            }
-            if (val.length > 6) {
-                newVal += val.substr(0, 3) + '-';
-                newVal += val.substr(3, 3) + '-';
-                val = val.substr(6);
-            }
-            newVal += val;
-            this.value = newVal.substring(0, 12);
+                        error:function (err,state) {
+                            console.log(err)
+                        }
+                    });
+                }
+
+            });
+
         });
 
         function displayMessage(message) {
             $(".response").html("<div class='success'>"+message+"</div>");
             setInterval(function() { $(".success").fadeOut(); }, 1000);
         }
-
-
-
     </script>
-
-
-
-
-
-
 
 @endsection
 

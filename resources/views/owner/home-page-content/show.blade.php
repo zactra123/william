@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="fullwidth-block">
+    <div class="fullwidth-block mt-5 pt-5">
         <div class="container fon">
             <p class="row justify-content-center">
                 @foreach($content as $value)

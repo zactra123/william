@@ -89,7 +89,7 @@ class FAQsTableSeeder extends Seeder
             ],
             [
                 'title'=>'What is a “charge-off”? How does one change my credit score?',
-                'description'=>'When you take out credit, you are responsible for making payments on that account until 
+                'description'=>"When you take out credit, you are responsible for making payments on that account until 
                                 it is paid off. Sometimes, life gets in the way… and you may end up missing a 
                                 payment—or two or three. If 180 days pass without a payment from you, then your 
                                 creditor will “charge-off” your account, which allows them to count it as a loss for 
@@ -102,8 +102,8 @@ class FAQsTableSeeder extends Seeder
                                 Once this has happened, your credit score will fall, causing your current creditors to 
                                 raise your interest rates and many potential creditors to decline your application for 
                                 credit. You don’t want a charge-off on your credit report, so don’t let yours linger. 
-                                Better Credit Fix can help dispute charge-offs and other negative items and improve your
-                                 score.',
+                                 can help dispute charge-offs and other negative items and improve your
+                                 score.",
 
             ],
             [
@@ -115,7 +115,7 @@ class FAQsTableSeeder extends Seeder
                                 is possible) fair. We have the expertise to fight negative items on your report by 
                                 communicating with creditors and ensuring they meet these obligations to you in their 
                                 reports to credit bureaus. So even if everything in your report is accurate, with expert 
-                                negotiators like those on our Better Credit Fix team on your side, there’s more room for 
+                                negotiators like those on our Prudent Credit Solutions team on your side, there’s more room for 
                                 growth than you may think!',
 
             ],
@@ -139,7 +139,7 @@ class FAQsTableSeeder extends Seeder
                                 late many times before. You can also work to prevent future late payments by setting up 
                                 automatic payments from your bank account. To solve bigger issues with late payments, 
                                 you’ll want to dispute with a credit bureau to try and have the items removed. That’s 
-                                our specialty at Better Credit Fix—we know all the legal and financial ins and outs of 
+                                our specialty at Prudent Credit Solutions—we know all the legal and financial ins and outs of 
                                 credit, which allows us to better handle the disputation process—and get a better 
                                 outcome for you.',
 
@@ -185,7 +185,7 @@ class FAQsTableSeeder extends Seeder
                                 premature to consider credit repair when you’re still going through a bankruptcy, but 
                                 it’s the perfect time to seek help with credit repair because revised items can easily 
                                 be incorrectly reported on your score and harm your credit unnecessarily. If you contact 
-                                Better Credit Fix while filing for bankruptcy, we can work with you to make sure that 
+                                Prudent Credit Solutions while filing for bankruptcy, we can work with you to make sure that 
                                 all items appear correctly (and that any incorrect items are removed from your score), 
                                 ensuring that you get the best possible outcome from a stressful situation.',
 

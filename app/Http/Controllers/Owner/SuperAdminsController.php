@@ -95,7 +95,7 @@ class SuperAdminsController extends Controller
 
         $validation =  Validator::make($update, [
             'title' => ['required', 'string', 'max:255'],
-            'url'=>['required','string',  'max:255','unique:home_page_contents'],
+            'url'=>['required','string',  'max:255'],
             'category' => ['required', 'numeric'],
             'sub_content' => ['required', 'string'],
             'content' => ['required', 'string'],
@@ -103,8 +103,10 @@ class SuperAdminsController extends Controller
 
 
         if ($validation->fails()){
+
             return view('owner.home-page-content.edit', compact('content'))->withErrors($validation);
         }
+
 
         HomePageContent::where('url', $url)->update([
             'title' => $update['title'],

@@ -19,8 +19,11 @@ class Credential extends Model
         'ex_password',
         'ex_question',
         'ex_answer',
+        'ex_pin',
         'tu_login',
         'tu_password',
+        'eq_login',
+        'eq_password'
     ];
 
     public function user()

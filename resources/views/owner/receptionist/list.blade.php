@@ -1,30 +1,30 @@
 @extends('layouts.owner')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5 pt-5">
         <div class="row justify-content-end m-2">
             <a class="btn btn-success" href="{{ route('owner.receptionist.create')}}" role="button">
-                Create Receptionist
+                CREATE RECEPTIONIST
             </a>
         </div>
 
 
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="card">
 
                     <div class="card-header">
-                        <label class="header m-2">Receptionist List</label>
+                        <label class="header m-2">RECEPTIONIST LIST</label>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First name</th>
-                                <th scope="col">Last name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">FIRST NAME</th>
+                                <th scope="col">LAST NAME</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">ACTIONS</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -36,9 +36,11 @@
                                     <td>{{$receptionist['email']}}</td>
                                     <td>
 
-                                        <a href="{{route('owner.receptionist.edit', $receptionist['id'])}}" class="btn btn-primary" data-id="{{ $receptionist['id'] }}" ><span class="fa fa-pencil"></span></a>
+                                        <a href="{{route('owner.receptionist.edit', $receptionist['id'])}}" class="btn btn-primary" data-id="{{ $receptionist['id'] }}" >
+                                            <i class="fa fa-pencil-alt"></i></a>
 
-                                        <button class="btn btn-danger delete" data-id="{{ $receptionist['id'] }}" ><span class="fa fa-trash-o"></span></button>
+                                        <button class="btn btn-danger delete" data-id="{{ $receptionist['id'] }}" >
+                                            <i class="fa fa-trash"></i></button>
                                         <meta name="csrf-token" content="{{ csrf_token() }}">
                                     </td>
 

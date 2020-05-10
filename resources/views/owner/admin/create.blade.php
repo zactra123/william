@@ -7,13 +7,10 @@
             border-radius: 10px;
         }
 
-
-
     </style>
 
-
-    <div class="container">
-        <div class="row m-2">
+    <div class="container pt-5 mt-5">
+        <div class="row m-2 pt-4">
           <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
         </div>
 
@@ -22,14 +19,12 @@
             <div class="alert alert-danger">{{ $error }}</div>
 
         @endforeach
-
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-11">
 
                 <div class="card">
                     <div class="card-header">
                         <div class="head m-2">Create Admin</div>
-
                     </div>
                     <div class="card-body">
                         {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
@@ -55,12 +50,6 @@
                         <div id="newIp">
                         </div>
 
-
-
-
-
-
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -68,7 +57,6 @@
                                 </button>
                             </div>
                         </div>
-
 
                         {!! Form::close() !!}
 

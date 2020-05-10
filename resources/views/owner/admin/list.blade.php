@@ -1,31 +1,35 @@
 @extends('layouts.owner')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-end m-2">
-            <a class="btn btn-success" href="{{ route('owner.admin.create')}}" role="button">
-                Create Admin
-            </a>
+    <div class="container pt-4 mt-4">
+
+        <div class="row m-2  pt-4">
+            <div class="col-md-11 pull-right">
+                <a class="btn btn-primary pull-right" href="{{ route('owner.admin.create')}}" role="button">
+                    Create Admin
+                </a>
+            </div>
+
         </div>
 
 
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="card">
 
                     <div class="card-header">
-                        <label class="header m-2">Admins List</label>
+                        <label class="header m-2">ADMINS LIST</label>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First name</th>
-                                <th scope="col">Last name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Negative Type</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">FIRST NAME</th>
+                                <th scope="col">LAST NAME</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">NEGATIVE TYPE</th>
+                                <th scope="col">ACTION</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,9 +42,9 @@
                                     <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
                                     <td>
 
-                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><span class="fa fa-pencil"></span></a>
+                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-alt"></i></a>
 
-                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><span class="fa fa-trash-o"></span></button>
+                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash"></i></button>
                                         <meta name="csrf-token" content="{{ csrf_token() }}">
                                     </td>
 

@@ -24,11 +24,11 @@ class Admin
         elseif ( Auth::user()->role != 'admin'){
             return redirect()->to('/');
         }
-//        $allowed_ip = AllowedIp::where("user_id", Auth::user()->id)->where("ip_address", $request->ip())->first();
-//        if (!$allowed_ip){
-////            logout
-//            return redirect()->route('login');
-//        }
+        $allowed_ip = AllowedIp::where("user_id", Auth::user()->id)->where("ip_address", $request->ip())->first();
+        if (!$allowed_ip && env("APP_ENV") != "local"){
+            Auth::logout();
+            return redirect()->route('login');
+        }
         return $next($request);
     }
 }

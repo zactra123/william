@@ -83,7 +83,7 @@
 
 @section('content')
 
-    <div class="page-content pt-4">
+    <div class="page-content mt-5 pt-5">
         <div class="page-content p-0 mr-0 ml-0">
             {{--<div class="container">--}}
                 <div class="row mr-0 ml-0">

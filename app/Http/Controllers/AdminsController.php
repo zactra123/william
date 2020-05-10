@@ -8,6 +8,11 @@ use App\User;
 use App\ClientDetail;
 use Illuminate\Http\Request;
 use Response;
+use PDF;
+
+//Twilio
+use Twilio\Rest\Client;
+use Validator;
 
 class AdminsController extends Controller
 {
@@ -19,7 +24,20 @@ class AdminsController extends Controller
     public function index()
     {
 
-        return view('admin.index');
+        if(request()->ajax())
+        {
+            $messages = Message::whereDate('call_date', '>=', $request->start)
+                ->whereDate('call_date', '<=', $request->end);
+            if ($request->type == 'completed' || $request->type == 'pending'){
+                $messages = $messages->where('completed', $request->type == 'completed');
+            }
+            $messages = $messages->select("id", "title", "call_date as start", "call_date as end")->get()->toArray();
+
+            return Response::json($messages);
+        }
+
+
+        return view('admin.message.index');
     }
 
     public function list()
@@ -30,7 +48,7 @@ class AdminsController extends Controller
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
             ->where('users.role', 'client')
-            ->get();
+            ->paginate(10);
 
         return view('admin.user-list', compact( 'users'));
 
@@ -44,7 +62,7 @@ class AdminsController extends Controller
                 'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
             ->where('role', 'affiliate')
             ->groupBy('users.id')
-            ->get();
+            ->paginate(10);
         return view('admin.affiliate-list', compact('users'));
     }
 
@@ -57,6 +75,81 @@ class AdminsController extends Controller
 
 
     }
+
+    public function printPdfClientProfile($id)
+    {
+
+        $client = User::clients()->find($id);
+        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
+        return $pdf->download('invoice.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
+
+        dd($client);
+
+        $pdf = $pdf->setPaper('a4', 'portrait');
+
+        return  $pdf->stream('client-profile'.$id.'.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
+
+        return $pdf->download('client-profile'.$id.'.pdf');
+
+    }
+
+
+//Twilio
+    public function sendSms( Request $request )
+    {
+
+        $sid    = env( 'TWILIO_SID' );
+        $token  = env( 'TWILIO_AUTH_TOKEN' );
+        $client = new Client( $sid, $token );
+
+        //test
+
+//        $ok = $client->messages->create(
+//            '+374 93 050093',
+//            [
+////                'from' => '+15005550006',
+//                'from' => env( 'TWILIO_NUMBER' ),
+//                'body' => "Hello world",
+//            ]
+//        );
+//
+//        dd($ok );
+        $validator = Validator::make($request->all(), [
+            'numbers' => 'required',
+            'message' => 'required'
+        ]);
+
+        if ( $validator->passes() ) {
+
+            $numbers_in_arrays = explode( ',' , $request->input( 'numbers' ) );
+
+            $message = $request->input( 'message' );
+            $count = 0;
+
+            foreach( $numbers_in_arrays as $number )
+            {
+                $count++;
+
+                $client->messages->create(
+                    $number,
+                    [
+                        'from' => env( 'TWILIO_FROM' ),
+                        'body' => $message,
+                    ]
+                );
+            }
+
+            return back()->with( 'success', $count . " messages sent!" );
+
+        } else {
+            return back()->withErrors( $validator );
+        }
+    }
+
+
+
 
     public function clientReportNumber(Request $request)
     {

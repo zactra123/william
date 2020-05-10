@@ -8,9 +8,7 @@ use App\User;
 use App\AllowedIp;
 use App\NegativeType;
 use App\AdminSpecification;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class AdminsController extends Controller
 {
@@ -40,6 +38,7 @@ class AdminsController extends Controller
             'negative_types' => ['required'],
         ]);
 
+
         if ($validation->fails()){
             $negativeType = NegativeType::all()
                 ->pluck('name', 'id')
@@ -53,15 +52,17 @@ class AdminsController extends Controller
             'role'=>'admin',
         ]);
 
+        $userId = $user->id;
+
         foreach($admin['ip_address'] as $ipAddress){
 
             AllowedIp::create([
-                'user_id'=> $user->id,
+                'user_id'=> $userId,
                 'ip_address' => $ipAddress
             ]);
        }
 
-        $userId = $user->id;
+
 
         foreach($admin['negative_types'] as $negativeTypes){
             AdminSpecification::create([
@@ -90,7 +91,6 @@ class AdminsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $ipAddress = $request->admin['ip_address'];
 
         $admin = $request->admin;
         $admin['id'] = $id;
@@ -124,11 +124,11 @@ class AdminsController extends Controller
                 'negative_types_id' => $negativeTypes,
             ]);
         }
-        if(isset($request->admin['ip_address_new'])){
+        if(isset($request->admin['ip_address'])){
             foreach($request->admin['ip_id']  as $key =>$id){
 
                 if( AllowedIp::where('id', $id)->first()!= null){
-                    AllowedIp::where('id', $id)->update(['ip_address'=>$ipAddress[$key]]);
+                    AllowedIp::where('id', $id)->update(['ip_address'=> $request->admin['ip_address'][$key]]);
                 }
             }
         }
@@ -143,7 +143,6 @@ class AdminsController extends Controller
 
         return redirect('owner/admin/list');
     }
-
 
     public function destroy($id)
     {

@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="page-content">
-        <div class="row justify-content-center">
-            <div class="col-md-10 pt-2">
+
+    <div class= "row justify-content-center mt-5 pt-5">
+            <div class="col-md-11 pt-2">
                 <div class="card">
 
                     <div class="card-header">
@@ -39,14 +39,12 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $users->links() }}
+
                     </div>
 
                 </div>
             </div>
         </div>
 
-
-
-
-    </div>
 @endsection

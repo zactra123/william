@@ -7,7 +7,7 @@
             @foreach($pageContentUp as $contentUp)
                 <li>
                     <div class="container">
-                        <img src="dummy/server.jpg" alt="">
+                        {{--<img src="dummy/server.jpg" alt="">--}}
                         <div class="slide-caption">
                             <h2 class="slide-title">{{$contentUp->title}}</h2>
                             {{--<small class="slide-subtitle">Nemo enom ipsam voluptatem voluptas</small>--}}

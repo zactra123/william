@@ -1,175 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <title>Contact</title>
-    <!-- Loading third party fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Loading main css file -->
-    <link rel="stylesheet" href="css/css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+@extends('layouts.layout')
 
-    <!--[if lt IE 9]>
-    <script src="js/js/ie-support/html5.js"></script>
-    <script src="js/js/ie-support/respond.js"></script>
-    <![endif]-->
+@section('content')
 
-</head>
-
-<body>
-
-<div id="site-content">
-
-    <header class="site-header">
-
-        <div class="bottom-header">
-            <div class="container">
-                <a href="{{ url('/') }}" class="branding pull-left">
-                    <img src="images/logo-icon.png" alt="Site title" class="logo-icon">
-                    <h1 class="site-title">Better <span>Credit</span></h1>
-                    <h2 class="site-description">Tagline goes here</h2>
-                </a> <!-- #branding -->
-
-                <nav class="main-navigation pull-right">
-                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-                    <ul class="menu">
-                        <li class="menu-item"><a href="">News</a></li>
-                        <li class="menu-item"><a href="{{route('about-us')}}">About Us</a></li>
-                        <li class="menu-item"><a href="">Services</a></li>
-                        <li class="menu-item"><a href="{{route('contacts')}}">Contact</a></li>
-
-                        @if (Route::has('login'))
-                            @auth
-
-                                @if(Auth::user()->role == 'client')
-                                    @if(empty(Auth::user()->clientDetails))
-                                        <li class="menu-item"><a href="{{ url('/client/details/create') }}"><i class="fa fa-user"></i>Home</a></li>
-                                    @else
-                                        <li class="menu-item"><a href="{{ url('/client/details') }}"><i class="fa fa-user"></i>Home</a></li>
-                                    @endif
-                                @elseif((Auth::user()->role == 'admin'))
-
-                                    <li class="menu-item"><a href="{{ url('/admin') }}"><i class="fa fa-user"></i>Home</a></li>
-                                @else
-
-                                    <li class="menu-item"> <a href="{{ url('/owner') }}"><i class="fa fa-user"></i>Home</a></li>
-                                @endif
-                            @else
-                                <li class="menu-item"><a href="{{ route('login') }}"><i class="fa fa-lock"></i>Login</a></li>
-
-                                @if (Route::has('register'))
-                                    <li class="menu-item"> <a href="{{ route('register') }}"><i class="fa fa-user"></i>Register</a></li>
-                                    @endif
-                                    @endauth
-                                    @endif
-                        </li>
-                    </ul>
-                </nav> <!-- .main-navigation -->
-            </div> <!-- .container -->
-        </div> <!-- .bottom-header -->
-    </header> <!-- .site-header -->
-
-    <main class="content">
-        <div class="breadcrumbs">
-            <div class="container">
-                <a href="index.html">Home</a> &rarr;
-                <a href="#">Contact</a>
-            </div>
+    <section class="header-title section-padding">
+        <div class="container text-center">
+            <h2 class="title">Contact Us</h2>
+            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Contact Us</span>
         </div>
+    </section>
 
-        <div class="page-content">
 
 
-            <div class="fullwidth-block">
+    <!-- Working Area -->
+    <section class="ms-working working-section section-padding">
+        <div class="container">
+            <div class="section-title text-center">
                 <div class="container">
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.1093732611434!2d-73.99664419999999!3d40.7376188!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bd6429cbad%3A0xabf8edfb01e21691!2s534+Avenue+of+the+Americas%2C+New+York%2C+NY+10011%2C+Amerika+Serikat!5e0!3m2!1sid!2sid!4v1410801748284" width="600" height="450" frameborder="0" style="border:0"></iframe>
-                    </div>
+                    <p class="who-font" style="text-align: justify">
+                        <span class="font-italic">PRUDENT CREDIT SOLUTIONS</span> created to help make fixing your credit a
+                        hassle-free task. We help you dispute any errors showing on your report, negotiate any bad debts,
+                        and their repayment schedules, and then we’ll point you in the right direction to ensure you keep
+                        the upward trend of a growing credit score! With us, you have a fighting chance to get our credit
+                        back into tip-top shape!
+                    </p>
+
+
+                    <p  class="who-font"  style="text-align: justify">
+                        Have a question or want a free review of your financial profile to determine whether we
+                        can help? Contact us through our contact information detailed below:
+                    </p>
+
                 </div>
-            </div>
 
-            <div class="fullwidth-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h1 class="wow fadeInLeft">Addresss</h1>
-                            <address class="wow fadeInLeft">
-                                <p>Company Name</p>
-                                <p>4235 Poplar Street,  Compton, CA 90220</p>
-                                <p>Phone: +1 932 349 313 <br>info@companyname.com</p>
+            </div> <!-- section-title -->
+
+            <div class="section-wrapper">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="wrapper-content">
+                            <h2>Address</h2>
+                            <address>
+                                <p  class="who-font font-italic" >PRUDENT CREDIT SOLUTIONS</p>
+                                <p>5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040</p>
+                                <p>Phone: <a href="tel:1-844-337-8336">
+                                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                                        1-844-337-8336
+                                    </a>
+                                </p>
+                                <p>info@prudentcredit.com</p>
                             </address>
                         </div>
-                        <div class="col-md-9">
-                            <h1 class="wow fadeInRight">Contact Form</h1>
-                            <form action="#">
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="video-wrapper" id="contactForm">
+                            <h1>Contact Form</h1>
+                            <form action="#" >
                                 <div class="row">
+                                    @csrf
                                     <div class="col-md-4">
-                                        <p class="wow fadeInRight"><input type="text" placeholder="Your name..."></p>
-                                        <p class="wow fadeInRight"><input type="text" placeholder="Company Name..."></p>
-                                        <p class="wow fadeInRight"><input type="email" placeholder="Email..."></p>
+                                        <p ><input class="form-control" name="contact[name]" type="text" placeholder="Your name..." required></p>
+                                        <p ><input class="form-control" name="contact[email]" type="email" placeholder="Email..." required></p>
                                     </div>
                                     <div class="col-md-8">
-                                        <p class="wow fadeInRight"><textarea name="" id=""></textarea></p>
-                                        <input type="submit" class="button pull-right wow fadeInRight" value="Send Messages">
+                                        <p ><textarea class="form-control" name="contact[text]" id="" required></textarea></p>
+                                        <input type="submit" class="button pull-right" value="Send Messages">
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> <!-- video-wrapper -->
                     </div>
                 </div>
-            </div>
-
-
-        </div> <!-- .inner-content -->
-    </main> <!-- .content -->
-
-    <footer class="site-footer wow fadeInUp">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-6">
-
-                    <div class=" branding">
-                        <img src="images/logo-footer.png" alt="Site title" class="logo-icon">
-                        <h1 class="site-title"><a href="#">Company <span>Name</span></a></h1>
-                        <h2 class="site-description">Tagline goes here</h2>
-                    </div> <!-- .branding -->
-
-                    <p class="copy">Copyright 2014 Company name. designed by Themezy. All rights reserved</p>
-                </div>
-
-                <div class="col-md-6 align-right">
-
-                    <nav class="footer-navigation">
-                        <a href="#">News</a>
-                        <a href="#">About us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Contact</a>
-                    </nav> <!-- .footer-navigation -->
-
-                    <div class="social-links">
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
-                    </div> <!-- .social-links -->
-
-                </div>
-            </div>
-
+            </div> <!-- section-wrapper -->
         </div>
-    </footer> <!-- .site-footer -->
+    </section>
 
-</div> <!-- #site-content -->
+<script>
+    $("#contactForm form").submit(function(e){
+        e.preventDefault();
+        var form = $(this).serializeArray(), data={};
+        $.each(form, function(index, el){
+            data[el.name] = el.value
+        });
+        console.log(data)
 
-<script src="js/js/jquery-1.11.1.min.js"></script>
-<script src="js/js/plugins.js"></script>
-<script src="js/js/app.js"></script>
+        $.ajax({
+            url: "/contact/send-message",
+            type:"POST",
+            data: data,
+            success: function (results) {
 
-</body>
+                bootbox.alert("Your email has been successfully sent")
+                $("#contactForm form")[0].reset()
 
-</html>
+            },
+
+            error:function (err, state) {
+                console.log(JSON.parse(err.responseText))
+                $("#appointments .text-danger").removeClass("d-none")
+            }
+        });
+
+
+
+    })
+</script>
+@endsection

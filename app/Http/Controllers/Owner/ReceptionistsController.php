@@ -71,8 +71,7 @@ class ReceptionistsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $receptionist = $request->admin;
-        $receptionist['id'] = $id;
+        $receptionist = $request->receptionist;
 
         $validation =  Validator::make($receptionist, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -86,7 +85,7 @@ class ReceptionistsController extends Controller
                 ->withErrors($validation);
         }
 
-        User::where('id', $receptionist->id)
+        User::where('id', $id)
             ->update([
                 'first_name' => $receptionist['first_name'],
                 'last_name' => $receptionist['last_name'],
@@ -94,10 +93,27 @@ class ReceptionistsController extends Controller
                 'role'=>'receptionist',
             ]);
 
+        if(!empty($receptionist["ip_id"])){
+            foreach($request->receptionist['ip_id']  as $key => $ip_id){
+
+                if( AllowedIp::where('id', $ip_id)->first()!= null){
+                    AllowedIp::where('id', $ip_id)->update(['ip_address'=> $receptionist['ip_address'][$key]]);
+                }
+            }
+        }
+
+        if(!empty($receptionist["ip_address_new"])) {
+            foreach($receptionist['ip_address_new'] as $newIp){
+                AllowedIp::create([
+                    'user_id'=> $id,
+                    'ip_address'=> $newIp
+                ]);
+            }
+        }
+
 
         return redirect('owner/receptionist/list');
     }
-
 
     public function destroy($id)
     {
@@ -111,8 +127,6 @@ class ReceptionistsController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-
-
     public function list()
     {
         $receptionists = User::where('role', 'receptionist')
@@ -120,5 +134,19 @@ class ReceptionistsController extends Controller
 
         return view('owner.receptionist.list', compact( 'receptionists'));
 
+    }
+
+    public function deleteIp(Request $request)
+    {
+        $id = $request->id;
+
+        try {
+            AllowedIp::where('id', $id)->delete();
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

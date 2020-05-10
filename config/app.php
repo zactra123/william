@@ -183,6 +183,8 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         Rainwater\Active\ActiveServiceProvider::class
 
@@ -240,6 +242,9 @@ return [
         'OCR' => Alimranahmed\LaraOCR\Facades\OCR::class,
         'Image' =>Intervention\Image\Facades\Image::class,
 
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Active' => Rainwater\Active\ActiveFacade::class
 
 

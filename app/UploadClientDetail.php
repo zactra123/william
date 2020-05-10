@@ -12,14 +12,21 @@ class UploadClientDetail extends Model
         'user_id' => 'required',
         'first_name',
         'last_name',
-        'ssn' =>'required',
-        'dob'=> 'required, date',
-        'sex'=> 'required,in: F, M, O',
-        'state' => 'required',
-        'city' => 'required',
-        'address' =>'required',
-        'zip' => 'required',
+        'ssn',
+        'dob',
+        'sex',
+        'name',
+        'number',
+        'state',
+        'city',
+        'address',
+        'zip',
+        'expiration'
 
     ];
 
+    public function full_name()
+    {
+        return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+    }
 }

@@ -4,17 +4,27 @@
             <li class="list-group-item">
                 <a href="{{ route('owner.reports.index')}}">
                     <i class="fa fa-user-md"></i>
-                    <span>Registered Clients</span>
+                    <span>REGISTERED CLIENTS</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
-                    <span> Further report page </span>
+                    <span>TOTAL PAYMENTS COLLECTED</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
-                    <span> Further report page </span>
+                    <span>CURRENT PAYMENTS DUE</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    <span>OVER DUE PAYMENTS</span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    <span>TOTAL ITEMS REMOVED</span>
                 </a>
             </li>
         </ul>
