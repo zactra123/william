@@ -16,8 +16,8 @@
     border: 1px solid #f0f0f0;
 }
 .card {
-    min-height: 80vh !important;
-    max-height: 85vh !important;
+    min-height: 60vh !important;
+    max-height: 70vh !important;
 }
 .chatList {
     min-height: 80vh !important;
