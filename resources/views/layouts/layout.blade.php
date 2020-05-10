@@ -199,9 +199,15 @@
         </div>
     </div>
 </div>
-@if (!Route::has('login') || Auth::user()->role == 'client')
+
+@auth
+    @if(Auth::user()->role == 'client')
+        @include('helpers.chat-box')
+    @endif
+@else
     @include('helpers.chat-box')
 @endif
+
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
