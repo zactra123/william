@@ -22,12 +22,12 @@
                                     <div class="response">
 
                                     </div>
-                                    <div id='calendar' class="card">
+                                    <div id='calendar' class="card" style="overflow: auto;">
 
                                     </div>
                                 </div>
 
-                                <div class="modal fad" id="appointments" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
+                                <div class="modal fade" id="appointments" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -37,43 +37,42 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="d-none text-danger text-center font-italic" > All fields are required</div>
-
-                                                <form method="post" action="{{route('admin.message.create')}}">
-                                                    @csrf
-                                                    <input type="hidden" name="start_date" id="start_date">
-                                                    <div class="phone_number_id m-1">
-                                                        <input type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
-                                                    </div>
-                                                    <div class="full_name_id m-1">
-                                                        <input type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
-
-                                                    </div>
-                                                    <div class="email_id m-1">
-                                                        <input type="email" name="email" id="emailId" placeholder="EMAIL">
-                                                    </div>
-
-                                                    <div class="time_id m-1">
-                                                        <input type="time" name="time" id="timeId" placeholder="TIME">
-
-                                                    </div>
-                                                    <div class="title_id m-1">
-                                                        <input type="text" name="title" id="titleId" placeholder="TITLE">
-
-                                                    </div>
-                                                    <div class="form-group row m-1">
-
-                                                        <textarea name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
-
-                                                    </div>
-
-                                                    <div class="form-group row mb-0">
-                                                        <div class="col-md-9 offset-md-5">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                ADD MESSAGE
-                                                            </button>
+                                                <div class="ms-ua-form">
+                                                    <form method="post" action="{{route('admin.message.create')}}">
+                                                        @csrf
+                                                        <input type="hidden" name="start_date" id="start_date">
+                                                        <div class="form-group phone_number_id">
+                                                            <input class="form-control" type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                        <div class="form-group full_name_id">
+                                                            <input class="form-control"  type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
+
+                                                        </div>
+                                                        <div class="form-group email_id">
+                                                            <input class="form-control"  type="email" name="email" id="emailId" placeholder="EMAIL">
+                                                        </div>
+
+                                                        <div class="form-group time_id">
+                                                            <input class="form-control" type="time" name="time" id="timeId" placeholder="TIME">
+
+                                                        </div>
+                                                        <div class="form-group title_id">
+                                                            <input class="form-control" type="text" name="title" id="titleId" placeholder="TITLE">
+
+                                                        </div>
+                                                        <div class="form-group">
+
+                                                            <textarea class="form-control" name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <input type="submit" value="Add message" class="ms-ua-submit">
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+
                                             </div>
                                             <div class="modal-footer">
 
@@ -82,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fad" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+                                <div class="modal fade" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -92,32 +91,36 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div><span class="text-primary pr-1 pb-3">FULL NAME</span><span id="appointment-full_name"></span></div>
-                                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-mobile-phone pr-1"></i>PHONE NUMBER:</span><span id="appointment-phone"></span></div>
-                                                <div><span class="text-primary pr-1 pb-3">EMAIL:</span><span id="appointment-email"></span></div>
-                                                <div><span class="text-primary pr-1 pb-3"><i class="fa fa-calendar pr-1"></i>DATE:</span><span id="appointment-date"></span></div>
-                                                <div class="overflow-auto h-25  pr-1   pb-3 appointment-title" id="appointment-title">
+                                                <div><span class="text-primary app_details">FULL NAME</span><span class="left" id="appointment-full_name"></span></div>
+                                                <div><span class="text-primary app_details"><i class="fa fa-mobile-phone" style="padding-right: 15px"></i>PHONE NUMBER:</span><span class="left" id="appointment-phone"></span></div>
+                                                <div><span class="text-primary app_details"><i class="fa fa-mail-reply" style="padding-right: 15px"></i>EMAIL:</span><span class="left" id="appointment-email"></span></div>
+                                                <div><span class="text-primary app_details"><i class="fa fa-calendar" style="padding-right: 15px"></i>DATE:</span><span class="left" id="appointment-date"></span></div>
+                                                <div class="overflow-auto h-25  app_details appointment-title" id="appointment-title">
                                                 </div>
-                                                <div class="overflow-auto h-25 border rounded pb-3 appointment-desc" id="appointment-description">
+                                                <div class="overflow-auto h-25 app_details border rounded pb-3 appointment-desc" id="appointment-description">
                                                 </div>
-                                                <div class="note overflow-auto" id="noteId">
+                                                <div class="note .overflow-vertical app_details" id="noteId">
                                                 </div>
 
+
                                                 <div class="addNote">
-                                                    <form method="POST" action="{{ route('admin.message.note') }}">
-                                                        @csrf
-                                                        <div class="message_id">
-                                                            <input type="hidden" name="message_id" id="messageId" >
-                                                        </div>
-                                                        <div class="form-group row m-1">
-                                                            <textarea name="notes" id=""></textarea>
-                                                        </div>
-                                                        <div class="form-group row mb-0">
-                                                            <div class="col-md-9 offset-md-5">
-                                                                <button type="submit" class="btn btn-primary">Add</button>
+
+                                                    <div class="ms-ua-form">
+                                                        <form method="POST" action="{{ route('admin.message.note') }}">
+                                                            @csrf
+                                                            <div class=" form-group message_id">
+                                                                <input class="form-control" type="hidden" name="message_id" id="messageId" >
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                            <div class="form-group ">
+                                                                <textarea class="form-control" name="notes" id=""></textarea>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <input type="submit" value="Add" class="ms-ua-submit">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -143,50 +146,49 @@
                                                     <span aria-hidden="true">Close</span> </button>
                                             </div>
                                             <div class="modal-body ">
-                                                <form method="PUT" action="" id="updateMessageId">
-                                                    @csrf
+                                                <div class="ms-ua-form">
+                                                    <form method="PUT" action="" id="updateMessageId">
+                                                        @csrf
 
-                                                    <div class="phone_number_id m-1">
-                                                        <input type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
-                                                    </div>
-                                                    <div class="full_name_id m-1">
-                                                        <input type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
-
-                                                    </div>
-                                                    <input type="hidden" name="id" id="editMessageId" >
-
-                                                    <div class="email_id m-1">
-                                                        <input type="email" name="email" id="oldEmailId" placeholder="EMAIL">
-                                                    </div>
-
-                                                    <div class="time_id m-1">
-                                                        <input type="date" name="date" id="oldDateId" placeholder="Date">
-
-                                                    </div>
-                                                    <div class="time_id m-1">
-                                                        <input type="time" name="time" id="oldTimeId" placeholder="TIME">
-
-                                                    </div>
-                                                    <div class="title_id m-1">
-                                                        <input type="text" name="title" id="oldTitleId" placeholder="TITLE">
-
-                                                    </div>
-
-
-                                                    <div class="form-group row m-1">
-
-                                                        <textarea name="description" id="oldDescriptionId" placeholder="DESCRIPTION"> </textarea>
-
-                                                    </div>
-
-                                                    <div class="form-group row mb-0">
-                                                        <div class="col-md-9 offset-md-5">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                EDIT MESSAGE
-                                                            </button>
+                                                        <div class="form-group phone_number_id">
+                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                        <div class="form-group full_name_id">
+                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
+
+                                                        </div>
+                                                        <input class="form-control" type="hidden" name="id" id="editMessageId" >
+
+                                                        <div class="form-group email_id">
+                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="EMAIL">
+                                                        </div>
+
+                                                        <div class="form-group time_id">
+                                                            <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
+
+                                                        </div>
+                                                        <div class=" form-group time_id m-1">
+                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="TIME">
+
+                                                        </div>
+                                                        <div class="form-group title_id">
+                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="TITLE">
+
+                                                        </div>
+
+
+                                                        <div class="form-group ">
+
+                                                            <textarea class="form-control" name="description" id="oldDescriptionId" placeholder="DESCRIPTION"> </textarea>
+
+                                                        </div>
+                                                        <div class="form-group row mb-0">
+                                                            <input type="submit" value="Add message" class="ms-ua-submit">
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -398,26 +400,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js" defer></script>
 
     <style>
-        .selectAdmin{
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 2px solid #0c71c3;
-            font-family: inherit;
-            font-size: 0.875em;
-            font-weight: 300;
-            width: 100%;
-            outline: none;
-            transition: .3s ease;
+        .app_details{
+            padding-left: 15px;
+            padding-bottom: 15px;
         }
-        .modal-backdrop {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1030;
-            background-color: #333333;
-            opacity:0.8; // I ADDED THIS LINE
+        .left{
+            padding-left: 15px;
         }
         .appointment-desc{
             max-height: 150px;
