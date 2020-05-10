@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <textarea  class="form-control" name="message" required placeholder="write your message"></textarea>
                             </div>
-                            <div class="col">
+                            <div class="form-group">
                                 <input type="submit" value="Submit" class="ms-ua-submit">
                             </div>
                         </form>
@@ -61,10 +61,10 @@
                     <div class="ms-ua-form">
                         <form>
                             <div class="row">
-                                <div class="form-group col-md-10">
+                                <div class="form-group">
                                     <textarea class="textinput" placeholder="Type message.." name="message" ></textarea>
                                 </div>
-                                <div class="form-group col-md-2 ">
+                                <div class="form-group">
                                     <input type="submit" value="Send" class="ms-ua-submit">
                                 </div>
                             </div>
