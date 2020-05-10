@@ -20,11 +20,12 @@
                                 <div class="sidebar__content">
                                     <div class="side-nav list-group">
                                         <div class="card ">
+
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
                                                     <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
                                                          data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
-                                                        <meta name="csrf-token" content="{{ csrf_token() }}">
+
                                                         <div class="row">
                                                             <span class="pl-2"><h3>{{$chat->full_name??"FULL NAME"}}</h3></span>
                                                             @if($chat->message != 0)
@@ -40,8 +41,8 @@
                                                     </div>
 
                                                 @endforeach
-
                                             </div>
+                                            <meta name="csrf-token" content="{{ csrf_token() }}">
                                         </div>
                                     </div>
                                 </div>

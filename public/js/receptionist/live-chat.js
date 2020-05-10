@@ -84,6 +84,7 @@ $(document).ready(function(){
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
 
+        console.log(token, 'asdadasd');
 
         $.ajax({
             url: "live-chat/chat-message",
