@@ -107,8 +107,12 @@
                     @if(Auth::user())
                         @if(Auth::user()->role == 'client')
                             @include('helpers.urls.nav_bar_client')
-                        @else
-
+                        @elseif(Auth::user()->role == 'super admin')
+                            @include('helpers.urls.nav_bar_owner')
+                        @elseif(Auth::user()->role == 'admin')
+                            @include('helpers.urls.nav_bar_admin')
+                        @elseif(Auth::user()->role == 'receptionist')
+                            <li> <a href="{{ url('receptionist/message') }}" class="branding pull-left">Home</a></li>
                         @endif
                     @else
                         @include('helpers.urls.nav_bar_guest')
@@ -122,13 +126,14 @@
                             @if(Auth::user()->role == 'client')
                                 @include('helpers.urls.logged_in_client')
                             @elseif((Auth::user()->role == 'admin'))
-                                <li><a href="{{ url('/admin') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                                @include('helpers.urls.logged_in_admin')
                             @elseif((Auth::user()->role == 'affiliate'))
                                 <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
                             @elseif((Auth::user()->role == 'receptionist'))
-                                <li><a href="{{ url('/receptionist/message') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                                @include('helpers.urls.logged_in_receptionist')
                             @else
-                                <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
+                                @include('helpers.urls.logged_in_owner')
+{{--                                <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>--}}
                             @endif
                         @else
                             <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a></li>
@@ -142,6 +147,7 @@
                     @endif
 
                 </ul>
+                @if(!Auth::user())
 
                 <ul class="nav navbar-nav social-icon pull-right">
                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -149,6 +155,7 @@
                     <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                 </ul>
+                @endif
             </div>
         </nav>
     </div>
@@ -156,6 +163,27 @@
 
 @yield('content')
 
+<div class="modal fad" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="appointmentDetailsModalLabel">Appiontments</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>You have <span class="apointments-count"></span> appiontments in the next 10 mintes</div>
+                <div class="appointments-info">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="{{route("admin.message.index")}}">More Info</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class="footer-section">
     <div class="footer-container">
