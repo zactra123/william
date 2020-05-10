@@ -81,15 +81,20 @@ $(document).ready(function(){
 
 
     $(document).on('click',".chatMessage", function(){
+
+
         var id = $(this).attr("data-id");
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
+
 
         $.ajax({
             url: "live-chat/chat-message",
             method:"POST",
             data:{id:id, type:type, _token: token},
             success: function (result) {
+
+                console.log(result);
 
                 $("#showChatMessage").html("")
                 $.each(result.chatMessage, function( index, value ) {

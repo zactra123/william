@@ -113,6 +113,19 @@
                             @include('helpers.urls.nav_bar_admin')
                         @elseif(Auth::user()->role == 'receptionist')
                             <li> <a href="{{ url('receptionist/message') }}" class="branding pull-left">Home</a></li>
+
+                            <li class="menu-item">
+                                <a href="{{ route('receptionist.liveChat.index')}}" > <span>Chat</span>
+                                    <span class="pl-1">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                    @if(isset($unreads) && empty($unreads))
+                                        <span id="allMessageCount" class="pl-1"> {{$unreads}}</span>
+                                    @endif
+                                </a>
+
+
+                            </li>
                         @endif
                     @else
                         @include('helpers.urls.nav_bar_guest')
@@ -163,8 +176,10 @@
 
 @yield('content')
 
-<div class="modal" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
-    <div class="modal-dialog" role="document">
+
+
+<div class="modal fade" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="appointmentDetailsModalLabel">Appiontments</h4>
