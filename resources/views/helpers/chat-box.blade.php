@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/chat_box.css">
 
-<div class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{1}}" ><i class="far fa-comment-dots"></i></div>
+<div class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" ><i class="far fa-comment-dots"></i></div>
 {{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{7}}" >Chat</button>--}}
 
 
