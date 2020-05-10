@@ -17,6 +17,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-align: center;
   z-index: 999;
 }
+.open-button i {
+  font-size: xx-large;;
+}
 
 .defined-user{
   display: none;
@@ -32,6 +35,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   right: 15px;
   /*border: 3px solid #f1f1f1;*/
   z-index: 9999;
+  border-radius: 8px;
 }
 
 .chat-content {
@@ -45,12 +49,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add styles to the form container */
-.not-defined-user .form-container{
-  background-color: white;
+.chat-popup .ms-user-account {
+  padding: 0px;
 }
-.chat-popup .card-header{
-  background-color: #0c71c3;
-  color: #fff;
+.chat-popup .ms-user-account .ms-ua-box{
+  border-radius: 0px;
+}
+.chat-popup .chat-header{
+  background-color: #f2f0f0;
+  padding: 15px;
+  border-radius: 8px 8px 0px 0px;
 }
 .defined-user .form-container {
   /*max-width: 300px;*/
@@ -76,23 +84,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   outline: none;
 }
 
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #0c71c3;
-  color: white;
-  border: none;
-  cursor: pointer;
-  /*width: 100%;*/
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-
 
 .message {
   background-color: #f1f1f1;
@@ -152,4 +147,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin: 5px 0 22px 0 ;
   padding: 10px;
   height: 75%;
+}
+
+/* width */
+.ms-chat-tab ::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.ms-chat-tab ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.ms-chat-tab ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.ms-chat-tab ::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
