@@ -16,7 +16,7 @@
 <!-- Bootstrap -->
     <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- animated-css -->
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/css/animate.min.css')}}" rel="stylesheet" type="text/css">
     <!-- font-awesome-css -->
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -156,7 +156,7 @@
 
 @yield('content')
 
-
+@include('helpers.chat-box')
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
