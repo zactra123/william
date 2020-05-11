@@ -100,8 +100,8 @@
         </div> <!-- top-bar -->
     </div> <!-- topper -->
 
-    <div class="container">
-        <nav class="navbar navbar-inverse hidden-sm hidden-xs">
+    <div class="container" id="app" data-user="{{Auth::user()?Auth::user()->id:''}}">
+        <nav class="navbar navbar-inverse hidden-sm hidden-xs" >
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     @if(Auth::user())
