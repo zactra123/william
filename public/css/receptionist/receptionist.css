@@ -29,9 +29,9 @@
 }
 
 .scrollDiv {
-    height:auto;
-    max-height:150%;
-    overflow:auto;
+    height: 250px;
+    background-color: white;
+    overflow-y: auto;
 
 }
 

@@ -16,7 +16,7 @@
 
                 <div class="page-content">
                         <div class="row justify-content-center m-0">
-                            <aside class="sidebar col-md-3 scrollDiv">
+                            <aside class="sidebar col-md-3">
                                 <div class="sidebar__content">
                                     <div class="side-nav list-group">
                                         <div class="card ">
@@ -49,7 +49,7 @@
                             </aside>
 
                             <div class="col-md-9">
-                                <div class="card scrollDiv">
+                                <div class="card ">
                                     <div  id="scrollingDiv" class="card-body scrollDiv">
                                         <div class="card-body " id="showChatMessage"  >
 

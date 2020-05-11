@@ -49,14 +49,14 @@ addMessageToChat = function(message) {
 addChatUserList = function(chatUserList) {
     chatListHtml = ''
     chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.type + chatUserList.id + ' data-id='+chatUserList.id
-    chatListHtml +=  ' data-type='+chatUserList.type+ '> <div class="row"><span><h3>'
+    chatListHtml +=  ' data-type='+chatUserList.type+ '> <div class="form-group"><span><h3>'
     chatListHtml += chatUserList.full_name+'</h3></span>'
     if(chatUserList.message != 0){
         chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
         chatListHtml += chatUserList.message+'</span>'
     }
 
-    chatListHtml += '</div> <div class="row"> <span>'+chatUserList.type
+    chatListHtml += '</div> <div class="form-group"> <span>'+chatUserList.type
     chatListHtml += '</span>   <span class="pl-2">'+chatUserList.email+'</span></div></div>'
     return chatListHtml
 
@@ -139,14 +139,14 @@ $(document).ready(function(){
                     var message_date = new Date(result.chatMessage[val]['created_at']);
 
                     if(result.chatMessage[val]['type'] == 'to'){
-                        html += '<div class="row  pt-2" ><div class="col-6  align-left message"><div class="row">'
-                        html +=  result.chatMessage[val]['message']+'</div><div class="row">'
+                        html += '<div class="form-group  pt-2" ><div class="col-6  align-left message"><div class="form-group">'
+                        html +=  result.chatMessage[val]['message']+'</div><div class="form-group">'
                         html += message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
                         html +=  '</div></div></div>'
 
                     }else{
-                        html += '<div class="row  pt-2" ><div class="col-6 offset-6 align-left message darker" ><div class="row">'
-                        html +=  result.chatMessage[val]['message']+'</div><div class="row">'
+                        html += '<div class="form-group  pt-2" ><div class="col-6 offset-6 align-left message darker" ><div class="form-group">'
+                        html +=  result.chatMessage[val]['message']+'</div><div class="form-group">'
                         html += message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
                         html +=  '</div></div></div>'
                     }

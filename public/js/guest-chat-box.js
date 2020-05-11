@@ -156,12 +156,19 @@ $(document).ready(function(){
 
     $(".defined-user form").submit(function(e){
         e.preventDefault();
+
         var message = $(this).find(".textinput").val();
-        postNewMessage(recipient, message)
-            .then(function(data){
-                addMessageToChat(data.messages);
-                $(".defined-user form")[0].reset();
-            })
+
+        console.log(message)
+        if(message != ''){
+            postNewMessage(recipient, message)
+                .then(function(data){
+                    addMessageToChat(data.messages);
+                    $(".defined-user form")[0].reset();
+                })
+        }
+
+
 
     });
 

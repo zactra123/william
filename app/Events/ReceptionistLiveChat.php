@@ -60,6 +60,7 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+
         $userId = !isset($this->message->user_id)?$this->message['user_id']:$this->message->user_id;
 //        dd("ReceptionistLiveChat.{$this->message->user_id}");
         return new Channel("ReceptionistLiveChat.{$userId}");

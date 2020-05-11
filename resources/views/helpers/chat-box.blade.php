@@ -57,21 +57,19 @@
         </div>
         <section class="ms-user-account">
             <div class="col-12">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="ms-ua-box">
-                    <div class="ms-ua-form">
-                        <form>
-                            <div class="row">
-                                <div class="form-group">
-                                    <textarea class="textinput" placeholder="Type message.." name="message" ></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Send" class="ms-ua-submit">
-                                </div>
-                            </div>
+                    <form>
+                        <div class="form-group">
+                            <textarea class=" form-control textinput" placeholder="Type message.." name="message" ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input clas type="submit" value="Send" class="ms-ua-submit">
+                        </div>
 
-                         </form>
-                    </div>
+                     </form>
                 </div>
+
             </div>
         </section>
     </div>
