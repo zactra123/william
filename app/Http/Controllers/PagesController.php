@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Validator;
 use App\Faq;
 use App\ContactMessage;
 use Illuminate\Support\Facades\DB;
+use App\Services\ReadPdfData;
 
 class PagesController extends Controller
 {
-    public function welcome()
+    public function welcome(ReadPdfData $readPdfData)
     {
+
+        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
+
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogans = Db::table('slogans')

@@ -14,6 +14,8 @@ class ReadPdfData
         $data = $text->setOptions(['raw', 'f 1'])->text();
 
         $dataArray = explode(PHP_EOL, $data);
+
+        dd($data );
         $creditorContactDetails =[];
 
         $lastReportArray = array_values(preg_grep('/^Last Reported\s.*/', $dataArray));
@@ -595,6 +597,205 @@ class ReadPdfData
         return $dataReport;
     }
 
+    public function equifaxPdf($attachment)
+    {
+        //        $text = new Pdf(config("pdf_to_text"));
+        $text = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
+        $text  ->setPdf($attachment);
+        $data = $text->setOptions(['table', 'f 1'])->text();
+
+        $delimiter = 'Payment History Key';
+        $delimiterInquiry = 'Inquiries that do not impact your credit rating';
+
+        $matchAccount = '/^[A-Z\/\s]{3,}+[0-9X\s]{2,}+[0-9\/]{2}+[0-9\/]{2}+[0-9]{4}.*/m';
+        $matchInquiry = '/^[A-Z\/\s:\:]{3,}+[0-9]{2}\/[0-9]{2}\/[0-9]{2}.*/m';
+        $dataArray = explode($delimiter, $data);
+        preg_match_all($matchAccount, $dataArray[0], $separateMatch);
+        $dataInquiry = explode($delimiterInquiry, $dataArray[1]);
+
+        preg_match_all($matchInquiry, $dataInquiry[0], $separateInquiryMatch);
+
+        $separate = $separateMatch[0]?$separateMatch[0]:null;
+        $separateInquiry = $separateInquiryMatch[0]?$separateInquiryMatch[0]:null;
+//        dd($separateInquiry);
+        $dataEquifax = [];
+
+//        dd($dataArray[0]);
+        for($i = 0; $i<= count($separate)-1; $i++) {
+            if($i ==  count($separate)-1){
+                $data =$this-> get_string_between($dataArray[0],$separate[$i], 'Other Accounts' );
+            }else{
+                $data =$this-> get_string_between($dataArray[0],$separate[$i],$separate[$i+1] );
+            }
+
+            preg_match('/^[A-Z\/\s]{3,}/m',$separate[$i] , $account);
+            $accountName = str_replace(["\r\n", "  ", "\n"],'',$account[0]) ;
+
+            $address = str_replace(["\r\n", "  ", "\n"],'',$this->get_string_between($data, $accountName, 'Account Number'));
+            $accountNumber  =  str_replace(["\r\n", "  ", "\n"],'',$this->get_string_between($data, 'Account Number:', ' Current Status'));
+            $currentStatus  =  str_replace(["\r\n", "  ", "\n"],'',$this->get_string_between($data, 'Current Status:', 'Account Owner'));
+            $accountOwner  =  str_replace(["\r\n", "  ", "\n"],'',$this->get_string_between($data, 'Account Owner:', 'High Credit'));
+            $highCredit  =  str_replace(["\r\n", "  ", "\n"],'',$this->get_string_between($data, 'High Credit:', 'Type of Account'));
+            $typeOfAccount  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Type of Account', 'Credit Limit'));
+            $creditLimit  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Credit Limit:', 'Term Duration'));
+            $termDuration  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Term Duration:', 'Terms Frequency'));
+            $termsFrequency  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Terms Frequency:', 'Date Opened'));
+            $dateOpened  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date Opened:', 'Balance'));
+            $balance  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Balance:', 'Date Reported'));
+            $dateReport  =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date Reported:', 'Amount Past Due'));
+            $amountPastDue =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Amount Past Due:', 'Date of Last Payment'));
+            $dateOfLastPayment =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date of Last Payment:', 'Actual Payment Amount'));
+            $actualPaymentAmount =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Actual Payment Amount:', 'Scheduled Payment Amount'));
+            $scheduledPaymentAmount =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Scheduled Payment Amount:', 'Date of Last Activity'));
+            $dateLastActivity =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date of Last Activity:', 'Date Major Delinquency First Reported'));
+            $dateMajorDelinquencyFirstReported =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date Major Delinquency First Reported:', 'Months Reviewed:'));
+            $monthsReviewed =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Months Reviewed:', 'Creditor Classification'));
+            $creditorClassification=  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Creditor Classification:', 'Activity Description'));
+            $activityDescription=  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Activity Description:', 'Charge Off Amount'));
+            $chargeOffAmount =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Charge Off Amount:', 'Deferred Payment Start Date'));
+            $deferredPaymentStartDate =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Deferred Payment Start Date:', 'Balloon Payment Amount'));
+            $balloonPaymentAmount =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Balloon Payment Amount', 'Balloon Payment Date'));
+            $balloonPaymentDate =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Balloon Payment Date', 'Date Closed'));
+            $dateClosed =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date Closed', 'Type of Loan'));
+            $typeOfLoan =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Type of Loan', 'Date of First Delinquency'));
+            $dateOfFirstDelinquency =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Date of First Delinquency', 'Comments'));
+            $comments =  str_replace(["\r\n", "  ", "\n",":"],'',$this->get_string_between($data, 'Comments', '81'));
+
+            $paymentHistory =[];
+            if(!strpos($data,'No 81-Month Payment Data available for display' )){
+                if(strpos($data,'Historical Account Information' )){
+                    $payment =$this-> get_string_between($data,'81-Month Payment History', 'Historical Account Information' );
+
+                }else{
+                    $payment =$this-> get_string_between($data,'81-Month Payment History', null );
+                }
+
+                $paymentArray = explode(PHP_EOL,  $payment);
+                $dataPayArray = array_values(array_filter($paymentArray));
+                $locationMatch = array_shift($dataPayArray);
+                $location['year'] = strpos($locationMatch, 'Year');
+                $location['jan'] = strpos($locationMatch, 'Jan');
+                $location['feb'] = strpos($locationMatch, 'Feb');
+                $location['mar'] = strpos($locationMatch, 'Mar');
+                $location['apr'] = strpos($locationMatch, 'Apr');
+                $location['may'] = strpos($locationMatch, 'May');
+                $location['jun'] = strpos($locationMatch, 'Jun');
+                $location['jul'] = strpos($locationMatch, 'Jul');
+                $location['aug'] = strpos($locationMatch, 'Aug');
+                $location['sep'] = strpos($locationMatch, 'Sep');
+                $location['oct'] = strpos($locationMatch, 'Oct');
+                $location['nov'] = strpos($locationMatch, 'Nov');
+                $location['dec'] = strpos($locationMatch, 'Dec');
+
+                foreach ($dataPayArray as $pay){
+                    $year = trim(substr($pay, $location['year'], 7));
+                    $paymentHistory[$year] = [
+                        'jan'=> trim(substr($pay, $location['jan']-1, 5)),
+                        'feb' => trim(substr($pay, $location['feb']-1, 5)),
+                        'mar' => trim(substr($pay, $location['mar']-1, 5)),
+                        'apr' => trim(substr($pay, $location['apr']-1, 5)),
+                        'may' => trim(substr($pay, $location['may']-1, 5)),
+                        'jun' => trim(substr($pay, $location['jun']-1, 5)),
+                        'jul' => trim(substr($pay, $location['jul']-1, 5)),
+                        'aug' => trim(substr($pay, $location['aug']-1, 5)),
+                        'sep' => trim(substr($pay, $location['sep']-1, 5)),
+                        'oct' => trim(substr($pay, $location['oct']-1, 5)),
+                        'nov' => trim(substr($pay, $location['nov']-1, 5)),
+                        'dec' => trim(substr($pay, $location['dec']-1, 5)),
+                    ];
+                }
+            }
+
+            if(strpos($data,'Historical Account Information' )) {
+
+                $historicalAccount = $this->get_string_between($data, 'Historical Account Information', null);
+
+                $historicalAccount= str_replace(["Payment Amount\r\n","Amount\r\n", "Payment\r\n"],'',$historicalAccount);
+                preg_match_all('/(^\s+[0-9]{2}\/[0-9]{4}).*+\s+Balance/mi',$historicalAccount, $match);
+                $dateArray = isset($match[0])?$match[0]:null;
+                $historyInfo=[];
+                $history=[];
+                foreach($dateArray as $key =>$value){
+                    preg_match_all('/[0-9]{2}\/[0-9]{4}/mi',$value, $dates);
+
+                    foreach($dates[0] as $date){
+                        $loc= array_values(array_filter(explode(PHP_EOL,str_replace('Balance','',$value))));
+                        $locationDate[$key][$date] = strpos($loc[0], $date);
+
+                    }
+                    if($key != count($dateArray)-1){
+                        $history[] =$this-> get_string_between($historicalAccount, str_replace('Balance','',$value), str_replace('Balance','',$dateArray[$key+1]) );
+
+                    }else{
+                        $history[] =$this-> get_string_between($historicalAccount, str_replace('Balance','',$value), null );
+                    }
+
+                }
+
+                foreach($history as $k =>$val){
+                    $historyArray = explode(PHP_EOL,  $val);
+                    $historyArray =array_values( array_filter($historyArray));
+                    $type ='';
+                    $j = 0;
+                    foreach ($historyArray as $l =>$v){
+                        if(is_numeric(strpos($v, "\f"))){
+                            $j = $k+1;
+                            $v = str_replace("\f",'',$v);
+                        }
+                        $first = strtolower(trim(substr($v, 0, 15)));
+
+                        foreach ($locationDate[$k] as $dat=> $locDate){
+                            if(isset($locationDate[$j])){
+                                $n = 1;
+                                if($j>$k){
+                                    foreach ($locationDate[$j] as $d=> $l){
+                                        $m =1;
+                                        if($n == $m){
+                                            $locDate = $l;
+                                        }
+                                        $m = $m+1;
+                                    }
+
+                                }
+                                $n = $n+1;
+                            }
+
+                            if($first != null && $first != $type){
+                                $historyInfo[$first][$dat] =  trim(substr($v, $locDate-1, 17));
+
+                            }else{
+                                $historyInfo[$type][$dat] = $historyInfo[$type][$dat].' '.trim(substr($v, $locDate-2, 17));
+                            }
+                        }
+                        $type = $first != null?$first:$type;
+
+                    }
+                }dd($historyInfo);
+            }
+//            dd($address,$accountNumber, $accountName,$currentStatus,$accountOwner,$highCredit,$typeOfAccount,$creditLimit,$termDuration, $termsFrequency, $dateOpened,
+//                $balance, $dateReport,$amountPastDue,$dateOfLastPayment, $actualPaymentAmount,$scheduledPaymentAmount,$dateLastActivity,
+//                $dateMajorDelinquencyFirstReported,$monthsReviewed,$creditorClassification,$activityDescription,$chargeOffAmount,
+//                $deferredPaymentStartDate,$balloonPaymentAmount, $balloonPaymentDate,$dateClosed, $typeOfLoan,$dateOfFirstDelinquency, $comments,$data);
+        }
+
+        for($i = 0; $i<= count($separateInquiry)-1; $i++){
+            if($i ==  count($separateInquiry)-1){
+                $data =$this-> get_string_between($dataInquiry[0],$separateInquiry[$i], 'Inquiries that do not impact your credit rating' );
+            }else{
+                $data =$this-> get_string_between($dataInquiry[0],$separateInquiry[$i],$separateInquiry[$i+1] );
+            }
+
+            $contactInformation = str_replace(["\r\n", "  "]," ", $data);
+        }
+
+        if(isset($dataInquiry[1])){
+            $strat = 'Date of Inquiry';
+            $end = 'Prefix';
+            $simpleInquiry = $this-> get_string_between($dataInquiry[1], $strat, $end);
+            dd($simpleInquiry);
+        }
+
+    }
 
 
 
@@ -617,8 +818,12 @@ class ReadPdfData
         $len = strpos($string, $end);
         return substr($string,  0, $len);
     }
+    function get_history($string, $end){
 
+        $len = strpos($string, $end)+ strlen($end);
 
+        return substr($string,  0, $len);
+    }
     function get_string($string, $start, $end){
         $string = ' ' . $string;
         $ini = strpos($string, $start);
