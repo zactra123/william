@@ -254,7 +254,7 @@
 
 
                         <ul class="wrapper-option " style="padding-left: 20px">
-                            <li><a href="{{route('faqs')}}">FAQ</a></li>
+                            <li><a href="{{route('faqs')}}">FAQs</a></li>
                             <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
                             <li>
                                 <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">

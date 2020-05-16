@@ -16,7 +16,7 @@ class PagesController extends Controller
     public function welcome(ReadPdfData $readPdfData)
     {
 
-        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
+//        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
 
         $pageContentUp = DB::table('home_pages')->get();
 

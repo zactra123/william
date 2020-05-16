@@ -26,6 +26,7 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
+
         $client = Auth::user();
         return view('client_details.index', compact('client'));
     }

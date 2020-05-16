@@ -8,134 +8,262 @@
 
     @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
 
-
-    <aside class="side-nav" id="show-side-navigation1">
-        <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
-        <div class="heading">
-{{--            @foreach($client->clientAttachments->where('category','DL') as $attachment)--}}
-{{--            <img src="{{$attachment->path}}" alt="">--}}
-{{--            @endforeach--}}
-            <div class="info">
-                <h3><a href="#">{{$client->full_name()??""}}</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </div>
-        <ul class="categories">
-            <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:+91-434-3433">{{$client->clientDetails->phone_number}}</a></li>
-            <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:demomail@gmail.com"> {{$client->email}}</a>
-            </li>
-            <li title="FULL ADDRESS"><i class="fa fa-map fa-fw"></i> {{$client->clientDetails->address??""}}</li>
-            <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i>{{$client->clientDetails->dob??""}}</li>
-            <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn??""}}</li>
-            <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by??""}}</li>
-            <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i> {{$client->clientDetails->sex??""}}</li>
-
-
-        </ul>
-    </aside>
-    <section id="contents">
-
-        <div class="welcome">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="content">
-                            <h2>Welcome to Dashboard</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                        </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <aside class="side-nav" id="show-side-navigation1">
+                <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+                <div class="heading">
+{{--                    <img src="assets/images/trump.jpg" alt="">--}}
+                    <div class="info">
+                        <h5>Client No: 01</h5>
+                        <h3><a href="#">{{$client->full_name()}}</a></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
                     </div>
                 </div>
-            </div>
+                <ul class="categories">
+                    <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
+                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->eamil}}"> {{$client->email}}</a>
+                    </li>
+                    <li title="FULL ADDRESS"><i class="fa fa-map fa-fw"></i> {{$client->clientDetails->address}}</li>
+                    <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}   ({{date("Y")- date("Y",strtotime($client->clientDetails->dob))}})</li>
+                    <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
+                    @if($client->clientDetails->referred_by != null)
+                    <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}</li>
+                    @endif
+                    <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
+                    @if($client->clientDetails->sex == 'M')
+                        Male
+                    @elseif($client->clientDetails->sex == 'F')
+                        Female
+                    @else
+                        Non-Binary
+                    @endif
+                    </li>
+                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
+                </ul>
+            </aside>
         </div>
 
-        <section class="charts">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <div class="boxheading">
-                                <h3>CREDIT REPORTS</h3>
-                            </div>
-                            <div class="col-6 mt20">
-                                <h4>Lorem ipsum dolor sit.pdf</h4>
-                                <p>12-04-2020</p>
-                            </div>
-                            <div class="col-6 ">
-                                <h4>Lorem ipsum dolor sit.pdf</h4>
-                                <p>12-04-2020</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <div class="boxheading">
-                                <h3>DISPUTE PROGRESS</h3>
-                            </div>
-                            <div class="mt20">
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, doloribus.</h4>
-                                <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+        <div class="col-sm-9">
+            <section id="contents">
+                <div class="welcome">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="content">
+                                    <h2>Welcome to Dashboard</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row mt50">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <div class="boxheading">
-                                <h3>ARCHIVE</h3>
+                <section class="charts">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="chart-container">
+                                    <div class="boxheading">
+                                        <h3>CREDIT REPORTS</h3>
+                                    </div>
+                                    <div class="col-6 mt20">
+                                        <h4>Lorem ipsum dolor sit.pdf</h4>
+                                        <p>12-04-2020</p>
+                                    </div>
+                                    <div class="col-6 ">
+                                        <h4>Lorem ipsum dolor sit.pdf</h4>
+                                        <p>12-04-2020</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-6 mt20">
-                                <h4>DOCUMENTS </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                            <div class="col-md-6">
+                                <div class="chart-container">
+                                    <div class="boxheading">
+                                        <h3>DISPUTE PROGRESS</h3>
+                                    </div>
+                                    <div class="row p20">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="progress green">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">10</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6  col-sm-6">
+                                            <div class="progress yellow">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">5</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <h4 class=" text-center">Uploaded Documents VS Processed</h4>
+                                </div>
                             </div>
-                            <div class="col-6 ">
-                                <h4>MISCELLANEOUS</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                        </div>
+
+                        <div class="row mt50">
+                            <div class="col-md-6">
+                                <div class="chart-container">
+                                    <div class="boxheading">
+                                        <h3>ARCHIVE</h3>
+                                    </div>
+                                    <div class="col-6 mt20">
+                                        <h4>DOCUMENTS</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                                    </div>
+                                    <div class="col-6 ">
+                                        <h4>MISCELLANEOUS</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="chart-container">
+                                    <div class="boxheading">
+                                        <h3>BILLING </h3>
+                                    </div>
+                                    <div class="mt20">
+                                        <h4>billing statements</h4>
+                                        <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <div class="boxheading">
-                                <h3>BILLING </h3>
+                </section>
+
+                <section class="charts pb50 mt50">
+                    <div class="container-fluid">
+                        <div class="row ">
+                            <div class="col-md-8 col-sm-offset-2">
+                                <div class="chart-container">
+                                    <div class="boxheading">
+                                        <h3>EXCEED COMPANIES</h3>
+                                    </div>
+                                    <div class="mt20">
+                                        <h4>EXCEED AUTO GROUP</h4>
+                                        <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+                                    </div>
+                                    <div class="mt20">
+                                        <h4>EXCEED AUTO GROUP</h4>
+                                        <p>EXCEED CAPITAL LENDING</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mt20">
-                                <h4>billing statements</h4>
-                                <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
-                            </div>
+
                         </div>
                     </div>
+                </section>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                    @method('PUT')
+                    @csrf
+                        <div class="form row">
+                            <div class="form-group col-md-12">
+
+                                {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                            </div>
+                            <div class="form-group col-md-12">
+
+                                {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                            </div>
+
+                            <div class="form-group col-md-12">
+
+                                {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
+                            </div>
+
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label for="gender">Gender</label>--}}
+{{--                                <div class="form-check form-check-inline">--}}
+{{--                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked="checked">--}}
+{{--                                    <label class="form-check-label" for="male">Male</label>--}}
+
+{{--                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">--}}
+{{--                                    <label class="form-check-label" for="female">Female</label>--}}
+{{--                                </div>--}}
+
+{{--                            </div>--}}
+
+                        </div>
+
+                        <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
 
-        <section class="charts pb50 mt50">
-            <div class="container-fluid">
-                <div class="row ">
-                    <div class="col-md-8 col-sm-offset-2">
-                        <div class="chart-container">
-                            <div class="boxheading">
-                                <h3>EXCEED COMPANIES </h3>
-                            </div>
-                            <div class="mt20">
-                                <h4>EXCEED AUTO GROUP</h4>
-                                <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
-                            </div>
-                            <div class="mt20">
-                                <h4>EXCEED AUTO GROUP</h4>
-                                <p> EXCEED CAPITAL LENDING</p>
-                            </div>
-                        </div>
-                    </div>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
-                </div>
-            </div>
-        </section>
-    </section>
+    </script>
 
-    <script type="text/javascript">
+    <script>
+        $(document).ready(function(){
+
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                $("#address").val(place.formatted_address)
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if (place.address_components[i].types[j] == "postal_code") {
+                            $("#zip").val(place.address_components[i].long_name);
+
+                        }
+                    }
+                }
+            });
+
+
+
+            $(".ssn").mask("999-99-9999");
+            $('#phone_number').mask('(000) 000-0000');
+
+        </script>
+
+
+
+
+        <script type="text/javascript">
         /*global $, console*/
 
         $(function () {
@@ -360,6 +488,7 @@
 
         });
     </script>
+
 
 
 @endsection

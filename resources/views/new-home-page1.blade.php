@@ -439,92 +439,92 @@
     </section>
 
 
-    <section class="research-section section-padding">
-        <div class="container">
-            <div class="row mx-auto">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="section-title">
-                        <h2>Testimonials</h2>
-                        <div class="border-2"></div>
-                    </div> <!-- section-title -->
+{{--    <section class="research-section section-padding">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row mx-auto">--}}
+{{--                <div class="col-md-8 col-md-offset-2">--}}
+{{--                    <div class="section-title">--}}
+{{--                        <h2>Testimonials</h2>--}}
+{{--                        <div class="border-2"></div>--}}
+{{--                    </div> <!-- section-title -->--}}
 
-                    <div id="research-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item">
-                                <div class="carousel-wrapper">
-                                    <img src="{{asset('images/t2.jpg')}}" alt="image">
+{{--                    <div id="research-carousel" class="carousel slide" data-ride="carousel">--}}
+{{--                        <div class="carousel-inner" role="listbox">--}}
+{{--                            <div class="item">--}}
+{{--                                <div class="carousel-wrapper">--}}
+{{--                                    <img src="{{asset('images/t2.jpg')}}" alt="image">--}}
 
-                                    <div class="content">
-                                        <h3>Larry Barry</h3>
-                                        <span class="position">CEO, Finance World</span>
-                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>
+{{--                                    <div class="content">--}}
+{{--                                        <h3>Larry Barry</h3>--}}
+{{--                                        <span class="position">CEO, Finance World</span>--}}
+{{--                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>--}}
 
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+{{--                                        <ul>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="item active">
-                                <div class="carousel-wrapper">
-                                    <img src="{{asset('images/t2.jpg')}}" alt="image">
+{{--                            <div class="item active">--}}
+{{--                                <div class="carousel-wrapper">--}}
+{{--                                    <img src="{{asset('images/t2.jpg')}}" alt="image">--}}
 
-                                    <div class="content">
-                                        <h3>Larry Barry123</h3>
-                                        <span class="position">CEO, Finance World</span>
-                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>
+{{--                                    <div class="content">--}}
+{{--                                        <h3>Larry Barry123</h3>--}}
+{{--                                        <span class="position">CEO, Finance World</span>--}}
+{{--                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>--}}
 
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+{{--                                        <ul>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                            <div class="item">
-                                <div class="carousel-wrapper">
-                                    <img src="{{asset('images/t2.jpg')}}" alt="image">
+{{--                            <div class="item">--}}
+{{--                                <div class="carousel-wrapper">--}}
+{{--                                    <img src="{{asset('images/t2.jpg')}}" alt="image">--}}
 
-                                    <div class="content">
-                                        <h3>Larry Barry</h3>
-                                        <span class="position">CEO, Finance World</span>
-                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>
+{{--                                    <div class="content">--}}
+{{--                                        <h3>Larry Barry</h3>--}}
+{{--                                        <span class="position">CEO, Finance World</span>--}}
+{{--                                        <p>Knowledge is spread out across the organization. It can take too long to find the asset with the information needed. Great people, great clients, and you get to be a part of an organization.</p>--}}
 
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+{{--                                        <ul>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                            <li><i class="fa fa-star"></i></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <a class="left carousel-control" href="#research-carousel" role="button" data-slide="prev"><img src="{{asset('images/left-angel.png')}}" alt=""></a>
+{{--                        <a class="left carousel-control" href="#research-carousel" role="button" data-slide="prev"><img src="{{asset('images/left-angel.png')}}" alt=""></a>--}}
 
-                        <a class="right carousel-control" href="#research-carousel" role="button" data-slide="next"><img src="{{asset('images/right-angel.png')}}" alt=""></a>
+{{--                        <a class="right carousel-control" href="#research-carousel" role="button" data-slide="next"><img src="{{asset('images/right-angel.png')}}" alt=""></a>--}}
 
-                        <div class="link text-center">
-                            <a href="#" class="btn btn-primary"><i class="fa fa-th" aria-hidden="true"></i> View All</a>
-                        </div>
-                    </div>
+{{--                        <div class="link text-center">--}}
+{{--                            <a href="#" class="btn btn-primary"><i class="fa fa-th" aria-hidden="true"></i> View All</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
-                </div>
-            </div>
-        </div>
-    </section>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <div class="modal fade" id="bankruptcies" role="dialog">
         <div class="modal-dialog modal-dialog-centered">

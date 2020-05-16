@@ -31,10 +31,7 @@ Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->nam
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
 Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
 
-
-
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
-
 
 Auth::routes();
 Auth::routes(['verify' => true]);
