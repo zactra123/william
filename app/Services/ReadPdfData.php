@@ -461,27 +461,52 @@ class ReadPdfData
         $text = new Pdf('C:\xampp\htdocs\ccc\pdftotext.exe');
         $text->setPdf($path);
         $data = $text->setOptions(['raw', 'f 1'])->text();
+        $dataNoPageBreak = $text->setOptions(['nopgbrk'])->text();
 
 
-        $data = explode('Account name', $data);
+        $creditReportPart = $this->get_account_name($data, 'We make your credit history available to your current');
+        $creditReportPartNoPageBreak = $this->get_account_name($dataNoPageBreak, 'We make your credit history available to your current');
+
+        $arrayCreditReport = explode('Account name', $creditReportPart);
+        $arrayCreditReportNoPageBreak = explode('Account name', $creditReportPartNoPageBreak);
+
         $dataReport = [];
-        array_shift($data);
-        foreach($data as $key=>$value){
+        array_shift($arrayCreditReport);
+        array_shift($arrayCreditReportNoPageBreak);
+        foreach($arrayCreditReport as $key=>$value){
 
             $acountName = str_replace("\r\n", '', $this->get_account_name($value,'Account number' ));
             if (empty($acountName)){
                 continue;
             }
-            $dataReport[$key]["user_id"] = $userId;
-            $dataReport[$key]["attachment_id"] = $attachmentId;
 
+
+
+            preg_match("/[0-9]{7,11}\s/",$value, $matchAddressIdentNumber);
+            preg_match("/[0-9]{15,20}\s/",$value, $matchMortgageIdentNum);
+
+            $addressIdentificationNumber = isset($matchAddressIdentNumber[0])?$matchAddressIdentNumber[0]:null;
+            $mortgageIdentificationNumber =  isset($matchMortgageIdentNum[0])?$matchMortgageIdentNum[0]:null;
 
             $dataReport[$key]["account_name"] = $acountName;
             $dataReport[$key]["account_number"]  = str_replace("\r\n", '',$this->get_string_between($value, 'Account number', 'Recent balance' ));
             $dataReport[$key]["recent_balance"] = str_replace("\r\n", '',$this->get_string_between($value, 'Recent balance', 'Date opened' ));
             $dataReport[$key]["date_opened"] = str_replace("\r\n", '',$this->get_string_between($value, 'Date opened', 'Status' ));
-            $dataReport[$key]["type"] = str_replace("\r\n", '',$this->get_string_between($value, 'Type', 'Terms' ));
-            $dataReport[$key]["terms"] = str_replace("\r\n", '',$this->get_string_between($value, 'Terms', 'On record until' ));
+            $dataReport[$key]["type"] = str_replace("\r\n", '',$this->get_string_between($arrayCreditReportNoPageBreak[$key], 'Type', 'Terms' ));
+
+
+            if($key == 1){
+                dd($dataReport, $value, $arrayCreditReportNoPageBreak[$key]);
+            }
+
+
+
+
+
+
+
+
+            $dataReport[$key]["terms"] =str_replace("\r\n", '',$this->get_string_between($value, 'Terms', 'On record until' ));;
             $dataReport[$key]["on_record_until"] = str_replace("\r\n", '',$this->get_string_between($value, 'On record until', 'Credit limit ' ));
             $dataReport[$key]["credit_limit"] = str_replace("\r\n", '',$this->get_string_between($value, 'original amount', 'High balance' ));
             $dataReport[$key]["highest_balance"] = str_replace("\r\n", '',$this->get_string_between($value, 'High balance', 'Monthly payment' ));
@@ -491,27 +516,25 @@ class ReadPdfData
             $dataReport[$key]["first_reported"] = str_replace("\r\n", '',$this->get_string_between($value, "First reported", 'Responsibility' ));
             $dataReport[$key]["sold_to"] = $soldTo = str_replace("\r\n", '',$this->get_string_between($value, "Sold to", 'Type' ));
             $dataReport[$key]["original_creditor"] = $originalCreditor = str_replace("\r\n", '',$this->get_string_between($value, "Original creditor", 'Type' ));
-            $dataReport[$key]["mortgage_identification_number"] = $mortgageIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Mortgage identification number", 'Type' ));
 
-            $addressIdentificationNumber = null;
-            if($soldTo != null){
-                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Sold to' ));
-            }elseif($originalCreditor != null){
-                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Original creditor' ));
-            }elseif($mortgageIdentificationNumber != null ){
-                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Mortgage identification number' ));
-            }else{
-                $addressIdentificationNumber = str_replace("\r\n", '',$this->get_string_between($value, "Address identification number", 'Type'));
-            }
-            $dataReport[$key]["address_identification_number"] = $addressIdentificationNumber;
+            $dataReport[$key]["mortgage_identification_number"] =trim($mortgageIdentificationNumber) ;
+            $dataReport[$key]["address_identification_number"] = trim($addressIdentificationNumber);
 
             $statusAddress =str_replace("\r\n", ' ',$this->get_string_between($value, "Status", 'Address identification number' ));
-            preg_match('/[A-Z]{2,}+(.*)$/',$statusAddress, $address );
+            preg_match('/[A-Z\/]{3,}+(.*)$/',$statusAddress, $address );
+
             $dataReport[$key]["address"] = $address[0];
             $statusText = str_replace([ $address[0],' + Dispute'], '', $statusAddress);
-            $pattern = '/(Closed|Account|Transferred|Foreclosed|Collection|Open|Paid)+(.*)$/';
+            $pattern = '/(Closed|Account|Transferred|Foreclosed|Collection|Open|Paid|Credit card reported)+(.*)$/';
             preg_match($pattern,$statusText, $status );
-            $dataReport[$key]["status"] = $status[0];
+            $dataReport[$key]["status"] = isset($status[0])?$status[0]:null;
+
+//            if($key==32){
+//                dd($address, $statusAddress, $dataReport[$key]["terms"],$value);
+////                dd($statusText, $statusAddress, $statusAddress,$key, $value, $key);
+//            }
+
+
 
             $commentOther = $this->get_string_between($value, "Comment", null);
 
@@ -593,7 +616,7 @@ class ReadPdfData
             $dataReport[$key]["payment_history"] = $paymentHistory;
 
         }
-
+        dd($dataReport, $data);
         return $dataReport;
     }
 
