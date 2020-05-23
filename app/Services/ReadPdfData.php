@@ -495,7 +495,7 @@ class ReadPdfData
             $dataReport[$key]["type"] = str_replace("\r\n", '',$this->get_string_between($arrayCreditReportNoPageBreak[$key], 'Type', 'Terms' ));
 
 
-            if($key == 1){
+            if($key == 30){
                 dd($dataReport, $value, $arrayCreditReportNoPageBreak[$key]);
             }
 
@@ -521,6 +521,7 @@ class ReadPdfData
             $dataReport[$key]["address_identification_number"] = trim($addressIdentificationNumber);
 
             $statusAddress =str_replace("\r\n", ' ',$this->get_string_between($value, "Status", 'Address identification number' ));
+            dd($statusAddress);
             preg_match('/[A-Z\/]{3,}+(.*)$/',$statusAddress, $address );
 
             $dataReport[$key]["address"] = $address[0];
