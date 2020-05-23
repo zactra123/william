@@ -95,7 +95,7 @@ class ClientsController extends Controller
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
-            ->paginate(20);
+            ->paginate(10);
 
         return view('owner.client.list', compact( 'users'));
 
