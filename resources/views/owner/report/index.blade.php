@@ -20,15 +20,22 @@
                             <div class="card-body">
                                 <form>
                                     <div class="row">
-                                        <div class="custom-control custom-control-inline">
-                                            <input type="date" name="from" value="{{$dates["from"]}}"/>
+                                        <div class="form-group">
+
+                                                <div class="col-lg-4">
+                                                    <input class="form-control" type="date" name="from" value="{{$dates["from"]}}"/>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <input class="form-control " type="date" name="to" value="{{$dates["to"]}}" max="{{date('Y-m-d    ')}}"/>
+                                                </div>
+                                                <dov class=" col-lg-4">
+                                                    <button class="btn btn-primary">Get Report</button>
+                                                </dov>
+
+                                            </div>
 
                                         </div>
-                                        <div class="custom-control custom-control-inline">
-                                            <input type="date" name="to" value="{{$dates["to"]}}" max="{{date('Y-m-d    ')}}"/>
 
-                                        </div>
-                                        <button class="btn btn-primary">Get Report</button>
 
                                     </div>
                                 </form>

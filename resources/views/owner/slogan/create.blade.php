@@ -17,10 +17,10 @@
                                     {!! Form::open(['route' => ['owner.slogans.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
                                     @csrf
                                     <div class="form-group row font">
-                                        {{ Form::text('slogan[author]', old('slogan.author'), ['class' => 'form-control m-input', 'placeholder' => 'Title']) }}
+                                        {{ Form::text('slogan[author]', old('slogan.author'), ['class' => 'form-control m-input', 'placeholder' => 'AUTHOR NAME']) }}
                                     </div>
                                     <div class="form-group row font">
-                                        {{ Form::textarea('slogan[slogan]', old('slogan.slogan'), ['class' => 'form-control m-input', 'placeholder' => 'Sub Content']) }}
+                                        {{ Form::textarea('slogan[slogan]', old('slogan.slogan'), ['class' => 'form-control m-input', 'placeholder' => 'SLOGAN']) }}
                                     </div>
                                     <div class="form-group row mb-0 font">
                                         <div class="col-md-8 offset-md-4">

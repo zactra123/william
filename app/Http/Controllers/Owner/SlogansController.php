@@ -12,7 +12,7 @@ class SlogansController extends Controller
 
     public function index()
     {
-        $slogans = Slogan::all();
+        $slogans = Slogan::paginate(20);
         return view('owner.slogan.index', compact('slogans'));
     }
 

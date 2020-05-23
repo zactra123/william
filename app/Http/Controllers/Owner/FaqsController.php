@@ -12,7 +12,7 @@ class FaqsController extends Controller
 
     public function index()
     {
-        $faqs = Faq::all();
+        $faqs = Faq::paginate(10);
 
         return view('owner.faqs.index', compact('faqs'));
 
@@ -84,7 +84,7 @@ class FaqsController extends Controller
 
     public function question()
     {
-        $questions = Question::all();
+        $questions = Question::paginate(20);
         return view('owner.faqs.question', compact('questions'));
     }
     public function questionDelete($id)

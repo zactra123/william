@@ -16,10 +16,10 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Question</th>
-                                            <th scope="col">Action</th>
+                                            <th>#</th>
+                                            <th class="col-lg-2">Title</th>
+                                            <th class="col-lg-8">Question</th>
+                                            <th class="col-lg-2">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -40,6 +40,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    {{$faqs->links()}}
                                 </div>
 
                             </div>

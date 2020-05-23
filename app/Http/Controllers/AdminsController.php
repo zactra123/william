@@ -48,7 +48,7 @@ class AdminsController extends Controller
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
             ->where('users.role', 'client')
-            ->paginate(10);
+            ->paginate(20);
 
         return view('admin.user-list', compact( 'users'));
 
@@ -62,7 +62,7 @@ class AdminsController extends Controller
                 'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
             ->where('role', 'affiliate')
             ->groupBy('users.id')
-            ->paginate(10);
+            ->paginate(20);
         return view('admin.affiliate-list', compact('users'));
     }
 

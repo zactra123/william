@@ -39,6 +39,7 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
+                                            {{$slogans->links()}}
                                         </div>
 
                                     </div>
