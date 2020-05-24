@@ -167,32 +167,27 @@ class   User extends Authenticatable implements MustVerifyEmail
         $chats = DB::table('chat')
             ->leftJoin('guest', function($join)
             {
-                $join->on('chat.recipient_id', '=', 'guest.id')
-                    ->where('chat.recipient_type','=', DB::raw("'Guest'"));
+                $join->on('chat.recipient_id', '=', 'guest.id');
+                $join->on('chat.recipient_type','=', DB::raw("'Guest'"));
             })
-            ->leftJoin('users as guest_user', "guest_user.id", '=', 'guest.user_id')
             ->leftJoin('users', function($join)
             {
-                $join->on('chat.recipient_id', '=', 'users.id')
-                    ->where('chat.recipient_type','=', DB::raw("'User'"));
+                $join->on('chat.recipient_id', '=', 'users.id');
+                $join->on('chat.recipient_type','=', DB::raw("'User'"));
             })
-            ->groupBy([
-                DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END'),
-                DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END')
-            ])
-            ->where(['chat.user_id'=> $this->id])
-            ->whereRaw('(users.id IS NOT NULL OR guest.id IS NOT NULL)')
-            ->orderBy('chat.created_at', 'DESC')
-            ->select(
-                DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END as id'),
-                DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END as type'),
-                DB::raw('CASE
-                   WHEN guest.user_id IS NULL AND guest.id IS NOT NULL THEN guest.full_name
-                   WHEN guest.user_id IS NOT NULL THEN CONCAT(guest_user.first_name, " ", guest_user.last_name)
-                   ELSE CONCAT(users.first_name, " ", users.last_name) END AS full_name'),
+            ->groupBy(['recipient_id', 'recipient_type'])
+            ->where('chat.user_id', $this->id)
+            ->select('recipient_id as id', 'recipient_type as type', 'guest.full_name as full_name',
+                DB::raw('CONCAT(users.last_name, " ",users.first_name) AS user_full_name'),
                 DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
                 DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
             ->get()->toArray();
+
+        return $chats;
+
+
+
+
 
         return $chats;
     }
@@ -228,3 +223,34 @@ class   User extends Authenticatable implements MustVerifyEmail
 //        return $chats;
 //    }
 }
+
+
+
+//$chats = DB::table('chat')
+//    ->leftJoin('guest', function($join)
+//    {
+//        $join->on('chat.recipient_id', '=', 'guest.id')
+//            ->where('chat.recipient_type','=', DB::raw("'Guest'"));
+//    })
+//    ->leftJoin('users', function($join)
+//    {
+//        $join->on('chat.recipient_id', '=', 'users.id')
+//            ->where('chat.recipient_type','=', DB::raw("'User'"));
+//    })
+//    ->groupBy([
+//        DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END'),
+//        DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END')
+//    ])
+//    ->where(['chat.user_id'=> $this->id])
+//    ->whereRaw('(users.id IS NOT NULL OR guest.id IS NOT NULL)')
+//    ->orderBy('chat.created_at', 'DESC')
+//    ->select(
+//        DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END as id'),
+//        DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END as type'),
+//        DB::raw('CASE
+//                   WHEN guest.user_id IS NULL AND guest.id IS NOT NULL THEN guest.full_name
+//                   WHEN guest.user_id IS NOT NULL THEN CONCAT(guest_user.first_name, " ", guest_user.last_name)
+//                   ELSE CONCAT(users.first_name, " ", users.last_name) END AS full_name'),
+//        DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
+//        DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
+//    ->get()->toArray();

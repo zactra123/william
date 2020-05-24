@@ -24,8 +24,8 @@ class LiveChat implements ShouldBroadcast
      */
     public function __construct($data)
     {
+//        dd($data);
         $this->message = $data;
-
 
     }
 
