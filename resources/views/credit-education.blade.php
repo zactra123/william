@@ -30,8 +30,8 @@
                 <div class="row justify-content-center">
 
                         <div class="wrapper-content">
-                            <img width="55%" src="{{asset('images/chart1.jpg')}}"  w alt="">
-
+                            <img width="55%" src="{{asset('images/chart1.jpg')}}"  alt="">
+                        </div>
 
 {{--                    <div class="col-md-3">--}}
 {{--                        <div class="wrapper-content">--}}

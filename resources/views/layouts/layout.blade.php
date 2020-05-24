@@ -200,6 +200,7 @@
     </div>
 </div>
 
+{{--@include('helpers.chat-box')--}}
 @auth
     @if(Auth::user()->role == 'client')
         @include('helpers.chat-box')

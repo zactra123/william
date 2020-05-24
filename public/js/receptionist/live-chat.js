@@ -172,7 +172,6 @@ $(document).ready(function(){
     })
 
     var user = $('#app').data("user");
-    console.log(user)
     if (user != ''){
         connectToChannel(user)
     }

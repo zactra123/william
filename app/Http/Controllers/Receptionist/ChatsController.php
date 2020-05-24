@@ -23,6 +23,11 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
+
+//        bash
+//        $new_message = Chat::find(22);
+//        broadcast(new LiveChat($new_message));
+//        die;
         $chats = Auth::user()->chat_list();
 
         $unreads = array_sum(array_map('intval',array_column($chats, "message")));
@@ -57,24 +62,15 @@ class ChatsController extends Controller
     {
 
         $user = Auth::user();
-        if(isset($request->private)){
-            $new_message = Chat::create([
-                "message" => $request->answer,
-                "recipient_type" => $request->recipient_type,
-                "recipient_id" => $request->recipient_id,
-                "user_id" => $user->id,
-                "type" => "from"
-            ]);
-        }else{
-            $guest = DB::table('guest')->where('user_id', $request->recipient_id)->first();
-            $new_message = Chat::create([
-                "message" => $request->answer,
-                "recipient_type" =>'Guest',
-                "recipient_id" => $guest->id,
-                "user_id" => $user->id,
-                "type" => "from"
-            ]);
-        }
+        $new_message = Chat::create([
+            "message" => $request->answer,
+            "recipient_type" => $request->recipient_type,
+            "recipient_id" => $request->recipient_id,
+            "user_id" => $user->id,
+            "private" =>  (int) $request->private,
+            "type" => "from"
+        ]);
+
         broadcast(new LiveChat($new_message));
 
         $chatMessage =  Auth::user()

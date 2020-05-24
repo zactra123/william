@@ -32,6 +32,13 @@ Route::get('faqs', 'PagesController@faqs')->name('faqs');
 Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
 
 
+Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
+    if ($req->channel_name == 'presence-LiveChat') {
+
+        return \Illuminate\Support\Facades\Broadcast::auth($req);
+    }
+});
+
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 
