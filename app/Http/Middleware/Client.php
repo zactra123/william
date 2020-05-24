@@ -23,6 +23,9 @@ class Client
            return redirect()->route('login');
        } elseif ( Auth::user()->role != 'client') {
             return redirect()->to('/');
+       }elseif(Auth::user()->role == 'client' && Auth::user()->active ==0 ){
+           Auth::logout();
+           return redirect()->to('login')->withErrors(['error'=>"Your account is locked please connect to administrator "]);
        }
        if($request->path() != "client/registration-steps" && $request->method() =='GET'){
            if($request->path() =="client/continue"){

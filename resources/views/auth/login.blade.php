@@ -23,6 +23,15 @@
                         <div class="ms-ua-title">
                             <h3>Login</h3>
                         </div>
+                        @if ($errors->any())
+
+                            <div class="alert alert-danger flash">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                @foreach($errors->all()  as $message)
+                                    <strong>{{ $message }}</strong>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="ms-ua-form">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
