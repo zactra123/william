@@ -67,6 +67,8 @@ class SendNotification extends Command
                     'credentials.ex_pin',
                     'credentials.tu_login',
                     'credentials.tu_password',
+                    'credentials.tu_answer',
+                    'credentials.tu_question',
                     'credentials.eq_login',
                     'credentials.eq_password',
                 ]);
