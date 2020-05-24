@@ -297,6 +297,13 @@
         @if(Auth::user())
             @if(Auth::user()->role == 'client')
                 @include('helpers.urls.nav_bar_client')
+                @if(!empty(Auth::user()->clientDetails))
+                    @if(Auth::user()->clientDetails->registration_steps != 'registered')
+                        <li ><a href="{{route('client.details.edit', Auth::user()->id)}}">EDIT DETAILS</a></li>
+                        <li ><a href="{{route('client.addDriverSocial')}}">UPLOAD DL & SS </a></li>
+                        <li><a href="{{route('client.credentials')}}">CREDENTIALS</a></li>
+                    @endif
+                @endif
                 <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
