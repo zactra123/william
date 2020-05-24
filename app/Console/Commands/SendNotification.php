@@ -55,21 +55,15 @@ class SendNotification extends Command
         $users = DB::table('users')
 
             ->leftJoin('credentials', 'users.id','=', 'credentials.user_id')
-            ->where('users.id', 22)
-            ->where('ck_login', null)
-            ->orWhere('ck_password', null)
-            ->orWhere('tu_login', null)
-            ->orWhere('tu_password', null)
-            ->orWhere('ex_login',null)
-            ->orWhere('ex_password',null)
-            ->orWhere('ex_answer',null)
-            ->orWhere('ex_pin', null)
-            ->orWhere('eq_login',null)
-            ->orWhere('eq_password', null)
             ->where('users.role', 'client')
+            ->where(DB::raw('ck_login IS NULL OR ck_password IS NULL'))
+
+//            ->where(DB::raw('ck_login IS NULL OR ck_password IS NULL OR tu_login IS NULL OR tu_password IS NULL
+//            OR ex_login IS NULL OR ex_password IS NULL OR ex_answer IS NULL OR ex_pin IS NULL OR eq_login IS NULL
+//            OR eq_password IS NULL'))
 
             ->select('users.*')
-            ->toSql();
+            ->get();
 
         dd($users);
 
