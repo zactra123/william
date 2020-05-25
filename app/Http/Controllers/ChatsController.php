@@ -138,6 +138,7 @@ class ChatsController extends Controller
      */
     public function postNewMessage(Request $requests)
     {
+
         $last_message = Chat::where("recipient_type", $requests->recipient_type)
             ->where("recipient_id", $requests->recipient_id)
             ->first();

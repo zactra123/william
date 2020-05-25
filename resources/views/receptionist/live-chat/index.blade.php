@@ -78,6 +78,23 @@
                                         <div class="card ">
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
+                                                    @if($chat->type == 'User')
+
+                                                    <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
+                                                         data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
+                                                        <div class="row">
+                                                            <span class="pl-2"><h3>{{$chat->user_full_name??"FULL NAME"}}</h3></span>
+                                                            @if($chat->message != 0)
+                                                                <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
+                                                                    </i>{{$chat->message}}</h3>
+                                                            @endif
+                                                        </div>
+                                                        <div class="row">
+                                                            <span class="pl-2">{{$chat->type}}</span>
+                                                            <span class="pl-2">{{$chat->email}}</span>
+                                                        </div>
+                                                    </div>
+                                                @elseif($chat->type == 'Guest')
                                                     <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
                                                          data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
 
@@ -94,6 +111,7 @@
                                                             <span class="pl-2">{{$chat->email}}</span>
                                                         </div>
                                                     </div>
+                                                @endif
 
                                                 @endforeach
                                             </div>

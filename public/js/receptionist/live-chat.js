@@ -51,7 +51,11 @@ addChatUserList = function(chatUserList) {
     chatListHtml = ''
     chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.type + chatUserList.id + ' data-id='+chatUserList.id
     chatListHtml +=  ' data-type='+chatUserList.type+ '> <div class="form-group"><span><h3>'
-    chatListHtml += chatUserList.full_name+'</h3></span>'
+
+    if(chatUserList.type == "Guest"){
+        full_name = chatUserList.full_name
+    }else{full_name = chatUserList.user_full_name}
+    chatListHtml +=  full_name+'</h3></span>'
     if(chatUserList.message != 0){
         chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
         chatListHtml += chatUserList.message+'</span>'

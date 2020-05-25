@@ -98,7 +98,7 @@ $(document).ready(function(){
             user = $(this).data('userId');
         if(guest != '' || user != '') {
             recipient.type = user != ''? "user" : "guest";
-            recipient.id =  guest != '' ? guest : user;
+            recipient.id =  user != '' ? user : guest;
             getChatMessages(recipient.id, recipient.type)
                 .then(function(result){
                     return addAllMessages(result.messages)
