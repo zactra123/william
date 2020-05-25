@@ -46,50 +46,58 @@ addMessageToChat = function(message) {
 
 };
 
+allChatList = function(chats) {
+    chatListHtml = '';
+
+    $.each(chats, function( index, value ) {
+        chatListHtml +=  addChatUserList(value);
+    });
+    $("#chatListId").html(chatListHtml);
+}
 
 addChatUserList = function(chatUserList) {
     chatListHtml = ''
-    chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.type + chatUserList.id + ' data-id='+chatUserList.id
+    chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.recipient_type + chatUserList.recipient_id + ' data-id='+chatUserList.id
     chatListHtml +=  ' data-type='+chatUserList.type+ '> <div class="form-group"><span><h3>'
 
-    if(chatUserList.type == "Guest"){
-        full_name = chatUserList.full_name
-    }else{full_name = chatUserList.user_full_name}
+        full_name = chatUserList.full_name?? "Unnamed Guest"
+
     chatListHtml +=  full_name+'</h3></span>'
     if(chatUserList.message != 0){
         chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
         chatListHtml += chatUserList.message+'</span>'
     }
 
-    chatListHtml += '</div> <div class="form-group"> <span>'+chatUserList.type
+    chatListHtml += '</div> <div class="form-group"> <span>'+chatUserList.recipient_type
     chatListHtml += '</span>   <span class="pl-2">'+chatUserList.email+'</span></div></div>'
     return chatListHtml
 
 };
 
+getChatInformations = function(data){
+    return new Promise(function(resolve, reject) {
+        $.ajax({
+            url: '/receptionist/live-chat',
+            type: "GET",
+            data: data,
+            success: function(response) {
+                resolve(response)
+            },
+            error: function(error) {
+                console.log(error);
+                reject(error)
+            }
+        })
+    })
+}
+
 
 $(document).ready(function(){
-    $.ajax({
-        url: "live-chat/unreads",
-        method: "GET",
-
-        success: function (result) {
-            var messageCount = ' '
-            messageCount += result
-            $("#allMessageCount").html(messageCount)
-        },
-
-    });
-
 
     $(document).on('click',".chatMessage", function(){
-
-
         var id = $(this).attr("data-id");
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
-
-        console.log(token, 'asdadasd');
 
         $.ajax({
             url: "live-chat/chat-message",
@@ -107,7 +115,8 @@ $(document).ready(function(){
                 $.each(result.chats, function( index, value ) {
                     chatListHtml +=  addChatUserList(value);
                 });
-                console.log(type);
+
+                //esi petq chi voncor
                 if(type == "Guest"){
                     $(".privateCheckBox").hide();
                 }else{ $(".privateCheckBox").show();}
@@ -174,6 +183,35 @@ $(document).ready(function(){
         });
 
     })
+
+    $(document).on("click", "#chat_type li",function(){
+        var type = $(this).attr("data-type")
+        getChatInformations({"type": type})
+            .then(function(response){
+                $("#chat_type li").removeClass("active")
+                $(this).addClass("active")
+                allChatList(response.chats)
+            }.bind(this))
+            .catch(function(err){
+                console.log(err)
+            })
+    });
+
+    $(document).on("change keyup", "#chat-filters", function(){
+        var data = {
+            type: $("#chat_type li.active").attr("data-type"),
+            order: $("#chat-filters select").val(),
+            term: $("#chat-filters input").val()
+        };
+
+        getChatInformations(data)
+            .then(function(response){
+                allChatList(response.chats)
+            })
+            .catch(function(err){
+                console.log(err)
+            })
+    });
 
     var user = $('#app').data("user");
     if (user != ''){

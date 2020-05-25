@@ -162,12 +162,12 @@ class   User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function chat_list($params)
+    public function chat_list($params = [])
     {
         $chats = DB::table('chat')
             ->where(['chat.user_id'=> $this->id]);
 
-        if ($params["type"] == "Guest") {
+        if (!empty($params["type"]) && $params["type"] == "Guest") {
             $chats = $chats->leftJoin('guest', function($join) {
                 $join->on('chat.recipient_id', '=', 'guest.id')
                     ->where('chat.recipient_type','=', DB::raw("'Guest'"));
@@ -175,14 +175,21 @@ class   User extends Authenticatable implements MustVerifyEmail
                 ->leftJoin('users', "users.id", '=', 'guest.user_id')
                 ->whereNotNull('guest.id')
                 ->select(
-                    "recipient_type as type",
-                    "recipient_id as id",
+                    "chat.recipient_id as recipient_id",
+                    "chat.recipient_type as recipient_type",
                     "guest.full_name as full_name",
                     "guest.phone as phone",
                     "guest.email as email",
-                    "users.*",
+                    DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_full_name"),
+                    DB::raw("users.id as user_id"),
                     DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")
                 );
+            if (!empty($params["term"])){
+                $chats = $chats->where(function($query) use ($params) {
+                    $query->orWhere("guest.full_name",  "LIKE",  "%{$params["term"]}%")
+                        ->orWhere("guest.email",  'like', "%{$params["term"]}%");
+                    });
+            }
         } else {
             $chats = $chats->leftJoin('users', function($join) {
                 $join->on('chat.recipient_id', '=', 'users.id')
@@ -191,22 +198,48 @@ class   User extends Authenticatable implements MustVerifyEmail
                 ->leftJoin("client_details", "client_details.user_id", "users.id")
                 ->whereNotNull('users.id')
                 ->select(
-                    "recipient_type as type",
-                    "recipient_id as id",
+                    "chat.recipient_id as recipient_id",
+                    "chat.recipient_type as recipient_type",
                     DB::raw("CONCAT(users.first_name, ' ', users.last_name) as full_name"),
                     "client_details.phone_number as phone",
                     "users.email as email",
                     DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")
                 );
+            if (!empty($params["term"])){
+                $chats = $chats->where(function($query) use ($params) {
+                    $query->orWhere( DB::raw("CONCAT(users.first_name, ' ', users.last_name)"),  "LIKE",  "%{$params["term"]}%")
+                        ->orWhere("users.email",  'LIKE', "%{$params["term"]}%");
+                });
+            }
         }
+
+
         $chats = $chats->groupBy([
             'chat.recipient_id',
             "chat.recipient_type"
-        ])
-            ->orderBy('chat.created_at', 'DESC')
-            ->get()->toArray();
+        ]);
 
-        return $chats;
+        $chats = $chats->orderBy('chat.created_at', 'DESC');
+        if (!empty($params["order"]) && $params["order"] == "unreads") {
+            $chats = $chats->orderBy(DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END)"), 'DESC');
+
+        }
+
+
+
+        return $chats->get()->toArray();
+    }
+
+    public function unreads()
+    {
+        $unreads = Chat::where([
+            ["user_id", $this->id],
+            ["unread", 1]
+        ])
+            ->groupBy("recipient_type")
+            ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
+            ->pluck('unreads', "recipient_type");
+        return $unreads;
     }
 //        $chats = DB::table('chat')
 //            ->leftJoin('guest', function($join)

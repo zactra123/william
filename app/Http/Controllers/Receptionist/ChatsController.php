@@ -23,37 +23,36 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
-        $unreads = Chat::where([
-            ["user_id", Auth::user()->id],
-            ["unread", 1]
-            ])
-            ->groupBy("recipient_type")
-            ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
-            ->pluck('unreads', "recipient_type");
+        $chats = Auth::user()->chat_list($request->only("type", "term", "order"));
+        $unreads = Auth::user()->unreads();
 
-        $params = ["type"=> "Guest"];
-        $chats = Auth::user()->chat_list($params);
-
-//        $unreads = array_sum(array_map('intval',array_column($chats, "message")));
+        if ($request->ajax()){
+            $data = [
+                "chats" => $chats,
+                "unreads" => $unreads
+                ];
+            return Response::json($data);
+        }
         return view('receptionist.live-chat.index', compact('chats', 'unreads'));
     }
 
     public function show(Request $request)
     {
-
        $chatMessage =  Auth::user()->chatMessages($request->only("type", "id"))->select("chat.*");
 
        $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
 
        $chatMessage = $chatMessage->get();
-       $recipientData = ['id'=> $request->id, 'type' =>$request->type];
+       $recipientData = $request->only("type", "id");
 
-        $chats = Auth::user()->chat_list(["type" => $request->type]);
+        $chats = Auth::user()->chat_list(["type" => "Guest"]);
+        $unreads = Auth::user()->unreads();
 
-       $data = [
+        $data = [
            'chatMessage' =>$chatMessage,
            'recipient' =>$recipientData,
-           'chats' => $chats
+           'chats' => $chats,
+            'unreads' => $unreads
 
        ] ;
 

@@ -50,23 +50,23 @@
                 <div class="page-content">
                         <div class="row justify-content-center m-0">
                             <aside class="sidebar col-md-3">
-                                <div>
+                                <div id="chat_type">
                                     <ul class="list-group">
-                                        <li class="list-group-item  active">
+                                        <li class="list-group-item  active" data-type="User">
                                             <span>Clients</span>
-                                            <span class="badge badge-notify">{{$unreads["User"]}}</span>
+                                            <span class="badge badge-notify">{{!empty($unreads["User"]) ? $unreads["User"] :""}}</span>
                                         </li>
-                                        <li class="list-group-item">
+                                        <li class="list-group-item" data-type="Guest">
                                             <span>Guests</span>
-                                            <span class="badge badge-notify">{{$unreads["Guest"]}}</span>
+                                            <span class="badge badge-notify">{{!empty($unreads["Guest"]) ? $unreads["Guest"] : ""}}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div id="chat-filters">
                                     <div class="form-group">
-                                        <select class="form-control" name="" id="">
-                                            <option value="">newest</option>
-                                            <option value="">unreads</option>
+                                        <select class="form-control" name="order">
+                                            <option value="newest">newest</option>
+                                            <option value="unreads">unreads</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -78,28 +78,24 @@
                                         <div class="card ">
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
-                                                    @if($chat->type == 'User')
+                                                    <div class="list-group-item chatMessage " id="{{$chat->recipient_type}}{{$chat->recipient_id}}"
+                                                         data-id="{{$chat->recipient_id}}" data-type="{{$chat->recipient_type}}" >
 
-                                                    <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
-                                                         data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
+                                                    @if($chat->recipient_type == 'User')
                                                         <div class="row">
-                                                            <span class="pl-2"><h3>{{$chat->user_full_name??"FULL NAME"}}</h3></span>
+                                                            <span class="pl-2"><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
                                                             @if($chat->message != 0)
                                                                 <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
                                                                     </i>{{$chat->message}}</h3>
                                                             @endif
                                                         </div>
                                                         <div class="row">
-                                                            <span class="pl-2">{{$chat->type}}</span>
+                                                            <span class="pl-2">{{$chat->recipient_type}}</span>
                                                             <span class="pl-2">{{$chat->email}}</span>
                                                         </div>
-                                                    </div>
-                                                @elseif($chat->type == 'Guest')
-                                                    <div class="list-group-item chatMessage " id="{{$chat->type}}{{$chat->id}}"
-                                                         data-id="{{$chat->id}}" data-type="{{$chat->type}}" >
-
+                                                    @elseif($chat->recipient_type == 'Guest')
                                                         <div class="row">
-                                                            <span class="pl-2"><h3>{{$chat->full_name??"FULL NAME"}}</h3></span>
+                                                            <span class="pl-2"><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
                                                             @if($chat->message != 0)
                                                                 <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
                                                                     </i>{{$chat->message}}</h3>
@@ -107,11 +103,12 @@
                                                         </div>
 
                                                         <div class="row">
-                                                            <span class="pl-2">{{$chat->type}}</span>
+                                                            <span class="pl-2">{{$chat->recipient_type}}</span>
                                                             <span class="pl-2">{{$chat->email}}</span>
                                                         </div>
+
+                                                    @endif
                                                     </div>
-                                                @endif
 
                                                 @endforeach
                                             </div>
