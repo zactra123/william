@@ -54,11 +54,11 @@
                                     <ul class="list-group">
                                         <li class="list-group-item  active">
                                             <span>Clients</span>
-                                            <span class="badge badge-notify"> 3</span>
+                                            <span class="badge badge-notify">{{$unreads["User"]}}</span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span>Not registered</span>
-                                            <span class="badge badge-notify"> 5</span>
+                                            <span>Guests</span>
+                                            <span class="badge badge-notify">{{$unreads["Guest"]}}</span>
                                         </li>
                                     </ul>
                                 </div>

@@ -23,14 +23,18 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
+        $unreads = Chat::where([
+            ["user_id", Auth::user()->id],
+            ["unread", 1]
+            ])
+            ->groupBy("recipient_type")
+            ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
+            ->pluck('unreads', "recipient_type");
 
-//        bash
-//        $new_message = Chat::find(22);
-//        broadcast(new LiveChat($new_message));
-//        die;
-        $chats = Auth::user()->chat_list();
+        $params = ["type"=> "Guest"];
+        $chats = Auth::user()->chat_list($params);
 
-        $unreads = array_sum(array_map('intval',array_column($chats, "message")));
+//        $unreads = array_sum(array_map('intval',array_column($chats, "message")));
         return view('receptionist.live-chat.index', compact('chats', 'unreads'));
     }
 
