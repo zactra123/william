@@ -48,7 +48,7 @@ class ChatsController extends Controller
        $chatMessage = $chatMessage->get();
        $recipientData = ['id'=> $request->id, 'type' =>$request->type];
 
-        $chats = Auth::user()->chat_list();
+        $chats = Auth::user()->chat_list(["type" => $request->type]);
 
        $data = [
            'chatMessage' =>$chatMessage,
