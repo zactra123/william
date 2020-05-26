@@ -55,8 +55,6 @@ class ChatsController extends Controller
             'unreads' => $unreads
 
        ] ;
-
-
         return Response::json($data);
     }
 

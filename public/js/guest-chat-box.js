@@ -63,8 +63,10 @@ connectToChannel = function(recipient, type) {
 };
 
 addAllMessages = function (data){
+    // console.log(data)
+    $(".chat-content").html("");
     return $.each(data , function(index, message){
-        $(".chat-content").html("");
+
         addMessageToChat(message);
     });
 

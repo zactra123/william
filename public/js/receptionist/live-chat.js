@@ -57,8 +57,8 @@ allChatList = function(chats) {
 
 addChatUserList = function(chatUserList) {
     chatListHtml = ''
-    chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.recipient_type + chatUserList.recipient_id + ' data-id='+chatUserList.id
-    chatListHtml +=  ' data-type='+chatUserList.type+ '> <div class="form-group"><span><h3>'
+    chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.recipient_type + chatUserList.recipient_id + ' data-id='+chatUserList.recipient_id
+    chatListHtml +=  ' data-type='+chatUserList.recipient_type+ '> <div class="form-group"><span><h3>'
 
         full_name = chatUserList.full_name?? "Unnamed Guest"
 
@@ -99,6 +99,7 @@ $(document).ready(function(){
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
 
+
         $.ajax({
             url: "live-chat/chat-message",
             method:"POST",
@@ -120,6 +121,7 @@ $(document).ready(function(){
                 if(type == "Guest"){
                     $(".privateCheckBox").hide();
                 }else{ $(".privateCheckBox").show();}
+                console.log(result.recipient);
 
                 $("#chatListId").html(chatListHtml);
                 $("#recipientId").val(result.recipient.id);

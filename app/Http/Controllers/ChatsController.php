@@ -96,7 +96,6 @@ class ChatsController extends Controller
      */
     public function getChatMessages(Request $request)
     {
-
         if(!empty(Auth::user())){
 
             $messages = DB::table('chat')
