@@ -23,7 +23,7 @@ class PagesController extends Controller
         $slogansFull = Db::table('slogans')
 //            ->whereRaw('LENGTH(slogan) < 70')
             ->inRandomOrder()
-            ->limit(5)
+//            ->limit(5)
             ->select('slogan','author')->get()->toArray();
 
 
@@ -31,6 +31,10 @@ class PagesController extends Controller
         foreach ($slogansFull as $key =>$slogan){
 
             $slogans [$key]['author'] = $slogan->author;
+            if (strlen($slogan->slogan) < 60) {
+                $slogans [$key]['slogan'][]  = $slogan->slogan;
+                continue;
+            }
             $texts = explode(' ', $slogan->slogan);
             $textSlogan = [];
             $k = 0;
@@ -47,7 +51,7 @@ class PagesController extends Controller
 
 
                 }
-            $slogans [$key]['slogan'] = $textSlogan;
+            $slogans[$key]['slogan'] = $textSlogan;
         }
 
         return view('new-home-page1', compact('pageContentUp', 'slogans'));

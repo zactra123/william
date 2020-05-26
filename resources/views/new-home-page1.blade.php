@@ -8,119 +8,39 @@
         <div class="rev_slider_wrapper">
             <div id="rev_slider_4" class="rev_slider" style="display:none">
                 <ul>
-                    <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="{{asset('images/slider-1.jpg')}}">
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img src="{{asset('images/slider-1.jpg')}}" alt="Sky" class="rev-slidebg">
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="center" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                            {{$slogans['0']['author']}}
-                        </div>
+                    <?php $k = 1;?>
+                    @foreach($slogans as $key=> $value)
+                        <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="{{asset('images/slider-1.jpg')}}">
+                            <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+                            <img src="{{asset("images/slider-{$k}.jpg")}}" alt="Sky" class="rev-slidebg">
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
+                                 data-x="center" data-hoffset="0"
+                                 data-y="top" data-voffset="300"
+                                 data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
+                                {{$value['author']}}
+                            </div>
 
 
-                        <!-- LAYER NR. 2 -->
-                        @foreach( $slogans['0']['slogan'] as $key=> $slogan)
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="center" data-hoffset="0"
-                             data-y="top" data-voffset="{{340 + $key*40 }}"
-                             data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogan}}
-
-                        </div>
-                        @endforeach
-
-                        <!-- LAYER NR. 4 -->
-                        <div class="tp-caption sfr tp-resizeme letter-space-4"
-                             data-x="center" data-hoffset="0"
-                             data-y="center" data-voffset="180"
-                             data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'><a href="{{route('whoWeAre')}}" class="el-btn-regular slider-btn-left btn btn-primary">About Us</a>
-                        </div>
-                    </li>
-
-                    <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="assets/images/slider-2.jpg">
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img src="{{asset('images/slider-2.jpg')}}" alt="Sky" class="rev-slidebg">
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="left" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['1']['author'] }}
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        @foreach( $slogans['1']['slogan'] as $key=> $slogan)
+                            <!-- LAYER NR. 2 -->
+                            @foreach( $value['slogan'] as $key=> $slogan)
                             <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
                                  data-x="center" data-hoffset="0"
                                  data-y="top" data-voffset="{{340 + $key*40 }}"
                                  data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogan}}
 
                             </div>
-                        @endforeach
-                    </li>
+                            @endforeach
 
-                    <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="{{asset('images/slider-1.jpg')}}">
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img src="{{asset('images/slider-3.jpg')}}" alt="Sky" class="rev-slidebg">
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="left" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['2']['author'] }}
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        @foreach( $slogans['2']['slogan'] as $key=> $slogan)
-                            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
+                            <!-- LAYER NR. 4 -->
+                            <div class="tp-caption sfr tp-resizeme letter-space-4"
                                  data-x="center" data-hoffset="0"
-                                 data-y="top" data-voffset="{{340 + $key*40 }}"
-                                 data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogan}}
-
+                                 data-y="center" data-voffset="180"
+                                 data-frames='[{"delay":2200,"speed":2000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'><a href="{{route('whoWeAre')}}" class="el-btn-regular slider-btn-left btn btn-primary">About Us</a>
                             </div>
-                        @endforeach
-                    </li>
-
-                    <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="{{asset('images/slider-4.png')}}">
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img src="{{asset('images/slider-4.png')}}" alt="Sky" class="rev-slidebg">
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4  wrapper-contant"
-                             data-x="left" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['3']['author'] }}
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        @foreach( $slogans['3']['slogan'] as $key=> $slogan)
-                            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                                 data-x="center" data-hoffset="0"
-                                 data-y="top" data-voffset="{{340 + $key*40 }}"
-                                 data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogan}}
-
-                            </div>
-                        @endforeach
-                    </li>
-
-                    <li data-transition="random" data-title="Slide Title" data-param1="Additional Text" data-thumb="{{asset('images/slider-5.png')}}">
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img src="{{asset('images/slider-5.png')}}" alt="Sky" class="rev-slidebg">
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="left" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogans['4']['author'] }}
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        @foreach( $slogans['4']['slogan'] as $key=> $slogan)
-                            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                                 data-x="center" data-hoffset="0"
-                                 data-y="top" data-voffset="{{340 + $key*40 }}"
-                                 data-frames='[{"delay":1000,"speed":3000,"frame":"0","from":"x:[175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>{{$slogan}}
-
-                            </div>
-                        @endforeach
-                    </li>
+                        </li>
+                        <?php $k = $k ==5 ? 1: $k+1;?>
+                    @endforeach
 
                 </ul>
             </div>
