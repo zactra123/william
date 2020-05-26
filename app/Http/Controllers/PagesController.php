@@ -20,11 +20,36 @@ class PagesController extends Controller
 
         $pageContentUp = DB::table('home_pages')->get();
 
-        $slogans = Db::table('slogans')
-            ->whereRaw('LENGTH(slogan) < 70')
+        $slogansFull = Db::table('slogans')
+//            ->whereRaw('LENGTH(slogan) < 70')
             ->inRandomOrder()
             ->limit(5)
             ->select('slogan','author')->get()->toArray();
+
+
+        $slogans = [];
+        foreach ($slogansFull as $key =>$slogan){
+
+            $slogans [$key]['author'] = $slogan->author;
+            $texts = explode(' ', $slogan->slogan);
+            $textSlogan = [];
+            $k = 0;
+                foreach($texts as $w => $text){
+                    if($w == 0){
+                        $textSlogan[$k] = $text;
+                    }elseif(strlen($textSlogan[$k])<60){
+
+                        $textSlogan[$k] = $textSlogan[$k]." ". $text;
+                    }else{
+                        $k = $k+1;
+                        $textSlogan[$k] = $text;
+                    }
+
+
+                }
+            $slogans [$key]['slogan'] = $textSlogan;
+        }
+
         return view('new-home-page1', compact('pageContentUp', 'slogans'));
     }
 
