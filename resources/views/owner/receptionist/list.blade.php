@@ -40,7 +40,7 @@
                                             <tbody>
                                             @foreach($receptionists as $key=> $receptionist)
                                                 <tr>
-                                                    <th scope="row">{{$key+1}}</th>
+                                                    <th scope="row">{{ (($receptionists->currentPage() - 1 ) * $receptionists->perPage() ) + $loop->iteration }}</th>
                                                     <td>{{$receptionist['first_name']}}</td>
                                                     <td>{{$receptionist['last_name']}}</td>
                                                     <td>{{$receptionist['email']}}</td>

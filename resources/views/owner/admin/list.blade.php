@@ -39,7 +39,7 @@
                                             <tbody>
                                             @foreach($admins as $key=> $admin)
                                                 <tr>
-                                                    <th scope="row">{{$key+1}}</th>
+                                                    <th scope="row">{{ (($admins->currentPage() - 1 ) * $admins->perPage() ) + $loop->iteration }}</th>
                                                     <td>{{$admin['first_name']}}</td>
                                                     <td>{{$admin['last_name']}}</td>
                                                     <td>{{$admin['email']}}</td>

@@ -32,7 +32,7 @@
                                         @foreach($users as $key=> $user)
 
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
+                                                <th scope="row">{{ (($users->currentPage() - 1 ) * $users->perPage() ) + $loop->iteration }}</th>
                                                 <td>{{$user->first_name}}</td>
                                                 <td>{{$user->last_name}}</td>
                                                 <td>{{$user->email}}</td>

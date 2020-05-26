@@ -26,7 +26,9 @@
                                                 <tbody>
                                                 @foreach($slogans as $key=> $slogan)
                                                     <tr>
-                                                        <th scope="row">{{$key+1}}</th>
+
+
+                                                        <th scope="row">{{ (($slogans->currentPage() - 1 ) * $slogans->perPage() ) + $loop->iteration }}</th>
                                                         <td>{{$slogan->author}}</td>
                                                         <td>{{$slogan->slogan}}</td>
                                                         <td>
@@ -39,6 +41,7 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
+
                                             {{$slogans->links()}}
                                         </div>
 

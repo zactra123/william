@@ -25,7 +25,7 @@
                                         <tbody>
                                         @foreach($faqs as $key=> $faq)
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
+                                                <th scope="row">{{ (($faqs->currentPage() - 1 ) * $faqs->perPage() ) + $loop->iteration }}</th>
                                                 <td>{{$faq->title}}</td>
                                                 <td>{{$faq->description}}</td>
                                                 <td>
