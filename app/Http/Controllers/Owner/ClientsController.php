@@ -41,7 +41,7 @@ class ClientsController extends Controller
     {
         $client = User::clients()->find($clientId);
 
-        return view('owner.client.client-profile', compact('client'));
+        return view('owner.client.client-profile1', compact('client'));
     }
 
     public function clientReportNumber(Request $request)
