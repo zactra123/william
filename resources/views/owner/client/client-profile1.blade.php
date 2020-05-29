@@ -111,14 +111,14 @@
                                     <h2>Welcome to Dashboard</h2>
                                     @if(!empty($client->clientAttachments()))
                                         @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-                                            <li> <img src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> Download</a></li>
+                                            <li> <img src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> Download</a></li>
                                         @else
-                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>Download</a></li>
+                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>Download</a></li>
                                         @endif
                                         @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-                                        <li> <img src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>Download</a></li>
+                                        <li> <img src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>Download</a></li>
                                         @else
-                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> Download</a></li>
+                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> Download</a></li>
                                         @endif
                                     @endif
 
