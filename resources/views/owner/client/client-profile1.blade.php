@@ -111,14 +111,14 @@
                                     <h2>Welcome to Dashboard</h2>
                                     @if(!empty($client->clientAttachments()))
                                         @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-                                            <li><a href="{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> <img src= "{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ></a></li>
+                                            <li> <img src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> Download</a></li>
                                         @else
-                                            <li><a href="{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> <embed src= "{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ></a></li>
+                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>Download</a></li>
                                         @endif
                                         @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-                                        <li><a href="{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> <img src= "{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ></a></li>
+                                        <li> <img src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>Download</a></li>
                                         @else
-                                            <li><a href="{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> <embed src= "{{asset(str_replace("C:\\xampp\\htdocs\\ccc\\public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ></a></li>
+                                            <li> <embed src= "{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> Download</a></li>
                                         @endif
                                     @endif
 
@@ -449,6 +449,7 @@
                                 <li>Login: {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
                                 <li>Password:  {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
                                 <li>Answer:  {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
+                                <li>Pin Number:  {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
 
                             </div>
                         </div>
