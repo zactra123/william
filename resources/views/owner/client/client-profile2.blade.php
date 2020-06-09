@@ -440,6 +440,7 @@
                     <div class="setting">
                         <div class="setting image_picker">
                             <h2>SSC</h2>
+
                             <div class="settings_wrap">
                                 <label class="drop_target"> <div class="image_preview"></div>
                                     <input id="inputFile" type="file" />
@@ -481,7 +482,7 @@
                             @if(!empty($client->clientAttachments()))
                                 @if(!empty($client->clientAttachments()->where('category', "DL")->first()))
                                     @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-                                        <img type="file" src=""{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="100" name="img-drvl" id="img-drvl"/>
+                                        <img type="file" src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="100" name="img-drvl" id="img-drvl"/>
                                     @endif
                                 @endif
                                 @if(!empty($client->clientAttachments()->where('category', "SS")->first()))
@@ -534,7 +535,28 @@
                         <i class="fa fa-pencil-square-o fa-fw"></i> Edit Profile
                         </a>
                     </li>
+
+                    @if(!empty($client->clientAttachments()))
+                        @if(!empty($client->clientAttachments()->where('category', "DL")->first()))
+                            @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
+                                <li> <img src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> Download</a></li>
+                            @else
+                                <li> <embed src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>Download</a></li>
+                            @endif
+                        @endif
+                        @if(!empty($client->clientAttachments()->where('category', "SS")->first()))
+                            @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
+                                <li> <img src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>Download</a></li>
+                            @else
+                                <li> <embed src= "{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width= "250" ><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> Download</a></li>
+                            @endif
+                        @endif
+                    @endif
+
+
                 </ul>
+
+
             </aside>
         </div>
 
@@ -546,6 +568,127 @@
                             <div class="col-md-12">
                                 <div class="content">
                                     <h2>Welcome to Dashboard</h2>
+                                    <div>
+                                        <a href="#" class="btn dropdown-toggle" data-toggle="dropdown"> REPORT ACCESS<b class="caret"></b></a>
+                                        <ul class="dropdown-menu multi-level">
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
+                                                    <li> <a class="dropdown-item" href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">DISPUTE</a></li>
+                                                    <li> <a class="dropdown-item" href="https://my.equifax.com/membercenter/#/login" target="_blank">DISUTE STATUS</a></li>
+                                                    <li> <a class="dropdown-item" href="https://aa.econsumer.equifax.com/aad/landing.ehtml" target="_blank">FCRA</a></li>
+                                                    <li> <a class="dropdown-item" href="ttps://my.equifax.com/membercenter/#/login" target="_blank">MEMBER LOGIN</a></li>
+                                                    <li> <a class="dropdown-item" href="https://www.econsumer.equifax.com/otc/landing.ehtml?^start=&companyName=W18uft01_uplanr" target="_blank">MEMBERSHIP SIGNUP </a></li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <li> <a class="dropdown-item" href="#equifax" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
+                                                    <li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/creditreport?type=declined">DENIED</a></li>
+                                                    <li> <a class="dropdown-item" href="https://usa.experian.com/registration/?offer=at_fcras102,at_ltdreg100&op=FRCD-DIS-PRI-102-WGT-EXDPTAG-B1-EXP-VWIN-SEO-XXXXXX-XXXXXX-XXXXX">DISPUTE</a></li>
+                                                    <li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/disputeresults?intcmp=dispute_email_resultsready02">DISPUTE STATUS </a></li>
+                                                    <li>  <a class="dropdown-item" href="https://www.experian.com/ncaconline/dispute">VIEW REPORT</a></li>
+                                                    <li> <a class="dropdown-item" href="https://usa.experian.com/login/index?br=exp">MEMBER LOGIN </a></li>
+                                                    <li> <a class="dropdown-item" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">MEMBERSHIP SIGNUP</a></li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <li> <a class="dropdown-item" href="#experian" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
+                                                    <li> <a class="dropdown-item" href="https://dispute.transunion.com/dp/dispute/landingPage.jsp?PLACE_CTA=dispute:cta">DISPUTE LOGIN </a></li>
+                                                    <li> <a class="dropdown-item" href="https://disclosure.transunion.com/dc/disclosure/landingPage.jsp">DISCLOSURE LOGIN</a></li>
+                                                    <li> <a class="dropdown-item" href="https://fraud.transunion.com/fa/fraudAlert/landingPage.jsp?incorrect=true">FRAUD LOGIN </a></li>
+                                                    <li> <a class="dropdown-item" href="https://dispute.transunion.com/fa/fraudAlert/indexProcess">NEW ACCOUNT REGISTRATION</a></li>
+                                                    <li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/login.page?PLACE_CTA=TransUnion:PHP:Login">MEMBER LOGIN </a></li>
+                                                    <li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?">MEMBERSHIP SIGNUP</a></li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <li> <a class="dropdown-item" href="#transunion" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/in_logo_2.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <a class="dropdown-item" href="https://www.innovis.com/creditReport/index" target="_blank">REQUEST CREDIT REPORT </a>
+                                                    <a class="dropdown-item" href="https://www.innovis.com/personal/creditReport/orderYourInnovisCreditReport#dropdownMenu">LOGIN</a>
+                                                    <a class="dropdown-item" href="https://www.innovis.com/securityFreeze/index">SECURITY FREEZE </a>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li> <a class="dropdown-item" href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank">ORDER CONSUMER REPORT</a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li> <a class="dropdown-item" href="https://www.creditkarma.com/auth/logon" target="_blank">MEMBER LOGIN</a></li>
+                                                    <li> <a class="dropdown-item" href="https://www.creditkarma.com/signup/">SIGNUP</a></li>
+                                                    <li> <a class="dropdown-item" href="#creditkarma" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/ew_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" target="_blank">ORDER CONSUMER REPORT </a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/lxn_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li>   <a class="dropdown-item" href="https://consumer.risk.lexisnexis.com/request" target="_blank">ORDER CONSUMER REPORT </a></li>
+                                                    <li>  <a class="dropdown-item" href="https://optout.lexisnexis.com/" target="_blank">OPT OUT</a></li>
+
+                                                    <div class="dropdown-divider"></div>
+                                                    <li>  <a class="dropdown-item" href="#">LOGIN CREDENTIALS </a></li>
+
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access"src="{{asset('images/report_access/ss_logo_1.png')}}"  width="140"></a>
+                                                <ul class="dropdown-menu">
+                                                    <li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/consumer-report-self" target="_blank">ORDER CONSUMER REPORT </a></li>
+                                                    <li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/freeze-self" target="_blank">ADD SECURITY FREEZE</a></li>
+                                                    <li><a class="dropdown-item" href="https://forms.sagestreamllc.com/#/unfreeze-self" target="_blank">LIFT SECURITY FREEZE</a></li>
+                                                </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <li class="dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">CA STATE COURTS ACCESS</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="http://www.lacourt.org/casesummary/ui/index.aspx?casetype=civil" target="_blank">LOS ANGELES COUNTY </a></li>
+                                                    <li><a class="dropdown-item" href="https://ocapps.occourts.org/civilwebShoppingNS/Search.do#searchAnchor" target="_blank">ORANGE COUNTY</a></li>
+                                                    <li><a class="dropdown-item" href="http://public-access.riverside.courts.ca.gov/OpenAccess/CivilMainMenu.asp" target="_blank">RIVERSIDE</a></li>
+                                                    <li><a class="dropdown-item" href="http://openaccess.sb-court.org/CIVIL/" target="_blank">SAN BERNANDINO COUNTY </a></li>
+                                                    <li><a class="dropdown-item" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">VENTURA COUNTY </a></li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+
+
+                                    </div>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                                         sed do eiusmod tempor.
@@ -819,6 +962,86 @@
             </div>
         </div>
     </div>
+
+
+    <div class="col-sm-9">
+        <div class="tab-content">
+            <div class="modal fade" id="equifax" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3>Equifax Credentials</h3>
+                            <li>Login: {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
+                            <li>Password:  {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="tab-content">
+            <div class="modal fade" id="experian" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3>Experian Credentials</h3>
+                            <li>Login: {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
+                            <li>Password:  {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
+                            <li>Answer:  {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
+                            <li>Pin Number:  {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="tab-content">
+            <div class="modal fade" id="transunion" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3>TransUnion Credentials</h3>
+                            <li>Login: {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
+                            <li>Password:  {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N\A"}}</li>
+                            <li>Question:  {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N\A"}}</li>
+                            <li>Answer:  {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N\A"}}</li>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-9">
+        <div class="tab-content">
+            <div class="modal fade" id="creditkarma" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3>Credit Karma Credentials</h3>
+                            <li>Login: {{isset($client->credentials->ck_login)?$client->credentials->ck_login: "N/A"}}</li>
+                            <li>Password:  {{isset($client->credentials->ck_password)?$client->credentials->ck_password:"N\A"}}</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <script type="text/javascript">
         var per1 = $(".progress.p1").attr("data");
