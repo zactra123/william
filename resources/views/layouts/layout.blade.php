@@ -189,30 +189,42 @@
     <div class="footer-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-7 col-sm-7">
                     <div class="footer-wrapper">
-                        <img src="{{asset('images/logo-icon.png')}}" alt="">
-
-                        <ul class="location">
-                            <li><i class="fa fa-home" aria-hidden="true"></i>
-                                <div class="content">
-                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
-                                </div>
-                            </li>
-
-                            <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                <div class="content">
+                        <ul class="wrapper-option clearfix">
+                            <h3> CONNECT WITH US</h3>
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
                                     1-844-337-8336
                                 </div>
                             </li>
-                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                <div class="content">
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
                                     info@prudentcredit.com
                                 </div>
                             </li>
-
-                            <li><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                <div class="content">
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    info@prudentcredit.com
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="wrapper-option" style="padding-left: 30px">
+                            <h3> REACH US DIRECTLY</h3>
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    info@prudentcredit.com
+                                </div>
+                                <div class="content" style="color: #aaa ">
+                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
+                                </div>
+                                <div class="content" style="color: #aaa ">
+                                    Tel: 1-844-337-8336
+                                </div>
+                                <div class="content" style="color: #aaa ">
                                     Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
                             </li>
@@ -220,7 +232,7 @@
                     </div> <!-- footer-wrapper -->
                 </div>
 
-                <div class="col-md-2 col-sm-4">
+{{--                <div class="col-md-1 col-sm-1">--}}
 {{--                    <div class="footer-wrapper">--}}
 {{--                        <h3>About</h3>--}}
 
@@ -233,27 +245,24 @@
 {{--                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
 {{--                        </ul>--}}
 {{--                    </div> <!-- footer-wrapper -->--}}
-                </div>
+{{--                </div>--}}
 
-                <div class="col-md-5 col-md-offset-1 col-sm-4">
+                <div class="col-md-5  col-sm-5">
                     <div class="footer-wrapper last-wrapper">
-                        <h3>Navigation</h3>
 
                         <ul class="wrapper-option clearfix">
+                            <h3>INFORMATION</h3>
                             <li><a href="{{url('/')}}">Home</a></li>
-{{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
+                            {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
                             <li><a href="#">Careers</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
                             <li><a href="{{route('credit.repair')}}">Resources</a></li>
                             <li><a href="#">Newsroom</a></li>
-{{--                            <li><a href="#">Affiliates</a></li>--}}
-
-
+                            {{--                            <li><a href="#">Affiliates</a></li>--}}
                         </ul> <!-- wrapper-option -->
 
-
-
-                        <ul class="wrapper-option " style="padding-left: 20px">
+                        <ul class="wrapper-option " style="padding-left: 30px">
+                            <h3>CUSTOMER SERVICE</h3>
                             <li><a href="{{route('faqs')}}">FAQs</a></li>
                             <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
                             <li>
