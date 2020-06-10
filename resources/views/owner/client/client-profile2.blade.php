@@ -521,13 +521,13 @@
                         <i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}
                     </li>
                     @endif
-                    <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
+                    <li title="GENDER">
                         @if($client->clientDetails->sex == 'M')
-                            Male
+                            <img src="/images/male.png" width="20px">  Male
                         @elseif($client->clientDetails->sex == 'F')
-                            Female
+                            <img src="/images/female.png" width="20px">  Female
                         @else
-                            Non-Binary
+                            <img src="/images/non_binary.png" width="25px">  Non-Binary
                         @endif
                     </li>
                     <li>
