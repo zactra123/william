@@ -15,5 +15,14 @@ class Guest extends Model
         'phone'
     ];
 
+    protected $with = ["user"];
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_id', 'id');
+
+    }
+
 
 }

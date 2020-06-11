@@ -30,6 +30,16 @@ class Chat extends Model
 
     }
 
+    public function recipient()
+    {
+        return $this->morphTo();
 
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo('App\User','user_id', 'id');
+
+    }
 
 }

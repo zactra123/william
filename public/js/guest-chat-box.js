@@ -1,3 +1,8 @@
+recipient = {
+    id: '',
+    type: '',
+};
+
 identifyUser = function(guest) {
     return new Promise(function(resolve, reject) {
         $.ajax({
@@ -77,12 +82,21 @@ addMessageToChat = function(message) {
     if ($(".chat-content").find(`[data-message-id='${message.id}']`).length > 0){
         return false;
     }
+    console.log(message)
     var message_date = new Date(message.created_at);
     var time = message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
     var message_template = $("#chat-message-to-admin-template").html();
     if (message.type == 'from') {
         message_template = $("#chat-message-from-admin-template").html();
     }
+    if (recipient.type == "guest" && message.private) {
+        message_template = message_template.replace(/{message}/g, "<a href='/login'>Please Log in to see the answer</a>")
+            .replace(/{time}/g, time)
+            .replace(/{message-id}/g, message.id);
+        $(".chat-content").append(message_template);
+        return false;
+    }
+
     message_template = message_template.replace(/{message}/g, message.message)
                                         .replace(/{time}/g, time)
                                         .replace(/{message-id}/g, message.id);
@@ -90,11 +104,6 @@ addMessageToChat = function(message) {
 };
 
 $(document).ready(function(){
-    recipient = {
-        id: '',
-        type: '',
-    };
-
     $(".open-chatbox-btn").click(function(){
         var guest = $(this).data("guestId"),
             user = $(this).data('userId');

@@ -1,19 +1,13 @@
 connectToChannel = function (user) {
     window.Echo.channel(`ReceptionistLiveChat.${user}`)
         .listen("ReceptionistLiveChat", function(e){
-
             var id = $('.active-user').attr('data-id');
             var type = $('.active-user').attr('data-type');
             var messageCount = ' '
             messageCount += e.unreads
-
-            console.log(e.message['recipient_id'] , id, e.message['recipient_type'] , type , e.message);
-
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == type){
-                console.log('ashxatuma bayc chi nakrum!!!!!');
                 addMessageToChat(e.message)
             }
-
             chatListHtml = '';
 
             $.each(e.recipient_lists, function( index, value ) {
@@ -28,7 +22,6 @@ connectToChannel = function (user) {
 
 
 addMessageToChat = function(message) {
-    console.log(message)
     if ($("#showChatMessage").find(`[data-message-id='${message.id}']`).length > 0){
         return false;
     }
@@ -40,7 +33,8 @@ addMessageToChat = function(message) {
     }
     message_template = message_template.replace(/{message}/g, message.message)
                                         .replace(/{time}/g, time)
-                                        .replace(/{message-id}/g, message.id);
+                                        .replace(/{message-id}/g, message.id)
+                                        .replace(/{admin_full_name}/g, message.admin.first_name + " " + message.admin.last_name);
     $("#showChatMessage").append(message_template);
     $('#scrollingDiv').scrollTop($('#scrollingDiv')[0].scrollHeight);
 
@@ -56,20 +50,28 @@ allChatList = function(chats) {
 }
 
 addChatUserList = function(chatUserList) {
-    chatListHtml = ''
-    chatListHtml += '<div class="list-group-item chatMessage" id=' + chatUserList.recipient_type + chatUserList.recipient_id + ' data-id='+chatUserList.recipient_id
-    chatListHtml +=  ' data-type='+chatUserList.recipient_type+ '> <div class="form-group"><span><h3>'
-
-        full_name = chatUserList.full_name?? "Unnamed Guest"
-
-    chatListHtml +=  full_name+'</h3></span>'
-    if(chatUserList.message != 0){
-        chatListHtml += '<span class="pl-2"><i class="fa fa-comment-o" aria-hidden="true"></i>'
-        chatListHtml += chatUserList.message+'</span>'
+    chatListHtml = $("#recipient-list-user").html()
+    connected = ''
+    if (chatUserList.recipient_type == "Guest") {
+        chatListHtml = $("#recipient-list-guest").html()
+        if (chatUserList.user_full_name) {
+            connected = '<span class="text-info"> CONNECTED TO CLIENT: ' + chatUserList.user_full_name + '</span>'
+        }
+    }
+    unreads = ''
+    if (chatUserList.message != 0) {
+        unreads += '<span class="badge badge-warning float-right"><i class="fa fa-comment-o" aria-hidden="true"></i>'
+        unreads += chatUserList.message+'</span>'
     }
 
-    chatListHtml += '</div> <div class="form-group"> <span>'+chatUserList.recipient_type
-    chatListHtml += '</span>   <span class="pl-2">'+chatUserList.email+'</span></div></div>'
+
+
+    chatListHtml = chatListHtml.replace(/{recipient-identifier}/g, chatUserList.recipient_type + chatUserList.recipient_id)
+                               .replace(/{recipient-id}/g, chatUserList.recipient_id)
+                               .replace(/{recipient-type}/g, chatUserList.recipient_type)
+                               .replace(/{full_name}/g, chatUserList.full_name?? "Unnamed "+chatUserList.recipient_type)
+                               .replace(/{unreads}/g, unreads)
+                               .replace(/{connected_user_details}/g, connected)
     return chatListHtml
 
 };
@@ -105,8 +107,11 @@ $(document).ready(function(){
             method:"POST",
             data:{id:id, type:type, _token: token},
             success: function (result) {
-
-
+                show_direct_answer = false;
+                if (result.chatMessage[0]["recipient_type"] == 'App\\Guest') {
+                    show_direct_answer = !!result.chatMessage[0]["recipient"]["user"]
+                }
+                $("#direct-answer").toggleClass("hidden", !show_direct_answer)
                 $("#showChatMessage").html("")
                 $.each(result.chatMessage, function( index, value ) {
                     addMessageToChat(value)
@@ -137,14 +142,17 @@ $(document).ready(function(){
         });
 
     });
-
+    $("#direct-answer").on("click", function(){
+        $("#direct-to-user").attr("disabled", false)
+    })
     $("#chatAnswer form").submit(function(e){
         e.preventDefault();
-
         var form = $(this).serializeArray(), data={};
         $.each(form, function(index, el){
             data[el.name] = el.value
         });
+        $("#direct-to-user").attr("disabled", true)
+
         $.ajax({
             url: '/receptionist/live-chat/answer',
             type:"POST",

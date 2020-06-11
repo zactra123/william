@@ -78,7 +78,7 @@ class ChatsController extends Controller
 
         $message = Chat::create([
             "message" => $request->message,
-            "recipient_type" => "Guest",
+            "recipient_type" => "App\\Guest",
             "recipient_id" => $guest->id,
             "user_id" => $userId,
             "type" => "to"
@@ -103,7 +103,7 @@ class ChatsController extends Controller
                 {
                     $join->on('chat.recipient_id', '=', 'guest.id')
                         ->where('guest.user_id', Auth::user()->id);
-                    $join->on('chat.recipient_type','=', DB::raw("'Guest'"))
+                    $join->on('chat.recipient_type','=', DB::raw("'App\\Guest'"))
                         ->where('guest.user_id', Auth::user()->id);
                 })
                 ->leftJoin('users', function($join)
@@ -118,7 +118,7 @@ class ChatsController extends Controller
 
 
         }else{
-            $messages = Chat::where("recipient_type", $request->type)
+            $messages = Chat::where("recipient_type", "App\\{$request->type}")
                 ->where("recipient_id", $request->id)
                 ->get()->toArray();
         }
@@ -166,7 +166,7 @@ class ChatsController extends Controller
             }
 
             $new_message = Chat::create([
-                "recipient_type" => $requests->recipient_type,
+                "recipient_type" => "App\\{$requests->recipient_type}",
                 "recipient_id" => $requests->recipient_id,
                 "message" => $requests->message,
                 "user_id" => $userId,

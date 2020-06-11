@@ -25,7 +25,6 @@ class ChatsController extends Controller
     {
         $chats = Auth::user()->chat_list($request->only("type", "term", "order"));
         $unreads = Auth::user()->unreads();
-
         if ($request->ajax()){
             $data = [
                 "chats" => $chats,
@@ -38,14 +37,15 @@ class ChatsController extends Controller
 
     public function show(Request $request)
     {
-       $chatMessage =  Auth::user()->chatMessages($request->only("type", "id"))->select("chat.*");
+       $chatMessage =  Auth::user()->chatMessages($request->only("type", "id"))
+           ->with(["admin", "recipient"])->select("chat.*");
 
        $updateChatMessageStatus = $chatMessage->update(['unread'=>false]);
 
        $chatMessage = $chatMessage->get();
        $recipientData = $request->only("type", "id");
 
-        $chats = Auth::user()->chat_list(["type" => "Guest"]);
+        $chats = Auth::user()->chat_list($request->only("type"));
         $unreads = Auth::user()->unreads();
 
         $data = [
@@ -65,10 +65,10 @@ class ChatsController extends Controller
         $user = Auth::user();
         $new_message = Chat::create([
             "message" => $request->answer,
-            "recipient_type" => $request->recipient_type,
+            "recipient_type" => "App\\{$request->recipient_type}",
             "recipient_id" => $request->recipient_id,
             "user_id" => $user->id,
-            "private" =>  (int) $request->private,
+            "private" =>  (int) $request->direct,
             "type" => "from"
         ]);
 

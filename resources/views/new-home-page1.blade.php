@@ -12,12 +12,12 @@
                         <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
                         <img src="{{asset('images/slider-1.jpg')}}" alt="Sky" class="rev-slidebg">
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"
-                             data-x="center" data-hoffset="0"
-                             data-y="top" data-voffset="300"
-                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>
-                            {{$slogans['0']->author}}
-                        </div>
+{{--                        <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4"--}}
+{{--                             data-x="center" data-hoffset="0"--}}
+{{--                             data-y="top" data-voffset="300"--}}
+{{--                             data-frames='[{"delay":0,"speed":3000,"frame":"0","from":"x:[100%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:1;","mask":"x:[-100%];y:0;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]'>--}}
+{{--                            {{$slogans['0']->author}}--}}
+{{--                        </div>--}}
 
 
                         <!-- LAYER NR. 2 -->

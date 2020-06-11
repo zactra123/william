@@ -122,22 +122,17 @@ class   User extends Authenticatable implements MustVerifyEmail
     {
         if ($params["type"] == "User"){
             return $this->hasMany('App\Chat')
-                ->leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
                 ->where(
                         [
-                            "recipient_type" => "User",
+                            "recipient_type" => 'App\\User',
                             "recipient_id"=> $params["id"]
                         ]
-                    )
-                ->orWhere([
-                    "recipient_type"=> "'Guest'",
-                    "guest.user_id"=> $params["id"]
-                ]);
+                    );
         }else {
             return $this->hasMany('App\Chat')
                 ->leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
                 ->where(
-                    ["recipient_type" => "Guest",
+                    ["recipient_type" => "App\\Guest",
                         "recipient_id" => $params["id"]
                     ]
                 );
@@ -170,13 +165,13 @@ class   User extends Authenticatable implements MustVerifyEmail
         if (!empty($params["type"]) && $params["type"] == "Guest") {
             $chats = $chats->leftJoin('guest', function($join) {
                 $join->on('chat.recipient_id', '=', 'guest.id')
-                    ->where('chat.recipient_type','=', DB::raw("'Guest'"));
+                    ->where('chat.recipient_type','=', 'App\\Guest');
             })
                 ->leftJoin('users', "users.id", '=', 'guest.user_id')
                 ->whereNotNull('guest.id')
                 ->select(
                     "chat.recipient_id as recipient_id",
-                    "chat.recipient_type as recipient_type",
+                    DB::raw("'Guest' as recipient_type"),
                     "guest.full_name as full_name",
                     "guest.phone as phone",
                     "guest.email as email",
@@ -193,13 +188,13 @@ class   User extends Authenticatable implements MustVerifyEmail
         } else {
             $chats = $chats->leftJoin('users', function($join) {
                 $join->on('chat.recipient_id', '=', 'users.id')
-                    ->where('chat.recipient_type','=', DB::raw("'User'"));
+                    ->where('chat.recipient_type','=', 'App\\User');
             })
                 ->leftJoin("client_details", "client_details.user_id", "users.id")
                 ->whereNotNull('users.id')
                 ->select(
                     "chat.recipient_id as recipient_id",
-                    "chat.recipient_type as recipient_type",
+                    DB::raw("'User' as recipient_type"),
                     DB::raw("CONCAT(users.first_name, ' ', users.last_name) as full_name"),
                     "client_details.phone_number as phone",
                     "users.email as email",
@@ -233,106 +228,13 @@ class   User extends Authenticatable implements MustVerifyEmail
     public function unreads()
     {
         $unreads = Chat::where([
-            ["user_id", $this->id],
-            ["unread", 1]
-        ])
+                ["user_id", $this->id],
+                ["unread", 1]
+            ])
             ->groupBy("recipient_type")
             ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
             ->pluck('unreads', "recipient_type");
         return $unreads;
     }
-//        $chats = DB::table('chat')
-//            ->leftJoin('guest', function($join)
-//            {
-//                $join->on('chat.recipient_id', '=', 'guest.id')
-//                    ->where('chat.recipient_type','=', DB::raw("'Guest'"));
-//            })
-//            ->leftJoin('users as guest_user', "guest_user.id", '=', 'guest.user_id')
-//            ->leftJoin('users', function($join)
-//            {
-//                $join->on('chat.recipient_id', '=', 'users.id')
-//                    ->where('chat.recipient_type','=', DB::raw("'User'"));
-//            })
-//            ->groupBy([
-//                DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END'),
-//                DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END')
-//            ])
-//            ->where(['chat.user_id'=> $this->id])
-//            ->whereRaw('(users.id IS NOT NULL OR guest.id IS NOT NULL)')
-//            ->orderBy('chat.created_at', 'DESC')
-//            ->select(
-//                DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END as id'),
-//                DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END as type'),
-//                DB::raw('CASE
-//                   WHEN guest.user_id IS NULL AND guest.id IS NOT NULL THEN guest.full_name
-//                   WHEN guest.user_id IS NOT NULL THEN CONCAT(guest_user.first_name, " ", guest_user.last_name)
-//                   ELSE CONCAT(users.first_name, " ", users.last_name) END AS full_name'),
-//                DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
-//                DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
-//            ->get()->toArray();
-//
-//        return $chats;
-//    }
 
-//    public function chat_list()
-//    {
-//        $chats = DB::table('chat')
-//            ->leftJoin('guest', function($join)
-//            {
-//                $join->on('chat.recipient_id', '=', 'guest.id')
-//                    ->where('guest.user_id', '!=', null);
-//                $join->on('chat.recipient_type','=', DB::raw("'Guest'"))
-//                    ->where('guest.user_id', '!=', null);
-//            })
-//
-//
-//            ->leftJoin(DB::raw("(select `users`.* from `users` LEFT JOIN `guest` on `users`.`id` =  `guest`.`user_id`) `users`"), function($join)
-//            {
-//                $join->on('chat.recipient_id', '=', 'users.id');
-//                $join->on('chat.recipient_type','=', DB::raw("'User'"));
-//            })
-//            ->groupBy(['recipient_id', 'recipient_type'])
-//            ->where(['chat.user_id'=> $this->id])
-//            ->orderBy('chat.created_at', 'DESC')
-//            ->select('recipient_id as id', 'recipient_type as type',
-//                DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.full_name ELSE CONCAT(users.first_name, " ",users.last_name ) END AS full_name'),
-//                DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
-//
-//                DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
-//            ->get()->toArray();
-//
-//
-//        return $chats;
-//    }
 }
-
-
-
-//$chats = DB::table('chat')
-//    ->leftJoin('guest', function($join)
-//    {
-//        $join->on('chat.recipient_id', '=', 'guest.id')
-//            ->where('chat.recipient_type','=', DB::raw("'Guest'"));
-//    })
-//    ->leftJoin('users', function($join)
-//    {
-//        $join->on('chat.recipient_id', '=', 'users.id')
-//            ->where('chat.recipient_type','=', DB::raw("'User'"));
-//    })
-//    ->groupBy([
-//        DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END'),
-//        DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END')
-//    ])
-//    ->where(['chat.user_id'=> $this->id])
-//    ->whereRaw('(users.id IS NOT NULL OR guest.id IS NOT NULL)')
-//    ->orderBy('chat.created_at', 'DESC')
-//    ->select(
-//        DB::raw('CASE WHEN guest.user_id THEN guest.user_id ELSE chat.recipient_id END as id'),
-//        DB::raw('CASE WHEN guest.user_id THEN "User" ELSE chat.recipient_type END as type'),
-//        DB::raw('CASE
-//                   WHEN guest.user_id IS NULL AND guest.id IS NOT NULL THEN guest.full_name
-//                   WHEN guest.user_id IS NOT NULL THEN CONCAT(guest_user.first_name, " ", guest_user.last_name)
-//                   ELSE CONCAT(users.first_name, " ", users.last_name) END AS full_name'),
-//        DB::raw('CASE WHEN chat.recipient_type = "Guest" THEN guest.email ELSE users.email END AS email'),
-//        DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")  )
-//    ->get()->toArray();

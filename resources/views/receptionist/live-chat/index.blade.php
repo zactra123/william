@@ -26,6 +26,12 @@
     .list-group-item>.badge-notify{
         background-color: red ;
     }
+    .badge.badge-warning {
+        background-color: red ;
+    }
+    .float-right {
+        float: right;
+    }
 </style>
 
 
@@ -78,38 +84,21 @@
                                         <div class="card ">
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
-                                                    <div class="list-group-item chatMessage " id="{{$chat->recipient_type}}{{$chat->recipient_id}}"
-                                                         data-id="{{$chat->recipient_id}}" data-type="{{$chat->recipient_type}}" >
-
-                                                    @if($chat->recipient_type == 'User')
-                                                        <div class="row">
-                                                            <span class="pl-2"><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
+                                                    <div class="list-group-item chatMessage" id='{{$chat->recipient_type}}{{$chat->recipient_id}}'
+                                                         data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
+                                                        <div class="form-group">
+                                                            <span><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
                                                             @if($chat->message != 0)
-                                                                <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
-                                                                    </i>{{$chat->message}}</h3>
+                                                                <h3 class="badge badge-warning float-right">
+                                                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                                    {{$chat->message}}
+                                                                </h3>
                                                             @endif
                                                         </div>
-                                                        <div class="row">
-                                                            <span class="pl-2">{{$chat->recipient_type}}</span>
-                                                            <span class="pl-2">{{$chat->email}}</span>
+                                                        <div class="form-group">
+                                                            <div class="text-link">show details</div>
                                                         </div>
-                                                    @elseif($chat->recipient_type == 'Guest')
-                                                        <div class="row">
-                                                            <span class="pl-2"><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
-                                                            @if($chat->message != 0)
-                                                                <h3 class="pl-2"><i class="fa fa-comment-o" aria-hidden="true">
-                                                                    </i>{{$chat->message}}</h3>
-                                                            @endif
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <span class="pl-2">{{$chat->recipient_type}}</span>
-                                                            <span class="pl-2">{{$chat->email}}</span>
-                                                        </div>
-
-                                                    @endif
                                                     </div>
-
                                                 @endforeach
                                             </div>
                                             <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -132,45 +121,32 @@
                                     <div id="chatAnswer" style="display: none">
                                         <div class="ms-ua-form">
                                             {!! Form::open(['route' =>['receptionist.liveChat.create'], 'method' => 'POST', 'class' => 'v-100 p-2 m-1']) !!}
-                                            @csrf
-{{--                                            <div class="form-group privateCheckBox">--}}
-{{--                                                <div class="col-2  v-100 m-0 mb-2">--}}
-{{--                                                    <label>Private Message</label>--}}
-{{--                                                    <input type="hidden" name="private"  value="0">--}}
-{{--                                                    <input class="form-control" type="checkbox" name="private"  value="1">--}}
-
-{{--                                                </div>--}}
-
-{{--                                            </div>--}}
+{{--                                            @csrf--}}
                                             <div class="form-group" style="height: 10%">
-
-
                                                 <div class="form-group  v-100 m-0">
                                                     <input type="hidden" name="recipient_id" id="recipientId" >
-                                                    <div class="form-group privateCheckBox">
-                                                        <input type="hidden" name="recipient_type" id="recipientType" >
-                                                        <input class="form-check-input" type="checkbox" name="private"  {{ old('private') ? 'checked' : '' }}>
-                                                    </div>
+                                                    <input type="hidden" name="recipient_type" id="recipientType" >
                                                     <div class="comment-text-area">
                                                         <textarea class="textinput"  name="answer" placeholder="Comment"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="submit" value="Send message" class="ms-ua-submit">
+                                                <div class="row">
+                                                    <div class="col-sm-6 form-group">
+                                                        <input type="hidden" name="direct" value="1" id="direct-to-user" disabled>
+                                                        <input type="submit" value="Reply Directly To The Client" id="direct-answer" class="ms-ua-submit hidden">
+                                                    </div>
+                                                    <div class="col-sm-6 form-group">
+                                                        <input type="submit" value="Send message" class="ms-ua-submit">
+                                                    </div>
                                                 </div>
-
                                             </div>
                                             {!! Form::close() !!}
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
             </div>
         </section>
     </section>
@@ -205,6 +181,31 @@
             <div class="col-6 offset-6 align-left message darker">
                 <div class="form-group">{message}</div>
                 <div class="form-group">{time}</div>
+            </div>
+        </div>
+    </script>
+
+    <script id="recipient-list-user" type="text/html">
+        <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
+            <div class="form-group">
+                <span><h3>{full_name}</h3></span>
+                {unreads}
+            </div>
+            <div class="form-group">
+                <div class="text-link">show details</div>
+            </div>
+        </div>
+    </script>
+
+    <script id="recipient-list-guest" type="text/html">
+        <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
+            <div class="form-group">
+                <span class="h3 text-uppercase">{full_name}</span>
+                {unreads}
+            </div>
+            <div class="form-group">
+                {connected_user_details}
+                <div class="text-link recipient-details">show details</div>
             </div>
         </div>
     </script>
