@@ -1009,12 +1009,14 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h3>TransUnion Credentials</h3>
+                            <h3>TransUnion Membership Credentials</h3>
                             <li>Login: {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
-                            <li>Password:  {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N\A"}}</li>
-                            <li>Question:  {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N\A"}}</li>
-                            <li>Answer:  {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N\A"}}</li>
-
+                            <li>Password:  {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N/A"}}</li>
+                            <li>Question:  {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N/A"}}</li>
+                            <li>Answer:  {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N/A"}}</li>
+                            <h3>TransUnion Dispute Credentials</h3>
+                            <li>Login: {{isset($client->credentials->tu_dis_login)?$client->credentials->tu_dis_login: "N/A"}}</li>
+                            <li>Password:  {{isset($client->credentials->tu_dis_password)?$client->credentials->tu_dis_password:"N/A"}}</li>
                         </div>
                     </div>
                 </div>

@@ -51,6 +51,16 @@
             </div>
         </div>
         <div class="col-sm-12">
+            <label> <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"> (DISPUTE) If You are Not Register  <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Click here to register</a></label>
+            <div class="form-group  m-1 font">
+                {{ Form::text('client[tu_dis_login]', !empty($client->credentials->tu_dis_login) ? $client->credentials->tu_dis_login : old('client.tu_dis_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
+
+            </div>
+            <div class="form-group m-1  font">
+                {{ Form::text('client[tu_dis_password]', !empty($client->credentials->tu_dis_password) ? $client->credentials->tu_dis_password : old('client.tu_dis_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
+            </div>
+        </div>
+        <div class="col-sm-12">
             <label> <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">  If You are Not Register  <a href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">Click here to register</a></label>
             <div class="form-group  m-1 font">
                 {{ Form::text('client[eq_login]', !empty($client->credentials->eq_login) ? $client->credentials->eq_login : old('client.eq_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
