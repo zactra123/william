@@ -49,6 +49,12 @@ $(document).ready(function($){
             "sex": {
                 required: true
             },
+            "secret_question": {
+                required: true
+            },
+            "secret_answer": {
+                required: true
+            },
             "email": {
                 required: true,
                 email: true

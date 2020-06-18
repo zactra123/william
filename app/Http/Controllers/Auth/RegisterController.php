@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -48,6 +49,13 @@ class RegisterController extends Controller
     }
 
 
+    public function showRegistrationForm()
+    {
+        $secrets=DB::table('secret_questions')->select('question','id')->get();
+        return view('auth.register',compact('secrets'));
+    }
+
+
     public function registerAffiliate()
     {
         return view('auth.register_as_affiliate');
@@ -64,10 +72,13 @@ class RegisterController extends Controller
     {
         if($data['role']!='affiliate'){
             return Validator::make($data, [
+                'full_name' => ['required', 'string', 'max:255'],
                 'sex'=> ['required'],
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'secret_questions_id'=>['required'],
+                'secret_answer'=>['required'],
             ]);
         }else{
             return Validator::make($data, [
@@ -77,6 +88,7 @@ class RegisterController extends Controller
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+
             ]);
         }
 
@@ -90,9 +102,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $full_name = explode(" ", $data["full_name"]);
+        $data["first_name"] = array_shift($full_name);
+        $data["last_name"] = implode(" ", $full_name);
+
         $user =   User::create([
+            'first_name' =>$data["first_name"],
+            'last_name'=> $data["last_name"],
             'email' => $data['email'],
             'role'=>$data['role'],
+            'secret_questions_id'=>$data['secret_questions_id'],
+            'secret_answer'=>trim($data['secret_answer']),
             'password' => Hash::make($data['password']),
         ]);
 

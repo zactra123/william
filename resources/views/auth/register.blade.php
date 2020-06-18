@@ -24,6 +24,16 @@
                         <div class="ms-ua-form">
                             <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                 @csrf
+
+                                <div class="form-group">
+                                    <input id="full_name" type="text" class="form-control phone" name="full_name" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="FULL NAME">
+                                    @error('full_name')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">
 
@@ -70,6 +80,30 @@
                                             </span>
                                     @enderror
 
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="secret_questions_id" id="secret_question">
+                                        <option disabled="disabled" selected="selected">Choose Secret Question</option>
+
+                                        @foreach($secrets as $value)
+
+                                            <option value="{{$value->id}}">{{$value->question}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+                                </div>
+                                <div class="form-group">
+                                    <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                                    @error('secret_answer')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
                                 </div>
                                 <div class="col"><input type="submit" value="Register" class="ms-ua-submit"></div>
                             </form>

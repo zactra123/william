@@ -62,11 +62,15 @@
                                     </div>
                                     <div class="col-md-6 col-xs-12 ms-us-sp">
 
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
+                                        <a class="btn btn-link" style="text-decoration: underline" href="{{route('login.infoFirst')}}">
+                                            Forget Login Information?
+                                        </a>
+
+{{--                                        @if (Route::has('password.request'))--}}
+{{--                                            <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">--}}
+{{--                                                {{ __('Forgot Your Password?') }}--}}
+{{--                                            </a>--}}
+{{--                                        @endif--}}
 
                                     </div>
                                 </div>

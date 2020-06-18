@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Auth;
 use App\User;
 use App\ClientDetail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
@@ -68,7 +69,7 @@ class ClientDetailsController extends Controller
             $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
             $clientDetails["user_id"] = $id;
 
-            User::where('id', $id)->update($user);
+//            User::where('id', $id)->update($user);
 
             if(empty(ClientDetail::where('user_id',$id )->first())){
                 ClientDetail::create($clientDetails);
@@ -355,4 +356,41 @@ class ClientDetailsController extends Controller
         $uploadUserDetail = UploadClientDetail::where('user_id',$client->id )->first();
         return redirect (route('client.details.create'));
     }
+
+    public function importantInformation(Request $request)
+    {
+        $userId = Auth::user()->id;
+        if($request->method()=="GET"){
+
+            $client = User::where('id', $userId)->first();
+
+            $secrets=DB::table('secret_questions')->select('question','id')->get();
+
+            return view('client_details.important-information', compact('client', 'secrets'));
+
+        }elseif($request->method()=="POST"){
+
+            $clientData= $request->except('_token');
+
+            $full_name = explode(" ", $clientData["full_name"]);
+            $clientData["first_name"] = array_shift($full_name);
+            $clientData["last_name"] = implode(" ", $full_name);
+
+            User::where('id', $userId)->update([
+                'first_name' => $clientData["first_name"],
+                'last_name' => $clientData["last_name"],
+                'secret_questions_id'=> $clientData["secret_questions_id"],
+                'secret_answer' => $clientData["secret_answer"]
+
+            ]);
+
+            ClientDetail::where('user_id', $userId)->update([
+                'phone_number'=>$clientData["phone_number"],
+                'sex'=>$clientData["sex"]
+            ]);
+
+            return redirect()->to('/client/registration-steps');
+        }
+    }
+
 }

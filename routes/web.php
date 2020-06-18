@@ -42,6 +42,12 @@ Route::get('/facebook/callback', 'SocialAuthController@callback');
 Route::get('/google/redirect', 'SocialAuthController@redirectGoogle')->name('google.login');
 Route::get('/google/callback', 'SocialAuthController@callbackGoogle');
 
+Route::get('login-info-first', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirst');
+Route::post('login-info-second', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirstSend');
+Route::post('login-info-reset', 'Auth\LoginController@loginInfoSecond')->name('login.infoSecondSend');
+Route::post('login-info-finish', 'Auth\LoginController@loginInfoFinish')->name('login.infoFinishSend');
+
+
 Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')->name('register.Affiliate');
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 
@@ -136,10 +142,6 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
 
 
-
-
-
-
 Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
@@ -155,6 +157,10 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
 
 Route::group(['prefix' =>'client'], function() {
+
+    Route::get('important-information', 'ClientDetailsController@importantInformation');
+    Route::post('important-information', 'ClientDetailsController@importantInformation')->name('client.important');
+
     Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
