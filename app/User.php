@@ -121,16 +121,14 @@ class   User extends Authenticatable implements MustVerifyEmail
     public function chatMessages($params)
     {
         if ($params["type"] == "User"){
-            return $this->hasMany('App\Chat')
-                ->where(
+            return Chat::where(
                         [
                             "recipient_type" => 'App\\User',
                             "recipient_id"=> $params["id"]
                         ]
                     );
         }else {
-            return $this->hasMany('App\Chat')
-                ->leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
+            return Chat::leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
                 ->where(
                     ["recipient_type" => "App\\Guest",
                         "recipient_id" => $params["id"]
