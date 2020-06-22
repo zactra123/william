@@ -159,8 +159,10 @@ class   User extends Authenticatable implements MustVerifyEmail
 
     public function chat_list($params = [])
     {
-        $chats = DB::table('chat')
-            ->where(['chat.user_id'=> $this->id]);
+        $chats = DB::table('chat');
+        if (empty($params["all"])) {
+            $chats = $chats->where(['chat.user_id'=> $this->id]);
+        }
 
         if (!empty($params["type"]) && $params["type"] == "Guest") {
             $chats = $chats->leftJoin('guest', function($join) {
@@ -225,16 +227,21 @@ class   User extends Authenticatable implements MustVerifyEmail
         return $chats->get()->toArray();
     }
 
-    public function unreads()
+    public static function unreads($params = [])
     {
-        $unreads = Chat::where([
-                ["user_id", $this->id],
-                ["unread", 1]
-            ])
-            ->groupBy("recipient_type")
+        $result = Chat::where("unread", 1);
+
+        if (!empty($params["id"])) {
+            $result = $result->where("user_id", $params["id"]);
+        }
+        if (!empty($params["type"])) {
+            $result = $result->where("type", $params["type"]);
+        }
+        $result = $result->groupBy("recipient_type")
             ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
-            ->pluck('unreads', "recipient_type");
-        return $unreads;
+            ->pluck('unreads', "recipient_type")
+            ->toArray();
+        return $result;
     }
 
 }

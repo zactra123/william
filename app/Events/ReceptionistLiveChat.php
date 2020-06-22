@@ -30,7 +30,7 @@ class ReceptionistLiveChat implements ShouldBroadcast
         $this->message = $data;
         $admin = User::find($data->user_id);
         $this->recipient_lists = $admin->chat_list();
-        $this->unreads = $admin->unreads();
+        $this->unreads = $admin->unreads(["id" => $admin->id, "type" => "to"]);
 
 
     }

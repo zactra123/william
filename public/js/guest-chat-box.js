@@ -63,6 +63,7 @@ getChatMessages = function(recipient, type) {
 connectToChannel = function(recipient, type) {
     window.Echo.channel(`LiveChat.${type}_${recipient}`)
         .listen("LiveChat", function(e){
+            console.log(e)
             addMessageToChat(e.message);
         })
 };

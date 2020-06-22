@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Response;
 use Auth;
 use App\Chat;
+use App\User;
 
 
 
@@ -23,9 +24,9 @@ class ChatsController extends Controller
 
     public function index(Request $request)
     {
-        $chats = Auth::user()->chat_list($request->only("type", "term", "order"));
-        $unreads = Auth::user()->unreads();
-
+        $chats = Auth::user()->chat_list($request->only("type", "term", "order", "all"));
+        $unreads = Auth::user()->unreads(["id" => Auth::user()->id, "type" => "to"]);
+        $all_unreads = User::unreads(["type" => "to"]);
         if ($request->ajax()){
             $data = [
                 "chats" => $chats,
@@ -33,7 +34,7 @@ class ChatsController extends Controller
                 ];
             return Response::json($data);
         }
-        return view('receptionist.live-chat.index', compact('chats', 'unreads'));
+        return view('receptionist.live-chat.index', compact('chats', 'unreads','all_unreads'));
     }
 
     public function show(Request $request)
@@ -47,7 +48,7 @@ class ChatsController extends Controller
        $recipientData = $request->only("type", "id");
 
         $chats = Auth::user()->chat_list($request->only("type"));
-        $unreads = Auth::user()->unreads();
+        $unreads = Auth::user()->unreads(["id" => Auth::user()->id, "type" => "to"]);
 
         $data = [
            'chatMessage' =>$chatMessage,
