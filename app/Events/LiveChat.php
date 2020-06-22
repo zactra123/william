@@ -36,11 +36,11 @@ class LiveChat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        if ($this->message->recipient_type == "User") {
+        if ($this->message->recipient_type == "App/User") {
             $user = User::find($this->message->recipient_id);
             $guest = Guest::where("user_id", $user->id)->first();
         }
-        if ($this->message->recipient_type == "Guest") {
+        if ($this->message->recipient_type == "App/Guest") {
             $guest = Guest::find($this->message->recipient_id);
             $user = User::find($guest->user_id);
         }
