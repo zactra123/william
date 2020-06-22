@@ -79,7 +79,7 @@ addChatUserList = function(chatUserList) {
 getChatInformations = function(data){
     return new Promise(function(resolve, reject) {
         $.ajax({
-            url: '/receptionist/live-chat',
+            // url: '/receptionist/live-chat',
             type: "GET",
             data: data,
             success: function(response) {
