@@ -25,6 +25,7 @@ class ChatsController extends Controller
     {
         $chats = Auth::user()->chat_list($request->only("type", "term", "order"));
         $unreads = Auth::user()->unreads();
+
         if ($request->ajax()){
             $data = [
                 "chats" => $chats,

@@ -19,6 +19,8 @@ class Chat extends Model
         "private"
     ];
 
+    protected $with = ["admin", "recipient"];
+
     public function guest()
     {
         return $this->belongsTo('App\Guest','recipient_id', 'id');
@@ -33,7 +35,6 @@ class Chat extends Model
     public function recipient()
     {
         return $this->morphTo();
-
     }
 
     public function admin()

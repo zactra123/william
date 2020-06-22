@@ -60,11 +60,11 @@
                                     <ul class="list-group">
                                         <li class="list-group-item  active" data-type="User">
                                             <span>Clients</span>
-                                            <span class="badge badge-notify">{{!empty($unreads["User"]) ? $unreads["User"] :""}}</span>
+                                            <span class="badge badge-notify">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
                                         </li>
                                         <li class="list-group-item" data-type="Guest">
                                             <span>Guests</span>
-                                            <span class="badge badge-notify">{{!empty($unreads["Guest"]) ? $unreads["Guest"] : ""}}</span>
+                                            <span class="badge badge-notify">{{!empty($unreads["App\Guest"]) ? $unreads["App\Guest"] : ""}}</span>
                                         </li>
                                     </ul>
                                 </div>

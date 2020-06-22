@@ -5,7 +5,7 @@ connectToChannel = function (user) {
             var type = $('.active-user').attr('data-type');
             var messageCount = ' '
             messageCount += e.unreads
-            if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == type){
+            if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == ('App\\'+ type)){
                 addMessageToChat(e.message)
             }
             chatListHtml = '';
