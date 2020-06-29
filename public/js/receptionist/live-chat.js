@@ -25,7 +25,7 @@ connectToChannel = function (user) {
             }
             if(typeof(e.all_unreads['App\\Guest']) != "undefined" && e.all_unreads['App\\Guest'] !== null) {
                 messageAllCount += e.all_unreads['App\\Guest'];
-                allClientMessageCount += e.all_unreads['App\\Guest'];
+                allGuestMessageCount += e.all_unreads['App\\Guest'];
             }
 
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == ('App\\'+ type)){
@@ -37,8 +37,6 @@ connectToChannel = function (user) {
                 chatListHtml +=  addChatUserList(value);
             });
 
-            console.log('fsd',chatListHtml,'dfgdfgdfg');
-            console.log(messageCount);
 
             $("#chatListId").html(chatListHtml);
             $("#"+type+id).addClass('active-user');
@@ -51,7 +49,7 @@ connectToChannel = function (user) {
             if(guestMessageCount != null){
                 $("#guestMessageCount").html(guestMessageCount)
             }
-            if(clientMessageCount != null){
+            if(allClientMessageCount != null){
                 $("#allClientMessageCount").html(allClientMessageCount)
             }
             if(allGuestMessageCount != null){
@@ -159,6 +157,45 @@ $(document).ready(function(){
                 });
                 chatListHtml = '';
 
+                var clientMessageCount = null;
+                var guestMessageCount = null;
+                var allClientMessageCount = null;
+                var allGuestMessageCount = null;
+                var messageCount = null;
+                var messageAllCount = null;
+
+                if(typeof(result.unreads['App\\User']) != "undefined"){
+                    var clientMessageCount = result.unreads['App\\User'];
+                }else{clientMessageCount= ''; }
+
+                if(typeof(result.unreads['App\\Guest']) != "undefined"){
+                    var guestMessageCount = result.unreads['App\\Guest'];
+                }else{guestMessageCount= ''; }
+
+                if(typeof(result.all_unreads['App\\User']) != "undefined"){
+                    var allClientMessageCount = result.all_unreads['App\\User'];
+                }else{allClientMessageCount= ''; }
+
+                if(typeof(result.unreads['App\\Guest']) != "undefined"){
+                    var allGuestMessageCount = result.all_unreads['App\\Guest'];
+                }else{allGuestMessageCount= ''; }
+
+                if(allClientMessageCount !=''){
+                    messageAllCount += allClientMessageCount;
+                }
+                if(allGuestMessageCount !=''){
+                    messageAllCount += allGuestMessageCount;
+                }
+                if(messageAllCount==null){messageAllCount=''}
+
+                if(clientMessageCount !=''){
+                    messageCount +=clientMessageCount;
+                }
+                if(guestMessageCount !=''){
+                    messageCount += guestMessageCount;
+                }
+                if(messageCount == null){messageCount=''}
+
                 $.each(result.chats, function( index, value ) {
                     chatListHtml +=  addChatUserList(value);
                 });
@@ -173,8 +210,15 @@ $(document).ready(function(){
                 $("#recipientId").val(result.recipient.id);
                 $("#recipientType").val(result.recipient.type);
                 $("#chatAnswer").show()
-                $("#"+type+id).addClass('active-user')
+                $("#"+type+id).addClass('active-user');
 
+                $("#allMessageCount").html(messageCount);
+                $("#userUnreds").html(messageCount);
+                $("#allUserUnreds").html(messageAllCount);
+                $("#clientMessageCount").html(clientMessageCount)
+                $("#guestMessageCount").html(guestMessageCount)
+                $("#allClientMessageCount").html(allClientMessageCount)
+                $("#allGuestMessageCount").html(allGuestMessageCount)
             },
 
             error:function (err,state) {

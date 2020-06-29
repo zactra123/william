@@ -49,12 +49,15 @@ class ChatsController extends Controller
 
         $chats = Auth::user()->chat_list($request->only("type"));
         $unreads = Auth::user()->unreads(["id" => Auth::user()->id, "type" => "to"]);
+        $all_unreads = User::unreads(["type" => "to"]);
+
 
         $data = [
-           'chatMessage' =>$chatMessage,
-           'recipient' =>$recipientData,
-           'chats' => $chats,
-            'unreads' => $unreads
+            'chatMessage' =>$chatMessage,
+            'recipient' =>$recipientData,
+            'chats' => $chats,
+            'unreads' => $unreads,
+            'all_unreads'=> $all_unreads
 
        ] ;
         return Response::json($data);
