@@ -47,7 +47,7 @@ class ChatsController extends Controller
        $chatMessage = $chatMessage->get();
        $recipientData = $request->only("type", "id");
 
-        $chats = Auth::user()->chat_list($request->only("type"));
+        $chats = Auth::user()->chat_list($request->only("type", "order", "term"));
         $unreads = Auth::user()->unreads(["id" => Auth::user()->id, "type" => "to"]);
         $all_unreads = User::unreads(["type" => "to"]);
 
@@ -102,6 +102,7 @@ class ChatsController extends Controller
 
     public function unreads(Request $request)
     {
+        dd("test");
         $chats = Auth::user()->chat_list();
         $unreads = array_sum(array_map('intval',array_column($chats, "message")));
         return Response::json($unreads);

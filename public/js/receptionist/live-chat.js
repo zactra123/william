@@ -1,3 +1,5 @@
+filters_params = {};
+
 connectToChannel = function (user) {
     window.Echo.channel(`ReceptionistLiveChat.${user}`)
         .listen("ReceptionistLiveChat", function(e){
@@ -139,12 +141,11 @@ $(document).ready(function(){
         var id = $(this).attr("data-id");
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
-
-
+        data = {id:id, type:type, _token: token}
         $.ajax({
             url: "live-chat/chat-message",
             method:"POST",
-            data:{id:id, type:type, _token: token},
+            data: {...filters_params, ...data},
             success: function (result) {
                 show_direct_answer = false;
                 if (result.chatMessage[0]["recipient_type"] == 'App\\Guest') {
@@ -280,8 +281,8 @@ $(document).ready(function(){
     })
 
     $(document).on("click", "#chat_type li",function(){
-        var type = $(this).attr("data-type")
-        getChatInformations({"type": type})
+        filters_params = { ...filters_params, "type": $(this).attr("data-type")}
+        getChatInformations(filters_params)
             .then(function(response){
                 $("#chat_type li").removeClass("active")
                 $(this).addClass("active")
@@ -293,13 +294,13 @@ $(document).ready(function(){
     });
 
     $(document).on("change keyup", "#chat-filters", function(){
-        var data = {
+        filters_params = {
             type: $("#chat_type li.active").attr("data-type"),
             order: $("#chat-filters select").val(),
             term: $("#chat-filters input").val()
         };
 
-        getChatInformations(data)
+        getChatInformations(filters_params)
             .then(function(response){
                 allChatList(response.chats)
             })
@@ -312,5 +313,4 @@ $(document).ready(function(){
     if (user != ''){
         connectToChannel(user)
     }
-    console.log(user, 'hhhhh');
 });
