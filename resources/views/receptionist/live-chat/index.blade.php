@@ -69,9 +69,9 @@
                                         <li class="list-group-item  active" data-type="User">
                                             <span>Clients</span>
                                             @if(Request()->all)
-                                                <span class="badge badge-notify" id="clientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify" id="allClientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
                                             @else
-                                                <span class="badge badge-notify" id="allClientMessageCount">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify" id="clientMessageCount">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
                                             @endif
                                         </li>
                                         <li class="list-group-item" data-type="Guest">

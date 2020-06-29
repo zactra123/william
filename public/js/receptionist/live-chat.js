@@ -3,16 +3,16 @@ connectToChannel = function (user) {
         .listen("ReceptionistLiveChat", function(e){
             var id = $('.active-user').attr('data-id');
             var type = $('.active-user').attr('data-type');
-            var messageCount = ' ';
-            var messageAllCount = ' ';
-            var clientMessageCount = ' ';
-            var allClientMessageCount = ' ';
-            var guestMessageCount = ' ';
-            var allGuestMessageCount = ' ';
+            var messageCount = null;
+            var messageAllCount = null;
+            var clientMessageCount = null;
+            var allClientMessageCount = null;
+            var guestMessageCount = null;
+            var allGuestMessageCount = null;
 
             if(typeof(e.unreads['App\\User']) != "undefined" && e.unreads['App\\User'] !== null) {
                 messageCount += e.unreads['App\\User'];
-                clientMessageCount += e.unreads['App\\User'];
+                clientMessageCount = e.unreads['App\\User'];
             }
             if(typeof(e.unreads['App\\Guest']) != "undefined" && e.unreads['App\\Guest'] !== null) {
                 messageCount += e.unreads['App\\Guest'];
@@ -38,22 +38,23 @@ connectToChannel = function (user) {
             });
 
             console.log('fsd',chatListHtml,'dfgdfgdfg');
+            console.log(messageCount);
 
             $("#chatListId").html(chatListHtml);
             $("#"+type+id).addClass('active-user');
             $("#allMessageCount").html(messageCount);
             $("#userUnreds").html(messageCount);
             $("#allUserUnreds").html(messageAllCount);
-            if(clientMessageCount != ' '){
+            if(clientMessageCount != null){
                 $("#clientMessageCount").html(clientMessageCount)
             }
-            if(guestMessageCount != ' '){
+            if(guestMessageCount != null){
                 $("#guestMessageCount").html(guestMessageCount)
             }
-            if(clientMessageCount != ' '){
-                $("#allClientMessageCount").html(allClientMessafeCount)
+            if(clientMessageCount != null){
+                $("#allClientMessageCount").html(allClientMessageCount)
             }
-            if(allGuestMessageCount != ' '){
+            if(allGuestMessageCount != null){
                 $("#allGuestMessageCount").html(allGuestMessageCount)
             }
 
