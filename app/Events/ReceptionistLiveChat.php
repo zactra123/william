@@ -19,6 +19,7 @@ class ReceptionistLiveChat implements ShouldBroadcast
     public $message;
     public $recipient_lists;
     public $unreads;
+    public $all_unreads;
     /**
      * Create a new event instance.
      *
@@ -26,12 +27,11 @@ class ReceptionistLiveChat implements ShouldBroadcast
      */
     public function __construct($data)
     {
-
         $this->message = $data;
         $admin = User::find($data->user_id);
-        $this->recipient_lists = $admin->chat_list();
+        $this->recipient_lists = $admin->chat_list(["type"=> $data->recipient_type,]);
         $this->unreads = $admin->unreads(["id" => $admin->id, "type" => "to"]);
-
+        $this->all_unreads = User::unreads();
 
     }
 

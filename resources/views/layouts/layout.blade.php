@@ -119,8 +119,8 @@
                                     <span class="pl-1">
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
-                                    @if(isset($unreads) && empty($unreads))
-                                        <span id="allMessageCount" class="pl-1"> {{$unreads}}</span>
+                                    @if(!empty($all_unreads))
+                                        <span id="allMessageCount" class="pl-1"> {{array_sum($all_unreads)}}</span>
                                     @endif
                                 </a>
 

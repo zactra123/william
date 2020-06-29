@@ -47,12 +47,12 @@
                 <div class="list-group list-group-horizontal">
                     <a class="list-group-item  {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
                         @if(array_sum($unreads))
-                            <span class="badge badge-notify">{{array_sum($unreads)}}</span>
+                            <span class="badge badge-notify" id="userUnreds">{{array_sum($unreads)}}</span>
                         @endif
                     </a>
                     <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >All Messages
                         @if(array_sum($all_unreads))
-                            <span class="badge badge-notify">{{array_sum($all_unreads)}}</span>
+                            <span class="badge badge-notify" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
                         @endif
                     </a>
                 </div>
@@ -69,17 +69,17 @@
                                         <li class="list-group-item  active" data-type="User">
                                             <span>Clients</span>
                                             @if(Request()->all)
-                                                <span class="badge badge-notify">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify" id="clientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
                                             @else
-                                                <span class="badge badge-notify">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify" id="allClientMessageCount">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
                                             @endif
                                         </li>
                                         <li class="list-group-item" data-type="Guest">
                                             <span>Guests</span>
                                             @if(Request()->all)
-                                                <span class="badge badge-notify">{{!empty($all_unreads["App\Guest"]) ? $all_unreads["App\Guest"] :""}}</span>
+                                                <span class="badge badge-notify" id="allGuestMessageCount">{{!empty($all_unreads["App\Guest"]) ? $all_unreads["App\Guest"] :""}}</span>
                                             @else
-                                                <span class="badge badge-notify">{{!empty($unreads["App\Guest"]) ? $unreads["App\Guest"] :""}}</span>
+                                                <span class="badge badge-notify" id="guestMessageCount">{{!empty($unreads["App\Guest"]) ? $unreads["App\Guest"] :""}}</span>
                                             @endif
                                         </li>
                                     </ul>

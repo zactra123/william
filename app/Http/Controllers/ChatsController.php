@@ -28,6 +28,9 @@ class ChatsController extends Controller
      */
     public function identifyUser(Request $request)
     {
+
+
+
         $actives = Active::usersWithinMinutes(60)->get();
         $receptionistId = [];
         foreach($actives as $users){
@@ -35,13 +38,12 @@ class ChatsController extends Controller
                 $receptionistId[] = $users->user->id;
             }
         }
-
         $timeInterval  = date('Y-m-d H:i:s',  strtotime("-1 day"));
         $chatUserId =Chat::where('created_at','>',$timeInterval)
             ->distinct('user_id')
             ->pluck('user_id')->toArray();
 
-        $dif = array_diff($receptionistId, $chatUserId);
+        $dif = count($receptionistId)>count($chatUserId)?array_diff($receptionistId, $chatUserId):$receptionistId;
 
         if(!empty($dif))
         {
@@ -51,7 +53,6 @@ class ChatsController extends Controller
         } else {
             $userId = User::where("role", 'receptionist')->orderByRaw("RAND()")->first()->id;
         }
-
         $user = User::where('email', $request->get('email'))->first();
 
 
@@ -137,10 +138,12 @@ class ChatsController extends Controller
      */
     public function postNewMessage(Request $requests)
     {
+        $type = $requests->recipient_type=='guest'?'App\\Guest':'App\\User';
 
-        $last_message = Chat::where("recipient_type", $requests->recipient_type)
+        $last_message = Chat::where("recipient_type", $type)
             ->where("recipient_id", $requests->recipient_id)
             ->first();
+
 
         if(empty($last_message)){
             $actives = Active::usersWithinMinutes(60)->get();
@@ -175,8 +178,9 @@ class ChatsController extends Controller
 
 
         }else{
+
             $new_message = Chat::create([
-                "recipient_type" => $requests->recipient_type,
+                "recipient_type" => $type,
                 "recipient_id" => $requests->recipient_id,
                 "message" => $requests->message,
                 "user_id" => $last_message->user_id,

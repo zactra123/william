@@ -3,8 +3,31 @@ connectToChannel = function (user) {
         .listen("ReceptionistLiveChat", function(e){
             var id = $('.active-user').attr('data-id');
             var type = $('.active-user').attr('data-type');
-            var messageCount = ' '
-            messageCount += e.unreads
+            var messageCount = ' ';
+            var messageAllCount = ' ';
+            var clientMessageCount = ' ';
+            var allClientMessageCount = ' ';
+            var guestMessageCount = ' ';
+            var allGuestMessageCount = ' ';
+
+            if(typeof(e.unreads['App\\User']) != "undefined" && e.unreads['App\\User'] !== null) {
+                messageCount += e.unreads['App\\User'];
+                clientMessageCount += e.unreads['App\\User'];
+            }
+            if(typeof(e.unreads['App\\Guest']) != "undefined" && e.unreads['App\\Guest'] !== null) {
+                messageCount += e.unreads['App\\Guest'];
+                guestMessageCount += e.unreads['App\\Guest'];
+            }
+            if(typeof(e.all_unreads['App\\User']) != "undefined" && e.all_unreads['App\\User'] !== null) {
+                messageAllCount += e.all_unreads['App\\User'];
+                allClientMessageCount += e.all_unreads['App\\User'];
+
+            }
+            if(typeof(e.all_unreads['App\\Guest']) != "undefined" && e.all_unreads['App\\Guest'] !== null) {
+                messageAllCount += e.all_unreads['App\\Guest'];
+                allClientMessageCount += e.all_unreads['App\\Guest'];
+            }
+
             if( e.message['recipient_id'] == id &&  e.message['recipient_type'] == ('App\\'+ type)){
                 addMessageToChat(e.message)
             }
@@ -14,9 +37,26 @@ connectToChannel = function (user) {
                 chatListHtml +=  addChatUserList(value);
             });
 
+            console.log('fsd',chatListHtml,'dfgdfgdfg');
+
             $("#chatListId").html(chatListHtml);
             $("#"+type+id).addClass('active-user');
-            $("#allMessageCount").html(messageCount)
+            $("#allMessageCount").html(messageCount);
+            $("#userUnreds").html(messageCount);
+            $("#allUserUnreds").html(messageAllCount);
+            if(clientMessageCount != ' '){
+                $("#clientMessageCount").html(clientMessageCount)
+            }
+            if(guestMessageCount != ' '){
+                $("#guestMessageCount").html(guestMessageCount)
+            }
+            if(clientMessageCount != ' '){
+                $("#allClientMessageCount").html(allClientMessafeCount)
+            }
+            if(allGuestMessageCount != ' '){
+                $("#allGuestMessageCount").html(allGuestMessageCount)
+            }
+
         })
 };
 
