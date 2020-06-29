@@ -112,7 +112,12 @@
                                                             @endif
                                                         </div>
                                                         <div class="form-group">
-                                                            <div class="text-link">show details</div>
+                                                            <div class="text-link">
+                                                                <a href="#{{$chat->recipient_type}}_{{$chat->recipient_id}}" data-toggle="modal">
+                                                                    show details
+                                                                </a>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -164,6 +169,20 @@
                         </div>
                     </div>
             </div>
+
+            <div class="modal fade" id="showDetails" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </section>
     </section>
 
@@ -208,7 +227,11 @@
                 {unreads}
             </div>
             <div class="form-group">
-                <div class="text-link">show details</div>
+                <div class="text-link">
+                    <a href="#{recipient-type}_{recipient-id}" data-toggle="modal">
+                        show details
+                    </a>
+                </div>
             </div>
         </div>
     </script>
@@ -221,7 +244,11 @@
             </div>
             <div class="form-group">
                 {connected_user_details}
-                <div class="text-link recipient-details">show details</div>
+                <div class="text-link">
+                    <a href="#{recipient-type}_{recipient-id}" data-toggle="modal">
+                        show details
+                    </a>
+                </div>
             </div>
         </div>
     </script>
