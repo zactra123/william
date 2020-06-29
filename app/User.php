@@ -214,13 +214,11 @@ class   User extends Authenticatable implements MustVerifyEmail
             "chat.recipient_type"
         ]);
 
-        $chats = $chats->orderBy('chat.created_at', 'DESC');
-
         if (!empty($params["order"]) && $params["order"] == "unreads") {
             $chats = $chats->orderBy(DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END)"), 'DESC');
-
+        } else {
+            $chats = $chats->orderBy('chat.created_at', 'DESC');
         }
-
 
 
         return $chats->get()->toArray();
