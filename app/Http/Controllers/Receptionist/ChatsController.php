@@ -102,10 +102,42 @@ class ChatsController extends Controller
 
     public function unreads(Request $request)
     {
-        dd("test");
         $chats = Auth::user()->chat_list();
         $unreads = array_sum(array_map('intval',array_column($chats, "message")));
         return Response::json($unreads);
+    }
+
+    public function showDetails(Request $request)
+    {
+        $recipientType = $request->type;
+        $recipientId = $request->id;
+        if($recipientType=="Guest"){
+
+            $guest = DB::table('guest')->where('id',$recipientId)->first();
+            $user =  $guest->user_id!=null? User::where('id', $guest->user_id)->with('clientDetails')->first():null;
+            $data = [
+                'recipient_guest' =>$guest,
+                'guest_user' => $user,
+                'recipient_user' => null
+
+            ] ;
+
+        }elseif($recipientType=="User"){
+
+            $user = User::where('id',$recipientId)->with('clientDetails')->first();
+
+            $data = [
+                'recipient_guest' =>null,
+                'guest_user' => null,
+                'recipient_user' => $user
+
+            ] ;
+        }
+
+
+        return Response::json($data);
+
+
     }
 
 }

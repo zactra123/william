@@ -137,7 +137,11 @@ getChatInformations = function(data){
 
 $(document).ready(function(){
 
-    $(document).on('click',".chatMessage", function(){
+    $(document).on('click',".chatMessage", function(e){
+        console.log($(e.target).hasClass("show_details"))
+        if ($(e.target).hasClass("show_details")) {
+            return false;
+        }
         var id = $(this).attr("data-id");
         var type = $(this).attr("data-type");
         var token = $("meta[name='csrf-token']").attr("content");
@@ -308,6 +312,55 @@ $(document).ready(function(){
                 console.log(err)
             })
     });
+
+    $(document).on('click',".show_details", function() {
+        var id = $(this).attr("data-id");
+        var type = $(this).attr("data-type");
+        var token = $("meta[name='csrf-token']").attr("content");
+
+        data = {id:id, type:type, _token: token};
+        $.ajax({
+            url: "live-chat/show-details",
+            method:"POST",
+            data: data,
+            success: function (result) {
+                console.log(result,'654');
+                var full_name = '';
+                var phone_number = '';
+                var ssn = '';
+                var dob = '';
+                var address = '';
+
+
+                if(result.recipient_guest != null){
+                    full_name = result.recipient_guest['full_name'];
+                     phone_number = result.recipient_guest['phone'];
+                    if(result.guest_user != null){
+                        ssn = result.guest_user['client_details']['ssn'];
+                        address = result.guest_user['client_details']['address'];
+                    }
+                }else if(result.recipient_guest != null){
+                    full_name = result.recipien_user['first_name']+' '+result.recipien_user['last_name'];
+                    phone_number = result.recipient_guest['phone_number'];
+                    ssn = result.guest_user['ssn'];
+                    address = result.guest_user['address'];
+
+                }
+                $("#showFullName").html(full_name);
+                $("#showPhoneNumber").html(phone_number);
+                $("#showSSN").html(ssn)
+                $("#showAddress").html(address)
+
+            },
+
+            error:function (err,state) {
+                console.log(err)
+            }
+        });
+
+
+    })
+
 
     var user = $('#app').data("user");
     if (user != ''){

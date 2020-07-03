@@ -113,7 +113,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="text-link">
-                                                                <a href="#{{$chat->recipient_type}}_{{$chat->recipient_id}}" data-toggle="modal">
+                                                                <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
                                                                     show details
                                                                 </a>
 
@@ -175,7 +175,20 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      
+
+                            <div  class="form-group">
+                                <p> Full Name  <span id="showFullName"></span></p>
+                            </div>
+                            <div  class="form-group">
+                                <p> Phone #  <span id="showPhoneNumber"></span></p>
+                            </div>
+                            <div  class="form-group">
+                                <p> Social Security #  <span id="showSSN"></span></p>
+                            </div>
+                            <div  class="form-group">
+                                <p> Address  <span id="showAddress"></span></p>
+                            </div>
+
 
                         </div>
                     </div>
@@ -228,7 +241,7 @@
             </div>
             <div class="form-group">
                 <div class="text-link">
-                    <a href="#{recipient-type}_{recipient-id}" data-toggle="modal">
+                    <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
                         show details
                     </a>
                 </div>
@@ -245,7 +258,7 @@
             <div class="form-group">
                 {connected_user_details}
                 <div class="text-link">
-                    <a href="#{recipient-type}_{recipient-id}" data-toggle="modal">
+                    <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
                         show details
                     </a>
                 </div>
