@@ -42,13 +42,13 @@ connectToChannel = function (user) {
 
             $("#chatListId").html(chatListHtml);
             $("#"+type+id).addClass('active-user');
-            $("#allMessageCount").html(messageCount);
+            $("#allMessageCount").html(messageAllCount);
             $("#userUnreds").html(messageCount);
             $("#allUserUnreds").html(messageAllCount);
             if(clientMessageCount != null){
                 $("#clientMessageCount").html(clientMessageCount)
             }
-            if(guestMessageCount != null){
+            if(guestMessageCountconsole.log(result) != null){
                 $("#guestMessageCount").html(guestMessageCount)
             }
             if(allClientMessageCount != null){
@@ -217,7 +217,7 @@ $(document).ready(function(){
                 $("#chatAnswer").show()
                 $("#"+type+id).addClass('active-user');
 
-                $("#allMessageCount").html(messageCount);
+                $("#allMessageCount").html(messageAllCount);
                 $("#userUnreds").html(messageCount);
                 $("#allUserUnreds").html(messageAllCount);
                 $("#clientMessageCount").html(clientMessageCount)
