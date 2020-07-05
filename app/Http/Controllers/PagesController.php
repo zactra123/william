@@ -15,6 +15,12 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
+        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
+        $arguments = ['salbibazikyan', '9708564vS', 5];
+        $command_args = array_merge(['python3', $script_path], $arguments);
+        $command = escapeshellcmd(implode( " ", $command_args));
+        $output = shell_exec($command);
+        dd("asd",  $output);
 
 //        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
 

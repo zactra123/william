@@ -1,0 +1,25 @@
+1593869419600	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "--disable-gpu" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.RgGReYCq88Ch"
+1593869426069	Marionette	INFO	Listening on port 33815
+1593869426123	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593869446532	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+JavaScript error: chrome://marionette/content/error.js, line 175: ScriptTimeoutError: Timed out after 30000 ms
+JavaScript error: , line 0: uncaught exception: undefined
+
+(/usr/lib/firefox/firefox:6854): dconf-WARNING **: 17:36:32.543: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+1593881407909	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "--disable-gpu" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.6zIwYf5SrYEB"
+1593881412899	Marionette	INFO	Listening on port 36101
+1593881412935	Marionette	WARN	TLS certificate errors will be ignored for this session
+1593881432758	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+JavaScript error: , line 0: uncaught exception: undefined
+
+(/usr/lib/firefox/firefox:22194): dconf-WARNING **: 20:53:10.888: Unable to open /var/lib/snapd/desktop/dconf/profile/user: Permission denied
+JavaScript error: chrome://marionette/content/error.js, line 175: ScriptTimeoutError: Timed out after 30000 ms
+JavaScript error: , line 0: uncaught exception: undefined
