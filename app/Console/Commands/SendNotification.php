@@ -85,7 +85,7 @@ class SendNotification extends Command
             if($user->note_count == 0) {
                 if ($result > 24 && $result < 36) {
                     Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentcredit.com');
+                        $mail->from('info@prudentscores.com');
                         $mail->to($user->email)
                             ->subject('Please add your credentials for start your working');
                     });
@@ -94,7 +94,7 @@ class SendNotification extends Command
             }elseif ($user->note_count == 1) {
                 if ($result > 48 && $result < 60) {
                     Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentcredit.com');
+                        $mail->from('info@prudentscores.com');
                         $mail->to($user->email)
                             ->subject('Please add your credentials for start your working');
                     });
@@ -104,7 +104,7 @@ class SendNotification extends Command
             }elseif ($user->note_count == 2) {
                 if ($result > 72 && $result < 84) {
                     Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentcredit.com');
+                        $mail->from('info@prudentscores.com');
                         $mail->to($user->email)
                             ->subject('Please add your credentials for start your working');
                     });
@@ -114,7 +114,7 @@ class SendNotification extends Command
             }elseif ($user->note_count == 3 && $result > 144) {
 //                && $result < 168
                 Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                    $mail->from('info@prudentcredit.com');
+                    $mail->from('info@prudentscores.com');
                     $mail->to($user->email)
                         ->subject('Please add your credentials for start your working');
                 });

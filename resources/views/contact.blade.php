@@ -48,7 +48,7 @@
                                         1-844-337-8336
                                     </a>
                                 </p>
-                                <p>info@prudentcredit.com</p>
+                                <p>info@prudentscores.com</p>
                             </address>
                         </div>
                     </div>
