@@ -87,7 +87,7 @@ try:
     driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/section[3]/div/div/button').click()
     time.sleep(15)
 except:
-    passf
+    pass
 
 
 
@@ -130,8 +130,6 @@ for e in range(30):
         # print(element)
         driver.find_element_by_xpath(element).click()
         time.sleep(2)
-        print("--" * 30)
-
     except:
         pass
 
@@ -203,44 +201,8 @@ for e in range(30):
     except:
         pass
 
-print("--" * 50)
 time.sleep(3)
 soup = BeautifulSoup(driver.page_source, u"html.parser")
-# divs = soup.findAll("div", attrs={"class": "report-account-table"})
-# print(divs)
-
-# for d in divs:
-#     try:
-#         report_name = d["data-selenium"]
-#         report_name = str(report_name).split("-")[-1].strip()
-#         # a_dict.update({"report_name": report_name})
-#     except:
-#         report_name = "None"
-
-#     print("Rep-->", report_name)
-#     cells = d.find_next("div", attrs={"class": "tbody"}).findAll(
-#         "div", attrs={"class": "frow report-row"}
-#     )
-
-#     for row in cells:
-#         try:
-#             keys = row.find("div", attrs={"class": "fhcell"}).text.strip()
-#         except:
-#             keys = "None"
-
-#         try:
-#             values = row.find(
-#                 "div", attrs={"class": "tu-cell fcell dispute-cell"}
-#             ).text.strip()
-#         except:
-#             values = "None"
-
-
-#         p_dict = {"report": report_name, keys: values}
-
-#         print(p_dict)
-#         payments_arr.append(p_dict)
-
 
 all_scripts = soup.find('script',attrs={'id':'UserData'})
 all_scripts = str(all_scripts).split(' var ud = ')[1].split('</script>')[0].strip().replace('/n','')
