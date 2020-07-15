@@ -30,6 +30,29 @@ $(document).ready(function($){
         return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
     }, "Please write your full name in this pattern first name middle name last name!!");
 
+    $.validator.addMethod("password_requirements", function(value, element) {
+        var valid = !!value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@$*+-])(?:([\w\d])\1?(?!\1))[A-Za-z\d!@$*+-]{7,20}$/gm);
+        valid = valid && !value.match(/\d{9,}/mg)
+        var email = $('#email').val()
+        var include_email = false
+        if (email) {
+            partsOfFourLetters = email.match(/.{4}/g).concat(
+                email.substr(1).match(/.{4}/g),
+                email.substr(2).match(/.{4}/g) );
+            include_email = new RegExp(partsOfFourLetters.join("|"), "i").test(value);
+        }
+
+        return valid && !include_email
+    }, "Please pay attention on password requirements");
+
+
+    $('#password').popover({
+        html: true,
+        trigger: 'focus',
+        content: $('#password-information').html(),
+        title: 'Password Requirements',
+        placement: 'bottom'
+    })
 
     $('#client-registration-form').validate({
         rules: {
@@ -61,7 +84,7 @@ $(document).ready(function($){
             },
             "password": {
                 required: true,
-                minlength: 8
+                password_requirements: true
             },
             "password_confirmation": {
                 required: true,

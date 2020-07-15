@@ -53,7 +53,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                                    <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
                                     <input type="hidden" name="role" class="form-control" value="client">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -125,6 +125,20 @@
             </div>
         </div>
     </section>
+
+    <div id="password-information" class="hidden">
+        <ul>
+            <li><i class="fa fa-check-circle text-success"></i> Must be between 8 and 20</li>
+            <li><i class="fa fa-check-circle text-success"></i> Must contain both upper and lower case letters</li>
+            <li><i class="fa fa-check-circle text-success"></i> Must contain at least 1 number</li>
+            <li><i class="fa fa-check-circle text-success"></i> Must contain at least one of these special characters !@$*+-</li>
+            <li><i class="fa fa-check-circle text-success"></i> Cannot contain any other special character beside those listed above</li>
+            <li><i class="fa fa-check-circle text-success"></i> Cannot contain more than 2 repeating characters</li>
+            <li><i class="fa fa-check-circle text-success"></i> Cannot contain the username</li>
+            <li><i class="fa fa-check-circle text-success"></i> Cannot contain 9 or more consecutive numbers</li>
+            <li><i class="fa fa-check-circle text-success"></i> Cannot contain spaces</li>
+        </ul>
+    </div>
 
 
     <script async defer
