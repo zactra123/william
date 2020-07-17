@@ -48,9 +48,9 @@ $(document).ready(function($) {
         return valid && !include_email
     }, "Please pay attention on password requirements");
 
-    $('#password').on('focus keyup', function(){
-
-        $('#password').popover({
+    $('#password,#password-confirm').on('focus keyup', function(){
+        var $this = this;
+        $($this).popover({
             html: true,
             trigger: 'manual',
             content: function () {
@@ -58,7 +58,7 @@ $(document).ready(function($) {
                     success_class = 'fa-check-circle text-success',
                     failed_class = 'fa-minus-circle text-danger',
                     password_requirements_template = $('#password-requirements').html(),
-                    password = $('#password').val();
+                    password = $($this).val();
 
                 if (!password.length) {
                     password_requirements = password_requirements_template
@@ -71,7 +71,6 @@ $(document).ready(function($) {
                         .replace('{consecutive-class}', default_class)
                         .replace('{spaces-class}', default_class)
                 } else {
-                    console.log(password)
                     valid_length = !!password.match(/^(.{8,20})$/gm)
                     upper_lower = !!password.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
                     digit = !!password.match(/\d/gm)
@@ -94,7 +93,6 @@ $(document).ready(function($) {
 
 
                 var email = $('#email').val()
-                console.log(email)
                 if (email.length) {
                     partsOfFourLetters = email.match(/.{4}/g).concat(
                         email.substr(1).match(/.{4}/g),
@@ -108,15 +106,15 @@ $(document).ready(function($) {
                 return password_requirements
             },
             title: 'Password Requirements',
-            placement: 'bottom'
+            placement: (window.innerWidth <1000 ? 'bottom' : 'right')
         })
-        console.log("asdasd")
-        $('#password').popover('show')
-        $('#password').popover('update')
+        
+        $($this).popover('show')
+        $($this).popover('update')
     })
 
-    $('#password').on('focusout', function(){
-        $('#password').popover('hide')
+    $('#password,#password-confirm').on('focusout', function(){
+        $(this).popover('hide')
     })
 
     $('#client-registration-form').validate({
