@@ -115,6 +115,10 @@ $(document).ready(function($) {
         $('#password').popover('update')
     })
 
+    $('#password').on('focusout', function(){
+        $('#password').popover('hide')
+    })
+
     $('#client-registration-form').validate({
         rules: {
             "full_name": {
