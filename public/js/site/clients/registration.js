@@ -1,4 +1,4 @@
-$(document).ready(function($){
+$(document).ready(function($) {
     // autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
     // google.maps.event.addListener(autocomplete, 'place_changed', function() {
     //     var place = autocomplete.getPlace();
@@ -14,23 +14,26 @@ $(document).ready(function($){
 
     $('#date').focus(function () {
 
-        this.type='date';
+        this.type = 'date';
     });
     $('#date').click(function () {
-        this.type='date';
-    })  ;
+        this.type = 'date';
+    });
     $('#date').blur(function () {
-        if(this.value==''){this.type='text'};
+        if (this.value == '') {
+            this.type = 'text'
+        }
+        ;
     });
 
     $(".ssn").mask("999-99-9999");
     $('#phone_number').mask('(000) 000-0000');
 
-    $.validator.addMethod("valid_full_name", function(value, element) {
+    $.validator.addMethod("valid_full_name", function (value, element) {
         return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
     }, "Please write your full name in this pattern first name middle name last name!!");
 
-    $.validator.addMethod("password_requirements", function(value, element) {
+    $.validator.addMethod("password_requirements", function (value, element) {
         var valid = !!value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@$*+-])(?:([\w\d])\1?(?!\1))[A-Za-z\d!@$*+-]{7,20}$/gm);
         valid = valid && !value.match(/\d{9,}/mg)
         var email = $('#email').val()
@@ -38,20 +41,78 @@ $(document).ready(function($){
         if (email) {
             partsOfFourLetters = email.match(/.{4}/g).concat(
                 email.substr(1).match(/.{4}/g),
-                email.substr(2).match(/.{4}/g) );
+                email.substr(2).match(/.{4}/g));
             include_email = new RegExp(partsOfFourLetters.join("|"), "i").test(value);
         }
 
         return valid && !include_email
     }, "Please pay attention on password requirements");
 
+    $('#password').on('focus keyup', function(){
 
-    $('#password').popover({
-        html: true,
-        trigger: 'focus',
-        content: $('#password-information').html(),
-        title: 'Password Requirements',
-        placement: 'bottom'
+        $('#password').popover({
+            html: true,
+            trigger: 'manual',
+            content: function () {
+                var default_class = 'fa-check-circle text-secondary',
+                    success_class = 'fa-check-circle text-success',
+                    failed_class = 'fa-minus-circle text-danger',
+                    password_requirements_template = $('#password-requirements').html(),
+                    password = $('#password').val();
+
+                if (!password.length) {
+                    password_requirements = password_requirements_template
+                        .replace('{length-class}', default_class)
+                        .replace('{letters-class}', default_class)
+                        .replace('{digit-class}', default_class)
+                        .replace('{special-class}', default_class)
+                        .replace('{other-special-class}', default_class)
+                        .replace('{repeating-class}', default_class)
+                        .replace('{consecutive-class}', default_class)
+                        .replace('{spaces-class}', default_class)
+                } else {
+                    console.log(password)
+                    valid_length = !!password.match(/^(.{8,20})$/gm)
+                    upper_lower = !!password.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
+                    digit = !!password.match(/\d/gm)
+                    special = !!password.match(/[!@$*+-]/gm)
+                    other_special = !!password.match(/^[a-zA-z\d!@$*+\-\s]{1,}$/gm)
+                    repeating = !password.match(/([A-Za-z\d!@$*+-])\1{2}/gm)
+                    consecutive = !password.match(/\d{9,}/mg)
+                    spaces = !password.match(/\s/gm)
+
+                    password_requirements = password_requirements_template
+                        .replace('{length-class}', valid_length ? success_class : failed_class)
+                        .replace('{letters-class}', upper_lower ? success_class : failed_class)
+                        .replace('{digit-class}', digit ? success_class : failed_class)
+                        .replace('{special-class}', special ? success_class : failed_class)
+                        .replace('{other-special-class}', other_special ? success_class : failed_class)
+                        .replace('{repeating-class}', repeating ? success_class : failed_class)
+                        .replace('{consecutive-class}', consecutive ? success_class : failed_class)
+                        .replace('{spaces-class}', spaces ? success_class : failed_class)
+                }
+
+
+                var email = $('#email').val()
+                console.log(email)
+                if (email.length) {
+                    partsOfFourLetters = email.match(/.{4}/g).concat(
+                        email.substr(1).match(/.{4}/g),
+                        email.substr(2).match(/.{4}/g));
+                    include_email = new RegExp(partsOfFourLetters.join("|"), "i").test(password);
+
+                    password_requirements = password_requirements.replace('{username-class}', !include_email ? success_class : failed_class)
+                } else {
+                    password_requirements = password_requirements.replace('{username-class}', default_class)
+                }
+                return password_requirements
+            },
+            title: 'Password Requirements',
+            placement: 'bottom'
+        })
+        console.log("asdasd")
+        $('#password').popover('show')
+        $('#password').popover('update')
     })
 
     $('#client-registration-form').validate({
@@ -92,6 +153,7 @@ $(document).ready(function($){
             }
         },
         messages: {
+            "password": '',
             "password_confirmation": {
                 equalTo: "Password confirmation doesn't match Password"
             }
