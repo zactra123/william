@@ -157,7 +157,7 @@ $(document).ready(function($) {
             }
         },
         messages: {
-            "password": '',
+            "password": 'Please use valid password format',
             "password_confirmation": {
                 equalTo: "Password confirmation doesn't match Password"
             }
