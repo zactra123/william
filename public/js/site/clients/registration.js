@@ -170,4 +170,11 @@ $(document).ready(function($) {
             }
         }
     })
+
+
+    $('#client-registration-form').submit(function () {
+        if (!$(this).valid()){
+            $('#client-registration-form .form-control.error')[0].focus()
+        }
+    })
 });
