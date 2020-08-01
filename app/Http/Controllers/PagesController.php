@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Screaper;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;
@@ -15,12 +16,25 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
-        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
-        $arguments = ['salbibazikyan', '9708564vS', 5];
-        $command_args = array_merge(['python3', $script_path], $arguments);
-        $command = escapeshellcmd(implode( " ", $command_args));
-        $output = shell_exec($command);
-        dd("asd",  $output);
+
+
+//        dd(resource_path('scripts/'. 'transunion_dispute.py'));
+//        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
+
+        $scraper = new Screaper();
+//        $arguments = ['ninelgrigoryan', 'N1982inel', 'Zaruhi', 'Hakobyan', '9265_Woodman_Ave_Apt2', 'Arleta', 'CA', '91331', 'johnsofiadavid7@gmail.com', '10/07/1971', "730-26-7353", '‎3238195555', 'True' ];  //
+//        $scraper->transunion_dispute(22, $arguments);
+        $arguments = ['WILLIAM7787', 'a77BOVYAN!', 'Minasyan', '7229', '03/07/1983', '‎‎618-25-2314' ];  //
+        $arguments = ['asatryan123', 'Abovyan76', 'ARA', '‎1234', '08/25/1976', '‎‎619-39-6185' ];  //
+        $arguments = ['varduhiavagyan@yahoo.com', 'Gabi2155', 'YEREVAN', '2155', '03/21/1972', '‎‎‎602-65-3251' ];  //
+//
+        $scraper->experian_login(22, $arguments);
+
+//
+//        $command_args = array_merge(['python3', $script_path], $arguments);
+//        $command = escapeshellcmd(implode( " ", $command_args));
+//        $output = shell_exec($command);
+//        dd("asd",  $output);
 
 //        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
 
