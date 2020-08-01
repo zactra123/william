@@ -22,8 +22,10 @@ class PagesController extends Controller
 //        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
 
         $scraper = new Screaper();
-//        $arguments = ['ninelgrigoryan', 'N1982inel', 'Zaruhi', 'Hakobyan', '9265_Woodman_Ave_Apt2', 'Arleta', 'CA', '91331', 'johnsofiadavid7@gmail.com', '10/07/1971', "730-26-7353", '‎3238195555', 'True' ];  //
-//        $scraper->transunion_dispute(22, $arguments);
+        $arguments = ['ninelgrigoryan', 'N1982inel', 'Zaruhi', 'Hakobyan', '9265_Woodman_Ave_Apt2', 'Arleta', 'CA', '91331', 'johnsofiadavid7@gmail.com', '10/07/1971', "730-26-7353", '‎3238195555', 'True' ];  //
+        $arguments = ['A4839kop', 'A91206kop', 'AKOP', 'DEMIRCHYAN', '1155_RAYMOND_AVE_APT_C', 'GLENDALE', 'CA', '91201', 'AKOPDEM@GMAIL.COM', '05/19/1951', "625-58-4839", '‎8185563666', 'false' ];  //
+
+        $scraper->transunion_dispute(22, $arguments);
         $arguments = ['WILLIAM7787', 'a77BOVYAN!', 'Minasyan', '7229', '03/07/1983', '‎‎618-25-2314' ];  //
         $arguments = ['asatryan123', 'Abovyan76', 'ARA', '‎1234', '08/25/1976', '‎‎619-39-6185' ];  //
         $arguments = ['varduhiavagyan@yahoo.com', 'Gabi2155', 'YEREVAN', '2155', '03/21/1972', '‎‎‎602-65-3251' ];  //
