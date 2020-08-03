@@ -76,7 +76,15 @@ class transunionDispute:
 
             if 'Username or Password Incorrect' in msg:
                 self.recover_account()
-            return msg
+
+            self.getDisputes()
+
+            return {
+                'status': 'success',
+                'username': self.username,
+                'password': self.password,
+                'data_path': self.filepath_report
+            }
         except:
             return {
                 'status': 'error',
@@ -175,20 +183,18 @@ class transunionDispute:
             self.driver.find_element_by_xpath(
                 '/html/body/div[1]/div[3]/form/div/div/section[2]/div/button').click()
             WebDriverWait(self.driver, 2).until(EC.url_changes('https://service.transunion.com/dss/loginHelp2_form.page'))
-            print("Next step")
             # step 3
             soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-            sys.exit()
+
             if 'We are sorry, but we are unable to fulfill your request at this time.' in soup.text.strip():
                 number = soup.text.strip().split(
                     'Access Support team at')[1].split(',')[0]
-                print(number)
-                response = {
+                raise {
                     'status': 'We are sorry, but we are unable to fulfill your request at this time.',
                     'code': status.HTTP_409_CONFLICT,
                     'message': 'Please Contact at ~ ' + number,
+                    'number': number,
                 }
-                print(response)
             else:
                 vpass = self.driver.find_element_by_name('tl.password')
                 vpass.click()
@@ -199,13 +205,10 @@ class transunionDispute:
                 vuser = self.driver.find_element_by_xpath(
                     '//*[@id="username"]').get_attribute('value')
                 self.username = vuser
-              # all_script = soup.find('div', attrs={'id': 'c1547224005442'}).find(
-              #     'script').text.strip()
-              # import pprint
-              # pprint.pprint(all_script)
-                time.sleep(5)
+
+                time.sleep(1)
                 try:
-                    driver.find_element_by_class_name(
+                    self.driver.find_element_by_class_name(
                         'form').find_element_by_tag_name('button').click()
                 except:
                     raise "Something went wrong on recover account"
@@ -214,34 +217,31 @@ class transunionDispute:
                 # cpage = 'https://service.transunion.com/dss/ivFailed_error.page'
                 # error = driver.find_element_by_class_name('message').text
                 # if 'Unable to Verify Identity' in error:
-                soup = BeautifulSoup(driver.page_source, u'html.parser')
+                soup = BeautifulSoup(self.driver.page_source, u'html.parser')
                 # print(soup.text)
                 if 'Online dispute currently' in soup.text.strip():
-                    nm = driver.find_element_by_class_name('section-content').text
+                    nm = self.driver.find_element_by_class_name('section-content').text
                     num = str(nm).split('Access Support team at')[1].split('.')[0]
-                    response = {
+                    raise {
                         'status': 'error',
                         'code': status.HTTP_401_UNAUTHORIZED,
                         'message': 'Unable to Verify Identity',
                         'Please Contact on this number': num,
                     }
-                    print(response)
-                elif driver.current_url == 'https://service.transunion.com/dss/identityVerification_form.page':
-                    print('ba xi stex chei')
+                elif self.driver.current_url == 'https://service.transunion.com/dss/identityVerification_form.page':
+                    self.time_delay()
 
-                    time_delay()
-                    getDisputes(vuser, password, driver)
-
-
-                else:
-                    print('Loging in....')
-                    getDisputes(vuser, password, driver)
-
+    def time_delay(self):
+        if self.driver.current_url == 'https://service.transunion.com/dss/identityVerification_form.page':
+            time.sleep(5)
+            print('time + 5seconde')
+            self.time_delay()
+        else: return True
 
     def create_account(self):
-        driver.get('https://service.transunion.com/dss/orderStep1_form.page')
+        self.driver.get('https://service.transunion.com/dss/orderStep1_form.page')
         time.sleep(10)
-        soup = BeautifulSoup(driver.page_source, u'html.parser')
+        soup = BeautifulSoup(self.driver.page_source, u'html.parser')
         secret_question = 'What was the make and model of your first car?'
         secret_answer = "TOYOTA"
 
@@ -253,22 +253,19 @@ class transunionDispute:
 
         # ----------
         try:
-            driver.find_element_by_name('tl.last-name').send_keys(self.lname)
-            time.sleep(2)
-        except:
-            pass
-
-        # ------------------
-
-        try:
-
-            driver.find_element_by_name('tl.curr-street').send_keys(self.address)
+            self.driver.find_element_by_name('tl.last-name').send_keys(self.lname)
             time.sleep(2)
         except:
             pass
 
         try:
-            driver.find_element_by_name('tl.curr-city').send_keys(self.city)
+            self.driver.find_element_by_name('tl.curr-street').send_keys(self.address)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name('tl.curr-city').send_keys(self.city)
             time.sleep(2)
         except:
             pass
@@ -386,7 +383,7 @@ class transunionDispute:
                     break
                     time.sleep(5)
             try:
-                driver.find_element_by_name(
+                self.driver.find_element_by_name(
                     'tl.secret-answer').send_keys(self.secret_answer)
                 time.sleep(3)
             except:
@@ -402,19 +399,430 @@ class transunionDispute:
         except:
             pass
         # ---------------------------------------------------------------------------------------------------------------------------------------------------------
-        print('Waiting For Continue Button You Have 50 Seconds To Click On Continue and fill Questions')
-
-        time_delay()
+        self.time_delay()
 
 
         errorlink = str(self.driver.current_url)
 
         if 'error.page'in errorlink:
-            print('Error Occured in Transunion Normal Registration')
-            fill_formfields(driver)
+            self.fill_formfields()
+
+    def fill_formfields(self):
+        self.driver.get(
+            'https://dispute.transunion.com/dp/dispute/order.jsp?package=DisputeDisclosureXML')
+
+        secret_question = 'What was the make and model of your first car?'
+        secret_answer = "TOYOTA"
+
+        try:
+            self.driver.find_element_by_name('firstName').send_keys(self.fname)
+            time.sleep(2)
+        except:
+            pass
+
+        # ----------
+        try:
+            self.driver.find_element_by_name('lastName').send_keys(self.lname)
+            time.sleep(2)
+        except:
+            pass
+
+        # ----------------------------------------------------------------------------------------------
+
+        try:
+            self.driver.find_element_by_name(
+                'mailAddress').send_keys(self.address)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name('mailCity').send_keys(self.city)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            select_box = self.driver.find_element_by_name(
+                'mailState').send_keys(self.state)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name(
+                'mailZipCode').send_keys(self.zipcode)
+            time.sleep(2)
+            driver.find_element_by_name('name').click()
+            time.sleep(8)
+        except:
+            pass
+
+        # # Step2 Started---------------------------------------------------------------------------------------------------------------------------------------
+
+        try:
+            self.driver.find_element_by_name('username').send_keys(self.username)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name(
+                'password').send_keys(self.password)
+            time.sleep(3)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name(
+                'confirmPassword').send_keys(self.password)
+            time.sleep(3)
+        except:
+            pass
+
+        try:
+            select_boxs = self.driver.find_element_by_name(
+                'secretQuestion').click()
+            time.sleep(5)
+
+            # select_box = driver.find_element_by_name('secretQuestion')
+            # print(select_box)
+            options = self.driver.find_elements_by_tag_name('option')
+            # print(options)
+            # driver.find_element_by_name('secretQuestion').click()
+            # time.sleep(1)
+            for option in options:
+                # print(option.get_attribute("value"))
+                if option.get_attribute("value") == '3':
+                    option.click()  # select() in earlier versions of webdriver
+                    break
+                    time.sleep(5)
+            try:
+                self.driver.find_element_by_name(
+                    'secretAnswer').send_keys(self.secret_answer)
+                time.sleep(3)
+            except:
+                pass
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name('email').send_keys(self.email)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name(
+                'confirmEmail').send_keys(self.email)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            dates = str(dobmonth)+'/'+str(dobday)+'/'+str(dobyear)
+            self.driver.find_element_by_name('yearDOB').send_keys(self.dates)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSN1').send_keys(self.ssn1)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSN2').send_keys(self.ssn2)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSN3').send_keys(self.ssn3)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSNC1').send_keys(self.ssn1)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSNC2').send_keys(self.ssn2)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('SSNC3').send_keys(self.ssn3)
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_id('checkbox').click()
+            time.sleep(2)
+        except:
+            pass
+
+        try:
+            self.driver.find_element_by_name('agreeCB1').click()
+            time.sleep(2)
+        except:
+            pass
+
+        # This is Continue Button
+        try:
+            self.driver.find_element_by_id('continueButton').click()
+            time.sleep(20)
+        except:
+            pass
+
+        soup = BeautifulSoup(self.driver.page_source, u'html.parser')
+        # print(soup.text)
+        if 'You Already Have an Account' in soup.text:
+            self.login()
+
+        if 'We are unable to confirm your identity' in soup.text.strip():
+            message = soup.text.split('What to do ')[1]
+            raise {
+                'status': 'error',
+                'code': status.HTTP_401_UNAUTHORIZED,
+                'message': 'Unable to Verify Identity '+str(message),
+            }
+
+        elif 'account has been temporarily suspended' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_403_FORBIDDEN,
+                'message': 'Your account has been temporarily suspended',
+            }
+
+        # We are unable to complete your request
+
+        elif 'We are experiencing technical difficulties.' in soup.text.strip():
+            message = 'We appreciate your patience while we resolve this issue. Please try again later or contact us at (833)-395-6940.'
+            raise {
+                'status': 'error',
+                'code': status.HTTP_401_UNAUTHORIZED,
+                'message': 'We are experiencing technical difficulties. '+str(message),
+            }
+
+        elif 'Online dispute currently' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_404_NOT_FOUND,
+                'message': 'Online dispute currently not available',
+            }
+        elif 'We are unable to complete your request' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_404_NOT_FOUND,
+                'message': 'We are unable to complete your request',
+            }
+
         else:
-            print('Going To Get Dispute After Transunion Register 1')
-            getDisputes(username, password, driver)
+            self.login()
+
+
+    def getDisputes(self):
+        acc_arr = []
+        acc_dict = {}
+        finlarr = []
+        self.click_to_continue()
+        self.driver.get('https://service.transunion.com/dss/dispute.page?')
+        time.sleep(10)
+        soup = BeautifulSoup(self.driver.page_source, u'html.parser')
+        try:
+
+            # check_status = soup.find('tbody', attrs={'id': "activeDispute"})
+            datesubest = soup.find('tbody', attrs={'id': "activeDispute"})
+            ac_dispute = datesubest.findAll('tr')
+            if not (len(ac_dispute) == 3):
+                datesubest = soup.find('tbody', attrs={'id': "manualDisputes"})
+                mn_dispute = datesubest.findAll('tr')
+            final_arr = []
+            dates_arr = []
+            mn_dates_arr = []
+
+            for a in ac_dispute:
+                try:
+                    dates = a.text.strip()
+                except:
+                    dates = 'None'
+                dates_arr.append(dates)
+
+            for a in mn_dispute:
+                try:
+                    dates = a.text.strip()
+                except:
+                    dates = 'None'
+                mn_dates_arr.append(dates)
+
+            new_arr = dates_arr[0].split('\n')
+            mn_new_arr = mn_dates_arr[0].split('\n')
+
+            if (len(new_arr) == 3):
+                datesub = dates_arr[0].split('\n')[0].strip()
+                datec = dates_arr[0].split('\n')[1].strip()
+                state = dates_arr[0].split('\n')[2].strip()
+                final_arr.append(
+                    {'Date_Submitted': datesub, 'Estimated_Completion': datec, 'Status': state})
+
+            if (len(mn_new_arr) == 3):
+                mn_datesub = dates_arr[0].split('\n')[0].strip()
+                mn_datec = dates_arr[0].split('\n')[1].strip()
+                mn_state = dates_arr[0].split('\n')[2].strip()
+                mn_final_arr.append(
+                    {'Date_Submitted': mn_datesub, 'Estimated_Completion': mn_datec, 'Status': mn_state})
+
+            if final_arr:
+                with open(self.filepath_report, "a+") as f:
+                    jsondata = json.dumps(final_arr, indent=4)
+                    f.write(jsondata)
+                    f.close()
+        except:
+            pass
+
+        if 'Online dispute currently' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_404_NOT_FOUND,
+                'message': 'Online dispute currently not available',
+            }
+        elif 'account has been temporarily suspended' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_403_FORBIDDEN,
+                'message': 'Your account has been temporarily suspended',
+            }
+
+        elif 'Unable to Verify' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_401_UNAUTHORIZED,
+                'message': 'Unable to Verify Identity',
+            }
+        else:
+            try:
+                self.driver.find_element_by_xpath(
+                    '//*[@id="startDispute"]/a').click()
+                time.sleep(10)
+            except:
+                pass
+
+            try:
+                self.driver.find_element_by_xpath(
+                    '//*[@id="disputeRefresh"]/label').click()
+            except:
+                try:
+                    self.driver.find_element_by_xpath(
+                        '/html/body/div[1]/div[2]/form/div[2]/div/section/p[2]/label').click()
+                except:
+                    sys.exit()
+            time.sleep(1)
+
+            try:
+                self.driver.find_element_by_id(
+                    'confirmRefreshButton-startDispute').click()
+            except:
+                self.driver.find_element_by_id('Continue').click()
+            WebDriverWait(self.driver, 5).until(EC.url_to_be('https://service.transunion.com/dss/disputeCategories.page'))
+
+
+            soup = BeautifulSoup(self.driver.page_source, u'html.parser')
+
+            try:
+                self.driver.find_element_by_id('expand-all').click()
+                time.sleep(5)
+            except:
+                pass
+
+            # for i in range(50):
+            #     try:
+            #         driver.find_element_by_id('trade-' + str(i)).click()
+            #         time.sleep(2)
+            #         ele = soup.find('td', attrs={'id': 'trade-'+str(i)})
+            #     except:
+            #         continue
+
+                # Element Public Records
+
+            # for i in range(50):
+            #     try:
+            #         driver.find_element_by_id('publicRecord-' + str(i)).click()
+            #         time.sleep(2)
+            #     except:
+            #         continue
+
+            # #  tHIS IS For Collections
+            # for i in range(50):
+            #     try:
+            #         driver.find_element_by_id('collection-' + str(i)).click()
+            #         time.sleep(2)
+            #     except:
+            #         continue
+
+            # # Satisfactory Accounts
+            # for i in range(50):
+            #     try:
+            #         driver.find_element_by_id('collection-' + str(i)).click()
+            #         time.sleep(2)
+            #     except:
+            #         continue
+
+            try:
+                cons_statement = soup.find('section', attrs={
+                    'id': 'simple-cons-statement'}).text.replace('\n', ' ').strip()
+            except:
+                cons_statement = 'none'
+
+            try:
+                public_records = soup.find('section', attrs={
+                    'id': 'simple-public-records'}).text.replace('\n', ' ').strip()
+            except:
+                public_records = 'none'
+
+            try:
+                inquiries = soup.find(
+                    'section', attrs={'id': 'simple-inquiries'}).text.replace('\n', ' ').strip()
+            except:
+                inquiries = 'none'
+
+            other_dict = {'cons_statement': cons_statement,
+                          'public_records': public_records, 'inquiries': inquiries}
+            finlarr.append(other_dict)
+
+            all_scripts = soup.find('script', attrs={'id': 'UserData'})
+            all_scripts = str(all_scripts).split(' var ud = ')[1].split(
+                '</script>')[0].strip().replace('/n', '')
+            all_scripts = all_scripts.replace('/', '').strip()
+
+            jsondata = json.loads(all_scripts)
+
+            with open(self.filepath_report, "a+") as f:
+                sorted = json.dumps(jsondata, indent=4)
+                f.write(sorted)
+                f.close()
+
+    def click_to_continue(self):
+        try:
+            button = self.driver.find_element_by_xpath(
+                '/html/body/div[1]/div[2]/form/div/div/section[2]/div/div/button')
+        except:
+            try:
+                button = self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/div/div/div/div/div/button')
+            except:
+                self.click_to_continue()
+        try:
+            button.click()
+            time.sleep(5)
+            return 'success'
+        except:
+            self.click_to_continue()
 
 transunion = transunionDispute(sys.argv)
 print(transunion.call())
