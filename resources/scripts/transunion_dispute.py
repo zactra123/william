@@ -34,7 +34,8 @@ class transunionDispute:
         self.lived_status = True
 
         self.email = arguments[9]
-        dob = str(arguments[10]).split('/')
+        self.dob = arguments[10]
+        dob = str(self.dob).split('/')
         self.dobmonth = dob[0]
         self.dobday = dob[1]
         self.dobyear = dob[2]
@@ -73,11 +74,19 @@ class transunionDispute:
             msg = 'Username or Password Incorrect'
             if self.should_login == 'True':
                 msg = self.login()
-
+            if 'Account Security: Your account has been temporarily suspended.' in msg:
+                self.unlock_account()
+                return {
+                    'status': 'success',
+                    'message': 'Your request to unlock your account has been submitted.',
+                }
             if 'Username or Password Incorrect' in msg:
                 self.recover_account()
 
-            self.getDisputes()
+            msg = self.getDisputes()
+            if msg == 're_login':
+                msg = self.login()
+            msg = self.getDisputes()
 
             return {
                 'status': 'success',
@@ -106,15 +115,77 @@ class transunionDispute:
             self.driver.find_element_by_xpath(
                 '//*[@id="c1527812999683"]/form/div/div/section[2]/div/div/div/button').click()
             time.sleep(15)
-            soup = BeautifulSoup(driver.page_source, u'html.parser')
+            soup = BeautifulSoup(self.driver.page_source, u'html.parser')
             msg = soup.find('div', attrs={'class': 'message'})
             if msg:
                 return msg.text.strip()
             else:
                 return 'success'
         except:
-            msg = 'Exception'
+            msg = sys.exc_info()
             return msg
+
+    def unlock_account(self):
+        href = self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/section[2]/div[2]/ul/li/a').get_attribute("href")
+
+        self.driver.get(href)
+        time.sleep(5)
+        self.driver.find_element_by_class_name('SingleAnswer').click()
+        time.sleep(1)
+        self.driver.find_element_by_class_name('NextButton').click()
+        time.sleep(2)
+
+        try: 
+            first_name = self.driver.find_element_by_xpath('//*[@id="QR~QID6"]')
+            first_name.click()
+            first_name.send_keys(self.fname)
+        except:
+            pass
+
+        try: 
+            last_name = self.driver.find_element_by_xpath('//*[@id="QR~QID7"]')
+            last_name.click()
+            last_name.send_keys(self.lname)
+        except:
+            pass
+
+        try: 
+            last_4 = self.driver.find_element_by_xpath('//*[@id="QR~QID12"]')
+            last_4.click()
+            last_4.send_keys(self.last4sscnumber)
+        except:
+            pass
+
+        try: 
+            dob = self.driver.find_element_by_xpath('//*[@id="QR~QID16"]')
+            dob.click()
+            dob.send_keys(self.dob)
+        except:
+            pass
+
+        try: 
+            email = self.driver.find_element_by_xpath('//*[@id="QR~QID8"]')
+            email.click()
+            email.send_keys(self.email)
+        except:
+            pass
+
+        try: 
+            zip_number = self.driver.find_element_by_xpath('//*[@id="QR~QID9"]')
+            zip_number.click()
+            zip_number.send_keys(self.zipcode)
+        except:
+            pass
+
+        try: 
+            phone = self.driver.find_element_by_xpath('//*[@id="QR~QID10"]')
+            phone.click()
+            phone.send_keys(self.mobile)
+        except:
+            pass
+        time.sleep(1)       
+        self.driver.find_element_by_class_name('NextButton').click()
+
 
     def recover_account(self):
         self.driver.get('https://service.transunion.com/dss/loginHelp1_form.page?')
@@ -633,20 +704,26 @@ class transunionDispute:
         acc_dict = {}
         finlarr = []
         self.click_to_continue()
-        self.driver.get('https://service.transunion.com/dss/dispute.page?')
+        if self.driver.current_url == 'https://service.transunion.com/dss/dashboard.page?':
+            self.driver.get('https://service.transunion.com/dss/dispute.page?')
         time.sleep(10)
         soup = BeautifulSoup(self.driver.page_source, u'html.parser')
-        try:
 
+        try:
             # check_status = soup.find('tbody', attrs={'id': "activeDispute"})
             datesubest = soup.find('tbody', attrs={'id': "activeDispute"})
             ac_dispute = datesubest.findAll('tr')
-            if not (len(ac_dispute) == 3):
-                datesubest = soup.find('tbody', attrs={'id': "manualDisputes"})
-                mn_dispute = datesubest.findAll('tr')
+            
+            mn_datesubest = soup.find('tbody', attrs={'id': "manualDisputes"})
+            mn_dispute = mn_datesubest.findAll('tr')
+
+            past_datesubest = soup.find('tbody', attrs={'id': "pastDisputes"})
+            past_dispute = past_datesubest.findAll('tr')
+
             final_arr = []
             dates_arr = []
             mn_dates_arr = []
+            past_dates_arr = []
 
             for a in ac_dispute:
                 try:
@@ -662,22 +739,73 @@ class transunionDispute:
                     dates = 'None'
                 mn_dates_arr.append(dates)
 
+
+            for a in past_dispute:
+                try:
+                    dates = a.text.strip()
+                except:
+                    dates = 'None'
+                past_dates_arr.append(dates)    
+
             new_arr = dates_arr[0].split('\n')
             mn_new_arr = mn_dates_arr[0].split('\n')
+            past_new_arr = past_dates_arr[0].split('\n')
 
-            if (len(new_arr) == 3):
+            if (len(new_arr) >= 3):
                 datesub = dates_arr[0].split('\n')[0].strip()
                 datec = dates_arr[0].split('\n')[1].strip()
                 state = dates_arr[0].split('\n')[2].strip()
                 final_arr.append(
                     {'Date_Submitted': datesub, 'Estimated_Completion': datec, 'Status': state})
 
-            if (len(mn_new_arr) == 3):
-                mn_datesub = dates_arr[0].split('\n')[0].strip()
-                mn_datec = dates_arr[0].split('\n')[1].strip()
-                mn_state = dates_arr[0].split('\n')[2].strip()
-                mn_final_arr.append(
+            if (len(mn_new_arr) >= 3):
+                mn_datesub = mn_dates_arr[0].split('\n')[0].strip()
+                mn_datec = mn_dates_arr[0].split('\n')[1].strip()
+                mn_state = mn_dates_arr[0].split('\n')[2].strip()
+                final_arr.append(
                     {'Date_Submitted': mn_datesub, 'Estimated_Completion': mn_datec, 'Status': mn_state})
+
+            if (len(past_new_arr) >= 3):
+
+                past_datesub = past_dates_arr[0].split('\n')[0].strip()
+                past_datec = past_dates_arr[0].split('\n')[1].strip()
+
+                if len(past_new_arr) == 4:
+                    past_state = past_dates_arr[0].split('\n')[2].strip()
+                    if "" == past_state:
+                        past_state = past_dates_arr[0].split('\n')[3].strip()
+
+                if past_state == "View Dispute Results":
+
+                    time.sleep(5)
+
+                    self.driver.find_element_by_xpath('/html/body/div[1]/div[3]/form/div/div/section[5]/table/tbody/tr/td[3]/a').click()
+                    time.sleep(25)
+
+                    if self.driver.current_url != "https://service.transunion.com/dss/disputeResults.page":
+                        time.sleep(20)
+                    past = {}
+                    try: 
+                        fin = self.driver.find_element_by_class_name("fin")
+                        past["fin"] = fin.text.strip() 
+                    except:
+                        pass
+
+                    try:
+                        fcell = self.driver.find_element_by_class_name("fcell")
+                        past["fcell"] = fcell.text.strip()
+                    except:
+                        pass
+
+                    self.driver.get("https://service.transunion.com/dss/dispute.page?")
+                    time.sleep(10)
+                    final_arr.append(
+                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past})              
+                else:
+                    final_arr.append(
+                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past_state})    
+                          
+
 
             if final_arr:
                 with open(self.filepath_report, "a+") as f:
@@ -708,8 +836,11 @@ class transunionDispute:
             }
         else:
             try:
-                self.driver.find_element_by_xpath(
-                    '//*[@id="startDispute"]/a').click()
+                start_dispute = self.driver.find_element_by_xpath(
+                    '//*[@id="startDispute"]/a')
+                start_dispute.click()
+                if 'PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE.' in start_dispute.text:
+                    return "re_login"
                 time.sleep(10)
             except:
                 pass
