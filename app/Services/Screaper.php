@@ -35,6 +35,15 @@ class Screaper
         dd($output);
     }
 
+    public function experian_view_report($client_id = null, $arguments = [])
+    {
+        array_push($arguments, $client_id);
+        $command = $this->make_run_command('experian_view_report.py',$arguments);
+//        dd($command);
+        $output = shell_exec($command);
+        dd($output);
+    }
+
 
     private function make_run_command($script_name, $command_args)
     {

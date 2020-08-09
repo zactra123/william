@@ -22,8 +22,15 @@ class PagesController extends Controller
 //        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
 
         $scraper = new Screaper();
+        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['1854037387','‎1316806202','‎0914142484']) ];  //
+        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['2224037387','2226806202','2224142484']) ];  //
+//        esemdues@gmail  ‎
+        $scraper->experian_view_report(8, $arguments);
+
+
         $arguments = ['ninelgrigoryan', 'N1982inel', 'Zaruhi', 'Hakobyan', '9265_Woodman_Ave_Apt2', 'Arleta', 'CA', '91331', 'johnsofiadavid7@gmail.com', '10/07/1971', "730-26-7353", '‎3238195555', 'True' ];  //
-        $arguments = ['A4839kop', 'A91206kop', 'AKOP', 'DEMIRCHYAN', '1155_RAYMOND_AVE_APT_C', 'GLENDALE', 'CA', '91201', 'AKOPDEM@GMAIL.COM', '05/19/1951', "625-58-4839", '‎8185563666', 'false' ];  //
+        $arguments = ['HERMINEM1988', 'M1988OVSESIAN', 'HERMINE', 'MOVSESIAN', '1044_WINCHESTER_AVE_APT_206', 'GLENDALE', 'CA', '91201', 'DINALAVAZARIAN83@AOL.COM', '04/24/1988', "608-49-4069", '8184847243', 'True' ];  //
+
 
         $scraper->transunion_dispute(22, $arguments);
         $arguments = ['WILLIAM7787', 'a77BOVYAN!', 'Minasyan', '7229', '03/07/1983', '‎‎618-25-2314' ];  //
