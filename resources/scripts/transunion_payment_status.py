@@ -5,217 +5,233 @@ import xlrd, json
 import time,sys
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from Screenshot import Screenshot_Clipping
+from colorama import init
+from termcolor import colored
+from PIL import Image
+from fpdf import FPDF
+import img2pdf
 import os
 from os import path
 import datetime
 
-options = webdriver.FirefoxOptions()
-options.add_argument("--disable-gpu")
-fp = webdriver.FirefoxProfile()
-# 0 means to download to the desktop, 1 means to download to the default "Downloads" directory, 2 means to use the directory
-fp.set_preference("browser.download.folderList", 1)
-fp.set_preference("browser.helperApps.alwaysAsk.force", False)
-fp.set_preference("print.always_print_silent", True)
-fp.set_preference("Save as PDF", True)
-fp.set_preference("print save as pdf", True)
-fp.set_preference("browser.download.manager.showWhenStarting", False)
 
-username = sys.argv[1]
-password = sys.argv[2]
-db_id = sys.argv[3]
-# Save All json files in following directory with user specific folder
-json_directory = '../storage/reports/' + db_id + '/transunion_payments'
+class transUnionMebership: 
 
-# create directory if not exist
-if not os.path.exists(json_directory):
-    os.makedirs(json_directory)
+    def __init__(self, argumnets):
+        self.username = sys.argv[1]
+        self.password = sys.argv[2]
+        self.db_id = sys.argv[3]
 
-account_arr = []
-payments_arr = []
-# options.add_argument('--headless')
-driver = webdriver.Firefox(
-    executable_path="/home/collab015/Documents/bcf/final_version/geckodriver", options=options, firefox_profile=fp
-)
-driver.get("https://membership.tui.transunion.com/tucm/login.page")
+        mime_types = "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml"
 
-username_field = driver.find_element_by_xpath(
-    '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/div[1]/input'
-)
-username_field.send_keys(username)
-time.sleep(1)
-password_field = driver.find_element_by_xpath(
-    '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/div[2]/input'
-)
-password_field.send_keys(password)
-time.sleep(1)
-driver.find_element_by_xpath(
-    '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/button'
-).click()
-time.sleep(5)
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--disable-gpu")
+        options.add_argument('--headless')
+        fp = webdriver.FirefoxProfile()
+        fp.set_preference("browser.download.folderList", 1)
+        fp.set_preference("browser.helperApps.alwaysAsk.force", False)
+        fp.set_preference("print.always_print_silent", True)
+        fp.set_preference("Save as PDF", True)
+        fp.set_preference("print save as pdf", True)
+        fp.set_preference("browser.download.manager.showWhenStarting", False)
+        fp.set_preference("browser.helperApps.neverAsk.saveToDisk", mime_types)
+        fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
+        fp.set_preference("pdfjs.disabled", True)
 
-# Clicked The Continue Button
-try:
-    driver.find_element_by_xpath(
-        '//*[@id="bodyContent"]/div/div[2]/div/div/div[2]/div[1]/button'
-    ).click()
-    time.sleep(25)
-    driver.find_element_by_xpath('/html/body/div[6]/form/div[2]/div/div[2]/div/a').click()
-    time.sleep(3)
-except:
-    pass
+        self.driver = webdriver.Firefox(executable_path=os.environ['GECKO_DRIVER_PATH'], options=options, firefox_profile=fp)
 
-try:
-    driver.find_elements_by_class_name('dontShow floaterLink modal-action-alt').click()
-    time.sleep(3)
-except:
-    pass
+        self.json_directory = '../storage/reports/' +self.db_id + '/transunion_payments'
 
-# Refresh Now Button Click
-try:
-    driver.find_element_by_xpath('//*[@id="dashboard-tools"]/div[2]/div[1]/div/a[1]').click()
-    time.sleep(15)
-    driver.find_element_by_id('confirmRefreshconfirmRefresh').click()
-    time.sleep(1)
+        # create directory if not exist
+        if not os.path.exists(self.json_directory):
+            os.makedirs(self.json_directory)
 
-    driver.find_element_by_id('confirmRefreshButton').click()
-    time.sleep(60)
-except:
-    print(sys.exc_info())
-    pass
+        self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
+        self.filepath_report = self.json_directory +'/report_data_'+self.filename
+        self.filepath_report1 = self.json_directory +'/report_data1_'+self.filename
+    def call(self):
+        try:
+            msg = self.login()
 
-try:
-    driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/section[3]/div/div/button').click()
-    time.sleep(15)
-except:
-    pass
+            if msg =='Account Locked.':
+                return {
+                    'status': 'error',
+                    'error': 'Account Locked.',
+                    'report_filepath': self.filepath_report,
+                }
+            elif msg == "credit card information":
+            
+                return {
+                    'status': 'error',
+                    'error': 'Credit card information',
+                    'report_filepath': self.filepath_report,
+                }    
+            else:
+                return {
+                    'status': 'success',
+                    'report_filepath': self.filepath_report,
+                }
+        except:
+            return {
+                'status': 'error',
+                'error': sys.exc_info(),
+                'report_filepath': self.filepath_report,
+            }
 
 
 
+    def login(self):
 
-# Hitting Credit Report Page
-driver.get("https://membership.tui.transunion.com/tucm/creditReport_TUCM.page?")
+        self.driver.get("https://membership.tui.transunion.com/tucm/login.page")
 
-# Clicking on Each Report to Expand
-# Real Estate
-try:
-    driver.find_element_by_xpath(
-        '//*[@id="CR-Accounts-RealEstate"]/div/div[2]/div[1]/div[1]'
-    ).click()
-    time.sleep(2)
-except:
-    pass
-
-# Credit Revolving Reports
-for e in range(30):
-    try:
-        element = (
-            '//*[@id="CR-Accounts-CreditRevolving"]/div/div[2]/div['
-            + str(e)
-            + "]/div[1]/div"
+        username_field = self.driver.find_element_by_xpath(
+            '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/div[1]/input'
         )
-        # print(element)
-        driver.find_element_by_xpath(element).click()
-        time.sleep(2)
-    except:
-        pass
-
-# Cr Installments
-for e in range(30):
-    try:
-        element = (
-            '//*[@id="CR-Accounts-Installment"]/div/div[2]/div['
-            + str(e)
-            + "]/div[1]/div"
+        username_field.send_keys(self.username)
+        time.sleep(1)
+        password_field = self.driver.find_element_by_xpath(
+            '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/div[2]/input'
         )
-        # print(element)
-        driver.find_element_by_xpath(element).click()
-        time.sleep(2)
-    except:
-        pass
+        password_field.send_keys(self.password)
+        time.sleep(1)
+        self.driver.find_element_by_xpath(
+            '//*[@id="c1354063416773"]/form/div/div/section[3]/div/div[1]/div/button'
+        ).click()
+        time.sleep(5)
+
+        soup = BeautifulSoup(self.driver.page_source, u'html.parser')
+
+        if 'Account Locked.' in soup.text.strip():
+            return 'Account Locked.'
+        elif 'The credit card information you provided is not valid.' in soup.text.strip():
+            return 'credit card information'
+
+        elif 'Unable to Verify' in soup.text.strip():
+            raise {
+                'status': 'error',
+                'code': status.HTTP_401_UNAUTHORIZED,
+                'message': 'Unable to Verify Identity',
+            }
 
 
-driver.execute_script('window.print();')
-# Waiting for pdf Saving
-time.sleep(60)
+        try:
+            self.driver.find_element_by_xpath(
+                '//*[@id="bodyContent"]/div/div[2]/div/div/div[2]/div[1]/button'
+            ).click()
+            time.sleep(25)
+            self.driver.find_element_by_xpath('/html/body/div[6]/form/div[2]/div/div[2]/div/a').click()
+            time.sleep(3)
+        except:
+            pass
 
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Clicking For Payment Status
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        try:
+            self.driver.find_elements_by_class_name('dontShow floaterLink modal-action-alt').click()
+            time.sleep(3)
+        except:
+            pass
 
-# Loading For Payments
-driver.get("https://membership.tui.transunion.com/tucm/creditReport_TUCM.page?")
-time.sleep(5)
-print('Reload Done For Payments')
-try:
-    driver.find_element_by_xpath(
-        '//*[@id="CR-Accounts-RealEstate"]/div/div[2]/div[1]'
-    ).click()
-    time.sleep(2)
+        # Refresh Now Button Click
+        try:
+            self.driver.find_element_by_xpath('//*[@id="dashboard-tools"]/div[2]/div[1]/div/a[1]').click()
+            time.sleep(15)
+            self.driver.find_element_by_id('confirmRefreshconfirmRefresh').click()
+            time.sleep(1)
 
-    # Payment Status Click
-    driver.find_element_by_xpath('//*[@id="CR-Accounts-RealEstate"]/div/div[2]/div[2]/div/div/div[1]/div[2]').click()
-    # driver.find_elements_by_xpath('//*[@id="CR-Accounts-RealEstate"]/div/div[2]/div[2]/div/div/div[3]/div[2]/a').click()
-    driver.find_element_by_link_text("Expand All").click()
-    print('Clicked Expand')
-except:
-    pass
+            self.driver.find_element_by_id('confirmRefreshButton').click()
+            time.sleep(60)
+        except:
+            # print(sys.exc_info())
+            pass
 
-# Credit Revolving Reports
-for e in range(30):
-    try:
-        # //*[@id="CR-Accounts-CreditRevolving"]/div/div[2]/div[4]/div/div/div[1]/div[2]
-        element = (
-            '//*[@id="CR-Accounts-CreditRevolving"]/div/div[2]/div['
-            + str(e)
-            + "]"
-        )
-        # print(element)
-        driver.find_element_by_xpath(element).click()
-        time.sleep(2)
-        # Expand Button
+        try:
+            self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/section[3]/div/div/button').click()
+            time.sleep(15)
+        except:
+            pass
 
-        ps_button = '//*[@id="CR-Accounts-CreditRevolving"]/div/div[2]/div['+str(e)+']/div/div/div[1]/div[2]'
-        driver.find_element_by_xpath(ps_button).click()
-        driver.find_element_by_link_text("Expand All").click()
-        print('Clicked Expand')
-    except:
-        pass
+        # Hitting Credit Report Page
+        self.driver.get("https://membership.tui.transunion.com/tucm/creditReport_TUCM.page?")
 
-# Cr Installments
-for e in range(30):
-    try:
-        element = (
-            '//*[@id="CR-Accounts-Installment"]/div/div[2]/div['
-            + str(e)
-            + "]"
-        )
-        # print(element)
-        driver.find_element_by_xpath(element).click()
-        time.sleep(2)
+        # Clicking on Each Report to Expand
+        # Real Estate
+        self.driver.execute_script("$('.account-row').click()")
+       
 
-        ps_button = '//*[@id="CR-Accounts-Installment"]/div/div[2]/div['+str(e)+']/div/div/div[1]/div[2]'
-        driver.find_element_by_xpath(ps_button).click()
-        # driver.find_element_by_link_text("Payment Status").click()
-        driver.find_element_by_link_text("Expand All").click()
-        print('Clicked Expand')
-    except:
-        pass
+        self.print_pdf('accounts')
 
-time.sleep(3)
-soup = BeautifulSoup(driver.page_source, u"html.parser")
+        # self.driver.execute_script('window.print();')
+        # Waiting for pdf Saving
+        # time.sleep(60)
 
-all_scripts = soup.find('script',attrs={'id':'UserData'})
-all_scripts = str(all_scripts).split(' var ud = ')[1].split('</script>')[0].strip().replace('/n','')
-all_scripts = all_scripts.replace('/','').strip()
+        # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        # Clicking For Payment Status
+        # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-jsondata = json.loads(all_scripts)
+        # Loading For Payments
+        self.driver.execute_script("$('.account-toggle:contains(Payment Status)').click()")
+        self.driver.execute_script("$('.history-show-more').click()")
+        # self.driver.get("https://membership.tui.transunion.com/tucm/creditReport_TUCM.page?")
+        time.sleep(5)     
 
 
-filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-print("File_Name--", filename)
-with open(json_directory + '/'+ filename, "a+") as f:
-    sorted = json.dumps(jsondata, indent=4)
-    f.write(sorted)
-    print("Json Generated")
+        time.sleep(3)
+        soup = BeautifulSoup(self.driver.page_source, u"html.parser")
 
-driver.execute_script('window.print();')
+        all_scripts = soup.find('script',attrs={'id':'UserData'})
+        all_scripts = str(all_scripts).split(' var ud = ')[1].split('</script>')[0].strip().replace('/n','')
+        all_scripts = all_scripts.replace('/','').strip()
+
+        jsondata = json.loads(all_scripts)
+
+        with open(self.filepath_report, "a+") as f:
+            sorted = json.dumps(jsondata, indent=4)
+            f.write(sorted)
+       
+        self.print_pdf('payments')
+
+    def print_pdf(self, subName):
+        date_time = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+        full_image = self.filename+subName+ '.png'
+        total_height = self.driver.execute_script("return document.body.scrollHeight")
+        self.driver.set_window_size(1920, total_height)
+        self.driver.save_screenshot(self.json_directory + '/' + full_image)
+
+        # png = Image.open("report_screenshot.png")
+        # png.load() # required for png.split()
+
+        im = Image.open(self.json_directory + '/' + full_image)
+        imgwidth, imgheight = im.size
+        images = []
+        k =0
+        for i in range(0,imgheight,2724):
+            for j in range(0,imgwidth,1920):
+                box = (j, i, j+1920, i+2724)
+                a = im.crop(box)
+                a = a.resize((595, 842))
+                try:
+                    name = "%s-%d.jpg" % (self.filename+subName, k)
+                    images.append(name)
+
+                    background = Image.new("RGB", a.size, (255, 255, 255))
+                    background.paste(a, mask=a.split()[3]) # 3 is the alpha channel
+
+                    background.save(name, 'JPEG', quality='maximum')
+                except:
+                    pass
+                k +=1
+
+
+        pdf = FPDF()
+        # imagelist is the list with all image filenames
+        for image in images:
+            pdf.add_page()
+            pdf.image(image, 0, 0 )
+        pdf.output(self.json_directory + '/' + self.filename+subName+".pdf", "F")
+
+        for i in images:
+            os.remove(i)        
+
+
+transUnion = transUnionMebership(sys.argv)
+print(transUnion.call())
