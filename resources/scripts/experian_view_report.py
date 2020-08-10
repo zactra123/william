@@ -74,7 +74,6 @@ class experianViewReport():
     def call(self):
         try:
             self.login()
-            self.driver.get('file:///var/www/test_laravel/scripts/test_page/Experian2.html')
             self.get_report()
             self.print_pdf()
 
