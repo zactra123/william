@@ -47,7 +47,7 @@ class experianViewReport():
 
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         # options.add_argument('print.always_print_silent')
         # fp = webdriver.FirefoxProfile()
         # # 0 means to download to the desktop, 1 means to download to the default "Downloads" directory, 2 means to use the directory
@@ -133,8 +133,7 @@ class experianViewReport():
                     if not 'Your credit report' in title:
                         raise("Report number not logged in")
                 except:       
-                    # raise("Report number not logged in")
-                    pass
+                    raise("Report number not logged in")
                 self.rn_status[rn] = 'success'
                 return "success"
 
@@ -142,7 +141,8 @@ class experianViewReport():
                 self.rn_status[rn] = sys.exc_info()
 
     def get_report(self):
-        self.click_to_expand()
+        self.driver.execute_script("$('#expand-submit').click()")
+        # self.click_to_expand()
         soup = BeautifulSoup(self.driver.page_source, u'html.parser')
         personal_block = []
         address_block = []
@@ -298,31 +298,21 @@ class experianViewReport():
         # STarted Bankrupcyyyy
 
         try:
-            try:
-                'report-entry even bankruptcy in-dispute expandable'
-                block_crupcy = soup.find('div', attrs={'class': 'bankruptcy'}).find_all(
-                    "div", attrs={"class": "val item-name"})
-            except:
-                block_crupcy = soup.find('div', attrs={
-                                         'class': 'report-entry even bankruptcy'}).find_all("div", attrs={"class": "val item-name"})
-
             item_name = item_number = claim_amount = date_filled = val_status = address = ad_iden = libality_block = date_resolved = on_record_until = responsibility_b = reinvestigation = address6 = 'none'
+            block_crupcy = soup.find('div', attrs={'id': 'report-box-potentially-negative'}).find_all(
+                    "div", attrs={"class": "bankruptcy"})
 
             for i in block_crupcy:
                 try:
-                    item_name = i.text.strip()
+                    item_name = i.find("div", attrs={"class": "val item-name"}).text.strip()
                 except:
-                    item_name = 'none'
-
-                # print('Item-->',item_name)
-
+                    continue
                 try:
                     item_number = i.find(
                         'div', attrs={'class': 'val id-number'}).text.strip()
                 except:
                     item_number = 'none'
                 # print('Itemno-->',item_number)
-
                 try:
                     claim_amount = i.find(
                         'div', attrs={'class': 'val claim-amount'}).text.strip()
@@ -342,107 +332,86 @@ class experianViewReport():
                 except:
                     val_status = 'none'
 
-                try:
-                    address = i.find(
-                        "div", attrs={"class": "col-info-1"})[1].text.strip()
-                except:
-                    address = 'none'
-
                     # print(bankcrpcy_blockaddress)
                 try:
-                    try:
-                        bankcrpcy_blockaddress = soup.find('div', attrs={'class': 'bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-1"})[1]
-                    except:
-                        bankcrpcy_blockaddress = soup.find('div', attrs={
-                                                           'class': 'report-entry even bankruptcy'}).findAll("div", attrs={"class": "col-info-1"})[1]
+                    address_name = i.find(
+                        'div', attrs={'class': 'val address'}).text.strip()
+                    # print(address6)
+                    add_city = i.find(
+                        'span', attrs={'class': 'val city'}).text.strip()
 
-                    address6 = bankcrpcy_blockaddress.text.strip()
-                    address6 = address6.split('Address')[0].strip()
+                    add_state = i.find(
+                        'span', attrs={'class': 'val state'}).text.strip()
+                    
+                    add_zip = i.find(
+                        'span', attrs={'class': 'val zip'}).text.strip()
+                    
+                    add_id = i.find(
+                        'div', attrs={'class': 'val address-id'}).text.strip()
+                    
+                    add_phone = i.find(
+                        'div', attrs={'class': 'val phone'}).text.strip()
+
+                    address = {
+                        'address': address_name,
+                        'city': add_city,
+                        'state': add_state,
+                        'zip': add_zip,
+                        'identification_number': add_id,
+                        'phone': add_phone,
+                    }
+                    
                 except:
-                    address6 = 'none'
+                    address = {}
 
-                # print('Block Address-->>',address6)
-
+     
                 try:
-                    try:
-                        ad_iden = soup.find('div', attrs={'class': 'bankruptcy'}).findAll("div", attrs={
-                            "class": "col-info-1"})[1].find('div', attrs={'class': 'val address-id'}).text.strip()
-                    except:
-                        ad_iden = soup.find('div', attrs={'class': 'report-entry even bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-1"})[1].find('div', attrs={'class': 'val address-id'}).text.strip()
-
-                except:
-                    ad_iden = 'none'
-
-                try:
-                    try:
-                        libality_block = soup.find('div', attrs={'class': 'bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-3"})[1]
-                    except:
-                        libality_block = soup.find('div', attrs={
-                                                   'class': 'report-entry even bankruptcy'}).findAll("div", attrs={"class": "col-info-3"})[1]
-
-                    liability = libality_block.find(
+                    liability = i.find(
                         'div', attrs={'class': 'val liability-amount'}).text.strip()
                 except:
                     liability = 'none'
 
                 try:
-                    try:
-                        onrecord_until = soup.find('div', attrs={'class': 'bankruptcy'}).findAll("div", attrs={
-                            "class": "col-info-2"})[1].find('div', attrs={'class': 'val on-record-until'}).text.strip()
-                    except:
-                        onrecord_until = soup.find('div', attrs={'class': 'report-entry even bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-2"})[1].find('div', attrs={'class': 'val on-record-until'}).text.strip()
-
+                    onrecord_until = i.find(
+                        'div', attrs={'class': 'val on-record-until'}).text.strip()
                 except:
                     onrecord_until = 'none'
 
                 try:
-                    try:
-                        date_resolved = soup.find('div', attrs={'class': 'bankruptcy'}).findAll("div", attrs={
-                            "class": "col-info-4"})[1].find('div', attrs={'class': 'val date-resolved'}).text.strip()
-                    except:
-                        date_resolved = soup.find('div', attrs={'class': 'report-entry even bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-4"})[1].find('div', attrs={'class': 'val date-resolved'}).text.strip()
+                   date_resolved = i.find(
+                        'div', attrs={'class': 'val date-resolved'}).text.strip()
                 except:
                     date_resolved = 'none'
 
                 try:
-                    try:
-                        reinvestigation = reinvestigation = soup.find('div', attrs={'class': 'bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-5"})[1].find('div', attrs={'class': 'val reinvestigation'}).text.strip()
-                    except:
-                        reinvestigation = reinvestigation = soup.find('div', attrs={'class': 'report-entry even bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-5"})[1].find('div', attrs={'class': 'val reinvestigation'}).text.strip()
+                   onrecord_until = i.find(
+                        'div', attrs={'class': 'val reinvestigation'}).text.strip()
                 except:
                     reinvestigation = 'none'
-                    # print('Error in reinvestigation Block',sys.exc_info())
-                    # print('Error in date_resolved Block',sys.exc_info())
 
                 try:
-                    try:
-                        responsibility_b = soup.find('div', attrs={'class': 'bankruptcy'}).findAll("div", attrs={
-                            "class": "col-info-5"})[1].find('div', attrs={'class': 'val responsibility'}).text.strip()
-                    except:
-                        responsibility_b = soup.find('div', attrs={'class': 'report-entry even bankruptcy'}).findAll(
-                            "div", attrs={"class": "col-info-5"})[1].find('div', attrs={'class': 'val responsibility'}).text.strip()
+                    responsibility_b = i.find(
+                        'div', attrs={'class': 'val responsibility'}).text.strip()
                 except:
                     responsibility_b = 'none'
 
-            bankruptcy_block.append({"item_name": item_name,
-                                     "item_number": item_number,
-                                     "claim_amount": claim_amount,
-                                     "date_filled": date_filled,
-                                     "value_status": val_status, 'address': address6,
-                                     'identity': ad_iden, 'liability': liability,
-                                     'onrecord_until': onrecord_until, 'onrecord_until': onrecord_until,
-                                     'reinvestigation': reinvestigation, 'date_resolved': date_resolved, 'responsibility': responsibility_b})
+                bankruptcy_block.append({
+                    "item_name": item_name,
+                    "item_number": item_number,
+                    "claim_amount": claim_amount,
+                    "date_filled": date_filled,
+                    "value_status": val_status, 
+                    'address': address,
+                    'liability': liability,
+                    'onrecord_until': onrecord_until, 
+                    'reinvestigation': reinvestigation, 
+                    'date_resolved': date_resolved, 
+                    'responsibility': responsibility_b
+                })
 
         except:
-            import sys
-            # print('Error in Item Block', sys.exc_info())
+            
+            print('Error in Item Block', sys.exc_info())
             pass
 
         #  Start Of Negative------------------------------------------------------------------------------------
@@ -591,13 +560,11 @@ class experianViewReport():
                     regex = re.compile('.*col-acc-hist-item.*')
                     account = acccounts.find_all("div", attrs={"class": regex})
 
-                    account_history = {}
-
-                    j = 0
-                    for i in account:
+                    account_history = []
+                    for v in account:
                                 
                         try:
-                            yeraValue = i.find(
+                            yeraValue = v.find(
                                 'div', attrs={'class': 'acc-hist-year'}).text.strip()
                            
                             if  "" !=  yeraValue:
@@ -606,66 +573,60 @@ class experianViewReport():
                             pass
 
                         try:
-                            month = i.find(
+                            month = v.find(
                                 'div', attrs={'class': 'acc-hist-month'}).text.strip()
                         except:
                             month = 'none'
 
                         try:
-                            value = i.find(
+                            value = v.find(
                                 'div', attrs={'class': 'acc-hist-value'}).text.strip()
                         except:
                             value = 'none'
 
-                        account_history[j] =  {
+                        account_history.append({
                             'year':yera,
                             'month':month,
                             'value':value
 
-                        }
-                        j +=1 
+                        })
 
 
                 except:
                     account_history = {}
 
                 try:
-                    payAll = i.find("div", attrs={"class": "row-payment-history grid"})
-                    pays = {}
+                    payAll = i.find("div", attrs={"class": "row-payment-history"})
+
+                    pays = []
                     if payAll:
                         pay = payAll.find_all("div", attrs={"class": "pay-hist-item"})
-                        j = 0
-                        for v in pay:
-                                    
+                        for v in pay:           
                             try:
-                                pays[j] = v.text.strip()
+                                pay_s = v.text.strip()
+                                pays.append(pay_s)
 
                             except:
-                                pass
-                            j +=1   
+                                pass 
                 except:
-                    pays = {}
+                    pays = []
 
 
-                
                 try:
                     balance = i.find("div", attrs={"class": "col-1-1 bal-hist-items-container"})
                     balanceAll = balance.find_all("div", attrs={"class": "bal-hist-item"})
 
-                    balance_history = {}
-                    j = 0
+                    balance_history = []
                     for v in balance:
                                 
                         try:
-                            balance3 = v.text.strip()
-                            balance_history[j] = balance3
+                            balance_history.append(v.text.strip())
 
                         except:
                             pass
                             
-                        j +=1   
                 except:
-                    balance_history = {}
+                    balance_history = []
 
                 try:
                     original_creditor = i.find(
@@ -930,8 +891,7 @@ class experianViewReport():
 
 
                 except:
-                    print(sys.exc_info())
-                    account_history = {}
+                    account_history = []
 
                 try:
                     balance = i.find("div", attrs={"class": "col-1-1 bal-hist-items-container"})
@@ -944,7 +904,7 @@ class experianViewReport():
                         except:
                             pass 
                 except:
-                    balance_history = {}
+                    balance_history = []
 
                 try:
                     original_creditor = i.find(
@@ -971,7 +931,7 @@ class experianViewReport():
                         except:
                             pass 
                 except:
-                    recent_payments = {}
+                    recent_payments = []
 
                 try:
                     status_updated = i.find('div', attrs={

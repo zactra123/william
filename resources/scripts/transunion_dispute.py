@@ -57,10 +57,12 @@ class transunionDispute:
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(
-            executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
+            executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
+            # executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
 
 
-        json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
+        # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
+        json_directory = 'reports/' + self.db_id + '/transunion_dispute'
         # create directory if not exist
         if not os.path.exists(json_directory):
             os.makedirs(json_directory)
@@ -84,9 +86,10 @@ class transunionDispute:
                 self.recover_account()
 
             msg = self.getDisputes()
+            print(msg)
             if msg == 're_login':
                 msg = self.login()
-            msg = self.getDisputes()
+                msg = self.getDisputes()
 
             return {
                 'status': 'success',
@@ -103,7 +106,8 @@ class transunionDispute:
 
     def login(self):
         try:
-            self.driver.get('https://service.transunion.com/dss/login.page?dest=dispute')
+            if not 'https://service.transunion.com/dss/login.page' in self.driver.current_url:
+                self.driver.get('https://service.transunion.com/dss/login.page?dest=dispute')
             WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.NAME, 'tl.username')))
             uname = self.driver.find_element_by_name('tl.username')
             uname.click()
@@ -704,7 +708,7 @@ class transunionDispute:
         acc_dict = {}
         finlarr = []
         self.click_to_continue()
-        if self.driver.current_url == 'https://service.transunion.com/dss/dashboard.page?':
+        if self.driver.current_url != 'https://service.transunion.com/dss/dispute.page?':
             self.driver.get('https://service.transunion.com/dss/dispute.page?')
         time.sleep(10)
         soup = BeautifulSoup(self.driver.page_source, u'html.parser')
@@ -838,8 +842,10 @@ class transunionDispute:
             try:
                 start_dispute = self.driver.find_element_by_xpath(
                     '//*[@id="startDispute"]/a')
+                start_dispute_text = start_dispute.text
                 start_dispute.click()
-                if 'PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE.' in start_dispute.text:
+                time.sleep(2)
+                if 'PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE.' in start_dispute_text:
                     return "re_login"
                 time.sleep(10)
             except:
@@ -861,7 +867,7 @@ class transunionDispute:
                     'confirmRefreshButton-startDispute').click()
             except:
                 self.driver.find_element_by_id('Continue').click()
-            WebDriverWait(self.driver, 5).until(EC.url_to_be('https://service.transunion.com/dss/disputeCategories.page'))
+            WebDriverWait(self.driver, 20).until(EC.url_to_be('https://service.transunion.com/dss/disputeCategories.page'))
 
 
             soup = BeautifulSoup(self.driver.page_source, u'html.parser')
@@ -937,9 +943,12 @@ class transunionDispute:
             with open(self.filepath_report, "a+") as f:
                 sorted = json.dumps(jsondata, indent=4)
                 f.write(sorted)
-                f.close()
+                f.close() 
+            return 'success'
 
     def click_to_continue(self):
+
+        # /html/body/div[1]/div[2]/form/div/div/div/div/div/div/div/button
         try:
             button = self.driver.find_element_by_xpath(
                 '/html/body/div[1]/div[2]/form/div/div/section[2]/div/div/button')
@@ -947,13 +956,9 @@ class transunionDispute:
             try:
                 button = self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/div/div/div/div/div/button')
             except:
+                time.sleep(2)
                 self.click_to_continue()
-        try:
-            button.click()
-            time.sleep(5)
-            return 'success'
-        except:
-            self.click_to_continue()
+        button.click()
 
 transunion = transunionDispute(sys.argv)
 print(transunion.call())

@@ -177,7 +177,7 @@ class experianLogin:
         self.driver.find_element_by_xpath(
             '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-signin/ecs-card/section[2]/div/ecs-form/form/div[4]/button').click()
         time.sleep(5)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
         if 'Billing Information Update' in soup.text.strip():
             from rest_framework import status
             raise {
@@ -293,7 +293,7 @@ class experianLogin:
 
                 time.sleep(5)
                 # driver.switch_to.active_element
-                self.driver.switch_to_window(driver.window_handles[1])
+                self.driver.switch_to_window(self.driver.window_handles[1])
                 self.driver.switch_to.default_content
                 self.driver.switch_to.window
                 # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
@@ -308,7 +308,7 @@ class experianLogin:
                 time.sleep(5)
 
     def get_report_numbers(self):
-        self.driver.switch_to_window(driver.window_handles[0])
+        self.driver.switch_to_window(self.driver.window_handles[0])
         self.driver.switch_to.default_content
         self.driver.switch_to.window
         self.driver.get('https://usa.experian.com/member/disputeCenter')
@@ -326,7 +326,7 @@ class experianLogin:
 
                 self.driver.get(rep_links)
                 time.sleep(3)
-                rsoup = BeautifulSoup(driver.page_source, 'html.parser')
+                rsoup = BeautifulSoup(self.driver.page_source, 'html.parser')
                 rnum = rsoup.find(
                     'span', attrs={'ng-bind': '::cdfItem.reportNumber'}).text.strip().replace('-', '')
 
