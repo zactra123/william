@@ -22,12 +22,20 @@ class PagesController extends Controller
 //        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
 
         $scraper = new Screaper();
-        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['1854037387','‎1316806202','‎0914142484']) ];  //
-        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['2224037387','2226806202','2224142484']) ];  //
-//        esemdues@gmail  ‎
-        $scraper->experian_view_report(8, $arguments);
+//        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['1854037387','‎1316806202','‎0914142484']) ];  //
+//        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['2224037387','2226806202','2224142484']) ];  //
+//        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['0914142484','1316806202','1854037387‎']) ];  //
+//        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['5555142484','5555806202','5555037387‎']) ];  //
+//        $arguments = ['GISRAYELYAN@YAHOO.COM', '602-02-5872', implode(',', ['‎0378168296','‎2125935223','2390421947']) ];  //
+//        $arguments = ['MNJOYASHOT8@GMAIL.COM', '624-45-0757', implode(',', ['‎2405121431','‎‎2807904228ha areev']) ];  //
+//        'esemdues@gmail.com', '118-62-7536', '0914142484','1316806202','1854037387‎'
+//        $scraper->experian_view_report(32, $arguments);
+        $arguments =['salbibazikyan', '9708564vS'];
+        $scraper->trnsunion_membership(35, $arguments);
 
-
+        $arguments = ['Ponchukyan1986', '123456Ap', 'YEREVAN', '0523', '05/23/1986', '561-89-5564'];  //
+//        $arguments = ['Alextutiven10', '!Gisiscool10', 'BUICK', '2823', '01/04/1969', '118-62-7536'];  //
+        $scraper->experian_login(8, $arguments);
         $arguments = ['ninelgrigoryan', 'N1982inel', 'Zaruhi', 'Hakobyan', '9265_Woodman_Ave_Apt2', 'Arleta', 'CA', '91331', 'johnsofiadavid7@gmail.com', '10/07/1971', "730-26-7353", '‎3238195555', 'True' ];  //
         $arguments = ['HERMINEM1988', 'M1988OVSESIAN', 'HERMINE', 'MOVSESIAN', '1044_WINCHESTER_AVE_APT_206', 'GLENDALE', 'CA', '91201', 'DINALAVAZARIAN83@AOL.COM', '04/24/1988', "608-49-4069", '8184847243', 'True' ];  //
 
@@ -37,7 +45,6 @@ class PagesController extends Controller
         $arguments = ['asatryan123', 'Abovyan76', 'ARA', '‎1234', '08/25/1976', '‎‎619-39-6185' ];  //
         $arguments = ['varduhiavagyan@yahoo.com', 'Gabi2155', 'YEREVAN', '2155', '03/21/1972', '‎‎‎602-65-3251' ];  //
 //
-        $scraper->experian_login(22, $arguments);
 
 //
 //        $command_args = array_merge(['python3', $script_path], $arguments);

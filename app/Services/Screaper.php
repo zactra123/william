@@ -21,9 +21,9 @@ class Screaper
     public function trnsunion_membership($client_id = null, $arguments = [])
     {
         array_push($arguments, $client_id);
-        $command = $this->make_run_command('transunion_dispute.py',$arguments);
-        dd($command);
+        $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $output = shell_exec($command);
+        dd($output);
     }
 
     public function experian_login($client_id = null, $arguments = [])

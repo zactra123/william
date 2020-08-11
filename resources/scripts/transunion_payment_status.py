@@ -171,7 +171,7 @@ class transUnionMebership:
         # Loading For Payments
         self.driver.execute_script("$('.account-toggle:contains(Payment Status)').click()")
         self.driver.execute_script("$('.history-show-more').click()")
-        # self.driver.get("https://membership.tui.transunion.com/tucm/creditReport_TUCM.page?")
+
         time.sleep(5)     
 
 
@@ -192,45 +192,29 @@ class transUnionMebership:
 
     def print_pdf(self, subName):
         date_time = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
-        full_image = self.filename+subName+ '.png'
-        total_height = self.driver.execute_script("return document.body.scrollHeight")
-        self.driver.set_window_size(1920, total_height)
-        self.driver.save_screenshot(self.json_directory + '/' + full_image)
+        full_image = self.filename+subName+ '_%s.png'
+        js = 'return Math.max( document.body.scrollHeight, document.body.offsetHeight,  document.documentElement.clientHeight,  document.documentElement.scrollHeight,  document.documentElement.offsetHeight);'
+        total_height = self.driver.execute_script(js)
+        self.driver.set_window_size(1920, 20000)
 
-        # png = Image.open("report_screenshot.png")
-        # png.load() # required for png.split()
+        slices = [] 
+        offset = 0
+        verbose = 1
+        img = ''
+        s = 0
+        step = 20000
+        print(total_height)
+        while offset < total_height:
+            s +=1
 
-        im = Image.open(self.json_directory + '/' + full_image)
-        imgwidth, imgheight = im.size
-        images = []
-        k =0
-        for i in range(0,imgheight,2724):
-            for j in range(0,imgwidth,1920):
-                box = (j, i, j+1920, i+2724)
-                a = im.crop(box)
-                a = a.resize((595, 842))
-                try:
-                    name = "%s-%d.jpg" % (self.filename+subName, k)
-                    images.append(name)
+            self.driver.execute_script("window.scrollTo(0, %s);" % offset)
+            offset += step
+            if total_height < offset:
+                offset = total_height
+            # slices.append(img)
+            self.driver.get_screenshot_as_file(self.json_directory + '/' + (full_image % s))
 
-                    background = Image.new("RGB", a.size, (255, 255, 255))
-                    background.paste(a, mask=a.split()[3]) # 3 is the alpha channel
-
-                    background.save(name, 'JPEG', quality='maximum')
-                except:
-                    pass
-                k +=1
-
-
-        pdf = FPDF()
-        # imagelist is the list with all image filenames
-        for image in images:
-            pdf.add_page()
-            pdf.image(image, 0, 0 )
-        pdf.output(self.json_directory + '/' + self.filename+subName+".pdf", "F")
-
-        for i in images:
-            os.remove(i)        
+       
 
 
 transUnion = transUnionMebership(sys.argv)
