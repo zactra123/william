@@ -1,13 +1,18 @@
 import json
-from selenium import webdriver
 import requests
 from bs4 import BeautifulSoup
 import xlwt
 import sys
 import xlrd
 import time
+from selenium import webdriver
 from selenium.webdriver.chrome.options import DesiredCapabilities
+from selenium.webdriver.common.proxy import Proxy, ProxyType
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import requests
 from requests.auth import HTTPBasicAuth
 from pprint import pprint
@@ -26,18 +31,41 @@ class experianLogin:
         self.dob = arguments[5]
         self.ssn = arguments[6]
         self.db_id = arguments[7]
+        self.error_message = []
+
+        # PROXY = '64.71.145.122:3128'
+
+        # webdriver.DesiredCapabilities.CHROME['proxy'] = {
+        #     "httpProxy": PROXY,
+        #     "ftpProxy": PROXY,
+        #     "sslProxy": PROXY,
+        #     "proxyType": "MANUAL",
+
+        # }
+        appState = {
+            "recentDestinations": [
+                {
+                    "id": "Save as PDF",
+                    "origin": "local",
+                    "account": ""
+                }
+            ],
+            "selectedDestinationId": "Save as PDF",
+            "version": 2
+        }
+        profile = {
+            'printing.print_preview_sticky_settings.appState': json.dumps(appState)}
 
         options = webdriver.ChromeOptions()
-        # options.add_argument('--disable-gpu')
-        # options.add_argument("disable-infobars")
         options.add_experimental_option("useAutomationExtension", False)
         options.add_experimental_option(
-            "excludeSwitches", ["enable-automation"])
+                "excludeSwitches", ["enable-automation"])
         options.add_experimental_option('prefs', profile)
         options.add_argument('--kiosk-printing')
         # options.add_argument('--headless')
-        self.driver = webdriver.Chrome(
-            executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
+
+        self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
+
 
         json_directory = '../storage/reports/' + self.db_id + '/experian_login'
         # create directory if not exist
@@ -51,11 +79,13 @@ class experianLogin:
     def call(self):
         try:
             self.get_json()
-            self.get_pdf()
+            self.login()
+            self.get_report()
             self.get_report_numbers()
 
             return {
                 'status': 'success',
+                'message': self.error_message,
                 'report_filepath': self.filepath_report,
                 'numbers_filepath': self.filepath_numbers
             }
@@ -160,9 +190,9 @@ class experianLogin:
             sorted = json.dumps(p_main, indent=4)
             f.write(sorted)
 
-    def get_pdf(self):
+    def login(self):
         self.driver.get('https://usa.experian.com/login/index')
-        time.sleep(10)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-signin/ecs-card/section[2]/div/ecs-form/form/ecs-input/div/div[2]/input')))
         uname = self.driver.find_element_by_xpath(
             '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-signin/ecs-card/section[2]/div/ecs-form/form/ecs-input/div/div[2]/input')
         uname.click()
@@ -186,126 +216,155 @@ class experianLogin:
                 'message': 'Please Enter Credit Card Number',
             }
 
-        else:
 
+        if self.driver.current_url == 'https://usa.experian.com/member/loginInterstitial':
             try:
-                self.driver.get('https://usa.experian.com/login/ato/question')
-
-                teacher = self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/ecs-input[1]/div/div[2]/input')
-
-                teacher.click()
-
-                teacher.send_keys(question)
-
-                pin = self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/ecs-input[2]/div/div[2]/input')
-
-                pin.click()
-                pin.send_keys(pinn)
-
-                self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/button').click()
+                self.driver.find_element_by_xpath('//*[@id="siteContent"]/div/div/form/div/div[2]/div/div[2]/div/div[5]/button').click()
                 time.sleep(10)
-
-                DOB = self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/ecs-dob-input/div/ecs-input/div/div[2]/input')
-
-                DOB.click()
-
-                DOB.send_keys(date_OB)
-
-                ssn = self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/ecs-ssn-input/label/div[2]/input')
-                ssn.click()
-                ssn.send_keys(sec_pin)
-
-                self.driver.find_element_by_xpath(
-                    '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/div/button').click()
-
             except:
                 pass
 
-            time.sleep(8)
+        if self.driver.current_url == 'https://usa.experian.com/member/overview':
+            return True
 
-            try:
-                self.driver.find_element_by_xpath(
-                    '/html/body/app-root/div[2]/div/div[1]/main/div/div/form/div/div[2]/div/div[2]/div/div[5]/button').click()
-            except:
-                pass
+        try:
+            self.driver.get('https://usa.experian.com/login/ato/question')
 
-            time.sleep(6)
+            teacher = self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/ecs-input[1]/div/div[2]/input')
+
+            teacher.click()
+
+            teacher.send_keys(self.question)
+
+            pin = self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/ecs-input[2]/div/div[2]/input')
+
+            pin.click()
+            pin.send_keys(self.pinn)
+
+            self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/button').click()
+            time.sleep(10)
+
+            DOB = self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/ecs-dob-input/div/ecs-input/div/div[2]/input')
+
+            DOB.click()
+
+            DOB.send_keys(self.dob)
+
+            ssn = self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/ecs-ssn-input/label/div[2]/input')
+            ssn.click()
+            ssn.send_keys(self.ssn)
+
+            self.driver.find_element_by_xpath(
+                '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-email/ecs-card/section[2]/div/app-dob-ssn-page/ecs-form/form/div/button').click()
+
+        except:
+            pass
+        time.sleep(8)
+        
+
+
+    def get_report(self):
+        try:
+            self.driver.find_element_by_xpath(
+                '/html/body/app-root/div[2]/div/div[1]/main/div/div/form/div/div[2]/div/div[2]/div/div[5]/button').click()
+        except:
+            pass
+
+        time.sleep(6)
+
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
+
+        if 'Billing Information Update' in soup.text.strip():
+            from rest_framework import status
+            raise {
+                'status': 'Billing Information Update require',
+                'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
+                'message': 'Please Enter Credit Card Number',
+            }
+            return False
+        else:
+            self.driver.get(
+                'https://usa.experian.com/member/disputeCenter/reportSummary')
+            time.sleep(5)
 
             soup = BeautifulSoup(self.driver.page_source, 'html.parser')
+            try:
+                block1 = soup.find('div', attrs={'class': 'dispute-error-found--block'})
+                from rest_framework import status
+                self.error_message.append( {
+                    'status': 'technical difficulties and cannot access your report',
+                    'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    'message': block1.text.strip(),
+                })
+                return False
+            except: 
+                pass
 
             if 'Billing Information Update' in soup.text.strip():
                 from rest_framework import status
-                raise {
+                self.error_message.append({
                     'status': 'Billing Information Update require',
                     'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
                     'message': 'Please Enter Credit Card Number',
-                }
+                })
+                return False
 
-            else:
-                self.driver.get(
-                    'https://usa.experian.com/member/disputeCenter/reportSummary')
+            try:
+                self.driver.find_element_by_xpath(
+                        '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/form/label').click()
+            except:
+                pass
+            try:
+                self.driver.find_element_by_xpath(
+                    ('/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/form/label[2]/span[1]')).click()
+            except:
+                pass
+
+            time.sleep(5)
+            try:
+                self.driver.find_element_by_xpath(
+                    '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/button').click()
+            except:
+                pass
+            try:
+                self.driver.find_element_by_xpath(
+                    '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a').click()
+            except:
+                pass
+
+            self.driver.get(
+                'https://usa.experian.com/member/disputeCenter/reportSummary')
+            time.sleep(5)
+            try:
+                error = self.driver.find_element_by_class_name(
+                    'dispute-header').text
+                if "Dispute Can't Be Processed Online" in error:
+                    self.driver.get(
+                        'https://usa.experian.com/member/reports/experian/now?scroll=false')
+                self.driver.find_element_by_xpath(
+                    '/html/body/app-root/div[2]/div/div[1]/main/div/div[2]/div/div/div/div[2]/div[1]/button').click()
                 time.sleep(5)
+            except:
+                time.sleep(10)
+                self.driver.find_element_by_xpath(
+                    '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div/div/div[2]/div[2]/a/span').click()
 
-                try:
-                    self.driver.find_element_by_xpath(
-                            '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/form/label').click()
-                except:
-                    pass
-                try:
-                    self.driver.find_element_by_xpath(
-                        ('/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/form/label[2]/span[1]')).click()
-                except:
-                    pass
+            time.sleep(5)
+            # driver.switch_to.active_element
+            self.driver.switch_to_window(self.driver.window_handles[1])
+            self.driver.switch_to.default_content
+            self.driver.switch_to.window
+            # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
 
-                time.sleep(5)
-                try:
-                    self.driver.find_element_by_xpath(
-                        '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/button').click()
-                except:
-                    pass
-                try:
-                    self.driver.find_element_by_xpath(
-                        '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/div[2]/div[1]/div/div[2]/div/a').click()
-                except:
-                    pass
-
-                self.driver.get(
-                    'https://usa.experian.com/member/disputeCenter/reportSummary')
-                time.sleep(5)
-                try:
-                    error = self.driver.find_element_by_class_name(
-                        'dispute-header').text
-                    if "Dispute Can't Be Processed Online" in error:
-                        self.driver.get(
-                            'https://usa.experian.com/member/reports/experian/now?scroll=false')
-                    self.driver.find_element_by_xpath(
-                        '/html/body/app-root/div[2]/div/div[1]/main/div/div[2]/div/div/div/div[2]/div[1]/button').click()
-                    time.sleep(5)
-                except:
-                    time.sleep(10)
-                    self.driver.find_element_by_xpath(
-                        '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div/div/div[2]/div[2]/a/span').click()
-
-                time.sleep(5)
-                # driver.switch_to.active_element
-                self.driver.switch_to_window(self.driver.window_handles[1])
-                self.driver.switch_to.default_content
-                self.driver.switch_to.window
-                # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
-                # driver.find_element_by_tag_name('button').click()
-
-                # time.sleep(5)
-
-                # print(driver.current_url)
-                time.sleep(3)
-                # print(driver.current_window_handle)
-                self.driver.execute_script('window.print();')
-                time.sleep(5)
+            time.sleep(3)
+            # print(driver.current_window_handle)
+            self.driver.execute_script('window.print();')
+            time.sleep(5)
 
     def get_report_numbers(self):
         self.driver.switch_to_window(self.driver.window_handles[0])
@@ -342,7 +401,7 @@ class experianLogin:
                 a_main.append(aa)
 
             repn = {
-                'Username': username,
+                'Username': self.username,
                 'SSN': int(self.ssn.replace('-', '').replace('\u200e', '')),
                 'Report Numbers': a_main,
             }

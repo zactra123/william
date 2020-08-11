@@ -94,7 +94,6 @@ class experianViewReport():
         for rn in self.report_numbers:
             try:
                 self.driver.get('https://www.experian.com/ncaconline/dispute')
-                self.driver.execute_script('window.onbeforeunload = function () {};')
                 WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, 'reg-capid-rn-txt-reportNumber')))
                 report_numberxpath = self.driver.find_element_by_id('reg-capid-rn-txt-reportNumber')
                 report_numberxpath.send_keys(str(rn))
