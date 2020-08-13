@@ -612,7 +612,7 @@ class experianViewReport():
 
 
                 try:
-                    balance = i.find("div", attrs={"class": "col-1-1 bal-hist-items-container"})
+                    balance = i.find("div", attrs={"class": "bal-hist-items-container"})
                     balanceAll = balance.find_all("div", attrs={"class": "bal-hist-item"})
 
                     balance_history = []
@@ -893,13 +893,14 @@ class experianViewReport():
                     account_history = []
 
                 try:
-                    balance = i.find("div", attrs={"class": "col-1-1 bal-hist-items-container"})
-                    balanceAll = balance.find("div", attrs={"class": "bal-hist-item"})
+                    balance = i.find("div", attrs={"class": "bal-hist-items-container"})
+                    balanceAll = balance.find_all("div", attrs={"class": "bal-hist-item"})
 
                     balance_history = []
                     for v in balanceAll:                              
                         try:
-                            balance_history.append(v.text.strip()) 
+                            balance_s = v.text.strip()
+                            balance_history.append(balance_s) 
                         except:
                             pass 
                 except:
@@ -925,7 +926,8 @@ class experianViewReport():
                     recent_payments = []
                     for v in pay:
                         try:
-                            recent_payments.appent(v.text.strip())
+                            pay_s = v.text.strip()
+                            recent_payments.appent(pay_s)
 
                         except:
                             pass 
