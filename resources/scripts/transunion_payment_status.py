@@ -5,7 +5,6 @@ import xlrd, json
 import time,sys
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from Screenshot import Screenshot_Clipping
 from colorama import init
 from termcolor import colored
 from PIL import Image
@@ -47,9 +46,9 @@ class transUnionMebership:
         if not os.path.exists(self.json_directory):
             os.makedirs(self.json_directory)
 
-        self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-        self.filepath_report = self.json_directory +'/report_data_'+self.filename
-        self.filepath_report1 = self.json_directory +'/report_data1_'+self.filename
+        self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+        self.filepath_report = self.json_directory +'/report_data_'+self.filename  + '.json'
+        self.filepath_report1 = self.json_directory +'/report_data1_'+self.filename + '.json'
     def call(self):
         try:
             msg = self.login()
@@ -191,7 +190,6 @@ class transUnionMebership:
         self.print_pdf('payments')
 
     def print_pdf(self, subName):
-        date_time = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
         full_image = self.filename+subName+ '_%s.png'
         js = 'return Math.max( document.body.scrollHeight, document.body.offsetHeight,  document.documentElement.clientHeight,  document.documentElement.scrollHeight,  document.documentElement.offsetHeight);'
         total_height = self.driver.execute_script(js)
@@ -203,18 +201,13 @@ class transUnionMebership:
         img = ''
         s = 0
         step = 20000
-        print(total_height)
         while offset < total_height:
             s +=1
-
             self.driver.execute_script("window.scrollTo(0, %s);" % offset)
             offset += step
             if total_height < offset:
                 offset = total_height
-            # slices.append(img)
             self.driver.get_screenshot_as_file(self.json_directory + '/' + (full_image % s))
-
-       
 
 
 transUnion = transUnionMebership(sys.argv)

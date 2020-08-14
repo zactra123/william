@@ -86,10 +86,13 @@ class transunionDispute:
                 self.recover_account()
 
             msg = self.getDisputes()
-            print(msg)
             if msg == 're_login':
                 msg = self.login()
                 msg = self.getDisputes()
+                if msg == 're_login'
+                    raise "Can't login: PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE."
+
+            self.print_pdf()
 
             return {
                 'status': 'success',
@@ -963,6 +966,26 @@ class transunionDispute:
                 time.sleep(2)
                 self.click_to_continue()
         button.click()
+
+    def print_pdf(self):
+        full_image = self.filename + '_%s.png'
+        js = 'return Math.max( document.body.scrollHeight, document.body.offsetHeight,  document.documentElement.clientHeight,  document.documentElement.scrollHeight,  document.documentElement.offsetHeight);'
+        total_height = self.driver.execute_script(js)
+        self.driver.set_window_size(1920, 20000)
+
+        slices = [] 
+        offset = 0
+        verbose = 1
+        img = ''
+        s = 0
+        step = 20000
+        while offset < total_height:
+            s +=1
+            self.driver.execute_script("window.scrollTo(0, %s);" % offset)
+            offset += step
+            if total_height < offset:
+                offset = total_height
+            self.driver.get_screenshot_as_file(self.json_directory + '/' + (full_image % s))
 
 transunion = transunionDispute(sys.argv)
 print(transunion.call())
