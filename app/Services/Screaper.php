@@ -403,7 +403,7 @@ class Screaper
                     'under_dispute' => $inquiryOthers['auxData']['underDispute'],
                     'subscriber_id' => $inquiryOthers['auxData']['subscriberID'],
                     'negative_item' => true,
-                    'ain'=> $inquiryOthers['subscriberID'],
+                    'ain'=> $inquiryOthers['ain'],
                     'end_user' =>  null,
                     'source_name' => $inquiryOthers['sourceName'],
                     'source_address_street' => $inquiryOthers['sourceAddress']['street'],
@@ -430,7 +430,7 @@ class Screaper
                     'subscriber_id' => $consumerInquiries['auxData']['subscriberID'],
                     'negative_item' => false,
                     'ain'=> null,
-                    'end_user' =>  $consumerInquiries['end_user'],
+                    'end_user' =>  $consumerInquiries['endUser'],
                     'source_name' => $consumerInquiries['sourceName'],
                     'source_address_street' => $consumerInquiries['sourceAddress']['street'],
                     'source_address_city' => $consumerInquiries['sourceAddress']['city'],
@@ -438,20 +438,11 @@ class Screaper
                     'source_address_zip' => $consumerInquiries['sourceAddress']['zip'],
                     'source_address_phone' => $consumerInquiries['sourceAddress']['telephone']['number'],
                     'source_address_phone_type' => $consumerInquiries['sourceAddress']['telephone']['tail'],
-                    'date_of_inquiry' => null,
+                    'date_of_inquiry' => json_encode($consumerInquiries['datesOfInquiry']),
                     'comment' => null,
                     'permissible_purpose' => $consumerInquiries['permissiblePurpose'],
                 ];
 
-                if(!empty($consumerInquiries['dateOfInquiry'])){
-                    foreach ($consumerInquiries['dateOfInquiry'] as $dateOfInquiry) {
-                        $dataAccountLimitHighBalances[] = [
-                            'experian_account_id' => 'id',
-                            'name' => $dateOfInquiry
-                        ];
-                    }
-
-                }
 
             }
 
@@ -889,21 +880,11 @@ class Screaper
                     'source_address_zip' => $consumerInquiries['zip'],
                     'source_address_phone' => $consumerInquiries['phone'],
                     'source_address_phone_type' => null,
-                    'date_of_inquiry' => null,
+                    'date_of_inquiry' => json_encode($consumerInquiries['date_of_request']),
                     'comment' => null,
                     'permissible_purpose' => null,
                 ];
 
-                if(!empty($consumerInquiries['date_of_request'])){
-                    $dateOfRequests = str_split($consumerInquiries['date_of_request'], 10);
-                    foreach ($dateOfRequests as $date) {
-                        $dataAccountLimitHighBalances[] = [
-                            'experian_account_id' => 'id',
-                            'name' => $date
-                        ];
-                    }
-
-                }
             }
 
         }
