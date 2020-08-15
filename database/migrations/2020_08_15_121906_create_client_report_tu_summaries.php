@@ -13,7 +13,7 @@ class CreateClientReportTuSummaries extends Migration
      */
     public function up()
     {
-        Schema::create('client_ report_tu_summaries', function (Blueprint $table) {
+        Schema::create('client_report_tu_summaries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_id');
             $table->foreign('client_report_id')->references('id')->on('client_reports');

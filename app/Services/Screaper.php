@@ -47,9 +47,10 @@ class Screaper
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
 //        dd($command);
-//        $output = shell_exec($command);
-        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
+        $output = shell_exec($command);
         var_dump($output);
+        dd('asd');
+        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
         dd($output);
     }
@@ -591,12 +592,11 @@ class Screaper
             foreach ($json['bankcrupcy_information'] as $publicRecords) {
 
                 $dataPublicRecords[] = [
-                    'client_report_id' => 'id',
                     'is_dispute' => null,
                     'under_dispute' => null,
                     'negative_item' => null,
-                    'date_filed' => $publicRecords['date_filled'],
-                    'date_resolved' => $publicRecords['date_resolved'],
+                    'date_filed' => \DateTime::createFromFormat("m/Y", $publicRecords['date_filled'])->format("Y-m-d"),
+                    'date_resolved' => \DateTime::createFromFormat("m/Y", $publicRecords['date_resolved'])->format("Y-m-d"),
                     'responsibility' => $publicRecords['responsibility'],
                     'claim_amount' => $publicRecords['claim_amount'],
                     'liability_amount' => $publicRecords['liability'],
@@ -614,10 +614,11 @@ class Screaper
                     'reinvestigation' => $publicRecords['reinvestigation'],
                     'plaintiff' => null,
                     'status' => $publicRecords['value_status'],
-                    'on_record_until' => $publicRecords['onrecord_until'],
+                    'on_record_until' => \DateTime::createFromFormat("M Y", $publicRecords['onrecord_until'])->format("Y-m-d"),
                 ];
             }
 
+//            $clientReport->clientExPublicRecords()->createMany($dataPublicRecords);
         }
         //potentially statements
         if(!empty($json['potentially_statements'])){
@@ -641,7 +642,6 @@ class Screaper
                     $recentBalancePayAmount = null;
                 }
 
-//                dd($negativeAccount);
                 $dataAccount = [
                     'client_report_id' => 'id',
                     'is_dispute' => null,
@@ -678,8 +678,7 @@ class Screaper
                     'status' => $negativeAccount['value_status'],
                     'statement' => $negativeAccount['statement'],
                     'reinvestigation' => null,
-                    "positive" => true,
-                    "secondary_agency_name_as_title" => $negativeAccount['agency_name'],
+                    "secondary_agency_name" => $negativeAccount['agency_name'],
                     "secondary_agency_id" => $negativeAccount['agency_id'],
                     "on_record_until" => $negativeAccount['on_record_until'],
                     "complianceCode" => $negativeAccount['on_record_until'],
@@ -723,8 +722,8 @@ class Screaper
                                     'experian_account_id' => 'id',
                                     "date" =>str_replace(':','',$matachesNotEmpty[0]),
                                     "amount" => isset($nextValue[0])?trim($nextValue[0]):null,
-                                    "date_PR" => isset($nextValue[1])?trim($nextValue[1]):null,
-                                    "amount_Sch" => isset($nextValue[2])?trim($nextValue[2]):null,
+                                    "date_pr" => isset($nextValue[1])?trim($nextValue[1]):null,
+                                    "amount_sch" => isset($nextValue[2])?trim($nextValue[2]):null,
                                     "amount_act" => isset($nextValue[3])?trim($nextValue[3]):null
                                 ];
                             }else{
@@ -738,10 +737,10 @@ class Screaper
                 }
             }
         }
+
         //good standing accounts information
         if (!empty($json['goodstanding_accountsinformation'])) {
             foreach ($json['goodstanding_accountsinformation'] as $positiveAccount) {
-//                dd($positiveAccount);
 
                 if (!empty($positiveAccount['recent_balance']) && $positiveAccount['recent_balance'] != "Not reported") {
                     $regBalance = '/\$[0-9\,]{1,}/im';
@@ -760,21 +759,21 @@ class Screaper
                     $recentBalanceAmount = null;
                     $recentBalancePayAmount = null;
                 }
+
                 $dataAccount = [
-                    'client_report_id' => 'id',
                     'is_dispute' => null,
                     'under_dispute' => null,
                     'negative_item' => false,
-                    'opened_date' => $positiveAccount['date_opened'],
-                    'report_started_date' => $positiveAccount['first_reported'],
-                    'status_date' => $positiveAccount['date_status'],
+                    'opened_date' => \DateTime::createFromFormat("m/Y", $positiveAccount['date_opened'])->format("Y-m-d"),
+                    'report_started_date' => \DateTime::createFromFormat("m/Y", $positiveAccount['first_reported'])->format("Y-m-d"),
+                    'status_date' => \DateTime::createFromFormat("m/Y", $positiveAccount['date_status'])->format("Y-m-d"),
                     'last_reported_date' => null,
                     'type' => $positiveAccount['account_type'],
                     'classification' => null,
                     'term' => $positiveAccount['term'],
                     'monthly_payment' => $positiveAccount['monthly_payment'],
                     'responsibility' => $positiveAccount['responsibilty'],
-                    'credit_limit_or_original_amount' => $positiveAccount['credit_limit'],
+                    'credit_limit' => $positiveAccount['credit_limit'],
                     'original_balance' => null,
                     'high_balance' => $positiveAccount['high_balance'],
                     'source_name' => $positiveAccount['account_name'],
@@ -790,21 +789,20 @@ class Screaper
                     'sold_to' => $positiveAccount['sold_to'],
                     'purchased_from' => $positiveAccount['purchased_from'],
                     'mortgage_id' => $positiveAccount['mortage_id'],
-
                     'recent_balance_date' => $recentBalanceDate,
                     'recent_balance_amount' => $recentBalanceAmount,
                     'recent_balance_pay_amount' => $recentBalancePayAmount,
-
                     'status' => $positiveAccount['value_status'],
                     'statement' => $positiveAccount['statement'],
                     'reinvestigation' => null,
-                    "positive" => true,
-                    "secondary_agency_name_as_title" => $positiveAccount['agency_name'],
+                    "secondary_agency_name" => $positiveAccount['agency_name'],
                     "secondary_agency_id" => $positiveAccount['agency_id'],
                     "on_record_until" => $positiveAccount['on_record_until'],
                     "complianceCode" => $positiveAccount['on_record_until'],
                     "subscriberStatement" => null,
                 ];
+                $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
+                dd($exAccount);
                 $dataAccountPayStates = [];
                 $dataAccountLimitHighBalances = [];
                 $dataAccountBalanceHistories = [];
