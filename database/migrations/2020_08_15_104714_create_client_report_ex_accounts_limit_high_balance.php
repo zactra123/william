@@ -13,7 +13,7 @@ class CreateClientReportExAccountsLimitHighBalance extends Migration
      */
     public function up()
     {
-        Schema::create('client_report_ex_accounts_limit_high_balance', function (Blueprint $table) {
+        Schema::create('client_report_ex_accounts_limit_high_balances', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_ex_account_id');
             $table->foreign('client_report_ex_account_id', 'ex_acc_id_hb')->references('id')->on('client_report_ex_accounts');
@@ -29,6 +29,6 @@ class CreateClientReportExAccountsLimitHighBalance extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_report_ex_accounts_limit_high_balance');
+        Schema::dropIfExists('client_report_ex_accounts_limit_high_balances');
     }
 }

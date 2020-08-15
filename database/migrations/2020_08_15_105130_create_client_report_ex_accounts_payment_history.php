@@ -13,7 +13,7 @@ class CreateClientReportExAccountsPaymentHistory extends Migration
      */
     public function up()
     {
-        Schema::create('client_report_ex_accounts_payment_history', function (Blueprint $table) {
+        Schema::create('client_report_ex_accounts_payment_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_ex_account_id');
             $table->foreign('client_report_ex_account_id', 'ex_acc_id_ph')->references('id')->on('client_report_ex_accounts');
@@ -32,6 +32,6 @@ class CreateClientReportExAccountsPaymentHistory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_report_ex_accounts_payment_history');
+        Schema::dropIfExists('client_report_ex_accounts_payment_histories');
     }
 }

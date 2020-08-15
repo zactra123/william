@@ -13,17 +13,15 @@ class CreateClientReportTuAccountsHistories extends Migration
      */
     public function up()
     {
-        Schema::create('client_report_tu_accounts_histories', function (Blueprint $table) {
-            Schema::create('client_report_tu_public_records', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('client_report_tu_account_id');
-                $table->foreign('client_report_tu_account_id')->references('id')->on('client_report_tu_accounts');
-                $table->string('month')->nullable();
-                $table->string('year')->nullable();
-                $table->string('value')->nullable();
+        Schema::create('client_report_tu_accounts_payment_histories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('client_report_tu_account_id');
+            $table->foreign('client_report_tu_account_id', 'cr_tu_acc_id_ah')->references('id')->on('client_report_tu_accounts');
+            $table->string('month')->nullable();
+            $table->string('year')->nullable();
+            $table->string('value')->nullable();
 
-                $table->timestamps();
-            });
+            $table->timestamps();
         });
     }
 
@@ -34,6 +32,6 @@ class CreateClientReportTuAccountsHistories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_report_tu_accounts_histories');
+        Schema::dropIfExists('client_report_tu_accounts_payment_histories');
     }
 }
