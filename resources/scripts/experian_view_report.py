@@ -318,7 +318,11 @@ class experianViewReport():
                 except:
                     claim_amount = 'none'
 
-                # print('Claim-->',claim_amount)
+                try:
+                    in_dispunte = ('in-dispute' in i.get('class'))
+                except:
+                    in_dispunte = False
+
                 try:
                     date_filled = i.find(
                         'div', attrs={'class': 'val date-filed'}).text.strip()
@@ -383,7 +387,7 @@ class experianViewReport():
                     date_resolved = 'none'
 
                 try:
-                   onrecord_until = i.find(
+                   reinvestigation = i.find(
                         'div', attrs={'class': 'val reinvestigation'}).text.strip()
                 except:
                     reinvestigation = 'none'
@@ -398,19 +402,18 @@ class experianViewReport():
                     "item_name": item_name,
                     "item_number": item_number,
                     "claim_amount": claim_amount,
+                    "under_dispunte": in_dispunte,
                     "date_filled": date_filled,
                     "value_status": val_status, 
                     'address': address,
                     'liability': liability,
+                    'date_resolved': date_resolved, 
                     'onrecord_until': onrecord_until, 
                     'reinvestigation': reinvestigation, 
-                    'date_resolved': date_resolved, 
                     'responsibility': responsibility_b
                 })
 
         except:
-            
-            print('Error in Item Block', sys.exc_info())
             pass
 
         #  Start Of Negative------------------------------------------------------------------------------------
@@ -429,6 +432,11 @@ class experianViewReport():
                         'div', attrs={'class': 'val account-number'}).text.strip()
                 except:
                     acc_no = 'none'
+
+                try:
+                    in_dispunte = ('in-dispute' in i.get('class'))
+                except:
+                    in_dispunte = False
 
                 try:
                     recent_bal = i.find(
@@ -640,12 +648,6 @@ class experianViewReport():
                     sold_to = 'none'
 
                 try:
-                    status_updated = i.find('div', attrs={
-                        'class': 'val status-date'}).text.replace("\n", " ").replace("\u00a0", " ").strip()
-                except:
-                    status_updated = 'none'
-
-                try:
                     mortage_id = i.find('div', attrs={
                         'class': 'val mortgageId'}).text.replace("\n", " ").replace("\u00a0", " ").strip()
                 except:
@@ -675,6 +677,7 @@ class experianViewReport():
                     "account_number": acc_no,
                     "recent_balance": recent_bal, 
                     "date_opened": date_opened,
+                    "under_dispunte": in_dispunte,
                     "responsible_names":responsible_names,
                     "value_status": val_status,                        
                     "address": address6,
@@ -935,12 +938,6 @@ class experianViewReport():
                     recent_payments = []
 
                 try:
-                    status_updated = i.find('div', attrs={
-                        'class': 'val status-date'}).text.replace("\n", " ").replace("\u00a0", " ").strip()
-                except:
-                    status_updated = 'none'
-
-                try:
                     mortage_id = i.find('div', attrs={
                         'class': 'val mortgageId'}).text.replace("\n", " ").replace("\u00a0", " ").strip()
                 except:
@@ -971,6 +968,7 @@ class experianViewReport():
                     "account_number": acc_no,
                     "recent_balance": recent_bal,
                     "date_opened": date_opened,
+                    "under_dispunte": False,
                     "responsible_names": responsible_names,
                     "value_status": val_status,
                     "address": address6,
@@ -1016,12 +1014,13 @@ class experianViewReport():
                     acc_name = i.find("div", attrs={"class": "val account-name"}).text.strip()
                 except:
                     continue 
-                # print(acc_name)
+                date_of_request = []
                 try:
-                    date_of_request = i.find('div', attrs={'class': 'val date-of-request'}).find_previous(
-                        "div", attrs={"class": "grid"}).text.replace("\n", " ").strip()
+                    date_of_requests_block = i.find( "div", attrs={"class": "col-info-2"})
+                    for v in date_of_requests_block.find_all('div', attrs={'class': 'date-of-request'}):
+                        date_of_request.append(v.text.strip())
                 except:
-                    date_of_request = 'none'
+                    pass
                 # print(date_of_request)
 
                 try:
@@ -1089,11 +1088,13 @@ class experianViewReport():
                 except:
                     continue
                 # print(acc_name)
+                date_of_request = []
                 try:
-                    date_of_request = i.find('div', attrs={'class': 'val date-of-request'}).find_previous(
-                        "div", attrs={"class": "grid"}).text.replace("\n", " ").strip()
+                    date_of_requests_block = i.find( "div", attrs={"class": "col-info-2"})
+                    for v in date_of_requests_block.find_all('div', attrs={'class': 'date-of-request'}):
+                        date_of_request.append(v.text.strip())
                 except:
-                    date_of_request = 'none'
+                    pass
 
                 # print(date_of_request)
                 
