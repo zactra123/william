@@ -16,7 +16,7 @@ class CreateClientReportExAccountsPaymentHistory extends Migration
         Schema::create('client_report_ex_accounts_payment_history', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_ex_account_id');
-            $table->foreign('client_report_ex_account_id')->references('id')->on('client_report_ex_accounts');
+            $table->foreign('client_report_ex_account_id', 'ex_acc_id_ph')->references('id')->on('client_report_ex_accounts');
             $table->string('month')->nullable();
             $table->string('day')->nullable();
             $table->string('year')->nullable();

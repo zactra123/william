@@ -2,45 +2,55 @@
 
 namespace App\Services;
 use App\User;
+use App\ClientReport;
 
 class Screaper
 {
-    public function transunion_dispute($client_id = null, $arguments = [])
+    protected $client_id;
+
+    public function __construct($id = null)
+    {
+     $this->client_id = $id;
+    }
+
+    public function transunion_dispute($arguments = [])
     {
 //        if ($client_id) {
 //            $cilient = User::find($client_id);
 //            $username = $client->credentials
 //            $password =
 //        }
-        array_push($arguments, $client_id);
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
         $output = shell_exec($command);
         dd($output);
     }
 
-    public function trnsunion_membership($client_id = null, $arguments = [])
+    public function trnsunion_membership( $arguments = [])
     {
-        array_push($arguments, $client_id);
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $output = shell_exec($command);
-        dd($output);
+        $this->prepare_transunion_membership_data(str_replace('\'', '"',$output));
     }
 
-    public function experian_login($client_id = null, $arguments = [])
+    public function experian_login($arguments = [])
     {
-        array_push($arguments, $client_id);
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
-//        dd($command);
         $output = shell_exec($command);
         dd($output);
     }
 
-    public function experian_view_report($client_id = null, $arguments = [])
+    public function experian_view_report($arguments = [])
     {
-        array_push($arguments, $client_id);
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
 //        dd($command);
-        $output = shell_exec($command);
+//        $output = shell_exec($command);
+        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
+        var_dump($output);
+        $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
         dd($output);
     }
 
@@ -53,13 +63,12 @@ class Screaper
         return $command;
     }
 
-    public function experian_login()
+    public function prepare_experian_login_data()
     {
 
 //        $path = public_path() . "/Data_ARUTYUN.json";
         $path = public_path() . "/Data_TIGRAN,.json";
         $json = json_decode(file_get_contents($path), true);
-        $user_id = 1;
         $type = 'EX_LOG';
 
         $reportNumber = $json['id']?$json['id']:null;
@@ -71,7 +80,7 @@ class Screaper
         $dob = isset($json['consumerDOB']['dateOfBirth'])?$json['consumerDOB']['dateOfBirth']:null;
 
         $dataClientReports = [
-            'user_id' => $user_id,
+            'user_id' => $this->client_id,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => null,
@@ -467,13 +476,18 @@ class Screaper
 
     }
 
-    public function ex_view_report()
+    public function prepare_experian_view_report_data($output)
     {
-//        $path = storage_path()  . "/GCHESHMEJYAN_Dispute2.json";
-        $path = storage_path()  . "/report/report_data_2020_08_11_01_08_53.json";
-//        $path = storage_path()  . "/report/report_data_2020_08_11_01_32_18.json";
+        $data = json_decode($output, true);
+
+        if($data['status'] != 'success') {
+
+            return false;
+        }
+
+        $path = storage_path($data["report_filepath"]);
+
         $json = json_decode(file_get_contents($path), true);
-        $user_id = 1;
         $type = 'EX_VIEW';
 
         $dob = !empty($json['other_personal_information']) && isset($json['other_personal_information'][0]['year of birth']) ?
@@ -483,7 +497,7 @@ class Screaper
             $json['personal_infomation'][0]['name'] : null;
 
         $dataClientReports = [
-            'user_id' => $user_id,
+            'user_id' => $this->client_id,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => null,
@@ -494,6 +508,9 @@ class Screaper
             'current_phone' => null,
             'file_path' => $path
         ];
+//        $clientReport = ClientReport::create($dataClientReports);
+        $clientReport = ClientReport::find(1);
+
         $dataName = [];
         $dataAddress = [];
         $dataEmployer = [];
@@ -503,22 +520,21 @@ class Screaper
         if (!empty($json['personal_infomation'])) {
             foreach ($json['personal_infomation'] as $nameInfo) {
                 $dataName[] = [
-                    'client_report_id' => 'id',
                     'full_name' => $nameInfo['name'],
                     'nin' => $nameInfo['name_identification_number']
                 ];
             }
+//            $clientReport->clientNames()->createMany($dataName);
         }
+
         //address
         if (!empty($json['address'])) {
-
             foreach ($json['address'] as $infoAddress) {
                 $address = $this->splitAddress($infoAddress['address']);
                 $type = $infoAddress['residence_type'];
                 $ain = $infoAddress['address_identification_number'];
                 $geographicalCode = $infoAddress['geographical_code'];
                 $dataAddress[] = [
-                    'client_report_id' => 'id',
                     'current' => 0,
                     'street' => $address['street'],
                     'city' => $address['city'],
@@ -530,13 +546,14 @@ class Screaper
                     'date_reported'=>null
                 ];
             }
+
+//            $clientReport->clientAddresses()->createMany($dataAddress);
         }
         //other_personal_information
         if (!empty($json['other_personal_information'])) {
             foreach ($json['other_personal_information'] as $phoneEmployer) {
                 if (isset($phoneEmployer['telephone_number'])) {
                     $dataPhone[] = [
-                        'client_report_id' => 'id',
                         'current' => 0,
                         'number' => $phoneEmployer['telephone_number'],
                         'type' => $phoneEmployer['telephone_type']
@@ -547,7 +564,6 @@ class Screaper
                     $address = $this->splitAddress($phoneEmployer['address']);
 
                     $dataEmployer[] = [
-                        'client_report_id' => 'id',
                         'current' => 0,
                         'name' => $phoneEmployer['employer'],
                         'occupation' => null,
@@ -560,11 +576,19 @@ class Screaper
                     ];
                 }
             }
+
+            if (!empty($dataPhone)) {
+//                $clientReport->ClientPhones()->createMany($dataPhone);
+            }
+
+            if (!empty($dataEmployer)) {
+//                $clientReport->clientEmployers()->createMany($dataEmployer);
+            }
         }
+
         //bankcrupcy_information
         if (!empty($json['bankcrupcy_information'])) {
             foreach ($json['bankcrupcy_information'] as $publicRecords) {
-
 
                 $dataPublicRecords[] = [
                     'client_report_id' => 'id',
@@ -904,12 +928,11 @@ class Screaper
         }
     }
 
-    public function transUnion()
+    public function prepare_transunion_dispute_data()
     {
 //        $path = storage_path()  . "/report/alisa_khachatryan.json";
         $path = storage_path()  . "/report/Transunion_Experion_Report_EDWARD.json";
         $json = json_decode(file_get_contents($path), true);
-        $user_id = 1;
         $type = 'TU_DIS';
         $single = $json['Reports']['SINGLE_REPORT_TU'];
         $full_name = $single['Name']["TUC"];
@@ -921,7 +944,7 @@ class Screaper
         $currentPhone = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["CurrentPhone"];
 
         $dataClientReports = [
-            'user_id' => $user_id,
+            'user_id' => $this->client_id,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => $ssn,
@@ -932,7 +955,6 @@ class Screaper
             'current_phone' => $currentPhone,
             'file_path' => $path
         ];
-        //pahel es datan vercnel id
 
         $dataName = [];
         $aka = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["AKA"];
@@ -1207,12 +1229,17 @@ class Screaper
 
     }
 
-    public function transUnionMember()
+    public function prepare_transunion_membership_data($output)
     {
-//        $path = storage_path()  . "/report/alisa_khachatryan.json";
-        $path = storage_path()  . "/report/maga.json";
+        $data = json_decode($output, true);
+        if ($data["status"] != "success") {
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
+            // @Todo: integrenq, email, sms ashxatoxnerin hamapatasxan case-eri depqum
+            return false;
+        }
+
+        $path = storage_path($data["report_filepath"]);
         $json = json_decode(file_get_contents($path), true);
-        $user_id = 1;
         $type = 'TU_MEM';
 
         $single = $json['Reports']['SINGLE_REPORT_TU'];
@@ -1225,7 +1252,7 @@ class Screaper
         $currentPhone = null;
 
         $dataClientReports = [
-            'user_id' => $user_id,
+            'user_id' => $this->client_id,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => $ssn,
@@ -1250,7 +1277,6 @@ class Screaper
                 ] ;
             }
         }
-//        dd($single);
 
         $dataAddress = [];
         $address = $single['NEW-CurrentAddr']['TUC'];
@@ -1276,7 +1302,7 @@ class Screaper
             {
                 $dataAddress[] = [
                     'client_report_id' => 'id',
-                    'current'=> 1,
+                    'current'=> 0,
                     'street' => $infoAddress['street'],
                     'city' => $infoAddress['city'],
                     'state'=>$infoAddress['state'],
@@ -1289,7 +1315,6 @@ class Screaper
             }
         }
 
-//        dd($json);
         $currentEmployer =  $single['NEW-Employer']["TUC"];
         $previousEmployer =  $single['NEW-PreviousEmployer']["TUC"];
         $dataEmployer = [];
@@ -1387,7 +1412,6 @@ class Screaper
         }
 
         $dataAccounts = [];
-//        dd($single['Accounts']);
         foreach ($single['Accounts'] as $type =>$infoAccounts){
             if(!empty($infoAccounts)){
                 foreach($infoAccounts as $accounts){
@@ -1520,7 +1544,7 @@ class Screaper
 
         }
 
-
+        dd($dataAccount, $dataClientReports, $dataInquiry, $dataAddress, $dataEmployer, $dataName, $dataPublicRecord, $dataSummery);
         dd( 'ok');
 
     }

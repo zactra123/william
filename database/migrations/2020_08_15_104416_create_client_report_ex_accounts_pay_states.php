@@ -16,7 +16,7 @@ class CreateClientReportExAccountsPayStates extends Migration
         Schema::create('client_report_ex_accounts_pay_states', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_ex_account_id');
-            $table->foreign('client_report_ex_account_id')->references('id')->on('client_report_ex_accounts');
+            $table->foreign('client_report_ex_account_id', 'ex_acc_id_ps')->references('id')->on('client_report_ex_accounts');
             $table->text('name')->nullable();
             $table->timestamps();
         });

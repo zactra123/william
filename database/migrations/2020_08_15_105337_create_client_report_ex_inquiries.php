@@ -17,7 +17,6 @@ class CreateClientReportExInquiries extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_id');
             $table->foreign('client_report_id')->references('id')->on('client_reports');
-            $table->string('current')->nullable();
             $table->string('is_dispute')->nullable();
             $table->string('under_dispute')->nullable();
             $table->string('negative_item')->nullable();

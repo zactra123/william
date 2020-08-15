@@ -16,7 +16,7 @@ class CreateClientReportExInquiriesDates extends Migration
         Schema::create('client_report_ex_inquiries_dates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_report_ex_inquiry_id');
-            $table->foreign('client_report_ex_inquiry_id')->references('id')->on('client_report_ex_inquiries');
+            $table->foreign('client_report_ex_inquiry_id', 'ex_inq_id_dates')->references('id')->on('client_report_ex_inquiries');
             $table->date('date')->nullable();
             $table->timestamps();
         });
