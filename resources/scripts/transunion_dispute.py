@@ -57,12 +57,12 @@ class transunionDispute:
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(
-            executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
-            # executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
+            # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
+            executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
 
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
-        json_directory = 'reports/' + self.db_id + '/transunion_dispute'
+        json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
         # create directory if not exist
         if not os.path.exists(json_directory):
             os.makedirs(json_directory)
