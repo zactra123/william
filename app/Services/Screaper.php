@@ -248,11 +248,11 @@ class Screaper
                     'statement' => $infoNegativeTrade['statement'],
                     'reinvestigation' => $infoNegativeTrade['reinvestigation'],
                     "positive" => $infoNegativeTrade['positive'],
-                    "secondary_agency_name_as_title" => $infoNegativeTrade['secondaryAgencyNameAsTitle'],
+                    "secondary_agency_name" => $infoNegativeTrade['secondaryAgencyNameAsTitle'],
                     "secondary_agency_id" => $infoNegativeTrade['secondaryAgencyId'],
                     "on_record_until" => $infoNegativeTrade['onRecordUntil'],
-                    "complianceCode" => $infoNegativeTrade['complianceCode'],
-                    "subscriberStatement" => $infoNegativeTrade['subscriberStatement'],
+                    "compliance_code" => $infoNegativeTrade['complianceCode'],
+                    "subscriber_statement" => $infoNegativeTrade['subscriberStatement'],
                 ];
 
                 $dataAccountPayStates = [];
@@ -265,7 +265,6 @@ class Screaper
                             'name' => $payState
                         ];
                     }
-
                 }
 
                 if (!empty($infoNegativeTrade['limitHighBalances'])) {
@@ -275,7 +274,6 @@ class Screaper
                             'name' => $limitHighBalances
                         ];
                     }
-
                 }
                 if (!empty($infoNegativeTrade['balanceHistories'])) {
                     foreach ($infoNegativeTrade['balanceHistories'] as $balanceHis) {
@@ -283,14 +281,11 @@ class Screaper
                             'experian_account_id' => 'id',
                             "date" => $balanceHis['date'],
                             "amount" => $balanceHis['amount'],
-                            "date_PR" => $balanceHis['datePR'],
-                            "amount_Sch" => $balanceHis['amountSch'],
+                            "date_pr" => $balanceHis['datePR'],
+                            "amount_sch" => $balanceHis['amountSch'],
                             "amount_act" => $balanceHis['amountAct']
-
                         ];
-
                     }
-
                 }
 
                 if (!empty($infoNegativeTrade['paymentHistories'])) {
@@ -301,11 +296,8 @@ class Screaper
                             "day" => $paymentHistories['day'],
                             "year" => $paymentHistories['year'],
                             "status" => $paymentHistories['status'],
-
                         ];
-
                     }
-
                 }
             }
         }
@@ -349,11 +341,11 @@ class Screaper
                     'statement' => $infoPositiveTrade['statement'],
                     'reinvestigation' => $infoPositiveTrade['reinvestigation'],
                     "positive" => $infoPositiveTrade['positive'],
-                    "secondary_agency_name_as_title" => $infoPositiveTrade['secondaryAgencyNameAsTitle'],
+                    "secondary_agency_name" => $infoPositiveTrade['secondaryAgencyNameAsTitle'],
                     "secondary_agency_id" => $infoPositiveTrade['secondaryAgencyId'],
                     "on_record_until" => $infoPositiveTrade['onRecordUntil'],
-                    "complianceCode" => $infoPositiveTrade['complianceCode'],
-                    "subscriberStatement" => $infoPositiveTrade['subscriberStatement'],
+                    "compliance_code" => $infoPositiveTrade['complianceCode'],
+                    "subscriber_statement" => $infoPositiveTrade['subscriberStatement'],
                 ];
                 $dataAccountPayStates = [];
                 $dataAccountLimitHighBalances = [];
@@ -365,7 +357,6 @@ class Screaper
                             'name' => $payState
                         ];
                     }
-
                 }
 
                 if (!empty($infoPositiveTrade['limitHighBalances'])) {
@@ -375,7 +366,6 @@ class Screaper
                             'name' => $limitHighBalances
                         ];
                     }
-
                 }
                 if (!empty($infoPositiveTrade['balanceHistories'])) {
                     foreach ($infoPositiveTrade['balanceHistories'] as $balanceHis) {
@@ -386,11 +376,8 @@ class Screaper
                             "date_pr" => $balanceHis['datePR'],
                             "amount_sch" => $balanceHis['amountSch'],
                             "amount_act" => $balanceHis['amountAct']
-
                         ];
-
                     }
-
                 }
 
                 if (!empty($infoPositiveTrade['paymentHistories'])) {
@@ -401,12 +388,8 @@ class Screaper
                             "day" => $paymentHistories['day'],
                             "year" => $paymentHistories['year'],
                             "status" => $paymentHistories['status'],
-
                         ];
-
                     }
-
-
                 }
             }
         }
@@ -681,8 +664,8 @@ class Screaper
                     "secondary_agency_name" => $negativeAccount['agency_name'],
                     "secondary_agency_id" => $negativeAccount['agency_id'],
                     "on_record_until" => $negativeAccount['on_record_until'],
-                    "complianceCode" => $negativeAccount['on_record_until'],
-                    "subscriberStatement" => null,
+                    "compliance_code" => $negativeAccount['on_record_until'],
+                    "subscriber_statement" => null,
                 ];
                 $dataAccountPayStates = [];
                 $dataAccountLimitHighBalances = [];
@@ -798,8 +781,8 @@ class Screaper
                     "secondary_agency_name" => $positiveAccount['agency_name'],
                     "secondary_agency_id" => $positiveAccount['agency_id'],
                     "on_record_until" => $positiveAccount['on_record_until'],
-                    "complianceCode" => $positiveAccount['on_record_until'],
-                    "subscriberStatement" => null,
+                    "compliance_code" => $positiveAccount['on_record_until'],
+                    "subscriber_statement" => null,
                 ];
                 $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
                 dd($exAccount);
@@ -843,8 +826,8 @@ class Screaper
                                     'experian_account_id' => 'id',
                                     "date" =>str_replace(':','',$matachesNotEmpty[0]),
                                     "amount" => isset($nextValue[0])?trim($nextValue[0]):null,
-                                    "date_PR" => isset($nextValue[1])?trim($nextValue[1]):null,
-                                    "amount_Sch" => isset($nextValue[2])?trim($nextValue[2]):null,
+                                    "date_pr" => isset($nextValue[1])?trim($nextValue[1]):null,
+                                    "amount_sch" => isset($nextValue[2])?trim($nextValue[2]):null,
                                     "amount_act" => isset($nextValue[3])?trim($nextValue[3]):null
                                 ];
                             }else{

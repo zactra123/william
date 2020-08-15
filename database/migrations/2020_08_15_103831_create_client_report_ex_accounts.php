@@ -30,7 +30,7 @@ class CreateClientReportExAccounts extends Migration
             $table->string('monthly_payment')->nullable();
             $table->string('responsibility')->nullable();
             $table->string('credit_limit')->nullable();
-            $table->string('original_balance')->nullable();
+            $table->string('credit_limit_label')->nullable();
             $table->string('high_balance')->nullable();
             $table->string('source_name')->nullable();
             $table->string('source_id')->nullable();
@@ -55,8 +55,8 @@ class CreateClientReportExAccounts extends Migration
             $table->string('secondary_agency_name')->nullable();
             $table->string('secondary_agency_id')->nullable();
             $table->string('on_record_until')->nullable();
-            $table->string('complianceCode')->nullable();
-            $table->string('subscriberStatement')->nullable();
+            $table->string('compliance_code')->nullable();
+            $table->string('subscriber_statement')->nullable();
             $table->timestamps();
         });
     }
