@@ -5,11 +5,10 @@ import xlrd, json
 import time,sys
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 from colorama import init
-from termcolor import colored
-from PIL import Image
-from fpdf import FPDF
-import img2pdf
 import os
 from os import path
 import datetime
@@ -26,7 +25,7 @@ class transUnionMebership:
 
         options = webdriver.FirefoxOptions()
         options.add_argument("--disable-gpu")
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         fp = webdriver.FirefoxProfile()
         fp.set_preference("browser.download.folderList", 1)
         fp.set_preference("browser.helperApps.alwaysAsk.force", False)
@@ -49,6 +48,7 @@ class transUnionMebership:
         self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
         self.filepath_report = self.json_directory +'/report_data_'+self.filename  + '.json'
         self.filepath_report1 = self.json_directory +'/report_data1_'+self.filename + '.json'
+
     def call(self):
         try:
             msg = self.login()
@@ -113,12 +113,13 @@ class transUnionMebership:
                 'message': 'Unable to Verify Identity',
             }
 
-
         try:
             self.driver.find_element_by_xpath(
                 '//*[@id="bodyContent"]/div/div[2]/div/div/div[2]/div[1]/button'
             ).click()
-            time.sleep(25)
+            
+            WebDriverWait(self.driver, 30).until(EC.url_to_be('https://membership.tui.transunion.com/tucm/dashboard.page'))
+            WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[6]/form/div[2]/div/div[2]/div/a')))
             self.driver.find_element_by_xpath('/html/body/div[6]/form/div[2]/div/div[2]/div/a').click()
             time.sleep(3)
         except:
@@ -138,12 +139,11 @@ class transUnionMebership:
             time.sleep(1)
 
             self.driver.find_element_by_id('confirmRefreshButton').click()
-            time.sleep(60)
         except:
-            # print(sys.exc_info())
             pass
 
         try:
+            WebDriverWait(self.driver, 60).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div/div/section[3]/div/div/button')))
             self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/form/div/div/section[3]/div/div/button').click()
             time.sleep(15)
         except:
