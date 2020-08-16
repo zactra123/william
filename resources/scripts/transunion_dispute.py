@@ -89,7 +89,7 @@ class transunionDispute:
             if msg == 're_login':
                 msg = self.login()
                 msg = self.getDisputes()
-                if msg == 're_login'
+                if msg == 're_login':
                     raise "Can't login: PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE."
 
             self.print_pdf()
@@ -98,7 +98,7 @@ class transunionDispute:
                 'status': 'success',
                 'username': self.username,
                 'password': self.password,
-                'data_path': self.filepath_report
+                'report_filepath': self.filepath_report
             }
         except:
             return {
@@ -828,11 +828,11 @@ class transunionDispute:
                 'code': status.HTTP_404_NOT_FOUND,
                 'message': 'Online dispute currently not available',
             }
-		elif 'Online dispute is not available at this time' in soup.text.strip():
+        elif 'Online dispute is not available at this time' in soup.text.strip():
 
             raise NameError('error','Online dispute is not available at this time.')
 
-		elif 'account has been temporarily suspended' in soup.text.strip():
+        elif 'account has been temporarily suspended' in soup.text.strip():
             raise {
                 'status': 'error',
                 'code': status.HTTP_403_FORBIDDEN,
