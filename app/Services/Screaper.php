@@ -22,11 +22,11 @@ class Screaper
 //        }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
-//        $output = shell_exec($command);
-        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
-        var_dump($output);
+        $output = shell_exec($command);
+//        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
+//        var_dump($output);
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
-        dd($output);
+
     }
 
     public function trnsunion_membership( $arguments = [])
@@ -42,20 +42,17 @@ class Screaper
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $output = shell_exec($command);
-        dd($output);
+        $this->prepare_experian_login_data(str_replace('\'', '"',$output));
+
     }
 
     public function experian_view_report($arguments = [])
     {
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
-//        dd($command);
         $output = shell_exec($command);
-        var_dump($output);
-        dd('asd');
-        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
+//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
-        dd($output);
     }
 
 
@@ -67,13 +64,19 @@ class Screaper
         return $command;
     }
 
-    public function prepare_experian_login_data()
+    public function prepare_experian_login_data($output)
     {
+        $data = json_decode($output, true);
+        if($data['status'] != 'success') {
 
-//        $path = public_path() . "/Data_ARUTYUN.json";
-        $path = public_path() . "/Data_TIGRAN,.json";
+            return false;
+        }
+
+        $path = storage_path($data["report_filepath"]);
+
         $json = json_decode(file_get_contents($path), true);
         $type = 'EX_LOG';
+
 
         $reportNumber = $json['id']?$json['id']:null;
         $reportDate = $json['date']?$json['date']:null;
@@ -95,9 +98,12 @@ class Screaper
             'current_phone' => null,
             'file_path' => $path
         ];
+        $clientReport = ClientReport::create($dataClientReports);
 
-        $dataName = [];
+
+
         if(!empty($json['consumerInfoNames'])){
+            $dataName = [];
             foreach($json['consumerInfoNames'] as $info){
                 $fullName = $info['name']['firstName'];
                 $fullName = $info['name']['middleName'] != "" ? $fullName. ' '. $info['name']['middleName'] :$fullName;
@@ -109,27 +115,29 @@ class Screaper
                     'nin'=> $nin
                 ] ;
             }
+            $clientReport->clientNames()->createMany($dataName);
+
         }
 
-        $dataPhone = [];
         if(!empty($json['consumerInfoPhones'])){
+            $dataPhone = [];
             foreach($json['consumerInfoPhones'] as $infoPhone)
             {
                 $phone = $infoPhone['telephone']['number'];
                 $type = $infoPhone['telephone']['tail'];
                 $dataPhone[] = [
-                    'client_report_id' => 'id',
                     'current'=> 0,
                     'number'=> $phone,
                     'type'=> $type
                 ] ;
             }
+            $clientReport->ClientPhones()->createMany($dataPhone);
+
         }
 
-        $dataAddress = [];
         if(!empty($json['consumerInfoAddresses'])){
-            foreach($json['consumerInfoAddresses'] as $infoAddress)
-            {
+            $dataAddress = [];
+            foreach($json['consumerInfoAddresses'] as $infoAddress){
                 $street = $infoAddress['address']['street'];
                 $city = $infoAddress['address']['city'];
                 $state = $infoAddress['address']['state'];
@@ -138,7 +146,6 @@ class Screaper
                 $ain = $infoAddress['ain'];
 
                 $dataAddress[] = [
-                    'client_report_id' => 'id',
                     'current'=> 0,
                     'street' => $street,
                     'city' => $city,
@@ -150,10 +157,12 @@ class Screaper
                     'date_reported'=>null
                 ] ;
             }
+            $clientReport->clientAddresses()->createMany($dataAddress);
         }
 
-        $dataEmployer = [];
+
         if(!empty($json['consumerInfoEmployers'])){
+            $dataEmployer = [];
             foreach($json['consumerInfoEmployers'] as $infoEmployer)
             {
                 $name = $infoEmployer['name'];
@@ -165,7 +174,6 @@ class Screaper
                 $phoneTail = $infoEmployer['address']['telephone']['tail'];
 
                 $dataEmployer[] = [
-                    'client_report_id' => 'id',
                     'current'=> 0,
                     'name' => $name,
                     'occupation' => null,
@@ -177,17 +185,18 @@ class Screaper
                     'type'=>$phoneTail,
                 ] ;
             }
+            $clientReport->clientEmployers()->createMany($dataEmployer);
+
         }
 
-        $dataPublicRecords = [];
         if(!empty($json['publicRecords'])){
+            $dataPublicRecords = [];
             foreach($json['publicRecords'] as $infoPublicRecords)
             {
                 $dataPublicRecords[] = [
-                    'client_report_id' =>'id',
                     'is_dispute' => $infoPublicRecords['auxData']['isDisputable'],
                     'under_dispute' => $infoPublicRecords['auxData']['underDispute'],
-                    'negative_item' =>$infoPublicRecords['auxData']['negativeItem'],
+                    'negative_item' =>$infoPublicRecords['negativeItem'],
                     'date_filed' => $infoPublicRecords['dateFiled'],
                     'date_resolved' => $infoPublicRecords['dateResolved'],
                     'responsibility' => $infoPublicRecords['responsibility'],
@@ -210,12 +219,13 @@ class Screaper
                     'on_record_until' => $infoPublicRecords['onRecordUntil'],
                 ];
             }
+            $clientReport->clientExPublicRecords()->createMany($dataPublicRecords);
+
         }
 
         if(!empty($json['negativeTradeRecords'])){
             foreach($json['negativeTradeRecords'] as $infoNegativeTrade) {
                 $dataAccount = [
-                    'client_report_id' => 'id',
                     'is_dispute' => $infoNegativeTrade['auxData']['isDisputable'],
                     'under_dispute' => $infoNegativeTrade['auxData']['underDispute'],
                     'negative_item' => true,
@@ -257,43 +267,49 @@ class Screaper
                     "compliance_code" => $infoNegativeTrade['complianceCode'],
                     "subscriber_statement" => $infoNegativeTrade['subscriberStatement'],
                 ];
+                $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
 
-                $dataAccountPayStates = [];
-                $dataAccountLimitHighBalances = [];
-                $dataAccountBalanceHistories = [];
+
                 if (!empty($infoNegativeTrade['payStates'])) {
+                    $dataAccountPayStates = [];
                     foreach ($infoNegativeTrade['payStates'] as $payState) {
                         $dataAccountPayStates[] = [
-                            'experian_account_id' => 'id',
                             'name' => $payState
                         ];
                     }
+                    $exAccount->payStates()->createMany($dataAccountPayStates);
                 }
 
+
                 if (!empty($infoNegativeTrade['limitHighBalances'])) {
+                    $dataAccountLimitHighBalances = [];
                     foreach ($infoNegativeTrade['limitHighBalances'] as $limitHighBalances) {
                         $dataAccountLimitHighBalances[] = [
                             'experian_account_id' => 'id',
                             'name' => $limitHighBalances
                         ];
                     }
+                    $exAccount->limitHighBalance()->createMany($dataAccountLimitHighBalances);
                 }
                 if (!empty($infoNegativeTrade['balanceHistories'])) {
+                    $dataAccountBalanceHistories = [];
                     foreach ($infoNegativeTrade['balanceHistories'] as $balanceHis) {
                         $dataAccountBalanceHistories[] = [
                             'experian_account_id' => 'id',
-                            "date" => $balanceHis['date'],
                             "amount" => $balanceHis['amount'],
                             "date_pr" => $balanceHis['datePR'],
                             "amount_sch" => $balanceHis['amountSch'],
                             "amount_act" => $balanceHis['amountAct']
                         ];
                     }
+                    $exAccount->balanceHistories()->createMany($dataAccountBalanceHistories);
+
                 }
 
                 if (!empty($infoNegativeTrade['paymentHistories'])) {
+                    $dataAccountPaymentHistories = [];
                     foreach ($infoNegativeTrade['paymentHistories'] as $paymentHistories) {
-                        $dataAccountBalanceHistories[] = [
+                        $dataAccountPaymentHistories[] = [
                             'experian_account_id' => 'id',
                             "month" => $paymentHistories['month'],
                             "day" => $paymentHistories['day'],
@@ -301,14 +317,15 @@ class Screaper
                             "status" => $paymentHistories['status'],
                         ];
                     }
+                    $exAccount->paymentHistories()->createMany($dataAccountPaymentHistories);
+
                 }
             }
         }
 
         if(!empty($json['positiveTradeRecords'])){
             foreach($json['positiveTradeRecords'] as $infoPositiveTrade) {
-                $dataAccount = [
-                    'client_report_id' => 'id',
+                $dataAccountPos = [
                     'is_dispute' => $infoPositiveTrade['auxData']['isDisputable'],
                     'under_dispute' => $infoPositiveTrade['auxData']['underDispute'],
                     'negative_item' => false,
@@ -350,30 +367,34 @@ class Screaper
                     "compliance_code" => $infoPositiveTrade['complianceCode'],
                     "subscriber_statement" => $infoPositiveTrade['subscriberStatement'],
                 ];
-                $dataAccountPayStates = [];
-                $dataAccountLimitHighBalances = [];
-                $dataAccountBalanceHistories = [];
+
+                $exAccountPos = $clientReport->clientExAccounts()->create($dataAccountPos);
+
                 if (!empty($infoPositiveTrade['payStates'])) {
+                    $dataAccountPayStatesPos = [];
                     foreach ($infoPositiveTrade['payStates'] as $payState) {
-                        $dataAccountPayStates[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountPayStatesPos[] = [
                             'name' => $payState
                         ];
                     }
+                    $exAccountPos->payStates()->createMany($dataAccountPayStatesPos);
+
                 }
 
                 if (!empty($infoPositiveTrade['limitHighBalances'])) {
+                    $dataAccountLimitHighBalancesPos = [];
                     foreach ($infoPositiveTrade['limitHighBalances'] as $limitHighBalances) {
-                        $dataAccountLimitHighBalances[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountLimitHighBalancesPos[] = [
                             'name' => $limitHighBalances
                         ];
                     }
+                    $exAccountPos->limitHighBalance()->createMany($dataAccountLimitHighBalancesPos);
+
                 }
                 if (!empty($infoPositiveTrade['balanceHistories'])) {
+                    $dataAccountBalanceHistoriesPos = [];
                     foreach ($infoPositiveTrade['balanceHistories'] as $balanceHis) {
-                        $dataAccountBalanceHistories[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountBalanceHistoriesPos[] = [
                             "date" => $balanceHis['date'],
                             "amount" => $balanceHis['amount'],
                             "date_pr" => $balanceHis['datePR'],
@@ -381,27 +402,31 @@ class Screaper
                             "amount_act" => $balanceHis['amountAct']
                         ];
                     }
+                    $exAccountPos->balanceHistories()->createMany($dataAccountBalanceHistoriesPos);
+
                 }
 
                 if (!empty($infoPositiveTrade['paymentHistories'])) {
+                    $dataAccountPaymentHistoriesPos = [];
                     foreach ($infoPositiveTrade['paymentHistories'] as $paymentHistories) {
-                        $dataAccountBalanceHistories[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountPaymentHistoriesPos[] = [
                             "month" => $paymentHistories['month'],
                             "day" => $paymentHistories['day'],
                             "year" => $paymentHistories['year'],
                             "status" => $paymentHistories['status'],
                         ];
                     }
+                    $exAccountPos->paymentHistories()->createMany($dataAccountPaymentHistoriesPos);
+
                 }
             }
         }
-        $dataInquiry = [];
+
         if(!empty($json['inquiryOthers'])){
+            $dataInquiry = [];
             foreach($json['inquiryOthers'] as $inquiryOthers){
 
                 $dataInquiry = [
-                    'client_report_id' => 'id',
                     'is_dispute' => $inquiryOthers['auxData']['isDisputable'],
                     'under_dispute' => $inquiryOthers['auxData']['underDispute'],
                     'subscriber_id' => $inquiryOthers['auxData']['subscriberID'],
@@ -421,13 +446,14 @@ class Screaper
                 ];
 
             }
+            $clientReport->clientExInquiry()->createMany($dataInquiry);
 
         }
         if(!empty($json['consumerInquiries'])){
+            $dataInquiryConsumer = [];
             foreach($json['consumerInquiries'] as $consumerInquiries){
 
-                $dataInquiry = [
-                    'client_report_id' => 'id',
+                $dataInquiryConsumer = [
                     'is_dispute' => $consumerInquiries['auxData']['isDisputable'],
                     'under_dispute' => $consumerInquiries['auxData']['underDispute'],
                     'subscriber_id' => $consumerInquiries['auxData']['subscriberID'],
@@ -448,7 +474,7 @@ class Screaper
 
 
             }
-
+            $clientReport->clientExInquiry()->createMany($dataInquiryConsumer);
         }
 
 
@@ -486,8 +512,7 @@ class Screaper
             'current_phone' => null,
             'file_path' => $path
         ];
-//        $clientReport = ClientReport::create($dataClientReports);
-        $clientReport = ClientReport::find(1);
+        $clientReport = ClientReport::create($dataClientReports);
 
         $dataName = [];
         $dataAddress = [];
@@ -502,10 +527,9 @@ class Screaper
                     'nin' => $nameInfo['name_identification_number']
                 ];
             }
-//            $clientReport->clientNames()->createMany($dataName);
+            $clientReport->clientNames()->createMany($dataName);
         }
 
-        //address
         if (!empty($json['address'])) {
             foreach ($json['address'] as $infoAddress) {
                 $address = $this->splitAddress($infoAddress['address']);
@@ -527,6 +551,7 @@ class Screaper
 
 //            $clientReport->clientAddresses()->createMany($dataAddress);
         }
+
         //other_personal_information
         if (!empty($json['other_personal_information'])) {
             foreach ($json['other_personal_information'] as $phoneEmployer) {
@@ -556,18 +581,20 @@ class Screaper
             }
 
             if (!empty($dataPhone)) {
-//                $clientReport->ClientPhones()->createMany($dataPhone);
+                $clientReport->ClientPhones()->createMany($dataPhone);
+
             }
 
             if (!empty($dataEmployer)) {
-//                $clientReport->clientEmployers()->createMany($dataEmployer);
+                $clientReport->clientEmployers()->createMany($dataEmployer);
             }
         }
+
 
         //bankcrupcy_information
         if (!empty($json['bankcrupcy_information'])) {
             foreach ($json['bankcrupcy_information'] as $publicRecords) {
-
+                //unnder_Dsipute
                 $dataPublicRecords[] = [
                     'is_dispute' => null,
                     'under_dispute' => null,
@@ -594,9 +621,9 @@ class Screaper
                     'on_record_until' => \DateTime::createFromFormat("M Y", $publicRecords['onrecord_until'])->format("Y-m-d"),
                 ];
             }
-
-//            $clientReport->clientExPublicRecords()->createMany($dataPublicRecords);
+            $clientReport->clientExPublicRecords()->createMany($dataPublicRecords);
         }
+
         //potentially statements
         if(!empty($json['potentially_statements'])){
             foreach ($json['potentially_statements'] as $negativeAccount) {
@@ -619,8 +646,7 @@ class Screaper
                     $recentBalancePayAmount = null;
                 }
 
-                $dataAccount = [
-                    'client_report_id' => 'id',
+                $dataAccountNeg = [
                     'is_dispute' => null,
                     'under_dispute' => null,
                     'negative_item' => false,
@@ -661,31 +687,35 @@ class Screaper
                     "compliance_code" => $negativeAccount['on_record_until'],
                     "subscriber_statement" => null,
                 ];
-                $dataAccountPayStates = [];
-                $dataAccountLimitHighBalances = [];
-                $dataAccountBalanceHistories = [];
-                if (!empty($negativeAccount['pay_states'])) {
+                $exAccountNeg = $clientReport->clientExAccounts()->create($dataAccountNeg);
 
+                if (!empty($negativeAccount['pay_states'])) {
+                    $dataAccountPayStatesNeg = [];
                     foreach ($negativeAccount['pay_states'] as $payState) {
-                        $dataAccountPayStates[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountPayStatesNeg[] = [
                             'name' => $payState
                         ];
                     }
+
+                    $exAccountNeg->payStates()->createMany($dataAccountPayStatesNeg);
                 }
                 if (!empty($negativeAccount['account_history'])) {
+                    $dataAccountPaymentHistoriesNeg = [];
                     foreach ($negativeAccount['account_history'] as $paymentHistories) {
-                        $dataAccountBalanceHistories[] = [
-                            'experian_account_id' => 'id',
+                        $dataAccountPaymentHistoriesNeg[] = [
                             "month" => $paymentHistories['month'],
                             "day" => null,
                             "year" => $paymentHistories['year'],
                             "status" => $paymentHistories['value'],
-
                         ];
                     }
+
+                    $exAccountNeg->paymentHistories()->createMany($dataAccountPaymentHistoriesNeg);
+
                 }
                 if(!empty($negativeAccount['balance_history'])){
+                    $dataAccountLimitHighBalancesNeg = [];
+                    $dataAccountBalanceHistoriesNeg = [];
                     foreach ($negativeAccount['balance_history'] as $balanceHistory){
                         $inString1 = 'The following data will appear in the following format:';
                         $inString2 = 'Date: account balance / date payment received / scheduled payment amount / actual amount paid';
@@ -696,7 +726,6 @@ class Screaper
                                 $nextValue = explode(" / ", str_replace($matachesNotEmpty[0], '', $balanceHistory));
 
                                 $dataAccountBalanceHistories[] = [
-                                    'experian_account_id' => 'id',
                                     "date" =>str_replace(':','',$matachesNotEmpty[0]),
                                     "amount" => isset($nextValue[0])?trim($nextValue[0]):null,
                                     "date_pr" => isset($nextValue[1])?trim($nextValue[1]):null,
@@ -705,16 +734,24 @@ class Screaper
                                 ];
                             }else{
                                 $dataAccountLimitHighBalances[] = [
-                                    'experian_account_id' => 'id',
                                     'name' => $balanceHistory
                                 ];
                             }
                         }
                     }
+                    if(!empty($dataAccountBalanceHistoriesNeg)){
+
+                        $exAccountNeg->balanceHistories()->createMany($dataAccountBalanceHistoriesNeg);
+
+                    }
+                    if(!empty($dataAccountLimitHighBalances)){
+
+                        $exAccountNeg->limitHighBalance()->createMany($dataAccountLimitHighBalancesNeg);
+                    }
                 }
+
             }
         }
-
         //good standing accounts information
         if (!empty($json['goodstanding_accountsinformation'])) {
             foreach ($json['goodstanding_accountsinformation'] as $positiveAccount) {
@@ -751,7 +788,7 @@ class Screaper
                     'monthly_payment' => $positiveAccount['monthly_payment'],
                     'responsibility' => $positiveAccount['responsibilty'],
                     'credit_limit' => $positiveAccount['credit_limit'],
-                    'original_balance' => null,
+                    'credit_limit_label' => null,
                     'high_balance' => $positiveAccount['high_balance'],
                     'source_name' => $positiveAccount['account_name'],
                     'source_id' => $positiveAccount['account_number'],
@@ -779,34 +816,32 @@ class Screaper
                     "subscriber_statement" => null,
                 ];
                 $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
-                dd($exAccount);
-                $dataAccountPayStates = [];
-                $dataAccountLimitHighBalances = [];
-                $dataAccountBalanceHistories = [];
 
                 if (!empty($positiveAccount['payStates'])) {
-
+                    $dataAccountPayStates = [];
                     foreach ($positiveAccount['payStates'] as $payState) {
                         $dataAccountPayStates[] = [
-                            'experian_account_id' => 'id',
                             'name' => $payState
                         ];
                     }
-
+                    $exAccount->payStates()->createMany($dataAccountPayStates);
                 }
                 if (!empty($positiveAccount['account_history'])) {
+                    $dataAccountBalanceHistories = [];
                     foreach ($positiveAccount['account_history'] as $paymentHistories) {
                         $dataAccountBalanceHistories[] = [
-                            'experian_account_id' => 'id',
                             "month" => $paymentHistories['month'],
                             "day" => null,
                             "year" => $paymentHistories['year'],
                             "status" => $paymentHistories['value'],
-
                         ];
                     }
+                    $exAccount->paymentHistories()->createMany($dataAccountBalanceHistories);
+
                 }
                 if(!empty($positiveAccount['balance_history'])){
+                    $dataAccountBalanceHistories = [];
+                    $dataAccountLimitHighBalances = [];
                     foreach ($positiveAccount['balance_history'] as $balanceHistory){
                         $inString1 = 'The following data will appear in the following format:';
                         $inString2 = 'Date: account balance / date payment received / scheduled payment amount / actual amount paid';
@@ -817,7 +852,6 @@ class Screaper
                                 $nextValue = explode(" / ", str_replace($matachesNotEmpty[0], '', $balanceHistory));
 
                                 $dataAccountBalanceHistories[] = [
-                                    'experian_account_id' => 'id',
                                     "date" =>str_replace(':','',$matachesNotEmpty[0]),
                                     "amount" => isset($nextValue[0])?trim($nextValue[0]):null,
                                     "date_pr" => isset($nextValue[1])?trim($nextValue[1]):null,
@@ -826,23 +860,27 @@ class Screaper
                                 ];
                             }else{
                                 $dataAccountLimitHighBalances[] = [
-                                    'experian_account_id' => 'id',
                                     'name' => $balanceHistory
                                 ];
                             }
                         }
                     }
+                    if(!empty($dataAccountBalanceHistories)){
+                        $exAccount->balanceHistories()->createMany($dataAccountBalanceHistories);
+                    }
+                    if(!empty($dataAccountLimitHighBalances)){
+                        $exAccount->limitHighBalance()->createMany($dataAccountLimitHighBalances);
+
+                    }
                 }
-
-
             }
         }
+
         //inquiryOthers
         if(!empty($json['inquiryOthers'])){
+            $dataInquiry = [];
             foreach($json['credit_inquiry_information'] as $inquiryOthers){
-
                 $dataInquiry = [
-                    'client_report_id' => 'id',
                     'is_dispute' => null,
                     'under_dispute' => null,
                     'subscriber_id' => null,
@@ -862,14 +900,15 @@ class Screaper
                 ];
 
             }
+            $clientReport->clientExInquiry()->createMany($dataInquiry);
 
         }
+
         //consumer_inquiryblock
         if(!empty($json['consumer_inquiryblock'])){
+            $dataConsumerInquiry = [];
             foreach($json['consumer_inquiryblock'] as $consumerInquiries){
-
-                $dataInquiry = [
-                    'client_report_id' => 'id',
+                $dataConsumerInquiry[] = [
                     'is_dispute' => null,
                     'under_dispute' => null,
                     'subscriber_id' => null,
@@ -887,16 +926,18 @@ class Screaper
                     'comment' => null,
                     'permissible_purpose' => null,
                 ];
-
             }
+
+            $clientReport->clientExInquiry()->createMany($dataConsumerInquiry);
+
 
         }
     }
 
+
     public function prepare_transunion_dispute_data($output)
     {
         $data = json_decode($output, true);
-
         if($data['status'] != 'success') {
             return false;
         }
@@ -1204,7 +1245,8 @@ class Screaper
             return false;
         }
 
-        $path = storage_path($data["report_filepath"]);
+//        $path = storage_path($data["report_filepath"]);
+        $path = storage_path('reports/36/transunion_payments/maga.json');
         $json = json_decode(file_get_contents($path), true);
         $type = 'TU_MEM';
 
@@ -1229,7 +1271,12 @@ class Screaper
             'current_phone' => $currentPhone,
             'file_path' => $path
         ];
+
         //pahel es datan vercnel id
+        $clientReport = ClientReport::create($dataClientReports);
+
+        $clientReport = ClientReport::find(1);
+
 
         $dataName = [];
         $aka = $single['AKA']['TUC'];
@@ -1243,6 +1290,7 @@ class Screaper
                 ] ;
             }
         }
+        $clientReport->clientNames()->createMany($dataName);
 
         $dataAddress = [];
         $address = $single['NEW-CurrentAddr']['TUC'];
@@ -1280,6 +1328,7 @@ class Screaper
                 ] ;
             }
         }
+        $clientReport->clientAddresses()->createMany($dataAddress);
 
         $currentEmployer =  $single['NEW-Employer']["TUC"];
         $previousEmployer =  $single['NEW-PreviousEmployer']["TUC"];
@@ -1304,21 +1353,24 @@ class Screaper
         }
         if(!empty($previousEmployer)){
             foreach($previousEmployer as $infoEmployer){
-
-                $dataEmployer[] = [
-                    'client_report_id' => 'id',
-                    'current'=> 0,
-                    'name' => $infoEmployer['name'],
-                    'occupation' => null,
-                    'street' => null,
-                    'city' => null,
-                    'state'=>null,
-                    'zip'=> null,
-                    'phone'=>null,
-                    'type'=>null,
-                ] ;
+                if($infoEmployer['name'] != null){
+                    $dataEmployer[] = [
+                        'client_report_id' => 'id',
+                        'current'=> 0,
+                        'name' => $infoEmployer['name'],
+                        'occupation' => null,
+                        'street' => null,
+                        'city' => null,
+                        'state'=>null,
+                        'zip'=> null,
+                        'phone'=>null,
+                        'type'=>null,
+                    ] ;
+                }
             }
         }
+        $clientReport->clientEmployers()->createMany($dataEmployer);
+
         $dataSummery= [
             'open_accounts'=>$single['OpenAccts']['TUC'],
             'total_accounts'=>$single['TotalAccounts']['TUC'],
@@ -1330,6 +1382,8 @@ class Screaper
             'public_records'=>$single['PublicRecords']['TUC'],
             'inquiry_summary'=>$single['InquirySummary']['TUC'],
         ];
+
+        $clientReport->clientTuSummary()->create($dataSummery);
 
         $dataPublicRecord = [];
         if(!empty($single['PublicRecords']['TUC'])){
@@ -1372,18 +1426,20 @@ class Screaper
                             'remarks'=> $records['Remarks']['TUC'],
                         ];
 
+
                     }
                 }
             }
         }
 
+        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+
         $dataAccounts = [];
         foreach ($single['Accounts'] as $type =>$infoAccounts){
             if(!empty($infoAccounts)){
                 foreach($infoAccounts as $accounts){
-                    $dataAccount[] = [
-                        "report_id"=> 1,
-                        "type"=>$type,
+                    $dataAccount = [
+                        "type"=>"TU_MEM",
                         "sub_type"=>null,
                         "suppression_flag" =>null,
                         "adverse_flag" => null,
@@ -1399,7 +1455,7 @@ class Screaper
                         "phone" => $accounts['CreditorPhone']["TUC"],
                         "account_number" => $accounts['accountNumber']["TUC"],
                         "payment_frequency" => null,
-                        "payment_schedule_monthCount" => $accounts['termMonths']["TUC"],
+                        "payment_schedule_month_count" => $accounts['termMonths']["TUC"],
                         "scheduled_monthly_payment" => $accounts['monthlyPayment']["TUC"],
                         "date_opened" => $accounts['dateOpened']["TUC"] != null?$this->dateFormat($accounts['dateOpened']["TUC"]):null,
                         "date_placed_for_collection" => null,
@@ -1414,7 +1470,7 @@ class Screaper
                         "last_payment_amount" => null,
                         "high_balance" => $accounts['highBalance']["TUC"],
                         "original_amount" => null,
-                        "original_chargeOff" => null,
+                        "original_charge_off" => null,
                         "original_creditor" => $accounts['originalCreditor']["TUC"],
                         "credit_limit" => $accounts['CreditLimit']["TUC"],
                         "past_due" => $accounts['amountPastDue']["TUC"],
@@ -1447,11 +1503,15 @@ class Screaper
                         "late_30_count"=>$accounts['late30Count']["TUC"],
                         "late_60_count"=>$accounts['late60Count']["TUC"],
                         "late_90_count"=>$accounts['late90Count']["TUC"],
-                        "worst_pay_satus"=>$accounts['WorstPayStatus']["TUC"],
+                        "worst_pay_status"=>$accounts['WorstPayStatus']["TUC"],
                         "m_pay_status"=>$accounts['PayStatus']["TUC"],
                         "oldest_year"=>isset($accounts['oldestYear']["TUC"])?$accounts['oldestYear']["TUC"]:null,
                         "subscriber_code" =>isset($accounts['subscriberCode']["TUC"])?$accounts['subscriberCode']["TUC"]:null
                     ];
+
+
+                    $account = $clientReport->clientTuAccounts()->create($dataAccount);
+
 
                     if(isset($accounts["PaymentHistory-TUC"]) && !empty($accounts["PaymentHistory-TUC"])){
                         $i = 0;
@@ -1473,13 +1533,15 @@ class Screaper
                             $i +=1;
 
                         }
+//                        $account->accountPaymentHistories()->createMany($dataAccountHistory);
+
                     }
                 }
             }
         }
 
         $inquiries =  $single['Inquiries'];
-
+        $dataInquiry = [];
         if(!empty($inquiries)){
             foreach($inquiries as  $inquiryValues){
                 $dataInquiry[]=[
@@ -1490,7 +1552,7 @@ class Screaper
                     "member_code" => null,
                     "description" => null,
                     "owner"=>$inquiryValues['Owner'],
-                    "date_of_inquiry"=>$inquiryValues['DateOfInquiry'] ==null?$this->dateFormat($inquiryValues['DateOfInquiry']):null,
+                    "date_of_inquiry"=> $inquiryValues['DateOfInquiry'] != null?$this->dateFormat($inquiryValues['DateOfInquiry']):null,
                     "permissible_purpose" => null,
                     "subscriber_name" => null,
                     "requestor_name" =>null,
@@ -1508,14 +1570,11 @@ class Screaper
 
             }
 
+            $clientReport->clientTuInquiries()->createMany($dataInquiry);
+
         }
 
-        dd($dataAccount, $dataClientReports, $dataInquiry, $dataAddress, $dataEmployer, $dataName, $dataPublicRecord, $dataSummery);
-        dd( 'ok');
-
     }
-
-
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)
     {
@@ -1590,7 +1649,7 @@ class Screaper
             "last_payment_amount" => $data['lastPaymentAmount'],
             "high_balance" => $data['highBalance'],
             "original_amount" => $data['originalAmount'],
-            "original_chargeOff" => $data['originalChargeOff'],
+            "original_charge_off" => $data['originalChargeOff'],
             "original_creditor" => $data['originalCreditor'],
             "credit_limit" => $data['creditLimit'],
             "past_due" => $data['pastDue'],
@@ -1607,6 +1666,7 @@ class Screaper
             "account_sale_info" => $data['accountSaleInfo'],
             "estimated_deletion_date" => $data['estimatedDeletionDate'],
             "last_payment_date" => $data['lastPaymentDate'],
+            "account_history_start_date"=>$data['$data[\'lastPaymentDate\']'],
             "hist_balance_list" => $data['histBalanceList'],
             "hist_payment_due_list" => $data['histPaymentDueList'],
             "hist_payment_amt_list" => $data['histPaymentAmtList'],
@@ -1646,7 +1706,9 @@ class Screaper
                 }
             }
         }
-        $account->accountPaymentHistories()->createMany($dataAccountHistory);
+        if(!empty($dataAccountHistory)){
+            $account->accountPaymentHistories()->createMany($dataAccountHistory);
+        }
     }
 
     public function dateFormat($dateString)
@@ -1657,7 +1719,6 @@ class Screaper
         $date = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
         return $date;
     }
-
 
     public function splitAddress($address)
     {

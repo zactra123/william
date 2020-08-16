@@ -37,6 +37,7 @@ class CreateClientReportTuAccounts extends Migration
             $table->string('scheduled_monthly_payment')->nullable();
             $table->date('date_opened')->nullable();
             $table->date('date_placed_for_collection')->nullable();
+            $table->string('account_type')->nullable();
             $table->string('responsibility')->nullable();
             $table->string('account_type_description')->nullable();
             $table->string('loan_type')->nullable();
@@ -56,6 +57,7 @@ class CreateClientReportTuAccounts extends Migration
             $table->date('date_closed')->nullable();
             $table->date('date_paid')->nullable();
             $table->date('date_paid_out')->nullable();
+            $table->string('max_delinquency')->nullable();
             $table->string('hist_high_credit_stmt')->nullable();
             $table->string('hist_credit_limit_stmt')->nullable();
             $table->string('special_payment')->nullable();
@@ -66,18 +68,21 @@ class CreateClientReportTuAccounts extends Migration
             $table->date('account_history_start_date')->nullable();
             $table->text('hist_balance_list')->nullable();
             $table->text('hist_payment_amt_list')->nullable();
+            $table->text('hist_payment_due_list')->nullable();
             $table->text('hist_past_due_list')->nullable();
             $table->text('hist_credit_limit_list')->nullable();
+            $table->text('hist_high_credit_list')->nullable();
             $table->text('hist_remark_list')->nullable();
             $table->text('remark')->nullable();
             $table->text('rating')->nullable();
             $table->string('current_balance')->nullable();
             $table->date('date_reported')->nullable();
+            $table->date('date_account_status')->nullable();
             $table->string('account_condition')->nullable();
             $table->string('late_30_count')->nullable();
             $table->string('late_60_count')->nullable();
             $table->string('late_90_count')->nullable();
-            $table->string('worst_pay_satus')->nullable();
+            $table->string('worst_pay_status')->nullable();
             $table->string('m_pay_status')->nullable();
             $table->string('oldest_year')->nullable();
             $table->string('subscriber_code')->nullable();

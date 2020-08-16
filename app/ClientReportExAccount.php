@@ -51,26 +51,26 @@ class ClientReportExAccount extends Model
 
     public function clientReport()
     {
-        return $this->belongsTo('App/ClientReport');
+        return $this->belongsTo('App\ClientReport');
     }
 
     public function limitHighBalance()
     {
-        return $this->hasMany('App/ClientReportExAccountsLimitHighBalance');
+        return $this->hasMany('App\ClientReportExAccountsLimitHighBalance');
     }
 
-    public function BalanceHistories()
+    public function balanceHistories()
     {
-        return $this->hasMany('App/ClientReportExAccountsBalanceHistory');
+        return $this->hasMany('App\ClientReportExAccountsBalanceHistory');
     }
 
-    public function PayStates()
+    public function payStates()
     {
-        return $this->hasMany('App/ClientReportExAccountsPayState');
+        return $this->hasMany('App\ClientReportExAccountsPayState');
     }
 
-    public function PaymentHistories()
+    public function paymentHistories()
     {
-        return $this->hasMany('App/ClientReportExAccountsPaymentHistory');
+        return $this->hasMany('App\ClientReportExAccountsPaymentHistory');
     }
 }

@@ -20,7 +20,6 @@ class CreateClientReportExInquiries extends Migration
             $table->string('is_dispute')->nullable();
             $table->string('under_dispute')->nullable();
             $table->string('subscriber_id')->nullable();
-            $table->string('subscriber_id')->nullable();
             $table->string('negative_item')->nullable();
             $table->string('ain')->nullable();
             $table->string('end_user')->nullable();

@@ -31,6 +31,7 @@ class ClientReportTuAccount extends Model
         'date_opened',
         'date_placed_for_collection',
         'responsibility',
+        'account_type',
         'account_type_description',
         'loan_type',
         'balance',
@@ -49,6 +50,7 @@ class ClientReportTuAccount extends Model
         'date_closed',
         'date_paid',
         'date_paid_out',
+        'max_delinquency',
         'hist_high_credit_stmt',
         'hist_credit_limit_stmt',
         'special_payment',
@@ -58,19 +60,22 @@ class ClientReportTuAccount extends Model
         'last_payment_date',
         'account_history_start_date',
         'hist_balance_list',
+        'hist_payment_due_list',
         'hist_payment_amt_list',
         'hist_past_due_list',
         'hist_credit_limit_list',
+        'hist_high_credit_list',
         'hist_remark_list',
         'remark',
         'rating',
+        'date_account_status',
         'current_balance',
         'date_reported',
         'account_condition',
         'late_30_count',
         'late_60_count',
         'late_90_count',
-        'worst_pay_satus',
+        'worst_pay_status',
         'm_pay_status',
         'oldest_year',
         'subscriber_code',
@@ -78,6 +83,11 @@ class ClientReportTuAccount extends Model
 
     public function clientReport()
     {
-        return $this->belongsTo('App/ClientReport');
+        return $this->belongsTo('App\ClientReport');
+    }
+
+    public function accountPaymentHistories()
+    {
+        return $this->hasMany('App\ClientReportTuAccountsPaymentHistory');
     }
 }
