@@ -20,11 +20,14 @@ class Screaper
 //            $username = $client->credentials
 //            $password =
 //        }
+
         array_push($arguments, $this->client_id);
-        $command = $this->make_run_command('transunion_dispute.py',$arguments);
-        $output = shell_exec($command);
+//        dd($arguments);
+//        $command = $this->make_run_command('transunion_dispute.py',$arguments);
+//        $output = shell_exec($command);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
+        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
 
     }
@@ -34,14 +37,20 @@ class Screaper
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $output = shell_exec($command);
+        //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
+
         $this->prepare_transunion_membership_data(str_replace('\'', '"',$output));
     }
 
     public function experian_login($arguments = [])
     {
         array_push($arguments, $this->client_id);
-        $command = $this->make_run_command('experian_login.py',$arguments);
-        $output = shell_exec($command);
+//        $command = $this->make_run_command('experian_login.py',$arguments);
+//        $output = shell_exec($command);
+                $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/Data_ARUTYUN.json'}";
+
+
+//        dd($output);
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
 
     }
@@ -66,6 +75,7 @@ class Screaper
 
     public function prepare_experian_login_data($output)
     {
+        set_time_limit(300);
         $data = json_decode($output, true);
         if($data['status'] != 'success') {
 
@@ -197,8 +207,8 @@ class Screaper
                     'is_dispute' => $infoPublicRecords['auxData']['isDisputable'],
                     'under_dispute' => $infoPublicRecords['auxData']['underDispute'],
                     'negative_item' =>$infoPublicRecords['negativeItem'],
-                    'date_filed' => $infoPublicRecords['dateFiled'],
-                    'date_resolved' => $infoPublicRecords['dateResolved'],
+                    'date_filed' =>$infoPublicRecords['dateFiled']!= null?\DateTime::createFromFormat("m/d/Y", $infoPublicRecords['dateFiled'])->format("Y-m-d"):null,
+                    'date_resolved' => $infoPublicRecords['dateResolved']!= null?\DateTime::createFromFormat("m/d/Y", $infoPublicRecords['dateResolved'])->format("Y-m-d"):null,
                     'responsibility' => $infoPublicRecords['responsibility'],
                     'claim_amount' => $infoPublicRecords['claimAmount'],
                     'liability_amount' => $infoPublicRecords['liabilityAmount'],
@@ -229,10 +239,10 @@ class Screaper
                     'is_dispute' => $infoNegativeTrade['auxData']['isDisputable'],
                     'under_dispute' => $infoNegativeTrade['auxData']['underDispute'],
                     'negative_item' => true,
-                    'opened_date' => $infoNegativeTrade['openedDate'],
-                    'report_started_date' => $infoNegativeTrade['reportStartedDate'],
-                    'status_date' => $infoNegativeTrade['statusDate'],
-                    'last_reported_date' => $infoNegativeTrade['lastReportedDate'],
+                    'opened_date' => $infoNegativeTrade['openedDate']!= null?\DateTime::createFromFormat("m/d/Y", $infoNegativeTrade['openedDate'])->format("Y-m-d"):null,
+                    'report_started_date' => $infoNegativeTrade['reportStartedDate']!= null?\DateTime::createFromFormat("m/Y", $infoNegativeTrade['reportStartedDate'])->format("Y-m-d"):null,
+                    'status_date' => $infoNegativeTrade['statusDate']!= null?\DateTime::createFromFormat("m/Y", $infoNegativeTrade['statusDate'])->format("Y-m-d"):null,
+                    'last_reported_date' => $infoNegativeTrade['lastReportedDate']!= null?\DateTime::createFromFormat("m/d/Y", $infoNegativeTrade['lastReportedDate'])->format("Y-m-d"):null,
                     'type' => $infoNegativeTrade['type'],
                     'classification' => $infoNegativeTrade['classification'],
                     'term' => $infoNegativeTrade['term'],
@@ -325,14 +335,15 @@ class Screaper
 
         if(!empty($json['positiveTradeRecords'])){
             foreach($json['positiveTradeRecords'] as $infoPositiveTrade) {
+
                 $dataAccountPos = [
                     'is_dispute' => $infoPositiveTrade['auxData']['isDisputable'],
                     'under_dispute' => $infoPositiveTrade['auxData']['underDispute'],
                     'negative_item' => false,
-                    'opened_date' => $infoPositiveTrade['openedDate'],
-                    'report_started_date' => $infoPositiveTrade['reportStartedDate'],
-                    'status_date' => $infoPositiveTrade['statusDate'],
-                    'last_reported_date' => $infoPositiveTrade['lastReportedDate'],
+                    'opened_date' =>$infoPositiveTrade['openedDate']!= null?\DateTime::createFromFormat("m/d/Y", $infoPositiveTrade['openedDate'])->format("Y-m-d"):null,
+                    'report_started_date' => $infoPositiveTrade['reportStartedDate']!= null?\DateTime::createFromFormat("m/Y", $infoPositiveTrade['reportStartedDate'])->format("Y-m-d"):null,
+                    'status_date' => $infoPositiveTrade['statusDate']!= null?\DateTime::createFromFormat("m/Y", $infoPositiveTrade['statusDate'])->format("Y-m-d"):null,
+                    'last_reported_date' => $infoPositiveTrade['lastReportedDate']!= null? \DateTime::createFromFormat("m/d/Y", $infoPositiveTrade['lastReportedDate'])->format("Y-m-d"):null,
                     'type' => $infoPositiveTrade['type'],
                     'classification' => $infoPositiveTrade['classification'],
                     'term' => $infoPositiveTrade['term'],
@@ -426,7 +437,7 @@ class Screaper
             $dataInquiry = [];
             foreach($json['inquiryOthers'] as $inquiryOthers){
 
-                $dataInquiry = [
+                $dataInquiry[] = [
                     'is_dispute' => $inquiryOthers['auxData']['isDisputable'],
                     'under_dispute' => $inquiryOthers['auxData']['underDispute'],
                     'subscriber_id' => $inquiryOthers['auxData']['subscriberID'],
@@ -445,15 +456,16 @@ class Screaper
                     'permissible_purpose' => null,
                 ];
 
+
+
             }
             $clientReport->clientExInquiry()->createMany($dataInquiry);
-
         }
         if(!empty($json['consumerInquiries'])){
             $dataInquiryConsumer = [];
             foreach($json['consumerInquiries'] as $consumerInquiries){
 
-                $dataInquiryConsumer = [
+                $dataInquiryConsumer[] = [
                     'is_dispute' => $consumerInquiries['auxData']['isDisputable'],
                     'under_dispute' => $consumerInquiries['auxData']['underDispute'],
                     'subscriber_id' => $consumerInquiries['auxData']['subscriberID'],
@@ -633,12 +645,12 @@ class Screaper
                     preg_match($regBalance, $negativeAccount['recent_balance'], $matchesBalance);
                     preg_match($regDate, $negativeAccount['recent_balance'], $matchesBalanceDate);
                     $recentBalanceDate = isset($matchesBalanceDate[0]) ? $matchesBalanceDate[0] : null;
-                    $recentBalancePayAmount = isset($matchesBalance[0]) ? $matchesBalance[0] : null;
-                    if ($recentBalanceDate != null && $recentBalancePayAmount) {
-                        $recentBalanceAmount = trim(str_replace([$recentBalancePayAmount, $recentBalanceDate],
+                    $recentBalanceAmount = isset($matchesBalance[0]) ? $matchesBalance[0] : null;
+                    if ($recentBalanceDate != null && $recentBalanceAmount) {
+                        $recentBalancePayAmount = trim(str_replace([$recentBalanceAmount, $recentBalanceDate],
                             '', $negativeAccount['recent_balance']));
                     } else {
-                        $recentBalanceAmount = null;
+                        $recentBalancePayAmount = null;
                     }
                 } else {
                     $recentBalanceDate = null;
@@ -937,6 +949,8 @@ class Screaper
 
     public function prepare_transunion_dispute_data($output)
     {
+        set_time_limit(300);
+
         $data = json_decode($output, true);
         if($data['status'] != 'success') {
             return false;
@@ -944,6 +958,7 @@ class Screaper
 
         $path = storage_path($data["report_filepath"]);
         $json = json_decode(file_get_contents($path), true);
+
         $type = 'TU_DIS';
         $single = $json['Reports']['SINGLE_REPORT_TU'];
         $full_name = $single['Name']["TUC"];
@@ -1666,7 +1681,7 @@ class Screaper
             "account_sale_info" => $data['accountSaleInfo'],
             "estimated_deletion_date" => $data['estimatedDeletionDate'],
             "last_payment_date" => $data['lastPaymentDate'],
-            "account_history_start_date"=>$data['$data[\'lastPaymentDate\']'],
+            "account_history_start_date"=>$data['accountHistoryStartDate'],
             "hist_balance_list" => $data['histBalanceList'],
             "hist_payment_due_list" => $data['histPaymentDueList'],
             "hist_payment_amt_list" => $data['histPaymentAmtList'],

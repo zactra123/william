@@ -30,6 +30,6 @@ class ClientReportExInquiry extends Model
 
     public function clientReport()
     {
-        return $this->belongsTo('App/ClientReport');
+        return $this->belongsTo('App\ClientReport');
     }
 }
