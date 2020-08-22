@@ -286,13 +286,18 @@ class experianViewReport():
                 other_personal_block.append({"notice": notice})
             except:
                 pass
-
-        # print("other_personal_block",other_personal_block)
+                
+        personal_statement =[]
         try:
-            personal_statement = soup.find('div', attrs={'id': 'report-box-personal-statements'}).text.replace(
-                "\n", " ").replace("\t", " ").replace("  ", "").strip()
+            personal_statements = soup.find('div', attrs={'id': 'report-group-personal-statements'}).find_all("div", attrs={"class": "report-entry"})
+            
+            for ps in personal_statements:
+                try: 
+                    personal_statement.append({"statement": ps.find('div', attrs={'class': 'val statement'}).text.strip()})
+                except:
+                    pass
         except:
-            personal_statement = "none"
+            pass
 
         # STarted Bankrupcyyyy
 

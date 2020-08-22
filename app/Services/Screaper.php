@@ -7,27 +7,32 @@ use App\ClientReport;
 class Screaper
 {
     protected $client_id;
+    protected $client;
 
     public function __construct($id = null)
     {
-     $this->client_id = $id;
+        $this->client_id = $id;
+        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
     }
 
     public function transunion_dispute($arguments = [])
     {
-//        if ($client_id) {
-//            $cilient = User::find($client_id);
-//            $username = $client->credentials
-//            $password =
-//        }
-
+        if (empty($arguments)) {
+            $arguments = [
+                $this->client['credentials']['tu_login'],
+                $this->client['credentials']['tu_password'],
+                $this->client['first_name'],
+                $this->client['last_name'],
+                $this->client['last_name'],
+                $this->client['last_name'],
+            ];
+            dd($this->client['clientDetails']);
+        }
         array_push($arguments, $this->client_id);
-//        dd($arguments);
-//        $command = $this->make_run_command('transunion_dispute.py',$arguments);
-//        $output = shell_exec($command);
+        $command = $this->make_run_command('transunion_dispute.py',$arguments);
+        $output = shell_exec($command);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
-        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
 
     }
@@ -45,13 +50,10 @@ class Screaper
     public function experian_login($arguments = [])
     {
         array_push($arguments, $this->client_id);
-//        $command = $this->make_run_command('experian_login.py',$arguments);
-//        $output = shell_exec($command);
-                $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/Data_ARUTYUN.json'}";
-
-
-//        dd($output);
+        $command = $this->make_run_command('experian_login.py',$arguments);
+        $output = shell_exec($command);
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
+        return true;
 
     }
 
@@ -62,6 +64,7 @@ class Screaper
         $output = shell_exec($command);
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
+        return true;
     }
 
 
@@ -81,7 +84,6 @@ class Screaper
 
             return false;
         }
-
         $path = storage_path($data["report_filepath"]);
 
         $json = json_decode(file_get_contents($path), true);
@@ -106,6 +108,7 @@ class Screaper
             'report_number'=> $reportNumber,
             'current_address' => null,
             'current_phone' => null,
+            'spouse' => $json['spouse'],
             'file_path' => $path
         ];
         $clientReport = ClientReport::create($dataClientReports);
@@ -199,6 +202,11 @@ class Screaper
 
         }
 
+        if (!empty($json['statements'])) {
+            $statements = array_map(function($el){$ret=['statement'=> $el['statement']]; return $ret;},$json['statements']);
+            $clientReport->clientExStatements()->createMany($statements);
+        }
+
         if(!empty($json['publicRecords'])){
             $dataPublicRecords = [];
             foreach($json['publicRecords'] as $infoPublicRecords)
@@ -289,7 +297,6 @@ class Screaper
                     }
                     $exAccount->payStates()->createMany($dataAccountPayStates);
                 }
-
 
                 if (!empty($infoNegativeTrade['limitHighBalances'])) {
                     $dataAccountLimitHighBalances = [];
@@ -483,13 +490,9 @@ class Screaper
                     'comment' => null,
                     'permissible_purpose' => $consumerInquiries['permissiblePurpose'],
                 ];
-
-
             }
             $clientReport->clientExInquiry()->createMany($dataInquiryConsumer);
         }
-
-
     }
 
     public function prepare_experian_view_report_data($output)
@@ -511,6 +514,12 @@ class Screaper
 
         $full_name = !empty($json['personal_infomation']) && isset($json['personal_infomation'][0]['name']) ?
             $json['personal_infomation'][0]['name'] : null;
+        $spouse = null;
+        if (!empty($json['other_personal_information']) &&
+            !empty($json['other_personal_information'][0]['spouse_coapplicant']) &&
+            $json['other_personal_information'][0]['spouse_coapplicant'] != 'none' ) {
+            $spouse = $json['other_personal_information'][0]['spouse_coapplicant'];
+        }
 
         $dataClientReports = [
             'user_id' => $this->client_id,
@@ -522,6 +531,7 @@ class Screaper
             'report_number' => null,
             'current_address' => null,
             'current_phone' => null,
+            'spouse' => $spouse,
             'file_path' => $path
         ];
         $clientReport = ClientReport::create($dataClientReports);
@@ -561,7 +571,7 @@ class Screaper
                 ];
             }
 
-//            $clientReport->clientAddresses()->createMany($dataAddress);
+            $clientReport->clientAddresses()->createMany($dataAddress);
         }
 
         //other_personal_information
@@ -601,7 +611,10 @@ class Screaper
                 $clientReport->clientEmployers()->createMany($dataEmployer);
             }
         }
-
+        //statements
+        if (!empty($json['personal_statement'])){
+            $clientReport->clientExStatements()->crateMany($json['personal_statement']);
+        }
 
         //bankcrupcy_information
         if (!empty($json['bankcrupcy_information'])) {
@@ -751,17 +764,13 @@ class Screaper
                             }
                         }
                     }
-                    if(!empty($dataAccountBalanceHistoriesNeg)){
-
+                    if (!empty($dataAccountBalanceHistoriesNeg)) {
                         $exAccountNeg->balanceHistories()->createMany($dataAccountBalanceHistoriesNeg);
-
                     }
-                    if(!empty($dataAccountLimitHighBalances)){
-
+                    if (!empty($dataAccountLimitHighBalances)) {
                         $exAccountNeg->limitHighBalance()->createMany($dataAccountLimitHighBalancesNeg);
                     }
                 }
-
             }
         }
         //good standing accounts information
@@ -1802,6 +1811,4 @@ class Screaper
             ];
         }
     }
-
-
 }

@@ -17,6 +17,7 @@ use App\Services\CreditReportUpload;
 use App\ClientAttachment;
 use App\Credential;
 use App\UploadClientDetail;
+use App\Services\Screaper;
 
 class ClientDetailsController extends Controller
 {
@@ -28,7 +29,6 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
-
         $client = Auth::user();
         return view('client_details.index', compact('client'));
     }
