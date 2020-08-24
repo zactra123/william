@@ -48,6 +48,10 @@ class ClientReport extends Model
     {
         return $this->hasMany('App\ClientReportExStatement');
     }
+    public function clientTuStatements()
+    {
+        return $this->hasMany('App\ClientReportTuStatement');
+    }
 
     public function clientExPublicRecords()
     {
