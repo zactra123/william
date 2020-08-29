@@ -52,7 +52,7 @@
             {!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
 
 
-            <div class="Experian" style="display: block">
+            <div class="Experian" style="display: none">
                 <div class="row mt20">
                     <div class="col-md-1 mt20">
                     </div>
@@ -297,7 +297,7 @@
                         @foreach($clientReportsEX->clientExAccounts->where('negative_item', true) as $accounts)
                             <div class="mt20"></div>
 
-                                <div class="row " style="font-weight: bold">
+                                <div class="row border" style="font-weight: bold">
                                     <div class="col-md-1">
                                     </div>
 
@@ -318,7 +318,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt20 border" style="font-weight: bold" >
+                                <div class="row mt20 " style="font-weight: bold" >
                                     <div class="col-md-1">
                                     </div>
                                     @if($accounts->opened_date !=null )
@@ -416,7 +416,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt20 border" style="font-weight: bold" >
+                                <div class="row mt20 " style="font-weight: bold" >
                                     <div class="col-md-1">
                                     </div>
                                     @if($accounts->opened_date !=null )
@@ -602,6 +602,7 @@
 
                             @endforeach
                         </div>
+                        <div class="mt20"></div>
 
                         <div class="chart-report">
                             <span style="font-weight: bold">STATEMENTS</span>
@@ -795,7 +796,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt20 border " style="font-weight: bold">
+                                <div class="row mt20  " style="font-weight: bold">
                                     <div class="col-md-1">
                                     </div>
 
@@ -855,11 +856,16 @@
                                 </div>
 
                             @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
-                                    <div class="row mt20 border">
-                                        <div class="col-md-12">
+                                    <div class="row mt20 ">
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <div class="col-md-11">
                                             ACCOUNT HISTORY
                                         </div>
+                                        <div class="col-md-1">
 
+                                        </div>
                                         @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
                                             <div class="col-md-3">
                                                 LATE {{$payment->value}} AS OF {{$payment->month}}/{{$payment->year}}
@@ -897,7 +903,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt20 border " style="font-weight: bold">
+                                <div class="row mt20  " style="font-weight: bold">
                                     <div class="col-md-1">
                                     </div>
 
@@ -957,7 +963,7 @@
                                 </div>
 
                             @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
-                                    <div class="row mt20 border">
+                                    <div class="row mt20 ">
                                         <div class="col-md-12">
                                             ACCOUNT HISTORY
                                         </div>
@@ -999,7 +1005,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt20 border " style="font-weight: bold">
+                                <div class="row mt20  " style="font-weight: bold">
                                     <div class="col-md-1">
                                     </div>
 
@@ -1059,7 +1065,7 @@
                                 </div>
 
                             @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
-                                    <div class="row mt20 border">
+                                    <div class="row mt20 ">
                                         <div class="col-md-12">
                                             ACCOUNT HISTORY
                                         </div>
