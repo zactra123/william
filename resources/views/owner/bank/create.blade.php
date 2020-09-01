@@ -128,7 +128,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>Dispute</th>
+                                                <th>DISPUTE</th>
                                                 <td><input type="text" name="dis[street]" class="form-control"></td>
                                                 <td><input type="text" name="dis[city]" class="form-control"></td>
                                                 <td>

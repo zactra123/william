@@ -42,7 +42,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>Dispute</th>
+                                                <th>DISPUTE</th>
                                                 <td><input type="text" name="dis[street]"   value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="dis[city]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->city??null}}" class="form-control"></td>
                                                 <td>
