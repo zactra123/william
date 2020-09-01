@@ -16,7 +16,7 @@ class CreateBankAddressesTable extends Migration
         Schema::create('bank_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('bank_logo_id');
-            $table->foreign('bank_logo_id')->references('id')->on('bank_logos');
+            $table->foreign('bank_logo_id')->references('id')->on('bank_logos')->onDelete('cascade');
             $table->string('type')->nullable();
             $table->string('street')->nullable();
             $table->string('city')->nullable();

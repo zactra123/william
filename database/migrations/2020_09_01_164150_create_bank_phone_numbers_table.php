@@ -17,7 +17,7 @@ class CreateBankPhoneNumbersTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('bank_logo_id');
-            $table->foreign('bank_logo_id')->references('id')->on('bank_logos');
+            $table->foreign('bank_logo_id')->references('id')->on('bank_logos')->onDelete('cascade');
             $table->string('type')->nullable();
             $table->string('number')->nullable();
         });

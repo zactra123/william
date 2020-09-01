@@ -95,7 +95,7 @@
                     <div class="ms-ua-box">
                         <div class="col-md-11">
                             <div class="card">
-                                {!! Form::open(['route'=>['owner.bank.store'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                                {!! Form::open(['route'=>['owner.bank.store'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "bankInformation"]) !!}
                                 @csrf
                                 <div class="card-header">
                                     <div class="row " style="margin-top: 40px">
@@ -106,7 +106,10 @@
                                     </div>
                                     <div class="row m-2">
                                         <div class="col-md-6">
-                                            <input type="text" name="name" class="form-control" placeholder="BANK NAME">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="BANK NAME">
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -128,7 +131,11 @@
                                                 <th>Dispute</th>
                                                 <td><input type="text" name="dis[street]" class="form-control"></td>
                                                 <td><input type="text" name="dis[city]" class="form-control"></td>
-                                                <td><input type="text" name="dis[state]" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="dis[state]" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="dis[zip]"  class="form-control"></td>
 
                                             </tr>
@@ -136,28 +143,44 @@
                                                     <th>EXECUTIVE OFFICE</th>
                                                 <td><input type="text" name="ex[street]" class="form-control"></td>
                                                 <td><input type="text" name="ex[city]" class="form-control"></td>
-                                                <td><input type="text" name="ex[state]" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="ex[state]" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="ex[zip]"  class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>GOVERNING ADOREE</th>
                                                 <td><input type="text" name="gv[street]" class="form-control"></td>
                                                 <td><input type="text" name="gv[city]" class="form-control"></td>
-                                                <td><input type="text" name="gv[state]" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="gv[state]" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="gv[zip]"  class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>LEGAL DEPARTMENT</th>
                                                 <td><input type="text" name="lg[street]"  class="form-control"></td>
                                                 <td><input type="text" name="lg[city]" class="form-control"></td>
-                                                <td><input type="text" name="lg[state]"  class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="lg[state]"  class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="lg[zip]"  class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>PROCESS SERVER</th>
                                                 <td><input type="text" name="ps[street]"   class="form-control"></td>
                                                 <td><input type="text" name="ps[city]" class="form-control"></td>
-                                                <td><input type="text" name="ps[state]" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="ps[state]" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="ps[zip]"  class="form-control"></td>
                                             </tr>
                                         </tbody>
@@ -169,7 +192,7 @@
                                                 {{ Form::text('phone[type][]', old('admin.phone_type'), ['class' => 'form-control', 'placeholder'=>'PHONE TYPE'])}}
                                             </div>
                                             <div class="col-sm-5 form-group">
-                                                {{ Form::text('phone[number][]ba', old('admin.phone_number'), ['class' => 'form-control phone', 'placeholder'=>'PHONE NUMBER']) }}
+                                                {{ Form::text('phone[number][]', old('admin.phone_number'), ['class' => 'form-control phone-us', 'placeholder'=>'PHONE NUMBER']) }}
                                             </div>
                                             <div class="col-sm-2 form-group">
                                                 <input class="btn btn-primary add-ip-address" type="button" value="Add"/>
@@ -251,21 +274,20 @@
         });
 
         $(document).ready(function () {
-            $('#phone_number').mask('(000) 000-0000');
+            $('.phone-us').mask('(000) 000-0000');
 
             var i=0;
 
             $(".add-ip-address").on('click', function(){
                 i++
-                console.log('dasdasd')
                 var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
                 var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-5 form-group'>"
                 var addIp = "<input type='text' name=phone[type][] class = 'form-control' placeholder = 'PHONE TYPE'> </div>" +
-                    "<div class='col-sm-5 form-group'><input type='text' name=phone[number][] class = 'form-control phone_number' placeholder = 'PHONE NUMBER'></div>"
+                    "<div class='col-sm-5 form-group'><input type='text' name=phone[number][] class = 'form-control phone-us' placeholder = 'PHONE NUMBER'></div>"
                 addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-phone btn btn-primary" type="button" data-target="'+i+'" value="Delete"/></div>'
                 newDiv += addIp + "</div></div>";
                 $("#newIp").append(newDiv);
-
+                $('.phone-us').mask('(000) 000-0000');
             })
 
             $(document).delegate('.delete-phone', 'click', function(){
@@ -299,6 +321,46 @@
                 $(this).addClass('bank_logo_dropp')
                 // $(".driver_dropp").css('background-image',file)
             });
+
+            $.validator.addMethod("valid_state", function(value, element) {
+                if (value == ''){
+                    return true
+                }
+                return !!value.match(/(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)/g);
+            }, "Not valid state format.");
+
+            $("#bankInformation").validate({
+                rules: {
+                    "name": {
+                        required:true
+                    },
+                    "logo": {
+                        required:true
+                    },
+
+
+                    "dis[state]": {
+                        valid_state:true,
+                    },
+                    "ex[state]": {
+                        valid_state:true,
+                    },
+                    "gv[state]": {
+                        valid_state:true,
+                    },
+
+                    "lg[state]": {
+                        valid_state:true,
+                    },
+                    "ps[state]": {
+                        valid_state:true,
+                    },
+
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element).parents(".form-group"));
+                }
+            })
 
 
 

@@ -12,7 +12,7 @@
                         <div class="col-md-11">
                             <div class="card">
 
-                                {!! Form::open(['route' => ['owner.bank.update', $banksLogos->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
+                                {!! Form::open(['route' => ['owner.bank.update', $banksLogos->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                                 @method('PUT')
                                 @csrf
                                 <div class="card-header">
@@ -21,8 +21,9 @@
                                             <img src="{{asset($banksLogos->path)}}" width="100px">
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="text" name="name" value="{{strtoupper($banksLogos->name)}}" class="form-control">
-
+                                            <div class="form-group">
+                                                <input type="text" name="name" value="{{strtoupper($banksLogos->name)}}" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
@@ -44,7 +45,11 @@
                                                 <th>Dispute</th>
                                                 <td><input type="text" name="dis[street]"   value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="dis[city]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->city??null}}" class="form-control"></td>
-                                                <td><input type="text" name="dis[state]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->state??null}}" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="dis[state]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->state??null}}" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="dis[zip]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->zip??null}}" class="form-control"></td>
 
                                             </tr>
@@ -52,28 +57,44 @@
                                                     <th>EXECUTIVE OFFICE</th>
                                                 <td><input type="text" name="ex[street]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="ex[city]"   value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->city??null}}"class="form-control"></td>
-                                                <td><input type="text" name="ex[state]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->state??null}}" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="ex[state]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->state??null}}" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="ex[zip]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->zip??null}}" class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>GOVERNING ADOREE</th>
                                                 <td><input type="text" name="gv[street]"  value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="gv[city]" value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->city??null}}" class="form-control"></td>
-                                                <td><input type="text" name="gv[state]"  value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->state??null}}" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="gv[state]"  value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->state??null}}" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="gv[zip]" value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->zip??null}}" class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>LEGAL DEPARTMENT</th>
                                                 <td><input type="text" name="lg[street]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="lg[city]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->city??null}}" class="form-control"></td>
-                                                <td><input type="text" name="lg[state]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->state??null}}" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="lg[state]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->state??null}}" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="lg[zip]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->zip??null}}" class="form-control"></td>
                                             </tr>
                                             <tr>
                                                     <th>PROCESS SERVER</th>
                                                 <td><input type="text" name="ps[street]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->street??null}}" class="form-control"></td>
                                                 <td><input type="text" name="ps[city]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->city??null}}" class="form-control"></td>
-                                                <td><input type="text" name="ps[state]" value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->state??null}}" class="form-control"></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input type="text" name="ps[state]" value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->state??null}}" class="form-control">
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" name="ps[zip]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->zip??null}}" class="form-control"></td>
                                             </tr>
                                         </tbody>
@@ -88,7 +109,7 @@
                                                     {{ Form::text('phone[type][]', $value->type, ['class' => 'form-control', 'placeholder'=>'PHONE TYPE'])}}
                                                 </div>
                                                 <div class="col-sm-5 form-group">
-                                                    {{ Form::text('phone[number][]ba', $value->number, ['class' => 'form-control', 'placeholder'=>'PHONE NUMBER']) }}
+                                                    {{ Form::text('phone[number][]ba', $value->number, ['class' => 'form-control phone-us', 'placeholder'=>'PHONE NUMBER']) }}
                                                 </div>
 
                                                 <div class="col-sm-2 form-group">
@@ -103,7 +124,7 @@
                                     </div>
                                     <div class="form-group row m-1">
                                         <div class="col-md-2">
-                                            <input class="btn btn-primary add-phone" type="button" value="Add"/>
+                                            <input class="btn btn-primary add-phone" type="button" value="ADD PHONE #"/>
 
                                         </div>
                                     </div>
@@ -125,20 +146,25 @@
         </div>
     </section>
 
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+
     <script>
         $(document).ready(function () {
+            $('.phone-us').mask('(000) 000-0000');
             var i=0;
 
             $(".add-phone").on('click', function(){
                 i++
-                console.log('dasdasd')
                 var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
                 var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-5 form-group'>"
                 var addIp = "<input type='text' name=phone[type][] class = 'form-control' placeholder = 'PHONE TYPE'> </div>" +
-                    "<div class='col-sm-5 form-group'><input type='text' name=phone[number][] class = 'form-control' placeholder = 'PHONE NUMBER'></div>"
+                    "<div class='col-sm-5 form-group'><input type='text' name=phone[number][] class = 'form-control phone-us' placeholder = 'PHONE NUMBER'></div>"
                 addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-phone btn btn-primary" type="button" data-target="'+i+'" value="Delete"/></div>'
                 newDiv += addIp + "</div></div>";
                 $("#newIp").append(newDiv);
+
+                $('.phone-us').mask('(000) 000-0000');
 
             })
 
@@ -149,8 +175,6 @@
 
             $('.phone').click( function(){
                 var  deleteId = $(this).attr("data-target");
-
-                console.log(deleteId);
                 var token = "<?= csrf_token()?>";
                 $.ajax(
                     {
@@ -167,6 +191,46 @@
                     });
 
             });
+
+            $.validator.addMethod("valid_state", function(value, element) {
+                if (value == ''){
+                    return true
+                }
+                return !!value.match(/(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)/g);
+            }, "Not valid state format.");
+
+            $("#bankInformation").validate({
+                rules: {
+                    "name": {
+                        required:true
+                    },
+
+
+                    "dis[state]": {
+                        valid_state:true,
+                    },
+                    "ex[state]": {
+                        valid_state:true,
+                    },
+                    "gv[state]": {
+                        valid_state:true,
+                    },
+
+                    "lg[state]": {
+                        valid_state:true,
+                    },
+                    "ps[state]": {
+                        valid_state:true,
+                    },
+
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element).parents(".form-group"));
+                }
+            })
+
+
+
 
         })
     </script>

@@ -27,7 +27,7 @@ class BanksController extends Controller
 
     public function store(Request $request)
     {
-        $validation =  Validator::make($request, [
+        $validation =  Validator::make($request->all(), [
             'logo' => ['required', 'file'],
             'name'=>['required', 'string', 'max:255'],
 
@@ -45,7 +45,7 @@ class BanksController extends Controller
                 ->with('error','Please upload files');
         }
 
-        $imagesBankLogo = $request->file("driver_license");
+        $imagesBankLogo = $request->file("logo");
         $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
         $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
         if(!in_array($bankLogoExtension, $imageExtension)){
@@ -55,7 +55,7 @@ class BanksController extends Controller
         $path = "image/banks_logo";
         $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
         $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
-        $pathLogo =  '/' . $path . $nameBankLogo;
+        $pathLogo =  '/' . $path . '/'.$nameBankLogo;
 
         $bankLogo = BankLogo::create([
             'name'=>$request->name,
@@ -103,7 +103,7 @@ class BanksController extends Controller
             if( $type != null && $phone['number'][$key] !=  null ){
 
                 BankPhoneNumber::create([
-                    'bank_logo_id'=> $id,
+                    'bank_logo_id'=>$bankLogo->id,
                     'type' =>$type,
                     'number'=>$phone['number'][$key]
                 ]);
@@ -208,21 +208,25 @@ class BanksController extends Controller
             }
         }
 
-       if(count($phone['type'])!= null && $phone['type'][0] !=null  ){
-           BankPhoneNumber::where( 'bank_logo_id',  $id)->delete();
+        if(isset($phone['type'])){
+            if(count($phone['type'])!= null && $phone['type'][0] !=null  ){
+                BankPhoneNumber::where( 'bank_logo_id',  $id)->delete();
 
-            foreach($phone['type'] as $key => $type){
-                if( $type != null && $phone['number'][$key] !=  null ){
+                foreach($phone['type'] as $key => $type){
+                    if( $type != null && $phone['number'][$key] !=  null ){
 
-                    BankPhoneNumber::create([
-                        'bank_logo_id'=> $id,
-                        'type' =>$type,
-                        'number'=>$phone['number'][$key]
-                    ]);
+                        BankPhoneNumber::create([
+                            'bank_logo_id'=> $id,
+                            'type' =>$type,
+                            'number'=>$phone['number'][$key]
+                        ]);
+                    }
+
                 }
-
             }
-       }
+
+        }
+
 
         return redirect('owner/bank/logo');
 
@@ -254,9 +258,9 @@ class BanksController extends Controller
     }
 
 
-    public function showBankLogo()
+    public function showBankLogo(Request $request)
     {
-        $banksLogos = DB::table('bank_logos')->paginate(10);
+        $banksLogos = DB::table('bank_logos')->where('name', 'LIKE', "%{$request->term}%")->paginate(10);
         return view('owner.bank.logo',compact('banksLogos'));
 
     }
