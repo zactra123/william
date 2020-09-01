@@ -14,4 +14,15 @@ class BankLogo extends Model
         'path',
 
     ];
+
+    public function bankAddress()
+    {
+        return $this->hasMany('App\BankAddress');
+    }
+
+    public function bankPhoneNumber()
+    {
+        return $this->hasMany('App\BankPhoneNumber');
+    }
+
 }

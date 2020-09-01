@@ -89,7 +89,12 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::group(["prefix"=>"bank"], function(){
         Route::get('/logo','Owner\BanksController@showBankLogo')->name("owner.bank.show");
+        Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
+        Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
         Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
+        Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
+        Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
+        Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

@@ -8,8 +8,17 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
+                    <div class="row m-2  pt-4">
+                        <div class="col-md-11 pull-left">
+                            <a class="btn btn-primary pull-left" href="{{ route('owner.bank.create')}}" role="button">
+                                ADD BANK
+                            </a>
+                        </div>
+
+                    </div>
                     <div class="ms-ua-box">
                         <div class="col-md-11">
+
                             <div class="card">
 
                                 <div class="card-header">
@@ -34,7 +43,7 @@
                                                 <td>{{strtoupper($logos->name)}}</td>
                                                 <td>
 
-
+                                                    <a  href ="{{route("owner.bank.edit", $logos->id)}}" class="btn btn-primary" data-id="{{ $logos->id}}" ><i class="fa fa-edit"></i> </a>
 
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
