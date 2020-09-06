@@ -9,15 +9,13 @@ class BankLogo extends Model
     protected $table = 'bank_logos';
 
     protected $fillable =[
-
         'name',
         'path',
-
     ];
 
-    public function bankAddress()
+    public function bankAccounts()
     {
-        return $this->hasMany('App\BankAddress');
+        return $this->hasMany('App\BankAccount');
     }
 
     public function bankPhoneNumber()

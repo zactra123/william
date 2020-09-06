@@ -2,145 +2,105 @@
 
 @section('content')
 
-    @include('helpers.breadcrumbs', ['title'=> "BANK ADDRESS", 'route' => ["Home"=> '/owner',"CLIENTS LIST" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/owner',"{$bank->name}" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
-                        <div class="col-md-11">
-                            <div class="card">
-
-                                {!! Form::open(['route' => ['owner.bank.update', $banksLogos->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
-                                @method('PUT')
-                                @csrf
-                                <div class="card-header">
-                                    <div class="row m-2">
-                                        <div class="col-md-4">
-                                            <img src="{{asset($banksLogos->path)}}" width="100px">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="text" name="name" value="{{strtoupper($banksLogos->name)}}" class="form-control">
-                                            </div>
+                    <?php $states = [null=>''] + \App\BankAddress::STATES;?>
+                        {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+                        @method('PUT')
+                        @csrf
+                        <div class="ms-ua-box">
+                            <div class="col-md-12">
+                                <div class="row m-2">
+                                    <div class="col-md-4">
+                                        <img src="{{asset($bank->path)}}" width="100px">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control">
                                         </div>
                                     </div>
-
+                                    <div class="col-md-4">
+                                        {!! Form::select('account_types[]', $account_types, array_keys($bank_accounts), ['multiple'=>'multiple','class'=>'selectize', 'id' => 'select-account']); !!}
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">TYPE</th>
-                                            <th class="col-md-4">STREET</th>
-                                            <th class="col-md-2">CITY</th>
-                                            <th class="col-md-1">STATE</th>
-                                            <th class="col-md-2">ZIP</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>DISPUTE</th>
-                                                <td><input type="text" name="dis[street]"   value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->street??null}}" class="form-control"></td>
-                                                <td><input type="text" name="dis[city]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->city??null}}" class="form-control"></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="text" name="dis[state]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->state??null}}" class="form-control">
-                                                    </div>
-                                                </td>
-                                                <td><input type="text" name="dis[zip]" value="{{$banksAddress->where('type', 'DISPUTE ADDRESS')->first()->zip??null}}" class="form-control"></td>
+                    @foreach($account_types as $k=>$account_type)
+                        @if(!empty($bank_accounts[$k]))
+                            {!! Form::hidden("bank_accounts[{$k}]", $bank_accounts[$k], ["class"=>"form-control"]) !!}
+                        @endif
 
-                                            </tr>
-                                            <tr>
-                                                    <th>EXECUTIVE OFFICE</th>
-                                                <td><input type="text" name="ex[street]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->street??null}}" class="form-control"></td>
-                                                <td><input type="text" name="ex[city]"   value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->city??null}}"class="form-control"></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="text" name="ex[state]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->state??null}}" class="form-control">
-                                                    </div>
-                                                </td>
-                                                <td><input type="text" name="ex[zip]"  value="{{$banksAddress->where('type', 'EXECUTIVE OFFICE')->first()->zip??null}}" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                    <th>GOVERNING ADOREE</th>
-                                                <td><input type="text" name="gv[street]"  value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->street??null}}" class="form-control"></td>
-                                                <td><input type="text" name="gv[city]" value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->city??null}}" class="form-control"></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="text" name="gv[state]"  value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->state??null}}" class="form-control">
-                                                    </div>
-                                                </td>
-                                                <td><input type="text" name="gv[zip]" value="{{$banksAddress->where('type', 'GOVERNING ADOREE')->first()->zip??null}}" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                    <th>LEGAL DEPARTMENT</th>
-                                                <td><input type="text" name="lg[street]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->street??null}}" class="form-control"></td>
-                                                <td><input type="text" name="lg[city]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->city??null}}" class="form-control"></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="text" name="lg[state]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->state??null}}" class="form-control">
-                                                    </div>
-                                                </td>
-                                                <td><input type="text" name="lg[zip]" value="{{$banksAddress->where('type', 'LEGAL DEPARTMENT')->first()->zip??null}}" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                    <th>PROCESS SERVER</th>
-                                                <td><input type="text" name="ps[street]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->street??null}}" class="form-control"></td>
-                                                <td><input type="text" name="ps[city]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->city??null}}" class="form-control"></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="text" name="ps[state]" value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->state??null}}" class="form-control">
-                                                    </div>
-                                                </td>
-                                                <td><input type="text" name="ps[zip]"  value="{{$banksAddress->where('type', 'PROCESS SERVER')->first()->zip??null}}" class="form-control"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    @foreach($banksPhoneNumbers as $value)
-                                        <div class="form-group row font justify-content-center" id="delete-{{$value->id}}">
-                                            <div class="col-md-12 tab-selector">
-
-
-                                                <div class="col-sm-5 form-group">
-                                                    {{ Form::text('phone[type][]', $value->type, ['class' => 'form-control', 'placeholder'=>'PHONE TYPE'])}}
-                                                </div>
-                                                <div class="col-sm-5 form-group">
-                                                    {{ Form::text('phone[number][]ba', $value->number, ['class' => 'form-control phone-us', 'placeholder'=>'PHONE NUMBER']) }}
-                                                </div>
-
-                                                <div class="col-sm-2 form-group">
-                                                    <input class="phone form-control btn btn-primary " type="button" data-target={{$value->id}} value="Delete"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-
-                                    <div id="newIp">
+                        <div class="ms-ua-box mt-2 {{empty($bank_accounts[$k])?"hidden" : ""}}" id="account-{{$k}}">
+                            <div class="ms-ua-title mb-0">
+                                <div class="row">
+                                    <div class="col-md-6 text-left"><h4> {{$account_type}} </h4> </div>
+                                    <div class="col-md-6 text-right">
+                                        <button type="button" class="remove-account-type" data-account="#account-{{$k}}" data-value="{{$k}}">
+                                            <i class="fa fa-close"></i>
+                                        </button>
                                     </div>
-                                    <div class="form-group row m-1">
-                                        <div class="col-md-2">
-                                            <input class="btn btn-primary add-phone" type="button" value="ADD PHONE #"/>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-0 font">
-                                        <div class="col-md-offset-5">
-                                            <button type="submit" class="btn btn-primary">
-                                                ADD BANK INFO
+                                </div>
+                            </div>
+                            <div class="ms-ua-form pl-4 pr-4 ">
+                            <?php $address_ids = !empty($bank_addresses[$k]) ? array_reduce($bank_addresses[$k], function ($result, $item) {$result[$item['type']] = $item; return  $result;}, []) : [] ?>
+                            @foreach(\App\BankAddress::TYPES as $type=>$name)
+                                    <div class="row expand-address" data-address="#address-{{$type}}-{{$k}}">
+                                        <div class="col-md-6"><label for="">{{$name}}</label>  </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button">
+                                                <i class="fa fa-plus-circle"></i>
                                             </button>
                                         </div>
                                     </div>
+                                    <div class="col-md-12 addresses hidden" id="address-{{$type}}-{{$k}}">
+                                        <div class="row">
+                                            {!! Form::hidden("bank_address[{$k}][{$type}][type]", $type, ["class"=>"form-control"]) !!}
+                                            @if(!empty($address_ids[$type]))
+                                             {!! Form::hidden("bank_address[{$k}][{$type}][id]", $address_ids[$type]['id'], ["class"=>"form-control"]) !!}
+                                            @endif
+                                            <div class="form-group col-sm-4">
+                                                {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}
+                                                {!! Form::text("bank_address[{$k}][{$type}][street]", !empty($address_ids[$type]) ? $address_ids[$type]['street'] : null, ["class"=>"form-control"]) !!}
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}
+                                                {!! Form::text("bank_address[{$k}][{$type}][city]",  !empty($address_ids[$type]) ? $address_ids[$type]['city'] : null, ["class"=>"form-control"]) !!}
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}
+                                                {!! Form::select("bank_address[{$k}][{$type}][state]", $states,  !empty($address_ids[$type]) ? $address_ids[$type]['state'] : null, ['class'=>'selectize-single']); !!}
+                                            </div>
+                                            <div class="form-group col-sm-3">
+                                                {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}
+                                                {!! Form::text("bank_address[{$k}][{$type}][zip]", !empty($address_ids[$type]) ?  $address_ids[$type]['zip'] : null, ["class"=>"us-zip form-control"]) !!}
+                                            </div>
+                                        </div>
 
-                                </div>
-                                {!! Form::close() !!}
-                          </div>
+                                        <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}
+                                            {!! Form::text("bank_address[{$k}][{$type}][fax_number]", !empty($address_ids[$type]) ? $address_ids[$type]['fax_number'] : null, ["class"=>"us-phone form-control"]) !!}
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}
+                                            {!! Form::text("bank_address[{$k}][{$type}][phone_number]", !empty($address_ids[$type]) ? $address_ids[$type]['phone_number'] : null, ["class"=>"us-phone form-control"]) !!}
+                                        </div>
+                                    </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
+                    @endforeach
+                    <div class="col">
+                        <input type="submit" value="Save" class="ms-ua-submit">
+
                     </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -148,93 +108,10 @@
 
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/site/admins/banks.js?v=2') }}" ></script>
 
-    <script>
-        $(document).ready(function () {
-            $('.phone-us').mask('(000) 000-0000');
-            var i=0;
-
-            $(".add-phone").on('click', function(){
-                i++
-                var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
-                var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-5 form-group'>"
-                var addIp = "<input type='text' name=phone[type][] class = 'form-control' placeholder = 'PHONE TYPE'> </div>" +
-                    "<div class='col-sm-5 form-group'><input type='text' name=phone[number][] class = 'form-control phone-us' placeholder = 'PHONE NUMBER'></div>"
-                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-phone btn btn-primary" type="button" data-target="'+i+'" value="Delete"/></div>'
-                newDiv += addIp + "</div></div>";
-                $("#newIp").append(newDiv);
-
-                $('.phone-us').mask('(000) 000-0000');
-
-            })
-
-            $(document).delegate('.delete-phone', 'click', function(){
-                $(this ).parents('.form-group').remove();
-
-            });
-
-            $('.phone').click( function(){
-                var  deleteId = $(this).attr("data-target");
-                var token = "<?= csrf_token()?>";
-                $.ajax(
-                    {
-                        url: "/owner/bank/delete/bank-phone/" + deleteId,
-                        type: 'DELETE',
-                        data: {
-                            "id": deleteId,
-                            "_token": token,
-                        },
-                        success: function () {
-                            $(this).parents(".form-group").remove();
-                            console.log("it Works");
-                        }.bind(this)
-                    });
-
-            });
-
-            $.validator.addMethod("valid_state", function(value, element) {
-                if (value == ''){
-                    return true
-                }
-                return !!value.match(/(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)/g);
-            }, "Not valid state format.");
-
-            $("#bankInformation").validate({
-                rules: {
-                    "name": {
-                        required:true
-                    },
-
-
-                    "dis[state]": {
-                        valid_state:true,
-                    },
-                    "ex[state]": {
-                        valid_state:true,
-                    },
-                    "gv[state]": {
-                        valid_state:true,
-                    },
-
-                    "lg[state]": {
-                        valid_state:true,
-                    },
-                    "ps[state]": {
-                        valid_state:true,
-                    },
-
-                },
-                errorPlacement: function(error, element) {
-                    error.insertAfter($(element).parents(".form-group"));
-                }
-            })
-
-
-
-
-        })
-    </script>
-
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 @endsection
 
 

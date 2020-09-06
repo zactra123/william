@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\AccountType;
 use App\BankAddress;
 use App\BankLogo;
 use App\BankPhoneNumber;
@@ -120,111 +121,47 @@ class BanksController extends Controller
     public function update(Request $request)
     {
         $id  = $request->id;
-        $bankName = $request->name;
-        if($bankName == null){
-            BankLogo::whereId('$id')->udate(['name'=>$bankName]);
-        }
-        $dispute  = $request->dis;
-        $ex  = $request->ex;
-        $gv  = $request->gv;
-        $lg  = $request->lg;
-        $ps  = $request->ps;
-        $phone  = $request->phone;
-        if($dispute['street'] != null){
-           $dispute['type'] =  "DISPUTE ADDRESS";
-           $dispute['bank_logo_id'] = $id;
+        $bank = BankLogo::find($id);
+        $bank->update($request->bank);
+        $existing_accounts = $bank->bankAccounts->pluck('account_type_id')->toArray();
+        $new_account_types = array_diff($request->account_types, $existing_accounts);
+        $removed_account_types = array_diff($existing_accounts, $request->account_types);
+        $new_account_types = collect($new_account_types)->map(function ($id){return ["account_type_id" =>$id]; });
 
-            $disputeAddress = DB::table('bank_addresses')->where('bank_logo_id', $id)
-               ->where('type', "DISPUTE ADDRESS" );
+        $bank->bankAccounts()->createMany($new_account_types);
+        $bank->bankAccounts()->whereIn('account_type_id', $removed_account_types)->delete();
+        $bankAccounts = $bank->bankAccounts()->whereIn('account_type_id',$request->account_types)->get();
+        foreach ( $bankAccounts as $bankAccount) {
+            $removed_bank_account_address = [];
+            $bank_account_address = [];
 
-           $checkAddress = $disputeAddress->first();
-           if(empty($checkAddress)){
-               BankAddress::create($dispute);
-           }else{
-               BankAddress::where('bank_logo_id', $id)
-                   ->where('type', "DISPUTE ADDRESS" )->update($dispute);
-           }
-        }
-        if($ex['street'] != null){
-            $ex['type'] =  "EXECUTIVE OFFICE";
-            $ex['bank_logo_id'] = $id;
-
-            $exAddress = DB::table('bank_addresses')->where('bank_logo_id', $id)
-               ->where('type', "EXECUTIVE OFFICE" );
-
-           $checkEx = $exAddress->first();
-           if(empty($checkEx)){
-               BankAddress::create($ex);
-           }else{
-               BankAddress::where('bank_logo_id', $id)
-                   ->where('type', "EXECUTIVE OFFICE" )->update($ex);
-           }
-        }
-        if($gv['street'] != null){
-            $gv['type'] =  "GOVERNING ADOREE";
-            $gv['bank_logo_id'] = $id;
-
-            $gvAddress = DB::table('bank_addresses')->where('bank_logo_id', $id)
-               ->where('type', "GOVERNING ADOREE" );
-
-           $checkGv = $gvAddress->first();
-           if(empty($checkGv)){
-               BankAddress::create($gv);
-           }else{
-               BankAddress::where('bank_logo_id', $id)
-                   ->where('type', "GOVERNING ADOREE")->update($gv);
-           }
-        }
-        if($lg['street'] != null){
-            $lg['type'] =  "LEGAL DEPARTMENT";
-            $lg['bank_logo_id'] = $id;
-
-            $lgAddress = DB::table('bank_addresses')->where('bank_logo_id', $id)
-               ->where('type', "LEGAL DEPARTMENT" );
-
-           $checkLg = $lgAddress->first();
-           if(empty($checkLg)){
-               BankAddress::create($lg);
-           }else{
-               BankAddress::where('bank_logo_id', $id)
-                   ->where('type', "LEGAL DEPARTMENT" )->update($lg);
-
-           }
-        }
-        if($ps['street'] != null){
-            $ps['type'] =  "PROCESS SERVER";
-            $ps['bank_logo_id'] = $id;
-
-            $psAddress = DB::table('bank_addresses')->where('bank_logo_id', $id)
-               ->where('type', "PROCESS SERVER");
-
-           $checkPs= $psAddress->first();
-            if(empty($checkPs)){
-                BankAddress::create($ps);
-            }else{
-                BankAddress::where('bank_logo_id', $id)
-                    ->where('type', "PROCESS SERVER" )->update($ps);
-
-            }
-        }
-
-        if(isset($phone['type'])){
-            if(count($phone['type'])!= null && $phone['type'][0] !=null  ){
-                BankPhoneNumber::where( 'bank_logo_id',  $id)->delete();
-
-                foreach($phone['type'] as $key => $type){
-                    if( $type != null && $phone['number'][$key] !=  null ){
-
-                        BankPhoneNumber::create([
-                            'bank_logo_id'=> $id,
-                            'type' =>$type,
-                            'number'=>$phone['number'][$key]
-                        ]);
+            $account_addresses =  $request->bank_address[$bankAccount->account_type_id];
+            foreach($account_addresses as $account_address) {
+                if (
+                    empty($account_address['street']) &&
+                    empty($account_address['city']) &&
+                    empty($account_address['state']) &&
+                    empty($account_address['zip']) &&
+                    empty($account_address['fax_number']) &&
+                    empty($account_address['phone_number'])
+                ) {
+                    if(!empty($account_address['id'])) {
+                        $removed_bank_account_address[] =  $account_address['id'];
                     }
-
+                    continue;
                 }
+
+                $bank_account_address = $account_address;
+
+                if (!empty($account_address['id'])) {
+                    $bankAccount->accountAddresses()->find($account_address['id'])->update($bank_account_address);
+                } else {
+                    $bankAccount->accountAddresses()->create($bank_account_address);
+                }
+
             }
 
+            $bankAccount->accountAddresses()->whereIn('id',$removed_bank_account_address)->delete();
         }
 
 
@@ -236,12 +173,13 @@ class BanksController extends Controller
     public function edit(Request $request)
     {
         $id  = $request->id;
+        $bank = BankLogo::find($id);
+        $bank_addresses = $bank->bankAccounts()->with('accountAddresses');
+        $bank_addresses  = $bank_addresses->get()->pluck('accountAddresses', 'account_type_id')->toArray();
+        $account_types = AccountType::all()->pluck('name', 'id')->toArray();
+        $bank_accounts = $bank->bankAccounts->pluck('id', 'account_type_id')->toArray();
 
-        $banksLogos = DB::table('bank_logos')->whereId($id)->first();
-        $banksAddress  = DB:: table('bank_addresses')->where('bank_logo_id', $id)->get();
-        $banksPhoneNumbers  = DB:: table('bank_phone_numbers')->where('bank_logo_id', $id)->get();
-
-        return view('owner.bank.edit', compact('banksLogos', 'banksAddress', 'banksPhoneNumbers'));
+        return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
 
     }
 

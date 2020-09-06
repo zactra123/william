@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankAddress;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;

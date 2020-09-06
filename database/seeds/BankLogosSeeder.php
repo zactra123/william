@@ -11,6 +11,11 @@ class BankLogosSeeder extends Seeder
      */
     public function run()
     {
+        Eloquent::unguard();
+
+        //disable foreign key check for this connection before running seeders
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         DB::table('bank_logos')->truncate();
 
         DB::table('bank_logos')->insert([
