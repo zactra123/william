@@ -97,13 +97,13 @@ class BanksController extends Controller
         $bank = BankLogo::find($id);
         $bank->update($request->bank);
         $existing_accounts = $bank->bankAccounts->pluck('account_type_id')->toArray();
-        $new_account_types = array_diff($request->account_types, $existing_accounts);
-        $removed_account_types = array_diff($existing_accounts, $request->account_types);
+        $new_account_types = array_diff($request->account_types??[], $existing_accounts);
+        $removed_account_types = array_diff($existing_accounts, $request->account_types??[]);
         $new_account_types = collect($new_account_types)->map(function ($id){return ["account_type_id" =>$id]; });
 
         $bank->bankAccounts()->createMany($new_account_types);
         $bank->bankAccounts()->whereIn('account_type_id', $removed_account_types)->delete();
-        $bankAccounts = $bank->bankAccounts()->whereIn('account_type_id',$request->account_types)->get();
+        $bankAccounts = $bank->bankAccounts()->whereIn('account_type_id',$request->account_types??[])->get();
         foreach ( $bankAccounts as $bankAccount) {
             $removed_bank_account_address = [];
             $bank_account_address = [];
