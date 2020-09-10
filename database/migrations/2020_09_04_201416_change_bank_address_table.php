@@ -13,6 +13,8 @@ class ChangeBankAddressTable extends Migration
      */
     public function up()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
         Schema::table('bank_addresses', function (Blueprint $table) {
             $table->dropForeign('bank_addresses_bank_logo_id_foreign');
             $table->dropColumn('bank_logo_id');
@@ -22,7 +24,7 @@ class ChangeBankAddressTable extends Migration
             $table->string('fax_number')->nullable()->after('zip');
             $table->string('phone_number')->nullable()->after('zip');
         });
-
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         Schema::dropIfExists('bank_phone_numbers');
     }
 

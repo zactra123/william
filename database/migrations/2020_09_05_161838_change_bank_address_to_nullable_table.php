@@ -30,8 +30,7 @@ class ChangeBankAddressToNullableTable extends Migration
      */
     public function down()
     {
-        Schema::table('nullable', function (Blueprint $table) {
-            //
+        Schema::table('bank_addresses', function (Blueprint $table) {
         });
     }
 }
