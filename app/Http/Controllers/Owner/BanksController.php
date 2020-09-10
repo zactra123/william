@@ -22,7 +22,9 @@ class BanksController extends Controller
 
     public function create()
     {
-        return view('owner.bank.create');
+
+        $account_types = AccountType::all()->pluck('name', 'id')->toArray();
+        return view('owner.bank.create', compact( 'account_types'));
 
     }
 
@@ -58,58 +60,29 @@ class BanksController extends Controller
         $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
         $pathLogo =  '/' . $path . '/'.$nameBankLogo;
 
-        $bankLogo = BankLogo::create([
+        $bank = BankLogo::create([
             'name'=>$request->name,
             'path'=>$pathLogo,
 
         ]);
 
-        $dispute  = $request->dis;
-        $ex  = $request->ex;
-        $gv  = $request->gv;
-        $lg  = $request->lg;
-        $ps  = $request->ps;
-        $phone  = $request->phone;
-        if($dispute['street'] != null){
-            $dispute['type'] =  "DISPUTE ADDRESS";
-            $dispute['bank_logo_id'] = $bankLogo->id;
-
-            BankAddress::create($dispute);
-        }
-        if($ex['street'] != null){
-            $ex['type'] =  "EXECUTIVE OFFICE";
-            $ex['bank_logo_id'] = $bankLogo->id;
-            BankAddress::create($ex);
-
-        }
-        if($gv['street'] != null){
-            $gv['type'] =  "GOVERNING ADOREE";
-            $gv['bank_logo_id'] = $bankLogo->id;
-            BankAddress::create($gv);
-
-        }
-        if($lg['street'] != null){
-            $lg['type'] =  "LEGAL DEPARTMENT";
-            $lg['bank_logo_id'] = $bankLogo->id;
-            BankAddress::create($lg);
-
-        }
-        if($ps['street'] != null){
-            $ps['type'] =  "PROCESS SERVER";
-            $ps['bank_logo_id'] = $bankLogo->id;
-            BankAddress::create($ps);
-
-        }
-        foreach($phone['type'] as $key => $type){
-            if( $type != null && $phone['number'][$key] !=  null ){
-
-                BankPhoneNumber::create([
-                    'bank_logo_id'=>$bankLogo->id,
-                    'type' =>$type,
-                    'number'=>$phone['number'][$key]
-                ]);
+        $new_account_types = collect($request->account_types)->map(function ($id){return ["account_type_id" =>$id]; });
+        $bankAccounts = $bank->bankAccounts()->createMany($new_account_types);
+        foreach ( $bankAccounts as $bankAccount) {
+            $account_addresses =  $request->bank_address[$bankAccount->account_type_id];
+            foreach($account_addresses as $account_address) {
+                if (
+                    empty($account_address['street']) &&
+                    empty($account_address['city']) &&
+                    empty($account_address['state']) &&
+                    empty($account_address['zip']) &&
+                    empty($account_address['fax_number']) &&
+                    empty($account_address['phone_number'])
+                ) {
+                    continue;
+                }
+                $bankAccount->accountAddresses()->create($account_address);
             }
-
         }
 
         return redirect('owner/bank/logo');

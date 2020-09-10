@@ -1,7 +1,5 @@
 @extends('layouts.layout')
-
 @section('content')
-
     @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/owner',"{$bank->name}" => "#"]])
     <section class="ms-user-account">
         <div class="container">
@@ -109,6 +107,7 @@
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="{{ asset('js/site/admins/banks.js?v=2') }}" ></script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
