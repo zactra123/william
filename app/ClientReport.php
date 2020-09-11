@@ -16,6 +16,7 @@ class ClientReport extends Model
         'report_number',
         'current_address',
         'current_phone',
+        'spouse',
         'file_path',
     ];
 

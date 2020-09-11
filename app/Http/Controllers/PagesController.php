@@ -23,7 +23,7 @@ class PagesController extends Controller
 
 //        dd(resource_path('scripts/'. 'transunion_dispute.py'));
 //        $script_path = resource_path() . '/scripts/transunion_payment_status.py';
-        $scraper = new Screaper(2);
+//        $scraper = new Screaper(2);
 //        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['1854037387','‎1316806202','‎0914142484']) ];  //
 //        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['2224037387','2226806202','2224142484']) ];  //
 //        $arguments = ['esemdues@gmail.com', '118-62-7536', implode(',', ['0914142484','1316806202','1854037387‎']) ];  //
