@@ -3,6 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\ClientReport;
+use App\ClientReportAddress;
+use App\ClientReportExAccount;
+use App\ClientReportExInquiry;
+use App\ClientReportExPublicRecord;
+use App\ClientReportExStatement;
+use App\ClientReportName;
+use App\ClientReportPhone;
+use App\ClientReportTuAccount;
+use App\ClientReportTuInquiry;
+use App\ClientReportTuPublicRecord;
+use App\ClientReportTuStatement;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use Illuminate\Http\Request;
@@ -406,7 +417,352 @@ class ClientDetailsController extends Controller
     }
     public function negativeItemStore(Request $request)
     {
+        $disputeOptions = $request->except('_token');
+        $userId = Auth::user()->id;
+
+        $disputeName = [];
+        $disputeAddress = [];
+        $disputePhone = [];
+        $disputeExPublicRecord = [];
+        $disputeExAccount = [];
+        $disputeExInquiry = [];
+        $disputeExStatement = [];
+        $disputeTuPublicRecord = [];
+        $disputeTuAccount = [];
+        $disputeTuInquiry = [];
+        $disputeTuStatement = [];
+
+        foreach($disputeOptions as $key => $value){
+
+
+            if($key == 'ex_name' or $key == 'tu_name'){
+                $option = [
+                    1 => 'BELONGS TO ANOTHER PERSON WITH SAME/SIMILAR NAME',
+                    2 => 'IDENTITY THEFT',
+                    3 => 'OTHER REASON'
+                ];
+                foreach($value  as $id =>$dispute){
+                    $name = ClientReportName::where('id', $id)->first();
+                    $comment = isset($disputeOptions['ex_name_comment'][$id])?$disputeOptions['ex_name_comment'][$id]:isset($disputeOptions['tu_name_comment'][$id])?$disputeOptions['tu_name_comment'][$id]:null;
+                    $disputeName[] =[
+                        'details' => $name,
+                        'option' => $option[$dispute],
+                        'option_id' => $dispute,
+                        'comment'=> $comment
+                    ];
+                }
+
+            }
+
+            if($key == 'ex_address' or $key == 'tu_address'){
+
+                $optionAddress = [
+                    '1'=> 'NEVER LIVED AT THIS ADDRESS',
+                    '2'=>'BELONGS TO ANOTHER PERSON WITH SAME/SIMILAR NAME',
+                    '3'=>'RESIDENCE TYPE IS INACCURATE',
+                    '4'=>'IDENTITY THEFT',
+                    '5'=>'OTHER REASON'
+                ];
+
+                foreach($value  as $idAddress =>$disputeAddresses){
+                    $name = ClientReportAddress::where('id', $idAddress)->first();
+                    $comment = isset($disputeOptions['ex_address_comment'][$idAddress])?$disputeOptions['ex_address_comment'][$idAddress]:isset($disputeOptions['tu_address_comment'][$idAddress])?$disputeOptions['tu_address_comment'][$idAddress]:null;
+
+                    $disputeAddress[] =[
+                        'details' => $name,
+                        'option' => $optionAddress[$disputeAddresses],
+                        'option_id'=>$disputeAddresses,
+                        'comment'=> $comment
+                    ];
+                }
+
+            }
+
+            if($key == 'ex_phone' or $key == 'tu_phone'){
+                $optionPhone = [
+                    '1'=> 'INACCURATE PHONE NUMBER',
+                    '2'=>'NOT MINE',
+                    '3'=>'IDENTITY THEFT',
+                    '4'=>'OTHER REASON'
+                ];
+                foreach($value  as $idPhone => $disputePhones){
+
+                    $name = ClientReportPhone::where('id', $idPhone)->first();
+                    $comment = isset($disputeOptions['ex_phone_comment'][$idPhone])?$disputeOptions['ex_phone_comment'][$idPhone]:isset($disputeOptions['tu_phone_comment'][$idPhone])?$disputeOptions['tu_phone_comment'][$idPhone]:null;
+
+                    $disputePhone[] = [
+                        'details' => $name,
+                        'option' => $optionPhone[$disputePhones],
+                        'option_id'=>$idPhone,
+                        'comment'=> $comment
+                    ];
+
+                }
+
+            }
+
+            if($key == 'ex_publicRecorde'){
+                $optionExPublicRecord = [
+                    '1'=>'PAYMENT NEVER LATE',
+                    '2'=>'NOT MINE OR NOT KNOWLEDGE OF ACCOUNT',
+                    '3'=>'ACCOUNT PAID IN FULL',
+                    '4'=>'ACCOUNT CLOSED',
+                    '5'=>'UNAUTHORIZED CHARGES',
+                    '6'=>'BELONGS TO EX-SPOUSE',
+                    '7'=>'BALANCE INCORRECT',
+                    '8'=>'INCLUDED IN BANKRUPTCY',
+                    '9'=>'INCLUDED IN BANKRUPTCY',
+                    '10'=>'BELONGS TO PRIMARY ACCOUNT HOLDER',
+                    '11'=>'CORPORATE ACCOUNT',
+                    '12'=>'BELONGS TO ANOTHER PERSON WITH SAME OR SIMILAR NAME',
+                    '13'=>'IDENTITY THEFT',
+                    '14'=>'OTHER REASON'
+                ];
+                foreach($value  as $idExPublicRecord =>$disputeExPublicRecords){
+
+                    $name = ClientReportExPublicRecord::where('id', $idExPublicRecord)->first();
+
+                    $disputeExPublicRecord[] =[
+                        'details' => $name,
+                        'option' => $optionExPublicRecord[$disputeExPublicRecords],
+                        'option_id'=> $disputeExPublicRecords,
+                        'comment'=> $disputeOptions['ex_publicRecorde_comment'][$idExPublicRecord]
+                    ];
+                }
+
+
+            }
+
+            if($key == 'ex_account'){
+                $optionExAccount = [
+                    '1'=>'PAYMENT NEVER LATE',
+                    '2'=>'NOT MINE OR NOT KNOWLEDGE OF ACCOUNT',
+                    '3'=>'ACCOUNT PAID IN FULL',
+                    '4'=>'ACCOUNT CLOSED',
+                    '5'=>'UNAUTHORIZED CHARGES',
+                    '6'=>'BELONGS TO EX-SPOUSE',
+                    '7'=>'BALANCE INCORRECT',
+                    '8'=>'INCLUDED IN BANKRUPTCY',
+                    '9'=>'INCLUDED IN BANKRUPTCY',
+                    '10'=>'BELONGS TO PRIMARY ACCOUNT HOLDER',
+                    '11'=>'CORPORATE ACCOUNT',
+                    '12'=>'BELONGS TO ANOTHER PERSON WITH SAME OR SIMILAR NAME',
+                    '13'=>'IDENTITY THEFT',
+                    '14'=>'OTHER REASON'
+                ];
+                foreach($value  as $idExAccount=>$disputeExAccounts){
+                    $name = ClientReportExAccount::where('id', $idExAccount)->first();
+
+                    $disputeExAccount[] = [
+                        'details' => $name,
+                        'option' => $optionExAccount[$disputeExAccounts],
+                        'option_id'=> $disputeExAccounts,
+                        'comment'=> $disputeOptions['ex_account_comment'][$idExAccount]
+                    ];
+                }
+            }
+
+            if($key == 'ex_inquiry'){
+
+                foreach($value  as $idExInquiry=>$disputeExInquiries){
+                    $optionExInquiry = [
+                        '1'=>'UNAUTHORIZED',
+                        '2'=>'FRADULENT',
+                        '3'=>'OTHER REASON'
+                    ];
+
+                    $name = ClientReportExInquiry::where('id', $idExInquiry)->first();
+
+                    $disputeExInquiry[] =[
+                        'details' => $name,
+                        'option' => $optionExInquiry[$disputeExInquiries],
+                        'option_id'=>$disputeExInquiries,
+                        'comment'=> $disputeOptions['ex_inquiry_comment'][$idExInquiry]
+                    ];
+                }
+
+            }
+
+            if($key == 'ex_statement'){
+
+                foreach($value  as $idExStatement=>$disputeExStatements){
+                    $optionExInquiry = [
+                        '1'=>'PLEASE ADD/UPDATE PHONE NUMBER',
+                        '2'=>'PLEASE REMOVE THIS FRAUD ALERT',
+                        '3'=>'LEASE ADD A FRAUD ALERT'
+                    ];
+
+                    $name = ClientReportExStatement::where('id', $idExStatement)->first();
+
+                    $disputeExStatement[] =[
+                        'details' => $name,
+                        'option' => $optionExAccount[$disputeExStatements],
+                        'option_id'=> $disputeExStatements,
+                        'phone_1'=> $disputeOptions['ex_statement_phone1'][$idExStatement],
+                        'phone-2'=> $disputeOptions['ex_statement_phone2'][$idExStatement]
+                    ];
+                }
+
+            }
+
+            if($key == 'tu_publicRecorde'){
+                $optionTuPublicRecord = [
+                    '1'=>'THE BALANCE AND/OR PAST DUE AMOUNT ARE/IS INCORRECT',
+                    '2'=>'THE AMOUNTS OTHER THAN BALANCE AND/OR PAST DUE ARE NOT CORRECT',
+                    '3'=>'THE PAYMENT HISTORY/RATING IS INCORRECT',
+                    '4'=>'THE DATES ON THIS ACCOUNT ARE INCORRECT',
+                    '5'=>'THIS ACCOUNT IS TOO OLD TO BE ON MY CREDIT REPORT',
+                    '6'=>'THIS ACCOUNT IS SETTLED',
+                    '7'=>'THIS ACCOUNT IS NOT A COLLECTION OR CHARGE-OFF',
+                    '8'=>'I CLOSED THIS ACCOUNT',
+                    '9'=>'THIS ACCOUNT IS CLOSED',
+                    '10'=>'THERE WERE FRAUDULENT CHARGES ON MADE THIS ACCOUNT',
+                    '11'=>'THIS ACCOUNT IS INCLUDING ON BANKRUPTCY',
+                    '12'=>'THIS ACCOUNT IS NOT IN BANKRUPTCY',
+                    '13'=>'THIS ACCOUNT IS NOT IN BANKRUPTCY OF ANOTHER PERSON',
+                    '14'=>'THE INFORMATION IN THE REMARKS FIELD IS MISSING OR INCORRECT',
+                    '15'=>'I AM ON ACTIVE MILITARY DUTY',
+                    '16'=>'THIS ACCOUNT IS NOT CLOSED',
+                    '17'=>'THE ACCOUNT IN DISPUTE REMARK IS MISSING OR INCORRECT',
+                    '18'=>'THE PAYMENT TERMS OR ACCOUNT TYPE ARE INCORRECT',
+                    '19'=>'THE CREDITOR AGREED TO DELETE THIS ACCOUNT',
+                    '20'=>'THE CONTRACT RELATED TO THIS ACCOUNT HAS BEEN CANCELLED',
+                    '21'=>'THE CREDIT LIMIT AND/OR HIGH BALANCE IS INCORRECT',
+                    '22'=>'THE CREDITOR AGREED TO CHANGE ACCOUNT INFORMATION',
+                    '23'=>'THE PAYMENT HISTORY/ RATING IS INCORRECT',
+                    '24'=>'THIS ACCOUNT WAS PAID BY INSURANCE',
+                    '25'=>'THIS ACCOUNT INVOLVED IN LITIGATION',
+                    '26'=>'THIS ACCOUNT IS DEFERRED OR IN FORBEARENCE',
+                    '27'=>'I AM A VICTIM OF A NATURAL OR DECLARED DISASTER',
+                    '28'=>'I AM NOT DECEASED',
+                    '29'=>'OTHER REASON'
+                ];
+                foreach($value  as $idTuPublicRecord =>$disputeTuPublicRecords){
+                    $name = ClientReportTuPublicRecord::where('id', $idTuPublicRecord)->first();
+
+                    $disputeTuPublicRecord[] =[
+                        'details' => $name,
+                        'option' => $optionTuPublicRecord[$disputeTuPublicRecords],
+                        'option_id'=>$disputeTuPublicRecords,
+                        'comment'=> $disputeOptions['tu_publicRecorde_comment'][$idTuPublicRecord]
+                    ];
+                }
+
+            }
+
+            if($key == 'tu_account'){
+                $optionTuAccount = [
+                    '1'=>'THE BALANCE AND/OR PAST DUE AMOUNT ARE/IS INCORRECT',
+                    '2'=>'THE AMOUNTS OTHER THAN BALANCE AND/OR PAST DUE ARE NOT CORRECT',
+                    '3'=>'THE PAYMENT HISTORY/RATING IS INCORRECT',
+                    '4'=>'THE DATES ON THIS ACCOUNT ARE INCORRECT',
+                    '5'=>'THIS ACCOUNT IS TOO OLD TO BE ON MY CREDIT REPORT',
+                    '6'=>'THIS ACCOUNT IS SETTLED',
+                    '7'=>'THIS ACCOUNT IS NOT A COLLECTION OR CHARGE-OFF',
+                    '8'=>'I CLOSED THIS ACCOUNT',
+                    '9'=>'THIS ACCOUNT IS CLOSED',
+                    '10'=>'THERE WERE FRAUDULENT CHARGES ON MADE THIS ACCOUNT',
+                    '11'=>'THIS ACCOUNT IS INCLUDING ON BANKRUPTCY',
+                    '12'=>'THIS ACCOUNT IS NOT IN BANKRUPTCY',
+                    '13'=>'THIS ACCOUNT IS NOT IN BANKRUPTCY OF ANOTHER PERSON',
+                    '14'=>'THE INFORMATION IN THE REMARKS FIELD IS MISSING OR INCORRECT',
+                    '15'=>'I AM ON ACTIVE MILITARY DUTY',
+                    '16'=>'THIS ACCOUNT IS NOT CLOSED',
+                    '17'=>'THE ACCOUNT IN DISPUTE REMARK IS MISSING OR INCORRECT',
+                    '18'=>'THE PAYMENT TERMS OR ACCOUNT TYPE ARE INCORRECT',
+                    '19'=>'THE CREDITOR AGREED TO DELETE THIS ACCOUNT',
+                    '20'=>'THE CONTRACT RELATED TO THIS ACCOUNT HAS BEEN CANCELLED',
+                    '21'=>'THE CREDIT LIMIT AND/OR HIGH BALANCE IS INCORRECT',
+                    '22'=>'THE CREDITOR AGREED TO CHANGE ACCOUNT INFORMATION',
+                    '23'=>'THE PAYMENT HISTORY/ RATING IS INCORRECT',
+                    '24'=>'THIS ACCOUNT WAS PAID BY INSURANCE',
+                    '25'=>'THIS ACCOUNT INVOLVED IN LITIGATION',
+                    '26'=>'THIS ACCOUNT IS DEFERRED OR IN FORBEARENCE',
+                    '27'=>'I AM A VICTIM OF A NATURAL OR DECLARED DISASTER',
+                    '28'=>'I AM NOT DECEASED',
+                    '29'=>'OTHER REASON'
+                ];
+                foreach($value  as $idTuAccount=>$disputeTuAccounts){
+                    $name = ClientReportTuAccount::where('id', $idTuAccount)->first();
+
+                    $disputeTuAccount[] =[
+                        'details' => $name,
+                        'option' => $optionTuAccount[$disputeTuAccounts],
+                        'option_id'=>$disputeTuAccounts,
+                        'comment'=> isset($disputeOptions['tu_account_comment'][$idTuAccount])?$disputeOptions['tu_account_comment'][$idTuAccount]:null,
+                    ];
+                }
+
+            }
+
+            if($key == 'tu_inquiry'){
+                $optionTuInquiry = [
+                    '1'=>'UNAUTHORIZED',
+                    '2'=>'FRADULENT',
+                    '3'=>'OTHER REASON'
+                ];
+                foreach($value  as $idTuInquiry=>$disputeTuInquiries){
+                    $name = ClientReportTuInquiry::where('id', $idTuInquiry)->first();
+
+                    $disputeTuInquiry[] =[
+                        'details' => $name,
+                        'option' => $optionTuInquiry[$disputeTuInquiries],
+                        'option_id' =>$disputeTuInquiries,
+                        'comment'=> $disputeOptions['tu_inquiry_comment'][$idTuInquiry]
+                    ];
+                }
+            }
+
+            if($key == 'tu_statement'){
+
+                $optionTuInquiry = [
+                    '1'=>'PLEASE ADD/UPDATE PHONE NUMBER',
+                    '2'=>'PLEASE REMOVE THIS FRAUD ALERT',
+                    '3'=>'LEASE ADD A FRAUD ALERT'
+                ];
+
+                foreach($value  as $idTuStatement=>$disputeTuStatements){
+                    $name = ClientReportTuStatement::where('id', $idTuStatement)->first();
+
+                    $disputeTuStatement[] =[
+                        'details' => $name,
+                        'option' => $optionTuInquiry[$disputeTuStatements],
+                        'option_id'=>$disputeTuStatements,
+                        'phone_1'=> $disputeOptions['tu_statement_phone1'][$idTuStatement],
+                        'phone-2'=> $disputeOptions['tu_statement_phone2'][$idTuStatement]
+                    ];
+                }
+
+            }
+
+
+        }
+
+        $data = [
+            'name'=>$disputeName,
+            'address'=>$disputeAddress,
+            'phone'=>$disputePhone,
+            'ex_public'=>$disputeExPublicRecord,
+            'ex_account'=>$disputeExAccount,
+            'ex_inquiry'=>$disputeExInquiry,
+            'ex_statement'=>$disputeExStatement,
+            'tu_public'=>$disputeTuPublicRecord,
+            'tu_account'=>$disputeTuAccount,
+            'tu_inquiry'=>$disputeTuInquiry,
+            'tu_statement'=>$disputeTuStatement
+
+        ];
+
+
+        return view('client_details.view_negative_show', compact('data'));
+
+    }
+
+    public function negativeItemContract(Request $request)
+    {
         dd($request->all());
     }
+
+
 
 }

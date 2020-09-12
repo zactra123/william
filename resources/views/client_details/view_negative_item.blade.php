@@ -142,7 +142,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_address[]" value="{{$address->id}}" id="ex-address-{{$address->id}}" class="customcheck ex_address">
+                                            <input type="checkbox"  id="ex-address-{{$address->id}}" class="customcheck ex_address">
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$phone->id}}" id="ex-phone-{{$phone->id}}"   class="customcheck ex_phone">
+                                            <input type="checkbox"  id="ex-phone-{{$phone->id}}"   class="customcheck ex_phone">
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +219,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$publicRecords->id}}"  id="ex-publicRecorde-{{$publicRecords->id}}" class="customcheck ex_publicRecorde">
+                                            <input type="checkbox"   id="ex-publicRecorde-{{$publicRecords->id}}" class="customcheck ex_publicRecorde">
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +311,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$accounts->id}}" id="ex-account-{{$accounts->id}}" class="customcheck ex_account">
+                                            <input type="checkbox"  id="ex-account-{{$accounts->id}}" class="customcheck ex_account">
                                         </div>
                                     </div>
                                 </div>
@@ -409,7 +409,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$names->id}}" id="ex-account-{{$accounts->id}}" class="customcheck ex_account">
+                                            <input type="checkbox"  id="ex-account-{{$accounts->id}}" class="customcheck ex_account">
                                         </div>
                                     </div>
                                 </div>
@@ -532,7 +532,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$names->id}}"  id="ex-inquiry-{{$inquiries->id}}"  class="customcheck ex_inquiry">
+                                            <input type="checkbox"   id="ex-inquiry-{{$inquiries->id}}"  class="customcheck ex_inquiry">
                                         </div>
                                     </div>
 
@@ -590,7 +590,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$inquiries->id}}"  id="ex-inquiry-{{$inquiries->id}}"  class="customcheck ex_inquiry">
+                                            <input type="checkbox"  id="ex-inquiry-{{$inquiries->id}}"  class="customcheck ex_inquiry">
                                         </div>
                                     </div>
 
@@ -619,7 +619,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$statements->id}}" id="ex-statement-{{$statements->id}}"    class="customcheck ex_statement">
+                                            <input type="checkbox"  id="ex-statement-{{$statements->id}}"    class="customcheck ex_statement">
                                         </div>
                                     </div>
 
@@ -673,7 +673,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$names->id}}" class="customcheck tu_name">
+                                            <input type="checkbox"  class="customcheck tu_name">
                                         </div>
                                     </div>
                                 </div>
@@ -715,7 +715,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$address->id}}" id="tu-address-{{$address->id}}"   class="customcheck tu_address">
+                                            <input type="checkbox"  id="tu-address-{{$address->id}}"   class="customcheck tu_address">
                                         </div>
                                     </div>
 
@@ -758,7 +758,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$phone->id}}" id="tu-phone-{{$phone->id}}" class="customcheck tu_phone">
+                                            <input type="checkbox"  id="tu-phone-{{$phone->id}}" class="customcheck tu_phone">
                                         </div>
                                     </div>
 
@@ -788,7 +788,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$accounts->id}}" id="tu-account-{{$accounts->id}}" class="customcheck tu_account ">
+                                            <input type="checkbox" id="tu-account-{{$accounts->id}}" class="customcheck tu_account ">
                                         </div>
                                     </div>
                                 </div>
@@ -895,7 +895,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$phone->id}}" class="customcheck ex_phone">
+                                            <input type="checkbox"  class="customcheck tu_account">
                                         </div>
                                     </div>
                                 </div>
@@ -1129,7 +1129,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$publicRecords->id}}" id="tu-publicRecorde-{{$publicRecords->id}}"  class="customcheck tu_publicRecorde">
+                                            <input type="checkbox" id="tu-publicRecorde-{{$publicRecords->id}}"  class="customcheck tu_publicRecorde">
                                         </div>
                                     </div>
                                 </div>
@@ -1275,7 +1275,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$inquiries->id}}" id="tu-inquiry-{{$inquiries->id}}" class="customcheck tu_inquiry">
+                                            <input type="checkbox" id="tu-inquiry-{{$inquiries->id}}" class="customcheck tu_inquiry">
                                         </div>
                                     </div>
                                 </div>
@@ -1325,7 +1325,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$inquiries->id}}"id="tu-inquiry-{{$inquiries->id}}" class="customcheck tu_inquiry">
+                                            <input type="checkbox" id="tu-inquiry-{{$inquiries->id}}" class="customcheck tu_inquiry">
                                         </div>
                                     </div>
                                 </div>
@@ -1375,7 +1375,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$inquiries->id}}"id="tu-inquiry-{{$inquiries->id}}" class="customcheck tu_inquiry">
+                                            <input type="checkbox" id="tu-inquiry-{{$inquiry->id}}" class="customcheck tu_inquiry">
                                         </div>
                                     </div>
                                 </div>
@@ -1402,7 +1402,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="ex_name[]" value="{{$statements->id}}" id="tu-statement-{{$statements->id}}" class="customcheck tu_statement">
+                                            <input type="checkbox" id="tu-statement-{{$statements->id}}" class="customcheck tu_statement">
                                         </div>
                                     </div>
                                 </div>
@@ -1533,9 +1533,9 @@
                         html  = html + "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
                         html  = html + "<span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>"
                         html  = html + "<div class='form row'><div class='form-group col-md-12'>"
-                        html  = html + "<select class='form-control reason_phone' name='ex_address["+id+"]'>"
+                        html  = html + "<select class='form-control reason_phone' name='ex_phone["+id+"]'>"
                         html  = html + "<option disabled='disabled' selected='selected'>SELECT A DISPUTE REASON </option>"
-                        html  = html + "<option value='1'>INACCURATE PHONE NUBER</option>"
+                        html  = html + "<option value='1'>INACCURATE PHONE NUMBER</option>"
                         html  = html + "<option value='2'>NOT MINE</option>"
                         html  = html + "<option value='3'>IDENTITY THEFT</option>"
                         html  = html + "<option value='4'>OTHER REASON</option>"
@@ -1766,12 +1766,6 @@
                     }
                 });
 
-
-
-
-
-
-
                 $(".tu_name").click(function () {
                     if(this.checked) {
                         var id  = this.id.replace('tu-name-', '')
@@ -1794,8 +1788,8 @@
                         html  = html + "<option value='2'>BELONGS TO ANOTHER PERSON WITH SAME/SIMILAR NAME</option>"
                         html  = html + "<option value='3'>IDENTITY THEFT</option>"
                         html  = html + "<option value='4'>OTHER REASON</option></select></div>"
-                        html  = html + "<div class='form-group col-md-12' id ='ex_name_comment"+id +"' style='display:none'>"
-                        html  = html + "<textarea class='form-control' name='ex_name_comment["+id+"]'></textarea></div></div></div>"
+                        html  = html + "<div class='form-group col-md-12' id ='tu_name_comment"+id +"' style='display:none'>"
+                        html  = html + "<textarea class='form-control' name='tu_name_comment["+id+"]'></textarea></div></div></div>"
                         html  = html + "<div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>OK</button>"
                         html  = html + "</div></div></div></div>"
 
@@ -1871,7 +1865,7 @@
                         html  = html + "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
                         html  = html + "<span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>"
                         html  = html + "<div class='form row'><div class='form-group col-md-12'>"
-                        html  = html + "<select class='form-control reason_tu_phone' name='tu_address["+id+"]'>"
+                        html  = html + "<select class='form-control reason_tu_phone' name='tu_phone["+id+"]'>"
                         html  = html + "<option disabled='disabled' selected='selected'>SELECT A DISPUTE REASON </option>"
                         html  = html + "<option value='1'>INACCURATE PHONE NUBER</option>"
                         html  = html + "<option value='2'>NOT MINE</option>"
@@ -1914,20 +1908,35 @@
                         html  = html + "<div class='form row'><div class='form-group col-md-12'>"
                         html  = html + "<select class='form-control reason_tu_publicRecord' name='tu_publicRecorde["+id+"]'>"
                         html  = html + "<option disabled='disabled' selected='selected'>SELECT A DISPUTE REASON </option>"
-                        html  = html + "<option value='1'>PAYMENT NEVER LATE</option>"
-                        html  = html + "<option value='2'>NOT MINE OR NOT KNOWLEDGE OF ACCOUNT/option>"
-                        html  = html + "<option value='3'>ACCOUNT PAID IN FULL</option>"
-                        html  = html + "<option value='4'>ACCOUNT CLOSED</option>"
-                        html  = html + "<option value='5'>UNAUTHORIZED CHARGES</option>"
-                        html  = html + "<option value='6'>BELONGS TO EX-SPOUSE </option>"
-                        html  = html + "<option value='7'>BALANCE INCORRECT</option>"
-                        html  = html + "<option value='8'>INCLUDED IN BANKRUPTCY</option>"
-                        html  = html + "<option value='9'>INCLUDED IN BANKRUPTCY</option>"
-                        html  = html + "<option value='10'>BELONGS TO PRIMARY ACCOUNT HOLDER</option>"
-                        html  = html + "<option value='11'>CORPORATE ACCOUNT</option>"
-                        html  = html + "<option value='12'>BELONGS TO ANOTHER PERSON WITH SAME OR SIMILAR NAME</option>"
-                        html  = html + "<option value='13'>IDENTITY THEFT</option>"
-                        html  = html + "<option value='14'>OTHER REASON</option>"
+                        html  = html + "<option value='1'>THE BALANCE AND/OR PAST DUE AMOUNT ARE/IS INCORRECT </option>"
+                        html  = html + "<option value='2'>THE AMOUNTS OTHER THAN BALANCE AND/OR PAST DUE ARE NOT CORRECT</option>"
+                        html  = html + "<option value='3'>THE PAYMENT HISTORY/RATING IS INCORRECT</option>"
+                        html  = html + "<option value='4'>THE DATES ON THIS ACCOUNT ARE INCORRECT</option>"
+                        html  = html + "<option value='5'>THIS ACCOUNT IS TOO OLD TO BE ON MY CREDIT REPORT</option>"
+                        html  = html + "<option value='6'>THIS ACCOUNT IS SETTLED </option>"
+                        html  = html + "<option value='7'>THIS ACCOUNT IS NOT A COLLECTION OR CHARGE-OFF</option>"
+                        html  = html + "<option value='8'>I CLOSED THIS ACCOUNT</option>"
+                        html  = html + "<option value='9'>THIS ACCOUNT IS CLOSED</option>"
+                        html  = html + "<option value='10'>THERE WERE FRAUDULENT CHARGES ON MADE THIS ACCOUNT</option>"
+                        html  = html + "<option value='11'>THIS ACCOUNT IS INCLUDING ON BANKRUPTCY </option>"
+                        html  = html + "<option value='12'>THIS ACCOUNT IS NOT IN BANKRUPTCY </option>"
+                        html  = html + "<option value='13'>THIS ACCOUNT IS NOT IN BANKRUPTCY OF ANOTHER PERSON</option>"
+                        html  = html + "<option value='14'>THE INFORMATION IN THE REMARKS FIELD IS MISSING OR INCORRECT</option>"
+                        html  = html + "<option value='15'>I AM ON ACTIVE MILITARY DUTY</option>"
+                        html  = html + "<option value='16'>THIS ACCOUNT IS NOT CLOSED</option>"
+                        html  = html + "<option value='17'>THE ACCOUNT IN DISPUTE REMARK IS MISSING OR INCORRECT</option>"
+                        html  = html + "<option value='18'>THE PAYMENT TERMS OR ACCOUNT TYPE ARE INCORRECT</option>"
+                        html  = html + "<option value='19'>THE CREDITOR AGREED TO DELETE THIS ACCOUNT</option>"
+                        html  = html + "<option value='20'>THE CONTRACT RELATED TO THIS ACCOUNT HAS BEEN CANCELLED</option>"
+                        html  = html + "<option value='21'>THE CREDIT LIMIT AND/OR HIGH BALANCE IS INCORRECT</option>"
+                        html  = html + "<option value='22'>THE CREDITOR AGREED TO CHANGE ACCOUNT INFORMATION</option>"
+                        html  = html + "<option value='23'>THE PAYMENT HISTORY/ RATING IS INCORRECT</option>"
+                        html  = html + "<option value='24'>THIS ACCOUNT WAS PAID BY INSURANCE</option>"
+                        html  = html + "<option value='25'>THIS ACCOUNT INVOLVED IN LITIGATION</option>"
+                        html  = html + "<option value='26'>THIS ACCOUNT IS DEFERRED OR IN FORBEARENCE </option>"
+                        html  = html + "<option value='27'>I AM A VICTIM OF A NATURAL OR DECLARED DISASTER </option>"
+                        html  = html + "<option value='28'>I AM NOT DECEASED </option>"
+                        html  = html + "<option value='29'>OTHER REASON</option>"
                         html  = html + "</select></div>"
                         html  = html + "<div class='form-group col-md-12' id ='tu_publicRecorde_comment"+id +"' style='display:none'>"
                         html  = html + "<textarea class='form-control' name='tu_publicRecorde_comment["+id+"]'></textarea></div></div></div>"
@@ -1943,7 +1952,7 @@
                 $(document).delegate('.reason_tu_publicRecord', 'click', function(){
                     var  value = $(this).val()
                     var id =$(this).attr("name").replace('tu_publicRecorde[','').replace(']','')
-                    if(value == 14){
+                    if(value == 29){
                         $("#tu_publicRecorde_comment"+id).css("display", "block");
                     }else{
                         $("#tu_publicRecorde_comment"+id).css("display", "none");
@@ -2018,10 +2027,11 @@
                     }
                 });
 
-                $(".ex_inquiry").click(function () {
+                $(".tu_inquiry").click(function () {
                     if(this.checked) {
                         var id  = this.id.replace('tu-inquiry-', '')
                         var name = "tu_inquiry-" + id
+
 
                         var html = "<div class='modal fade' id='tu_inquiry-"
                         html  = html + id + "' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>"

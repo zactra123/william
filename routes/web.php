@@ -172,6 +172,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::get('profile', 'ClientDetailsController@profile')->name('client.profile');
     Route::get('negative-item', 'ClientDetailsController@negativeItem')->name('client.negative.item');
     Route::post('negative-item', 'ClientDetailsController@negativeItemStore')->name('negative.store');
+    Route::post('negative-contract', 'ClientDetailsController@negativeItemContract')->name('negative.contract');
     Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 
 
