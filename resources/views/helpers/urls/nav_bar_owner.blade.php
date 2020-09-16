@@ -11,6 +11,7 @@
 <li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">BANKS</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
         <li><a href="{{ route('owner.bank.show')}}">BANK LOGO</a></li>
+        <li><a href="{{ route('owner.bank.equal')}}">EQUAL BANKS</a></li>
     </ul>
 </li>
 

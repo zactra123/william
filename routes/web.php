@@ -95,6 +95,9 @@ Route::group(['prefix'=>'owner'], function(){
         Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
         Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
         Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
+        Route::any('/equal-banks', 'Owner\BanksController@equalBanks')->name("owner.bank.equal");
+        Route::any('/banks_json', 'Owner\BanksController@banks');
+        Route::delete('/equal-bank', 'Owner\BanksController@removeEqualBank');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

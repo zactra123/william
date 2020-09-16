@@ -57,7 +57,6 @@
 
                                                     <a  href ="{{route("owner.bank.edit", $logos->id)}}" class="btn btn-primary" data-id="{{ $logos->id}}" ><i class="fa fa-edit"></i> </a>
 
-                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
 
                                                     <button class="btn btn-danger delete" data-id="{{ $logos->id}}" ><i class="fa fa-trash"></i> </button>
 

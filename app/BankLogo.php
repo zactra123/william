@@ -18,6 +18,11 @@ class BankLogo extends Model
         return $this->hasMany('App\BankAccount');
     }
 
+    public function equalBanks()
+    {
+        return $this->hasMany('App\EqualBank');
+    }
+
     public function bankPhoneNumber()
     {
         return $this->hasMany('App\BankPhoneNumber');

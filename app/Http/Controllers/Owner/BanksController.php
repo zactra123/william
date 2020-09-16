@@ -6,8 +6,10 @@ use App\AccountType;
 use App\BankAddress;
 use App\BankLogo;
 use App\BankPhoneNumber;
+use App\EqualBank;
 use App\Http\Controllers\Controller;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -172,7 +174,7 @@ class BanksController extends Controller
     public function showBankLogo(Request $request)
     {
         $banksLogos = DB::table('bank_logos')->where('name', 'LIKE', "%{$request->term}%")->paginate(10);
-        return view('owner.bank.logo',compact('banksLogos'));
+        return view('owner.bank.logo_new',compact('banksLogos'));
 
     }
 
@@ -196,6 +198,54 @@ class BanksController extends Controller
 
 
 
+    public function equalBanks(Request $request)
+    {
+        if($request->isMethod("post")){
+            $banksLogo = BankLogo::find($request->bank_logo["id"]);
+            $existing_names = $banksLogo->equalBanks()->select('name')->get()->toArray();
+            $eqs = explode(',', $request->equal_banks);
+            foreach( $eqs as $eb) {
+                if (!in_array($eb, $existing_names)) {
+                    $banksLogo->equalBanks()->create(["name" => $eb]);
+                }
+            }
+        }
+
+        $banksLogos = BankLogo::with('equalBanks')->get();
+        return view('owner.bank.equal_banks',compact('banksLogos'));
+    }
 
 
+    public function banks(Request $request)
+    {
+
+        $banks = BankLogo::with('equalBanks')
+            ->select('bank_logos.*')
+            ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
+            ->where('bank_logos.name', 'LIKE', "%{$request->search_key}%")
+            ->orWhere('equal_banks.name', 'LIKE', "%{$request->search_key}%")
+            ->limit(15)
+            ->get()
+            ->toArray();
+        $result = [];
+
+        foreach($banks as $bank) {
+            $searchable =  collect($bank['equal_banks'])->map(function ($eb){return $eb["name"]; })->toArray();
+            $searchable[] = $bank['name'];
+            $result[] = [
+                "id" => $bank['id'],
+                "name" => $bank['name'],
+                "searchable" => implode(' ', $searchable)
+            ];
+        }
+
+        return response()->json($result);
+    }
+
+    public function removeEqualBank(Request $request)
+    {
+        EqualBank::find($request->equal_bank_id)->delete();
+
+        return response()->json('success');
+    }
 }
