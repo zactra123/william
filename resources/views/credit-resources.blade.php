@@ -49,12 +49,8 @@
 
                     <h2>CreditKarma</h2>
                     <p style="text-align: justify">
-                        CreditKarma is a generic credit score app that allows users to get a basic outline of
-                        their current credit score. It allows you to create hypothetical situations and forecast
-                        how different moves such as paying off a balance quicker will affect your overall score.
-                        This isn’t to be confused with an actual credit report, as your free annual credit report
-                        will provide detailed insights to your credit profile, and CreditKarma is more generic info.
-
+                        CreditKarma.com is a generic monitoring app that allows its subscribers to get a basic
+                        TransUnion and Equifax credit information, including but not limited to credit scores.
                     </p>
 
                 </div> <!-- section-title -->
