@@ -18,10 +18,10 @@
                 <div class="border-2"></div>
                 <div class="wrapper-content">
                     <p style="text-align: justify">
-                        Need some trusted resources to help keep your credit it tip top shape? Or perhaps you’d
-                        like to educate yourself on how to improve your score? Having the right tools with a
-                        trusted reputation and track history proven to help is vital. Here are some popular
-                        resources that will get the job done right for you.
+                        Credit Resources - Need some trusted resources to help keep your credit in tip-top shape? Or
+                        perhaps you’d like to educate yourself on how to improve your score? Having the right tools with
+                        a trusted reputation and track history proven to help is vital. Here are some popular resources
+                        that will get the job done right for you
                     </p>
                     <h2>Mint</h2>
                     <p style="text-align: justify">
@@ -32,19 +32,19 @@
 
                     <h2>AnnualCreditReport.com</h2>
                     <p style="text-align: justify">
-                        It’s law that every US citizen can get a free credit report without any negative impacts
-                        to your score. This can be obtained with AnnualCreditReport.com. It allows you to monitor
-                        your credit year over year and gives you a very detailed outline of every debt listed on
-                        your credit.
+                        It’s the law that every US citizen can get a free credit report without impacting your score.
+                        This can be obtained with AnnualCreditReport.com. It allows you to monitor your credit year over
+                        year and gives you a very detailed outline of every debt listed on your credit.
+
                     </p>
 
                     <h2>NerdWallet</h2>
                     <p style="text-align: justify">
-                        NerdWallet is an educational resource to help you understand all things related to money.
-                        This includes credit cards, banking, investing, mortgages, loans, insurance, personal
-                        finance and even traveling! Along with their educational resources, they partner with
-                        some of the top companies in the industry to give you exclusive deals to helpful money
-                        tools, including credit repair tips and tricks!
+                        NerdWallet is an educational resource to help you understand all things related to money. This
+                        includes credit cards, banking, investing, mortgages, loans, insurance, personal finance, and
+                        even traveling! Along with their educational resources, they partner with some of the top
+                        companies in the industry to give you exclusive deals to helpful money tools, including credit
+                        repair tips and tricks!
                     </p>
 
                     <h2>CreditKarma</h2>

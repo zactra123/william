@@ -227,9 +227,7 @@
                                 <div class="content" style="color: #aaa ">
                                     5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
                                 </div>
-                                <div class="content" style="color: #aaa ">
-                                    Tel: 1-844-337-8336
-                                </div>
+
                                 <div class="content" style="color: #aaa ">
                                     Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
