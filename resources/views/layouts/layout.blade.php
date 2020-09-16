@@ -184,7 +184,24 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="partner_with_us" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p style="text-align: justify">
+                    We are always looking to partner with independent sales representatives.
+                    To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
+                        partners@prudentscores.com</a> and one of our representatives will contact you promptly.
+                    HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU? To request to review, update,
+                    or delete your personal information, please email us at <a href="mailto:info@prudentscores.com">
+                        info@prudentscores.com</a> and we will respond to your request within 30 days.
 
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
@@ -207,18 +224,6 @@
                             </li>
                             <li>
                                 <div class="content" style="color: #aaa ">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    info@prudentscores.com
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrapper-option" style="padding-left: 30px">
-                            <h3> REACH US DIRECTLY</h3>
-                            <li>
-                                <div class="content" style="color: #aaa ">
-                                    info@prudentscores.com
-                                </div>
-                                <div class="content" style="color: #aaa ">
                                     5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
                                 </div>
                                 <div class="content" style="color: #aaa ">
@@ -228,6 +233,24 @@
                                     Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
                             </li>
+
+                        </ul>
+                        <ul class="wrapper-option" style="padding-left: 30px">
+{{--                            <h3> REACH US DIRECTLY</h3>--}}
+{{--                            <li>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    info@prudentscores.com--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Tel: 1-844-337-8336--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
                         </ul>
                     </div> <!-- footer-wrapper -->
                 </div>
@@ -254,7 +277,7 @@
                             <h3>INFORMATION</h3>
                             <li><a href="{{url('/')}}">Home</a></li>
                             {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
                             <li><a href="{{route('credit.repair')}}">Resources</a></li>
                             <li><a href="#">Newsroom</a></li>
@@ -264,7 +287,7 @@
                         <ul class="wrapper-option " style="padding-left: 30px">
                             <h3>CUSTOMER SERVICE</h3>
                             <li><a href="{{route('faqs')}}">FAQs</a></li>
-                            <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
+                            <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
                             <li>
                                 <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
                                     Score Estimator
