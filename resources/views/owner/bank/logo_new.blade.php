@@ -61,7 +61,9 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="row m-2  pt-4">
                         <div class="col-md-8 pull-left">
-
+                            <a class="btn btn-primary pull-left" href="{{ route('owner.bank.create')}}" role="button">
+                                ADD BANK
+                            </a>
                         </div>
                         <div class="col-md-4 pull-right">
                             <form >
@@ -78,42 +80,39 @@
 
                     </div>
                     <div class="ms-ua-box">
-                        <div class="col-md-11">
-
-                            <div class="card">
-                                    <section class="jumbotron text-center">
-                                        <div class="container">
-                                            <p>
-                                                <a class="btn btn-primary my-2t" href="{{ route('owner.bank.create')}}" role="button">
-                                                    ADD BANK
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </section>
-
-                                    <div class="album py-5 bg-light">
-                                        <div class="container">
-                                            <div class="row">
-                                                @foreach($banksLogos as  $logos)
-                                                    <div class="col-md-3" onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'">
-                                                        <div class="card mb-3 box-shadow">
-                                                            <img class="card-img-top" src="{{asset($logos->path)}}"  alt="Card image cap">
-                                                            <div class="card-body">
-                                                                <p class="card-text text-center">{{strtoupper($logos->name)}}</p>
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <div class="btn-group">
-                                                                        <button class="btn btn-outline-danger border-0 delete" data-id="{{ $logos->id}}" ><i class="fa fa-trash"></i> </button>
-                                                                    </div>
+                        <?php $alphas = range('A', 'Z');?>
+                        <ul class="pagination">
+                            <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('owner.bank.show')}}">ALL</a></li>
+                            <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="btn btn-primary cicl" href="{{ route('owner.bank.show', ['character' => "#"])}}">#</a></li>
+                            @foreach($alphas as $alpha)
+                                <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('owner.bank.show', ['character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="card">
+                                <div class="album py-5 bg-light">
+                                    <div class="container">
+                                        <div class="row">
+                                            @foreach($banksLogos as  $logos)
+                                                <div class="col-md-3" onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'">
+                                                    <div class="card mb-4 box-shadow">
+                                                        <img class="card-img-top" src="{{asset($logos->path)}}"  alt="Card image cap">
+                                                        <div class="card-body">
+                                                            <p class="card-text text-center">{{strtoupper($logos->name)}}</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-outline-danger border-0 delete" data-id="{{ $logos->id}}" ><i class="fa fa-trash"></i> </button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-
-                            </div>
+                                </div>
+                            {{ $banksLogos->appends(request()->except('page'))->links() }}
                         </div>
                     </div>
                 </div>

@@ -173,7 +173,17 @@ class BanksController extends Controller
 
     public function showBankLogo(Request $request)
     {
-        $banksLogos = DB::table('bank_logos')->where('name', 'LIKE', "%{$request->term}%")->paginate(16);
+        $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
+
+        if (!empty($request->character)) {
+            if ($request->character == '#'){
+                $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
+
+            } else {
+                $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
+            }
+        }
+        $banksLogos = $banksLogos->orderBy('name')->paginate(16);
         return view('owner.bank.logo_new',compact('banksLogos'));
 
     }
