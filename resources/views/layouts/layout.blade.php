@@ -194,9 +194,7 @@
                     We are always looking to partner with independent sales representatives.
                     To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
                         partners@prudentscores.com</a> and one of our representatives will contact you promptly.
-                    HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU? To request to review, update,
-                    or delete your personal information, please email us at <a href="mailto:info@prudentscores.com">
-                        info@prudentscores.com</a> and we will respond to your request within 30 days.
+                  
 
                 </p>
             </div>
