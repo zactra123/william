@@ -87,7 +87,6 @@ class SuperAdminsController extends Controller
 
     public function homePageContentUpdate(Request $request, $url)
     {
-        dd('dasdasd');
         $content = HomePageContent::where('url', $url)->first();
         $update = $request['content'];
 

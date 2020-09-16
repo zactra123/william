@@ -49,7 +49,7 @@
                                                                role="button"><span class="fa fa-pencil"></span></a>
                                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                            <button class="btn btn-danger " data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
+                                                            <button class="btn btn-danger delete" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
 
                                                         </td>
                                                     </tr>
