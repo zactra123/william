@@ -1,4 +1,22 @@
 @extends('layouts.layout')
+
+<style>
+
+    .selectize-input,.selectize-select{
+        border: 1px solid #000 !important;
+        border-radius: 8px !important;
+    }
+
+
+    .ms-ua-box {
+        background-color: #ffffff !important;
+        border-radius: 4px !important;
+        padding: 15px;
+        box-shadow: 0 0 5px 1px #0000005c;
+        opacity: 1;
+    }
+
+</style>
 @section('content')
     @include('helpers.breadcrumbs', ['title'=> "CREARE BANK", 'route' => ["Home"=> '/owner',"Bank" => "#"]])
     <section class="ms-user-account">
@@ -11,18 +29,22 @@
                     @csrf
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
-                            <div class="row">
-                                <div class="col-sm-4 form-group files">
-                                    <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="text" name="name"  class="form-control">
+
+                            <div class="ms-ua-title mb-0">
+                                <div class="row">
+                                    <div class="col-sm-4 form-group files">
+                                        <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" name="name"  class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        {!! Form::select('account_types[]', $account_types, [], ['multiple'=>'multiple','class'=>'selectize ms-ua-form', 'id' => 'select-account']); !!}
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    {!! Form::select('account_types[]', $account_types, [], ['multiple'=>'multiple','class'=>'selectize', 'id' => 'select-account']); !!}
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -97,6 +119,7 @@
             </div>
         </div>
     </section>
+
 
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>

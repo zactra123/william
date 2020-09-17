@@ -97,7 +97,34 @@ class BanksController extends Controller
     {
         $id  = $request->id;
         $bank = BankLogo::find($id);
-        $bank->update($request->bank);
+
+
+        if($request->logo != null){
+            $imagesBankLogo = $request->file("logo");
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+            $path = "image/banks_logo";
+            $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
+            $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
+            $pathLogo =  '/' . $path . '/'.$nameBankLogo;
+            $bankLogo = $request->bank;
+            $bankLogo['path'] = $pathLogo;
+            $deleteOldLogo = $bank->path;
+
+            if(file_exists(public_path($deleteOldLogo))) {
+                unlink(public_path($deleteOldLogo));
+            }
+            $bank->update($bankLogo);
+        }else{
+            $bank->update($request->bank);
+
+        }
+
+
         $existing_accounts = $bank->bankAccounts->pluck('account_type_id')->toArray();
         $new_account_types = array_diff($request->account_types??[], $existing_accounts);
         $removed_account_types = array_diff($existing_accounts, $request->account_types??[]);
