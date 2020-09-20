@@ -24,7 +24,10 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
-                    <?php $states = [null=>''] + \App\BankAddress::STATES;?>
+                    <?php
+                    $states = [null=>''] + \App\BankAddress::STATES;
+                    $types = [null=>''] + \App\BankLogo::TYPES;
+                    ?>
                     {!! Form::open(['route' => ['owner.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                     @csrf
                     <div class="ms-ua-box">
@@ -32,7 +35,7 @@
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
-                                    <div class="col-sm-4 form-group files">
+                                    <div class="col-sm-3 form-group files">
                                         <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
                                     </div>
                                     <div class="col-md-4">
@@ -40,7 +43,10 @@
                                             <input type="text" name="name"  class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
+                                        {!! Form::select("bank[type]", $types,  null, ['class'=>'selectize-single']); !!}
+                                    </div>
+                                    <div class="col-md-3">
                                         {!! Form::select('account_types[]', $account_types, [], ['multiple'=>'multiple','class'=>'selectize ms-ua-form', 'id' => 'select-account']); !!}
                                     </div>
                                 </div>

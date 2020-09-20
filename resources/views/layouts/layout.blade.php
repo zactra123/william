@@ -34,7 +34,32 @@
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=3') }}"></script>
-    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
+    <style>
+        .scrolled-content {
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+{{--    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>--}}
     {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 
 
@@ -60,7 +85,7 @@
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>
-
+    <script src="{{ asset('js/lib/jquery.mCustomScrollbar.min.js') }}" ></script>
     <script src="{{asset('js/js/script.js')}}"></script>
 </head>
 <body class="homePageFour">
@@ -194,7 +219,7 @@
                     We are always looking to partner with independent sales representatives.
                     To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
                         partners@prudentscores.com</a> and one of our representatives will contact you promptly.
-                  
+
 
                 </p>
             </div>

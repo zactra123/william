@@ -87,8 +87,7 @@ Route::group(['prefix'=>'owner'], function(){
     });
 
 
-    Route::group(["prefix"=>"bank"], function(){
-        Route::get('/logo','Owner\BanksController@showBankLogo')->name("owner.bank.show");
+    Route::group(["prefix"=>"furnishers"], function(){
         Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
         Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
         Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
@@ -98,6 +97,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::any('/equal-banks', 'Owner\BanksController@equalBanks')->name("owner.bank.equal");
         Route::any('/banks_json', 'Owner\BanksController@banks');
         Route::delete('/equal-bank', 'Owner\BanksController@removeEqualBank');
+        Route::get('/{type}','Owner\BanksController@showBankLogo')->name("owner.bank.show");
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

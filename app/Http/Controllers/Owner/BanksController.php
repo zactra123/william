@@ -87,7 +87,7 @@ class BanksController extends Controller
             }
         }
 
-        return redirect('owner/bank/logo');
+        return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
 
     }
 
@@ -167,7 +167,7 @@ class BanksController extends Controller
         }
 
 
-        return redirect('owner/bank/logo');
+        return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
 
     }
 
@@ -198,10 +198,22 @@ class BanksController extends Controller
     }
 
 
-    public function showBankLogo(Request $request)
+    public function showBankLogo($type, Request $request)
     {
+        if (!in_array($type,['all', 'untyped']) && !in_array($type, array_keys(BankLogo::TYPES))){
+            dd('asd');
+        }
         $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
 
+        switch ($type) {
+            case 'untyped':
+                    $banksLogos = $banksLogos->whereNull('type');
+                break;
+            case 'all':
+                break;
+            default:
+                $banksLogos = $banksLogos->where('type', '=', $type);
+        }
         if (!empty($request->character)) {
             if ($request->character == '#'){
                 $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
@@ -232,7 +244,6 @@ class BanksController extends Controller
 
 
     }
-
 
 
     public function equalBanks(Request $request)

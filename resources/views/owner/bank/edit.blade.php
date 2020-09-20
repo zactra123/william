@@ -25,7 +25,10 @@
     <section class="ms-user-account">
         <div class="container">
             <div class="col-md-12 col-sm-12">
-                <?php $states = [null=>''] + \App\BankAddress::STATES;?>
+                <?php
+                    $states = [null=>''] + \App\BankAddress::STATES;
+                    $types = [null=>''] + \App\BankLogo::TYPES;
+                ?>
                     {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
@@ -35,10 +38,10 @@
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
-                                    <div class="col-sm-4 form-group changeLogo">
+                                    <div class="col-sm-3 form-group changeLogo">
                                         <img src="{{asset($bank->path)}}" width="100px">
                                     </div>
-                                    <div class="col-sm-4 hide form-group updateLogo files">
+                                    <div class="col-sm-3 hide form-group updateLogo files">
                                         <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
                                     </div>
                                     <div class="col-md-4">
@@ -46,7 +49,10 @@
                                             <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
+                                        {!! Form::select("bank[type]", $types,  $bank->type, ['class'=>'selectize-single']); !!}
+                                    </div>
+                                    <div class="col-md-3">
                                         {!! Form::select('account_types[]', $account_types, array_keys($bank_accounts), ['multiple'=>'multiple','class'=>'selectize', 'id' => 'select-account']); !!}
                                     </div>
                                 </div>
