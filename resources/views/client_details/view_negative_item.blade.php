@@ -1435,7 +1435,7 @@
     </section>
         <script>
             $(document).ready(function(){
-                $(".ex_name").click(function () {
+                $(".ex_name").click(function (e) {
                     if(this.checked) {
                         var id  = this.id.replace('name-', '')
                         var name = "ex_name-" + id
@@ -1458,7 +1458,12 @@
                         html  = html + "<div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>OK</button>"
                         html  = html + "</div></div></div></div>"
 
+                        console.log(e.pageX, e.pageY)
+
+
                         $("#addModal").append(html);
+                        $("#"+name).css({left: e.pageX});
+                        $("#"+name).css({top: e.pageY});
 
                         $("#"+name).modal();
                     }

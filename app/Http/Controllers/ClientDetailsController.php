@@ -29,6 +29,10 @@ use App\ClientAttachment;
 use App\Credential;
 use App\UploadClientDetail;
 use App\Services\Screaper;
+use PhpOffice\PhpWord\Element\Image;
+use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\Settings;
+use PhpOffice\PhpWord\SimpleType\TblWidth;
 
 class ClientDetailsController extends Controller
 {
@@ -760,7 +764,124 @@ class ClientDetailsController extends Controller
 
     public function negativeItemContract(Request $request)
     {
-        dd($request->all());
+        $user = Auth::user();
+        if($user->clientDetails->sex = "M"){
+           $heSheIt = "he";
+        }elseif($user->clientDetails->sex = "M"){
+            $heSheIt = "she";
+        }else{$heSheIt = "the client";}
+
+        $sumDisp = null;
+
+        if(empty($request->except('_token'))){
+            return redirect()->back()
+                ->withInput()
+                ->withErrors("Nothing chosen");
+        }
+
+        foreach ($request->except('_token') as $item) {
+            $sumDisp = $sumDisp + count($item);
+        }
+        if($sumDisp>1){
+            $pluralItem = "all negative items";
+            $plural = "items";
+            $pluralViol = "violations";
+        }else{
+            $pluralItem = "negative";
+            $plural = "item";
+            $pluralViol = "violation";
+        }
+
+
+
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(false);
+
+        $document = $phpWord->loadTemplate(public_path('/files/contract').'/PRUDENT_CONTRACT.docx');
+
+        $document->setValue('DAY', (date("d")) );
+        $document->setValue('MONTH', (date("M")) );
+        $document->setValue('YEAR', (date("Y")) );
+        $document->setValue('CLIENT_NAME', ($user->full_name()) );
+        $document->setValue('HE_SHE_THE CLIENT', ($heSheIt));
+        $document->setValue('PLURAL_ITEM', ($pluralItem));
+        $document->setValue('ITEM_ITEMS', ($plural));
+        $document->setValue('VIOLATION', ($pluralViol));
+        $document->setValue('DATE', (date("d/M/Y")));
+
+
+        $path='C:\xampp\htdocs\ccc\public\images\banks_logo\payoff.jpeg';
+        $document->setImageValue('foto', array('path' => $path, 'width' => 100, 'height' => 100, 'ratio' => true));
+        $length = 31;
+        $cloneCount = (int)ceil($length/10);
+        $countInRow = $length%10 +1;
+
+        $document->cloneRow('row1', $cloneCount);
+        if($countInRow <= 10){
+            for($j = $countInRow; $j<=10; $j++){
+                $document->setValue('logo'.$j.'#'.$cloneCount,'');
+                $document->setValue('neg'.$j.'#'.$cloneCount, '');
+            }
+        }
+        for($k = 1; $k<=$length; $k++){
+            $document->setValue('row1#'.$k ,'');
+        }
+        $row = 1;
+        for($k = 1; $k<=$length; $k++){
+
+
+
+            $logo = $k %10==0?'logo10#'.$row:'logo'.$k%10 .'#'. $row;
+            $neg = $k %10==0?'neg10#'.$row:'neg'.$k%10 .'#'. $row;
+
+            $document->setImageValue($logo, array('path' => $path, 'width' => 50, 'height' => 50, 'ratio' => true));
+            $document->setValue($neg, '1st Line<w:br />2nd Line');
+            if($k %10 == 0){
+                $row = $row+1;
+            }
+
+        }
+
+//        $table = new Table(array('borderSize' => 12, 'borderColor' => 'black', 'width' => 6000));
+//        $table->addRow();
+//        $table->addCell()->addImage($path, array('width' => 100, 'height' => 100, 'ratio' => true));
+////        $table->addCell(4500)->addImage( $path, array('width' => 530, 'height' => 75, 'marginTop' => -1 , 'marginLeft' => -1, 'marginRight' => -1));
+//        $table->addCell(150)->addText(htmlspecialchars('${NEW_PHOTO/}'));
+//        $table->addCell(150)->addText(htmlspecialchars(''));
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $table->addRow();
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+//        $document->setComplexBlock('table', $table);
+//        dd($document);
+        $name = 'Doc_1'.date("Y_m_d_h_m").'.docx';
+
+        $xxx = $name;
+
+        $document->saveAs($name);
+        rename($name, public_path()."/files/contract/{$name}");
+
+        $file= public_path(). "/files/contract/{$name}";
+
+
+
+//        $file= storage_path(). "/word/{$name}";
+//
+//        $headers = array(
+//            //'Content-Type: application/msword',
+//            'Content-Type: vnd.openxmlformats-officedocument.wordprocessingml.document'
+//        );
+//
+//        $response = Response::download($file, $name, $headers);
+//        ob_end_clean();
+//
+//        return $response;
+
+
+        dd('test for send variabkes in word documents', $phpWord, $document);
     }
 
 

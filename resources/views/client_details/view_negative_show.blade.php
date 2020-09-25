@@ -367,11 +367,11 @@
                                             <span style="padding-left: 15px">    # {{$ex_account['details']->source_id}}</span>
                                         </div>
                                         <div class="col-md-5">
-                                            DISPUTE OPTION  {{$ex_public['option']}}  {{$ex_public['comment']}}
+                                            DISPUTE OPTION  {{$ex_account['option']}}  {{$ex_account['comment']}}
                                         </div>
                                         <div class="col-md-1 delete" data-attribute="title-ex_account-{{$ex_account['details']->id}}">
                                             <i class="fa fa-minus" aria-hidden="true"></i>
-                                            <input type="hidden" name="ex_account[{{$ex_public['details']->id}}]" value="{{$ex_public['option_id']}}">
+                                            <input type="hidden" name="ex_account[{{$ex_account['details']->id}}]" value="{{$ex_account['option_id']}}">
 
                                         </div>
 
