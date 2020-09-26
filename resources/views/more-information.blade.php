@@ -46,5 +46,5 @@
             </div>
         </div>
     </div>
-
+    @include('helpers/chat-box')
 @endsection

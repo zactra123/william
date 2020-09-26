@@ -180,11 +180,14 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
+//        Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+
+        Rainwater\Active\ActiveServiceProvider::class
+
 
     ],
 
@@ -242,6 +245,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Active' => Rainwater\Active\ActiveFacade::class
+
 
     ],
 

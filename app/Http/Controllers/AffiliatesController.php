@@ -14,9 +14,6 @@ use Illuminate\Support\Arr;
 use App\ClientDetail;
 use App\UploadClientDetail;
 
-
-
-
 class AffiliatesController extends Controller
 {
 

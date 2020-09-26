@@ -17,7 +17,7 @@
 <!-- Bootstrap -->
     <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- animated-css -->
-    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/css/animate.min.css')}}" rel="stylesheet" type="text/css">
     <!-- font-awesome-css -->
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -126,8 +126,8 @@
         </div> <!-- top-bar -->
     </div> <!-- topper -->
 
-    <div class="container">
-        <nav class="navbar navbar-inverse hidden-sm hidden-xs">
+    <div class="container" id="app" data-user="{{Auth::user()?Auth::user()->id:''}}">
+        <nav class="navbar navbar-inverse hidden-sm hidden-xs" >
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     @if(Auth::user())
@@ -138,7 +138,7 @@
                         @elseif(Auth::user()->role == 'admin')
                             @include('helpers.urls.nav_bar_admin')
                         @elseif(Auth::user()->role == 'receptionist')
-                            <li> <a href="{{ url('receptionist/message') }}" class="branding pull-left">Home</a></li>
+                            @include('helpers.urls.nav_bar_receptionist')
                         @endif
                     @else
                         @include('helpers.urls.nav_bar_guest')
@@ -189,8 +189,10 @@
 
 @yield('content')
 
-<div class="modal fad" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
-    <div class="modal-dialog" role="document">
+
+
+<div class="modal fade" id="appointmentNotifier" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="appointmentDetailsModalLabel">Appiontments</h4>
@@ -226,6 +228,14 @@
         </div>
     </div>
 </div>
+{{--@include('helpers.chat-box')--}}
+@auth
+    @if(Auth::user()->role == 'client')
+        @include('helpers.chat-box')
+    @endif
+@else
+    @include('helpers.chat-box')
+@endif
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">

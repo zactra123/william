@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable implements MustVerifyEmail
+class   User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -46,7 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Scope a query to only include popular users.
+     * Scope a query to only include users with client role.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -54,6 +54,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeClients($query)
     {
         return $query->where('users.role',  'client');
+    }
+
+    /**
+     * Scope a query to only include users with receptionist role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeReceptionists($query)
+    {
+        return $query->where('users.role',  'receptionist');
     }
 
 
@@ -104,6 +115,30 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\AllowedIp');
     }
 
+    public function chats()
+    {
+        return $this->hasMany('App\Chat');
+    }
+
+    public function chatMessages($params)
+    {
+        if ($params["type"] == "User"){
+            return Chat::where(
+                        [
+                            "recipient_type" => 'App\\User',
+                            "recipient_id"=> $params["id"]
+                        ]
+                    );
+        }else {
+            return Chat::leftJoin('guest', 'chat.recipient_id', '=', 'guest.id')
+                ->where(
+                    ["recipient_type" => "App\\Guest",
+                        "recipient_id" => $params["id"]
+                    ]
+                );
+        }
+    }
+
 
     public function clientAttachments()
     {
@@ -126,4 +161,92 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
     }
+
+
+    public function chat_list($params = [])
+    {
+
+        $chats = DB::table('chat');
+        if (empty($params["all"])) {
+            $chats = $chats->where(['chat.user_id'=> $this->id]);
+        }
+
+        if (!empty($params["type"]) && ($params["type"] == 'App\\Guest'||$params["type"] == 'Guest')) {
+            $chats = $chats->leftJoin('guest', function($join) {
+                $join->on('chat.recipient_id', '=', 'guest.id')
+                    ->where('chat.recipient_type','=', 'App\\Guest');
+            })
+                ->leftJoin('users', "users.id", '=', 'guest.user_id')
+                ->whereNotNull('guest.id')
+                ->select(
+                    "chat.recipient_id as recipient_id",
+                    DB::raw("'Guest' as recipient_type"),
+                    "guest.full_name as full_name",
+                    "guest.phone as phone",
+                    "guest.email as email",
+                    DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_full_name"),
+                    DB::raw("users.id as user_id"),
+                    DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")
+                );
+            if (!empty($params["term"])){
+                $chats = $chats->where(function($query) use ($params) {
+                    $query->orWhere("guest.full_name",  "LIKE",  "%{$params["term"]}%")
+                        ->orWhere("guest.email",  'like', "%{$params["term"]}%");
+                    });
+            }
+        } else {
+            $chats = $chats->leftJoin('users', function($join) {
+                $join->on('chat.recipient_id', '=', 'users.id')
+                    ->where('chat.recipient_type','=', 'App\\User');
+            })
+                ->leftJoin("client_details", "client_details.user_id", "users.id")
+                ->whereNotNull('users.id')
+                ->select(
+                    "chat.recipient_id as recipient_id",
+                    DB::raw("'User' as recipient_type"),
+                    DB::raw("CONCAT(users.first_name, ' ', users.last_name) as full_name"),
+                    "client_details.phone_number as phone",
+                    "users.email as email",
+                    DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END) AS message")
+                );
+            if (!empty($params["term"])){
+                $chats = $chats->where(function($query) use ($params) {
+                    $query->orWhere( DB::raw("CONCAT(users.first_name, ' ', users.last_name)"),  "LIKE",  "%{$params["term"]}%")
+                        ->orWhere("users.email",  'LIKE', "%{$params["term"]}%");
+                });
+            }
+        }
+
+        $chats = $chats->groupBy([
+            'chat.recipient_id',
+            "chat.recipient_type"
+        ]);
+
+        if (!empty($params["order"]) && $params["order"] == "unreads") {
+            $chats = $chats->orderBy(DB::raw("SUM(CASE WHEN unread = '1' AND type = 'to' THEN 1 ELSE 0 END)"), 'DESC');
+        } else {
+            $chats = $chats->orderBy('chat.created_at', 'DESC');
+        }
+
+
+        return $chats->get()->toArray();
+    }
+
+    public static function unreads($params = [])
+    {
+        $result = Chat::where("unread", 1);
+
+        if (!empty($params["id"])) {
+            $result = $result->where("user_id", $params["id"]);
+        }
+        if (!empty($params["type"])) {
+            $result = $result->where("type", $params["type"]);
+        }
+        $result = $result->groupBy("recipient_type")
+            ->select(DB::raw('COUNT(unread) as unreads'),"recipient_type")
+            ->pluck('unreads', "recipient_type")
+            ->toArray();
+        return $result;
+    }
+
 }

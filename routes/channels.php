@@ -12,5 +12,15 @@
 */
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
+    return true;
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('LiveChat.{id}', function ($id) {
+    return true;
+});
+
+
+Broadcast::channel('ReceptionistLiveChat.{id}', function($id){
+    return true;
 });

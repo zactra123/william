@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\HomePageContent;
 use Illuminate\Support\Facades\Validator;
+use App\Events\LiveChat;
+use Auth;
 
 class SuperAdminsController extends Controller
 {
@@ -17,9 +19,8 @@ class SuperAdminsController extends Controller
         $this->middleware(['auth', 'superadmin']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
 
         return view('owner.index');
     }

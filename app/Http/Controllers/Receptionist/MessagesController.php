@@ -224,12 +224,4 @@ class MessagesController extends Controller
 
 
 
-
-
-
-
-
-
-
-
 }

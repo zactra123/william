@@ -2,6 +2,13 @@
 @extends('layouts.layout')
 
 @section('content')
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="{{url('/')}}">Home</a> &rarr;
+            <a href="#">who we are</a>
+        </div>
+    </div>
+
 
     <section class="header-title section-padding">
         <div class="container text-center">

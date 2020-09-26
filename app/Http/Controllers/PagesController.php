@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
+use App\Events\ReceptionistLiveChat;
+use App\User;
 use App\BankAddress;
 use Illuminate\Http\Request;
 use App\HomePageContent;
@@ -10,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Faq;
 use App\ContactMessage;
 use Illuminate\Support\Facades\DB;
+use App\Guest;
 use App\Services\ReadPdfData;
 
 class PagesController extends Controller

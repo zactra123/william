@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "bootbox": "^5.3.4",
+        "laravel-echo": "^1.6.1",
+        "pusher-js": "^5.0.3",
         "validate.js": "^0.13.1"
     }
 }

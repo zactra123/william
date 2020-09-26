@@ -31,6 +31,15 @@ Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->nam
 Route::get('faqs', 'PagesController@faqs')->name('faqs');
 Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
 
+
+Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
+    if ($req->channel_name == 'presence-LiveChat') {
+
+        return \Illuminate\Support\Facades\Broadcast::auth($req);
+    }
+});
+
+
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 
 Auth::routes();
@@ -156,6 +165,12 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::delete('message/{id}','Receptionist\MessagesController@destroy')->name('receptionist.message.destroy');
     Route::post('message/user/data','Receptionist\MessagesController@userData')->name('receptionist.message.userData');
 
+    Route::get('live-chat','Receptionist\ChatsController@index')->name('receptionist.liveChat.index');
+    Route::get('live-chat/unreads','Receptionist\ChatsController@unreads')->name('receptionist.liveChat.unreads');
+    Route::post('live-chat/chat-message','Receptionist\ChatsController@show')->name('receptionist.liveChat.show');
+    Route::post('live-chat/show-details','Receptionist\ChatsController@showDetails')->name('receptionist.liveChat.showDetails');
+    Route::post('live-chat/answer','Receptionist\ChatsController@create')->name('receptionist.liveChat.create');
+
 
 });
 
@@ -201,7 +216,11 @@ Route::group(['prefix' =>'client'], function() {
 
 
 
-
+Route::group(["prefix" => 'chat'], function(){
+    Route::post('/identify-user', 'ChatsController@identifyUser');
+    Route::get('/get-chat-messages', 'ChatsController@getChatMessages');
+    Route::post('/new-message', 'ChatsController@postNewMessage');
+});
 
 
 
