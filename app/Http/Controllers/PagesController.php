@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chat;
 use App\Events\ReceptionistLiveChat;
 use App\User;
+use App\BankAddress;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;
@@ -13,18 +14,51 @@ use App\Faq;
 use App\ContactMessage;
 use Illuminate\Support\Facades\DB;
 use App\Guest;
+use App\Services\ReadPdfData;
 
 class PagesController extends Controller
 {
-    public function welcome()
+    public function welcome(ReadPdfData $readPdfData)
     {
+
+//        $clientReports = $readPdfData->equifaxPdf('C:/xampp/htdocs/tests/public/PDF/eq.pdf');
+
         $pageContentUp = DB::table('home_pages')->get();
 
-        $slogans = Db::table('slogans')
-            ->whereRaw('LENGTH(slogan) < 70')
+        $slogansFull = Db::table('slogans')
+//            ->whereRaw('LENGTH(slogan) < 70')
             ->inRandomOrder()
-            ->limit(5)
+//            ->limit(5)
             ->select('slogan','author')->get()->toArray();
+
+
+        $slogans = [];
+        foreach ($slogansFull as $key =>$slogan){
+
+            $slogans [$key]['author'] = $slogan->author;
+            if (strlen($slogan->slogan) < 60) {
+                $slogans [$key]['slogan'][]  = $slogan->slogan;
+                continue;
+            }
+            $texts = explode(' ', $slogan->slogan);
+            $textSlogan = [];
+            $k = 0;
+                foreach($texts as $w => $text){
+                    if($w == 0){
+                        $textSlogan[$k] = $text;
+                    }elseif(strlen($textSlogan[$k])<60){
+
+                        $textSlogan[$k] = $textSlogan[$k]." ". $text;
+                    }else{
+                        $k = $k+1;
+                        $textSlogan[$k] = $text;
+                    }
+
+
+                }
+            $slogans[$key]['slogan'] = $textSlogan;
+        }
+
         return view('new-home-page1', compact('pageContentUp', 'slogans'));
     }
 

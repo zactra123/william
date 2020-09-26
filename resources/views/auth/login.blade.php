@@ -23,6 +23,15 @@
                         <div class="ms-ua-title">
                             <h3>Login</h3>
                         </div>
+                        @if ($errors->any())
+
+                            <div class="alert alert-danger flash">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                @foreach($errors->all()  as $message)
+                                    <strong>{{ $message }}</strong>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="ms-ua-form">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -53,11 +62,15 @@
                                     </div>
                                     <div class="col-md-6 col-xs-12 ms-us-sp">
 
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif
+                                        <a class="btn btn-link" style="text-decoration: underline" href="{{route('login.infoFirst')}}">
+                                            Forget Login Information?
+                                        </a>
+
+{{--                                        @if (Route::has('password.request'))--}}
+{{--                                            <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">--}}
+{{--                                                {{ __('Forgot Your Password?') }}--}}
+{{--                                            </a>--}}
+{{--                                        @endif--}}
 
                                     </div>
                                 </div>

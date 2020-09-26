@@ -130,7 +130,7 @@ class ReceptionistsController extends Controller
     public function list()
     {
         $receptionists = User::where('role', 'receptionist')
-            ->get();
+            ->paginate(20);
 
         return view('owner.receptionist.list', compact( 'receptionists'));
 

@@ -7,7 +7,23 @@
           max-height: 500px;
         }
 
+        div.tab-content > div:nth-of-type(odd) {
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
 
+        .striped {
+            padding: 10px;
+        }
+        .ms-edu-tab-content .nav-tabs-wrapper {
+            max-height: 90vh;
+        }
+        .scrolled-content {
+            overflow-y: scroll;
+        }
+        .scrolled-content::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 
@@ -51,6 +67,7 @@
 {{--                            <h4 style="font-size: 20px">Length of Credit Ratio</h4>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
+                        </div>
                 </div>
             </div> <!-- section-wrapper -->
         </div>
@@ -65,21 +82,21 @@
                         <ul id="nav-tabs-wrapper" class="nav nav-tabs nav-pills nav-stacked well">
                             @foreach($contents as  $content)
                             <li class="{{$content->id==1?'active':''}}"><a href="#{{$content->url}}" data-toggle="tab">{{$content->title}}</a></li>
-
                             @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-9">
-                    <div class="tab-content">
-                        @foreach($contents as $info)
-                        <div role="tabpanel" class="tab-pane fade in {{$info->id==1?'active':''}}" id="{{$info->url}}">
-                            <h3>{{$info->title}}</h3>
-                            <p><?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?></p>
+                <div class="col-sm-9 ">
+                    <div class="ms-edu-tab-content">
+                        <div class="tab-content nav-tabs-wrapper scrolled-content ">
+                            @foreach($contents as $info)
+                                <div role="tabpanel" class="striped" id="{{$info->url}}">
+                                    <h3>{{$info->title}}</h3>
+                                    <p><?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?></p>
 
-                        </div>
-                        @endforeach
-
+                                </div>
+                            @endforeach
+                            </div>
                     </div>
                 </div>
             </div>
@@ -123,6 +140,7 @@
         </div>
     </section>
 
+    <script src="{{ asset('js/lib/jquery.mCustomScrollbar.min.js') }}" ></script>
     <script>
         $(document).ready(function(){
             $("a").on('click', function(event) {

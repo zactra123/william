@@ -22,6 +22,10 @@ class Credential extends Model
         'ex_pin',
         'tu_login',
         'tu_password',
+        'tu_question',
+        'tu_answer',
+        'tu_dis_login',
+        'tu_dis_password',
         'eq_login',
         'eq_password'
     ];

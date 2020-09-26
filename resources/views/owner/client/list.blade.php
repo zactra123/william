@@ -23,7 +23,7 @@
                                             <th scope="col">FIRST NAME</th>
                                             <th scope="col">LAST NAME</th>
                                             <th scope="col">EMAIL</th>
-                                            <th scope="col">AFFILIATE FULL NAME </th>
+{{--                                            <th scope="col">AFFILIATE FULL NAME </th>--}}
 
                                             <th scope="col">Action</th>
                                         </tr>
@@ -32,11 +32,11 @@
                                         @foreach($users as $key=> $user)
 
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
+                                                <th scope="row">{{ (($users->currentPage() - 1 ) * $users->perPage() ) + $loop->iteration }}</th>
                                                 <td>{{$user->first_name}}</td>
                                                 <td>{{$user->last_name}}</td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->full_name?? "-"}}</td>
+{{--                                                <td>{{$user->full_name?? "-"}}</td>--}}
                                                 <td>
 
                                                     <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
@@ -53,10 +53,9 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
-
                                         </tbody>
                                     </table>
+                                    {{ $users->links() }}
                                 </div>
 
                             </div>

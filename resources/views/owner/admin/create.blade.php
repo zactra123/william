@@ -18,7 +18,7 @@
                                     <div class="alert alert-danger">{{ $error }}</div>
                                 @endforeach
                             </div>
-                            <div class="row m-2 pt-4">
+                            <div class="row " style="margin: 10px">
                                 <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
                             </div>
                             <div class="card-body ">

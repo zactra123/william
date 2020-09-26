@@ -39,15 +39,13 @@
                                             <tbody>
                                             @foreach($admins as $key=> $admin)
                                                 <tr>
-                                                    <th scope="row">{{$key+1}}</th>
+                                                    <th scope="row">{{ (($admins->currentPage() - 1 ) * $admins->perPage() ) + $loop->iteration }}</th>
                                                     <td>{{$admin['first_name']}}</td>
                                                     <td>{{$admin['last_name']}}</td>
                                                     <td>{{$admin['email']}}</td>
                                                     <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
                                                     <td>
-
-                                                        <a href="{{route('owner.admin.edit', $admin['id'])}}" class="btn btn-primary" data-id="{{ $admin['id'] }}" ><i class="fa fa-penci"></i></a>
-
+                                                        <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil"></i></a>
                                                         <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash"></i></button>
                                                         <meta name="csrf-token" content="{{ csrf_token() }}">
                                                     </td>
@@ -58,6 +56,7 @@
 
                                             </tbody>
                                         </table>
+                                        {{ $admins->links() }}
                                     </div>
 
                                 </div>

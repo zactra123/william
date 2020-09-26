@@ -42,7 +42,6 @@ Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
 
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 
-
 Auth::routes();
 Auth::routes(['verify' => true]);
 
@@ -51,6 +50,12 @@ Route::get('/facebook/callback', 'SocialAuthController@callback');
 
 Route::get('/google/redirect', 'SocialAuthController@redirectGoogle')->name('google.login');
 Route::get('/google/callback', 'SocialAuthController@callbackGoogle');
+
+Route::get('login-info-first', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirst');
+Route::post('login-info-second', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirstSend');
+Route::post('login-info-reset', 'Auth\LoginController@loginInfoSecond')->name('login.infoSecondSend');
+Route::post('login-info-finish', 'Auth\LoginController@loginInfoFinish')->name('login.infoFinishSend');
+
 
 Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')->name('register.Affiliate');
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
@@ -91,6 +96,19 @@ Route::group(['prefix'=>'owner'], function(){
     });
 
 
+    Route::group(["prefix"=>"furnishers"], function(){
+        Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
+        Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
+        Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
+        Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
+        Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
+        Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
+        Route::any('/equal-banks', 'Owner\BanksController@equalBanks')->name("owner.bank.equal");
+        Route::any('/banks_json', 'Owner\BanksController@banks');
+        Route::delete('/equal-bank', 'Owner\BanksController@removeEqualBank');
+        Route::get('/{type}','Owner\BanksController@showBankLogo')->name("owner.bank.show");
+    });
+
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
     Route::post('message/note', 'Owner\MessagesController@addNote')->name('owner.message.note');
 
@@ -126,6 +144,12 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
 
 
+    Route::group(["prefix"=>"bank"], function(){
+        Route::get('/logo','BanksController@showBankLogo')->name("admin.bank.show");
+        Route::delete('/logo/{id}','BanksController@deleteBankLogo')->name("admin.bank.delete");
+    });
+
+
 
 });
 
@@ -152,10 +176,6 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
 
 
-
-
-
-
 Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
@@ -171,6 +191,10 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
 
 Route::group(['prefix' =>'client'], function() {
+
+    Route::get('important-information', 'ClientDetailsController@importantInformation');
+    Route::post('important-information', 'ClientDetailsController@importantInformation')->name('client.important');
+
     Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
     Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');

@@ -14,36 +14,42 @@
                                 <div class="row justify-content-center pt-2">
                                     <div class="col-11">
                                         <div class="card ">
-                                            <div class="row m-0 p-2">
-                                                <a class="btn btn-success" href="{{route('owner.home.content.create')}}" role="button">Crete Content</a>
+
+                                            <div class="row m-2  pt-4">
+                                                <div class="col-md-11 pull-right">
+                                                    <a class="btn btn-primary pull-right" href="{{route('owner.home.content.create')}}" role="button">
+                                                        Add Education
+                                                    </a>
+                                                </div>
+
                                             </div>
+
                                             <table class="table">
                                                 <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">category</th>
-                                                    <th scope="col">url</th>
-                                                    <th scope="col">Title</th>
-                                                    <th scope="col">Sub Content</th>
+                                                    <th >#</th>
+                                                    <th class="col-lg-2">url</th>
+                                                    <th class="col-lg-2">Title</th>
+                                                    <th class="col-lg-7">Sub Content</th>
+                                                    <th class="col-lg-1">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($contents as $key=> $content)
                                                     <tr>
                                                         <th scope="row">{{$content->id}}</th>
-                                                        <td>{{$content->category}}</td>
                                                         <td>{{$content->url}}</td>
                                                         <td>{{$content->title}}</td>
                                                         <td><?php echo htmlspecialchars_decode(htmlspecialchars($content->sub_content, ENT_QUOTES));  ?></td>
                                                         <td>
 
-                                                            <a class="btn btn-default" href="{{route('owner.home.content.show', $content->url)}}"
+                                                            <a style="margin: 1px" href="{{route('owner.home.content.show', $content->url)}}"
                                                                role="button"><i class="fa fa-file-text"></i></a>
-                                                            <a class="btn btn-default" href="{{route('owner.home.content.edit', $content->url)}}"
+                                                            <a  href="{{route('owner.home.content.edit', $content->url)}}"
                                                                role="button"><span class="fa fa-pencil"></span></a>
                                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                            <button class="btn btn-danger " data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
+                                                            <button class="btn btn-danger delete" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
 
                                                         </td>
                                                     </tr>

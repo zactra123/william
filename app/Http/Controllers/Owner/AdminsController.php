@@ -166,7 +166,7 @@ class AdminsController extends Controller
     {
 
         $admins = User::where('role', 'admin')
-            ->get();
+            ->paginate(10);
 
         return view('owner.admin.list', compact( 'admins'));
 

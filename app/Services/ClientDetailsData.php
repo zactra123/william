@@ -259,7 +259,6 @@ class ClientDetailsData
             $result['last_name'] = count($full_name) > 2 ? strtoupper($full_name[2]) : strtoupper($full_name[1]);
         }
 
-
         return $result;
     }
 

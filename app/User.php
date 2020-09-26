@@ -22,6 +22,8 @@ class   User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role',
+        'secret_questions_id',
+        'secret_answer',
         'active',
     ];
 
@@ -151,7 +153,13 @@ class   User extends Authenticatable implements MustVerifyEmail
 
     public function full_name()
     {
-        return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+        if($this->first_name != null && $this->last_name){
+            return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+        }else{
+
+            return null;
+        }
+
     }
 
 

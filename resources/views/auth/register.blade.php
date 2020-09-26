@@ -24,6 +24,16 @@
                         <div class="ms-ua-form">
                             <form method="POST" id="client-registration-form" action="{{ route('register') }}">
                                 @csrf
+
+                                <div class="form-group">
+                                    <input id="full_name" type="text" class="form-control phone" name="full_name" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="FULL NAME">
+                                    @error('full_name')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
+
                                 <div class="form-group">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">
 
@@ -71,6 +81,30 @@
                                     @enderror
 
                                 </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="secret_questions_id" id="secret_question">
+                                        <option disabled="disabled" selected="selected">Choose Secret Question</option>
+
+                                        @foreach($secrets as $value)
+
+                                            <option value="{{$value->id}}">{{$value->question}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('sex')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+                                </div>
+                                <div class="form-group">
+                                    <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                                    @error('secret_answer')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+                                </div>
                                 <div class="col"><input type="submit" value="Register" class="ms-ua-submit"></div>
                             </form>
                             <div class="row">
@@ -92,16 +126,31 @@
         </div>
     </section>
 
-
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
-
+    <script id="password-requirements" type="text/html">
+        <div>
+            <ul>
+                <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
+                <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
+                <li><i class="fa {digit-class}"></i> Must contain at least 1 number</li>
+                <li><i class="fa {special-class}"></i> Must contain at least one of these special characters !@$*+-</li>
+                <li><i class="fa {other-special-class}"></i> Cannot contain any other special character beside those listed above</li>
+                <li><i class="fa {repeating-class}"></i> Cannot contain more than 2 repeating characters</li>
+                <li><i class="fa {username-class}"></i> Cannot contain the username</li>
+                <li><i class="fa {consecutive-class}"></i> Cannot contain 9 or more consecutive numbers</li>
+                <li><i class="fa {spaces-class}"></i> Cannot contain spaces</li>
+            </ul>
+        </div>
     </script>
+
+    <style>
+        .popover {
+            width: fit-content;
+        }
+    </style>
 
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/site/clients/registration.js?v=2') }}" defer></script>
 
 @endsection
-
 

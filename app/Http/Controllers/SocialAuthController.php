@@ -83,7 +83,9 @@ class SocialAuthController extends Controller
             $account->save();
 
             auth()->login($account->user);
-            return redirect()->to('/client/registration-steps')->with('success','Congrats! You just did something really wise');
+
+            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+
         }
 
         auth()->login($account->user);
@@ -94,6 +96,7 @@ class SocialAuthController extends Controller
 
     public function redirectGoogle()
     {
+
         return Socialite::driver('google')->redirect();
 
     }
@@ -141,20 +144,11 @@ class SocialAuthController extends Controller
             $account->save();
             auth()->login($account->user);
 
-            return redirect()->to('/client/registration-steps')->with('success','Congrats! You just did something really wise');
+            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
         }
 
         auth()->login($account->user);
-        if (empty(auth()->user()->clientDetails)){
-
-            return redirect()->to('/client/registration-steps');
-        }else{
-            return redirect()->to('/client/details');
-        }
-
-
-
-
+        return redirect()->to('/client/details');
     }
 
 

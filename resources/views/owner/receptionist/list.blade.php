@@ -9,11 +9,16 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
-                        <div class="row justify-content-end m-2">
-                            <a class="btn btn-success" href="{{ route('owner.receptionist.create')}}" role="button">
-                                CREATE RECEPTIONIST
-                            </a>
+                        <div class="row m-2  pt-4">
+                            <div class="col-md-11 pull-right">
+                                <a class="btn btn-primary pull-right" href="{{ route('owner.receptionist.create')}}" role="button">
+                                    CREATE RECEPTIONIST
+                                </a>
+                            </div>
+
                         </div>
+
+
                         <div class="row justify-content-center">
                             <div class="col-md-11">
                                 <div class="card">
@@ -35,14 +40,14 @@
                                             <tbody>
                                             @foreach($receptionists as $key=> $receptionist)
                                                 <tr>
-                                                    <th scope="row">{{$key+1}}</th>
+                                                    <th scope="row">{{ (($receptionists->currentPage() - 1 ) * $receptionists->perPage() ) + $loop->iteration }}</th>
                                                     <td>{{$receptionist['first_name']}}</td>
                                                     <td>{{$receptionist['last_name']}}</td>
                                                     <td>{{$receptionist['email']}}</td>
                                                     <td>
 
-                                                        <a href="{{route('owner.receptionist.edit', $receptionist['id'])}}" class="btn btn-primary" data-id="{{ $receptionist['id'] }}" >
-                                                            <i class="fa fa-pencil-alt"></i></a>
+                                                        <a href="{{route('owner.receptionist.edit', $receptionist['id'])}}"  data-id="{{ $receptionist['id'] }}" >
+                                                            <i class="fa fa-pencil"></i></a>
 
                                                         <button class="btn btn-danger delete" data-id="{{ $receptionist['id'] }}" >
                                                             <i class="fa fa-trash"></i></button>
@@ -55,6 +60,7 @@
 
                                             </tbody>
                                         </table>
+                                        {{ $receptionists->links() }}
                                     </div>
 
                                 </div>

@@ -18,13 +18,13 @@
                                     @csrf
                                     <div class="form-group row font">
 
-                                        {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'Title']) }}
+                                        {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'ANSWER']) }}
 
                                     </div>
 
                                     <div class="form-group row font">
 
-                                        {{ Form::textarea('faqs[description]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'Sub Content']) }}
+                                        {{ Form::textarea('faqs[description]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'QUESTION']) }}
 
                                     </div>
                                     <div class="form-group row mb-0 font">

@@ -16,16 +16,16 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Question</th>
-                                            <th scope="col">Action</th>
+                                            <th>#</th>
+                                            <th class="col-lg-2">Title</th>
+                                            <th class="col-lg-8">Question</th>
+                                            <th class="col-lg-2">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($faqs as $key=> $faq)
                                             <tr>
-                                                <th scope="row">{{$key+1}}</th>
+                                                <th scope="row">{{ (($faqs->currentPage() - 1 ) * $faqs->perPage() ) + $loop->iteration }}</th>
                                                 <td>{{$faq->title}}</td>
                                                 <td>{{$faq->description}}</td>
                                                 <td>
@@ -40,6 +40,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    {{$faqs->links()}}
                                 </div>
 
                             </div>
@@ -65,7 +66,7 @@
 
                             $.ajax(
                                 {
-                                    url: "/ owner/faqs/" + id,
+                                    url: "/owner/faqs/" + id,
                                     type: 'DELETE',
                                     data: {
                                         "id": id,

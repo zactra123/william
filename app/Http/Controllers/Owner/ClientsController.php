@@ -41,7 +41,7 @@ class ClientsController extends Controller
     {
         $client = User::clients()->find($clientId);
 
-        return view('owner.client.client-profile', compact('client'));
+        return view('owner.client.client-profile2', compact('client'));
     }
 
     public function clientReportNumber(Request $request)
@@ -95,7 +95,7 @@ class ClientsController extends Controller
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
             ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
                 'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
-            ->get();
+            ->paginate(10);
 
         return view('owner.client.list', compact( 'users'));
 

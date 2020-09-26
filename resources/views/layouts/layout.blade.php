@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Home - PRUDENT CREDIT SOLUTION</title>
 
     <!-- fav icon -->
@@ -16,7 +17,7 @@
 <!-- Bootstrap -->
     <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- animated-css -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{asset('css/css/animate.min.css')}}" rel="stylesheet" type="text/css">
     <!-- font-awesome-css -->
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -33,7 +34,32 @@
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=3') }}"></script>
-    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
+    <style>
+        .scrolled-content {
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+{{--    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>--}}
     {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 
 
@@ -59,7 +85,7 @@
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>
-
+    <script src="{{ asset('js/lib/jquery.mCustomScrollbar.min.js') }}" ></script>
     <script src="{{asset('js/js/script.js')}}"></script>
 </head>
 <body class="homePageFour">
@@ -91,7 +117,7 @@
                             <ul class="contact-wrapper">
                                 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
                                 <li><i class="fa fa-mobile" aria-hidden="true"></i> 1-844-337-8336</li>
-                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentcredit.com</li>
+                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentscores.com</li>
                             </ul>
                         </div> <!-- header-left-bar -->
                     </div>
@@ -186,7 +212,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="partner_with_us" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p style="text-align: justify">
+                    We are always looking to partner with independent sales representatives.
+                    To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
+                        partners@prudentscores.com</a> and one of our representatives will contact you promptly.
 
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {{--@include('helpers.chat-box')--}}
 @auth
     @if(Auth::user()->role == 'client')
@@ -195,43 +236,58 @@
 @else
     @include('helpers.chat-box')
 @endif
-
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-7 col-sm-7">
                     <div class="footer-wrapper">
-                        <img src="{{asset('images/logo-icon.png')}}" alt="">
-
-                        <ul class="location">
-                            <li><i class="fa fa-home" aria-hidden="true"></i>
-                                <div class="content">
-                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
-                                </div>
-                            </li>
-
-                            <li><i class="fa fa-phone" aria-hidden="true"></i>
-                                <div class="content">
+                        <ul class="wrapper-option clearfix">
+                            <h3> CONNECT WITH US</h3>
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
                                     1-844-337-8336
                                 </div>
                             </li>
-                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                <div class="content">
-                                    info@prudentcredit.com
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
+                                    info@prudentscores.com
                                 </div>
                             </li>
+                            <li>
+                                <div class="content" style="color: #aaa ">
+                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
+                                </div>
 
-                            <li><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                <div class="content">
+                                <div class="content" style="color: #aaa ">
                                     Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
                             </li>
+
+                        </ul>
+                        <ul class="wrapper-option" style="padding-left: 30px">
+{{--                            <h3> REACH US DIRECTLY</h3>--}}
+{{--                            <li>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    info@prudentscores.com--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Tel: 1-844-337-8336--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
                         </ul>
                     </div> <!-- footer-wrapper -->
                 </div>
 
-                <div class="col-md-2 col-sm-4">
+{{--                <div class="col-md-1 col-sm-1">--}}
 {{--                    <div class="footer-wrapper">--}}
 {{--                        <h3>About</h3>--}}
 
@@ -244,29 +300,26 @@
 {{--                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
 {{--                        </ul>--}}
 {{--                    </div> <!-- footer-wrapper -->--}}
-                </div>
+{{--                </div>--}}
 
-                <div class="col-md-5 col-md-offset-1 col-sm-4">
+                <div class="col-md-5  col-sm-5">
                     <div class="footer-wrapper last-wrapper">
-                        <h3>Navigation</h3>
 
                         <ul class="wrapper-option clearfix">
+                            <h3>INFORMATION</h3>
                             <li><a href="{{url('/')}}">Home</a></li>
-{{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
-                            <li><a href="#">Careers</a></li>
+                            {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
+                            <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
                             <li><a href="{{route('credit.repair')}}">Resources</a></li>
                             <li><a href="#">Newsroom</a></li>
-{{--                            <li><a href="#">Affiliates</a></li>--}}
-
-
+                            {{--                            <li><a href="#">Affiliates</a></li>--}}
                         </ul> <!-- wrapper-option -->
 
-
-
-                        <ul class="wrapper-option " style="padding-left: 20px">
-                            <li><a href="{{route('faqs')}}">FAQ</a></li>
-                            <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
+                        <ul class="wrapper-option " style="padding-left: 30px">
+                            <h3>CUSTOMER SERVICE</h3>
+                            <li><a href="{{route('faqs')}}">FAQs</a></li>
+                            <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
                             <li>
                                 <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
                                     Score Estimator
@@ -308,10 +361,17 @@
         @if(Auth::user())
             @if(Auth::user()->role == 'client')
                 @include('helpers.urls.nav_bar_client')
+                @if(!empty(Auth::user()->clientDetails))
+                    @if(Auth::user()->clientDetails->registration_steps != 'registered')
+                        <li ><a href="{{route('client.details.edit', Auth::user()->id)}}">EDIT DETAILS</a></li>
+                        <li ><a href="{{route('client.addDriverSocial')}}">UPLOAD DL & SS </a></li>
+                        <li><a href="{{route('client.credentials')}}">CREDENTIALS</a></li>
+                    @endif
+                @endif
                 <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}</a>
+                       LOG OUT <i class="fa fa-power-off"></i></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
