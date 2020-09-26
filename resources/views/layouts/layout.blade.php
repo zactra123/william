@@ -59,7 +59,7 @@
             background: #555;
         }
     </style>
-{{--    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>--}}
+    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
     {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 
 
@@ -67,7 +67,7 @@
     <script src="{{asset('js/js/wow.js')}}"></script>
     <script src="{{asset('js/js/lightbox.js')}}"></script>
     <script src="{{asset('owl-carrosel/owl.carousel.min.js')}}"></script>
-{{--<script src="{{asset('js/js/jquery-ui.js')}}"></script>--}}
+    <script src="{{asset('js/js/jquery-ui.js')}}"></script>
 
 
 
