@@ -17,24 +17,22 @@ class Screaper
 
     public function transunion_dispute($arguments = [])
     {
-//        if (empty($arguments)) {
-//            $arguments = [
-//                $this->client['credentials']['tu_login'],
-//                $this->client['credentials']['tu_password'],
-//                $this->client['first_name'],
-//                $this->client['last_name'],
-//                $this->client['last_name'],
-//                $this->client['last_name'],
-//            ];
-//            dd($this->client['clientDetails']);
-//        }
-//        array_push($arguments, $this->client_id);
-//        $command = $this->make_run_command('transunion_dispute.py',$arguments);
-//        $output = shell_exec($command);
+        if (empty($arguments)) {
+            $arguments = [
+                $this->client['credentials']['tu_login'],
+                $this->client['credentials']['tu_password'],
+                $this->client['first_name'],
+                $this->client['last_name'],
+                $this->client['last_name'],
+                $this->client['last_name'],
+            ];
+            dd($this->client['clientDetails']);
+        }
+        array_push($arguments, $this->client_id);
+        $command = $this->make_run_command('transunion_dispute.py',$arguments);
+        $output = shell_exec($command);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
-                $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
-
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
 
     }
@@ -51,10 +49,9 @@ class Screaper
 
     public function experian_login($arguments = [])
     {
-//        array_push($arguments, $this->client_id);
-//        $command = $this->make_run_command('experian_login.py',$arguments);
-//        $output = shell_exec($command);
-        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/Data_ARUTYUN.json'}";
+        array_push($arguments, $this->client_id);
+        $command = $this->make_run_command('experian_login.py',$arguments);
+        $output = shell_exec($command);
 
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
         return true;

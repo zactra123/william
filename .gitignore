@@ -4,6 +4,7 @@
 /public/files
 /storage/*.key
 /vendor
+/storage/reports
 /.idea
 .env
 .env.backup
