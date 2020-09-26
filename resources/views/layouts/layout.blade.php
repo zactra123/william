@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Home - PRUDENT CREDIT SOLUTION</title>
 
     <!-- fav icon -->
@@ -33,7 +34,32 @@
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=3') }}"></script>
-    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
+    <style>
+        .scrolled-content {
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+{{--    <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>--}}
     {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 
 
@@ -59,7 +85,7 @@
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.parallax.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/revolution/extensions/revolution.extension.video.min.js')}}"></script>
-
+    <script src="{{ asset('js/lib/jquery.mCustomScrollbar.min.js') }}" ></script>
     <script src="{{asset('js/js/script.js')}}"></script>
 </head>
 <body class="homePageFour">
@@ -91,7 +117,7 @@
                             <ul class="contact-wrapper">
                                 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
                                 <li><i class="fa fa-mobile" aria-hidden="true"></i> 1-844-337-8336</li>
-                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentcredit.com</li>
+                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentscores.com</li>
                             </ul>
                         </div> <!-- header-left-bar -->
                     </div>
@@ -184,7 +210,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="partner_with_us" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p style="text-align: justify">
+                    We are always looking to partner with independent sales representatives.
+                    To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
+                        partners@prudentscores.com</a> and one of our representatives will contact you promptly.
 
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <footer class="footer-section">
     <div class="footer-container">
         <div class="container">
@@ -202,32 +243,36 @@
                             <li>
                                 <div class="content" style="color: #aaa ">
                                     <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
-                                    info@prudentcredit.com
+                                    info@prudentscores.com
                                 </div>
                             </li>
                             <li>
-                                <div class="content" style="color: #aaa ">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    info@prudentcredit.com
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrapper-option" style="padding-left: 30px">
-                            <h3> REACH US DIRECTLY</h3>
-                            <li>
-                                <div class="content" style="color: #aaa ">
-                                    info@prudentcredit.com
-                                </div>
                                 <div class="content" style="color: #aaa ">
                                     5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
                                 </div>
-                                <div class="content" style="color: #aaa ">
-                                    Tel: 1-844-337-8336
-                                </div>
+
                                 <div class="content" style="color: #aaa ">
                                     Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
                                 </div>
                             </li>
+
+                        </ul>
+                        <ul class="wrapper-option" style="padding-left: 30px">
+{{--                            <h3> REACH US DIRECTLY</h3>--}}
+{{--                            <li>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    info@prudentscores.com--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Tel: 1-844-337-8336--}}
+{{--                                </div>--}}
+{{--                                <div class="content" style="color: #aaa ">--}}
+{{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
                         </ul>
                     </div> <!-- footer-wrapper -->
                 </div>
@@ -254,7 +299,7 @@
                             <h3>INFORMATION</h3>
                             <li><a href="{{url('/')}}">Home</a></li>
                             {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
                             <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
                             <li><a href="{{route('credit.repair')}}">Resources</a></li>
                             <li><a href="#">Newsroom</a></li>
@@ -264,7 +309,7 @@
                         <ul class="wrapper-option " style="padding-left: 30px">
                             <h3>CUSTOMER SERVICE</h3>
                             <li><a href="{{route('faqs')}}">FAQs</a></li>
-                            <li><a href="{{route('credit.free.repair')}}">Free Credit Repair</a></li>
+                            <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
                             <li>
                                 <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
                                     Score Estimator

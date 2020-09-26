@@ -52,7 +52,6 @@ class FaqsController extends Controller
 
         $id = $request->faq;
 
-
         $validation = Validator::make($request->faqs, [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
@@ -60,11 +59,9 @@ class FaqsController extends Controller
         ]);
 
         if ($validation->fails()) {
-
-            return view('owner.faqs.create')->withErrors($validation);
+            return redirect()->back()->withErrors($validation);
         } else {
             Faq::where('id',$id)->update($request->faqs);
-
             return redirect(route('owner.faqs.index'))->with('success', "your data update");
         }
 

@@ -185,7 +185,7 @@
                     }
                 },
                 errorPlacement: function(error, element) {
-                    error.insertAfter($(element).parents(".form-group"));
+                    error.insertAfter($(element).parents(".form-control"));
                 }
             })
         })

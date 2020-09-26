@@ -87,6 +87,19 @@ Route::group(['prefix'=>'owner'], function(){
     });
 
 
+    Route::group(["prefix"=>"furnishers"], function(){
+        Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
+        Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
+        Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
+        Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
+        Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
+        Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
+        Route::any('/equal-banks', 'Owner\BanksController@equalBanks')->name("owner.bank.equal");
+        Route::any('/banks_json', 'Owner\BanksController@banks');
+        Route::delete('/equal-bank', 'Owner\BanksController@removeEqualBank');
+        Route::get('/{type}','Owner\BanksController@showBankLogo')->name("owner.bank.show");
+    });
+
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
     Route::post('message/note', 'Owner\MessagesController@addNote')->name('owner.message.note');
 
@@ -120,6 +133,12 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::post('message/create','MessagesController@create')->name('admin.message.create');
     Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
     Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
+
+
+    Route::group(["prefix"=>"bank"], function(){
+        Route::get('/logo','BanksController@showBankLogo')->name("admin.bank.show");
+        Route::delete('/logo/{id}','BanksController@deleteBankLogo')->name("admin.bank.delete");
+    });
 
 
 

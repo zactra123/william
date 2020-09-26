@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankAddress;
 use App\Services\Screaper;
 use Illuminate\Http\Request;
 use App\HomePageContent;

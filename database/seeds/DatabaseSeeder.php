@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             $this->call(UserTableSeeder::class);
             $this->call(SloganSeeder::class);
             $this->call(SecretQuestionSeeder::class);
+            $this->call(BankLogosSeeder::class);
+            $this->call(AddBankLogosSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -66,7 +66,7 @@
 
                             $.ajax(
                                 {
-                                    url: "/ owner/faqs/" + id,
+                                    url: "/owner/faqs/" + id,
                                     type: 'DELETE',
                                     data: {
                                         "id": id,

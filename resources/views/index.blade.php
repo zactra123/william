@@ -116,10 +116,10 @@
             “we”, “us”, or “our”). We are committed to protecting your personal information
             and your right to privacy. If you have any questions or concerns about our
             policy, or our practices with regards to your personal information, please
-            contact us at info@prudentcredit.com.
+            contact us at info@prudentscores.com.
         </p>
         <p>
-            When you visit our website http://www.prudentcredit.com, mobile application,
+            When you visit our website http://www.prudentscores.com, mobile application,
             Facebook application, and use our services,
             you trust us with your personal information. We take your privacy very seriously.
             In this privacy notice, we describe our privacy policy.We seek to explain to you
@@ -130,7 +130,7 @@
         </p>
         <p>
             This privacy policy applies to all information collected through our websites
-            (http://www.prudentcredit.com), mobile application, Facebook application ("Apps"),
+            (http://www.prudentscores.com), mobile application, Facebook application ("Apps"),
             and/or any related services, sales, marketing or events (we refer to them
             collectively in this privacy policy as the "Services").
         </p>
