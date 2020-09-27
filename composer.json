@@ -23,6 +23,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
         "pusher/pusher-php-server": "~3.0",
+        "phpoffice/phpword": "^0.17.0",
         "spatie/pdf-to-text": "^1.2",
         "thiagoalessio/tesseract_ocr": "^2.8",
         "twilio/sdk": "^6.0"
