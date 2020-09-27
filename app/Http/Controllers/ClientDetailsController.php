@@ -459,7 +459,7 @@ class ClientDetailsController extends Controller
                 }
             }
 
-            if($key == 'ex_publicRecorde'){
+            if($key == 'ex_public'){
                 foreach($value  as $disputeExPublicRecords){
                     $exPublic = ClientReportExPublicRecord::where('id', $disputeExPublicRecords)->first();
                     $disputeExPublicRecord[] =$exPublic;
@@ -487,7 +487,7 @@ class ClientDetailsController extends Controller
                 }
             }
 
-            if($key == 'tu_publicRecorde'){
+            if($key == 'tu_public'){
                 foreach($value  as $disputeTuPublicRecords){
                     $tuPublic = ClientReportTuPublicRecord::where('id', $disputeTuPublicRecords)->first();
                     $disputeTuPublicRecord[] =$tuPublic;
@@ -540,6 +540,8 @@ class ClientDetailsController extends Controller
 
     public function negativeItemContract(Request $request)
     {
+
+        dd($request->all());
         $user = Auth::user();
         if($user->clientDetails->sex = "M"){
            $heSheIt = "he";

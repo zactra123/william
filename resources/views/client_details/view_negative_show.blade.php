@@ -49,7 +49,6 @@
                     <div class="col-md-10 mt20">
                         {!! Form::open(['route' => ['negative.contract'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
 
-
                         @if(!empty($data['name']))
                             <div class="mt20"></div>
                             <div class="chart-report">
@@ -60,9 +59,9 @@
                                         <span style="font-weight: bold; font-size: 16px"> NAME</span>
                                     </div>
                                     <div class="col-md-3">
-                                        <span style="font-weight: bold; font-size: 16px">DISPUTE</span>
                                     </div>
                                     <div class="col-md-3">
+                                        <span style="font-weight: bold; font-size: 16px">REMOVE DISPUTE</span>
                                     </div>
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px"></span>
@@ -77,8 +76,15 @@
                                         <div class="col-md-3">
                                             <span style="font-weight: bold"> {{$names->full_name}} </span>
                                         </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
                                         <div class="col-md-2 delete-name" data-attribute="title-name-{{$names->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="name[]" value="{{$names->id}}">
                                         </div>
                                     </div>
@@ -93,11 +99,11 @@
                                 <div class="row">
                                     <div class="col-md-1">
                                     </div>
-                                    <div class="col-md-5" style="font-weight: bold; font-size: 16px">
+                                    <div class="col-md-6" style="font-weight: bold; font-size: 16px">
                                         ADDRESS
                                     </div>
                                     <div class="col-md-4" style="font-weight: bold">
-                                        DISPUTE
+                                        <span style="font-weight: bold; font-size: 16px">REMOVE DISPUTE</span>
                                     </div>
                                     <div class="col-md-2" style="font-weight: bold">
 
@@ -109,14 +115,16 @@
                                     <div class="row mt20 border title-address-{{$address->id}}" style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <span class="">{{$address->street}}, </span>
                                             <span class="">{{$address->city}}, </span>
                                             <span class="">{{$address->state}}, </span>
                                             <span class="">{{$address->zip}}</span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-address-{{$address->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="address[]" value="{{$address->id}}">
                                         </div>
                                     </div>
@@ -131,11 +139,11 @@
                                 <div class="row" >
                                     <div class="col-md-1">
                                     </div>
-                                    <div class="col-md-5" style="font-weight: bold">
+                                    <div class="col-md-6" style="font-weight: bold">
                                         <span style="font-weight: bold; font-size: 16px">PHONE # </span>
                                     </div>
                                     <div class="col-md-3" style="font-weight: bold">
-                                        <span style="font-weight: bold; font-size: 16px"> DISPUTE</span>
+                                        <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE</span>
                                     </div>
                                     <div class="col-md-2" >
                                     </div>
@@ -147,11 +155,13 @@
                                     <div class="row mt20 border title-phone-{{$phone->id}}">
                                         <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <span style="font-weight: bold">{{$phone->number}} </span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-phone-{{$phone->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="phone[{{$phone->id}}]" value="{{$phone->id}}">
                                         </div>
                                     </div>
@@ -166,12 +176,12 @@
                                     <div class="row " style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-5">
-                                            <span class="form-text">{{$ex_public['details']->source_name}}</span>
-                                            <span class="form-text" style="padding-left: 15px">{{$ex_public['details']->source_id}}</span>
+                                        <div class="col-md-6">
+                                            <span class="form-text">{{$ex_public->source_name}}</span>
+                                            <span class="form-text" style="padding-left: 15px">{{$ex_public->source_id}}</span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-ex_public-{{$ex_public->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span> <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="ex_public[]" value="{{$ex_public->id}}">
 
                                         </div>
@@ -250,14 +260,15 @@
                                     <div class="row " style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <span class="form-text">{{$tu_public->name}}</span>
                                             <span class="form-text" style="padding-left: 15px">{{$tu_public->docket_number}}</span>
 
                                         </div>
 
                                         <div class="col-md-2 delete-name" data-attribute="title-tu_public-{{$tu_public->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="tu_public[]" value="{{$tu_public->id}}">
                                         </div>
                                     </div>
@@ -282,7 +293,7 @@
                                                     <label class="form-text">DATE FILED</label>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <span class=""> {{date("m/d/Y",strtotime($tu_public['details']->date_filed))}} </span>
+                                                    <span class=""> {{date("m/d/Y",strtotime($tu_public->date_filed))}} </span>
                                                 </div>
                                             </div>
 
@@ -335,13 +346,14 @@
                                     <div class="row mt20 " style="font-weight: bold" >
                                         <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <span class="">{{$ex_account->source_name}} </span>
 
                                             <span style="padding-left: 15px">    # {{$ex_account->source_id}}</span>
                                         </div>
-                                        <div class="col-md-1 delete" data-attribute="title-ex_account-{{$ex_account->id}}">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                        <div class="col-md-2 delete" data-attribute="title-ex_account-{{$ex_account->id}}">
+                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                             <input type="hidden" name="ex_account[]" value="{{$ex_account->id}}">
 
                                         </div>
@@ -412,13 +424,15 @@
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <span class="">{{$tu_account->account_name}} </span>
 
                                                 <span style="padding-left: 15px">    # {{$tu_account->account_number}}</span>
                                             </div>
-                                            <div class="col-md-1 delete-name" data-attribute="title-tu_account-{{$tu_account->id}}">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_account-{{$tu_account->id}}">
+                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_account[]" value="{{$tu_account->id}}">
                                             </div>
                                         </div>
@@ -483,12 +497,14 @@
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <span class="">{{$ex_inquiry->source_name}} </span>
 
                                             </div>
-                                            <div class="col-md-1 delete-name" data-attribute="title-ex_inquiry-{{$ex_inquiry->id}}">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <div class="col-md-2 delete-name" data-attribute="title-ex_inquiry-{{$ex_inquiry->id}}">
+                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="ex_inquiry[]" value="{{$ex_inquiry->id}}">
 
                                             </div>
@@ -503,16 +519,19 @@
                         @if(!empty($data['tu_inquiry']))
                             @foreach($data['tu_inquiry'] as $tu_inquiry)
                                 @if(!empty($tu_inquiry))
+
                                     <div class="mt20 title-tu_inquiry-{{$tu_inquiry->id}}"></div>
                                     <div class="chart-report title-tu_inquiry-{{$tu_inquiry->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
-                                            <div class="col-md-5">
-                                                <span class="">{{$tu_inquiry->account_name}} </span>
+                                            <div class="col-md-6">
+                                                <span class="">{{$tu_inquiry->subscriber_name}} </span>
                                             </div>
-                                            <div class="col-md-1 delete-name" data-attribute="title-tu_inquiry-{{$tu_inquiry->id}}">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$tu_inquiry->id}}">
+                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_inquiry[]" value="{{$tu_inquiry->id}}">
 
                                             </div>
@@ -532,12 +551,14 @@
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <span class="">{{$ex_statement->statement}} </span>
 
                                             </div>
-                                            <div class="col-md-1 delete-name" data-attribute="title-ex_statement-{{$ex_statement['details']->id}}">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <div class="col-md-2 delete-name" data-attribute="title-ex_statement-{{$ex_statement->id}}">
+                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="ex_statement[]" value="{{$ex_statement->id}}">
 
                                             </div>
@@ -557,11 +578,13 @@
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <span class="">{{$tu_statement->statement}} {{$tu_statement->description}} </span>
                                             </div>
-                                            <div class="col-md-1 delete-tu-statement" data-attribute="title-tu_statement-{{$tu_statement->id}}">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                            <div class="col-md-2 delete-tu-statement" data-attribute="title-tu_statement-{{$tu_statement->id}}">
+                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+
+                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_statement[]" value="{{$tu_statement->id}}">
                                             </div>
                                         </div>
