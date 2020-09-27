@@ -138,7 +138,6 @@ getChatInformations = function(data){
 $(document).ready(function(){
 
     $(document).on('click',".chatMessage", function(e){
-        console.log($(e.target).hasClass("show_details"))
         if ($(e.target).hasClass("show_details")) {
             return false;
         }
@@ -325,32 +324,62 @@ $(document).ready(function(){
             data: data,
             success: function (result) {
                 console.log(result,'654');
-                var full_name = '';
-                var phone_number = '';
-                var ssn = '';
-                var dob = '';
-                var address = '';
+                var full_name = '',
+                     email = '',
+                     phone_number = '',
+                     ssn = '',
+                     dob = '',
+                     address = '';
 
 
                 if(result.recipient_guest != null){
+                    console.log(result.recipient_user)
                     full_name = result.recipient_guest['full_name'];
-                     phone_number = result.recipient_guest['phone'];
+                    email = result.recipient_guest['email'];
+                    phone_number = result.recipient_guest['phone'];
                     if(result.guest_user != null){
                         ssn = result.guest_user['client_details']['ssn'];
                         address = result.guest_user['client_details']['address'];
                     }
-                }else if(result.recipient_guest != null){
-                    full_name = result.recipien_user['first_name']+' '+result.recipien_user['last_name'];
-                    phone_number = result.recipient_guest['phone_number'];
-                    ssn = result.guest_user['ssn'];
-                    address = result.guest_user['address'];
+                }else if(result.recipient_user != null){
+                    console.log(result.recipient_user)
+                    full_name = result.recipient_user['first_name']+' '+result.recipient_user['last_name'];
+                    email = result.recipient_user['email'];
+                    phone_number = result.recipient_user['client_details']['phone_number'];
+                    ssn = result.recipient_user['client_details']['ssn'];
+                    address = result.recipient_user['client_details']['address'];
 
                 }
-                $("#showFullName").html(full_name);
-                $("#showPhoneNumber").html(phone_number);
-                $("#showSSN").html(ssn)
-                $("#showAddress").html(address)
-
+                if (!!full_name ) {
+                    $("#showFullName").html(full_name);
+                    $("#showFullName").parents('.form-group').show();
+                } else {
+                    $("#showFullName").parents('.form-group').hide();
+                }
+                if (!!email) {
+                    $("#showEmailAddress").html(email);
+                    $("#showEmailAddress").parents('.form-group').show();
+                } else {
+                    $("#showEmailAddress").parents('.form-group').hide();
+                }
+                if (!!phone_number) {
+                    $("#showPhoneNumber").html(phone_number);
+                    $("#showPhoneNumber").parents('.form-group').show();
+                } else {
+                    $("#showPhoneNumber").parents('.form-group').hide();
+                }
+                if (!!ssn) {
+                    $("#showSSN").html(ssn)
+                    $("#showSSN").parents('.form-group').show();
+                } else {
+                    $("#showSSN").parents('.form-group').hide();
+                }
+                if (!!address) {
+                    $("#showAddress").html(address)
+                    $("#showAddress").parents('.form-group').show();
+                } else {
+                    $("#showAddress").parents('.form-group').hide();
+                }
             },
 
             error:function (err,state) {

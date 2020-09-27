@@ -177,7 +177,10 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                             <div  class="form-group">
-                                <p> Full Name  <span id="showFullName"></span></p>
+                                <p> Full Name: <span id="showFullName" class="text-uppercase"></span></p>
+                            </div>
+                            <div  class="form-group">
+                                <p> EMAIL: <span id="showEmailAddress" class="text-uppercase"></span></p>
                             </div>
                             <div  class="form-group">
                                 <p> Phone #  <span id="showPhoneNumber"></span></p>
@@ -186,7 +189,7 @@
                                 <p> Social Security #  <span id="showSSN"></span></p>
                             </div>
                             <div  class="form-group">
-                                <p> Address  <span id="showAddress"></span></p>
+                                <p> Address:  <span id="showAddress" class="text-uppercase"></span></p>
                             </div>
 
 
