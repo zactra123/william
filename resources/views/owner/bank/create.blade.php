@@ -40,11 +40,11 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="text" name="name"  class="form-control">
+                                            <input type="text" name="name"  class="form-control" placeholder="BANK NAME">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        {!! Form::select("bank[type]", $types,  null, ['class'=>'selectize-single']); !!}
+                                        {!! Form::select("bank[type]", $types,  null, ['class'=>'selectize-single', 'placeholder' => 'Type']); !!}
                                     </div>
                                     <div class="col-md-3">
                                         {!! Form::select('account_types[]', $account_types, [], ['multiple'=>'multiple','class'=>'selectize ms-ua-form', 'id' => 'select-account']); !!}
@@ -84,32 +84,33 @@
                                                 {!! Form::hidden("bank_address[{$k}][{$type}][id]", $address_ids[$type]['id'], ["class"=>"form-control"]) !!}
                                             @endif
                                             <div class="form-group col-sm-4">
-                                                {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}
-                                                {!! Form::text("bank_address[{$k}][{$type}][street]", null, ["class"=>"form-control"]) !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                                {!! Form::text("bank_address[{$k}][{$type}][street]", null, ["class"=>"form-control", 'placeholder' => 'Street']) !!}
                                             </div>
                                             <div class="form-group col-sm-3">
-                                                {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}
-                                                {!! Form::text("bank_address[{$k}][{$type}][city]", null, ["class"=>"form-control"]) !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                                {!! Form::text("bank_address[{$k}][{$type}][city]", null, ["class"=>"form-control", 'placeholder' => 'City']) !!}
                                             </div>
                                             <div class="form-group col-sm-2">
-                                                {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}
-                                                {!! Form::select("bank_address[{$k}][{$type}][state]", $states,  null, ['class'=>'selectize-single']); !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                                {!! Form::select("bank_address[{$k}][{$type}][state]", $states,  null, ['class'=>'selectize-single', 'placeholder' => 'State']); !!}
                                             </div>
                                             <div class="form-group col-sm-3">
-                                                {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}
-                                                {!! Form::text("bank_address[{$k}][{$type}][zip]", null, ["class"=>"us-zip form-control"]) !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                                {!! Form::text("bank_address[{$k}][{$type}][zip]", null, ["class"=>"us-zip form-control", 'placeholder' => 'Zip code']) !!}
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group col-sm-6">
-                                                {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}
-                                                {!! Form::text("bank_address[{$k}][{$type}][fax_number]", null, ["class"=>"us-phone form-control"]) !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}--}}
+                                                {!! Form::text("bank_address[{$k}][{$type}][phone_number]", null, ["class"=>"us-phone form-control", 'placeholder' => 'Phone Number']) !!}
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}
-                                                {!! Form::text("bank_address[{$k}][{$type}][phone_number]", null, ["class"=>"us-phone form-control"]) !!}
+{{--                                                {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}--}}
+                                                {!! Form::text("bank_address[{$k}][{$type}][fax_number]", null, ["class"=>"us-phone form-control", 'placeholder' => 'Fax Number']) !!}
                                             </div>
+
                                         </div>
                                     </div>
                                 @endforeach
