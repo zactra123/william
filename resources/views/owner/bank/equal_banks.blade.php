@@ -106,7 +106,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <table width="100%">
+                        <table width="100%" class="table  table-striped">
                             <thead>
                             <tr>
                                 <th width="20%">Bank Name</th>

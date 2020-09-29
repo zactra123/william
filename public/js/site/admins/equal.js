@@ -50,7 +50,7 @@ $(document).ready(function($) {
                 self = this;
         console.log($("meta[name='csrf-token']").attr("content"))
         $.ajax({
-            url: '/owner/bank/equal-bank',
+            url: '/owner/furnishers/equal-bank',
             type: 'DELETE',
             data: {
                 "_token": $("meta[name='csrf-token']").attr("content"),
