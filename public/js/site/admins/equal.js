@@ -6,6 +6,7 @@ $(document).ready(function($) {
         labelField: 'name',
         valueField: 'id',
         sortField: 'name',
+        selectOnTab: true,
         create: function(input) {
             return {
                 value: input,

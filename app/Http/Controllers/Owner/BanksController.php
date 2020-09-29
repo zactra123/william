@@ -251,13 +251,14 @@ class BanksController extends Controller
     {
         if($request->isMethod("post")){
             $banksLogo = BankLogo::find($request->bank_logo["id"]);
-            $existing_names = $banksLogo->equalBanks()->select('name')->get()->toArray();
+            $existing_names = $banksLogo->equalBanks()->get()->pluck('name')->toArray();
             $eqs = explode(',', $request->equal_banks);
             foreach( $eqs as $eb) {
                 if (!in_array($eb, $existing_names)) {
                     $banksLogo->equalBanks()->create(["name" => $eb]);
                 }
             }
+            return redirect()->route('owner.bank.equal');
         }
 
         $banksLogos = BankLogo::with('equalBanks')->get();
