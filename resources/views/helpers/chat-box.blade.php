@@ -27,12 +27,21 @@
                             <div class="form-group">
                                     <input id="full_name" type="text" class="form-control" name="full_name" value="" placeholder="You full name" autofocus>
                             </div>
+{{--                            <div class="form-group ">--}}
+{{--                                --}}
+{{--                            </div>--}}
                             <div class="form-group ">
-                                <input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Mail Address">
-                            </div>
-
-                            <div class="form-group ">
-                                <input id="phone" type="text" class="form-control us-phone" name="phone" placeholder="Phone Number">
+                                <div class="row">
+                                    <div class="col-md-6" style="margin: 0">
+                                        <input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Mail Address">
+                                    </div>
+                                    <div class="col-md-1" style="margin: 0; padding: 0">
+                                        OR
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input id="phone" type="text" class="form-control us-phone" name="phone" placeholder="Phone Number">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <textarea  class="form-control" name="message" required placeholder="write your message"></textarea>

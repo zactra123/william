@@ -6,7 +6,7 @@
     }
 
     .chart-report {
-        /*background-color: #d4ddec;*/
+        /*backgrouREMOVE DISPUTEnd-color: #d4ddec;*/
         padding: 15px;
         box-shadow: 0 0 5px 1px #0000005c;
         opacity: 1;
@@ -61,7 +61,7 @@
                                     <div class="col-md-3">
                                     </div>
                                     <div class="col-md-3">
-                                        <span style="font-weight: bold; font-size: 16px">REMOVE DISPUTE</span>
+                                        <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                     </div>
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px"></span>
@@ -82,9 +82,8 @@
                                         </div>
 
                                         <div class="col-md-2 delete-name" data-attribute="title-name-{{$names->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
 
-                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="name[]" value="{{$names->id}}">
                                         </div>
                                     </div>
@@ -103,7 +102,7 @@
                                         ADDRESS
                                     </div>
                                     <div class="col-md-4" style="font-weight: bold">
-                                        <span style="font-weight: bold; font-size: 16px">REMOVE DISPUTE</span>
+                                        <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                     </div>
                                     <div class="col-md-2" style="font-weight: bold">
 
@@ -122,9 +121,9 @@
                                             <span class="">{{$address->zip}}</span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-address-{{$address->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="address[]" value="{{$address->id}}">
                                         </div>
                                     </div>
@@ -143,7 +142,7 @@
                                         <span style="font-weight: bold; font-size: 16px">PHONE # </span>
                                     </div>
                                     <div class="col-md-3" style="font-weight: bold">
-                                        <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE</span>
+                                        <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                     </div>
                                     <div class="col-md-2" >
                                     </div>
@@ -159,9 +158,9 @@
                                             <span style="font-weight: bold">{{$phone->number}} </span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-phone-{{$phone->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="phone[{{$phone->id}}]" value="{{$phone->id}}">
                                         </div>
                                     </div>
@@ -181,7 +180,7 @@
                                             <span class="form-text" style="padding-left: 15px">{{$ex_public->source_id}}</span>
                                         </div>
                                         <div class="col-md-2 delete-name" data-attribute="title-ex_public-{{$ex_public->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span> <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span> <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="ex_public[]" value="{{$ex_public->id}}">
 
                                         </div>
@@ -267,8 +266,8 @@
                                         </div>
 
                                         <div class="col-md-2 delete-name" data-attribute="title-tu_public-{{$tu_public->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
-                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
                                             <input type="hidden" name="tu_public[]" value="{{$tu_public->id}}">
                                         </div>
                                     </div>
@@ -352,8 +351,8 @@
                                             <span style="padding-left: 15px">    # {{$ex_account->source_id}}</span>
                                         </div>
                                         <div class="col-md-2 delete" data-attribute="title-ex_account-{{$ex_account->id}}">
-                                            <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
-                                            <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                             <input type="hidden" name="ex_account[]" value="{{$ex_account->id}}">
 
                                         </div>
@@ -430,9 +429,9 @@
                                                 <span style="padding-left: 15px">    # {{$tu_account->account_number}}</span>
                                             </div>
                                             <div class="col-md-2 delete-name" data-attribute="title-tu_account-{{$tu_account->id}}">
-                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_account[]" value="{{$tu_account->id}}">
                                             </div>
                                         </div>
@@ -502,9 +501,9 @@
 
                                             </div>
                                             <div class="col-md-2 delete-name" data-attribute="title-ex_inquiry-{{$ex_inquiry->id}}">
-                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="ex_inquiry[]" value="{{$ex_inquiry->id}}">
 
                                             </div>
@@ -529,9 +528,9 @@
                                                 <span class="">{{$tu_inquiry->subscriber_name}} </span>
                                             </div>
                                             <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$tu_inquiry->id}}">
-                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_inquiry[]" value="{{$tu_inquiry->id}}">
 
                                             </div>
@@ -556,9 +555,9 @@
 
                                             </div>
                                             <div class="col-md-2 delete-name" data-attribute="title-ex_statement-{{$ex_statement->id}}">
-                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="ex_statement[]" value="{{$ex_statement->id}}">
 
                                             </div>
@@ -582,9 +581,9 @@
                                                 <span class="">{{$tu_statement->statement}} {{$tu_statement->description}} </span>
                                             </div>
                                             <div class="col-md-2 delete-tu-statement" data-attribute="title-tu_statement-{{$tu_statement->id}}">
-                                                <span style="font-weight: bold; font-size: 16px"> REMOVE DISPUTE </span>
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
-                                                <i class="fa fa-minus-circle" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_statement[]" value="{{$tu_statement->id}}">
                                             </div>
                                         </div>

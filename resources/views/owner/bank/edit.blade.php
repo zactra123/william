@@ -99,32 +99,33 @@
                                          {!! Form::hidden("bank_address[{$k}][{$type}][id]", $address_ids[$type]['id'], ["class"=>"form-control"]) !!}
                                         @endif
                                         <div class="form-group col-sm-4">
-                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}
-                                            {!! Form::text("bank_address[{$k}][{$type}][street]", !empty($address_ids[$type]) ? $address_ids[$type]['street'] : null, ["class"=>"form-control"]) !!}
+{{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                            {!! Form::text("bank_address[{$k}][{$type}][street]", !empty($address_ids[$type]) ? $address_ids[$type]['street'] : null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}
-                                            {!! Form::text("bank_address[{$k}][{$type}][city]",  !empty($address_ids[$type]) ? $address_ids[$type]['city'] : null, ["class"=>"form-control"]) !!}
+{{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                            {!! Form::text("bank_address[{$k}][{$type}][city]",  !empty($address_ids[$type]) ? $address_ids[$type]['city'] : null, ["class"=>"form-control","placeholder"=>"City"]) !!}
                                         </div>
                                         <div class="form-group col-sm-2">
-                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}
-                                            {!! Form::select("bank_address[{$k}][{$type}][state]", $states,  !empty($address_ids[$type]) ? $address_ids[$type]['state'] : null, ['class'=>'selectize-single']); !!}
+{{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                            {!! Form::select("bank_address[{$k}][{$type}][state]", $states,  !empty($address_ids[$type]) ? $address_ids[$type]['state'] : null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}
-                                            {!! Form::text("bank_address[{$k}][{$type}][zip]", !empty($address_ids[$type]) ?  $address_ids[$type]['zip'] : null, ["class"=>"us-zip form-control"]) !!}
+{{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                            {!! Form::text("bank_address[{$k}][{$type}][zip]", !empty($address_ids[$type]) ?  $address_ids[$type]['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                         </div>
                                     </div>
 
                                     <div class="row">
                                     <div class="form-group col-sm-6">
-                                        {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}
-                                        {!! Form::text("bank_address[{$k}][{$type}][fax_number]", !empty($address_ids[$type]) ? $address_ids[$type]['fax_number'] : null, ["class"=>"us-phone form-control"]) !!}
+{{--                                        {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}--}}
+                                        {!! Form::text("bank_address[{$k}][{$type}][phone_number]", !empty($address_ids[$type]) ? $address_ids[$type]['phone_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}
-                                        {!! Form::text("bank_address[{$k}][{$type}][phone_number]", !empty($address_ids[$type]) ? $address_ids[$type]['phone_number'] : null, ["class"=>"us-phone form-control"]) !!}
+{{--                                        {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}--}}
+                                        {!! Form::text("bank_address[{$k}][{$type}][fax_number]", !empty($address_ids[$type]) ? $address_ids[$type]['fax_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
                                     </div>
+
                                 </div>
                                 </div>
                             @endforeach
