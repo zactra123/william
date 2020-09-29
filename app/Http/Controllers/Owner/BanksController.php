@@ -9,6 +9,7 @@ use App\BankPhoneNumber;
 use App\EqualBank;
 use App\Http\Controllers\Controller;
 
+use Facade\FlareClient\Http\Exceptions\NotFound;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -140,6 +141,7 @@ class BanksController extends Controller
             $account_addresses =  $request->bank_address[$bankAccount->account_type_id];
             foreach($account_addresses as $account_address) {
                 if (
+                    empty($account_address['name']) &&
                     empty($account_address['street']) &&
                     empty($account_address['city']) &&
                     empty($account_address['state']) &&
@@ -154,7 +156,6 @@ class BanksController extends Controller
                 }
 
                 $bank_account_address = $account_address;
-
                 if (!empty($account_address['id'])) {
                     $bankAccount->accountAddresses()->find($account_address['id'])->update($bank_account_address);
                 } else {
@@ -201,7 +202,7 @@ class BanksController extends Controller
     public function showBankLogo($type, Request $request)
     {
         if (!in_array($type,['all', 'untyped']) && !in_array($type, array_keys(BankLogo::TYPES))){
-            dd('asd');
+            redirect()->route('owner.bank.show', ['type'=> 'all']);
         }
         $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
 

@@ -15,6 +15,9 @@
         box-shadow: 0 0 5px 1px #0000005c;
         opacity: 1;
     }
+    .expand-address {
+        cursor: pointer;
+    }
 
 </style>
 @section('content')
@@ -78,6 +81,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 addresses hidden" id="address-{{$type}}-{{$k}}">
+                                        @if($type == 'registered_agent')
+                                            <div class="row">
+                                                <div class="form-group col-sm-12">
+                                                    {!! Form::text("bank_address[{$k}][{$type}][name]",  null, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
+                                                </div>
+                                            </div>
+                                        @endif
                                         <div class="row">
                                             {!! Form::hidden("bank_address[{$k}][{$type}][type]", $type, ["class"=>"form-control"]) !!}
                                             @if(!empty($address_ids[$type]))

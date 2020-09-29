@@ -26,7 +26,9 @@ $(document).ready(function($) {
             }
         },
     })
-    $('.selectize-single').selectize()
+    $('.selectize-single').selectize({
+        selectOnTab: true,
+    })
 
 
     $(document).on('click', '.remove-account-type', function(){
@@ -62,8 +64,6 @@ $(document).ready(function($) {
                     // Fetch the first page
                     var pageNumber = 1;
                     pdf.getPage(pageNumber).then(function(page) {
-                        console.log('Page loaded');
-
                         var scale = 1.5;
                         var viewport = page.getViewport({scale: scale});
 

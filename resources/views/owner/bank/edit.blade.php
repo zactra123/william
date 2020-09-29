@@ -17,6 +17,9 @@
         box-shadow: 0 0 5px 1px #0000005c;
         opacity: 1;
     }
+    .expand-address {
+        cursor: pointer;
+    }
 
 </style>
 
@@ -93,6 +96,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 addresses hidden" id="address-{{$type}}-{{$k}}">
+                                    @if($type == 'registered_agent')
+                                        <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                {!! Form::text("bank_address[{$k}][{$type}][name]", !empty($address_ids[$type]) ? $address_ids[$type]['name'] : null, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
+                                            </div>
+                                        </div>
+                                    @endif
                                     <div class="row">
                                         {!! Form::hidden("bank_address[{$k}][{$type}][type]", $type, ["class"=>"form-control"]) !!}
                                         @if(!empty($address_ids[$type]))
@@ -117,18 +127,19 @@
                                     </div>
 
                                     <div class="row">
-                                    <div class="form-group col-sm-6">
-{{--                                        {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}--}}
-                                        {!! Form::text("bank_address[{$k}][{$type}][phone_number]", !empty($address_ids[$type]) ? $address_ids[$type]['phone_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
-                                    </div>
-                                    <div class="form-group col-sm-6">
-{{--                                        {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}--}}
-                                        {!! Form::text("bank_address[{$k}][{$type}][fax_number]", !empty($address_ids[$type]) ? $address_ids[$type]['fax_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
-                                    </div>
+                                        <div class="form-group col-sm-6">
+    {{--                                        {!! Form::label("bank_address[{$k}][{$type}][phone_number]", 'Phone Number'); !!}--}}
+                                            {!! Form::text("bank_address[{$k}][{$type}][phone_number]", !empty($address_ids[$type]) ? $address_ids[$type]['phone_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                                        </div>
+                                        <div class="form-group col-sm-6">
+    {{--                                        {!! Form::label("bank_address[{$k}][{$type}][fax_number]", 'Fax Number'); !!}--}}
+                                            {!! Form::text("bank_address[{$k}][{$type}][fax_number]", !empty($address_ids[$type]) ? $address_ids[$type]['fax_number'] : null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                        </div>
 
-                                </div>
+                                    </div>
                                 </div>
                             @endforeach
+                            <div class="row"></div>
                         </div>
                     </div>
                 @endforeach

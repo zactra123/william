@@ -17,6 +17,7 @@ class BankAddress extends Model
         'zip',
         'phone_number',
         'fax_number',
+        'name'
     ];
 
     const TYPES = [
@@ -24,7 +25,7 @@ class BankAddress extends Model
         'executive_address'=>'EXECUTIVE ADDRESS',
         'governing_authority'=>'GOVERNING AUTHORITY',
         'legal_department_address'=>'LEGAL DEPARTMENT ADDRESS',
-        'process_server'=>'REGISTERED AGENT',
+        'registered_agent'=>'REGISTERED AGENT',
     ];
 
     const STATES = [
