@@ -118,7 +118,12 @@
                                             @foreach($banksLogos as  $logos)
                                                 <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                                     <div class="card mb-4 box-shadow" >
-                                                        <img class="card-img-top banks-card" src="{{asset($logos->path)}}"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                        @if(file_exists(public_path($logos->path)) && !is_dir(public_path($logos->path)))
+                                                            <img class="card-img-top banks-card" src="{{asset($logos->path)}}"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                        @else
+                                                            <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                        @endif
+
                                                         <div class="card-body">
                                                             <div class="card-text mt-5">
                                                                 <div class="bank-name b"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>

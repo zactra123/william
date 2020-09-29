@@ -35,7 +35,6 @@
                     {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
-
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
 
@@ -143,7 +142,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="col">
+                <div class="col mt-5">
                     <input type="submit" value="Save" class="ms-ua-submit">
 
                 </div>
