@@ -68,6 +68,16 @@ class Screaper
         return true;
     }
 
+    public function equifax_via_credit_karma($arguments = [])
+    {
+        array_push($arguments, $this->client_id);
+        $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
+        $output = shell_exec($command);
+//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
+        $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
+        return true;
+    }
+
 
     private function make_run_command($script_name, $command_args)
     {
