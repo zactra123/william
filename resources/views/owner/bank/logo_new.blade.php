@@ -171,7 +171,7 @@
                 var id = $(this).attr('data-id'),
                 token = $("meta[name='csrf-token']").attr("content");
                 $.ajax({
-                    url: "/owner/bank/logo/" + id,
+                    url: "/owner/furnishers/logo/" + id,
                     type: 'DELETE',
                     data: {
                         "id": id,
