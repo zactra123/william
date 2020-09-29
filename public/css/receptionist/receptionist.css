@@ -16,8 +16,8 @@
     border: 1px solid #f0f0f0;
 }
 .card {
-    min-height: 60vh !important;
-    max-height: 70vh !important;
+    min-height: 40vh !important;
+    max-height: 50vh !important;
 }
 .chatList {
     min-height: 80vh !important;
@@ -29,7 +29,7 @@
 }
 
 .scrollDiv {
-    height: 250px;
+    height: 80vh;
     background-color: white;
     overflow-y: auto;
 

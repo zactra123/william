@@ -1,6 +1,14 @@
 @extends('layouts.layout')
 
 <style>
+    .list-group {
+        margin-bottom: 10px !important;
+    }
+    .inCenter{
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
     .list-group-horizontal .list-group-item
     {
         display: inline-block;
@@ -32,6 +40,17 @@
     .float-right {
         float: right;
     }
+    .sssss{
+        min-height: 30vh !important;
+        max-height: 40vh !important;
+    }
+    .ms-edu {
+        padding: 10px 0 50px !important;
+    }
+
+    .ms-working {
+        padding: 10px 0 50px !important;
+    }
 </style>
 
 
@@ -44,7 +63,7 @@
     <section class="ms-working working-section section-padding">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="list-group list-group-horizontal">
+                <div class="list-group inCenter  list-group-horizontal">
                     <a class="list-group-item  {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
                         @if(array_sum($unreads))
                             <span class="badge badge-notify" id="userUnreds">{{array_sum($unreads)}}</span>
@@ -97,7 +116,7 @@
                                 </div>
                                 <div class="sidebar__content">
                                     <div class="side-nav list-group">
-                                        <div class="card ">
+                                        <div class="sssss ">
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
                                                     <div class="list-group-item chatMessage" id='{{$chat->recipient_type}}{{$chat->recipient_id}}'
@@ -130,7 +149,7 @@
 
                             <div class="col-md-9">
                                 <div class="card ">
-                                    <div  id="scrollingDiv" class="card-body scrollDiv">
+                                    <div  id="scrollingDiv" class="card-body  scrollDiv">
                                         <div class="card-body " id="showChatMessage"  >
 
                                         </div>
