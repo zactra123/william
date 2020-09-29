@@ -116,8 +116,7 @@ class BanksController extends Controller
             $bankLogo['path'] = $pathLogo;
             $deleteOldLogo = $bank->path;
 
-
-            if(file_exists(public_path($deleteOldLogo)) && $deleteOldLogo != "/images/banks_logo/") {
+            if(file_exists(public_path($deleteOldLogo)) && !is_dir(public_path($deleteOldLogo))) {
                 unlink(public_path($deleteOldLogo));
             }
             $bank->update($bankLogo);
@@ -236,7 +235,7 @@ class BanksController extends Controller
 
         $delete = BankLogo::where('id', $logId);
 
-        if(file_exists(public_path($delete->first()->path)) &&  $delete->first()->path != "/images/banks_logo/"  ){
+        if(file_exists(public_path($delete->first()->path)) &&  !is_dir(public_path($delete->first()->path))  ){
             unlink(public_path($delete->first()->path));
             $delete->delete();
         }else{
