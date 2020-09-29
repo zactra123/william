@@ -14,7 +14,7 @@ $(document).ready(function($) {
         },
         load: function(query, callback) {
             $.ajax({
-                url: '/owner/bank/banks_json',
+                url: '/owner/furnishers/banks_json',
                 type: 'GET',
                 dataType: 'json',
                 data: {
