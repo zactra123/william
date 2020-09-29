@@ -108,7 +108,7 @@ class BanksController extends Controller
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
 
-            $path = "image/banks_logo";
+            $path = "images/banks_logo";
             $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
             $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
             $pathLogo =  '/' . $path . '/'.$nameBankLogo;
