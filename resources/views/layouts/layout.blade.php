@@ -33,7 +33,7 @@
     <!-- style-css -->
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
-    <script src="{{ asset('js/app.js?v=3') }}"></script>
+    <script src="{{ asset('js/app.js?v=4') }}"></script>
     <style>
         .scrolled-content {
             max-height: 200px;
