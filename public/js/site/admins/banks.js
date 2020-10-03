@@ -117,12 +117,12 @@ $(document).ready(function($) {
     });
 
     $(document).on('click', '.customcheck' ,function(){
-
         var id  = $(this).attr('id').replace('name-', '')
         var accountType = $(this).attr('data-type')
+        console.log(id, accountType)
         if(this.checked) {
             var address_template =  $("#address-template").html()
-            address_template = address_template.replace(/{type}/g, accountType)
+            address_template = address_template.replace(/{type}/g,"dispute_address")
                 .replace(/{id}/g, id)
                 .replace(/{account_type_id}/g, id)
                 .replace(/{name}/g, accountType+' Dispute Address');

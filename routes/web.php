@@ -97,6 +97,7 @@ Route::group(['prefix'=>'owner'], function(){
 
 
     Route::group(["prefix"=>"furnishers"], function(){
+        Route::post('/bank-name','Owner\BanksController@banKName');
         Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
         Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
         Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");

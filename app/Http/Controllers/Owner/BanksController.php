@@ -12,7 +12,7 @@ use App\EqualBank;
 use App\Http\Controllers\Controller;
 
 use Facade\FlareClient\Http\Exceptions\NotFound;
-use http\Env\Response;
+use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -27,14 +27,13 @@ class BanksController extends Controller
 
     public function create()
     {
-
         $account_types = AccountType::all()->pluck('name', 'id')->toArray();
         return view('owner.bank.create', compact( 'account_types'));
-
     }
 
     public function store(Request $request)
     {
+
         $validation =  Validator::make($request->all(), [
             'logo' => ['required', 'file'],
             'name'=>['required', 'string', 'max:255'],
@@ -60,7 +59,7 @@ class BanksController extends Controller
             return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
         }
 
-        $path = "image/banks_logo";
+        $path = "images/banks_logo";
         $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
         $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
         $pathLogo =  '/' . $path . '/'.$nameBankLogo;
@@ -68,33 +67,17 @@ class BanksController extends Controller
         $bank = BankLogo::create([
             'name'=>$request->name,
             'path'=>$pathLogo,
-
         ]);
-
-        $new_account_types = collect($request->account_types)->map(function ($id){return ["account_type_id" =>$id]; });
-        $bankAccounts = $bank->bankAccounts()->createMany($new_account_types);
-        foreach ( $bankAccounts as $bankAccount) {
-            $account_addresses =  $request->bank_address[$bankAccount->account_type_id];
-            foreach($account_addresses as $account_address) {
-                if (
-                    empty($account_address['street']) &&
-                    empty($account_address['city']) &&
-                    empty($account_address['state']) &&
-                    empty($account_address['zip']) &&
-                    empty($account_address['fax_number']) &&
-                    empty($account_address['phone_number'])
-                ) {
-                    continue;
-                }
-                $bankAccount->accountAddresses()->create($account_address);
+        $account_addresses =  $request->bank_address;
+        foreach ( $account_addresses as $addresses) {
+            foreach($addresses as $address) {
+                $address['bank_logo_id'] = $bank->id;
+                BankAddress::create($address);
             }
         }
-
         return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
 
     }
-
-
 
     public function edit(Request $request)
     {
@@ -125,7 +108,6 @@ class BanksController extends Controller
         return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
 
     }
-
 
     public function update(Request $request)
     {
@@ -219,7 +201,6 @@ class BanksController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-
     public function showBankLogo($type, Request $request)
     {
         if (!in_array($type,['all', 'untyped']) && !in_array($type, array_keys(BankLogo::TYPES))){
@@ -267,7 +248,6 @@ class BanksController extends Controller
 
     }
 
-
     public function equalBanks(Request $request)
     {
         if($request->isMethod("post")){
@@ -285,7 +265,6 @@ class BanksController extends Controller
         $banksLogos = BankLogo::with('equalBanks')->get();
         return view('owner.bank.equal_banks',compact('banksLogos'));
     }
-
 
     public function banks(Request $request)
     {
@@ -319,4 +298,28 @@ class BanksController extends Controller
 
         return response()->json('success');
     }
+
+    public function banKName(Request $request)
+    {
+        $bankName = $request->bank_name;
+        $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
+        $keywordId = null;
+        foreach($keyWords as $key=>$words){
+            if (strpos(strtoupper($bankName),$words) !== false) {
+                $keywordId = $key;
+                break;
+            }
+        }
+        if($keywordId !=null){
+            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
+                ->pluck('account_type_id')->toArray();
+            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
+        }else{
+            $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
+        }
+        $data = $account_types;
+        return Response::json($data);
+    }
+
+
 }

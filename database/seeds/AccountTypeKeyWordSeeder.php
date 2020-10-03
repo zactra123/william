@@ -121,11 +121,19 @@ class AccountTypeKeyWordSeeder extends Seeder
             ],
             [
                 'account_type_key_id'=>5,
+                'account_type_id' =>1
+            ],
+            [
+                'account_type_key_id'=>5,
                 'account_type_id' =>2
             ],
             [
                 'account_type_key_id'=>5,
                 'account_type_id' =>7
+            ],
+            [
+                'account_type_key_id'=>6,
+                'account_type_id' =>1
             ],
             [
                 'account_type_key_id'=>6,
@@ -138,6 +146,10 @@ class AccountTypeKeyWordSeeder extends Seeder
             [
                 'account_type_key_id'=>6,
                 'account_type_id' =>7
+            ],
+            [
+                'account_type_key_id'=>7,
+                'account_type_id' =>1
             ],
             [
                 'account_type_key_id'=>7,

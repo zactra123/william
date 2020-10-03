@@ -144,7 +144,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="row"></div>
                         </div>
                     </div>
 
@@ -167,7 +166,6 @@
 
                 <div class="col mt-5">
                     <input type="submit" value="Save" class="ms-ua-submit">
-
                 </div>
                 {!! Form::close() !!}
             </div>
