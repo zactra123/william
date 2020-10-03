@@ -129,7 +129,7 @@
     <div class="container" id="app" data-user="{{Auth::user()?Auth::user()->id:''}}">
         <nav class="navbar navbar-inverse hidden-sm hidden-xs" >
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav mr-1">
                     @if(Auth::user())
                         @if(Auth::user()->role == 'client')
                             @include('helpers.urls.nav_bar_client')

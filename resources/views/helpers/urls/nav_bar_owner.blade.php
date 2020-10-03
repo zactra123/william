@@ -9,14 +9,10 @@
 </li>
 
 <li class="dropdown menu-item">
-    <a href="#"  data-toggle="dropdown">FURNISHERS</a>
+    <a href="{{ route('owner.bank.show')}}"  data-toggle="dropdown">FURNISHERs/CRAs</a>
         <ul id="products-menu" class="dropdown-menu scrolled-content" role="menu">
-            <li><a href="{{ route('owner.bank.show',['type' =>"all"])}}">ALL</a></li>
-            <li><a href="{{ route('owner.bank.show',['type' =>"untyped"])}}">UNTYPED</a></li>
-            @foreach(\App\BankLogo::TYPES as $key =>$type)
-                <li><a href="{{ route('owner.bank.show',['type' =>$key])}}">{{$type}}</a></li>
-            @endforeach
-            <li><a href="{{ route('owner.bank.equal')}}">EQUAL NAMES</a></li>
+            <li><a href="{{ route('owner.bank.show')}}">FURNISHERs/CRAs</a></li>
+            <li><a href="{{ route('owner.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
 
         </ul>
 </li>

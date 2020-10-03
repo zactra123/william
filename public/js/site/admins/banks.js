@@ -116,6 +116,61 @@ $(document).ready(function($) {
         // $(".driver_dropp").css('background-image',file)
     });
 
+    $('.selectize-multiple').selectize({
+        plugins: ['remove_button'],
+        delimiter: ',',
+        persist: true,
+        preload: true,
+        labelField: 'name',
+        valueField: 'name',
+        create: function(input) {
+            return {
+                value: input,
+                name: input
+            };
+        }
+    });
+
+
+    $("#bank_logo").val(null)
+    $(".changeLogo").click(function (e) {
+        e.preventDefault();
+        $(".changeLogo").addClass("hide")
+        $(".updateLogo").removeClass("hide")
+
+    });
+    $(document).on('change', '#bank_name' ,function(){
+        var bankName = $(this).val()
+        var token = $("meta[name='csrf-token']").attr("content");
+        $.ajax({
+            url: "/owner/furnishers/bank-name",
+            method:"POST",
+            data:{bank_name:bankName, _token: token},
+            success: function (result) {
+
+                html ='<div class="row" id="account_types_append">'
+                for( let val in result){
+
+                    html = html +'<div class="col-md-2">'+result[val]+'<input name="account_type[]" data-type="'+result[val]
+
+                    html = html +'" type="checkbox" id="name-'+val+'" value ="'+val+'" class="customcheck ex_name"></div>'
+                }
+                html = html+ '</div>'
+
+                $('#account_types').find('#account_types_append').remove()
+
+                $("#account_types").html(html);
+
+
+            },
+
+            error:function (err,state) {
+                console.log(err)
+            }
+        });
+
+    });
+
     $(document).on('click', '.customcheck' ,function(){
         var id  = $(this).attr('id').replace('name-', '')
         var accountType = $(this).attr('data-type')
@@ -134,6 +189,5 @@ $(document).ready(function($) {
         }else{
             $('#addresses_container').find('#dispute-address-'+ id).remove()
         }
-
     })
 });

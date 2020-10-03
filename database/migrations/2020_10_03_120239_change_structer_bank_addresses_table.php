@@ -18,8 +18,8 @@ class ChangeStructerBankAddressesTable extends Migration
 
         Schema::table('bank_addresses', function (Blueprint $table) {
 
-//            $table->dropForeign('ba_bank_account_id');
-//            $table->dropColumn('bank_account_id');
+            $table->dropForeign('ba_bank_account_id');
+            $table->dropColumn('bank_account_id');
 
             $table->unsignedBigInteger('bank_logo_id')->after('id');
             $table->foreign('bank_logo_id', 'bank_logo_id')->references('id')->on('bank_logos')->onDelete('cascade');

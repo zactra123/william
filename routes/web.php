@@ -98,16 +98,16 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::group(["prefix"=>"furnishers"], function(){
         Route::post('/bank-name','Owner\BanksController@banKName');
+        Route::get('/','Owner\BanksController@showBankLogo')->name("owner.bank.show");
         Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
         Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
         Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
         Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
         Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
         Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
-        Route::any('/equal-banks', 'Owner\BanksController@equalBanks')->name("owner.bank.equal");
-        Route::any('/banks_json', 'Owner\BanksController@banks');
-        Route::delete('/equal-bank', 'Owner\BanksController@removeEqualBank');
-        Route::get('/{type}','Owner\BanksController@showBankLogo')->name("owner.bank.show");
+        Route::any('/types', 'Owner\BanksController@types')->name("owner.bank.types");
+        Route::delete('/types/{id}', 'Owner\BanksController@delete_types');
+        Route::any('/keywords', 'Owner\BanksController@keywords');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

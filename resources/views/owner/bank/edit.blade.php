@@ -21,6 +21,51 @@
         cursor: pointer;
     }
 
+    .selected {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: -7px;
+    }
+
+    .selected li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background: rgb(6, 29, 49, 0.8);
+        border-radius: 3px;
+        margin: 7px;
+        padding-left: 0.9375rem;
+        padding-right: 0.3125rem;
+        max-width: calc(100% - 14px);
+        box-shadow: 2px 2px 1px #061d3166;
+    }
+    .selected span {
+        font-size: 1.25rem;
+        color: #fff;
+        display: inline-block;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .selected i {
+        cursor: pointer;
+        font-size: 1.25rem;
+        color:#fff;
+        padding: 5px;
+        -webkit-transition: .2s;
+        transition: .2s;
+    }
+
 </style>
 
 @section('content')
@@ -48,33 +93,23 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control">
+                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control" id="bank_name">
                                         </div>
                                     </div>
 
-
-
-
-
-{{--                                    <div class="col-md-2">--}}
-{{--                                        {!! Form::select("bank[type]", $types,  $bank->type, ['class'=>'selectize-single']); !!}--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3">--}}
-{{--                                        {!! Form::select('account_types[]', $account_types, array_keys($bank_accounts), ['multiple'=>'multiple','class'=>'selectize', 'id' => 'select-account']); !!}--}}
-{{--                                    </div>--}}
                                 </div>
+                                <div id="account_types">
+                                    <div class="row" id="account_types_append">
+                                        @foreach($account_types as $typeId =>$typeName)
+                                            <div class="col-md-2 ">
+                                                {{$typeName}}
+                                                <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}" class="customcheck ex_name">
+                                            </div>
 
-                                <div class="row">
-                                    @foreach($account_types as $typeId =>$typeName)
-                                        <div class="col-md-2 ">
-                                            {{$typeName}}
-                                            <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}" class="customcheck ex_name">
-                                        </div>
 
-
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -144,6 +179,7 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="row"></div>
                         </div>
                     </div>
 
@@ -159,7 +195,7 @@
                             </div>
                         </div>
                         <div class="ms-ua-form pl-4 pr-4 ">
-                            {!! Form::text('equal_banks', '', ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
+                            {!! Form::text('equal_banks', implode(',',$bank->equalBanks->pluck('name')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
                             <div class="row"></div>
                         </div>
                     </div>
@@ -219,24 +255,6 @@
 
 
     </script>
-
-
-        <script>
-            $(document).ready(function(){
-
-                $("#bank_logo").val(null)
-                $(".changeLogo").click(function (e) {
-                    e.preventDefault();
-                    $(".changeLogo").addClass("hide")
-                    $(".updateLogo").removeClass("hide")
-
-                });
-
-            })
-
-
-
-        </script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>

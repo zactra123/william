@@ -200,51 +200,6 @@
 
 
     <script>
-        $(document).ready(function(){
-
-            $("#bank_logo").val(null)
-            $(".changeLogo").click(function (e) {
-                e.preventDefault();
-                $(".changeLogo").addClass("hide")
-                $(".updateLogo").removeClass("hide")
-
-            });
-
-            $(document).on('change', '#bank_name' ,function(){
-                var bankName = $(this).val()
-                var token = $("meta[name='csrf-token']").attr("content");
-                $.ajax({
-                    url: "/owner/furnishers/bank-name",
-                    method:"POST",
-                    data:{bank_name:bankName, _token: token},
-                    success: function (result) {
-
-                        html ='<div class="row" id="account_types_append">'
-                        for( let val in result){
-
-                            html = html +'<div class="col-md-2">'+result[val]+'<input name="account_type[]" data-type="'+result[val]
-
-                            html = html +'" type="checkbox" id="name-'+val+'" value ="'+val+'" class="customcheck ex_name"></div>'
-                        }
-                        html = html+ '</div>'
-
-                        $('#account_types').find('#account_types_append').remove()
-
-                        $("#account_types").html(html);
-
-
-                    },
-
-                    error:function (err,state) {
-                        console.log(err)
-                    }
-                });
-
-            });
-
-        })
-
-
 
     </script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>

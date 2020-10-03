@@ -20,4 +20,9 @@ class AccountType extends Model
     {
         return $this->hasMany('App\AccountTypeKeyWord');
     }
+
+    public function accountKeys()
+    {
+        return $this->belongsToMany('App\AccountTypeKeys', 'account_type_key_word', 'account_type_id','account_type_key_id');
+    }
 }

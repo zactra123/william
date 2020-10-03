@@ -35,7 +35,6 @@ class BanksController extends Controller
     {
 
         $validation =  Validator::make($request->all(), [
-            'logo' => ['required', 'file'],
             'name'=>['required', 'string', 'max:255'],
 
         ]);
@@ -45,25 +44,23 @@ class BanksController extends Controller
                 ->withErrors($validation);
         }
 
+        $pathLogo = '';
+        if (!empty($request['logo']) ) {
 
-        if (empty($request['logo']) ) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error','Please upload files');
+
+            $imagesBankLogo = $request->file("logo");
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+            $path = "images/banks_logo";
+            $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
+            $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
+            $pathLogo =  '/' . $path . '/'.$nameBankLogo;
+
         }
-
-        $imagesBankLogo = $request->file("logo");
-        $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-        $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-        if(!in_array($bankLogoExtension, $imageExtension)){
-            return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
-        }
-
-        $path = "images/banks_logo";
-        $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
-        $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
-        $pathLogo =  '/' . $path . '/'.$nameBankLogo;
-
         $bank = BankLogo::create([
             'name'=>$request->name,
             'path'=>$pathLogo,
@@ -74,10 +71,18 @@ class BanksController extends Controller
             foreach($addresses as $address) {
 
                 $address['bank_logo_id'] = $bank->id;
-//                dd($address);
                 BankAddress::create($address);
             }
         }
+
+        $existing_names = $bank->equalBanks->pluck('name')->toArray();
+        $eqs = explode(',', $request->equal_banks);
+        foreach($eqs as $eb) {
+            if (!in_array($eb, $existing_names)) {
+                $bank->equalBanks()->create(["name" => $eb]);
+            }
+        }
+
         return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
 
     }
@@ -87,7 +92,6 @@ class BanksController extends Controller
         $id  = $request->id;
         $bank = BankLogo::find($id);
         $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
-//        dd($keyWords);
         $keywordId = null;
         foreach($keyWords as $key=>$words){
             if (strpos(strtoupper($bank->name),$words) !== false) {
@@ -95,7 +99,6 @@ class BanksController extends Controller
                 break;
             }
         }
-
         if($keywordId !=null){
             $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
                 ->pluck('account_type_id')->toArray();
@@ -108,6 +111,8 @@ class BanksController extends Controller
         $bank_addresses  = $bank_addresses->get()->pluck('accountAddresses', 'account_type_id')->toArray();
         $bank_accounts = $bank->bankAccounts->pluck('id', 'account_type_id')->toArray();
 
+
+
         return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
 
     }
@@ -116,7 +121,7 @@ class BanksController extends Controller
     {
         $id  = $request->id;
         $bank = BankLogo::find($id);
-        
+
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
             $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
@@ -185,7 +190,15 @@ class BanksController extends Controller
         }
 
 
-        return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
+        $existing_names = $bank->equalBanks->pluck('name')->toArray();
+        $eqs = explode(',', $request->equal_banks);
+        foreach($eqs as $eb) {
+            if (!in_array($eb, $existing_names)) {
+                $bank->equalBanks()->create(["name" => $eb]);
+            }
+        }
+
+        return redirect()->route('owner.bank.show');
 
     }
 
@@ -201,22 +214,11 @@ class BanksController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public function showBankLogo($type, Request $request)
+
+    public function showBankLogo(Request $request)
     {
-        if (!in_array($type,['all', 'untyped']) && !in_array($type, array_keys(BankLogo::TYPES))){
-            redirect()->route('owner.bank.show', ['type'=> 'all']);
-        }
         $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
 
-        switch ($type) {
-            case 'untyped':
-                    $banksLogos = $banksLogos->whereNull('type');
-                break;
-            case 'all':
-                break;
-            default:
-                $banksLogos = $banksLogos->where('type', '=', $type);
-        }
         if (!empty($request->character)) {
             if ($request->character == '#'){
                 $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
@@ -248,46 +250,49 @@ class BanksController extends Controller
 
     }
 
-    public function equalBanks(Request $request)
+
+    public function types(Request $request)
     {
         if($request->isMethod("post")){
-            $banksLogo = BankLogo::find($request->bank_logo["id"]);
-            $existing_names = $banksLogo->equalBanks()->get()->pluck('name')->toArray();
-            $eqs = explode(',', $request->equal_banks);
-            foreach( $eqs as $eb) {
-                if (!in_array($eb, $existing_names)) {
-                    $banksLogo->equalBanks()->create(["name" => $eb]);
-                }
+
+            $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
+            if ($check_type) {
+                return redirect()->route('owner.bank.types')
+                    ->withErrors("FURNISHER TYPE ALREADY EXIST");
             }
-            return redirect()->route('owner.bank.equal');
+            $accountType = AccountType::create($request->account_type);
+            $key_words = explode(',', $request->account_type_keys["key_word"]);
+            $accountTypeKeys = [];
+
+            foreach($key_words as $key) {
+                $accountKeys = AccountTypeKeys::firstOrCreate(
+                    ['key_word' =>$key]
+                )->id;
+                $accountTypeKeys[]= ["account_type_key_id" => $accountKeys];
+            }
+            if(!empty($accountTypeKeys)) {
+                $accountType->AccountTypeKeyWord()->createMany($accountTypeKeys);
+            }
+            return redirect()->route('owner.bank.types');
+
         }
 
-        $banksLogos = BankLogo::with('equalBanks')->get();
-        return view('owner.bank.equal_banks',compact('banksLogos'));
+        $accountTypes = AccountType::with('accountKeys')->get();
+
+        return view('owner.bank.types',compact('accountTypes'));
     }
 
-    public function banks(Request $request)
+
+    public function delete_types($id)
     {
+        AccountType::destroy($id);
+        return response()->json(['status' => 'success']);
+    }
 
-        $banks = BankLogo::with('equalBanks')
-            ->select('bank_logos.*')
-            ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
-            ->where('bank_logos.name', 'LIKE', "%{$request->search_key}%")
-            ->orWhere('equal_banks.name', 'LIKE', "%{$request->search_key}%")
-            ->limit(15)
-            ->get()
-            ->toArray();
-        $result = [];
 
-        foreach($banks as $bank) {
-            $searchable =  collect($bank['equal_banks'])->map(function ($eb){return $eb["name"]; })->toArray();
-            $searchable[] = $bank['name'];
-            $result[] = [
-                "id" => $bank['id'],
-                "name" => $bank['name'],
-                "searchable" => implode(' ', $searchable)
-            ];
-        }
+    public function keywords(Request $request)
+    {
+        $result = AccountTypeKeys::where('account_type_keys.key_word', 'LIKE', "%{$request->search_key}%")->get(["id","key_word"]);
 
         return response()->json($result);
     }
