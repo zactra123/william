@@ -23,8 +23,8 @@ class ChangeStructerBankAddressesTable extends Migration
 
             $table->unsignedBigInteger('bank_logo_id')->after('id');
             $table->foreign('bank_logo_id', 'bank_logo_id')->references('id')->on('bank_logos')->onDelete('cascade');
-            $table->unsignedBigInteger('account_type_id')->after('bank_logo_id');
-            $table->foreign('account_type_id', 'account_type_id')->references('id')->on('account_types')->onDelete('cascade')->nullable();
+            $table->unsignedBigInteger('account_type_id')->nullable()->after('bank_logo_id');
+            $table->foreign('account_type_id', 'account_type_id')->nullable()->references('id')->on('account_types')->onDelete('cascade');
 
         });
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

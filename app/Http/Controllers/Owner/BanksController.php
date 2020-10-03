@@ -68,10 +68,13 @@ class BanksController extends Controller
             'name'=>$request->name,
             'path'=>$pathLogo,
         ]);
+
         $account_addresses =  $request->bank_address;
         foreach ( $account_addresses as $addresses) {
             foreach($addresses as $address) {
+
                 $address['bank_logo_id'] = $bank->id;
+//                dd($address);
                 BankAddress::create($address);
             }
         }
@@ -113,10 +116,7 @@ class BanksController extends Controller
     {
         $id  = $request->id;
         $bank = BankLogo::find($id);
-
-        dd($request->all(),$request->id);
-
-
+        
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
             $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
