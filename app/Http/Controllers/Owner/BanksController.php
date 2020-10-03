@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Owner;
 
 use App\AccountType;
+use App\AccountTypeKeys;
+use App\AccountTypeKeyWord;
 use App\BankAddress;
 use App\BankLogo;
 use App\BankPhoneNumber;
@@ -94,10 +96,43 @@ class BanksController extends Controller
 
 
 
+    public function edit(Request $request)
+    {
+        $id  = $request->id;
+        $bank = BankLogo::find($id);
+        $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
+//        dd($keyWords);
+        $keywordId = null;
+        foreach($keyWords as $key=>$words){
+            if (strpos(strtoupper($bank->name),$words) !== false) {
+                $keywordId = $key;
+                break;
+            }
+        }
+
+        if($keywordId !=null){
+            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
+                ->pluck('account_type_id')->toArray();
+            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
+        }else{
+            $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
+        }
+
+        $bank_addresses = $bank->bankAccounts()->with('accountAddresses');
+        $bank_addresses  = $bank_addresses->get()->pluck('accountAddresses', 'account_type_id')->toArray();
+        $bank_accounts = $bank->bankAccounts->pluck('id', 'account_type_id')->toArray();
+
+        return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
+
+    }
+
+
     public function update(Request $request)
     {
         $id  = $request->id;
         $bank = BankLogo::find($id);
+
+        dd($request->all(),$request->id);
 
 
         if($request->logo != null){
@@ -169,20 +204,6 @@ class BanksController extends Controller
 
 
         return redirect()->route('owner.bank.show', ['type'=> $bank->type??'all']);
-
-    }
-
-
-    public function edit(Request $request)
-    {
-        $id  = $request->id;
-        $bank = BankLogo::find($id);
-        $bank_addresses = $bank->bankAccounts()->with('accountAddresses');
-        $bank_addresses  = $bank_addresses->get()->pluck('accountAddresses', 'account_type_id')->toArray();
-        $account_types = AccountType::all()->pluck('name', 'id')->toArray();
-        $bank_accounts = $bank->bankAccounts->pluck('id', 'account_type_id')->toArray();
-
-        return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
 
     }
 

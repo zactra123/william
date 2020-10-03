@@ -3,6 +3,7 @@
 namespace App\Services;
 use App\User;
 use App\ClientReport;
+use Illuminate\Support\Facades\Auth;
 
 class Screaper
 {
@@ -70,11 +71,16 @@ class Screaper
 
     public function equifax_via_credit_karma($arguments = [])
     {
-        array_push($arguments, $this->client_id);
+
+//        dd('asd');
+        set_time_limit(300);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
-        $output = shell_exec($command);
+//        $output = shell_exec($command);
+
+        $output = "{'status': 'success', 'report_filepath': 'reports/8/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
+
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
-        $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
+        $this->prepare_equifax_karma_report_data(str_replace('\'', '"',$output));
         return true;
     }
 
@@ -82,7 +88,7 @@ class Screaper
     private function make_run_command($script_name, $command_args)
     {
         $script_path = resource_path('scripts/'. $script_name);
-        $command_args = array_merge(['python3', $script_path], $command_args);
+        $command_args = array_merge(['python', $script_path], $command_args);
         $command = escapeshellcmd(implode( " ", $command_args));
         return $command;
     }
@@ -964,7 +970,6 @@ class Screaper
         }
     }
 
-
     public function prepare_transunion_dispute_data($output)
     {
         set_time_limit(300);
@@ -1618,6 +1623,327 @@ class Screaper
 
         }
 
+    }
+
+    public function prepare_equifax_karma_report_data($output)
+    {
+        $data = json_decode($output, true);
+
+        if($data['status'] != 'success') {
+            return false;
+        }
+        $path = storage_path($data["report_filepath"]);
+        $json = json_decode(file_get_contents($path), true);
+        $type = 'EQ';
+
+        $data = $json['data']['creditReportsV2']['equifax'];
+        $equifax = count($data)>=1?$data[0]:null;
+        $reportedDate = $equifax['dateReportPulled']!= null ? date('Y-m-d',strtotime($equifax['dateReportPulled'])):null;
+        $full_name = null;
+        if(!empty($equifax['names'])){
+            $name =  $equifax['names'][0]['first'];
+            $full_name = $equifax['names'][0]['middle'] !=null ? $name." ".
+                $equifax['names'][0]['middle']." ".$equifax['names'][0]['last']:
+                $name." ".$equifax['names'][0]['last'];
+        }
+
+        $dataClientReports = [
+            'user_id' => $this->client_id,
+            'type' => $type,
+            'full_name' => $full_name,
+            'ssn' => null,
+            'dob' => null,
+            'report_date' => $reportedDate,
+            'report_number' => null,
+            'current_address' => null,
+            'current_phone' => null,
+            'spouse' => null,
+            'file_path' => $path
+        ];
+//        $clientReport = ClientReport::create($dataClientReports);
+
+        if(!empty($equifax['names'])){
+            $dataName = [];
+            foreach($equifax['names'] as $info){
+                $name =  $info['first'];
+
+                $fullName = $info['middle'] !=null ? $name." ".
+                    $info['middle']." ".$info['last']:
+                    $name." ".$info['last'];
+
+                $dataName[] = [
+                    'full_name'=> $fullName,
+                    'nin'=> null
+                ] ;
+            }
+//            $clientReport->clientNames()->createMany($dataName);
+        }
+
+        if(!empty($equifax['addresses'])){
+            $dataAddress = [];
+            foreach($equifax['addresses'] as $infoAddress){
+
+                $street = $infoAddress['formattedStreet'];
+                $city = $infoAddress['city'];
+                $state = $infoAddress['stateCode'];
+                $zip = $infoAddress['postalCode'];
+
+                $dataAddress[] = [
+                    'current'=> 0,
+                    'street' => $street,
+                    'city' => $city,
+                    'state'=>$state,
+                    'zip'=> $zip,
+                    'type'=>null,
+                    'ain'=>null,
+                    'geographical_code' => null,
+                    'date_reported'=>null
+                ] ;
+            }
+//            $clientReport->clientAddresses()->createMany($dataAddress);
+        }
+
+        if(!empty($equifax['employers'])){
+            $dataEmployer = [];
+            foreach($equifax['employers'] as $infoEmployer)
+            {
+                $name = $infoEmployer['name'];
+                $street = $infoEmployer['address']['formattedStreet'];
+                $city = $infoEmployer['address']['city'];
+                $state = $infoEmployer['address']['stateCode'];
+                $zip = $infoEmployer['address']['postalCode'];
+
+                $dataEmployer[] = [
+                    'current'=> 0,
+                    'name' => $name,
+                    'occupation' => null,
+                    'street' => $street,
+                    'city' => $city,
+                    'state'=>$state,
+                    'zip'=> $zip,
+                    'phone'=>null,
+                    'type'=>null,
+                ] ;
+            }
+//            $clientReport->clientEmployers()->createMany($dataEmployer);
+
+        }
+
+        if(!empty($equifax['inquiries'])){
+            $dataInquiry = [];
+            foreach($equifax['inquiries'] as $inquiry){
+                $dataInquiry[] = [
+                    'date_inquiry'=>$inquiry['dateInquired'],
+                    'industry_name'=>$inquiry['industryName'],
+                    'street'=>$inquiry['institution']['address']['formattedStreet'],
+                    'city'=>$inquiry['institution']['address']['city'],
+                    'state'=>$inquiry['institution']['address']['stateCode'],
+                    'zip'=>$inquiry['institution']['address']['postalCode'],
+                    'industry_code'=>$inquiry['institution']['institutionCode'],
+                    'name'=>$inquiry['institution']['name'],
+                    'phone'=>$inquiry['institution']['telephone']
+                ];
+
+            }
+//            $clientReport->clientEqInquiry()->createMany($dataInquiry);
+        }
+
+        $dataPublicRecord = [];
+        foreach($equifax['publicRecords'] as $publicKey=> $public){
+            if(!empty($public) && $publicKey != "__typename"){
+                foreach($public as $records){
+
+                    $dateFiled =$records['dateFiled']!=null? date("Y-m-d",strtotime($records['dateFiled'])):null;
+                    $date =$records['date']!=null? date("Y-m-d",strtotime($records['date'])):null;
+                    $dateVerified =$records['dateVerified']!=null? date("Y-m-d",strtotime($records['dateVerified'])):null;
+
+                    $dataPublicRecord[]=[
+                        'category_type'=>$publicKey,
+                        'reference_number'=>$records['referenceNumber'],
+                        'classification'=>$records['classification'],
+                        'date_filed'=>$dateFiled,
+                        'date'=>$date,
+                        'status'=>$records['status'],
+                        'amount'=>$records['amount']['amount'],
+                        'street'=>$records['contact']['address']['formattedStreet'],
+                        'city'=>$records['contact']['address']['city'],
+                        'state'=>$records['contact']['address']['postalCode'],
+                        'zip'=>$records['contact']['address']['stateCode'],
+                        'phone'=>$records['contact']['telephone'],
+                        'name'=>$records['contact']['name'],
+                        'institution_code'=>$records['contact']['institutionCode'],
+                        'date_verified'=>$dateVerified,
+                        'responsibility'=>$records['responsibility'],
+                        'public_record_id'=>$records['responsibility'],
+                        'type'=>$records['type'],
+                        'asset'=>$records['assetAmount'],
+                        'court_number'=>$records['courtNumber'],
+                        'trustee'=>$records['trustee'],
+                        'liability_amount'=>$records['liabilityAmount'],
+                        'exempt_amount'=>$records['exemptAmount']
+                    ];
+                }
+            }
+        }
+//            $clientReport->clientEqPublicRecords()->createMany($dataPublicRecord);
+        foreach($equifax['tradelines'] as $accountKey => $accounts){
+            if(!empty($accounts) && $accountKey != '__typename' && strpos($accountKey, 'Label') === false ){
+                foreach($accounts as $account){
+//                    dd($account);
+
+                    $accountStatus =  str_replace('Account status: ','',$account['accountStatusText']['spans'][0]['text']);
+                    $balanceText =  str_replace(['Balance: $','Balance: '],'',$account['balanceText']['spans'][0]['text']);
+                    $lastPaymentText =  str_replace('Last Payment: ','',$account['lastPaymentText']['spans'][0]['text']);
+                    $accountTitle =  $account['accountTitleText']['spans'][0]['text'];
+                    $worstPaymentStatusText =  $account['payments']['worstPaymentStatusText']['spans'][0]['text'];
+
+                    $lastPayment =$lastPaymentText!=null? date("Y-m-d",strtotime($lastPaymentText)):null;
+
+                    $dataAccount = [
+                        'type'=>$accountKey,
+                        'account_id'=>isset($account['accountId'])?$account['accountId']:null,
+                        'account_number'=>isset($account['accountNumber'])?$account['accountNumber']:null,
+                        'account_standing'=>isset($account['accountStanding'])?$account['accountStanding']:null,
+                        'account_status'=>$accountStatus,
+                        'account_title'=>$accountTitle,
+                        'account_type'=>isset($account['accountType'])?$account['accountType']:null,
+                        'actual_payment_amount'=>isset($account['actualPaymentAmount']['amount'])?$account['actualPaymentAmount']['amount']:null,
+                        'amount_past_due'=>isset($account['amountPastDue']['amount'])?$account['amountPastDue']['amount']:null,
+                        'balance'=>$balanceText,
+                        'balance_remain_percent'=>isset($account['balanceRemainingPercentage'])?$account['balanceRemainingPercentage']:null,
+                        'category_type'=>isset($account['categoryType'])?$account['categoryType']:null,
+                        'current_balance'=>isset($account['currentBalance']['amount'])?$account['currentBalance']['amount']:null,
+                        'date_closed'=>isset($account['dateClosed'])?$account['dateClosed']:null,
+                        'date_last_payment'=>isset($account['dateLastPayment'])?$account['dateLastPayment']:null,
+                        'date_opened'=>isset($account['dateOpened'])?$account['dateOpened']:null,
+                        'date_reported'=>isset($account['dateReported'])?$account['dateReported']:null,
+                        'high_balance'=>isset($account['highBalance']['amount'])?$account['highBalance']['amount']:null,
+                        'industry_code'=>isset($account['industryCode'])?$account['industryCode']:null,
+                        'street'=>$account['institution']['address']['formattedStreet'],
+                        'city'=>$account['institution']['address']['city'],
+                        'state'=>$account['institution']['address']['stateCode'],
+                        'zip'=>$account['institution']['address']['postalCode'],
+                        'name'=>$account['institution']['name'],
+                        'phone'=>$account['institution']['telephone'],
+                        'is_open'=>$account['isOpen'],
+                        'last_payment'=>$lastPayment,
+                        'late_30_count'=>$account['late30Count'],
+                        'late_60_count'=>$account['late60Count'],
+                        'late_90_count'=>$account['late90Count'],
+                        'limit'=>isset($account['limit']['amount'])?$account['limit']['amount']:null,
+                        'monthly_payment'=>isset($account['monthlyPayment']['amount'])?$account['monthlyPayment']['amount']:null,
+                        'original_creditor'=>null,
+                        'new_account_label'=>isset($account['newAccountLabel'])?$account['newAccountLabel']:null,
+                        'current_payment_status'=>$account['payments']['currentPaymentStatus'],
+                        'start_date'=>isset($account['payments']['startDate'])?$account['payments']['startDate']:null,
+                        'worst_payment_status'=>$worstPaymentStatusText,
+                        'perm_por_item_id'=>$account['permPorItemId'],
+                        'por_item_id'=>$account['porItemId'],
+                        'portfolio_type'=>$account['portfolioType'],
+                        'remarks'=>$account['remarks'],
+                        'report_id'=>$account['reportId'],
+                        'responsibility'=>$account['responsibilityType'],
+                        'tradeline_id'=>$account['tradelineId'],
+                        'utilization'=>$account['utilization'],
+                        'worst_pay_status'=>$account['worstPayStatus'],
+                        'has_limit'=>isset($account['hasLimit'])?$account['hasLimit']:null,
+                        'utilization_percentage'=>isset($account['utilizationPercentage'])?$account['utilizationPercentage']:null,
+                        'term_month'=>isset($account['accountType'])?$account['accountType']:null
+                    ];
+//                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
+
+                    if(isset($account["payments"]['paymentHistory']) && !empty($account["payments"]["paymentHistory"])) {
+
+                        $dataAccountHistory = [];
+                        foreach ($account["payments"]['paymentHistory']['years'] as $paymentHistory) {
+                            $year = $paymentHistory['value'];
+                            foreach($paymentHistory['months'] as $monthValue)
+                            $dataAccountHistory[] = [
+                                'month' => $monthValue['month'],
+                                'year' => $year,
+                                'value' =>$monthValue['status']
+
+                            ];
+                        }
+////                        $account->accountPaymentHistories()->createMany($dataAccountHistory);
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        foreach($equifax['collections'] as $collections){
+
+            dd($collections);
+            $accountStatus =  str_replace('Account status: ','',$collections['accountStatusText']['spans'][0]['text']);
+            $balanceText =  str_replace(['Balance: $','Balance: '],'',$collections['balanceText']['spans'][0]['text']);
+            $lastPaymentText =  str_replace('Last Payment: ','',$account['lastPaymentText']['spans'][0]['text']);
+            $accountTitle =  $collections['accountTitleText']['spans'][0]['text'];
+            $worstPaymentStatusText =  $account['payments']['worstPaymentStatusText']['spans'][0]['text'];
+
+            $lastPayment =$lastPaymentText!=null? date("Y-m-d",strtotime($lastPaymentText)):null;
+
+            $dataAccount = [
+                'type'=>'collection',
+                'account_id'=>isset($collections['accountId'])?$collections['accountId']:null,
+                'account_number'=>isset($collections['accountNumber'])?$collections['accountNumber']:null,
+                'account_standing'=>isset($account['$collections'])?$account['$collections']:null,
+                'account_status'=>$accountStatus,
+                'account_title'=>$accountTitle,
+                'account_type'=>isset($collections['accountType'])?$collections['accountType']:null,
+                'actual_payment_amount'=>isset($collections['actualPaymentAmount']['amount'])?$collections['actualPaymentAmount']['amount']:null,
+                'amount_past_due'=>isset($collections['amountPastDue']['amount'])?$collections['amountPastDue']['amount']:null,
+                'balance'=>$balanceText,
+                'balance_remain_percent'=>isset($collections['balanceRemainingPercentage'])?$collections['balanceRemainingPercentage']:null,
+                'category_type'=>isset($collections['categoryType'])?$collections['categoryType']:null,
+                'current_balance'=>isset($collections['currentBalance']['amount'])?$collections['currentBalance']['amount']:null,
+                'date_closed'=>isset($collections['dateClosed'])?$collections['dateClosed']:null,
+                'date_last_payment'=>isset($collections['dateLastPayment'])?$collections['dateLastPayment']:null,
+                'date_opened'=>isset($collections['dateOpened'])?$collections['dateOpened']:null,
+                'date_reported'=>isset($collections['dateReported'])?$collections['dateReported']:null,
+                'high_balance'=>isset($collections['highBalance']['amount'])?$collections['highBalance']['amount']:null,
+                'industry_code'=>isset($collections['industryCode'])?$collections['industryCode']:null,
+                'street'=>$collections['institution']['address']['formattedStreet'],
+                'city'=>$collections['institution']['address']['city'],
+                'state'=>$collections['institution']['address']['stateCode'],
+                'zip'=>$collections['institution']['address']['postalCode'],
+                'name'=>$collections['institution']['name'],
+                'phone'=>$collections['institution']['telephone'],
+                'is_open'=>$collections['isOpen'],
+                'last_payment'=>null,
+                'late_30_count'=>null,
+                'late_60_count'=>null,
+                'late_90_count'=>null,
+                'limit'=>null,
+                'monthly_payment'=>isset($collections['monthlyPayment']['amount'])?$collections['monthlyPayment']['amount']:null,
+                'original_creditor'=>$collections['originalCreditorName'],
+                'new_account_label'=>null,
+                'current_payment_status'=>null,
+                'start_date'=>null,
+                'worst_payment_status'=>null,
+                'perm_por_item_id'=>$collections['permPorItemId'],
+                'por_item_id'=>$collections['porItemId'],
+                'portfolio_type'=>$collections['portfolioType'],
+                'remarks'=>$collections['remarks'],
+                'report_id'=>$collections['reportId'],
+                'responsibility'=>$collections['responsibilityType'],
+                'tradeline_id'=>$collections['tradelineId'],
+                'utilization'=>null,
+                'worst_pay_status'=>$collections['worstPayStatus'],
+                'has_limit'=>null,
+                'utilization_percentage'=>null,
+                'term_month'=>null
+            ];
+//                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
+
+
+
+        }
+
+        dd($equifax);
     }
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)

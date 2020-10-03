@@ -20,40 +20,84 @@ class AccountTypesSeeder extends Seeder
 
         DB::table('account_types')->insert([
             [
+                'type'=>true,
                 'name' => 'CREDIT CARD'
             ],
             [
+                'type'=>true,
                 'name' => 'PERSONAL LOANS'
             ],
             [
-                'name' => 'RENTAL AGREEMENT'
+                'type'=>true,
+                'name' => 'CHARGE CARD'
             ],
             [
-                'name' => 'AUTO ACCOUNTS'
+                'type'=>true,
+                'name' => 'INSTALLMENT CONTRACT'
             ],
             [
-                'name' => 'MOTORCYCLE'
+                'type'=>true,
+                'name' => 'CHECK CASHING'
             ],
             [
-                'name' => 'MORTGAGES'
+                'type'=>true,
+                'name' => 'PAYDAY LOANS'
             ],
             [
-                'name' => 'HOME EQUITY LINE OF CREDIT'
+                'type'=>true,
+                'name' => 'MORTGAGE'
             ],
             [
-                'name' => 'LINE OF CREDIT'
+                'type'=>true,
+                'name' => 'AUTO LOAN'
             ],
             [
-                'name' => 'UTILITY COMPANY'
+                'type'=>true,
+                'name' => 'STUDENT LOAN'
             ],
             [
-                'name' => 'CHILD SUPPORT'
+                'type'=>true,
+                'name' => 'TIMESHARE'
             ],
             [
-                'name' => 'BANKRUPTCY'
+                'type'=>true,
+                'name' => 'CELLPHONE'
             ],
             [
-                'name' => 'COLLECTIONS'
+                'type'=>true,
+                'name' => 'CABLE/TV/INTERNET PROVIDER'
+            ],
+            [
+                'type'=>false,
+                'name' => 'MED LOAN'
+            ],
+            [
+                'type'=>false,
+                'name' => 'MED CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'CREDIT CARD CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'AUTO LOAN CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'INSURANCE CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'UTILITY CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'CELL CA'
+            ],
+            [
+                'type'=>false,
+                'name' => 'RESIDENTIAL CA'
             ]
         ]);
 

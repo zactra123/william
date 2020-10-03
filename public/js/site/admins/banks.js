@@ -116,4 +116,24 @@ $(document).ready(function($) {
         // $(".driver_dropp").css('background-image',file)
     });
 
+    $(document).on('click', '.customcheck' ,function(){
+
+        var id  = $(this).attr('id').replace('name-', '')
+        var accountType = $(this).attr('data-type')
+        if(this.checked) {
+            var address_template =  $("#address-template").html()
+            address_template = address_template.replace(/{type}/g, accountType)
+                .replace(/{id}/g, id)
+                .replace(/{account_type_id}/g, id)
+                .replace(/{name}/g, accountType+' Dispute Address');
+            $("#addresses_container").append(address_template);
+            $('#dispute-address-'+ id).find('.selectize-single').selectize({
+                selectOnTab: true,
+            })
+
+        }else{
+            $('#addresses_container').find('#dispute-address-'+ id).remove()
+        }
+
+    })
 });
