@@ -37,12 +37,19 @@ $(document).ready(function($) {
             target = $(this).attr('data-account')
             self = $('#select-account')[0].selectize
 
+        console.log(target, 'DASDAD')
+
         self.removeItem(option)
         $(target).addClass('hidden')
         $(target).find('i').removeClass('fa-plus-circle')
         $(target).find('i').removeClass('fa-minus-circle')
         $(target).find('i').addClass('fa-plus-circle')
         $(target).find('.addresses :not(.first-bar)').addClass('hidden')
+    })
+    $(document).on('click', '.remove-equal-bank', function(){
+
+        $("#account-equal-bank").remove()
+
     })
 
 
@@ -180,7 +187,7 @@ $(document).ready(function($) {
             address_template = address_template.replace(/{type}/g,"dispute_address")
                 .replace(/{id}/g, id)
                 .replace(/{account_type_id}/g, id)
-                .replace(/{name}/g, accountType+' Dispute Address');
+                .replace(/{name}/g, accountType+' DISPUTE ADDRESS');
             $("#addresses_container").append(address_template);
             $('#dispute-address-'+ id).find('.selectize-single').selectize({
                 selectOnTab: true,

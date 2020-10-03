@@ -35,6 +35,11 @@
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
     <style>
+
+        .header-section .navbar .navbar-collapse .navbar-nav li {
+
+            text-transform: none !important;
+        }
         .scrolled-content {
             max-height: 200px;
             overflow-y: auto;

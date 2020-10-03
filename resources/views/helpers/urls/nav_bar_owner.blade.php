@@ -1,5 +1,5 @@
 
-<li><a href="{{ route('owner.reports.index')}}">Reports</a></li>
+<li><a href="{{ route('owner.reports.index')}}">REPORTS</a></li>
 <li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">WORKERS</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
         <li><a href="{{ route('owner.admin.list')}}">ADMINS</a></li>
@@ -9,7 +9,7 @@
 </li>
 
 <li class="dropdown menu-item">
-    <a href="{{ route('owner.bank.show')}}"  data-toggle="dropdown">FURNISHERs/CRAs</a>
+    <a href="{{ route('owner.bank.show')}}"  data-toggle="dropdown" >FURNISHERs/CRAs</a>
         <ul id="products-menu" class="dropdown-menu scrolled-content" role="menu">
             <li><a href="{{ route('owner.bank.show')}}">FURNISHERs/CRAs</a></li>
             <li><a href="{{ route('owner.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
@@ -18,21 +18,21 @@
 </li>
 
 
-<li><a href="{{ url('owner/message')}}">Messages</a></li>
-<li><a href="{{ route('owner.client.list')}}" >Clients</a></li>
-<li><a href="{{route('owner.home.content')}}">Educations</a></li>
-<li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">Slogans</a>
+<li><a href="{{ url('owner/message')}}">MESSAGES</a></li>
+<li><a href="{{ route('owner.client.list')}}" >CLIENTS</a></li>
+<li><a href="{{route('owner.home.content')}}">EDUCATIONS</a></li>
+<li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">SLOGANS</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
-        <li><a href="{{route('owner.slogans.index')}}"> View Slogans</a></li>
-        <li><a href="{{route('owner.slogans.create')}}"> Add Slogans</a></li>
+        <li><a href="{{route('owner.slogans.index')}}">VIEW SLOGANS</a></li>
+        <li><a href="{{route('owner.slogans.create')}}">ADD SLOGANS</a></li>
     </ul>
 </li>
 <li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">FAQs</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
-        <li><a href="{{route('owner.faqs.index')}}"> View FAQs</a></li>
-        <li><a href="{{route('owner.faqs.create')}}"> Add FAQs</a></li>
+        <li><a href="{{route('owner.faqs.index')}}">VIEW FAQs</a></li>
+        <li><a href="{{route('owner.faqs.create')}}">ADD FAQs</a></li>
 
-        <li><a href="{{route('owner.faqs.question')}}">Question</a></li>
+        <li><a href="{{route('owner.faqs.question')}}">QUESTION</a></li>
 
     </ul>
 </li>

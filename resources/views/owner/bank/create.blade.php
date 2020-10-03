@@ -55,16 +55,16 @@
                     </div>
 
                     <div class="ms-ua-box mt-2" id="account">
-                            <div class="ms-ua-title mb-0">
-                                <div class="row">
-                                    <div class="col-md-6 text-left"><h4>Addresses</h4> </div>
-                                    <div class="col-md-6 text-right">
-                                        <button type="button" class="remove-account-type">
-                                            <i class="fa fa-close"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="ms-ua-title mb-0">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-6 text-left"><h4>Addresses</h4> </div>--}}
+{{--                                    <div class="col-md-6 text-right">--}}
+{{--                                        <button type="button" class="remove-account-type">--}}
+{{--                                            <i class="fa fa-close"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="ms-ua-form pl-4 pr-4 ">
 
                                 <div id="addresses_container">
@@ -74,7 +74,7 @@
                                         <div class="col-md-6"><label for="">{{$name}}</label>  </div>
                                         <div class="col-md-6 text-right">
                                             <button type="button">
-                                                <i class="fa fa-plus-circle"></i>
+                                                <i class="fa fa-minus-circle"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -121,12 +121,14 @@
                             </div>
                             <div class="row"></div>
                         </div>
-                        <div class="ms-ua-box mt-2" id="account">
+                        <div class="ms-ua-box mt-2" id="account-equal-bank">
+
+
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
                                     <div class="col-md-6 text-left"><h4>Equal Names</h4> </div>
                                     <div class="col-md-6 text-right">
-                                        <button type="button" class="remove-account-type">
+                                        <button type="button" class="remove-equal-bank">
                                             <i class="fa fa-close"></i>
                                         </button>
                                     </div>
@@ -157,7 +159,7 @@
                 <div class="col-md-6"><label for="">{name}</label>  </div>
                 <div class="col-md-6 text-right">
                     <button type="button">
-                        <i class="fa fa-plus-circle"></i>
+                        <i class="fa fa-minus-circle"></i>
                     </button>
                 </div>
             </div>
