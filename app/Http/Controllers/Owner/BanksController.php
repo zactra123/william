@@ -75,11 +75,15 @@ class BanksController extends Controller
             }
         }
 
-        $existing_names = $bank->equalBanks->pluck('name')->toArray();
-        $eqs = explode(',', $request->equal_banks);
-        foreach($eqs as $eb) {
-            if (!in_array($eb, $existing_names)) {
-                $bank->equalBanks()->create(["name" => $eb]);
+        $equalBanks = $request->equal_banks;
+        if($equalBanks != null){
+            $eqs = explode(',', $equalBanks);
+            foreach($eqs as $name){
+                $data = [
+                    'bank_logo_id' => $bank->id,
+                    'name'=>$name
+                ];
+                EqualBank::create($data);
             }
         }
 
