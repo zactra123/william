@@ -10,6 +10,7 @@ class BankAddress extends Model
 
     protected $fillable = [
         'bank_logo_id',
+        'account_type_id',
         'type',
         'street',
         'city',
@@ -93,6 +94,11 @@ class BankAddress extends Model
     public function bank()
     {
         return $this->belongsTo('App\BankLogo');
+    }
+
+    public function accountType()
+    {
+        return $this->belongsTo('App\AccountType');
     }
 
 }

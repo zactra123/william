@@ -53,4 +53,14 @@ class BankLogo extends Model
         return $this->hasMany('App\BankPhoneNumber');
     }
 
+    public function bankAddresses()
+    {
+        return $this->hasMany('App\BankAddress');
+    }
+
+    public function bankTypes()
+    {
+        return $this->belongsToMany('App\AccountType', 'bank_addresses','bank_logo_id', 'account_type_id');
+    }
+
 }

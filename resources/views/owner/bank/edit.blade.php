@@ -103,7 +103,7 @@
                                         @foreach($account_types as $typeId =>$typeName)
                                             <div class="col-md-2 ">
                                                 {{$typeName}}
-                                                <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}" class="customcheck ex_name">
+                                                <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}"  {{in_array($typeName, $bank_types)? "checked":''}} class="customcheck ex_name">
                                             </div>
 
 
@@ -127,56 +127,60 @@
                         </div>
                         <div class="ms-ua-form pl-4 pr-4 ">
                             <div id="addresses_container">
-                                @foreach(['executive_address'=>'EXECUTIVE ADDRESS', 'registered_agent'=>'REGISTERED AGENT'] as $type=>$name)
 
-                                    <div class="row expand-address" data-address="#address-{{$type}}">
-                                        <div class="col-md-6"><label for="">{{$name}}</label>  </div>
-                                        <div class="col-md-6 text-right">
-                                            <button type="button">
-                                                <i class="fa fa-plus-circle"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 addresses " id="address-{{$type}}">
-                                        @if($type == 'registered_agent')
-                                            <div class="row">
-                                                <div class="form-group col-sm-12">
-                                                    {!! Form::text("bank_address[][{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <div class="row">
-                                            {!! Form::hidden("bank_address[][{$type}][type]", $type, ["class"=>"form-control"]) !!}
-
-                                            <div class="form-group col-sm-4">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                {!! Form::text("bank_address[][{$type}][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                {!! Form::text("bank_address[][{$type}][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
-                                            </div>
-                                            <div class="form-group col-sm-2">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                {!! Form::select("bank_address[][{$type}][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
-                                            </div>
-                                            <div class="form-group col-sm-3">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                                                {!! Form::text("bank_address[][{$type}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                @foreach($bank_addresses as $address)
+                                    <div id="dispute-address-{id}">
+                                        <div class="row expand-address" data-address="#address-{type}">
+                                            <div class="col-md-6"><label for="">{{(!empty($address->accountType))?$address->accountType->name : '' }} {{\App\BankAddress::TYPES[$address->type]}}</label>  </div>
+                                            <div class="col-md-6 text-right">
+                                                <button type="button">
+                                                    <i class="fa fa-plus-circle"></i>
+                                                </button>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 addresses " id="address-{{$address->acount_type_id}}">
+                                            <?php $atid = intval($address->account_type_id); ?>
+                                            @if($address->type == 'registered_agent')
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            <div class="row">
+                                                {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$address->type][$atid][type]", $address->type, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$address->type][$atid][id]", $address->id, ["class"=>"form-control"]) !!}
+
+                                                <div class="form-group col-sm-4">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                                    {!! Form::text("bank_address[$address->type][$atid][street]",  $address->street, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
+                                                </div>
+                                                <div class="form-group col-sm-3">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                                    {!! Form::text("bank_address[$address->type][$atid][city]", $address->city, ["class"=>"form-control","placeholder"=>"City"]) !!}
+                                                </div>
+                                                <div class="form-group col-sm-2">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                                    {!! Form::select("bank_address[$address->type][$atid][state]", $states,  $address->state, ['class'=>'selectize-single','placeholder' => 'State']); !!}
+                                                </div>
+                                                <div class="form-group col-sm-3">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                                    {!! Form::text("bank_address[$address->type][$atid][zip]",  $address->zip, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    {!! Form::label("bank_address[][{$type}][phone_number]", 'Phone Number'); !!}
-                                                    {!! Form::text("bank_address[][{$type}][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                                                    {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    {!! Form::label("bank_address[][{$type}][fax_number]", 'Fax Number'); !!}
-                                                    {!! Form::text("bank_address[][{$type}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                                    {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
                                                 </div>
 
                                             </div>
+                                        </div>
                                     </div>
+
                                 @endforeach
                             </div>
                             <div class="row"></div>
@@ -220,33 +224,32 @@
             </div>
             <div class="col-md-12 addresses " id="address-{type}">
                 <div class="row">
-                    {!! Form::hidden("bank_address[][{type}][account_type]", "{account_type_id}", ["class"=>"form-control"]) !!}
+                    {!! Form::hidden("bank_address[{type}][{account_type_id}][account_type_id]", "{account_type_id}", ["class"=>"form-control"]) !!}
+                    {!! Form::hidden("bank_address[{type}][{account_type_id}][type]", "dispute_address", ["class"=>"form-control"]) !!}
 
                     <div class="form-group col-sm-4">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                        {!! Form::text("bank_address[][{type}][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
+                        {!! Form::text("bank_address[{type}][{account_type_id}][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
                     </div>
                     <div class="form-group col-sm-3">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                        {!! Form::text("bank_address[][{type}][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
+                        {!! Form::text("bank_address[{type}][{account_type_id}][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
                     </div>
                     <div class="form-group col-sm-2">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                        {!! Form::select("bank_address[][{type}][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
+                        {!! Form::select("bank_address[{type}][{account_type_id}][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
                     </div>
                     <div class="form-group col-sm-3">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                        {!! Form::text("bank_address[][{type}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                        {!! Form::text("bank_address[{type}][{account_type_id}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        {!! Form::label("bank_address[][{type}][phone_number]", 'Phone Number'); !!}
-                        {!! Form::text("bank_address[][{type}][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                        {!! Form::text("bank_address[{type}][{account_type_id}][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
                     </div>
                     <div class="form-group col-sm-6">
-                        {!! Form::label("bank_address[][{type}][fax_number]", 'Fax Number'); !!}
-                        {!! Form::text("bank_address[][{type}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                        {!! Form::text("bank_address[{type}][{account_type_id}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
                     </div>
 
                 </div>

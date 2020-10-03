@@ -111,13 +111,12 @@ class BanksController extends Controller
             $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
         }
 
-        $bank_addresses = $bank->bankAccounts()->with('accountAddresses');
-        $bank_addresses  = $bank_addresses->get()->pluck('accountAddresses', 'account_type_id')->toArray();
-        $bank_accounts = $bank->bankAccounts->pluck('id', 'account_type_id')->toArray();
+        $bank_addresses = $bank->bankAddresses;
+        $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
 
 
 
-        return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses'));
+        return view('owner.bank.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses', 'bank_types'));
 
     }
 
@@ -151,46 +150,22 @@ class BanksController extends Controller
 
         }
 
+        $addresses_ids = [];
+        foreach ($request->bank_address as $addresses) {
+            foreach ($addresses as $address){
+                $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
 
-        $existing_accounts = $bank->bankAccounts->pluck('account_type_id')->toArray();
-        $new_account_types = array_diff($request->account_types??[], $existing_accounts);
-        $removed_account_types = array_diff($existing_accounts, $request->account_types??[]);
-        $new_account_types = collect($new_account_types)->map(function ($id){return ["account_type_id" =>$id]; });
-
-        $bank->bankAccounts()->createMany($new_account_types);
-        $bank->bankAccounts()->whereIn('account_type_id', $removed_account_types)->delete();
-        $bankAccounts = $bank->bankAccounts()->whereIn('account_type_id',$request->account_types??[])->get();
-        foreach ( $bankAccounts as $bankAccount) {
-            $removed_bank_account_address = [];
-            $bank_account_address = [];
-
-            $account_addresses =  $request->bank_address[$bankAccount->account_type_id];
-            foreach($account_addresses as $account_address) {
-                if (
-                    empty($account_address['name']) &&
-                    empty($account_address['street']) &&
-                    empty($account_address['city']) &&
-                    empty($account_address['state']) &&
-                    empty($account_address['zip']) &&
-                    empty($account_address['fax_number']) &&
-                    empty($account_address['phone_number'])
-                ) {
-                    if(!empty($account_address['id'])) {
-                        $removed_bank_account_address[] =  $account_address['id'];
-                    }
-                    continue;
-                }
-
-                $bank_account_address = $account_address;
-                if (!empty($account_address['id'])) {
-                    $bankAccount->accountAddresses()->find($account_address['id'])->update($bank_account_address);
-                } else {
-                    $bankAccount->accountAddresses()->create($bank_account_address);
-                }
-
+                $bank_address = $bank->bankAddresses()->firstorCreate(
+                    [
+                        "type" => $address['type'],
+                        "account_type_id" => $address['account_type_id']
+                    ]);
+                $bank_address->update($address);
+                $addresses_ids[] = $bank_address->id;
             }
-
-            $bankAccount->accountAddresses()->whereIn('id',$removed_bank_account_address)->delete();
+        }
+        if ($addresses_ids){
+            $bank->bankAddresses()->whereNotIn('id', $addresses_ids)->delete();
         }
 
 
