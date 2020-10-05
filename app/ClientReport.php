@@ -88,4 +88,21 @@ class ClientReport extends Model
         return $this->hasMany('App\ClientReportTuInquiry');
     }
 
+
+
+    public function clientEqPublicRecords()
+    {
+        return $this->hasMany('App\ClientReportEqPublicRecord');
+    }
+
+    public function clientEqAccounts()
+    {
+        return $this->hasMany('App\ClientReportEqAccount');
+    }
+
+    public function clientEqInquiry()
+    {
+        return $this->hasMany('App\ClientReportEqInquiry');
+    }
+
 }

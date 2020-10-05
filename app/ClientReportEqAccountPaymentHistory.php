@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReportEqAccountPaymentHistory extends Model
 {
-    protected  $table = 'client_report_eq_accounts_payment_histories';
+    protected  $table = 'client_report_eq_account_payment_histories';
 
     protected $fillable = [
         "client_report_eq_account_id",

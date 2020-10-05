@@ -72,12 +72,11 @@ class Screaper
     public function equifax_via_credit_karma($arguments = [])
     {
 
-//        dd('asd');
         set_time_limit(300);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
 //        $output = shell_exec($command);
 
-        $output = "{'status': 'success', 'report_filepath': 'reports/8/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
+        $output = "{'status': 'success', 'report_filepath': 'reports/7/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
 
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_equifax_karma_report_data(str_replace('\'', '"',$output));
@@ -1627,6 +1626,8 @@ class Screaper
 
     public function prepare_equifax_karma_report_data($output)
     {
+        set_time_limit(300);
+
         $data = json_decode($output, true);
 
         if($data['status'] != 'success') {
@@ -1640,6 +1641,7 @@ class Screaper
         $equifax = count($data)>=1?$data[0]:null;
         $reportedDate = $equifax['dateReportPulled']!= null ? date('Y-m-d',strtotime($equifax['dateReportPulled'])):null;
         $full_name = null;
+
         if(!empty($equifax['names'])){
             $name =  $equifax['names'][0]['first'];
             $full_name = $equifax['names'][0]['middle'] !=null ? $name." ".
@@ -1648,7 +1650,8 @@ class Screaper
         }
 
         $dataClientReports = [
-            'user_id' => $this->client_id,
+//            'user_id' => $this->client_id,
+            'user_id' => 2,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => null,
@@ -1660,7 +1663,7 @@ class Screaper
             'spouse' => null,
             'file_path' => $path
         ];
-//        $clientReport = ClientReport::create($dataClientReports);
+        $clientReport = ClientReport::create($dataClientReports);
 
         if(!empty($equifax['names'])){
             $dataName = [];
@@ -1676,8 +1679,9 @@ class Screaper
                     'nin'=> null
                 ] ;
             }
-//            $clientReport->clientNames()->createMany($dataName);
+            $clientReport->clientNames()->createMany($dataName);
         }
+
 
         if(!empty($equifax['addresses'])){
             $dataAddress = [];
@@ -1700,7 +1704,7 @@ class Screaper
                     'date_reported'=>null
                 ] ;
             }
-//            $clientReport->clientAddresses()->createMany($dataAddress);
+            $clientReport->clientAddresses()->createMany($dataAddress);
         }
 
         if(!empty($equifax['employers'])){
@@ -1725,7 +1729,7 @@ class Screaper
                     'type'=>null,
                 ] ;
             }
-//            $clientReport->clientEmployers()->createMany($dataEmployer);
+            $clientReport->clientEmployers()->createMany($dataEmployer);
 
         }
 
@@ -1741,13 +1745,12 @@ class Screaper
                     'zip'=>$inquiry['institution']['address']['postalCode'],
                     'industry_code'=>$inquiry['institution']['institutionCode'],
                     'name'=>$inquiry['institution']['name'],
-                    'phone'=>$inquiry['institution']['telephone']
+                    'phone'=>$inquiry['institution']['telephone']["value"]
                 ];
 
             }
-//            $clientReport->clientEqInquiry()->createMany($dataInquiry);
+            $clientReport->clientEqInquiry()->createMany($dataInquiry);
         }
-
         $dataPublicRecord = [];
         foreach($equifax['publicRecords'] as $publicKey=> $public){
             if(!empty($public) && $publicKey != "__typename"){
@@ -1769,7 +1772,7 @@ class Screaper
                         'city'=>$records['contact']['address']['city'],
                         'state'=>$records['contact']['address']['postalCode'],
                         'zip'=>$records['contact']['address']['stateCode'],
-                        'phone'=>$records['contact']['telephone'],
+                        'phone'=>$records['contact']['telephone']["value"],
                         'name'=>$records['contact']['name'],
                         'institution_code'=>$records['contact']['institutionCode'],
                         'date_verified'=>$dateVerified,
@@ -1785,11 +1788,12 @@ class Screaper
                 }
             }
         }
-//            $clientReport->clientEqPublicRecords()->createMany($dataPublicRecord);
+            $clientReport->clientEqPublicRecords()->createMany($dataPublicRecord);
+
+
         foreach($equifax['tradelines'] as $accountKey => $accounts){
             if(!empty($accounts) && $accountKey != '__typename' && strpos($accountKey, 'Label') === false ){
                 foreach($accounts as $account){
-//                    dd($account);
 
                     $accountStatus =  str_replace('Account status: ','',$account['accountStatusText']['spans'][0]['text']);
                     $balanceText =  str_replace(['Balance: $','Balance: '],'',$account['balanceText']['spans'][0]['text']);
@@ -1824,7 +1828,7 @@ class Screaper
                         'state'=>$account['institution']['address']['stateCode'],
                         'zip'=>$account['institution']['address']['postalCode'],
                         'name'=>$account['institution']['name'],
-                        'phone'=>$account['institution']['telephone'],
+                        'phone'=>$account['institution']['telephone']['value'],
                         'is_open'=>$account['isOpen'],
                         'last_payment'=>$lastPayment,
                         'late_30_count'=>$account['late30Count'],
@@ -1840,7 +1844,7 @@ class Screaper
                         'perm_por_item_id'=>$account['permPorItemId'],
                         'por_item_id'=>$account['porItemId'],
                         'portfolio_type'=>$account['portfolioType'],
-                        'remarks'=>$account['remarks'],
+                        'remarks'=>!empty($account['remarks'])?json_encode($account['remarks']):null,
                         'report_id'=>$account['reportId'],
                         'responsibility'=>$account['responsibilityType'],
                         'tradeline_id'=>$account['tradelineId'],
@@ -1850,7 +1854,8 @@ class Screaper
                         'utilization_percentage'=>isset($account['utilizationPercentage'])?$account['utilizationPercentage']:null,
                         'term_month'=>isset($account['accountType'])?$account['accountType']:null
                     ];
-//                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
+
+                    $accountSave = $clientReport->clientEqAccounts()->create($dataAccount);
 
                     if(isset($account["payments"]['paymentHistory']) && !empty($account["payments"]["paymentHistory"])) {
 
@@ -1865,7 +1870,7 @@ class Screaper
 
                             ];
                         }
-////                        $account->accountPaymentHistories()->createMany($dataAccountHistory);
+                        $accountSave->paymentHistories()->createMany($dataAccountHistory);
                     }
 
                 }
@@ -1874,17 +1879,12 @@ class Screaper
 
         }
 
-
         foreach($equifax['collections'] as $collections){
 
-            dd($collections);
             $accountStatus =  str_replace('Account status: ','',$collections['accountStatusText']['spans'][0]['text']);
             $balanceText =  str_replace(['Balance: $','Balance: '],'',$collections['balanceText']['spans'][0]['text']);
-            $lastPaymentText =  str_replace('Last Payment: ','',$account['lastPaymentText']['spans'][0]['text']);
             $accountTitle =  $collections['accountTitleText']['spans'][0]['text'];
-            $worstPaymentStatusText =  $account['payments']['worstPaymentStatusText']['spans'][0]['text'];
 
-            $lastPayment =$lastPaymentText!=null? date("Y-m-d",strtotime($lastPaymentText)):null;
 
             $dataAccount = [
                 'type'=>'collection',
@@ -1911,7 +1911,7 @@ class Screaper
                 'state'=>$collections['institution']['address']['stateCode'],
                 'zip'=>$collections['institution']['address']['postalCode'],
                 'name'=>$collections['institution']['name'],
-                'phone'=>$collections['institution']['telephone'],
+                'phone'=>$collections['institution']['telephone']["value"],
                 'is_open'=>$collections['isOpen'],
                 'last_payment'=>null,
                 'late_30_count'=>null,
@@ -1927,7 +1927,7 @@ class Screaper
                 'perm_por_item_id'=>$collections['permPorItemId'],
                 'por_item_id'=>$collections['porItemId'],
                 'portfolio_type'=>$collections['portfolioType'],
-                'remarks'=>$collections['remarks'],
+                'remarks'=>!empty($account['remarks'])?json_encode($account['remarks']):null,
                 'report_id'=>$collections['reportId'],
                 'responsibility'=>$collections['responsibilityType'],
                 'tradeline_id'=>$collections['tradelineId'],
@@ -1937,13 +1937,13 @@ class Screaper
                 'utilization_percentage'=>null,
                 'term_month'=>null
             ];
-//                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
+
+                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
 
 
 
         }
-
-        dd($equifax);
+        dd('ASDA');
     }
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)

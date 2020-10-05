@@ -68,6 +68,6 @@ class ClientReportEqAccount extends Model
 
     public function paymentHistories()
     {
-        return $this->hasMany('App\ClientReportEqAccountsPaymentHistory');
+        return $this->hasMany('App\ClientReportEqAccountPaymentHistory');
     }
 }
