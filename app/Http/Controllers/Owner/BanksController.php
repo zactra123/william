@@ -307,7 +307,7 @@ class BanksController extends Controller
 
     public function update_type_keywords(Request $request)
     {
-        $account_type = AccountType::find($request->accout_type);
+        $account_type = AccountType::find($request->account_type);
         if (!$account_type) {
 //            throw error that account Type not found
         }
@@ -322,6 +322,17 @@ class BanksController extends Controller
             $key_word_ids[] = $type_keyword->id;
         }
         $account_type->accountTypeKeyWord()->whereNotIn('id', $key_word_ids)->delete();
+        return response()->json(['status' => 'success']);
+    }
+
+    public function update_type_default(Request $request)
+    {
+        $account_type = AccountType::find($request->account_type);
+        if (!$account_type) {
+//            throw error that account Type not found
+        }
+    
+        $account_type->update(['type' => (int) ($request->type == "true")]);
         return response()->json(['status' => 'success']);
     }
 

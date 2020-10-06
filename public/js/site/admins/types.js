@@ -88,23 +88,46 @@ $('.selectize-multiple').selectize({
     // },
 
     onChange: function(value) {
-        account_type = this.$input.parents('tr').attr('data-id');
-        key_words = this.items
-         token = $("meta[name='csrf-token']").attr("content");
+        var account_type = this.$input.parents('tr').attr('data-id'),
+            key_words = this.items,
+            token = $("meta[name='csrf-token']").attr("content");
         $.ajax({
             url: '/owner/furnishers/types/update_keywords',
             type: 'POST',
             data: {
                 "_token": token,
-                accout_type: account_type,
+                account_type: account_type,
                 keywords : key_words
             },
             success: function (result) {
-
+                console.log(result)
             },
             error: function (error) {
-                consloe.log(result)
+                console.log(error)
             }
         })
     }
 });
+
+
+$('.is_default_account_type').on('change', function() {
+    var account_type = $(this).parents('tr').data('id'),
+        is_default = $(this).is(':checked'),
+         token = $("meta[name='csrf-token']").attr("content");
+
+    $.ajax({
+        url: '/owner/furnishers/types/update_default',
+        type: 'POST',
+        data: {
+            "_token": token,
+            account_type: account_type,
+            type : is_default
+        },
+        success: function (result) {
+            console.log(result)
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    })
+})

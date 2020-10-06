@@ -96,7 +96,7 @@
                                     <tr data-id="{{$type->id}}">
                                         <td width="20%">{{$type["name"]}}</td>
                                         <td width="10%">
-                                            <input type="checkbox" class="is_default_account_type" data-account-tyep="{{$type["id"]}}" checked="{{$type["type"]? "checked":''}}">
+                                            <input type="checkbox" class="is_default_account_type" data-account-tyep="{{$type["id"]}}" {{$type["type"] ? "checked":''}}>
                                         </td>
                                         <td width="50%">
                                             {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}

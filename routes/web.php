@@ -108,6 +108,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::any('/types', 'Owner\BanksController@types')->name("owner.bank.types");
         Route::delete('/types/{id}', 'Owner\BanksController@delete_types');
         Route::post('/types/update_keywords', 'Owner\BanksController@update_type_keywords');
+        Route::post('/types/update_default', 'Owner\BanksController@update_type_default');
         Route::any('/keywords', 'Owner\BanksController@keywords');
     });
 
