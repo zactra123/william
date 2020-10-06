@@ -9,9 +9,9 @@
             }
         }
 
-        div {
-            padding: 10px;
-        }
+        /*div {*/
+        /*    padding: 10px;*/
+        /*}*/
 
         tr {
             display: flex;

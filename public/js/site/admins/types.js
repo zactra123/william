@@ -33,43 +33,6 @@ $(document).ready(function($) {
         });
     })
 
-    $('.selectize-multiple').selectize({
-        plugins: ['remove_button'],
-        delimiter: ',',
-        searchField: 'key_word',
-        labelField: 'key_word',
-        valueField: 'key_word',
-        create: function(input) {
-            account_type = this.$input.parents('tr').attr('data-id');
-            console.log(account_type, this)
-            return {
-                key_word: input
-            };
-        },
-        load: function(query, callback) {
-            $.ajax({
-                url: '/owner/furnishers/keywords',
-                type: 'GET',
-                dataType: 'json',
-                data: {
-                    search_key: query
-                },
-                error: function() {
-                    callback();
-                },
-                success: function(res) {
-                    callback(res);
-                }
-            });
-        },
-        onOptionAdd: function(value, data){
-            account_type = this.$input.parents('tr').attr('data-id');
-            account_type = this.$input.parents('tr').attr('data-id');
-            console.log(account_type, this)
-        }
-    });
-
-
     $(document).on ('click', '.remove-equal-bank', function(){
         var  equal_bank_id = $(this).attr('data-equal-id'),
                 self = this;
@@ -89,4 +52,59 @@ $(document).ready(function($) {
             }
         });
     })
+
+
+});
+$('.selectize-multiple').selectize({
+    plugins: ['remove_button'],
+    delimiter: ',',
+    searchField: 'key_word',
+    labelField: 'key_word',
+    valueField: 'key_word',
+    create: function(input) {
+        account_type = this.$input.parents('tr').attr('data-id');
+        console.log(account_type, this)
+        return {
+            key_word: input
+        };
+    },
+    load: function(query, callback) {
+        $.ajax({
+            url: '/owner/furnishers/keywords',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                search_key: query
+            },
+            error: function() {
+                callback();
+            },
+            success: function(res) {
+                callback(res);
+            }
+        });
+    },
+    // onOptionAdd: function(value, data){
+    // },
+
+    onChange: function(value) {
+        account_type = this.$input.parents('tr').attr('data-id');
+        key_words = this.items
+         token = $("meta[name='csrf-token']").attr("content");
+        $.ajax({
+            url: '/owner/furnishers/types/update_keywords',
+            type: 'POST',
+            data: {
+                "_token": token,
+                accout_type: account_type,
+                keywords : key_words
+            },
+            success: function (result) {
+
+            },
+            error: function (error) {
+                consloe.log(result)
+            }
+        })
+    }
 });

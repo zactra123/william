@@ -305,5 +305,24 @@ class BanksController extends Controller
         return Response::json($data);
     }
 
+    public function update_type_keywords(Request $request)
+    {
+        $account_type = AccountType::find($request->accout_type);
+        if (!$account_type) {
+//            throw error that account Type not found
+        }
+
+        $key_word_ids = [];
+        foreach ($request->keywords as $key) {
+            $keyword = AccountTypeKeys::firstorCreate(['key_word' => strtoupper($key)]);
+            $type_keyword = $account_type->accountTypeKeyWord()->firstOrCreate([
+                'account_type_key_id' => $keyword->id,
+            ]);
+
+            $key_word_ids[] = $type_keyword->id;
+        }
+        $account_type->accountTypeKeyWord()->whereNotIn('id', $key_word_ids)->delete();
+        return response()->json(['status' => 'success']);
+    }
 
 }

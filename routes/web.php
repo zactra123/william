@@ -107,6 +107,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
         Route::any('/types', 'Owner\BanksController@types')->name("owner.bank.types");
         Route::delete('/types/{id}', 'Owner\BanksController@delete_types');
+        Route::post('/types/update_keywords', 'Owner\BanksController@update_type_keywords');
         Route::any('/keywords', 'Owner\BanksController@keywords');
     });
 
