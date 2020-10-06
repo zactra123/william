@@ -338,6 +338,92 @@
 
                         @endif
 
+                        @if(!empty($data['eq_public']))
+                            @foreach($data['eq_public'] as $tu_public)
+                                <div class="mt20 title-eq_public-{{$eq_public->id}}"></div>
+                                <div class="chart-report title-eq_public-{{$eq_public->id}}">
+                                    <div class="row " style="font-weight: bold">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="form-text">{{$eq_public->name}}</span>
+                                            <span class="form-text" style="padding-left: 15px">{{$eq_public->reference_number}}</span>
+
+                                        </div>
+
+                                        <div class="col-md-2 delete-name" data-attribute="title-eq_public-{{$eq_public->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <input type="hidden" name="tu_public[]" value="{{$eq_public->id}}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt20 border" style="font-weight: bold">
+                                        <div class="col-md-1">
+                                        </div>
+                                        @if($eq_public->classification !=null )
+                                            <div class="col-md-3">
+                                                <div class="col-md-12">
+                                                    <label class="form-text">CLASSIFICATION</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$eq_public->classification}} </span>
+                                                </div>
+                                            </div>
+
+                                        @endif
+
+                                        @if($tu_public->date_filed !=null )
+                                            <div class="col-md-2">
+                                                <div class="col-md-12">
+                                                    <label class="form-text">DATE FILED</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class=""> {{date("m/d/Y",strtotime($eq_public->date_filed))}} </span>
+                                                </div>
+                                            </div>
+
+                                        @endif
+
+                                        @if($eq_public->resposibility !=null )
+                                            <div class="col-md-2">
+                                                <div class="col-md-12">
+                                                    <label class="form-text">RESPONSIBILITY</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$eq_public->resposibility}} </span>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if($eq_public->category_type !=null )
+                                            <div class="col-md-2">
+                                                <div class="col-md-12">
+                                                    <label class="form-text">CATEGORY TYPE</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$eq_public->category_type}}  </span>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if($eq_public->responsibility != null )
+
+                                            <div class="col-md-2">
+                                                <div class="col-md-12">
+                                                    <label class="form-text">RESPONSIBILITY</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$eq_public->responsibility}} </span>
+                                                </div>
+                                            </div>
+
+                                        @endif
+
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                        @endif
+
                         @if(!empty($data['ex_account']))
                             @foreach($data['ex_account'] as $ex_account)
                                 <div class="mt20 title-ex_account-{{$ex_account->id}}"></div>
@@ -488,6 +574,77 @@
                             @endforeach
                         @endif
 
+                        @if(!empty($data['eq_account']))
+                            @foreach($data['eq_account'] as $tu_account)
+                                @if(!empty($eq_account))
+                                    <div class="mt20 title-eq_account-{{$eq_account->id}}"></div>
+                                    <div class="chart-report title-eq_account-{{$eq_account->id}}">
+                                        <div class="row mt20 " style="font-weight: bold" >
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="">{{$eq_account->name}} </span>
+                                            </div>
+                                            <div class="col-md-2 delete-name" data-attribute="title-eq_account-{{$eq_account->id}}">
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <input type="hidden" name="eq_account[]" value="{{$eq_account->id}}">
+                                            </div>
+                                        </div>
+                                        <div class="row mt20 border" style="font-weight: bold" >
+                                            <div class="col-md-1">
+                                            </div>
+                                            @if($eq_account->date_opened !=null )
+                                                <div class="col-md-2">
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">DATE OPENED</label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class=""> {{date("m/d/Y",strtotime($eq_account->date_opened))}} </span>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if($eq_account->account_type !=null )
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">ACCOUNT TYPE</label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class=""> {{$eq_account->account_type}} </span>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if($eq_account->loan_type !=null )
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">ACCOUNT TITLE</label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class=""> {{$eq_account->account_title}} </span>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if($eq_account->current_payment_status !=null )
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">PAYMENT STATUS</label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <span class="">{{$eq_account->current_payment_status}} </span>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="col-md-2">
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+
                         @if(!empty($data['ex_inquiry']))
                             @foreach($data['ex_inquiry'] as $ex_inquiry)
                                 @if(!empty($ex_inquiry))
@@ -532,6 +689,34 @@
 
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="tu_inquiry[]" value="{{$tu_inquiry->id}}">
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+
+                        @if(!empty($data['eq_inquiry']))
+                            @foreach($data['eq_inquiry'] as $tu_inquiry)
+                                @if(!empty($tu_inquiry))
+
+                                    <div class="mt20 title-eq_inquiry-{{$eq_inquiry->id}}"></div>
+                                    <div class="chart-report title-eq_inquiry-{{$eq_inquiry->id}}">
+                                        <div class="row mt20 " style="font-weight: bold" >
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">{{$eq_inquiry->industry_name}}</div>
+                                                <div class="col-md-12">{{$eq_inquiry->name}}</div>
+                                            </div>
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$eq_inquiry->id}}">
+                                                <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+
+                                                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
+                                                <input type="hidden" name="tu_inquiry[]" value="{{$eq_inquiry->id}}">
 
                                             </div>
 

@@ -413,11 +413,12 @@ class ClientDetailsController extends Controller
 
         $clientReportsTU = ClientReport::where('user_id',2)->where('type', "TU_DIS")->first();
         $clientReportsEX = ClientReport::where('user_id',2)->where('type', "EX_LOG")->first();
-
+        $clientReportsEQ = ClientReport::where('user_id',2)->where('type', "EQ")->first();
+//        dd($clientReportsEQ);
 //        dd($clientReportsEX);
 
 
-        return view('client_details.view_negative_item', compact('clientReportsEX','clientReportsTU'));
+        return view('client_details.view_negative_item', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ'));
     }
     public function negativeItemStore(Request $request)
     {
@@ -434,18 +435,20 @@ class ClientDetailsController extends Controller
         $disputeTuAccount = [];
         $disputeTuInquiry = [];
         $disputeTuStatement = [];
-
+        $disputeEqPublicRecord = [];
+        $disputeEqAccount = [];
+        $disputeEqInquiry = [];
 
         foreach($dispute as $key => $value){
 
-            if($key == 'ex_name' or $key == 'tu_name'){
+            if($key == 'ex_name' or $key == 'tu_name' or 'eq_name'){
                 foreach($value  as $dispute_name){
                     $name = ClientReportName::where('id', $dispute_name)->first();
                     $disputeName[] =$name;
                 }
             }
 
-            if($key == 'ex_address' or $key == 'tu_address'){
+            if($key == 'ex_address' or $key == 'tu_address' or 'eq_address'){
                 foreach($value  as $disputeAddresses){
                     $address = ClientReportAddress::where('id', $disputeAddresses)->first();
                     $disputeAddress[] =$address;
@@ -516,6 +519,29 @@ class ClientDetailsController extends Controller
                 }
             }
 
+            if($key == 'eq_public'){
+                foreach($value  as $disputeEqPublicRecords){
+                    $tuPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
+                    $disputeEqPublicRecord[] =$tuPublic;
+                }
+            }
+
+            if($key == 'eq_account'){
+                foreach($value  as $disputeEqAccounts){
+                    $tuAccount = ClientReportEqAccount::where('id', $disputeEqAccounts)->first();
+                    $disputeEqAccount[] =$tuAccount;
+                }
+
+            }
+
+            if($key == 'eq_inquiry'){
+                foreach($value  as $disputeEqInquiries){
+                    $tuInquiry = ClientReportEqInquiry::where('id', $disputeEqInquiries)->first();
+                    $disputeEqInquiry[] =$tuInquiry;
+                }
+            }
+
+
         }
 
         $data = [
@@ -529,8 +555,10 @@ class ClientDetailsController extends Controller
             'tu_public'=>$disputeTuPublicRecord,
             'tu_account'=>$disputeTuAccount,
             'tu_inquiry'=>$disputeTuInquiry,
-            'tu_statement'=>$disputeTuStatement
-
+            'tu_statement'=>$disputeTuStatement,
+            'eq_public'=>$disputeEqPublicRecord,
+            'eq_account'=>$disputeEqAccount,
+            'eq_inquiry'=>$disputeEqInquiry
         ];
 
 

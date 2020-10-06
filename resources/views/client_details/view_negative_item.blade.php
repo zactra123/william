@@ -47,6 +47,7 @@
             <div class="btn-group" role="group" aria-label="Basic example">
                 <a href="#" class="btn btn-secondary creditReport" data-target="Experian"><img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
                 <a href="#" class="btn btn-secondary creditReport" data-target="TransUnion"><img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"></a>
+                <a href="#" class="btn btn-secondary creditReport" data-target="Equifax"><img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="140"></a>
             </div>
 
             {!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!}
@@ -1419,6 +1420,456 @@
             </div>
 
 
+            <div class="Equifaq" style="display: block">
+                <div class="row mt20">
+                    <div class="col-md-1 mt20">
+                    </div>
+                    <div class="col-md-10 mt20">
+                        <div class="chart-report" >
+                            <div class="row mt20 ">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold"> NAME</span>
+                                </div>
+
+                            </div>
+                            <div class="row mt20 border">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold"> {{$clientReportsEQ->full_name}}</span>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                </div>
+                            </div>
+                        @foreach($clientReportsEQ->clientNames as $names)
+
+                                <div class="row mt20 border">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span style="font-weight: bold"> {{$names->full_name}}</span>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input name="eq_name[]" type="checkbox" id="tu-name-{{$names->id}}" value ="{{$names->id}}" class="customcheck">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endforeach
+                        </div>
+                        <div class="mt20"></div>
+                        <div class="chart-container">
+                            <div class="row ">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5" style="font-weight: bold">
+                                    ADDRESS
+                                </div>
+                                <div class="col-md-4" style="font-weight: bold">
+                                </div>
+
+                                <div class="col-md-1" style="font-weight: bold">
+                                    DISPUTE
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+                            @foreach($clientReportsEQ->clientAddresses as $address)
+                                <div class="row mt20 border" style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="">{{$address->street}}, </span>
+                                        <span class="">{{$address->city}}, </span>
+                                        <span class="">{{$address->state}}, </span>
+                                        <span class="">{{$address->zip}}</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input name="eq_address[]" type="checkbox" id="tu-address-{{$address->id}}" value ="{{$address->id}}" class="customcheck">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="mt20"></div>
+                        <div class="chart-report">
+
+                            <div class="row" >
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5" style="font-weight: bold">
+                                    PHONE #
+                                </div>
+
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-2" style="font-weight: bold">
+                                    DISPUTE
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="mt20"></div>
+                        <div class="chart-report">
+                            <span style="font-weight: bold"> NEGATIVE ACCOUNTS</span>
+                            @foreach($clientReportsEQ->clientEqAccounts->where('type', "!=",'collection') as $accounts)
+
+
+                            <div class="mt20"></div>
+
+                                <div class="row border" style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                   </div>
+                                    <div class="col-md-7">
+                                        <span class="">{{$accounts->name}}</span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value ="{{$accounts->id}}" class="customcheck">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt20  " style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+
+
+                                    @if($accounts->date_opened !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">DATE OPENED</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+
+                                    @if($accounts->account_type !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">ACCOUNT TYPE</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->account_type}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->account_title !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">ACCOUNT TITLE</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->account_title}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->current_payment_status !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">PAYMENT STATUS</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->current_payment_status}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->remarks != null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">REMARK</label>
+                                            </div>
+                                            @foreach(json_decode($accounts->remarks) as $remark)
+                                            <div class="col-md-12">
+                                                <span class=""> {{$remark}} </span>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+
+                            @if($accounts->paymentHistories->where('value','Like',"%0%" )->first() )
+                                    <div class="row mt20 ">
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <?php dd('dasd')?>
+                                        <div class="col-md-11">
+                                            ACCOUNT HISTORY
+                                        </div>
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        @foreach($accounts->paymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
+                                            <div class="col-md-3">
+                                                LATE {{$payment->value}} AS OF {{$payment->month}}/{{$payment->year}}
+
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                @endif
+                        @endforeach
+                        </div>
+                        <div class="mt20"></div>
+
+                        <div class="mt20"></div>
+                        <div class="chart-report">
+                            <span style="font-weight: bold"> COLLECTION ACCOUNTS</span>
+                        @foreach($clientReportsEQ->clientEqAccounts->where('type', 'collection') as $accounts)
+
+                            <div class="mt20"></div>
+
+                                <div class="row border" style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <span class="">{{$accounts->name}}</span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value ="{{$accounts->id}}" class="customcheck">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt20  " style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+
+
+                                    @if($accounts->date_opened !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">DATE OPENED</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+
+                                    @if($accounts->account_type !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">ACCOUNT TYPE</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->account_type}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->account_title !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">ACCOUNT TITLE</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->account_title}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->current_payment_status !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">PAYMENT STATUS</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$accounts->current_payment_status}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($accounts->remarks != null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">REMARK</label>
+                                            </div>
+                                            @foreach(json_decode($accounts->remarks) as $remark)
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$remark}} </span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+
+                        @endforeach
+                        </div>
+
+                    @foreach($clientReportsEQ->clientEqPublicRecords as $publicRecords)
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20" style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="col-md-12">
+                                            <label class="form-text">COURT NAME</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="">{{$publicRecords->name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-12">
+                                            <label class="form-text">REFERENCE  #</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="">{{$publicRecords->reference_number}}</span>
+                                        </div>
+                                    </div>
+
+                                    @if($publicRecords->status !=null )
+
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">STATUS</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class="">{{$publicRecords->status}}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($publicRecords->classification !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">CLASSIFICATION</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$publicRecords->phone}}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input type="checkbox" name="eq_public[]" value="{{$publicRecords->id}}" id="tu-publicRecorde-{{$publicRecords->id}}" class="customcheck">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt20 border" style="font-weight: bold">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="col-md-12">
+                                            <label class="form-text">RESPONSIBILITY</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class=""> {{$publicRecords->responsibility}}  </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-12">
+                                            <label class="form-text">DATE FILED</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="">{{date("m/d/Y", strtotime($publicRecords->date_filed))}}</span>
+                                        </div>
+                                    </div>
+
+                                    @if($publicRecords->category_type !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">CATEGORY TYPE</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{$publicRecords->category_type}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if($publicRecords->date_verified !=null )
+                                        <div class="col-md-2">
+                                            <div class="col-md-12">
+                                                <label class="form-text">DATE VERIFIED</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span class=""> {{date("m/d/Y", strtotime($publicRecords->date_verified))}} </span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                </div>
+
+                            </div>
+                        @endforeach
+
+
+                        <div class="mt20"></div>
+                        <div class="chart-report">
+                            <span style="font-weight: bold;">REGULAR INQUIRIES</span>
+
+                            @foreach($clientReportsEQ->clientEqInquiry as $inquiry)
+
+                                <div class="row mt20 border " style="font-weight: bold">
+                                    <div class="col-md-1"> </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-12">INQUIRY NAME</div>
+                                        <div class="col-md-12">{{$inquiry->industry_name}}</div>
+                                        <div class="col-md-12">{{$inquiry->name}}</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="col-md-12">DATE OF REQUEST</div>
+                                        @if($inquiry->date_inquiry != null)
+                                        @endif
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-6">
+                                            <label class="form-text">DISPUTE</label>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <input type="checkbox" name="eq_inquiry[]" value="{{$inquiries->id}}" id="tu-inquiry-{{$inquiries->id}}" class="customcheck">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+
+                            <div class="mt20"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             <div class="addModal" id ="addModal"></div>
 
 
@@ -1444,6 +1895,7 @@
 
                     $(".Experian").css("display", "none");
                     $(".TransUnion").css("display", "none");
+                    $(".Equifax").css("display", "none");
                     $("."+name).css("display", "block");
 
                 });
