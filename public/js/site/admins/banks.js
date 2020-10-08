@@ -13,6 +13,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build
     }
 }
 
+$( document ).on( "click keyup", ".us-phone", function() {
+    $('.us-phone').mask('(000) 000-0000');
+    $('.us-zip').mask('00000');
+});
 
 $(document).ready(function($) {
     $('.us-phone').mask('(000) 000-0000');
@@ -29,7 +33,9 @@ $(document).ready(function($) {
     $('.selectize-single').selectize({
         selectOnTab: true,
     })
-
+    $( document ).on( "load", "#addresses_container", function() {
+        $('.cpf').mask('999.999.999-99');
+    });
 
     $(document).on('click', '.remove-account-type', function(){
 
