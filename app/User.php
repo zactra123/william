@@ -139,6 +139,10 @@ class   User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function experianReportNumbers()
+    {
+        return $this->hasMany('App\ExperianReportNumber', 'client_id');
+    }
 
     public function clientAttachments()
     {
@@ -165,7 +169,6 @@ class   User extends Authenticatable implements MustVerifyEmail
 
     public function chat_list($params = [])
     {
-
         $chats = DB::table('chat');
         if (empty($params["all"])) {
             $chats = $chats->where(['chat.user_id'=> $this->id]);

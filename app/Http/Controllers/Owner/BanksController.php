@@ -331,7 +331,7 @@ class BanksController extends Controller
         if (!$account_type) {
 //            throw error that account Type not found
         }
-    
+
         $account_type->update(['type' => (int) ($request->type == "true")]);
         return response()->json(['status' => 'success']);
     }

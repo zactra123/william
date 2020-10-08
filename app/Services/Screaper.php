@@ -9,25 +9,54 @@ class Screaper
 {
     protected $client_id;
     protected $client;
+    protected $arguments;
 
     public function __construct($id = null)
     {
         $this->client_id = $id;
         $this->client = User::with(['credentials', 'clientDetails'])->find($id);
+
+        $this->arguments = [
+            'transunion_dispute' =>[
+                    $this->client['credentials']['tu_login'],
+                    $this->client['credentials']['tu_password'],
+                    $this->client['first_name'],
+                    $this->client['last_name'],
+                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['number']]),
+                    $this->client['clientDetails']['city'],
+                    $this->client['clientDetails']['state'],
+                    $this->client['clientDetails']['zip'],
+                    $this->client['email'],
+//                    date_format($this->client['clientDetails']['dob'], 'm/d/Y'),
+                    $this->client['clientDetails']['ssn'],
+                    $this->client['clientDetails']['phone_number']
+                ],
+            'transunion_membership' => [
+
+            ],
+            'experian_view_report' => [
+
+            ],
+            'experian_login' => [
+                $this->client['credentials']['ex_login'],
+                $this->client['credentials']['ex_password'],
+                $this->client['credentials']['ex_answer'],
+                $this->client['credentials']['ex_pin'],
+//                date_format($this->client['clientDetails']['dob'], 'm/d/Y'),
+                $this->client['clientDetails']['ssn'],
+            ],
+            'equifax_credit_karma' => [
+                $this->client['credentials']['ck_login'],
+                $this->client['credentials']['ck_password']
+            ]
+        ];
     }
 
     public function transunion_dispute($arguments = [])
     {
         if (empty($arguments)) {
-            $arguments = [
-                $this->client['credentials']['tu_login'],
-                $this->client['credentials']['tu_password'],
-                $this->client['first_name'],
-                $this->client['last_name'],
-                $this->client['last_name'],
-                $this->client['last_name'],
-            ];
-            dd($this->client['clientDetails']);
+            $arguments = $this->arguments['transunion_dispute'];
+            dd($arguments);
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
@@ -38,8 +67,11 @@ class Screaper
 
     }
 
-    public function trnsunion_membership( $arguments = [])
+    public function transunion_membership( $arguments = [])
     {
+        if (empty($arguments)) {
+            $arguments = $this->arguments['transunion_membership'];
+        }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $output = shell_exec($command);
@@ -50,6 +82,10 @@ class Screaper
 
     public function experian_login($arguments = [])
     {
+        if (empty($arguments)) {
+            $arguments = $this->arguments['experian_login'];
+            dd($arguments);
+        }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $output = shell_exec($command);
@@ -61,6 +97,10 @@ class Screaper
 
     public function experian_view_report($arguments = [])
     {
+        if (empty($arguments)) {
+            $arguments = $this->arguments['experian_view_report'];
+            dd($arguments);
+        }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
         $output = shell_exec($command);
@@ -71,7 +111,10 @@ class Screaper
 
     public function equifax_via_credit_karma($arguments = [])
     {
-
+        if (empty($arguments)) {
+            $arguments = $this->arguments['equifax_credit_karma'];
+            dd($arguments);
+        }
         set_time_limit(300);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
 //        $output = shell_exec($command);
@@ -100,11 +143,26 @@ class Screaper
 
             return false;
         }
-        $path = storage_path($data["report_filepath"]);
+       // Save Experian Report Numbers -START-
+        $report_number_path = storage_path($data["numbers_filepath"]);
+        $report_numbers = json_decode(file_get_contents($report_number_path), true);
 
+        if ($report_numbers) {
+            foreach ($report_numbers['Report Numbers'] as $report_number) {
+                $this->client->experianReportNumbers()->firstOrCreate(
+                    ['number' => $report_number['Report Number']],
+                    [
+                        'number' => $report_number['Report Number'],
+                        'date_generated'=> \DateTime::createFromFormat("M d, Y", $report_number['Date Generated'])->format("Y-m-d")
+                    ]
+                );
+            }
+        }
+        // Save Experian Report Numbers -END-
+
+        $path = storage_path($data["report_filepath"]);
         $json = json_decode(file_get_contents($path), true);
         $type = 'EX_LOG';
-
 
         $reportNumber = $json['id']?$json['id']:null;
         $reportDate = $json['date']?$json['date']:null;
