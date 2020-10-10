@@ -196,7 +196,11 @@ class BanksController extends Controller
 
     public function showBankLogo(Request $request)
     {
+
         $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
+
+        dd($banksLogos->pluck('name', 'id')->toArray());
+
 
         if (!empty($request->character)) {
             if ($request->character == '#'){
