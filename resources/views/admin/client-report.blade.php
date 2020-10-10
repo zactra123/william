@@ -46,6 +46,40 @@
 
 
             @if($clientReportsEX != null)
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12"></div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="row m-2  pt-4">
+                                <div class="col-md-8 pull-left">
+                                    <form >
+                                        <div class="row">
+                                            <div class="col-md-4 form-group">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="date" id="gender">
+                                                        <option disabled="disabled" selected="selected">DATE</option>
+                                                        @foreach($experianDate as $key => $value)
+                                                            <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+                                                {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
+                                            </div>
+                                            <div class="col-md-4  form-group">
+                                                <input type="submit" value="Search" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-4 pull-right">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="Experian">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
@@ -542,7 +576,43 @@
             @endif
 
             @if($clientReportsTU != null)
-                <div class="TransUnion">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12"></div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row m-2  pt-4">
+                                    <div class="col-md-8 pull-left">
+                                        <form >
+                                            <div class="row">
+                                                <div class="col-md-4 form-group">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="date" id="gender">
+                                                            <option disabled="disabled" selected="selected">DATE</option>
+                                                            @foreach($transunionDate as $key => $value)
+                                                                <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                                    {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
+                                                </div>
+                                                <div class="col-md-4  form-group">
+                                                    <input type="submit" value="Search" class="form-control">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="TransUnion">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
                         </div>
@@ -1231,6 +1301,39 @@
             @endif
 
             @if($clientReportsEQ != null)
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12"></div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row m-2  pt-4">
+                                    <div class="col-md-8 pull-left">
+                                        <form >
+                                            <div class="row">
+                                                <div class="col-md-4 form-group">
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="date" id="gender">
+                                                            <option disabled="disabled" selected="selected">DATE</option>
+                                                            @foreach($equifaxDate as $key => $value)
+                                                            <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+{{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
+                                                </div>
+                                                <div class="col-md-4  form-group">
+                                                    <input type="submit" value="Search" class="form-control">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <div class="Equifaq" style="display: block">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">

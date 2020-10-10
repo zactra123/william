@@ -81,16 +81,31 @@ class AdminsController extends Controller
         $clientReportsEQ = null;
         $clientReportsTU = null;
         $clientReportsEX = null;
-        if($request->type == 'equifax'){
-            $clientReportsEQ = ClientReport::where('user_id',$request->client)->where('type', "EQ")->first();
 
-        }elseif($request->type == 'transunion'){
-            $clientReportsTU = ClientReport::where('user_id',$request->client)->where('type', "TU_DIS")->first();
-        }elseif($request->type == 'experian'){
-            $clientReportsEX = ClientReport::where('user_id',$request->client)->where('type', "EX_LOG")->first();
+        if($request->date !=null){
+            $clientReports = ClientReport::where('id',$request->date);
+
+        }else{
+            $clientReports = ClientReport::where('user_id',$request->client);
         }
 
-        return view('admin.client-report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ'));
+        if($request->type == 'equifax'){
+            $clientReportsEQ = $clientReports->where('type', "EQ")->first();
+            $equifaxDate =$clientReports->where('type', "EQ")
+                ->pluck('created_at', 'id')->toArray();
+        }elseif($request->type == 'transunion'){
+            $clientReportsTU = $clientReports->where('type', "TU_DIS")->first();
+            $transunionDate = $clientReports->where('type', "TU")
+                ->pluck('created_at', 'id')->toArray();
+
+        }elseif($request->type == 'experian'){
+            $clientReportsEX = $clientReports->where('type', "EX_LOG")->first();
+            $experianDate = $clientReports->where('type', "EX_LOG")
+                ->pluck('created_at', 'id')->toArray();
+        }
+
+        return view('admin.client-report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
+            'equifaxDate','experianDate','transunionDate'));
     }
 
 

@@ -247,7 +247,7 @@
                             <div class="col-md-12">
 
                                 <div class="content">
-                                    <h2>RECENT HISTORIES TO DO</h2>
+                                    <h2>WORKS HISTORIES</h2>
 
 
                                 </div>
