@@ -34,6 +34,14 @@ class BanksController extends Controller
     public function store(Request $request)
     {
 
+        if($request->term != null){
+
+            $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
+
+            $banksLogos = $banksLogos->orderBy('name')->paginate(16);
+            return view('owner.bank.logo_new',compact('banksLogos'));
+        }
+
         $validation =  Validator::make($request->all(), [
             'name'=>['required', 'string', 'max:255'],
 
@@ -122,6 +130,13 @@ class BanksController extends Controller
 
     public function update(Request $request)
     {
+        if($request->term != null){
+
+            $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
+
+            $banksLogos = $banksLogos->orderBy('name')->paginate(16);
+            return view('owner.bank.logo_new',compact('banksLogos'));
+        }
         $id  = $request->id;
         $bank = BankLogo::find($id);
 
@@ -196,11 +211,7 @@ class BanksController extends Controller
 
     public function showBankLogo(Request $request)
     {
-
         $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
-
-        dd($banksLogos->pluck('name', 'id')->toArray());
-
 
         if (!empty($request->character)) {
             if ($request->character == '#'){

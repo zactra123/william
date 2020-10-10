@@ -193,7 +193,7 @@ $(document).ready(function($) {
             address_template = address_template.replace(/{type}/g,"dispute_address")
                 .replace(/{id}/g, id)
                 .replace(/{account_type_id}/g, id)
-                .replace(/{name}/g, accountType+' DISPUTE ADDRESS');
+                .replace(/{name}/g, accountType+' DISPUTE');
             $("#addresses_container").append(address_template);
             $('#dispute-address-'+ id).find('.selectize-single').selectize({
                 selectOnTab: true,

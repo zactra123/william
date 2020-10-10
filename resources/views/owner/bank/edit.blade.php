@@ -80,11 +80,35 @@
                     {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
+
+
+                    <div class="row m-2  pt-4">
+                        <div class="col-md-8 pull-left">
+
+                        </div>
+                        <div class="col-md-4 pull-right">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-8 form-group">
+                                        <input type="text" name="term"  class="form-control" >
+                                    </div>
+                                    <div class="col-md-4  form-group">
+                                        <input type="submit" value="Search" class="form-control">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
+
+
                                     <div class="col-sm-3 form-group changeLogo">
                                         <img src="{{asset($bank->path)}}" width="100px">
                                     </div>
@@ -132,7 +156,7 @@
                                     <?php $atid = intval($address->account_type_id); ?>
                                     <div id="dispute-address-{{$atid}}">
                                         <div class="row expand-address" data-address="#address-{{$address->type}}-{{$address->account_type_id}}">
-                                            <div class="col-md-6"><label for="">{{(!empty($address->accountType))?$address->accountType->name : '' }} {{\App\BankAddress::TYPES[$address->type]}}</label>  </div>
+                                            <div class="col-md-6"><label for="">{{(!empty($address->accountType))?$address->accountType->name : '' }} {{str_replace("ADDRESS","",\App\BankAddress::TYPES[$address->type])}}</label>  </div>
                                             <div class="col-md-6 text-right">
                                                 <button type="button">
                                                     <i class="fa fa-minus-circle"></i>
