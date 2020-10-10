@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\ClientReport;
 use App\Message;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -70,11 +71,28 @@ class AdminsController extends Controller
     {
         $client = User::clients()->find($clientId);
 
-
-       return view('admin.client-profile', compact('client'));
+//       return view('admin.client-profile', compact('client'));
+       return view('admin.client-profile-1', compact('client'));
 
 
     }
+    public function clientReport(Request $request)
+    {
+        $clientReportsEQ = null;
+        $clientReportsTU = null;
+        $clientReportsEX = null;
+        if($request->type == 'equifax'){
+            $clientReportsEQ = ClientReport::where('user_id',$request->client)->where('type', "EQ")->first();
+
+        }elseif($request->type == 'transunion'){
+            $clientReportsTU = ClientReport::where('user_id',$request->client)->where('type', "TU_DIS")->first();
+        }elseif($request->type == 'experian'){
+            $clientReportsEX = ClientReport::where('user_id',$request->client)->where('type', "EX_LOG")->first();
+        }
+
+        return view('admin.client-report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ'));
+    }
+
 
     public function printPdfClientProfile($id)
     {
