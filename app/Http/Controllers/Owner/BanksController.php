@@ -361,22 +361,48 @@ class BanksController extends Controller
     {
         $banks_file = storage_path('furnishers/banks.json');
 
-        $banks = json_decode(file_get_contents($banks_file), true);
-        $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
-        dd($banks, $bank_logos);
-        $blanks = [];
-        $bank_names = array_column($banks, 'bank_name');
-        foreach ($bank_logos as $b_l) {
-            foreach ($b_l as $bank) {
-                $i  =  array_search($bank["name"], $bank_names);
-                if (!$i) {
-                    $blanks[] = $bank;
-                } else {
-                    $banks[$i]['path'] = $bank['path'];
-                }
-            }
+//        $banks = json_decode(file_get_contents($banks_file), true);
+//        $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
+//        dd($banks, $bank_logos);
+//        $blanks = [];
+//        $bank_names = array_column($banks, 'bank_name');
+//        foreach ($bank_logos as $b_l) {
+//            foreach ($b_l as $bank) {
+//                $i  =  array_search($bank["name"], $bank_names);
+//                if (!$i) {
+//                    $blanks[] = $bank;
+//                } else {
+//                    $banks[$i]['path'] = $bank['path'];
+//                }
+//            }
+//        }
+//        dd($banks, $blanks);
+        $banks = json_decode(file_get_contents(storage_path('furnishers/credit_unions.json')), true);
+        foreach($banks as $bank_data) {
+
+            $bank = BankLogo::firstorCreate(['name' => $bank_data['bank_name']]);
+
+            $phone = $bank_data["phone_number"] != 'null' ? substr(str_replace('-', '', $bank_data["phone_number"]), -10): null;
+            $bank->bankAddresses()->firstorCreate(
+                [
+                    "type" => 'registered_agent'
+                ]
+            );
+            $address = $bank->bankAddresses()->firstorCreate(
+                [
+                    "type" => 'executive_address'
+                ]
+            );
+            $address->update(
+                [
+                    "street" => $bank_data["address"],
+                    "city" =>$bank_data["city"],
+                    "state" =>$bank_data["state"],
+                    "zip" => $bank_data["zip_code"],
+                    "phone_number" =>$phone,
+                ]);
         }
-        dd($banks, $blanks);
+        dd('ok');
     }
 
 }
