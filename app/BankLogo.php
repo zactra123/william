@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class BankLogo extends Model
 {
@@ -37,6 +38,16 @@ class BankLogo extends Model
         "cell_phone_companies" => "CELL PHONE COMPANIES",
         "home_security_companies" => "HOME SECURITY COMPANIES"
     ];
+    public function checkUrlAttribute()
+    {
+        return Storage::disk('s3')->has($this->path);
+    }
+
+    public function getUrlAttribute()
+    {
+        return Storage::disk('s3')->url($this->path);
+    }
+
 
     public function bankAccounts()
     {

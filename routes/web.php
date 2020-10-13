@@ -110,6 +110,8 @@ Route::group(['prefix'=>'owner'], function(){
         Route::post('/types/update_keywords', 'Owner\BanksController@update_type_keywords');
         Route::post('/types/update_default', 'Owner\BanksController@update_type_default');
         Route::any('/keywords', 'Owner\BanksController@keywords');
+
+        Route::get('/store-data', 'Owner\BanksController@storeBanksData');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

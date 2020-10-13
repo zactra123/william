@@ -12,6 +12,7 @@ use App\EqualBank;
 use App\Http\Controllers\Controller;
 
 use Facade\FlareClient\Http\Exceptions\NotFound;
+use Illuminate\Support\Facades\Storage;
 use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,10 +64,15 @@ class BanksController extends Controller
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
 
-            $path = "images/banks_logo";
-            $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
-            $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
-            $pathLogo =  '/' . $path . '/'.$nameBankLogo;
+
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file('logo')->storeAs(
+                'bank_logos',
+                "furnisher_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
+
 
         }
         $bank = BankLogo::create([
@@ -147,18 +153,20 @@ class BanksController extends Controller
             if(!in_array($bankLogoExtension, $imageExtension)){
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
-
-            $path = "images/banks_logo";
-            $nameBankLogo =str_replace(' ','_',strtolower($request->name)).date("m_d_y_h").'.'.$bankLogoExtension;
-            $imagesBankLogo->move(public_path() . '/' . $path, $nameBankLogo);
-            $pathLogo =  '/' . $path . '/'.$nameBankLogo;
             $bankLogo = $request->bank;
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file("logo")->storeAs(
+                'bank_logos',
+                "furnisher_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
             $bankLogo['path'] = $pathLogo;
-            $deleteOldLogo = $bank->path;
 
-            if(file_exists(public_path($deleteOldLogo)) && !is_dir(public_path($deleteOldLogo))) {
-                unlink(public_path($deleteOldLogo));
+            if($bank->checkUrlAttribute()) {
+                Storage::delete($bank->path);
             }
+
             $bank->update($bankLogo);
         }else{
             $bank->update($request->bank);
@@ -231,14 +239,11 @@ class BanksController extends Controller
 
         $logId = $request->id;
 
-        $delete = BankLogo::where('id', $logId);
-
-        if(file_exists(public_path($delete->first()->path)) &&  !is_dir(public_path($delete->first()->path))  ){
-            unlink(public_path($delete->first()->path));
-            $delete->delete();
-        }else{
-            $delete->delete();
+        $delete = BankLogo::find($logId);
+        if($delete->checkUrlAttribute()) {
+            Storage::delete($delete->path);
         }
+        $delete->delete();
         return response()->json(['status' => 'success']);
 
 
@@ -349,6 +354,29 @@ class BanksController extends Controller
 
         $account_type->update(['type' => (int) ($request->type == "true")]);
         return response()->json(['status' => 'success']);
+    }
+
+
+    public function storeBanksData()
+    {
+        $banks_file = storage_path('furnishers/banks.json');
+
+        $banks = json_decode(file_get_contents($banks_file), true);
+        $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
+        dd($banks, $bank_logos);
+        $blanks = [];
+        $bank_names = array_column($banks, 'bank_name');
+        foreach ($bank_logos as $b_l) {
+            foreach ($b_l as $bank) {
+                $i  =  array_search($bank["name"], $bank_names);
+                if (!$i) {
+                    $blanks[] = $bank;
+                } else {
+                    $banks[$i]['path'] = $bank['path'];
+                }
+            }
+        }
+        dd($banks, $blanks);
     }
 
 }

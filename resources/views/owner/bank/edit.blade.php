@@ -110,7 +110,11 @@
 
 
                                     <div class="col-sm-3 form-group changeLogo">
-                                        <img src="{{asset($bank->path)}}" width="100px">
+                                        @if($bank->checkUrlAttribute())
+                                            <img src="{{$bank->getUrlAttribute()}}" width="100px">
+                                        @else
+                                            <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+                                        @endif
                                     </div>
                                     <div class="col-sm-3 hide form-group updateLogo files">
                                         <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
