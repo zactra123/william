@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ClientReport;
 use App\ClientReportAddress;
+use App\ClientReportEqAccount;
+use App\ClientReportEqInquiry;
 use App\ClientReportExAccount;
 use App\ClientReportExInquiry;
 use App\ClientReportExPublicRecord;
@@ -14,8 +16,10 @@ use App\ClientReportTuAccount;
 use App\ClientReportTuInquiry;
 use App\ClientReportTuPublicRecord;
 use App\ClientReportTuStatement;
+use App\Disputable;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
+use App\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Auth;
@@ -411,15 +415,16 @@ class ClientDetailsController extends Controller
     public function negativeItem()
     {
 
-        $clientReportsTU = ClientReport::where('user_id',2)->where('type', "TU_DIS")->first();
-        $clientReportsEX = ClientReport::where('user_id',2)->where('type', "EX_LOG")->first();
-        $clientReportsEQ = ClientReport::where('user_id',2)->where('type', "EQ")->first();
+        $clientReportsTU = ClientReport::where('user_id', 2)->where('type', "TU_DIS")->first();
+        $clientReportsEX = ClientReport::where('user_id', 2)->where('type', "EX_LOG")->first();
+        $clientReportsEQ = ClientReport::where('user_id', 2)->where('type', "EQ")->first();
 //        dd($clientReportsEQ);
 //        dd($clientReportsEX);
 
 
-        return view('client_details.view_negative_item', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ'));
+        return view('client_details.view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ'));
     }
+
     public function negativeItemStore(Request $request)
     {
         $dispute = $request->except('_token');
@@ -439,126 +444,125 @@ class ClientDetailsController extends Controller
         $disputeEqAccount = [];
         $disputeEqInquiry = [];
 
-        foreach($dispute as $key => $value){
+        foreach ($dispute as $key => $value) {
 
-            if($key == 'ex_name' or $key == 'tu_name' or 'eq_name'){
-                foreach($value  as $dispute_name){
+            if ($key == 'ex_name' or $key == 'tu_name' or $key == 'eq_name') {
+
+                foreach ($value as $dispute_name) {
                     $name = ClientReportName::where('id', $dispute_name)->first();
-                    $disputeName[] =$name;
+                    $disputeName[] = $name;
                 }
             }
 
-            if($key == 'ex_address' or $key == 'tu_address' or 'eq_address'){
-                foreach($value  as $disputeAddresses){
+            if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
+                foreach ($value as $disputeAddresses) {
                     $address = ClientReportAddress::where('id', $disputeAddresses)->first();
-                    $disputeAddress[] =$address;
+                    $disputeAddress[] = $address;
                 }
             }
 
-            if($key == 'ex_phone' or $key == 'tu_phone'){
-                foreach($value  as $disputePhones){
+            if ($key == 'ex_phone' or $key == 'tu_phone') {
+                foreach ($value as $disputePhones) {
                     $phone = ClientReportPhone::where('id', $disputePhones)->first();
                     $disputePhone[] = $phone;
                 }
             }
 
-            if($key == 'ex_public'){
-                foreach($value  as $disputeExPublicRecords){
+            if ($key == 'ex_public') {
+                foreach ($value as $disputeExPublicRecords) {
                     $exPublic = ClientReportExPublicRecord::where('id', $disputeExPublicRecords)->first();
-                    $disputeExPublicRecord[] =$exPublic;
+                    $disputeExPublicRecord[] = $exPublic;
                 }
             }
 
-            if($key == 'ex_accounts'){
-                foreach($value  as $disputeExAccounts){
+            if ($key == 'ex_accounts') {
+                foreach ($value as $disputeExAccounts) {
                     $exAccount = ClientReportExAccount::where('id', $disputeExAccounts)->first();
                     $disputeExAccount[] = $exAccount;
                 }
             }
 
-            if($key == 'ex_inquiry'){
-                foreach($value  as $disputeExInquiries){
+            if ($key == 'ex_inquiry') {
+                foreach ($value as $disputeExInquiries) {
                     $exInquiry = ClientReportExInquiry::where('id', $disputeExInquiries)->first();
-                    $disputeExInquiry[] =$exInquiry;
+                    $disputeExInquiry[] = $exInquiry;
                 }
             }
 
-            if($key == 'ex_statement'){
-                foreach($value  as $disputeExStatements){
+            if ($key == 'ex_statement') {
+                foreach ($value as $disputeExStatements) {
                     $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();
-                    $disputeExStatement[] =$exStatement;
+                    $disputeExStatement[] = $exStatement;
                 }
             }
 
-            if($key == 'tu_public'){
-                foreach($value  as $disputeTuPublicRecords){
+            if ($key == 'tu_public') {
+                foreach ($value as $disputeTuPublicRecords) {
                     $tuPublic = ClientReportTuPublicRecord::where('id', $disputeTuPublicRecords)->first();
-                    $disputeTuPublicRecord[] =$tuPublic;
+                    $disputeTuPublicRecord[] = $tuPublic;
                 }
             }
 
-            if($key == 'tu_account'){
-                foreach($value  as $disputeTuAccounts){
+            if ($key == 'tu_account') {
+                foreach ($value as $disputeTuAccounts) {
                     $tuAccount = ClientReportTuAccount::where('id', $disputeTuAccounts)->first();
-                    $disputeTuAccount[] =$tuAccount;
+                    $disputeTuAccount[] = $tuAccount;
                 }
-
             }
 
-            if($key == 'tu_inquiry'){
-                foreach($value  as $disputeTuInquiries){
+            if ($key == 'tu_inquiry') {
+                foreach ($value as $disputeTuInquiries) {
                     $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
-                    $disputeTuInquiry[] =$tuInquiry;
+                    $disputeTuInquiry[] = $tuInquiry;
                 }
             }
 
-            if($key == 'tu_statement'){
-                foreach($value  as $disputeTuStatements){
+            if ($key == 'tu_statement') {
+                foreach ($value as $disputeTuStatements) {
                     $tuStatement = ClientReportTuStatement::where('id', $disputeTuStatements)->first();
-                    $disputeTuStatement[] =$tuStatement;
+                    $disputeTuStatement[] = $tuStatement;
                 }
             }
 
-            if($key == 'eq_public'){
-                foreach($value  as $disputeEqPublicRecords){
+            if ($key == 'eq_public') {
+                foreach ($value as $disputeEqPublicRecords) {
                     $tuPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
-                    $disputeEqPublicRecord[] =$tuPublic;
+                    $disputeEqPublicRecord[] = $tuPublic;
                 }
             }
 
-            if($key == 'eq_account'){
-                foreach($value  as $disputeEqAccounts){
-                    $tuAccount = ClientReportEqAccount::where('id', $disputeEqAccounts)->first();
-                    $disputeEqAccount[] =$tuAccount;
+            if ($key == 'eq_account') {
+                foreach ($value as $disputeEqAccounts) {
+                    $tuAccount = ClientReportEqAccount:: where('id', $disputeEqAccounts)->first();
+                    $disputeEqAccount[] = $tuAccount;
                 }
-
             }
 
-            if($key == 'eq_inquiry'){
-                foreach($value  as $disputeEqInquiries){
+            if ($key == 'eq_inquiry') {
+                foreach ($value as $disputeEqInquiries) {
                     $tuInquiry = ClientReportEqInquiry::where('id', $disputeEqInquiries)->first();
-                    $disputeEqInquiry[] =$tuInquiry;
+                    $disputeEqInquiry[] = $tuInquiry;
                 }
             }
-
 
         }
 
+
         $data = [
-            'name'=>$disputeName,
-            'address'=>$disputeAddress,
-            'phone'=>$disputePhone,
-            'ex_public'=>$disputeExPublicRecord,
-            'ex_account'=>$disputeExAccount,
-            'ex_inquiry'=>$disputeExInquiry,
-            'ex_statement'=>$disputeExStatement,
-            'tu_public'=>$disputeTuPublicRecord,
-            'tu_account'=>$disputeTuAccount,
-            'tu_inquiry'=>$disputeTuInquiry,
-            'tu_statement'=>$disputeTuStatement,
-            'eq_public'=>$disputeEqPublicRecord,
-            'eq_account'=>$disputeEqAccount,
-            'eq_inquiry'=>$disputeEqInquiry
+            'name' => $disputeName,
+            'address' => $disputeAddress,
+            'phone' => $disputePhone,
+            'ex_public' => $disputeExPublicRecord,
+            'ex_account' => $disputeExAccount,
+            'ex_inquiry' => $disputeExInquiry,
+            'ex_statement' => $disputeExStatement,
+            'tu_public' => $disputeTuPublicRecord,
+            'tu_account' => $disputeTuAccount,
+            'tu_inquiry' => $disputeTuInquiry,
+            'tu_statement' => $disputeTuStatement,
+            'eq_public' => $disputeEqPublicRecord,
+            'eq_account' => $disputeEqAccount,
+            'eq_inquiry' => $disputeEqInquiry
         ];
 
 
@@ -569,127 +573,280 @@ class ClientDetailsController extends Controller
     public function negativeItemContract(Request $request)
     {
 
-        dd($request->all());
-        $user = Auth::user();
-        if($user->clientDetails->sex = "M"){
-           $heSheIt = "he";
-        }elseif($user->clientDetails->sex = "M"){
-            $heSheIt = "she";
-        }else{$heSheIt = "the client";}
+        $dispute = $request->except('_token');
+        $clientId = Auth::user()->id;
+        $user = User::where('role', 'receptionist')->first();
 
-        $sumDisp = null;
+        foreach ($dispute as $key => $value) {
 
-        if(empty($request->except('_token'))){
-            return redirect()->back()
-                ->withInput()
-                ->withErrors("Nothing chosen");
-        }
+            if ($key == 'ex_name' or $key == 'tu_name' or $key == 'eq_name') {
+                $todoName = $this->saveToDo($clientId, $user->id, "Name", "","in progress");
+                foreach ($value as $dispute_name) {
 
-        foreach ($request->except('_token') as $item) {
-            $sumDisp = $sumDisp + count($item);
-        }
-        if($sumDisp>1){
-            $pluralItem = "all negative items";
-            $plural = "items";
-            $pluralViol = "violations";
-        }else{
-            $pluralItem = "negative";
-            $plural = "item";
-            $pluralViol = "violation";
-        }
-
-
-
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(false);
-
-        $document = $phpWord->loadTemplate(public_path('/files/contract').'/PRUDENT_CONTRACT.docx');
-
-        $document->setValue('DAY', (date("d")) );
-        $document->setValue('MONTH', (date("M")) );
-        $document->setValue('YEAR', (date("Y")) );
-        $document->setValue('CLIENT_NAME', ($user->full_name()) );
-        $document->setValue('HE_SHE_THE CLIENT', ($heSheIt));
-        $document->setValue('PLURAL_ITEM', ($pluralItem));
-        $document->setValue('ITEM_ITEMS', ($plural));
-        $document->setValue('VIOLATION', ($pluralViol));
-        $document->setValue('DATE', (date("d/M/Y")));
-
-
-        $path='C:\xampp\htdocs\ccc\public\images\banks_logo\payoff.jpeg';
-        $document->setImageValue('foto', array('path' => $path, 'width' => 100, 'height' => 100, 'ratio' => true));
-        $length = 31;
-        $cloneCount = (int)ceil($length/10);
-        $countInRow = $length%10 +1;
-
-        $document->cloneRow('row1', $cloneCount);
-        if($countInRow <= 10){
-            for($j = $countInRow; $j<=10; $j++){
-                $document->setValue('logo'.$j.'#'.$cloneCount,'');
-                $document->setValue('neg'.$j.'#'.$cloneCount, '');
-            }
-        }
-        for($k = 1; $k<=$length; $k++){
-            $document->setValue('row1#'.$k ,'');
-        }
-        $row = 1;
-        for($k = 1; $k<=$length; $k++){
-
-
-
-            $logo = $k %10==0?'logo10#'.$row:'logo'.$k%10 .'#'. $row;
-            $neg = $k %10==0?'neg10#'.$row:'neg'.$k%10 .'#'. $row;
-
-            $document->setImageValue($logo, array('path' => $path, 'width' => 50, 'height' => 50, 'ratio' => true));
-            $document->setValue($neg, '1st Line<w:br />2nd Line');
-            if($k %10 == 0){
-                $row = $row+1;
+                    $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name);
+                }
             }
 
+            if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
+
+                $todoAddress = $this->saveToDo($clientId, $user->id, "Address", "","in progress");
+
+                foreach ($value as $disputeAddresses) {
+                    $this->saveDisputable($todoAddress, "App\\ClientReportAddress",  $disputeAddresses);
+               }
+            }
+
+            if ($key == 'ex_phone' or $key == 'tu_phone') {
+                $todoPhone = $this->saveToDo($clientId, $user->id, "Phone", "","in progress");
+                foreach ($value as $disputePhones) {
+                    $this->saveDisputable($todoPhone, "App\\ClientReportPhone",  $disputePhones);
+                }
+            }
+
+            if ($key == 'ex_public') {
+                $todoExPublic = $this->saveToDo($clientId, $user->id, "Experian Public Record", "","in progress");
+                foreach ($value as $disputeExPublicRecords) {
+                    $this->saveDisputable($todoExPublic, "App\\ClientReportExPublicRecord",  $disputeExPublicRecords);
+                }
+            }
+
+            if ($key == 'ex_accounts') {
+                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "","in progress");
+
+                foreach ($value as $disputeExAccounts) {
+                    $this->saveDisputable($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts);
+
+                }
+            }
+
+            if ($key == 'ex_inquiry') {
+                $todoExInquiry = $this->saveToDo($clientId, $user->id, "Experian Inquiry", "","in progress");
+                foreach ($value as $disputeExInquiries) {
+                    $this->saveDisputable($todoExInquiry, "App\\ClientReportExInquiry",  $disputeExInquiries);
+                }
+            }
+
+            if ($key == 'ex_statement') {
+                $todoExStatement = $this->saveToDo($clientId, $user->id, "Experian Statement", "","in progress");
+                foreach ($value as $disputeExStatements) {
+                    $this->saveDisputable($todoExStatement, "App\\ClientReportExStatement",  $disputeExStatements);
+                }
+            }
+
+            if ($key == 'tu_public') {
+                $todoTuPublic = $this->saveToDo($clientId, $user->id, "TransUnion Public Record", "","in progress");
+                foreach ($value as $disputeTuPublicRecords) {
+                    $this->saveDisputable($todoTuPublic, "App\\ClientReportTuPublicRecord",  $disputeTuPublicRecords);
+                }
+            }
+
+            if ($key == 'tu_account') {
+                $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "","in progress");
+                foreach ($value as $disputeTuAccounts) {
+                    $this->saveDisputable($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts);
+                }
+            }
+
+            if ($key == 'tu_inquiry') {
+                $todoTuInquiry = $this->saveToDo($clientId, $user->id, "TransUnion Inquiry", "","in progress");
+                foreach ($value as $disputeTuInquiries) {
+                    $this->saveDisputable($todoTuInquiry, "App\\ClientReportTuInquiry",  $disputeTuInquiries);
+                }
+            }
+
+            if ($key == 'tu_statement') {
+                $todoTuStatement = $this->saveToDo($clientId, $user->id, "TransUnion Statement", "","in progress");
+                foreach ($value as $disputeTuStatements) {
+                    $this->saveDisputable($todoTuStatement, "App\\ClientReportTuStatement",  $disputeTuStatements);
+                }
+            }
+
+            if ($key == 'eq_public') {
+                $todoEqPublic = $this->saveToDo($clientId, $user->id, "Equifax Public Record", "","in progress");
+                foreach ($value as $disputeEqPublicRecords) {
+                    $this->saveDisputable($todoEqPublic, "App\\ClientReportEqPublicRecord",  $disputeEqPublicRecords);
+                }
+            }
+
+            if ($key == 'eq_account') {
+                $todoEqAccount = $this->saveToDo($clientId, $user->id, "Equifax Account", "","in progress");
+                foreach ($value as $disputeEqAccounts) {
+                    $this->saveDisputable($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts);
+                }
+            }
+
+            if ($key == 'eq_inquiry') {
+                $todoEqInquiry = $this->saveToDo($clientId, $user->id, "Equifax Inquiry", "","in progress");
+                foreach ($value as $disputeEqInquiries) {
+                    $this->saveDisputable($todoEqInquiry, "App\\ClientReportEqInquiry",  $disputeEqInquiries);
+                }
+            }
+
+
+//        $data = [
+//            'name'=>$disputeName,
+//            'address'=>$disputeAddress,
+//            'phone'=>$disputePhone,
+//            'ex_public'=>$disputeExPublicRecord,
+//            'ex_account'=>$disputeExAccount,
+//            'ex_inquiry'=>$disputeExInquiry,
+//            'ex_statement'=>$disputeExStatement,
+//            'tu_public'=>$disputeTuPublicRecord,
+//            'tu_account'=>$disputeTuAccount,
+//            'tu_inquiry'=>$disputeTuInquiry,
+//            'tu_statement'=>$disputeTuStatement,
+//            'eq_public'=>$disputeEqPublicRecord,
+//            'eq_account'=>$disputeEqAccount,
+//            'eq_inquiry'=>$disputeEqInquiry
+//        ];
+
+//
+//        if($user->clientDetails->sex = "M"){
+//           $heSheIt = "he";
+//        }elseif($user->clientDetails->sex = "M"){
+//            $heSheIt = "she";
+//        }else{$heSheIt = "the client";}
+//
+//        $sumDisp = null;
+//
+//        if(empty($request->except('_token'))){
+//            return redirect()->back()
+//                ->withInput()
+//                ->withErrors("Nothing chosen");
+//        }
+//
+//        foreach ($request->except('_token') as $item) {
+//            $sumDisp = $sumDisp + count($item);
+//        }
+//        if($sumDisp>1){
+//            $pluralItem = "all negative items";
+//            $plural = "items";
+//            $pluralViol = "violations";
+//        }else{
+//            $pluralItem = "negative";
+//            $plural = "item";
+//            $pluralViol = "violation";
+//        }
+//
+//
+//
+//        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+//        \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(false);
+//
+//        $document = $phpWord->loadTemplate(public_path('/files/contract').'/PRUDENT_CONTRACT.docx');
+//
+//        $document->setValue('DAY', (date("d")) );
+//        $document->setValue('MONTH', (date("M")) );
+//        $document->setValue('YEAR', (date("Y")) );
+//        $document->setValue('CLIENT_NAME', ($user->full_name()) );
+//        $document->setValue('HE_SHE_THE CLIENT', ($heSheIt));
+//        $document->setValue('PLURAL_ITEM', ($pluralItem));
+//        $document->setValue('ITEM_ITEMS', ($plural));
+//        $document->setValue('VIOLATION', ($pluralViol));
+//        $document->setValue('DATE', (date("d/M/Y")));
+//
+//
+//        $path='C:\xampp\htdocs\ccc\public\images\banks_logo\payoff.jpeg';
+//        $document->setImageValue('foto', array('path' => $path, 'width' => 100, 'height' => 100, 'ratio' => true));
+//        $length = 31;
+//        $cloneCount = (int)ceil($length/10);
+//        $countInRow = $length%10 +1;
+//
+//        $document->cloneRow('row1', $cloneCount);
+//        if($countInRow <= 10){
+//            for($j = $countInRow; $j<=10; $j++){
+//                $document->setValue('logo'.$j.'#'.$cloneCount,'');
+//                $document->setValue('neg'.$j.'#'.$cloneCount, '');
+//            }
+//        }
+//        for($k = 1; $k<=$length; $k++){
+//            $document->setValue('row1#'.$k ,'');
+//        }
+//        $row = 1;
+//        for($k = 1; $k<=$length; $k++){
+//
+//
+//
+//            $logo = $k %10==0?'logo10#'.$row:'logo'.$k%10 .'#'. $row;
+//            $neg = $k %10==0?'neg10#'.$row:'neg'.$k%10 .'#'. $row;
+//
+//            $document->setImageValue($logo, array('path' => $path, 'width' => 50, 'height' => 50, 'ratio' => true));
+//            $document->setValue($neg, '1st Line<w:br />2nd Line');
+//            if($k %10 == 0){
+//                $row = $row+1;
+//            }
+//
+//        }
+//
+////        $table = new Table(array('borderSize' => 12, 'borderColor' => 'black', 'width' => 6000));
+////        $table->addRow();
+////        $table->addCell()->addImage($path, array('width' => 100, 'height' => 100, 'ratio' => true));
+//////        $table->addCell(4500)->addImage( $path, array('width' => 530, 'height' => 75, 'marginTop' => -1 , 'marginLeft' => -1, 'marginRight' => -1));
+////        $table->addCell(150)->addText(htmlspecialchars('${NEW_PHOTO/}'));
+////        $table->addCell(150)->addText(htmlspecialchars(''));
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $table->addRow();
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
+////        $document->setComplexBlock('table', $table);
+////        dd($document);
+//        $name = 'Doc_1'.date("Y_m_d_h_m").'.docx';
+//
+//        $xxx = $name;
+//
+//        $document->saveAs($name);
+//        rename($name, public_path()."/files/contract/{$name}");
+//
+//        $file= public_path(). "/files/contract/{$name}";
+//
+//
+//
+////        $file= storage_path(). "/word/{$name}";
+////
+////        $headers = array(
+////            //'Content-Type: application/msword',
+////            'Content-Type: vnd.openxmlformats-officedocument.wordprocessingml.document'
+////        );
+////
+////        $response = Response::download($file, $name, $headers);
+////        ob_end_clean();
+////
+////        return $response;
+//
+//
+//        dd('test for send variabkes in word documents', $phpWord, $document);
         }
 
-//        $table = new Table(array('borderSize' => 12, 'borderColor' => 'black', 'width' => 6000));
-//        $table->addRow();
-//        $table->addCell()->addImage($path, array('width' => 100, 'height' => 100, 'ratio' => true));
-////        $table->addCell(4500)->addImage( $path, array('width' => 530, 'height' => 75, 'marginTop' => -1 , 'marginLeft' => -1, 'marginRight' => -1));
-//        $table->addCell(150)->addText(htmlspecialchars('${NEW_PHOTO/}'));
-//        $table->addCell(150)->addText(htmlspecialchars(''));
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $table->addRow();
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-//        $document->setComplexBlock('table', $table);
-//        dd($document);
-        $name = 'Doc_1'.date("Y_m_d_h_m").'.docx';
 
-        $xxx = $name;
-
-        $document->saveAs($name);
-        rename($name, public_path()."/files/contract/{$name}");
-
-        $file= public_path(). "/files/contract/{$name}";
-
-
-
-//        $file= storage_path(). "/word/{$name}";
-//
-//        $headers = array(
-//            //'Content-Type: application/msword',
-//            'Content-Type: vnd.openxmlformats-officedocument.wordprocessingml.document'
-//        );
-//
-//        $response = Response::download($file, $name, $headers);
-//        ob_end_clean();
-//
-//        return $response;
-
-
-        dd('test for send variabkes in word documents', $phpWord, $document);
     }
 
+    public function saveToDo($clientId, $userId, $title, $desc, $status)
+    {
+        $todo = Todo::create([
+            'client_id' => $clientId,
+            'user_id' => $userId,
+            'title' => $title,
+            'description' => "",
+            'status' => $status,
+            'due_date' => null,
+            'completed_date' => null
+        ]);
 
+        return $todo->id;
+    }
+
+    public function saveDisputable($todoId, $type, $id)
+    {
+        Disputable::create([
+            'todo_id' => $todoId,
+            'disputable_type' => $type,
+            'disputable_id' => $id
+        ]);
+        return true;
+    }
 
 }
+

@@ -1459,7 +1459,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input name="eq_name[]" type="checkbox" id="tu-name-{{$names->id}}" value ="{{$names->id}}" class="customcheck">
+                                            <input name="eq_name[]" type="checkbox" id="eq-name-{{$names->id}}" value ="{{$names->id}}" class="customcheck">
 
                                         </div>
                                     </div>
@@ -1502,7 +1502,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input name="eq_address[]" type="checkbox" id="tu-address-{{$address->id}}" value ="{{$address->id}}" class="customcheck">
+                                            <input name="eq_address[]" type="checkbox" id="eq-address-{{$address->id}}" value ="{{$address->id}}" class="customcheck">
                                         </div>
                                     </div>
                                 </div>
@@ -1855,7 +1855,7 @@
                                             <label class="form-text">DISPUTE</label>
                                         </div>
                                         <div class="col-md-4 ">
-                                            <input type="checkbox" name="eq_inquiry[]" value="{{$inquiries->id}}" id="tu-inquiry-{{$inquiries->id}}" class="customcheck">
+                                            <input type="checkbox" name="eq_inquiry[]" value="{{$inquiry->id}}" id="tu-inquiry-{{$inquiry->id}}" class="customcheck">
                                         </div>
                                     </div>
                                 </div>

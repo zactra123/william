@@ -339,7 +339,7 @@
                         @endif
 
                         @if(!empty($data['eq_public']))
-                            @foreach($data['eq_public'] as $tu_public)
+                            @foreach($data['eq_public'] as $eq_public)
                                 <div class="mt20 title-eq_public-{{$eq_public->id}}"></div>
                                 <div class="chart-report title-eq_public-{{$eq_public->id}}">
                                     <div class="row " style="font-weight: bold">
@@ -575,7 +575,7 @@
                         @endif
 
                         @if(!empty($data['eq_account']))
-                            @foreach($data['eq_account'] as $tu_account)
+                            @foreach($data['eq_account'] as $eq_account)
                                 @if(!empty($eq_account))
                                     <div class="mt20 title-eq_account-{{$eq_account->id}}"></div>
                                     <div class="chart-report title-eq_account-{{$eq_account->id}}">
@@ -700,8 +700,8 @@
                         @endif
 
                         @if(!empty($data['eq_inquiry']))
-                            @foreach($data['eq_inquiry'] as $tu_inquiry)
-                                @if(!empty($tu_inquiry))
+                            @foreach($data['eq_inquiry'] as $eq_inquiry)
+                                @if(!empty($eq_inquiry))
 
                                     <div class="mt20 title-eq_inquiry-{{$eq_inquiry->id}}"></div>
                                     <div class="chart-report title-eq_inquiry-{{$eq_inquiry->id}}">
