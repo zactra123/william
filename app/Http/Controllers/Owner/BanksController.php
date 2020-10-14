@@ -385,8 +385,9 @@ class BanksController extends Controller
                 }
             }
         }
-
-        dd($banks);
+        $a= array_chunk($banks, count($banks)/2);
+        return response()->json($a[0]);
+        dd($a[1]);
         $t = [];
 
         foreach($blanks as $b_2){
