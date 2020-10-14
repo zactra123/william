@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use ParagonIE\Sodium\File;
+use function RingCentral\Psr7\str;
 
 class BanksController extends Controller
 {
@@ -361,22 +362,66 @@ class BanksController extends Controller
     {
         $banks_file = storage_path('furnishers/banks.json');
 
-//        $banks = json_decode(file_get_contents($banks_file), true);
-//        $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
-//        dd($banks, $bank_logos);
-//        $blanks = [];
-//        $bank_names = array_column($banks, 'bank_name');
-//        foreach ($bank_logos as $b_l) {
-//            foreach ($b_l as $bank) {
-//                $i  =  array_search($bank["name"], $bank_names);
-//                if (!$i) {
-//                    $blanks[] = $bank;
-//                } else {
-//                    $banks[$i]['path'] = $bank['path'];
-//                }
-//            }
-//        }
-//        dd($banks, $blanks);
+
+        $banks = json_decode(file_get_contents($banks_file), true);
+        $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
+        $blanks = [];
+        $bank_names = array_column($banks, 'bank_name');
+
+//        dd(array_sum(array_map("count", $bank_logos)) , count($bank_names));
+        $banks_with_logo = [];
+        foreach ($bank_logos as $b_l) {
+
+            foreach ($b_l as $bank) {
+
+                $i  =  array_search($bank["name"], $bank_names);
+                if (!$i) {
+                    $blanks[] = $bank;
+                } else {
+
+                    $banks[$i]['path'] = $bank['path'];
+                    unset($bank_names[$i]);
+                }
+            }
+        }
+        $t = [];
+
+        foreach($blanks as $b_2){
+
+            $i  =  preg_grep("/^".$b_2["name"].".*/mi", $bank_names);
+
+            if (!$i or empty($i)) {
+                $blanks1[] = $b_2;
+            } else {
+
+                $banks[ key($i)]['path'] = $b_2['path'];
+                unset($bank_names[ key($i)]);
+                $t[key($i)] =  $banks[ key($i)];
+                $t[ key($i)]['path'] = $b_2['path'];
+                $t[ key($i)]['equal_name'] = $b_2['name'];
+            }
+
+        }
+        dd($t, $bank_names);
+        $t = [];
+        foreach($blanks1 as $b_3)
+        {
+           $name = substr($b_3["name"], 0, intdiv(strlen($b_3["name"]),2));
+            $j  =  preg_grep("/".$name.".*/mi", $bank_names);
+
+            if (!$j or empty($i)) {
+                $blanks2[] = $b_3;
+            } else {
+                $t[key($j)] =  $banks[ key($j)];
+                $t[ key($j)]['path'] = $b_3['path'];
+                $t[ key($j)]['equal_name'][] = $b_3['name'];
+            }
+
+        }
+        dd($t, $blanks1, $blanks2);
+
+
+        dd($blanks1, $blanks2);
         $banks = json_decode(file_get_contents(storage_path('furnishers/credit_unions.json')), true);
         foreach($banks as $bank_data) {
 
