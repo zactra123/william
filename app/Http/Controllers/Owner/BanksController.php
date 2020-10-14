@@ -381,9 +381,12 @@ class BanksController extends Controller
 
                     $banks[$i]['path'] = $bank['path'];
                     unset($bank_names[$i]);
+                    unset($banks[$i]);
                 }
             }
         }
+
+        dd($banks);
         $t = [];
 
         foreach($blanks as $b_2){
