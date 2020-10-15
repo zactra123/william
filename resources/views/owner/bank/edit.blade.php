@@ -73,6 +73,24 @@
     <section class="ms-user-account">
         <div class="container">
             <div class="col-md-12 col-sm-12">
+                <div class="row m-2  pt-4">
+                    <div class="col-md-8 pull-left">
+
+                    </div>
+                    <div class="col-md-4 pull-right">
+                        <form action="/owner/furnishers" method="get">
+                            <div class="row">
+                                <div class="col-md-8 form-group">
+                                    <input type="text" name="term"  class="form-control" >
+                                </div>
+                                <div class="col-md-4  form-group">
+                                    <input type="submit" value="Search" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
                 <?php
                     $states = [null=>''] + \App\BankAddress::STATES;
                     $types = [null=>''] + \App\BankLogo::TYPES;
@@ -80,28 +98,6 @@
                     {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
-
-
-                    <div class="row m-2  pt-4">
-                        <div class="col-md-8 pull-left">
-
-                        </div>
-                        <div class="col-md-4 pull-right">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-8 form-group">
-                                        <input type="text" name="term"  class="form-control" >
-                                    </div>
-                                    <div class="col-md-4  form-group">
-                                        <input type="submit" value="Search" class="form-control">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-
-
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
 
