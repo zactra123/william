@@ -364,6 +364,39 @@ class BanksController extends Controller
 
 
         $banks = json_decode(file_get_contents($banks_file), true);
+
+        foreach($banks as $bank_data) {
+            $bank = BankLogo::firstorCreate(['name' => $bank_data['bank_name']]);
+
+            $bank->update(['path'=> $bank_data['path']]);
+            $bank->bankAddresses()->firstorCreate(
+                [
+                    "type" => 'registered_agent'
+                ]
+            );
+            $address = $bank->bankAddresses()->firstorCreate(
+                [
+                    "type" => 'executive_address'
+                ]
+            );
+            $phone = $bank_data['phone_number'] ? substr(preg_replace("/[^0-9]/", "", $bank_data["phone_number"]), -10): null;
+            $address->update(
+                [
+                    "street" => $bank_data["address"],
+                    "city" =>$bank_data["city"],
+                    "state" =>$bank_data["state"],
+                    "zip" => $bank_data["zip_code"],
+                    "phone_number" =>$phone,
+                ]);
+
+            if (!empty($bank_data['equal_name'])){
+
+                $bank->equalBanks()->firstorCreate(['name' => $bank_data['equal_name']]);
+            }
+        }
+        dd('done');
+
+
         $bank_logos = json_decode(file_get_contents(storage_path('furnishers/bank_logo.json')), true);
         $blanks = [];
         $bank_names = array_column($banks, 'bank_name');
@@ -378,15 +411,16 @@ class BanksController extends Controller
                 if (!$i) {
                     $blanks[] = $bank;
                 } else {
-
                     $banks[$i]['path'] = $bank['path'];
+                    $banks_with_logo[] = $banks[$i];
                     unset($bank_names[$i]);
                     unset($banks[$i]);
                 }
             }
         }
+        return response()->json($banks_with_logo);
         $a= array_chunk($banks, count($banks)/2);
-        return response()->json($a[0]);
+        return response()->json($a[1]);
         dd($a[1]);
         $t = [];
 
