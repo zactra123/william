@@ -367,8 +367,10 @@ class BanksController extends Controller
 
         foreach($banks as $bank_data) {
             $bank = BankLogo::firstorCreate(['name' => $bank_data['bank_name']]);
+            if (!empty($bank_data['path'])) {
+                $bank->update(['path'=> $bank_data['path']]);
+            }
 
-            $bank->update(['path'=> $bank_data['path']]);
             $bank->bankAddresses()->firstorCreate(
                 [
                     "type" => 'registered_agent'
