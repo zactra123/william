@@ -21,6 +21,11 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
+        $scraper = new Screaper(1);
+//        VAHEM@YMAIL.COM  V0552ahe TOYOTA 1984 05/01/1984
+        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
+
+        dd($data);
 
         $pageContentUp = DB::table('home_pages')->get();
 
