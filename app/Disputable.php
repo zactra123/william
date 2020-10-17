@@ -20,6 +20,11 @@ class Disputable extends Model
         '2'=>'COMPLETED',
     ];
 
+    public function disputable()
+    {
+        return $this->morphTo();
+    }
+
     public function clientReportName()
     {
         return $this->belongsTo('App\ClientReportName','disputable_id', 'id');

@@ -24,7 +24,7 @@ class Todo extends Model
     ];
 
 
-    public function disputeable()
+    public function disputes()
     {
         return $this->hasMany('App\Disputable');
     }

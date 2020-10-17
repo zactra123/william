@@ -14,6 +14,13 @@ class ClientReportName extends Model
 
     public function clientReport()
     {
-        return $this->belongsTo('App/ClientReport');
+        return $this->belongsTo('App\ClientReport');
+    }
+
+
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        return "$berau : $this->full_name";
     }
 }

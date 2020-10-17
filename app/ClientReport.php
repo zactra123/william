@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReport extends Model
 {
+    const REPORT_TYPES = [
+        'EQ' => "EQUIFAX",
+        'EX_LOG' => "EXPERIAN",
+        'EX_VIEW' => "EXPERIAN",
+        'TU_DIS' => "TRANSUNION",
+        'TU_MEM' => "TRANSUNION",
+    ];
+
     protected $fillable = [
         'user_id',
         'type',

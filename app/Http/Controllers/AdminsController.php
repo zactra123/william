@@ -73,13 +73,31 @@ class AdminsController extends Controller
         $client = User::clients()->find($clientId);
         $toDos = Todo::where('client_id', $clientId)->get();
 
-
-
         //       return view('admin.client-profile', compact('client'));
        return view('admin.client-profile-1', compact('client', 'toDos'));
 
 
     }
+    public function clientToDo(Request $request)
+    {
+        $toDo = Todo::find($request->id);
+
+        $view = view('helpers.to-do-form', compact('toDo'))->render();
+
+        return response()->json(['status' => 200, 'view' => $view]);
+
+
+//        return Response::json(['status' => 200, 'view' => $view]);
+
+    }
+
+    public function clientToDoUpdate(Request $request)
+    {
+        dd($request);
+    }
+
+
+
     public function clientReport(Request $request)
     {
         $clientReportsEQ = null;
