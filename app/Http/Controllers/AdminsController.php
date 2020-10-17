@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\ClientReport;
 use App\Message;
+use App\Todo;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -70,9 +71,12 @@ class AdminsController extends Controller
     public function clientProfile($clientId)
     {
         $client = User::clients()->find($clientId);
+        $toDos = Todo::where('client_id', $clientId)->get();
 
-//       return view('admin.client-profile', compact('client'));
-       return view('admin.client-profile-1', compact('client'));
+
+
+        //       return view('admin.client-profile', compact('client'));
+       return view('admin.client-profile-1', compact('client', 'toDos'));
 
 
     }

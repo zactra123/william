@@ -161,7 +161,7 @@
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                             <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
-                                            <input type="hidden" name="phone[{{$phone->id}}]" value="{{$phone->id}}">
+                                            <input type="hidden" name="phone[]" value="{{$phone->id}}">
                                         </div>
                                     </div>
                                 @endforeach

@@ -17,6 +17,11 @@ class Todo extends Model
         'due_date',
         'completed_date'
     ];
+    const STATUS = [
+        '0'=>'ACTIVE',
+        '1'=>'PENDING',
+        '2'=>'COMPLETED',
+    ];
 
 
     public function disputeable()

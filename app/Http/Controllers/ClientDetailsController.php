@@ -572,116 +572,111 @@ class ClientDetailsController extends Controller
 
     public function negativeItemContract(Request $request)
     {
-
         $dispute = $request->except('_token');
         $clientId = Auth::user()->id;
         $user = User::where('role', 'receptionist')->first();
 
         foreach ($dispute as $key => $value) {
-
-            if ($key == 'ex_name' or $key == 'tu_name' or $key == 'eq_name') {
-                $todoName = $this->saveToDo($clientId, $user->id, "Name", "","in progress");
+            if ($key == 'name') {
+                $todoName = $this->saveToDo($clientId, $user->id, "Name", "",0);
                 foreach ($value as $dispute_name) {
-
-                    $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name);
+                    $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name, 0);
                 }
             }
 
-            if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
-
-                $todoAddress = $this->saveToDo($clientId, $user->id, "Address", "","in progress");
-
+            if ($key == 'address') {
+                $todoAddress = $this->saveToDo($clientId, $user->id, "Address", "",0);
                 foreach ($value as $disputeAddresses) {
                     $this->saveDisputable($todoAddress, "App\\ClientReportAddress",  $disputeAddresses);
                }
             }
 
-            if ($key == 'ex_phone' or $key == 'tu_phone') {
-                $todoPhone = $this->saveToDo($clientId, $user->id, "Phone", "","in progress");
+            if ($key == 'phone') {
+                $todoPhone = $this->saveToDo($clientId, $user->id, "Phone", "",0);
                 foreach ($value as $disputePhones) {
-                    $this->saveDisputable($todoPhone, "App\\ClientReportPhone",  $disputePhones);
+                    $this->saveDisputable($todoPhone, "App\\ClientReportPhone",  $disputePhones,0);
                 }
             }
 
             if ($key == 'ex_public') {
-                $todoExPublic = $this->saveToDo($clientId, $user->id, "Experian Public Record", "","in progress");
+                $todoExPublic = $this->saveToDo($clientId, $user->id, "Experian Public Record", "",0);
                 foreach ($value as $disputeExPublicRecords) {
-                    $this->saveDisputable($todoExPublic, "App\\ClientReportExPublicRecord",  $disputeExPublicRecords);
+                    $this->saveDisputable($todoExPublic, "App\\ClientReportExPublicRecord",  $disputeExPublicRecords,0);
                 }
             }
 
             if ($key == 'ex_accounts') {
-                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "","in progress");
+                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
 
                 foreach ($value as $disputeExAccounts) {
-                    $this->saveDisputable($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts);
+                    $this->saveDisputable($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
 
                 }
             }
 
             if ($key == 'ex_inquiry') {
-                $todoExInquiry = $this->saveToDo($clientId, $user->id, "Experian Inquiry", "","in progress");
+                $todoExInquiry = $this->saveToDo($clientId, $user->id, "Experian Inquiry", "",0);
                 foreach ($value as $disputeExInquiries) {
-                    $this->saveDisputable($todoExInquiry, "App\\ClientReportExInquiry",  $disputeExInquiries);
+                    $this->saveDisputable($todoExInquiry, "App\\ClientReportExInquiry",  $disputeExInquiries,0);
                 }
             }
 
             if ($key == 'ex_statement') {
-                $todoExStatement = $this->saveToDo($clientId, $user->id, "Experian Statement", "","in progress");
+                $todoExStatement = $this->saveToDo($clientId, $user->id, "Experian Statement", "",0);
                 foreach ($value as $disputeExStatements) {
-                    $this->saveDisputable($todoExStatement, "App\\ClientReportExStatement",  $disputeExStatements);
+                    $this->saveDisputable($todoExStatement, "App\\ClientReportExStatement",  $disputeExStatements,0);
                 }
             }
 
             if ($key == 'tu_public') {
-                $todoTuPublic = $this->saveToDo($clientId, $user->id, "TransUnion Public Record", "","in progress");
+                $todoTuPublic = $this->saveToDo($clientId, $user->id, "TransUnion Public Record", "",0);
                 foreach ($value as $disputeTuPublicRecords) {
-                    $this->saveDisputable($todoTuPublic, "App\\ClientReportTuPublicRecord",  $disputeTuPublicRecords);
+                    $this->saveDisputable($todoTuPublic, "App\\ClientReportTuPublicRecord",  $disputeTuPublicRecords,0);
                 }
             }
 
             if ($key == 'tu_account') {
-                $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "","in progress");
+                $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "",0);
                 foreach ($value as $disputeTuAccounts) {
-                    $this->saveDisputable($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts);
+                    $this->saveDisputable($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts,0);
                 }
             }
 
             if ($key == 'tu_inquiry') {
-                $todoTuInquiry = $this->saveToDo($clientId, $user->id, "TransUnion Inquiry", "","in progress");
+                $todoTuInquiry = $this->saveToDo($clientId, $user->id, "TransUnion Inquiry", "",0);
                 foreach ($value as $disputeTuInquiries) {
-                    $this->saveDisputable($todoTuInquiry, "App\\ClientReportTuInquiry",  $disputeTuInquiries);
+                    $this->saveDisputable($todoTuInquiry, "App\\ClientReportTuInquiry",  $disputeTuInquiries,0);
                 }
             }
 
             if ($key == 'tu_statement') {
-                $todoTuStatement = $this->saveToDo($clientId, $user->id, "TransUnion Statement", "","in progress");
+                $todoTuStatement = $this->saveToDo($clientId, $user->id, "TransUnion Statement", "",0);
                 foreach ($value as $disputeTuStatements) {
-                    $this->saveDisputable($todoTuStatement, "App\\ClientReportTuStatement",  $disputeTuStatements);
+                    $this->saveDisputable($todoTuStatement, "App\\ClientReportTuStatement",  $disputeTuStatements,0);
                 }
             }
 
             if ($key == 'eq_public') {
-                $todoEqPublic = $this->saveToDo($clientId, $user->id, "Equifax Public Record", "","in progress");
+                $todoEqPublic = $this->saveToDo($clientId, $user->id, "Equifax Public Record", "",0);
                 foreach ($value as $disputeEqPublicRecords) {
-                    $this->saveDisputable($todoEqPublic, "App\\ClientReportEqPublicRecord",  $disputeEqPublicRecords);
+                    $this->saveDisputable($todoEqPublic, "App\\ClientReportEqPublicRecord",  $disputeEqPublicRecords,0);
                 }
             }
 
             if ($key == 'eq_account') {
-                $todoEqAccount = $this->saveToDo($clientId, $user->id, "Equifax Account", "","in progress");
+                $todoEqAccount = $this->saveToDo($clientId, $user->id, "Equifax Account", "",0);
                 foreach ($value as $disputeEqAccounts) {
-                    $this->saveDisputable($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts);
+                    $this->saveDisputable($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts,0);
                 }
             }
 
             if ($key == 'eq_inquiry') {
-                $todoEqInquiry = $this->saveToDo($clientId, $user->id, "Equifax Inquiry", "","in progress");
+                $todoEqInquiry = $this->saveToDo($clientId, $user->id, "Equifax Inquiry", "",0);
                 foreach ($value as $disputeEqInquiries) {
-                    $this->saveDisputable($todoEqInquiry, "App\\ClientReportEqInquiry",  $disputeEqInquiries);
+                    $this->saveDisputable($todoEqInquiry, "App\\ClientReportEqInquiry",  $disputeEqInquiries,0);
                 }
             }
-
+            return redirect()->route('client.details.index');
 
 //        $data = [
 //            'name'=>$disputeName,
@@ -838,12 +833,13 @@ class ClientDetailsController extends Controller
         return $todo->id;
     }
 
-    public function saveDisputable($todoId, $type, $id)
+    public function saveDisputable($todoId, $type, $id, $status)
     {
         Disputable::create([
             'todo_id' => $todoId,
             'disputable_type' => $type,
-            'disputable_id' => $id
+            'disputable_id' => $id,
+            'status' => $status
         ]);
         return true;
     }

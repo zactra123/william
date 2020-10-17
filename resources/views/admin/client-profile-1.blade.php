@@ -254,6 +254,15 @@
 
                                 <div class="content">
                                     <h2>TO DO</h2>
+                                    <?php $status = [null=>''] + \App\Disputable::STATUS ?>
+                                    @foreach($toDos as $todo)
+
+                                        {{$todo->title}}
+
+
+
+                                    @endforeach
+
                                 </div>
 
                                 <div class="content">
