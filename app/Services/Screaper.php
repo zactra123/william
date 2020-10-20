@@ -89,8 +89,8 @@ class Screaper
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $output = shell_exec($command);
-        return $output;
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
+        return $output;
 
     }
 

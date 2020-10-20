@@ -69,8 +69,8 @@ class experianLogin:
         options.add_argument('--kiosk-printing')
         # options.add_argument('--headless')
 
-        #self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
-        self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
+        self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
+        # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
 
         json_directory = '../storage/reports/' + self.db_id + '/experian_login'
         # create directory if not exist
@@ -105,11 +105,7 @@ class experianLogin:
     def get_json(self):
 
         session = requests.Session()
-        session.proxies = {
-            "http": "http://143.110.151.242:3128",
-            "https": "http://143.110.151.242:3128"
-        }
-
+        session.proxies = self.proxies
 
         #session = requests.Session()
         data = '{"username":"'+self.username+'","password":"' + \
@@ -128,8 +124,6 @@ class experianLogin:
 
         ress = session.post(
             'https://usa.experian.com/api/securelogin/oauth/token', data=data, headers=headers)
-
-        print(ress.content.decode())
         headd = json.loads(ress.content)
         if 'errors' in headd:
             raise Exception(headd['errors'])
@@ -152,7 +146,7 @@ class experianLogin:
         data = '{"answer":"'+str(self.question)+'","pin":"'+str(self.pinn)+'","trustDevice":true,"trustId":"' + \
             str(tid)+'"}'
         response = session.post('https://usa.experian.com/api/securelogin/submitquestion',
-                                headers=headers, data=data.encode('utf-8'), proxies=self.proxies)
+                                headers=headers, data=data.encode('utf-8'))
 
         main = json.loads(response.content)
 
@@ -177,7 +171,7 @@ class experianLogin:
                 'DNT': '1',
             }
             qress = session.post(
-                'https://usa.experian.com/api/securelogin/submitdob', data=qdata.encode('utf-8'), headers=qheaders, proxies=self.proxies)
+                'https://usa.experian.com/api/securelogin/submitdob', data=qdata.encode('utf-8'), headers=qheaders)
 
             qheadd = json.loads(qress.content)
             q_token = str(qheadd['token']['accessToken'])
@@ -198,7 +192,7 @@ class experianLogin:
             'TE': 'Trailers',
         }
 
-        resp = session.get("https://usa.experian.com/api/dispute/cdis", headers=headers, proxies=self.proxies)
+        resp = session.get("https://usa.experian.com/api/dispute/cdis", headers=headers)
         p_main = json.loads(resp.content)
 
         with open(self.filepath_report, "a+") as f:

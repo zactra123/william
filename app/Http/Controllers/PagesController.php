@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\Events\ReceptionistLiveChat;
+use App\Jobs\ScrapeReports;
 use App\User;
 use App\BankAddress;
 use App\Services\Screaper;
@@ -21,11 +22,13 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
-        $scraper = new Screaper(1);
+//        ScrapeReports::dispatch(User::find(170));
+//        dd('asdasd');
+//        $scraper = new Screaper(1);
 //        VAHEM@YMAIL.COM  V0552ahe TOYOTA 1984 05/01/1984
-        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
+//        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
 
-        dd($data);
+//        dd($data);
 
         $pageContentUp = DB::table('home_pages')->get();
 
