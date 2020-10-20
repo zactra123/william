@@ -70,4 +70,13 @@ class ClientReportEqAccount extends Model
     {
         return $this->hasMany('App\ClientReportEqAccountPaymentHistory');
     }
+
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        $name =  $this->account_title;
+
+        return "$berau : $name";
+    }
+
 }

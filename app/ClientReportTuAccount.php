@@ -90,4 +90,12 @@ class ClientReportTuAccount extends Model
     {
         return $this->hasMany('App\ClientReportTuAccountsPaymentHistory');
     }
+
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        $name =  $this->account_name.' #'.$this->account_number;
+        return "$berau : $name";
+    }
+
 }

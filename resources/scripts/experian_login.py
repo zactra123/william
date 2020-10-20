@@ -69,8 +69,8 @@ class experianLogin:
         options.add_argument('--kiosk-printing')
         # options.add_argument('--headless')
 
-        self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
-
+        #self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
+        self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
 
         json_directory = '../storage/reports/' + self.db_id + '/experian_login'
         # create directory if not exist
@@ -103,7 +103,15 @@ class experianLogin:
             }
 
     def get_json(self):
+
         session = requests.Session()
+        session.proxies = {
+            "http": "http://143.110.151.242:3128",
+            "https": "http://143.110.151.242:3128"
+        }
+
+
+        #session = requests.Session()
         data = '{"username":"'+self.username+'","password":"' + \
             self.password+'","clientId": "experian", "jsc":"7ta44j1eJNlY5BSo9z4ofjb75PaK4Vpjt4U_98uszHVyVxFAk.lzXJJIneGffLMC7EZ3QHPBirTYKUowRslzRQqwSM2icATNK0Wn_CvLG9mhORoVidPZW2AUMnGWVQdsCRUdFUFTc4s.QuyPB94UXuGlfUm9z9JIply_0x0uVMV0Yz3ccbbJYMLgiPFU77qZoOSix5ezdstlYysrhsui6SFLwke22b9QqgXK_Pmtd0UbUV8afuyPBCADLU35Y___rtpBSKxUC56MnGWpwoNSUC53ZXnN87gq1VWKqC1FJZ9fWi.uJtHoqvynx9MsFyxYM9Z.AmVuY6RcQs40Nk91kL3sgdmcKFvj_UaHzuETlfe2RjGATJ8QdvMK9BNr5xj6Knrgy4TIvRSwQ5BSp45BNlVnvLw24qgcCr__xoeFTe4JE_Bz2pU__zdYI25ke4VcvabzLf9aLdVI1Z5.Bzeua29Ua0Ve8mb40AK_IEkre0_0DumpSvkY2S9lF75uTQWUjoKnvi4yzGMEiu6BrONc5f80kOPUXlByHJmFANSroLKQ_0lNc1lF7qnAEnxj6KxG65aSEqtB1lF1qUd1.3zAq__bFnySmKJtCM12f9bc9eUeJ2DcYYIDbvRa2Ejt0wWkYYID4CmN7ulF1f4.9gJ0GV_L9.J9ielFCUC68mlFCUC68mlF8HaL9.Mc_L9.MEe0Nc6Dz.ICQiSyti_Nc5GeZhLOGR.NOzn.6fqew4LHAVv0tmRLfvIdzEpOcspBZUrsgkMfs.2KG","trustId":"385a4dbdb7cd4ff3a44a6f4965275ade"}'
         headers = {
@@ -121,7 +129,7 @@ class experianLogin:
         ress = session.post(
             'https://usa.experian.com/api/securelogin/oauth/token', data=data, headers=headers)
 
-        print(ress.content)
+        print(ress.content.decode())
         headd = json.loads(ress.content)
         if 'errors' in headd:
             raise Exception(headd['errors'])
@@ -272,7 +280,7 @@ class experianLogin:
         except:
             pass
         time.sleep(8)
-        
+
 
 
     def get_report(self):
@@ -309,7 +317,7 @@ class experianLogin:
                     'message': block1.text.strip(),
                 })
                 return False
-            except: 
+            except:
                 pass
 
             if 'Billing Information Update' in soup.text.strip():

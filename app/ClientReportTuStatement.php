@@ -19,4 +19,11 @@ class ClientReportTuStatement extends Model
     {
         return $this->belongsTo('App/ClientReport');
     }
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        $name =  $this->statement;
+        return "$berau : $name";
+    }
+
 }

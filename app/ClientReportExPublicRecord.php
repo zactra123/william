@@ -36,4 +36,11 @@ class ClientReportExPublicRecord extends Model
     {
         return $this->belongsTo('App/ClientReport');
     }
+
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        $name =  $this->source_name.' #'.$this->source_id;
+        return "$berau : $name";
+    }
 }

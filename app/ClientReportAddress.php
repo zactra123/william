@@ -22,4 +22,12 @@ class ClientReportAddress extends Model
     {
         return $this->belongsTo('App/ClientReport');
     }
+
+    public function showDetails()
+    {
+        $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
+        $address = $this->street.', '.$this->city.', '.$this->state.', '.$this->zip;
+        return "$berau : $address";
+    }
+
 }
