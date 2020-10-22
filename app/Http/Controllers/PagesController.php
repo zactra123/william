@@ -22,13 +22,12 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
-//        ScrapeReports::dispatch(User::find(170));
-//        dd('asdasd');
 //        $scraper = new Screaper(1);
-//        VAHEM@YMAIL.COM  V0552ahe TOYOTA 1984 05/01/1984
-//        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
-
+////        VAHEM@YMAIL.COM  V0552ahe TOYOTA 1984 05/01/1984
+////        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
+//        $data = $scraper->experian_login(["WILLIAM7787", "Y1983erevan!", "Minasyan", "7229", "03/07/1983", "618-25-2314"]);
 //        dd($data);
+////        WILLIAM7787 a77BOVYAN! Minasyan 7229 03/07/1983 ?618-25-2314
 
         $pageContentUp = DB::table('home_pages')->get();
 

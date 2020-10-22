@@ -164,6 +164,11 @@ Route::group(['prefix'=> 'admin'], function(){
 
 Route::group(['prefix'=> 'receptionist'], function(){
 
+    Route::get('client','Receptionist\ClientsController@list')->name('receptionist.client.list');
+    Route::get('client/{client}/profile', 'Receptionist\ClientsController@profile')->name('receptionist.client.profile');
+
+
+
     Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
     Route::post('message/note', 'Receptionist\MessagesController@addNote')->name('receptionist.message.note');
 
