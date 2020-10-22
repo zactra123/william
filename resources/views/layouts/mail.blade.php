@@ -139,7 +139,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <td align="left" class="esd-block-text" esd-links-color="#061d31">
-                                                                <p style="color: #061d31;"><strong>1-844-337-8336<br><br><span style="color:null;"><a target="_blank" href="mailto:info@prudentscores.com" style="color: #061d31;">&nbsp;info@prudentscores.com</a><br><br>5800 S. Eastern Ave., Suite 500<br>Commerce, CA 90040Working Hours:<br>Mon-Fri (9:00 a.m. - 5:30 p.m.)</span></strong><br><br></p>
+                                                                <p style="color: #061d31;"><strong>1-844-337-8336<br><br><span style="color:null;"><a target="_blank" href="mailto:info@prudentscores.com" style="color: #061d31;">&nbsp;info@prudentscores.com</a><br><br>5800 S. Eastern Ave., Suite 500 Commerce,<br> CA 90040 <br>Working Hours:<br>Mon-Fri (9:00 a.m. - 5:30 p.m.)</span></strong><br><br></p>
                                                             </td>
                                                         </tr>
                                                         </tbody>
