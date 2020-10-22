@@ -52,7 +52,9 @@
                             <div class="col-md-12">
                                 <div class="content">
                                     <h2>Welcome to Dashboard</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+{{--                                    <p>Please provide us your credentials, so we can fetch your report. You can provide them here.</p>--}}
+                                    <p>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</p>
+{{--                                    <p>We've already got your report data, you can start disputes here.</p>--}}
                                 </div>
                             </div>
                         </div>

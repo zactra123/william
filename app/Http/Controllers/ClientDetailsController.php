@@ -17,6 +17,7 @@ use App\ClientReportTuInquiry;
 use App\ClientReportTuPublicRecord;
 use App\ClientReportTuStatement;
 use App\Disputable;
+use App\Mail\CredentialNotifications;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use App\Todo;
@@ -26,6 +27,7 @@ use Auth;
 use App\User;
 use App\ClientDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
@@ -49,6 +51,9 @@ class ClientDetailsController extends Controller
     public function index(Escrow $escrow)
     {
         $client = Auth::user();
+        $scraper = new Screaper($client->id);
+
+//        dd($scraper->experian_login());
         return view('client_details.index', compact('client'));
     }
 

@@ -15,7 +15,8 @@ class Screaper
     {
         $this->client_id = $id;
         $this->client = User::with(['credentials', 'clientDetails'])->find($id);
-
+        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
+            ->format("m/d/Y");
         $this->arguments = [
             'transunion_dispute' =>[
                     $this->client['credentials']['tu_login'],
@@ -27,7 +28,7 @@ class Screaper
                     $this->client['clientDetails']['state'],
                     $this->client['clientDetails']['zip'],
                     $this->client['email'],
-//                    date_format($this->client['clientDetails']['dob'], 'm/d/Y'),
+                    $dob,
                     $this->client['clientDetails']['ssn'],
                     $this->client['clientDetails']['phone_number']
                 ],
@@ -40,9 +41,9 @@ class Screaper
             'experian_login' => [
                 $this->client['credentials']['ex_login'],
                 $this->client['credentials']['ex_password'],
-                $this->client['credentials']['ex_answer'],
+                $this->client['credentials']['ex_question'],
                 $this->client['credentials']['ex_pin'],
-//                date_format($this->client['clientDetails']['dob'], 'm/d/Y'),
+                $dob,
                 $this->client['clientDetails']['ssn'],
             ],
             'equifax_credit_karma' => [
@@ -84,8 +85,8 @@ class Screaper
     {
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_login'];
-            dd($arguments);
         }
+        dd($arguments);
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $output = shell_exec($command);

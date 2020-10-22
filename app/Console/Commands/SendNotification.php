@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Console\Commands;
+use App\Mail\CredentialNotifications;
 use App\User;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Support\Facades\DB;
@@ -84,40 +85,23 @@ class SendNotification extends Command
 
             if($user->note_count == 0) {
                 if ($result > 24 && $result < 36) {
-                    Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentscores.com');
-                        $mail->to($user->email)
-                            ->subject('Please add your credentials for start your working');
-                    });
+                    Mail::send(new CredentialNotifications($user));
                     User::where('id', $user->id)->update(['note_count', 1]);
                 }
             }elseif ($user->note_count == 1) {
                 if ($result > 48 && $result < 60) {
-                    Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentscores.com');
-                        $mail->to($user->email)
-                            ->subject('Please add your credentials for start your working');
-                    });
+                    Mail::send(new CredentialNotifications($user));
                     User::where('id', $user->id)->update(['note_count', 2]);
 
                 }
             }elseif ($user->note_count == 2) {
                 if ($result > 72 && $result < 84) {
-                    Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                        $mail->from('info@prudentscores.com');
-                        $mail->to($user->email)
-                            ->subject('Please add your credentials for start your working');
-                    });
+                    Mail::send(new CredentialNotifications($user));
                     User::where('id', $user->id)->update(['note_count', 3]);
 
                 }
             }elseif ($user->note_count == 3 && $result > 144) {
-//                && $result < 168
-                Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-                    $mail->from('info@prudentscores.com');
-                    $mail->to($user->email)
-                        ->subject('Please add your credentials for start your working');
-                });
+                Mail::send(new CredentialNotifications($user));
                 User::where('id', $user->id)->update(['active'=> 0]);
 
 
