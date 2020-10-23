@@ -454,12 +454,12 @@ class ClientDetailsController extends Controller
 
     public function negativeItem()
     {
+        $client = Auth::user();
 
-        $clientReportsTU = ClientReport::where('user_id', 2)->where('type', "TU_DIS")->first();
-        $clientReportsEX = ClientReport::where('user_id', 2)->where('type', "EX_LOG")->first();
-        $clientReportsEQ = ClientReport::where('user_id', 2)->where('type', "EQ")->first();
-//        dd($clientReportsEQ);
-//        dd($clientReportsEX);
+
+        $clientReportsTU = ClientReport::where('user_id', $client->id)->where('type', "TU_DIS")->first();
+        $clientReportsEX = ClientReport::where('user_id', $client->id)->where('type', "EX_LOG")->first();
+        $clientReportsEQ = ClientReport::where('user_id', $client->id)->where('type', "EQ")->first();
 
 
         return view('client_details.view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ'));
