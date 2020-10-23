@@ -92,11 +92,12 @@ class AdminsController extends Controller
     public function clientToDo(Request $request)
     {
         $toDo = Todo::find($request->id);
+        $admins = User::admins()->get();
+        $admins = $admins->mapWithKeys(function($admin){return [ $admin['id']  => $admin->full_name()];})->toArray();
 
-        $view = view('helpers.to-do-form', compact('toDo'))->render();
+        $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
 
         return response()->json(['status' => 200, 'view' => $view]);
-
 
 //        return Response::json(['status' => 200, 'view' => $view]);
 
@@ -104,7 +105,7 @@ class AdminsController extends Controller
 
     public function clientToDoUpdate(Request $request)
     {
-        dd($request);
+        dd($request->all());
     }
 
 

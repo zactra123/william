@@ -481,6 +481,9 @@
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
     </script>

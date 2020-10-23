@@ -21,7 +21,7 @@ class Admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        elseif ( Auth::user()->role != 'admin'){
+        elseif ( Auth::user()->role == 'client'){
             return redirect()->to('/');
         }
         $allowed_ip = AllowedIp::where("user_id", Auth::user()->id)->where("ip_address", $request->ip())->first();

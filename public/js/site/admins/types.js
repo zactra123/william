@@ -36,7 +36,6 @@ $(document).ready(function($) {
     $(document).on ('click', '.remove-equal-bank', function(){
         var  equal_bank_id = $(this).attr('data-equal-id'),
                 self = this;
-        console.log($("meta[name='csrf-token']").attr("content"))
         $.ajax({
             url: '/owner/furnishers/equal-bank',
             type: 'DELETE',

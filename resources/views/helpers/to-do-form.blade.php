@@ -16,6 +16,13 @@
             {{ Form::textarea('todo[description]', $toDo->description??'', ['class' => 'form-control m-input', 'placeholder' => 'Last name']) }}
         </div>
     </div>
+
+    <div class="form-group row m-1">
+        <div class="col-md-11">
+            {!! Form::select('todo[user_id]',$admins, $toDo->user_id ,['class'=>'form-account-name', 'id' => 'select-account']); !!}
+        </div>
+    </div>
+
     <div class="form-group row m-1">
         <label for="status" class="col-md-2 col-form-label text-md-center">  STATUS:  </label>
         <div class="col-md-12">
@@ -88,3 +95,9 @@
     </div>
     {!! Form::close() !!}
 </div>
+
+<script>
+$('#select-account').selectize({    searchField: 'full_name',
+    labelField: 'full_name',
+    valueField: 'id'})
+</script>

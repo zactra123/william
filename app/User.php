@@ -57,7 +57,7 @@ class   User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Scope a query to only include users with receptionist role.
+     * Scope a query to only include users with admins role.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
@@ -65,6 +65,17 @@ class   User extends Authenticatable implements MustVerifyEmail
     public function scopeReceptionists($query)
     {
         return $query->where('users.role',  'receptionist');
+    }
+
+    /**
+     * Scope a query to only include users with client role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAdmins($query)
+    {
+        return $query->where('users.role',  'admin');
     }
 
 
