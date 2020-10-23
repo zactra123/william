@@ -44,7 +44,6 @@
     <section class="charts working-section">
         <div class="container-fluid">
 
-
             @if($clientReportsEX != null)
                 <div class="container">
                     <div class="row">
@@ -117,6 +116,43 @@
 
                                 @endforeach
                             </div>
+                            <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsEX->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-weight: bold"> {{$employ->name}}</span>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
+
+
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row">
@@ -577,42 +613,42 @@
 
             @if($clientReportsTU != null)
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-12"></div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="row m-2  pt-4">
-                                    <div class="col-md-8 pull-left">
-                                        <form >
-                                            <div class="row">
-                                                <div class="col-md-4 form-group">
-                                                    <div class="form-group">
-                                                        <select class="form-control" name="date" id="gender">
-                                                            <option disabled="disabled" selected="selected">DATE</option>
-                                                            @foreach($transunionDate as $key => $value)
-                                                                <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
-                                                            @endforeach
-                                                        </select>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12"></div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="row m-2  pt-4">
+                                <div class="col-md-8 pull-left">
+                                    <form >
+                                        <div class="row">
+                                            <div class="col-md-4 form-group">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="date" id="gender">
+                                                        <option disabled="disabled" selected="selected">DATE</option>
+                                                        @foreach($transunionDate as $key => $value)
+                                                            <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
+                                                        @endforeach
+                                                    </select>
 
-                                                    </div>
-                                                    {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                                                 </div>
-                                                <div class="col-md-4  form-group">
-                                                    <input type="submit" value="Search" class="form-control">
-                                                </div>
+                                                {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-4 pull-right">
+                                            <div class="col-md-4  form-group">
+                                                <input type="submit" value="Search" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-4 pull-right">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
-                    <div class="TransUnion">
+                <div class="TransUnion">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
                         </div>
@@ -650,6 +686,43 @@
 
                                 @endforeach
                             </div>
+                            <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsTU->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-weight: bold"> {{$employ->name}}</span>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
+
+
                             <div class="mt20"></div>
                             <div class="chart-container">
                                 <div class="row ">
@@ -1301,39 +1374,39 @@
             @endif
 
             @if($clientReportsEQ != null)
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-12"></div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="row m-2  pt-4">
-                                    <div class="col-md-8 pull-left">
-                                        <form >
-                                            <div class="row">
-                                                <div class="col-md-4 form-group">
-                                                    <div class="form-group">
-                                                        <select class="form-control" name="date" id="gender">
-                                                            <option disabled="disabled" selected="selected">DATE</option>
-                                                            @foreach($equifaxDate as $key => $value)
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12"></div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="row m-2  pt-4">
+                                <div class="col-md-8 pull-left">
+                                    <form >
+                                        <div class="row">
+                                            <div class="col-md-4 form-group">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="date" id="gender">
+                                                        <option disabled="disabled" selected="selected">DATE</option>
+                                                        @foreach($equifaxDate as $key => $value)
                                                             <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        @endforeach
+                                                    </select>
 
-                                                    </div>
-{{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                                                 </div>
-                                                <div class="col-md-4  form-group">
-                                                    <input type="submit" value="Search" class="form-control">
-                                                </div>
+                                                {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-4 pull-right">
+                                            <div class="col-md-4  form-group">
+                                                <input type="submit" value="Search" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-4 pull-right">
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="Equifaq" style="display: block">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
@@ -1372,6 +1445,40 @@
 
                                 @endforeach
                             </div>
+                            <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsEQ->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
                             <div class="mt20"></div>
                             <div class="chart-container">
                                 <div class="row ">

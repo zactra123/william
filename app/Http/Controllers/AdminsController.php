@@ -23,7 +23,7 @@ class AdminsController extends Controller
         $this->middleware(['auth', 'admin']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
 
         if(request()->ajax())
@@ -67,6 +67,17 @@ class AdminsController extends Controller
             ->paginate(10);
         return view('admin.affiliate-list', compact('users'));
     }
+
+    public function toDoList(Request $request)
+    {
+        if($request->title != null){
+            $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
+        }else{
+            $toDos = Todo::paginate(15);
+        }
+        return view('admin.todo-list', compact('toDos'));
+    }
+
 
     public function clientProfile($clientId)
     {

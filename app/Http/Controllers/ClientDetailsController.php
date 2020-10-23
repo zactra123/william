@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ClientReport;
 use App\ClientReportAddress;
+use App\ClientReportEmployer;
 use App\ClientReportEqAccount;
 use App\ClientReportEqInquiry;
 use App\ClientReportExAccount;
@@ -470,6 +471,7 @@ class ClientDetailsController extends Controller
         $dispute = $request->except('_token');
         $userId = Auth::user()->id;
         $disputeName = [];
+        $disputeEmployer = [];
         $disputeAddress = [];
         $disputePhone = [];
         $disputeExPublicRecord = [];
@@ -491,6 +493,14 @@ class ClientDetailsController extends Controller
                 foreach ($value as $dispute_name) {
                     $name = ClientReportName::where('id', $dispute_name)->first();
                     $disputeName[] = $name;
+                }
+            }
+
+            if ($key == 'ex_employ' or $key == 'tu_employ' or $key == 'eq_employ') {
+
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportEmployer::where('id', $dispute_name)->first();
+                    $disputeEmployer[] = $name;
                 }
             }
 
@@ -590,6 +600,7 @@ class ClientDetailsController extends Controller
 
         $data = [
             'name' => $disputeName,
+            'employ' => $disputeEmployer,
             'address' => $disputeAddress,
             'phone' => $disputePhone,
             'ex_public' => $disputeExPublicRecord,
@@ -621,6 +632,14 @@ class ClientDetailsController extends Controller
                 $todoName = $this->saveToDo($clientId, $user->id, "Name", "",0);
                 foreach ($value as $dispute_name) {
                     $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name, 0);
+                }
+            }
+            if ($key == 'employer') {
+
+
+                $todoName = $this->saveToDo($clientId, $user->id, "Employer", "",0);
+                foreach ($value as $dispute_name) {
+                    $this->saveDisputable($todoName, "App\\ClientReportEmployer",  $dispute_name, 0);
                 }
             }
 

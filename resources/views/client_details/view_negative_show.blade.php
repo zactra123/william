@@ -92,6 +92,50 @@
 
                         @endif
 
+
+                        @if(!empty($data['employ']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span style="font-weight: bold; font-size: 16px"> Employer</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="font-weight: bold; font-size: 16px"></span>
+                                    </div>
+
+                                </div>
+                                @foreach($data['employ'] as $employer)
+
+                                    <div class="row mt20 border title-name-{{$employer->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold"> {{$employer->name}} </span>
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
+                                        <div class="col-md-2 delete-name" data-attribute="title-employer-{{$employer->id}}">
+
+                                            <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
+                                            <input type="hidden" name="employer[]" value="{{$employer->id}}">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                        @endif
+
                         @if(!empty($data['address']))
                             <div class="mt20"></div>
                             <div class="chart-report">

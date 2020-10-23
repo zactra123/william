@@ -118,6 +118,43 @@
                                 @endforeach
                             </div>
                             <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsEX->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-weight: bold"> {{$employ->name}}</span>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
+
+
+                            <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row">
                                     <div class="col-md-1">
@@ -650,6 +687,43 @@
 
                                 @endforeach
                             </div>
+                            <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsTU->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-weight: bold"> {{$employ->name}}</span>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
+
+
                             <div class="mt20"></div>
                             <div class="chart-container">
                                 <div class="row ">
@@ -1372,6 +1446,40 @@
 
                                 @endforeach
                             </div>
+                            <div class="mt20"></div>
+
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+
+                                @foreach($clientReportsEQ->clientEmployers as $employ)
+                                    <div class="row mt20 border">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                    </div>
+
+                                @endforeach
+                            </div>
+
                             <div class="mt20"></div>
                             <div class="chart-container">
                                 <div class="row ">
