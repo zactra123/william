@@ -53,8 +53,10 @@ class ClientDetailsController extends Controller
         $client = Auth::user();
         $scraper = new Screaper($client->id);
 
-//        dd($scraper->experian_login());
-        return view('client_details.index', compact('client'));
+        $toDos = Todo::where('client_id', $client->id)->get();
+        $status = [null => ''] + \App\Todo::STATUS;
+
+        return view('client_details.index', compact('client', 'toDos', 'status'));
     }
 
     public function create(Request $request)
@@ -416,6 +418,39 @@ class ClientDetailsController extends Controller
             return redirect()->to('/client/registration-steps');
         }
     }
+
+    public function clientReport(Request $request)
+    {
+        $clientReportsEQ = null;
+        $clientReportsTU = null;
+        $clientReportsEX = null;
+
+        if($request->date !=null){
+            $clientReports = ClientReport::where('id',$request->date);
+
+        }else{
+            $clientReports = ClientReport::where('user_id', auth()->user()->id);
+        }
+
+        if($request->type == 'equifax'){
+            $clientReportsEQ = $clientReports->where('type', "EQ")->first();
+            $equifaxDate =$clientReports->where('type', "EQ")
+                ->pluck('created_at', 'id')->toArray();
+        }elseif($request->type == 'transunion'){
+            $clientReportsTU = $clientReports->where('type', "TU_DIS")->first();
+            $transunionDate = $clientReports->where('type', "TU")
+                ->pluck('created_at', 'id')->toArray();
+
+        }elseif($request->type == 'experian'){
+            $clientReportsEX = $clientReports->where('type', "EX_LOG")->first();
+            $experianDate = $clientReports->where('type', "EX_LOG")
+                ->pluck('created_at', 'id')->toArray();
+        }
+
+        return view('client_details.report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
+            'equifaxDate','experianDate','transunionDate'));
+    }
+
 
     public function negativeItem()
     {

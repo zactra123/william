@@ -1,6 +1,14 @@
 @extends('layouts.layout')
 
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
+<style>
+    .scrollDiv {
+        height: 270px;
+        background-color: white;
+        overflow-y: auto;
+
+    }
+</style>
 
 @section('content')
 
@@ -60,25 +68,35 @@
                         </div>
                     </div>
                 </div>
-
                 <section class="charts">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="chart-container">
+                                <div class="chart-container scrollDiv">
                                     <div class="boxheading">
-                                        <h3>CREDIT REPORTS</h3>
+                                        <h3>DISPUTES </h3>
                                     </div>
-                                    <div class="col-6 mt20">
-                                        <h4>Lorem ipsum dolor sit.pdf</h4>
-                                        <p>12-04-2020</p>
-                                    </div>
-                                    <div class="col-6 ">
-                                        <h4>Lorem ipsum dolor sit.pdf</h4>
-                                        <p>12-04-2020</p>
+                                    <div class="mt20 ">
+                                        @foreach($toDos as $todo)
+                                            @foreach($todo->disputes as $dispute)
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <?php $info =  $dispute->disputable->showDetails();?>
+                                                        {{$info}}
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        {{$status[$dispute->status]}}
+
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
+
+
+
                             <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
@@ -114,22 +132,37 @@
                             </div>
                         </div>
 
-                        <div class="row mt50">
-                            <div class="col-md-6">
-                                <div class="chart-container">
-                                    <div class="boxheading">
-                                        <h3>ARCHIVE</h3>
+                    </div>
+                </section>
+
+
+                <section class="charts">
+                    <div class="container-fluid">
+                        <div class="chart-container">
+                            <div class="content">
+                                <h2>CREDIT REPORTS</h2>
+
+                                <div class="row">
+                                    <div  class="col-md-4 mt20">
+                                        <a href="{{route('client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
                                     </div>
-                                    <div class="col-6 mt20">
-                                        <h4>DOCUMENTS</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                                    <div  class="col-md-4 mt20">
+                                        <a href="{{route('client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
                                     </div>
-                                    <div class="col-6 ">
-                                        <h4>MISCELLANEOUS</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, tenetur.</p>
+                                    <div  class="col-md-4 mt20">
+                                        <a  href="{{route('client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="charts">
+
+                        <div class="row mt50">
+
                             <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
@@ -141,14 +174,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="charts pb50 mt50">
-                    <div class="container-fluid">
-                        <div class="row ">
-                            <div class="col-md-8 col-sm-offset-2">
+                            <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
                                         <h3>EXCEED COMPANIES</h3>
@@ -163,6 +189,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+
+                </section>
+
+
+                <section class="charts pb50 mt50">
+                    <div class="container-fluid">
+                        <div class="row ">
 
                         </div>
                     </div>

@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23cc027d-b9a6-4160-bb81-85cb5e3c5f36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/site/admins/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/owner/bank/types.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/client_details/report.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AccountType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AccountType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Owner/BanksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Owner/BanksController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_03_120239_change_structer_bank_addresses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_120239_change_structer_bank_addresses_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/site/admins/banks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/site/admins/banks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/site/admins/equal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/helpers/urls/nav_bar_owner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/helpers/urls/nav_bar_owner.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/owner/bank/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/owner/bank/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/owner/bank/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/owner/bank/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/owner/bank/equal_banks.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientDetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientDetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client_details/registration_steps/finished.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client_details/registration_steps/finished.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/client/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/client/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +17,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -158,6 +152,13 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltopdf-amd64" />
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-escaper" />
+      <path value="$PROJECT_DIR$/vendor/pclzip/pclzip" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/common" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpword" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -297,7 +298,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/ClientDetailsController.php</url>
-          <line>209</line>
+          <line>206</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

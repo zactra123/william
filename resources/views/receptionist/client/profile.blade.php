@@ -248,7 +248,7 @@
                     <div class="container-fluid">
                         <div class="chart-container">
                             <div class="content">
-                                <h2>WORKS HISTORIES</h2>
+                                <h2>WORK HISTORY</h2>
                             </div>
                         </div>
                     </div>
