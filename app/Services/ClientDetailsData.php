@@ -170,13 +170,12 @@ class ClientDetailsData
     // $result is Array with ["dob", "address", "city", "state", "zip", "sex"]
     public function dirverLicenseProcessing($text)
     {
-
         $result = [];
         // remove draft file
         $addressCityStateRegex = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
         MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
 //        $addressStreetRegex = "/[0-9]{1,}.+?[A-Z]{2,}+[-A-Z0-9 ,#'\/.\\r]{3,50}$/im";
-        $addressStreetRegex = "/[0-9]{1,}+[-A-Z0-9 ,#'\/.\\r]{3,50}$/im";
+        $addressStreetRegex = "/^[0-9]{1,}+[-A-Z0-9 ,#\s]{3,} *$|^[a-z]{1}\s+[0-9]{1,}+[-A-Z0-9 ,#\s]{3,} *$/im";
 
 //        preg_match("/(^[0-9]{1,}+[0-9a-zA-Z\s,.%;:]+([0-9]{4,5}+(-+[0-9]{4}|)))/im", $text, $address);
 
@@ -225,12 +224,20 @@ class ClientDetailsData
 //            $city = isset($result["city"]) ?$result["city"]:"";
 //            $state = isset($result["state"])?$result["state"]:"";
             $state = isset($addressCityState[0])?strtoupper($addressCityState[0]):"";
-            $result["address"] = strtoupper(str_replace("\r", "", $addressStreet[0])).', '. $state;
-            preg_match("/([0-9]{1,})/im", $addressStreet[0], $number);
-            $result ["number"] = $number[0];
-            $result['name'] = trim(strtoupper(str_replace($number[0],'',$addressStreet[0])));
-        }
+            $addressAll = strtoupper(str_replace("\r", "", $addressStreet[0])).', '. $state;
 
+            if(strpos($addressStreet[0], "\n")){
+                $addressArr = explode("\n", $addressAll);
+                $address = $addressArr[0];
+            }else{
+                $address = $addressAll;
+            }
+            $result["address"] = $address.', '. $state;
+            preg_match("/([0-9]{1,})/im", $address, $number);
+            $result ["number"] = $number[0];
+            $result['name'] = trim(strtoupper(str_replace($number[0],'',$address)));
+        }
+        
         return $result;
     }
 

@@ -17,7 +17,7 @@
 
             <div class="col-md-12 tab-selector">
                 <div class="col-md-12" class="col-md-12 ">
-                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input',  'placeholder' => 'FULL NAME']) }}
+                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) && $uploadUserDetail->full_name() != null ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input',  'placeholder' => 'FULL NAME']) }}
                 </div>
             </div>
 
