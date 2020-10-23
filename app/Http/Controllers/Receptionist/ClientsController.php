@@ -51,18 +51,17 @@ class ClientsController extends Controller
 
 
     }
-//    public function clientToDo(Request $request)
-//    {
-//        $toDo = Todo::find($request->id);
-//
-//        $view = view('helpers.to-do-form', compact('toDo'))->render();
-//
-//        return response()->json(['status' => 200, 'view' => $view]);
-//
-//
-////        return Response::json(['status' => 200, 'view' => $view]);
-//
-//    }
+    public function clientToDo(Request $request)
+    {
+
+        $toDo = Todo::find($request->id);
+
+        $view = view('helpers.to-do-form', compact('toDo'))->render();
+
+        return response()->json(['status' => 200, 'view' => $view]);
+
+
+    }
 
 
 

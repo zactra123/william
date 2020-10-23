@@ -510,7 +510,7 @@
                 var token = "<?= csrf_token()?>";
 
                 $.ajax({
-                    url: '/admin/client/profile/todo',
+                    url: '/receptionist/client/profile/todo',
                     type: "POST",
                     data: {
                         "id": todo,

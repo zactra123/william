@@ -169,9 +169,8 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::get('client/{client}/profile', 'Receptionist\ClientsController@profile')->name('receptionist.client.profile');
     Route::get('client/{client}/report/{type}', 'Receptionist\ClientsController@clientReport')->name('receptionist.client.report');
 
-
     Route::get('todo/list', 'Receptionist\ClientsController@toDoList')->name('receptionist.toDo.list');
-
+    Route::post('client/profile/todo', 'Receptionist\ClientsController@clientToDo')->name('receptionist.client.todo');
 
 
     Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
