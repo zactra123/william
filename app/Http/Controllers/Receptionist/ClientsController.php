@@ -64,6 +64,84 @@ class ClientsController extends Controller
     }
 
 
+    public function clientReport(Request $request)
+    {
+        $clientReportsEQ = null;
+        $clientReportsTU = null;
+        $clientReportsEX = null;
+
+        if($request->date !=null){
+            $clientReports = ClientReport::where('id',$request->date);
+
+        }else{
+            $clientReports = ClientReport::where('user_id',$request->client);
+        }
+
+        if($request->type == 'equifax'){
+            $clientReportsEQ = $clientReports->where('type', "EQ")->first();
+            $equifaxDate =$clientReports->where('type', "EQ")
+                ->pluck('created_at', 'id')->toArray();
+        }elseif($request->type == 'transunion'){
+            $clientReportsTU = $clientReports->where('type', "TU_DIS")->first();
+            $transunionDate = $clientReports->where('type', "TU")
+                ->pluck('created_at', 'id')->toArray();
+
+        }elseif($request->type == 'experian'){
+            $clientReportsEX = $clientReports->where('type', "EX_LOG")->first();
+            $experianDate = $clientReports->where('type', "EX_LOG")
+                ->pluck('created_at', 'id')->toArray();
+        }
+
+        return view('receptionist.client.report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
+            'equifaxDate','experianDate','transunionDate'));
+    }
+
+
+    public function toDoList(Request $request)
+    {
+
+        $admins = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
+        if($request->title != null && $request->admin != null && $request->assign == "on"){
+
+            $toDos = Todo::where('user_id',  $request->admin)
+                ->where('title',"LIKE", "%".$request->title."%")
+                ->where('user_id', "!=", auth()->user()->id)
+                ->paginate(15);
+
+        }elseif($request->title == null && $request->admin != null && $request->assign == "on"){
+
+            $toDos = Todo::where('user_id',  $request->admin)
+                ->where('user_id', "!=", auth()->user()->id)
+                ->paginate(15);
+        }elseif($request->title != null && $request->admin == null && $request->assign == "on"){
+
+            $toDos = Todo::where('title', "LIKE", "%" . $request->title . "%")
+                ->where('user_id', "!=", auth()->user()->id)
+                ->paginate(15);
+        }elseif($request->title != null && $request->admin != null && $request->assign != "on"){
+
+            $toDos = Todo::where('user_id',  $request->admin)
+                ->where('title',"LIKE", "%".$request->title."%")
+                ->paginate(15);
+        }elseif($request->title != null && $request->admin == null && $request->assign != "on"){
+
+            $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
+        }elseif($request->title == null && $request->admin != null && $request->assign != "on"){
+
+            $toDos = Todo::where('user_id',  $request->admin)->paginate(15);
+        }elseif($request->title == null && $request->admin == null && $request->assign == "on"){
+
+            $toDos = Todo::where('user_id', "!=", auth()->user()->id)->paginate(15);
+        }else{
+            $toDos = Todo::paginate(15);
+        }
+
+
+
+        return view('receptionist.client.todo-list', compact('toDos', 'admins'));
+    }
+
+
 
 
 }
