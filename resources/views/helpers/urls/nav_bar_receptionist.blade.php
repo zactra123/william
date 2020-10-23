@@ -12,3 +12,4 @@
 
 </li>
 <li class="menu-item"><a href="{{ route('receptionist.client.list')}}" >Client List</a></li>
+<li class="menu-item"><a href="{{ route('receptionist.toDo.list')}}" >To Do List</a></li>

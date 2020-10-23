@@ -134,6 +134,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::put('client/profile/todo/{todo}', 'AdminsController@clientToDoUpdate')->name('admin.client.todoUpdate');
     Route::get('client/{client}/report/{type}', 'AdminsController@clientReport')->name('admin.client.report');
 
+
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
     Route::post('client/report-number', 'AdminsController@clientReportNumber')->name('admin.client.report_number');
     Route::get('getNotifications', 'AdminsController@getNotifications');
@@ -166,6 +167,10 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
     Route::get('client','Receptionist\ClientsController@list')->name('receptionist.client.list');
     Route::get('client/{client}/profile', 'Receptionist\ClientsController@profile')->name('receptionist.client.profile');
+    Route::get('client/{client}/report/{type}', 'Receptionist\ClientsController@clientReport')->name('receptionist.client.report');
+
+
+    Route::get('todo/list', 'Receptionist\ClientsController@toDoList')->name('receptionist.toDo.list');
 
 
 

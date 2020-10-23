@@ -258,4 +258,10 @@ class   User extends Authenticatable implements MustVerifyEmail
         return $result;
     }
 
+    public function todo()
+    {
+        return $this->hasOne('App\Todo', 'client_id');
+
+    }
+
 }

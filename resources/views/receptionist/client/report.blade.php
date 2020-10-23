@@ -37,7 +37,7 @@
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title"> View Negative Item </h2>
-            <span class="sub-title"><a href="#">Home</a> &gt; Negative Item</span>
+            <span class="sub-title"><a href="#">Home</a> &gt; VIEW REPORT </span>
         </div>
     </section>
 

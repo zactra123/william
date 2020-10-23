@@ -28,4 +28,11 @@ class Todo extends Model
     {
         return $this->hasMany('App\Disputable');
     }
+
+    public function client()
+    {
+        return $this->belongsTo('App\User', 'client_id');
+    }
+
+
 }
