@@ -74,11 +74,11 @@
 
                 <label for="female" class="col-md-3 col-form-label text-md-right">  PENDING:  </label>
                 <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                    {{Form::radio('dispute['.$dispute->id.'][status]', 1, $dispute->status??''== 1)}}
+                    {{Form::radio('dispute['.$dispute->id.'][status]', 1, $dispute->status == 1)}}
                 </label>
                 <label for="other" class="col-md-3 col-form-label text-md-center">  COMPLETED:  </label>
                 <label for="Sex" class="col-md-1 col-form-label m-1 ">
-                    {{Form::radio('dispute['.$dispute->id.'][status]', 2, $dispute->status??''== 2)}}
+                    {{Form::radio('dispute['.$dispute->id.'][status]', 2, $dispute->status == 2)}}
                 </label>
             </div>
         </div>
