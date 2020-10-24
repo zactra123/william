@@ -35,4 +35,35 @@ class Credential extends Model
         return $this->belongsTo('App\user');
     }
 
+
+    public function is_present()
+    {
+        return $this->eq_present() && $this->tu_dis_present() && $this->tu_present() && $this->ck_present();
+    }
+
+    public function ck_present()
+    {
+        return $this->ck_login && $this->ck_password;
+    }
+
+    public function ex_present()
+    {
+        return $this->ex_login && $this->ex_password && $this->ex_question && $this->ex_pin;
+    }
+
+    public function tu_present()
+    {
+        return  $this->tu_login && $this->tu_password && $this->tu_question && $this->tu_answer;
+    }
+
+    public function tu_dis_present()
+    {
+        return $this->tu_dis_login && $this->tu_dis_password;
+    }
+
+    public function eq_present()
+    {
+        return $this->eq_login && $this->eq_password;
+    }
+
 }

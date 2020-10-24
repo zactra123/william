@@ -216,7 +216,6 @@
     $(document).ready(function () {
 
         $.validator.addMethod('filesize', function (value, element) {
-            console.log(element.files[0].type);
             if(element.files[0].type == "application/pdf"){
                 return this.optional(element) || (element.files[0].size <= 1048576)
             }else{
@@ -260,9 +259,8 @@
                 reader.readAsDataURL(file);
             }
 
-            $(this).removeClass('driver_license')
-            $(this).addClass('driver_dropp')
-           // $(".driver_dropp").css('background-image',file)
+            $(this).removeClass('driver_license');
+            $(this).addClass('driver_dropp');
         });
 
         $("#social_security").change(function(e) {
@@ -281,7 +279,6 @@
             }
             $(this).removeClass('social_security')
             $(this).addClass('social_dropp')
-           // $(".driver_dropp").css('background-image',file)
         });
 
         $('.driver_license').bind('dragover', function(){
@@ -308,14 +305,12 @@
 
 
         //on submit
-        // $('#preloader').css('background-color', 'transparent');
-        // $('#preloader').show()
         $('#correct_form').modal('show');
         $('.document-form').click(function(){
             $('#correct_form').modal('show');
         });
-        $('INPUT[type="file"]').change(function () {
-            var ext = this.value.match(/\.(.+)$/)[1];
+        $('input[type="file"]').change(function () {
+            var ext = this.value.split('.').pop();
             switch (ext) {
                 case 'jpg':
                 case 'jpeg':

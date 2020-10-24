@@ -137,6 +137,11 @@
             return $("[name='" +element.name+ "']").length < 2;
         }, "Please choose one of the options");
 
+        $.validator.addMethod("valid_ssn", function(value, element) {
+            console.log(value, element)
+            return !!value.match(/[0-9]{3}-[0-9]{2}-[0-9]{4}/g);
+        }, "Not valid ssn format.");
+
         $.validator.addMethod("valid_address", function(value, element) {
             return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
         }, "Not valid address format.");
@@ -153,7 +158,7 @@
                 },
                 "client[ssn]": {
                     required:true,
-                    one_option: true
+                    valid_ssn: true
                 },
                 "client[address]": {
                     required:true,
