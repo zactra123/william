@@ -1,79 +1,77 @@
 @extends('layouts.layout')
-
-<style>
-    .list-group {
-        margin-bottom: 10px !important;
-    }
-    .inCenter{
-        margin-left: 30%;
-        margin-right: 30%;
-    }
-
-    .list-group-horizontal .list-group-item
-    {
-        display: inline-block;
-    }
-    .list-group-horizontal .list-group-item
-    {
-        margin-bottom: 0;
-        margin-left:-4px;
-        margin-right: 0;
-        border-right-width: 0;
-    }
-    .list-group-horizontal .list-group-item:first-child
-    {
-        border-top-right-radius:0;
-        border-bottom-left-radius:4px;
-    }
-    .list-group-horizontal .list-group-item:last-child
-    {
-        border-top-right-radius:4px;
-        border-bottom-left-radius:0;
-        border-right-width: 1px;
-    }
-    .list-group-item>.badge-notify{
-        background-color: red ;
-    }
-    .badge.badge-warning {
-        background-color: red ;
-    }
-    .float-right {
-        float: right;
-    }
-    .sssss{
-        min-height: 30vh !important;
-        max-height: 40vh !important;
-    }
-    .ms-edu {
-        padding: 10px 0 50px !important;
-    }
-
-    .ms-working {
-        padding: 10px 0 50px !important;
-    }
-</style>
-
-
-
 @section('content')
+    <style>
+        .list-group {
+            margin-bottom: 10px !important;
+        }
+
+        .list-group-horizontal .list-group-item
+        {
+            display: inline-block;
+        }
+        .list-group-horizontal .list-group-item
+        {
+            margin-bottom: 0;
+            margin-left:-4px;
+            margin-right: 0;
+            border-right-width: 0;
+        }
+        .list-group-horizontal .list-group-item:first-child
+        {
+            border-top-right-radius:0;
+            border-bottom-left-radius:4px;
+        }
+        .list-group-horizontal .list-group-item:last-child
+        {
+            border-top-right-radius:4px;
+            border-bottom-left-radius:0;
+            border-right-width: 1px;
+        }
+        .list-group-item>.badge-notify{
+            background-color: red ;
+        }
+        .badge.badge-warning {
+            background-color: red ;
+        }
+        .float-right {
+            float: right;
+        }
+        .sssss{
+            min-height: 30vh !important;
+            max-height: 40vh !important;
+        }
+        .ms-edu {
+            padding: 10px 0 50px !important;
+        }
+
+        .ms-working {
+            padding: 10px 0 50px !important;
+        }
+        .d-inline-flex{
+            display: inline-flex !important;
+        }
+    </style>
+
     <link href="{{ asset('css/receptionist/receptionist.css') }}" rel="stylesheet">
 
     @include('helpers.breadcrumbs', ['title'=> "RECEPTIONIST", 'route' => ["Home"=> '/owner',"CHAT" => "#"]])
 
     <section class="ms-working working-section section-padding">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="list-group inCenter  list-group-horizontal">
-                    <a class="list-group-item  {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
-                        @if(array_sum($unreads))
-                            <span class="badge badge-notify" id="userUnreds">{{array_sum($unreads)}}</span>
-                        @endif
-                    </a>
-                    <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >All Messages
-                        @if(array_sum($all_unreads))
-                            <span class="badge badge-notify" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
-                        @endif
-                    </a>
+            <div class="row">
+                <div class="col-md-12 d-inline-flex">
+                    <div class="list-group center-block list-group-horizontal">
+                        <a class="list-group-item   {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
+                            @if(array_sum($unreads))
+                                <span class="badge badge-notify" id="userUnreds">{{array_sum($unreads)}}</span>
+                            @endif
+                        </a>
+                        <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >All Messages
+                            @if(array_sum($all_unreads))
+                                <span class="badge badge-notify" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
+                            @endif
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,7 +165,7 @@
                                                     <input type="hidden" name="recipient_id" id="recipientId" >
                                                     <input type="hidden" name="recipient_type" id="recipientType" >
                                                     <div class="comment-text-area">
-                                                        <textarea class="textinput"  name="answer" placeholder="Comment"></textarea>
+                                                        <textarea class="textinput tiny"  name="answer" placeholder="Comment"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -287,5 +285,4 @@
             </div>
         </div>
     </script>
-
 @endsection
