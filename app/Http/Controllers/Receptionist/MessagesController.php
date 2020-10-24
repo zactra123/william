@@ -24,10 +24,8 @@ class MessagesController extends Controller
     public function index(Request $request)
     {
 
-        $admins = User::where('role', 'admin')
-            ->select('id', DB::raw('CONCAT(last_name, " ",first_name) AS full_name'))
+        $admins = User::where('role', 'admin')->get()
             ->pluck('full_name', 'id');
-
 
         if(request()->ajax())
         {

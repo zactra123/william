@@ -19,7 +19,7 @@
 
     <div class="form-group row m-1">
         <div class="col-md-11">
-            {!! Form::select('todo[user_id]',$admins, $toDo->user_id ,['class'=>'form-account-name form-control', 'id' => 'select-account']); !!}
+            {!! Form::select('todo[user_id]',$admins, $toDo->user_id ,['class'=>'form-account-name ', 'id' => 'select-account']); !!}
         </div>
     </div>
 

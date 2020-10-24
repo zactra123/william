@@ -94,7 +94,7 @@ class AdminsController extends Controller
     {
 
         $toDo = Todo::find($request->id);
-        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();;
+        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
 
         $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
 

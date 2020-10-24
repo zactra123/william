@@ -55,8 +55,8 @@ class ClientsController extends Controller
     {
 
         $toDo = Todo::find($request->id);
-
-        $view = view('helpers.to-do-form', compact('toDo'))->render();
+        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
+        $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
 
         return response()->json(['status' => 200, 'view' => $view]);
 
