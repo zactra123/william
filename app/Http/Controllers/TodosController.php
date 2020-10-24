@@ -71,7 +71,7 @@ class TodosController extends Controller
                 ->pluck('created_at', 'id')->toArray();
         }
 
-        return view('receptionist.client.report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
+        return view('todo.report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
             'equifaxDate','experianDate','transunionDate'));
     }
 
