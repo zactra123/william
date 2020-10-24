@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Receptionist;
 
 
+use App\Disputable;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -33,8 +34,8 @@ class ClientsController extends Controller
         $users = DB::table('users')
             ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
-            ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
-                'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
+            ->select('users.id as id', 'users.email as email',
+                DB::raw('CONCAT(users.last_name, " ",users.first_name) AS full_name'))
             ->where('users.role', 'client')
             ->paginate(10);
 
@@ -146,6 +147,53 @@ class ClientsController extends Controller
         $todo = Todo::find($request->id)->update(['user_id' => $request->user_id]);;
 
         return response()->json(['status' => 200, 'view' => $todo]);
+    }
+
+    public function toDoDestroy($id)
+    {
+        try {
+            Disputable::where('todo_id', $id)->delete();
+            Todo::where('id', $id)->delete();
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
+
+
+    }
+
+    public function clientToDoUpdate(Request $request)
+    {
+        $todo = $request->todo;
+        $request->todoId;
+        $client= Todo::where('id', $request->todoId)->first()->client_id;
+        Todo::where('id', $request->todoId)->update($todo);
+
+        foreach($request->dispute as $dispute){
+            Disputable::where('id',$dispute['id'])
+                ->update(['status'=>$dispute['status']]);
+        }
+        return redirect()->route('admin.client.profile', $client);
+    }
+
+    public function disputeDestroy($id)
+    {
+        try {
+            $todoId = Disputable::where('id', $id)->fisrt()->todo_id;
+            Disputable::where('id', $id)->delete();
+            if(empty(Disputable::where('todo_id', $todoId)->first())){
+                Todo::where('id', $todoId)->delete();
+            }
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
+
+
     }
 
 }

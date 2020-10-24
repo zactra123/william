@@ -55,6 +55,7 @@
                                             <th scope="col">FULL NAME</th>
                                             <th scope="col">Dispute Title</th>
                                             <th scope="col">ASSIGNMENT</th>
+                                            <th scope="col">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -67,6 +68,12 @@
                                                 <td>{{$todo->title}}</td>
                                                 <td>
                                                     {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
+                                                </td>
+
+                                                <td>
+                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+                                                    <button class="btn  delete" data-id="{{ $todo->id}}" ><i class="fa fa-trash"></i> </button>
                                                 </td>
                                             </tr>
                                         @endforeach

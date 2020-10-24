@@ -242,13 +242,40 @@
                     </div>
                 </div>
             </section>
-
+            <?php $status = [null=>''] + \App\Disputable::STATUS ?>
             <section  id="contents">
                 <section class="charts">
                     <div class="container-fluid">
                         <div class="chart-container">
                             <div class="content">
                                 <h2>WORK HISTORY</h2>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-1 font-weight-normal">#</div>
+                                        <div class="col-md-1 font-weight-normal"></div>
+                                        <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
+                                        <div class="col-md-2">STATUS</div>
+                                    </div>
+                                    @foreach($toDos->where('status', 2) as $todo)
+
+                                        <div class="row">
+                                            <div class="col-md-1 font-weight-normal">
+                                                {{$loop->iteration}}
+                                            </div>
+                                            <div class="col-md-1 updateview" data-id="{{$todo->id}}">
+                                                <i class="fa fa-eye"></i>
+                                            </div>
+
+                                            <div class="col-md-3"> {{$todo->title}}</div>
+                                            <div class="col-md-2">{{$status[$todo->status]}}</div>
+                                            <div class="col-md-3">
+
+
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -258,7 +285,7 @@
                         <div class="chart-container">
                             <div class="content">
                                 <h2>TO DO</h2>
-                                <?php $status = [null=>''] + \App\Disputable::STATUS ?>
+
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-1 font-weight-normal">#</div>
@@ -266,7 +293,7 @@
                                         <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
                                         <div class="col-md-2">STATUS</div>
                                     </div>
-                                    @foreach($toDos as $todo)
+                                    @foreach($toDos->where('status', '!=',2) as $todo)
 
                                         <div class="row">
                                             <div class="col-md-1 font-weight-normal">
@@ -532,6 +559,10 @@
                     }
                 });
             })
+
+
+
+
         })
 
     </script>

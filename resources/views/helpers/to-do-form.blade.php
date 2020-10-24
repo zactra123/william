@@ -1,7 +1,11 @@
 <div class="card-body">
 
-    {!! Form::open(['route' => ['admin.client.todoUpdate', $toDo->id], 'method' => 'POST', 'id' => 'toDoUpdate',  'class' => 'm-form m-form--label-align-right']) !!}
-    @method('PUT')
+    @if(auth()->user()->role == "admin")
+        {!! Form::open(['route' => ['admin.client.todoUpdate', $toDo->id], 'method' => 'POST', 'id' => 'toDoUpdate',  'class' => 'm-form m-form--label-align-right']) !!}
+    @elseif(auth()->user()->role == "receptionist")
+        {!! Form::open(['route' => ['receptionist.client.todoUpdate', $toDo->id], 'method' => 'POST', 'id' => 'toDoUpdate',  'class' => 'm-form m-form--label-align-right']) !!}
+    @endif
+        @method('PUT')
 
     @csrf
     <div class="form-group row m-1">
@@ -49,7 +53,7 @@
 
             <div class="form-group row m-1">
 
-                <div class="col-md-11">
+                <div class="col-md-10">
 
                     <?php $info =  $dispute->disputable->showDetails();?>
 
@@ -58,6 +62,16 @@
 
 
                 </div>
+                @if(auth()->user()->role== 'receptionist')
+
+                <div class="col-md-2">
+
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    <div class="btn  delete" data-id="{{ $dispute->id}}" ><i class="fa fa-trash"></i></div>
+
+                </div>
+                @endif
+
             </div>
 
 
@@ -96,4 +110,53 @@
 
 <script>
 $('#select-account').selectize()
+</script>
+<script>
+    $(document).ready(function(){
+
+        $(document).delegate('.delete', 'click', function (e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var token = $("meta[name='csrf-token']").attr("content");
+            bootbox.confirm({
+                title: "Destroy To Do?",
+                message: "Do you really want to delete record?",
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancel',
+                        className: 'btn-success'
+
+                    },
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Confirm',
+                        className: 'btn-danger'
+
+                    }
+                },
+                callback: function (result) {
+                    console.log('This was logged in the callback: ' + result);
+                    if (result) {
+
+                        $.ajax(
+                            {
+                                url: "/receptionist/dispute/" + id,
+                                type: 'DELETE',
+                                data: {
+                                    "id": id,
+                                    "_token": token,
+                                },
+                                success: function () {
+                                    console.log("it Works");
+                                }
+                            });
+                    }
+                }
+            });
+        });
+
+
+
+
+    })
+
 </script>

@@ -172,8 +172,12 @@ Route::group(['prefix'=> 'receptionist'], function(){
     Route::get('client/{client}/report/{type}', 'Receptionist\ClientsController@clientReport')->name('receptionist.client.report');
 
     Route::get('todo/list', 'Receptionist\ClientsController@toDoList')->name('receptionist.toDo.list');
-    Route::post('todo/change-assignment', 'Receptionist\ClientsController@changeTodoAssignment')->name('receptionist.todo.assignment');
+    Route::delete('todo/{id}', 'Receptionist\ClientsController@toDoDestroy')->name('receptionist.toDo.destroy');
+    Route::delete('dispute/{id}', 'Receptionist\ClientsController@disputeDestroy')->name('receptionist.dispute.destroy');
+    Route::post('todo/change-assignment', 'Receptionist\ClientsControlleqr@changeTodoAssignment')->name('receptionist.todo.assignment');
+
     Route::post('client/profile/todo', 'Receptionist\ClientsController@clientToDo')->name('receptionist.client.todo');
+    Route::put('client/todo/{todoId}', 'Receptionist\ClientsController@clientToDoUpdate')->name('receptionist.client.todoUpdate');
 
 
     Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
