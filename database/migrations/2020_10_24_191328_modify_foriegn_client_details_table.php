@@ -58,7 +58,7 @@ class ModifyForiegnClientDetailsTable extends Migration
         });
         Schema::table('messages', function (Blueprint $table) {
             $table->dropForeign('messages_user_id_foreign');
-            $table->unsignedInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
@@ -67,7 +67,7 @@ class ModifyForiegnClientDetailsTable extends Migration
 
         Schema::table('question_notes', function (Blueprint $table) {
             $table->dropForeign('question_notes_user_id_foreign');
-            $table->unsignedInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
                 ->nullable()
                 ->references('id')->on('users')
@@ -75,14 +75,14 @@ class ModifyForiegnClientDetailsTable extends Migration
         });
         Schema::table('appointments', function (Blueprint $table) {
             $table->dropForeign('appointments_user_id_foreign');
-            $table->unsignedInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
         });
         Schema::table('message_histories', function (Blueprint $table) {
             $table->dropForeign('message_histories_user_id_foreign');
-            $table->unsignedInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
@@ -97,7 +97,7 @@ class ModifyForiegnClientDetailsTable extends Migration
 
         Schema::table('chat', function (Blueprint $table) {
             $table->dropForeign('chat_user_id_foreign');
-            $table->unsignedInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->change();
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
@@ -259,6 +259,8 @@ class ModifyForiegnClientDetailsTable extends Migration
                 ->references('id')->on('client_report_eq_accounts')
                 ->onDelete('cascade');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
