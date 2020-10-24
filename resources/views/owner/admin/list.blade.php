@@ -8,62 +8,60 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
-                        <div class="row m-2  pt-4">
-                            <div class="col-md-11 pull-right">
-                                <a class="btn btn-primary pull-right" href="{{ route('owner.admin.create')}}" role="button">
-                                    Create Admin
-                                </a>
-                            </div>
-
+                    <div class="row m-2  pt-4">
+                        <div class="col-md-11 pull-right">
+                            <a class="btn btn-primary pull-right" href="{{ route('owner.admin.create')}}" role="button">
+                                Create Admin
+                            </a>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-md-11">
-                                <div class="card">
-
-                                    <div class="card-header">
-                                        <label class="header m-2">ADMINS LIST</label>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">FIRST NAME</th>
-                                                <th scope="col">LAST NAME</th>
-                                                <th scope="col">EMAIL</th>
-                                                <th scope="col">NEGATIVE TYPE</th>
-                                                <th scope="col">ACTION</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($admins as $key=> $admin)
-                                                <tr>
-                                                    <th scope="row">{{ (($admins->currentPage() - 1 ) * $admins->perPage() ) + $loop->iteration }}</th>
-                                                    <td>{{$admin['first_name']}}</td>
-                                                    <td>{{$admin['last_name']}}</td>
-                                                    <td>{{$admin['email']}}</td>
-                                                    <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
-                                                    <td>
-                                                        <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil"></i></a>
-                                                        <button class="btn btn-danger delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash"></i></button>
-                                                        <meta name="csrf-token" content="{{ csrf_token() }}">
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-
-
-                                            </tbody>
-                                        </table>
-                                        {{ $admins->links() }}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                    <div class="ms-ua-box">
+                        <div class="col-md-11">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    <label class="header m-2">ADMINS</label>
+                                </div>
+
+                                <div class="card-body mt-5">
+                                    <table class="table table-hover">
+                                        <thead class="thead thead-dark">
+                                        <tr>
+                                            <th class="col-md-1">#</th>
+                                            <th class="col-md-2">FIRST NAME</th>
+                                            <th class="col-md-2">LAST NAME</th>
+                                            <th class="col-md-2">EMAIL</th>
+                                            <th class="col-md-4">NEGATIVE TYPE</th>
+                                            <th class="col-md-1">ACTION</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($admins as $key=> $admin)
+
+                                            <tr>
+                                                <th scope="row">{{ (($admins->currentPage() - 1 ) * $admins->perPage() ) + $loop->iteration }}</th>
+                                                <td>{{$admin->first_name}}</td>
+                                                <td>{{$admin->last_name}}</td>
+                                                <td>{{$admin->email}}</td>
+                                                <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
+                                                <td>
+                                                    <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-square-o"></i></a>
+                                                    <button class="btn delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button>
+                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    {{ $admins->links() }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

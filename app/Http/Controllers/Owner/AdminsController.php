@@ -30,7 +30,6 @@ class AdminsController extends Controller
     public function store(Request $request)
     {
         $admin = $request->admin;
-
         $validation =  Validator::make($admin, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -39,7 +38,7 @@ class AdminsController extends Controller
         ]);
 
 
-        if ($validation->fails()){
+        if($validation->fails()){
             $negativeType = NegativeType::all()
                 ->pluck('name', 'id')
                 ->toArray();
@@ -61,8 +60,6 @@ class AdminsController extends Controller
                 'ip_address' => $ipAddress
             ]);
        }
-
-
 
         foreach($admin['negative_types'] as $negativeTypes){
             AdminSpecification::create([
@@ -94,7 +91,7 @@ class AdminsController extends Controller
 
         $admin = $request->admin;
         $admin['id'] = $id;
-
+        
         $validation =  Validator::make($admin, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],

@@ -12,15 +12,18 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
 
-                        <div class="card w-75">
-                            <div class="text-center">
-                                @foreach ($errors->all() as $error)
-                                    <div class="alert alert-danger">{{ $error }}</div>
-                                @endforeach
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="text-center">
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                </div>
+                                <div class="row " style="margin: 10px">
+                                    <a class="btn btn-light"  href="{{route('owner.admin.list')}}">Back</a>
+                                </div>
                             </div>
-                            <div class="row " style="margin: 10px">
-                                <a class="btn btn-success"  href="{{route('owner.admin.list')}}">Back</a>
-                            </div>
+
                             <div class="card-body ">
                                 {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
 
@@ -65,11 +68,11 @@
                                 </div>
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
-                                        <div class="col-sm-10 form-group">
+                                        <div class="col-md-10 form-group">
                                             {{ Form::text('admin[ip_address][]', old('admin.ip_address'), ['class' => 'form-control', 'placeholder'=>'IP ADDRESS']) }}
                                         </div>
-                                        <div class="col-sm-2 form-group">
-                                            <input class="btn btn-primary add-ip-address" type="button" value="Add"/>
+                                        <div class="col-md-2 form-group">
+                                            <input class="btn btn-block add-ip-address" type="button" value="Add"/>
                                         </div>
                                     </div>
                                 </div>
@@ -78,11 +81,9 @@
                                     <div id="newIp">
                                     </div>
 
-                                <div class="form-group row mb-0 font">
-                                    <div class="col-md-offset-5">
-                                        <button type="submit" class="btn btn-primary">
-                                            Create admin
-                                        </button>
+                                <div class="form-group row font">
+                                    <div class="col-md-12 tab-selector">
+                                        <input type="submit" value="ADD ADMIN" class="ms-ua-submit">
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
@@ -107,7 +108,7 @@
                 var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
                 var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
                 var addIp = "<input type='text' name=admin[ip_address][] class = 'form-control col-10' placeholder = 'IP ADDRESS'> </div>"
-                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-primary" type="button" data-target="'+i+'" value="Delete"/></div>'
+                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-block" type="button" data-target="'+i+'" value="Delete"/></div>'
                 newDiv += addIp + "</div></div>";
                 $("#newIp").append(newDiv);
 
