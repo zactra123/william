@@ -13,13 +13,13 @@
     </div>
     <div class="form-group row m-1">
         <div class="col-md-11">
-            {{ Form::textarea('todo[description]', $toDo->description??'', ['class' => 'form-control m-input', 'placeholder' => 'Last name']) }}
+            {{ Form::textarea('todo[description]', $toDo->description??'', ['class' => 'form-control m-input', 'placeholder' => 'To Do Description']) }}
         </div>
     </div>
 
     <div class="form-group row m-1">
         <div class="col-md-11">
-            {!! Form::select('todo[user_id]',$admins, $toDo->user_id ,['class'=>'form-account-name', 'id' => 'select-account']); !!}
+            {!! Form::select('todo[user_id]',$admins, $toDo->user_id ,['class'=>'form-account-name form-control', 'id' => 'select-account']); !!}
         </div>
     </div>
 
@@ -87,10 +87,8 @@
 
 
     <div class="form-group row mb-0 font">
-        <div class="col-md-8 offset-md-4">
-            <button type="submit" class="btn btn-primary">
-                Submit
-            </button>
+        <div class="col-md-12">
+            <input type="submit" value="Update" class="ms-ua-submit">
         </div>
     </div>
     {!! Form::close() !!}

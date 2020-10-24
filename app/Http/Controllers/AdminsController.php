@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\ClientReport;
+use App\Disputable;
 use App\Message;
 use App\Todo;
 use Illuminate\Support\Facades\Date;
@@ -91,6 +92,7 @@ class AdminsController extends Controller
     }
     public function clientToDo(Request $request)
     {
+
         $toDo = Todo::find($request->id);
         $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();;
 
@@ -104,7 +106,16 @@ class AdminsController extends Controller
 
     public function clientToDoUpdate(Request $request)
     {
-        dd($request->all());
+        $todo = $request->todo;
+        $request->todoId;
+        $client= Todo::where('id', $request->todoId)->first()->client_id;
+        Todo::where('id', $request->todoId)->update($todo);
+
+        foreach($request->dispute as $dispute){
+            Disputable::where('id',$dispute['id'])
+                ->update(['status'=>$dispute['status']]);
+        }
+        return redirect()->route('admin.client.profile', $client);
     }
 
 

@@ -133,8 +133,8 @@ Route::group(['prefix'=> 'admin'], function(){
 
     Route::get('client/{client}/profile', 'AdminsController@clientProfile')->name('admin.client.profile');
     Route::post('client/profile/todo', 'AdminsController@clientToDo')->name('admin.client.todo');
-    Route::put('client/profile/todo/{todo}', 'AdminsController@clientToDoUpdate')->name('admin.client.todoUpdate');
     Route::get('client/{client}/report/{type}', 'AdminsController@clientReport')->name('admin.client.report');
+    Route::put('client/todo/{todoId}', 'AdminsController@clientToDoUpdate')->name('admin.client.todoUpdate');
 
 
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
