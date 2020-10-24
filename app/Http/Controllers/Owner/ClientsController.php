@@ -35,7 +35,19 @@ class ClientsController extends Controller
 
     public function destroy($userId)
     {
-        dd($userId);
+
+        try {
+            $user = User::find($userId);
+
+
+            User::where('id', $userId)->forceDelete();
+
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
     }
     public function show($clientId)
     {

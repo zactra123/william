@@ -74,12 +74,26 @@
                 var id = $(this).data('id');
                 var token = $("meta[name='csrf-token']").attr("content");
                 console.log("test");
-                bootbox.confirm("Do you really want to delete record?", function (result) {
-                    console.log(result);
-                    if (result) {
+                bootbox.confirm({
+                    title: "Destroy  this admin?",
+                    message: "Do you really want to delete record?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel',
+                            className: 'btn-success'
 
-                        $.ajax(
-                            {
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm',
+                            className: 'btn-danger'
+
+                        }
+                    },
+                    callback: function (result) {
+                        console.log('This was logged in the callback: ' + result);
+                        if (result) {
+
+                            $.ajax({
                                 url: "/owner/admin/" + id,
                                 type: 'DELETE',
                                 data: {
@@ -91,8 +105,10 @@
                                     location.reload()
                                 }
                             });
+                        }
                     }
-                })
+                });
+
 
             })
         })
