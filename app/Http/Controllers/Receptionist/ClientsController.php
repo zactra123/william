@@ -142,6 +142,10 @@ class ClientsController extends Controller
     }
 
 
+    public function changeTodoAssignment(Request $request) {
+        $todo = Todo::find($request->id)->update(['user_id' => $request->user_id]);;
 
+        return response()->json(['status' => 200, 'view' => $todo]);
+    }
 
 }

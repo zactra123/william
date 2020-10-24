@@ -97,7 +97,5 @@
 </div>
 
 <script>
-$('#select-account').selectize({    searchField: 'full_name',
-    labelField: 'full_name',
-    valueField: 'id'})
+$('#select-account').selectize()
 </script>

@@ -92,8 +92,7 @@ class AdminsController extends Controller
     public function clientToDo(Request $request)
     {
         $toDo = Todo::find($request->id);
-        $admins = User::admins()->get();
-        $admins = $admins->mapWithKeys(function($admin){return [ $admin['id']  => $admin->full_name()];})->toArray();
+        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();;
 
         $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
 

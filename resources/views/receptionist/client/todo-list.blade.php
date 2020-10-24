@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+    @extends('layouts.layout')
 
 @section('content')
     @include('helpers.breadcrumbs', ['title'=> "TO DO", 'route' => ["Home"=> '/owner',"TO DO LIST" => "#"]])
@@ -53,26 +53,21 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">FULL NAME</th>
-                                            <th scope="col">NAME NAME</th>
-                                            <th scope="col">GO TO</th>
-                                            <th scope="col">ASSIGN</th>
+                                            <th scope="col">Dispute Title</th>
+                                            <th scope="col">ASSIGNMENT</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($toDos as $todo)
 
-                                            <tr>
+                                            <tr data-id="{{$todo->id}}">
                                                 <th scope="row"></th>
-                                                <td>{{$todo->client->full_name()}}</td>
+                                                <td><a href="{{route('receptionist.client.profile', $todo->client_id)}}"
+                                                       role="button">{{$todo->client->full_name()}}</a></td>
                                                 <td>{{$todo->title}}</td>
-
                                                 <td>
-                                                    <a href="{{route('receptionist.client.profile', $todo->client_id)}}"
-                                                       role="button"><span class="fa fa-file-text"></span></a>
+                                                    {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
                                                 </td>
-                                                <td>
-                                                </td>
-
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -88,5 +83,12 @@
             </div>
         </div>
     </section>
+
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/todo-list.js?v=2') }}" ></script>
+
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+
+
 
 @endsection
