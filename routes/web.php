@@ -167,18 +167,6 @@ Route::group(['prefix'=> 'admin'], function(){
 
 Route::group(['prefix'=> 'receptionist'], function(){
 
-    Route::get('client','Receptionist\ClientsController@list')->name('receptionist.client.list');
-    Route::get('client/{client}/profile', 'Receptionist\ClientsController@profile')->name('receptionist.client.profile');
-    Route::get('client/{client}/report/{type}', 'Receptionist\ClientsController@clientReport')->name('receptionist.client.report');
-
-    Route::get('todo/list', 'Receptionist\ClientsController@toDoList')->name('receptionist.toDo.list');
-    Route::delete('todo/{id}', 'Receptionist\ClientsController@toDoDestroy')->name('receptionist.toDo.destroy');
-    Route::delete('dispute/{id}', 'Receptionist\ClientsController@disputeDestroy')->name('receptionist.dispute.destroy');
-    Route::post('todo/change-assignment', 'Receptionist\ClientsControlleqr@changeTodoAssignment')->name('receptionist.todo.assignment');
-
-    Route::post('client/profile/todo', 'Receptionist\ClientsController@clientToDo')->name('receptionist.client.todo');
-    Route::put('client/todo/{todoId}', 'Receptionist\ClientsController@clientToDoUpdate')->name('receptionist.client.todoUpdate');
-
 
     Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
     Route::post('message/note', 'Receptionist\MessagesController@addNote')->name('receptionist.message.note');
@@ -199,6 +187,20 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
 });
 
+Route::group(['prefix'=> 'receptionist-admin/'], function(){
+
+    Route::get('client','TodosController@clientList')->name('adminRec.client.list');
+    Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
+    Route::get('client/{client}/report/{type}', 'TodosController@clientReport')->name('adminRec.client.report');
+    Route::get('todo/list', 'TodosController@toDoList')->name('adminRec.toDo.list');
+    Route::delete('todo/{id}', 'TodosController@toDoDestroy')->name('adminRec.toDo.destroy');
+    Route::delete('dispute/{id}', 'TodosController@disputeDestroy')->name('adminRec.dispute.destroy');
+    Route::post('todo/change-assignment', 'TodosController@changeTodoAssignment')->name('adminRec.todo.assignment');
+    Route::post('client/profile/todo', 'TodosController@clientToDo')->name('adminRec.client.todo');
+    Route::put('client/todo/{todoId}', 'TodosController@clientToDoUpdate')->name('adminRec.client.todoUpdate');
+
+
+});
 
 
 Route::group(['prefix'=> 'affiliate'], function(){

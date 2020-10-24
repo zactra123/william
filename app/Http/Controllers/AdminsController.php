@@ -69,57 +69,6 @@ class AdminsController extends Controller
         return view('admin.affiliate-list', compact('users'));
     }
 
-    public function toDoList(Request $request)
-    {
-        if($request->title != null){
-            $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
-        }else{
-            $toDos = Todo::paginate(15);
-        }
-        return view('admin.todo-list', compact('toDos'));
-    }
-
-
-    public function clientProfile($clientId)
-    {
-        $client = User::clients()->find($clientId);
-        $toDos = Todo::where('client_id', $clientId)->get();
-
-        //       return view('admin.client-profile', compact('client'));
-       return view('admin.client-profile-1', compact('client', 'toDos'));
-
-
-    }
-    public function clientToDo(Request $request)
-    {
-
-        $toDo = Todo::find($request->id);
-        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
-
-        $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
-
-        return response()->json(['status' => 200, 'view' => $view]);
-
-//        return Response::json(['status' => 200, 'view' => $view]);
-
-    }
-
-    public function clientToDoUpdate(Request $request)
-    {
-        $todo = $request->todo;
-        $request->todoId;
-        $client= Todo::where('id', $request->todoId)->first()->client_id;
-        Todo::where('id', $request->todoId)->update($todo);
-
-        foreach($request->dispute as $dispute){
-            Disputable::where('id',$dispute['id'])
-                ->update(['status'=>$dispute['status']]);
-        }
-        return redirect()->route('admin.client.profile', $client);
-    }
-
-
-
     public function clientReport(Request $request)
     {
         $clientReportsEQ = null;

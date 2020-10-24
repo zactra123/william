@@ -1,35 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Receptionist;
-
-
-use App\Disputable;
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 use App\ClientReport;
+use App\Disputable;
 use App\Todo;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
 use App\User;
-use App\ClientDetail;
-use Response;
-use PDF;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-
-
-use App\Client_detail;
-
-class ClientsController extends Controller
+class TodosController extends Controller
 {
-
     public function __construct()
     {
-        $this->middleware(['auth',  'receptionist']);
+        $this->middleware('auth');
+
     }
 
-    public function list()
+    public function clientList()
     {
         $users = DB::table('users')
             ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
@@ -39,31 +28,20 @@ class ClientsController extends Controller
             ->where('users.role', 'client')
             ->paginate(10);
 
-        return view('receptionist.client.list', compact( 'users'));
+        return view('todo.list', compact( 'users'));
 
     }
+
+
     public function profile($clientId)
     {
         $client = User::clients()->find($clientId);
         $toDos = Todo::where('client_id', $clientId)->get();
         $user = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
-
-        return view('receptionist.client.profile', compact('client', 'user','toDos'));
-
-
-    }
-    public function clientToDo(Request $request)
-    {
-
-        $toDo = Todo::find($request->id);
-        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
-        $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
-
-        return response()->json(['status' => 200, 'view' => $view]);
+        return view('todo.profile', compact('client', 'user','toDos'));
 
 
     }
-
 
     public function clientReport(Request $request)
     {
@@ -97,49 +75,66 @@ class ClientsController extends Controller
             'equifaxDate','experianDate','transunionDate'));
     }
 
+    public function clientToDo(Request $request)
+    {
+
+        $toDo = Todo::find($request->id);
+        $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
+        $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
+
+        return response()->json(['status' => 200, 'view' => $view]);
+
+
+    }
 
     public function toDoList(Request $request)
     {
+        if(auth()->user()->role=='receptionist'){
+            $admins = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
+            if($request->title != null && $request->admin != null && $request->assign == "on"){
+                $toDos = Todo::where('user_id',  $request->admin)
+                    ->where('title',"LIKE", "%".$request->title."%")
+                    ->where('user_id', "!=", auth()->user()->id)
+                    ->paginate(15);
 
-        $admins = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
-        if($request->title != null && $request->admin != null && $request->assign == "on"){
+            }elseif($request->title == null && $request->admin != null && $request->assign == "on"){
 
-            $toDos = Todo::where('user_id',  $request->admin)
-                ->where('title',"LIKE", "%".$request->title."%")
-                ->where('user_id', "!=", auth()->user()->id)
-                ->paginate(15);
+                $toDos = Todo::where('user_id',  $request->admin)
+                    ->where('user_id', "!=", auth()->user()->id)
+                    ->paginate(15);
+            }elseif($request->title != null && $request->admin == null && $request->assign == "on"){
 
-        }elseif($request->title == null && $request->admin != null && $request->assign == "on"){
+                $toDos = Todo::where('title', "LIKE", "%" . $request->title . "%")
+                    ->where('user_id', "!=", auth()->user()->id)
+                    ->paginate(15);
+            }elseif($request->title != null && $request->admin != null && $request->assign != "on"){
+                $toDos = Todo::where('user_id',  $request->admin)
+                    ->where('title',"LIKE", "%".$request->title."%")
+                    ->paginate(15);
+            }elseif($request->title != null && $request->admin == null && $request->assign != "on"){
 
-            $toDos = Todo::where('user_id',  $request->admin)
-                ->where('user_id', "!=", auth()->user()->id)
-                ->paginate(15);
-        }elseif($request->title != null && $request->admin == null && $request->assign == "on"){
+                $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
+            }elseif($request->title == null && $request->admin != null && $request->assign != "on"){
 
-            $toDos = Todo::where('title', "LIKE", "%" . $request->title . "%")
-                ->where('user_id', "!=", auth()->user()->id)
-                ->paginate(15);
-        }elseif($request->title != null && $request->admin != null && $request->assign != "on"){
+                $toDos = Todo::where('user_id',  $request->admin)->paginate(15);
+            }elseif($request->title == null && $request->admin == null && $request->assign == "on"){
 
-            $toDos = Todo::where('user_id',  $request->admin)
-                ->where('title',"LIKE", "%".$request->title."%")
-                ->paginate(15);
-        }elseif($request->title != null && $request->admin == null && $request->assign != "on"){
+                $toDos = Todo::where('user_id', "!=", auth()->user()->id)->paginate(15);
+            }else{
+                $toDos = Todo::paginate(15);
+            }
+            return view('todo.todo-list', compact('toDos', 'admins'));
 
-            $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
-        }elseif($request->title == null && $request->admin != null && $request->assign != "on"){
-
-            $toDos = Todo::where('user_id',  $request->admin)->paginate(15);
-        }elseif($request->title == null && $request->admin == null && $request->assign == "on"){
-
-            $toDos = Todo::where('user_id', "!=", auth()->user()->id)->paginate(15);
-        }else{
-            $toDos = Todo::paginate(15);
+        }elseif(auth()->user()->role=='admin'){
+            if($request->title != null){
+                $toDos = Todo::where('title',"LIKE", "%".$request->title."%")->paginate(15);
+            }else{
+                $toDos = Todo::paginate(15);
+            }
+            return view('todo.todo-list', compact('toDos'));
         }
 
 
-
-        return view('receptionist.client.todo-list', compact('toDos', 'admins'));
     }
 
 
@@ -167,7 +162,6 @@ class ClientsController extends Controller
     public function clientToDoUpdate(Request $request)
     {
         $todo = $request->todo;
-        $request->todoId;
         $client= Todo::where('id', $request->todoId)->first()->client_id;
         Todo::where('id', $request->todoId)->update($todo);
 
@@ -175,7 +169,16 @@ class ClientsController extends Controller
             Disputable::where('id',$dispute['id'])
                 ->update(['status'=>$dispute['status']]);
         }
-        return redirect()->route('admin.client.profile', $client);
+
+        $allvalues = Disputable::where('todo_id', $request->todoId)->pluck('status')->toArray();
+
+        if (count(array_unique($allvalues)) === 1 && end($allvalues) === 'true') {
+            Todo::where('id', $request->todoId)->update(['status'=>end($allvalues)]);
+        }else{
+            Todo::where('id', $request->todoId)->update(['status'=>min($allvalues)]);
+        }
+
+        return redirect()->route('adminRec.client.profile', $client);
     }
 
     public function disputeDestroy($id)
@@ -195,5 +198,6 @@ class ClientsController extends Controller
 
 
     }
+
 
 }

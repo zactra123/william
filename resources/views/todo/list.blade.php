@@ -29,7 +29,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>
-                                                    <a href="{{route('receptionist.client.profile', $user->id)}}" role="button">
+                                                    <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
                                                     {{$user->full_name}}
                                                     </a>
                                                 </td>

@@ -326,13 +326,13 @@
 
                                 <div class="row">
                                     <div  class="col-md-4 mt20">
-                                        <a href="{{route('receptionist.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                        <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
                                     </div>
                                     <div  class="col-md-4 mt20">
-                                        <a href="{{route('receptionist.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+                                        <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
                                     </div>
                                     <div  class="col-md-4 mt20">
-                                        <a  href="{{route('receptionist.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+                                        <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +540,7 @@
                 var token = "<?= csrf_token()?>";
 
                 $.ajax({
-                    url: '/receptionist/client/profile/todo',
+                    url: '/receptionist-admin/client/profile/todo',
                     type: "POST",
                     data: {
                         "id": todo,

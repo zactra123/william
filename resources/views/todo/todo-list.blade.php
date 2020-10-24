@@ -14,7 +14,7 @@
                             <div class="col-md-4 form-group">
                                 <input type="text" name="title"  class="form-control"  placeholder="TO DO TITLE">
                             </div>
-
+                            @if(auth()->user()->role=='receptionist')
                             <div class="col-md-3 form-group">
                                 <div class="form-group">
                                     <select class="form-control" name="admin" id="gender">
@@ -25,12 +25,12 @@
                                     </select>
 
                                 </div>
-                                {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                             </div>
                             <div class="col-md-1 form-group">
                                 ASSIGNED
                                 <input type="checkbox" name="assign"   placeholder="TO DO TITLE">
                             </div>
+                            @endif
                             <div class="col-md-4  form-group">
                                 <input type="submit" value="Search" class="form-control">
                             </div>
@@ -54,8 +54,10 @@
                                             <th scope="col">#</th>
                                             <th scope="col">FULL NAME</th>
                                             <th scope="col">Dispute Title</th>
+                                            @if(auth()->user()->role=='receptionist')
                                             <th scope="col">ASSIGNMENT</th>
                                             <th scope="col">ACTION</th>
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -63,9 +65,11 @@
 
                                             <tr data-id="{{$todo->id}}">
                                                 <th scope="row"></th>
-                                                <td><a href="{{route('receptionist.client.profile', $todo->client_id)}}"
+                                                <td><a href="{{route('adminRec.client.profile', $todo->client_id)}}"
                                                        role="button">{{$todo->client->full_name()}}</a></td>
                                                 <td>{{$todo->title}}</td>
+                                                @if(auth()->user()->role=='receptionist')
+
                                                 <td>
                                                     {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
                                                 </td>
@@ -75,6 +79,7 @@
 
                                                     <button class="btn  delete" data-id="{{ $todo->id}}" ><i class="fa fa-trash"></i> </button>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         </tbody>
