@@ -91,7 +91,7 @@ class AdminsController extends Controller
 
         $admin = $request->admin;
         $admin['id'] = $id;
-        
+
         $validation =  Validator::make($admin, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -122,10 +122,10 @@ class AdminsController extends Controller
             ]);
         }
         if(isset($request->admin['ip_address'])){
-            foreach($request->admin['ip_id']  as $key =>$id){
+            foreach($request->admin['ip_address'] as $key =>$ip_address){
 
-                if( AllowedIp::where('id', $id)->first()!= null){
-                    AllowedIp::where('id', $id)->update(['ip_address'=> $request->admin['ip_address'][$key]]);
+                if( AllowedIp::where('id', $key)->first()!= null){
+                    AllowedIp::where('id', $key)->update(['ip_address'=> $ip_address]);
                 }
             }
         }

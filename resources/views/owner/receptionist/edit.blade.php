@@ -12,19 +12,15 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
 
-                        <div class="card w-75">
+                        <div class="card">
                             <div class="text-center">
                                 @foreach ($errors->all() as $error)
                                     <div class="alert alert-danger">{{ $error }}</div>
                                 @endforeach
                             </div>
                             <div class="row m-2">
-                                <a class="btn btn-success"  href="{{route('owner.receptionist.list')}}">BACK</a>
+                                <a class="btn btn-light"  href="{{route('owner.receptionist.list')}}">BACK</a>
                             </div>
-                            <div class="card-header">
-                                <h3> EDIT RECEPTIONIST </h3>
-                            </div>
-
                             <div class="card-body ">
                                 {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
                                 @method('PUT')
@@ -66,10 +62,10 @@
                                         <div class="col-md-12 tab-selector">
 
                                             <div class="col-sm-10 form-group">
-                                                {{ Form::text('receptionist[ip_address][]', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
+                                                {{ Form::text('receptionist[ip_address]['.$value->id.']', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
                                             </div>
                                             <div class="col-sm-2 form-group">
-                                                <input class="ip-address  btn btn-primary " type="button" data-target={{$value->id}} value="Delete"/>
+                                                <input class="ip-address  btn btn-block " type="button" data-target={{$value->id}} value="Delete"/>
                                             </div>
                                         </div>
                                     </div>
@@ -78,16 +74,14 @@
                                 </div>
                                 <div class="form-group row m-1">
                                     <div class="col-md-2">
-                                        <input class="btn btn-primary add-ip-address" type="button" value="Add"/>
+                                        <input class="btn btn-block add-ip-address" type="button" value="Add Ip"/>
 
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0 font">
-                                    <div class="col-md-offset-5">
-                                        <button type="submit" class="btn btn-primary">
-                                            Create admin
-                                        </button>
+                                    <div class="col-md-12">
+                                        <input type="submit" value="UPDATE" class="ms-ua-submit">
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
@@ -109,7 +103,7 @@
                 $(".add-ip-address").on('click', function(){
                     var newDiv = "<div class='form-group row font justify-content-center' ><div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
                     var addIp = "<input type='text' name=receptionist[ip_address_new][] class = 'form-control col-9' placeholder = 'IP ADDRESS'></div>"
-                    addIp +=  '<div class="col-sm-2 form-group">  <input class="delete-ip-address  btn btn-primary " type="button" value="Delete"/></div>'
+                    addIp +=  '<div class="col-sm-2 form-group">  <input class="delete-ip-address  btn btn-block" type="button" value="Delete"/></div>'
                     newDiv += addIp + "</div></div></div>";+
                         $("#newIp").append(newDiv);
 

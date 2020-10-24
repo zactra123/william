@@ -12,10 +12,10 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
 
-                        <div class="card w-75">
+                        <div class="card">
 
                             <div class="row m-2">
-                                <a class="btn btn-success"  href="{{route('owner.receptionist.list')}}">Back</a>
+                                <a class="btn btn-light"  href="{{route('owner.receptionist.list')}}">Back</a>
                             </div>
 
                             @foreach ($errors->all() as $error)
@@ -24,7 +24,6 @@
 
                             @endforeach
                             <div class="card-header">
-                            <h3>Create Receptionist</h3>
 
                             </div>
                             <div class="card-body ">
@@ -68,7 +67,7 @@
                                             {{ Form::text('receptionist[ip_address][]', old('receptionist.ip_address'), ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
                                         </div>
                                         <div class="col-sm-2 form-group">
-                                            <input class="btn btn-primary add-ip-address" type="button" value="Add"/>
+                                            <input class="btn btn-block add-ip-address" type="button" value="Add Ip"/>
                                         </div>
                                     </div>
                                 </div>
@@ -78,10 +77,9 @@
                                 </div>
 
                                 <div class="form-group row mb-0 font">
-                                    <div class="col-md-offset-5">
-                                        <button type="submit" class="btn btn-primary">
-                                            Create admin
-                                        </button>
+                                    <div class="col-md-12">
+                                        <input type="submit" value="ADD" class="ms-ua-submit">
+
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
@@ -105,7 +103,7 @@
                 var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
                 var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
                 var addIp = "<input type='text' name=receptionist[ip_address][] class = 'form-control col-10' placeholder = 'IP ADDRESS'></div>"
-                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-primary" type="button" data-target="'+i+'" value="Delete"/></div>'
+                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-block" type="button" data-target="'+i+'" value="Delete"/></div>'
                 newDiv += addIp + "</div></div>";
                     $("#newIp").append(newDiv);
 

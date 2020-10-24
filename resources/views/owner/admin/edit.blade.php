@@ -69,10 +69,10 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-sm-10 form-group">
-                                            {{ Form::text('admin[ip_address][]', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
+                                            {{ Form::text('admin[ip_address]['.$value->id.']', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
                                         </div>
                                         <div class="col-sm-2 form-group">
-                                            <input class="ip-address form-control btn btn-primary " type="button" data-target={{$value->id}} value="Delete"/>
+                                            <input class="ip-address form-control btn btn-block " type="button" data-target={{$value->id}} value="Delete"/>
                                         </div>
                                     </div>
                                 </div>

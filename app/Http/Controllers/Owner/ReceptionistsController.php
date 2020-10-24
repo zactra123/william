@@ -27,7 +27,6 @@ class ReceptionistsController extends Controller
     {
         $receptionist = $request->receptionist;
 
-
         $validation =  Validator::make($receptionist, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name'=>['required', 'string', 'max:255'],
@@ -35,7 +34,6 @@ class ReceptionistsController extends Controller
         ]);
 
         if ($validation->fails()){
-
             return view('owner.receptionist.create')->withErrors($validation);
         }
         $user = User::create([
@@ -47,12 +45,10 @@ class ReceptionistsController extends Controller
         foreach($receptionist['ip_address'] as $ipAddress){
 
             AllowedIp::create([
-                'user_id'=>$user->id,
+                'user_id'=> $user->id,
                 'ip_address' => $ipAddress,
             ]);
         }
-
-
 
         $user->sendEmailVerificationNotification();
 
@@ -64,7 +60,6 @@ class ReceptionistsController extends Controller
         $receptionist = User::where('id', $id)
             ->where('role', 'receptionist')
             ->first();
-
 
         return view('owner.receptionist.edit', compact('receptionist'));
     }
@@ -93,11 +88,11 @@ class ReceptionistsController extends Controller
                 'role'=>'receptionist',
             ]);
 
-        if(!empty($receptionist["ip_id"])){
-            foreach($request->receptionist['ip_id']  as $key => $ip_id){
+        if(!empty($receptionist["ip_address"])){
+            foreach($receptionist["ip_address"]  as $key => $ip_id){
 
-                if( AllowedIp::where('id', $ip_id)->first()!= null){
-                    AllowedIp::where('id', $ip_id)->update(['ip_address'=> $receptionist['ip_address'][$key]]);
+                if( AllowedIp::where('id', $key)->first()!= null){
+                    AllowedIp::where('id', $key)->update(['ip_address'=> $ip_id]);
                 }
             }
         }
