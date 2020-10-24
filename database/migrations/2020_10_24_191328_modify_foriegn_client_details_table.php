@@ -13,6 +13,7 @@ class ModifyForiegnClientDetailsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('client_details', function (Blueprint $table) {
             $table->dropForeign('client_details_user_id_foreign');
             $table->foreign('user_id')
