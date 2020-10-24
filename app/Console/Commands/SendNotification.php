@@ -42,22 +42,9 @@ class SendNotification extends Command
      */
     public function handle()
     {
-        $words = [
-            'aberration' => 'a state or condition markedly different from the norm',
-            'convivial' => 'occupied with or fond of the pleasures of good company',
-            'diaphanous' => 'so thin as to transmit light',
-            'elegy' => 'a mournful poem; a lament for the dead',
-            'ostensible' => 'appearing as such but not necessarily so'
-        ];
 
-        // Finding a random word
-        $key = array_rand($words);
-        $value = $words[$key];
-
-        $users = DB::table('users')
+        $users = User::where('users.role', 'client')
             ->leftJoin('credentials', 'users.id', '=', 'credentials.user_id')
-            ->where('users.role', 'client')
-            ->where('users.id', 39)
             ->where(function ($query) {
                 $query->orWhereNUll([
                     'credentials.ck_login',
@@ -82,27 +69,29 @@ class SendNotification extends Command
             $to_day = date('Y-m-d-H');
             $result = $start_time->diffInHours($to_day, false);
 
+            $this->info(!$user->note_count . "__ ". $user->id ."_____" . $result);
 
-            if($user->note_count == 0) {
+
+            if(!$user->note_count) {
                 if ($result > 24 && $result < 36) {
                     Mail::send(new CredentialNotifications($user));
-                    User::where('id', $user->id)->update(['note_count', 1]);
+                    $user->update(['note_count'=> 1]);
                 }
             }elseif ($user->note_count == 1) {
                 if ($result > 48 && $result < 60) {
                     Mail::send(new CredentialNotifications($user));
-                    User::where('id', $user->id)->update(['note_count', 2]);
+                    $user->update(['note_count'=> 2]);
 
                 }
             }elseif ($user->note_count == 2) {
                 if ($result > 72 && $result < 84) {
                     Mail::send(new CredentialNotifications($user));
-                    User::where('id', $user->id)->update(['note_count', 3]);
+                    $user->update(['note_count'=> 3]);
 
                 }
             }elseif ($user->note_count == 3 && $result > 144) {
                 Mail::send(new CredentialNotifications($user));
-                User::where('id', $user->id)->update(['active'=> 0]);
+                $user->update(['active'=> 0]);
 
 
             }
