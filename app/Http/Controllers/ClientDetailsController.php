@@ -18,6 +18,7 @@ use App\ClientReportTuInquiry;
 use App\ClientReportTuPublicRecord;
 use App\ClientReportTuStatement;
 use App\Disputable;
+use App\Jobs\FetchReports;
 use App\Mail\CredentialNotifications;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
@@ -52,7 +53,6 @@ class ClientDetailsController extends Controller
     public function index(Escrow $escrow)
     {
         $client = Auth::user();
-        $scraper = new Screaper($client->id);
 
         $toDos = Todo::where('client_id', $client->id)->get();
         $status = [null => ''] + \App\Todo::STATUS;
@@ -172,12 +172,14 @@ class ClientDetailsController extends Controller
             $clientDetails['address'] = strtoupper($data['address']);
             $clientDetails['registration_steps'] = "finished";
 
-            User::where('id', $id)->update([
+            $client = User::find($id)->update([
                 'first_name' => strtoupper($user['first_name']),
                 'last_name' => strtoupper($user['last_name'])
             ]);
+            
             $client_details->update($clientDetails);
             $uploaded->delete();
+            FetchReports::dispatch($client);
             if ($registration_steps == 'review') {
                 return redirect(route('client.details.create'));
             }

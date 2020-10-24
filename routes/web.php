@@ -128,13 +128,6 @@ Route::group(['prefix'=>'owner'], function(){
 
 Route::group(['prefix'=> 'admin'], function(){
     Route::resource('/', 'AdminsController')->names('admin')->parameters([''=>'admin'])->except('show');
-    Route::get('client/list', 'AdminsController@list')->name('admin.client.list');
-    Route::get('todo/list', 'AdminsController@toDoList')->name('admin.toDo.list');
-
-    Route::get('client/{client}/profile', 'AdminsController@clientProfile')->name('admin.client.profile');
-    Route::post('client/profile/todo', 'AdminsController@clientToDo')->name('admin.client.todo');
-    Route::get('client/{client}/report/{type}', 'AdminsController@clientReport')->name('admin.client.report');
-    Route::put('client/todo/{todoId}', 'AdminsController@clientToDoUpdate')->name('admin.client.todoUpdate');
 
 
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
