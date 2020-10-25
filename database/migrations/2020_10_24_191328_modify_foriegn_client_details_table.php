@@ -13,6 +13,8 @@ class ModifyForiegnClientDetailsTable extends Migration
      */
     public function up()
     {
+        $this->registerEnumWithDoctrine();
+
         Schema::disableForeignKeyConstraints();
         Schema::table('client_details', function (Blueprint $table) {
             $table->dropForeign('client_details_user_id_foreign');
@@ -98,7 +100,7 @@ class ModifyForiegnClientDetailsTable extends Migration
 
         Schema::table('chat', function (Blueprint $table) {
             $table->dropForeign('chat_user_id_foreign');
-            $table->bigInteger('user_id')->nullable()->change();
+            $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('set null');
@@ -171,7 +173,7 @@ class ModifyForiegnClientDetailsTable extends Migration
                 ->onDelete('cascade');
         });
         Schema::table('client_report_ex_accounts_payment_histories', function (Blueprint $table) {
-            $table->dropForeign('ex_acc_id_bh');
+            $table->dropForeign('ex_acc_id_ph');
             $table->foreign('client_report_ex_account_id', 'ex_acc_id_ph')
                 ->references('id')->on('client_report_ex_accounts')
                 ->onDelete('cascade');
@@ -272,5 +274,12 @@ class ModifyForiegnClientDetailsTable extends Migration
     public function down()
     {
         //
+    }
+
+    private function registerEnumWithDoctrine()
+    {
+        DB::getDoctrineSchemaManager()
+            ->getDatabasePlatform()
+            ->registerDoctrineTypeMapping('enum', 'string');
     }
 }
