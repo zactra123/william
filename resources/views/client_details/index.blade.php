@@ -246,24 +246,24 @@
                     <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS">
-                        <div class="row">
-                            <div class="col-md-1 mt-2"><i class="fa fa-map fa-fw"></i></div>
-                            <div class="col-md-10 ">{{$client->clientDetails->address}}</div>
-                        </div>
+                            <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                    </li>
+                    <li title="FULL ADDRESS" style="margin-left: 25px; padding-top:0px">
+                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
                     </li>
                     <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
                     <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
                     <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
                     @if($client->clientDetails->sex == 'M')
-                        Male
+                        MALE
                     @elseif($client->clientDetails->sex == 'F')
-                        Female
+                        FEMALE
                     @else
-                        Non-Binary
+                        NON-BINARY
                     @endif
                     </li>
                     @if($client->clientDetails->referred_by != null)
-                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}</li>
+                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
                     @endif
                     <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
                 </ul>
