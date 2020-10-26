@@ -73,6 +73,8 @@
                                     </form>
                                 </div>
                                 <div class="col-md-4 pull-right">
+                                    <a target="_blank" href="{{ url(Storage::url('123.pdf') )}}" title="MyPdf">Download</a>
+
 
                                 </div>
                             </div>
@@ -1335,7 +1337,7 @@
 
                                             @else
                                                 <div class="col-md-12">
-                                                    <span class="">{{json_decode(str_replace(['[',']'],'',$inquiries->date_of_inquiry))}}</span>
+                                                    <span class="">{{json_decode(str_replace(['[',']'],'',$inquiry->date_of_inquiry))}}</span>
 
                                                 </div>
 

@@ -227,7 +227,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::get('negative-item', 'ClientDetailsController@negativeItem')->name('client.negative.item');
     Route::post('negative-item', 'ClientDetailsController@negativeItemStore')->name('negative.store');
     Route::post('negative-contract', 'ClientDetailsController@negativeItemContract')->name('negative.contract');
-    Route::get('client/report/{type}', 'ClientDetailsController@clientReport')->name('client.report');
+    Route::get('report/{type}', 'ClientDetailsController@clientReport')->name('client.report');
 
     Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 

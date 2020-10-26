@@ -60,6 +60,7 @@ class ModifyForiegnClientDetailsTable extends Migration
                 ->onDelete('cascade');
         });
         Schema::table('messages', function (Blueprint $table) {
+//            $table->dropForeign('messages_user_id_foreign');
             $table->dropForeign('messages_user_id_foreign');
             $table->bigInteger('user_id')->nullable()->unsigned()->change();
             $table->foreign('user_id')
@@ -257,8 +258,8 @@ class ModifyForiegnClientDetailsTable extends Migration
                 ->onDelete('cascade');
         });
         Schema::table('client_report_eq_account_payment_histories', function (Blueprint $table) {
-            $table->dropForeign('cr_tu_acc_id_ah');
-            $table->foreign('cr_eq_acc_id_ah', 'cr_eq_acc_id_ah')
+            $table->dropForeign('cr_eq_acc_id_ah');
+            $table->foreign('client_report_eq_account_id', 'cr_eq_acc_id_ah')
                 ->references('id')->on('client_report_eq_accounts')
                 ->onDelete('cascade');
         });

@@ -53,11 +53,17 @@ class ClientDetailsController extends Controller
     public function index(Escrow $escrow)
     {
         $client = Auth::user();
-
         $toDos = Todo::where('client_id', $client->id)->get();
         $status = [null => ''] + \App\Todo::STATUS;
+        $reportsDateEQ = ClientReport::where('user_id', auth()->user()->id)
+            ->where('type', "EQ")->pluck('created_at', 'id')->toArray();
+        $reportsDateEX = ClientReport::where('user_id', auth()->user()->id)
+            ->where('type', "EX_LOG")->pluck('created_at', 'id')->toArray();
+        $reportsDateTU = ClientReport::where('user_id', auth()->user()->id)
+            ->where('type', "TU_DIS")->pluck('created_at', 'id')->toArray();
 
-        return view('client_details.index', compact('client', 'toDos', 'status'));
+
+        return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU' ));
     }
 
     public function create(Request $request)
@@ -129,13 +135,12 @@ class ClientDetailsController extends Controller
         $data["last_name"] = implode(" ", $full_name);
         $id = Auth::user()->id;
         $uploaded = UploadClientDetail::where("user_id", $id);
-
         $validation = Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'dob' => ['required'],
+//            'dob' => ['required'],
             'sex' => ['required'],
-            'ssn' => ['required', 'string', 'max:255'],
+//            'ssn' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
         ]);
 
@@ -176,7 +181,7 @@ class ClientDetailsController extends Controller
                 'first_name' => strtoupper($user['first_name']),
                 'last_name' => strtoupper($user['last_name'])
             ]);
-            
+
             $client_details->update($clientDetails);
             $uploaded->delete();
             FetchReports::dispatch($client);

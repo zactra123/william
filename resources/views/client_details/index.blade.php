@@ -1,17 +1,194 @@
 @extends('layouts.layout')
-
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
-<style>
-    .scrollDiv {
-        height: 270px;
-        background-color: white;
-        overflow-y: auto;
-
-    }
-</style>
 
 @section('content')
 
+    <style>
+        .scrollDiv {
+            height: 270px;
+            background-color: white;
+            overflow-y: auto;
+
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+        .disput-progress {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        @media only screen and (max-width: 479px) {
+            .disput-progress {
+                flex-direction: column;
+            }
+        }
+
+        .progress {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        svg {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .p1 svg circle {
+            position: relative;
+            transform: translate(50%, 50%);
+            margin-left: -50%;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke-width: 30;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 0;
+            stroke: rgb(255, 0, 0);
+            stroke-linecap: butt;
+        }
+
+
+        .p1 svg circle:nth-child(2) {
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            stroke: #01bb01
+        }
+
+
+        .p1 svg circle:nth-child(3) {
+            stroke-dasharray: 5, 20;
+            stroke-dashoffset: 90;
+            stroke: rgb(255, 255, 255);
+        }
+
+        .p1 svg circle:nth-child(4) {
+            transform: translate(50%, 50%);
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: rgba(102, 102, 102, 0.295);
+            stroke-width: 15;
+            stroke-dasharray: 440;
+            stroke-linecap: butt;
+            stroke-dashoffset: 5;
+        }
+
+        .number {
+            width: 100%;
+            height: 100%;
+            top: 10px;
+            left: 0;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            border-radius: 50%;
+            align-items: center;
+        }
+
+        .number h2 {
+            text-align: center;
+        }
+
+        .number span {
+            width: 20px;
+            height: 30px;
+            font-size: 20px;
+            position: relative;
+            line-height: 10px;
+        }
+
+        .bank_logo {
+            background-image: url(/images/correct-dl.png);
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bank_logo:after {  pointer-events: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 70px;
+            right: 0;
+            height: 76px;
+            content: "";
+            background-image: url(/images/upload.png);
+            display: block;
+            margin: 0 auto;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .bank_logo:before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "choose or drag it here. ";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .social {
+            display: block;
+        }
+        .zoomDL:hover {
+            transform:translate(50%,50%) scale(2.5);
+            transition: transform .5s;
+        }
+        .driver:hover ~ .social {
+            display: none;
+        }
+        .zoomSS:hover {
+            transform:translate(-50%,50%) scale(2.5);
+            transition: transform .5s ease-in-out;
+        }
+
+        .changeLogo:hover {
+            padding-bottom: 150px;
+        }
+
+
+
+    </style>
 
 
     @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
@@ -24,20 +201,58 @@
 {{--                    <img src="assets/images/trump.jpg" alt="">--}}
                     <div class="info">
                         <h5>Client No: 01</h5>
-                        <h3><a href="#">{{$client->full_name()}}</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                        <a href="#">{{$client->full_name()}}</a>
                     </div>
+
+                    <div class="row changeLogo" >
+                        <div class="col-md-12 m-0">
+                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
+                                @if(!empty($client->clientAttachments()))
+                                    @if(!empty($client->clientAttachments()->where('category', "DL")->first()))
+                                        @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
+                                            <img type="file" class="zoomDL" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="125px" name="img-drvl" id="img-drvl"/>
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="col-md-6 text-md-center social" style="text-align: center">
+                                @if(!empty($client->clientAttachments()))
+                                    @if(!empty($client->clientAttachments()->where('category', "SS")->first()))
+                                        @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
+                                            <img type="file"  class="zoomSS" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="125px" name="img-sos" id="img-sose" />
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row  hide form-group updateLogo ">
+                        {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+
+                        <div class="col-sm-12 form-group files">
+                            <input class="bank_logo file-box" type="file" name="logo"  id="bank_logo" >
+                        </div>
+                        <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+
+                        {!! Form::close() !!}
+                    </div>
+
+                    <div class="info zoomIn">
+                    </div>
+
                 </div>
                 <ul class="categories">
                     <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
-                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->eamil}}"> {{$client->email}}</a>
+                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
-                    <li title="FULL ADDRESS"><i class="fa fa-map fa-fw"></i> {{$client->clientDetails->address}}</li>
+                    <li title="FULL ADDRESS">
+                        <div class="row">
+                            <div class="col-md-1 mt-2"><i class="fa fa-map fa-fw"></i></div>
+                            <div class="col-md-10 ">{{$client->clientDetails->address}}</div>
+                        </div>
+                    </li>
                     <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
                     <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
-                    @if($client->clientDetails->referred_by != null)
-                    <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}</li>
-                    @endif
                     <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
                     @if($client->clientDetails->sex == 'M')
                         Male
@@ -47,6 +262,9 @@
                         Non-Binary
                     @endif
                     </li>
+                    @if($client->clientDetails->referred_by != null)
+                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}</li>
+                    @endif
                     <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
                 </ul>
             </aside>
@@ -113,31 +331,22 @@
                                     <div class="boxheading">
                                         <h3>DISPUTE PROGRESS</h3>
                                     </div>
-                                    <div class="row p20">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="progress green">
-                                                <span class="progress-left">
-                                                    <span class="progress-bar"></span>
-                                                </span>
-                                                <span class="progress-right">
-                                                    <span class="progress-bar"></span>
-                                                </span>
-                                                <div class="progress-value">10</div>
+                                    <div class="disput-progress d-flex flex-sm-row flex-column">
+                                        <div class="progress p1 mr-auto p-2" data-1="50" data-2="20">
+                                            <svg>
+                                                <circle cx="0" cy="0" r="70" />
+                                                <circle cx="0" cy="0" r="70" />
+                                                <circle cx="0" cy="0" r="70" />
+                                                <circle cx="0" cy="0" r="63" />
+                                            </svg>
+                                            <div class="number">
+                                                <h2></h2>
+                                                <span>%</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-6  col-sm-6">
-                                            <div class="progress yellow">
-                                                <span class="progress-left">
-                                                    <span class="progress-bar"></span>
-                                                </span>
-                                                <span class="progress-right">
-                                                    <span class="progress-bar"></span>
-                                                </span>
-                                                <div class="progress-value">5</div>
-                                            </div>
-                                        </div>
-
                                     </div>
+
+
                                     <h4 class=" text-center">Uploaded Documents VS Processed</h4>
                                 </div>
                             </div>
@@ -155,13 +364,35 @@
 
                                 <div class="row">
                                     <div  class="col-md-4 mt20">
-                                        <a href="{{route('client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                        <div class="dropdown">
+                                            <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                            <div class="dropdown-content">
+                                                @foreach($reportsDateEQ as $keyEq=> $eqDate)
+                                                    <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                     <div  class="col-md-4 mt20">
-                                        <a href="{{route('client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+                                        <div class="dropdown">
+                                            <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+                                            <div class="dropdown-content">
+                                                @foreach($reportsDateEX as $keyEx => $exDate)
+                                                    <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div  class="col-md-4 mt20">
-                                        <a  href="{{route('client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+                                        <div class="dropdown">
+                                            <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+                                            <div class="dropdown-content">
+                                                @foreach($reportsDateTU as $keyTu => $tuDate)
+                                                    <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -276,6 +507,104 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        var per1 = $(".progress.p1").attr("data-1");
+        var per2 = $(".progress.p1").attr("data-2");
+        $(".p1 .number h2").text(per1);
+        var val1 = 440 - (440 * per1) / 100;
+
+        var val2 = (440 * per2) / 100;
+        console.log(val1, val2, per2)
+        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val1}, 1000);
+        $(".p1 svg circle:nth-child(1)").animate({
+                "stroke-dashoffset": val2}, 1000);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".file-box").on("change", function(e){
+                var file = e.target.files[0]
+                var _this = this
+                if(file.type == "application/pdf"){
+                    var fileReader = new FileReader();
+                    fileReader.onload = function() {
+                        var pdfData = new Uint8Array(this.result);
+                        var loadingTask = pdfjsLib.getDocument({data: pdfData});
+                        loadingTask.promise.then(function(pdf) {
+                            // Fetch the first page
+                            var pageNumber = 1;
+                            pdf.getPage(pageNumber).then(function(page) {
+                                var scale = 1.5;
+                                var viewport = page.getViewport({scale: scale});
+
+                                // Prepare canvas using PDF page dimensions
+                                var canvas = $("#pdfViewer")[0];
+                                var context = canvas.getContext('2d');
+                                canvas.height = viewport.height;
+                                canvas.width = viewport.width;
+                                // Render PDF page into canvas context
+                                var renderContext = {
+                                    canvasContext: context,
+                                    viewport: viewport
+                                };
+                                var renderTask = page.render(renderContext);
+                                renderTask.promise.then(function () {
+                                    // console.log(canvas.toDataURL("image/png", 0.8))
+                                    $(_this).css('background-image', 'url("'+ $('#pdfViewer').get(0).toDataURL("image/jpeg", 0.8) +'")');
+                                    $(_this).css('background-size', '200px');
+
+                                });
+                            });
+                        }, function (reason) {
+                            console.error(reason);
+                        });
+                    };
+                    fileReader.readAsArrayBuffer(file);
+                }
+            });
+
+            $("#bank_logo").change(function(e) {
+                $(this).removeClass('driver_license')
+
+                $(this).removeClass('bank_logo_dropp')
+                var file = e.target.files[0]
+                if(file.type == "application/pdf"){
+                    $(this).addClass('bank_logo_dropp')
+                    // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
+                }else{
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $(".bank_logo_dropp").css('background-image','url('+ event.target.result +')');
+                        $(".bank_logo_dropp").css('background-size','cover');
+                    }
+                    reader.readAsDataURL(file);
+                }
+
+                $(this).removeClass('bank_logo_class')
+                $(this).addClass('bank_logo_dropp')
+                // $(".driver_dropp").css('background-image',file)
+            });
+
+            $("#bank_logo").val(null)
+
+
+            $(".driver").click(function (e) {
+                e.preventDefault();
+
+                var  hideShow = $(".updateLogo").attr("class")
+                if(hideShow.search("hide") != -1){
+                    $(".updateLogo").removeClass("hide")
+                }else{
+                    $(".updateLogo").addClass("hide")
+                }
+                // $(".changeLogo").addClass("hide")
+
+            });
+
+        })
+
+    </script>
+
 
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
@@ -285,10 +614,13 @@
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
 
-            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], {
+                types: ['address'],
+                componentRestrictions: {country: "us"}
+            });
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
                 $("#address").val(place.formatted_address)
                 for (var i = 0; i < place.address_components.length; i++) {
@@ -302,16 +634,16 @@
             });
 
 
-
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');
+        })
 
         </script>
 
 
 
 
-        <script type="text/javascript">
+    <script type="text/javascript">
         /*global $, console*/
 
         $(function () {
@@ -380,162 +712,10 @@
 
             }());
 
-            // Start chart
-
-            var chart = document.getElementById('myChart');
-            Chart.defaults.global.animation.duration = 2000; // Animation duration
-            Chart.defaults.global.title.display = false; // Remove title
-            Chart.defaults.global.title.text = "Chart"; // Title
-            Chart.defaults.global.title.position = 'bottom'; // Title position
-            Chart.defaults.global.defaultFontColor = '#999'; // Font color
-            Chart.defaults.global.defaultFontSize = 10; // Font size for every label
-
-            // Chart.defaults.global.tooltips.backgroundColor = '#FFF'; // Tooltips background color
-            Chart.defaults.global.tooltips.borderColor = 'white'; // Tooltips border color
-            Chart.defaults.global.legend.labels.padding = 0;
-            Chart.defaults.scale.ticks.beginAtZero = true;
-            Chart.defaults.scale.gridLines.zeroLineColor = 'rgba(255, 255, 255, 0.1)';
-            Chart.defaults.scale.gridLines.color = 'rgba(255, 255, 255, 0.02)';
-
-            Chart.defaults.global.legend.display = false;
-
-            var myChart = new Chart(chart, {
-                type: 'bar',
-                data: {
-                    labels: ["January", "February", "March", "April", "May", 'Jul'],
-                    datasets: [{
-                        label: "Lost",
-                        fill: false,
-                        lineTension: 0,
-                        data: [45, 25, 40, 20, 45, 20],
-                        pointBorderColor: "#4bc0c0",
-                        borderColor: '#4bc0c0',
-                        borderWidth: 2,
-                        showLine: true,
-                    }, {
-                        label: "Succes",
-                        fill: false,
-                        lineTension: 0,
-                        startAngle: 2,
-                        data: [20, 40, 20, 45, 25, 60],
-                        // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
-                        backgroundColor: "transparent",
-                        pointBorderColor: "#ff6384",
-                        borderColor: '#ff6384',
-                        borderWidth: 2,
-                        showLine: true,
-                    }]
-                },
-            });
-            //  Chart ( 2 )
-
-
-            var Chart2 = document.getElementById('myChart2').getContext('2d');
-            var chart = new Chart(Chart2, {
-                type: 'line',
-                data: {
-                    labels: ["January", "February", "March", "April", 'test', 'test', 'test', 'test'],
-                    datasets: [{
-                        label: "My First dataset",
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 79, 116)',
-                        borderWidth: 2,
-                        pointBorderColor: false,
-                        data: [5, 10, 5, 8, 20, 30, 20, 10],
-                        fill: false,
-                        lineTension: .4,
-                    }, {
-                        label: "Month",
-                        fill: false,
-                        lineTension: .4,
-                        startAngle: 2,
-                        data: [20, 14, 20, 25, 10, 15, 25, 10],
-                        // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
-                        backgroundColor: "transparent",
-                        pointBorderColor: "#4bc0c0",
-                        borderColor: '#4bc0c0',
-                        borderWidth: 2,
-                        showLine: true,
-                    }, {
-                        label: "Month",
-                        fill: false,
-                        lineTension: .4,
-                        startAngle: 2,
-                        data: [40, 20, 5, 10, 30, 15, 15, 10],
-                        // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
-                        backgroundColor: "transparent",
-                        pointBorderColor: "#ffcd56",
-                        borderColor: '#ffcd56',
-                        borderWidth: 2,
-                        showLine: true,
-                    }]
-                },
-
-                // Configuration options
-                options: {
-                    title: {
-                        display: false
-                    }
-                }
-            });
-
-
-            console.log(Chart.defaults.global);
-
-            var chart = document.getElementById('chart3');
-            var myChart = new Chart(chart, {
-                type: 'line',
-                data: {
-                    labels: ["One", "Two", "Three", "Four", "Five", 'Six', "Seven", "Eight"],
-                    datasets: [{
-                        label: "Lost",
-                        fill: false,
-                        lineTension: .5,
-                        pointBorderColor: "transparent",
-                        pointColor: "white",
-                        borderColor: '#d9534f',
-                        borderWidth: 0,
-                        showLine: true,
-                        data: [0, 40, 10, 30, 10, 20, 15, 20],
-                        pointBackgroundColor: 'transparent',
-                    },{
-                        label: "Lost",
-                        fill: false,
-                        lineTension: .5,
-                        pointColor: "white",
-                        borderColor: '#5cb85c',
-                        borderWidth: 0,
-                        showLine: true,
-                        data: [40, 0, 20, 10, 25, 15, 30, 0],
-                        pointBackgroundColor: 'transparent',
-                    },
-                        {
-                            label: "Lost",
-                            fill: false,
-                            lineTension: .5,
-                            pointColor: "white",
-                            borderColor: '#f0ad4e',
-                            borderWidth: 0,
-                            showLine: true,
-                            data: [10, 40, 20, 5, 35, 15, 35, 0],
-                            pointBackgroundColor: 'transparent',
-                        },
-                        {
-                            label: "Lost",
-                            fill: false,
-                            lineTension: .5,
-                            pointColor: "white",
-                            borderColor: '#337ab7',
-                            borderWidth: 0,
-                            showLine: true,
-                            data: [0, 30, 10, 25, 10, 40, 20, 0],
-                            pointBackgroundColor: 'transparent',
-                        }]
-                },
-            });
 
         });
     </script>
+
 
 
 
