@@ -451,7 +451,12 @@ class ClientDetailsController extends Controller
 
         }elseif($request->type == 'experian'){
             $clientReportsEX = $clientReports->where('type', "EX_LOG")->first();
-            $experianDate = $clientReports->where('type', "EX_LOG")
+//            PDF Cuyc Tal
+//            header("Content-type: application/pdf");
+//            header("Content-Disposition: inline; filename=filename.pdf");
+//            @readfile($clientReportsEX->file_path);// readfile(pdf_path)
+//            die;
+            $experianDate = auth()->user()->reports()->where('type', "EX_LOG")
                 ->pluck('created_at', 'id')->toArray();
         }
 
