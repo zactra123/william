@@ -58,42 +58,51 @@
             border-radius: 50%;
         }
 
+
         svg {
             position: relative;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
         }
-
         .p1 svg circle {
             position: relative;
             transform: translate(50%, 50%);
-            margin-left: -50%;
-            width: 100%;
-            height: 100%;
+            /*margin-left: -50%;*/
+            /*width: 100%;*/
+            /*height: 100%;*/
             fill: none;
             stroke-width: 30;
             stroke-dasharray: 440;
             stroke-dashoffset: 0;
-            stroke: rgb(255, 0, 0);
+            stroke: rgb(255, 173, 22);
             stroke-linecap: butt;
         }
-
-
         .p1 svg circle:nth-child(2) {
+            stroke-width: 30;
             stroke-dasharray: 440;
-            stroke-dashoffset: 440;
-            stroke: #01bb01
+            stroke-dashoffset: 300;
+            stroke: rgb(255, 14, 52);
+
         }
 
 
         .p1 svg circle:nth-child(3) {
-            stroke-dasharray: 5, 20;
-            stroke-dashoffset: 90;
-            stroke: rgb(255, 255, 255);
+            stroke-width: 30;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 400;
+            stroke: #01bb01;
+
         }
 
         .p1 svg circle:nth-child(4) {
+            stroke-width: 30;
+            stroke-dasharray: 5, 20;
+            stroke-dashoffset: 200;
+            stroke: rgb(255, 255, 255);
+        }
+
+        .p1 svg circle:nth-child(5) {
             transform: translate(50%, 50%);
             width: 100%;
             height: 100%;
@@ -102,8 +111,9 @@
             stroke-width: 15;
             stroke-dasharray: 440;
             stroke-linecap: butt;
-            stroke-dashoffset: 5;
+            stroke-dashoffset: 2;
         }
+
 
         .number {
             width: 100%;
@@ -129,7 +139,6 @@
             position: relative;
             line-height: 10px;
         }
-
         .bank_logo {
             background-image: url(/images/correct-dl.png);
             display: block;
@@ -181,13 +190,9 @@
             transform:translate(-50%,50%) scale(2.5);
             transition: transform .5s ease-in-out;
         }
-
         .changeLogo:hover {
             padding-bottom: 150px;
         }
-
-
-
     </style>
 
 
@@ -201,10 +206,10 @@
 {{--                    <img src="assets/images/trump.jpg" alt="">--}}
                     <div class="info">
                         <h5>Client No: 01</h5>
-                        <a href="#">{{$client->full_name()}}</a>
+                        <a href="#"><span style="font-weight: bold;padding-right: ">{{$client->full_name()}}</span></a>
                     </div>
 
-                    <div class="row changeLogo" >
+                    <div class="row changeLogo mt-5" >
                         <div class="col-md-12 m-0">
                             <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
                                 @if(!empty($client->clientAttachments()))
@@ -227,10 +232,14 @@
                         </div>
                     </div>
                     <div class="row  hide form-group updateLogo ">
-                        {!! Form::open(['route'=>['client.storeDriverSocial'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
-
+                        <button type="button" class="close closeUpload">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                            @method("PUT")
+                            @csrf
                         <div class="col-sm-12 form-group files">
-                            <input class="bank_logo file-box" type="file" name="logo"  id="bank_logo" >
+                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >
                         </div>
                         <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
 
@@ -323,17 +332,15 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
                                         <h3>DISPUTE PROGRESS</h3>
                                     </div>
                                     <div class="disput-progress d-flex flex-sm-row flex-column">
-                                        <div class="progress p1 mr-auto p-2" data-1="50" data-2="20">
+                                        <div class="progress p1 mr-auto p-2" data-1="75" data-2="20">
                                             <svg>
+                                                <circle cx="0" cy="0" r="70" />
                                                 <circle cx="0" cy="0" r="70" />
                                                 <circle cx="0" cy="0" r="70" />
                                                 <circle cx="0" cy="0" r="70" />
@@ -351,11 +358,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section>
-
-
                 <section class="charts">
                     <div class="container-fluid">
                         <div class="chart-container">
@@ -402,9 +406,8 @@
                 </section>
 
                 <section class="charts">
-
+                    <div class="container-fluid">
                         <div class="row mt50">
-
                             <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
@@ -419,7 +422,7 @@
                             <div class="col-md-6">
                                 <div class="chart-container">
                                     <div class="boxheading">
-                                        <h3>EXCEED COMPANIES</h3>
+                                        <h3>ADDITIONAL SERVICES</h3>
                                     </div>
                                     <div class="mt20">
                                         <h4>EXCEED AUTO GROUP</h4>
@@ -433,6 +436,7 @@
                             </div>
 
                         </div>
+                    </div>
 
                 </section>
 
@@ -514,10 +518,11 @@
         var val1 = 440 - (440 * per1) / 100;
 
         var val2 = (440 * per2) / 100;
+        var val3 = val1-val2
         console.log(val1, val2, per2)
-        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val1}, 1000);
-        $(".p1 svg circle:nth-child(1)").animate({
-                "stroke-dashoffset": val2}, 1000);
+
+        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
+        $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -586,6 +591,19 @@
             });
 
             $("#bank_logo").val(null)
+
+            $(".closeUpload").click(function (e) {
+                e.preventDefault();
+
+                var  hideShow = $(".updateLogo").attr("class")
+                if(hideShow.search("hide") != -1){
+                    $(".updateLogo").removeClass("hide")
+                }else{
+                    $(".updateLogo").addClass("hide")
+                }
+                // $(".changeLogo").addClass("hide")
+
+            });
 
 
             $(".driver").click(function (e) {

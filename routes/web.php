@@ -228,6 +228,8 @@ Route::group(['prefix' =>'client'], function() {
     Route::post('negative-item', 'ClientDetailsController@negativeItemStore')->name('negative.store');
     Route::post('negative-contract', 'ClientDetailsController@negativeItemContract')->name('negative.contract');
     Route::get('report/{type}', 'ClientDetailsController@clientReport')->name('client.report');
+    Route::put('update/driver-license', 'ClientDetailsController@updateDriver')->name('client.updateDriver');
+
 
     Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 

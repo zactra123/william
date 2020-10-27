@@ -230,7 +230,6 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
     {
-
         $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
             return redirect()->back()
@@ -329,58 +328,61 @@ class ClientDetailsController extends Controller
 
     }
 
-    public function uploadCreditReports()
+    public function updateDriver(Request $request)
     {
-        return view('client_details.upload-credit-reports');
+        $client = Auth::user()->id;
+        if (empty($request['driver'])) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Please upload both files');
+        }
+
+
+        $imagesDriverLicense = $request->file("driver");
+
+        $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+        $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+
+        if (!in_array($driverLicenseExtension, $imageExtension)) {
+            return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
+        }
+
+        $path = "files/client/details/image/" . $client . "/";
+
+        $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
+
+        $pathDriverLicense = public_path() . '/' . $path . $nameDriverLicense;
+
+        $clientAttachmentData = [
+
+            'user_id' => $client,
+            'path' => $pathDriverLicense,
+            'file_name' => $nameDriverLicense,
+            'category' => 'DL',
+            'type' => $driverLicenseExtension
+
+        ];
+        $clientAttachment = ClientAttachment::where('user_id', $client)->where('category', 'DL');
+
+        if(empty($clientAttachment->first())){
+            ClientAttachment::insert($clientAttachmentData[0]);
+        }else{
+            if(file_exists($clientAttachment->first()->path)){
+                unlink($clientAttachment->first()->path);
+            }
+            $clientAttachment->update($clientAttachmentData);
+
+        }
+        $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+
+
+
+        return redirect()->route('client.details.index');
+
+
     }
 
-    public function uploadPdf(Request $request, ReadPdfData $readPdfData, CreditReportUpload $creditReportUpload)
-    {
 
-        if (empty($request->file())) {
-            return redirect('/client/details/upload-credit-reports')->with('error', 'Please upload files');
-        }
-        $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
-
-        if ($validationUploadPdf[0] == 'error') {
-            return redirect('/client/details/upload-credit-reports')->with('error', $validationUploadPdf[1]);
-        }
-
-        $userId = Auth::user()->id;
-
-        $moveUploadFile = $creditReportUpload->moveUploadFile($userId, $request['credit_report'], $validationUploadPdf[1]);
-
-//        @Todo: get data from second transunion pdf file
-//        @Todo: CreditKarma payment history
-        $clientReports = [];
-        if (count($moveUploadFile) > 1) {
-            $clientReports = $readPdfData->getTransUnionAccountDetailsData($moveUploadFile['attachments'][0]);
-            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($moveUploadFile['attachments'][1]);
-            // Merge Payment History to Client Reports Data
-            foreach ($clientReports as $key => &$clientReport) {
-                $clientReport = array_merge($clientReport, $dataTUPH[$key]);
-            }
-        } else {
-            switch ($moveUploadFile['attachments'][0]->category) {
-                case "CK TU":
-                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
-                    break;
-                case "CK EF":
-                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
-                    break;
-                case "EX":
-                    $clientReports = $readPdfData->getExprianData($moveUploadFile['attachments'][0]);
-                    break;
-                default:
-                    return redirect('/client/details/upload-credit-reports')->with('error', "Error message: case when file is not known");
-                    break;
-            }
-        }
-        ClientReports::insert($clientReports);
-
-        return redirect(route('client.details.index'))->with('success', "Your report uploaded");
-
-    }
 
     public function continue()
     {
@@ -750,141 +752,6 @@ class ClientDetailsController extends Controller
             }
             return redirect()->route('client.details.index');
 
-//        $data = [
-//            'name'=>$disputeName,
-//            'address'=>$disputeAddress,
-//            'phone'=>$disputePhone,
-//            'ex_public'=>$disputeExPublicRecord,
-//            'ex_account'=>$disputeExAccount,
-//            'ex_inquiry'=>$disputeExInquiry,
-//            'ex_statement'=>$disputeExStatement,
-//            'tu_public'=>$disputeTuPublicRecord,
-//            'tu_account'=>$disputeTuAccount,
-//            'tu_inquiry'=>$disputeTuInquiry,
-//            'tu_statement'=>$disputeTuStatement,
-//            'eq_public'=>$disputeEqPublicRecord,
-//            'eq_account'=>$disputeEqAccount,
-//            'eq_inquiry'=>$disputeEqInquiry
-//        ];
-
-//
-//        if($user->clientDetails->sex = "M"){
-//           $heSheIt = "he";
-//        }elseif($user->clientDetails->sex = "M"){
-//            $heSheIt = "she";
-//        }else{$heSheIt = "the client";}
-//
-//        $sumDisp = null;
-//
-//        if(empty($request->except('_token'))){
-//            return redirect()->back()
-//                ->withInput()
-//                ->withErrors("Nothing chosen");
-//        }
-//
-//        foreach ($request->except('_token') as $item) {
-//            $sumDisp = $sumDisp + count($item);
-//        }
-//        if($sumDisp>1){
-//            $pluralItem = "all negative items";
-//            $plural = "items";
-//            $pluralViol = "violations";
-//        }else{
-//            $pluralItem = "negative";
-//            $plural = "item";
-//            $pluralViol = "violation";
-//        }
-//
-//
-//
-//        $phpWord = new \PhpOffice\PhpWord\PhpWord();
-//        \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(false);
-//
-//        $document = $phpWord->loadTemplate(public_path('/files/contract').'/PRUDENT_CONTRACT.docx');
-//
-//        $document->setValue('DAY', (date("d")) );
-//        $document->setValue('MONTH', (date("M")) );
-//        $document->setValue('YEAR', (date("Y")) );
-//        $document->setValue('CLIENT_NAME', ($user->full_name()) );
-//        $document->setValue('HE_SHE_THE CLIENT', ($heSheIt));
-//        $document->setValue('PLURAL_ITEM', ($pluralItem));
-//        $document->setValue('ITEM_ITEMS', ($plural));
-//        $document->setValue('VIOLATION', ($pluralViol));
-//        $document->setValue('DATE', (date("d/M/Y")));
-//
-//
-//        $path='C:\xampp\htdocs\ccc\public\images\banks_logo\payoff.jpeg';
-//        $document->setImageValue('foto', array('path' => $path, 'width' => 100, 'height' => 100, 'ratio' => true));
-//        $length = 31;
-//        $cloneCount = (int)ceil($length/10);
-//        $countInRow = $length%10 +1;
-//
-//        $document->cloneRow('row1', $cloneCount);
-//        if($countInRow <= 10){
-//            for($j = $countInRow; $j<=10; $j++){
-//                $document->setValue('logo'.$j.'#'.$cloneCount,'');
-//                $document->setValue('neg'.$j.'#'.$cloneCount, '');
-//            }
-//        }
-//        for($k = 1; $k<=$length; $k++){
-//            $document->setValue('row1#'.$k ,'');
-//        }
-//        $row = 1;
-//        for($k = 1; $k<=$length; $k++){
-//
-//
-//
-//            $logo = $k %10==0?'logo10#'.$row:'logo'.$k%10 .'#'. $row;
-//            $neg = $k %10==0?'neg10#'.$row:'neg'.$k%10 .'#'. $row;
-//
-//            $document->setImageValue($logo, array('path' => $path, 'width' => 50, 'height' => 50, 'ratio' => true));
-//            $document->setValue($neg, '1st Line<w:br />2nd Line');
-//            if($k %10 == 0){
-//                $row = $row+1;
-//            }
-//
-//        }
-//
-////        $table = new Table(array('borderSize' => 12, 'borderColor' => 'black', 'width' => 6000));
-////        $table->addRow();
-////        $table->addCell()->addImage($path, array('width' => 100, 'height' => 100, 'ratio' => true));
-//////        $table->addCell(4500)->addImage( $path, array('width' => 530, 'height' => 75, 'marginTop' => -1 , 'marginLeft' => -1, 'marginRight' => -1));
-////        $table->addCell(150)->addText(htmlspecialchars('${NEW_PHOTO/}'));
-////        $table->addCell(150)->addText(htmlspecialchars(''));
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $table->addRow();
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $table->addCell(150)->addText(htmlspecialchars('321321321'));
-////        $document->setComplexBlock('table', $table);
-////        dd($document);
-//        $name = 'Doc_1'.date("Y_m_d_h_m").'.docx';
-//
-//        $xxx = $name;
-//
-//        $document->saveAs($name);
-//        rename($name, public_path()."/files/contract/{$name}");
-//
-//        $file= public_path(). "/files/contract/{$name}";
-//
-//
-//
-////        $file= storage_path(). "/word/{$name}";
-////
-////        $headers = array(
-////            //'Content-Type: application/msword',
-////            'Content-Type: vnd.openxmlformats-officedocument.wordprocessingml.document'
-////        );
-////
-////        $response = Response::download($file, $name, $headers);
-////        ob_end_clean();
-////
-////        return $response;
-//
-//
-//        dd('test for send variabkes in word documents', $phpWord, $document);
         }
 
 
@@ -915,8 +782,6 @@ class ClientDetailsController extends Controller
         ]);
         return true;
     }
-
-
 
     public function splitAddress($address)
     {
@@ -981,6 +846,61 @@ class ClientDetailsController extends Controller
             ];
         }
     }
+
+    public function uploadCreditReports()
+    {
+        return view('client_details.upload-credit-reports');
+    }
+
+    public function uploadPdf(Request $request, ReadPdfData $readPdfData, CreditReportUpload $creditReportUpload)
+    {
+
+        if (empty($request->file())) {
+            return redirect('/client/details/upload-credit-reports')->with('error', 'Please upload files');
+        }
+        $validationUploadPdf = $creditReportUpload->validate($request['credit_report']);
+
+        if ($validationUploadPdf[0] == 'error') {
+            return redirect('/client/details/upload-credit-reports')->with('error', $validationUploadPdf[1]);
+        }
+
+        $userId = Auth::user()->id;
+
+        $moveUploadFile = $creditReportUpload->moveUploadFile($userId, $request['credit_report'], $validationUploadPdf[1]);
+
+//        @Todo: get data from second transunion pdf file
+//        @Todo: CreditKarma payment history
+        $clientReports = [];
+        if (count($moveUploadFile) > 1) {
+            $clientReports = $readPdfData->getTransUnionAccountDetailsData($moveUploadFile['attachments'][0]);
+            $dataTUPH = $readPdfData->getTransUnionPaymentHistoryData($moveUploadFile['attachments'][1]);
+            // Merge Payment History to Client Reports Data
+            foreach ($clientReports as $key => &$clientReport) {
+                $clientReport = array_merge($clientReport, $dataTUPH[$key]);
+            }
+        } else {
+            switch ($moveUploadFile['attachments'][0]->category) {
+                case "CK TU":
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
+                    break;
+                case "CK EF":
+                    $clientReports = $readPdfData->getCreditKarmaData($moveUploadFile['attachments'][0]);
+                    break;
+                case "EX":
+                    $clientReports = $readPdfData->getExprianData($moveUploadFile['attachments'][0]);
+                    break;
+                default:
+                    return redirect('/client/details/upload-credit-reports')->with('error', "Error message: case when file is not known");
+                    break;
+            }
+        }
+        ClientReports::insert($clientReports);
+
+        return redirect(route('client.details.index'))->with('success', "Your report uploaded");
+
+    }
+
+
 
 }
 

@@ -58,6 +58,61 @@
          color: #092a48 !important;
     }
 
+    .bank_logo {
+        background-image: url(/images/correct-dl.png);
+        display: block;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .bank_logo:after {  pointer-events: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 70px;
+        right: 0;
+        height: 76px;
+        content: "";
+        background-image: url(/images/upload.png);
+        display: block;
+        margin: 0 auto;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    .bank_logo:before {
+        position: absolute;
+        bottom: 0px;
+        left: 0;  pointer-events: none;
+        width: 100%;
+        right: 0;
+        height: 57px;
+        content: "choose or drag it here. ";
+        display: block;
+        margin: 0 auto;
+        color: #341d31;
+        font-weight: 900;
+        font-size: 20px;
+        text-transform: capitalize;
+        text-align: center;
+    }
+    .social {
+        display: block;
+    }
+    .zoomDL:hover {
+        transform:translate(50%,50%) scale(2.5);
+        transition: transform .5s;
+    }
+    .driver:hover ~ .social {
+        display: none;
+    }
+    .zoomSS:hover {
+        transform:translate(-50%,50%) scale(2.5);
+        transition: transform .5s ease-in-out;
+    }
+    .changeLogo:hover {
+        padding-bottom: 150px;
+    }
+
 
 
 </style>
@@ -79,29 +134,59 @@
                     <div class="info">
                         <h5>Client No: 01</h5>
                         <h3><a href="#">{{$client->full_name()}}</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
-
                     </div>
+                    <div class="row changeLogo mt-5" >
+                        <div class="col-md-12 m-0">
+                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
+                                @if(!empty($client->clientAttachments()))
+                                    @if(!empty($client->clientAttachments()->where('category', "DL")->first()))
+                                        @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
+                                            <img type="file" class="zoomDL" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="125px" name="img-drvl" id="img-drvl"/>
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="col-md-6 text-md-center social" style="text-align: center">
+                                @if(!empty($client->clientAttachments()))
+                                    @if(!empty($client->clientAttachments()->where('category', "SS")->first()))
+                                        @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
+                                            <img type="file"  class="zoomSS" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="125px" name="img-sos" id="img-sose" />
+                                        @endif
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <ul class="categories">
                     <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
-                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->eamil}}"> {{$client->email}}</a>
+                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->eamil}}"> {{strtoupper($client->email)}}</a>
                     </li>
-                    <li title="FULL ADDRESS"><i class="fa fa-map fa-fw"></i> {{$client->clientDetails->address}}</li>
+                    <li title="FULL ADDRESS">
+                        <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                    </li>
+                    <li title="FULL ADDRESS" style="margin-left: 25px; padding-top:0px">
+                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                    </li>
+
                     <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
                     <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
-                    @if($client->clientDetails->referred_by != null)
-                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}</li>
-                    @endif
+
                     <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
                         @if($client->clientDetails->sex == 'M')
-                            Male
+                            MALE
                         @elseif($client->clientDetails->sex == 'F')
-                            Female
+                            FEMALE
                         @else
-                            Non-Binary
+                            NON-BINARY
                         @endif
                     </li>
+
+                    @if($client->clientDetails->referred_by != null)
+                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
+                    @endif
+
                     <li>
 
 
@@ -340,7 +425,13 @@
                         </div>
                     </div>
                 </section>
+                <section class="charts pb50 mt50">
+                    <div class="container-fluid">
+                        <div class="row ">
 
+                        </div>
+                    </div>
+                </section>
             </section>
         </div>
     </div>
