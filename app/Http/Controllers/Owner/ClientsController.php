@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use App\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,13 +36,15 @@ class ClientsController extends Controller
 
     public function destroy($userId)
     {
-
         try {
             $user = User::find($userId);
+            $user->delete();
 
-
-            User::where('id', $userId)->forceDelete();
-
+//            $path = 'files/client/details/image/'.$userId;
+//            dd(\File::exists(public_path($path)), $userId, \File::deleteDirectory(public_path($path)));
+//            if (\File::exists($path)) \File::deleteDirectory($path);
+//
+//            dd($user);
 
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);

@@ -101,6 +101,7 @@
                                         "_token": token,
                                     },
                                     success: function () {
+                                        location.reload();
                                         console.log("it Works");
                                     }
                             });

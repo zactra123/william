@@ -179,6 +179,10 @@
         .social {
             display: block;
         }
+        .driver {
+            display: block;
+        }
+
         .zoomDL:hover {
             transform:translate(50%,50%) scale(2.5);
             transition: transform .5s;
@@ -186,13 +190,33 @@
         .driver:hover ~ .social {
             display: none;
         }
+        .social:hover ~ .driver {
+            display: none;
+        }
         .zoomSS:hover {
             transform:translate(-50%,50%) scale(2.5);
             transition: transform .5s ease-in-out;
         }
         .changeLogo:hover {
-            padding-bottom: 150px;
+            padding-bottom: 120px;
         }
+
+        .side-nav .categories > li {
+            padding: 10px 40px 10px 30px !important;
+
+        }
+
+        .scaleDL{
+            transform:translate(50%,50%) scale(2.5);
+        }
+        .scaleSS{
+            transform:translate(-50%,50%) scale(2.5);
+        }
+        .changePadding {
+            padding-bottom: 120px;
+        }
+
+
     </style>
 
 
@@ -605,7 +629,6 @@
 
             });
 
-
             $(".driver").click(function (e) {
                 e.preventDefault();
 
@@ -615,10 +638,33 @@
                 }else{
                     $(".updateLogo").addClass("hide")
                 }
-                // $(".changeLogo").addClass("hide")
-
             });
 
+            $( ".zoomSS" ).dblclick(function() {
+                var  scale = $(".zoomSS").attr("class")
+
+                if(scale.search("scaleSS") != -1){
+                    $(".zoomSS").removeClass("scaleSS")
+                    $(".changeLogo").removeClass("changePadding")
+                }else{
+                    $(".zoomSS").addClass("scaleSS")
+                    $(".changeLogo").addClass("changePadding")
+                }
+            });
+
+            $( ".zoomDL" ).dblclick(function() {
+                var  scale = $(".zoomDL").attr("class")
+                if(scale.search("scaleDL") != -1){
+                    $(".zoomDL").removeClass("scaleDL")
+                    $(".changeLogo").removeClass("changePadding")
+                    $(".social").removeClass("hide")
+
+                }else{
+                    $(".zoomDL").addClass("scaleDL")
+                    $(".changeLogo").addClass("changePadding")
+                    $(".social").addClass("hide")
+                }
+            });
         })
 
     </script>
