@@ -26,6 +26,7 @@ class ClientReport extends Model
         'current_phone',
         'spouse',
         'file_path',
+        'pdf',
     ];
 
     public function user()
