@@ -40,7 +40,7 @@ class BanksController extends Controller
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
 
-            $banksLogos = $banksLogos->orderBy('name')->paginate(16);
+            $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('owner.bank.logo_new',compact('banksLogos'));
         }
 
@@ -141,7 +141,7 @@ class BanksController extends Controller
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
 
-            $banksLogos = $banksLogos->orderBy('name')->paginate(16);
+            $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('owner.bank.logo_new',compact('banksLogos'));
         }
         $id  = $request->id;
