@@ -184,6 +184,7 @@ Route::group(['prefix'=> 'receptionist-admin/'], function(){
 
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
+    Route::put('client/{client}/update', 'TodosController@updateClient')->name('adminRec.client.update');
     Route::get('client/{client}/report/{type}', 'TodosController@clientReport')->name('adminRec.client.report');
     Route::get('todo/list', 'TodosController@toDoList')->name('adminRec.toDo.list');
     Route::delete('todo/{id}', 'TodosController@toDoDestroy')->name('adminRec.toDo.destroy');
@@ -191,6 +192,9 @@ Route::group(['prefix'=> 'receptionist-admin/'], function(){
     Route::post('todo/change-assignment', 'TodosController@changeTodoAssignment')->name('adminRec.todo.assignment');
     Route::post('client/profile/todo', 'TodosController@clientToDo')->name('adminRec.client.todo');
     Route::put('client/todo/{todoId}', 'TodosController@clientToDoUpdate')->name('adminRec.client.todoUpdate');
+
+    Route::get('client-profile-print/{id}', 'TodosController@printPdfClientProfile')->name('adminRec.profilePdf');
+
 
 
 });

@@ -337,7 +337,6 @@ class ClientDetailsController extends Controller
                 ->with('error', 'Please upload both files');
         }
 
-
         $imagesDriverLicense = $request->file("driver");
 
         $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
@@ -375,20 +374,13 @@ class ClientDetailsController extends Controller
         }
         $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
 
-
-
         return redirect()->route('client.details.index');
-
-
     }
-
-
 
     public function continue()
     {
         $client = Auth::user();
         ClientDetail::where('user_id', $client->id)->update(['registration_steps' => 'review']);
-
 
         $uploadUserDetail = UploadClientDetail::where('user_id', $client->id)->first();
         return redirect(route('client.details.create'));
@@ -471,13 +463,9 @@ class ClientDetailsController extends Controller
     public function negativeItem()
     {
         $client = Auth::user();
-
-
         $clientReportsTU = ClientReport::where('user_id', $client->id)->where('type', "TU_DIS")->first();
         $clientReportsEX = ClientReport::where('user_id', $client->id)->where('type', "EX_LOG")->first();
         $clientReportsEQ = ClientReport::where('user_id', $client->id)->where('type', "EQ")->first();
-
-
         return view('client_details.view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ'));
     }
 

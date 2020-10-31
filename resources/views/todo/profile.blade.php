@@ -1,126 +1,226 @@
 
 @extends('layouts.layout')
 
-<style>
-    .dropdown-menu {
-        /*position: initial !important;*/
-        /*float: initial !important;*/
-
-    }
-    .dropdown-submenu {
-        position: relative;
-    }
-
-    .dropdown-submenu>.dropdown-menu {
-        top: 0;
-        left: 100%;
-        margin-top: -6px;
-        margin-left: -1px;
-        -webkit-border-radius: 0 6px 6px 6px;
-        -moz-border-radius: 0 6px 6px;
-        border-radius: 0 6px 6px 6px;
-    }
-
-    .dropdown-submenu:hover>.dropdown-menu {
-        display: block;
-    }
-
-    .dropdown-submenu>a:after {
-        display: block;
-        content: " ";
-        float: right;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        border-width: 5px 0 5px 5px;
-        border-left-color: #ccc;
-        margin-top: 5px;
-        margin-right: -10px;
-    }
-
-    .dropdown-submenu:hover>a:after {
-        border-left-color: #fff;
-    }
-
-    .dropdown-submenu.pull-left {
-        float: none;
-    }
-
-    .dropdown-submenu.pull-left>.dropdown-menu {
-        left: -100%;
-        margin-left: 10px;
-        -webkit-border-radius: 6px 0 6px 6px;
-        -moz-border-radius: 6px 0 6px 6px;
-        border-radius: 6px 0 6px 6px;
-    }
-    .charts {
-         color: #092a48 !important;
-    }
-
-    .bank_logo {
-        background-image: url(/images/correct-dl.png);
-        display: block;
-        background-size: 80%;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    .bank_logo:after {  pointer-events: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 70px;
-        right: 0;
-        height: 76px;
-        content: "";
-        background-image: url(/images/upload.png);
-        display: block;
-        margin: 0 auto;
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
-    .bank_logo:before {
-        position: absolute;
-        bottom: 0px;
-        left: 0;  pointer-events: none;
-        width: 100%;
-        right: 0;
-        height: 57px;
-        content: "choose or drag it here. ";
-        display: block;
-        margin: 0 auto;
-        color: #341d31;
-        font-weight: 900;
-        font-size: 20px;
-        text-transform: capitalize;
-        text-align: center;
-    }
-    .social {
-        display: block;
-    }
-    .zoomDL:hover {
-        transform:translate(50%,50%) scale(2.5);
-        transition: transform .5s;
-    }
-    .driver:hover ~ .social {
-        display: none;
-    }
-    .zoomSS:hover {
-        transform:translate(-50%,50%) scale(2.5);
-        transition: transform .5s ease-in-out;
-    }
-    .changeLogo:hover {
-        padding-bottom: 150px;
-    }
-
-
-
-</style>
 
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
 
 @section('content')
 
+    <style>
+        .scrollDiv {
+            height: 270px;
+            background-color: white;
+            overflow-y: auto;
+
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+        .disput-progress {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        @media only screen and (max-width: 479px) {
+            .disput-progress {
+                flex-direction: column;
+            }
+        }
+
+        .progress {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+
+        svg {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .p1 svg circle {
+            position: relative;
+            transform: translate(50%, 50%);
+            /*margin-left: -50%;*/
+            /*width: 100%;*/
+            /*height: 100%;*/
+            fill: none;
+            stroke-width: 30;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 0;
+            stroke: rgb(255, 173, 22);
+            stroke-linecap: butt;
+        }
+        .p1 svg circle:nth-child(2) {
+            stroke-width: 30;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 300;
+            stroke: rgb(255, 14, 52);
+
+        }
+
+
+        .p1 svg circle:nth-child(3) {
+            stroke-width: 30;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 400;
+            stroke: #01bb01;
+
+        }
+
+        .p1 svg circle:nth-child(4) {
+            stroke-width: 30;
+            stroke-dasharray: 5, 20;
+            stroke-dashoffset: 200;
+            stroke: rgb(255, 255, 255);
+        }
+
+        .p1 svg circle:nth-child(5) {
+            transform: translate(50%, 50%);
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: rgba(102, 102, 102, 0.295);
+            stroke-width: 15;
+            stroke-dasharray: 440;
+            stroke-linecap: butt;
+            stroke-dashoffset: 2;
+        }
+
+
+        .number {
+            width: 100%;
+            height: 100%;
+            top: 10px;
+            left: 0;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            position: absolute;
+            border-radius: 50%;
+            align-items: center;
+        }
+
+        .number h2 {
+            text-align: center;
+        }
+
+        .number span {
+            width: 20px;
+            height: 30px;
+            font-size: 20px;
+            position: relative;
+            line-height: 10px;
+        }
+        .bank_logo {
+            background-image: url(/images/correct-dl.png);
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bank_logo:after {  pointer-events: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 70px;
+            right: 0;
+            height: 76px;
+            content: "";
+            background-image: url(/images/upload.png);
+            display: block;
+            margin: 0 auto;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .bank_logo:before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "choose or drag it here. ";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .social {
+            display: block;
+        }
+        .driver {
+            display: block;
+        }
+
+        .zoomDL:hover {
+            transform:translate(50%,50%) scale(2.5);
+            transition: transform .5s;
+        }
+        .driver:hover ~ .social {
+            display: none;
+        }
+        .social:hover ~ .driver {
+            display: none;
+        }
+        .zoomSS:hover {
+            transform:translate(-50%,50%) scale(2.5);
+            transition: transform .5s ease-in-out;
+        }
+        .changeLogo:hover {
+            padding-bottom: 120px;
+        }
+
+        .side-nav .categories > li {
+            padding: 10px 40px 10px 30px !important;
+
+        }
+
+        .scaleDL{
+            transform:translate(50%,50%) scale(2.5);
+        }
+        .scaleSS{
+            transform:translate(-50%,50%) scale(2.5);
+        }
+        .changePadding {
+            padding-bottom: 120px;
+        }
+
+
+    </style>
 
 
     @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
@@ -157,6 +257,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row  hide form-group updateLogo ">
+                        <button type="button" class="close closeUpload">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {!! Form::open(['route'=>['adminRec.client.update', $client->id],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                        @method("PUT")
+                        @csrf
+                        <div class="col-sm-12 form-group files">
+                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >
+                        </div>
+                        <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+
+                        {!! Form::close() !!}
+                    </div>
 
                 </div>
                 <ul class="categories">
@@ -188,9 +302,10 @@
                     @endif
 
                     <li>
-
-
+                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> UPDATE</a>
+{{--                        <a href="{{route('adminRec.profilePdf', $client->id)}}" class="btn btn-success text-white"><i class="fa fa-print fa-fw"></i> PRINT</a>--}}
                     </li>
+
                 </ul>
             </aside>
         </div>
@@ -448,7 +563,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                    {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                     @method('PUT')
                     @csrf
                     <div class="form row">
@@ -470,17 +585,6 @@
                             {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
                         </div>
 
-                        {{--                            <div class="form-group col-md-6">--}}
-                        {{--                                <label for="gender">Gender</label>--}}
-                        {{--                                <div class="form-check form-check-inline">--}}
-                        {{--                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked="checked">--}}
-                        {{--                                    <label class="form-check-label" for="male">Male</label>--}}
-
-                        {{--                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">--}}
-                        {{--                                    <label class="form-check-label" for="female">Female</label>--}}
-                        {{--                                </div>--}}
-
-                        {{--                            </div>--}}
 
                     </div>
 
@@ -592,6 +696,140 @@
 
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        var per1 = $(".progress.p1").attr("data-1");
+        var per2 = $(".progress.p1").attr("data-2");
+        $(".p1 .number h2").text(per1);
+        var val1 = 440 - (440 * per1) / 100;
+        var val2 = (440 * per2) / 100;
+        var val3 = val1-val2
+        console.log(val1, val2, per2)
+
+        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
+        $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".file-box").on("change", function(e){
+                var file = e.target.files[0]
+                var _this = this
+                if(file.type == "application/pdf"){
+                    var fileReader = new FileReader();
+                    fileReader.onload = function() {
+                        var pdfData = new Uint8Array(this.result);
+                        var loadingTask = pdfjsLib.getDocument({data: pdfData});
+                        loadingTask.promise.then(function(pdf) {
+                            // Fetch the first page
+                            var pageNumber = 1;
+                            pdf.getPage(pageNumber).then(function(page) {
+                                var scale = 1.5;
+                                var viewport = page.getViewport({scale: scale});
+
+                                // Prepare canvas using PDF page dimensions
+                                var canvas = $("#pdfViewer")[0];
+                                var context = canvas.getContext('2d');
+                                canvas.height = viewport.height;
+                                canvas.width = viewport.width;
+                                // Render PDF page into canvas context
+                                var renderContext = {
+                                    canvasContext: context,
+                                    viewport: viewport
+                                };
+                                var renderTask = page.render(renderContext);
+                                renderTask.promise.then(function () {
+                                    // console.log(canvas.toDataURL("image/png", 0.8))
+                                    $(_this).css('background-image', 'url("'+ $('#pdfViewer').get(0).toDataURL("image/jpeg", 0.8) +'")');
+                                    $(_this).css('background-size', '200px');
+
+                                });
+                            });
+                        }, function (reason) {
+                            console.error(reason);
+                        });
+                    };
+                    fileReader.readAsArrayBuffer(file);
+                }
+            });
+
+            $("#bank_logo").change(function(e) {
+                $(this).removeClass('driver_license')
+
+                $(this).removeClass('bank_logo_dropp')
+                var file = e.target.files[0]
+                if(file.type == "application/pdf"){
+                    $(this).addClass('bank_logo_dropp')
+                    // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
+                }else{
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $(".bank_logo_dropp").css('background-image','url('+ event.target.result +')');
+                        $(".bank_logo_dropp").css('background-size','cover');
+                    }
+                    reader.readAsDataURL(file);
+                }
+
+                $(this).removeClass('bank_logo_class')
+                $(this).addClass('bank_logo_dropp')
+                // $(".driver_dropp").css('background-image',file)
+            });
+
+            $("#bank_logo").val(null)
+
+            $(".closeUpload").click(function (e) {
+                e.preventDefault();
+
+                var  hideShow = $(".updateLogo").attr("class")
+                if(hideShow.search("hide") != -1){
+                    $(".updateLogo").removeClass("hide")
+                }else{
+                    $(".updateLogo").addClass("hide")
+                }
+                // $(".changeLogo").addClass("hide")
+
+            });
+
+            $(".driver").click(function (e) {
+                e.preventDefault();
+
+                var  hideShow = $(".updateLogo").attr("class")
+                if(hideShow.search("hide") != -1){
+                    $(".updateLogo").removeClass("hide")
+                }else{
+                    $(".updateLogo").addClass("hide")
+                }
+            });
+
+            $( ".zoomSS" ).dblclick(function() {
+                var  scale = $(".zoomSS").attr("class")
+
+                if(scale.search("scaleSS") != -1){
+                    $(".zoomSS").removeClass("scaleSS")
+                    $(".changeLogo").removeClass("changePadding")
+                }else{
+                    $(".zoomSS").addClass("scaleSS")
+                    $(".changeLogo").addClass("changePadding")
+                }
+            });
+
+            $( ".zoomDL" ).dblclick(function() {
+                var  scale = $(".zoomDL").attr("class")
+                if(scale.search("scaleDL") != -1){
+                    $(".zoomDL").removeClass("scaleDL")
+                    $(".changeLogo").removeClass("changePadding")
+                    $(".social").removeClass("hide")
+
+                }else{
+                    $(".zoomDL").addClass("scaleDL")
+                    $(".changeLogo").addClass("changePadding")
+                    $(".social").addClass("hide")
+                }
+            });
+        })
+
+    </script>
 
 
 
