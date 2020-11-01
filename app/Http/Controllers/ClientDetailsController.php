@@ -20,6 +20,7 @@ use App\ClientReportTuStatement;
 use App\Disputable;
 use App\Jobs\FetchReports;
 use App\Mail\CredentialNotifications;
+use App\Services\ClientDetailsNewData;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use App\Todo;
@@ -228,7 +229,7 @@ class ClientDetailsController extends Controller
 
     //create or update for client details
 
-    public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData)
+    public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData, ClientDetailsNewData $clientDetailsNewData)
     {
         $client = Auth::user()->id;
         if (empty($request['driver_license']) || empty($request['social_security'])) {
@@ -258,15 +259,14 @@ class ClientDetailsController extends Controller
         $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
         $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
 
-        $pathDriverLicense = public_path() . '/' . $path . $nameDriverLicense;
-        $pathSocialSecurity = public_path() . '/' . $path . $nameSocialSecurity;
+        $pathDriverLicense = '/' . $path . $nameDriverLicense;
+        $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
 
+        $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
+        $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
 
-        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
-        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
-
-        $user = Arr::only($resultSocialSecurity, ['first_name', 'last_name']);
-        $clientData = $resultDriverLicense;
+        $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
+        $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);
         $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
         $clientData['user_id'] = $client;
@@ -326,6 +326,71 @@ class ClientDetailsController extends Controller
         }
         return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
 
+        
+//        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
+//        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
+
+//        $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
+//        $clientData = $resultDriverLicense;
+//        $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
+//        $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
+//        $clientData['user_id'] = $client;
+//
+//
+//        $clientAttachmentData = [
+//            [
+//                'user_id' => $client,
+//                'path' => $pathDriverLicense,
+//                'file_name' => $nameDriverLicense,
+//                'category' => 'DL',
+//                'type' => $driverLicenseExtension
+//            ],
+//            [
+//                'user_id' => $client,
+//                'path' => $pathSocialSecurity,
+//                'file_name' => $nameSocialSecurity,
+//                'category' => 'SS',
+//                'type' => $socialSecurityExtension
+//            ]
+//        ];
+//
+//        if (empty(ClientAttachment::where('user_id', $client)->first())) {
+//            ClientAttachment::insert($clientAttachmentData);
+//        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'DL')->first())) {
+//
+//            ClientAttachment::insert($clientAttachmentData[0]);
+//            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
+//        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'SS')->first())) {
+//
+//            ClientAttachment::insert($clientAttachmentData[1]);
+//            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
+//        } else {
+//            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
+//            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
+//
+//        }
+//        $c = Auth::user();
+//
+//        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
+//            $request->session()->put('bad',true);
+//        }elseif ($c->clientDetails->registration_steps =='documents') {
+//            $c->clientDetails->update(['registration_steps'=>'credentials']);
+//        }
+//
+//        if ($c->clientDetails->registration_steps == 'documents') {
+//            $c->clientDetails->update(['registration_steps' => 'credentials']);
+//        }
+//        $request->session()->put('bad',true);
+
+
+//        if (empty(ClientDetail::where('user_id', $client)->first())) {
+//            User::where('id', $client)->update($user);
+//            ClientDetail::create($clientData);
+//        } else {
+//            UploadClientDetail::insert(array_merge($user, $clientData));
+//        }
+//        return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
+//
     }
 
     public function updateDriver(Request $request)
@@ -350,7 +415,7 @@ class ClientDetailsController extends Controller
 
         $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
 
-        $pathDriverLicense = public_path() . '/' . $path . $nameDriverLicense;
+        $pathDriverLicense = '/' . $path . $nameDriverLicense;
 
         $clientAttachmentData = [
 

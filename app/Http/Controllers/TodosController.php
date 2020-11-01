@@ -226,7 +226,7 @@ class TodosController extends Controller
 
             $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
 
-            $pathDriverLicense = public_path() . '/' . $path . $nameDriverLicense;
+            $pathDriverLicense =   '/' . $path . $nameDriverLicense;
 
             $clientAttachmentData = [
 
@@ -237,6 +237,7 @@ class TodosController extends Controller
                 'type' => $driverLicenseExtension
 
             ];
+
             $clientAttachment = ClientAttachment::where('user_id', $id)->where('category', 'DL');
 
             if(empty($clientAttachment->first())){
@@ -305,16 +306,6 @@ class TodosController extends Controller
         $pdf = PDF::loadView('todo.profile-pdf', compact('client'));
 
         return $pdf->download('invoice.pdf');
-
-
-        dd('asdad');
-
-
-
-
-
-
-
 
         return view('todo.client', compact('client'));
 
