@@ -10,66 +10,66 @@ class ClientDetailsNewData
     {
         $driverLicenseSize = false;
 
-//        if($extension != 'pdf'){
-//            $driverLicenseSize = \Image::make(public_path($path))->filesize();
-//        }
-//
-//        if($driverLicenseSize > 1048576){
-//
-//            $draftPath = $this->resizeImage($path, $name);
-//
-//            $textDriverLicense = $this->getImageData($draftPath);
-//            $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
-//        }else{
-//            if($extension == 'pdf' ){
-//                $textDriverLicense = $this->getImageData($path);
-//                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
-//            }else{
-//                $textDriverLicense = $this->getImageData($path);
-//                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
-//            }
-//
-//
-//        }
+        if($extension != 'pdf'){
+            $driverLicenseSize = \Image::make(public_path($path))->filesize();
+        }
 
-        $textDriverLicense = [
-            "result" => [
-            "documentNumber" => "Y5940176",
-            "firstName" => "VAZGEN",
-            "lastName" => "POGHOSYAN",
-            "fullName" => "VAZGEN POGHOSYAN",
-            "height" => "6'",
-            "dob_day" => 27,
-            "dob_month" => 9,
-            "dob_year" => 1995,
-            "expiry_day" => 27,
-            "expiry_month" => 9,
-            "expiry_year" => 2024,
-            "address1" => "10701 LUELLA CT",
-            "address2" => "RNCHO CORDOVA, CA",
-            "postcode" => "95670",
-            "internalId" => "1739",
-            "documentSide" => "FRONT",
-            "documentType" => "D",
-            "issuerOrg_region_full" => "California",
-            "issuerOrg_region_abbr" => "CA",
-            "issuerOrg_full" => "United States",
-            "issuerOrg_iso2" => "US",
-            "issuerOrg_iso3" => "USA",
-            "nationality_full" => "United States",
-            "nationality_iso2" => "US",
-            "nationality_iso3" => "USA",
-            "dob" => "1995/09/27",
-            "age" => 25,
-            "expiry" => "2024/09/27",
-            "daysToExpiry" => 1427,
-          ],
-          "matchrate" => 0.68,
-          "executionTime" => 1.5928189754486,
-          "responseID" => "7da9d3517ae323e64e53d55c09efa9c4",
-          "quota" => 91,
-          "credit" => 0,
-        ];
+        if($driverLicenseSize > 1048576){
+
+            $draftPath = $this->resizeImage($path, $name);
+
+            $textDriverLicense = $this->getImageData($draftPath);
+            $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+        }else{
+            if($extension == 'pdf' ){
+                $textDriverLicense = $this->getImageData($path);
+                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+            }else{
+                $textDriverLicense = $this->getImageData($path);
+                $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+            }
+
+
+        }
+
+//        $textDriverLicense = [
+//            "result" => [
+//            "documentNumber" => "Y5940176",
+//            "firstName" => "VAZGEN",
+//            "lastName" => "POGHOSYAN",
+//            "fullName" => "VAZGEN POGHOSYAN",
+//            "height" => "6'",
+//            "dob_day" => 27,
+//            "dob_month" => 9,
+//            "dob_year" => 1995,
+//            "expiry_day" => 27,
+//            "expiry_month" => 9,
+//            "expiry_year" => 2024,
+//            "address1" => "10701 LUELLA CT",
+//            "address2" => "RNCHO CORDOVA, CA",
+//            "postcode" => "95670",
+//            "internalId" => "1739",
+//            "documentSide" => "FRONT",
+//            "documentType" => "D",
+//            "issuerOrg_region_full" => "California",
+//            "issuerOrg_region_abbr" => "CA",
+//            "issuerOrg_full" => "United States",
+//            "issuerOrg_iso2" => "US",
+//            "issuerOrg_iso3" => "USA",
+//            "nationality_full" => "United States",
+//            "nationality_iso2" => "US",
+//            "nationality_iso3" => "USA",
+//            "dob" => "1995/09/27",
+//            "age" => 25,
+//            "expiry" => "2024/09/27",
+//            "daysToExpiry" => 1427,
+//          ],
+//          "matchrate" => 0.68,
+//          "executionTime" => 1.5928189754486,
+//          "responseID" => "7da9d3517ae323e64e53d55c09efa9c4",
+//          "quota" => 91,
+//          "credit" => 0,
+//        ];
 
 
         $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
@@ -152,7 +152,7 @@ class ClientDetailsNewData
         $result["expiration"] =  date("Y-m-d",strtotime($text['result']['expiry']));
         $result['dob'] = date("Y-m-d",strtotime($text['result']['dob']));;
         $result['sex'] =  null;
-        $result["address"]  =$text['result']['address1'];
+        $result["address"]  = $text['result']['address1'].', '.$text['result']['address2'] ;
 
         $result["city"]   = trim(str_replace([',', $text['result']['issuerOrg_region_abbr']],'' ,$text['result']['address2']));
         $result["state"]  = $text['result']['issuerOrg_region_abbr'];
