@@ -237,19 +237,17 @@
                         <div class="col-md-12 m-0">
                             <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
                                 @if(!empty($client->clientAttachments()))
-                                    @if(!empty($client->clientAttachments()->where('category', "DL")->first()))
-                                        @if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-                                            <img type="file" class="zoomDL" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="125px" name="img-drvl" id="img-drvl"/>
-                                        @endif
+                                    <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                                    @if(!empty($dl))
+                                            <img type="file" class="zoomDL" src="{{asset($dl->path)}}" width="125px" name="img-drvl" id="img-drvl"/>
                                     @endif
                                 @endif
                             </div>
                             <div class="col-md-6 text-md-center social" style="text-align: center">
                                 @if(!empty($client->clientAttachments()))
-                                    @if(!empty($client->clientAttachments()->where('category', "SS")->first()))
-                                        @if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-                                            <img type="file"  class="zoomSS" src="{{asset(str_replace('C:\xampp\htdocs\ccc\public/','', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="125px" name="img-sos" id="img-sose" />
-                                        @endif
+                                    <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+                                    @if(!empty($ss))
+                                            <img type="file"  class="zoomSS" src="{{asset($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
                                     @endif
                                 @endif
                             </div>

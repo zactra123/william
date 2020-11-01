@@ -57,7 +57,6 @@ class Screaper
     {
         if (empty($arguments)) {
             $arguments = $this->arguments['transunion_dispute'];
-            dd($arguments);
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
@@ -86,7 +85,6 @@ class Screaper
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_login'];
         }
-        dd($arguments);
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $output = shell_exec($command);
@@ -99,7 +97,6 @@ class Screaper
     {
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_view_report'];
-            dd($arguments);
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
@@ -113,7 +110,6 @@ class Screaper
     {
         if (empty($arguments)) {
             $arguments = $this->arguments['equifax_credit_karma'];
-            dd($arguments);
         }
         set_time_limit(300);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
@@ -1996,12 +1992,11 @@ class Screaper
                 'term_month'=>null
             ];
 
-                    $account = $clientReport->clientEqAccounts()->create($dataAccount);
+            $account = $clientReport->clientEqAccounts()->create($dataAccount);
 
 
 
         }
-        dd('ASDA');
     }
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)

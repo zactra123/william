@@ -302,10 +302,29 @@ class TodosController extends Controller
 
     public function printPdfClientProfile($id)
     {
+
+        $client = User::clients()->find($id);
+        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
+        return $pdf->download('invoice.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
+
+        dd($client);
+
+
         $client = User::clients()->find($id);
         $pdf = PDF::loadView('todo.profile-pdf', compact('client'));
 
-        return $pdf->download('invoice.pdf');
+        return $pdf->download(public_path('client_data/profile.pdf'));
+
+
+        dd('asdad');
+   
+
+
+
+
+
+
 
         return view('todo.client', compact('client'));
 

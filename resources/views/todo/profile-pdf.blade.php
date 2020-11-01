@@ -84,18 +84,6 @@
                                     <div class="col-xs-6   external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}} </div>
                                 </div>
 
-                                <div class="report_number " id="report_number">
-                                    <input   type="hidden" value="{{$client->id}}" id="client_id" >
-
-                                    <div class="pb-1 row border-bottom">
-                                        <div class="col-4   internal">"EX# ************"</div>
-                                        <div class="col-4   internal">"EQ# ************"</div>
-                                        <div class="col-4   external">"TU# ************"</div>
-                                    </div>
-                                    <div class="pb-1 row border-bottom">
-                                        <div class="col-4   internal">"FTC# ************"</div>
-                                        <div class="col-4   external">"DR# ************"</div>                                    </div>
-                                </div>
 
                                 @if($client->clientDetails != null)
 
@@ -119,7 +107,7 @@
                                                 </div>
                                             @else
                                                 <div class="row">
-                                                    <label class="col-4 m-0 p-0">  NON BINARI
+                                                    <label class="col-4 m-0 p-0">  NON BINARY
                                                         <input type="radio" name="sex"  class="sex" value="O" checked>
                                                     </label>
                                                 </div>

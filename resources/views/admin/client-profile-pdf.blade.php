@@ -4,19 +4,19 @@
 {{--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--}}
 
 
-    <link href="{{asset('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{public_path('fonts/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{public_path('css/style.css')}}">
 
-{{--        <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">--}}
+<!-- {{--        <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">--}} -->
 
 
 
-    {{--<script src="{{ asset('js/app.js?v=2') }}" defer></script>--}}
-    {{--<script src="{{asset('js/js/ie-support/html5.js')}}"></script>--}}
-    {{--<script src="{{asset('js/js/ie-support/respond.js')}}"></script>--}}
+    <!-- {{--<script src="{{ asset('js/app.js?v=2') }}" defer></script>--}} -->
+    <!-- {{--<script src="{{asset('js/js/ie-support/html5.js')}}"></script>--}} -->
+    <!-- {{--<script src="{{asset('js/js/ie-support/respond.js')}}"></script>--}} -->
     <style>
-        @import "{{asset('css/app.css')}}";
+        @import "{{public_path('css/app.css')}}";
     </style>
     <style type="text/css" >
         .dropdown-submenu.pull-left> {
@@ -84,68 +84,43 @@
                                     <div class="col-xs-6   external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}} </div>
                                 </div>
 
-                                <div class="report_number " id="report_number">
-                                    <input   type="hidden" value="{{$client->id}}" id="client_id" >
-
-                                    <div class="pb-1 row border-bottom">
-                                        <div class="col-4   internal">"EX# ************"</div>
-                                        <div class="col-4   internal">"EQ# ************"</div>
-                                        <div class="col-4   external">"TU# ************"</div>
-                                    </div>
-                                    <div class="pb-1 row border-bottom">
-                                        <div class="col-4   internal">"FTC# ************"</div>
-                                        <div class="col-4   external">"DR# ************"</div>                                    </div>
-                                </div>
-
                                 @if($client->clientDetails != null)
-
-                                    <div class="pb-2 pt-2 row  mr-0 ml-0 external border-bottom">
-
-                                        <div class="col-2 m-0 p-0">
-                                            <label>GENDER:</label>
-                                        </div>
-                                        <div class="col-10 ">
+                                     <div class="pb-1 row border-bottom">
+                                        <div class="col-xs-6   external">
                                             @if($client->clientDetails->sex == "M")
-                                                <div class="row">
-                                                    <label class="col-4 m-0 p-0">  MALE
-                                                        <input type="radio" name="sex" class="sex" value="M" checked>
-                                                    </label>
-                                                </div>
+                                            MALE
                                             @elseif($client->clientDetails->sex == "F")
-                                                <div class="row">
-                                                    <label class="col-4 m-0 p-0">  FEMALE
-                                                        <input type="radio" name="sex" class="sex" value="F" checked>
-                                                    </label>
-                                                </div>
+                                            FEMALE
                                             @else
-                                                <div class="row">
-                                                    <label class="col-4 m-0 p-0">  NON BINARI
-                                                        <input type="radio" name="sex"  class="sex" value="O" checked>
-                                                    </label>
-                                                </div>
+                                            NON BINARY
                                             @endif
                                         </div>
                                     </div>
-                                @else
-                                    <div class="pb-2 pt-2 row  mr-0 ml-0 external border-bottom">
 
-                                        <div class="col-12 m-0 p-0">
-                                            <label>Gender:</label>
-                                            <label class="col-2 m-0 p-0">  MALE
-                                                <input type="radio" name="sex" class="sex" value="M">
-                                            </label>
-                                            <label class="col-2 m-0 p-0">  FEMALE
-                                                <input type="radio" name="sex" class="sex" value="F">
-                                            </label>
-                                            <label class="col-2 m-0 p-0">  NON BINARI
-                                                <input type="radio" name="sex" class="sex" value="F">
-                                            </label>
+                                @else
+                                    <div class="pb-1 row border-bottom">
+                                            <div class="col-xs-6   external">
+                                                NOT SPECIFIED
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
+                               @endif
 
                                 <div class="pt-2  pb-2 pl-3 row external">
                                     REFFERED BY {{$client->referredBy()}}
+                                </div>
+
+                                <div>
+                                 @if(!empty($client->clientAttachments()))
+                                    <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                                    @if(!empty($dl))
+                                            <img type="file" width="70%" src="{{public_path($dl->path)}}" width="125px" name="img-drvl" id="img-drvl"/>
+                                    @endif
+                                    <br />
+                                    <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+                                    @if(!empty($ss))
+                                            <img type="file"  width="70%" src="{{public_path($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
+                                    @endif
+                                @endif
                                 </div>
 
                             {{--</div>--}}
@@ -160,9 +135,9 @@
 
 
 
-{{--<script src="{{asset('js/js/jquery-1.11.1.min.js')}}"></script>--}}
-{{--<script src="{{asset('js/js/plugins.js')}}"></script>--}}
-{{--<script src="{{asset('js/js/app.js')}}"></script>--}}
+{{--<script src="{{public_path('js/js/jquery-1.11.1.min.js')}}"></script>--}}
+{{--<script src="{{public_path('js/js/plugins.js')}}"></script>--}}
+{{--<script src="{{public_path('js/js/app.js')}}"></script>--}}
 
 </body>
 

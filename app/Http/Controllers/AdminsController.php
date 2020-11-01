@@ -110,7 +110,7 @@ class AdminsController extends Controller
         return $pdf->download('invoice.pdf');
         return view('admin.client-profile-pdf', compact('client'));
 
-        dd($client);
+        dd($client); 
 
         $pdf = $pdf->setPaper('a4', 'portrait');
 

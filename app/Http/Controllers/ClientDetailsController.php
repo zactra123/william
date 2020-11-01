@@ -186,8 +186,8 @@ class ClientDetailsController extends Controller
             ]);
             $client_details->update($clientDetails);
             $uploaded->delete();
-//            FetchReports::dispatch($client);
             if ($registration_steps == 'review') {
+                FetchReports::dispatch($client);
                 return redirect(route('client.details.create'));
             }
             return redirect(route('client.details.index'))->with('success', "your data saved");
