@@ -168,12 +168,11 @@ class ClientDetailsController extends Controller
 
             $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
             $client_details = ClientDetail::where('user_id', $id)->first();
-
             $registration_steps = $client_details->registration_steps;
 
             preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
-            $clientDetails ["number"] = $number[0];
-            $clientDetails['name'] = trim(str_replace($number[0], '', $splitAddress['street']));
+            $clientDetails ["number"] = isset($number[0])?$number[0]:null;
+            $clientDetails['name'] = trim(str_replace($clientDetails ["number"], '', $splitAddress['street']));
             $clientDetails['city'] = $splitAddress['city'];
             $clientDetails['state'] = $splitAddress['state'];
             $clientDetails['zip'] =$splitAddress['zip'];
@@ -840,13 +839,11 @@ class ClientDetailsController extends Controller
     public function splitAddress($address)
     {
 
-
         $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
-                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
+                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5,}/";
 
         preg_match($addressState, $address, $matcheSate);
         $state = isset($matcheSate[1])?$matcheSate[1]:null;
-
         if($state != null){
             $explodeAddress = explode(' '.$state.' ', $address);
             $zipCode = isset($explodeAddress[1])?trim($explodeAddress[1]):null;

@@ -143,7 +143,8 @@
         }, "Not valid ssn format.");
 
         $.validator.addMethod("valid_address", function(value, element) {
-            return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
+            // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
+            return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
         }, "Not valid address format.");
 
         $("#clientDetailsForm").validate({

@@ -4,6 +4,9 @@
 @section('content')
 
     <style>
+        div.pac-container {
+            z-index: 1050 !important;
+        }
         .scrollDiv {
             height: 270px;
             background-color: white;
@@ -500,8 +503,8 @@
                                 {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
                             </div>
                             <div class="form-group col-md-12">
+                                {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
 
-                                {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                             </div>
 
                             <div class="form-group col-md-12">
@@ -509,22 +512,12 @@
                                 {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
                             </div>
 
-{{--                            <div class="form-group col-md-6">--}}
-{{--                                <label for="gender">Gender</label>--}}
-{{--                                <div class="form-check form-check-inline">--}}
-{{--                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked="checked">--}}
-{{--                                    <label class="form-check-label" for="male">Male</label>--}}
 
-{{--                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">--}}
-{{--                                    <label class="form-check-label" for="female">Female</label>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
 
                         </div>
 
                         <button type="submit" value="Update" class="btn btn-primary">Update</button>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -533,21 +526,92 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        var per1 = $(".progress.p1").attr("data-1");
-        var per2 = $(".progress.p1").attr("data-2");
-        $(".p1 .number h2").text(per1);
-        var val1 = 440 - (440 * per1) / 100;
 
-        var val2 = (440 * per2) / 100;
-        var val3 = val1-val2
-        console.log(val1, val2, per2)
 
-        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
-        $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
+
+
+
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
+
     </script>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function() {
+
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                $("#address").val(place.formatted_address)
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if (place.address_components[i].types[j] == "postal_code") {
+                            $("#zip").val(place.address_components[i].long_name);
+
+                        }
+                    }
+                }
+            });
+
+
+            $(".ssn").mask("999-99-9999");
+            $('#phone_number').mask('(000) 000-0000');
+
+            $.validator.addMethod("one_option", function(value, element) {
+                if (element.name.indexOf("sex") != -1){
+                    return $(".sex_options").length < 2
+                }
+                return $("[name='" +element.name+ "']").length < 2;
+            }, "Please choose one of the options");
+
+            $.validator.addMethod("valid_ssn", function(value, element) {
+                console.log(value, element)
+                return !!value.match(/[0-9]{3}-[0-9]{2}-[0-9]{4}/g);
+            }, "Not valid ssn format.");
+
+            $.validator.addMethod("valid_address", function(value, element) {
+                // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
+                return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
+            }, "Not valid address format.");
+
+
+            $("#clientDetailsForm").validate({
+                rules: {
+                    "client[full_name]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[dob]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[ssn]": {
+                        required:true,
+                        valid_ssn: true
+                    },
+                    "client[address]": {
+                        required:true,
+                        one_option: true,
+                        valid_address: true
+                    },
+                    "client[zip]": {
+                        required:true,
+                        one_option: true
+                    },
+                    "client[sex]": {
+                        required:   true,
+                        one_option: true
+                    },
+                    "client[sex_uploaded]": {
+                        required:true
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element).parents(".form-group"));
+                }
+            })
+
             $(".file-box").on("change", function(e){
                 var file = e.target.files[0]
                 var _this = this
@@ -663,44 +727,24 @@
                     $(".social").addClass("hide")
                 }
             });
-        })
 
-    </script>
-
-
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
-
-    </script>
-
-    <script>
-        $(document).ready(function() {
-
-            autocomplete = new google.maps.places.Autocomplete($("#address")[0], {
-                types: ['address'],
-                componentRestrictions: {country: "us"}
-            });
-            google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                var place = autocomplete.getPlace();
-                $("#address").val(place.formatted_address)
-                for (var i = 0; i < place.address_components.length; i++) {
-                    for (var j = 0; j < place.address_components[i].types.length; j++) {
-                        if (place.address_components[i].types[j] == "postal_code") {
-                            $("#zip").val(place.address_components[i].long_name);
-
-                        }
-                    }
-                }
-            });
-
-
-            $(".ssn").mask("999-99-9999");
-            $('#phone_number').mask('(000) 000-0000');
         })
 
         </script>
+
+    <script type="text/javascript">
+        var per1 = $(".progress.p1").attr("data-1");
+        var per2 = $(".progress.p1").attr("data-2");
+        $(".p1 .number h2").text(per1);
+        var val1 = 440 - (440 * per1) / 100;
+
+        var val2 = (440 * per2) / 100;
+        var val3 = val1-val2
+        console.log(val1, val2, per2)
+
+        $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
+        $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
+    </script>
 
 
 
