@@ -187,7 +187,7 @@
         }
 
         .zoomDL:hover {
-            transform:translate(60%,50%) scale(2.6);
+            transform:translate(70%,50%) scale(2.6);
             transition: transform .5s;
         }
         .driver:hover ~ .social {
@@ -210,7 +210,7 @@
         }
 
         .scaleDL{
-            transform:translate(60%,50%) scale(2.6);
+            transform:translate(70%,50%) scale(2.6);
         }
         .scaleSS{
             transform:translate(-60%,50%) scale(2.6);
@@ -306,7 +306,7 @@
                         <div class="row">
 
                             <div class="col-lg-11 address2">
-                               {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}} 
+                               {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
 
                             </div>
                         </div>
