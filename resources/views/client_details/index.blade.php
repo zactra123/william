@@ -187,7 +187,7 @@
         }
 
         .zoomDL:hover {
-            transform:translate(50%,50%) scale(2.5);
+            transform:translate(60%,50%) scale(2.6);
             transition: transform .5s;
         }
         .driver:hover ~ .social {
@@ -197,11 +197,11 @@
             display: none;
         }
         .zoomSS:hover {
-            transform:translate(-50%,50%) scale(2.5);
+            transform:translate(-60%,50%) scale(2.6);
             transition: transform .5s ease-in-out;
         }
         .changeLogo:hover {
-            padding-bottom: 120px;
+            padding-bottom: 100px;
         }
 
         .side-nav .categories > li {
@@ -210,13 +210,22 @@
         }
 
         .scaleDL{
-            transform:translate(50%,50%) scale(2.5);
+            transform:translate(60%,50%) scale(2.6);
         }
         .scaleSS{
-            transform:translate(-50%,50%) scale(2.5);
+            transform:translate(-60%,50%) scale(2.6);
         }
         .changePadding {
-            padding-bottom: 120px;
+            padding-bottom: 110px;
+        }
+
+        .responsive {
+            width: 100%;
+            height: auto;
+        }
+
+        .address2{
+            margin-left: 20px !important;
         }
 
 
@@ -233,7 +242,7 @@
 {{--                    <img src="assets/images/trump.jpg" alt="">--}}
                     <div class="info">
                         <h5>Client No: 01</h5>
-                        <a href="#"><span style="font-weight: bold;padding-right: ">{{$client->full_name()}}</span></a>
+                        <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                     </div>
 
                     <div class="row changeLogo mt-5" >
@@ -242,7 +251,7 @@
                                 @if(!empty($client->clientAttachments()))
                                     <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
                                     @if(!empty($dl))
-                                            <img type="file" class="zoomDL" src="{{asset($dl->path)}}" width="125px" name="img-drvl" id="img-drvl"/>
+                                            <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}" with="70%"  name="img-drvl" id="img-drvl"/>
                                     @endif
                                 @endif
                             </div>
@@ -250,12 +259,20 @@
                                 @if(!empty($client->clientAttachments()))
                                     <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
                                     @if(!empty($ss))
-                                            <img type="file"  class="zoomSS" src="{{asset($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
+                                            <img type="file"  class="zoomSS responsive" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
                                     @endif
                                 @endif
                             </div>
                         </div>
                     </div>
+                    <div class="row" >
+                        <div class="col-l-12 m-0">
+                            <a href="# " class="link closeUpload" >
+                                UPLOAD DRIVER LICENSE
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="row  hide form-group updateLogo ">
                         <button type="button" class="close closeUpload">
                             <span aria-hidden="true">&times;</span>
@@ -279,12 +296,22 @@
                     <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
                     <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
-                    <li title="FULL ADDRESS">
-                            <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                    <li title="FULL ADDRESS"  >
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-11 address2">
+                               {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}} 
+
+                            </div>
+                        </div>
                     </li>
-                    <li title="FULL ADDRESS" style="margin-left: 25px; padding-top:0px">
-                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
-                    </li>
+
                     <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
                     <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
                     <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
@@ -691,24 +718,37 @@
 
             });
 
-            $(".driver").click(function (e) {
-                e.preventDefault();
+            // $(".driver").click(function (e) {
+            //     e.preventDefault();
+            //
+            //     var  hideShow = $(".updateLogo").attr("class")
+            //     if(hideShow.search("hide") != -1){
+            //         $(".updateLogo").removeClass("hide")
+            //     }else{
+            //         $(".updateLogo").addClass("hide")
+            //     }
+            // });
 
-                var  hideShow = $(".updateLogo").attr("class")
-                if(hideShow.search("hide") != -1){
-                    $(".updateLogo").removeClass("hide")
-                }else{
-                    $(".updateLogo").addClass("hide")
+            $(document).on("click",function() {
+
+                var  scaleSS = $(".zoomSS").attr("class")
+                var  scaleDL = $(".zoomDL").attr("class")
+
+                if(scaleSS.search("scaleSS") != -1) {
+                    $(".zoomSS").removeClass("scaleSS")
+                    $(".changeLogo").removeClass("changePadding")
                 }
-            });
+                if(scaleDL.search("scaleDL") != -1){
+                    $(".zoomDL").removeClass("scaleDL")
+                    $(".changeLogo").removeClass("changePadding")
+                    $(".social").removeClass("hide")
+                }
+
+           });
 
             $( ".zoomSS" ).dblclick(function() {
                 var  scale = $(".zoomSS").attr("class")
-
-                if(scale.search("scaleSS") != -1){
-                    $(".zoomSS").removeClass("scaleSS")
-                    $(".changeLogo").removeClass("changePadding")
-                }else{
+                if(scale.search("scaleSS") == -1){
                     $(".zoomSS").addClass("scaleSS")
                     $(".changeLogo").addClass("changePadding")
                 }
@@ -716,12 +756,7 @@
 
             $( ".zoomDL" ).dblclick(function() {
                 var  scale = $(".zoomDL").attr("class")
-                if(scale.search("scaleDL") != -1){
-                    $(".zoomDL").removeClass("scaleDL")
-                    $(".changeLogo").removeClass("changePadding")
-                    $(".social").removeClass("hide")
-
-                }else{
+                if(scale.search("scaleDL") == -1){
                     $(".zoomDL").addClass("scaleDL")
                     $(".changeLogo").addClass("changePadding")
                     $(".social").addClass("hide")
