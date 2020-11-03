@@ -142,14 +142,22 @@
             position: relative;
             line-height: 10px;
         }
-        .bank_logo {
+
+        .driver_license {
             background-image: url(/images/correct-dl.png);
             display: block;
             background-size: 80%;
             background-repeat: no-repeat;
             background-position: center;
         }
-        .bank_logo:after {  pointer-events: none;
+        .social_security {
+            background-image: url(/images/correct-ss.png);
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .driver_license:after, .social_security:after {  pointer-events: none;
             position: absolute;
             top: 60px;
             left: 0;
@@ -163,7 +171,7 @@
             background-size: 100%;
             background-repeat: no-repeat;
         }
-        .bank_logo:before {
+        .driver_license:before, .social_security:before {
             position: absolute;
             bottom: 0px;
             left: 0;  pointer-events: none;
@@ -179,6 +187,49 @@
             text-transform: capitalize;
             text-align: center;
         }
+
+        .driver_dropp, .social_dropp {
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .driver_dropp:before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "ID IS ATTACHED ";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .social_dropp:before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "SSC IS ATTACHED";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+
+
+
+
         .social {
             display: block;
         }
@@ -225,7 +276,7 @@
         }
 
         .address2{
-            margin-left: 20px !important;
+            margin-left: 30px !important;
         }
 
 
@@ -251,7 +302,7 @@
                                 @if(!empty($client->clientAttachments()))
                                     <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
                                     @if(!empty($dl))
-                                            <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}" with="70%"  name="img-drvl" id="img-drvl"/>
+                                            <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
                                     @endif
                                 @endif
                             </div>
@@ -268,7 +319,7 @@
                     <div class="row" >
                         <div class="col-l-12 m-0">
                             <a href="# " class="link closeUpload" >
-                                UPLOAD DRIVER LICENSE
+                                UPLOAD NEW ID OR SOCIAL SECURITY
                             </a>
                         </div>
                     </div>
@@ -281,7 +332,12 @@
                             @method("PUT")
                             @csrf
                         <div class="col-sm-12 form-group files">
-                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >
+{{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
+                            <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
+
+                        </div>
+                        <div class="col-sm-12 form-group files">
+                            <input class="social_security file-box" type="file" name="social"  id="social_security" >
                         </div>
                         <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
 
@@ -299,7 +355,7 @@
                     <li title="FULL ADDRESS"  >
                         <div class="row">
                             <div class="col-lg-12">
-                                <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                <i class="fa fa-map fa-fw " style="margin-right: 10px"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
 
                             </div>
                         </div>
@@ -680,28 +736,60 @@
                 }
             });
 
-            $("#bank_logo").change(function(e) {
+            $("#driver_license").change(function(e) {
                 $(this).removeClass('driver_license')
 
-                $(this).removeClass('bank_logo_dropp')
+                $(this).removeClass('driver_dropp')
                 var file = e.target.files[0]
                 if(file.type == "application/pdf"){
-                    $(this).addClass('bank_logo_dropp')
+                    $(this).addClass('driver_dropp')
                     // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
                 }else{
                     var reader = new FileReader();
 
                     reader.onload = function(event) {
-                        $(".bank_logo_dropp").css('background-image','url('+ event.target.result +')');
-                        $(".bank_logo_dropp").css('background-size','cover');
+                        $(".driver_dropp").css('background-image','url('+ event.target.result +')');
                     }
                     reader.readAsDataURL(file);
                 }
 
-                $(this).removeClass('bank_logo_class')
-                $(this).addClass('bank_logo_dropp')
-                // $(".driver_dropp").css('background-image',file)
+                $(this).removeClass('driver_license');
+                $(this).addClass('driver_dropp');
             });
+
+            $("#social_security").change(function(e) {
+                $(this).removeClass('social_dropp')
+                var file = e.target.files[0]
+
+                if(file.type == "application/pdf"){
+                    $(this).addClass('socia_dropp')
+                }else{
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $(".social_dropp").css('background-image','url('+ event.target.result +')');
+                    }
+                    reader.readAsDataURL(file);
+                }
+                $(this).removeClass('social_security')
+                $(this).addClass('social_dropp')
+            });
+
+            $('.driver_license').bind('dragover', function(){
+                console.log('xxx')
+                $(this).addClass('drag-over');
+            });
+            $('.driver_license').bind('dragleave', function(){
+                $(this).removeClass('drag-over');
+            });
+            $('.social_security').bind('dragover', function(){
+                $(this).addClass('drag-over');
+            });
+            $('.social_security').bind('dragleave', function(){
+                $(this).removeClass('drag-over');
+            });
+
+
 
             $("#bank_logo").val(null)
 

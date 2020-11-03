@@ -24,6 +24,7 @@ use App\Services\ClientDetailsNewData;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use App\Todo;
+use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Auth;
@@ -395,49 +396,92 @@ class ClientDetailsController extends Controller
 
     public function updateDriver(Request $request)
     {
+
         $client = Auth::user()->id;
-        if (empty($request['driver'])) {
+        if (empty($request['driver']) && empty($request['social'])) {
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Please upload both files');
         }
 
-        $imagesDriverLicense = $request->file("driver");
+        if(!empty($request['driver'])){
+            $imagesDriverLicense = $request->file("driver");
 
-        $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-        $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
 
-        if (!in_array($driverLicenseExtension, $imageExtension)) {
-            return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
-        }
-
-        $path = "files/client/details/image/" . $client . "/";
-
-        $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
-
-        $pathDriverLicense = '/' . $path . $nameDriverLicense;
-
-        $clientAttachmentData = [
-
-            'user_id' => $client,
-            'path' => $pathDriverLicense,
-            'file_name' => $nameDriverLicense,
-            'category' => 'DL',
-            'type' => $driverLicenseExtension
-
-        ];
-        $clientAttachment = ClientAttachment::where('user_id', $client)->where('category', 'DL');
-
-        if(empty($clientAttachment->first())){
-            ClientAttachment::insert($clientAttachmentData[0]);
-        }else{
-            if(file_exists($clientAttachment->first()->path)){
-                unlink($clientAttachment->first()->path);
+            if (!in_array($driverLicenseExtension, $imageExtension)) {
+                return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
             }
-            $clientAttachment->update($clientAttachmentData);
 
+            $path = "files/client/details/image/" . $client . "/";
+
+            $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
+
+            $pathDriverLicense = '/' . $path . $nameDriverLicense;
+
+            $clientAttachmentDataDL = [
+
+                'user_id' => $client,
+                'path' => $pathDriverLicense,
+                'file_name' => $nameDriverLicense,
+                'category' => 'DL',
+                'type' => $driverLicenseExtension
+
+            ];
+            $clientAttachment = ClientAttachment::where('user_id', $client)->where('category', 'DL');
+
+            if(empty($clientAttachment->first())){
+                ClientAttachment::insert($clientAttachmentDataDL);
+            }else{
+                if(file_exists($clientAttachment->first()->path)){
+                    unlink($clientAttachment->first()->path);
+                }
+                $clientAttachment->update($clientAttachmentDataDL);
+
+            }
+            $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
         }
-        $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+        if(!empty($request['social'])){
+            $imagesDriverLicense = $request->file("social");
+
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $socialSecurityExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+
+            if (!in_array($socialSecurityExtension, $imageExtension)) {
+                return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+            $path = "files/client/details/image/" . $client . "/";
+
+            $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
+
+            $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
+
+            $clientAttachmentDataSS = [
+
+                'user_id' => $client,
+                'path' => $pathSocialSecurity,
+                'file_name' => $nameSocialSecurity,
+                'category' => 'SS',
+                'type' => $socialSecurityExtension
+
+            ];
+            $clientAttachmentSS = ClientAttachment::where('user_id', $client)->where('category', 'SS');
+            if(empty($clientAttachmentSS->first())){
+                ClientAttachment::insert($clientAttachmentDataSS);
+            }else{
+                if(file_exists($clientAttachment->first()->path)){
+                    unlink($clientAttachment->first()->path);
+                }
+                $clientAttachment->update($clientAttachmentDataSS);
+
+            }
+            $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+        }
+
+
+
 
         return redirect()->route('client.details.index');
     }
