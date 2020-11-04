@@ -254,6 +254,9 @@
         .changeLogo:hover {
             padding-bottom: 100px;
         }
+        .categories {
+            font-size:1.1vw
+        }
 
         .side-nav .categories > li {
             padding: 10px 40px 10px 30px !important;
@@ -283,8 +286,9 @@
     </style>
 
 
-    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
-
+{{--    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])--}}
+    <section class="section-padding">
+    </section>
     <div class="row">
         <div class="col-sm-3">
             <aside class="side-nav" id="show-side-navigation1">
@@ -296,9 +300,9 @@
                         <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                     </div>
 
-                    <div class="row changeLogo mt-5" >
+                    <div class="row changeLogo mt-5" style="padding-right: 0px! important; padding-left: 0px !important" >
                         <div class="col-md-12 m-0">
-                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
+                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px;padding-right: 5px! important; padding-left: 0px !important" >
                                 @if(!empty($client->clientAttachments()))
                                     <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
                                     @if(!empty($dl))
@@ -306,7 +310,7 @@
                                     @endif
                                 @endif
                             </div>
-                            <div class="col-md-6 text-md-center social" style="text-align: center">
+                            <div class="col-md-6 text-md-center social" style="margin-bottom: 10px;padding-left: 5px! important; padding-right: 0px! important; ">
                                 @if(!empty($client->clientAttachments()))
                                     <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
                                     @if(!empty($ss))
@@ -318,7 +322,7 @@
                     </div>
                     <div class="row" >
                         <div class="col-l-12 m-0">
-                            <a href="# " class="link closeUpload" >
+                            <a href="#" class="link closeUpload" >
                                 UPLOAD NEW ID OR SOCIAL SECURITY
                             </a>
                         </div>
@@ -461,8 +465,6 @@
                                         </div>
                                     </div>
 
-
-                                    <h4 class=" text-center">Uploaded Documents VS Processed</h4>
                                 </div>
                             </div>
                         </div>

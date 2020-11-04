@@ -241,120 +241,218 @@
 @else
     @include('helpers.chat-box')
 @endif
-<footer class="footer-section">
-    <div class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7 col-sm-7">
-                    <div class="footer-wrapper">
-                        <ul class="wrapper-option clearfix">
-                            <h3> CONNECT WITH US</h3>
-                            <li>
-                                <div class="content" style="color: #aaa ">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    1-844-337-8336
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content" style="color: #aaa ">
-                                    <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
-                                    info@prudentscores.com
-                                </div>
-                            </li>
-                            <li>
-                                <div class="content" style="color: #aaa ">
-                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
-                                </div>
 
-                                <div class="content" style="color: #aaa ">
-                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
-                                </div>
-                            </li>
+@if(Auth::user())
+    @if(Auth::user()->role == 'client')
+    @else
+        <footer class="footer-section">
+            <div class="footer-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-sm-7">
+                            <div class="footer-wrapper">
+                                <ul class="wrapper-option clearfix">
+                                    <h3> CONNECT WITH US</h3>
+                                    <li>
+                                        <div class="content" style="color: #aaa ">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            1-844-337-8336
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="content" style="color: #aaa ">
+                                            <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
+                                            info@prudentscores.com
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="content" style="color: #aaa ">
+                                            5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
+                                        </div>
 
-                        </ul>
-                        <ul class="wrapper-option" style="padding-left: 30px">
-{{--                            <h3> REACH US DIRECTLY</h3>--}}
-{{--                            <li>--}}
-{{--                                <div class="content" style="color: #aaa ">--}}
-{{--                                    info@prudentscores.com--}}
-{{--                                </div>--}}
-{{--                                <div class="content" style="color: #aaa ">--}}
-{{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
-{{--                                </div>--}}
-{{--                                <div class="content" style="color: #aaa ">--}}
-{{--                                    Tel: 1-844-337-8336--}}
-{{--                                </div>--}}
-{{--                                <div class="content" style="color: #aaa ">--}}
-{{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-                        </ul>
-                    </div> <!-- footer-wrapper -->
+                                        <div class="content" style="color: #aaa ">
+                                            Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <ul class="wrapper-option" style="padding-left: 30px">
+                                    {{--                            <h3> REACH US DIRECTLY</h3>--}}
+                                    {{--                            <li>--}}
+                                    {{--                                <div class="content" style="color: #aaa ">--}}
+                                    {{--                                    info@prudentscores.com--}}
+                                    {{--                                </div>--}}
+                                    {{--                                <div class="content" style="color: #aaa ">--}}
+                                    {{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
+                                    {{--                                </div>--}}
+                                    {{--                                <div class="content" style="color: #aaa ">--}}
+                                    {{--                                    Tel: 1-844-337-8336--}}
+                                    {{--                                </div>--}}
+                                    {{--                                <div class="content" style="color: #aaa ">--}}
+                                    {{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
+                                    {{--                                </div>--}}
+                                    {{--                            </li>--}}
+                                </ul>
+                            </div> <!-- footer-wrapper -->
+                        </div>
+
+                        {{--                <div class="col-md-1 col-sm-1">--}}
+                        {{--                    <div class="footer-wrapper">--}}
+                        {{--                        <h3>About</h3>--}}
+
+                        {{--                        <p>We have over 18 years of experience in the credit repair industry.As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.</p>--}}
+
+                        {{--                        <ul class="social-icon">--}}
+                        {{--                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                        {{--                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                        {{--                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>--}}
+                        {{--                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
+                        {{--                        </ul>--}}
+                        {{--                    </div> <!-- footer-wrapper -->--}}
+                        {{--                </div>--}}
+
+                        <div class="col-md-5  col-sm-5">
+                            <div class="footer-wrapper last-wrapper">
+
+                                <ul class="wrapper-option clearfix">
+                                    <h3>INFORMATION</h3>
+                                    <li><a href="{{url('/')}}">Home</a></li>
+                                    {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
+                                    <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
+                                    <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
+                                    <li><a href="{{route('credit.repair')}}">Resources</a></li>
+                                    <li><a href="#">Newsroom</a></li>
+                                    {{--                            <li><a href="#">Affiliates</a></li>--}}
+                                </ul> <!-- wrapper-option -->
+
+                                <ul class="wrapper-option " style="padding-left: 30px">
+                                    <h3>CUSTOMER SERVICE</h3>
+                                    <li><a href="{{route('faqs')}}">FAQs</a></li>
+                                    <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
+                                    <li>
+                                        <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
+                                            Score Estimator
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
+                                            Identity Theft
+                                        </a>
+                                    </li>
+                                    <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
+                                </ul> <!-- wrapper-option -->
+                            </div> <!-- footer-wrapper -->
+                        </div>
+                    </div>
                 </div>
+            </div> <!-- footer-container -->
 
-{{--                <div class="col-md-1 col-sm-1">--}}
-{{--                    <div class="footer-wrapper">--}}
-{{--                        <h3>About</h3>--}}
 
-{{--                        <p>We have over 18 years of experience in the credit repair industry.As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.</p>--}}
+            <div class="copy-right text-center">
+                <div class="container">
+                    <p>2020 &copy; All Rights Reserved by <a href="#">PRUDENT CREDIT SOLUTION</a></p>
+                </div>
+            </div> <!-- copy-right -->
+        </footer> <!-- footer-section -->
 
-{{--                        <ul class="social-icon">--}}
-{{--                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
-{{--                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
-{{--                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>--}}
-{{--                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
-{{--                        </ul>--}}
-{{--                    </div> <!-- footer-wrapper -->--}}
-{{--                </div>--}}
+    @endif
+@else
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="footer-wrapper">
+                            <ul class="wrapper-option clearfix">
+                                <h3> CONNECT WITH US</h3>
+                                <li>
+                                    <div class="content" style="color: #aaa ">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        1-844-337-8336
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content" style="color: #aaa ">
+                                        <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
+                                        info@prudentscores.com
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content" style="color: #aaa ">
+                                        5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040
+                                    </div>
 
-                <div class="col-md-5  col-sm-5">
-                    <div class="footer-wrapper last-wrapper">
+                                    <div class="content" style="color: #aaa ">
+                                        Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)
+                                    </div>
+                                </li>
 
-                        <ul class="wrapper-option clearfix">
-                            <h3>INFORMATION</h3>
-                            <li><a href="{{url('/')}}">Home</a></li>
-                            {{--                            <li><a href="{{route('contact')}}">Contact Us</a></li>--}}
-                            <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
-                            <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
-                            <li><a href="{{route('credit.repair')}}">Resources</a></li>
-                            <li><a href="#">Newsroom</a></li>
-                            {{--                            <li><a href="#">Affiliates</a></li>--}}
-                        </ul> <!-- wrapper-option -->
+                            </ul>
+                            <ul class="wrapper-option" style="padding-left: 30px">
+                                {{--                            <h3> REACH US DIRECTLY</h3>--}}
+                                {{--                            <li>--}}
+                                {{--                                <div class="content" style="color: #aaa ">--}}
+                                {{--                                    info@prudentscores.com--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="content" style="color: #aaa ">--}}
+                                {{--                                    5800 S. Eastern Ave., Suite 500 <br>Commerce, CA 90040--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="content" style="color: #aaa ">--}}
+                                {{--                                    Tel: 1-844-337-8336--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="content" style="color: #aaa ">--}}
+                                {{--                                    Working Hours: <br> Mon-Fri (9:00 a.m. - 5:30 p.m.)--}}
+                                {{--                                </div>--}}
+                                {{--                            </li>--}}
+                            </ul>
+                        </div> <!-- footer-wrapper -->
+                    </div>
 
-                        <ul class="wrapper-option " style="padding-left: 30px">
-                            <h3>CUSTOMER SERVICE</h3>
-                            <li><a href="{{route('faqs')}}">FAQs</a></li>
-                            <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
-                            <li>
-                                <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
-                                    Score Estimator
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
-                                    Identity Theft
-                                </a>
-                            </li>
-                            <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
-                        </ul> <!-- wrapper-option -->
-                    </div> <!-- footer-wrapper -->
+                    <div class="col-md-4  col-sm-4">
+                        <div class="footer-wrapper last-wrapper">
+                            <ul class="wrapper-option clearfix">
+                                <h3>INFORMATION</h3>
+                                <li><a href="{{url('/')}}">Home</a></li>
+                                <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
+                                <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
+                                <li><a href="{{route('credit.repair')}}">Resources</a></li>
+                                <li><a href="#">Newsroom</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4  col-sm-4">
+                        <div class="footer-wrapper last-wrapper">
+                            <ul class="wrapper-option " style="padding-left: 30px">
+                                <h3>CUSTOMER SERVICE</h3>
+                                <li><a href="{{route('faqs')}}">FAQs</a></li>
+                                <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
+                                <li>
+                                    <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
+                                        Score Estimator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">
+                                        Identity Theft
+                                    </a>
+                                </li>
+                                <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> <!-- footer-container -->
-
-
-    <div class="copy-right text-center">
-        <div class="container">
-            <p>2020 &copy; All Rights Reserved by <a href="#">PRUDENT CREDIT SOLUTION</a></p>
+        <div class="copy-right text-center">
+            <div class="container">
+                <p>2020 &copy; All Rights Reserved by <a href="#">PRUDENT CREDIT SOLUTION</a></p>
+            </div>
         </div>
-    </div> <!-- copy-right -->
-</footer> <!-- footer-section -->
+    </footer>
 
+@endif
 
-
-
-<!-- Off-Canvas View Only -->
 <span class="menu-toggle navbar visible-xs visible-sm sticky"><i class="fa fa-bars" aria-hidden="true"></i></span>
 
 <div id="offcanvas-menu" class="visible-xs visible-sm">
@@ -391,13 +489,6 @@
             <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
 
         @endif
-
-
-{{--        <li><a href="{{url('/')}}">Home</a></li>--}}
-{{--        <li><a href="{{route('whoWeAre')}}">Who We Are</a></li>--}}
-{{--        <li><a href="{{route('howItWorks')}}">How It Works</a></li>--}}
-{{--        <li><a href="{{route('credit.education')}}">Credit Education</a></li>--}}
-
 
 
     </ul> <!-- menu-wrapper -->
