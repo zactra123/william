@@ -52,6 +52,14 @@
             .disput-progress {
                 flex-direction: column;
             }
+            .categories {
+                font-size: 4vw !important
+            }
+            .refferred{
+                font-size: 30px !important
+            }
+
+
         }
 
         .progress {
@@ -238,7 +246,7 @@
         }
 
         .zoomDL:hover {
-            transform:translate(70%,50%) scale(2.6);
+            transform:translate(60%,50%) scale(2.1);
             transition: transform .5s;
         }
         .driver:hover ~ .social {
@@ -248,7 +256,7 @@
             display: none;
         }
         .zoomSS:hover {
-            transform:translate(-60%,50%) scale(2.6);
+            transform:translate(-60%,50%) scale(2.1);
             transition: transform .5s ease-in-out;
         }
         .changeLogo:hover {
@@ -264,10 +272,10 @@
         }
 
         .scaleDL{
-            transform:translate(70%,50%) scale(2.6);
+            transform:translate(60%,50%) scale(2.2);
         }
         .scaleSS{
-            transform:translate(-60%,50%) scale(2.6);
+            transform:translate(-60%,50%) scale(2.25);
         }
         .changePadding {
             padding-bottom: 110px;
@@ -279,8 +287,17 @@
         }
 
         .address2{
-            margin-left: 30px !important;
+            margin-left: 40px !important;
         }
+        .phone {
+            width: 15%;
+            height: auto;
+            padding-right: 5px;
+        }
+        .refferred {
+            font-size: 1.75vw !important
+        }
+
 
 
     </style>
@@ -294,10 +311,8 @@
             <aside class="side-nav" id="show-side-navigation1">
                 <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
                 <div class="heading">
-{{--                    <img src="assets/images/trump.jpg" alt="">--}}
                     <div class="info">
                         <h5>Client No: 01</h5>
-                        <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                     </div>
 
                     <div class="row changeLogo mt-5" style="padding-right: 0px! important; padding-left: 0px !important" >
@@ -353,38 +368,58 @@
 
                 </div>
                 <ul class="categories">
-                    <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
-                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
+                    <li title="FULL NAME">
+                        <img  class="phone" src="/images/full_name.png">
+                        <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
+                    </li>
+                    <li title="PHONE NUMBER">
+                        <img  class="phone" src="/images/phone_number.png">
+                        <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
+                    </li>
+                    <li title="EMAIL ADDRESS">
+                        <img  class="phone" src="/images/email.png">
+                        <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS"  >
                         <div class="row">
                             <div class="col-lg-12">
-                                <i class="fa fa-map fa-fw " style="margin-right: 10px"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                <img  class="phone" src="/images/location.png">
+                                {{$client->clientDetails->number}} {{$client->clientDetails->name}}
 
                             </div>
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-11 address2">
-                               {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                            <div class="col-lg-12" style="padding-left: 20%">
+
+                                {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
 
                             </div>
                         </div>
                     </li>
 
-                    <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
-                    <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
-                    <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
-                    @if($client->clientDetails->sex == 'M')
-                        MALE
-                    @elseif($client->clientDetails->sex == 'F')
-                        FEMALE
-                    @else
-                        NON-BINARY
-                    @endif
+                    <li title="DATE OF BIRTH">
+                        <img  class="phone" src="/images/birthday.png">
+                        {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
+                        <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
                     </li>
+                    <li title="SOCIAL SECURITY NUMBER">
+                        <img  class="phone" src="/images/ssc.png">
+                        {{$client->clientDetails->ssn}}
+                    </li>
+
+                    <li title="GENDER">
+                        @if($client->clientDetails->sex == 'M')
+                            <img  class="phone" src="/images/male.png" width="20px">  MALE
+                        @elseif($client->clientDetails->sex == 'F')
+                            <img class="phone"  src="/images/female.png" width="20px">  FEMALE
+                        @else
+                            <img class="phone" src="/images/non_binary.png" width="25px">  NON-BINARY
+                        @endif
+                    </li>
+
                     @if($client->clientDetails->referred_by != null)
-                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
+                        <li title="REFERRED BY"><i class="fa fa-user fa-fw refferred" ></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
                     @endif
                     <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
                 </ul>
@@ -874,78 +909,78 @@
 
 
 
-    <script type="text/javascript">
-        /*global $, console*/
+{{--    <script type="text/javascript">--}}
+{{--        /*global $, console*/--}}
 
-        $(function () {
+{{--        $(function () {--}}
 
-            'use strict';
+{{--            'use strict';--}}
 
-            (function () {
+{{--            (function () {--}}
 
-                var aside = $('.side-nav'),
+{{--                var aside = $('.side-nav'),--}}
 
-                    showAsideBtn = $('.show-side-btn'),
+{{--                    showAsideBtn = $('.show-side-btn'),--}}
 
-                    contents = $('#contents');
+{{--                    contents = $('#contents');--}}
 
-                showAsideBtn.on("click", function () {
+{{--                showAsideBtn.on("click", function () {--}}
 
-                    $("#" + $(this).data('show')).toggleClass('show-side-nav');
+{{--                    $("#" + $(this).data('show')).toggleClass('show-side-nav');--}}
 
-                    contents.toggleClass('margin');
+{{--                    contents.toggleClass('margin');--}}
 
-                });
+{{--                });--}}
 
-                if ($(window).width() <= 767) {
+{{--                if ($(window).width() <= 767) {--}}
 
-                    aside.addClass('show-side-nav');
+{{--                    aside.addClass('show-side-nav');--}}
 
-                }
-                $(window).on('resize', function () {
+{{--                }--}}
+{{--                $(window).on('resize', function () {--}}
 
-                    if ($(window).width() > 767) {
+{{--                    if ($(window).width() > 767) {--}}
 
-                        aside.removeClass('show-side-nav');
+{{--                        aside.removeClass('show-side-nav');--}}
 
-                    }
+{{--                    }--}}
 
-                });
+{{--                });--}}
 
-                // dropdown menu in the side nav
-                var slideNavDropdown = $('.side-nav-dropdown');
+{{--                // dropdown menu in the side nav--}}
+{{--                var slideNavDropdown = $('.side-nav-dropdown');--}}
 
-                $('.side-nav .categories li').on('click', function () {
+{{--                $('.side-nav .categories li').on('click', function () {--}}
 
-                    $(this).toggleClass('opend').siblings().removeClass('opend');
+{{--                    $(this).toggleClass('opend').siblings().removeClass('opend');--}}
 
-                    if ($(this).hasClass('opend')) {
+{{--                    if ($(this).hasClass('opend')) {--}}
 
-                        $(this).find('.side-nav-dropdown').slideToggle('fast');
+{{--                        $(this).find('.side-nav-dropdown').slideToggle('fast');--}}
 
-                        $(this).siblings().find('.side-nav-dropdown').slideUp('fast');
+{{--                        $(this).siblings().find('.side-nav-dropdown').slideUp('fast');--}}
 
-                    } else {
+{{--                    } else {--}}
 
-                        $(this).find('.side-nav-dropdown').slideUp('fast');
+{{--                        $(this).find('.side-nav-dropdown').slideUp('fast');--}}
 
-                    }
+{{--                    }--}}
 
-                });
+{{--                });--}}
 
-                $('.side-nav .close-aside').on('click', function () {
+{{--                $('.side-nav .close-aside').on('click', function () {--}}
 
-                    $('#' + $(this).data('close')).addClass('show-side-nav');
+{{--                    $('#' + $(this).data('close')).addClass('show-side-nav');--}}
 
-                    contents.removeClass('margin');
+{{--                    contents.removeClass('margin');--}}
 
-                });
+{{--                });--}}
 
-            }());
+{{--            }());--}}
 
 
-        });
-    </script>
+{{--        });--}}
+{{--    </script>--}}
 
 
 
