@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import requests
 from requests.auth import HTTPBasicAuth
-import re     
+import re
 from PIL import Image
 from fpdf import FPDF
 
@@ -47,6 +47,8 @@ class experianViewReport():
 
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
+        user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+        options.set_preference("general.useragent.override", user_agent)
         # options.add_argument('--headless')
         # options.add_argument('print.always_print_silent')
         # fp = webdriver.FirefoxProfile()
@@ -126,12 +128,12 @@ class experianViewReport():
                 #  submit form
                 self.driver.find_element_by_id('reg-capid-rn-btn-submit').click()
                 time.sleep(15)
-                try: 
+                try:
                     ressoup = BeautifulSoup(self.driver.page_source, u'html.parser')
                     title = ressoup.find('div', attrs={'id': 'section-titles'}).text.strip()
                     if not 'Your credit report' in title:
                         raise("Report number not logged in")
-                except:       
+                except:
                     raise("Report number not logged in")
                 self.rn_status[rn] = 'success'
                 return "success"
@@ -173,7 +175,7 @@ class experianViewReport():
         except:
             pass
         # print("personal_block",personal_block)
-        try: 
+        try:
             block2 = soup.find('div', attrs={
                                'id': 'report-group-addresses'}).find_all('div', attrs={'class': "report-entry"})
             # print('Block2',block2)
@@ -251,7 +253,7 @@ class experianViewReport():
                     pass
         except:
             pass
-        try: 
+        try:
             block4 = soup.find('div', attrs={'id': 'report-group-employer'}).find_all('div', attrs={'class': 'report-entry'})
 
             for i in block4:
@@ -286,13 +288,13 @@ class experianViewReport():
                 other_personal_block.append({"notice": notice})
             except:
                 pass
-                
+
         personal_statement =[]
         try:
             personal_statements = soup.find('div', attrs={'id': 'report-group-personal-statements'}).find_all("div", attrs={"class": "report-entry"})
-            
+
             for ps in personal_statements:
-                try: 
+                try:
                     personal_statement.append({"statement": ps.find('div', attrs={'class': 'val statement'}).text.strip()})
                 except:
                     pass
@@ -350,13 +352,13 @@ class experianViewReport():
 
                     add_state = i.find(
                         'span', attrs={'class': 'val state'}).text.strip()
-                    
+
                     add_zip = i.find(
                         'span', attrs={'class': 'val zip'}).text.strip()
-                    
+
                     add_id = i.find(
                         'div', attrs={'class': 'val address-id'}).text.strip()
-                    
+
                     add_phone = i.find(
                         'div', attrs={'class': 'val phone'}).text.strip()
 
@@ -368,11 +370,11 @@ class experianViewReport():
                         'identification_number': add_id,
                         'phone': add_phone,
                     }
-                    
+
                 except:
                     address = {}
 
-     
+
                 try:
                     liability = i.find(
                         'div', attrs={'class': 'val liability-amount'}).text.strip()
@@ -409,12 +411,12 @@ class experianViewReport():
                     "claim_amount": claim_amount,
                     "under_dispunte": in_dispunte,
                     "date_filled": date_filled,
-                    "value_status": val_status, 
+                    "value_status": val_status,
                     'address': address,
                     'liability': liability,
-                    'date_resolved': date_resolved, 
-                    'onrecord_until': onrecord_until, 
-                    'reinvestigation': reinvestigation, 
+                    'date_resolved': date_resolved,
+                    'onrecord_until': onrecord_until,
+                    'reinvestigation': reinvestigation,
                     'responsibility': responsibility_b
                 })
 
@@ -478,7 +480,7 @@ class experianViewReport():
                         'span', attrs={'class': 'val state'}).text.strip()
                     add_zip = i.find(
                         'span', attrs={'class': 'val zip'}).text.strip()
-                    
+
                     # print(address6)
                 except:
                     address6 = 'none'
@@ -564,7 +566,7 @@ class experianViewReport():
                     comment = i.find(
                         'div', attrs={'class': 'val comment'}).text.strip()
                 except:
-                    comment = 'none'    
+                    comment = 'none'
 
                 try:
                     acccounts = i.find("div", attrs={"class": "acc-hist-items-container"})
@@ -574,13 +576,13 @@ class experianViewReport():
 
                     account_history = []
                     for v in account:
-                                
+
                         try:
                             yeraValue = v.find(
                                 'div', attrs={'class': 'acc-hist-year'}).text.strip()
-                           
+
                             if  "" !=  yeraValue:
-                                yera = yeraValue     
+                                yera = yeraValue
                         except:
                             pass
 
@@ -613,13 +615,13 @@ class experianViewReport():
                     pays = []
                     if payAll:
                         pay = payAll.find_all("div", attrs={"class": "pay-hist-item"})
-                        for v in pay:           
+                        for v in pay:
                             try:
                                 pay_s = v.text.strip()
                                 pays.append(pay_s)
 
                             except:
-                                pass 
+                                pass
                 except:
                     pays = []
 
@@ -630,13 +632,13 @@ class experianViewReport():
 
                     balance_history = []
                     for v in balance:
-                                
+
                         try:
                             balance_history.append(v.text.strip())
 
                         except:
                             pass
-                            
+
                 except:
                     balance_history = []
 
@@ -680,11 +682,11 @@ class experianViewReport():
                 negative_block.append({
                     "account_name": acc_name,
                     "account_number": acc_no,
-                    "recent_balance": recent_bal, 
+                    "recent_balance": recent_bal,
                     "date_opened": date_opened,
                     "under_dispunte": in_dispunte,
                     "responsible_names":responsible_names,
-                    "value_status": val_status,                        
+                    "value_status": val_status,
                     "address": address6,
                     "city": add_city,
                     "state": add_state,
@@ -773,7 +775,7 @@ class experianViewReport():
                         'span', attrs={'class': 'val state'}).text.strip()
                     add_zip = i.find(
                         'span', attrs={'class': 'val zip'}).text.strip()
-                    
+
                     # print(address6)
                 except:
                     address6 = 'none'
@@ -792,7 +794,7 @@ class experianViewReport():
                     ad_phone = i.find(
                         'div', attrs={'class': 'val phone'}).text.strip()
                 except:
-                    ad_phone = 'none'    
+                    ad_phone = 'none'
 
                 try:
                     types = i.find(
@@ -861,7 +863,7 @@ class experianViewReport():
                     comment = 'none'
 
                 try:
-                    
+
                     acccounts = i.find("div", attrs={"class": "acc-hist-items-container"})
 
                     regex = re.compile('.*col-acc-hist-item.*')
@@ -869,13 +871,13 @@ class experianViewReport():
 
                     account_history = []
                     for v in account:
-                                
+
                         try:
                             yearValue = v.find(
                                 'div', attrs={'class': 'acc-hist-year'}).text.strip()
-                           
+
                             if  "" !=  yearValue:
-                                yera = yearValue     
+                                yera = yearValue
                         except:
                             pass
 
@@ -905,12 +907,12 @@ class experianViewReport():
                     balanceAll = balance.find_all("div", attrs={"class": "bal-hist-item"})
 
                     balance_history = []
-                    for v in balanceAll:                              
+                    for v in balanceAll:
                         try:
                             balance_s = v.text.strip()
-                            balance_history.append(balance_s) 
+                            balance_history.append(balance_s)
                         except:
-                            pass 
+                            pass
                 except:
                     balance_history = []
 
@@ -938,7 +940,7 @@ class experianViewReport():
                             recent_payments.appent(pay_s)
 
                         except:
-                            pass 
+                            pass
                 except:
                     recent_payments = []
 
@@ -1013,12 +1015,12 @@ class experianViewReport():
         try:
             block8 = soup.find('div', attrs={'id': 'report-group-credit-inquiries-others'}).find_all(
                 "div", attrs={"class": "report-entry"})
-            
+
             for i in block8:
                 try:
                     acc_name = i.find("div", attrs={"class": "val account-name"}).text.strip()
                 except:
-                    continue 
+                    continue
                 date_of_request = []
                 try:
                     date_of_requests_block = i.find( "div", attrs={"class": "col-info-2"})
@@ -1039,7 +1041,7 @@ class experianViewReport():
                         'span', attrs={'class': 'val state'}).text.strip()
                     add_zip = i.find(
                         'span', attrs={'class': 'val zip'}).text.strip()
-                    
+
                     # print(address6)
                 except:
                     address = 'none'
@@ -1058,7 +1060,7 @@ class experianViewReport():
                     ad_phone = i.find(
                         'div', attrs={'class': 'val phone'}).text.strip()
                 except:
-                    ad_phone = 'none'    
+                    ad_phone = 'none'
 
                 # print(address)
                 try:
@@ -1102,7 +1104,7 @@ class experianViewReport():
                     pass
 
                 # print(date_of_request)
-                
+
                 try:
                     address = i.find(
                         'div', attrs={'class': 'val address'}).text.strip()
@@ -1114,7 +1116,7 @@ class experianViewReport():
                         'span', attrs={'class': 'val state'}).text.strip()
                     add_zip = i.find(
                         'span', attrs={'class': 'val zip'}).text.strip()
-                    
+
                     # print(address6)
                 except:
                     address = 'none'
@@ -1168,7 +1170,7 @@ class experianViewReport():
             "potentially_statements": negative_block,
             'bankcrupcy_information': bankruptcy_block,
             "goodstanding_accountsinformation": accounts_block,
-            "credit_inquiry_information": credit_inquiry_block, 
+            "credit_inquiry_information": credit_inquiry_block,
             'consumer_inquiryblock': consumer_block,
             'medical_info': medical_records,
             'public_info': public_records
@@ -1184,7 +1186,7 @@ class experianViewReport():
             time.sleep(2)
             self.driver.find_element_by_id('expand-submit').click()
             return 'success'
-        except:            
+        except:
             self.click_to_expand()
 
     def print_pdf(self):
@@ -1193,7 +1195,7 @@ class experianViewReport():
         total_height = self.driver.execute_script(js)
         self.driver.set_window_size(1920, 20000)
 
-        slices = [] 
+        slices = []
         offset = 0
         verbose = 1
         img = ''
