@@ -1,0 +1,9826 @@
+{
+"37": {
+"bank_name": "SUNCOAST SCHOOLS",
+"charter_number": "23042"
+},
+"39": {
+"bank_name": "DESERT FINANCIAL",
+"charter_number": "3238"
+},
+"142": {
+"bank_name": "SCHOOLS FINANCIAL",
+"charter_number": "68398"
+},
+"151": {
+"bank_name": "ROBINS",
+"charter_number": "9331"
+},
+"167": {
+"bank_name": "CENTRAL FLORIDA EDUCATORS",
+"charter_number": "1976"
+},
+"173": {
+"bank_name": "HARBORONE",
+"charter_number": "67560"
+},
+"184": {
+"bank_name": "TTCU THE",
+"charter_number": "60553"
+},
+"201": {
+"bank_name": "KERN SCHOOLS",
+"charter_number": "3804"
+},
+"246": {
+"bank_name": "SAN FRANCISCO FIRE",
+"charter_number": "97069"
+},
+"253": {
+"bank_name": "INSPIRUS",
+"charter_number": "68362"
+},
+"259": {
+"bank_name": "AMERICAN EAGLE",
+"charter_number": "80"
+},
+"286": {
+"bank_name": "NAVY ARMY",
+"charter_number": "9998"
+},
+"289": {
+"bank_name": "NORTH ISLAND FINANCIAL",
+"charter_number": "68452"
+},
+"295": {
+"bank_name": "INTERRA",
+"charter_number": "82794"
+},
+"320": {
+"bank_name": "MELROSE",
+"charter_number": "62005"
+},
+"321": {
+"bank_name": "CREDIT UNION OF COLORADO",
+"charter_number": "64588"
+},
+"357": {
+"bank_name": "COBALT",
+"charter_number": "68695"
+},
+"365": {
+"bank_name": "SAC",
+"charter_number": "5400"
+},
+"372": {
+"bank_name": "DORT",
+"charter_number": "7569"
+},
+"399": {
+"bank_name": "CLARK COUNTY",
+"charter_number": "86752"
+},
+"402": {
+"bank_name": "O.S.U.",
+"charter_number": "9436"
+},
+"403": {
+"bank_name": "IBM SOUTHEAST EMPLOYEES",
+"charter_number": "19659"
+},
+"407": {
+"bank_name": "NUUNION",
+"charter_number": "60249"
+},
+"409": {
+"bank_name": "ABBOTT LABORATORIES",
+"charter_number": "96071"
+},
+"411": {
+"bank_name": "ANDIGO",
+"charter_number": "63799"
+},
+"417": {
+"bank_name": "SILVER STATE SCHOOLS",
+"charter_number": "97085"
+},
+"432": {
+"bank_name": "LAUNCH",
+"charter_number": "15605"
+},
+"489": {
+"bank_name": "CHRISTIAN COMMUNITY",
+"charter_number": "97068"
+},
+"508": {
+"bank_name": "NEVADA",
+"charter_number": "6573"
+},
+"512": {
+"bank_name": "DENALI",
+"charter_number": "5912"
+},
+"515": {
+"bank_name": "BOULDER DAM",
+"charter_number": "96084"
+},
+"524": {
+"bank_name": "1st Nor Cal Credit Union (CONTRA COSTA)",
+"charter_number": "6333"
+},
+"547": {
+"bank_name": "GEORGIA",
+"charter_number": "12320"
+},
+"548": {
+"bank_name": "PARK COMMUNITY",
+"charter_number": "10197"
+},
+"562": {
+"bank_name": "UNITED SERVICES OF AMERICA",
+"charter_number": "9005"
+},
+"618": {
+"bank_name": "LANSING AUTOMAKERS",
+"charter_number": "1033"
+},
+"622": {
+"bank_name": "Orion",
+"charter_number": "60117"
+},
+"639": {
+"bank_name": "SUPERIOR",
+"charter_number": "9845"
+},
+"647": {
+"bank_name": "COMMUNITY FINANCIAL MEMBERS",
+"charter_number": "7275"
+},
+"663": {
+"bank_name": "CP",
+"charter_number": "8667"
+},
+"667": {
+"bank_name": "SAFEAMERICA",
+"charter_number": "97093"
+},
+"695": {
+"bank_name": "CRESCENT",
+"charter_number": "68048"
+},
+"724": {
+"bank_name": "HUDSON HERITAGE",
+"charter_number": "3962"
+},
+"733": {
+"bank_name": "MCGRAW HILL",
+"charter_number": "861"
+},
+"752": {
+"bank_name": "DUPAGE",
+"charter_number": "97084"
+},
+"762": {
+"bank_name": "GLENDALE AREA SCHOOLS",
+"charter_number": "97101"
+},
+"774": {
+"bank_name": "BRIDGEWATER",
+"charter_number": "67984"
+},
+"822": {
+"bank_name": "CATHOLIC",
+"charter_number": "10848"
+},
+"832": {
+"bank_name": "ENDURA FINANCIAL",
+"charter_number": "24446"
+},
+"833": {
+"bank_name": "VISTERRA",
+"charter_number": "68390"
+},
+"835": {
+"bank_name": "KENTUCKY TELCO",
+"charter_number": "23541"
+},
+"836": {
+"bank_name": "ICON",
+"charter_number": "68594"
+},
+"840": {
+"bank_name": "ABRI",
+"charter_number": "97086"
+},
+"844": {
+"bank_name": "YORK COUNTY",
+"charter_number": "9508"
+},
+"856": {
+"bank_name": "MILL CITY CREDIT UNION",
+"charter_number": "68654"
+},
+"865": {
+"bank_name": "BELVOIR",
+"charter_number": "5356"
+},
+"867": {
+"bank_name": "PORTLAND",
+"charter_number": "5477"
+},
+"899": {
+"bank_name": "MCT",
+"charter_number": "97089"
+},
+"902": {
+"bank_name": "PACIFIC OAKS",
+"charter_number": "5662"
+},
+"915": {
+"bank_name": "EARTHMOVER",
+"charter_number": "97059"
+},
+"922": {
+"bank_name": "GENERAL MILLS",
+"charter_number": "24444"
+},
+"926": {
+"bank_name": "TELESIS COMMUNITY",
+"charter_number": "68396"
+},
+"929": {
+"bank_name": "IH CREDIT UNION, INC.",
+"charter_number": "61744"
+},
+"931": {
+"bank_name": "IH CREDIT UNION, INC.",
+"charter_number": "97104"
+},
+"937": {
+"bank_name": "YAKIMA VALLEY CU",
+"charter_number": "67876"
+},
+"944": {
+"bank_name": "SOUTHPOINT",
+"charter_number": "24662"
+},
+"963": {
+"bank_name": "SOFCU COMMUNITY",
+"charter_number": "68534"
+},
+"971": {
+"bank_name": "KANE COUNTY TEACHERS",
+"charter_number": "95015"
+},
+"972": {
+"bank_name": "WINSOUTH",
+"charter_number": "97076"
+},
+"994": {
+"bank_name": "ROCKY MOUNTAIN",
+"charter_number": "97110"
+},
+"1017": {
+"bank_name": "FIREFIGHTERS COMMUNITY CU",
+"charter_number": "96723"
+},
+"1022": {
+"bank_name": "MONTEREY",
+"charter_number": "97071"
+},
+"1023": {
+"bank_name": "UNITED TEXAS",
+"charter_number": "97107"
+},
+"1024": {
+"bank_name": "GENFED FINANCIAL",
+"charter_number": "97106"
+},
+"1034": {
+"bank_name": "DEER VALLEY",
+"charter_number": "68498"
+},
+"1040": {
+"bank_name": "PANHANDLE EDUCATORS",
+"charter_number": "11804"
+},
+"1041": {
+"bank_name": "VALLEY FCU OF MONTANA",
+"charter_number": "24214"
+},
+"1049": {
+"bank_name": "CHETCO",
+"charter_number": "12047"
+},
+"1061": {
+"bank_name": "PREVAIL",
+"charter_number": "67693"
+},
+"1071": {
+"bank_name": "UNITED TEXAS",
+"charter_number": "10245"
+},
+"1076": {
+"bank_name": "ROCKY MOUNTAIN",
+"charter_number": "63261"
+},
+"1094": {
+"bank_name": "GENFED FINANCIAL",
+"charter_number": "68611"
+},
+"1113": {
+"bank_name": "VALOR",
+"charter_number": "9198"
+},
+"1131": {
+"bank_name": "CAHP",
+"charter_number": "95071"
+},
+"1145": {
+"bank_name": "PEGASUS COMMUNITY",
+"charter_number": "64972"
+},
+"1147": {
+"bank_name": "CONSTELLATION",
+"charter_number": "5098"
+},
+"1152": {
+"bank_name": "MIDUSA",
+"charter_number": "96755"
+},
+"1169": {
+"bank_name": "SAGELINK",
+"charter_number": "61583"
+},
+"1187": {
+"bank_name": "DOCO",
+"charter_number": "68618"
+},
+"1193": {
+"bank_name": "MEMBERSALLIANCE",
+"charter_number": "81402"
+},
+"1200": {
+"bank_name": "FINANCIAL HORIZONS",
+"charter_number": "86755"
+},
+"1210": {
+"bank_name": "QUALTRUST",
+"charter_number": "68569"
+},
+"1216": {
+"bank_name": "INTERSTATE UNLIMITED",
+"charter_number": "18707"
+},
+"1227": {
+"bank_name": "LACAMAS COMMUNITY",
+"charter_number": "68492"
+},
+"1228": {
+"bank_name": "ALTIER",
+"charter_number": "68372"
+},
+"1277": {
+"bank_name": "BAY RIDGE",
+"charter_number": "78"
+},
+"1279": {
+"bank_name": "UNITED 1ST",
+"charter_number": "4999"
+},
+"1281": {
+"bank_name": "PACIFIC COMMUNITY",
+"charter_number": "60847"
+},
+"1287": {
+"bank_name": "CHACO",
+"charter_number": "60954"
+},
+"1289": {
+"bank_name": "ST. CLOUD",
+"charter_number": "24584"
+},
+"1301": {
+"bank_name": "FIRST METROPOLITAN",
+"charter_number": "64154"
+},
+"1316": {
+"bank_name": "GENFED",
+"charter_number": "2494"
+},
+"1319": {
+"bank_name": "DOCO REGIONAL",
+"charter_number": "12999"
+},
+"1323": {
+"bank_name": "MIDWEST FINANCIAL",
+"charter_number": "60418"
+},
+"1326": {
+"bank_name": "MIRAMAR",
+"charter_number": "8227"
+},
+"1330": {
+"bank_name": "AIR LINE PILOTS ASSOCIATION",
+"charter_number": "5609"
+},
+"1351": {
+"bank_name": "SPECTRUM",
+"charter_number": "21428"
+},
+"1352": {
+"bank_name": "OCEAN COMMUNITIES",
+"charter_number": "5890"
+},
+"1354": {
+"bank_name": "AURGROUP",
+"charter_number": "96761"
+},
+"1371": {
+"bank_name": "MICHIGAN COMMUNITY",
+"charter_number": "62310"
+},
+"1372": {
+"bank_name": "BEST REWARD",
+"charter_number": "68539"
+},
+"1373": {
+"bank_name": "ACHIEVE",
+"charter_number": "97094"
+},
+"1376": {
+"bank_name": "TRUPARTNER",
+"charter_number": "95802"
+},
+"1380": {
+"bank_name": "YOUR",
+"charter_number": "16822"
+},
+"1394": {
+"bank_name": "1ST PACIFIC",
+"charter_number": "68427"
+},
+"1395": {
+"bank_name": "TEXAS PARTNERS",
+"charter_number": "8676"
+},
+"1403": {
+"bank_name": "PSE CREDIT UNION, INC.",
+"charter_number": "96768"
+},
+"1404": {
+"bank_name": "BULL'S EYE",
+"charter_number": "66861"
+},
+"1408": {
+"bank_name": "LOMTO",
+"charter_number": "1532"
+},
+"1419": {
+"bank_name": "MARSHLAND COMMUNITY",
+"charter_number": "8323"
+},
+"1421": {
+"bank_name": "STALEY",
+"charter_number": "81416"
+},
+"1440": {
+"bank_name": "CONTINENTAL",
+"charter_number": "7812"
+},
+"1470": {
+"bank_name": "GREATER MINNESOTA",
+"charter_number": "64798"
+},
+"1478": {
+"bank_name": "THE PARTNERSHIP",
+"charter_number": "118"
+},
+"1493": {
+"bank_name": "FISCAL",
+"charter_number": "97080"
+},
+"1499": {
+"bank_name": "FIRST CATHOLIC",
+"charter_number": "6860"
+},
+"1502": {
+"bank_name": "HERMANTOWN",
+"charter_number": "5023"
+},
+"1511": {
+"bank_name": "SAN JOSE",
+"charter_number": "64820"
+},
+"1512": {
+"bank_name": "SOUTHWEST COMMUNITY",
+"charter_number": "2288"
+},
+"1518": {
+"bank_name": "USU CHARTER",
+"charter_number": "24677"
+},
+"1531": {
+"bank_name": "SCHOOL EMPLOYEES LORAIN COUNTY",
+"charter_number": "61008"
+},
+"1532": {
+"bank_name": "CREDIT UNIONS UNITED",
+"charter_number": "67827"
+},
+"1534": {
+"bank_name": "TOWPATH",
+"charter_number": "96658"
+},
+"1545": {
+"bank_name": "TRI-CO",
+"charter_number": "1151"
+},
+"1571": {
+"bank_name": "CHEVRON VALLEY",
+"charter_number": "60996"
+},
+"1595": {
+"bank_name": "PARK SIDE",
+"charter_number": "16700"
+},
+"1610": {
+"bank_name": "OHIO EDUCATIONAL",
+"charter_number": "95107"
+},
+"1613": {
+"bank_name": "GEMC",
+"charter_number": "19536"
+},
+"1631": {
+"bank_name": "M-C",
+"charter_number": "9493"
+},
+"1633": {
+"bank_name": "HOPE COMMUNITY",
+"charter_number": "68185"
+},
+"1634": {
+"bank_name": "TEXASONE COMMUNITY",
+"charter_number": "60206"
+},
+"1635": {
+"bank_name": "NORTHERN TIER",
+"charter_number": "12998"
+},
+"1636": {
+"bank_name": "PARKER COMMUNITY",
+"charter_number": "66992"
+},
+"1650": {
+"bank_name": "RIGHT CHOICE",
+"charter_number": "22910"
+},
+"1667": {
+"bank_name": "EL PASO CORPORATION",
+"charter_number": "6009"
+},
+"1668": {
+"bank_name": "EDUCATION PLUS",
+"charter_number": "62008"
+},
+"1674": {
+"bank_name": "NORTHWELL HEALTH",
+"charter_number": "20941"
+},
+"1678": {
+"bank_name": "A M COMMUNITY",
+"charter_number": "66535"
+},
+"1685": {
+"bank_name": "HARBOR",
+"charter_number": "5593"
+},
+"1690": {
+"bank_name": "MARTIN",
+"charter_number": "23101"
+},
+"1691": {
+"bank_name": "MEADOWS",
+"charter_number": "61639"
+},
+"1695": {
+"bank_name": "SOUTH WESTERN",
+"charter_number": "1955"
+},
+"1703": {
+"bank_name": "CENTRAL MICHIGAN COMMUNITY",
+"charter_number": "5743"
+},
+"1711": {
+"bank_name": "HAWTHORNE",
+"charter_number": "66882"
+},
+"1718": {
+"bank_name": "CINCO FAMILY FINANCIAL CENTER",
+"charter_number": "68481"
+},
+"1724": {
+"bank_name": "SOUTH BAY",
+"charter_number": "95052"
+},
+"1733": {
+"bank_name": "AUGUSTA METRO",
+"charter_number": "14228"
+},
+"1743": {
+"bank_name": "LATAH",
+"charter_number": "97102"
+},
+"1744": {
+"bank_name": "WOODLANDS",
+"charter_number": "60306"
+},
+"1747": {
+"bank_name": "GREATER CINCINNATI SCHOOL",
+"charter_number": "96722"
+},
+"1750": {
+"bank_name": "HARBOR",
+"charter_number": "66849"
+},
+"1759": {
+"bank_name": "TLC",
+"charter_number": "12044"
+},
+"1761": {
+"bank_name": "ROANOKE POSTAL EMPLOYEES",
+"charter_number": "5900"
+},
+"1784": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"1806": {
+"bank_name": "UNITED HEALTH SERVICES",
+"charter_number": "68206"
+},
+"1819": {
+"bank_name": "DEXTER",
+"charter_number": "65746"
+},
+"1832": {
+"bank_name": "COASTLAND",
+"charter_number": "13137"
+},
+"1849": {
+"bank_name": "TYCO",
+"charter_number": "20699"
+},
+"1850": {
+"bank_name": "WOODSTONE",
+"charter_number": "60613"
+},
+"1858": {
+"bank_name": "ABBEY",
+"charter_number": "66827"
+},
+"1866": {
+"bank_name": "ABBEY",
+"charter_number": "97111"
+},
+"1871": {
+"bank_name": "MAIN STREET FINANCIAL",
+"charter_number": "3096"
+},
+"1873": {
+"bank_name": "LAKES COMMUNITY",
+"charter_number": "62170"
+},
+"1877": {
+"bank_name": "GOOD SHEPHERD",
+"charter_number": "62630"
+},
+"1888": {
+"bank_name": "BESTSOURCE",
+"charter_number": "60150"
+},
+"1896": {
+"bank_name": "PORTALLIANCE",
+"charter_number": "12630"
+},
+"1897": {
+"bank_name": "NEA",
+"charter_number": "22548"
+},
+"1901": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"1905": {
+"bank_name": "PACIFIC RESOURCE",
+"charter_number": "68414"
+},
+"1907": {
+"bank_name": "PLUS",
+"charter_number": "86756"
+},
+"1908": {
+"bank_name": "FRIENDS AND FAMILY CREDIT UNION INC",
+"charter_number": "96750"
+},
+"1921": {
+"bank_name": "FOCUS ONE COMMUNITY",
+"charter_number": "68515"
+},
+"1927": {
+"bank_name": "DAY-MET",
+"charter_number": "97105"
+},
+"1931": {
+"bank_name": "CAL STATE C U OF THE NORTH BAY",
+"charter_number": "60989"
+},
+"1933": {
+"bank_name": "AAFES",
+"charter_number": "18292"
+},
+"1940": {
+"bank_name": "DEKALB FINANCIAL",
+"charter_number": "60368"
+},
+"1942": {
+"bank_name": "CHESTERFIELD",
+"charter_number": "15496"
+},
+"1948": {
+"bank_name": "INCENTA",
+"charter_number": "293"
+},
+"1950": {
+"bank_name": "EASTEX",
+"charter_number": "97098"
+},
+"1951": {
+"bank_name": "FIRST JERSEY",
+"charter_number": "62750"
+},
+"1975": {
+"bank_name": "ALLEGIS",
+"charter_number": "60445"
+},
+"1976": {
+"bank_name": "RIVERS EDGE COMMUNITY",
+"charter_number": "62317"
+},
+"1979": {
+"bank_name": "DAY-MET",
+"charter_number": "60885"
+},
+"1981": {
+"bank_name": "WEBER",
+"charter_number": "66735"
+},
+"1985": {
+"bank_name": "OAKLAND MUNICIPAL",
+"charter_number": "64575"
+},
+"1990": {
+"bank_name": "WYANDOTTE",
+"charter_number": "23705"
+},
+"1994": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"2002": {
+"bank_name": "LATAH",
+"charter_number": "19564"
+},
+"2004": {
+"bank_name": "ALL VALLEY",
+"charter_number": "13057"
+},
+"2009": {
+"bank_name": "ANNE ARUNDEL CO EMPLOYEES",
+"charter_number": "16198"
+},
+"2015": {
+"bank_name": "ST. VRAIN VALLEY",
+"charter_number": "64984"
+},
+"2019": {
+"bank_name": "POST COMMUNITY",
+"charter_number": "62155"
+},
+"2020": {
+"bank_name": "SHREVEPORT",
+"charter_number": "11263"
+},
+"2024": {
+"bank_name": "AUTOTRUCK",
+"charter_number": "16606"
+},
+"2028": {
+"bank_name": "CSC EMPLOYEES",
+"charter_number": "19176"
+},
+"2031": {
+"bank_name": "SUPERIOR IRON RANGE COMMUNITY",
+"charter_number": "5742"
+},
+"2041": {
+"bank_name": "FIRSTDAY FINANCIAL",
+"charter_number": "362"
+},
+"2051": {
+"bank_name": "FRONTIER FINANCIAL",
+"charter_number": "95778"
+},
+"2059": {
+"bank_name": "UNITED METHODIST FINANCIAL CREDIT U",
+"charter_number": "96699"
+},
+"2060": {
+"bank_name": "FIRST NEW ENGLAND",
+"charter_number": "2601"
+},
+"2062": {
+"bank_name": "GENERAL",
+"charter_number": "97055"
+},
+"2088": {
+"bank_name": "CHEVRON WEST",
+"charter_number": "67072"
+},
+"2095": {
+"bank_name": "COUNTRY",
+"charter_number": "18288"
+},
+"2097": {
+"bank_name": "MAGNIFY",
+"charter_number": "68344"
+},
+"2116": {
+"bank_name": "FIRST OHIO",
+"charter_number": "68168"
+},
+"2117": {
+"bank_name": "NORTHWEST GEORGIA",
+"charter_number": "65912"
+},
+"2118": {
+"bank_name": "BRIDGEWAY",
+"charter_number": "731"
+},
+"2119": {
+"bank_name": "BLUEBONNET",
+"charter_number": "68570"
+},
+"2123": {
+"bank_name": "CD",
+"charter_number": "9321"
+},
+"2124": {
+"bank_name": "BUCKEYE STATE",
+"charter_number": "96672"
+},
+"2135": {
+"bank_name": "UKRAINIAN FUTURE",
+"charter_number": "64070"
+},
+"2139": {
+"bank_name": "IOWA COMMUNITY",
+"charter_number": "64019"
+},
+"2145": {
+"bank_name": "ENTRUST FINANCIAL",
+"charter_number": "68612"
+},
+"2151": {
+"bank_name": "CTCE",
+"charter_number": "20138"
+},
+"2174": {
+"bank_name": "SD MEDICAL",
+"charter_number": "7258"
+},
+"2178": {
+"bank_name": "COMMUNITY STAR",
+"charter_number": "95008"
+},
+"2187": {
+"bank_name": "SUNTIDE",
+"charter_number": "24869"
+},
+"2189": {
+"bank_name": "PRAIRIE TRAIL",
+"charter_number": "64307"
+},
+"2200": {
+"bank_name": "LES BOIS",
+"charter_number": "10101"
+},
+"2205": {
+"bank_name": "BAYLANDS",
+"charter_number": "5267"
+},
+"2208": {
+"bank_name": "REALTORS",
+"charter_number": "24806"
+},
+"2211": {
+"bank_name": "TUSCALOOSA",
+"charter_number": "60485"
+},
+"2213": {
+"bank_name": "POSTCITY FINANCIAL",
+"charter_number": "86063"
+},
+"2218": {
+"bank_name": "MEDICAL AREA",
+"charter_number": "24251"
+},
+"2223": {
+"bank_name": "PATRIOTS",
+"charter_number": "14785"
+},
+"2224": {
+"bank_name": "VANTRIA",
+"charter_number": "6660"
+},
+"2225": {
+"bank_name": "CENTRALALLIANCE",
+"charter_number": "66657"
+},
+"2226": {
+"bank_name": "STATE CENTER",
+"charter_number": "63819"
+},
+"2234": {
+"bank_name": "MUSICIANS' INTERGUILD",
+"charter_number": "62092"
+},
+"2239": {
+"bank_name": "AUGUSTA VAH",
+"charter_number": "9029"
+},
+"2243": {
+"bank_name": "CENTRAL STAR",
+"charter_number": "67818"
+},
+"2250": {
+"bank_name": "HERCULES",
+"charter_number": "67068"
+},
+"2253": {
+"bank_name": "BEST ADVANTAGE",
+"charter_number": "66991"
+},
+"2270": {
+"bank_name": "MASSACHUSETTS STATE EMPLOYEES",
+"charter_number": "67866"
+},
+"2277": {
+"bank_name": "EASTEX",
+"charter_number": "10379"
+},
+"2286": {
+"bank_name": "EDTECH",
+"charter_number": "9741"
+},
+"2287": {
+"bank_name": "FIRST CASTLE",
+"charter_number": "5"
+},
+"2292": {
+"bank_name": "CHESTNUT RUN",
+"charter_number": "13232"
+},
+"2296": {
+"bank_name": "WESTERN",
+"charter_number": "60910"
+},
+"2299": {
+"bank_name": "ENTRUST",
+"charter_number": "20250"
+},
+"2300": {
+"bank_name": "STATE CENTRAL",
+"charter_number": "67204"
+},
+"2306": {
+"bank_name": "KEMBA INDIANAPOLIS",
+"charter_number": "82793"
+},
+"2320": {
+"bank_name": "SMW",
+"charter_number": "24363"
+},
+"2331": {
+"bank_name": "M E A",
+"charter_number": "14034"
+},
+"2336": {
+"bank_name": "NORTHWEST CHRISTIAN",
+"charter_number": "97073"
+},
+"2341": {
+"bank_name": "FME",
+"charter_number": "1622"
+},
+"2343": {
+"bank_name": "FEDCOM",
+"charter_number": "62096"
+},
+"2349": {
+"bank_name": "SUNTIDE",
+"charter_number": "11070"
+},
+"2354": {
+"bank_name": "VALLEYSTONE",
+"charter_number": "67597"
+},
+"2355": {
+"bank_name": "AUTOMATIC DATA PROCESSING",
+"charter_number": "22488"
+},
+"2356": {
+"bank_name": "COLUMBUS",
+"charter_number": "66817"
+},
+"2361": {
+"bank_name": "METRO SHORES",
+"charter_number": "61897"
+},
+"2363": {
+"bank_name": "SOUTHWEST MICHIGAN",
+"charter_number": "4103"
+},
+"2365": {
+"bank_name": "LACLEDE COMMUNITY",
+"charter_number": "60656"
+},
+"2367": {
+"bank_name": "MONTANA FIRST",
+"charter_number": "63237"
+},
+"2373": {
+"bank_name": "CLARKSTON BRANDON COMMUNITY",
+"charter_number": "61293"
+},
+"2378": {
+"bank_name": "TACONNET",
+"charter_number": "9009"
+},
+"2381": {
+"bank_name": "MORRISTOWN",
+"charter_number": "9059"
+},
+"2382": {
+"bank_name": "PIEDMONT CREDIT UNION",
+"charter_number": "66971"
+},
+"2386": {
+"bank_name": "SOUTHEAST",
+"charter_number": "22215"
+},
+"2391": {
+"bank_name": "CINTEL",
+"charter_number": "2606"
+},
+"2405": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"2407": {
+"bank_name": "MCAS BEAUFORT",
+"charter_number": "11805"
+},
+"2409": {
+"bank_name": "ELECTRUS",
+"charter_number": "24656"
+},
+"2410": {
+"bank_name": "SUMMITONE",
+"charter_number": "24719"
+},
+"2415": {
+"bank_name": "BOULDER MUNICIPAL EMPLOYEES",
+"charter_number": "16710"
+},
+"2416": {
+"bank_name": "HORIZON ONE",
+"charter_number": "6435"
+},
+"2421": {
+"bank_name": "TALERIS",
+"charter_number": "95821"
+},
+"2423": {
+"bank_name": "TARGET CORPORATION",
+"charter_number": "60381"
+},
+"2435": {
+"bank_name": "COMMUNITY DRIVEN",
+"charter_number": "62029"
+},
+"2438": {
+"bank_name": "NORTH ORANGE COUNTY",
+"charter_number": "61038"
+},
+"2444": {
+"bank_name": "IDAHO ADVANTAGE",
+"charter_number": "68566"
+},
+"2446": {
+"bank_name": "GOLDEN KEY",
+"charter_number": "7224"
+},
+"2452": {
+"bank_name": "SCENIC FALLS",
+"charter_number": "20721"
+},
+"2464": {
+"bank_name": "COMALA",
+"charter_number": "61337"
+},
+"2465": {
+"bank_name": "UNITED SERVICES",
+"charter_number": "60980"
+},
+"2466": {
+"bank_name": "A-K VALLEY",
+"charter_number": "324"
+},
+"2472": {
+"bank_name": "SAUGUS",
+"charter_number": "24314"
+},
+"2474": {
+"bank_name": "NBC UNIVERSAL EMPLOYEES",
+"charter_number": "13384"
+},
+"2484": {
+"bank_name": "MOAPA VALLEY",
+"charter_number": "12585"
+},
+"2502": {
+"bank_name": "GATEWAY COMMUNITY",
+"charter_number": "18983"
+},
+"2517": {
+"bank_name": "SAN JACINTO AREA",
+"charter_number": "67707"
+},
+"2518": {
+"bank_name": "WHITE HOUSE",
+"charter_number": "263"
+},
+"2519": {
+"bank_name": "POSTAL FAMILY CREDIT UNION, INC.",
+"charter_number": "97079"
+},
+"2531": {
+"bank_name": "COMMUNICATING ARTS",
+"charter_number": "96690"
+},
+"2541": {
+"bank_name": "BELLWOOD",
+"charter_number": "7419"
+},
+"2560": {
+"bank_name": "DALLAS",
+"charter_number": "5905"
+},
+"2566": {
+"bank_name": "BIG VALLEY",
+"charter_number": "8697"
+},
+"2570": {
+"bank_name": "FORT GORDON",
+"charter_number": "12253"
+},
+"2574": {
+"bank_name": "INDIAN RIVER",
+"charter_number": "13257"
+},
+"2580": {
+"bank_name": "SAFEWAY LOS ANGELES",
+"charter_number": "7079"
+},
+"2594": {
+"bank_name": "SOUTHWEST COLORADO",
+"charter_number": "12609"
+},
+"2596": {
+"bank_name": "RIVERDALE",
+"charter_number": "62843"
+},
+"2603": {
+"bank_name": "SECURITY ONE",
+"charter_number": "17540"
+},
+"2606": {
+"bank_name": "PERFECT CIRCLE",
+"charter_number": "82792"
+},
+"2608": {
+"bank_name": "SONEPCO",
+"charter_number": "10484"
+},
+"2609": {
+"bank_name": "STARTRUST",
+"charter_number": "24229"
+},
+"2620": {
+"bank_name": "INDIANAPOLIS POST OFFICE",
+"charter_number": "82770"
+},
+"2633": {
+"bank_name": "THE QUEEN'S",
+"charter_number": "5099"
+},
+"2649": {
+"bank_name": "DODGE CENTRAL",
+"charter_number": "66672"
+},
+"2651": {
+"bank_name": "PUTNAM",
+"charter_number": "17210"
+},
+"2656": {
+"bank_name": "MAIN LINE HEALTH EMPLOYEES",
+"charter_number": "22291"
+},
+"2669": {
+"bank_name": "FINANCIAL",
+"charter_number": "2149"
+},
+"2671": {
+"bank_name": "EDUCATION AFFILIATES",
+"charter_number": "23500"
+},
+"2675": {
+"bank_name": "ST. FRANCIS CAMPUS EMPLOYEES",
+"charter_number": "63927"
+},
+"2678": {
+"bank_name": "EASTERN NEW YORK",
+"charter_number": "14693"
+},
+"2681": {
+"bank_name": "BOISE U S EMPLOYEES",
+"charter_number": "554"
+},
+"2684": {
+"bank_name": "FIRST ILLINOIS",
+"charter_number": "61284"
+},
+"2689": {
+"bank_name": "CTECU",
+"charter_number": "67583"
+},
+"2692": {
+"bank_name": "EASTERN MAINE MEDICAL CENTER",
+"charter_number": "23310"
+},
+"2693": {
+"bank_name": "WIREGRASS",
+"charter_number": "13228"
+},
+"2697": {
+"bank_name": "DUVAL",
+"charter_number": "297"
+},
+"2713": {
+"bank_name": "EVERETT",
+"charter_number": "67559"
+},
+"2714": {
+"bank_name": "HEALTH ASSOCIATES",
+"charter_number": "18565"
+},
+"2715": {
+"bank_name": "FOCAL POINT",
+"charter_number": "12093"
+},
+"2716": {
+"bank_name": "NEW MEXICO ENERGY",
+"charter_number": "11190"
+},
+"2718": {
+"bank_name": "MWD",
+"charter_number": "10837"
+},
+"2735": {
+"bank_name": "CHICOPEE MUNICIPAL EMPLOYEES",
+"charter_number": "66334"
+},
+"2748": {
+"bank_name": "NIAGARA COUNTY'S",
+"charter_number": "18435"
+},
+"2750": {
+"bank_name": "HAWAII PACIFIC",
+"charter_number": "4676"
+},
+"2755": {
+"bank_name": "S C O R E",
+"charter_number": "11251"
+},
+"2759": {
+"bank_name": "HINGHAM",
+"charter_number": "11941"
+},
+"2760": {
+"bank_name": "MILLSTREAM AREA",
+"charter_number": "96756"
+},
+"2762": {
+"bank_name": "BEST OF IOWA COMMUNITY",
+"charter_number": "64391"
+},
+"2763": {
+"bank_name": "A-B",
+"charter_number": "67015"
+},
+"2770": {
+"bank_name": "UCF",
+"charter_number": "20508"
+},
+"2777": {
+"bank_name": "OHIO'S FIRST CLASS",
+"charter_number": "96682"
+},
+"2789": {
+"bank_name": "CENTRAL HUDSON EMPLOYEES",
+"charter_number": "24053"
+},
+"2805": {
+"bank_name": "OAHU ONE",
+"charter_number": "65857"
+},
+"2808": {
+"bank_name": "WINSLOW COMMUNITY",
+"charter_number": "12396"
+},
+"2811": {
+"bank_name": "MEMBERSTRUST",
+"charter_number": "66586"
+},
+"2813": {
+"bank_name": "UNIFIED PEOPLE'S",
+"charter_number": "1305"
+},
+"2818": {
+"bank_name": "QUIMPER COMMUNITY",
+"charter_number": "24699"
+},
+"2823": {
+"bank_name": "BAY PINES",
+"charter_number": "192"
+},
+"2826": {
+"bank_name": "PURINA",
+"charter_number": "61763"
+},
+"2842": {
+"bank_name": "FRESNO POLICE DEPARTMENT",
+"charter_number": "97096"
+},
+"2843": {
+"bank_name": "EDCO COMMUNITY",
+"charter_number": "63758"
+},
+"2848": {
+"bank_name": "BRYANT",
+"charter_number": "24738"
+},
+"2851": {
+"bank_name": "SECURE FIRST CREDIT UNION",
+"charter_number": "68543"
+},
+"2852": {
+"bank_name": "49'ER",
+"charter_number": "16045"
+},
+"2853": {
+"bank_name": "KENT",
+"charter_number": "67199"
+},
+"2856": {
+"bank_name": "RAPID CITY TELCO",
+"charter_number": "5198"
+},
+"2866": {
+"bank_name": "HORIZON COMMUNITY",
+"charter_number": "66390"
+},
+"2872": {
+"bank_name": "ALAMO",
+"charter_number": "2995"
+},
+"2876": {
+"bank_name": "FALLS CATHOLIC",
+"charter_number": "96707"
+},
+"2878": {
+"bank_name": "DEFENSE CONTRACTS SOUTH",
+"charter_number": "17027"
+},
+"2880": {
+"bank_name": "PROFESSIONAL POLICE OFFICERS",
+"charter_number": "82769"
+},
+"2887": {
+"bank_name": "OAK TRUST",
+"charter_number": "62513"
+},
+"2892": {
+"bank_name": "FREMONT FIRST CENTRAL",
+"charter_number": "24280"
+},
+"2899": {
+"bank_name": "CALIFORNIA PACIFIC",
+"charter_number": "1592"
+},
+"2901": {
+"bank_name": "GRAND COUNTY",
+"charter_number": "67075"
+},
+"2904": {
+"bank_name": "HANESBRANDS",
+"charter_number": "60881"
+},
+"2908": {
+"bank_name": "MCHENRY COUNTY",
+"charter_number": "14274"
+},
+"2913": {
+"bank_name": "GUARDIAN ANGELS",
+"charter_number": "60786"
+},
+"2928": {
+"bank_name": "TRI-STATE",
+"charter_number": "650"
+},
+"2929": {
+"bank_name": "COWLITZ",
+"charter_number": "68262"
+},
+"2930": {
+"bank_name": "CORPS OF ENGINEERS",
+"charter_number": "24473"
+},
+"2931": {
+"bank_name": "ST. JOSEPH`S",
+"charter_number": "67686"
+},
+"2935": {
+"bank_name": "FAIRPORT",
+"charter_number": "20956"
+},
+"2944": {
+"bank_name": "GOLDEN WEST CITIES",
+"charter_number": "13451"
+},
+"2947": {
+"bank_name": "TENET",
+"charter_number": "17747"
+},
+"2952": {
+"bank_name": "KULA COMMUNITY",
+"charter_number": "9285"
+},
+"2956": {
+"bank_name": "CREDIT UNION PLUS",
+"charter_number": "61296"
+},
+"2960": {
+"bank_name": "UNITED SERVICE",
+"charter_number": "61919"
+},
+"2964": {
+"bank_name": "CLASSIC",
+"charter_number": "15768"
+},
+"2968": {
+"bank_name": "JAX METRO CU",
+"charter_number": "67294"
+},
+"2969": {
+"bank_name": "UNITED EQUITY",
+"charter_number": "81688"
+},
+"2976": {
+"bank_name": "RYDER SYSTEM",
+"charter_number": "13652"
+},
+"2977": {
+"bank_name": "DARDEN EMPLOYEES",
+"charter_number": "18327"
+},
+"2978": {
+"bank_name": "APEX COMMUNITY",
+"charter_number": "6414"
+},
+"2980": {
+"bank_name": "S.T.A.R. COMMUNITY",
+"charter_number": "61359"
+},
+"2985": {
+"bank_name": "FOREST PARK",
+"charter_number": "7065"
+},
+"2986": {
+"bank_name": "COUNTY & MUNICIPAL EMPLOYEES",
+"charter_number": "67881"
+},
+"2988": {
+"bank_name": "GRANITE HILLS",
+"charter_number": "64973"
+},
+"2997": {
+"bank_name": "FRED MEYER EMPLOYEES",
+"charter_number": "760"
+},
+"3000": {
+"bank_name": "INLAND EMPIRE",
+"charter_number": "68400"
+},
+"3002": {
+"bank_name": "WINTHROP",
+"charter_number": "15624"
+},
+"3003": {
+"bank_name": "B.A.E.",
+"charter_number": "60433"
+},
+"3006": {
+"bank_name": "SOO LINE",
+"charter_number": "63458"
+},
+"3008": {
+"bank_name": "PETROLEUM ASSOCIATES",
+"charter_number": "11322"
+},
+"3016": {
+"bank_name": "FORT WORTH TELCO",
+"charter_number": "67852"
+},
+"3024": {
+"bank_name": "ERIE METRO",
+"charter_number": "22440"
+},
+"3029": {
+"bank_name": "GRAND RAPIDS FAMILY",
+"charter_number": "62207"
+},
+"3034": {
+"bank_name": "OHIO EDISON - PENN POWER",
+"charter_number": "61121"
+},
+"3037": {
+"bank_name": "HIGHGROVE COMMUNITY",
+"charter_number": "24364"
+},
+"3040": {
+"bank_name": "TELECOMMUNITY",
+"charter_number": "95062"
+},
+"3044": {
+"bank_name": "HIGH PLAINS",
+"charter_number": "16559"
+},
+"3052": {
+"bank_name": "LIBERTY ALLIANCE",
+"charter_number": "1220"
+},
+"3053": {
+"bank_name": "FREDERICA",
+"charter_number": "67939"
+},
+"3054": {
+"bank_name": "BCT",
+"charter_number": "4507"
+},
+"3056": {
+"bank_name": "NEO",
+"charter_number": "11319"
+},
+"3062": {
+"bank_name": "UPPER MICHIGAN COMMUNITY",
+"charter_number": "62138"
+},
+"3063": {
+"bank_name": "WEST MAUI COMMUNITY",
+"charter_number": "2563"
+},
+"3064": {
+"bank_name": "U.S.A. ONE NATIONAL",
+"charter_number": "95800"
+},
+"3070": {
+"bank_name": "STANDARD REGISTER",
+"charter_number": "1380"
+},
+"3072": {
+"bank_name": "EMERALD CREDIT UNION, INC.",
+"charter_number": "97077"
+},
+"3079": {
+"bank_name": "HOSPITALITY",
+"charter_number": "24509"
+},
+"3091": {
+"bank_name": "FIRST EDITION COMMUNITY",
+"charter_number": "60671"
+},
+"3093": {
+"bank_name": "CENTRAL KANSAS",
+"charter_number": "67987"
+},
+"3095": {
+"bank_name": "SEMINOLE SCHOOLS",
+"charter_number": "1047"
+},
+"3098": {
+"bank_name": "DOUBLE ELEVEN",
+"charter_number": "61606"
+},
+"3102": {
+"bank_name": "ALL CITY",
+"charter_number": "68022"
+},
+"3103": {
+"bank_name": "COVENANT HEALTH",
+"charter_number": "24795"
+},
+"3112": {
+"bank_name": "AMALGAMATED",
+"charter_number": "62087"
+},
+"3117": {
+"bank_name": "PEPSICO EMPLOYEES",
+"charter_number": "23381"
+},
+"3118": {
+"bank_name": "OCEAN CREST",
+"charter_number": "24809"
+},
+"3121": {
+"bank_name": "BUTTE",
+"charter_number": "643"
+},
+"3122": {
+"bank_name": "SEACOAST",
+"charter_number": "68211"
+},
+"3130": {
+"bank_name": "FLORENCE DUPONT EMPLOYEES",
+"charter_number": "22384"
+},
+"3135": {
+"bank_name": "WEST OAHU COMMUNITY",
+"charter_number": "5978"
+},
+"3145": {
+"bank_name": "ACE COMMUNITY",
+"charter_number": "62795"
+},
+"3151": {
+"bank_name": "CORNING CABLE SYSTEMS",
+"charter_number": "65508"
+},
+"3154": {
+"bank_name": "CENTURION",
+"charter_number": "7726"
+},
+"3156": {
+"bank_name": "WESTERN INDIANA CREDIT UNION",
+"charter_number": "82789"
+},
+"3164": {
+"bank_name": "SUN CENTER",
+"charter_number": "22421"
+},
+"3174": {
+"bank_name": "COMO NORTHTOWN COMMUNITY",
+"charter_number": "61723"
+},
+"3179": {
+"bank_name": "ARKANSAS EMPLOYEES",
+"charter_number": "23956"
+},
+"3180": {
+"bank_name": "PITTSBURGH CENTRAL",
+"charter_number": "1853"
+},
+"3182": {
+"bank_name": "AP",
+"charter_number": "11171"
+},
+"3188": {
+"bank_name": "RIVERWOOD-MARITIME",
+"charter_number": "66403"
+},
+"3189": {
+"bank_name": "BLACKHAWK AREA",
+"charter_number": "95042"
+},
+"3198": {
+"bank_name": "EATON COUNTY EDUCATIONAL",
+"charter_number": "61954"
+},
+"3199": {
+"bank_name": "MEMBERS PREFERRED",
+"charter_number": "82547"
+},
+"3203": {
+"bank_name": "CONSUMERS CHOICE",
+"charter_number": "60067"
+},
+"3210": {
+"bank_name": "HEALTH EMPLOYEES",
+"charter_number": "22075"
+},
+"3219": {
+"bank_name": "ITT EMPLOYEES FORT WAYNE DIV",
+"charter_number": "379"
+},
+"3228": {
+"bank_name": "ALLIANCE OF MAINE",
+"charter_number": "910"
+},
+"3242": {
+"bank_name": "PEOPLES ENERGY",
+"charter_number": "81200"
+},
+"3245": {
+"bank_name": "SOUTHERN SELECT COMMUNITY",
+"charter_number": "66583"
+},
+"3247": {
+"bank_name": "GREATER OREGON",
+"charter_number": "4196"
+},
+"3248": {
+"bank_name": "INTERNATIONAL AIRLINE EMPLOYEES",
+"charter_number": "14427"
+},
+"3259": {
+"bank_name": "AL GAR",
+"charter_number": "9183"
+},
+"3260": {
+"bank_name": "SOUTHEASTERN OHIO",
+"charter_number": "96674"
+},
+"3263": {
+"bank_name": "ENCORE",
+"charter_number": "5590"
+},
+"3265": {
+"bank_name": "NBC (N.Y.) EMPLOYEES",
+"charter_number": "22351"
+},
+"3271": {
+"bank_name": "APEX FINANCIAL",
+"charter_number": "62711"
+},
+"3278": {
+"bank_name": "ROSE CITY",
+"charter_number": "13352"
+},
+"3280": {
+"bank_name": "WESTCHESTER",
+"charter_number": "10039"
+},
+"3284": {
+"bank_name": "PIEDMONT PLUS",
+"charter_number": "24442"
+},
+"3285": {
+"bank_name": "US COAST GUARD YARD",
+"charter_number": "95740"
+},
+"3291": {
+"bank_name": "FM FINANCIAL",
+"charter_number": "61641"
+},
+"3294": {
+"bank_name": "WENATCHEE VALLEY",
+"charter_number": "9098"
+},
+"3296": {
+"bank_name": "FORT BRAGG COMMUNITY",
+"charter_number": "7893"
+},
+"3302": {
+"bank_name": "ARIZONA HERITAGE",
+"charter_number": "65319"
+},
+"3311": {
+"bank_name": "HEALTH FACILITIES",
+"charter_number": "22811"
+},
+"3317": {
+"bank_name": "EMPLOYEES CREDIT UNION",
+"charter_number": "60505"
+},
+"3319": {
+"bank_name": "WEST COAST FEDERAL EMP.",
+"charter_number": "67296"
+},
+"3326": {
+"bank_name": "PRICE",
+"charter_number": "67246"
+},
+"3328": {
+"bank_name": "CHINO",
+"charter_number": "9771"
+},
+"3331": {
+"bank_name": "FORT MEADE",
+"charter_number": "95749"
+},
+"3332": {
+"bank_name": "ALAMEDA",
+"charter_number": "60831"
+},
+"3335": {
+"bank_name": "POST OFFICE CU OF MD, INC.",
+"charter_number": "95742"
+},
+"3336": {
+"bank_name": "AFFINIA",
+"charter_number": "1383"
+},
+"3339": {
+"bank_name": "MORRIS COMMUNITY",
+"charter_number": "60518"
+},
+"3351": {
+"bank_name": "WIREMEN'S",
+"charter_number": "96808"
+},
+"3354": {
+"bank_name": "EL MONTE COMMUNITY",
+"charter_number": "95072"
+},
+"3357": {
+"bank_name": "CAPITOL REGION",
+"charter_number": "9184"
+},
+"3360": {
+"bank_name": "DESERT COMMUNITIES",
+"charter_number": "9821"
+},
+"3368": {
+"bank_name": "VAC",
+"charter_number": "5379"
+},
+"3371": {
+"bank_name": "CEDARS-SINAI",
+"charter_number": "17652"
+},
+"3372": {
+"bank_name": "MIDWEST PARTNERS",
+"charter_number": "4316"
+},
+"3373": {
+"bank_name": "FAIRFIELD COUNTY",
+"charter_number": "24723"
+},
+"3377": {
+"bank_name": "NEW MEXICO CENTRAL",
+"charter_number": "61817"
+},
+"3378": {
+"bank_name": "RIVERVIEW COMMUNITY",
+"charter_number": "7921"
+},
+"3379": {
+"bank_name": "EASTSIDE FAMILY",
+"charter_number": "7276"
+},
+"3381": {
+"bank_name": "SOUNDVIEW",
+"charter_number": "23659"
+},
+"3390": {
+"bank_name": "1ST PATRIOTS",
+"charter_number": "9859"
+},
+"3404": {
+"bank_name": "P E F",
+"charter_number": "12024"
+},
+"3408": {
+"bank_name": "UNION-WALLOWA-BAKER",
+"charter_number": "5285"
+},
+"3417": {
+"bank_name": "ALLIANCE BLACKSTONE VALLEY",
+"charter_number": "24645"
+},
+"3418": {
+"bank_name": "WEMELCO",
+"charter_number": "67735"
+},
+"3419": {
+"bank_name": "TUCSON TELCO",
+"charter_number": "2458"
+},
+"3420": {
+"bank_name": "MPO",
+"charter_number": "17341"
+},
+"3424": {
+"bank_name": "FIRST LEGACY COMMUNITY",
+"charter_number": "68593"
+},
+"3428": {
+"bank_name": "OLD DOMINION UNIVERSITY CU INC.,",
+"charter_number": "60568"
+},
+"3436": {
+"bank_name": "WEST FINANCIAL",
+"charter_number": "64845"
+},
+"3437": {
+"bank_name": "LUTHERAN CREDIT UNION OF AMERICA",
+"charter_number": "97074"
+},
+"3440": {
+"bank_name": "PUGET SOUND",
+"charter_number": "68339"
+},
+"3442": {
+"bank_name": "POSTMARK CREDIT UNION",
+"charter_number": "60018"
+},
+"3445": {
+"bank_name": "AKRON FIRE POLICE",
+"charter_number": "96656"
+},
+"3451": {
+"bank_name": "TRIAD PARTNERS",
+"charter_number": "17060"
+},
+"3454": {
+"bank_name": "ALTOONA REGIONAL HEALTH SYSTEM",
+"charter_number": "20378"
+},
+"3467": {
+"bank_name": "DAKOTA TERRITORY",
+"charter_number": "9668"
+},
+"3469": {
+"bank_name": "NAVFAC",
+"charter_number": "7521"
+},
+"3471": {
+"bank_name": "ROANOKE COUNTY SCHOOLS",
+"charter_number": "10095"
+},
+"3472": {
+"bank_name": "MONTGOMERY COUNTY",
+"charter_number": "63961"
+},
+"3473": {
+"bank_name": "NEW TRIER",
+"charter_number": "12306"
+},
+"3474": {
+"bank_name": "UNITED SHORELINE",
+"charter_number": "6804"
+},
+"3476": {
+"bank_name": "WEST SPRINGFIELD",
+"charter_number": "13781"
+},
+"3478": {
+"bank_name": "A. B. & W. EMP. CREDIT UNION INC",
+"charter_number": "66972"
+},
+"3480": {
+"bank_name": "TCC",
+"charter_number": "67873"
+},
+"3481": {
+"bank_name": "SANTA MONICA CITY EMPLOYEES",
+"charter_number": "876"
+},
+"3492": {
+"bank_name": "FIRST CHEYENNE",
+"charter_number": "402"
+},
+"3494": {
+"bank_name": "JACKSON COMMUNITY",
+"charter_number": "7549"
+},
+"3496": {
+"bank_name": "OSHKOSH CENTRAL",
+"charter_number": "66803"
+},
+"3498": {
+"bank_name": "EAST KY EMPLOYEES",
+"charter_number": "15943"
+},
+"3505": {
+"bank_name": "GENERATIONS FAMILY",
+"charter_number": "1594"
+},
+"3525": {
+"bank_name": "FEDERAL FAMILY",
+"charter_number": "9738"
+},
+"3533": {
+"bank_name": "KENSINGTON VALLEY COMMUNITY",
+"charter_number": "61043"
+},
+"3534": {
+"bank_name": "ACCESS FIRST",
+"charter_number": "1467"
+},
+"3536": {
+"bank_name": "SEARS",
+"charter_number": "989"
+},
+"3537": {
+"bank_name": "AUTO CLUB",
+"charter_number": "21872"
+},
+"3540": {
+"bank_name": "HEINZ - DEL MONTE",
+"charter_number": "4000"
+},
+"3542": {
+"bank_name": "TRANSPORTATION NORTHWEST",
+"charter_number": "68264"
+},
+"3548": {
+"bank_name": "SHELL GEISMAR",
+"charter_number": "19385"
+},
+"3549": {
+"bank_name": "SOUTH FLORIDA",
+"charter_number": "23041"
+},
+"3550": {
+"bank_name": "1ST CHOICE COMMUNITY",
+"charter_number": "4446"
+},
+"3553": {
+"bank_name": "WECU",
+"charter_number": "63616"
+},
+"3557": {
+"bank_name": "SIERRA POINT",
+"charter_number": "68025"
+},
+"3573": {
+"bank_name": "LAPEER COUNTY SCHOOL EMPLOYEES'",
+"charter_number": "62163"
+},
+"3584": {
+"bank_name": "L.C. SCHOOL EMPLOYEES",
+"charter_number": "158"
+},
+"3587": {
+"bank_name": "CTECU",
+"charter_number": "97099"
+},
+"3588": {
+"bank_name": "TAYLOR MODEL BASIN",
+"charter_number": "4857"
+},
+"3598": {
+"bank_name": "SANTA CRUZ COUNTY EMPLOYEES",
+"charter_number": "64439"
+},
+"3600": {
+"bank_name": "DELAWARE FIRST",
+"charter_number": "15065"
+},
+"3601": {
+"bank_name": "NORFOLK MUNICIPAL",
+"charter_number": "11951"
+},
+"3606": {
+"bank_name": "MEMBERS ALLIANCE",
+"charter_number": "24493"
+},
+"3608": {
+"bank_name": "LAKESHORE COMMUNITY",
+"charter_number": "61428"
+},
+"3609": {
+"bank_name": "PUEBLO HORIZONS",
+"charter_number": "2449"
+},
+"3611": {
+"bank_name": "CHATHAM",
+"charter_number": "12070"
+},
+"3613": {
+"bank_name": "ALLIED TRADES",
+"charter_number": "60356"
+},
+"3615": {
+"bank_name": "U OF P",
+"charter_number": "11803"
+},
+"3624": {
+"bank_name": "PUTNAM COUNTY",
+"charter_number": "19547"
+},
+"3627": {
+"bank_name": "CARDINAL",
+"charter_number": "16752"
+},
+"3643": {
+"bank_name": "LOUCHEM",
+"charter_number": "18855"
+},
+"3647": {
+"bank_name": "COMMUNITY 1",
+"charter_number": "21098"
+},
+"3657": {
+"bank_name": "UNIVERSITY OF WISCONSIN-OSHKOSH",
+"charter_number": "66805"
+},
+"3667": {
+"bank_name": "ILWU - FSC",
+"charter_number": "22015"
+},
+"3674": {
+"bank_name": "NEWAYGO COUNTY SERVICE EMPLOYEES",
+"charter_number": "61877"
+},
+"3675": {
+"bank_name": "VALLEY STATE",
+"charter_number": "60775"
+},
+"3677": {
+"bank_name": "WACOPSE",
+"charter_number": "4182"
+},
+"3678": {
+"bank_name": "TRACY",
+"charter_number": "16377"
+},
+"3684": {
+"bank_name": "FITCHBURG M E",
+"charter_number": "11488"
+},
+"3685": {
+"bank_name": "BELL WEST COMMUNITY",
+"charter_number": "68020"
+},
+"3688": {
+"bank_name": "TURBINE",
+"charter_number": "22452"
+},
+"3698": {
+"bank_name": "THUNDER BAY AREA",
+"charter_number": "62222"
+},
+"3701": {
+"bank_name": "CLAWSON COMMUNITY",
+"charter_number": "60422"
+},
+"3703": {
+"bank_name": "UFCW NORTHWEST",
+"charter_number": "14229"
+},
+"3706": {
+"bank_name": "INTEGRUS CREDIT UNION",
+"charter_number": "64348"
+},
+"3707": {
+"bank_name": "HAMILTON COUNTY SCHOOL EMPLOYEES",
+"charter_number": "65280"
+},
+"3713": {
+"bank_name": "DANVILLE CITY EMPLOYEES",
+"charter_number": "5919"
+},
+"3718": {
+"bank_name": "MATTEAWAN",
+"charter_number": "903"
+},
+"3720": {
+"bank_name": "KENNAMETAL EMPLOYEES",
+"charter_number": "6691"
+},
+"3722": {
+"bank_name": "HABERSHAM",
+"charter_number": "23054"
+},
+"3725": {
+"bank_name": "OREGON PIONEER",
+"charter_number": "7330"
+},
+"3727": {
+"bank_name": "CRAFTSMAN",
+"charter_number": "61511"
+},
+"3739": {
+"bank_name": "HUMAN SERVICES EMPLOYEES'",
+"charter_number": "61730"
+},
+"3745": {
+"bank_name": "CULVER CITY EMPLOYEES",
+"charter_number": "6695"
+},
+"3751": {
+"bank_name": "WEST OHIO UNITED METHODIST",
+"charter_number": "63515"
+},
+"3752": {
+"bank_name": "FRANCISCAN SKEMP",
+"charter_number": "66611"
+},
+"3757": {
+"bank_name": "SJB",
+"charter_number": "3913"
+},
+"3759": {
+"bank_name": "ST LUKES",
+"charter_number": "61811"
+},
+"3764": {
+"bank_name": "COMMUNITY UNITED",
+"charter_number": "17201"
+},
+"3765": {
+"bank_name": "FLORIDA BAPTIST",
+"charter_number": "68028"
+},
+"3772": {
+"bank_name": "TIP OF TEXAS",
+"charter_number": "5929"
+},
+"3773": {
+"bank_name": "TRICO COMMUNITY",
+"charter_number": "9809"
+},
+"3777": {
+"bank_name": "METROPOLITAN SERVICE",
+"charter_number": "7161"
+},
+"3780": {
+"bank_name": "JACKSON COUNTY CO-OP",
+"charter_number": "97063"
+},
+"3781": {
+"bank_name": "PEOPLES COMMUNITY",
+"charter_number": "64246"
+},
+"3784": {
+"bank_name": "FIDELITY",
+"charter_number": "14385"
+},
+"3786": {
+"bank_name": "LAKES AREA",
+"charter_number": "24663"
+},
+"3787": {
+"bank_name": "RAFE",
+"charter_number": "15396"
+},
+"3788": {
+"bank_name": "FIRST COMMUNITY CREDIT UNION",
+"charter_number": "67777"
+},
+"3796": {
+"bank_name": "CENTEL",
+"charter_number": "62055"
+},
+"3799": {
+"bank_name": "MOUNTAIN LAKES COMMUNITY",
+"charter_number": "12062"
+},
+"3804": {
+"bank_name": "ALOHA",
+"charter_number": "7597"
+},
+"3810": {
+"bank_name": "FAMILY 1",
+"charter_number": "16399"
+},
+"3822": {
+"bank_name": "MARATHON ROTHSCHILD",
+"charter_number": "66711"
+},
+"3823": {
+"bank_name": "JSTC EMPLOYEES",
+"charter_number": "7832"
+},
+"3824": {
+"bank_name": "AMERICAN",
+"charter_number": "66413"
+},
+"3833": {
+"bank_name": "HAWAIIAN AIRLINES",
+"charter_number": "5927"
+},
+"3845": {
+"bank_name": "I TRUST",
+"charter_number": "20722"
+},
+"3848": {
+"bank_name": "LOUISVILLE MEDICAL CENTER",
+"charter_number": "8737"
+},
+"3850": {
+"bank_name": "SECURE",
+"charter_number": "67692"
+},
+"3852": {
+"bank_name": "HEALTHEAST EMPLOYEES",
+"charter_number": "60102"
+},
+"3858": {
+"bank_name": "NORTHERN PAPER MILLS",
+"charter_number": "66632"
+},
+"3863": {
+"bank_name": "NWS",
+"charter_number": "11298"
+},
+"3865": {
+"bank_name": "KBR",
+"charter_number": "68326"
+},
+"3868": {
+"bank_name": "NORTHEASTERN UNIVERSITY",
+"charter_number": "19481"
+},
+"3875": {
+"bank_name": "MITCHELL AREA",
+"charter_number": "9661"
+},
+"3880": {
+"bank_name": "ETOWAH VALLEY",
+"charter_number": "19963"
+},
+"3884": {
+"bank_name": "EPA",
+"charter_number": "63701"
+},
+"3887": {
+"bank_name": "INDEPENDENCE PARKWAY",
+"charter_number": "11762"
+},
+"3890": {
+"bank_name": "GREATER WEST HAVEN",
+"charter_number": "2936"
+},
+"3894": {
+"bank_name": "LETOURNEAU",
+"charter_number": "5384"
+},
+"3895": {
+"bank_name": "DOW NORTHEAST EMPLOYEES",
+"charter_number": "5160"
+},
+"3896": {
+"bank_name": "CHADWICK",
+"charter_number": "19118"
+},
+"3899": {
+"bank_name": "BRITISH AIRWAYS EMPLOYEES",
+"charter_number": "8338"
+},
+"3903": {
+"bank_name": "PACIFIC RAILS",
+"charter_number": "68365"
+},
+"3904": {
+"bank_name": "MIDDCONN",
+"charter_number": "13112"
+},
+"3905": {
+"bank_name": "GREAT RIVER COMMUNITY",
+"charter_number": "64511"
+},
+"3907": {
+"bank_name": "JEFFCO",
+"charter_number": "12884"
+},
+"3912": {
+"bank_name": "LANSING POSTAL COMMUNITY",
+"charter_number": "62311"
+},
+"3918": {
+"bank_name": "LONGS PEAK",
+"charter_number": "68232"
+},
+"3919": {
+"bank_name": "HEART OF THE LAKES",
+"charter_number": "60241"
+},
+"3921": {
+"bank_name": "CHICAGO POST OFFICE EMPLOYEES",
+"charter_number": "95826"
+},
+"3922": {
+"bank_name": "CONNECTICUT COMMUNITY",
+"charter_number": "66306"
+},
+"3926": {
+"bank_name": "PACIFIC NORTHWEST",
+"charter_number": "67926"
+},
+"3928": {
+"bank_name": "MAUMEE VALLEY",
+"charter_number": "97053"
+},
+"3929": {
+"bank_name": "CITY OF RALEIGH EMPLOYEES",
+"charter_number": "63424"
+},
+"3930": {
+"bank_name": "BLUESTONE",
+"charter_number": "24361"
+},
+"3933": {
+"bank_name": "C B S EMPLOYEES",
+"charter_number": "14588"
+},
+"3935": {
+"bank_name": "PRICE CHOPPER EMPLOYEES",
+"charter_number": "23757"
+},
+"3943": {
+"bank_name": "PREMIER SERVICES",
+"charter_number": "66986"
+},
+"3946": {
+"bank_name": "BRIDGEPORT HOSPITAL",
+"charter_number": "9301"
+},
+"3948": {
+"bank_name": "MERCY HEALTH PARTNERS",
+"charter_number": "12706"
+},
+"3949": {
+"bank_name": "HAMILTON",
+"charter_number": "9536"
+},
+"3950": {
+"bank_name": "INDEPENDENT EMPLOYERS GROUP",
+"charter_number": "5628"
+},
+"3954": {
+"bank_name": "THE HERITAGE",
+"charter_number": "7141"
+},
+"3961": {
+"bank_name": "NORTHLAND EDUCATORS",
+"charter_number": "2718"
+},
+"3963": {
+"bank_name": "UNIVERSITY HEALTH",
+"charter_number": "12908"
+},
+"3967": {
+"bank_name": "ST CLOUD CITY & COUNTY EMPLOYEES",
+"charter_number": "60984"
+},
+"3968": {
+"bank_name": "KILOWATT",
+"charter_number": "66384"
+},
+"3971": {
+"bank_name": "SACRAMENTO DISTRICT POSTAL EMPS.",
+"charter_number": "95088"
+},
+"3973": {
+"bank_name": "EASTERN MICHIGAN UNIVERSITY",
+"charter_number": "62184"
+},
+"3980": {
+"bank_name": "HOUSATONIC TEACHERS",
+"charter_number": "366"
+},
+"3981": {
+"bank_name": "AMERICAN GREETINGS",
+"charter_number": "6246"
+},
+"3982": {
+"bank_name": "AIR GUARD",
+"charter_number": "10905"
+},
+"3985": {
+"bank_name": "ALLSTEEL",
+"charter_number": "60173"
+},
+"3991": {
+"bank_name": "SHERATON HAWAII",
+"charter_number": "13001"
+},
+"4000": {
+"bank_name": "KEKAHA",
+"charter_number": "2578"
+},
+"4002": {
+"bank_name": "FINANCIAL BENEFITS",
+"charter_number": "61125"
+},
+"4003": {
+"bank_name": "STEPHENS-FRANKLIN TEACHERS",
+"charter_number": "13797"
+},
+"4006": {
+"bank_name": "VILLAGE COMMUNITY",
+"charter_number": "62237"
+},
+"4009": {
+"bank_name": "SOUTHSIDE",
+"charter_number": "68193"
+},
+"4010": {
+"bank_name": "SAN GABRIEL VALLEY POSTAL",
+"charter_number": "64309"
+},
+"4012": {
+"bank_name": "HARBOR AREA POSTAL EMPLOYEES",
+"charter_number": "5482"
+},
+"4020": {
+"bank_name": "MILESTONE",
+"charter_number": "64162"
+},
+"4021": {
+"bank_name": "PERSONAL CARE AMERICA",
+"charter_number": "22293"
+},
+"4023": {
+"bank_name": "COAST-TEL",
+"charter_number": "13090"
+},
+"4028": {
+"bank_name": "PERRY POINT",
+"charter_number": "1477"
+},
+"4030": {
+"bank_name": "INTERSTATE",
+"charter_number": "15030"
+},
+"4031": {
+"bank_name": "H - F",
+"charter_number": "68245"
+},
+"4036": {
+"bank_name": "UNITED FINANCIAL SERVICES",
+"charter_number": "2192"
+},
+"4037": {
+"bank_name": "FILENE",
+"charter_number": "24504"
+},
+"4040": {
+"bank_name": "THE GREATER NORWALK AREA",
+"charter_number": "60168"
+},
+"4042": {
+"bank_name": "AURORA POLICEMEN",
+"charter_number": "97100"
+},
+"4044": {
+"bank_name": "SAVANNAH FEDERAL",
+"charter_number": "67445"
+},
+"4050": {
+"bank_name": "LONG ISLAND COMMUNITY",
+"charter_number": "21277"
+},
+"4051": {
+"bank_name": "ARGENTINE SANTA FE INDUSTRIES",
+"charter_number": "62934"
+},
+"4054": {
+"bank_name": "CICOST",
+"charter_number": "12015"
+},
+"4055": {
+"bank_name": "AMERICAN CHEMICAL SOCIETY",
+"charter_number": "14418"
+},
+"4057": {
+"bank_name": "NICOLET",
+"charter_number": "66870"
+},
+"4059": {
+"bank_name": "WASHINGTON POSTAL EMPLOYEES",
+"charter_number": "16412"
+},
+"4063": {
+"bank_name": "BENT RIVER COMMUNITY",
+"charter_number": "62974"
+},
+"4066": {
+"bank_name": "CHESHIRE COUNTY",
+"charter_number": "13073"
+},
+"4071": {
+"bank_name": "ATLANTIC CITY FIREMEN'S",
+"charter_number": "3198"
+},
+"4073": {
+"bank_name": "C D S C LOUISIANA",
+"charter_number": "22218"
+},
+"4076": {
+"bank_name": "SUNRISE",
+"charter_number": "66650"
+},
+"4077": {
+"bank_name": "HAWAII NATIONAL GUARD",
+"charter_number": "13158"
+},
+"4079": {
+"bank_name": "N A R C",
+"charter_number": "3072"
+},
+"4082": {
+"bank_name": "BRIDGEPORT FIRE DEPARTMENT EMP",
+"charter_number": "10451"
+},
+"4087": {
+"bank_name": "S W G",
+"charter_number": "13670"
+},
+"4089": {
+"bank_name": "WHITTIER MUNICIPAL EMPLOYEES",
+"charter_number": "15865"
+},
+"4093": {
+"bank_name": "BATTLE CREEK AREA COMMUNITY",
+"charter_number": "439"
+},
+"4094": {
+"bank_name": "P.G. & W. EMP.",
+"charter_number": "21885"
+},
+"4096": {
+"bank_name": "MID-CITIES",
+"charter_number": "95073"
+},
+"4107": {
+"bank_name": "WARREN M S D",
+"charter_number": "16896"
+},
+"4108": {
+"bank_name": "WHITEHALL",
+"charter_number": "97091"
+},
+"4113": {
+"bank_name": "FEDONE",
+"charter_number": "14631"
+},
+"4118": {
+"bank_name": "NORTHERN PIEDMONT",
+"charter_number": "9187"
+},
+"4120": {
+"bank_name": "ADAMS COUNTY",
+"charter_number": "95812"
+},
+"4121": {
+"bank_name": "BIG SPRING COMMUNITY",
+"charter_number": "6937"
+},
+"4124": {
+"bank_name": "NLRB",
+"charter_number": "2942"
+},
+"4125": {
+"bank_name": "NORTH GEORGIA COMMUNITY",
+"charter_number": "12176"
+},
+"4127": {
+"bank_name": "LUBBOCK TEACHERS",
+"charter_number": "3554"
+},
+"4129": {
+"bank_name": "LOUISVILLE METRO POLICE OFFICERS",
+"charter_number": "61772"
+},
+"4131": {
+"bank_name": "A M",
+"charter_number": "1500"
+},
+"4133": {
+"bank_name": "RICHMOND COMMUNITY",
+"charter_number": "14578"
+},
+"4139": {
+"bank_name": "SOUTHSHORE",
+"charter_number": "66758"
+},
+"4141": {
+"bank_name": "ENKA COMMUNITY",
+"charter_number": "62602"
+},
+"4144": {
+"bank_name": "TRADEWINDS",
+"charter_number": "62086"
+},
+"4152": {
+"bank_name": "UPPER VALLEY COMMUNITY",
+"charter_number": "65872"
+},
+"4153": {
+"bank_name": "CAPITAL CITY PRESS",
+"charter_number": "6529"
+},
+"4163": {
+"bank_name": "NU COMMUNITY",
+"charter_number": "64258"
+},
+"4165": {
+"bank_name": "SEAFORD",
+"charter_number": "19930"
+},
+"4171": {
+"bank_name": "NORTH HAWAII COMMUNITY",
+"charter_number": "10349"
+},
+"4172": {
+"bank_name": "NORSCO",
+"charter_number": "18355"
+},
+"4176": {
+"bank_name": "RESOURCES",
+"charter_number": "291"
+},
+"4180": {
+"bank_name": "SPERRY MARINE",
+"charter_number": "11855"
+},
+"4182": {
+"bank_name": "S.F. BAY AREA EDUCATORS",
+"charter_number": "62541"
+},
+"4184": {
+"bank_name": "FLOODWOOD AREA",
+"charter_number": "60556"
+},
+"4186": {
+"bank_name": "COMMUNICATION SERVICES",
+"charter_number": "61228"
+},
+"4194": {
+"bank_name": "BUFFALO FIRE DEPARTMENT",
+"charter_number": "2590"
+},
+"4195": {
+"bank_name": "PALMETTO TRUST",
+"charter_number": "9084"
+},
+"4198": {
+"bank_name": "GEORGIA PINE",
+"charter_number": "3985"
+},
+"4199": {
+"bank_name": "D.T.&I EMPLOYEES",
+"charter_number": "61053"
+},
+"4202": {
+"bank_name": "SCOTT SCHOOLS",
+"charter_number": "64946"
+},
+"4205": {
+"bank_name": "TOUCHSTONE",
+"charter_number": "11765"
+},
+"4207": {
+"bank_name": "TRIVANTAGE COMMUNITY",
+"charter_number": "24533"
+},
+"4208": {
+"bank_name": "IBEW MEMBERS +",
+"charter_number": "64555"
+},
+"4211": {
+"bank_name": "SPARTAN",
+"charter_number": "23416"
+},
+"4216": {
+"bank_name": "KOLOA",
+"charter_number": "2576"
+},
+"4222": {
+"bank_name": "MED/PRO",
+"charter_number": "5643"
+},
+"4225": {
+"bank_name": "BROWN COUNTY EMPLOYEES",
+"charter_number": "66635"
+},
+"4233": {
+"bank_name": "PENSACOLA",
+"charter_number": "1313"
+},
+"4235": {
+"bank_name": "PHILA GAS WORKS EMPLOYEES",
+"charter_number": "23094"
+},
+"4236": {
+"bank_name": "CVPS EMPLOYEES'",
+"charter_number": "63852"
+},
+"4248": {
+"bank_name": "PUGET SOUND",
+"charter_number": "24837"
+},
+"4250": {
+"bank_name": "VILLAGE",
+"charter_number": "64308"
+},
+"4252": {
+"bank_name": "TREE CAPITAL",
+"charter_number": "67313"
+},
+"4256": {
+"bank_name": "SAGUACHE COUNTY",
+"charter_number": "68191"
+},
+"4257": {
+"bank_name": "WALLINGFORD MUNICIPAL",
+"charter_number": "14682"
+},
+"4262": {
+"bank_name": "WOOD COUNTY COMMUNITY",
+"charter_number": "22961"
+},
+"4264": {
+"bank_name": "DISTRICT 8 HIGHWAY EMPLOYEES",
+"charter_number": "64357"
+},
+"4269": {
+"bank_name": "CWA LONG ISLAND",
+"charter_number": "22904"
+},
+"4270": {
+"bank_name": "FIRESTONE FINANCIAL SERVICES",
+"charter_number": "86031"
+},
+"4271": {
+"bank_name": "KINGSVILLE AREA EDUCATORS",
+"charter_number": "15117"
+},
+"4272": {
+"bank_name": "RIVER TRACE",
+"charter_number": "11150"
+},
+"4273": {
+"bank_name": "BSE",
+"charter_number": "97078"
+},
+"4278": {
+"bank_name": "ZANE TRACE",
+"charter_number": "14894"
+},
+"4281": {
+"bank_name": "KYGER CREEK",
+"charter_number": "96737"
+},
+"4290": {
+"bank_name": "MENASHA EMPLOYEES",
+"charter_number": "66468"
+},
+"4296": {
+"bank_name": "AMERICAN",
+"charter_number": "10398"
+},
+"4300": {
+"bank_name": "POCATELLO TEACHERS",
+"charter_number": "10661"
+},
+"4302": {
+"bank_name": "CARLE EMPLOYEES",
+"charter_number": "17080"
+},
+"4304": {
+"bank_name": "ELKHORN",
+"charter_number": "495"
+},
+"4308": {
+"bank_name": "OPERATING ENGINEERS LOCAL #148",
+"charter_number": "63779"
+},
+"4309": {
+"bank_name": "AMERICAN BELL",
+"charter_number": "1600"
+},
+"4314": {
+"bank_name": "HEALTHCARE COMMUNITY",
+"charter_number": "63782"
+},
+"4316": {
+"bank_name": "GREATER PIEDMONT",
+"charter_number": "68276"
+},
+"4320": {
+"bank_name": "ST. ANNE",
+"charter_number": "67418"
+},
+"4321": {
+"bank_name": "HEALTHFIRST",
+"charter_number": "18500"
+},
+"4326": {
+"bank_name": "NORTHLAND",
+"charter_number": "68292"
+},
+"4327": {
+"bank_name": "GLENVIEW",
+"charter_number": "62354"
+},
+"4328": {
+"bank_name": "SOUTHWEST CHICAGO CHAPTER",
+"charter_number": "62648"
+},
+"4336": {
+"bank_name": "AGC",
+"charter_number": "60692"
+},
+"4338": {
+"bank_name": "UNITED VIP",
+"charter_number": "65739"
+},
+"4340": {
+"bank_name": "BCBSNC",
+"charter_number": "66312"
+},
+"4346": {
+"bank_name": "SO VAL TEL",
+"charter_number": "9004"
+},
+"4347": {
+"bank_name": "FAIRFIELD MUNICIPAL",
+"charter_number": "13537"
+},
+"4355": {
+"bank_name": "SUNNYVALE",
+"charter_number": "11609"
+},
+"4356": {
+"bank_name": "MY POSTAL",
+"charter_number": "61629"
+},
+"4357": {
+"bank_name": "U-DEL",
+"charter_number": "18947"
+},
+"4358": {
+"bank_name": "DENVER WATER",
+"charter_number": "65790"
+},
+"4359": {
+"bank_name": "LORAIN SCHOOL EMPLOYEES",
+"charter_number": "96746"
+},
+"4363": {
+"bank_name": "OSHKOSH TRUCK",
+"charter_number": "66474"
+},
+"4364": {
+"bank_name": "MISSISSIPPI FARM BUREAU EMPLOYEES",
+"charter_number": "24891"
+},
+"4365": {
+"bank_name": "FANNIE MAE",
+"charter_number": "20730"
+},
+"4367": {
+"bank_name": "LEHIGH VALLEY",
+"charter_number": "9083"
+},
+"4372": {
+"bank_name": "BETHEX",
+"charter_number": "19907"
+},
+"4373": {
+"bank_name": "ST. CLETUS",
+"charter_number": "63678"
+},
+"4374": {
+"bank_name": "MEDIA HAWAII",
+"charter_number": "1958"
+},
+"4382": {
+"bank_name": "G.I.C.",
+"charter_number": "1193"
+},
+"4386": {
+"bank_name": "CLEARCHOICE",
+"charter_number": "12020"
+},
+"4387": {
+"bank_name": "WYOMING COUNTY SCHOOL EMP",
+"charter_number": "10846"
+},
+"4392": {
+"bank_name": "BOARD OF WATER SUPPLY",
+"charter_number": "2638"
+},
+"4393": {
+"bank_name": "SCHOOL DISTRICT 40 EMPLOYEES",
+"charter_number": "60982"
+},
+"4401": {
+"bank_name": "WEST COAST",
+"charter_number": "19588"
+},
+"4402": {
+"bank_name": "MARINETTE COUNTY EMPLOYEES",
+"charter_number": "66558"
+},
+"4403": {
+"bank_name": "BIG DUTCH FLEET",
+"charter_number": "62084"
+},
+"4404": {
+"bank_name": "ST. AGATHA",
+"charter_number": "7834"
+},
+"4407": {
+"bank_name": "SOUTHWEST HEALTH CARE",
+"charter_number": "64051"
+},
+"4412": {
+"bank_name": "VETERANS ADMINISTRATION",
+"charter_number": "66407"
+},
+"4414": {
+"bank_name": "FINANCIAL ASSURANCE",
+"charter_number": "24411"
+},
+"4418": {
+"bank_name": "TURTLE CREEK",
+"charter_number": "588"
+},
+"4422": {
+"bank_name": "CHAMPLAIN",
+"charter_number": "11156"
+},
+"4424": {
+"bank_name": "AMERITAS EMPLOYEES",
+"charter_number": "66099"
+},
+"4425": {
+"bank_name": "TUCSON HEALTHCARE AFFILIATES",
+"charter_number": "21890"
+},
+"4427": {
+"bank_name": "SOO SELECT",
+"charter_number": "62670"
+},
+"4432": {
+"bank_name": "POCAHY FAMILY",
+"charter_number": "24803"
+},
+"4433": {
+"bank_name": "AURORA POLICEMEN",
+"charter_number": "61352"
+},
+"4434": {
+"bank_name": "MCKEE",
+"charter_number": "67917"
+},
+"4448": {
+"bank_name": "BABBITT STEELWORKERS",
+"charter_number": "60227"
+},
+"4453": {
+"bank_name": "MONAD",
+"charter_number": "10332"
+},
+"4455": {
+"bank_name": "TUSCARAWAS SCHOOLS",
+"charter_number": "61154"
+},
+"4457": {
+"bank_name": "APPALACHIAN",
+"charter_number": "23632"
+},
+"4460": {
+"bank_name": "BADGER",
+"charter_number": "66398"
+},
+"4464": {
+"bank_name": "NORTH ROCKLAND EDUCATIONAL",
+"charter_number": "22756"
+},
+"4465": {
+"bank_name": "HOULTON",
+"charter_number": "15910"
+},
+"4470": {
+"bank_name": "RAY COOPERATIVE",
+"charter_number": "63912"
+},
+"4477": {
+"bank_name": "MISSISSIPPI FARM BUREAU EMPLOYEES",
+"charter_number": "63874"
+},
+"4479": {
+"bank_name": "HEALTH ONE",
+"charter_number": "63106"
+},
+"4480": {
+"bank_name": "GENIE-WATT",
+"charter_number": "62384"
+},
+"4486": {
+"bank_name": "VALLEY BELL",
+"charter_number": "81274"
+},
+"4491": {
+"bank_name": "FAITH COMMUNITY UNITED",
+"charter_number": "96706"
+},
+"4492": {
+"bank_name": "CHICAGOLAND ELECTRICAL INDUSTRY",
+"charter_number": "65657"
+},
+"4493": {
+"bank_name": "SCHUYLKILL",
+"charter_number": "12676"
+},
+"4494": {
+"bank_name": "COVERED BRIDGE",
+"charter_number": "64737"
+},
+"4495": {
+"bank_name": "MAYFAIR",
+"charter_number": "1664"
+},
+"4496": {
+"bank_name": "OSWEGO HERITAGE",
+"charter_number": "7938"
+},
+"4500": {
+"bank_name": "SIMPLY SERVICE",
+"charter_number": "8866"
+},
+"4501": {
+"bank_name": "AGASSIZ",
+"charter_number": "24522"
+},
+"4505": {
+"bank_name": "GEORGIA STATE UNIVERSITY",
+"charter_number": "20991"
+},
+"4507": {
+"bank_name": "GREATER MILWAUKEE",
+"charter_number": "66528"
+},
+"4510": {
+"bank_name": "STAR HARBOR",
+"charter_number": "11194"
+},
+"4513": {
+"bank_name": "DANVILLE BELL",
+"charter_number": "81540"
+},
+"4519": {
+"bank_name": "MALDEN CITY EMPLOYEES",
+"charter_number": "67773"
+},
+"4520": {
+"bank_name": "LADISH COMMUNITY",
+"charter_number": "67224"
+},
+"4529": {
+"bank_name": "KEARNEY EATON EMPLOYEES",
+"charter_number": "22113"
+},
+"4532": {
+"bank_name": "LV EAST",
+"charter_number": "20476"
+},
+"4537": {
+"bank_name": "VAMCO",
+"charter_number": "62792"
+},
+"4540": {
+"bank_name": "CHEMICAL",
+"charter_number": "61218"
+},
+"4542": {
+"bank_name": "TRI-RIVERS",
+"charter_number": "14314"
+},
+"4544": {
+"bank_name": "WRIGLEY ASSOCIATES",
+"charter_number": "64743"
+},
+"4545": {
+"bank_name": "ATD",
+"charter_number": "21052"
+},
+"4547": {
+"bank_name": "BENSENVILLE COMMUNITY",
+"charter_number": "97042"
+},
+"4549": {
+"bank_name": "COOS EDUCATORS'",
+"charter_number": "8690"
+},
+"4551": {
+"bank_name": "E. W. NO. 401",
+"charter_number": "86754"
+},
+"4552": {
+"bank_name": "KUNIA",
+"charter_number": "3644"
+},
+"4554": {
+"bank_name": "FAIRVIEW EMPLOYEES",
+"charter_number": "13560"
+},
+"4555": {
+"bank_name": "NATIONAL OILWELL VARCO EMPLOYEES",
+"charter_number": "67570"
+},
+"4556": {
+"bank_name": "BEACON MUTUAL",
+"charter_number": "12407"
+},
+"4557": {
+"bank_name": "NORWAY COMMUNITY",
+"charter_number": "62176"
+},
+"4564": {
+"bank_name": "LYNROCTEN",
+"charter_number": "1345"
+},
+"4566": {
+"bank_name": "GEORGIA COASTAL",
+"charter_number": "4425"
+},
+"4568": {
+"bank_name": "CALCASIEU FEDERAL EMPLOYEES",
+"charter_number": "61060"
+},
+"4571": {
+"bank_name": "SEQUOIA HOSPITAL EMPLOYEES",
+"charter_number": "9547"
+},
+"4572": {
+"bank_name": "JEFFCO",
+"charter_number": "67953"
+},
+"4574": {
+"bank_name": "WEST HAVEN MUNICIPAL",
+"charter_number": "13153"
+},
+"4578": {
+"bank_name": "F.C.S.",
+"charter_number": "17696"
+},
+"4580": {
+"bank_name": "WINNEBAGO COUNTY SCHOOLS",
+"charter_number": "65335"
+},
+"4581": {
+"bank_name": "NORTH COAST CREDIT UNION",
+"charter_number": "95786"
+},
+"4586": {
+"bank_name": "KENT HOSPITAL",
+"charter_number": "24474"
+},
+"4587": {
+"bank_name": "ATHENA",
+"charter_number": "96781"
+},
+"4588": {
+"bank_name": "BIG THOMPSON",
+"charter_number": "17484"
+},
+"4589": {
+"bank_name": "S F RECREATION & PARKS",
+"charter_number": "9253"
+},
+"4592": {
+"bank_name": "ELGIN CITY EMPLOYEES",
+"charter_number": "81092"
+},
+"4595": {
+"bank_name": "ELCOSE",
+"charter_number": "14543"
+},
+"4597": {
+"bank_name": "COUNTYWIDE",
+"charter_number": "14811"
+},
+"4599": {
+"bank_name": "PARSONS PITTSBURG",
+"charter_number": "61254"
+},
+"4604": {
+"bank_name": "NEW YORK METRO",
+"charter_number": "4562"
+},
+"4605": {
+"bank_name": "BADGER CAMPUS",
+"charter_number": "66453"
+},
+"4621": {
+"bank_name": "GEORGIA DEPT OF PUB SAFETY",
+"charter_number": "67712"
+},
+"4622": {
+"bank_name": "SB COMMUNITY",
+"charter_number": "7810"
+},
+"4625": {
+"bank_name": "MEDED",
+"charter_number": "68096"
+},
+"4635": {
+"bank_name": "I F F EMPLOYEES",
+"charter_number": "20807"
+},
+"4648": {
+"bank_name": "ROCKFORD COMMUNITY",
+"charter_number": "20278"
+},
+"4649": {
+"bank_name": "PALM SPRINGS",
+"charter_number": "12111"
+},
+"4651": {
+"bank_name": "FIRST STATE",
+"charter_number": "20900"
+},
+"4653": {
+"bank_name": "STAGE EMPLOYEES",
+"charter_number": "16225"
+},
+"4654": {
+"bank_name": "LINCOLN NATIONAL",
+"charter_number": "830"
+},
+"4655": {
+"bank_name": "CONSOL EMPLOYEES",
+"charter_number": "67250"
+},
+"4657": {
+"bank_name": "ENCHANTED MOUNTAINS",
+"charter_number": "8976"
+},
+"4658": {
+"bank_name": "NATIONAL GEOGRAPHIC",
+"charter_number": "23643"
+},
+"4660": {
+"bank_name": "WYANDOTTE",
+"charter_number": "61770"
+},
+"4661": {
+"bank_name": "GOODYEAR-DANVILLE FAMILY CREDIT UNI",
+"charter_number": "66907"
+},
+"4663": {
+"bank_name": "CITY CENTER",
+"charter_number": "67128"
+},
+"4665": {
+"bank_name": "SANTA FE SPRINGS CITY EMP.",
+"charter_number": "60999"
+},
+"4679": {
+"bank_name": "EBSCO",
+"charter_number": "8919"
+},
+"4682": {
+"bank_name": "WINCHESTER COMMUNITY",
+"charter_number": "20814"
+},
+"4684": {
+"bank_name": "LAKELANDS",
+"charter_number": "22098"
+},
+"4686": {
+"bank_name": "S.C. MEMBERSFIRST",
+"charter_number": "2261"
+},
+"4691": {
+"bank_name": "ST. JOSEPH MERCY HOSPITAL PONTIAC",
+"charter_number": "11978"
+},
+"4695": {
+"bank_name": "GENERAL MILLS EMPLOYEES",
+"charter_number": "61354"
+},
+"4697": {
+"bank_name": "CIVIC ARTS PLAZA",
+"charter_number": "24344"
+},
+"4701": {
+"bank_name": "BAY MEDIA",
+"charter_number": "8426"
+},
+"4703": {
+"bank_name": "SPARKS CITY EMPLOYEES",
+"charter_number": "12618"
+},
+"4710": {
+"bank_name": "HUNTINGDON COUNTY",
+"charter_number": "5214"
+},
+"4721": {
+"bank_name": "DYERSBURG",
+"charter_number": "68078"
+},
+"4723": {
+"bank_name": "NEWVISION",
+"charter_number": "66450"
+},
+"4724": {
+"bank_name": "HOMEPORT",
+"charter_number": "5450"
+},
+"4726": {
+"bank_name": "SECU",
+"charter_number": "13648"
+},
+"4727": {
+"bank_name": "CRAIG",
+"charter_number": "63944"
+},
+"4732": {
+"bank_name": "NASHVILLE",
+"charter_number": "67379"
+},
+"4735": {
+"bank_name": "NEW ALBANY SCHOOLS",
+"charter_number": "62398"
+},
+"4738": {
+"bank_name": "DALLAS SANTA FE",
+"charter_number": "67548"
+},
+"4740": {
+"bank_name": "BERKSHIRE",
+"charter_number": "17414"
+},
+"4744": {
+"bank_name": "MEMBERS CHOICE PA",
+"charter_number": "20733"
+},
+"4745": {
+"bank_name": "NEWPORT BEACH CITY EMPLOYEES",
+"charter_number": "13144"
+},
+"4746": {
+"bank_name": "PORTLAND",
+"charter_number": "60859"
+},
+"4752": {
+"bank_name": "MC CLATCHY EMPLOYEES",
+"charter_number": "65095"
+},
+"4758": {
+"bank_name": "MELROSE FIRST",
+"charter_number": "14820"
+},
+"4763": {
+"bank_name": "WESTSIDE EMPLOYEES",
+"charter_number": "12413"
+},
+"4764": {
+"bank_name": "AKRON POLICE DEPARTMENT",
+"charter_number": "96657"
+},
+"4770": {
+"bank_name": "KYLE CENTRAL",
+"charter_number": "67258"
+},
+"4771": {
+"bank_name": "RIVER CITY COMMUNITY",
+"charter_number": "66463"
+},
+"4778": {
+"bank_name": "RINGGOLD SCHOOL EMPLOYEES",
+"charter_number": "3886"
+},
+"4781": {
+"bank_name": "RITE CHOICE COMMUNITY",
+"charter_number": "21288"
+},
+"4782": {
+"bank_name": "W-G",
+"charter_number": "23799"
+},
+"4784": {
+"bank_name": "ASCENTIA",
+"charter_number": "17222"
+},
+"4785": {
+"bank_name": "THE UNION",
+"charter_number": "68261"
+},
+"4791": {
+"bank_name": "PALO ALTO COMMUNITY",
+"charter_number": "24478"
+},
+"4792": {
+"bank_name": "HAWAII STEVEDORES/CASTLE & COOKE HI",
+"charter_number": "2941"
+},
+"4794": {
+"bank_name": "AMICUS",
+"charter_number": "24729"
+},
+"4798": {
+"bank_name": "RACOM COMMUNITY",
+"charter_number": "65043"
+},
+"4799": {
+"bank_name": "ARKANSAS VALLEY",
+"charter_number": "1479"
+},
+"4800": {
+"bank_name": "COLUMBUS MUNICIPAL",
+"charter_number": "66839"
+},
+"4811": {
+"bank_name": "COMMUNITY UNITED",
+"charter_number": "97092"
+},
+"4812": {
+"bank_name": "PACIFIC ADVANTAGE",
+"charter_number": "15167"
+},
+"4817": {
+"bank_name": "COMMERCIAL METALS",
+"charter_number": "14350"
+},
+"4820": {
+"bank_name": "ELECTRIC",
+"charter_number": "15334"
+},
+"4825": {
+"bank_name": "SOUTHWEST MISSOURI",
+"charter_number": "63234"
+},
+"4826": {
+"bank_name": "TRIPLER",
+"charter_number": "7649"
+},
+"4831": {
+"bank_name": "MILFORD",
+"charter_number": "11058"
+},
+"4834": {
+"bank_name": "MAPLE HILL",
+"charter_number": "66536"
+},
+"4838": {
+"bank_name": "GROUP SERVICE EMPLOYEES",
+"charter_number": "11341"
+},
+"4840": {
+"bank_name": "STEVENSON",
+"charter_number": "5445"
+},
+"4842": {
+"bank_name": "S A F E",
+"charter_number": "67501"
+},
+"4848": {
+"bank_name": "GRAND ISLAND CENTRAL",
+"charter_number": "13475"
+},
+"4849": {
+"bank_name": "COLLEGEVILLE COMMUNITY",
+"charter_number": "63325"
+},
+"4851": {
+"bank_name": "I-R EMPLOYEES",
+"charter_number": "19513"
+},
+"4852": {
+"bank_name": "MSA EMPLOYEES",
+"charter_number": "2428"
+},
+"4853": {
+"bank_name": "OUR FAMILY",
+"charter_number": "12421"
+},
+"4855": {
+"bank_name": "HOLSTON VALLEY",
+"charter_number": "68132"
+},
+"4859": {
+"bank_name": "WAT",
+"charter_number": "11456"
+},
+"4861": {
+"bank_name": "MEMBERS UNITED",
+"charter_number": "67372"
+},
+"4862": {
+"bank_name": "PANNONIA",
+"charter_number": "2631"
+},
+"4871": {
+"bank_name": "ECOLAB",
+"charter_number": "64722"
+},
+"4872": {
+"bank_name": "IEC",
+"charter_number": "20028"
+},
+"4880": {
+"bank_name": "CAROLINA FAMILY",
+"charter_number": "22235"
+},
+"4882": {
+"bank_name": "ARCH COMMUNITY",
+"charter_number": "64074"
+},
+"4884": {
+"bank_name": "FEDERATED FAMILY",
+"charter_number": "66519"
+},
+"4885": {
+"bank_name": "OCEAN SPRAY EMPLOYEES",
+"charter_number": "17537"
+},
+"4887": {
+"bank_name": "POLK COUNTY SCHOOLS EMPLOYEES",
+"charter_number": "64360"
+},
+"4891": {
+"bank_name": "HEALTHCARE FAMILY",
+"charter_number": "21526"
+},
+"4894": {
+"bank_name": "SHORES AREA",
+"charter_number": "61964"
+},
+"4898": {
+"bank_name": "PROSPERITY",
+"charter_number": "4220"
+},
+"4902": {
+"bank_name": "NEWTON MUNICIPAL",
+"charter_number": "61549"
+},
+"4904": {
+"bank_name": "HEIGHTS COMMUNITY",
+"charter_number": "3153"
+},
+"4908": {
+"bank_name": "BARD EMPLOYEES",
+"charter_number": "22267"
+},
+"4910": {
+"bank_name": "TRI-STATE",
+"charter_number": "14063"
+},
+"4913": {
+"bank_name": "HEALTHONE",
+"charter_number": "19933"
+},
+"4921": {
+"bank_name": "LOCAL #170 TEAMSTERS",
+"charter_number": "22798"
+},
+"4927": {
+"bank_name": "ASSURANCE",
+"charter_number": "24789"
+},
+"4928": {
+"bank_name": "AGFIRST",
+"charter_number": "81"
+},
+"4929": {
+"bank_name": "BENCHSMART",
+"charter_number": "8269"
+},
+"4930": {
+"bank_name": "MET",
+"charter_number": "66380"
+},
+"4931": {
+"bank_name": "WYOMING VALLEY WEST COMMUNITY",
+"charter_number": "7160"
+},
+"4937": {
+"bank_name": "WESTERN VALLEY",
+"charter_number": "24496"
+},
+"4938": {
+"bank_name": "BROCKTON POSTAL EMPLOYEES",
+"charter_number": "66478"
+},
+"4940": {
+"bank_name": "CLARK COUNTY INDIANA TEACHERS",
+"charter_number": "12849"
+},
+"4941": {
+"bank_name": "PORT OF SEATTLE",
+"charter_number": "14630"
+},
+"4946": {
+"bank_name": "RIVER CITY UNITED",
+"charter_number": "67948"
+},
+"4949": {
+"bank_name": "FOUR FOUR",
+"charter_number": "64799"
+},
+"4950": {
+"bank_name": "HEALTHCOM",
+"charter_number": "12568"
+},
+"4952": {
+"bank_name": "BRISTOL MUNICIPAL EMPLOYEES",
+"charter_number": "12776"
+},
+"4957": {
+"bank_name": "U.F.C.W. UNION LOCAL 880",
+"charter_number": "61252"
+},
+"4958": {
+"bank_name": "NEIGHBORS 1ST",
+"charter_number": "18847"
+},
+"4959": {
+"bank_name": "MIDWEST",
+"charter_number": "63835"
+},
+"4962": {
+"bank_name": "KYANG",
+"charter_number": "10507"
+},
+"4964": {
+"bank_name": "BASE",
+"charter_number": "2060"
+},
+"4968": {
+"bank_name": "BORINQUEN SUR",
+"charter_number": "11246"
+},
+"4969": {
+"bank_name": "ST. JULES",
+"charter_number": "61654"
+},
+"4971": {
+"bank_name": "CNG",
+"charter_number": "10795"
+},
+"4972": {
+"bank_name": "METROPOLITAN",
+"charter_number": "7095"
+},
+"4973": {
+"bank_name": "METROPLEX",
+"charter_number": "67502"
+},
+"4974": {
+"bank_name": "ATLANTA",
+"charter_number": "12490"
+},
+"4975": {
+"bank_name": "OTS EMPLOYEES",
+"charter_number": "1868"
+},
+"4980": {
+"bank_name": "KA'U",
+"charter_number": "2860"
+},
+"4981": {
+"bank_name": "CENTRAL STATE HOSPITAL",
+"charter_number": "61461"
+},
+"4988": {
+"bank_name": "AGILITY FINANCIAL",
+"charter_number": "67989"
+},
+"4992": {
+"bank_name": "CO-OP TOLEDO",
+"charter_number": "62879"
+},
+"4994": {
+"bank_name": "EAST HARTFORD",
+"charter_number": "13288"
+},
+"4995": {
+"bank_name": "ENERGY SERVICES",
+"charter_number": "24664"
+},
+"4998": {
+"bank_name": "SENTINEL GRAPHICS",
+"charter_number": "14393"
+},
+"5005": {
+"bank_name": "SOUTH HILLS HEALTHCARE",
+"charter_number": "22585"
+},
+"5008": {
+"bank_name": "NORTH TONAWANDA COMMUNITY",
+"charter_number": "22749"
+},
+"5009": {
+"bank_name": "WORCESTER POSTAL",
+"charter_number": "67628"
+},
+"5011": {
+"bank_name": "KENOSHA CITY EMPLOYEES",
+"charter_number": "66511"
+},
+"5014": {
+"bank_name": "DESERT MEDICAL",
+"charter_number": "20214"
+},
+"5020": {
+"bank_name": "SOUTH JERSEY GAS EMPLOYEES",
+"charter_number": "9737"
+},
+"5027": {
+"bank_name": "WOODCO",
+"charter_number": "16537"
+},
+"5031": {
+"bank_name": "A A",
+"charter_number": "13869"
+},
+"5035": {
+"bank_name": "FALLON COUNTY",
+"charter_number": "9780"
+},
+"5036": {
+"bank_name": "MONARCH",
+"charter_number": "1489"
+},
+"5037": {
+"bank_name": "LOUISE MILLS",
+"charter_number": "15611"
+},
+"5041": {
+"bank_name": "ST. JAMES HOSPITAL EMPLOYEES",
+"charter_number": "17142"
+},
+"5043": {
+"bank_name": "CHESAPEAKE PUB. SCH. EMP CREDIT UN.",
+"charter_number": "66940"
+},
+"5044": {
+"bank_name": "CLAY COUNTY FARM BUREAU CO-OP",
+"charter_number": "82754"
+},
+"5052": {
+"bank_name": "TRI-POINT",
+"charter_number": "321"
+},
+"5058": {
+"bank_name": "STARCOR",
+"charter_number": "64652"
+},
+"5059": {
+"bank_name": "NORTH STATE TELCO",
+"charter_number": "63526"
+},
+"5063": {
+"bank_name": "MIDWEST CITY",
+"charter_number": "62823"
+},
+"5065": {
+"bank_name": "NEWINGTON VA",
+"charter_number": "1155"
+},
+"5066": {
+"bank_name": "WEST DENVER COMMUNITY",
+"charter_number": "65726"
+},
+"5067": {
+"bank_name": "TAPPAN COMMUNITY CREDIT UNION, INC.",
+"charter_number": "96796"
+},
+"5068": {
+"bank_name": "HARTFORD POSTAL EMPLOYEES",
+"charter_number": "60482"
+},
+"5072": {
+"bank_name": "WYSE",
+"charter_number": "13578"
+},
+"5075": {
+"bank_name": "DIAL",
+"charter_number": "64247"
+},
+"5078": {
+"bank_name": "ST JOE VALLEY",
+"charter_number": "97066"
+},
+"5081": {
+"bank_name": "THE THRIFT",
+"charter_number": "67631"
+},
+"5083": {
+"bank_name": "MENOMINEE AREA",
+"charter_number": "63753"
+},
+"5091": {
+"bank_name": "LANCASTER POSTAL EMPLOYEES",
+"charter_number": "24799"
+},
+"5094": {
+"bank_name": "VICTOR VALLEY",
+"charter_number": "17164"
+},
+"5096": {
+"bank_name": "LIBBEY",
+"charter_number": "3522"
+},
+"5100": {
+"bank_name": "VANGUARD COMMUNITY CREDIT UNION",
+"charter_number": "67607"
+},
+"5102": {
+"bank_name": "GORMAN-RUPP & ASSOCIATES",
+"charter_number": "96719"
+},
+"5103": {
+"bank_name": "SANGAMO CHAPTER",
+"charter_number": "65624"
+},
+"5110": {
+"bank_name": "WEST STARK COMMUNITY",
+"charter_number": "2966"
+},
+"5112": {
+"bank_name": "OCHSNER CLINIC",
+"charter_number": "21481"
+},
+"5114": {
+"bank_name": "CENTRA HEALTH CREDIT UNION INC.",
+"charter_number": "66937"
+},
+"5115": {
+"bank_name": "NORTH SIDE COMMUNITY",
+"charter_number": "21550"
+},
+"5119": {
+"bank_name": "VALDOSTA EDUCATORS",
+"charter_number": "61485"
+},
+"5120": {
+"bank_name": "GREATER OMAHA",
+"charter_number": "24222"
+},
+"5124": {
+"bank_name": "ALL SEASONS",
+"charter_number": "19505"
+},
+"5126": {
+"bank_name": "PRINCE KUHIO",
+"charter_number": "20187"
+},
+"5127": {
+"bank_name": "LITTLE GIANT",
+"charter_number": "4709"
+},
+"5131": {
+"bank_name": "THORNTON TOWNSHIP HIGH SCHOOLS",
+"charter_number": "65342"
+},
+"5132": {
+"bank_name": "TEXAS CHAMPIONS",
+"charter_number": "2632"
+},
+"5134": {
+"bank_name": "THEODAVIES",
+"charter_number": "1959"
+},
+"5137": {
+"bank_name": "CYPRESS WEST",
+"charter_number": "17605"
+},
+"5138": {
+"bank_name": "COCA-COLA UNITED",
+"charter_number": "18417"
+},
+"5141": {
+"bank_name": "VALUED MEMBERS",
+"charter_number": "24821"
+},
+"5148": {
+"bank_name": "RIO GRANDE OPERATING",
+"charter_number": "65665"
+},
+"5149": {
+"bank_name": "NIAGARA MOHAWK POWER MOHAWK DIV.",
+"charter_number": "2737"
+},
+"5151": {
+"bank_name": "PROVIDERS",
+"charter_number": "20731"
+},
+"5154": {
+"bank_name": "LAKESIDE",
+"charter_number": "6577"
+},
+"5157": {
+"bank_name": "UNION PACIFIC CALIFORNIA EMP",
+"charter_number": "327"
+},
+"5161": {
+"bank_name": "GLENDIVE P E",
+"charter_number": "14851"
+},
+"5163": {
+"bank_name": "1ST CITY",
+"charter_number": "63995"
+},
+"5166": {
+"bank_name": "EAST BAY POSTAL",
+"charter_number": "65582"
+},
+"5168": {
+"bank_name": "CENTRAL WASHINGTON",
+"charter_number": "6838"
+},
+"5172": {
+"bank_name": "ST. LUKE PARISH",
+"charter_number": "12441"
+},
+"5176": {
+"bank_name": "U H D",
+"charter_number": "15325"
+},
+"5178": {
+"bank_name": "OSNOVA UKRAINIAN",
+"charter_number": "24681"
+},
+"5179": {
+"bank_name": "NEW HAVEN POSTAL EMPLOYEES",
+"charter_number": "7353"
+},
+"5183": {
+"bank_name": "RIVERWEST",
+"charter_number": "783"
+},
+"5184": {
+"bank_name": "LAKESIDE",
+"charter_number": "66464"
+},
+"5185": {
+"bank_name": "CENTURY EMPLOYEES' SAVINGS FUND",
+"charter_number": "62870"
+},
+"5186": {
+"bank_name": "JEFF-CO SCHOOLS",
+"charter_number": "21344"
+},
+"5188": {
+"bank_name": "TOOL STEEL",
+"charter_number": "63160"
+},
+"5189": {
+"bank_name": "EDCO",
+"charter_number": "1920"
+},
+"5197": {
+"bank_name": "HOT SPRINGS",
+"charter_number": "24426"
+},
+"5200": {
+"bank_name": "CLAY ELECTRIC EMPLOYEES",
+"charter_number": "67307"
+},
+"5203": {
+"bank_name": "CANDO",
+"charter_number": "61382"
+},
+"5205": {
+"bank_name": "SALT CREEK",
+"charter_number": "68036"
+},
+"5211": {
+"bank_name": "CARILION",
+"charter_number": "19932"
+},
+"5215": {
+"bank_name": "CATHOLIC",
+"charter_number": "63587"
+},
+"5216": {
+"bank_name": "LAND OF ENCHANTMENT",
+"charter_number": "7458"
+},
+"5217": {
+"bank_name": "SOUTH BERGEN",
+"charter_number": "821"
+},
+"5219": {
+"bank_name": "SMITH & NEPHEW EMPLOYEES",
+"charter_number": "67755"
+},
+"5220": {
+"bank_name": "GROVE COMMUNITY",
+"charter_number": "17797"
+},
+"5223": {
+"bank_name": "SOUTH COMMUNITY",
+"charter_number": "64761"
+},
+"5224": {
+"bank_name": "WOODS",
+"charter_number": "66070"
+},
+"5226": {
+"bank_name": "HATTIESBURG-LAUREL",
+"charter_number": "24218"
+},
+"5227": {
+"bank_name": "WALTHAM MUNICIPAL EMPLOYEES",
+"charter_number": "67838"
+},
+"5229": {
+"bank_name": "WEST COVINA",
+"charter_number": "10753"
+},
+"5230": {
+"bank_name": "PARK SCHOOLS",
+"charter_number": "60998"
+},
+"5232": {
+"bank_name": "ESSEX DIVISION TELEPHONE",
+"charter_number": "16346"
+},
+"5235": {
+"bank_name": "BI-COUNTY PTC",
+"charter_number": "5441"
+},
+"5236": {
+"bank_name": "ST. VINCENTS EMPLOYEES",
+"charter_number": "17417"
+},
+"5238": {
+"bank_name": "WAUSAU POSTAL EMPLOYEES",
+"charter_number": "66614"
+},
+"5244": {
+"bank_name": "ABLE",
+"charter_number": "14727"
+},
+"5245": {
+"bank_name": "TOWER FAMILY",
+"charter_number": "62129"
+},
+"5247": {
+"bank_name": "BOISE FIRE DEPARTMENT",
+"charter_number": "82504"
+},
+"5249": {
+"bank_name": "MT. GARFIELD",
+"charter_number": "2695"
+},
+"5252": {
+"bank_name": "CANTON POLICE & FIREMEN'S",
+"charter_number": "96675"
+},
+"5253": {
+"bank_name": "CODY SCHOOLS",
+"charter_number": "14802"
+},
+"5254": {
+"bank_name": "WHITE PINE",
+"charter_number": "65786"
+},
+"5255": {
+"bank_name": "DELUXE",
+"charter_number": "12006"
+},
+"5256": {
+"bank_name": "VALLEY COMMUNITY CREDIT UNION",
+"charter_number": "66893"
+},
+"5257": {
+"bank_name": "KOKOMO HERITAGE",
+"charter_number": "13187"
+},
+"5258": {
+"bank_name": "ALTOONA VA HOSPITAL",
+"charter_number": "7339"
+},
+"5259": {
+"bank_name": "BIG SKY",
+"charter_number": "15964"
+},
+"5263": {
+"bank_name": "OWOSSO COLUMBUS",
+"charter_number": "62440"
+},
+"5264": {
+"bank_name": "IRSE",
+"charter_number": "65760"
+},
+"5267": {
+"bank_name": "HUNTINGTON SCHOOLS",
+"charter_number": "15987"
+},
+"5270": {
+"bank_name": "WINDSOR COUNTY SOUTH",
+"charter_number": "64478"
+},
+"5271": {
+"bank_name": "PANDUIT EMPLOYEES",
+"charter_number": "65654"
+},
+"5273": {
+"bank_name": "MACON CO SCHOOL EMPLOYEES",
+"charter_number": "11622"
+},
+"5275": {
+"bank_name": "VALLEY COMMUNITY",
+"charter_number": "66189"
+},
+"5281": {
+"bank_name": "KNOXVILLE NEWS-SENTINEL EMPLOYEES",
+"charter_number": "67947"
+},
+"5284": {
+"bank_name": "TOMBSTONE",
+"charter_number": "11075"
+},
+"5292": {
+"bank_name": "MIDDLESEX HEALTHCARE",
+"charter_number": "21155"
+},
+"5293": {
+"bank_name": "LIMITS DEPOT",
+"charter_number": "2567"
+},
+"5295": {
+"bank_name": "BISSELL EMPLOYEES",
+"charter_number": "61970"
+},
+"5296": {
+"bank_name": "WESTCO",
+"charter_number": "19728"
+},
+"5297": {
+"bank_name": "SOUTHERN ILLINOIS AREA",
+"charter_number": "65742"
+},
+"5299": {
+"bank_name": "C & H SUGAR EMPLOYEES",
+"charter_number": "1071"
+},
+"5300": {
+"bank_name": "WICKIFFE PAPER MILL",
+"charter_number": "20218"
+},
+"5304": {
+"bank_name": "TIDEWATER DOMINION EMPLOYEES",
+"charter_number": "2983"
+},
+"5306": {
+"bank_name": "PACIFIC ISLAND ENERGY",
+"charter_number": "5368"
+},
+"5310": {
+"bank_name": "EVONIK EMPLOYEES",
+"charter_number": "23893"
+},
+"5311": {
+"bank_name": "EL CAMINO HOSPITAL",
+"charter_number": "14842"
+},
+"5312": {
+"bank_name": "FAMILY",
+"charter_number": "24052"
+},
+"5313": {
+"bank_name": "EAST COAST",
+"charter_number": "66590"
+},
+"5314": {
+"bank_name": "BAPTIST REGIONAL MEDICAL",
+"charter_number": "9833"
+},
+"5315": {
+"bank_name": "FREEDOM FINANCIAL",
+"charter_number": "19070"
+},
+"5318": {
+"bank_name": "GRANGE MUTUAL EMPLOYEES",
+"charter_number": "61452"
+},
+"5321": {
+"bank_name": "YOUNGSTOWN CITY SCHOOLS",
+"charter_number": "96812"
+},
+"5322": {
+"bank_name": "EAST CENTRAL",
+"charter_number": "60841"
+},
+"5323": {
+"bank_name": "PENSACOLA L & N",
+"charter_number": "7259"
+},
+"5325": {
+"bank_name": "LIFE LINE CREDIT UNION, INC.",
+"charter_number": "66930"
+},
+"5327": {
+"bank_name": "GEORGIA PEACH CU",
+"charter_number": "67357"
+},
+"5329": {
+"bank_name": "EASTERN PITTSBURGH BELL",
+"charter_number": "4108"
+},
+"5330": {
+"bank_name": "CONNECTICUT",
+"charter_number": "23411"
+},
+"5337": {
+"bank_name": "EMC",
+"charter_number": "60033"
+},
+"5341": {
+"bank_name": "CALIFORNIA CENTER",
+"charter_number": "64630"
+},
+"5343": {
+"bank_name": "MCCRACKEN COUNTY TEACHERS",
+"charter_number": "12061"
+},
+"5345": {
+"bank_name": "FANCY FARM",
+"charter_number": "61166"
+},
+"5351": {
+"bank_name": "PORTLAND MAINE POLICE DEPARTMENT",
+"charter_number": "675"
+},
+"5352": {
+"bank_name": "LOCAL 142",
+"charter_number": "8004"
+},
+"5354": {
+"bank_name": "UNIVERSITY DRIVE VAH",
+"charter_number": "8960"
+},
+"5360": {
+"bank_name": "RIVER CITIES",
+"charter_number": "60309"
+},
+"5361": {
+"bank_name": "FAYETTEVILLE POSTAL",
+"charter_number": "63612"
+},
+"5362": {
+"bank_name": "GAS AND ELECTRIC EMPLOYEES",
+"charter_number": "17735"
+},
+"5365": {
+"bank_name": "SOUTHLAND SAVINGS",
+"charter_number": "2016"
+},
+"5366": {
+"bank_name": "OAK POINT EMPLOYEES",
+"charter_number": "62777"
+},
+"5370": {
+"bank_name": "JACKSON CITY COUNTY",
+"charter_number": "62131"
+},
+"5375": {
+"bank_name": "QUINNIPIAC VALLEY COMMUNITY",
+"charter_number": "2536"
+},
+"5377": {
+"bank_name": "FLOSSMOOR",
+"charter_number": "65741"
+},
+"5378": {
+"bank_name": "I.K.I.B.E.W.",
+"charter_number": "23435"
+},
+"5379": {
+"bank_name": "EMPIRE STATE",
+"charter_number": "60308"
+},
+"5381": {
+"bank_name": "HOWLAND - ENFIELD",
+"charter_number": "14211"
+},
+"5382": {
+"bank_name": "MADISON NEWS",
+"charter_number": "66690"
+},
+"5385": {
+"bank_name": "DISTRICT 05 DOTD",
+"charter_number": "14249"
+},
+"5389": {
+"bank_name": "GREAT LAKES MEMBERS",
+"charter_number": "61888"
+},
+"5391": {
+"bank_name": "ST. MARKS EMPLOYEES",
+"charter_number": "13419"
+},
+"5394": {
+"bank_name": "SHYANN",
+"charter_number": "6754"
+},
+"5395": {
+"bank_name": "FORT WORTH STAR TELEGRAM EMPLOYEES",
+"charter_number": "702"
+},
+"5396": {
+"bank_name": "MINNESOTA ORE OPERATIONS EMPLOYEES",
+"charter_number": "64325"
+},
+"5398": {
+"bank_name": "PORTLAND ONIZED",
+"charter_number": "12344"
+},
+"5399": {
+"bank_name": "MIDWEST FEDERAL EMPLOYEES",
+"charter_number": "64727"
+},
+"5400": {
+"bank_name": "G.B.B.R.",
+"charter_number": "23484"
+},
+"5401": {
+"bank_name": "ADA FEDERAL EMPLOYEES",
+"charter_number": "60851"
+},
+"5412": {
+"bank_name": "SPARTANBURG CITY EMPLOYEES",
+"charter_number": "60769"
+},
+"5413": {
+"bank_name": "VENSURE",
+"charter_number": "10293"
+},
+"5415": {
+"bank_name": "TRUSTUS",
+"charter_number": "24754"
+},
+"5416": {
+"bank_name": "ATLANTA TEACHERS",
+"charter_number": "88"
+},
+"5417": {
+"bank_name": "TIMES",
+"charter_number": "12720"
+},
+"5418": {
+"bank_name": "SCHOOL DISTRICT #9",
+"charter_number": "60739"
+},
+"5419": {
+"bank_name": "SOUTHWESTERN TELCO",
+"charter_number": "19065"
+},
+"5420": {
+"bank_name": "B & W MISS. EMPLOYEES",
+"charter_number": "21358"
+},
+"5424": {
+"bank_name": "SHAW'S EMPLOYEES",
+"charter_number": "998"
+},
+"5425": {
+"bank_name": "MERRIMACK COLLEGE",
+"charter_number": "20944"
+},
+"5431": {
+"bank_name": "TWO RIVERS COMMUNITY",
+"charter_number": "66473"
+},
+"5432": {
+"bank_name": "WEST HAVEN V.A. EMPLOYEES",
+"charter_number": "9444"
+},
+"5433": {
+"bank_name": "CITY OF DOWNEY",
+"charter_number": "12179"
+},
+"5434": {
+"bank_name": "1ST PRIORITY",
+"charter_number": "23304"
+},
+"5435": {
+"bank_name": "BUFFALO COOPERATIVE",
+"charter_number": "23495"
+},
+"5437": {
+"bank_name": "PACO",
+"charter_number": "4150"
+},
+"5438": {
+"bank_name": "STURDY",
+"charter_number": "66361"
+},
+"5439": {
+"bank_name": "FATHER KRAMER",
+"charter_number": "61026"
+},
+"5441": {
+"bank_name": "SYNERGY EASTEX",
+"charter_number": "21411"
+},
+"5442": {
+"bank_name": "NABCO",
+"charter_number": "5176"
+},
+"5444": {
+"bank_name": "WESTMORELAND FEDERAL EMPLOYEE",
+"charter_number": "4806"
+},
+"5445": {
+"bank_name": "THREE I",
+"charter_number": "61545"
+},
+"5448": {
+"bank_name": "GRANT COUNTY COMMUNITY",
+"charter_number": "23051"
+},
+"5449": {
+"bank_name": "RCT",
+"charter_number": "15885"
+},
+"5452": {
+"bank_name": "CREDIT UNION SOUTH",
+"charter_number": "68424"
+},
+"5453": {
+"bank_name": "WEST ORANGE MUNICIPAL",
+"charter_number": "10432"
+},
+"5455": {
+"bank_name": "HUDSON MUNICIPAL EMPLOYEES",
+"charter_number": "15205"
+},
+"5457": {
+"bank_name": "UNITED SERVICES",
+"charter_number": "6019"
+},
+"5461": {
+"bank_name": "MENASHA CORPORATION EMPLOYEES",
+"charter_number": "66566"
+},
+"5464": {
+"bank_name": "MCCABE HAMILTON & RENNY",
+"charter_number": "17989"
+},
+"5466": {
+"bank_name": "U S ENGINEERS L. A.",
+"charter_number": "4962"
+},
+"5470": {
+"bank_name": "BAKERY EMPLOYEES",
+"charter_number": "65674"
+},
+"5471": {
+"bank_name": "LINDE EMPLOYEES",
+"charter_number": "6805"
+},
+"5473": {
+"bank_name": "UNITED MARYLAND EMPLOYEES",
+"charter_number": "20517"
+},
+"5475": {
+"bank_name": "R T A BROOKLYN",
+"charter_number": "3240"
+},
+"5476": {
+"bank_name": "SOUTHEASTERN ELECTRIC EMPLOYEES",
+"charter_number": "65332"
+},
+"5479": {
+"bank_name": "C H E",
+"charter_number": "65353"
+},
+"5481": {
+"bank_name": "CREDIT UNION OF LEAVENWORTH COUNTY",
+"charter_number": "63209"
+},
+"5482": {
+"bank_name": "KILOWATT COMMUNITY",
+"charter_number": "67727"
+},
+"5484": {
+"bank_name": "AREA",
+"charter_number": "60807"
+},
+"5485": {
+"bank_name": "ERIE FLAGSHIP COMMUNITY",
+"charter_number": "6104"
+},
+"5489": {
+"bank_name": "HOUSTON CHRONICLE EMPLOYEES",
+"charter_number": "18424"
+},
+"5490": {
+"bank_name": "TREASURY",
+"charter_number": "67042"
+},
+"5491": {
+"bank_name": "HAMDEN",
+"charter_number": "14976"
+},
+"5493": {
+"bank_name": "S A M P SCRANTON",
+"charter_number": "11647"
+},
+"5495": {
+"bank_name": "E.S.A.",
+"charter_number": "82514"
+},
+"5497": {
+"bank_name": "GOODYEAR",
+"charter_number": "4362"
+},
+"5501": {
+"bank_name": "SLC",
+"charter_number": "62030"
+},
+"5503": {
+"bank_name": "TIMKEN AEROSPACE",
+"charter_number": "24815"
+},
+"5505": {
+"bank_name": "COLGATE EMPLOYEES",
+"charter_number": "4526"
+},
+"5510": {
+"bank_name": "MONTCLAIR POSTAL EMPLOYEES",
+"charter_number": "66248"
+},
+"5511": {
+"bank_name": "TULSA METRO",
+"charter_number": "10149"
+},
+"5514": {
+"bank_name": "SONY SAN DIEGO EMPLOYEES",
+"charter_number": "21919"
+},
+"5515": {
+"bank_name": "MOUNTAIN VALLEY",
+"charter_number": "247"
+},
+"5516": {
+"bank_name": "BLUE CROSS BLUE SHIELD",
+"charter_number": "14298"
+},
+"5518": {
+"bank_name": "HANOVER",
+"charter_number": "10940"
+},
+"5523": {
+"bank_name": "PAYETTE RIVER COMMUNITY",
+"charter_number": "68378"
+},
+"5525": {
+"bank_name": "NORTHAMPTON V.A.F.",
+"charter_number": "515"
+},
+"5530": {
+"bank_name": "SUGAR LAND EMPLOYEES",
+"charter_number": "4642"
+},
+"5532": {
+"bank_name": "DELTA WYE",
+"charter_number": "14378"
+},
+"5537": {
+"bank_name": "GENERAL DRIVERS",
+"charter_number": "65021"
+},
+"5540": {
+"bank_name": "MOORHEAD",
+"charter_number": "24638"
+},
+"5543": {
+"bank_name": "THE-MAC",
+"charter_number": "21471"
+},
+"5545": {
+"bank_name": "ABBEVILLE SEABOARD",
+"charter_number": "60894"
+},
+"5549": {
+"bank_name": "MAGIC VALLEY",
+"charter_number": "17290"
+},
+"5551": {
+"bank_name": "HEALTHCARE 1ST",
+"charter_number": "13545"
+},
+"5558": {
+"bank_name": "HEALTH CARE OF NEW JERSEY",
+"charter_number": "23961"
+},
+"5559": {
+"bank_name": "DANBURY CYANAMID EMPLOYEES",
+"charter_number": "60268"
+},
+"5562": {
+"bank_name": "D C",
+"charter_number": "63498"
+},
+"5564": {
+"bank_name": "POSTAL CREDIT UNION OF NORTHERN CAL",
+"charter_number": "65026"
+},
+"5567": {
+"bank_name": "FOUNDERS COMMUNITY",
+"charter_number": "10034"
+},
+"5569": {
+"bank_name": "CLINTON",
+"charter_number": "24252"
+},
+"5571": {
+"bank_name": "BI-MART",
+"charter_number": "19847"
+},
+"5574": {
+"bank_name": "ASHWORTH",
+"charter_number": "62857"
+},
+"5575": {
+"bank_name": "GP COMMUNITY",
+"charter_number": "16391"
+},
+"5579": {
+"bank_name": "C U OF PROVIDENCE SYSTEMS",
+"charter_number": "24425"
+},
+"5585": {
+"bank_name": "HOUGHTON MIFFLIN HARCOURT EMPLOYEES",
+"charter_number": "11884"
+},
+"5591": {
+"bank_name": "EXPRESS-NEWS",
+"charter_number": "15973"
+},
+"5592": {
+"bank_name": "VA REGIONAL OFFICE",
+"charter_number": "6289"
+},
+"5593": {
+"bank_name": "CHOB",
+"charter_number": "23338"
+},
+"5597": {
+"bank_name": "BEECH ISLAND",
+"charter_number": "60810"
+},
+"5598": {
+"bank_name": "READING",
+"charter_number": "21503"
+},
+"5599": {
+"bank_name": "ST. JOSEPHS BROADMOOR",
+"charter_number": "8314"
+},
+"5600": {
+"bank_name": "UNITED PEOPLE'S",
+"charter_number": "23345"
+},
+"5601": {
+"bank_name": "INTERLAKES",
+"charter_number": "20330"
+},
+"5602": {
+"bank_name": "ST. JOSEPH HOSPITAL EMPLOYEES'S",
+"charter_number": "66289"
+},
+"5605": {
+"bank_name": "PERMACULTURE",
+"charter_number": "68438"
+},
+"5610": {
+"bank_name": "AMERICAN COMMUNITY",
+"charter_number": "17624"
+},
+"5620": {
+"bank_name": "I.B.E.W. LOCAL 816",
+"charter_number": "9913"
+},
+"5621": {
+"bank_name": "B. C. B. S.",
+"charter_number": "61204"
+},
+"5623": {
+"bank_name": "NORTHCOUNTRY COOPERATIVE",
+"charter_number": "24689"
+},
+"5626": {
+"bank_name": "SOUTHEAST TEXAS EMPLOYEES",
+"charter_number": "21163"
+},
+"5627": {
+"bank_name": "LEBCO EDUCATORS",
+"charter_number": "11859"
+},
+"5628": {
+"bank_name": "CHARLOTTESVILLE POSTAL",
+"charter_number": "11270"
+},
+"5629": {
+"bank_name": "N.G.H.",
+"charter_number": "67990"
+},
+"5633": {
+"bank_name": "RICHMOND POLICE DEPT.",
+"charter_number": "66901"
+},
+"5634": {
+"bank_name": "ALLIANCE FINANCIAL",
+"charter_number": "66024"
+},
+"5636": {
+"bank_name": "BETHLEHEM MUNICIPAL EMPLOYEES",
+"charter_number": "11713"
+},
+"5637": {
+"bank_name": "PHONE-CO.",
+"charter_number": "64413"
+},
+"5641": {
+"bank_name": "UNITED WORKERS",
+"charter_number": "10963"
+},
+"5644": {
+"bank_name": "NATIONAL CAPITAL",
+"charter_number": "6080"
+},
+"5645": {
+"bank_name": "PITTSBURG EMPLOYEES",
+"charter_number": "13120"
+},
+"5646": {
+"bank_name": "SUBURBAN",
+"charter_number": "11841"
+},
+"5647": {
+"bank_name": "ELCOME",
+"charter_number": "13014"
+},
+"5649": {
+"bank_name": "CHURCH OF THE BRETHREN",
+"charter_number": "64838"
+},
+"5651": {
+"bank_name": "DALLAS COTTON BELT EMPLOYEES",
+"charter_number": "67623"
+},
+"5653": {
+"bank_name": "FRIENDS FIRST",
+"charter_number": "21626"
+},
+"5656": {
+"bank_name": "PENACOL",
+"charter_number": "5613"
+},
+"5660": {
+"bank_name": "T & P",
+"charter_number": "5493"
+},
+"5663": {
+"bank_name": "AUGUSTA SEABOARD COMMUNITY",
+"charter_number": "7922"
+},
+"5665": {
+"bank_name": "PENNFORMER COMMUNITY",
+"charter_number": "4693"
+},
+"5669": {
+"bank_name": "RALE",
+"charter_number": "19581"
+},
+"5672": {
+"bank_name": "NEWPORT SITE EMPLOYEES",
+"charter_number": "2214"
+},
+"5673": {
+"bank_name": "MISSION SAN FRANCISCO",
+"charter_number": "20620"
+},
+"5676": {
+"bank_name": "PEOPLE'S CHOICE",
+"charter_number": "22534"
+},
+"5679": {
+"bank_name": "NASHWAUK",
+"charter_number": "18569"
+},
+"5684": {
+"bank_name": "STOCKTON COMMUNITY",
+"charter_number": "7260"
+},
+"5686": {
+"bank_name": "ALAMOSA",
+"charter_number": "64854"
+},
+"5690": {
+"bank_name": "SIMCOE",
+"charter_number": "82540"
+},
+"5693": {
+"bank_name": "ST. FRANCIS DE SALES PARISH",
+"charter_number": "4385"
+},
+"5694": {
+"bank_name": "HOSPITALITY COMMUNITY",
+"charter_number": "17029"
+},
+"5695": {
+"bank_name": "OLDHAM FAMILY ALLIANCE",
+"charter_number": "6644"
+},
+"5697": {
+"bank_name": "MEMBERS UNITED",
+"charter_number": "4662"
+},
+"5698": {
+"bank_name": "KEYSTONE FIRST",
+"charter_number": "2501"
+},
+"5701": {
+"bank_name": "OAK RIDGE SCHOOLS",
+"charter_number": "5979"
+},
+"5702": {
+"bank_name": "FRIENDS FIRST",
+"charter_number": "68637"
+},
+"5703": {
+"bank_name": "CONSOLIDATED-HUB CO",
+"charter_number": "6089"
+},
+"5704": {
+"bank_name": "DEKALB COUNTY",
+"charter_number": "60880"
+},
+"5705": {
+"bank_name": "STANDARD STEEL EMP",
+"charter_number": "18375"
+},
+"5711": {
+"bank_name": "FIRST SECURITY",
+"charter_number": "62061"
+},
+"5714": {
+"bank_name": "PREFERRED FINANCIAL",
+"charter_number": "14244"
+},
+"5716": {
+"bank_name": "SPRUANCE CELLOPHANE",
+"charter_number": "60012"
+},
+"5717": {
+"bank_name": "M E C O",
+"charter_number": "13644"
+},
+"5718": {
+"bank_name": "DANVILLE CONSOLIDATED",
+"charter_number": "60382"
+},
+"5723": {
+"bank_name": "FIRST DELTA",
+"charter_number": "23810"
+},
+"5731": {
+"bank_name": "SELECT COMMUNITY",
+"charter_number": "4946"
+},
+"5734": {
+"bank_name": "TIOGA AREA",
+"charter_number": "23369"
+},
+"5735": {
+"bank_name": "N.Y. B & FMC",
+"charter_number": "21702"
+},
+"5736": {
+"bank_name": "COLTON",
+"charter_number": "19266"
+},
+"5739": {
+"bank_name": "IRONDEQUOIT",
+"charter_number": "14268"
+},
+"5740": {
+"bank_name": "UNION SETTLEMENT",
+"charter_number": "11702"
+},
+"5741": {
+"bank_name": "BNSF",
+"charter_number": "67509"
+},
+"5743": {
+"bank_name": "H-F EMPLOYEES",
+"charter_number": "13111"
+},
+"5745": {
+"bank_name": "WESLEY MEDICAL",
+"charter_number": "65965"
+},
+"5746": {
+"bank_name": "OLOL REGIONAL",
+"charter_number": "14477"
+},
+"5747": {
+"bank_name": "UFCW LOCAL 342",
+"charter_number": "14129"
+},
+"5749": {
+"bank_name": "FIRST STATE REFINERY",
+"charter_number": "13280"
+},
+"5750": {
+"bank_name": "MUSKEGON CONSUMERS POWER EMPLOYEES",
+"charter_number": "61678"
+},
+"5751": {
+"bank_name": "STAR ENERGY",
+"charter_number": "64544"
+},
+"5752": {
+"bank_name": "HEALTH CARE PROFESSIONALS OF NAPA",
+"charter_number": "17887"
+},
+"5754": {
+"bank_name": "NORTH SHORE MANUFACTURERS",
+"charter_number": "18457"
+},
+"5756": {
+"bank_name": "MORSE CHAIN ITHACA EMPLOYEES",
+"charter_number": "68610"
+},
+"5757": {
+"bank_name": "FMC TECHNOLOGIES",
+"charter_number": "6083"
+},
+"5760": {
+"bank_name": "MORSE CHAIN ITHACA EMPLOYEES",
+"charter_number": "8971"
+},
+"5762": {
+"bank_name": "HAMPTON ROADS CATHOLIC",
+"charter_number": "17832"
+},
+"5763": {
+"bank_name": "MORRISON COMMUNITY",
+"charter_number": "15401"
+},
+"5767": {
+"bank_name": "NABISCO EMPLOYEES CREDIT UNION",
+"charter_number": "66957"
+},
+"5769": {
+"bank_name": "OHIO OPERATING ENGINEERS",
+"charter_number": "14689"
+},
+"5770": {
+"bank_name": "MURRAY EMPLOYEES",
+"charter_number": "66015"
+},
+"5771": {
+"bank_name": "BRIDGEPORT FAIRFIELD TEACHERS",
+"charter_number": "36"
+},
+"5774": {
+"bank_name": "TRUAX",
+"charter_number": "66469"
+},
+"5775": {
+"bank_name": "PEOPLE'S CREDIT UNION OF ABILENE",
+"charter_number": "67411"
+},
+"5777": {
+"bank_name": "GREATER OZARKS COMMUNITY",
+"charter_number": "61427"
+},
+"5778": {
+"bank_name": "STEWART",
+"charter_number": "67613"
+},
+"5782": {
+"bank_name": "HAMPTON CITY EMP CREDIT UNION INC.",
+"charter_number": "66950"
+},
+"5783": {
+"bank_name": "IBEW 968",
+"charter_number": "14020"
+},
+"5784": {
+"bank_name": "ARMSTRONG PREFERRED MEMBERS",
+"charter_number": "13486"
+},
+"5786": {
+"bank_name": "CENTRAL OHIO TEAMSTERS",
+"charter_number": "96676"
+},
+"5790": {
+"bank_name": "E W O D",
+"charter_number": "12349"
+},
+"5792": {
+"bank_name": "S F MUNICIPAL RAILWAY EMP",
+"charter_number": "7826"
+},
+"5798": {
+"bank_name": "LITHUANIAN",
+"charter_number": "64715"
+},
+"5801": {
+"bank_name": "BLUE SPRUCE",
+"charter_number": "19845"
+},
+"5802": {
+"bank_name": "TRMC EMPLOYEES",
+"charter_number": "60803"
+},
+"5803": {
+"bank_name": "LASALLE COUNTY SCHOOL EMPLOYEES",
+"charter_number": "64410"
+},
+"5804": {
+"bank_name": "LAMAR CIVIC",
+"charter_number": "10246"
+},
+"5808": {
+"bank_name": "CAYUGA COUNTY SCHOOL EMPLOYEES",
+"charter_number": "21548"
+},
+"5810": {
+"bank_name": "BLUE CROSS BLUE SHIELD K.C.",
+"charter_number": "63997"
+},
+"5813": {
+"bank_name": "FRONTIER CENTRAL",
+"charter_number": "12716"
+},
+"5816": {
+"bank_name": "ELGIN MENTAL HEALTH CENTER",
+"charter_number": "62007"
+},
+"5817": {
+"bank_name": "DALLAS TXDOT",
+"charter_number": "67420"
+},
+"5822": {
+"bank_name": "VETERANS ADMINISTRATION",
+"charter_number": "61925"
+},
+"5823": {
+"bank_name": "TOLEDO BEND TEACHERS",
+"charter_number": "67580"
+},
+"5824": {
+"bank_name": "ALTON AREA EMPLOYEES",
+"charter_number": "20634"
+},
+"5826": {
+"bank_name": "UNITED CATHOLIC",
+"charter_number": "64147"
+},
+"5827": {
+"bank_name": "BORINQUEN",
+"charter_number": "21677"
+},
+"5828": {
+"bank_name": "ST. LANDRY PARISH",
+"charter_number": "15261"
+},
+"5830": {
+"bank_name": "FAMILIES FIRST",
+"charter_number": "14916"
+},
+"5831": {
+"bank_name": "PEOPLE'S PRIORITY",
+"charter_number": "19747"
+},
+"5834": {
+"bank_name": "EFFINGHAM HIGHWAY",
+"charter_number": "81553"
+},
+"5836": {
+"bank_name": "SOUTHERN BUTLER COUNTY COMMUNITY CR",
+"charter_number": "64272"
+},
+"5837": {
+"bank_name": "RIVER ROUGE MUNICIPAL",
+"charter_number": "62173"
+},
+"5840": {
+"bank_name": "MIDWEST ASSOCIATES",
+"charter_number": "22915"
+},
+"5841": {
+"bank_name": "ST. JOSEPH VALLEY COMMUNITY",
+"charter_number": "22381"
+},
+"5844": {
+"bank_name": "MANISTEE",
+"charter_number": "2186"
+},
+"5845": {
+"bank_name": "LITTLE COMPANY OF MARY EMPLOY",
+"charter_number": "81409"
+},
+"5847": {
+"bank_name": "COVENANT",
+"charter_number": "24272"
+},
+"5848": {
+"bank_name": "GUARDIAN FIRST",
+"charter_number": "3494"
+},
+"5852": {
+"bank_name": "NORTH OLMSTED SCHOOLS",
+"charter_number": "15968"
+},
+"5853": {
+"bank_name": "SELECTIVE",
+"charter_number": "21404"
+},
+"5855": {
+"bank_name": "PHILCORE",
+"charter_number": "17883"
+},
+"5857": {
+"bank_name": "JEFFSO",
+"charter_number": "63035"
+},
+"5859": {
+"bank_name": "RELAY",
+"charter_number": "1812"
+},
+"5861": {
+"bank_name": "CAMCO COMMUNITY",
+"charter_number": "12163"
+},
+"5864": {
+"bank_name": "HOUSTON MUSICIANS",
+"charter_number": "8872"
+},
+"5865": {
+"bank_name": "HEALTHCARE UNITED",
+"charter_number": "20924"
+},
+"5868": {
+"bank_name": "ASSOCIATED",
+"charter_number": "7699"
+},
+"5872": {
+"bank_name": "CRANE GULF",
+"charter_number": "12224"
+},
+"5873": {
+"bank_name": "EAST CENTRAL MISSISSIPPI",
+"charter_number": "65470"
+},
+"5874": {
+"bank_name": "EL PASO'S",
+"charter_number": "7823"
+},
+"5876": {
+"bank_name": "WEST YORK AREA SCHOOL DIST EM",
+"charter_number": "16624"
+},
+"5881": {
+"bank_name": "GOODYEAR EMPLOYEES",
+"charter_number": "96718"
+},
+"5882": {
+"bank_name": "ST. ALPHONSUS MEDICAL",
+"charter_number": "82537"
+},
+"5883": {
+"bank_name": "LOUDEN DEPOT COMMUNITY",
+"charter_number": "63855"
+},
+"5884": {
+"bank_name": "KELLY",
+"charter_number": "14121"
+},
+"5886": {
+"bank_name": "HUTCHESON",
+"charter_number": "10546"
+},
+"5888": {
+"bank_name": "THE TIMES-PICAYUNE EMPLOYEES",
+"charter_number": "4813"
+},
+"5893": {
+"bank_name": "AMERICA'S BEST COMMUNITY",
+"charter_number": "21387"
+},
+"5894": {
+"bank_name": "AMERICAN METER EMPLOYEES",
+"charter_number": "682"
+},
+"5896": {
+"bank_name": "STATE SERVICE",
+"charter_number": "95095"
+},
+"5898": {
+"bank_name": "UNION OIL SANTA FE SPRINGS EM",
+"charter_number": "898"
+},
+"5901": {
+"bank_name": "MEDICREDIT",
+"charter_number": "9862"
+},
+"5908": {
+"bank_name": "ARCADIA CITY",
+"charter_number": "13048"
+},
+"5912": {
+"bank_name": "LANCASTER PA POLICE",
+"charter_number": "2359"
+},
+"5913": {
+"bank_name": "SHELBY COMMUNITY",
+"charter_number": "9592"
+},
+"5914": {
+"bank_name": "AMOCO EAST TEXAS",
+"charter_number": "3151"
+},
+"5916": {
+"bank_name": "DEFENSE ELECTRONICS",
+"charter_number": "21105"
+},
+"5917": {
+"bank_name": "RENTON COMMUNITY",
+"charter_number": "68238"
+},
+"5920": {
+"bank_name": "CARCO",
+"charter_number": "9507"
+},
+"5921": {
+"bank_name": "MIDVALLEY",
+"charter_number": "6488"
+},
+"5923": {
+"bank_name": "MISSISSIPPI DEPT.OF TRANSPORTATION",
+"charter_number": "4604"
+},
+"5924": {
+"bank_name": "S. & S. M. H. EMPLOYEES",
+"charter_number": "21745"
+},
+"5926": {
+"bank_name": "PROMISE",
+"charter_number": "68592"
+},
+"5929": {
+"bank_name": "DUNKIRK SCHOOL EMPLOYEES",
+"charter_number": "22040"
+},
+"5931": {
+"bank_name": "PACOE",
+"charter_number": "13740"
+},
+"5934": {
+"bank_name": "KANKAKEE COUNTY FEDERAL EMP",
+"charter_number": "2707"
+},
+"5935": {
+"bank_name": "E.S.C.U.",
+"charter_number": "21216"
+},
+"5936": {
+"bank_name": "LOUISIANA FARM BUREAU",
+"charter_number": "61608"
+},
+"5938": {
+"bank_name": "ST. LOUIS CARPENTERS",
+"charter_number": "65390"
+},
+"5940": {
+"bank_name": "DARIGOLD",
+"charter_number": "7968"
+},
+"5943": {
+"bank_name": "FERNDALE REFINERY",
+"charter_number": "68234"
+},
+"5946": {
+"bank_name": "KOOTENAI VALLEY",
+"charter_number": "11330"
+},
+"5947": {
+"bank_name": "VALLEY COUNCIL",
+"charter_number": "63510"
+},
+"5953": {
+"bank_name": "U.F.C.W. LOCAL 371",
+"charter_number": "23036"
+},
+"5954": {
+"bank_name": "ST. AGNES HOSPITAL",
+"charter_number": "17419"
+},
+"5955": {
+"bank_name": "PENNYPACK",
+"charter_number": "5494"
+},
+"5959": {
+"bank_name": "SACRED HEART HOSPITAL EMPLOYEES",
+"charter_number": "66666"
+},
+"5962": {
+"bank_name": "FIRST DAKOTA",
+"charter_number": "40"
+},
+"5965": {
+"bank_name": "CHAMPAIGN MUNICIPAL EMPLOYEES",
+"charter_number": "66812"
+},
+"5967": {
+"bank_name": "STRATFORD MUNICIPAL EMPLOYEES",
+"charter_number": "13498"
+},
+"5970": {
+"bank_name": "GRANTSVILLE",
+"charter_number": "12840"
+},
+"5975": {
+"bank_name": "B I P",
+"charter_number": "22639"
+},
+"5976": {
+"bank_name": "ST. PAULS PARISH",
+"charter_number": "8301"
+},
+"5977": {
+"bank_name": "MEMBERS UNITED",
+"charter_number": "66653"
+},
+"5980": {
+"bank_name": "ST. ELIZABETH EMPLS.",
+"charter_number": "66729"
+},
+"5981": {
+"bank_name": "PINE CREEK",
+"charter_number": "13756"
+},
+"5985": {
+"bank_name": "RPI EMPLOYEES",
+"charter_number": "23098"
+},
+"5987": {
+"bank_name": "ABILENE TELCO",
+"charter_number": "8038"
+},
+"5988": {
+"bank_name": "BLENNERHASSETT",
+"charter_number": "10540"
+},
+"5991": {
+"bank_name": "1ST ALLIANCE",
+"charter_number": "12951"
+},
+"5992": {
+"bank_name": "MULTIPLE EMPLOYEE GROUP",
+"charter_number": "7735"
+},
+"5995": {
+"bank_name": "LAUHOFF EMPLOYEES",
+"charter_number": "60334"
+},
+"5997": {
+"bank_name": "CHESHIRE HEALTH",
+"charter_number": "16608"
+},
+"5999": {
+"bank_name": "SHAMROCK FOODS",
+"charter_number": "9111"
+},
+"6000": {
+"bank_name": "TESORO EMPLOYEES",
+"charter_number": "21766"
+},
+"6001": {
+"bank_name": "LEHIGH VALLEY",
+"charter_number": "63884"
+},
+"6002": {
+"bank_name": "MONROE EDUCATION EMPLOYEES",
+"charter_number": "12709"
+},
+"6003": {
+"bank_name": "N & W",
+"charter_number": "8575"
+},
+"6004": {
+"bank_name": "ALLIANCE OF AUTOMOTIVE SERVICE PROV",
+"charter_number": "20065"
+},
+"6005": {
+"bank_name": "UTELCO",
+"charter_number": "96802"
+},
+"6008": {
+"bank_name": "LEE COUNTY POSTAL EMP.",
+"charter_number": "67522"
+},
+"6009": {
+"bank_name": "SEARS WACO",
+"charter_number": "67454"
+},
+"6012": {
+"bank_name": "OUR LADY OF VICTORY INSTITUTIONS",
+"charter_number": "20898"
+},
+"6014": {
+"bank_name": "HORNELL ERIE",
+"charter_number": "9543"
+},
+"6019": {
+"bank_name": "MECU",
+"charter_number": "67353"
+},
+"6022": {
+"bank_name": "NORIDIAN EMPLOYEES",
+"charter_number": "62409"
+},
+"6025": {
+"bank_name": "HOMESTEAD",
+"charter_number": "24409"
+},
+"6026": {
+"bank_name": "TOLEDO POSTAL EMPLOYEES",
+"charter_number": "63621"
+},
+"6028": {
+"bank_name": "BAYONNE HOSPITAL EMPLOYEES",
+"charter_number": "22398"
+},
+"6029": {
+"bank_name": "NORTH HOLLYWOOD",
+"charter_number": "6061"
+},
+"6034": {
+"bank_name": "METRO WIRE",
+"charter_number": "22653"
+},
+"6038": {
+"bank_name": "NORFOLK",
+"charter_number": "1289"
+},
+"6039": {
+"bank_name": "YELLOWSTONE",
+"charter_number": "2472"
+},
+"6040": {
+"bank_name": "SUFFOLK, VA CITY EMPLOYEES",
+"charter_number": "22889"
+},
+"6048": {
+"bank_name": "ALTON ROUTE",
+"charter_number": "65758"
+},
+"6049": {
+"bank_name": "FEDERAL & STATE INSPECTORS",
+"charter_number": "9101"
+},
+"6050": {
+"bank_name": "ST. ANTHONY HOSPITAL EMPLOYEE",
+"charter_number": "20690"
+},
+"6051": {
+"bank_name": "A.C. JAACKS",
+"charter_number": "66019"
+},
+"6053": {
+"bank_name": "MILLEDGEVILLE COMMUNITY",
+"charter_number": "60344"
+},
+"6056": {
+"bank_name": "ASHTABULA CITY EMPLOYEES",
+"charter_number": "14679"
+},
+"6057": {
+"bank_name": "TOLEDO TEAMSTERS",
+"charter_number": "5352"
+},
+"6061": {
+"bank_name": "BELL FINANCIAL COMMUNITY",
+"charter_number": "60405"
+},
+"6062": {
+"bank_name": "LOCAL 194-6",
+"charter_number": "21221"
+},
+"6065": {
+"bank_name": "SAKS FIFTH AVENUE ENTERPRISES",
+"charter_number": "22450"
+},
+"6071": {
+"bank_name": "ASHEVILLE POSTAL",
+"charter_number": "63311"
+},
+"6072": {
+"bank_name": "SOUTHWEST KANSAS COMMUNITY",
+"charter_number": "67759"
+},
+"6075": {
+"bank_name": "OUR LADY OF HEALTH",
+"charter_number": "10110"
+},
+"6076": {
+"bank_name": "CCAC",
+"charter_number": "20989"
+},
+"6079": {
+"bank_name": "CY-CO",
+"charter_number": "23597"
+},
+"6082": {
+"bank_name": "AMERICAN BAKERY WORKERS",
+"charter_number": "3773"
+},
+"6086": {
+"bank_name": "A O SMITH EMPLOYEES",
+"charter_number": "8343"
+},
+"6087": {
+"bank_name": "TURNPIKE",
+"charter_number": "67765"
+},
+"6088": {
+"bank_name": "CROSS ROADS",
+"charter_number": "61459"
+},
+"6093": {
+"bank_name": "AGRICO CHEM",
+"charter_number": "21217"
+},
+"6094": {
+"bank_name": "MORTON SALT",
+"charter_number": "61827"
+},
+"6099": {
+"bank_name": "TRAILBLAZER",
+"charter_number": "11430"
+},
+"6100": {
+"bank_name": "ACUME",
+"charter_number": "66233"
+},
+"6101": {
+"bank_name": "INDUSTRIES PUERTO RICO",
+"charter_number": "21954"
+},
+"6102": {
+"bank_name": "PUROLATOR EMPLOYEES",
+"charter_number": "20750"
+},
+"6107": {
+"bank_name": "SEARS SPOKANE EMPLOYEES",
+"charter_number": "5700"
+},
+"6108": {
+"bank_name": "FARMERS UNION",
+"charter_number": "6064"
+},
+"6109": {
+"bank_name": "KULIA OHANA",
+"charter_number": "2575"
+},
+"6111": {
+"bank_name": "UNITED CHEMI-CON MANUFACTURING EMP.",
+"charter_number": "63525"
+},
+"6112": {
+"bank_name": "CATARACT CITY",
+"charter_number": "92"
+},
+"6113": {
+"bank_name": "BEAVER AVENUE",
+"charter_number": "3838"
+},
+"6114": {
+"bank_name": "NORFOLK VA POSTAL CREDIT UNION INC",
+"charter_number": "66895"
+},
+"6115": {
+"bank_name": "B & O",
+"charter_number": "14174"
+},
+"6116": {
+"bank_name": "P. M. H.",
+"charter_number": "64605"
+},
+"6117": {
+"bank_name": "PRINTING OFFICE EMPLOYEES",
+"charter_number": "61487"
+},
+"6120": {
+"bank_name": "CHESAPEAKE CITY EMP CREDIT UNION",
+"charter_number": "66919"
+},
+"6123": {
+"bank_name": "GUNNISON WESTERN",
+"charter_number": "15595"
+},
+"6126": {
+"bank_name": "G E A",
+"charter_number": "19356"
+},
+"6127": {
+"bank_name": "ATLANTIC GREYHOUND",
+"charter_number": "12252"
+},
+"6129": {
+"bank_name": "ASSOCIATES",
+"charter_number": "23743"
+},
+"6132": {
+"bank_name": "VETERANS HEALTH ADMINISTRATION",
+"charter_number": "61907"
+},
+"6134": {
+"bank_name": "C. G.",
+"charter_number": "22512"
+},
+"6137": {
+"bank_name": "ELK BASIN",
+"charter_number": "10155"
+},
+"6139": {
+"bank_name": "G H WOODWORKERS",
+"charter_number": "10215"
+},
+"6140": {
+"bank_name": "MICHOUD",
+"charter_number": "65659"
+},
+"6141": {
+"bank_name": "CENTRAL YORK",
+"charter_number": "22023"
+},
+"6145": {
+"bank_name": "SUGARDALE EMPLOYEES",
+"charter_number": "96793"
+},
+"6146": {
+"bank_name": "NIAGARA FALLS MEM. MED. CENTER",
+"charter_number": "18391"
+},
+"6147": {
+"bank_name": "RIVERGATE",
+"charter_number": "23116"
+},
+"6148": {
+"bank_name": "USDA",
+"charter_number": "65195"
+},
+"6152": {
+"bank_name": "OSU INSTITUTE OF TECHNOLOGY",
+"charter_number": "15833"
+},
+"6153": {
+"bank_name": "BURGER",
+"charter_number": "5357"
+},
+"6154": {
+"bank_name": "UNITED METHODIST MINISTRIES",
+"charter_number": "62524"
+},
+"6155": {
+"bank_name": "ROGERS EMPLOYEES",
+"charter_number": "5552"
+},
+"6156": {
+"bank_name": "FINANCIAL MEMBERS",
+"charter_number": "20904"
+},
+"6157": {
+"bank_name": "CONBRACO",
+"charter_number": "64022"
+},
+"6158": {
+"bank_name": "BAPTIST EMPLOYEES",
+"charter_number": "61388"
+},
+"6159": {
+"bank_name": "SOUTH SHORE RAILROAD EMP",
+"charter_number": "1091"
+},
+"6162": {
+"bank_name": "NORTHWEST BAPTIST",
+"charter_number": "12281"
+},
+"6164": {
+"bank_name": "R I D",
+"charter_number": "17238"
+},
+"6166": {
+"bank_name": "SOUTHEAST COMMUNITY",
+"charter_number": "67461"
+},
+"6168": {
+"bank_name": "DECATUR FIREMENS",
+"charter_number": "60244"
+},
+"6170": {
+"bank_name": "D.O.T.",
+"charter_number": "67719"
+},
+"6171": {
+"bank_name": "OLAN MILLS SAVINGS ASSOCIATION",
+"charter_number": "68106"
+},
+"6172": {
+"bank_name": "SHEET METAL WORKERS LO NO 312",
+"charter_number": "6852"
+},
+"6173": {
+"bank_name": "WESTHO",
+"charter_number": "10658"
+},
+"6178": {
+"bank_name": "FLOYD COUNTY POSTAL EMP",
+"charter_number": "67539"
+},
+"6180": {
+"bank_name": "ROUTE 1",
+"charter_number": "61488"
+},
+"6183": {
+"bank_name": "CSX CHICAGO TERMINAL",
+"charter_number": "81016"
+},
+"6184": {
+"bank_name": "NIAGARA PASNY",
+"charter_number": "14699"
+},
+"6187": {
+"bank_name": "UNITED AMERICA WEST",
+"charter_number": "20111"
+},
+"6190": {
+"bank_name": "KAPALAMA PACIFIC",
+"charter_number": "7029"
+},
+"6192": {
+"bank_name": "FINANCIAL 1ST",
+"charter_number": "22934"
+},
+"6197": {
+"bank_name": "CHEVRON SOUTHERN",
+"charter_number": "67378"
+},
+"6198": {
+"bank_name": "PHIL-PET",
+"charter_number": "3686"
+},
+"6199": {
+"bank_name": "FLOWER CITY",
+"charter_number": "14627"
+},
+"6202": {
+"bank_name": "MARICOPA SANTA FE",
+"charter_number": "12419"
+},
+"6203": {
+"bank_name": "PANHANDLE COOPERATIVE",
+"charter_number": "6997"
+},
+"6204": {
+"bank_name": "NIAGARA FALLS PENN CENTRAL EMPL",
+"charter_number": "62866"
+},
+"6205": {
+"bank_name": "ARG BRADFORD",
+"charter_number": "1417"
+},
+"6206": {
+"bank_name": "WEST FLORDIA MEDICAL",
+"charter_number": "22225"
+},
+"6207": {
+"bank_name": "NORTH DADE COMMUNITY DEVELOPMENT",
+"charter_number": "24593"
+},
+"6209": {
+"bank_name": "MOTION PICTURE",
+"charter_number": "13011"
+},
+"6211": {
+"bank_name": "I.C.E.",
+"charter_number": "3047"
+},
+"6212": {
+"bank_name": "TRINITY",
+"charter_number": "65990"
+},
+"6215": {
+"bank_name": "DOUGLAS COUNTY",
+"charter_number": "66488"
+},
+"6216": {
+"bank_name": "TEXAS UNITED",
+"charter_number": "7292"
+},
+"6221": {
+"bank_name": "N M P NORTHERN AREA",
+"charter_number": "1710"
+},
+"6222": {
+"bank_name": "GEORGIA POWER MACON",
+"charter_number": "375"
+},
+"6223": {
+"bank_name": "WESTFIELD AREA",
+"charter_number": "8529"
+},
+"6226": {
+"bank_name": "SPRINGFIELD CATHOLIC",
+"charter_number": "61867"
+},
+"6227": {
+"bank_name": "U.P.S.",
+"charter_number": "96799"
+},
+"6228": {
+"bank_name": "PICKENS CO EDUCATORS",
+"charter_number": "22129"
+},
+"6229": {
+"bank_name": "MOTORISTS INSURANCE EMPLOYEES",
+"charter_number": "61550"
+},
+"6232": {
+"bank_name": "BRASSIES",
+"charter_number": "60593"
+},
+"6235": {
+"bank_name": "ROBBINS & MYERS EMPLOYEES",
+"charter_number": "346"
+},
+"6236": {
+"bank_name": "TEAMSTERS LOCAL 30",
+"charter_number": "10851"
+},
+"6237": {
+"bank_name": "JEFF DAVIS",
+"charter_number": "67655"
+},
+"6238": {
+"bank_name": "MILFORD MEMORIAL",
+"charter_number": "19170"
+},
+"6240": {
+"bank_name": "CHERRY EMPLOYEES",
+"charter_number": "24391"
+},
+"6241": {
+"bank_name": "ST. CHARLES PARISH",
+"charter_number": "16114"
+},
+"6243": {
+"bank_name": "ORANGE SCHOOL EMPLOYEES",
+"charter_number": "96765"
+},
+"6248": {
+"bank_name": "CONE DRIVE GEARS",
+"charter_number": "7281"
+},
+"6249": {
+"bank_name": "KANSAS CITY P&G EMPLOYEES",
+"charter_number": "63145"
+},
+"6251": {
+"bank_name": "MONROE",
+"charter_number": "62935"
+},
+"6254": {
+"bank_name": "RUTGERS UNIVERSITY STUDENT AND ALUM",
+"charter_number": "24339"
+},
+"6255": {
+"bank_name": "METHODE",
+"charter_number": "19944"
+},
+"6258": {
+"bank_name": "D'PUC",
+"charter_number": "95045"
+},
+"6259": {
+"bank_name": "MIDWEST",
+"charter_number": "66465"
+},
+"6261": {
+"bank_name": "WAYNESBORO EMPLOYEES CREDIT UNION,",
+"charter_number": "66936"
+},
+"6262": {
+"bank_name": "EAGLE ROCK",
+"charter_number": "65106"
+},
+"6263": {
+"bank_name": "MEDICAL CARE EMPLOYEES",
+"charter_number": "14470"
+},
+"6265": {
+"bank_name": "PARKRIDGE",
+"charter_number": "68080"
+},
+"6272": {
+"bank_name": "BIRMINGHAM NEWS EMPLOYEES",
+"charter_number": "65463"
+},
+"6273": {
+"bank_name": "SARGENT & COMPANY EMPLOYEES",
+"charter_number": "1153"
+},
+"6276": {
+"bank_name": "MAGNETICS",
+"charter_number": "9635"
+},
+"6277": {
+"bank_name": "LABOR DEPARTMENT",
+"charter_number": "65325"
+},
+"6278": {
+"bank_name": "TOTAL ASSURANCE",
+"charter_number": "18822"
+},
+"6280": {
+"bank_name": "COMMUNITYWORKS",
+"charter_number": "24856"
+},
+"6281": {
+"bank_name": "LA CROSSE AREA POSTAL",
+"charter_number": "66610"
+},
+"6285": {
+"bank_name": "FIRST HAWAIIAN HOMES",
+"charter_number": "2223"
+},
+"6286": {
+"bank_name": "CONSUMERS UNION EMPLOYEES",
+"charter_number": "8702"
+},
+"6289": {
+"bank_name": "MCALESTER",
+"charter_number": "64983"
+},
+"6290": {
+"bank_name": "W R GRACE MARYLAND EMPLOYEES",
+"charter_number": "10545"
+},
+"6292": {
+"bank_name": "HOLY FAMILY HOSPITAL EMPLOYEES",
+"charter_number": "20853"
+},
+"6293": {
+"bank_name": "N.M.H.",
+"charter_number": "23548"
+},
+"6295": {
+"bank_name": "O.U.R.",
+"charter_number": "19768"
+},
+"6298": {
+"bank_name": "S O D E S",
+"charter_number": "8756"
+},
+"6302": {
+"bank_name": "THE GROCERS SUPPLY EMPLOYEES",
+"charter_number": "67640"
+},
+"6303": {
+"bank_name": "GDC",
+"charter_number": "20209"
+},
+"6305": {
+"bank_name": "L M C C EMPLOYEES",
+"charter_number": "11101"
+},
+"6306": {
+"bank_name": "YOUNGSTOWN OHIO CITY EMP",
+"charter_number": "9100"
+},
+"6307": {
+"bank_name": "MUSKEGON TEACHERS",
+"charter_number": "62051"
+},
+"6308": {
+"bank_name": "TRIPLE C 16",
+"charter_number": "9176"
+},
+"6310": {
+"bank_name": "TRAILVIEW",
+"charter_number": "6608"
+},
+"6311": {
+"bank_name": "CITY OF SCHENECTADY EMPLOYEES",
+"charter_number": "3330"
+},
+"6312": {
+"bank_name": "INDUSTRIAL DISTRIBUTORS",
+"charter_number": "24031"
+},
+"6315": {
+"bank_name": "ELIZABETH CITY COAST GUARD EMPLOYEE",
+"charter_number": "63569"
+},
+"6317": {
+"bank_name": "BENNINGTON E/E",
+"charter_number": "22373"
+},
+"6318": {
+"bank_name": "MT HOOD",
+"charter_number": "9477"
+},
+"6320": {
+"bank_name": "PITTCO (OF PITTSBURGH)",
+"charter_number": "3077"
+},
+"6321": {
+"bank_name": "UFCW OF AMERICA",
+"charter_number": "23074"
+},
+"6322": {
+"bank_name": "1ST NORTH WEST",
+"charter_number": "14108"
+},
+"6324": {
+"bank_name": "PACIFIC SPRUCE",
+"charter_number": "13494"
+},
+"6327": {
+"bank_name": "CONNECTICUT ENERGY EMPLOYEES",
+"charter_number": "60828"
+},
+"6328": {
+"bank_name": "ST. EDWARD MERCY HOSPITAL",
+"charter_number": "19798"
+},
+"6330": {
+"bank_name": "MILLER COUNTY TEACHERS",
+"charter_number": "8620"
+},
+"6331": {
+"bank_name": "SOUTH DEKALB CHURCH",
+"charter_number": "24572"
+},
+"6332": {
+"bank_name": "THD-6",
+"charter_number": "61312"
+},
+"6333": {
+"bank_name": "DUCOTE",
+"charter_number": "2654"
+},
+"6337": {
+"bank_name": "PENN DRAKE",
+"charter_number": "61245"
+},
+"6338": {
+"bank_name": "THE NEWS AND OBSERVER",
+"charter_number": "63914"
+},
+"6339": {
+"bank_name": "C.H.H.",
+"charter_number": "65819"
+},
+"6342": {
+"bank_name": "PEOPLE'S FIRST",
+"charter_number": "1610"
+},
+"6344": {
+"bank_name": "B.T.A.",
+"charter_number": "4001"
+},
+"6345": {
+"bank_name": "ELEC WORKERS UNION 474 IBEW",
+"charter_number": "11339"
+},
+"6346": {
+"bank_name": "BEVERLY BUS GARAGE",
+"charter_number": "2566"
+},
+"6348": {
+"bank_name": "RADIO, TELEVISION AND COMMUNICATION",
+"charter_number": "16393"
+},
+"6349": {
+"bank_name": "BORDER LODGE",
+"charter_number": "64364"
+},
+"6350": {
+"bank_name": "WITTENBERG UNIVERSITY",
+"charter_number": "14444"
+},
+"6352": {
+"bank_name": "COLUMBUS-LOWNDES EDUCATIONAL",
+"charter_number": "13446"
+},
+"6354": {
+"bank_name": "ENGLEWOOD MUNICIPAL",
+"charter_number": "13110"
+},
+"6360": {
+"bank_name": "CANADIAN NATIONAL RAILWAY EMPLOYEES",
+"charter_number": "2426"
+},
+"6361": {
+"bank_name": "CLAVER",
+"charter_number": "9716"
+},
+"6362": {
+"bank_name": "FLORIDA EPISCOPAL",
+"charter_number": "17654"
+},
+"6363": {
+"bank_name": "PIERCE",
+"charter_number": "12738"
+},
+"6366": {
+"bank_name": "YOUNGSTOWN FIREFIGHTERS",
+"charter_number": "96811"
+},
+"6367": {
+"bank_name": "WORKMENS CIRCLE",
+"charter_number": "2151"
+},
+"6368": {
+"bank_name": "KEDZIE AVENUE DEPOT",
+"charter_number": "2529"
+},
+"6369": {
+"bank_name": "RANCOCAS",
+"charter_number": "24137"
+},
+"6370": {
+"bank_name": "WAUSAU CITY EMPLOYEES",
+"charter_number": "66432"
+},
+"6372": {
+"bank_name": "ELLSWORTH",
+"charter_number": "5637"
+},
+"6373": {
+"bank_name": "WESLEY HEALTH SYSTEMS",
+"charter_number": "18813"
+},
+"6374": {
+"bank_name": "COTTRELL",
+"charter_number": "24513"
+},
+"6375": {
+"bank_name": "HEALTH CARE EMPLOYEES",
+"charter_number": "65220"
+},
+"6376": {
+"bank_name": "LIMA OHIO POSTAL EMPLOYEES",
+"charter_number": "1128"
+},
+"6377": {
+"bank_name": "N.E.A.R.M.C. EMPLOYEES",
+"charter_number": "11277"
+},
+"6381": {
+"bank_name": "HARPER & ROW, KEYSTONE EMP.",
+"charter_number": "19704"
+},
+"6382": {
+"bank_name": "CITY OF UKIAH EMPLOYEES",
+"charter_number": "64543"
+},
+"6385": {
+"bank_name": "QUINCY MUNICIPAL",
+"charter_number": "65483"
+},
+"6387": {
+"bank_name": "FERGUS FALLS COMMUNITY",
+"charter_number": "4634"
+},
+"6388": {
+"bank_name": "GLENVIL COOPERATIVE",
+"charter_number": "66275"
+},
+"6389": {
+"bank_name": "CO-OP EMPLOYEE",
+"charter_number": "68151"
+},
+"6390": {
+"bank_name": "DR PEPPER EMPLOYEES",
+"charter_number": "6848"
+},
+"6394": {
+"bank_name": "ROCK COUNTY EMPLOYEES",
+"charter_number": "66560"
+},
+"6396": {
+"bank_name": "NFTA EMPLOYEES",
+"charter_number": "7937"
+},
+"6397": {
+"bank_name": "ARK CITY TEACHERS",
+"charter_number": "67826"
+},
+"6399": {
+"bank_name": "PEACH TREE HILL",
+"charter_number": "21903"
+},
+"6400": {
+"bank_name": "PACIFIC HAWAII",
+"charter_number": "10796"
+},
+"6401": {
+"bank_name": "BLOOM TOWNSHIP HIGH SCHOOL",
+"charter_number": "64921"
+},
+"6403": {
+"bank_name": "GREENLEAF EMPLOYEE",
+"charter_number": "17096"
+},
+"6405": {
+"bank_name": "TRENARY COOPERATIVE",
+"charter_number": "7278"
+},
+"6406": {
+"bank_name": "CAANO EMPLOYEES",
+"charter_number": "6508"
+},
+"6412": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"6420": {
+"bank_name": "EAST CENTRAL",
+"charter_number": "23563"
+},
+"6423": {
+"bank_name": "TEAMSTERS LOCAL #222",
+"charter_number": "16265"
+},
+"6424": {
+"bank_name": "AXTON",
+"charter_number": "21657"
+},
+"6425": {
+"bank_name": "ASSOCIATED EMPLOYEES",
+"charter_number": "61932"
+},
+"6426": {
+"bank_name": "MON/MARINE",
+"charter_number": "4354"
+},
+"6428": {
+"bank_name": "SANGAMO-OCONEE EMPLOYEES",
+"charter_number": "21419"
+},
+"6429": {
+"bank_name": "CENTRAL CREDIT UNION, INC.",
+"charter_number": "96715"
+},
+"6430": {
+"bank_name": "C G H",
+"charter_number": "15373"
+},
+"6431": {
+"bank_name": "UTI EMPLOYEES",
+"charter_number": "63730"
+},
+"6432": {
+"bank_name": "ST. HELEN",
+"charter_number": "10900"
+},
+"6436": {
+"bank_name": "ELECTRICAL PRODUCTS EMPLOYEES",
+"charter_number": "21071"
+},
+"6437": {
+"bank_name": "HAMPTON ROADS POSTAL CU, INC.",
+"charter_number": "66894"
+},
+"6440": {
+"bank_name": "JONES DAIRY FARM EMPLOYEES",
+"charter_number": "66744"
+},
+"6444": {
+"bank_name": "ROANOKE VIRGINIA FIREMEN",
+"charter_number": "183"
+},
+"6445": {
+"bank_name": "MILLER TRANSPORTERS",
+"charter_number": "16568"
+},
+"6446": {
+"bank_name": "DIVISION 694 MOTOR COACH EMP",
+"charter_number": "2825"
+},
+"6447": {
+"bank_name": "GARMENT WORKERS",
+"charter_number": "9616"
+},
+"6448": {
+"bank_name": "VIRGINIA GAS CREDIT UNION INC.",
+"charter_number": "66990"
+},
+"6449": {
+"bank_name": "ANTIOCH",
+"charter_number": "96660"
+},
+"6451": {
+"bank_name": "A - E EMPLOYEES",
+"charter_number": "61227"
+},
+"6453": {
+"bank_name": "MCKENZIE VALLEY",
+"charter_number": "12316"
+},
+"6454": {
+"bank_name": "MEDICAL EMPLS.",
+"charter_number": "67135"
+},
+"6456": {
+"bank_name": "JACKSON ACCO",
+"charter_number": "63151"
+},
+"6458": {
+"bank_name": "ARKANSAS DEMOCRAT - GAZETTE",
+"charter_number": "24441"
+},
+"6459": {
+"bank_name": "ISLAND TRADITION",
+"charter_number": "1947"
+},
+"6462": {
+"bank_name": "FOOD MARKETING",
+"charter_number": "157"
+},
+"6463": {
+"bank_name": "SAN ANTONIO WATER SYSTEM",
+"charter_number": "12200"
+},
+"6466": {
+"bank_name": "PACOIMA DEVELOPMENT",
+"charter_number": "24736"
+},
+"6468": {
+"bank_name": "GRS EMPLOYEES",
+"charter_number": "24787"
+},
+"6469": {
+"bank_name": "DUGWAY",
+"charter_number": "12841"
+},
+"6470": {
+"bank_name": "KAUMAKANI",
+"charter_number": "10070"
+},
+"6471": {
+"bank_name": "CASSIA COUNTY EDUC.",
+"charter_number": "82509"
+},
+"6475": {
+"bank_name": "HMONG AMERICAN",
+"charter_number": "24158"
+},
+"6476": {
+"bank_name": "HD YORK",
+"charter_number": "11572"
+},
+"6478": {
+"bank_name": "PADUCAH CITY EMPLOYEES",
+"charter_number": "61738"
+},
+"6482": {
+"bank_name": "NORFOLK SCHOOLS",
+"charter_number": "1185"
+},
+"6485": {
+"bank_name": "FINANCIAL TRAX",
+"charter_number": "4523"
+},
+"6487": {
+"bank_name": "TARCANA",
+"charter_number": "61316"
+},
+"6490": {
+"bank_name": "KALAMAZOO BUILDING TRADES",
+"charter_number": "63842"
+},
+"6491": {
+"bank_name": "TOWNS-UNION EDUCATORS'",
+"charter_number": "22444"
+},
+"6493": {
+"bank_name": "BADGER METER",
+"charter_number": "66455"
+},
+"6494": {
+"bank_name": "EDUCATION ASSOCIATIONS",
+"charter_number": "9584"
+},
+"6495": {
+"bank_name": "MERCY HEALTH SERVICES EMPLOYEES",
+"charter_number": "23576"
+},
+"6496": {
+"bank_name": "BROOKS COMMUNITY",
+"charter_number": "5469"
+},
+"6497": {
+"bank_name": "PANHANDLE PUBLIC EMPLOYEES",
+"charter_number": "14553"
+},
+"6499": {
+"bank_name": "CHURCH KOINONIA",
+"charter_number": "24634"
+},
+"6501": {
+"bank_name": "QUEEN OF PEACE ARLINGTON",
+"charter_number": "16172"
+},
+"6502": {
+"bank_name": "ADA EMPLOYEES",
+"charter_number": "67487"
+},
+"6503": {
+"bank_name": "FLUKE EMPLOYEES",
+"charter_number": "20655"
+},
+"6505": {
+"bank_name": "TEXAS FIRST CHOICE",
+"charter_number": "18369"
+},
+"6508": {
+"bank_name": "ICI AMERICA",
+"charter_number": "21275"
+},
+"6509": {
+"bank_name": "MEADOW GOLD DAIRIES",
+"charter_number": "8186"
+},
+"6510": {
+"bank_name": "TINLEY FOREST EMPLOYEES",
+"charter_number": "62285"
+},
+"6514": {
+"bank_name": "VIRGINIA BOXER",
+"charter_number": "19842"
+},
+"6516": {
+"bank_name": "BERGEN",
+"charter_number": "16617"
+},
+"6518": {
+"bank_name": "EAST HAVEN MUNICIPAL EMPLOYEES",
+"charter_number": "61727"
+},
+"6519": {
+"bank_name": "PORT IVORY",
+"charter_number": "17251"
+},
+"6520": {
+"bank_name": "DECATUR STANOLIND",
+"charter_number": "65831"
+},
+"6521": {
+"bank_name": "DEL MONTE EASTERN REGION EMPLOYEES",
+"charter_number": "4832"
+},
+"6525": {
+"bank_name": "ELECTRICAL WORKERS",
+"charter_number": "65962"
+},
+"6527": {
+"bank_name": "AZUSA CITY EMPLOYEES",
+"charter_number": "10276"
+},
+"6528": {
+"bank_name": "M S T C",
+"charter_number": "6320"
+},
+"6529": {
+"bank_name": "PRIME",
+"charter_number": "18610"
+},
+"6530": {
+"bank_name": "MEMBERS 1ST OF MISSISSIPPI",
+"charter_number": "11367"
+},
+"6538": {
+"bank_name": "I & M TANNERS CREEK EMPLOYEES",
+"charter_number": "8815"
+},
+"6539": {
+"bank_name": "NAFCO NEBRASKA",
+"charter_number": "22921"
+},
+"6542": {
+"bank_name": "TAFT EMPLOYEES",
+"charter_number": "63010"
+},
+"6543": {
+"bank_name": "N E BLUE CROSS EMPLOYEES",
+"charter_number": "16505"
+},
+"6544": {
+"bank_name": "W.O.D.",
+"charter_number": "17460"
+},
+"6545": {
+"bank_name": "CWU",
+"charter_number": "17690"
+},
+"6548": {
+"bank_name": "IBEW 466",
+"charter_number": "14797"
+},
+"6551": {
+"bank_name": "REDFORD MUNICIPAL EMPL.",
+"charter_number": "62682"
+},
+"6552": {
+"bank_name": "FARREL",
+"charter_number": "2591"
+},
+"6556": {
+"bank_name": "PEORIA JOURNAL STAR",
+"charter_number": "60211"
+},
+"6557": {
+"bank_name": "ST. JAMES PUBLIC SCHOOLS",
+"charter_number": "24650"
+},
+"6558": {
+"bank_name": "MARION CITY EMPLOYEES",
+"charter_number": "11545"
+},
+"6562": {
+"bank_name": "BELT LINE EMP CREDIT UNION INC.",
+"charter_number": "66943"
+},
+"6563": {
+"bank_name": "OMAHA BURLINGTON EMPLOYEES",
+"charter_number": "66151"
+},
+"6564": {
+"bank_name": "MAPLETON PUBLIC SCHOOLS",
+"charter_number": "13021"
+},
+"6566": {
+"bank_name": "DELTA COUNTY TEACHERS",
+"charter_number": "62267"
+},
+"6570": {
+"bank_name": "I. U. O. E. #9",
+"charter_number": "61839"
+},
+"6571": {
+"bank_name": "RUTLAND CTY TEACH & MUNICIPAL EMP",
+"charter_number": "65165"
+},
+"6572": {
+"bank_name": "TETCO EMPLOYEES",
+"charter_number": "10338"
+},
+"6573": {
+"bank_name": "C & NW PROVISO",
+"charter_number": "60439"
+},
+"6574": {
+"bank_name": "OUR LADY OF THE ANGELS",
+"charter_number": "14695"
+},
+"6576": {
+"bank_name": "PHILADELPHIA POST OFFICE EMPLOYEES",
+"charter_number": "65212"
+},
+"6578": {
+"bank_name": "ONIZED OAKLAND",
+"charter_number": "3203"
+},
+"6580": {
+"bank_name": "NEW RIVER VALLEY TRUCK PLANT",
+"charter_number": "22684"
+},
+"6581": {
+"bank_name": "ETS",
+"charter_number": "63982"
+},
+"6583": {
+"bank_name": "TULIP COOPERATIVE",
+"charter_number": "68528"
+},
+"6584": {
+"bank_name": "AUTOMOTIVE AFTERMARKET EMPLOYEE",
+"charter_number": "21975"
+},
+"6585": {
+"bank_name": "MADISON V. A. EMPLOYEES'",
+"charter_number": "66385"
+},
+"6588": {
+"bank_name": "DENISON DISTRICT TELEPHONE",
+"charter_number": "67496"
+},
+"6589": {
+"bank_name": "S G E",
+"charter_number": "23870"
+},
+"6591": {
+"bank_name": "ELLWOOD CITY SCHOOL EMPLOYEES",
+"charter_number": "636"
+},
+"6593": {
+"bank_name": "LUBBOCK COUNTY SCHOOLS",
+"charter_number": "20760"
+},
+"6594": {
+"bank_name": "PARISH MEMBERS",
+"charter_number": "65230"
+},
+"6595": {
+"bank_name": "PLUMBERS LOCAL #27",
+"charter_number": "24594"
+},
+"6597": {
+"bank_name": "SERVCO",
+"charter_number": "6761"
+},
+"6598": {
+"bank_name": "BAKERSFIELD COMMUNITY",
+"charter_number": "10760"
+},
+"6602": {
+"bank_name": "CHARLESTON NEWSPAPERS",
+"charter_number": "3464"
+},
+"6603": {
+"bank_name": "E. S. B. EMPLOYEES",
+"charter_number": "2581"
+},
+"6604": {
+"bank_name": "KENTUCKY ARMY NATIONAL GUARD",
+"charter_number": "15314"
+},
+"6608": {
+"bank_name": "NATIONAL WESTERN LIFE",
+"charter_number": "19016"
+},
+"6614": {
+"bank_name": "65 FAMILY",
+"charter_number": "23967"
+},
+"6616": {
+"bank_name": "OTSEGO PAPERWORKERS",
+"charter_number": "62410"
+},
+"6620": {
+"bank_name": "KATO ENGINEERING EMPLOYEES",
+"charter_number": "63668"
+},
+"6622": {
+"bank_name": "ANDERSON COUNTY EMPLOYEES",
+"charter_number": "14721"
+},
+"6627": {
+"bank_name": "MOULTRIE EMPLOYEES",
+"charter_number": "10330"
+},
+"6628": {
+"bank_name": "CHRISTOPHER",
+"charter_number": "62280"
+},
+"6629": {
+"bank_name": "GREAT RIVER ROAD",
+"charter_number": "60517"
+},
+"6630": {
+"bank_name": "SMW NO 9",
+"charter_number": "13286"
+},
+"6632": {
+"bank_name": "MOUNT ST. MARY'S HOSPITAL",
+"charter_number": "15043"
+},
+"6633": {
+"bank_name": "EDGE MOOR DUPONT EMPLOYEES",
+"charter_number": "2080"
+},
+"6634": {
+"bank_name": "SHACOG",
+"charter_number": "24574"
+},
+"6636": {
+"bank_name": "ST. JOHNS",
+"charter_number": "7560"
+},
+"6637": {
+"bank_name": "MT. SLOVER",
+"charter_number": "8086"
+},
+"6640": {
+"bank_name": "LAWILIFIE",
+"charter_number": "62933"
+},
+"6641": {
+"bank_name": "NORTHERN STATES MONTEVIDEO EMPLOYEE",
+"charter_number": "63974"
+},
+"6642": {
+"bank_name": "M.H.I.",
+"charter_number": "64966"
+},
+"6643": {
+"bank_name": "CHIPPEWA EAGLE",
+"charter_number": "24828"
+},
+"6648": {
+"bank_name": "U. S. T. C. EMPLOYEES",
+"charter_number": "68145"
+},
+"6649": {
+"bank_name": "SUGAR GROWERS",
+"charter_number": "22187"
+},
+"6650": {
+"bank_name": "NORTH ANDOVER MUNICIPAL",
+"charter_number": "24450"
+},
+"6651": {
+"bank_name": "NWNJ FEDERAL",
+"charter_number": "21517"
+},
+"6653": {
+"bank_name": "CLEARFIELD STONE WORKERS",
+"charter_number": "10928"
+},
+"6657": {
+"bank_name": "FAIRFIELD UNIVERSITY EMPLOYEES",
+"charter_number": "22346"
+},
+"6658": {
+"bank_name": "FRONTIER",
+"charter_number": "12824"
+},
+"6659": {
+"bank_name": "MIDWEST UTILITIES",
+"charter_number": "64945"
+},
+"6661": {
+"bank_name": "CHAMPAIGN POSTAL",
+"charter_number": "81530"
+},
+"6662": {
+"bank_name": "NEWTON TEACHERS",
+"charter_number": "67992"
+},
+"6664": {
+"bank_name": "MEMPHIS AIR RESERVE",
+"charter_number": "11894"
+},
+"6666": {
+"bank_name": "COMPACTION AMERICA",
+"charter_number": "16313"
+},
+"6667": {
+"bank_name": "PEORIA U S EMPLOYEES",
+"charter_number": "4674"
+},
+"6668": {
+"bank_name": "SHILOH OF ALEXANDRIA",
+"charter_number": "24466"
+},
+"6671": {
+"bank_name": "REZNOR",
+"charter_number": "20017"
+},
+"6672": {
+"bank_name": "WATERLOO POLICE",
+"charter_number": "64469"
+},
+"6674": {
+"bank_name": "IBEW LOCAL B-649",
+"charter_number": "65933"
+},
+"6675": {
+"bank_name": "MOTOR COACH EMP.",
+"charter_number": "60185"
+},
+"6677": {
+"bank_name": "CENTRAL VALLEY",
+"charter_number": "400"
+},
+"6678": {
+"bank_name": "MITCHELL TEACHERS",
+"charter_number": "8386"
+},
+"6679": {
+"bank_name": "SCICAP",
+"charter_number": "65263"
+},
+"6680": {
+"bank_name": "JACKSON VIBRATORS EMPLOYEES",
+"charter_number": "62286"
+},
+"6681": {
+"bank_name": "ROCHESTER DAIRY COOPERATIVE EMPLOYE",
+"charter_number": "63247"
+},
+"6683": {
+"bank_name": "DES MOINES COUNTY POSTAL",
+"charter_number": "64480"
+},
+"6684": {
+"bank_name": "BALTIMORE PIPE TRADES",
+"charter_number": "14445"
+},
+"6688": {
+"bank_name": "ASE",
+"charter_number": "19318"
+},
+"6692": {
+"bank_name": "GRAYS HARBOR COMMUNITY HOSP",
+"charter_number": "15204"
+},
+"6697": {
+"bank_name": "ORAL",
+"charter_number": "6663"
+},
+"6698": {
+"bank_name": "MICO EMPLOYEES",
+"charter_number": "60259"
+},
+"6699": {
+"bank_name": "VICTORY/PIATERER MUTUAL BENEFIT ASS",
+"charter_number": "61786"
+},
+"6700": {
+"bank_name": "BAILEY CONTROLS",
+"charter_number": "20082"
+},
+"6702": {
+"bank_name": "QUEEN EMPLOYEES",
+"charter_number": "63669"
+},
+"6703": {
+"bank_name": "NYC MERCURY",
+"charter_number": "61348"
+},
+"6706": {
+"bank_name": "PROGRESSIVE NEIGHBORHOOD",
+"charter_number": "24558"
+},
+"6707": {
+"bank_name": "HOWARD COUNTY EMPLOYEES",
+"charter_number": "14360"
+},
+"6708": {
+"bank_name": "RACINE POLICE",
+"charter_number": "66723"
+},
+"6710": {
+"bank_name": "SOUTH BERKELEY",
+"charter_number": "14207"
+},
+"6713": {
+"bank_name": "V.A.M.C. FAYETTEVILLE",
+"charter_number": "5331"
+},
+"6717": {
+"bank_name": "WOMEN'S SOUTHWEST",
+"charter_number": "21747"
+},
+"6718": {
+"bank_name": "SHORE MEMORIAL",
+"charter_number": "20011"
+},
+"6719": {
+"bank_name": "TACOMIS",
+"charter_number": "149"
+},
+"6720": {
+"bank_name": "YALE SECURITY INC.",
+"charter_number": "13060"
+},
+"6721": {
+"bank_name": "BEMIS",
+"charter_number": "9374"
+},
+"6722": {
+"bank_name": "NORTHERN PACIFIC DULUTH",
+"charter_number": "1856"
+},
+"6723": {
+"bank_name": "BURGESS & NIPLE EMPLOYEES",
+"charter_number": "63514"
+},
+"6724": {
+"bank_name": "LAKE WORTH CITY EMPLOYEES",
+"charter_number": "67346"
+},
+"6725": {
+"bank_name": "BONNER SPRINGS",
+"charter_number": "152"
+},
+"6726": {
+"bank_name": "TEHACHAPI",
+"charter_number": "14757"
+},
+"6727": {
+"bank_name": "EPWORTH",
+"charter_number": "11467"
+},
+"6729": {
+"bank_name": "ABBCO COMMUNITY",
+"charter_number": "61828"
+},
+"6730": {
+"bank_name": "S J H EMPLOYEES",
+"charter_number": "17497"
+},
+"6733": {
+"bank_name": "ERIE T P E",
+"charter_number": "3113"
+},
+"6737": {
+"bank_name": "SWC",
+"charter_number": "60610"
+},
+"6739": {
+"bank_name": "M.A.P.",
+"charter_number": "82534"
+},
+"6740": {
+"bank_name": "IBEW LU 278",
+"charter_number": "12426"
+},
+"6741": {
+"bank_name": "SCHOOL DISTRICTS 162/163 EMPLOYEES",
+"charter_number": "13253"
+},
+"6746": {
+"bank_name": "RICH-SEAPAK",
+"charter_number": "11706"
+},
+"6748": {
+"bank_name": "GILMAN AREA",
+"charter_number": "67235"
+},
+"6749": {
+"bank_name": "GREENSBURG COMMUNITY",
+"charter_number": "20052"
+},
+"6750": {
+"bank_name": "NORFOLK SOUTHERN EMP CU., INC.",
+"charter_number": "66916"
+},
+"6751": {
+"bank_name": "WASHINGTON COUNTY POSTAL",
+"charter_number": "13100"
+},
+"6752": {
+"bank_name": "KOKOMO POST OFFICE",
+"charter_number": "66816"
+},
+"6753": {
+"bank_name": "SUNNYSIDE",
+"charter_number": "67105"
+},
+"6754": {
+"bank_name": "TIMES FREE PRESS",
+"charter_number": "68093"
+},
+"6755": {
+"bank_name": "ELECTRIC ENERGY INC EMPLOYEES",
+"charter_number": "65368"
+},
+"6757": {
+"bank_name": "CABISCO",
+"charter_number": "20505"
+},
+"6758": {
+"bank_name": "ST. PAULS EUCLID PARISH",
+"charter_number": "4932"
+},
+"6759": {
+"bank_name": "NEW YORK STATE EMPLOYEES",
+"charter_number": "165"
+},
+"6760": {
+"bank_name": "IFA EMPLOYEES",
+"charter_number": "1650"
+},
+"6761": {
+"bank_name": "DREMCO",
+"charter_number": "68067"
+},
+"6763": {
+"bank_name": "HUNGARIAN REFORMED CH SK BNFT",
+"charter_number": "14301"
+},
+"6764": {
+"bank_name": "EMPLOYEES SAVINGS",
+"charter_number": "64631"
+},
+"6767": {
+"bank_name": "LOCAL #673",
+"charter_number": "62852"
+},
+"6768": {
+"bank_name": "LOWER BUCKS HOSPITAL",
+"charter_number": "23491"
+},
+"6769": {
+"bank_name": "LAKE CHARLES TELCO",
+"charter_number": "62709"
+},
+"6770": {
+"bank_name": "G B C I",
+"charter_number": "66382"
+},
+"6772": {
+"bank_name": "EGYPTIAN",
+"charter_number": "65873"
+},
+"6774": {
+"bank_name": "LOCAL 229 IBEW",
+"charter_number": "10062"
+},
+"6775": {
+"bank_name": "NYC OTB",
+"charter_number": "20828"
+},
+"6777": {
+"bank_name": "LEAF RIVER",
+"charter_number": "24208"
+},
+"6779": {
+"bank_name": "LEAHI",
+"charter_number": "11332"
+},
+"6781": {
+"bank_name": "W. S. P.",
+"charter_number": "66697"
+},
+"6782": {
+"bank_name": "MOUNTAIN VIEW",
+"charter_number": "9911"
+},
+"6784": {
+"bank_name": "CENTRAL ELECTRIC",
+"charter_number": "64533"
+},
+"6785": {
+"bank_name": "FORT SMITH MUNICIPAL EMP",
+"charter_number": "17163"
+},
+"6786": {
+"bank_name": "PENNSYLVANIA GRANGE",
+"charter_number": "24462"
+},
+"6788": {
+"bank_name": "A M CASTLE EMPLOYEES",
+"charter_number": "16277"
+},
+"6789": {
+"bank_name": "ALTON BELL COMMUNITY",
+"charter_number": "65348"
+},
+"6790": {
+"bank_name": "LAKELAND POSTAL EMPLOYEES",
+"charter_number": "945"
+},
+"6791": {
+"bank_name": "BARTA-BERKS COMMUNITY",
+"charter_number": "5594"
+},
+"6794": {
+"bank_name": "WIN-HOOD CO-OP",
+"charter_number": "60098"
+},
+"6796": {
+"bank_name": "GASCO EASTERN DISTRICT",
+"charter_number": "16673"
+},
+"6798": {
+"bank_name": "INTEXT EMPLOYEES",
+"charter_number": "19329"
+},
+"6799": {
+"bank_name": "FENWAL",
+"charter_number": "67900"
+},
+"6801": {
+"bank_name": "LORAIN COUNTY POSTAL EMPLOYEES",
+"charter_number": "62213"
+},
+"6804": {
+"bank_name": "MONTROSE VA HOSPITAL",
+"charter_number": "6979"
+},
+"6805": {
+"bank_name": "QUIET CORNER COMMUNITY",
+"charter_number": "65801"
+},
+"6806": {
+"bank_name": "HI-TEC",
+"charter_number": "64395"
+},
+"6807": {
+"bank_name": "JUDD`S",
+"charter_number": "560"
+},
+"6808": {
+"bank_name": "MADCO",
+"charter_number": "66101"
+},
+"6809": {
+"bank_name": "HOME TOWN COMMUNITY CREDIT UNION",
+"charter_number": "66921"
+},
+"6810": {
+"bank_name": "MOON LAKE ELECTRIC EMPLOYEES",
+"charter_number": "15740"
+},
+"6811": {
+"bank_name": "BARABOO MUNICIPAL EMPLOYEES",
+"charter_number": "66804"
+},
+"6812": {
+"bank_name": "RTA HAYDEN",
+"charter_number": "2538"
+},
+"6813": {
+"bank_name": "NORTHERN STATES EMPLOYEES",
+"charter_number": "66769"
+},
+"6814": {
+"bank_name": "ORANGE COUNTY EMPLOYEES",
+"charter_number": "60776"
+},
+"6817": {
+"bank_name": "M. A. FORD EMPLOYEES",
+"charter_number": "63945"
+},
+"6820": {
+"bank_name": "CF INDUSTRIES INC. EMPLOYEES",
+"charter_number": "20987"
+},
+"6821": {
+"bank_name": "DINWIDDIE EDUCATION ASSOC",
+"charter_number": "13032"
+},
+"6824": {
+"bank_name": "NEWCOMER EMPLOYEES",
+"charter_number": "17755"
+},
+"6828": {
+"bank_name": "EAU CLAIRE POSTAL",
+"charter_number": "66612"
+},
+"6829": {
+"bank_name": "GRANITE CITY EMPLOYEES",
+"charter_number": "11720"
+},
+"6830": {
+"bank_name": "NORTH KENT CATHOLIC",
+"charter_number": "61979"
+},
+"6832": {
+"bank_name": "EMPLOYMENT SECURITY EMPLOYEES",
+"charter_number": "63162"
+},
+"6833": {
+"bank_name": "FIRST PA TWP EMP",
+"charter_number": "18445"
+},
+"6834": {
+"bank_name": "GLOBE INDUSTRIES EMPLOYEES",
+"charter_number": "61520"
+},
+"6835": {
+"bank_name": "CITY OF FAIRBANKS",
+"charter_number": "14573"
+},
+"6836": {
+"bank_name": "TRI AG",
+"charter_number": "4570"
+},
+"6837": {
+"bank_name": "ALCAN EMPLOYEES",
+"charter_number": "62559"
+},
+"6838": {
+"bank_name": "SCHOOL DISTRICT 130 EMPLOYEES",
+"charter_number": "16301"
+},
+"6841": {
+"bank_name": "WALKER-VIRGINIA",
+"charter_number": "17118"
+},
+"6844": {
+"bank_name": "U S VETERANS ADMINISTRATION, NEW OR",
+"charter_number": "267"
+},
+"6845": {
+"bank_name": "SUNLAND",
+"charter_number": "67291"
+},
+"6847": {
+"bank_name": "HRT EMPLOYEES",
+"charter_number": "5556"
+},
+"6848": {
+"bank_name": "CRESCENT",
+"charter_number": "7173"
+},
+"6849": {
+"bank_name": "THE LABOR",
+"charter_number": "66763"
+},
+"6854": {
+"bank_name": "PORTSMOUTH POLICE CREDIT UNION INC.",
+"charter_number": "66968"
+},
+"6856": {
+"bank_name": "JEFFERSON COMMUNITY DEVELOPMENT",
+"charter_number": "24684"
+},
+"6857": {
+"bank_name": "ST. GERTRUDE'S",
+"charter_number": "62289"
+},
+"6861": {
+"bank_name": "NORTHEAST HOUSTON",
+"charter_number": "10777"
+},
+"6865": {
+"bank_name": "NCP COMMUNITY DEVELOPMENT",
+"charter_number": "24618"
+},
+"6866": {
+"bank_name": "JUNIOR COLLEGE",
+"charter_number": "18989"
+},
+"6867": {
+"bank_name": "MHI INDEPENDENCE EMPLOYEES",
+"charter_number": "65264"
+},
+"6868": {
+"bank_name": "HEALTH CARE ASSOCIATIONS",
+"charter_number": "21153"
+},
+"6869": {
+"bank_name": "WILLIAMS COLLEGE EMPLOYEES",
+"charter_number": "23693"
+},
+"6870": {
+"bank_name": "PORTSMOUTH VA CITY EMPLOYEES",
+"charter_number": "16970"
+},
+"6871": {
+"bank_name": "ALABAMA WEST FLA METHODIST",
+"charter_number": "18187"
+},
+"6872": {
+"bank_name": "APC EMPLOYEES",
+"charter_number": "9552"
+},
+"6873": {
+"bank_name": "DESERET NEWS EMP. CREDIT UNION",
+"charter_number": "67101"
+},
+"6874": {
+"bank_name": "ST. PATRICK CARLETON",
+"charter_number": "6510"
+},
+"6875": {
+"bank_name": "MANITOWOC COUNTY EMPLOYEES",
+"charter_number": "66784"
+},
+"6877": {
+"bank_name": "FCAMEC",
+"charter_number": "22380"
+},
+"6878": {
+"bank_name": "SAGINAW VA HOSPITAL",
+"charter_number": "8499"
+},
+"6880": {
+"bank_name": "ST. JOSEPH COLD SPRING",
+"charter_number": "22378"
+},
+"6881": {
+"bank_name": "NEW JERSEY BUREAU OF PAROLE EMPLOYE",
+"charter_number": "64204"
+},
+"6882": {
+"bank_name": "STATE EMPLOYEES #84",
+"charter_number": "64376"
+},
+"6883": {
+"bank_name": "WORD OF LIFE",
+"charter_number": "24660"
+},
+"6885": {
+"bank_name": "BRANCH 825 N.A.L.C.",
+"charter_number": "62404"
+},
+"6887": {
+"bank_name": "MERCED MUNICIPAL EMPLOYEES",
+"charter_number": "62989"
+},
+"6888": {
+"bank_name": "W. P. S.",
+"charter_number": "66604"
+},
+"6890": {
+"bank_name": "DAIJO",
+"charter_number": "6135"
+},
+"6891": {
+"bank_name": "RIVERSIDE BEAVER COUNTY",
+"charter_number": "23126"
+},
+"6892": {
+"bank_name": "PENNINGTON MUNICIPAL & COUNTY EMPLO",
+"charter_number": "64331"
+},
+"6895": {
+"bank_name": "NOXEN COMMUNITY",
+"charter_number": "10046"
+},
+"6896": {
+"bank_name": "SOUTH JENNINGS CATHOLIC",
+"charter_number": "13673"
+},
+"6897": {
+"bank_name": "SALEM COUNTY (NJ) FEDERAL EMPLOYEES",
+"charter_number": "432"
+},
+"6898": {
+"bank_name": "MACON WATER WORKS",
+"charter_number": "67397"
+},
+"6901": {
+"bank_name": "FAIRFAX CITY",
+"charter_number": "18665"
+},
+"6903": {
+"bank_name": "LANE MEMORIAL",
+"charter_number": "15202"
+},
+"6904": {
+"bank_name": "PLUSWOOD GROUP",
+"charter_number": "67218"
+},
+"6905": {
+"bank_name": "MY CHOICE",
+"charter_number": "19676"
+},
+"6906": {
+"bank_name": "SEABOARD GATEWAY",
+"charter_number": "19888"
+},
+"6907": {
+"bank_name": "J C S EMPLOYEES",
+"charter_number": "12296"
+},
+"6910": {
+"bank_name": "IRON WORKERS LOCAL 25",
+"charter_number": "63401"
+},
+"6911": {
+"bank_name": "ROCKY RIVER SCHOOL EMPS.",
+"charter_number": "19150"
+},
+"6914": {
+"bank_name": "MAIL POUCH",
+"charter_number": "3909"
+},
+"6917": {
+"bank_name": "STARK METROPOLITAN HOUSING AUTHORIT",
+"charter_number": "24646"
+},
+"6919": {
+"bank_name": "URBANDALE MUNICIPAL EMPLOYEES",
+"charter_number": "65131"
+},
+"6920": {
+"bank_name": "VILLAGE PEOPLES",
+"charter_number": "23880"
+},
+"6922": {
+"bank_name": "BOYDS",
+"charter_number": "14876"
+},
+"6924": {
+"bank_name": "ANGELUS CAN EMPLOYEES",
+"charter_number": "15449"
+},
+"6926": {
+"bank_name": "CORY METHODIST CHURCH",
+"charter_number": "61622"
+},
+"6928": {
+"bank_name": "QUEMADO",
+"charter_number": "13765"
+},
+"6929": {
+"bank_name": "ANDERSON SC CITY EMPLOYEES",
+"charter_number": "15649"
+},
+"6930": {
+"bank_name": "NEWSPAPER AND PRINTERS",
+"charter_number": "68075"
+},
+"6931": {
+"bank_name": "ELKHART POSTAL EMPLOYEES",
+"charter_number": "13118"
+},
+"6933": {
+"bank_name": "ST. PATRICK (CROSWELL)",
+"charter_number": "62239"
+},
+"6934": {
+"bank_name": "HAMMOND FIREFIGHTERS ASSN.",
+"charter_number": "82762"
+},
+"6936": {
+"bank_name": "AMAIZO",
+"charter_number": "1062"
+},
+"6937": {
+"bank_name": "BLILEY",
+"charter_number": "5067"
+},
+"6938": {
+"bank_name": "PACIFICA-COASTSIDE",
+"charter_number": "63491"
+},
+"6939": {
+"bank_name": "CLEAVER-BROOKS",
+"charter_number": "67136"
+},
+"6940": {
+"bank_name": "NW IN-AM WATER EMP",
+"charter_number": "8041"
+},
+"6941": {
+"bank_name": "ALBANY CITY LODGE K OF P 540",
+"charter_number": "17469"
+},
+"6943": {
+"bank_name": "NORTHERN CALIFORNIA LATVIAN",
+"charter_number": "63097"
+},
+"6944": {
+"bank_name": "SCOTT A. T. O.",
+"charter_number": "21328"
+},
+"6945": {
+"bank_name": "NICHOLLS",
+"charter_number": "18933"
+},
+"6946": {
+"bank_name": "SOUTH END MUTUAL BENEFIT ASSOCIATIO",
+"charter_number": "65908"
+},
+"6949": {
+"bank_name": "IMMACULATE CONCEPTION FALL RIVER",
+"charter_number": "12209"
+},
+"6950": {
+"bank_name": "ANCHOR SEVEN",
+"charter_number": "16424"
+},
+"6951": {
+"bank_name": "PITTSBURGH PEPSI COLA",
+"charter_number": "18843"
+},
+"6952": {
+"bank_name": "REID TEMPLE",
+"charter_number": "24778"
+},
+"6957": {
+"bank_name": "CARTER COUNTY",
+"charter_number": "8495"
+},
+"6958": {
+"bank_name": "NATCHEZ-ADAMS EDUCATORS",
+"charter_number": "63821"
+},
+"6959": {
+"bank_name": "CHARLESTON POSTAL COOPERATIVE",
+"charter_number": "24686"
+},
+"6961": {
+"bank_name": "PITTSTON AREA SCHOOL EMPLOYEES",
+"charter_number": "22090"
+},
+"6962": {
+"bank_name": "UTILITY EMP LASALLE SERV AREA",
+"charter_number": "65622"
+},
+"6963": {
+"bank_name": "SAN FRANCISCO B P R",
+"charter_number": "1487"
+},
+"6964": {
+"bank_name": "KENOSHA POSTAL EMPLOYEES",
+"charter_number": "66641"
+},
+"6965": {
+"bank_name": "DOLE WAHIAWA",
+"charter_number": "2614"
+},
+"6969": {
+"bank_name": "BIRMINGHAM FINANCIAL",
+"charter_number": "11118"
+},
+"6971": {
+"bank_name": "EAST SIDE TERMINAL",
+"charter_number": "60687"
+},
+"6972": {
+"bank_name": "TCU 579",
+"charter_number": "66507"
+},
+"6973": {
+"bank_name": "KRAMER HOMES",
+"charter_number": "6097"
+},
+"6974": {
+"bank_name": "SIGNAL CEMENT WORKERS",
+"charter_number": "68086"
+},
+"6976": {
+"bank_name": "RICHMOND STATE HOSPITAL EMPLOYEES",
+"charter_number": "64742"
+},
+"6978": {
+"bank_name": "N P T EMPLOYEES",
+"charter_number": "7793"
+},
+"6979": {
+"bank_name": "STEEL CRETE EMPLOYEES",
+"charter_number": "15495"
+},
+"6982": {
+"bank_name": "SALT LAKE REGIONAL MEDICAL CENTER E",
+"charter_number": "12034"
+},
+"6986": {
+"bank_name": "LAKEWOOD FIRE FIGHTERS",
+"charter_number": "96738"
+},
+"6987": {
+"bank_name": "BELGER EMPLOYEES",
+"charter_number": "64802"
+},
+"6988": {
+"bank_name": "PCH",
+"charter_number": "22817"
+},
+"6989": {
+"bank_name": "KETEMA",
+"charter_number": "11414"
+},
+"6990": {
+"bank_name": "RHAWNHURST",
+"charter_number": "14566"
+},
+"6991": {
+"bank_name": "BOGALUSA SCHOOLS",
+"charter_number": "10557"
+},
+"6992": {
+"bank_name": "WHITE HAVEN CENTER EMPLOYEES",
+"charter_number": "19744"
+},
+"6993": {
+"bank_name": "CREAMERY",
+"charter_number": "64963"
+},
+"6995": {
+"bank_name": "WATER-LIGHT",
+"charter_number": "67090"
+},
+"7000": {
+"bank_name": "ST. MARYS ASSUMPTION PARISH",
+"charter_number": "934"
+},
+"7002": {
+"bank_name": "PPG PAINT RESEARCH",
+"charter_number": "11853"
+},
+"7004": {
+"bank_name": "CADMUS CREDIT UNION INCORPORATED",
+"charter_number": "60111"
+},
+"7006": {
+"bank_name": "SIXTH POSTAL",
+"charter_number": "60258"
+},
+"7007": {
+"bank_name": "CITY OF TRENTON EMPLOYEES",
+"charter_number": "63512"
+},
+"7008": {
+"bank_name": "L C MUNICIPAL",
+"charter_number": "11230"
+},
+"7009": {
+"bank_name": "COREY STEEL EMP.",
+"charter_number": "60294"
+},
+"7012": {
+"bank_name": "PEOPLES ELECTRIC POWER",
+"charter_number": "67148"
+},
+"7013": {
+"bank_name": "RANDOLPH COUNTY SCHOOL EMPLOYEES",
+"charter_number": "24190"
+},
+"7014": {
+"bank_name": "DIXIE CUP EMPLOYEES",
+"charter_number": "2019"
+},
+"7018": {
+"bank_name": "FIRE DEPARTMENT",
+"charter_number": "67065"
+},
+"7020": {
+"bank_name": "TOLNA CO OP",
+"charter_number": "3661"
+},
+"7021": {
+"bank_name": "FORREST-PETAL EDUCATIONAL",
+"charter_number": "16259"
+},
+"7022": {
+"bank_name": "LAKE SUPERIOR REFINERY",
+"charter_number": "66496"
+},
+"7023": {
+"bank_name": "CARROLL CHILDERS",
+"charter_number": "67466"
+},
+"7024": {
+"bank_name": "CAI EMPLOYEES",
+"charter_number": "60321"
+},
+"7025": {
+"bank_name": "TAZEWELL COUNTY GOVERNMENT EMP",
+"charter_number": "60298"
+},
+"7026": {
+"bank_name": "P S BURLINGTON EMPLOYEES",
+"charter_number": "12226"
+},
+"7027": {
+"bank_name": "SCIENTIFIC RESEARCH PARTNER'S",
+"charter_number": "63998"
+},
+"7031": {
+"bank_name": "O P S EMP",
+"charter_number": "18599"
+},
+"7033": {
+"bank_name": "ASHBY",
+"charter_number": "1938"
+},
+"7034": {
+"bank_name": "HUTCHINSON NEWS",
+"charter_number": "67830"
+},
+"7035": {
+"bank_name": "HURLBUT EMPLOYEES",
+"charter_number": "14924"
+},
+"7038": {
+"bank_name": "DUQ LITE EMPLOYEES",
+"charter_number": "7131"
+},
+"7039": {
+"bank_name": "PLUMBERS & STEAMFITTERS LO 83",
+"charter_number": "17168"
+},
+"7040": {
+"bank_name": "TOLNA",
+"charter_number": "68692"
+},
+"7041": {
+"bank_name": "WAUKEGAN MUNICIPAL EMPLOYEES",
+"charter_number": "66016"
+},
+"7042": {
+"bank_name": "BUFFALO & ERIE CNTY PUB LIBRARY EMP",
+"charter_number": "3362"
+},
+"7043": {
+"bank_name": "TABLE ROCK",
+"charter_number": "24717"
+},
+"7044": {
+"bank_name": "POSTAL EMPLOYEES OF TROY, N.Y.",
+"charter_number": "24347"
+},
+"7045": {
+"bank_name": "HAVERHILL",
+"charter_number": "67901"
+},
+"7046": {
+"bank_name": "PORTER-CABLE EMPLOYEES",
+"charter_number": "67969"
+},
+"7052": {
+"bank_name": "UNITED CATHOLIC",
+"charter_number": "65366"
+},
+"7056": {
+"bank_name": "ST. JOHN SELF-HELP",
+"charter_number": "19452"
+},
+"7057": {
+"bank_name": "BC3 EMPLOYEES",
+"charter_number": "22042"
+},
+"7063": {
+"bank_name": "KOLMAR N Y EMPLOYEES",
+"charter_number": "10450"
+},
+"7064": {
+"bank_name": "GILT EDGE EMPLOYEES",
+"charter_number": "14412"
+},
+"7065": {
+"bank_name": "SOUTHERN ARIZONA COMMUNICATIONS",
+"charter_number": "63304"
+},
+"7066": {
+"bank_name": "KENRICK",
+"charter_number": "11302"
+},
+"7068": {
+"bank_name": "H.B.E.",
+"charter_number": "66120"
+},
+"7069": {
+"bank_name": "GOUVERNEUR SCHOOLS",
+"charter_number": "10656"
+},
+"7071": {
+"bank_name": "SALEM ITALIAN-AMERICAN",
+"charter_number": "67893"
+},
+"7072": {
+"bank_name": "CAT",
+"charter_number": "2943"
+},
+"7075": {
+"bank_name": "BYZANTINE CATHOLIC",
+"charter_number": "13657"
+},
+"7076": {
+"bank_name": "RMH",
+"charter_number": "21592"
+},
+"7079": {
+"bank_name": "BLUFFTON MOTOR WORKS/FRANKLIN ELECT",
+"charter_number": "82753"
+},
+"7081": {
+"bank_name": "V A R O NO. 319",
+"charter_number": "5467"
+},
+"7082": {
+"bank_name": "DISTINGUISHED SERVICE",
+"charter_number": "95028"
+},
+"7086": {
+"bank_name": "WHITE PINE COUNTY SCHOOL EMP",
+"charter_number": "12617"
+},
+"7087": {
+"bank_name": "TWE",
+"charter_number": "16709"
+},
+"7089": {
+"bank_name": "W. N. M. H.",
+"charter_number": "67821"
+},
+"7091": {
+"bank_name": "GLACIAL LAKES EDUCATIONAL EMPLOYEES",
+"charter_number": "9233"
+},
+"7093": {
+"bank_name": "CY-HANNIBAL",
+"charter_number": "67795"
+},
+"7094": {
+"bank_name": "BIG VALLEY CREDIT UNION",
+"charter_number": "67094"
+},
+"7098": {
+"bank_name": "COPIAH - LINCOLN EDUCATORS",
+"charter_number": "23973"
+},
+"7099": {
+"bank_name": "CT1 MEDIA",
+"charter_number": "60049"
+},
+"7100": {
+"bank_name": "CITY OF MCKEESPORT EMPLOYEES",
+"charter_number": "1480"
+},
+"7103": {
+"bank_name": "SAVAGE ARMS EMPLOYEES",
+"charter_number": "67844"
+},
+"7105": {
+"bank_name": "BROOK PARK MUNICIPAL EMPLOYEES",
+"charter_number": "19144"
+},
+"7107": {
+"bank_name": "DISTRICT 1 THD",
+"charter_number": "67492"
+},
+"7109": {
+"bank_name": "PUBLIC LIBRARY EMPLOYEES",
+"charter_number": "96771"
+},
+"7110": {
+"bank_name": "INDIANA UNITED METHODIST",
+"charter_number": "11799"
+},
+"7111": {
+"bank_name": "ST. JAMES A M E",
+"charter_number": "5329"
+},
+"7112": {
+"bank_name": "W.H. NICHOLS EMPLOYEES",
+"charter_number": "12121"
+},
+"7113": {
+"bank_name": "WORZALLA PUBLISHING EMPLS.",
+"charter_number": "66578"
+},
+"7115": {
+"bank_name": "EAST CENTRAL OHIO FOOD DEALERS ASSC",
+"charter_number": "66280"
+},
+"7119": {
+"bank_name": "LAKE COUNTY",
+"charter_number": "65971"
+},
+"7123": {
+"bank_name": "N C S E CREDIT UNION INC.",
+"charter_number": "66988"
+},
+"7125": {
+"bank_name": "FAITH BASED",
+"charter_number": "24687"
+},
+"7126": {
+"bank_name": "540 I.B.E.W.",
+"charter_number": "96652"
+},
+"7127": {
+"bank_name": "WHEELING PITTSBURGH STEEL OFFICE",
+"charter_number": "387"
+},
+"7129": {
+"bank_name": "USP MARION EMPLOYEES",
+"charter_number": "15886"
+},
+"7130": {
+"bank_name": "EL BARRIO",
+"charter_number": "18275"
+},
+"7131": {
+"bank_name": "SORENG EMPLOYEES",
+"charter_number": "61644"
+},
+"7132": {
+"bank_name": "UNITED FELLOWSHIP",
+"charter_number": "24494"
+},
+"7134": {
+"bank_name": "ALTON & SOUTHERN RAILROAD EMP",
+"charter_number": "1562"
+},
+"7135": {
+"bank_name": "WESTERN STATES ENVELOPE",
+"charter_number": "66607"
+},
+"7140": {
+"bank_name": "PATTERSON-KELLEY EMPLOYEES",
+"charter_number": "13295"
+},
+"7147": {
+"bank_name": "UNITEHERE",
+"charter_number": "24772"
+},
+"7151": {
+"bank_name": "SANDHILLS",
+"charter_number": "4193"
+},
+"7152": {
+"bank_name": "EAST CHICAGO FIREMEN'S",
+"charter_number": "82772"
+},
+"7154": {
+"bank_name": "JAX GLIDCO EMPLOYEES",
+"charter_number": "13807"
+},
+"7156": {
+"bank_name": "SCOTTS BLUFF",
+"charter_number": "13768"
+},
+"7157": {
+"bank_name": "NORTH JEFFERSON COUNTY CATHOLIC",
+"charter_number": "67952"
+},
+"7158": {
+"bank_name": "CHICAGO HEIGHTS STEEL",
+"charter_number": "61104"
+},
+"7160": {
+"bank_name": "SHELL-FIR",
+"charter_number": "82539"
+},
+"7161": {
+"bank_name": "LOCAL 701 I B E W",
+"charter_number": "15330"
+},
+"7163": {
+"bank_name": "ST. JULIE BILLIART",
+"charter_number": "7527"
+},
+"7165": {
+"bank_name": "1ST SELECT",
+"charter_number": "11487"
+},
+"7166": {
+"bank_name": "I B E W RICHMOND VA LOCAL 666",
+"charter_number": "9426"
+},
+"7167": {
+"bank_name": "NEW MOUNT ZION BAPTIST CHURCH",
+"charter_number": "68436"
+},
+"7168": {
+"bank_name": "NEW MEXICO CORRECTIONAL EMPL",
+"charter_number": "12633"
+},
+"7169": {
+"bank_name": "HHA",
+"charter_number": "16195"
+},
+"7171": {
+"bank_name": "OUR LADY OF GOOD HOPE",
+"charter_number": "67134"
+},
+"7176": {
+"bank_name": "ARVIN EMPLOYEES",
+"charter_number": "65255"
+},
+"7177": {
+"bank_name": "CPT",
+"charter_number": "65553"
+},
+"7178": {
+"bank_name": "PIKE COUNTY TEACHERS",
+"charter_number": "16690"
+},
+"7179": {
+"bank_name": "CONTINENTAL EMPLOYEES",
+"charter_number": "7041"
+},
+"7180": {
+"bank_name": "NORFOLK COUNTY EMPLOYEES",
+"charter_number": "20502"
+},
+"7181": {
+"bank_name": "PEOPLES CHOICE OF SAN ANTONIO",
+"charter_number": "17378"
+},
+"7182": {
+"bank_name": "CHATTANOOGA COCA-COLA EMPLOYEES",
+"charter_number": "24510"
+},
+"7184": {
+"bank_name": "VALTEK",
+"charter_number": "67086"
+},
+"7185": {
+"bank_name": "TUSCUMBIA",
+"charter_number": "13054"
+},
+"7186": {
+"bank_name": "P.S. LOCAL 821",
+"charter_number": "9354"
+},
+"7190": {
+"bank_name": "MANISTEE PUBLIC EMPLOYEES",
+"charter_number": "62037"
+},
+"7191": {
+"bank_name": "BOISE VALLEY",
+"charter_number": "82503"
+},
+"7192": {
+"bank_name": "POINTE COUPEE EDUCATION ASSOC",
+"charter_number": "16386"
+},
+"7194": {
+"bank_name": "CHAGRIN FALLS SCHOOL EMP",
+"charter_number": "15417"
+},
+"7197": {
+"bank_name": "URBANA POSTAL",
+"charter_number": "64481"
+},
+"7198": {
+"bank_name": "THE CREDIT UNION FOR THE BLIND AND",
+"charter_number": "67118"
+},
+"7199": {
+"bank_name": "OELWEIN-CRESCO",
+"charter_number": "64329"
+},
+"7201": {
+"bank_name": "UPWA, DISTRICT #1 AREA 5",
+"charter_number": "65830"
+},
+"7202": {
+"bank_name": "SPOTSWOOD EMPLOYEES",
+"charter_number": "17131"
+},
+"7204": {
+"bank_name": "NWCS",
+"charter_number": "16223"
+},
+"7205": {
+"bank_name": "ST. CECILIA PARISH",
+"charter_number": "64669"
+},
+"7207": {
+"bank_name": "GECO",
+"charter_number": "9060"
+},
+"7208": {
+"bank_name": "E C A I",
+"charter_number": "16920"
+},
+"7209": {
+"bank_name": "DAPAKO",
+"charter_number": "65107"
+},
+"7213": {
+"bank_name": "NORTHERN EAGLE",
+"charter_number": "24852"
+},
+"7217": {
+"bank_name": "SHOSHONE COUNTY SCHOOL EMPLOYEES",
+"charter_number": "62766"
+},
+"7218": {
+"bank_name": "CARROLL COUNTY SCHOOL EMP",
+"charter_number": "15962"
+},
+"7221": {
+"bank_name": "CHESTER UPLAND SCHOOL EMPLOYEES",
+"charter_number": "3122"
+},
+"7223": {
+"bank_name": "JAYHAWK",
+"charter_number": "3795"
+},
+"7224": {
+"bank_name": "CITY-COUNTY",
+"charter_number": "19962"
+},
+"7225": {
+"bank_name": "CATHOLIC",
+"charter_number": "67027"
+},
+"7226": {
+"bank_name": "LANCASTER PRESS EMPLOYEES",
+"charter_number": "9267"
+},
+"7227": {
+"bank_name": "POSTAL CREDIT UNION OF FDL",
+"charter_number": "66487"
+},
+"7228": {
+"bank_name": "BRAND-REX EMPLOYEES",
+"charter_number": "61361"
+},
+"7230": {
+"bank_name": "BILT-WELL",
+"charter_number": "65286"
+},
+"7231": {
+"bank_name": "W. K.",
+"charter_number": "3879"
+},
+"7232": {
+"bank_name": "PEOPLE FOR PEOPLE COMMUNITY DEVELOP",
+"charter_number": "68406"
+},
+"7234": {
+"bank_name": "MAC NEILL EMPLOYEES",
+"charter_number": "67941"
+},
+"7235": {
+"bank_name": "GSI AVONMORE EMPLOYEES",
+"charter_number": "13466"
+},
+"7236": {
+"bank_name": "NKP BUFFALO DIV",
+"charter_number": "10981"
+},
+"7237": {
+"bank_name": "SHERWIL",
+"charter_number": "61292"
+},
+"7238": {
+"bank_name": "S. W. E.",
+"charter_number": "10749"
+},
+"7239": {
+"bank_name": "GORTON'S OF GLOUCESTER EMPLOYEES",
+"charter_number": "843"
+},
+"7240": {
+"bank_name": "S M H",
+"charter_number": "18110"
+},
+"7241": {
+"bank_name": "CATASAUQUA AREA",
+"charter_number": "3024"
+},
+"7245": {
+"bank_name": "ELY STEELWORKERS",
+"charter_number": "63666"
+},
+"7246": {
+"bank_name": "NIAGARA FALLS POLICEMENS",
+"charter_number": "777"
+},
+"7248": {
+"bank_name": "A. L. BRATCHER",
+"charter_number": "16523"
+},
+"7251": {
+"bank_name": "MOORHEAD TEACHERS",
+"charter_number": "64994"
+},
+"7252": {
+"bank_name": "KAPPA ALPHA PSI",
+"charter_number": "24732"
+},
+"7253": {
+"bank_name": "OLEAN TILE EMPLOYEES",
+"charter_number": "921"
+},
+"7254": {
+"bank_name": "KIT TEL",
+"charter_number": "12410"
+},
+"7255": {
+"bank_name": "ST. STEPHEN'S",
+"charter_number": "11624"
+},
+"7257": {
+"bank_name": "CEPA UNITED METHODIST",
+"charter_number": "11735"
+},
+"7261": {
+"bank_name": "BAILEY, INC. EMPLOYEES",
+"charter_number": "67137"
+},
+"7262": {
+"bank_name": "MANATROL DIVISION EMPLOYEES",
+"charter_number": "63053"
+},
+"7263": {
+"bank_name": "RECO",
+"charter_number": "60447"
+},
+"7265": {
+"bank_name": "WEDENEM",
+"charter_number": "64871"
+},
+"7266": {
+"bank_name": "K & E EMPLOYEES",
+"charter_number": "6444"
+},
+"7267": {
+"bank_name": "F. C.",
+"charter_number": "22510"
+},
+"7269": {
+"bank_name": "IBW EMPLOYEES",
+"charter_number": "8608"
+},
+"7270": {
+"bank_name": "SANDUSKY OHIO EDISON EMPLOYEE",
+"charter_number": "3376"
+},
+"7275": {
+"bank_name": "WIREMOLD",
+"charter_number": "6767"
+},
+"7280": {
+"bank_name": "PEPSI COLA",
+"charter_number": "11060"
+},
+"7282": {
+"bank_name": "DELMAR O C F",
+"charter_number": "22532"
+},
+"7284": {
+"bank_name": "N R P O EMPLOYEES",
+"charter_number": "6107"
+},
+"7285": {
+"bank_name": "null",
+"charter_number": "null"
+},
+"7286": {
+"bank_name": "CR COMMUNITY FIRST",
+"charter_number": "24785"
+},
+"7288": {
+"bank_name": "COHOES CITY EMPLOYEES",
+"charter_number": "22445"
+},
+"7289": {
+"bank_name": "WISCONSIN HEIGHTS",
+"charter_number": "66778"
+},
+"7290": {
+"bank_name": "PRODUCERS EMPLOYEES'",
+"charter_number": "96770"
+},
+"7291": {
+"bank_name": "CAM",
+"charter_number": "21700"
+},
+"7292": {
+"bank_name": "PHILADELPHIA MINT",
+"charter_number": "3297"
+},
+"7293": {
+"bank_name": "COMPTON MUNICIPAL EMPLOYEES",
+"charter_number": "4475"
+},
+"7294": {
+"bank_name": "THE URBAN STREET BISCUIT WKRS",
+"charter_number": "3300"
+},
+"7296": {
+"bank_name": "ST. JAMES PARISH SCHOOL EMPLOYEES",
+"charter_number": "23400"
+},
+"7298": {
+"bank_name": "NORTHERN STS PWR CO FARGO DIV",
+"charter_number": "73"
+},
+"7299": {
+"bank_name": "CABLE",
+"charter_number": "1874"
+},
+"7300": {
+"bank_name": "ST. ROSE PARISH PERRYSBURG",
+"charter_number": "63384"
+},
+"7301": {
+"bank_name": "BROWNBERRY",
+"charter_number": "66502"
+},
+"7302": {
+"bank_name": "SWEETHEART CUP",
+"charter_number": "23873"
+},
+"7303": {
+"bank_name": "NORTHWESTERN STATES CEMENT EMPLOYEE",
+"charter_number": "64468"
+},
+"7304": {
+"bank_name": "EAU CLAIRE PRESS",
+"charter_number": "66509"
+},
+"7305": {
+"bank_name": "MUNCIE POST OFFICE",
+"charter_number": "82785"
+},
+"7307": {
+"bank_name": "CIRCLE K",
+"charter_number": "65201"
+},
+"7308": {
+"bank_name": "RABUN-TALLULAH",
+"charter_number": "22672"
+},
+"7309": {
+"bank_name": "BEST FOOD BAYONNE EMPLOYEES",
+"charter_number": "3890"
+},
+"7312": {
+"bank_name": "UNION OF POLES IN AMERICA",
+"charter_number": "96800"
+},
+"7313": {
+"bank_name": "ELIZABETH POSTAL EMPLOYEES",
+"charter_number": "66160"
+},
+"7314": {
+"bank_name": "G.C.I. EMP.",
+"charter_number": "23817"
+},
+"7315": {
+"bank_name": "A.Y. MCDONALD EMPLOYEES",
+"charter_number": "64392"
+},
+"7317": {
+"bank_name": "HAZLETON NEWSPAPER EMPLOYEES",
+"charter_number": "13824"
+},
+"7318": {
+"bank_name": "P S GD TRENTON",
+"charter_number": "16217"
+},
+"7320": {
+"bank_name": "CCC MARTINSVILLE EMP CREDIT UNION",
+"charter_number": "66891"
+},
+"7323": {
+"bank_name": "ISCOLA",
+"charter_number": "23383"
+},
+"7324": {
+"bank_name": "GLEN ULLIN",
+"charter_number": "62686"
+},
+"7326": {
+"bank_name": "PINE TO PRAIRIE",
+"charter_number": "24675"
+},
+"7328": {
+"bank_name": "PROJECTOR",
+"charter_number": "20798"
+},
+"7329": {
+"bank_name": "SAN DIEGO JACL",
+"charter_number": "10622"
+},
+"7330": {
+"bank_name": "ELECTROPOWER",
+"charter_number": "81559"
+},
+"7331": {
+"bank_name": "PARIS",
+"charter_number": "13218"
+},
+"7332": {
+"bank_name": "EMSCO",
+"charter_number": "67050"
+},
+"7333": {
+"bank_name": "LOGAN CITY EMPLOYEES CREDIT UNION",
+"charter_number": "67161"
+},
+"7335": {
+"bank_name": "SHEPHERD'S",
+"charter_number": "24832"
+},
+"7336": {
+"bank_name": "K.C.NO. 3601",
+"charter_number": "9254"
+},
+"7338": {
+"bank_name": "ELECTRICAL WORKERS NO 527",
+"charter_number": "15419"
+},
+"7339": {
+"bank_name": "F.M.C. EMPLOYEES",
+"charter_number": "23786"
+},
+"7340": {
+"bank_name": "ST. NICHOLAS",
+"charter_number": "67170"
+},
+"7341": {
+"bank_name": "LAMAR",
+"charter_number": "15066"
+},
+"7342": {
+"bank_name": "CARVER BRANCH",
+"charter_number": "6109"
+},
+"7343": {
+"bank_name": "CAMPBELL COUNTY EMP CREDIT UNION",
+"charter_number": "66909"
+},
+"7345": {
+"bank_name": "HOPES EMPLOYEES",
+"charter_number": "3703"
+},
+"7346": {
+"bank_name": "DANVILLE HOLY FAMILY",
+"charter_number": "81543"
+},
+"7350": {
+"bank_name": "GOOD STREET BAPTIST CHURCH",
+"charter_number": "12108"
+},
+"7351": {
+"bank_name": "OKO CAL",
+"charter_number": "8410"
+},
+"7354": {
+"bank_name": "ELLWOOD CITY HOLY REDEEMER PARISH",
+"charter_number": "469"
+},
+"7357": {
+"bank_name": "GROPACO",
+"charter_number": "16020"
+},
+"7358": {
+"bank_name": "WARNACO EMPLOYEES",
+"charter_number": "21990"
+},
+"7359": {
+"bank_name": "VON MAUR EMPLOYEES",
+"charter_number": "64770"
+},
+"7360": {
+"bank_name": "CORCO",
+"charter_number": "12907"
+},
+"7361": {
+"bank_name": "FANNIE B. PECK OF BETHEL AME CHURCH",
+"charter_number": "61375"
+},
+"7363": {
+"bank_name": "MONOFRAX EMPLOYEES",
+"charter_number": "10218"
+},
+"7364": {
+"bank_name": "NEW COVENANT MISSIONARY BAPT CHURCH",
+"charter_number": "67220"
+},
+"7365": {
+"bank_name": "P. R. K. EMPLOYEES",
+"charter_number": "19209"
+},
+"7366": {
+"bank_name": "SALINA RAILROAD",
+"charter_number": "63087"
+},
+"7368": {
+"bank_name": "REPUBLIC HOSE EMPLOYEES",
+"charter_number": "3750"
+},
+"7370": {
+"bank_name": "DELAWARE RIVER EMPLOYEES",
+"charter_number": "15443"
+},
+"7371": {
+"bank_name": "EDDY PAPER EMPLOYEES",
+"charter_number": "61878"
+},
+"7372": {
+"bank_name": "ARLINGTON K OF C 109",
+"charter_number": "23932"
+},
+"7373": {
+"bank_name": "BRIDGE STREET AWME CHURCH",
+"charter_number": "24032"
+},
+"7376": {
+"bank_name": "GREATER CHRIST BAPTIST CHURCH",
+"charter_number": "63713"
+},
+"7377": {
+"bank_name": "MURPHY",
+"charter_number": "63865"
+},
+"7378": {
+"bank_name": "AUTOCLAVE ERIE",
+"charter_number": "11303"
+},
+"7379": {
+"bank_name": "S.F.& M. EMPLOYEES",
+"charter_number": "63052"
+},
+"7380": {
+"bank_name": "MILLWRIGHTS/PILE DRIVERS OF PITTSBU",
+"charter_number": "18444"
+},
+"7382": {
+"bank_name": "P. A.",
+"charter_number": "19909"
+},
+"7383": {
+"bank_name": "TRIBUNE HERALD",
+"charter_number": "2735"
+},
+"7384": {
+"bank_name": "HEEKIN CAN EMPL",
+"charter_number": "96821"
+},
+"7386": {
+"bank_name": "RENAISSANCE COMMUNITY DEVELOPMENT C",
+"charter_number": "68195"
+},
+"7387": {
+"bank_name": "TRIBUNE",
+"charter_number": "82545"
+},
+"7388": {
+"bank_name": "WRIGHT-DUNBAR AREA",
+"charter_number": "96691"
+},
+"7389": {
+"bank_name": "MONESSEN SCHOOL EMPLOYEES",
+"charter_number": "4979"
+},
+"7391": {
+"bank_name": "VEEDER-ROOT EMP. CREDIT ASSN.",
+"charter_number": "22316"
+},
+"7392": {
+"bank_name": "CAROL WIRE & CABLE CORP EMP",
+"charter_number": "8867"
+},
+"7393": {
+"bank_name": "K.E.M.",
+"charter_number": "63881"
+},
+"7394": {
+"bank_name": "BLESSED SACRAMENT PARISH",
+"charter_number": "3435"
+},
+"7396": {
+"bank_name": "VICTORIA COMMUNITY",
+"charter_number": "67817"
+},
+"7397": {
+"bank_name": "MCPHERSON COMMUNITY",
+"charter_number": "24644"
+},
+"7401": {
+"bank_name": "HOLY CROSS",
+"charter_number": "67219"
+},
+"7403": {
+"bank_name": "WARDEN CAPTREE",
+"charter_number": "14134"
+},
+"7406": {
+"bank_name": "WEBCRAFTERS EMPLOYES'",
+"charter_number": "66419"
+},
+"7407": {
+"bank_name": "CERROBRASS",
+"charter_number": "60130"
+},
+"7409": {
+"bank_name": "BLUEFIELD MUNICIPAL EMPLOYEES",
+"charter_number": "20140"
+},
+"7410": {
+"bank_name": "MADCO POSTAL",
+"charter_number": "13093"
+},
+"7412": {
+"bank_name": "I B M PITTSBURGH",
+"charter_number": "21346"
+},
+"7413": {
+"bank_name": "QUAKER OATS EMPLOYEES",
+"charter_number": "7768"
+},
+"7416": {
+"bank_name": "LYNN-CO",
+"charter_number": "13771"
+},
+"7417": {
+"bank_name": "PETROWAX",
+"charter_number": "23028"
+},
+"7420": {
+"bank_name": "GREATER ABYSSINIA",
+"charter_number": "13149"
+},
+"7421": {
+"bank_name": "CASEYVILLE TOWNSHIP COMMUNITY",
+"charter_number": "65766"
+},
+"7423": {
+"bank_name": "S M P E",
+"charter_number": "14225"
+},
+"7424": {
+"bank_name": "MINI-CASSIA EMPL.",
+"charter_number": "82527"
+},
+"7426": {
+"bank_name": "OARDC",
+"charter_number": "96764"
+},
+"7429": {
+"bank_name": "SACRED HEART OF CORPUS CHRISTI",
+"charter_number": "12256"
+},
+"7430": {
+"bank_name": "KCUMB",
+"charter_number": "64195"
+},
+"7431": {
+"bank_name": "POC",
+"charter_number": "23165"
+},
+"7432": {
+"bank_name": "WEBSTER CITY MUNICIPAL",
+"charter_number": "61049"
+},
+"7434": {
+"bank_name": "NAIL WORKERS",
+"charter_number": "61626"
+},
+"7435": {
+"bank_name": "IRISH AIR LINES",
+"charter_number": "14697"
+},
+"7437": {
+"bank_name": "HOLY FAMILY OGLESBY",
+"charter_number": "15702"
+},
+"7440": {
+"bank_name": "CHOICES",
+"charter_number": "24739"
+},
+"7441": {
+"bank_name": "PASSAIC POSTAL EMPLOYEES",
+"charter_number": "60448"
+},
+"7444": {
+"bank_name": "UFCW #916",
+"charter_number": "9768"
+},
+"7445": {
+"bank_name": "LAWRENCE POSTAL EMPLOYEES",
+"charter_number": "67912"
+},
+"7447": {
+"bank_name": "CHICAGO HEIGHTS ONIZED",
+"charter_number": "18153"
+},
+"7448": {
+"bank_name": "PERU MUNICIPAL",
+"charter_number": "65452"
+},
+"7450": {
+"bank_name": "RAINBOW",
+"charter_number": "66782"
+},
+"7451": {
+"bank_name": "MENARD",
+"charter_number": "65795"
+},
+"7452": {
+"bank_name": "SAUK COUNTY EMPLOYEES",
+"charter_number": "67209"
+},
+"7453": {
+"bank_name": "RUNNELLS HOSPITAL EMPLOYEES",
+"charter_number": "17208"
+},
+"7455": {
+"bank_name": "OGDEN WONDER",
+"charter_number": "11536"
+},
+"7456": {
+"bank_name": "MISSIONS BUILDING",
+"charter_number": "273"
+},
+"7458": {
+"bank_name": "FREEPORT CITY EMPLOYEES",
+"charter_number": "65631"
+},
+"7459": {
+"bank_name": "THE VERNO",
+"charter_number": "65241"
+},
+"7460": {
+"bank_name": "GLOVE WORKERS",
+"charter_number": "9929"
+},
+"7461": {
+"bank_name": "PENNZOIL",
+"charter_number": "9167"
+},
+"7462": {
+"bank_name": "MCMILLEN MASTER",
+"charter_number": "65005"
+},
+"7463": {
+"bank_name": "MONROE COUNTY SCHOOL EMPLOYEES",
+"charter_number": "22901"
+},
+"7465": {
+"bank_name": "BETHEL A.M.E. SAN FRANCISCO",
+"charter_number": "19554"
+},
+"7469": {
+"bank_name": "KINGDOM",
+"charter_number": "24610"
+},
+"7472": {
+"bank_name": "LITTLE CHAPPAPEELA",
+"charter_number": "60362"
+},
+"7473": {
+"bank_name": "MARTINSVILLE POSTAL CREDIT UNION",
+"charter_number": "66925"
+},
+"7474": {
+"bank_name": "T.P.C. EMPLOYEES",
+"charter_number": "22414"
+},
+"7477": {
+"bank_name": "INSPIRE COMMUNITY DEVELOPMENT",
+"charter_number": "24825"
+},
+"7478": {
+"bank_name": "V. SUAREZ EMPLOYEES",
+"charter_number": "11261"
+},
+"7481": {
+"bank_name": "SALT LAKE CITY V A F",
+"charter_number": "454"
+},
+"7487": {
+"bank_name": "RICHMOND CTY HEALTH DEPT.EMP.",
+"charter_number": "67724"
+},
+"7488": {
+"bank_name": "COMPANION-BRIGHAM PARK",
+"charter_number": "17289"
+},
+"7490": {
+"bank_name": "ROSLYN CATHOLIC",
+"charter_number": "12489"
+},
+"7491": {
+"bank_name": "JAMESTOWN POST OFFICE EMPLOYEES",
+"charter_number": "63761"
+},
+"7493": {
+"bank_name": "R.C.S.",
+"charter_number": "10667"
+},
+"7494": {
+"bank_name": "CLEMENTS",
+"charter_number": "13998"
+},
+"7496": {
+"bank_name": "GOOD COUNSEL",
+"charter_number": "17358"
+},
+"7497": {
+"bank_name": "ELECTCHESTER",
+"charter_number": "15860"
+},
+"7498": {
+"bank_name": "R.C.H.",
+"charter_number": "16128"
+},
+"7500": {
+"bank_name": "THE TRIUMPH BAPTIST",
+"charter_number": "21535"
+},
+"7501": {
+"bank_name": "UNCLE SAM",
+"charter_number": "21838"
+},
+"7502": {
+"bank_name": "ST. MARGARET",
+"charter_number": "67945"
+},
+"7505": {
+"bank_name": "BATH CATHOLIC",
+"charter_number": "4304"
+},
+"7506": {
+"bank_name": "L.M.P.C.O. EMPLOYEES CREDIT ASSN.",
+"charter_number": "68070"
+},
+"7507": {
+"bank_name": "ST. PASCAL PARISH",
+"charter_number": "62496"
+},
+"7510": {
+"bank_name": "U P CAR DEPT",
+"charter_number": "1004"
+},
+"7511": {
+"bank_name": "GOLDEN",
+"charter_number": "11489"
+},
+"7514": {
+"bank_name": "MACON POLICE",
+"charter_number": "63171"
+},
+"7515": {
+"bank_name": "MISSOURI UNITED METHODIST",
+"charter_number": "64711"
+},
+"7520": {
+"bank_name": "THERMON EMPLOYEES",
+"charter_number": "65097"
+},
+"7521": {
+"bank_name": "BEAVER CO POST OFFICE EMPLOYEES",
+"charter_number": "3216"
+},
+"7524": {
+"bank_name": "BRIGHT HOPE",
+"charter_number": "12447"
+},
+"7525": {
+"bank_name": "LEWISTON CATHOLIC",
+"charter_number": "82524"
+},
+"7529": {
+"bank_name": "MAPLE HEIGHTS SCHOOL EMPLOYEES",
+"charter_number": "63733"
+},
+"7530": {
+"bank_name": "ROCKFORD NEWSPAPERS",
+"charter_number": "65554"
+},
+"7532": {
+"bank_name": "MEMPHIS CHAPTER",
+"charter_number": "5639"
+},
+"7536": {
+"bank_name": "NEWPORT NEWS NEIGHBORHOOD",
+"charter_number": "19082"
+},
+"7537": {
+"bank_name": "CHAMPAIGN COUNTY EMPLOYEES",
+"charter_number": "65349"
+},
+"7538": {
+"bank_name": "OUR LADY OF ANGELS",
+"charter_number": "14784"
+},
+"7539": {
+"bank_name": "RIMODA",
+"charter_number": "65549"
+},
+"7540": {
+"bank_name": "HOLY ROSARY CHURCH",
+"charter_number": "12621"
+},
+"7541": {
+"bank_name": "RIO GRANDE MASONIC PRINCE HALL",
+"charter_number": "23328"
+},
+"7542": {
+"bank_name": "ACG TEXTILE EMPLOYEES",
+"charter_number": "67482"
+},
+"7543": {
+"bank_name": "HOLY NAME",
+"charter_number": "67828"
+},
+"7544": {
+"bank_name": "BHA RESIDENTS COMMUNITY DEVELOPMENT",
+"charter_number": "24505"
+},
+"7545": {
+"bank_name": "BEACH CO-OP",
+"charter_number": "64488"
+},
+"7547": {
+"bank_name": "SMITH AND SONS EMPLOYEES",
+"charter_number": "61590"
+},
+"7549": {
+"bank_name": "CUYAHOGA FALLS MUNICIPAL",
+"charter_number": "96694"
+},
+"7551": {
+"bank_name": "ST. PAUL A.M.E. ZION CHURCH",
+"charter_number": "96787"
+},
+"7552": {
+"bank_name": "WEST HOLMES SCHOOL EMPLOYEES",
+"charter_number": "96807"
+},
+"7556": {
+"bank_name": "TRIANGLE INTERESTS % SERVICE CENTER",
+"charter_number": "24561"
+},
+"7559": {
+"bank_name": "ST. BONIFACE PARISH",
+"charter_number": "37"
+},
+"7560": {
+"bank_name": "HOLY INFANT",
+"charter_number": "64210"
+},
+"7562": {
+"bank_name": "DALLAS I.H.C.",
+"charter_number": "17589"
+},
+"7564": {
+"bank_name": "SERVICES",
+"charter_number": "96066"
+},
+"7565": {
+"bank_name": "ENBIC COMPANY EMPLOYEES",
+"charter_number": "65911"
+},
+"7566": {
+"bank_name": "ST. JAMES A M E CHURCH",
+"charter_number": "11791"
+},
+"7567": {
+"bank_name": "BETHEL G T",
+"charter_number": "14506"
+},
+"7568": {
+"bank_name": "RIO",
+"charter_number": "66599"
+},
+"7569": {
+"bank_name": "UNITED CATHOLIC",
+"charter_number": "62193"
+},
+"7570": {
+"bank_name": "LAFAYETTE TEACHERS & EMPLOYEES",
+"charter_number": "12598"
+},
+"7572": {
+"bank_name": "PENINSULA METHODIST",
+"charter_number": "18268"
+},
+"7574": {
+"bank_name": "COLUMBIAN",
+"charter_number": "7186"
+},
+"7576": {
+"bank_name": "STEINERFILM EMPLOYEES",
+"charter_number": "23885"
+},
+"7577": {
+"bank_name": "COUNCIL 3052",
+"charter_number": "10268"
+},
+"7578": {
+"bank_name": "MIAMI SHORES VILLIAGE EMP",
+"charter_number": "6560"
+},
+"7579": {
+"bank_name": "COMMUNITY HOPE",
+"charter_number": "24882"
+},
+"7580": {
+"bank_name": "COMMANDING OFFICERS AND SERGEANTS",
+"charter_number": "65619"
+},
+"7582": {
+"bank_name": "AREA WEST",
+"charter_number": "12548"
+},
+"7583": {
+"bank_name": "COLFAX SCHOOL EMPLOYEES",
+"charter_number": "62569"
+},
+"7584": {
+"bank_name": "ZION",
+"charter_number": "11500"
+},
+"7585": {
+"bank_name": "CCA KNOXVILLE",
+"charter_number": "8798"
+},
+"7586": {
+"bank_name": "DAIRY-PAK ATHENS",
+"charter_number": "67737"
+},
+"7589": {
+"bank_name": "ST. PAUL'S BAPTIST",
+"charter_number": "21300"
+},
+"7591": {
+"bank_name": "MT OLIVET",
+"charter_number": "14236"
+},
+"7592": {
+"bank_name": "NORTHEAST OREGON",
+"charter_number": "22656"
+},
+"7593": {
+"bank_name": "ORANGE COUNTY TEACHERS",
+"charter_number": "67498"
+},
+"7594": {
+"bank_name": "MARTIN LUTHER KING",
+"charter_number": "67910"
+},
+"7595": {
+"bank_name": "GREENVILLE COUNTY TCHERS ASSN",
+"charter_number": "12558"
+},
+"7596": {
+"bank_name": "EAST FELICIANA TEACHERS",
+"charter_number": "18427"
+},
+"7597": {
+"bank_name": "CIRCOLO CAMPOBELLO DI LICATA",
+"charter_number": "1811"
+},
+"7598": {
+"bank_name": "DENNISON",
+"charter_number": "8385"
+},
+"7600": {
+"bank_name": "BETHEL A M E",
+"charter_number": "6482"
+},
+"7601": {
+"bank_name": "CLARET",
+"charter_number": "21773"
+},
+"7602": {
+"bank_name": "DAIRYPAK EMPLOYEES",
+"charter_number": "96696"
+},
+"7606": {
+"bank_name": "JEFFERSON COUNTY PUBL. EMPL",
+"charter_number": "82522"
+},
+"7609": {
+"bank_name": "VESTAL EMPLOYEES",
+"charter_number": "17573"
+},
+"7610": {
+"bank_name": "CENTRAL MISSISSIPPI",
+"charter_number": "18436"
+},
+"7611": {
+"bank_name": "GREATER GALILEE BAPTIST",
+"charter_number": "66806"
+},
+"7614": {
+"bank_name": "ALLOY SCOTTDALE",
+"charter_number": "11546"
+},
+"7616": {
+"bank_name": "DIXIECON",
+"charter_number": "15242"
+},
+"7619": {
+"bank_name": "BALL ELGIN",
+"charter_number": "20770"
+},
+"7622": {
+"bank_name": "SALEM",
+"charter_number": "12701"
+},
+"7623": {
+"bank_name": "RECTOR",
+"charter_number": "13713"
+},
+"7624": {
+"bank_name": "FOSS AVENUE BAPTIST CHURCH",
+"charter_number": "19197"
+},
+"7625": {
+"bank_name": "BEAVER COUNTY TIMES",
+"charter_number": "17771"
+},
+"7626": {
+"bank_name": "ABACO MD",
+"charter_number": "12373"
+},
+"7627": {
+"bank_name": "HACP/URA",
+"charter_number": "20882"
+},
+"7628": {
+"bank_name": "CARDOZO LODGE",
+"charter_number": "13801"
+},
+"7629": {
+"bank_name": "HANCHETT EMPLOYEES",
+"charter_number": "61490"
+},
+"7630": {
+"bank_name": "LANE METRO CME CHURCH",
+"charter_number": "96740"
+},
+"7633": {
+"bank_name": "D-B EMPLOYEES",
+"charter_number": "65753"
+},
+"7635": {
+"bank_name": "CONVENT",
+"charter_number": "14047"
+},
+"7636": {
+"bank_name": "BETHEL COMMUNITY",
+"charter_number": "14798"
+},
+"7637": {
+"bank_name": "GRENADA LAKE MEDICAL CENTER EMPLS",
+"charter_number": "22596"
+},
+"7638": {
+"bank_name": "LYON EMPLOYEES",
+"charter_number": "7566"
+},
+"7642": {
+"bank_name": "LAKEWOOD COMMUNITY",
+"charter_number": "23265"
+},
+"7643": {
+"bank_name": "MEMBERS SERVING MEMBERS",
+"charter_number": "66691"
+},
+"7644": {
+"bank_name": "ZACHARY COMMUNITY",
+"charter_number": "18219"
+},
+"7648": {
+"bank_name": "LOCAL 32 ASBESTOS WORKERS",
+"charter_number": "16162"
+},
+"7651": {
+"bank_name": "VELSICOL",
+"charter_number": "11318"
+},
+"7652": {
+"bank_name": "WATER COMPANY EMPLOYEES",
+"charter_number": "63460"
+},
+"7653": {
+"bank_name": "TIMES-NEWS EMPLOYEES",
+"charter_number": "82543"
+},
+"7654": {
+"bank_name": "C. B. C.",
+"charter_number": "22312"
+},
+"7655": {
+"bank_name": "PUBLIC SERVICE SEWAREN",
+"charter_number": "11863"
+},
+"7656": {
+"bank_name": "MARION MEMORIAL HOSPITAL",
+"charter_number": "64788"
+},
+"7657": {
+"bank_name": "CTK",
+"charter_number": "68533"
+},
+"7658": {
+"bank_name": "HANNA EMPLOYEES",
+"charter_number": "24870"
+},
+"7662": {
+"bank_name": "GRACE CONGREGATIONAL CHURCH",
+"charter_number": "7883"
+},
+"7664": {
+"bank_name": "HANNA EMPLOYEES",
+"charter_number": "60672"
+},
+"7667": {
+"bank_name": "TRANSFIGURATION",
+"charter_number": "3620"
+},
+"7668": {
+"bank_name": "ST. MARYS PARISH OTTOVILLE",
+"charter_number": "5460"
+},
+"7669": {
+"bank_name": "ST. MARTIN'S",
+"charter_number": "2184"
+},
+"7671": {
+"bank_name": "AMEZ UNITED",
+"charter_number": "63223"
+},
+"7673": {
+"bank_name": "NORTH CENTRAL PHM",
+"charter_number": "23110"
+},
+"7674": {
+"bank_name": "VALLEY BELL",
+"charter_number": "3488"
+},
+"7676": {
+"bank_name": "ST. JUDE FAIRVIEW MEDICAL CENTER",
+"charter_number": "18747"
+},
+"7677": {
+"bank_name": "DINGS EMPLOYEES",
+"charter_number": "66764"
+},
+"7678": {
+"bank_name": "SHILOH BAPTIST CHURCH",
+"charter_number": "5525"
+},
+"7679": {
+"bank_name": "HUM",
+"charter_number": "16300"
+},
+"7680": {
+"bank_name": "LA BELLE EMPLOYEES'",
+"charter_number": "66773"
+},
+"7685": {
+"bank_name": "ARLINGTON HOTEL",
+"charter_number": "24144"
+},
+"7686": {
+"bank_name": "SALEM BAPTIST",
+"charter_number": "15154"
+},
+"7687": {
+"bank_name": "METROPOLITAN CHURCH OF GOD",
+"charter_number": "60993"
+},
+"7688": {
+"bank_name": "PRESSERS UNION LOCAL 12 ILGWU",
+"charter_number": "61412"
+},
+"7689": {
+"bank_name": "ST. ELIZABETH'S",
+"charter_number": "65232"
+},
+"7691": {
+"bank_name": "FRANKLIN-ST. JOHNS",
+"charter_number": "68249"
+},
+"7695": {
+"bank_name": "WILBERFORCE UNIVERSITY",
+"charter_number": "22714"
+},
+"7696": {
+"bank_name": "PEOPLES-NEIGHBORHOOD",
+"charter_number": "20377"
+},
+"7697": {
+"bank_name": "NORTH EAST KY CAP",
+"charter_number": "18084"
+},
+"7699": {
+"bank_name": "TAIWANESE AMERICAN",
+"charter_number": "22014"
+},
+"7700": {
+"bank_name": "GUIDANCE CHURCH OF RELIGIOUS SCIENC",
+"charter_number": "22965"
+},
+"7701": {
+"bank_name": "POLISH COMBATANTS",
+"charter_number": "63784"
+},
+"7703": {
+"bank_name": "SHILOH BAPTIST CHURCH BR",
+"charter_number": "19592"
+},
+"7704": {
+"bank_name": "MT ZION CHARLOTTESVILLE",
+"charter_number": "17043"
+},
+"7705": {
+"bank_name": "PWR",
+"charter_number": "17517"
+},
+"7707": {
+"bank_name": "CARMEL BROTHERHOOD",
+"charter_number": "6207"
+},
+"7708": {
+"bank_name": "METRO FELLOWSHIP",
+"charter_number": "20312"
+},
+"7709": {
+"bank_name": "EDDY EMPLOYEES",
+"charter_number": "9867"
+},
+"7710": {
+"bank_name": "STO-ROX COMMUNITY",
+"charter_number": "19517"
+},
+"7711": {
+"bank_name": "BRADFORD POSTAL",
+"charter_number": "65403"
+},
+"7712": {
+"bank_name": "LANGSTON",
+"charter_number": "4370"
+},
+"7714": {
+"bank_name": "2ND BAPTIST CH. OF ANN ARBOR",
+"charter_number": "19730"
+},
+"7716": {
+"bank_name": "LINCOLN CITY",
+"charter_number": "68175"
+},
+"7717": {
+"bank_name": "IMMANUEL BAPTIST CHURCH",
+"charter_number": "23835"
+},
+"7718": {
+"bank_name": "NEW BETHEL",
+"charter_number": "23114"
+},
+"7719": {
+"bank_name": "G.C.I.U. LOCAL 235",
+"charter_number": "64668"
+},
+"7721": {
+"bank_name": "NYC EMPLOYEES",
+"charter_number": "65927"
+},
+"7723": {
+"bank_name": "WARD",
+"charter_number": "19770"
+},
+"7724": {
+"bank_name": "ANTIOCH MB",
+"charter_number": "20179"
+},
+"7726": {
+"bank_name": "STONE TYLER EMPLOYEES",
+"charter_number": "15112"
+},
+"7727": {
+"bank_name": "ST. AUGUSTINE PRESBYTERIAN",
+"charter_number": "5263"
+},
+"7728": {
+"bank_name": "NEW BETHEL A. M. E.",
+"charter_number": "23183"
+},
+"7729": {
+"bank_name": "FIRST BAPTIST CHURCH CRANFORD NJ",
+"charter_number": "66276"
+},
+"7730": {
+"bank_name": "HOLY COMFORTER-SAINT CYPRIANS",
+"charter_number": "15497"
+},
+"7731": {
+"bank_name": "EPIPHANY",
+"charter_number": "15129"
+},
+"7732": {
+"bank_name": "CRESTMONT BAPTIST",
+"charter_number": "19550"
+},
+"7734": {
+"bank_name": "KLANN EMP. CREDIT UNION INC.",
+"charter_number": "66987"
+},
+"7736": {
+"bank_name": "UNION MEMORIAL",
+"charter_number": "67744"
+},
+"7737": {
+"bank_name": "FIRST KINGDOM COMMUNITY",
+"charter_number": "24791"
+},
+"7738": {
+"bank_name": "WESLEY AME ZION",
+"charter_number": "14430"
+},
+"7739": {
+"bank_name": "JONES TABERNACLE",
+"charter_number": "12467"
+},
+"7740": {
+"bank_name": "VINE MEMORIAL",
+"charter_number": "16147"
+},
+"7742": {
+"bank_name": "MCKINLEY MEMORIAL",
+"charter_number": "17286"
+},
+"7743": {
+"bank_name": "FIRST AFRICAN BAPTIST CHURCH",
+"charter_number": "23169"
+},
+"7744": {
+"bank_name": "QUEEN STREET BAPTIST CHURCH",
+"charter_number": "19369"
+},
+"7745": {
+"bank_name": "FIRST BAPTIST CHURCH OF DARBY",
+"charter_number": "23640"
+},
+"7746": {
+"bank_name": "GOLMAR",
+"charter_number": "14600"
+},
+"7747": {
+"bank_name": "MACEDONIA BAPTIST",
+"charter_number": "13881"
+},
+"7748": {
+"bank_name": "FOUNTAIN BAPTIST",
+"charter_number": "9884"
+},
+"7749": {
+"bank_name": "FIFTH STREET BAPTIST CHURCH",
+"charter_number": "20177"
+},
+"7750": {
+"bank_name": "LEE COUNTY MOSQUITO CONTROL",
+"charter_number": "67305"
+},
+"7751": {
+"bank_name": "ST. STEPHENS OF HUNGARY",
+"charter_number": "16493"
+},
+"7752": {
+"bank_name": "TRANSFIGURATION MANHATTAN",
+"charter_number": "20495"
+},
+"7753": {
+"bank_name": "GETHSEMANE BAPTIST CHURCH",
+"charter_number": "24408"
+},
+"7755": {
+"bank_name": "GREATER INSTITUTIONAL A.M.E. CHURCH",
+"charter_number": "65433"
+},
+"7756": {
+"bank_name": "LOVE GOSPEL ASSEMBLY",
+"charter_number": "24740"
+},
+"7757": {
+"bank_name": "PRINCE",
+"charter_number": "15246"
+},
+"7759": {
+"bank_name": "S M",
+"charter_number": "13234"
+},
+"7760": {
+"bank_name": "ZOAR METHODIST CHURCH",
+"charter_number": "16115"
+},
+"7761": {
+"bank_name": "GOOD SHEPHERD",
+"charter_number": "81117"
+},
+"7762": {
+"bank_name": "STEPHENS-ADAMSON EMPLOYEES",
+"charter_number": "63869"
+},
+"7764": {
+"bank_name": "ELECTRICAL INSPECTORS",
+"charter_number": "22580"
+},
+"7766": {
+"bank_name": "MOUNT ZION A M E CHURCH",
+"charter_number": "18546"
+},
+"7768": {
+"bank_name": "PINEY GROVE COMMUNITY",
+"charter_number": "5540"
+},
+"7769": {
+"bank_name": "BAGUMBAYAN",
+"charter_number": "66200"
+},
+"7770": {
+"bank_name": "HOLY REDEEMER PARISH",
+"charter_number": "4984"
+},
+"7771": {
+"bank_name": "CORNERSTONE BAPTIST CHURCH",
+"charter_number": "12085"
+},
+"7772": {
+"bank_name": "ALLEN AME",
+"charter_number": "24100"
+},
+"7773": {
+"bank_name": "MIDDLE VILLAGE",
+"charter_number": "61635"
+},
+"7775": {
+"bank_name": "AMERICAN RIVET",
+"charter_number": "65884"
+},
+"7776": {
+"bank_name": "BETHANY BAPTIST CHRISTIAN",
+"charter_number": "24016"
+},
+"7777": {
+"bank_name": "ST. JOHNS AME BIRMINGHAM",
+"charter_number": "12137"
+},
+"7778": {
+"bank_name": "MILDRED MITCHELL-BATEMAN HOSPITAL",
+"charter_number": "23591"
+},
+"7779": {
+"bank_name": "WRG",
+"charter_number": "97090"
+},
+"7780": {
+"bank_name": "HOLSEY TEMPLE",
+"charter_number": "17772"
+},
+"7781": {
+"bank_name": "RICHARD ALLEN",
+"charter_number": "12850"
+},
+"7782": {
+"bank_name": "MONUMENTAL",
+"charter_number": "65960"
+},
+"7783": {
+"bank_name": "AECO",
+"charter_number": "13624"
+},
+"7784": {
+"bank_name": "AVON AVENUE BAPTIST CHURCH",
+"charter_number": "96664"
+},
+"7785": {
+"bank_name": "COSMOPOLITAN",
+"charter_number": "24188"
+},
+"7786": {
+"bank_name": "TAYLOR MEMORIAL UNITED METHODIST",
+"charter_number": "21263"
+},
+"7787": {
+"bank_name": "A M E UNION",
+"charter_number": "16121"
+},
+"7789": {
+"bank_name": "DAVID HORODOKER",
+"charter_number": "3845"
+},
+"7791": {
+"bank_name": "ZION HILL BAPTIST CHURCH",
+"charter_number": "19640"
+},
+"7792": {
+"bank_name": "STAR",
+"charter_number": "68535"
+},
+"7793": {
+"bank_name": "R T C",
+"charter_number": "16563"
+},
+"7794": {
+"bank_name": "GULFCO",
+"charter_number": "16826"
+},
+"7795": {
+"bank_name": "LOCAL 1710",
+"charter_number": "12180"
+},
+"7796": {
+"bank_name": "TEXAS FARM BUREAU",
+"charter_number": "11231"
+},
+"7797": {
+"bank_name": "HOLBROOK COMMUNITY",
+"charter_number": "8814"
+},
+"7798": {
+"bank_name": "DESTINY",
+"charter_number": "68580"
+},
+"7799": {
+"bank_name": "BETHANY BAPTIST",
+"charter_number": "11895"
+},
+"7801": {
+"bank_name": "INSULATORS LOCAL 21",
+"charter_number": "22809"
+},
+"7802": {
+"bank_name": "COMMUNITY SOURCE",
+"charter_number": "24659"
+},
+"7803": {
+"bank_name": "QUAKER",
+"charter_number": "14519"
+},
+"7804": {
+"bank_name": "ST. MARKS",
+"charter_number": "5022"
+},
+"7805": {
+"bank_name": "SIX THIRTY",
+"charter_number": "23077"
+},
+"7806": {
+"bank_name": "EQUIPONE",
+"charter_number": "20527"
+},
+"7807": {
+"bank_name": "EMP. OF GRANITE MILL & FIXTURE CO.",
+"charter_number": "67030"
+},
+"7808": {
+"bank_name": "BOOTSTRAP",
+"charter_number": "16532"
+},
+"7809": {
+"bank_name": "CHICAGO LEE",
+"charter_number": "16836"
+},
+"7810": {
+"bank_name": "MESSIAH BAPTIST",
+"charter_number": "17245"
+},
+"7811": {
+"bank_name": "LOMBARD METHODIST",
+"charter_number": "14743"
+},
+"7812": {
+"bank_name": "O A P A",
+"charter_number": "11186"
+},
+"7813": {
+"bank_name": "ST. MONICA",
+"charter_number": "8295"
+},
+"7814": {
+"bank_name": "MOUNT OLIVET",
+"charter_number": "4599"
+},
+"7815": {
+"bank_name": "CATHOLIC CLERGY",
+"charter_number": "14159"
+},
+"7816": {
+"bank_name": "E E SOUTH TEXAS",
+"charter_number": "67555"
+},
+"7817": {
+"bank_name": "DIXON CITY EMPLOYEES",
+"charter_number": "15995"
+},
+"7818": {
+"bank_name": "W A G E",
+"charter_number": "19629"
+},
+"7819": {
+"bank_name": "TAMPA LONGSHOREMEN'S",
+"charter_number": "22196"
+},
+"7820": {
+"bank_name": "KITCO EMPLOYEES",
+"charter_number": "62089"
+},
+"7821": {
+"bank_name": "ROHM AND HAAS EMPLOYEES",
+"charter_number": "68092"
+}
+}
