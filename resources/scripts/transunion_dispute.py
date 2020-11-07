@@ -1,6 +1,7 @@
 from rest_framework import status
 import json
 from selenium import webdriver
+from selenium.webdriver.firefox.options import DesiredCapabilities
 import requests
 from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
@@ -56,19 +57,22 @@ class transunionDispute:
         # webdriver
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
+        options.add_argument('--headless')
+        user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+        options.set_preference("general.useragent.override", user_agent)
         self.driver = webdriver.Firefox(
             # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
             executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
 
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
-        json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
+        self.json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
         # create directory if not exist
-        if not os.path.exists(json_directory):
-            os.makedirs(json_directory)
+        if not os.path.exists(self.json_directory):
+            os.makedirs(self.json_directory)
 
-        filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-        self.filepath_report = json_directory +'/report_data_'+filename
+        self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
+        self.filepath_report = self.json_directory +'/report_data_'+self.filename+ '.json'
 
     def call(self):
         try:
@@ -76,6 +80,7 @@ class transunionDispute:
             msg = 'Username or Password Incorrect'
             if self.should_login == 'True':
                 msg = self.login()
+
             if 'Account Security: Your account has been temporarily suspended.' in msg:
                 self.unlock_account()
                 return {
@@ -110,8 +115,8 @@ class transunionDispute:
     def login(self):
         try:
             if not 'https://service.transunion.com/dss/login.page' in self.driver.current_url:
-                self.driver.get('https://service.transunion.com/dss/login.page?dest=dispute')
-            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.NAME, 'tl.username')))
+                self.driver.get('https://service.transunion.com/dss/login.page')
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.NAME, 'tl.username')))
             uname = self.driver.find_element_by_name('tl.username')
             uname.click()
             uname.send_keys(self.username)
@@ -196,7 +201,7 @@ class transunionDispute:
 
     def recover_account(self):
         self.driver.get('https://service.transunion.com/dss/loginHelp1_form.page?')
-        WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div/div/section[2]/div/div[1]/div[1]/div[1]/input')))
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div/div/section[2]/div/div[1]/div[1]/div[1]/input')))
         sssn1 = self.driver.find_element_by_xpath(
             '/html/body/div[1]/div[2]/form/div/div/section[2]/div/div[1]/div[1]/div[1]/input')
         sssn1.click()
@@ -229,12 +234,13 @@ class transunionDispute:
         lsname.send_keys(self.lname)
         self.driver.find_element_by_xpath(
             '/html/body/div[1]/div[2]/form/div/div/section[2]/div/button').click()
-        WebDriverWait(self.driver, 5).until(EC.url_changes('https://service.transunion.com/dss/loginHelp1_form.page?'))
+        WebDriverWait(self.driver, 10).until(EC.url_changes('https://service.transunion.com/dss/loginHelp1_form.page?'))
 
         if self.driver.current_url == 'https://service.transunion.com/dss/incorrectInformation.page':
-            self.create_account()
+            #self.create_account()
+            print('no account')
         else:
-            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="question"]')))
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="question"]')))
             vquestion = self.driver.find_element_by_xpath(
                 '//*[@id="question"]').get_attribute('value')
             ans = self.driver.find_element_by_xpath(
@@ -260,7 +266,7 @@ class transunionDispute:
 
             self.driver.find_element_by_xpath(
                 '/html/body/div[1]/div[3]/form/div/div/section[2]/div/button').click()
-            WebDriverWait(self.driver, 2).until(EC.url_changes('https://service.transunion.com/dss/loginHelp2_form.page'))
+            WebDriverWait(self.driver, 10).until(EC.url_changes('https://service.transunion.com/dss/loginHelp2_form.page'))
             # step 3
             soup = BeautifulSoup(self.driver.page_source, 'html.parser')
 
@@ -274,6 +280,7 @@ class transunionDispute:
                     'number': number,
                 }
             else:
+                WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, 'tl.password')))
                 vpass = self.driver.find_element_by_name('tl.password')
                 vpass.click()
                 vpass.send_keys(self.password)
@@ -874,8 +881,7 @@ class transunionDispute:
                     'confirmRefreshButton-startDispute').click()
             except:
                 self.driver.find_element_by_id('Continue').click()
-            WebDriverWait(self.driver, 20).until(EC.url_to_be('https://service.transunion.com/dss/disputeCategories.page'))
-
+            WebDriverWait(self.driver, 30).until(EC.url_to_be('https://service.transunion.com/dss/disputeCategories.page'))
 
             soup = BeautifulSoup(self.driver.page_source, u'html.parser')
 
@@ -885,38 +891,6 @@ class transunionDispute:
             except:
                 pass
 
-            # for i in range(50):
-            #     try:
-            #         driver.find_element_by_id('trade-' + str(i)).click()
-            #         time.sleep(2)
-            #         ele = soup.find('td', attrs={'id': 'trade-'+str(i)})
-            #     except:
-            #         continue
-
-                # Element Public Records
-
-            # for i in range(50):
-            #     try:
-            #         driver.find_element_by_id('publicRecord-' + str(i)).click()
-            #         time.sleep(2)
-            #     except:
-            #         continue
-
-            # #  tHIS IS For Collections
-            # for i in range(50):
-            #     try:
-            #         driver.find_element_by_id('collection-' + str(i)).click()
-            #         time.sleep(2)
-            #     except:
-            #         continue
-
-            # # Satisfactory Accounts
-            # for i in range(50):
-            #     try:
-            #         driver.find_element_by_id('collection-' + str(i)).click()
-            #         time.sleep(2)
-            #     except:
-            #         continue
 
             try:
                 cons_statement = soup.find('section', attrs={
@@ -944,7 +918,6 @@ class transunionDispute:
             all_scripts = str(all_scripts).split(' var ud = ')[1].split(
                 '</script>')[0].strip().replace('/n', '')
             all_scripts = all_scripts.replace('/', '').strip()
-
             jsondata = json.loads(all_scripts)
 
             with open(self.filepath_report, "a+") as f:
