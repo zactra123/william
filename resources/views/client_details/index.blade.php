@@ -287,17 +287,26 @@
         }
 
         .address2{
-            margin-left: 40px !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
         }
+        .address1{
+            padding-left: 5px !important;
+            padding-right: 0 !important;
+        }
+
         .phone {
-            width: 15%;
+            width: 16.6%;
             height: auto;
             padding-right: 5px;
         }
         .refferred {
             font-size: 1.75vw !important
         }
-
+        .addressImage{
+            width: 100%;
+            height: auto;
+        }
 
 
     </style>
@@ -381,20 +390,22 @@
                         <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS"  >
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <img  class="phone" src="/images/location.png">
-                                {{$client->clientDetails->number}} {{$client->clientDetails->name}}
-
+                        <div class="row" style="padding-left: 10px">
+                            <div class="col-lg-2 address2">
+                                <img  class="addressImage" src="/images/location.png">
+                            </div>
+                            <div class="col-lg-10 address1">
+                                <div class="col-lg-12 address2">
+                                    {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                </div>
+                                <div class="col-lg-12 address2">
+                                    {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                </div>
                             </div>
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-12" style="padding-left: 20%">
 
-                                {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
-
-                            </div>
                         </div>
                     </li>
 
