@@ -364,8 +364,11 @@ class BanksController extends Controller
         $charters = json_decode(file_get_contents($creditUn), true);
         foreach ($charters as $charter){
             $credit_union = BankLogo::where("name", $charter["bank_name"])->get();
-            $credit_union->first()->delete();
+            if ($credit_union->first()) {
+                $credit_union->first()->delete();
+            }
         }
+
         dd('ok');
     }
 
