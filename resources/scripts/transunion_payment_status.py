@@ -73,10 +73,10 @@ class transUnionMebership:
                     'status': 'success',
                     'report_filepath': self.filepath_report,
                 }
-        except:
+        except Exception as e:
             return {
                 'status': 'error',
-                'error': sys.exc_info(),
+                'error': e[0],
                 'report_filepath': self.filepath_report,
             }
 
@@ -104,16 +104,12 @@ class transUnionMebership:
         soup = BeautifulSoup(self.driver.page_source, u'html.parser')
 
         if 'Account Locked.' in soup.text.strip():
-            return 'Account Locked.'
+            raise Exception({"message": "Account Locked."})
         elif 'The credit card information you provided is not valid.' in soup.text.strip():
-            return 'credit card information'
+            raise Exception({"message":"The credit card information you provided is not valid."})
 
         elif 'Unable to Verify' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_401_UNAUTHORIZED,
-                'message': 'Unable to Verify Identity',
-            }
+            raise Exception({"message":"Unable to Verify Identity"})
 
         try:
             self.driver.find_element_by_xpath(

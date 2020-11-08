@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Services;
+use App\Mail\ScraperNotifications;
 use App\User;
 use App\ClientReport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class Screaper
 {
@@ -17,6 +19,7 @@ class Screaper
         $this->client = User::with(['credentials', 'clientDetails'])->find($id);
         $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
             ->format("m/d/Y");
+
         $this->arguments = [
             'transunion_dispute' =>[
                     $this->client['credentials']['tu_login'],
@@ -33,7 +36,8 @@ class Screaper
                     $this->client['clientDetails']['phone_number']
                 ],
             'transunion_membership' => [
-
+                $this->client['credentials']['tu_dis_login'],
+                $this->client['credentials']['tu_dis_password'],
             ],
             'experian_view_report' => [
 
@@ -76,8 +80,8 @@ class Screaper
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $output = shell_exec($command);
         //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
-
         $this->prepare_transunion_membership_data(str_replace('\'', '"',$output));
+        return $output;
     }
 
     public function experian_login($arguments = [])
@@ -136,7 +140,10 @@ class Screaper
         set_time_limit(300);
         $data = json_decode($output, true);
         if($data['status'] != 'success') {
-
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_login'));
+            }
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
        // Save Experian Report Numbers -START-
@@ -568,10 +575,12 @@ class Screaper
         $data = json_decode($output, true);
 
         if($data['status'] != 'success') {
-
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_view_report'));
+            }
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
-
         $path = storage_path($data["report_filepath"]);
 
         $json = json_decode(file_get_contents($path), true);
@@ -1029,6 +1038,10 @@ class Screaper
 
         $data = json_decode($output, true);
         if($data['status'] != 'success') {
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
+            }
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
 
@@ -1342,8 +1355,10 @@ class Screaper
     {
         $data = json_decode($output, true);
         if ($data["status"] != "success") {
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_membership'));
+            }
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
-            // @Todo: integrenq, email, sms ashxatoxnerin hamapatasxan case-eri depqum
             return false;
         }
 
@@ -1376,8 +1391,6 @@ class Screaper
 
         //pahel es datan vercnel id
         $clientReport = ClientReport::create($dataClientReports);
-
-        $clientReport = ClientReport::find(1);
 
 
         $dataName = [];
@@ -1685,6 +1698,10 @@ class Screaper
         $data = json_decode($output, true);
 
         if($data['status'] != 'success') {
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'equifax_from_credit_karma'));
+            }
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
         $path = storage_path($data["report_filepath"]);

@@ -17,38 +17,12 @@ use App\ContactMessage;
 use Illuminate\Support\Facades\DB;
 use App\Guest;
 use App\Services\ReadPdfData;
+use Response;
 
 class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData)
     {
-//        $activeCharterFile = storage_path('furnishers/active_charter_number.json');
-//        $charterFile = storage_path('furnishers/credit_union_number.json');
-//        $activeCharters = json_decode(file_get_contents($activeCharterFile), true);
-//        $charters = json_decode(file_get_contents($charterFile), true);
-//        $chartersNew = array_column($charters, 'charter_number');
-//
-//        $asd = [];
-//        $ddd = [];
-//        foreach($activeCharters as $active){
-//            $key = array_search($active['charter_number'], $chartersNew);
-//
-//            if($key !== false){
-//                $ddd[$key]=$charters[$key]['bank_name'];
-//                unset($charters[$key]);
-//            }else{
-//                $asd[] = $active['charter_number'];
-//            }
-//        }
-//        dd($charters);
-
-//        $scraper = new Screaper(1);
-////        VAHEM@YMAIL.COM  V0552ahe TOYOTA 1984 05/01/1984
-////        $data = $scraper->experian_login(["VAHEM@YMAIL.COM", "V0552ahe", "TOYOTA", "1984", "05/01/1984", "545-91-0552"]);
-//        $data = $scraper->experian_login(["WILLIAM7787", "Y1983erevan!", "Minasyan", "7229", "03/07/1983", "618-25-2314"]);
-//        dd($data);
-////        WILLIAM7787 a77BOVYAN! Minasyan 7229 03/07/1983 ?618-25-2314
-
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogansFull = Db::table('slogans')

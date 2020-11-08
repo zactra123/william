@@ -94,10 +94,10 @@ class experianLogin:
                 'report_filepath': self.filepath_report,
                 'numbers_filepath': self.filepath_numbers
             }
-        except:
+        except Exception as e:
             return {
                 'status': 'error',
-                'error': sys.exc_info(),
+                'error': e[0],
                 'report_filepath': self.filepath_report,
                 'numbers_filepath': self.filepath_numbers
             }
@@ -218,12 +218,7 @@ class experianLogin:
         time.sleep(5)
         soup = BeautifulSoup(self.driver.page_source, 'html.parser')
         if 'Billing Information Update' in soup.text.strip():
-            from rest_framework import status
-            raise {
-                'status': 'Billing Information Update require',
-                'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
-                'message': 'Please Enter Credit Card Number',
-            }
+            raise Exception({"message": "Please Enter Credit Card Number"})
 
 
         if self.driver.current_url == 'https://usa.experian.com/member/loginInterstitial':
@@ -289,13 +284,7 @@ class experianLogin:
         soup = BeautifulSoup(self.driver.page_source, 'html.parser')
 
         if 'Billing Information Update' in soup.text.strip():
-            from rest_framework import status
-            raise {
-                'status': 'Billing Information Update require',
-                'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
-                'message': 'Please Enter Credit Card Number',
-            }
-            return False
+            raise Exception({"message": "Please Enter Credit Card Number"})
         else:
             self.driver.get(
                 'https://usa.experian.com/member/disputeCenter/reportSummary')
@@ -315,14 +304,7 @@ class experianLogin:
                 pass
 
             if 'Billing Information Update' in soup.text.strip():
-                from rest_framework import status
-                self.error_message.append({
-                    'status': 'Billing Information Update require',
-                    'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
-                    'message': 'Please Enter Credit Card Number',
-                })
-                return False
-
+                raise Exception({"message": "Please Enter Credit Card Number"})
             try:
                 self.driver.find_element_by_xpath(
                         '/html/body/app-root/div[2]/div/div[1]/main/div/div/div/div[2]/form/label').click()

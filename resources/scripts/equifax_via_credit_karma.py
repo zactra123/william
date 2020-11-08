@@ -86,10 +86,10 @@ class equifaxCreditKarma:
                 'status': 'success',
                 'report_filepath': self.report_filepath
             }
-        except:
+        except Exception as e:
             return {
                 'status': 'error',
-                'error': sys.exc_info(),
+                'error': e[0],
                 'report_filepath': self.report_filepath
             }
 

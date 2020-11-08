@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/chat_box.css">
 
 <div class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" >
-    <img src="/images/chat-icon.png">
+    <img src="/images/chat_logo_new.png" >
 </div>
 {{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{7}}" >Chat</button>--}}
 

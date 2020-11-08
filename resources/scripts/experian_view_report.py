@@ -84,11 +84,11 @@ class experianViewReport():
                 'report_numbers': self.rn_status,
                 'report_filepath': self.filepath_report,
             }
-        except:
+        except Exception as e:
             return {
                 'status': 'error',
                 'report_numbers': self.rn_status,
-                'error': sys.exc_info(),
+                'error': e[0],
                 'report_filepath': self.filepath_report
             }
 

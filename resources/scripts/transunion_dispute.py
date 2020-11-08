@@ -105,10 +105,10 @@ class transunionDispute:
                 'password': self.password,
                 'report_filepath': self.filepath_report
             }
-        except:
+        except Exception as e:
             return {
                 'status': 'error',
-                'error': sys.exc_info(),
+                'error': e[0],
                 'report_filepath': self.filepath_report
             }
 
@@ -273,12 +273,8 @@ class transunionDispute:
             if 'We are sorry, but we are unable to fulfill your request at this time.' in soup.text.strip():
                 number = soup.text.strip().split(
                     'Access Support team at')[1].split(',')[0]
-                raise {
-                    'status': 'We are sorry, but we are unable to fulfill your request at this time.',
-                    'code': status.HTTP_409_CONFLICT,
-                    'message': 'Please Contact at ~ ' + number,
-                    'number': number,
-                }
+                message = 'We are sorry, but we are unable to fulfill your request at this time. Please Contact at ~ ' + number
+                raise Exception({"message": message})
             else:
                 WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, 'tl.password')))
                 vpass = self.driver.find_element_by_name('tl.password')
@@ -296,7 +292,7 @@ class transunionDispute:
                     self.driver.find_element_by_class_name(
                         'form').find_element_by_tag_name('button').click()
                 except:
-                    raise "Something went wrong on recover account"
+                    raise Exception({"message": "Something went wrong on recover account"})
 
                 time.sleep(10)
                 # cpage = 'https://service.transunion.com/dss/ivFailed_error.page'
@@ -307,12 +303,9 @@ class transunionDispute:
                 if 'Online dispute currently' in soup.text.strip():
                     nm = self.driver.find_element_by_class_name('section-content').text
                     num = str(nm).split('Access Support team at')[1].split('.')[0]
-                    raise {
-                        'status': 'error',
-                        'code': status.HTTP_401_UNAUTHORIZED,
-                        'message': 'Unable to Verify Identity',
-                        'Please Contact on this number': num,
-                    }
+                    message = "Unable to Verify Identity. Please Contact on this number: " + num
+                    raise Exception({"message": message})
+
                 elif self.driver.current_url == 'https://service.transunion.com/dss/identityVerification_form.page':
                     self.time_delay()
 
@@ -672,43 +665,24 @@ class transunionDispute:
             self.login()
 
         if 'We are unable to confirm your identity' in soup.text.strip():
-            message = soup.text.split('What to do ')[1]
-            raise {
-                'status': 'error',
-                'code': status.HTTP_401_UNAUTHORIZED,
-                'message': 'Unable to Verify Identity '+str(message),
-            }
+            what_todo = soup.text.split('What to do ')[1]
+            message = "Unable to Verify Identity. " + str(message)
+            raise Exception({"message": message})
 
         elif 'account has been temporarily suspended' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_403_FORBIDDEN,
-                'message': 'Your account has been temporarily suspended',
-            }
+            raise Exception({"message": "Your account has been temporarily suspended"})
 
         # We are unable to complete your request
 
         elif 'We are experiencing technical difficulties.' in soup.text.strip():
-            message = 'We appreciate your patience while we resolve this issue. Please try again later or contact us at (833)-395-6940.'
-            raise {
-                'status': 'error',
-                'code': status.HTTP_401_UNAUTHORIZED,
-                'message': 'We are experiencing technical difficulties. '+str(message),
-            }
+            error = 'We appreciate your patience while we resolve this issue. Please try again later or contact us at (833)-395-6940.'
+            message =  'We are experiencing technical difficulties. '+str(message)
+            raise Exception({"message": message})
 
         elif 'Online dispute currently' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_404_NOT_FOUND,
-                'message': 'Online dispute currently not available',
-            }
+            raise Exception({"message": "Online dispute currently not available"})
         elif 'We are unable to complete your request' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_404_NOT_FOUND,
-                'message': 'We are unable to complete your request',
-            }
-
+            raise Exception({"message": "We are unable to complete your request"})
         else:
             self.login()
 
@@ -830,28 +804,14 @@ class transunionDispute:
             pass
 
         if 'Online dispute currently' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_404_NOT_FOUND,
-                'message': 'Online dispute currently not available',
-            }
+            raise Exception({"message": "Online dispute currently not available"})
         elif 'Online dispute is not available at this time' in soup.text.strip():
-
-            raise NameError('error','Online dispute is not available at this time.')
-
+            raise Exception({"message": "Online dispute is not available at this time."})
         elif 'account has been temporarily suspended' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_403_FORBIDDEN,
-                'message': 'Your account has been temporarily suspended',
-            }
+            raise Exception({"message": "Your account has been temporarily suspended"})
 
         elif 'Unable to Verify' in soup.text.strip():
-            raise {
-                'status': 'error',
-                'code': status.HTTP_401_UNAUTHORIZED,
-                'message': 'Unable to Verify Identity',
-            }
+            raise Exception({"message": "Unable to Verify Identity"})
         else:
             try:
                 start_dispute = self.driver.find_element_by_xpath(
