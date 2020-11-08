@@ -48,27 +48,12 @@
             justify-content: space-evenly;
         }
 
-        @media only screen and (max-width: 479px) {
-            .disput-progress {
-                flex-direction: column;
-            }
-            .categories {
-                font-size: 4vw !important
-            }
-            .refferred{
-                font-size: 30px !important
-            }
-
-
-        }
-
         .progress {
             position: relative;
             width: 200px;
             height: 200px;
             border-radius: 50%;
         }
-
 
         svg {
             position: relative;
@@ -96,8 +81,6 @@
             stroke: rgb(255, 14, 52);
 
         }
-
-
         .p1 svg circle:nth-child(3) {
             stroke-width: 30;
             stroke-dasharray: 440;
@@ -124,8 +107,6 @@
             stroke-linecap: butt;
             stroke-dashoffset: 2;
         }
-
-
         .number {
             width: 100%;
             height: 100%;
@@ -150,7 +131,6 @@
             position: relative;
             line-height: 10px;
         }
-
         .driver_license {
             background-image: url(/images/correct-dl.png);
             display: block;
@@ -218,7 +198,7 @@
             text-transform: capitalize;
             text-align: center;
         }
-        .social_dropp:before {
+        .social_dropp: before {
             position: absolute;
             bottom: 0px;
             left: 0;  pointer-events: none;
@@ -235,379 +215,366 @@
             text-align: center;
         }
 
-
-
-
-        .social {
-            display: block;
-        }
-        .driver {
-            display: block;
-        }
-
         .zoomDL:hover {
-            transform:translate(60%,50%) scale(2.1);
-            transition: transform .5s;
-        }
-        .driver:hover ~ .social {
-            display: none;
-        }
-        .social:hover ~ .driver {
-            display: none;
+            transform:translate(225%,150%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
         }
         .zoomSS:hover {
-            transform:translate(-60%,50%) scale(2.1);
+            transform:translate(225%,-50%) scale(6.5);
             transition: transform .5s ease-in-out;
+            position: fixed;
         }
-        .changeLogo:hover {
-            padding-bottom: 100px;
-        }
-        .categories {
-            font-size:1.1vw
-        }
-
-        .side-nav .categories > li {
-            padding: 10px 40px 10px 30px !important;
-
-        }
-
         .scaleDL{
-            transform:translate(60%,50%) scale(2.2);
+            transform:translate(225%,150%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
         }
         .scaleSS{
-            transform:translate(-60%,50%) scale(2.25);
-        }
-        .changePadding {
-            padding-bottom: 110px;
+            transform:translate(225%,-50%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
         }
 
+        .categories {
+            font-size:1.05vw
+        }
+        .side-nav .categories > li {
+            padding: 10px 10px 5px 30px !important;
+        }
         .responsive {
-            width: 100%;
-            height: auto;
-        }
-
-        .address2{
-            padding-left: 0px !important;
-            padding-right: 0px !important;
-        }
-        .address1{
-            padding-left: 5px !important;
-            padding-right: 0 !important;
-        }
-
-        .phone {
             width: 16.6%;
             height: auto;
             padding-right: 5px;
         }
-        .refferred {
-            font-size: 1.75vw !important
-        }
         .addressImage{
             width: 100%;
             height: auto;
+            padding-right: 5px;
         }
-
-
+        .address{
+            width: 100%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .address1{
+            width: 16.6%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .address2{
+            width: 83%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .refferred {
+            font-size: 2vw !important
+        }
+        @media only screen and (max-width: 479px) {
+            .disput-progress {
+                flex-direction: column;
+            }
+            .categories {
+                font-size: 4vw !important
+            }
+            .refferred{
+                font-size: 40px !important
+            }
+        }
     </style>
-
-
-{{--    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])--}}
     <section class="section-padding">
     </section>
-    <div class="row">
-        <div class="col-sm-3">
-            <aside class="side-nav" id="show-side-navigation1">
-                <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
-                <div class="heading">
-                    <div class="info">
-                        <h5>Client No: 01</h5>
-                    </div>
-
-                    <div class="row changeLogo mt-5" style="padding-right: 0px! important; padding-left: 0px !important" >
-                        <div class="col-md-12 m-0">
-                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px;padding-right: 5px! important; padding-left: 0px !important" >
-                                @if(!empty($client->clientAttachments()))
-                                    <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-                                    @if(!empty($dl))
-                                            <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
-                                    @endif
-                                @endif
-                            </div>
-                            <div class="col-md-6 text-md-center social" style="margin-bottom: 10px;padding-left: 5px! important; padding-right: 0px! important; ">
-                                @if(!empty($client->clientAttachments()))
-                                    <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-                                    @if(!empty($ss))
-                                            <img type="file"  class="zoomSS responsive" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
-                                    @endif
-                                @endif
+        <div class="row m-0">
+            <div class="col-sm-3">
+                <aside class="side-nav" id="show-side-navigation1">
+                    <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+                    <div class="heading">
+                        <div class="row" >
+                            <div class="info">
+                                <h5>Client No: 01</h5>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" >
-                        <div class="col-l-12 m-0">
-                            <a href="#" class="link closeUpload" >
-                                UPLOAD NEW ID OR SOCIAL SECURITY
-                            </a>
-                        </div>
-                    </div>
 
-                    <div class="row  hide form-group updateLogo ">
-                        <button type="button" class="close closeUpload">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+
+                        <div class="row" >
+                            <div class="col-l-12 m-0">
+                                <a href="#" class="link closeUpload" >
+                                    UPLOAD NEW ID OR SOCIAL SECURITY
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row  hide form-group updateLogo ">
+                            <button type="button" class="close closeUpload">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
                             @method("PUT")
                             @csrf
-                        <div class="col-sm-12 form-group files">
-{{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
-                            <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
+                            <div class="col-sm-12 form-group files">
+                                {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
+                                <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
 
-                        </div>
-                        <div class="col-sm-12 form-group files">
-                            <input class="social_security file-box" type="file" name="social"  id="social_security" >
-                        </div>
-                        <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
-
-                        {!! Form::close() !!}
-                    </div>
-
-                    <div class="info zoomIn">
-                    </div>
-
-                </div>
-                <ul class="categories">
-                    <li title="FULL NAME">
-                        <img  class="phone" src="/images/full_name.png">
-                        <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
-                    </li>
-                    <li title="PHONE NUMBER">
-                        <img  class="phone" src="/images/phone_number.png">
-                        <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
-                    </li>
-                    <li title="EMAIL ADDRESS">
-                        <img  class="phone" src="/images/email.png">
-                        <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
-                    </li>
-                    <li title="FULL ADDRESS"  >
-                        <div class="row" style="padding-left: 10px">
-                            <div class="col-lg-2 address2">
-                                <img  class="addressImage" src="/images/location.png">
                             </div>
-                            <div class="col-lg-10 address1">
-                                <div class="col-lg-12 address2">
-                                    {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                            <div class="col-sm-12 form-group files">
+                                <input class="social_security file-box" type="file" name="social"  id="social_security" >
+                            </div>
+                            <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+
+                            {!! Form::close() !!}
+                        </div>
+
+                        <div class="info zoomIn">
+                        </div>
+
+                    </div>
+                    <ul class="categories">
+                        <li title="FULL NAME">
+                            @if(!empty($client->clientAttachments()))
+                                <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                                @if(!empty($dl))
+                                    <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
+                                @endif
+                            @endif
+                            <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
+                        </li>
+                        <li title="PHONE NUMBER">
+                            <img  class="responsive" src="/images/phone_number.png">
+                            <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
+                        </li>
+                        <li title="EMAIL ADDRESS">
+                            <img  class="responsive" src="/images/email.png">
+                            <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
+                        </li>
+                        <li title="FULL ADDRESS">
+                            <div class="address">
+                                <div class="address1">
+                                    <img  class="addressImage" src="/images/location.png">
                                 </div>
-                                <div class="col-lg-12 address2">
-                                    {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                <div class="address2">
+                                    <div class="address">
+                                        {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                    </div>
+                                    <div class="address">
+                                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </li>
 
+                        <li title="DATE OF BIRTH">
+                            <img  class="responsive" src="/images/birthday.png">
+                            {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
+                            <img src="/images/age.jpg" class="responsive"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                        </li>
+                        <li title="SOCIAL SECURITY NUMBER">
 
-                        </div>
-                    </li>
+                            @if(!empty($client->clientAttachments()))
+                                <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+                                @if(!empty($ss))
+                                    <img type="file"  class="zoomSS responsive" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+                                @endif
+                            @endif
 
-                    <li title="DATE OF BIRTH">
-                        <img  class="phone" src="/images/birthday.png">
-                        {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
-                        <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
-                    </li>
-                    <li title="SOCIAL SECURITY NUMBER">
-                        <img  class="phone" src="/images/ssc.png">
-                        {{$client->clientDetails->ssn}}
-                    </li>
+                            {{$client->clientDetails->ssn}}
+                        </li>
 
-                    <li title="GENDER">
-                        @if($client->clientDetails->sex == 'M')
-                            <img  class="phone" src="/images/male.png" width="20px">  MALE
-                        @elseif($client->clientDetails->sex == 'F')
-                            <img class="phone"  src="/images/female.png" width="20px">  FEMALE
-                        @else
-                            <img class="phone" src="/images/non_binary.png" width="25px">  NON-BINARY
+                        <li title="GENDER">
+                            @if($client->clientDetails->sex == 'M')
+                                <img  class="responsive" src="/images/male.png"> <span>MALE</span>
+                            @elseif($client->clientDetails->sex == 'F')
+                                <img class="responsive"  src="/images/female.png"> <span>FEMALE</span>
+                            @else
+                                <img class="responsive" src="/images/non_binary.png"> <span>NON-BINARY</span>
+                            @endif
+                        </li>
+
+                        @if($client->clientDetails->referred_by != null)
+                            <li title="REFERRED BY">
+                                <i class="fa fa-user fa-fw refferred" ></i>
+                                <span>{{strtoupper($client->clientDetails->referred_by)}}</span>
+                            </li>
                         @endif
-                    </li>
+                        <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
+                    </ul>
+                </aside>
+            </div>
 
-                    @if($client->clientDetails->referred_by != null)
-                        <li title="REFERRED BY"><i class="fa fa-user fa-fw refferred" ></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
-                    @endif
-                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
-                </ul>
-            </aside>
-        </div>
-
-        <div class="col-sm-9">
-            <section id="contents">
-                <div class="welcome">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="content">
-                                    <h2>Welcome to Dashboard</h2>
-                                    @if(!$client->credentials->is_present())
-                                        <p>
-                                            Please provide us your credentials, so we can fetch your report.
-                                            You can provide them
-                                            <a href="{{route("client.credentials")}}">here</a>.
-                                        </p>
-                                    @elseif(!$client->reports->first())
-                                        <p>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</p>
-                                    @else
-                                        <p>We've already got your report data,
-                                            you can start disputes
-                                            <a href="#">here</a>.
-                                        </p>
-                                    @endif
+            <div class="col-sm-9">
+                <section id="contents">
+                    <div class="welcome">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="content">
+                                        <h2>Welcome to Dashboard</h2>
+                                        @if(!$client->credentials->is_present())
+                                            <p>
+                                                Please provide us your credentials, so we can fetch your report.
+                                                You can provide them
+                                                <a href="{{route("client.credentials")}}">here</a>.
+                                            </p>
+                                        @elseif(!$client->reports->first())
+                                            <p>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</p>
+                                        @else
+                                            <p>We've already got your report data,
+                                                you can start disputes
+                                                <a href="#">here</a>.
+                                            </p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <section class="charts">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="chart-container scrollDiv">
-                                    <div class="boxheading">
-                                        <h3>DISPUTES </h3>
-                                    </div>
-                                    <div class="mt20 ">
-                                        @foreach($toDos as $todo)
-                                            @foreach($todo->disputes as $dispute)
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <?php $info =  $dispute->disputable->showDetails();?>
-                                                        {{$info}}
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        {{$status[$dispute->status]}}
+                    <section class="charts">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="chart-container scrollDiv">
+                                        <div class="boxheading">
+                                            <h3>DISPUTES </h3>
+                                        </div>
+                                        <div class="mt20 ">
+                                            @foreach($toDos as $todo)
+                                                @foreach($todo->disputes as $dispute)
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <?php $info =  $dispute->disputable->showDetails();?>
+                                                            {{$info}}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            {{$status[$dispute->status]}}
 
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             @endforeach
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="chart-container">
-                                    <div class="boxheading">
-                                        <h3>DISPUTE PROGRESS</h3>
-                                    </div>
-                                    <div class="disput-progress d-flex flex-sm-row flex-column">
-                                        <div class="progress p1 mr-auto p-2" data-1="75" data-2="20">
-                                            <svg>
-                                                <circle cx="0" cy="0" r="70" />
-                                                <circle cx="0" cy="0" r="70" />
-                                                <circle cx="0" cy="0" r="70" />
-                                                <circle cx="0" cy="0" r="70" />
-                                                <circle cx="0" cy="0" r="63" />
-                                            </svg>
-                                            <div class="number">
-                                                <h2></h2>
-                                                <span>%</span>
-                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="charts">
-                    <div class="container-fluid">
-                        <div class="chart-container">
-                            <div class="content">
-                                <h2>CREDIT REPORTS</h2>
-
-                                <div class="row">
-                                    <div  class="col-md-4 mt20">
-                                        <div class="dropdown">
-                                            <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
-                                            <div class="dropdown-content">
-                                                @foreach($reportsDateEQ as $keyEq=> $eqDate)
-                                                    <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
-                                                @endforeach
-                                            </div>
+                                <div class="col-md-6">
+                                    <div class="chart-container">
+                                        <div class="boxheading">
+                                            <h3>DISPUTE PROGRESS</h3>
                                         </div>
-                                    </div>
-                                    <div  class="col-md-4 mt20">
-                                        <div class="dropdown">
-                                            <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
-                                            <div class="dropdown-content">
-                                                @foreach($reportsDateEX as $keyEx => $exDate)
-                                                    <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
-                                                @endforeach
+                                        <div class="disput-progress d-flex flex-sm-row flex-column">
+                                            <div class="progress p1 mr-auto p-2" data-1="75" data-2="20">
+                                                <svg>
+                                                    <circle cx="0" cy="0" r="70" />
+                                                    <circle cx="0" cy="0" r="70" />
+                                                    <circle cx="0" cy="0" r="70" />
+                                                    <circle cx="0" cy="0" r="70" />
+                                                    <circle cx="0" cy="0" r="63" />
+                                                </svg>
+                                                <div class="number">
+                                                    <h2></h2>
+                                                    <span>%</span>
+                                                </div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div  class="col-md-4 mt20">
-                                        <div class="dropdown">
-                                            <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
-                                            <div class="dropdown-content">
-                                                @foreach($reportsDateTU as $keyTu => $tuDate)
-                                                    <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
-                                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="charts">
+                        <div class="container-fluid">
+                            <div class="chart-container">
+                                <div class="content">
+                                    <h2>CREDIT REPORTS</h2>
+
+                                    <div class="row">
+                                        <div  class="col-md-4 mt20">
+                                            <div class="dropdown">
+                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                                <div class="dropdown-content">
+                                                    @foreach($reportsDateEQ as $keyEq=> $eqDate)
+                                                        <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  class="col-md-4 mt20">
+                                            <div class="dropdown">
+                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+                                                <div class="dropdown-content">
+                                                    @foreach($reportsDateEX as $keyEx => $exDate)
+                                                        <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div  class="col-md-4 mt20">
+                                            <div class="dropdown">
+                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+                                                <div class="dropdown-content">
+                                                    @foreach($reportsDateTU as $keyTu => $tuDate)
+                                                        <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section class="charts">
-                    <div class="container-fluid">
-                        <div class="row mt50">
-                            <div class="col-md-6">
-                                <div class="chart-container">
-                                    <div class="boxheading">
-                                        <h3>BILLING </h3>
-                                    </div>
-                                    <div class="mt20">
-                                        <h4>billing statements</h4>
-                                        <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+                    <section class="charts">
+                        <div class="container-fluid">
+                            <div class="row mt50">
+                                <div class="col-md-6">
+                                    <div class="chart-container">
+                                        <div class="boxheading">
+                                            <h3>BILLING </h3>
+                                        </div>
+                                        <div class="mt20">
+                                            <h4>billing statements</h4>
+                                            <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="chart-container">
-                                    <div class="boxheading">
-                                        <h3>ADDITIONAL SERVICES</h3>
-                                    </div>
-                                    <div class="mt20">
-                                        <h4>EXCEED AUTO GROUP</h4>
-                                        <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
-                                    </div>
-                                    <div class="mt20">
-                                        <h4>EXCEED AUTO GROUP</h4>
-                                        <p>EXCEED CAPITAL LENDING</p>
+                                <div class="col-md-6">
+                                    <div class="chart-container">
+                                        <div class="boxheading">
+                                            <h3>ADDITIONAL SERVICES</h3>
+                                        </div>
+                                        <div class="mt20">
+                                            <h4>EXCEED AUTO GROUP</h4>
+                                            <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
+                                        </div>
+                                        <div class="mt20">
+                                            <h4>EXCEED AUTO GROUP</h4>
+                                            <p>EXCEED CAPITAL LENDING</p>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-
                         </div>
-                    </div>
+
+                    </section>
+
+
+                    <section class="charts pb50 mt50">
+                        <div class="container-fluid">
+                            <div class="row ">
+
+                            </div>
+                        </div>
+                    </section>
 
                 </section>
-
-
-                <section class="charts pb50 mt50">
-                    <div class="container-fluid">
-                        <div class="row ">
-
-                        </div>
-                    </div>
-                </section>
-
-            </section>
+            </div>
         </div>
-    </div>
+
 
     <!-- Modal -->
 
@@ -624,30 +591,30 @@
                     {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                     @method('PUT')
                     @csrf
-                        <div class="form row">
-                            <div class="form-group col-md-12">
+                    <div class="form row">
+                        <div class="form-group col-md-12">
 
-                                {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
-                            </div>
+                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                        </div>
 
-                            <div class="form-group col-md-12">
-                                {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
-                            </div>
-                            <div class="form-group col-md-12">
-                                {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-
-                            </div>
-
-                            <div class="form-group col-md-12">
-
-                                {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
-                            </div>
-
-
+                        <div class="form-group col-md-12">
+                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                        </div>
+                        <div class="form-group col-md-12">
+                            {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
 
                         </div>
 
-                        <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                        <div class="form-group col-md-12">
+
+                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
+                        </div>
+
+
+
+                    </div>
+
+                    <button type="submit" value="Update" class="btn btn-primary">Update</button>
                     {!! Form::close() !!}
                 </div>
                 <div class="modal-footer">
@@ -658,6 +625,9 @@
     </div>
 
 
+
+
+    {{--    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])--}}
 
 
 
@@ -872,12 +842,9 @@
 
                 if(scaleSS.search("scaleSS") != -1) {
                     $(".zoomSS").removeClass("scaleSS")
-                    $(".changeLogo").removeClass("changePadding")
                 }
                 if(scaleDL.search("scaleDL") != -1){
                     $(".zoomDL").removeClass("scaleDL")
-                    $(".changeLogo").removeClass("changePadding")
-                    $(".social").removeClass("hide")
                 }
 
            });
@@ -886,7 +853,6 @@
                 var  scale = $(".zoomSS").attr("class")
                 if(scale.search("scaleSS") == -1){
                     $(".zoomSS").addClass("scaleSS")
-                    $(".changeLogo").addClass("changePadding")
                 }
             });
 
@@ -894,8 +860,6 @@
                 var  scale = $(".zoomDL").attr("class")
                 if(scale.search("scaleDL") == -1){
                     $(".zoomDL").addClass("scaleDL")
-                    $(".changeLogo").addClass("changePadding")
-                    $(".social").addClass("hide")
                 }
             });
 
