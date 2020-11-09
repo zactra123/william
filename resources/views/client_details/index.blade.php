@@ -461,7 +461,7 @@
                                         <div class="boxheading">
                                             <h3>DISPUTE PROGRESS</h3>
                                         </div>
-                                        <div id="piechart_3d" style="width: 400px; height: 240px;"></div>
+                                        <div id="piechart_3d"></div>
 
                                     </div>
                                 </div>
@@ -897,8 +897,10 @@
             ]);
 
             var options = {
+                width: 400,
+                height: 240,
                 is3D: true,
-                colors: ['green', 'red', 'orange', 'grey']
+                colors: ['#22bb33', '#bb2124', '#f0ad4e', '#aaaaaa']
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
