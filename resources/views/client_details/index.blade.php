@@ -22,7 +22,7 @@
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 160px;
+            min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -461,6 +461,7 @@
                                         <div class="boxheading">
                                             <h3>DISPUTE PROGRESS</h3>
                                         </div>
+{{--                                        <div id="chartdiv" style=" margin: -.5em auto; text-align:center;  height: 240px"></div>--}}
                                         <div class="disput-progress d-flex flex-sm-row flex-column">
                                             <div class="progress p1 mr-auto p-2" data-1="75" data-2="20">
                                                 <svg>
@@ -491,8 +492,13 @@
                                     <div class="row">
                                         <div  class="col-md-4 mt20">
                                             <div class="dropdown">
-                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+{{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
                                                 <div class="dropdown-content">
+                                                    <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard" target="_blank">LOGIN KARMA</a>
+                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href="#" target="_blank">REGISTER</a>
+                                                    <a href=#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
                                                         <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
                                                     @endforeach
@@ -501,8 +507,14 @@
                                         </div>
                                         <div  class="col-md-4 mt20">
                                             <div class="dropdown">
-                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+{{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
+                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
                                                 <div class="dropdown-content">
+                                                    <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
+                                                    <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
+                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href=#">ARCHIVE</a>
+
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
                                                         <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
                                                     @endforeach
@@ -512,8 +524,16 @@
                                         </div>
                                         <div  class="col-md-4 mt20">
                                             <div class="dropdown">
-                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+{{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
+                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
                                                 <div class="dropdown-content">
+                                                    <a href="https://service.transunion.com/dss/login.page" target="_blank">LOGIN MEMBER</a>
+                                                    <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">LOGIN DISPUTE</a>
+                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">REGISTER MEMBER</a>
+                                                    <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">REGISTER DISPUTE</a>
+                                                    <a href=#">ARCHIVE</a>
+
                                                     @foreach($reportsDateTU as $keyTu => $tuDate)
                                                         <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
                                                     @endforeach
@@ -880,6 +900,58 @@
         $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
+
+{{--    <script src="https://www.amcharts.com/lib/4/core.js"></script>--}}
+{{--    <script src="https://www.amcharts.com/lib/amcharts.js"></script>--}}
+
+{{--    <script type="text/javascript">--}}
+
+{{--        var chart;--}}
+{{--        var legend;--}}
+
+{{--        var chartData = [{--}}
+{{--            country: "ACTIVE",--}}
+{{--            value: 260,--}}
+{{--            color:'#bb411d'--}}
+{{--        },--}}
+{{--            {--}}
+{{--                country: "COMPLETED",--}}
+{{--                value: 201,--}}
+{{--                color:'#01bb01'--}}
+
+{{--            },--}}
+{{--            {--}}
+{{--                country: "PENDING",--}}
+{{--                value: 65,--}}
+{{--                color:'#FFAD16'--}}
+
+{{--            },--}}
+{{--            {--}}
+{{--                country: "ADDED",--}}
+{{--                value: 39,--}}
+{{--                color:'#BF83E6'--}}
+
+{{--            },--}}
+{{--            ];--}}
+
+{{--        AmCharts.ready(function() {--}}
+{{--            // PIE CHART--}}
+{{--            chart = new AmCharts.AmPieChart();--}}
+{{--            chart.dataProvider = chartData;--}}
+{{--            chart.titleField = "country";--}}
+{{--            chart.valueField = "value";--}}
+{{--            chart.colorField = "color";--}}
+{{--            chart.outlineColor = "white";--}}
+{{--            chart.outlineAlpha = 0.8;--}}
+{{--            chart.outlineThickness = 2;--}}
+{{--            // this makes the chart 3D--}}
+{{--            chart.depth3D = 10;--}}
+{{--            chart.angle = 20;--}}
+
+{{--            // WRITE--}}
+{{--            chart.write("chartdiv");--}}
+{{--        });--}}
+{{--    </script>--}}
 
 
 

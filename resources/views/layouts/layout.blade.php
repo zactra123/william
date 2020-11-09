@@ -255,13 +255,13 @@
 
 
 @if(Auth::user()  && Auth::user()->role == 'client')
-{{--    <footer class="footer-section">--}}
-{{--        <div class="copy-right text-center">--}}
-{{--            <div class="container">--}}
-{{--                <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </footer>--}}
+    <footer class="footer-section">
+        <div class="copy-right text-center">
+            <div class="container">
+                <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+            </div>
+        </div>
+    </footer>
 @else
             <footer class="footer-section">
                 <div class="footer-container">
