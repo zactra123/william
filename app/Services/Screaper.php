@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Mail\ScraperNotifications;
+use App\ScraperError;
 use App\User;
 use App\ClientReport;
 use Illuminate\Support\Facades\Auth;
@@ -143,6 +144,11 @@ class Screaper
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_login'));
             }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
@@ -578,6 +584,11 @@ class Screaper
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_view_report'));
             }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
@@ -1041,6 +1052,12 @@ class Screaper
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
             }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
+
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
@@ -1358,6 +1375,12 @@ class Screaper
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_membership'));
             }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
+
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
@@ -1701,6 +1724,11 @@ class Screaper
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'equifax_from_credit_karma'));
             }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
