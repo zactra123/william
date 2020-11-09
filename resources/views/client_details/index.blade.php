@@ -461,22 +461,7 @@
                                         <div class="boxheading">
                                             <h3>DISPUTE PROGRESS</h3>
                                         </div>
-{{--                                        <div id="chartdiv" style=" margin: -.5em auto; text-align:center;  height: 240px"></div>--}}
-                                        <div class="disput-progress d-flex flex-sm-row flex-column">
-                                            <div class="progress p1 mr-auto p-2" data-1="75" data-2="20">
-                                                <svg>
-                                                    <circle cx="0" cy="0" r="70" />
-                                                    <circle cx="0" cy="0" r="70" />
-                                                    <circle cx="0" cy="0" r="70" />
-                                                    <circle cx="0" cy="0" r="70" />
-                                                    <circle cx="0" cy="0" r="63" />
-                                                </svg>
-                                                <div class="number">
-                                                    <h2></h2>
-                                                    <span>%</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div id="piechart_3d" style="width: 400px; height: 240px;"></div>
 
                                     </div>
                                 </div>
@@ -655,9 +640,7 @@
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
-
-    </script>
+    <script type="text/javascript" src="{{asset('js/lib/gstatic.js')}}"></script>
     <script>
         $(document).ready(function() {
 
@@ -901,133 +884,103 @@
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
 
-{{--    <script src="https://www.amcharts.com/lib/4/core.js"></script>--}}
-{{--    <script src="https://www.amcharts.com/lib/amcharts.js"></script>--}}
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Success',     11],
+                ['Failed',      2],
+                ['In Progress',  2],
+                ['Added',  8],
+            ]);
 
-{{--    <script type="text/javascript">--}}
+            var options = {
+                is3D: true,
+                colors: ['green', 'red', 'orange', 'grey']
+            };
 
-{{--        var chart;--}}
-{{--        var legend;--}}
-
-{{--        var chartData = [{--}}
-{{--            country: "ACTIVE",--}}
-{{--            value: 260,--}}
-{{--            color:'#bb411d'--}}
-{{--        },--}}
-{{--            {--}}
-{{--                country: "COMPLETED",--}}
-{{--                value: 201,--}}
-{{--                color:'#01bb01'--}}
-
-{{--            },--}}
-{{--            {--}}
-{{--                country: "PENDING",--}}
-{{--                value: 65,--}}
-{{--                color:'#FFAD16'--}}
-
-{{--            },--}}
-{{--            {--}}
-{{--                country: "ADDED",--}}
-{{--                value: 39,--}}
-{{--                color:'#BF83E6'--}}
-
-{{--            },--}}
-{{--            ];--}}
-
-{{--        AmCharts.ready(function() {--}}
-{{--            // PIE CHART--}}
-{{--            chart = new AmCharts.AmPieChart();--}}
-{{--            chart.dataProvider = chartData;--}}
-{{--            chart.titleField = "country";--}}
-{{--            chart.valueField = "value";--}}
-{{--            chart.colorField = "color";--}}
-{{--            chart.outlineColor = "white";--}}
-{{--            chart.outlineAlpha = 0.8;--}}
-{{--            chart.outlineThickness = 2;--}}
-{{--            // this makes the chart 3D--}}
-{{--            chart.depth3D = 10;--}}
-{{--            chart.angle = 20;--}}
-
-{{--            // WRITE--}}
-{{--            chart.write("chartdiv");--}}
-{{--        });--}}
-{{--    </script>--}}
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
 
 
 
 
-{{--    <script type="text/javascript">--}}
-{{--        /*global $, console*/--}}
+    {{--    <script type="text/javascript">--}}
+    {{--        /*global $, console*/--}}
 
-{{--        $(function () {--}}
+    {{--        $(function () {--}}
 
-{{--            'use strict';--}}
+    {{--            'use strict';--}}
 
-{{--            (function () {--}}
+    {{--            (function () {--}}
 
-{{--                var aside = $('.side-nav'),--}}
+    {{--                var aside = $('.side-nav'),--}}
 
-{{--                    showAsideBtn = $('.show-side-btn'),--}}
+    {{--                    showAsideBtn = $('.show-side-btn'),--}}
 
-{{--                    contents = $('#contents');--}}
+    {{--                    contents = $('#contents');--}}
 
-{{--                showAsideBtn.on("click", function () {--}}
+    {{--                showAsideBtn.on("click", function () {--}}
 
-{{--                    $("#" + $(this).data('show')).toggleClass('show-side-nav');--}}
+    {{--                    $("#" + $(this).data('show')).toggleClass('show-side-nav');--}}
 
-{{--                    contents.toggleClass('margin');--}}
+    {{--                    contents.toggleClass('margin');--}}
 
-{{--                });--}}
+    {{--                });--}}
 
-{{--                if ($(window).width() <= 767) {--}}
+    {{--                if ($(window).width() <= 767) {--}}
 
-{{--                    aside.addClass('show-side-nav');--}}
+    {{--                    aside.addClass('show-side-nav');--}}
 
-{{--                }--}}
-{{--                $(window).on('resize', function () {--}}
+    {{--                }--}}
+    {{--                $(window).on('resize', function () {--}}
 
-{{--                    if ($(window).width() > 767) {--}}
+    {{--                    if ($(window).width() > 767) {--}}
 
-{{--                        aside.removeClass('show-side-nav');--}}
+    {{--                        aside.removeClass('show-side-nav');--}}
 
-{{--                    }--}}
+    {{--                    }--}}
 
-{{--                });--}}
+    {{--                });--}}
 
-{{--                // dropdown menu in the side nav--}}
-{{--                var slideNavDropdown = $('.side-nav-dropdown');--}}
+    {{--                // dropdown menu in the side nav--}}
+    {{--                var slideNavDropdown = $('.side-nav-dropdown');--}}
 
-{{--                $('.side-nav .categories li').on('click', function () {--}}
+    {{--                $('.side-nav .categories li').on('click', function () {--}}
 
-{{--                    $(this).toggleClass('opend').siblings().removeClass('opend');--}}
+    {{--                    $(this).toggleClass('opend').siblings().removeClass('opend');--}}
 
-{{--                    if ($(this).hasClass('opend')) {--}}
+    {{--                    if ($(this).hasClass('opend')) {--}}
 
-{{--                        $(this).find('.side-nav-dropdown').slideToggle('fast');--}}
+    {{--                        $(this).find('.side-nav-dropdown').slideToggle('fast');--}}
 
-{{--                        $(this).siblings().find('.side-nav-dropdown').slideUp('fast');--}}
+    {{--                        $(this).siblings().find('.side-nav-dropdown').slideUp('fast');--}}
 
-{{--                    } else {--}}
+    {{--                    } else {--}}
 
-{{--                        $(this).find('.side-nav-dropdown').slideUp('fast');--}}
+    {{--                        $(this).find('.side-nav-dropdown').slideUp('fast');--}}
 
-{{--                    }--}}
+    {{--                    }--}}
 
-{{--                });--}}
+    {{--                });--}}
 
-{{--                $('.side-nav .close-aside').on('click', function () {--}}
+    {{--                $('.side-nav .close-aside').on('click', function () {--}}
 
-{{--                    $('#' + $(this).data('close')).addClass('show-side-nav');--}}
+    {{--                    $('#' + $(this).data('close')).addClass('show-side-nav');--}}
 
-{{--                    contents.removeClass('margin');--}}
+    {{--                    contents.removeClass('margin');--}}
 
-{{--                });--}}
+    {{--                });--}}
 
-{{--            }());--}}
+    {{--            }());--}}
 
 
-{{--        });--}}
-{{--    </script>--}}
+    {{--        });--}}
+    {{--    </script>--}}
 
 
 
