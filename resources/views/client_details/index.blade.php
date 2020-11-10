@@ -333,12 +333,15 @@
                     </div>
                     <ul class="categories">
                         <li title="FULL NAME">
-                            @if(!empty($client->clientAttachments()))
+
+                        @if(!empty($client->clientAttachments()))
                                 <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
                                 @if(!empty($dl))
-                                    <img type="file" class="zoomDL responsive" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
+                                    <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
                                 @endif
-                            @endif
+                        @endif
+                            <img  class="responsive full_name" src="/images/full_name.png">
+
                             <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                         </li>
                         <li title="PHONE NUMBER">
@@ -375,9 +378,10 @@
                             @if(!empty($client->clientAttachments()))
                                 <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
                                 @if(!empty($ss))
-                                    <img type="file"  class="zoomSS responsive" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+                                    <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
                                 @endif
                             @endif
+                            <img  class="responsive ss_number" src="/images/ssc.png">
 
                             {{$client->clientDetails->ssn}}
                         </li>
@@ -644,19 +648,19 @@
     <script>
         $(document).ready(function() {
 
-            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                var place = autocomplete.getPlace();
-                $("#address").val(place.formatted_address)
-                for (var i = 0; i < place.address_components.length; i++) {
-                    for (var j = 0; j < place.address_components[i].types.length; j++) {
-                        if (place.address_components[i].types[j] == "postal_code") {
-                            $("#zip").val(place.address_components[i].long_name);
-
-                        }
-                    }
-                }
-            });
+            // autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
+            // google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            //     var place = autocomplete.getPlace();
+            //     $("#address").val(place.formatted_address)
+            //     for (var i = 0; i < place.address_components.length; i++) {
+            //         for (var j = 0; j < place.address_components[i].types.length; j++) {
+            //             if (place.address_components[i].types[j] == "postal_code") {
+            //                 $("#zip").val(place.address_components[i].long_name);
+            //
+            //             }
+            //         }
+            //     }
+            // });
 
 
             $(".ssn").mask("999-99-9999");
@@ -842,15 +846,52 @@
 
                 var  scaleSS = $(".zoomSS").attr("class")
                 var  scaleDL = $(".zoomDL").attr("class")
+                var full_name = $(".full_name").attr("class")
+                var ssn = $(".ss_number").attr("class")
 
                 if(scaleSS.search("scaleSS") != -1) {
                     $(".zoomSS").removeClass("scaleSS")
+                    $(".zoomSS").addClass("hide")
+
                 }
                 if(scaleDL.search("scaleDL") != -1){
                     $(".zoomDL").removeClass("scaleDL")
+                    $(".zoomDL").addClass("hide")
+                }
+                if(full_name.search("hide") != -1){
+                    $(".full_name").removeClass("hide")
+                }
+                if(ssn.search("hide") != -1){
+                    $(".ss_number").removeClass("hide")
                 }
 
            });
+
+            $(".full_name").mouseover(function(){
+                $(".zoomDL").removeClass("hide");
+                $(".full_name").addClass("hide")
+
+            });
+            $(".zoomDL").mouseout(function(){
+                var  scaleDL = $(".zoomDL").attr("class")
+                if(scaleDL.search("scaleDL") == -1) {
+                    $(".zoomDL").addClass("hide")
+                    $(".full_name").removeClass("hide")
+                }
+            });
+
+            $(".ss_number").mouseover(function(){
+                $(".zoomSS").removeClass("hide");
+                $(".ss_number").addClass("hide")
+
+            });
+            $(".zoomSS").mouseout(function(){
+                var  scaleSS = $(".zoomSS").attr("class")
+                if(scaleSS.search("scaleSS") == -1) {
+                    $(".zoomSS").addClass("hide")
+                    $(".ss_number").removeClass("hide")
+                }
+            });
 
             $( ".zoomSS" ).dblclick(function() {
                 var  scale = $(".zoomSS").attr("class")
