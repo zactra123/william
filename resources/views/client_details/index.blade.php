@@ -302,6 +302,9 @@
             height: auto;
             padding-right: 5px;
         }
+        .responsive.small{
+            width: 12%;
+        }
         .addressImage{
             width: 100%;
             height: auto;
@@ -387,7 +390,7 @@
 
                     </div>
                     <ul class="categories">
-                        <li title="FULL NAME">
+                        <li title="FULL NAME" class="dl-field">
 
                         @if(!empty($client->clientAttachments()))
                                 <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
@@ -426,9 +429,9 @@
                         <li title="DATE OF BIRTH">
                             <img  class="responsive" src="/images/birthday.png">
                             {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
-                            <img src="/images/age.jpg" class="responsive"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                            <img src="/images/age.jpg" class="responsive small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
                         </li>
-                        <li title="SOCIAL SECURITY NUMBER">
+                        <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
 
                             @if(!empty($client->clientAttachments()))
                                 <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
@@ -725,21 +728,27 @@
     <script>
         $(document).ready(function() {
 
-            // autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-            // google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            //     var place = autocomplete.getPlace();
-            //     $("#address").val(place.formatted_address)
-            //     for (var i = 0; i < place.address_components.length; i++) {
-            //         for (var j = 0; j < place.address_components[i].types.length; j++) {
-            //             if (place.address_components[i].types[j] == "postal_code") {
-            //                 $("#zip").val(place.address_components[i].long_name);
-            //
-            //             }
-            //         }
-            //     }
-            // });
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], {
+                types: ['address'],
+                componentRestrictions: {country: "us"}
+            });
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                $("#address").val(place.formatted_address)
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if (place.address_components[i].types[j] == "postal_code") {
+                            $("#zip").val(place.address_components[i].long_name);
 
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
 
+        $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');
 
@@ -864,7 +873,7 @@
                 var file = e.target.files[0]
 
                 if(file.type == "application/pdf"){
-                    $(this).addClass('socia_dropp')
+                    $(this).addClass('social_dropp')
                 }else{
                     var reader = new FileReader();
 
@@ -926,30 +935,26 @@
                 var full_name = $(".full_name").attr("class")
                 var ssn = $(".ss_number").attr("class")
 
-                if(scaleSS.search("scaleSS") != -1) {
+                if(scaleSS.search("scaleSS") != -1 && ssn.search("hide") != -1) {
                     $(".zoomSS").removeClass("scaleSS")
                     $(".zoomSS").addClass("hide")
+                    $(".ss_number").removeClass("hide")
 
                 }
-                if(scaleDL.search("scaleDL") != -1){
+                if(scaleDL.search("scaleDL") != -1 && full_name.search("hide") != -1){
                     $(".zoomDL").removeClass("scaleDL")
                     $(".zoomDL").addClass("hide")
-                }
-                if(full_name.search("hide") != -1){
                     $(".full_name").removeClass("hide")
-                }
-                if(ssn.search("hide") != -1){
-                    $(".ss_number").removeClass("hide")
                 }
 
            });
 
-            $(".full_name").mouseover(function(){
+            $(".dl-field").mouseover(function(){
                 $(".zoomDL").removeClass("hide");
                 $(".full_name").addClass("hide")
 
             });
-            $(".zoomDL").mouseout(function(){
+            $(".dl-field").mouseout(function(){
                 var  scaleDL = $(".zoomDL").attr("class")
                 if(scaleDL.search("scaleDL") == -1) {
                     $(".zoomDL").addClass("hide")
@@ -957,14 +962,13 @@
                 }
             });
 
-            $(".ss_number").mouseover(function(){
+            $(".ssn-field").mouseover(function(){
                 $(".zoomSS").removeClass("hide");
                 $(".ss_number").addClass("hide")
 
             });
-            $(".zoomSS").mouseout(function(){
-                var  scaleSS = $(".zoomSS").attr("class")
-                if(scaleSS.search("scaleSS") == -1) {
+            $(document).on('mouseout',".ssn-field", function(){
+                if(!$(".zoomSS").hasClass("scaleSS")) {
                     $(".zoomSS").addClass("hide")
                     $(".ss_number").removeClass("hide")
                 }
