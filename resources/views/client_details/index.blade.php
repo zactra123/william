@@ -26,6 +26,29 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
+        .dropdown-content.experina {
+            background-color: #294991;
+        }
+        .dropdown-content.experina  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+        .dropdown-content.equifax  {
+            background-color: #b32541;
+        }
+        .dropdown-content.equifax  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+
+        .dropdown-content.transunion {
+            background-color: #02a5ca;
+        }
+        .dropdown-content.transunion  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+
 
         .dropdown-content a {
             color: black;
@@ -45,12 +68,11 @@
 
         .dropdown-submenu>.dropdown-menu {
             top: 0;
-            left: 100%;
-            margin-top: 10px;
-            margin-left: 5px;
+            left: -100%;
+            margin-right:  5px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             background-color: #f1f1f1;
-            min-width: 200px;
+            min-width: 150px;
 
             /*-webkit-border-radius: 0 6px 6px 6px;*/
             /*-moz-border-radius: 0 6px 6px;*/
@@ -79,20 +101,15 @@
             border-left-color: #fff;
         }
 
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
 
-        .dropdown-submenu.pull-left>.dropdown-menu {
+
+        .dropdown-submenu.pull-right>.dropdown-menu {
             left: -100%;
             margin-left: 10px;
             -webkit-border-radius: 6px 0 6px 6px;
             -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
         }
-
-
-
 
 
         .disput-progress {
@@ -303,7 +320,7 @@
             padding-right: 5px;
         }
         .responsive.small{
-            width: 12%;
+            width: 10%;
         }
         .addressImage{
             width: 100%;
@@ -539,31 +556,9 @@
                                     <div class="row">
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
-                                                <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
-                                                <div class="dropdown-content">
-                                                    <div class="dropdown">
-                                                        <li class="dropdown-submenu">
-                                                            <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
-                                                            <ul class="dropdown-menu">
-                                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
-
-                                                        </li>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div  class="col-md-3 mt20">
-                                            <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
-                                                <div class="dropdown-content">
+                                                <div class="dropdown-content equifax">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
@@ -578,7 +573,7 @@
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
-                                                <div class="dropdown-content">
+                                                <div class="dropdown-content experina">
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
                                                     <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
@@ -592,10 +587,10 @@
 
                                         </div>
                                         <div  class="col-md-3 mt20">
-                                            <div class="dropdown">
+                                            <div class="dropdown ">
 {{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
-                                                <div class="dropdown-content">
+                                                <div class="dropdown-content transunion">
                                                     <a href="https://service.transunion.com/dss/login.page" target="_blank">LOGIN MEMBER</a>
                                                     <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">LOGIN DISPUTE</a>
                                                     <a href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
@@ -610,7 +605,30 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </div>
+
+                                        <div  class="col-md-3 mt20">
+                                            <div class="dropdown">
+                                                <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
+                                                <div class="dropdown-content">
+                                                    <div class="dropdown">
+                                                        <ul class="dropdown-submenu">
+                                                            <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
+                                                            <ul class="dropdown-menu">
+                                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
+                                                            </ul>
+                                                        </ul>
+                                                        <ul>
+                                                            <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
+
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
 
                             </div>
                         </div>
