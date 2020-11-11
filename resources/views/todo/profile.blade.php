@@ -187,21 +187,24 @@
         }
 
         .zoomDL:hover {
-            transform:translate(50%,50%) scale(2.5);
-            transition: transform .5s;
-        }
-        .driver:hover ~ .social {
-            display: none;
-        }
-        .social:hover ~ .driver {
-            display: none;
+            transform:translate(225%,150%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
         }
         .zoomSS:hover {
-            transform:translate(-50%,50%) scale(2.5);
+            transform:translate(225%,-50%) scale(6.5);
             transition: transform .5s ease-in-out;
+            position: fixed;
         }
-        .changeLogo:hover {
-            padding-bottom: 120px;
+        .scaleDL{
+            transform:translate(225%,150%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
+        }
+        .scaleSS{
+            transform:translate(225%,-50%) scale(6.5);
+            transition: transform .5s ease-in-out;
+            position: fixed;
         }
 
         .side-nav .categories > li {
@@ -209,14 +212,37 @@
 
         }
 
-        .scaleDL{
-            transform:translate(50%,50%) scale(2.5);
+
+        .responsive {
+            width: 16.6%;
+            height: auto;
+            padding-right: 5px;
         }
-        .scaleSS{
-            transform:translate(-50%,50%) scale(2.5);
+        .addressImage{
+            width: 100%;
+            height: auto;
+            padding-right: 5px;
         }
-        .changePadding {
-            padding-bottom: 120px;
+        .address{
+            width: 100%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .address1{
+            width: 16.6%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .address2{
+            width: 83%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .refferred {
+            font-size: 2vw !important
         }
 
 
@@ -233,27 +259,6 @@
                     {{--                    <img src="assets/images/trump.jpg" alt="">--}}
                     <div class="info">
                         <h5>Client No: 01</h5>
-                        <h3><a href="#">{{$client->full_name()}}</a></h3>
-                    </div>
-                    <div class="row changeLogo mt-5" >
-                        <div class="col-md-12 m-0">
-                            <div class="col-md-6 justify-content-center driver" style="margin-bottom: 10px; text-align: center">
-                                @if(!empty($client->clientAttachments()))
-                                    <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-                                    @if(!empty($dl))
-                                            <img type="file" class="zoomDL" src="{{asset($dl->path)}}" width="125px" name="img-drvl" id="img-drvl"/>
-                                    @endif
-                                @endif
-                            </div>
-                            <div class="col-md-6 text-md-center social" style="text-align: center">
-                                @if(!empty($client->clientAttachments()))
-                                    <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-                                    @if(!empty($ss))
-                                            <img type="file"  class="zoomSS" src="{{asset($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
-                                    @endif
-                                @endif
-                            </div>
-                        </div>
                     </div>
                     <div class="row  hide form-group updateLogo ">
                         <button type="button" class="close closeUpload">
@@ -272,38 +277,77 @@
 
                 </div>
                 <ul class="categories">
-                    <li title="PHONE NUMBER"><i class="fa fa-phone fa-fw" aria-hidden="true"></i><a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a></li>
-                    <li title="EMAIL ADDRESS"><i class="fa fa-envelope fa-fw"></i><a href="mailto:{{$client->eamil}}"> {{strtoupper($client->email)}}</a>
+                    <li title="FULL NAME">
+
+                        @if(!empty($client->clientAttachments()))
+                            <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                            @if(!empty($dl))
+                                <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
+                            @endif
+                        @endif
+                        <img  class="responsive full_name" src="/images/full_name.png">
+
+                        <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
+                    </li>
+                    <li title="PHONE NUMBER">
+                        <img  class="responsive" src="/images/phone_number.png">
+                        <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
+                    </li>
+                    <li title="EMAIL ADDRESS">
+                        <img  class="responsive" src="/images/email.png">
+                        <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS">
-                        <i class="fa fa-map fa-fw"></i>{{$client->clientDetails->number}} {{$client->clientDetails->name}}
-                    </li>
-                    <li title="FULL ADDRESS" style="margin-left: 25px; padding-top:0px">
-                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                        <div class="address">
+                            <div class="address1">
+                                <img  class="addressImage" src="/images/location.png">
+                            </div>
+                            <div class="address2">
+                                <div class="address">
+                                    {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                </div>
+                                <div class="address">
+                                    {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                </div>
+                            </div>
+                        </div>
                     </li>
 
-                    <li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}}    <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
-                    <li title="SOCIAL SECURITY NUMBER"><i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}</li>
+                    <li title="DATE OF BIRTH">
+                        <img  class="responsive" src="/images/birthday.png">
+                        {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
+                        <img src="/images/age.jpg" class="responsive"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                    </li>
+                    <li title="SOCIAL SECURITY NUMBER">
 
-                    <li title="GENDER"><i class="fa fa-venus-mars fa-fw"></i>
+                        @if(!empty($client->clientAttachments()))
+                            <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+                            @if(!empty($ss))
+                                <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+                            @endif
+                        @endif
+                        <img  class="responsive ss_number" src="/images/ssc.png">
+
+                        {{$client->clientDetails->ssn}}
+                    </li>
+
+                    <li title="GENDER">
                         @if($client->clientDetails->sex == 'M')
-                            MALE
+                            <img  class="responsive" src="/images/male.png"> <span>MALE</span>
                         @elseif($client->clientDetails->sex == 'F')
-                            FEMALE
+                            <img class="responsive"  src="/images/female.png"> <span>FEMALE</span>
                         @else
-                            NON-BINARY
+                            <img class="responsive" src="/images/non_binary.png"> <span>NON-BINARY</span>
                         @endif
                     </li>
 
                     @if($client->clientDetails->referred_by != null)
-                        <li title="REFERRED BY"><i class="fa fa-user fa-fw"></i> {{strtoupper($client->clientDetails->referred_by)}}</li>
+                        <li title="REFERRED BY">
+                            <i class="fa fa-user fa-fw refferred" ></i>
+                            <span>{{strtoupper($client->clientDetails->referred_by)}}</span>
+                        </li>
                     @endif
-
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> UPDATE</a>
-                       <a href="{{route('adminRec.profilePdf', $client->id)}}" class="btn btn-success text-white"><i class="fa fa-print fa-fw"></i> PRINT</a>
-                    </li>
-
+                    <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
                 </ul>
             </aside>
         </div>
@@ -523,15 +567,89 @@
                                 <h2>CREDIT REPORTS</h2>
 
                                 <div class="row">
-                                    <div  class="col-md-4 mt20">
-                                        <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
+                                            <div class="dropdown-content">
+                                                <div class="dropdown">
+                                                    <li class="dropdown-submenu">
+                                                        <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
+                                                        <ul class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#"target="_blank">CREDENTIALS</a>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
+
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="https://consumer.risk.lexisnexis.com/request"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/lxn_logo_1.png')}}"  width="110px"></a>
+
+                                                    </li>
+                                                    <li class="dropdown-submenu">
+                                                        <a href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ew_logo_1.png')}}"  width="110px"></a>
+
+                                                    </li>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div  class="col-md-4 mt20">
-                                        <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>
+
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content">
+                                                <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
+                                                <a href="#">REGISTRATION</a>
+                                                <a href="#" >FCRA</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href=#">ANNUAL</a>
+{{--                                                    <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div  class="col-md-4 mt20">
-                                        <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
+                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content">
+                                                <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
+                                                <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTERATION</a>
+                                                <a href="">VIEW REPORT</a>
+                                                <a href=#">DENIED</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href=#">REPORT NUMBERS</a>
+                                                <a href=#">ANNUAL</a>
+
+{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content">
+                                                <a href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN </a>
+                                                <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
+                                                <a href="#" target="_blank">MEMBER CREDENTIALS</a>
+                                                <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
+                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
+                                                <a href="#" target="_blank">DISPUTE CREDENTIALS</a>
+                                                <a href="#">CREDENTIALS</a>
+                                                <a href="#" target="_blank">FRAUD ALERTS</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href="#" target="_blank">ANNUAL</a>
+
+{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
 
@@ -789,42 +907,71 @@
 
             });
 
-            $(".driver").click(function (e) {
-                e.preventDefault();
+            $(document).on("click",function() {
 
-                var  hideShow = $(".updateLogo").attr("class")
-                if(hideShow.search("hide") != -1){
-                    $(".updateLogo").removeClass("hide")
-                }else{
-                    $(".updateLogo").addClass("hide")
+                var  scaleSS = $(".zoomSS").attr("class")
+                var  scaleDL = $(".zoomDL").attr("class")
+                var full_name = $(".full_name").attr("class")
+                var ssn = $(".ss_number").attr("class")
+
+                if(scaleSS.search("scaleSS") != -1) {
+                    $(".zoomSS").removeClass("scaleSS")
+                    $(".zoomSS").addClass("hide")
+
+                }
+                if(scaleDL.search("scaleDL") != -1){
+                    $(".zoomDL").removeClass("scaleDL")
+                    $(".zoomDL").addClass("hide")
+                }
+                if(full_name.search("hide") != -1){
+                    $(".full_name").removeClass("hide")
+                }
+                if(ssn.search("hide") != -1){
+                    $(".ss_number").removeClass("hide")
+                }
+
+            });
+
+            $(".full_name").mouseover(function(){
+                $(".zoomDL").removeClass("hide");
+                $(".full_name").addClass("hide")
+
+            });
+            $(".zoomDL").mouseout(function(){
+                var  scaleDL = $(".zoomDL").attr("class")
+                if(scaleDL.search("scaleDL") == -1) {
+                    $(".zoomDL").addClass("hide")
+                    $(".full_name").removeClass("hide")
+                }
+            });
+
+            $(".ss_number").mouseover(function(){
+                $(".zoomSS").removeClass("hide");
+                $(".ss_number").addClass("hide")
+
+            });
+            $(".zoomSS").mouseout(function(){
+                var  scaleSS = $(".zoomSS").attr("class")
+                if(scaleSS.search("scaleSS") == -1) {
+                    $(".zoomSS").addClass("hide")
+                    $(".ss_number").removeClass("hide")
                 }
             });
 
             $( ".zoomSS" ).dblclick(function() {
                 var  scale = $(".zoomSS").attr("class")
-
-                if(scale.search("scaleSS") != -1){
-                    $(".zoomSS").removeClass("scaleSS")
-                    $(".changeLogo").removeClass("changePadding")
-                }else{
+                if(scale.search("scaleSS") == -1){
                     $(".zoomSS").addClass("scaleSS")
-                    $(".changeLogo").addClass("changePadding")
                 }
             });
 
             $( ".zoomDL" ).dblclick(function() {
                 var  scale = $(".zoomDL").attr("class")
-                if(scale.search("scaleDL") != -1){
-                    $(".zoomDL").removeClass("scaleDL")
-                    $(".changeLogo").removeClass("changePadding")
-                    $(".social").removeClass("hide")
-
-                }else{
+                if(scale.search("scaleDL") == -1){
                     $(".zoomDL").addClass("scaleDL")
-                    $(".changeLogo").addClass("changePadding")
-                    $(".social").addClass("hide")
                 }
             });
+
         })
 
     </script>

@@ -39,6 +39,61 @@
         .dropdown:hover .dropdown-content {display: block;}
 
         .dropdown:hover .dropbtn {background-color: #3e8e41;}
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: 10px;
+            margin-left: 5px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            background-color: #f1f1f1;
+            min-width: 200px;
+
+            /*-webkit-border-radius: 0 6px 6px 6px;*/
+            /*-moz-border-radius: 0 6px 6px;*/
+            /*border-radius: 0 6px 6px 6px;*/
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu>a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+
+        .dropdown-submenu:hover>a:after {
+            border-left-color: #fff;
+        }
+
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+
+        .dropdown-submenu.pull-left>.dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+
+
+
+
 
         .disput-progress {
             width: 100%;
@@ -479,12 +534,34 @@
                                     <h2>CREDIT REPORTS</h2>
 
                                     <div class="row">
-                                        <div  class="col-md-4 mt20">
+                                        <div  class="col-md-3 mt20">
+                                            <div class="dropdown">
+                                                <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
+                                                <div class="dropdown-content">
+                                                    <div class="dropdown">
+                                                        <li class="dropdown-submenu">
+                                                            <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
+                                                            <ul class="dropdown-menu">
+                                                                <a class="dropdown-item" href="#"target="_blank">CREDENTIALS</a>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
+
+                                                        </li>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div  class="col-md-3 mt20">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
                                                 <div class="dropdown-content">
-                                                    <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard" target="_blank">LOGIN KARMA</a>
+                                                    <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('client.credentials')}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
                                                     <a href=#">ARCHIVE</a>
@@ -494,7 +571,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div  class="col-md-4 mt20">
+                                        <div  class="col-md-3 mt20">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
@@ -511,7 +588,7 @@
                                             </div>
 
                                         </div>
-                                        <div  class="col-md-4 mt20">
+                                        <div  class="col-md-3 mt20">
                                             <div class="dropdown">
 {{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
@@ -529,7 +606,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -939,7 +1015,7 @@
 
             var options = {
                 width: 400,
-                height: 240,
+                height: [240,120,60,30],
                 is3D: true,
                 colors: ['#22bb33', '#bb2124', '#f0ad4e', '#aaaaaa']
             };
