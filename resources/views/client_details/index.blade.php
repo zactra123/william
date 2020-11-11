@@ -542,10 +542,10 @@
                                                         <li class="dropdown-submenu">
                                                             <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
                                                             <ul class="dropdown-menu">
-                                                                <a class="dropdown-item" href="#"target="_blank">CREDENTIALS</a>
+                                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
                                                             </ul>
                                                         </li>
-                                                        <li class="dropdown-submenu">
+                                                        <li>
                                                             <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
 
                                                         </li>
@@ -562,7 +562,7 @@
                                                 <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
                                                 <div class="dropdown-content">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
-                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
                                                     <a href=#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
@@ -578,7 +578,7 @@
                                                 <div class="dropdown-content">
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
-                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
                                                     <a href=#">ARCHIVE</a>
 
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
@@ -595,7 +595,8 @@
                                                 <div class="dropdown-content">
                                                     <a href="https://service.transunion.com/dss/login.page" target="_blank">LOGIN MEMBER</a>
                                                     <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">LOGIN DISPUTE</a>
-                                                    <a href="{{route('client.credentials')}}">CREDENTIALS</a>
+                                                    <a href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
+                                                    <a href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
                                                     <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">REGISTER MEMBER</a>
                                                     <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">REGISTER DISPUTE</a>
                                                     <a href=#">ARCHIVE</a>
@@ -1007,7 +1008,7 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Success',     11],
+                ['Success',     6],
                 ['Failed',      2],
                 ['In Progress',  2],
                 ['Added',  8],
@@ -1015,9 +1016,16 @@
 
             var options = {
                 width: 400,
-                height: [240,120,60,30],
+                height: 240,
+                legend: 'none',
                 is3D: true,
-                colors: ['#22bb33', '#bb2124', '#f0ad4e', '#aaaaaa']
+                // pieResidueSliceColor: '#aaaaaa',
+                colors: ['#22bb33', '#bb2124', '#f0ad4e', '#aaaaaa'],
+                slices: [{offset: 0.01},
+                    {offset: 0.04},
+                    {offset: 0.04},
+                    {offset: 0.04},
+                ],
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));

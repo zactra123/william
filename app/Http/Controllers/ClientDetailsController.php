@@ -196,10 +196,10 @@ class ClientDetailsController extends Controller
         }
     }
 
-    public function credentials()
+    public function credentials($source = null)
     {
         $client = Auth::user();
-        return view('client_details.create-credentials', compact('client'));
+        return view('client_details.create-credentials', compact('client', 'source'));
     }
 
     public function credentialsStore(Request $request)
