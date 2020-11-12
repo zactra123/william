@@ -328,20 +328,22 @@
                         <img  class="responsive" src="/images/email.png">
                         <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
-                    <li title="FULL ADDRESS">
-                        <div class="address">
-                            <div class="address1">
-                                <img  class="addressImage" src="/images/location.png">
-                            </div>
-                            <div class="address2">
-                                <div class="address">
-                                    {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                    <li title="FULL ADDRESS" >
+                            <div class="address">
+                                <div class="address1">
+                                    <a href="#" data-toggle="modal" data-target="#mapModal">
+                                      <img  class="addressImage" src="/images/location.png">
+                                    </a>
                                 </div>
-                                <div class="address">
-                                    {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                <div class="address2">
+                                    <div class="address">
+                                        {{$client->clientDetails->number}} {{$client->clientDetails->name}}
+                                    </div>
+                                    <div class="address">
+                                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </li>
 
                     <li title="DATE OF BIRTH" class="date_of_birth">
@@ -713,32 +715,32 @@
                 </div>
                 <div class="modal-body">
                     {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
-                    @method('PUT')
-                    @csrf
-                    <div class="form row">
-                        <div class="form-group col-md-12">
+                        @method('PUT')
+                        @csrf
+                        <div class="form row">
+                            <div class="form-group col-md-12">
 
-                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                                {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                            </div>
+                            <div class="form-group col-md-12">
+
+                                {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                            </div>
+
+                            <div class="form-group col-md-12">
+
+                                {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
+                            </div>
+
+
                         </div>
 
-                        <div class="form-group col-md-12">
-                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
-                        </div>
-                        <div class="form-group col-md-12">
-
-                            {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-                        </div>
-
-                        <div class="form-group col-md-12">
-
-                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
-                        </div>
-
-
-                    </div>
-
-                    <button type="submit" value="Update" class="btn btn-primary">Update</button>
-                    </form>
+                        <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                    {!! Form::close() !!}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -845,6 +847,27 @@
 
         </div>
     </div>
+
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="mapid"  style="height: 500px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <link rel="stylesheet" href="{{asset('css/lib/leaflet.css')}}" />
+    <script src="{{asset('js/lib/leaflet.js')}}"></script>
 
 
     <script type="text/javascript">
@@ -1078,10 +1101,13 @@
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
 
-            autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            autocomplete = new google.maps.places.Autocomplete($("#address")[0], {
+                types: ['address'],
+                componentRestrictions: {country: "us"}
+            });
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 var place = autocomplete.getPlace();
                 $("#address").val(place.formatted_address)
                 for (var i = 0; i < place.address_components.length; i++) {
@@ -1093,7 +1119,10 @@
                     }
                 }
             });
-
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');
 
@@ -1121,10 +1150,25 @@
                     }
                 });
             })
+        })
+    </script>
+    <script>
+        $(document).ready(function(){
+            var mymap = L.map('mapid')
+            $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q={{$client->clientDetails->address}}', function(data){
+                console.log(data);
+                mymap.setView([data[0]['lat'], data[0]['lon']], 17);
+                L.marker([data[0]['lat'], data[0]['lon']]).addTo(mymap);
 
+            });
 
-
-
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mymap);
+            mymap.invalidateSize()
+            $("#mapModal").on('shown.bs.modal', function(e) {
+                mymap.invalidateSize();
+            });
         })
 
     </script>
