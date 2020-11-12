@@ -6,6 +6,7 @@ use App\ClientAttachment;
 use App\ClientDetail;
 use App\ClientReport;
 use App\Disputable;
+use App\Services\Screaper;
 use App\Todo;
 use App\UploadClientDetail;
 use App\User;
@@ -44,7 +45,9 @@ class TodosController extends Controller
         $client = User::clients()->find($clientId);
         $toDos = Todo::where('client_id', $clientId)->get();
         $user = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
-        return view('todo.profile', compact('client', 'user','toDos'));
+
+        $zodiac = $this->getZodiac($client->clientDetails->dob);
+        return view('todo.profile', compact('client', 'user','toDos', 'zodiac'));
 
 
     }
@@ -89,8 +92,6 @@ class TodosController extends Controller
         $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
 
         return response()->json(['status' => 200, 'view' => $view]);
-
-
     }
 
     public function toDoList(Request $request)
@@ -142,7 +143,6 @@ class TodosController extends Controller
 
 
     }
-
 
     public function changeTodoAssignment(Request $request) {
         $todo = Todo::find($request->id)->update(['user_id' => $request->user_id]);;
@@ -318,12 +318,6 @@ class TodosController extends Controller
 
 
         dd('asdad');
-   
-
-
-
-
-
 
 
         return view('todo.client', compact('client'));
@@ -338,6 +332,92 @@ class TodosController extends Controller
 
     }
 
+    public function queueReport (Request $request)
+    {
+
+        $clientId = $request->client_id;
+        $bureau = $request->bureau;
+        $client = User::where('id', $clientId)->first();
+
+
+        $scraper = new Screaper($clientId);
+
+        if ($client->credentials->ex_present() && $bureau == "EXLOGIN") {
+//            $scraper->experian_login()->dispatch();
+            return response()->json(['status' => 'success']);
+
+        }elseif ($client->credentials->tu_present() && $bureau == "TUDISPUTE") {
+//            $scraper->transunion_dispute();
+            return response()->json(['status' => 'success']);
+        }elseif($client->credentials->tu_dis_present() && $bureau == "TUMEMBER") {
+//            $scraper->transunion_membership();
+            return response()->json(['status' => 'success']);
+        }elseif ($client->credentials->ck_present() && $bureau == "EQ"){
+//            $scraper->equifax_via_credit_karma();
+            return response()->json(['status' => 'success']);
+        }else{
+            return response()->json(['status' => 'error']);
+        }
+
+    }
+
+
+    public function getZodiac($date)
+    {
+
+//        $year = date('Y', strtotime($date));
+        $year =2015;
+        $month = date('m', strtotime($date));
+        $day = date('d', strtotime($date));
+
+        switch (($year - 4) % 12) {
+            case  0: $zodiacYear = 'Rat';       break;
+            case  1: $zodiacYear = 'Ox';            break;
+            case  2: $zodiacYear = 'Tiger';     break;
+            case  3: $zodiacYear = 'Rabbit';    break;
+            case  4: $zodiacYear = 'Dragon';    break;
+            case  5: $zodiacYear = 'Snake';     break;
+            case  6: $zodiacYear = 'Horse';     break;
+            case  7: $zodiacYear = 'Goat';  break;
+            case  8: $zodiacYear = 'Monkey';    break;
+            case  9: $zodiacYear = 'Rooster';   break;
+            case 10: $zodiacYear = 'Dog';   break;
+            case 11: $zodiacYear = 'Pig';   break;
+        }
+
+        if     ( ( $month == 3 && $day > 20 ) || ( $month == 4 && $day < 20 ) ) { $zodiacMonth = "Aries";}
+        elseif ( ( $month == 4 && $day > 19 ) || ( $month == 5 && $day < 21 ) ) { $zodiacMonth = "Taurus";}
+        elseif ( ( $month == 5 && $day > 20 ) || ( $month == 6 && $day < 21 ) ) { $zodiacMonth = "Gemini";}
+        elseif ( ( $month == 6 && $day > 20 ) || ( $month == 7 && $day < 23 ) ) { $zodiacMonth = "Cancer";}
+        elseif ( ( $month == 7 && $day > 22 ) || ( $month == 8 && $day < 23 ) ) { $zodiacMonth = "Leo";}
+        elseif ( ( $month == 8 && $day > 22 ) || ( $month == 9 && $day < 23 ) ) { $zodiacMonth = "Virgo";}
+        elseif ( ( $month == 9 && $day > 22 ) || ( $month == 10 && $day < 23 ) ) { $zodiacMonth = "Libra";}
+        elseif ( ( $month == 10 && $day > 22 ) || ( $month == 11 && $day < 22 ) ) { $zodiacMonth = "Scorpio";}
+        elseif ( ( $month == 11 && $day > 21 ) || ( $month == 12 && $day < 22 ) ) { $zodiacMonth = "Sagittarius";}
+        elseif ( ( $month == 12 && $day > 21 ) || ( $month == 1 && $day < 20 ) ) { $zodiacMonth = "Capricorn";}
+        elseif ( ( $month == 1 && $day > 19 ) || ( $month == 2 && $day < 19 ) ) { $zodiacMonth = "Aquarius";}
+        elseif ( ( $month == 2 && $day > 18 ) || ( $month == 3 && $day < 21 ) ) { $zodiacMonth = "Pisces";}
+
+        if     ( $month == 1  ) { $zodiacStone = "Garnet";}
+        elseif ( $month == 2 ) { $zodiacStone = "Amethyst";}
+        elseif ( $month == 3  ){ $zodiacStone = "Aquamarine, Bloodstone";}
+        elseif ( $month == 4  ) { $zodiacStone = "Diamond";}
+        elseif ( $month == 5  ) { $zodiacStone = "Emerald";}
+        elseif ( $month == 6  ) { $zodiacStone = "Pearl, Moonstone, Alexandrite	";}
+        elseif ( $month == 7  ) { $zodiacStone = "Ruby";}
+        elseif ( $month == 8  ) { $zodiacStone = "Pperidot, Spinel";}
+        elseif ( $month == 9  ) { $zodiacStone = "Sapphire";}
+        elseif ( $month == 10  )  { $zodiacStone = "Opal, Tourmaline";}
+        elseif ( $month == 11 ) { $zodiacStone = "Topaz, Citrine";}
+        elseif( $month == 12 ) { $zodiacStone = "Turquoise, Zircon, Tanzanite";}
+
+        return [
+                "month"=>$zodiacMonth,
+                "year"=>$zodiacYear,
+                "stone"=>$zodiacStone
+            ];
+
+    }
 
 
 
@@ -404,6 +484,8 @@ class TodosController extends Controller
             ];
         }
     }
+
+
 
 
 

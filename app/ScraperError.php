@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScraperError extends Model
 {
-    protected $table = 'scraper_error';
+    protected $table = 'scraper_errors';
 
     protected $fillable = [
         'user_id',

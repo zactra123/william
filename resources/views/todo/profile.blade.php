@@ -26,6 +26,29 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
+        .dropdown-content.experina {
+            background-color: #294991;
+        }
+        .dropdown-content.experina  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+        .dropdown-content.equifax  {
+            background-color: #b32541;
+        }
+        .dropdown-content.equifax  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+
+        .dropdown-content.transunion {
+            background-color: #02a5ca;
+        }
+        .dropdown-content.transunion  a {
+            color:  #f1f1f1;
+            font-weight: bolder;
+        }
+
 
         .dropdown-content a {
             color: black;
@@ -209,15 +232,16 @@
 
         .side-nav .categories > li {
             padding: 10px 40px 10px 30px !important;
-
         }
-
-
         .responsive {
             width: 16.6%;
             height: auto;
             padding-right: 5px;
         }
+        .responsive.small{
+            width: 10%;
+        }
+
         .addressImage{
             width: 100%;
             height: auto;
@@ -243,6 +267,13 @@
         }
         .refferred {
             font-size: 2vw !important
+        }
+
+        .zodiac{
+            display: none;
+        }
+        .date_of_birth:hover  .zodiac{
+            display:block;
         }
 
 
@@ -277,7 +308,7 @@
 
                 </div>
                 <ul class="categories">
-                    <li title="FULL NAME">
+                    <li title="FULL NAME" class="dl-field">
 
                         @if(!empty($client->clientAttachments()))
                             <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
@@ -313,12 +344,16 @@
                         </div>
                     </li>
 
-                    <li title="DATE OF BIRTH">
-                        <img  class="responsive" src="/images/birthday.png">
-                        {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
-                        <img src="/images/age.jpg" class="responsive"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                    <li title="DATE OF BIRTH" class="date_of_birth">
+
+                            <img  class="responsive" src="/images/birthday.png">
+                            {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
+                            <img src="/images/age.jpg" class="responsive small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                        <p class="zodiac">SIGN {{strtoupper($zodiac['month'])}}: BIRTHSTONES {{strtoupper($zodiac['month'])}}: YEAR  {{strtoupper($zodiac['year'])}} </p>
+
+
                     </li>
-                    <li title="SOCIAL SECURITY NUMBER">
+                    <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
 
                         @if(!empty($client->clientAttachments()))
                             <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
@@ -565,18 +600,67 @@
                         <div class="chart-container">
                             <div class="content">
                                 <h2>CREDIT REPORTS</h2>
-
                                 <div class="row">
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content equifax">
+                                                <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
+                                                <a href="#">REGISTRATION</a>
+                                                <a href="#" >FCRA</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href=#">ANNUAL</a>
+{{--                                                    <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
+                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content experina">
+                                                <a class="queue" data-report="EXLOGIN"  data-client="{{$client->id}}">LOGIN</a>
+                                                <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTERATION</a>
+                                                <a class="queue" data-report="EXVIEW"  data-client="{{$client->id}}">VIEW REPORT</a>
+                                                <a href=#">DENIED</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href=#">REPORT NUMBERS</a>
+                                                <a href=#">ANNUAL</a>
+
+{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div  class="col-md-3 mt20">
+                                        <div class="dropdown">
+                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
+                                            <div class="dropdown-content transunion">
+                                                <a class="queue" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
+                                                <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
+                                                <a href="#" target="_blank">MEMBER CREDENTIALS</a>
+                                                <a class="queue" data-report="TUDISPUTE"  data-client="{{$client->id}}">DISPUTE LOGIN</a>
+                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
+                                                <a href="#" target="_blank">DISPUTE CREDENTIALS</a>
+                                                <a href="#">CREDENTIALS</a>
+                                                <a href="#" target="_blank">FRAUD ALERTS</a>
+                                                <a href=#">ARCHIVE</a>
+                                                <a href="#" target="_blank">ANNUAL</a>
+
+{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
                                             <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
                                             <div class="dropdown-content">
                                                 <div class="dropdown">
                                                     <li class="dropdown-submenu">
-                                                        <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
-                                                        <ul class="dropdown-menu">
-                                                            <a class="dropdown-item" href="#"target="_blank">CREDENTIALS</a>
-                                                        </ul>
+                                                        <a  class="queue" data-report="EQ"  data-client="{{$client->id}}"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
+
                                                     </li>
                                                     <li class="dropdown-submenu">
                                                         <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
@@ -597,57 +681,6 @@
 
                                     </div>
 
-                                    <div  class="col-md-3 mt20">
-                                        <div class="dropdown">
-                                            {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
-                                            <div class="dropdown-content">
-                                                <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
-                                                <a href="#">REGISTRATION</a>
-                                                <a href="#" >FCRA</a>
-                                                <a href=#">ARCHIVE</a>
-                                                <a href=#">ANNUAL</a>
-{{--                                                    <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div  class="col-md-3 mt20">
-                                        <div class="dropdown">
-                                            {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
-                                            <div class="dropdown-content">
-                                                <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
-                                                <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTERATION</a>
-                                                <a href="">VIEW REPORT</a>
-                                                <a href=#">DENIED</a>
-                                                <a href=#">ARCHIVE</a>
-                                                <a href=#">REPORT NUMBERS</a>
-                                                <a href=#">ANNUAL</a>
-
-{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div  class="col-md-3 mt20">
-                                        <div class="dropdown">
-                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
-                                            <div class="dropdown-content">
-                                                <a href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN </a>
-                                                <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
-                                                <a href="#" target="_blank">MEMBER CREDENTIALS</a>
-                                                <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
-                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
-                                                <a href="#" target="_blank">DISPUTE CREDENTIALS</a>
-                                                <a href="#">CREDENTIALS</a>
-                                                <a href="#" target="_blank">FRAUD ALERTS</a>
-                                                <a href=#">ARCHIVE</a>
-                                                <a href="#" target="_blank">ANNUAL</a>
-
-{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                            </div>
-                                        </div>
-                                    </div>
 
 
                                 </div>
@@ -932,12 +965,12 @@
 
             });
 
-            $(".full_name").mouseover(function(){
+            $(".dl-field").mouseover(function(){
                 $(".zoomDL").removeClass("hide");
                 $(".full_name").addClass("hide")
 
             });
-            $(".zoomDL").mouseout(function(){
+            $(".dl-field").mouseout(function(){
                 var  scaleDL = $(".zoomDL").attr("class")
                 if(scaleDL.search("scaleDL") == -1) {
                     $(".zoomDL").addClass("hide")
@@ -945,14 +978,13 @@
                 }
             });
 
-            $(".ss_number").mouseover(function(){
+            $(".ssn-field").mouseover(function(){
                 $(".zoomSS").removeClass("hide");
                 $(".ss_number").addClass("hide")
 
             });
-            $(".zoomSS").mouseout(function(){
-                var  scaleSS = $(".zoomSS").attr("class")
-                if(scaleSS.search("scaleSS") == -1) {
+            $(document).on('mouseout',".ssn-field", function(){
+                if(!$(".zoomSS").hasClass("scaleSS")) {
                     $(".zoomSS").addClass("hide")
                     $(".ss_number").removeClass("hide")
                 }
@@ -975,6 +1007,62 @@
         })
 
     </script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+
+            $(".queue").click(function(){
+                var bureau = $(this).attr('data-report')
+                var clientId = $(this).attr('data-client')
+                console.log('experian-login',bureau, clientId)
+                var token = "<?= csrf_token()?>";
+
+                $.ajax({
+                    url: '/receptionist-admin/client/report/queue',
+                    type: "POST",
+                    data: {
+                        "client_id": clientId,
+                        "bureau": bureau,
+                        "_token": token,
+                    },
+                    success: function(response) {
+                        // bootbox.alert({
+                        //     message: "Your request in queue!!!",
+                        //     backdrop: true,
+                        //     centerVertical: true
+                        //
+                        // });
+
+                        bootbox.alert('Your request in queue!!!' ).find('.modal-content').css({
+                            'font-weight': 'bold',
+                            'color': '#442FFF',
+                            'font-size': '2em',
+                            'margin-top': function () {
+                                var w = $(window).height();
+                                var b = $(".modal-dialog").height();
+                                console.log(b)
+                                // should not be (w-h)/2
+                                var h = (0.8*w ) / 2;
+                                return h + "px";
+                            }
+                        });
+
+
+                    },
+                    error: function(error) {
+
+                    }
+                });
+            })
+
+
+
+
+        })
+
+    </script>
+
 
 
 

@@ -354,7 +354,7 @@ class Screaper
                     'original_creditor' => $infoNegativeTrade['originalCreditor'],
                     'sold_to' => $infoNegativeTrade['soldTo'],
                     'purchased_from' => $infoNegativeTrade['purchasedFrom'],
-                    'mortgage_id' => $infoNegativeTrade['status'],
+                    'mortgage_id' => $infoNegativeTrade['mortgageId'],
                     'recent_balance_date' => !empty($infoNegativeTrade['recentBalance']) ? $infoNegativeTrade['recentBalance']['date'] : null,
                     'recent_balance_amount' => !empty($infoNegativeTrade['recentBalance']) ? $infoNegativeTrade['recentBalance']['amount'] : null,
                     'recent_balance_pay_amount' => !empty($infoNegativeTrade['recentBalance']) ? $infoNegativeTrade['recentBalance']['payAmount'] : null,
