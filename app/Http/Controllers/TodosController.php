@@ -6,6 +6,7 @@ use App\ClientAttachment;
 use App\ClientDetail;
 use App\ClientReport;
 use App\Disputable;
+use App\Jobs\ScrapeReports;
 use App\Services\Screaper;
 use App\Todo;
 use App\UploadClientDetail;
@@ -340,20 +341,17 @@ class TodosController extends Controller
         $client = User::where('id', $clientId)->first();
 
 
-        $scraper = new Screaper($clientId);
-
         if ($client->credentials->ex_present() && $bureau == "EXLOGIN") {
-//            $scraper->experian_login()->dispatch();
+            ScrapeReports::dispatch($client, [], 'experian_login');
             return response()->json(['status' => 'success']);
-
         }elseif ($client->credentials->tu_present() && $bureau == "TUDISPUTE") {
-//            $scraper->transunion_dispute();
+            ScrapeReports::dispatch($client, [], 'transunion_dispute');
             return response()->json(['status' => 'success']);
         }elseif($client->credentials->tu_dis_present() && $bureau == "TUMEMBER") {
-//            $scraper->transunion_membership();
+            ScrapeReports::dispatch($client, [], 'transunion_membership');
             return response()->json(['status' => 'success']);
         }elseif ($client->credentials->ck_present() && $bureau == "EQ"){
-//            $scraper->equifax_via_credit_karma();
+            ScrapeReports::dispatch($client, [], 'equifax_via_credit_karma');
             return response()->json(['status' => 'success']);
         }else{
             return response()->json(['status' => 'error']);
