@@ -180,7 +180,7 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
 });
 
-Route::group(['prefix'=> 'receptionist-admin/'], function(){
+Route::group(['prefix'=> 'admins/'], function(){
 
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');

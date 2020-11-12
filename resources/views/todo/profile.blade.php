@@ -1019,7 +1019,7 @@
                 var token = "<?= csrf_token()?>";
 
                 $.ajax({
-                    url: '/receptionist-admin/client/report/queue',
+                    url: '/admins/client/report/queue',
                     type: "POST",
                     data: {
                         "client_id": clientId,
@@ -1102,7 +1102,7 @@
                 var token = "<?= csrf_token()?>";
 
                 $.ajax({
-                    url: '/receptionist-admin/client/profile/todo',
+                    url: '/admins/client/profile/todo',
                     type: "POST",
                     data: {
                         "id": todo,

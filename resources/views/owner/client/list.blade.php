@@ -39,7 +39,7 @@
 {{--                                                <td>{{$user->full_name?? "-"}}</td>--}}
                                                 <td>
 
-                                                    <a class="btn btn-secondary" href="{{ route('owner.client.show',$user->id)}}"
+                                                    <a class="btn btn-secondary" href="{{ route('adminRec.client.profile',$user->id)}}"
                                                        role="button"><i class="fa fa-file-text"></i></a>
 
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">

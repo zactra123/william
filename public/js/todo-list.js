@@ -4,7 +4,7 @@ $(document).ready(function(){
             var todo_id = this.$input.parents('tr').attr('data-id'),
                 token = $("meta[name='csrf-token']").attr("content");
             $.ajax({
-                url: '/receptionist-admin/todo/change-assignment',
+                url: '/admins/todo/change-assignment',
                 type: 'POST',
                 data: {
                     "_token": token,
@@ -47,7 +47,7 @@ $(document).ready(function(){
 
                     $.ajax(
                         {
-                            url: "/receptionist-admin/todo/" + id,
+                            url: "/admins/todo/" + id,
                             type: 'DELETE',
                             data: {
                                 "id": id,
