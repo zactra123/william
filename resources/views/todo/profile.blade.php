@@ -22,7 +22,7 @@
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 160px;
+            min-width: 220px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -314,9 +314,10 @@
                             <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
                             @if(!empty($dl))
                                 <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
+                            @else
+                                <img  class="responsive full_name" src="/images/full_name.png">
                             @endif
                         @endif
-                        <img  class="responsive full_name" src="/images/full_name.png">
 
                         <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                     </li>
@@ -329,21 +330,21 @@
                         <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS" >
-                            <div class="address">
-                                <div class="address1">
-                                    <a href="#" data-toggle="modal" data-target="#mapModal">
-                                      <img  class="addressImage" src="/images/location.png">
-                                    </a>
+                        <div class="address">
+                            <div class="address1">
+                                <a href="#" data-toggle="modal" data-target="#mapModal">
+                                  <img  class="addressImage" src="/images/location.png">
+                                </a>
+                            </div>
+                            <div class="address2">
+                                <div class="address">
+                                    {{$client->clientDetails->number}} {{$client->clientDetails->name}}
                                 </div>
-                                <div class="address2">
-                                    <div class="address">
-                                        {{$client->clientDetails->number}} {{$client->clientDetails->name}}
-                                    </div>
-                                    <div class="address">
-                                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
-                                    </div>
+                                <div class="address">
+                                    {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
                                 </div>
                             </div>
+                        </div>
                     </li>
 
                     <li title="DATE OF BIRTH" class="date_of_birth">
@@ -356,11 +357,12 @@
                         </p>
                     </li>
                     <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
-
                         @if(!empty($client->clientAttachments()))
                             <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
                             @if(!empty($ss))
                                 <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+                            @else
+                                <img  class="responsive" src="/images/ssc.png">
                             @endif
                         @endif
                         <img  class="responsive ss_number" src="/images/ssc.png">
@@ -606,13 +608,15 @@
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
                                             {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120">
+                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="100%">
                                             <div class="dropdown-content equifax">
                                                 <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
+                                                <a href="#">CREDENTIALS</a>
                                                 <a href="#">REGISTRATION</a>
-                                                <a href="#" >FCRA</a>
+                                                <a href="#" >FCRA ACCESS</a>
+                                                <a href="#" >DISPUTE ACCESS</a>
+                                                <a href="#" >ANNUAL REPORT</a>
                                                 <a href=#">ARCHIVE</a>
-                                                <a href=#">ANNUAL</a>
 {{--                                                    <a  href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
                                             </div>
                                         </div>
@@ -620,16 +624,16 @@
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
                                             {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120">
+                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="100%">
                                             <div class="dropdown-content experina">
                                                 <a class="queue" data-report="EXLOGIN"  data-client="{{$client->id}}">LOGIN</a>
+                                                <a href="#">CREDENTIALS</a>
                                                 <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTERATION</a>
+                                                <a href="#">DENIED</a>
                                                 <a class="queue" data-report="EXVIEW"  data-client="{{$client->id}}">VIEW REPORT</a>
-                                                <a href=#">DENIED</a>
-                                                <a href=#">ARCHIVE</a>
-                                                <a href=#">REPORT NUMBERS</a>
-                                                <a href=#">ANNUAL</a>
-
+                                                <a href="#">REPORT NUMBERS</a>
+                                                <a href="#">ANNUAL REPORT</a>
+                                                <a href="#">ARCHIVE</a>
 {{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
                                             </div>
                                         </div>
@@ -637,18 +641,19 @@
 
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
-                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120">
+                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="100%">
                                             <div class="dropdown-content transunion">
                                                 <a class="queue" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
+                                                <a href="#">MEMBER CREDENTIALS</a>
                                                 <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
-                                                <a href="#" target="_blank">MEMBER CREDENTIALS</a>
                                                 <a class="queue" data-report="TUDISPUTE"  data-client="{{$client->id}}">DISPUTE LOGIN</a>
-                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
                                                 <a href="#" target="_blank">DISPUTE CREDENTIALS</a>
-                                                <a href="#">CREDENTIALS</a>
+                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
                                                 <a href="#" target="_blank">FRAUD ALERTS</a>
+                                                <a href="#">FRAUD CREDENTIALS</a>
+                                                <a href="#">FRAUD REGISTRATION</a>
+                                                <a href="#" target="_blank">ANNUAL REPORT</a>
                                                 <a href=#">ARCHIVE</a>
-                                                <a href="#" target="_blank">ANNUAL</a>
 
 {{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
                                             </div>
@@ -657,7 +662,7 @@
 
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
-                                            <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="110px">
+                                            <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="100%">
                                             <div class="dropdown-content">
                                                 <div class="dropdown">
                                                     <li class="dropdown-submenu">
