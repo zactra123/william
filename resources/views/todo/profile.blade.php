@@ -347,13 +347,13 @@
                     </li>
 
                     <li title="DATE OF BIRTH" class="date_of_birth">
-
                             <img  class="responsive" src="/images/birthday.png">
                             {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
                             <img src="/images/age.jpg" class="responsive small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
-                        <p class="zodiac">SIGN {{strtoupper($zodiac['month'])}}: BIRTHSTONES {{strtoupper($zodiac['stone'])}}: YEAR  {{strtoupper($zodiac['year'])}} </p>
-
-
+                        <p class="zodiac">
+                            {{strtoupper($zodiac['month'])}}/{{strtoupper($zodiac['year'])}}
+                            BIRTHSTONES-{{strtoupper($zodiac['stone'])}}
+                        </p>
                     </li>
                     <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
 

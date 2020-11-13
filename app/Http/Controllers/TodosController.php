@@ -363,8 +363,7 @@ class TodosController extends Controller
     public function getZodiac($date)
     {
 
-//        $year = date('Y', strtotime($date));
-        $year =2015;
+        $year = date('Y', strtotime($date));
         $month = date('m', strtotime($date));
         $day = date('d', strtotime($date));
 

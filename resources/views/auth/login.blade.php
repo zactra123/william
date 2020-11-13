@@ -1,4 +1,21 @@
 @extends('layouts.layout')
+<style>.pass_show{position: relative}
+
+    .pass_show .ptxt {
+
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        z-index: 1;
+        color: black;
+        font-weight: bold;
+        margin-top: -10px;
+        cursor: pointer;
+        transition: .3s ease all;
+    }
+
+    .pass_show .ptxt:hover{color: #333333;}
+</style>
 
 @section('content')
 
@@ -44,8 +61,10 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password">
+                                <div class="form-group pass_show">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password" data-toggle="password">
+
+
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -103,9 +122,28 @@
 
 
 
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('.pass_show').append('<span class="ptxt">Show</span>');
+        });
+
+
+        $(document).on('click','.pass_show .ptxt', function(){
+
+            $(this).text($(this).text() == "Show" ? "Hide" : "Show");
+
+            $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
+
+        });
+
+
+
+    </script>
 
 
 
 
 
 @endsection
+
