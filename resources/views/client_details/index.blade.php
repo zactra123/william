@@ -562,7 +562,7 @@
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
                                                 <div class="dropdown-content equifax">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
@@ -577,7 +577,7 @@
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"   width="100%">
                                                 <div class="dropdown-content experina">
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
@@ -594,7 +594,7 @@
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown ">
 {{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="100%">
                                                 <div class="dropdown-content transunion">
                                                     <a href="https://service.transunion.com/dss/login.page" target="_blank">LOGIN MEMBER</a>
                                                     <a href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">LOGIN DISPUTE</a>
@@ -613,7 +613,7 @@
 
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
-                                                <img class="report_access"src="{{asset('images/report_access/misc.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/misc_2.png')}}"   width="100%">
                                                 <div class="dropdown-content">
                                                     <div class="dropdown">
                                                         <ul class="dropdown-submenu">

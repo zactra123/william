@@ -610,7 +610,7 @@
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
                                             {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="100%">
+                                            <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content equifax">
                                                 <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
                                                 <a href="#">CREDENTIALS</a>
@@ -626,7 +626,7 @@
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
                                             {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="100%">
+                                            <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content experina">
                                                 <a class="queue" data-report="EXLOGIN"  data-client="{{$client->id}}">LOGIN</a>
                                                 <a href="#">CREDENTIALS</a>
@@ -643,7 +643,7 @@
 
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
-                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="100%">
+                                            <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content transunion">
                                                 <a class="queue" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
                                                 <a href="#">MEMBER CREDENTIALS</a>
@@ -664,7 +664,7 @@
 
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
-                                            <img class="report_access"src="{{asset('images/report_access/misc.png')}}"  width="100%">
+                                            <img class="report_access mb-3 pb-5" src="{{asset('images/report_access/misc_2.png')}}"  width="90%">
                                             <div class="dropdown-content">
                                                 <div class="dropdown">
                                                     <li class="dropdown-submenu">
