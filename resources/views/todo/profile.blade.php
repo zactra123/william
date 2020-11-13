@@ -312,12 +312,13 @@
 
                         @if(!empty($client->clientAttachments()))
                             <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-                            @if(!empty($dl))
+                            @if(!empty($dl) && $dl->type != "pdf")
                                 <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
                             @else
-                                <img  class="responsive full_name" src="/images/full_name.png">
+                                <img type="file" class="zoomDL responsive hide" src="/images/full_name.png"   name="img-drvl" id="img-drvl"/>
                             @endif
                         @endif
+                            <img  class="responsive full_name" src="/images/full_name.png">
 
                         <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                     </li>
@@ -359,10 +360,11 @@
                     <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
                         @if(!empty($client->clientAttachments()))
                             <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-                            @if(!empty($ss))
+                            @if(!empty($ss) && $ss->type != "pdf")
                                 <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
                             @else
-                                <img  class="responsive" src="/images/ssc.png">
+                                <img type="file"  class="zoomSS responsive hide"  src="/images/ssc.png" name="img-sos" id="img-sose" />
+
                             @endif
                         @endif
                         <img  class="responsive ss_number" src="/images/ssc.png">
