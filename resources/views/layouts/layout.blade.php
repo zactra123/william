@@ -34,6 +34,7 @@
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
+
     <style>
 
         .header-section .navbar .navbar-collapse .navbar-nav li {
@@ -75,6 +76,7 @@
             color: #f7f7f7;
         }
     </style>
+    @yield('styles')
     <script src="{{ asset('js/lib/bootstrap.min.js') }}"></script>
     {{--<script src="assets/js/jquery.inview.min.js"></script>--}}
 

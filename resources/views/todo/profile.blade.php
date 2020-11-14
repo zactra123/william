@@ -645,19 +645,31 @@
                                         <div class="dropdown">
                                             <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content transunion">
-                                                <a class="queue" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
-                                                <a href="#">MEMBER CREDENTIALS</a>
-                                                <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
-                                                <a class="queue" data-report="TUDISPUTE"  data-client="{{$client->id}}">DISPUTE LOGIN</a>
-                                                <a href="#" target="_blank">DISPUTE CREDENTIALS</a>
-                                                <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
-                                                <a href="#" target="_blank">FRAUD ALERTS</a>
-                                                <a href="#">FRAUD CREDENTIALS</a>
-                                                <a href="#">FRAUD REGISTRATION</a>
-                                                <a href="#" target="_blank">ANNUAL REPORT</a>
-                                                <a href=#">ARCHIVE</a>
-
-{{--                                                    <a href="{{route('adminRec.client.report', ['client'=> $client->id, 'type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
+                                                <div class="pb-3">
+                                                    <a class="queue p-1" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
+                                                    <a class="p-1" href="#">MEMBER CREDENTIALS</a>
+                                                    <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
+                                                    <hr>
+                                                </div>
+                                                <div class="pb-3">
+                                                    <a class="p-1" class="queue" data-report="TUDISPUTE"  data-client="{{$client->id}}">DISPUTE LOGIN</a>
+                                                    <a class="p-1" href="#" target="_blank">DISPUTE CREDENTIALS</a>
+                                                    <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
+                                                    <hr>
+                                                </div>
+                                                <div class="pb-3">
+                                                    <a class="p-1" href="#" target="_blank">FRAUD ALERTS</a>
+                                                    <a class="p-1" href="#">FRAUD CREDENTIALS</a>
+                                                    <a class="p-1" href="#">FRAUD REGISTRATION</a>
+                                                    <hr>
+                                                </div>
+                                                <div class="pb-3">
+                                                    <a class="p-1" href="#" target="_blank">ANNUAL REPORT</a>
+                                                    <hr>
+                                                </div>
+                                                <div class="pb-3">
+                                                    <a class="p-1" href=#">ARCHIVE</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
