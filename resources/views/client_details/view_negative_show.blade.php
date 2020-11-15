@@ -484,7 +484,6 @@
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                             <input type="hidden" name="ex_account[]" value="{{$ex_account->id}}">
-
                                         </div>
 
                                     </div>
@@ -535,13 +534,139 @@
                                             <div class="col-md-2">
                                             </div>
                                         @endif
-
                                     </div>
+
+
+                                    <?php $string =  strtoupper(str_replace('Never late', '',$ex_account->status))?>
+
+                                    @if(strpos($string, "PAID")!==false && strpos($string, "CLOSED")!==false)
+                                        <div class="row mt20 border " style="font-weight: bold" >
+
+                                            @if(strpos(strtoupper($ex_account->type), "CREDIT")!== false)
+                                                <div class="col-md-12">
+                                                    <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                </div>
+                                                <div class="row mt20">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt20">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            @endif
+
+                                            @if(strpos(strtoupper($ex_account->type), "AUTO")!== false)
+                                                <div class="col-md-12">
+                                                    <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                </div>
+                                                <div class="row mt-20">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                        </div>
+
+                                                        <div class="col-md-4">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt20">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if(strpos(strtoupper($ex_account->type), "PERSONAL")!== false)
+                                                <div class="col-md-12">
+                                                    <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                </div>
+
+                                                <div class="row mt20">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if(strpos(strtoupper($ex_account->type), "STUDENT")!== false)
+                                                <div class="col-md-12">
+                                                    <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                    </div>
+                                                </div>
+
+                                            @endif
+                                            @if(strpos(strtoupper($ex_account->type), "MORTGAGE")!== false)
+                                                <div class="col-md-12">
+                                                    <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="col-md-12">
+                                                        <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endif
+
+
+
                                 </div>
-
-
-
-
                             @endforeach
                         @endif
 
@@ -613,6 +738,133 @@
                                             @endif
 
                                         </div>
+
+
+                                        @if(($tu_account->late_30_count!==0 ||$tu_account->late_60_count!==0 || $tu_account->late_90_count!==0) && strpos(strtoupper($tu_account->account_type), "OPEN")!==false)
+                                            <div class="row mt20 border " style="font-weight: bold" >
+
+                                                @if(strpos(strtoupper($tu_account->loan_type), "CREDIT")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                @endif
+
+                                                @if(strpos(strtoupper($tu_account->loan_type), "AUTO")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+                                                    <div class="row mt-20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(strpos(strtoupper($tu_account->loan_type), "PERSONAL")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(strpos(strtoupper($tu_account->loan_type), "STUDENT")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+
+                                                @endif
+                                                @if(strpos(strtoupper($tu_account->loan_type), "MORTGAGE")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                        @endif
                                     </div>
                                 @endif
                             @endforeach
@@ -684,7 +936,139 @@
                                             @endif
 
                                         </div>
+                                        @if(($eq_account->late_30_count!==0 ||$eq_account->late_60_count!==0 || $eq_account->late_90_count!==0) && strpos(strtoupper($eq_account->account_status), "OPEN")!==false)
+                                            <div class="row mt20 border " style="font-weight: bold" >
+
+                                                @if(strpos(strtoupper($eq_account->category_type), "CREDIT")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                @endif
+
+                                                @if(strpos(strtoupper($eq_account->category_type), "AUTO")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+                                                    <div class="row mt-20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(strpos(strtoupper($eq_account->category_type), "PERSONAL")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="row mt20">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @if(strpos(strtoupper($eq_account->category_type), "STUDENT")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+
+                                                @endif
+                                                @if(strpos(strtoupper($eq_account->category_type), "MORTGAGE")!== false)
+                                                    <div class="col-md-12">
+                                                        <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="col-md-12">
+                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+                                        @endif
+
                                     </div>
+
+
+
+
+
+
                                 @endif
                             @endforeach
                         @endif
