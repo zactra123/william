@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23cc027d-b9a6-4160-bb81-85cb5e3c5f36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/client_details/report.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/client/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ccc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ccc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientDetailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientDetailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/css/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client_details/registration_steps/finished.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client_details/registration_steps/finished.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/client/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/client/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/todo/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/todo/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +17,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,34 +159,35 @@
       <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="683" />
-    <option name="height" value="728" />
-  </component>
+  <component name="ProjectId" id="1kHLgvOjmCc8uhI0v5XdOg7SnjV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ccc - Copy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css/client" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/helpers" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="C:\xampp\htdocs\ccc\app\Services" />
-      <recent name="C:\xampp\htdocs\ccc\resources\views\helpers" />
-      <recent name="C:\xampp\htdocs\ccc\app\Http\Controllers\Owner" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ccc\resources\views\owner\client" />
       <recent name="C:\xampp\htdocs\ccc\resources\views\owner\admin" />
       <recent name="C:\xampp\htdocs\ccc\resources\views\client_details" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/css/client" />
+      <recent name="$PROJECT_DIR$/resources/views/helpers" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="C:\xampp\htdocs\ccc\app\Services" />
+      <recent name="C:\xampp\htdocs\ccc\resources\views\helpers" />
     </key>
   </component>
   <component name="RunManager">
@@ -258,6 +257,7 @@
       <workItem from="1577174422098" duration="3870000" />
       <workItem from="1577184438352" duration="8344000" />
       <workItem from="1577205490217" duration="4950000" />
+      <workItem from="1605352710297" duration="5036000" />
     </task>
     <servers />
   </component>
@@ -271,17 +271,17 @@
     </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="135" width="618" height="522" key="find.popup" timestamp="1601724999641">
+    <state x="393" y="135" width="618" height="586" key="find.popup" timestamp="1605356437702">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state x="393" y="135" width="618" height="522" key="find.popup/39.27.1327.741@39.27.1327.741" timestamp="1601724999641" />
-    <state x="365" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1601737494548">
+    <state x="393" y="135" width="618" height="586" key="find.popup/39.27.1327.741@39.27.1327.741" timestamp="1605356437702" />
+    <state x="365" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1605358137565">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state x="365" y="89" width="672" height="678" key="search.everywhere.popup/39.27.1327.741@39.27.1327.741" timestamp="1601737494548" />
+    <state x="365" y="89" width="672" height="678" key="search.everywhere.popup/39.27.1327.741@39.27.1327.741" timestamp="1605358137565" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -325,6 +325,11 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php</url>
           <line>4</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/client_details/index.blade.php</url>
+          <line>339</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
