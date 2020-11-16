@@ -750,7 +750,7 @@
 
                                     <div  class="col-md-3 mt20">
                                         <div class="dropdown">
-                                            <img class="report_access mb-3 pb-5" src="{{asset('images/report_access/misc_2.png')}}"  width="90%">
+                                            <img class="report_access mb-3 pb-5" src="{{asset('images/report_access/misc_4.png')}}"  width="90%">
                                             <div class="dropdown-content">
                                                 <div class="dropdown">
                                                     <li class="dropdown-submenu">

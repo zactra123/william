@@ -260,7 +260,7 @@
 
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
-                                                <img class="report_access"src="{{asset('images/report_access/misc_2.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="100%">
                                                 <div class="dropdown-content">
                                                     <div class="dropdown">
                                                         <ul class="dropdown-submenu">
