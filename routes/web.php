@@ -192,8 +192,11 @@ Route::group(['prefix'=> 'admins/'], function(){
     Route::post('todo/change-assignment', 'TodosController@changeTodoAssignment')->name('adminRec.todo.assignment');
     Route::post('client/profile/todo', 'TodosController@clientToDo')->name('adminRec.client.todo');
     Route::put('client/todo/{todoId}', 'TodosController@clientToDoUpdate')->name('adminRec.client.todoUpdate');
-    Route::get('client-profile-print/{id}', 'TodosController@printPdfClientProfile')->name('adminRec.profilePdf');
+    Route::get('client/{id}/credentials', 'TodosController@credentials')->name('adminRec.credentials');
+    Route::put('client/{id}/credentials', 'TodosController@credentialsUpdate')->name('adminRec.credentialsUpdate');
+    Route::post('client/send-email', 'TodosController@sendEmail')->name('adminRec.sendEmail');
 
+    Route::get('client-profile-print/{id}', 'TodosController@printPdfClientProfile')->name('adminRec.profilePdf');
     Route::post('client/report/queue', 'TodosController@queueReport')->name('adminRec.client.queue');
 
 

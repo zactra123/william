@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\ClientAttachment;
 use App\ClientDetail;
 use App\ClientReport;
+use App\Credential;
 use App\Disputable;
 use App\Jobs\ScrapeReports;
+use App\Mail\SendMailClient;
 use App\Services\Screaper;
 use App\Todo;
 use App\UploadClientDetail;
@@ -15,8 +17,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use PDF;
+use function Sodium\compare;
 
 class TodosController extends Controller
 {
@@ -49,8 +53,6 @@ class TodosController extends Controller
 
         $zodiac = $this->getZodiac($client->clientDetails->dob);
         return view('todo.profile', compact('client', 'user','toDos', 'zodiac'));
-
-
     }
 
     public function clientReport(Request $request)
@@ -208,49 +210,86 @@ class TodosController extends Controller
     public function updateClient(Request $request, $id)
     {
         if($request->file() == true){
-            if (empty($request['driver'])) {
+            if (empty($request['driver']) && empty($request['social'])) {
                 return redirect()->back()
                     ->withInput()
                     ->with('error', 'Please upload both files');
             }
+            if(!empty($request['driver'])){
+                $imagesDriverLicense = $request->file("driver");
 
-            $imagesDriverLicense = $request->file("driver");
+                $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+                $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
 
-            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-            $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
-
-            if (!in_array($driverLicenseExtension, $imageExtension)) {
-                return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
-            }
-
-            $path = "files/client/details/image/" . $id . "/";
-
-            $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
-
-            $pathDriverLicense =   '/' . $path . $nameDriverLicense;
-
-            $clientAttachmentData = [
-
-                'user_id' => $id,
-                'path' => $pathDriverLicense,
-                'file_name' => $nameDriverLicense,
-                'category' => 'DL',
-                'type' => $driverLicenseExtension
-
-            ];
-
-            $clientAttachment = ClientAttachment::where('user_id', $id)->where('category', 'DL');
-
-            if(empty($clientAttachment->first())){
-                ClientAttachment::insert($clientAttachmentData[0]);
-            }else{
-                if(file_exists($clientAttachment->first()->path)){
-                    unlink($clientAttachment->first()->path);
+                if (!in_array($driverLicenseExtension, $imageExtension)) {
+                    return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
                 }
-                $clientAttachment->update($clientAttachmentData);
 
+                $path = "files/client/details/image/" . $id . "/";
+
+                $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
+
+                $pathDriverLicense = '/' . $path . $nameDriverLicense;
+
+                $clientAttachmentDataDL = [
+
+                    'user_id' => $id,
+                    'path' => $pathDriverLicense,
+                    'file_name' => $nameDriverLicense,
+                    'category' => 'DL',
+                    'type' => $driverLicenseExtension
+
+                ];
+                $clientAttachment = ClientAttachment::where('user_id', $id)->where('category', 'DL');
+
+                if(empty($clientAttachment->first())){
+                    ClientAttachment::insert($clientAttachmentDataDL);
+                }else{
+                    if(file_exists($clientAttachment->first()->path)){
+                        unlink($clientAttachment->first()->path);
+                    }
+                    $clientAttachment->update($clientAttachmentDataDL);
+
+                }
+                $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
             }
-            $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+            if(!empty($request['social'])){
+                $imagesDriverLicense = $request->file("social");
+
+                $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+                $socialSecurityExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+
+                if (!in_array($socialSecurityExtension, $imageExtension)) {
+                    return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
+                }
+
+                $path = "files/client/details/image/" . $id . "/";
+
+                $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
+
+                $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
+
+                $clientAttachmentDataSS = [
+
+                    'user_id' => $id,
+                    'path' => $pathSocialSecurity,
+                    'file_name' => $nameSocialSecurity,
+                    'category' => 'SS',
+                    'type' => $socialSecurityExtension
+
+                ];
+                $clientAttachmentSS = ClientAttachment::where('user_id', $id)->where('category', 'SS');
+                if(empty($clientAttachmentSS->first())){
+                    ClientAttachment::insert($clientAttachmentDataSS);
+                }else{
+                    if(file_exists($clientAttachment->first()->path)){
+                        unlink($clientAttachment->first()->path);
+                    }
+                    $clientAttachment->update($clientAttachmentDataSS);
+
+                }
+                $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+            }
 
             return redirect()->route('adminRec.client.profile', ['client'=>$id]);
 
@@ -300,6 +339,66 @@ class TodosController extends Controller
 
     }
 
+    public function credentials(Request $request, $id)
+    {
+        $client = User::find($id);
+        $source = $request->source;
+        return view('todo.credentials', compact('client', 'source'));
+    }
+
+    public function credentialsUpdate(Request $request)
+    {
+        $userId = $request->id;
+        $data = $request['client'];
+        $data['user_id'] = $userId;
+
+        if (empty(Credential::where('user_id', $userId)->first())) {
+            Credential::create($data);
+        } else {
+            Credential::where('user_id', $userId)->update($data);
+        }
+        $clientDetails = ClientDetail::where('user_id', $userId)->first();
+        if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
+            $clientDetails->update(["registration_steps" => "review"]);
+        }
+        return redirect(route('adminRec.client.profile', $userId));
+    }
+
+
+    public function sendEmail(Request $request)
+    {
+        set_time_limit(300);
+
+        $client = $request->client;
+        $subject = $request->subject;
+        $description = $request->description;
+        $file = $request->file('attach');
+        $path = null;
+        $as = null;
+        $mime =null;
+        if($file){
+            $path = $file->getRealPath();
+            $as =  $file->getClientOriginalName();
+            $mime = $file->getMimeType();
+        }
+        $user = User::find($client);
+        $data = [
+            'user'=>$user,
+            'subject'=>$subject,
+            'description'=>$description,
+            'path'=>$path,
+            'as'=>$as,
+            'mime'=> $mime
+        ];
+
+        Mail::send(new SendMailClient($data));
+
+
+        return redirect(route('adminRec.client.profile', $user->id));
+
+    }
+
+
 
     public function printPdfClientProfile($id)
     {
@@ -310,7 +409,6 @@ class TodosController extends Controller
         return view('admin.client-profile-pdf', compact('client'));
 
         dd($client);
-
 
         $client = User::clients()->find($id);
         $pdf = PDF::loadView('todo.profile-pdf', compact('client'));
@@ -358,7 +456,6 @@ class TodosController extends Controller
         }
 
     }
-
 
     public function getZodiac($date)
     {
@@ -416,11 +513,8 @@ class TodosController extends Controller
 
     }
 
-
-
     public function splitAddress($address)
     {
-
 
         $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
                     MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";

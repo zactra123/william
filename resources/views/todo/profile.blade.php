@@ -1,11 +1,7 @@
 
 @extends('layouts.layout')
-
-
-<link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
-
 @section('content')
-
+    <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
     <style>
         .scrollDiv {
             height: 270px;
@@ -165,14 +161,25 @@
             position: relative;
             line-height: 10px;
         }
-        .bank_logo {
+
+
+
+
+        .driver_license {
             background-image: url(/images/correct-dl.png);
             display: block;
             background-size: 80%;
             background-repeat: no-repeat;
             background-position: center;
         }
-        .bank_logo:after {  pointer-events: none;
+        .social_security {
+            background-image: url(/images/correct-ss.png);
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .driver_license:after, .social_security:after {  pointer-events: none;
             position: absolute;
             top: 60px;
             left: 0;
@@ -186,7 +193,7 @@
             background-size: 100%;
             background-repeat: no-repeat;
         }
-        .bank_logo:before {
+        .driver_license:before, .social_security:before {
             position: absolute;
             bottom: 0px;
             left: 0;  pointer-events: none;
@@ -202,6 +209,52 @@
             text-transform: capitalize;
             text-align: center;
         }
+
+        .driver_dropp, .social_dropp {
+            display: block;
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .driver_dropp:before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "ID IS ATTACHED ";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .social_dropp: before {
+            position: absolute;
+            bottom: 0px;
+            left: 0;  pointer-events: none;
+            width: 100%;
+            right: 0;
+            height: 57px;
+            content: "SSC IS ATTACHED";
+            display: block;
+            margin: 0 auto;
+            color: #341d31;
+            font-weight: 900;
+            font-size: 20px;
+            text-transform: capitalize;
+            text-align: center;
+        }
+
+
+
+
+
+
+
         .social {
             display: block;
         }
@@ -240,6 +293,8 @@
         }
         .responsive.small{
             width: 10%;
+            padding-right: 0px !important;
+
         }
 
         .addressImage{
@@ -279,7 +334,6 @@
 
     </style>
 
-
     @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])
 
     <div class="row">
@@ -288,9 +342,23 @@
                 <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
                 <div class="heading">
                     {{--                    <img src="assets/images/trump.jpg" alt="">--}}
-                    <div class="info">
-                        <h5>Client No: 01</h5>
+                    <div class="row" >
+                        <div class="info">
+                            <h5>Client No: 01</h5>
+                        </div>
                     </div>
+
+
+                    <div class="row" >
+                        <div class="col-l-12 m-0">
+                            <a href="#" class="link closeUpload" >
+                                UPLOAD NEW ID OR SOCIAL SECURITY
+                            </a>
+                        </div>
+                    </div>
+
+
+
                     <div class="row  hide form-group updateLogo ">
                         <button type="button" class="close closeUpload">
                             <span aria-hidden="true">&times;</span>
@@ -299,13 +367,17 @@
                         @method("PUT")
                         @csrf
                         <div class="col-sm-12 form-group files">
-                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >
+                            {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
+                            <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
+
+                        </div>
+                        <div class="col-sm-12 form-group files">
+                            <input class="social_security file-box" type="file" name="social"  id="social_security" >
                         </div>
                         <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
 
                         {!! Form::close() !!}
                     </div>
-
                 </div>
                 <ul class="categories">
                     <li title="FULL NAME" class="dl-field">
@@ -327,7 +399,9 @@
                         <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
                     </li>
                     <li title="EMAIL ADDRESS">
+                        <a href="#" data-toggle="modal" data-target="#sendEmail">
                         <img  class="responsive" src="/images/email.png">
+                        </a>
                         <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
                     </li>
                     <li title="FULL ADDRESS" >
@@ -613,7 +687,7 @@
                                             <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content equifax">
                                                 <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> LOGIN</a>
-                                                <a href="#">CREDENTIALS</a>
+                                                <a href="{{route('adminRec.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">CREDENTIALS</a>
                                                 <a href="#">REGISTRATION</a>
                                                 <a href="#" >FCRA ACCESS</a>
                                                 <a href="#" >DISPUTE ACCESS</a>
@@ -629,7 +703,7 @@
                                             <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"  width="100%">
                                             <div class="dropdown-content experina">
                                                 <a class="queue" data-report="EXLOGIN"  data-client="{{$client->id}}">LOGIN</a>
-                                                <a href="#">CREDENTIALS</a>
+                                                <a href="{{route('adminRec.credentials',['source'=> 'experian','id'=>$client->id])}}">CREDENTIALS</a>
                                                 <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTERATION</a>
                                                 <a href="#">DENIED</a>
                                                 <a class="queue" data-report="EXVIEW"  data-client="{{$client->id}}">VIEW REPORT</a>
@@ -647,19 +721,19 @@
                                             <div class="dropdown-content transunion">
                                                 <div class="pb-3">
                                                     <a class="queue p-1" data-report="TUMEMBER"  data-client="{{$client->id}}">MEMBER LOGIN </a>
-                                                    <a class="p-1" href="#">MEMBER CREDENTIALS</a>
+                                                    <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">MEMBER CREDENTIALS</a>
                                                     <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
                                                     <hr>
                                                 </div>
                                                 <div class="pb-3">
                                                     <a class="p-1" class="queue" data-report="TUDISPUTE"  data-client="{{$client->id}}">DISPUTE LOGIN</a>
-                                                    <a class="p-1" href="#" target="_blank">DISPUTE CREDENTIALS</a>
+                                                    <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'transunion_dispute', 'id'=>$client->id])}}" target="_blank">DISPUTE CREDENTIALS</a>
                                                     <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
                                                     <hr>
                                                 </div>
                                                 <div class="pb-3">
                                                     <a class="p-1" href="#" target="_blank">FRAUD ALERTS</a>
-                                                    <a class="p-1" href="#">FRAUD CREDENTIALS</a>
+                                                    <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'null', 'id'=>$client->id])}}">FRAUD CREDENTIALS</a>
                                                     <a class="p-1" href="#">FRAUD REGISTRATION</a>
                                                     <hr>
                                                 </div>
@@ -884,6 +958,42 @@
     </div>
 </div>
 
+    <div class="modal fade" id="sendEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    {!! Form::open(['route'=>['adminRec.sendEmail'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="SUBJECT" />
+                        <input type="hidden" name="client" class="form-control" value="{{$client->id}}" />
+
+                    </div>
+                    <div class="form-group">
+                        <textarea name="description" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" name="attach" class="form-control"  />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="SEND" class="btn btn-primary"/>
+                    </div>
+                    {!! Form::close() !!}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <link rel="stylesheet" href="{{asset('css/lib/leaflet.css')}}" />
     <script src="{{asset('js/lib/leaflet.js')}}"></script>
@@ -1105,6 +1215,28 @@
 
     </script>
 
+
+
+
+
+    <script src="/js/lib/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            height: 250,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+    </script>
 
 
 
