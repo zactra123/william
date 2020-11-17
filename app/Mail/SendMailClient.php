@@ -36,7 +36,7 @@ class SendMailClient extends Mailable
     {
 
         if($this->path != null){
-            return $this->from('info@prudentscores.com')
+            return $this->from('info@prudentscores.com', 'PRUDENT CREDIT SOLUTION')
                 ->to($this->user->email)
                 ->subject($this->subject)
                 ->view('mailer.send_email')

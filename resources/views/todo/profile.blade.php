@@ -10,15 +10,17 @@
 
         }
         .dropdown {
-            position: relative;
+            position:relative;
             display: inline-block;
+
         }
+
 
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 220px;
+            min-width: 100%;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -443,7 +445,7 @@
                         @endif
                         <img  class="responsive ss_number" src="/images/ssc.png">
 
-                        {{$client->clientDetails->ssn}}
+                        <span class="ssn">{{$client->clientDetails->ssn}}</span>
                     </li>
 
                     <li title="GENDER">
@@ -753,22 +755,22 @@
                                             <img class="report_access mb-3 pb-5" src="{{asset('images/report_access/misc_4.png')}}"  width="90%">
                                             <div class="dropdown-content">
                                                 <div class="dropdown">
-                                                    <li class="dropdown-submenu">
-                                                        <a  class="queue" data-report="EQ"  data-client="{{$client->id}}"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
+                                                    <ul class="dropdown-submenu">
+                                                        <a  class="queue" data-report="EQ"  data-client="{{$client->id}}"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="100%"></a>
 
-                                                    </li>
-                                                    <li class="dropdown-submenu">
-                                                        <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
+                                                    </ul>
+                                                    <ul class="dropdown-submenu">
+                                                        <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="100%"></a>
 
-                                                    </li>
-                                                    <li class="dropdown-submenu">
-                                                        <a href="https://consumer.risk.lexisnexis.com/request"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/lxn_logo_1.png')}}"  width="110px"></a>
+                                                    </ul>
+                                                    <ul class="dropdown-submenu">
+                                                        <a href="https://consumer.risk.lexisnexis.com/request"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/lxn_logo_1.png')}}"  width="100%"></a>
 
-                                                    </li>
-                                                    <li class="dropdown-submenu">
-                                                        <a href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ew_logo_1.png')}}"  width="110px"></a>
+                                                    </ul>
+                                                    <ul class="dropdown-submenu">
+                                                        <a href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ew_logo_1.png')}}"  width="100%"></a>
 
-                                                    </li>
+                                                    </ul>
 
                                                 </div>
                                             </div>
@@ -997,6 +999,7 @@
 
     <link rel="stylesheet" href="{{asset('css/lib/leaflet.css')}}" />
     <script src="{{asset('js/lib/leaflet.js')}}"></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 
 
     <script type="text/javascript">
@@ -1013,6 +1016,9 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
+
+            $(".ssn").mask("999-99-9999");
+
             $(".file-box").on("change", function(e){
                 var file = e.target.files[0]
                 var _this = this
