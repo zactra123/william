@@ -1,38 +1,36 @@
 @extends('layouts.layout')
-<link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
-<style>
-    .charts {
-         color: #16181b !important;
-    }
+@section('content')
+    <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
+    <style>
+        .charts {
+            color: #16181b !important;
+        }
 
-    .chart-report {
-        /*background-color: #d4ddec;*/
-        padding: 15px;
-        box-shadow: 0 0 5px 1px #0000005c;
-        opacity: 1;
-    }
-    .customcheck{
-        display: block;
-        width: 100%;
-        height: 25px;
-    }
-
-    .border{
-        border-top: #b4c4dd 1px solid;
-    }
-    @media (max-width: 900px) {
+        .chart-report {
+            /*background-color: #d4ddec;*/
+            padding: 15px;
+            box-shadow: 0 0 5px 1px #0000005c;
+            opacity: 1;
+        }
         .customcheck{
             display: block;
-            width: 15%;
+            width: 100%;
             height: 25px;
-
         }
-    }
 
-</style>
+        .border{
+            border-top: #b4c4dd 1px solid;
+        }
+        @media (max-width: 900px) {
+            .customcheck{
+                display: block;
+                width: 15%;
+                height: 25px;
 
-@section('content')
+            }
+        }
 
+    </style>
 
     <section class="header-title section-padding">
         <div class="container text-center">
@@ -52,7 +50,7 @@
 
             {!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!}
             @if($clientReportsEX)
-                <div class="Experian" style="display: none">
+                <div class="Experian" style="display: block">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
                         </div>
@@ -152,10 +150,10 @@
                                     <div class="col-md-2" style="font-weight: bold; font-size: 16px">
                                         ADDRESS ID #
                                     </div>
-                                    <div class="col-md-2" style="font-weight: bold">
+                                    <div class="col-md-3" style="font-weight: bold">
                                         RESIDENCE TYPE
                                     </div>
-                                    <div class="col-md-2" style="font-weight: bold">
+                                    <div class="col-md-1" style="font-weight: bold">
                                         DISPUTE
                                     </div>
 
@@ -1506,7 +1504,7 @@
             </div>
             @endif
             @if($clientReportsEQ)
-                <div class="Equifaq" style="display: block">
+                <div class="Equifax" style="display: none">
                 <div class="row mt20">
                     <div class="col-md-1 mt20">
                     </div>
@@ -1721,7 +1719,7 @@
                                         </div>
                                     @endif
                                     @if($accounts->current_payment_status !=null )
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="col-md-12">
                                                 <label class="form-text">PAYMENT STATUS</label>
                                             </div>
@@ -1749,7 +1747,6 @@
                                         <div class="col-md-1">
 
                                         </div>
-                                        <?php dd('dasd')?>
                                         <div class="col-md-11">
                                             ACCOUNT HISTORY
                                         </div>
@@ -1832,7 +1829,7 @@
                                         </div>
                                     @endif
                                     @if($accounts->current_payment_status !=null )
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="col-md-12">
                                                 <label class="form-text">PAYMENT STATUS</label>
                                             </div>
@@ -1857,8 +1854,8 @@
 
                         @endforeach
                         </div>
-
                     @foreach($clientReportsEQ->clientEqPublicRecords as $publicRecords)
+
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row mt20" style="font-weight: bold">
@@ -1869,7 +1866,7 @@
                                             <label class="form-text">COURT NAME</label>
                                         </div>
                                         <div class="col-md-12">
-                                            <span class="">{{$publicRecords->name}}</span>
+                                            <span class="">{{$publicRecords->court_name}}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -1898,7 +1895,7 @@
                                                 <label class="form-text">CLASSIFICATION</label>
                                             </div>
                                             <div class="col-md-12">
-                                                <span class=""> {{$publicRecords->phone}}</span>
+                                                <span class=""> {{$publicRecords->classification}}</span>
                                             </div>
                                         </div>
                                     @endif
@@ -1933,7 +1930,7 @@
                                     </div>
 
                                     @if($publicRecords->category_type !=null )
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="col-md-12">
                                                 <label class="form-text">CATEGORY TYPE</label>
                                             </div>
@@ -1976,6 +1973,9 @@
                                     <div class="col-md-6">
                                         <div class="col-md-12">DATE OF REQUEST</div>
                                         @if($inquiry->date_inquiry != null)
+                                        <div class="col-md-12">
+                                            {{date("m/d/Y", strtotime($inquiry->date_inquiry))}}
+                                        </div>
                                         @endif
                                     </div>
                                     <div class="col-md-2">
@@ -2000,8 +2000,6 @@
 
             <div class="addModal" id ="addModal"></div>
 
-
-
             <div class="row mt20">
                 <div class="col-md-5"></div>
                 <div class="col-md-2">
@@ -2011,6 +2009,8 @@
                 </div>
                 <div class="col-md-5"></div>
             </div>
+
+
         </div>
     </section>
         <script>

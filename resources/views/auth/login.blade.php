@@ -1,25 +1,26 @@
 @extends('layouts.layout')
-<style>.pass_show{position: relative}
 
-    .pass_show .ptxt {
-
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        z-index: 1;
-        color: black;
-        font-weight: bold;
-        margin-top: -10px;
-        cursor: pointer;
-        transition: .3s ease all;
-    }
-
-    .pass_show .ptxt:hover{color: #333333;}
-</style>
 
 @section('content')
 
+    <style>
+        .pass_show{position: relative}
 
+        .pass_show .ptxt {
+
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            z-index: 1;
+            color: black;
+            font-weight: bold;
+            margin-top: -10px;
+            cursor: pointer;
+            transition: .3s ease all;
+        }
+
+        .pass_show .ptxt:hover{color: #333333;}
+    </style>
 
     <section class="header-title section-padding">
         <div class="container text-center">
