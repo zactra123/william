@@ -734,7 +734,7 @@
                                                     <hr>
                                                 </div>
                                                 <div class="pb-3">
-                                                    <a class="p-1" href="#" target="_blank">FRAUD ALERTS</a>
+                                                    <a class="p-1" href="#" target="_blank">FRAUD LOGIN</a>
                                                     <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'null', 'id'=>$client->id])}}">FRAUD CREDENTIALS</a>
                                                     <a class="p-1" href="#">FRAUD REGISTRATION</a>
                                                     <hr>
