@@ -237,6 +237,8 @@ Route::group(['prefix' =>'client'], function() {
     Route::get('report/{type}', 'ClientDetailsController@clientReport')->name('client.report');
     Route::put('update/driver-license', 'ClientDetailsController@updateDriver')->name('client.updateDriver');
 
+    Route::get('complete/require/information/{info}', 'ClientDetailsController@showRequireInfo')->name('client.complete.requireInfo');
+    Route::put('complete/require/information', 'ClientDetailsController@updateDispute')->name('client.dispute.update');
 
     Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
 

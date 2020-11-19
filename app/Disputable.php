@@ -12,13 +12,19 @@ class Disputable extends Model
         'todo_id',
         'disputable_type',
         'disputable_id',
-        'status'
+        'status',
+        'additional_information'
     ];
     const STATUS = [
         '0'=>'ACTIVE',
         '1'=>'PENDING',
         '2'=>'COMPLETED',
     ];
+    protected $casts = [
+        'additional_information' => 'array'
+    ];
+
+
 
     public function disputable()
     {

@@ -480,10 +480,10 @@
 
                                             <span style="padding-left: 15px">    # {{$ex_account->source_id}}</span>
                                         </div>
-                                        <div class="col-md-2 delete" data-attribute="title-ex_account-{{$ex_account->id}}">
+                                        <div class="col-md-2 delete-name" data-attribute="title-ex_account-{{$ex_account->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                            <input type="hidden" name="ex_account[]" value="{{$ex_account->id}}">
+                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][id]" value="{{$ex_account->id}}">
                                         </div>
 
                                     </div>
@@ -549,10 +549,12 @@
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="credit">
+
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][expiration_date]" placeholder="EXPIRATION DATE">
                                                         </div>
 
                                                     </div>
@@ -560,10 +562,10 @@
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -577,24 +579,25 @@
                                                 <div class="row mt-20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-4">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="auto">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][year]" placeholder="YEAR">
                                                         </div>
 
                                                         <div class="col-md-4">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][make]" placeholder="MAKE">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][model]" placeholder="MODEL">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -607,10 +610,11 @@
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="personal">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="SECURITY WORD">
                                                         </div>
 
                                                     </div>
@@ -623,18 +627,19 @@
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="student">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][school_attened]" placeholder="SCHOOL ATTENDED">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                     </div>
                                                 </div>
 
@@ -646,18 +651,19 @@
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                        <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="mortgage">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][propety_address]" placeholder="PROPERTY ADDRESS">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                        <input type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                     </div>
                                                 </div>
                                             @endif
@@ -687,7 +693,7 @@
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                <input type="hidden" name="tu_account[]" value="{{$tu_account->id}}">
+                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="{{$tu_account->id}}">
                                             </div>
                                         </div>
                                         <div class="row mt20 border" style="font-weight: bold" >
@@ -750,10 +756,12 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="credit">
+
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][expiration_date]" placeholder="EXPIRATION DATE">
                                                             </div>
 
                                                         </div>
@@ -761,10 +769,10 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -778,24 +786,26 @@
                                                     <div class="row mt-20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="auto">
+
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][year]" placeholder="YEAR">
                                                             </div>
 
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][make]" placeholder="MAKE">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][model]" placeholder="MODEL">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -808,10 +818,12 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="personal">
+
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
 
                                                         </div>
@@ -824,18 +836,20 @@
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="student">
+
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][school_attended]" placeholder="SCHOOL ATTENDED">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
 
@@ -847,18 +861,20 @@
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="mortgage">
+
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][school_attended]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][property_address]" placeholder="PROPERTY ADDRESS">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -885,7 +901,7 @@
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                <input type="hidden" name="eq_account[]" value="{{$eq_account->id}}">
+                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][id]" value="{{$eq_account->id}}">
                                             </div>
                                         </div>
                                         <div class="row mt20 border" style="font-weight: bold" >
@@ -946,10 +962,12 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="credit">
+
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="EXPIRATION DATE">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][eqpiration_date]" placeholder="EXPIRATION DATE">
                                                             </div>
 
                                                         </div>
@@ -957,10 +975,10 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -974,24 +992,25 @@
                                                     <div class="row mt-20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="auto">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="YEAR">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][year]" placeholder="YEAR">
                                                             </div>
 
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MAKE">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][maka]" placeholder="MAKE">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="MODEL">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][model]" placeholder="MODEL">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1004,10 +1023,11 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="personal">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->idd}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
 
                                                         </div>
@@ -1020,18 +1040,19 @@
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="student">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SCHOOL ATTENDED">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][Scholl_attended]" placeholder="SCHOOL ATTENDED">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][secutity_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
 
@@ -1043,18 +1064,19 @@
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="mortgage">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="PROPERTY ADDRESS">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][property_address]" placeholder="PROPERTY ADDRESS">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -1063,11 +1085,6 @@
                                         @endif
 
                                     </div>
-
-
-
-
-
 
                                 @endif
                             @endforeach
@@ -1193,7 +1210,7 @@
                                             <div class="col-md-6">
                                                 <span class="">{{$tu_statement->statement}} {{$tu_statement->description}} </span>
                                             </div>
-                                            <div class="col-md-2 delete-tu-statement" data-attribute="title-tu_statement-{{$tu_statement->id}}">
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_statement-{{$tu_statement->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>

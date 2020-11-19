@@ -148,6 +148,19 @@
                                                 <a href="#">here</a>.
                                             </p>
                                         @endif
+
+                                    @if(!empty($requiredInfo))
+                                            <h3>Please complete required data information are starting your dispute process!!!</h3>
+                                    @endif
+
+                                    @foreach($requiredInfo as $info)
+                                        <div class="row ">
+                                            <div class="col-md-12 danger">
+                                                <a href="{{route('client.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
                                     </div>
                                 </div>
                             </div>

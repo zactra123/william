@@ -64,8 +64,17 @@ class ClientDetailsController extends Controller
         $reportsDateTU = ClientReport::where('user_id', auth()->user()->id)
             ->where('type', "TU_DIS")->pluck('created_at', 'id')->toArray();
 
+        $requiredInfoArr = Todo::
+            leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+            ->where('client_id', $client->id)
+            ->whereJsonContains('additional_information', ['security_word' => null])
+            ->pluck('disputables.id')
+            ->toArray();
 
-        return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU' ));
+        $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
+
+
+        return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo'));
     }
 
     public function create(Request $request)
@@ -568,7 +577,6 @@ class ClientDetailsController extends Controller
             'equifaxDate','experianDate','transunionDate'));
     }
 
-
     public function negativeItem()
     {
         $client = Auth::user();
@@ -747,8 +755,6 @@ class ClientDetailsController extends Controller
                 }
             }
             if ($key == 'employer') {
-
-
                 $todoName = $this->saveToDo($clientId, $user->id, "Employer", "",0);
                 foreach ($value as $dispute_name) {
                     $this->saveDisputable($todoName, "App\\ClientReportEmployer",  $dispute_name, 0);
@@ -776,11 +782,12 @@ class ClientDetailsController extends Controller
                 }
             }
 
-            if ($key == 'ex_accounts') {
+            if ($key == 'ex_account') {
+
                 $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
 
                 foreach ($value as $disputeExAccounts) {
-                    $this->saveDisputable($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
+                    $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
 
                 }
             }
@@ -809,7 +816,7 @@ class ClientDetailsController extends Controller
             if ($key == 'tu_account') {
                 $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "",0);
                 foreach ($value as $disputeTuAccounts) {
-                    $this->saveDisputable($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts,0);
+                    $this->saveDisputableAdditional($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts,0);
                 }
             }
 
@@ -837,7 +844,7 @@ class ClientDetailsController extends Controller
             if ($key == 'eq_account') {
                 $todoEqAccount = $this->saveToDo($clientId, $user->id, "Equifax Account", "",0);
                 foreach ($value as $disputeEqAccounts) {
-                    $this->saveDisputable($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts,0);
+                    $this->saveDisputableAdditional($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts,0);
                 }
             }
 
@@ -851,6 +858,26 @@ class ClientDetailsController extends Controller
 
         }
 
+
+    }
+
+    public function showRequireInfo( $info)
+    {
+        $completeDispute = Disputable::where('id', $info)->get();
+        return view('client_details.complete-dispute', compact('completeDispute'));
+    }
+
+    public function updateDispute(Request $request)
+    {
+        $dispute = $request->eq_account;
+
+        $id = $dispute['id'];
+        unset($dispute['id']);
+
+        Disputable::where('id', $id)->update([
+            'additional_information'=>$dispute
+        ]);
+        return redirect()->route('client.details.index');
 
     }
 
@@ -875,7 +902,29 @@ class ClientDetailsController extends Controller
             'todo_id' => $todoId,
             'disputable_type' => $type,
             'disputable_id' => $id,
-            'status' => $status
+            'status' => $status,
+            'additionanal_information'=>null
+
+        ]);
+        return true;
+    }
+
+    public function saveDisputableAdditional($todoId, $type, $idInformation, $status)
+    {
+
+        $disputeId = $idInformation['id'];
+        $json  = null;
+        if(count($idInformation)>1){
+            unset($idInformation['id']);
+            $json = $idInformation;
+        }
+
+        Disputable::create([
+            'todo_id' => $todoId,
+            'disputable_type' => $type,
+            'disputable_id' => $disputeId,
+            'status' => $status,
+            'additional_information'=> $json
         ]);
         return true;
     }
