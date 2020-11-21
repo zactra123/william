@@ -58,7 +58,9 @@ class RegisterController extends Controller
 
     public function registerAffiliate()
     {
-        return view('auth.register_as_affiliate');
+        $secrets=DB::table('secret_questions')->select('question','id')->get();
+
+        return view('auth.register_as_affiliate',compact('secrets'));
     }
 
 
