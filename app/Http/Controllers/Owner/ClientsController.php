@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\DisputesPricing;
 use App\Http\Controllers\Controller;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
@@ -128,5 +129,12 @@ class ClientsController extends Controller
         return view('owner.client.affiliate', compact('users'));
     }
 
+    public function pricing(Request $request)
+    {
+        $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
+
+        $default_price_list = DisputesPricing::default();
+        return view('owner.pricing.list', compact('affiliates', 'default_price_list'));
+    }
 
 }

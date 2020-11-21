@@ -83,6 +83,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');;
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
     Route::post('client/report-number', 'ClientsController@clientReportNumber')->name('owner.client.report_number');
+    ROUTE::any('pricing', 'Owner\ClientsController@pricing')->name('owner.pricing');
 
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');

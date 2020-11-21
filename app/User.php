@@ -79,6 +79,17 @@ class   User extends Authenticatable implements MustVerifyEmail
         return $query->where('users.role',  'admin');
     }
 
+    /**
+     * Scope a query to only include users with affiliate role.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAffiliates($query)
+    {
+        return $query->where('users.role',  'affiliate');
+    }
+
 
     public function affiliateFullName()
     {
@@ -185,6 +196,11 @@ class   User extends Authenticatable implements MustVerifyEmail
 
     public function getFullNameAttribute()
     {
+        if ($this->role == 'affiliate') {
+            $business = ucfirst($this->ClientDetails->business_name);
+            $full_name = ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+            return "$business ($full_name)";
+        }
         return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
     }
 
