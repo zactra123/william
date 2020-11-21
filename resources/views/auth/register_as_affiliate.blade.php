@@ -31,13 +31,28 @@
                                 <div class="form-group">
                                     <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="COMPANY NAME (IF ANY)">
                                 </div>
-                                <div class="form-group">
-                                    <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="SOCIAL SECURITY NUMBER or EIN">
-                                    @error('ssn')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin: 0">
+                                            <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="SOCIAL SECURITY NUMBER">
+                                            @error('ssn')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-1" style="margin: 0; padding: 0">
+                                            OR
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input id="ssn" type="text" class="form-control ein" name="ein" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="EIN NUMBER">
+                                            @error('ssn')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="ADDRESS">
@@ -141,49 +156,11 @@
             $('#date').blur(function () {
                 if(this.value==''){this.type='text'};
             });
-            $('.ssn').keyup(function() {
-                var val = this.value.replace(/\D/g, '');
-                var newVal = '';
-                if(val.length > 4) {
-                    this.value = val;
-                }
-                if((val.length > 3) && (val.length < 6)) {
-                    newVal += val.substr(0, 3) + '-';
-                    val = val.substr(3);
-                }
-                if (val.length > 5) {
-                    newVal += val.substr(0, 3) + '-';
-                    newVal += val.substr(3, 2) + '-';
-                    val = val.substr(5);
-                }
-                newVal += val;
-                this.value = newVal.substring(0, 11);
-            });
 
-            $('#phone_number').keyup(function() {
-
-                var val = this.value.replace(/\D/g, '');
-                var newVal = '';
-                if(val.length > 4) {
-                    this.value = val;
-                }
-
-                if((val.length > 3) && (val.length <7)) {
-                    newVal += val.substr(0, 3) + '-';
-                    val = val.substr(3);
-                }
-                if (val.length > 6) {
-                    newVal += val.substr(0, 3) + '-';
-                    newVal += val.substr(3, 3) + '-';
-                    val = val.substr(6);
-                }
-                newVal += val;
-                this.value = newVal.substring(0, 12);
-            });
+            $('.ssn').mask('000-00-0000')
+            $('.ein').mask('00-0000000')
+            $('.phone').mask('(000) 000-0000')
         })
-
-
-
 
     </script>
 
