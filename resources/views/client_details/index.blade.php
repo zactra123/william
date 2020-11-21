@@ -154,11 +154,7 @@
                                     @endif
 
                                     @foreach($requiredInfo as $info)
-                                        <div class="row ">
-                                            <div class="col-md-12 danger">
-                                                <a href="{{route('client.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
-                                            </div>
-                                        </div>
+                                            <a class="btn btn-toolbar" href="{{route('client.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
                                     @endforeach
 
                                     </div>
