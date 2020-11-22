@@ -3,7 +3,6 @@
 
 @section('content')
 
-
     <div class="container fon">
         <div class="row justify-content-center">
             <div class="col-md-8 pt-4">

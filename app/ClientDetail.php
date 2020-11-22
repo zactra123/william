@@ -29,6 +29,7 @@ class ClientDetail extends Model
     protected $fillable = [
         'user_id',
         'ssn',
+        'ein',
         'dob',
         'sex',
         'number',

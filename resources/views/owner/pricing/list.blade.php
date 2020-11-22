@@ -26,6 +26,15 @@
                 <div class="col-md-10 col-sm-12">
                     <div class="ms-ua-box">
                         <div class="ms-ua-title">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="form-group">
                                 {!! Form::select('affiliates', ["" => "DEFAULT"] + $affiliates, null, ['class'=>'selectize']); !!}
                             </div>
@@ -35,6 +44,12 @@
                             {!! Form::open(['route' => "owner.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                             @csrf
                                 @include('owner.pricing._form', ["pricing" =>$default_price_list])
+
+
+                            <div class="col">
+                                <input type="submit" value="Add" class="ms-ua-submit">
+
+                            </div>
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -55,7 +70,10 @@
                 labelField: 'name',
                 valueField: 'id'
             });
+
+
         });
+
     </script>
 @endsection
 

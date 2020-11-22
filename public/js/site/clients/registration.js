@@ -108,7 +108,7 @@ $(document).ready(function($) {
             title: 'Password Requirements',
             placement: (window.innerWidth <1000 ? 'bottom' : 'right')
         })
-        
+
         $($this).popover('show')
         $($this).popover('update')
     })
@@ -126,9 +126,19 @@ $(document).ready(function($) {
             "phone_number": {
                 required: true
             },
-            "ssn": {
-                required: true
+            'ssn': {
+
+                required: '#ein_id:blank'
+
             },
+            'ein': {
+                required: '#ssn_id:blank'
+
+            },
+            //
+            // "ssn": {
+            //     required: true
+            // },
             "dob": {
                 required: true
             },

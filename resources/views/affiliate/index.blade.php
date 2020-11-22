@@ -3,64 +3,74 @@
 @section('content')
 
 
-        <div class="page-content">
-            <div class="row justify-content-center">
-                <div class="col-md-10 pt-4">
-                    <div class="card">
+    <section class="header-title section-padding">
+        <div class="container text-center">
+            <h2 class="title"> Credit Resources </h2>
+            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Affiliate</span>
+        </div>
+    </section>
 
-                        <div class="card-header">
-                            <label class="header m-2">Clients List</label>
-                        </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                <tr>
+    <section class="ms-working working-section section-padding">
+        <div class="container">
+            <div class="page-content">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 pt-4">
+                        <div class="card">
 
-                                    <th scope="col">First name</th>
-                                    <th scope="col">Last name</th>
-                                    <th scope="col">Email</th>
-
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($clients as  $client)
+                            <div class="card-header">
+                                <label class="header m-2">Clients List</label>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
                                     <tr>
 
-                                        <td>{{$client->user->first_name != null ?$client->user->first_name : "-"}}</td>
-                                        <td>{{$client->user->first_name != null ?$client->user->last_name : "-"}}</td>
-                                        <td>{{$client->user->email}}</td>
-                                        <td>
+                                        <th scope="col">FULL NAME</th>
+                                        <th scope="col">Email</th>
 
-                                            <a class="btn btn-secondary" href="{{route('affiliate.addDLSS',  $client->id)}}"
-                                               role="button">Add Social Security and Driver License</a>
-
-
-                                            @if(empty($client->user->clientDetails))
-                                                <a class="btn btn-secondary" href="{{route('affiliate.addClientDetails', $client->id)}}"
-                                                   role="button">Add Client Details</a>
-                                            @else
-                                                <a class="btn btn-secondary" href="{{route('affiliate.editClientDetails', $client->id)}}"
-                                                   role="button">Edit Client Details</a>
-                                            @endif
-
-                                        </td>
+                                        <th scope="col">Action</th>
                                     </tr>
-                                @endforeach
+                                    </thead>
+                                    <tbody>
+                                    @foreach($clients as  $client)
+                                        <tr>
+
+                                            <td>{{$client->user->full_name() != null ? $client->user->full_name() : "-"}}</td>
+                                            <td>{{$client->user->email}}</td>
+                                            <td>
+
+                                                <a class="btn" href="{{route('client.addDriverSocial',   ['client'=> $client->user->id])}}"
+                                                   role="button">Add SS & DL (or ID)</a>
+                                                @if(empty($client->user->clientDetails))
+                                                    <a class="btn" href="{{route('affiliate.addClientDetails', ['client'=> $client->id])}}"
+                                                       role="button">Add Client Details</a>
+                                                @else
+                                                    <a class="btn btn-secondary" href="{{route('affiliate.editClientDetails', $client->id)}}"
+                                                       role="button">Edit Client Details</a>
+                                                @endif
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
+
+
+
+
             </div>
 
-
-
-
         </div>
+    </section>
+
+
 
 
 

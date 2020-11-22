@@ -85,12 +85,11 @@ class RegisterController extends Controller
         }else{
             return Validator::make($data, [
                 'full_name' => ['required', 'string', 'max:255'],
-                'dob' =>['required'],
-                'ssn'=> ['required', 'string', 'max:255'],
                 'phone_number'=> ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
-
+                'secret_questions_id'=>['required'],
+                'secret_answer'=>['required'],
             ]);
         }
 
@@ -121,10 +120,12 @@ class RegisterController extends Controller
        $id = $user->id;
        ClientDetail::create([
             'user_id' => $id,
+            'ein'=>isset($data['ein'])?$data['ein']:null,
+            'ssn'=>isset($data['ssn'])?$data['ssn']:null,
+            'business_name'=>isset($data['business_name'])?$data['business_name']:null,
             'phone_number'=>$data['phone_number'],
             'sex'=>isset($data['sex'])?$data['sex']: null ,
             'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
-            'business_name'=>isset($data['business_name'])?$data['business_name']:null,
         ]);
         return $user;
     }

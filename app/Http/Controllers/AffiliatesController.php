@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 use App\User;
@@ -25,26 +26,25 @@ class AffiliatesController extends Controller
     public function index()
     {
         $affiliateId = Auth::user()->id;
-
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
-
         return view('affiliate.index', compact('clients'));
     }
 
     public function createClient()
     {
-        return view('affiliate.create-client');
+        $secrets=DB::table('secret_questions')->select('question','id')->get();
+        return view('affiliate.create-client', compact('secrets'));
     }
 
     public function storeClient(Request $request)
     {
 
-        $email = ['email'=>$request->email];
+        $clientData = $request->except('_token');
 
-        $validation =  Validator::make($email, [
-
+        $validation =  Validator::make($clientData, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-
+            'secret_questions_id' => ['required'],
+            'secret_answer' => ['required', 'string'],
         ]);
 
         if ($validation->fails()){
@@ -52,13 +52,8 @@ class AffiliatesController extends Controller
                 ->withInput()
                 ->withErrors($validation);
         }
-
         $affiliateId = Auth::user()->id;
-
-        $user = User::create([
-            'email'=> $request->email,
-        ]);
-
+        $user = User::create($clientData);
         $userId = $user->id;
 
         Affiliate::create([

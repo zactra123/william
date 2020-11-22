@@ -151,6 +151,8 @@
                     @if(Auth::user())
                         @if(Auth::user()->role == 'client')
                             @include('helpers.urls.nav_bar_client')
+                        @elseif(Auth::user()->role == 'affiliate')
+                            @include('helpers.urls.nav_bar_affiliate')
                         @elseif(Auth::user()->role == 'super admin')
                             @include('helpers.urls.nav_bar_owner')
                         @elseif(Auth::user()->role == 'admin')
@@ -169,6 +171,8 @@
                         @auth
                             @if(Auth::user()->role == 'client')
                                 @include('helpers.urls.logged_in_client')
+                            @elseif((Auth::user()->role == 'affiliate'))
+                                @include('helpers.urls.logged_in_affiliate')
                             @elseif((Auth::user()->role == 'admin'))
                                 @include('helpers.urls.logged_in_admin')
                             @elseif((Auth::user()->role == 'affiliate'))

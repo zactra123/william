@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\Validator;
+
 
 class ClientsController extends Controller
 {
@@ -131,9 +133,40 @@ class ClientsController extends Controller
 
     public function pricing(Request $request)
     {
-        $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
+        if($request->method()=="POST"){
 
-        $default_price_list = DisputesPricing::default();
+            $pricing = $request->except('_token');
+            $validate =new DisputesPricing();
+
+            $validator =Validator::make($pricing,
+                $validate->rules
+            );
+            if ($validator->fails()) {
+                return back()->withErrors($validator);
+            }
+
+            if(isset($pricing['user_id'])){
+                $disputePricing = DisputesPricing::where('user_id', $pricing['user_id']);
+                if(!empty($disputePricing->first())){
+                    $disputePricing = $disputePricing->update($pricing);
+                }else{
+                    $disputePricing = $disputePricing->create($pricing);
+                }
+            }else{
+                $disputePricing = DisputesPricing::where('user_id', null);
+                if(!empty($disputePricing->first())){
+                    $disputePricing = $disputePricing->update($pricing);
+                }else{
+                    $disputePricing = $disputePricing->create($pricing);
+                }
+            }
+        }else{
+            $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
+
+            $default_price_list = DisputesPricing::default();
+        }
+
+
         return view('owner.pricing.list', compact('affiliates', 'default_price_list'));
     }
 
