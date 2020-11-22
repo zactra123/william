@@ -34,7 +34,7 @@ $(document).ready(function($) {
     }, "Please write your full name in this pattern first name middle name last name!!");
 
     $.validator.addMethod("password_requirements", function (value, element) {
-        var valid = !!value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@$*+-])(?:([\w\d])\1?(?!\1))[A-Za-z\d!@$*+-]{7,20}$/gm);
+        var valid = !!value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@$*+-])(?:([\w\d!@$*+-])\1?(?!\1))[A-Za-z\d!@$*+-]{7,20}$/gm);
         valid = valid && !value.match(/\d{9,}/mg)
         var email = $('#email').val()
         var include_email = false
