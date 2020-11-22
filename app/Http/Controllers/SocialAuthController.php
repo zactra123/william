@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use Socialite;
 use Illuminate\Http\Request;
 use App\User;
@@ -18,6 +19,7 @@ class SocialAuthController extends Controller
      */
     public function redirect(Request $request)
     {
+        session(['user_role' => $request->users]);
 
         return Socialite::driver('facebook')->fields([
             'first_name', 'last_name', 'email', 'gender', 'birthday'
@@ -42,7 +44,6 @@ class SocialAuthController extends Controller
             ->first();
 
         if (!$account) {
-
             $user = User::where('email', $facebookUser->user['email'])->first();
             if ($user) {
                 return redirect()->to('/login')
@@ -53,12 +54,19 @@ class SocialAuthController extends Controller
                 'provider_user_id' => $facebookUser->user['id'],
                 'provider' => 'facebook'
             ]);
+            if(session('user_role') == null){
+
+                return redirect()->to('/login')
+                ->withErrors("Something is wrong please re register !!");
+            }
+
+            $userRole = session('user_role');
 
             $user = User::create([
                 'email' => $facebookUser->user['email'],
                 'first_name' => $facebookUser->user['first_name']?? '',
                 'last_name'=> $facebookUser->user['last_name']?? '',
-                'role'=>'client'
+                'role'=> $userRole
             ]);
             if(isset($facebookUser->user['birthday'])){
                 ClientDetail::create([
@@ -83,19 +91,26 @@ class SocialAuthController extends Controller
             $account->save();
 
             auth()->login($account->user);
-
-            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
-
+            if(Auth::user()->role == 'client'){
+                return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+            }else{
+                return redirect()->to('/affiliate')->with('success','Congrats! You just did something really wise');
+            }
         }
 
         auth()->login($account->user);
-        return redirect()->to('/client/details');
+        if(Auth::user()->role == 'client'){
+            return redirect()->to('/client/details');
+
+        }else{
+            return redirect()->to('/affiliate');
+
+        }
     }
 
-
-
-    public function redirectGoogle()
+    public function redirectGoogle(Request $request)
     {
+        session(['user_role' => $request->users]);
 
         return Socialite::driver('google')->redirect();
 
@@ -109,6 +124,7 @@ class SocialAuthController extends Controller
         $account = SocialAccount::where('provider','google')
             ->where('provider_user_id',$googleUser->user['id'])
             ->first();
+        $userRole = session('user_role');
         if (!$account) {
             $account = new SocialAccount([
                 'provider_user_id' => $googleUser->user['id'],
@@ -122,33 +138,45 @@ class SocialAuthController extends Controller
                 return redirect()->to('/login')
                     ->withErrors(['error'=> "User with this mail was already registered!!"]);
             }
+            if(session('user_role') == null){
+
+                return redirect()->to('/login')
+                    ->withErrors("Something is wrong please re register !!");
+            }
 
             $user = User::create([
                 'email' => $googleUser->user['email'],
                 'first_name' => $googleUser->user['given_name'] ?? '',
                 'last_name'=> $googleUser->user['family_name'] ?? '',
-                'role'=>'client'
+                'role'=>$userRole
             ]);
             ClientDetail::create([
                 'user_id' => $user->id,
                 'registration_steps'=> 'documents',
-
             ]);
 
             if ($user->markEmailAsVerified()) {
                 event(new Verified($user));
             }
 
-
             $account->user()->associate($user);
             $account->save();
             auth()->login($account->user);
-
-            return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+            if(Auth::user()->role == 'client'){
+                return redirect()->to('/client/details')->with('success','Congrats! You just did something really wise');
+            }else{
+                return redirect()->to('/affiliate')->with('success','Congrats! You just did something really wise');
+            }
         }
 
         auth()->login($account->user);
-        return redirect()->to('/client/details');
+        if(Auth::user()->role == 'client'){
+            return redirect()->to('/client/details');
+
+        }else{
+            return redirect()->to('/affiliate');
+        }
+
     }
 
 

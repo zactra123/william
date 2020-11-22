@@ -206,6 +206,9 @@ Route::group(['prefix'=> 'admins/'], function(){
 
 Route::group(['prefix'=> 'affiliate'], function(){
 
+    Route::get('important-information', 'AffiliatesController@importantInformation');
+    Route::post('important-information', 'AffiliatesController@importantInformation')->name('affiliate.important');
+
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
     Route::post('store-client', 'AffiliatesController@storeClient')->name('affiliate.store.client');
     Route::get('client-details/{client}', 'AffiliatesController@addClientDetails')->name('affiliate.addClientDetails');
