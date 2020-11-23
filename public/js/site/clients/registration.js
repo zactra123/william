@@ -34,10 +34,16 @@ $(document).ready(function($) {
     }, "Please write your full name in this pattern first name middle name last name!!");
 
     $.validator.addMethod("password_requirements", function (value, element) {
-        var valid = !!value.match(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@$*+-])(?:([\w\d!@$*+-])\1?(?!\1))[A-Za-z\d!@$*+-]{7,20}$/gm);
-        valid = valid && !value.match(/\d{9,}/mg)
-        var email = $('#email').val()
+        var valid_length = !!value.match(/^(.{8,20})$/gm)
+        var upper_lower = !!value.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
+        var digit = !!value.match(/\d/gm)
+        var special = !!value.match(/[!@$*+-]/gm)
+        var other_special = !!value.match(/^[a-zA-z\d!@$*+\-\s]{1,}$/gm)
+        var repeating = !value.match(/([A-Za-z\d!@$*+-])\1{2}/gm)
+        var consecutive = !value.match(/\d{9,}/mg)
+        var spaces = !value.match(/\s/gm)
         var include_email = false
+        var email = $('#email').val()
         if (email) {
             partsOfFourLetters = email.match(/.{4}/g).concat(
                 email.substr(1).match(/.{4}/g),
@@ -45,7 +51,7 @@ $(document).ready(function($) {
             include_email = new RegExp(partsOfFourLetters.join("|"), "i").test(value);
         }
 
-        return valid && !include_email
+        return valid_length && upper_lower && digit && special && other_special && repeating && consecutive && spaces && !include_email
     }, "Please pay attention on password requirements");
 
     $('#password,#password-confirm').on('focus keyup', function(){
