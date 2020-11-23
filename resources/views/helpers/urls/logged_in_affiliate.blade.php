@@ -2,7 +2,7 @@
     <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
 
 
-{{--        <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>--}}
+        <li class="menu-item"><a href="{{ route('affiliate.create.client')}}" >ADD CLIENT</a></li>
 {{--        <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>--}}
 
         <li class="menu-item sign-hide"><a href="{{ route('logout') }}"

@@ -39,15 +39,9 @@
                                             <td>{{$client->user->email}}</td>
                                             <td>
 
-                                                <a class="btn" href="{{route('client.addDriverSocial',   ['client'=> $client->user->id])}}"
-                                                   role="button">Add SS & DL (or ID)</a>
-                                                @if(empty($client->user->clientDetails))
-                                                    <a class="btn" href="{{route('affiliate.addClientDetails', ['client'=> $client->id])}}"
-                                                       role="button">Add Client Details</a>
-                                                @else
-                                                    <a class="btn btn-secondary" href="{{route('affiliate.editClientDetails', $client->id)}}"
-                                                       role="button">Edit Client Details</a>
-                                                @endif
+                                                <a class="btn" href="{{route('affiliate.client.profile', $client->user->id)}}"
+                                                   role="button">CLIENT PROFILE</a>
+
 
                                             </td>
                                         </tr>

@@ -211,12 +211,20 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
     Route::post('store-client', 'AffiliatesController@storeClient')->name('affiliate.store.client');
-    Route::get('client-details/{client}', 'AffiliatesController@addClientDetails')->name('affiliate.addClientDetails');
+    Route::get('client-document/{client}', 'AffiliatesController@addClientDocumnet')->name('affiliate.client.document');
+    Route::post('client-details/create/dl-ss/{client}', 'AffiliatesController@storeDLSS')->name('affiliate.storeDLSS');
+    Route::get('client-credentials', 'AffiliatesController@addCredentials')->name('affiliate.client.credentials');
+    Route::post('client-credentials/{clientId}', 'AffiliatesController@storeCredentials')->name('affiliate.storeCredentials');
+    Route::get('client-review', 'AffiliatesController@clientReview')->name('affiliate.clientReview');
+    Route::put('client-review/{clientId}', 'AffiliatesController@storeReview')->name('affiliate.storeReview');
+    Route::get('client-profile/{clientId}', 'AffiliatesController@clientProfile')->name('affiliate.client.profile');
+
+
+
     Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
     Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
     Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
     Route::get('client-details/dl-ss/{client}', 'AffiliatesController@addDLSS')->name('affiliate.addDLSS');
-    Route::post('client-details/create/dl-ss/{client}', 'AffiliatesController@storeDLSS')->name('affiliate.storeDLSS');
     Route::resource('/', 'AffiliatesController')->names('affiliate')->parameters([''=>'affiliate'])->only('index');
 });
 
