@@ -363,12 +363,12 @@ class AffiliatesController extends Controller
 
         }elseif($step =='credentials'){
             $clientId = $id;
-            return redirect(route('affiliate.client.credentials', compact('clientId')))
+            return redirect(route('affiliate.client.credentials', compact('clientId')));
         }elseif($step =='review'){
-            $clientId = $id
-            return redirect(route('affiliate.clientReview', compact('clientId')))
+            $clientId = $id;
+            return redirect(route('affiliate.clientReview', compact('clientId')));
         }
-        
+
         $client = User::whereId($id)->first();
         $toDos = Todo::where('client_id', $client->id)->get();
         $status = [null => ''] + \App\Todo::STATUS;

@@ -102,8 +102,6 @@ class ClientsController extends Controller
 
     public function update(Request $request)
     {
-        dd('not work yet');
-
     }
 
     public function list()
@@ -147,7 +145,7 @@ class ClientsController extends Controller
                 if (!$pricing) {
                     $pricing = new DisputesPricing(["user_id" => $request->user_id]);
                 }
-                return view('owner.pricing._form', compact('pricing', 'default'))->withInput()->withErrors($validator);
+                return view('owner.pricing._form', compact('pricing', 'default'))->withErrors($validator);
             }
 
             if(isset($pricing['user_id'])){
@@ -174,7 +172,9 @@ class ClientsController extends Controller
         }
 
         $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
+
         $default_price_list = DisputesPricing::default();
+
         return view('owner.pricing.list', compact('affiliates', 'default_price_list'));
     }
 
