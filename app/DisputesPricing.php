@@ -16,7 +16,7 @@ class DisputesPricing extends Model
         'cc_accnt_bloking' => 'required',
         'auto_blocking' => 'required',
         'mortgage_blocking' => 'required',
-        'p_loan_clocking' => 'required',
+        'p_loan_blocking' => 'required',
         'student_loan_blocking' => 'required',
         'cc_late' => 'required',
         'auto_late' => 'required',

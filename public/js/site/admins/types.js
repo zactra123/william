@@ -62,7 +62,6 @@ $('.selectize-multiple').selectize({
     valueField: 'key_word',
     create: function(input) {
         account_type = this.$input.parents('tr').attr('data-id');
-        console.log(account_type, this)
         return {
             key_word: input
         };

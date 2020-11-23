@@ -133,16 +133,21 @@ class ClientsController extends Controller
 
     public function pricing(Request $request)
     {
-        if($request->method()=="POST"){
-
-            $pricing = $request->except('_token');
+        if ($request->method()=="POST") {
+            $pricing = $request->except(['_token', 'auto_repo']);
             $validate =new DisputesPricing();
 
             $validator =Validator::make($pricing,
                 $validate->rules
             );
+
             if ($validator->fails()) {
-                return back()->withErrors($validator);
+                $default = DisputesPricing::default();
+                $pricing = DisputesPricing::where("user_id", $request->user_id)->first();
+                if (!$pricing) {
+                    $pricing = new DisputesPricing(["user_id" => $request->user_id]);
+                }
+                return view('owner.pricing._form', compact('pricing', 'default'))->withInput()->withErrors($validator);
             }
 
             if(isset($pricing['user_id'])){
@@ -160,14 +165,28 @@ class ClientsController extends Controller
                     $disputePricing = $disputePricing->create($pricing);
                 }
             }
-        }else{
-            $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
-
-            $default_price_list = DisputesPricing::default();
+            $default = DisputesPricing::default();
+            $pricing = DisputesPricing::where("user_id", $request->user_id)->first();
+            if (!$pricing) {
+                $pricing = new DisputesPricing(["user_id" => $request->user_id]);
+            }
+            return view('owner.pricing._form', compact('pricing', 'default'));
         }
 
-
+        $affiliates = User::affiliates()->get()->pluck('full_name', 'id')->toArray();
+        $default_price_list = DisputesPricing::default();
         return view('owner.pricing.list', compact('affiliates', 'default_price_list'));
+    }
+
+    public function pricing_affiliate(Request $request)
+    {
+        $default = DisputesPricing::default();
+        $pricing = DisputesPricing::where("user_id", $request->id)->first();
+        if (!$pricing) {
+            $pricing = new DisputesPricing(["user_id"=>$request->id]);
+        }
+
+        return view('owner.pricing._form', compact('pricing', 'default'));
     }
 
 }
