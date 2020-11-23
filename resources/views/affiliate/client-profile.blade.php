@@ -30,7 +30,7 @@
                             <button type="button" class="close closeUpload">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                            {!! Form::open(['route'=>['affiliate.client.update', $client->id],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
                             @method("PUT")
                             @csrf
                             <div class="col-sm-12 form-group files">
@@ -213,7 +213,7 @@
                                                 <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
                                                 <div class="dropdown-content equifax">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
-                                                    <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
+                                                    <a href="{{route('affiliate.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
                                                     <a href=#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
@@ -229,7 +229,7 @@
                                                 <div class="dropdown-content experina">
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
-                                                    <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
+                                                    <a href="{{route('affiliate.credentials',['source'=> 'experian','id'=>$client->id])}}">CREDENTIALS</a>
                                                     <a href=#">ARCHIVE</a>
 
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
@@ -246,13 +246,13 @@
                                                 <div class="dropdown-content transunion">
                                                     <div class="pb-3">
                                                         <a class="p-1" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
-                                                        <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
+                                                        <a class="p-1" href="{{route('affiliate.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">MEMBER CREDENTIALS</a>
                                                         <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER  REGISTRATION</a>
                                                         <hr>
                                                     </div>
                                                     <div class="pb-3">
                                                         <a class="p-1" href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
-                                                        <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
+                                                        <a class="p-1" href="{{route('affiliate.credentials',['source'=> 'transunion_dispute', 'id'=>$client->id])}}">DISPUTE CREDENTIALS</a>
                                                         <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
                                                         <hr>
                                                     </div>
@@ -356,7 +356,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+
+                    {!! Form::open(['route'=>['affiliate.client.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
                     @method('PUT')
                     @csrf
                     <div class="form row">

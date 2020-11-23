@@ -72,7 +72,7 @@
                                     <div class="form-group row font justify-content-center">
                                         <div class="col-md-12 tab-selector">
                                             <div class="col-md-12 sex_options">
-                                                {{ Form::select('client[sex_uploaded]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : $client->clientDetails->sex , ['class'=>'col-md-10  form-control']) }}
+                                                {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex , ['class'=>'col-md-10  form-control']) }}
                                             </div>
                                         </div>
                                     </div>

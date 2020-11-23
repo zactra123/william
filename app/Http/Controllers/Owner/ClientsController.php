@@ -185,7 +185,6 @@ class ClientsController extends Controller
         if (!$pricing) {
             $pricing = new DisputesPricing(["user_id"=>$request->id]);
         }
-
         return view('owner.pricing._form', compact('pricing', 'default'));
     }
 

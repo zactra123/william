@@ -220,12 +220,16 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::put('client-review/{clientId}', 'AffiliatesController@storeReview')->name('affiliate.storeReview');
     Route::get('client-profile/{clientId}', 'AffiliatesController@clientProfile')->name('affiliate.client.profile');
 
+    Route::put('client-profile/{client}/update', 'AffiliatesController@updateClient')->name('affiliate.client.update');
+    Route::get('client-profile/{id}/credentials', 'AffiliatesController@credentials')->name('affiliate.credentials');
+    Route::put('client-profile/{id}/credentials', 'AffiliatesController@credentialsUpdate')->name('affiliate.credentialsUpdate');
 
 
-    Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
-    Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
-    Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
-    Route::get('client-details/dl-ss/{client}', 'AffiliatesController@addDLSS')->name('affiliate.addDLSS');
+
+//    Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
+//    Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
+//    Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');
+//    Route::get('client-details/dl-ss/{client}', 'AffiliatesController@addDLSS')->name('affiliate.addDLSS');
     Route::resource('/', 'AffiliatesController')->names('affiliate')->parameters([''=>'affiliate'])->only('index');
 });
 
