@@ -46,12 +46,12 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}" required autocomplete="ssn" placeholder="COMPANY NAME (IF ANY)">
+                                    <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}" autocomplete="ssn" placeholder="COMPANY NAME (IF ANY)">
                                 </div>
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-md-6" style="margin: 0">
-                                            <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="SOCIAL SECURITY NUMBER">
+                                            <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}"  autocomplete="ssn" placeholder="SOCIAL SECURITY NUMBER">
                                             @error('ssn')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                                             OR
                                         </div>
                                         <div class="col-md-5">
-                                            <input id="ssn" type="text" class="form-control ein" name="ein" value="{{ old('ssn') }}" required autocomplete="ssn" placeholder="EIN NUMBER">
+                                            <input id="ssn" type="text" class="form-control ein" name="ein" value="{{ old('ssn') }}"  autocomplete="ssn" placeholder="EIN NUMBER">
                                             @error('ssn')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="ADDRESS">
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"  autocomplete="address" placeholder="ADDRESS">
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -80,7 +80,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="PHONE NUMBER">
+                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}"  autocomplete="phone_number" placeholder="PHONE NUMBER">
                                     @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -90,7 +90,7 @@
 
                                 <div class="form-group">
                                     <input type="hidden" name="role" class="form-control" value="affiliate">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-MAIL ADDRESS">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" placeholder="E-MAIL ADDRESS">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -98,7 +98,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group pass_show">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="PASSWORD">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password" placeholder="PASSWORD">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group">
-                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="CONFIRM PASSWORD">
+                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="CONFIRM PASSWORD">
                                 </div>
 
                                 <div class="form-group">
@@ -117,16 +117,23 @@
 
                                             <option value="{{$value->id}}">{{$value->question}}</option>
                                         @endforeach
+                                        <option value="other">
+                                            Your own question
+
+                                        </option>
                                     </select>
-                                    @error('sex')
+                                    @error('secret_question')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                     @enderror
 
                                 </div>
+                                <div class="form-group hidden" id="custom-secret-question">
+                                    <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
+                                </div>
                                 <div class="form-group">
-                                    <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                                    <input id="secret_answer" type="text" class="form-control" name="secret_answer" value="{{ old('secret_answer') }}"  autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
                                     @error('secret_answer')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -184,31 +191,26 @@
 
     </script>
 
+    <script id="password-requirements" type="text/html">
+        <div>
+            <ul>
+                <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
+                <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
+                <li><i class="fa {digit-class}"></i> Must contain at least 1 number</li>
+                <li><i class="fa {special-class}"></i> Must contain at least one of these special characters !@$*+-</li>
+                <li><i class="fa {other-special-class}"></i> Cannot contain any other special character beside those listed above</li>
+                <li><i class="fa {repeating-class}"></i> Cannot contain more than 2 repeating characters</li>
+                <li><i class="fa {username-class}"></i> Cannot contain the username</li>
+                <li><i class="fa {consecutive-class}"></i> Cannot contain 9 or more consecutive numbers</li>
+                <li><i class="fa {spaces-class}"></i> Cannot contain spaces</li>
+            </ul>
+        </div>
+    </script>
+
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/site/clients/registration.js?v=2') }}" defer></script>
 
-    <script type="text/javascript">
-
-
-
-        $(document).ready(function(){
-            $('#date').focus(function () {
-                this.type='date';
-            });
-            $('#date').click(function () {
-                this.type='date';
-            })  ;
-            $('#date').blur(function () {
-                if(this.value==''){this.type='text'};
-            });
-
-            $('.ssn').mask('000-00-0000')
-            $('.ein').mask('00-0000000')
-            $('.phone').mask('(000) 000-0000')
-        })
-
-    </script>
 
 
 @endsection

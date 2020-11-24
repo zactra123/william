@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\SecretQuestion;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -51,7 +52,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $secrets=DB::table('secret_questions')->select('question','id')->get();
+        $secrets=DB::table('secret_questions')->where('user_id', null)
+            ->select('question','id')->get();
         return view('auth.register',compact('secrets'));
     }
 
@@ -103,6 +105,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        if(isset($data['own_secter_question']) && $data['secret_questions_id'] == 'other'){
+
+           $secreteQuestion =  SecretQuestion::create([
+               'question'=>$data['own_secter_question']
+           ]);
+
+        }
+
+
         $full_name = explode(" ", $data["full_name"]);
         $data["first_name"] = array_shift($full_name);
         $data["last_name"] = implode(" ", $full_name);
@@ -112,12 +124,20 @@ class RegisterController extends Controller
             'last_name'=> $data["last_name"],
             'email' => $data['email'],
             'role'=>$data['role'],
-            'secret_questions_id'=>$data['secret_questions_id'],
+            'secret_questions_id'=>isset($secreteQuestion)?$secreteQuestion->id:$data['secret_questions_id'],
             'secret_answer'=>trim($data['secret_answer']),
             'password' => Hash::make($data['password']),
         ]);
 
+
        $id = $user->id;
+
+        if(isset($secreteQuestion)){
+            SecretQuestion::whereId($secreteQuestion->id)->update([
+                'user_id'=>$id,
+            ]);
+        }
+
        ClientDetail::create([
             'user_id' => $id,
             'ein'=>isset($data['ein'])?$data['ein']:null,

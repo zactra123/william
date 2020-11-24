@@ -113,29 +113,53 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    public function recover()
+    {
+        return view('auth.login_information_1');
+    }
+
     public function loginInfoFirst(Request $request)
     {
         if($request->method()=="GET"){
-            return view('auth.login_information_1');
+            if (empty(session("recover_client"))) {
+                return redirect(route("login.infoFirst"));
+            }
+            $client = session("recover_client");
+            return view('auth.login_information_2', compact('client'));
         }
+
         if($request->method()=="POST"){
             $clientInfo = $request->client;
 
-            if($clientInfo['ssn']!= $clientInfo['ssn_confirm'])
-            {
-                return back()->withErrors(  ['error'=>"wrong social security number confirmation!" ]);
+
+            if(is_null($clientInfo['ssn']) && is_null($clientInfo['ein'])){
+                return back()->withErrors(  ['error'=>"Social Security card or EIN Number is required" ]);
             }
+
+            if(!is_null($clientInfo['ssn'])){
+                if($clientInfo['ssn']!= $clientInfo['ssn_confirm'])
+                {
+                    return back()->withErrors(  ['error'=>"wrong social security number confirmation!" ]);
+                }
+            }elseif(!is_null($clientInfo['ein'])){
+                if($clientInfo['ein']!= $clientInfo['ein_confirm'])
+                {
+                    return back()->withErrors(  ['error'=>"wrong ein number confirmation!" ]);
+                }
+            }
+
 
             $client = DB::table('client_details')
                 ->leftJoin('users', 'client_details.user_id','=', 'users.id')
                 ->leftJoin('secret_questions', 'users.secret_questions_id', '=', 'secret_questions.id')
                 ->where('client_details.ssn', $clientInfo['ssn'])
+                ->where('client_details.ein', $clientInfo['ein'])
                 ->where('users.last_name', 'like', '%' . $clientInfo['last_name'] . '%')
                 ->select('users.id', 'secret_questions.question')
                 ->first();
             if(!empty($client)){
-
-                return view('auth.login_information_2', compact('client'));
+                session(["recover_client"=> $client]);
+                return redirect(route("login.infoFirstSend"));
             }else{
                 return back()->withErrors(  ['error' => "Please connect our team"] );
             }

@@ -57,10 +57,34 @@
                             <div class="form-group row font justify-content-center">
                                 <div class="col-md-12 tab-selector">
                                     <div class="col-md-12">
-                                        {{ Form::text('client[ssn_confirm]', old('client[ssn_confirmweb]'), ['class' => 'form-control m-input ssn', 'placeholder' => 'CONFIRM SOCIAL SECURITY NUMBER']) }}
+                                        {{ Form::text('client[ssn_confirm]', old('client[ssn_confirmweb]'), ['class' => 'form-control m-input ssn', 'id' => 'ssn_confirm','placeholder' => 'CONFIRM SOCIAL SECURITY NUMBER']) }}
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row font justify-content-center">
+                                <div class="col-md-12 tab-selector">
+                                    <div class="col-md-12">
+OR                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row font justify-content-center">
+                                <div class="col-md-12 tab-selector">
+                                    <div class="col-md-12">
+                                        {{ Form::text('client[ein]', old('client[ein]'), ['class' => 'form-control m-input ein', 'id' => 'ein','placeholder' => 'EIN NUMBER']) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row font justify-content-center">
+                                <div class="col-md-12 tab-selector">
+                                    <div class="col-md-12">
+                                        {{ Form::text('client[ein_confirm]', old('client[ein_confirm]'), ['class' => 'form-control m-input ein', 'id' => 'ein_confirm', 'placeholder' => 'CONFIRM EIN']) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                             <div class="form-group row font justify-content-center">
 
                                 <div class="col-md-12 tab-selector">
@@ -90,6 +114,7 @@
         $(document).ready(function(){
 
             $(".ssn").mask("999-99-9999");
+            $(".ein").mask("99-9999999");
 
             $.validator.addMethod("one_option", function(value, element) {
 
@@ -104,13 +129,28 @@
                         one_option: true
                     },
                     "client[ssn]": {
-                        required:true,
-                        one_option: true
+                        required: '#ein:blank'
+                    },
+                    "client[ein]": {
+                        required: '#ssn:blank'
                     },
                     "client[ssn_confirm]": {
-                        required:true,
+                        required: '#ein_:blank',
                         equalTo: "#ssn"
-                    }
+                    },
+                    "client[ein_confirm]": {
+                        required: '#ssn_:blank',
+                        equalTo: "#ein"
+                    },
+
+                    // "client[ssn]": {
+                    //     required:true,
+                    //     one_option: true
+                    // },
+                    // "client[ssn_confirm]": {
+                    //     required:true,
+                    //     equalTo: "#ssn"
+                    // }
                 },
                 errorPlacement: function(error, element) {
                     error.insertAfter($(element).parents(".form-group"));

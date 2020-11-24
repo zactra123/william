@@ -12,21 +12,9 @@ $(document).ready(function($) {
     //     }
     // });
 
-    $('#date').focus(function () {
-
-        this.type = 'date';
-    });
-    $('#date').click(function () {
-        this.type = 'date';
-    });
-    $('#date').blur(function () {
-        if (this.value == '') {
-            this.type = 'text'
-        }
-        ;
-    });
-
-    $(".ssn").mask("999-99-9999");
+    $('.ssn').mask('000-00-0000')
+    $('.ein').mask('00-0000000')
+    $('.phone').mask('(000) 000-0000')
     $('#phone_number').mask('(000) 000-0000');
 
     $.validator.addMethod("valid_full_name", function (value, element) {
@@ -189,6 +177,14 @@ $(document).ready(function($) {
     $('#client-registration-form').submit(function () {
         if (!$(this).valid()){
             $('#client-registration-form .form-control.error')[0].focus()
+        }
+    })
+
+    $('#secret_question').on('change', function(){
+        if ($(this).val() == "other") {
+            $("#custom-secret-question").removeClass('hidden')
+        } else {
+            $("#custom-secret-question").addClass('hidden')
         }
     })
 });

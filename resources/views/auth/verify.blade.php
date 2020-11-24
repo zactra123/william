@@ -12,7 +12,9 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
-                        @include('helpers.steps')
+                        @if(Auth::user()->role == 'client')
+                            @include('helpers.steps')
+                        @endif
                         @if (session('resent'))
                             <div class="alert alert-success" role="alert">
                                 {{ __('A fresh verification link has been sent to your email address.') }}

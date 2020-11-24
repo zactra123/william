@@ -277,18 +277,18 @@ class ClientDetailsController extends Controller
 
         if(isset($resultDriverLicense['error']) && isset($resultSocialSecurity['error'])){
              $error = [
-                 'driver_license'=>'Your uploaded document is not readable or incorrect',
-                 'social_security'=> 'Your uploaded document is not readable or incorrect'
+                 'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect',
+                 'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
              ];
             return redirect()->back()->withErrors($error);
         }elseif(isset($resultDriverLicense['error'])){
             $error = [
-                'driver_license'=>'Your uploaded document is not readable or incorrect'
+                'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect'
             ];
             return redirect()->back()->withErrors($error);
         }elseif(isset($resultSocialSecurity['error'])){
             $error = [
-                'social_security'=> 'Your uploaded document is not readable or incorrect'
+                'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
             ];
             return redirect()->back()->withErrors($error);
         }

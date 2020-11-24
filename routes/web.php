@@ -51,8 +51,8 @@ Route::get('/facebook/callback', 'SocialAuthController@callback');
 Route::get('/google/redirect', 'SocialAuthController@redirectGoogle')->name('google.login');
 Route::get('/google/callback', 'SocialAuthController@callbackGoogle');
 
-Route::get('login-info-first', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirst');
-Route::post('login-info-second', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirstSend');
+Route::get('login-info-first', 'Auth\LoginController@recover')->name('login.infoFirst');
+Route::any('login-info-second', 'Auth\LoginController@loginInfoFirst')->name('login.infoFirstSend');
 Route::post('login-info-reset', 'Auth\LoginController@loginInfoSecond')->name('login.infoSecondSend');
 Route::post('login-info-finish', 'Auth\LoginController@loginInfoFinish')->name('login.infoFinishSend');
 
