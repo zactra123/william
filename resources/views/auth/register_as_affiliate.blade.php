@@ -2,6 +2,23 @@
 
 @section('content')
 
+    <style>
+        .pass_show{position: relative}
+        .pass_show .ptxt {
+            position: absolute;
+            /*top: 50%;*/
+            right: 10px;
+            z-index: 1;
+            color: black;
+            font-weight: bold;
+            margin-top: -25px;
+            cursor: pointer;
+            transition: .3s ease all;
+        }
+        .pass_show .ptxt:hover{color: #333333;}
+    </style>
+
+
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title">Register</h2>
@@ -80,7 +97,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group pass_show">
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="PASSWORD">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -133,8 +150,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
                 </div>
@@ -150,6 +165,24 @@
             width: fit-content;
         }
     </style>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('.pass_show').append('<span class="ptxt"><i class="fa fa-eye"></span>');
+        });
+
+        $(document).on('click','.pass_show .ptxt', function(){
+            if($("#password").attr('type') == 'password'){
+
+                $("#password").attr('type', 'text')
+
+            }else{
+                $("#password").attr('type', 'password')
+            }
+        });
+
+    </script>
 
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>

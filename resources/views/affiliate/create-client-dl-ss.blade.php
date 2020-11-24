@@ -48,7 +48,7 @@
         }
         .driver_license:before, .social_security:before {
             position: absolute;
-            bottom: 0px;
+            bottom: 50px;
             left: 0;  pointer-events: none;
             width: 100%;
             right: 0;
@@ -162,12 +162,16 @@
                                     Upload Your Driver License or Identification card
                                 </label>
                                 <input class="driver_license file-box" type="file" name="driver_license"  id="driver_license">
+                                {!! $errors->first('driver_license', '<p class="help-block">:message</p>') !!}
+
                             </div>
                             <div class="col-sm-6 form-group files">
                                 <label title="Upload Your Social Security">
                                     Upload Your Social Security
                                 </label>
                                 <input class="social_security file-box" type="file" name="social_security"  id="social_security" >
+                                {!! $errors->first('social_security', '<p class="help-block">:message</p>') !!}
+
                             </div>
                         </div>
                         <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
@@ -328,8 +332,10 @@
 
 
             $("#doc_sunb").submit(function( event ) {
-                $('#preloader').css('background-color', 'transparent');
-                $('#preloader').show()
+                if($('#doc_sunb').valid()){
+                    $('#preloader').css('background-color', 'transparent');
+                    $('#preloader').show()
+                }
             });
 
 

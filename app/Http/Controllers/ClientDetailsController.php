@@ -251,7 +251,6 @@ class ClientDetailsController extends Controller
         $imagesDriverLicense = $request->file("driver_license");
         $imagesSocialSecurity = $request->file("social_security");
 
-
         $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
         $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
         $socialSecurityExtension = strtolower($imagesSocialSecurity->getClientOriginalExtension());
@@ -265,22 +264,40 @@ class ClientDetailsController extends Controller
         $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
         $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
 
-
         $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
         $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
 
         $pathDriverLicense = '/' . $path . $nameDriverLicense;
         $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
 
+
+
         $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
         $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
+
+        if(isset($resultDriverLicense['error']) && isset($resultSocialSecurity['error'])){
+             $error = [
+                 'driver_license'=>'Your uploaded document is not readable or incorrect',
+                 'social_security'=> 'Your uploaded document is not readable or incorrect'
+             ];
+            return redirect()->back()->withErrors($error);
+        }elseif(isset($resultDriverLicense['error'])){
+            $error = [
+                'driver_license'=>'Your uploaded document is not readable or incorrect'
+            ];
+            return redirect()->back()->withErrors($error);
+        }elseif(isset($resultSocialSecurity['error'])){
+            $error = [
+                'social_security'=> 'Your uploaded document is not readable or incorrect'
+            ];
+            return redirect()->back()->withErrors($error);
+        }
 
         $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
         $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);
         $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
         $clientData['user_id'] = $client;
-
 
         $clientAttachmentData = [
             [
@@ -522,7 +539,6 @@ class ClientDetailsController extends Controller
             $full_name = explode(" ", $clientData["full_name"]);
             $clientData["first_name"] = array_shift($full_name);
             $clientData["last_name"] = implode(" ", $full_name);
-
             User::where('id', $userId)->update([
                 'first_name' => $clientData["first_name"],
                 'last_name' => $clientData["last_name"],
@@ -533,7 +549,8 @@ class ClientDetailsController extends Controller
 
             ClientDetail::where('user_id', $userId)->update([
                 'phone_number' => $clientData["phone_number"],
-                'sex' => $clientData["sex"]
+                'sex' => $clientData["sex"],
+                'registration_steps' => 'documents'
             ]);
 
             return redirect()->to('/client/registration-steps');

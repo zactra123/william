@@ -143,6 +143,24 @@ class AffiliatesController extends Controller
         $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
         $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
 
+        if(isset($resultDriverLicense['error']) && isset($resultSocialSecurity['error'])){
+            $error = [
+                'driver_license'=>'Your uploaded document is not readable or incorrect',
+                'social_security'=> 'Your uploaded document is not readable or incorrect'
+            ];
+            return redirect()->back()->withErrors($error);
+        }elseif(isset($resultDriverLicense['error'])){
+            $error = [
+                'driver_license'=>'Your uploaded document is not readable or incorrect'
+            ];
+            return redirect()->back()->withErrors($error);
+        }elseif(isset($resultSocialSecurity['error'])){
+            $error = [
+                'social_security'=> 'Your uploaded document is not readable or incorrect'
+            ];
+            return redirect()->back()->withErrors($error);
+        }
+
         $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
         $user['user_id'] = $userId;
         $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);

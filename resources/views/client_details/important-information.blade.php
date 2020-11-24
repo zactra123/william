@@ -36,7 +36,7 @@
                                 @enderror
                             </div>
                             <div class="form-group ">
-                                {{ Form::select('sex', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($client->clientDetails()) ? $client->clientDetails->sex : '' , ['class'=>'form-control']) }}
+                                {{ Form::select('sex', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($client->clientDetails()) ? $client->clientDetails['sex'] : '' , ['class'=>'form-control']) }}
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="secret_questions_id" id="secret_question">
