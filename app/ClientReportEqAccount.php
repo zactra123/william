@@ -60,6 +60,7 @@ class ClientReportEqAccount extends Model
         'utilization_percentage ',
         'term_month',
     ];
+    protected $with = ["dispute"];
 
     public function clientReport()
     {
@@ -77,6 +78,11 @@ class ClientReportEqAccount extends Model
         $name =  $this->account_title;
 
         return "$berau : $name";
+    }
+
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportEqAccount');
     }
 
 }

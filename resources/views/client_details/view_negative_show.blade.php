@@ -1000,7 +1000,7 @@
                                                             </div>
 
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][maka]" placeholder="MAKE">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][make]" placeholder="MAKE">
                                                             </div>
                                                         </div>
                                                     </div>

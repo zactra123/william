@@ -54,6 +54,7 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
+
         $client = Auth::user();
         $toDos = Todo::where('client_id', $client->id)->get();
         $status = [null => ''] + \App\Todo::STATUS;
@@ -71,10 +72,34 @@ class ClientDetailsController extends Controller
             ->pluck('disputables.id')
             ->toArray();
 
+        $statusArray = DB::table('todos')
+            ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
+            ->where('todos.client_id', $client->id)
+            ->groupBy('disputables.status')
+            ->select(DB::raw('COUNT(disputables.id) as count'), 'disputables.status as status')
+            ->pluck('count', 'status')
+            ->toArray();
+
+        $statusInactive = Todo::
+            leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+            ->where('client_id', $client->id)
+            ->where('disputables.status', 0)
+            ->whereJsonContains('additional_information', ['security_word' => null])
+            ->count('disputables.status');
+        $statusDispute = json_encode([
+            'active' => $statusArray[0]- $statusInactive,
+            'pending' => $statusArray[1],
+            'complete'=> $statusArray[2],
+            'added' => $statusInactive,
+            'non_data' => $statusArray[0] == 0 && $statusArray[1] == 0 && $statusArray[2] == 0 ? 1:0,
+
+        ]);
+
+
         $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
 
 
-        return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo'));
+        return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
     }
 
     public function create(Request $request)

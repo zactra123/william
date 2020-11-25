@@ -686,20 +686,24 @@
     </script>
 
     <script type="text/javascript">
+
+        var statusDispute =  JSON.parse('<?php echo $statusDispute; ?>');
+        console.log( statusDispute, statusDispute['active'])
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Success',     11],
-                ['Failed',      2],
-                ['In Progress',  2],
-                ['Added',  8],
+                ['Task', 'Dispute progress'],
+                ['Success',    statusDispute['complete']],
+                ['Failed',      statusDispute['pending']],
+                ['In Progress',  statusDispute['active']],
+                ['Added',  statusDispute['added']],
+                ['No data entity',  statusDispute['non_data']],
             ]);
 
             var options = {
                 is3D: true,
-                colors: ['green', 'red', 'orange', 'grey']
+                colors: ['#89caf4','#4678b7', '#363676', '#275ca8', '#77c1ce','#0091ca']
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));

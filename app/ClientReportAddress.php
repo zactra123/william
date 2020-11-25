@@ -29,5 +29,10 @@ class ClientReportAddress extends Model
         $address = $this->street.', '.$this->city.', '.$this->state.', '.$this->zip;
         return "$berau : $address";
     }
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportAddress');
+    }
+
 
 }

@@ -29,4 +29,9 @@ class ClientReportEmployer extends Model
         $berau = ClientReport::REPORT_TYPES[$this->clientReport->type];
         return "$berau : $this->name";
     }
+
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportEmployer');
+    }
 }

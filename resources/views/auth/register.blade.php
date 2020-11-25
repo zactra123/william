@@ -28,8 +28,6 @@
         </div>
     </section>
 
-
-
     <!-- Login Area Start -->
     <section class="ms-user-account">
         <div class="container">
@@ -48,8 +46,8 @@
                                     <input id="full_name" type="text" class="form-control phone" name="full_name" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="FULL NAME">
                                     @error('full_name')
                                     <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
 
@@ -58,8 +56,8 @@
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
 
@@ -104,26 +102,29 @@
                                     </select>
                                     @error('sex')
                                     <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
 
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="secret_questions_id" id="secret_question">
                                         <option disabled="disabled" selected="selected">Choose Secret Question</option>
-
                                         @foreach($secrets as $value)
-
                                             <option value="{{$value->id}}">{{$value->question}}</option>
                                         @endforeach
+                                        <option value="other">
+                                            Your own question
+                                        </option>
                                     </select>
-                                    @error('sex')
+                                    @error('secret_questions_id')
                                     <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
-
+                                </div>
+                                <div class="form-group hidden" id="custom-secret-question">
+                                    <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
                                 </div>
                                 <div class="form-group">
                                     <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">

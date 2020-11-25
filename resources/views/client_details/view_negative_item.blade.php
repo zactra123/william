@@ -1672,14 +1672,22 @@
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->name}}</span>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="col-md-6">
-                                            <label class="form-text">DISPUTE</label>
+                                    @if(!empty($accounts->dispute->id))
+                                        <div class="col-md-2">
+                                            <div class="col-md-6">
+                                                <label class="form-text">ON DISPUTE</label>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 ">
-                                            <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value ="{{$accounts->id}}" class="customcheck">
+                                    @else
+                                        <div class="col-md-2">
+                                            <div class="col-md-6">
+                                                <label class="form-text">DISPUTE</label>
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value ="{{$accounts->id}}" class="customcheck">
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                                 <div class="row mt20  " style="font-weight: bold">
                                     <div class="col-md-1">

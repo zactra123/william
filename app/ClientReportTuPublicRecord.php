@@ -53,4 +53,9 @@ class ClientReportTuPublicRecord extends Model
         $name =  $this->name;
         return "$berau : $name";
     }
+
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportTuPublicRecord');
+    }
 }

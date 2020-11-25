@@ -24,4 +24,9 @@ class ClientReportTuSummary extends Model
     {
         return $this->belongsTo('App/ClientReport');
     }
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportTuSummary');
+    }
+
 }

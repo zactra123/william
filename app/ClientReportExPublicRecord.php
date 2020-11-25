@@ -43,4 +43,9 @@ class ClientReportExPublicRecord extends Model
         $name =  $this->source_name.' #'.$this->source_id;
         return "$berau : $name";
     }
+
+    public function dispute()
+    {
+        return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportExPublicRecord');
+    }
 }
