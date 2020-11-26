@@ -39,11 +39,11 @@
                             <h3>Registration</h3>
                         </div>
                         <div class="ms-ua-form">
-                            <form method="POST" id="client-registration-form" action="{{ route('register') }}">
+                            <form method="POST" id="registration-form" action="{{ route('register') }}">
                                 @csrf
 
                                 <div class="form-group">
-                                    <input id="full_name" type="text" class="form-control phone" name="full_name" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="FULL NAME">
+                                    <input id="full_name" type="text" class="form-control phone" name="full_name" value="{{ old('secret_answer') }}"  placeholder="FULL NAME">
                                     @error('full_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-Mail Address">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="E-Mail Address">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="Phone Number">
+                                    <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}"  placeholder="Phone Number">
                                     <input type="hidden" name="role" class="form-control" value="client">
 
                                     @error('phone_number')
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-group pass_show">
 
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  data-toggle="password" required autocomplete="new-password" placeholder="Password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  data-toggle="password" placeholder="Password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -88,10 +88,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Confirm Password">
                                 </div>
                                 <div class="form-group">
-                                    <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}" autocomplete="referred_by" placeholder="Referred By (if any)">
+                                    <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}"  placeholder="Referred By (if any)">
                                 </div>
                                 <div class="form-group">
                                     <select class="form-control" name="sex" id="gender">
@@ -127,7 +127,7 @@
                                     <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
                                 </div>
                                 <div class="form-group">
-                                    <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                                    <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ old('secret_answer') }}" placeholder="PLEASE ANSWER IN SECRET QUESTION">
                                     @error('secret_answer')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -181,13 +181,7 @@
                 <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
                 <li><i class="fa {digit-class}"></i> Must contain at least 1 number</li>
                 <li><i class="fa {special-class}"></i> Must contain at least one of these special characters</li>
-{{--                <li><i class="fa {special-class}"></i> Must contain at least one of these special characters !@$*+-</li>--}}
-{{--                <li><i class="fa {other-special-class}"></i> Cannot contain any other special character beside those listed above</li>--}}
-{{--                <li><i class="fa {repeating-class}"></i> Cannot contain more than 2 repeating characters</li>--}}
-{{--                <li><i class="fa {username-class}"></i> Cannot contain the username</li>--}}
-{{--                <li><i class="fa {consecutive-class}"></i> Cannot contain 9 or more consecutive numbers</li>--}}
-{{--                <li><i class="fa {spaces-class}"></i> Cannot contain spaces</li>--}}
-{{--            </ul>--}}
+            </ul>
         </div>
     </script>
 

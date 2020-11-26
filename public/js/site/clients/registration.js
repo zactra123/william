@@ -114,7 +114,7 @@ $(document).ready(function($) {
         $(this).popover('hide')
     })
 
-    $('#client-registration-form').validate({
+    $('#registration-form').validate({
         rules: {
             "full_name": {
                 required: true,

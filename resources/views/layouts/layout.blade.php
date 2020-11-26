@@ -188,7 +188,7 @@
 
 
                             @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
+{{--                                <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>--}}
                                 <li><a href="{{ route('register.Affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
 
                             @endif
