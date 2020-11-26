@@ -3,6 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\ClientReport;
+use App\ClientReportAddress;
+use App\ClientReportEmployer;
+use App\ClientReportEqAccount;
+use App\ClientReportEqInquiry;
+use App\ClientReportEqPublicRecord;
+use App\ClientReportExAccount;
+use App\ClientReportExInquiry;
+use App\ClientReportExPublicRecord;
+use App\ClientReportExStatement;
+use App\ClientReportName;
+use App\ClientReportPhone;
+use App\ClientReportTuAccount;
+use App\ClientReportTuInquiry;
+use App\ClientReportTuPublicRecord;
+use App\ClientReportTuStatement;
 use App\Credential;
 use App\Disputable;
 use App\Jobs\FetchReports;
@@ -36,10 +51,67 @@ class AffiliatesController extends Controller
         return view('affiliate.index', compact('clients'));
     }
 
+    public function importantInformation(Request $request)
+    {
+        $userId = Auth::user()->id;
+        if ($request->method() == "GET") {
+
+            $client = User::where('id', $userId)->first();
+
+            $secrets = DB::table('secret_questions')->select('question', 'id')->get();
+
+            return view('affiliate.important-information', compact('client', 'secrets'));
+
+        } elseif ($request->method() == "POST") {
+            $id = Auth::user()->id;
+
+            $affiliate = $request->except('_token');
+
+            $full_name = explode(" ", $affiliate["full_name"]);
+            $affiliate["first_name"] = array_shift($full_name);
+            $affiliate["last_name"] = implode(" ", $full_name);
+
+            $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($affiliate['address'])));
+
+            $affiliate_details = ClientDetail::where('user_id', $id)->first();
+            preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
+            $affiliateDetails ["number"] = isset($number[0])?$number[0]:null;
+            $affiliateDetails['name'] = trim(str_replace($affiliateDetails ["number"], '', $splitAddress['street']));
+            $affiliateDetails['city'] = $splitAddress['city'];
+            $affiliateDetails['state'] = $splitAddress['state'];
+            $affiliateDetails['zip'] =$splitAddress['zip'];
+            $affiliateDetails['address'] = strtoupper($affiliate['address']);
+            $affiliateDetails['registration_steps'] = "finished";
+
+            User::where('id', $userId)->update([
+                'first_name' => $affiliate["first_name"],
+                'last_name' => $affiliate["last_name"],
+                'secret_questions_id' => $affiliate["secret_questions_id"],
+                'secret_answer' => $affiliate["secret_answer"]
+
+            ]);
+
+            ClientDetail::where('user_id', $userId)->update([
+                'phone_number' => $affiliate["phone_number"],
+                'number'=>$affiliateDetails ["number"],
+                'name'=>$affiliateDetails ["name"],
+                'city'=>$affiliateDetails ["city"],
+                'state'=>$affiliateDetails ["state"],
+                'zip'=>$affiliateDetails ["zip"],
+                'address'=>$affiliateDetails ["address"],
+                'business_name'=>$affiliate["business_name"],
+                'ein'=>$affiliate["ein"],
+                'ssn'=>$affiliate["ssn"],
+            ]);
+
+            return redirect()->to('/affiliate');
+        }
+    }
+
     public function createClient()
     {
         $secrets=DB::table('secret_questions')->select('question','id')->get();
-        return view('affiliate.create-client', compact('secrets'));
+        return view('affiliate.client-create', compact('secrets'));
     }
 
     public function storeClient(Request $request)
@@ -231,7 +303,7 @@ class AffiliatesController extends Controller
         $step = $clients->clientDetails->registration_steps;
         $uploadUserDetail = UploadClientDetail::where('user_id', $user)->first();
 
-        return view('affiliate.create-client-credentials', compact('clients', 'step', 'uploadUserDetail'));
+        return view('affiliate.client-create-credentials', compact('clients', 'step', 'uploadUserDetail'));
 
     }
 
@@ -387,13 +459,21 @@ class AffiliatesController extends Controller
 
         $client = User::whereId($id)->first();
         $toDos = Todo::where('client_id', $client->id)->get();
+
         $status = [null => ''] + \App\Todo::STATUS;
-        $reportsDateEQ = ClientReport::where('user_id', auth()->user()->id)
+        $reportsDateEQ = ClientReport::where('user_id', $client->id)
             ->where('type', "EQ")->pluck('created_at', 'id')->toArray();
-        $reportsDateEX = ClientReport::where('user_id', auth()->user()->id)
+        $reportsDateEX = ClientReport::where('user_id', $client->id)
             ->where('type', "EX_LOG")->pluck('created_at', 'id')->toArray();
-        $reportsDateTU = ClientReport::where('user_id', auth()->user()->id)
+        $reportsDateTU = ClientReport::where('user_id', $client->id)
             ->where('type', "TU_DIS")->pluck('created_at', 'id')->toArray();
+
+        $requiredInfoArr = Todo::
+            leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+            ->where('client_id', $client->id)
+            ->whereJsonContains('additional_information', ['security_word' => null])
+            ->pluck('disputables.id')
+            ->toArray();
 
         $requiredInfoArr = Todo::
         leftJoin('disputables', 'todos.id','=','disputables.todo_id')
@@ -402,13 +482,44 @@ class AffiliatesController extends Controller
             ->pluck('disputables.id')
             ->toArray();
 
+        $statusArray = DB::table('todos')
+            ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
+            ->where('todos.client_id', $client->id)
+            ->groupBy('disputables.status')
+            ->select(DB::raw('COUNT(disputables.id) as count'), 'disputables.status as status')
+            ->pluck('count', 'status')
+            ->toArray();
+
+
+        $statusInactive = Todo::
+        leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+            ->where('client_id', $client->id)
+            ->where('disputables.status', 0)
+            ->whereJsonContains('additional_information', ['security_word' => null])
+            ->count('disputables.status');
+
+
+        $active = !empty($statusArray)? $statusArray[0]- $statusInactive:0;
+        $pending = !empty($statusArray) && isset($statusArray[1])? $statusArray[1]:0;
+        $complete = !empty($statusArray) && isset($statusArray[2])? $statusArray[2]:0;
+        $added = !empty($statusArray) && isset($statusArray[0]) && !is_null($statusInactive)? $statusInactive:0;
+        $non_data = empty($statusArray) ? 1:0;
+
+        $statusDispute = json_encode([
+            'active' => $active,
+            'pending' => $pending,
+            'complete'=> $complete,
+            'added' => $added,
+            'non_data' => $non_data,
+
+        ]);
+
         $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
 
 
-        return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo'));
+        return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
 
     }
-
 
     public function updateClient(Request $request, $id)
     {
@@ -546,8 +657,492 @@ class AffiliatesController extends Controller
     {
         $client = User::find($id);
         $source = $request->source;
-        return view('affiliate.credentials', compact('client', 'source'));
+        return view('affiliate.client-credentials', compact('client', 'source'));
     }
+
+    public function clientReport(Request $request)
+    {
+
+        $clientReportsEQ = null;
+        $clientReportsTU = null;
+        $clientReportsEX = null;
+
+        if($request->date !=null){
+            $clientReports = ClientReport::where('id',$request->date);
+
+        }else{
+            $clientReports = ClientReport::where('user_id', auth()->user()->id);
+        }
+
+        if($request->type == 'equifax'){
+            $clientReportsEQ = $clientReports->where('type', "EQ")->first();
+            $equifaxDate =$clientReports->where('type', "EQ")
+                ->pluck('created_at', 'id')->toArray();
+        }elseif($request->type == 'transunion'){
+            $clientReportsTU = $clientReports->where('type', "TU_DIS")->first();
+            $transunionDate = $clientReports->where('type', "TU")
+                ->pluck('created_at', 'id')->toArray();
+
+        }elseif($request->type == 'experian'){
+            $clientReportsEX = $clientReports->where('type', "EX_LOG")->first();
+//            PDF Cuyc Tal
+//            header("Content-type: application/pdf");
+//            header("Content-Disposition: inline; filename=filename.pdf");
+//            @readfile($clientReportsEX->file_path);// readfile(pdf_path)
+//            die;
+            $experianDate = auth()->user()->reports()->where('type', "EX_LOG")
+                ->pluck('created_at', 'id')->toArray();
+        }
+
+        return view('affiliate.client-report', compact('clientReportsEX','clientReportsTU', 'clientReportsEQ',
+            'equifaxDate','experianDate','transunionDate'));
+    }
+
+
+    public function negativeItem($id)
+    {
+        $affiliateId = Auth::user()->id;
+        $a = Affiliate::where('affiliate_id', $affiliateId)
+            ->where('user_id', $id)->first();
+        if(empty($a)){
+            return back();
+        }
+
+        $client =User::whereId($id)->first();
+
+        $clientReportsTU = ClientReport::where('user_id', $client->id)->where('type', "TU_DIS")->first();
+        $clientReportsEX = ClientReport::where('user_id', $client->id)->where('type', "EX_LOG")->first();
+        $clientReportsEQ = ClientReport::where('user_id', $client->id)->where('type', "EQ")->first();
+        return view('affiliate.client-view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ', 'client'));
+    }
+
+    public function negativeItemStore(Request $request, $id)
+    {
+        $affiliateId = Auth::user()->id;
+        $a = Affiliate::where('affiliate_id', $affiliateId)
+            ->where('user_id', $id)->first();
+        if(empty($a)){
+            return back();
+        }
+        $dispute = $request->except('_token');
+
+        if(empty($dispute)){
+            return back();
+        };
+        $userId = User::whereId($id)->first()->id;
+
+        $disputeName = [];
+        $disputeEmployer = [];
+        $disputeAddress = [];
+        $disputePhone = [];
+        $disputeExPublicRecord = [];
+        $disputeExAccount = [];
+        $disputeExInquiry = [];
+        $disputeExStatement = [];
+        $disputeTuPublicRecord = [];
+        $disputeTuAccount = [];
+        $disputeTuInquiry = [];
+        $disputeTuStatement = [];
+        $disputeEqPublicRecord = [];
+        $disputeEqAccount = [];
+        $disputeEqInquiry = [];
+
+        foreach ($dispute as $key => $value) {
+
+            if ($key == 'ex_name' or $key == 'tu_name' or $key == 'eq_name') {
+
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportName::where('id', $dispute_name)->first();
+                    $disputeName[] = $name;
+                }
+            }
+
+            if ($key == 'ex_employ' or $key == 'tu_employ' or $key == 'eq_employ') {
+
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportEmployer::where('id', $dispute_name)->first();
+                    $disputeEmployer[] = $name;
+                }
+            }
+
+            if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
+                foreach ($value as $disputeAddresses) {
+                    $address = ClientReportAddress::where('id', $disputeAddresses)->first();
+                    $disputeAddress[] = $address;
+                }
+            }
+
+            if ($key == 'ex_phone' or $key == 'tu_phone') {
+                foreach ($value as $disputePhones) {
+                    $phone = ClientReportPhone::where('id', $disputePhones)->first();
+                    $disputePhone[] = $phone;
+                }
+            }
+
+            if ($key == 'ex_public') {
+                foreach ($value as $disputeExPublicRecords) {
+                    $exPublic = ClientReportExPublicRecord::where('id', $disputeExPublicRecords)->first();
+                    $disputeExPublicRecord[] = $exPublic;
+                }
+            }
+
+            if ($key == 'ex_accounts') {
+                foreach ($value as $disputeExAccounts) {
+                    $exAccount = ClientReportExAccount::where('id', $disputeExAccounts)->first();
+                    $disputeExAccount[] = $exAccount;
+                }
+            }
+
+            if ($key == 'ex_inquiry') {
+                foreach ($value as $disputeExInquiries) {
+                    $exInquiry = ClientReportExInquiry::where('id', $disputeExInquiries)->first();
+                    $disputeExInquiry[] = $exInquiry;
+                }
+            }
+
+            if ($key == 'ex_statement') {
+                foreach ($value as $disputeExStatements) {
+                    $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();
+                    $disputeExStatement[] = $exStatement;
+                }
+            }
+
+            if ($key == 'tu_public') {
+                foreach ($value as $disputeTuPublicRecords) {
+                    $tuPublic = ClientReportTuPublicRecord::where('id', $disputeTuPublicRecords)->first();
+                    $disputeTuPublicRecord[] = $tuPublic;
+                }
+            }
+
+            if ($key == 'tu_account') {
+                foreach ($value as $disputeTuAccounts) {
+                    $tuAccount = ClientReportTuAccount::where('id', $disputeTuAccounts)->first();
+                    $disputeTuAccount[] = $tuAccount;
+                }
+            }
+
+            if ($key == 'tu_inquiry') {
+                foreach ($value as $disputeTuInquiries) {
+                    $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
+                    $disputeTuInquiry[] = $tuInquiry;
+                }
+            }
+
+            if ($key == 'tu_statement') {
+                foreach ($value as $disputeTuStatements) {
+                    $tuStatement = ClientReportTuStatement::where('id', $disputeTuStatements)->first();
+                    $disputeTuStatement[] = $tuStatement;
+                }
+            }
+
+            if ($key == 'eq_public') {
+                foreach ($value as $disputeEqPublicRecords) {
+
+                    $tuPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
+                    $disputeEqPublicRecord[] = $tuPublic;
+                }
+            }
+
+            if ($key == 'eq_account') {
+                foreach ($value as $disputeEqAccounts) {
+                    $tuAccount = ClientReportEqAccount:: where('id', $disputeEqAccounts)->first();
+                    $disputeEqAccount[] = $tuAccount;
+                }
+            }
+
+            if ($key == 'eq_inquiry') {
+                foreach ($value as $disputeEqInquiries) {
+                    $tuInquiry = ClientReportEqInquiry::where('id', $disputeEqInquiries)->first();
+                    $disputeEqInquiry[] = $tuInquiry;
+                }
+            }
+
+        }
+        $data = [
+            'name' => $disputeName,
+            'employ' => $disputeEmployer,
+            'address' => $disputeAddress,
+            'phone' => $disputePhone,
+            'ex_public' => $disputeExPublicRecord,
+            'ex_account' => $disputeExAccount,
+            'ex_inquiry' => $disputeExInquiry,
+            'ex_statement' => $disputeExStatement,
+            'tu_public' => $disputeTuPublicRecord,
+            'tu_account' => $disputeTuAccount,
+            'tu_inquiry' => $disputeTuInquiry,
+            'tu_statement' => $disputeTuStatement,
+            'eq_public' => $disputeEqPublicRecord,
+            'eq_account' => $disputeEqAccount,
+            'eq_inquiry' => $disputeEqInquiry
+        ];
+
+        return view('affiliate.client-view_negative_show', compact('data', 'userId'));
+    }
+
+    public function negativeItemContract(Request $request, $id)
+    {
+        $affiliateId = Auth::user()->id;
+        $a = Affiliate::where('affiliate_id', $affiliateId)
+            ->where('user_id', $id)->first();
+        if(empty($a)){
+            return back();
+        }
+        $dispute = $request->except('_token');
+        $clientId = User::whereId($id)->first()->id;
+
+        $user = User::where('role', 'receptionist')->first();
+
+        foreach ($dispute as $key => $value) {
+            set_time_limit(300);
+
+            if ($key == 'name') {
+                $todoName = $this->saveToDo($clientId, $user->id, "Name", "",0);
+                foreach ($value as $dispute_name) {
+                    $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name, 0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoName)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoName)->delete();
+                }
+            }
+            if ($key == 'employer') {
+                $todoEmployer = $this->saveToDo($clientId, $user->id, "Employer", "",0);
+                foreach ($value as $dispute_name) {
+                    $this->saveDisputable($todoEmployer, "App\\ClientReportEmployer",  $dispute_name, 0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEmployer)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEmployer)->delete();
+                }
+            }
+
+            if ($key == 'address') {
+                $todoAddress = $this->saveToDo($clientId, $user->id, "Address", "",0);
+                foreach ($value as $disputeAddresses) {
+                    $this->saveDisputable($todoAddress, "App\\ClientReportAddress",  $disputeAddresses);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoAddress)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoAddress)->delete();
+                }
+            }
+
+            if ($key == 'phone') {
+                $todoPhone = $this->saveToDo($clientId, $user->id, "Phone", "",0);
+                foreach ($value as $disputePhones) {
+                    $this->saveDisputable($todoPhone, "App\\ClientReportPhone",  $disputePhones,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoPhone)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoPhone)->delete();
+                }
+            }
+
+            if ($key == 'ex_public') {
+                $todoExPublic = $this->saveToDo($clientId, $user->id, "Experian Public Record", "",0);
+                foreach ($value as $disputeExPublicRecords) {
+                    $this->saveDisputable($todoExPublic, "App\\ClientReportExPublicRecord",  $disputeExPublicRecords,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExPublic)->delete();
+                }
+            }
+
+            if ($key == 'ex_account') {
+                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
+                foreach ($value as $disputeExAccounts) {
+                    $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExAccount)->delete();
+                }
+            }
+
+            if ($key == 'ex_inquiry') {
+                $todoExInquiry = $this->saveToDo($clientId, $user->id, "Experian Inquiry", "",0);
+                foreach ($value as $disputeExInquiries) {
+                    $this->saveDisputable($todoExInquiry, "App\\ClientReportExInquiry",  $disputeExInquiries,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExInquiry)->delete();
+                }
+            }
+
+            if ($key == 'ex_statement') {
+                $todoExStatement = $this->saveToDo($clientId, $user->id, "Experian Statement", "",0);
+                foreach ($value as $disputeExStatements) {
+                    $this->saveDisputable($todoExStatement, "App\\ClientReportExStatement",  $disputeExStatements,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExStatement)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExStatement)->delete();
+                }
+            }
+
+            if ($key == 'tu_public') {
+                $todoTuPublic = $this->saveToDo($clientId, $user->id, "TransUnion Public Record", "",0);
+                foreach ($value as $disputeTuPublicRecords) {
+                    $this->saveDisputable($todoTuPublic, "App\\ClientReportTuPublicRecord",  $disputeTuPublicRecords,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuPublic)->delete();
+                }
+
+            }
+
+            if ($key == 'tu_account') {
+                $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "",0);
+                foreach ($value as $disputeTuAccounts) {
+                    $this->saveDisputableAdditional($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuAccount)->delete();
+                }
+            }
+
+            if ($key == 'tu_inquiry') {
+                $todoTuInquiry = $this->saveToDo($clientId, $user->id, "TransUnion Inquiry", "",0);
+                foreach ($value as $disputeTuInquiries) {
+                    $this->saveDisputable($todoTuInquiry, "App\\ClientReportTuInquiry",  $disputeTuInquiries,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuInquiry)->delete();
+                }
+            }
+
+            if ($key == 'tu_statement') {
+                $todoTuStatement = $this->saveToDo($clientId, $user->id, "TransUnion Statement", "",0);
+                foreach ($value as $disputeTuStatements) {
+                    $this->saveDisputable($todoTuStatement, "App\\ClientReportTuStatement",  $disputeTuStatements,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuStatement)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuStatement)->delete();
+                }
+            }
+
+            if ($key == 'eq_public') {
+                $todoEqPublic = $this->saveToDo($clientId, $user->id, "Equifax Public Record", "",0);
+                foreach ($value as $disputeEqPublicRecords) {
+                    $this->saveDisputable($todoEqPublic, "App\\ClientReportEqPublicRecord",  $disputeEqPublicRecords,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEqPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqPublic)->delete();
+                }
+            }
+
+            if ($key == 'eq_account') {
+                $todoEqAccount = $this->saveToDo($clientId, $user->id, "Equifax Account", "",0);
+                foreach ($value as $disputeEqAccounts) {
+                    $this->saveDisputableAdditional($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEqAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqAccount)->delete();
+                }
+            }
+
+            if ($key == 'eq_inquiry') {
+                $todoEqInquiry = $this->saveToDo($clientId, $user->id, "Equifax Inquiry", "",0);
+                foreach ($value as $disputeEqInquiries) {
+                    $this->saveDisputable($todoEqInquiry, "App\\ClientReportEqInquiry",  $disputeEqInquiries,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEqInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqInquiry)->delete();
+                }
+            }
+            return redirect()->route('affiliate.client.profile', $clientId);
+
+        }
+
+    }
+
+    public function showRequireInfo( $info)
+    {
+        $completeDispute = Disputable::where('id', $info)->get();
+        return view('client_details.complete-dispute', compact('completeDispute'));
+    }
+
+    public function updateDispute(Request $request)
+    {
+        $dispute = $request->eq_account;
+
+        $id = $dispute['id'];
+        unset($dispute['id']);
+
+        Disputable::where('id', $id)->update([
+            'additional_information'=>$dispute
+        ]);
+        return redirect()->route('client.details.index');
+
+    }
+
+    public function saveToDo($clientId, $userId, $title, $desc, $status)
+    {
+        $todo = Todo::create([
+            'client_id' => $clientId,
+            'user_id' => $userId,
+            'title' => $title,
+            'description' => "",
+            'status' => $status,
+            'due_date' => null,
+            'completed_date' => null
+        ]);
+
+        return $todo->id;
+    }
+
+    public function saveDisputable($todoId, $type, $id, $status)
+    {
+        $check = Disputable::where('disputable_type', $type)
+            ->where('disputable_id', $id)->first();
+        if(empty($check)){
+            Disputable::create([
+                'todo_id' => $todoId,
+                'disputable_type' => $type,
+                'disputable_id' => $id,
+                'status' => $status,
+                'additionanal_information'=>null
+
+            ]);
+        }
+
+        return true;
+    }
+
+    public function saveDisputableAdditional($todoId, $type, $idInformation, $status)
+    {
+
+        $disputeId = $idInformation['id'];
+        $json  = null;
+        if(count($idInformation)>1){
+            unset($idInformation['id']);
+            $json = $idInformation;
+        }
+
+        $check = Disputable::where('disputable_type', $type)
+            ->where('disputable_id', $disputeId)->first();
+        if(empty($check)) {
+            Disputable::create([
+                'todo_id' => $todoId,
+                'disputable_type' => $type,
+                'disputable_id' => $disputeId,
+                'status' => $status,
+                'additional_information' => $json
+            ]);
+        }
+        return true;
+    }
+
+
 
     public function credentialsUpdate(Request $request)
     {
@@ -565,180 +1160,6 @@ class AffiliatesController extends Controller
             $clientDetails->update(["registration_steps" => "review"]);
         }
         return redirect(route('affiliate.client.profile', $userId));
-    }
-
-
-
-
-
-
-//    public function storeClientDetails(Request $request, $client)
-//    {
-//
-//        $affiliate = Affiliate::where('id', $client)->first();
-//
-//        $clientId = User::where('id', $affiliate->user_id)->first();
-//
-//        $data = $request->client;
-//
-//        $validation = Validator::make($data, [
-//            'first_name' => ['required', 'string', 'max:255'],
-//            'last_name' => ['required', 'string', 'max:255'],
-//            'dob' => ['required'],
-//            'sex'=> ['required'],
-//            'ssn'=> ['required', 'string', 'max:255'],
-//            'address'=> ['required', 'string', 'max:255'],
-//            'zip'=> ['required', 'string', 'max:255'],
-//            'phone_number'=> ['required', 'string', 'max:255'],
-//        ]);
-//
-//
-//        if ($validation->fails()) {
-//
-//            return view('affiliate.create-client-detail', compact('client'))->withErrors($validation);
-//        } else {
-//
-//            $user = Arr::only($request->client, ['first_name', 'last_name']);
-//            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
-//            $clientDetails["user_id"] = $clientId->id;
-//            $clientDetails["address"] = strtoupper($clientDetails["address"]);
-//
-//
-//            if(empty(ClientDetail::where('user_id',$clientId->id )->first())){
-//                ClientDetail::create($clientDetails);
-//                User::where('id', $clientId->id)->update([
-//                    'first_name' => strtoupper($user['first_name']),
-//                    'last_name' => strtoupper($user['last_name'])
-//                ]);
-//            }else{
-//                ClientDetail::where('user_id',$clientId->id)->update($clientDetails);
-//            }
-//
-//            return redirect(route('affiliate.index'))->with('success', "your data saved");
-//        }
-//    }
-//
-//    public function editClientDetails($affiliateId)
-//    {
-//
-//        $affiliate = Affiliate::where('id', $affiliateId)->first();
-//
-//        $user = User::where('id', $affiliate->user_id)->first();
-//
-//        $uploadUserDetail = UploadClientDetail::where('user_id',$user->id )->first();
-//
-//
-//        if (!empty($uploadUserDetail)) {
-//            return view('affiliate.edit-with-upload-data', compact('user', 'uploadUserDetail'));
-//        }
-//        return view('affiliate.edit-client-detail', compact('user'));
-//
-//    }
-//
-//    public function updateClientDetails(Request $request, $id)
-//    {
-//        $data = $request->client;
-//        $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
-//
-//        $uploaded = UploadClientDetail::where("user_id", $id);
-//
-//        $validation = Validator::make($data, [
-//            'first_name' => ['required', 'string', 'max:255'],
-//            'last_name' => ['required', 'string', 'max:255'],
-//            'dob' => ['required'],
-//            'sex'=> ['required'],
-//            'ssn'=> ['required', 'string', 'max:255'],
-//            'address'=> ['required', 'string', 'max:255'],
-//            'zip'=> ['required', 'string', 'max:255'],
-//        ]);
-//
-//
-//        if ($validation->fails()) {
-//
-//            return view('affiliate.editClientDetails')->withErrors($validation);
-//        } else {
-//
-//
-//
-//            $user = Arr::only($request->client, ['first_name', 'last_name']);
-//            $clientDetails = Arr::except($request->client, ['first_name', 'last_name']);
-//            $clientDetails['address'] = strtoupper($clientDetails['address']);
-//
-//            User::where('id', $id)->update([
-//                'first_name' => strtoupper($user['first_name']),
-//                'last_name' => strtoupper($user['last_name'])
-//            ]);
-//
-//            ClientDetail::where('user_id', $id)->update($clientDetails);
-//
-//            $uploaded->delete();
-//            return redirect(route('affiliate.index'))->with('success', "your data saved");
-//
-//        }
-//    }
-
-
-    public function addDLSS($client)
-    {
-        $clientId = $client;
-        return view('affiliate.create-client-dl-ss', compact('clientId'));
-    }
-
-    public function importantInformation(Request $request)
-    {
-        $userId = Auth::user()->id;
-        if ($request->method() == "GET") {
-
-            $client = User::where('id', $userId)->first();
-
-            $secrets = DB::table('secret_questions')->select('question', 'id')->get();
-
-            return view('affiliate.important-information', compact('client', 'secrets'));
-
-        } elseif ($request->method() == "POST") {
-            $id = Auth::user()->id;
-
-            $affiliate = $request->except('_token');
-
-            $full_name = explode(" ", $affiliate["full_name"]);
-            $affiliate["first_name"] = array_shift($full_name);
-            $affiliate["last_name"] = implode(" ", $full_name);
-
-            $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($affiliate['address'])));
-
-            $affiliate_details = ClientDetail::where('user_id', $id)->first();
-            preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
-            $affiliateDetails ["number"] = isset($number[0])?$number[0]:null;
-            $affiliateDetails['name'] = trim(str_replace($affiliateDetails ["number"], '', $splitAddress['street']));
-            $affiliateDetails['city'] = $splitAddress['city'];
-            $affiliateDetails['state'] = $splitAddress['state'];
-            $affiliateDetails['zip'] =$splitAddress['zip'];
-            $affiliateDetails['address'] = strtoupper($affiliate['address']);
-            $affiliateDetails['registration_steps'] = "finished";
-
-            User::where('id', $userId)->update([
-                'first_name' => $affiliate["first_name"],
-                'last_name' => $affiliate["last_name"],
-                'secret_questions_id' => $affiliate["secret_questions_id"],
-                'secret_answer' => $affiliate["secret_answer"]
-
-            ]);
-
-            ClientDetail::where('user_id', $userId)->update([
-                'phone_number' => $affiliate["phone_number"],
-                'number'=>$affiliateDetails ["number"],
-                'name'=>$affiliateDetails ["name"],
-                'city'=>$affiliateDetails ["city"],
-                'state'=>$affiliateDetails ["state"],
-                'zip'=>$affiliateDetails ["zip"],
-                'address'=>$affiliateDetails ["address"],
-                'business_name'=>$affiliate["business_name"],
-                'ein'=>$affiliate["ein"],
-                'ssn'=>$affiliate["ssn"],
-            ]);
-
-            return redirect()->to('/affiliate');
-        }
     }
 
     public function splitAddress($address)

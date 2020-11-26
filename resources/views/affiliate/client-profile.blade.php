@@ -154,7 +154,7 @@
                                     @endif
 
                                     @foreach($requiredInfo as $info)
-                                            <a class="btn btn-toolbar" href="{{route('client.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
+                                            <a class="btn btn-toolbar" href="{{route('affiliate.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
                                     @endforeach
 
                                     </div>
@@ -193,10 +193,11 @@
                                         <div class="boxheading">
                                             <h3>DISPUTE PROGRESS</h3>
                                         </div>
-                                        <div id="piechart_3d"></div>
+                                        <div id="piechart_3d" style="width: 400px; height: 240px;"></div>
 
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </section>
@@ -217,7 +218,7 @@
                                                     <a href="#" target="_blank">REGISTER</a>
                                                     <a href=#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
-                                                        <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
+                                                        <a href="{{route('affiliate.client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -233,7 +234,7 @@
                                                     <a href=#">ARCHIVE</a>
 
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
-                                                        <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
+                                                        <a href="{{route('affiliate.client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -261,7 +262,7 @@
                                                     </div>
 
                                                     @foreach($reportsDateTU as $keyTu => $tuDate)
-                                                        <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
+                                                        <a href="{{route('affiliate.client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -393,87 +394,40 @@
         </div>
     </div>
 
-
-
-
-    {{--    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])--}}
-
-
-
-
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-    <script src="{{ asset('js/lib/core.js') }}" ></script>
-    <script src="{{ asset('js/lib/charts.js') }}" ></script>
-    <script src="{{ asset('js/lib/themes/animated.js') }}" ></script>
+{{--    <script src="{{ asset('js/lib/core.js') }}" ></script>--}}
+{{--    <script src="{{ asset('js/lib/charts.js') }}" ></script>--}}
+{{--    <script src="{{ asset('js/lib/themes/animated.js') }}" ></script>--}}
+    <script type="text/javascript" src="{{asset('js/lib/gstatic.js')}}"></script>
 
-    <script>
-        am4core.useTheme(am4themes_animated);
+    <script type="text/javascript">
 
-        var chart = am4core.create("piechart_3d", am4charts.PieChart3D);
-        chart.hiddenState.properties.opacity = 0
+        var statusDispute =  JSON.parse('<?php echo $statusDispute; ?>');
+        console.log( statusDispute, statusDispute['active'])
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Dispute progress'],
+                ['Success',    statusDispute['complete']],
+                ['Failed',      statusDispute['pending']],
+                ['In Progress',  statusDispute['active']],
+                ['Added',  statusDispute['added']],
+                ['No data entity',  statusDispute['non_data']],
+            ]);
 
-        chart.data = [
-            {
-                country: "Success",
-                litres: 10,
-                level: 99,
-                fill: '#00ff00'
-            },
-            {
-                country: "Pending",
-                litres: 4,
-                level: 79,
-                fill: '#ff9900'
-            },
-            {
-                country: "Failed",
-                litres: 2,
-                level: 60,
-                fill: '#d71919'
-            },
-            {
-                country: "Added",
-                litres: 12,
-                level: 49,
-                fill: '#737973'
-            },
-        ];
+            var options = {
+                is3D: true,
+                colors: ['#89caf4','#4678b7', '#363676', '#275ca8', '#77c1ce','#0091ca']
+            };
 
-        chart.innerRadius = am4core.percent(0);
-        chart.depth = 100;
-
-        chart.legend = new am4charts.Legend();
-        chart.legend.position = "bottom";
-
-        var series = chart.series.push(new am4charts.PieSeries3D());
-        series.dataFields.value = "litres";
-        series.dataFields.depthValue = "level";
-        series.dataFields.category = "country";
-
-        series.slices.template.stroke = am4core.color("#fff");
-        series.slices.template.strokeWidth = 2;
-        series.slices.template.strokeOpacity = 0.4;
-
-        series.slices.template.cursorOverStyle = [
-            {
-                "property": "cursor",
-                "value": "pointer"
-            }
-        ];
-        series.events.on("datavalidated", function(ev) {
-            ev.target.slices.each(function(slice) {
-                slice.fill = am4core.color( slice.dataItem.dataContext.fill);
-                slice.label =null;
-            });
-        });
-
-        series.alignLabels = false;
-        series.labels.template.bent = true;
-        series.labels.template.padding(0,0,0,0);
-        series.ticks.template.disabled = true;
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
     </script>
+
     <script>
         $(document).ready(function() {
 
@@ -754,84 +708,5 @@
         $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
-
-
-
-
-    {{--    <script type="text/javascript">--}}
-    {{--        /*global $, console*/--}}
-
-    {{--        $(function () {--}}
-
-    {{--            'use strict';--}}
-
-    {{--            (function () {--}}
-
-    {{--                var aside = $('.side-nav'),--}}
-
-    {{--                    showAsideBtn = $('.show-side-btn'),--}}
-
-    {{--                    contents = $('#contents');--}}
-
-    {{--                showAsideBtn.on("click", function () {--}}
-
-    {{--                    $("#" + $(this).data('show')).toggleClass('show-side-nav');--}}
-
-    {{--                    contents.toggleClass('margin');--}}
-
-    {{--                });--}}
-
-    {{--                if ($(window).width() <= 767) {--}}
-
-    {{--                    aside.addClass('show-side-nav');--}}
-
-    {{--                }--}}
-    {{--                $(window).on('resize', function () {--}}
-
-    {{--                    if ($(window).width() > 767) {--}}
-
-    {{--                        aside.removeClass('show-side-nav');--}}
-
-    {{--                    }--}}
-
-    {{--                });--}}
-
-    {{--                // dropdown menu in the side nav--}}
-    {{--                var slideNavDropdown = $('.side-nav-dropdown');--}}
-
-    {{--                $('.side-nav .categories li').on('click', function () {--}}
-
-    {{--                    $(this).toggleClass('opend').siblings().removeClass('opend');--}}
-
-    {{--                    if ($(this).hasClass('opend')) {--}}
-
-    {{--                        $(this).find('.side-nav-dropdown').slideToggle('fast');--}}
-
-    {{--                        $(this).siblings().find('.side-nav-dropdown').slideUp('fast');--}}
-
-    {{--                    } else {--}}
-
-    {{--                        $(this).find('.side-nav-dropdown').slideUp('fast');--}}
-
-    {{--                    }--}}
-
-    {{--                });--}}
-
-    {{--                $('.side-nav .close-aside').on('click', function () {--}}
-
-    {{--                    $('#' + $(this).data('close')).addClass('show-side-nav');--}}
-
-    {{--                    contents.removeClass('margin');--}}
-
-    {{--                });--}}
-
-    {{--            }());--}}
-
-
-    {{--        });--}}
-    {{--    </script>--}}
-
-
-
 
 @endsection

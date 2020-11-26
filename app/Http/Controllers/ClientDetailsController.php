@@ -49,6 +49,7 @@ class ClientDetailsController extends Controller
 {
     public function __construct()
     {
+
         $this->middleware(['auth', 'verified']);
         $this->middleware('client', ['except' => 'store']);
     }
@@ -91,8 +92,8 @@ class ClientDetailsController extends Controller
 
         $active = !empty($statusArray)? $statusArray[0]- $statusInactive:0;
         $pending = !empty($statusArray) && isset($statusArray[1])? $statusArray[1]:0;
-        $complete = !empty($statusArray) && isset($statusArray[1])? $statusArray[2]:0;
-        $added = !empty($statusArray) && isset($statusArray[1])? $statusArray[3]:0;
+        $complete = !empty($statusArray) && isset($statusArray[2])? $statusArray[2]:0;
+        $added = !empty($statusArray) && !is_null($statusInactive)? $statusInactive:0;
         $non_data = empty($statusArray) ? 1:0;
 
         $statusDispute = json_encode([
@@ -104,10 +105,7 @@ class ClientDetailsController extends Controller
 
         ]);
 
-
         $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
-
-
         return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
     }
 

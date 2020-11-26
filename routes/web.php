@@ -224,6 +224,21 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::get('client-profile/{id}/credentials', 'AffiliatesController@credentials')->name('affiliate.credentials');
     Route::put('client-profile/{id}/credentials', 'AffiliatesController@credentialsUpdate')->name('affiliate.credentialsUpdate');
 
+    Route::get('client/report/{type}', 'AffiliatesController@clientReport')->name('affiliate.client.report');
+
+
+    Route::get('client/{client}/negative-item', 'AffiliatesController@negativeItem')->name('affiliate.negative.item');
+    Route::post('client/{client}/negative-item', 'AffiliatesController@negativeItemStore')->name('affiliate.negative.store');
+    Route::post('client/{client}/negative-contract', 'AffiliatesController@negativeItemContract')->name('affiliate.negative.contract');
+
+    Route::get('client/complete/information/{info}', 'AffiliatesController@showRequireInfo')->name('affiliate.complete.requireInfo');
+    Route::put('client/complete/require/information', 'AffiliatesController@updateDispute')->name('affiliate..dispute.update');
+
+
+
+
+
+
 
 
 //    Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
