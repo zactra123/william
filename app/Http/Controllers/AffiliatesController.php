@@ -110,7 +110,7 @@ class AffiliatesController extends Controller
 
     public function createClient()
     {
-        $secrets=DB::table('secret_questions')->select('question','id')->get();
+        $secrets=DB::table('secret_questions')->where('user_id', null)->select('question','id')->get();
         return view('affiliate.client-create', compact('secrets'));
     }
 
@@ -168,7 +168,7 @@ class AffiliatesController extends Controller
         $clients = User::where('id', $client)->first();
         $step = $clients->clientDetails->registration_steps;
 
-        return view('affiliate.create-client-dl-ss', compact('clients', 'step'));
+        return view('affiliate.client-create-dl-ss', compact('clients', 'step'));
 
     }
 
@@ -238,7 +238,6 @@ class AffiliatesController extends Controller
         $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);
         $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
         $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
-        $clientData['user_id'] = $client;
 
         $clientAttachmentData = [
             [

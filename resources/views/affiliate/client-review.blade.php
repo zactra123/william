@@ -58,7 +58,7 @@
                                     <div class="form-group row font justify-content-center">
                                         <div class="col-md-12 tab-selector">
                                             <div class="col-md-12">
-                                                {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->address :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                                                {{ Form::text('client[address]',  !empty($uploadUserDetail) ? "$uploadUserDetail->address $uploadUserDetail->zip" :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
                                             </div>
                                         </div>
                                     </div>
