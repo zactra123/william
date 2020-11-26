@@ -69,18 +69,21 @@
                                         <div class="form-group">
                                             <select class="form-control" name="secret_questions_id" id="secret_question">
                                                 <option disabled="disabled" selected="selected">Choose Secret Question</option>
-
                                                 @foreach($secrets as $value)
-
                                                     <option value="{{$value->id}}">{{$value->question}}</option>
                                                 @endforeach
+                                                <option value="other">
+                                                    Your own question
+                                                </option>
                                             </select>
                                             @error('sex')
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-
+                                        </div>
+                                        <div class="form-group hidden" id="custom-secret-question">
+                                            <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
                                         </div>
                                         <div class="form-group">
                                             <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" required autocomplete="secret_answer" placeholder="PLEASE ANSWER IN SECRET QUESTION">
@@ -117,6 +120,14 @@
             $('.ssn').mask('000-00-0000')
             $('.ein').mask('00-0000000')
             $('.phone').mask('(000) 000-0000')
+            $('#secret_question').on('change', function(){
+                if ($(this).val() == "other") {
+                    $("#custom-secret-question").removeClass('hidden')
+                } else {
+                    $("#custom-secret-question").addClass('hidden')
+                }
+            })
+
         })
 
     </script>

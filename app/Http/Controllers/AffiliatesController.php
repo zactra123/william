@@ -21,6 +21,7 @@ use App\ClientReportTuStatement;
 use App\Credential;
 use App\Disputable;
 use App\Jobs\FetchReports;
+use App\SecretQuestion;
 use App\Services\ClientDetailsNewData;
 use App\Todo;
 use Illuminate\Http\Request;
@@ -116,7 +117,9 @@ class AffiliatesController extends Controller
 
     public function storeClient(Request $request)
     {
+
         $clientData = $request->except('_token');
+
         $validation =  Validator::make($clientData, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_number'=> 'required',
@@ -130,6 +133,13 @@ class AffiliatesController extends Controller
                 ->withInput()
                 ->withErrors($validation);
         }
+
+        if(isset($clientData['own_secter_question']) && $clientData['secret_questions_id'] == 'other'){
+            $secreteQuestion =  SecretQuestion::create([
+                'question'=>$clientData['own_secter_question']
+            ]);
+        }
+
         $affiliateId = Auth::user()->id;
 
         $user = User::create([
@@ -139,6 +149,11 @@ class AffiliatesController extends Controller
             'role'=>'client'
         ]);
         $userId = $user->id;
+        if(isset($secreteQuestion)){
+            SecretQuestion::whereId($secreteQuestion->id)->update([
+                'user_id'=>$userId,
+            ]);
+        }
 
         ClientDetail::create([
             'user_id'=>$userId,
@@ -522,8 +537,16 @@ class AffiliatesController extends Controller
 
     public function updateClient(Request $request, $id)
     {
+
+        if(empty($request->file()) && is_null($request->client)){
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Please upload both files');
+        }
+
         if($request->file() == true){
             if (empty($request['driver']) && empty($request['social'])) {
+
                 return redirect()->back()
                     ->withInput()
                     ->with('error', 'Please upload both files');

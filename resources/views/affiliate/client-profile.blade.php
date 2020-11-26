@@ -450,7 +450,6 @@
         });
     </script>
     <script>
-
         $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');
@@ -693,7 +692,27 @@
 
         })
 
-        </script>
+    </script>
+    //document validate
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#doc_sunb").validate({
+                rules: {
+                    "social": {
+                        required: '#driver_license:blank',
+                    },
+                    "driver": {
+                        required: '#social_security:blank',
+                    },
+                },
+//
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element));
+                }
+            })
+        })
+    </script>
 
     <script type="text/javascript">
         var per1 = $(".progress.p1").attr("data-1");

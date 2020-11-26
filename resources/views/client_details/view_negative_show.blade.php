@@ -532,7 +532,7 @@
 
                                     <?php $string =  strtoupper(str_replace('Never late', '',$ex_account->status))?>
 
-                                    @if(strpos($string, "PAID")!==false && strpos($string, "CLOSED")!==false)
+                                    @if(strpos($string, "LATE")!==false && strpos($string, "OPEN")!==false)
                                         <div class="row mt20 border " style="font-weight: bold" >
 
                                             @if(strpos(strtoupper($ex_account->type), "CREDIT")!== false)

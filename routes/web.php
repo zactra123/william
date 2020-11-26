@@ -220,7 +220,7 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::put('client-review/{clientId}', 'AffiliatesController@storeReview')->name('affiliate.storeReview');
     Route::get('client-profile/{clientId}', 'AffiliatesController@clientProfile')->name('affiliate.client.profile');
 
-    Route::put('client-profile/{client}/update', 'AffiliatesController@updateClient')->name('affiliate.client.update');
+    Route::put('client-profile/{clientId}/update', 'AffiliatesController@updateClient')->name('affiliate.client.update');
     Route::get('client-profile/{id}/credentials', 'AffiliatesController@credentials')->name('affiliate.credentials');
     Route::put('client-profile/{id}/credentials', 'AffiliatesController@credentialsUpdate')->name('affiliate.credentialsUpdate');
 
