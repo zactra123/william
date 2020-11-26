@@ -275,7 +275,7 @@
                                                         <ul class="dropdown-submenu">
                                                             <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
                                                             <ul class="dropdown-menu">
-                                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
+                                                                <a class="dropdown-item" href="{{route('affiliate.credentials',['source'=> 'credit_karma', 'id'=>$client->id])}}">CREDENTIALS</a>
                                                             </ul>
                                                         </ul>
                                                         <ul>

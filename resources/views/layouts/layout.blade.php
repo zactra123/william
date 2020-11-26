@@ -134,8 +134,8 @@
                         <div class="header-left-bar pull-right">
                             <ul class="contact-wrapper">
                                 <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon - Fri: 9:00 a.m. - 5:30 p.m.</li>
-                                <li><i class="fa fa-mobile" aria-hidden="true"></i> 1-844-337-8336</li>
-                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> info@prudentscores.com</li>
+                                <li><i class="fa fa-mobile" aria-hidden="true"></i> <a href="tel:1-844-337-8336">1-844-337-8336</a></li>
+                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@prudentscores.com">info@prudentscores.com</a></li>
                             </ul>
                         </div> <!-- header-left-bar -->
                     </div>
@@ -281,13 +281,15 @@
                                         <li>
                                             <div class="content" style="color: #aaa ">
                                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                                                1-844-337-8336
+                                                <a href="tel:1-844-337-8336">1-844-337-8336</a>
+{{--                                                1-844-337-8336--}}
                                             </div>
                                         </li>
                                         <li>
                                             <div class="content" style="color: #aaa ">
                                                 <i class="fa fa-envelope-o" aria-hidden="true" style="color: #fefefe "></i>
-                                                info@prudentscores.com
+                                                <a href="mailto:info@prudentscores.com">info@prudentscores.com</a>
+{{--                                                info@prudentscores.com--}}
                                             </div>
                                         </li>
                                         <li>

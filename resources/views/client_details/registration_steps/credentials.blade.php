@@ -1,9 +1,12 @@
 <div class="card w-75">
-    <div class=" text-center    ">
+
+    @if(empty($source))
+    <div class=" text-center">
         <p >
             I will provide you the requested login credentials in a timely manner <a href="{{route('client.continue')}}">CLICK TO  CONTINUE.</a>
         </p>
     </div>
+    @endif
 
     <div class="card-body w-100">
         {!! Form::open(['route' => ['client.credentialsStore'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right', 'id'=>'client-credentials']) !!}
