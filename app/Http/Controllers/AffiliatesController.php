@@ -434,8 +434,8 @@ class AffiliatesController extends Controller
             ]);
             $client_details->update($clientDetails);
             $uploaded->delete();
+            FetchReports::dispatch($client);
 //            if ($registration_steps == 'review') {
-//                FetchReports::dispatch($client);
 //                return redirect(route('client.details.create'));
 //            }
             return redirect(route('affiliate.client.profile', $id))->with('success', "your data saved");
