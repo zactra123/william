@@ -62,7 +62,7 @@ class transunionDispute:
         options.set_preference("general.useragent.override", user_agent)
         self.driver = webdriver.Firefox(
             # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
-            executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
+            executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
@@ -147,55 +147,55 @@ class transunionDispute:
         self.driver.find_element_by_class_name('NextButton').click()
         time.sleep(2)
 
-        try: 
+        try:
             first_name = self.driver.find_element_by_xpath('//*[@id="QR~QID6"]')
             first_name.click()
             first_name.send_keys(self.fname)
         except:
             pass
 
-        try: 
+        try:
             last_name = self.driver.find_element_by_xpath('//*[@id="QR~QID7"]')
             last_name.click()
             last_name.send_keys(self.lname)
         except:
             pass
 
-        try: 
+        try:
             last_4 = self.driver.find_element_by_xpath('//*[@id="QR~QID12"]')
             last_4.click()
             last_4.send_keys(self.last4sscnumber)
         except:
             pass
 
-        try: 
+        try:
             dob = self.driver.find_element_by_xpath('//*[@id="QR~QID16"]')
             dob.click()
             dob.send_keys(self.dob)
         except:
             pass
 
-        try: 
+        try:
             email = self.driver.find_element_by_xpath('//*[@id="QR~QID8"]')
             email.click()
             email.send_keys(self.email)
         except:
             pass
 
-        try: 
+        try:
             zip_number = self.driver.find_element_by_xpath('//*[@id="QR~QID9"]')
             zip_number.click()
             zip_number.send_keys(self.zipcode)
         except:
             pass
 
-        try: 
+        try:
             phone = self.driver.find_element_by_xpath('//*[@id="QR~QID10"]')
             phone.click()
             phone.send_keys(self.mobile)
         except:
             pass
-        time.sleep(1)       
+        time.sleep(1)
         self.driver.find_element_by_class_name('NextButton').click()
 
 
@@ -701,7 +701,7 @@ class transunionDispute:
             # check_status = soup.find('tbody', attrs={'id': "activeDispute"})
             datesubest = soup.find('tbody', attrs={'id': "activeDispute"})
             ac_dispute = datesubest.findAll('tr')
-            
+
             mn_datesubest = soup.find('tbody', attrs={'id': "manualDisputes"})
             mn_dispute = mn_datesubest.findAll('tr')
 
@@ -733,7 +733,7 @@ class transunionDispute:
                     dates = a.text.strip()
                 except:
                     dates = 'None'
-                past_dates_arr.append(dates)    
+                past_dates_arr.append(dates)
 
             new_arr = dates_arr[0].split('\n')
             mn_new_arr = mn_dates_arr[0].split('\n')
@@ -773,9 +773,9 @@ class transunionDispute:
                     if self.driver.current_url != "https://service.transunion.com/dss/disputeResults.page":
                         time.sleep(20)
                     past = {}
-                    try: 
+                    try:
                         fin = self.driver.find_element_by_class_name("fin")
-                        past["fin"] = fin.text.strip() 
+                        past["fin"] = fin.text.strip()
                     except:
                         pass
 
@@ -788,11 +788,11 @@ class transunionDispute:
                     self.driver.get("https://service.transunion.com/dss/dispute.page?")
                     time.sleep(10)
                     final_arr.append(
-                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past})              
+                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past})
                 else:
                     final_arr.append(
-                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past_state})    
-                          
+                        {'Date_Submitted': past_datesub, 'Estimated_Completion': past_datec, 'Status': past_state})
+
 
 
             if final_arr:
@@ -883,7 +883,7 @@ class transunionDispute:
             with open(self.filepath_report, "a+") as f:
                 sorted = json.dumps(jsondata, indent=4)
                 f.write(sorted)
-                f.close() 
+                f.close()
             return 'success'
 
     def click_to_continue(self):
@@ -906,7 +906,7 @@ class transunionDispute:
         total_height = self.driver.execute_script(js)
         self.driver.set_window_size(1920, 20000)
 
-        slices = [] 
+        slices = []
         offset = 0
         verbose = 1
         img = ''

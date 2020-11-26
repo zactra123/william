@@ -69,7 +69,7 @@ class experianLogin:
         options.add_argument('--kiosk-printing')
         options.add_argument('--headless')
 
-        self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
+        self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
 
         json_directory = '../storage/reports/' + self.db_id + '/experian_login'

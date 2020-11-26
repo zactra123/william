@@ -67,7 +67,7 @@ class equifaxCreditKarma:
         options.add_argument('--kiosk-printing')
         options.add_argument('--headless')
 
-        self.driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
+        self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
 
 
         json_directory = '../storage/reports/' + self.db_id + '/experian_login'

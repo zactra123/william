@@ -62,7 +62,7 @@ class experianViewReport():
 
 
         self.driver = webdriver.Firefox(
-            executable_path=os.environ['GECKO_DRIVER_PATH'], options=options)
+            executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
 
         self.json_directory = '../storage/reports/' + self.db_id + '/experian_view_report'
