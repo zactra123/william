@@ -39,7 +39,7 @@ class transUnionMebership:
         fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
         fp.set_preference("pdfjs.disabled", True)
 
-        self.driver = webdriver.Firefox(executable_path=os.environ['GECKO_DRIVER_PATH'], options=options, firefox_profile=fp)
+        self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options, firefox_profile=fp)
 
         self.json_directory = '../storage/reports/' +self.db_id + '/transunion_payments'
 
