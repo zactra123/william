@@ -186,7 +186,7 @@ Route::group(['prefix'=> 'admins/'], function(){
 
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
-    Route::put('client/{client}/update', 'TodosController@updateClient')->name('adminRec.client.update');
+    Route::put('client/{clientId}/update', 'TodosController@updateClient')->name('adminRec.client.update');
     Route::get('client/{client}/report/{type}', 'TodosController@clientReport')->name('adminRec.client.report');
     Route::get('todo/list', 'TodosController@toDoList')->name('adminRec.toDo.list');
     Route::delete('todo/{id}', 'TodosController@toDoDestroy')->name('adminRec.toDo.destroy');

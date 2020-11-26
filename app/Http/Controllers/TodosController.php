@@ -209,7 +209,14 @@ class TodosController extends Controller
 
     public function updateClient(Request $request, $id)
     {
+        if(empty($request->file()) && is_null($request->client)){
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Please upload both files');
+        }
+
         if($request->file() == true){
+
             if (empty($request['driver']) && empty($request['social'])) {
                 return redirect()->back()
                     ->withInput()

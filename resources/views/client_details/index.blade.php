@@ -404,6 +404,25 @@
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
     <script type="text/javascript" src="{{asset('js/lib/gstatic.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#doc_sunb").validate({
+                rules: {
+                    "social": {
+                        required: '#driver_license:blank',
+                    },
+                    "driver": {
+                        required: '#social_security:blank',
+                    },
+                },
+
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element));
+                }
+            })
+        })
+    </script>
     <script>
         $(document).ready(function() {
 

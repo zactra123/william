@@ -809,7 +809,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                    {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'update_info',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
                         @csrf
                         <div class="form row">
@@ -970,7 +970,7 @@
                 </div>
                 <div class="modal-body">
 
-                    {!! Form::open(['route'=>['adminRec.sendEmail'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                    {!! Form::open(['route'=>['adminRec.sendEmail'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "send_email"]) !!}
 
                     <div class="form-group">
                         <input type="text" name="subject" class="form-control" placeholder="SUBJECT" />
@@ -1001,7 +1001,31 @@
     <script src="{{asset('js/lib/leaflet.js')}}"></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
 
+    //document upload validation
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#doc_sunb").validate({
+                rules: {
+                    "social": {
+                        required: '#driver_license:blank',
+                    },
+                    "driver": {
+                        required: '#social_security:blank',
+                    },
+                },
+
+                errorPlacement: function(error, element) {
+                    error.insertAfter($(element));
+                }
+            })
+        })
+    </script>
+
+    //hin chartna
     <script type="text/javascript">
         var per1 = $(".progress.p1").attr("data-1");
         var per2 = $(".progress.p1").attr("data-2");
@@ -1014,6 +1038,8 @@
         $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
+
+    //nkar mecacnel poqracnel
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -1059,31 +1085,6 @@
                     fileReader.readAsArrayBuffer(file);
                 }
             });
-
-            $("#bank_logo").change(function(e) {
-                $(this).removeClass('driver_license')
-
-                $(this).removeClass('bank_logo_dropp')
-                var file = e.target.files[0]
-                if(file.type == "application/pdf"){
-                    $(this).addClass('bank_logo_dropp')
-                    // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
-                }else{
-                    var reader = new FileReader();
-
-                    reader.onload = function(event) {
-                        $(".bank_logo_dropp").css('background-image','url('+ event.target.result +')');
-                        $(".bank_logo_dropp").css('background-size','cover');
-                    }
-                    reader.readAsDataURL(file);
-                }
-
-                $(this).removeClass('bank_logo_class')
-                $(this).addClass('bank_logo_dropp')
-                // $(".driver_dropp").css('background-image',file)
-            });
-
-            $("#bank_logo").val(null)
 
             $(".closeUpload").click(function (e) {
                 e.preventDefault();
@@ -1165,10 +1166,11 @@
         })
 
     </script>
+
+    //quue
     <script type="text/javascript">
 
         $(document).ready(function(){
-
 
             $(".queue").click(function(){
                 var bureau = $(this).attr('data-report')
@@ -1221,10 +1223,6 @@
 
     </script>
 
-
-
-
-
     <script src="/js/lib/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
         tinymce.init({
@@ -1247,12 +1245,10 @@
 
 
 
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+
+    //google map
     <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
     </script>
@@ -1278,6 +1274,8 @@
         //     });
         // })
     </script>
+
+    //ajax client profile
     <script>
         $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
@@ -1309,6 +1307,8 @@
             })
         })
     </script>
+
+    //map
     <script>
         $(document).ready(function(){
             var mymap = L.map('mapid')
