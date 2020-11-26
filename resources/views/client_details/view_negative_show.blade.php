@@ -286,14 +286,11 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($ex_public->date_resolved))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
 
                                     </div>
                                 </div>
                             @endforeach
-
-
                         @endif
 
                         @if(!empty($data['tu_public']))
@@ -416,7 +413,7 @@
 
                                         @endif
 
-                                        @if($tu_public->date_filed !=null )
+                                        @if($eq_public->date_filed !=null )
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE FILED</label>
@@ -458,14 +455,10 @@
                                                     <span class=""> {{$eq_public->responsibility}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
-
                                     </div>
                                 </div>
                             @endforeach
-
-
                         @endif
 
                         @if(!empty($data['ex_account']))

@@ -7,6 +7,7 @@ use App\ClientReportAddress;
 use App\ClientReportEmployer;
 use App\ClientReportEqAccount;
 use App\ClientReportEqInquiry;
+use App\ClientReportEqPublicRecord;
 use App\ClientReportExAccount;
 use App\ClientReportExInquiry;
 use App\ClientReportExPublicRecord;
@@ -80,18 +81,26 @@ class ClientDetailsController extends Controller
             ->pluck('count', 'status')
             ->toArray();
 
+
         $statusInactive = Todo::
             leftJoin('disputables', 'todos.id','=','disputables.todo_id')
             ->where('client_id', $client->id)
             ->where('disputables.status', 0)
             ->whereJsonContains('additional_information', ['security_word' => null])
             ->count('disputables.status');
+
+        $active = !empty($statusArray)? $statusArray[0]- $statusInactive:0;
+        $pending = !empty($statusArray) && isset($statusArray[1])? $statusArray[1]:0;
+        $complete = !empty($statusArray) && isset($statusArray[1])? $statusArray[2]:0;
+        $added = !empty($statusArray) && isset($statusArray[1])? $statusArray[3]:0;
+        $non_data = empty($statusArray) ? 1:0;
+
         $statusDispute = json_encode([
-            'active' => $statusArray[0]- $statusInactive,
-            'pending' => $statusArray[1],
-            'complete'=> $statusArray[2],
-            'added' => $statusInactive,
-            'non_data' => $statusArray[0] == 0 && $statusArray[1] == 0 && $statusArray[2] == 0 ? 1:0,
+            'active' => $active,
+            'pending' => $pending,
+            'complete'=> $complete,
+            'added' => $added,
+            'non_data' => $non_data,
 
         ]);
 
@@ -738,6 +747,7 @@ class ClientDetailsController extends Controller
 
             if ($key == 'eq_public') {
                 foreach ($value as $disputeEqPublicRecords) {
+
                     $tuPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
                     $disputeEqPublicRecord[] = $tuPublic;
                 }
@@ -778,9 +788,7 @@ class ClientDetailsController extends Controller
             'eq_inquiry' => $disputeEqInquiry
         ];
 
-
         return view('client_details.view_negative_show', compact('data'));
-
     }
 
     public function negativeItemContract(Request $request)
@@ -790,16 +798,27 @@ class ClientDetailsController extends Controller
         $user = User::where('role', 'receptionist')->first();
 
         foreach ($dispute as $key => $value) {
+
+            set_time_limit(300);
+
             if ($key == 'name') {
                 $todoName = $this->saveToDo($clientId, $user->id, "Name", "",0);
                 foreach ($value as $dispute_name) {
                     $this->saveDisputable($todoName, "App\\ClientReportName",  $dispute_name, 0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoName)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoName)->delete();
+                }
             }
             if ($key == 'employer') {
-                $todoName = $this->saveToDo($clientId, $user->id, "Employer", "",0);
+                $todoEmployer = $this->saveToDo($clientId, $user->id, "Employer", "",0);
                 foreach ($value as $dispute_name) {
-                    $this->saveDisputable($todoName, "App\\ClientReportEmployer",  $dispute_name, 0);
+                    $this->saveDisputable($todoEmployer, "App\\ClientReportEmployer",  $dispute_name, 0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEmployer)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEmployer)->delete();
                 }
             }
 
@@ -808,12 +827,20 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeAddresses) {
                     $this->saveDisputable($todoAddress, "App\\ClientReportAddress",  $disputeAddresses);
                }
+                $checkToDo = Disputable::where('todo_id', $todoAddress)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoAddress)->delete();
+                }
             }
 
             if ($key == 'phone') {
                 $todoPhone = $this->saveToDo($clientId, $user->id, "Phone", "",0);
                 foreach ($value as $disputePhones) {
                     $this->saveDisputable($todoPhone, "App\\ClientReportPhone",  $disputePhones,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoPhone)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoPhone)->delete();
                 }
             }
 
@@ -822,15 +849,20 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeExPublicRecords) {
                     $this->saveDisputable($todoExPublic, "App\\ClientReportExPublicRecord",  $disputeExPublicRecords,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoExPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExPublic)->delete();
+                }
             }
 
             if ($key == 'ex_account') {
-
                 $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
-
                 foreach ($value as $disputeExAccounts) {
                     $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
-
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExAccount)->delete();
                 }
             }
 
@@ -839,12 +871,20 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeExInquiries) {
                     $this->saveDisputable($todoExInquiry, "App\\ClientReportExInquiry",  $disputeExInquiries,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoExInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExInquiry)->delete();
+                }
             }
 
             if ($key == 'ex_statement') {
                 $todoExStatement = $this->saveToDo($clientId, $user->id, "Experian Statement", "",0);
                 foreach ($value as $disputeExStatements) {
                     $this->saveDisputable($todoExStatement, "App\\ClientReportExStatement",  $disputeExStatements,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoExStatement)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoExStatement)->delete();
                 }
             }
 
@@ -853,12 +893,21 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeTuPublicRecords) {
                     $this->saveDisputable($todoTuPublic, "App\\ClientReportTuPublicRecord",  $disputeTuPublicRecords,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoTuPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuPublic)->delete();
+                }
+
             }
 
             if ($key == 'tu_account') {
                 $todoTuAccount = $this->saveToDo($clientId, $user->id, "TransUnion Account", "",0);
                 foreach ($value as $disputeTuAccounts) {
                     $this->saveDisputableAdditional($todoTuAccount, "App\\ClientReportTuAccount",  $disputeTuAccounts,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuAccount)->delete();
                 }
             }
 
@@ -867,12 +916,20 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeTuInquiries) {
                     $this->saveDisputable($todoTuInquiry, "App\\ClientReportTuInquiry",  $disputeTuInquiries,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoTuInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuInquiry)->delete();
+                }
             }
 
             if ($key == 'tu_statement') {
                 $todoTuStatement = $this->saveToDo($clientId, $user->id, "TransUnion Statement", "",0);
                 foreach ($value as $disputeTuStatements) {
                     $this->saveDisputable($todoTuStatement, "App\\ClientReportTuStatement",  $disputeTuStatements,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoTuStatement)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoTuStatement)->delete();
                 }
             }
 
@@ -881,6 +938,10 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeEqPublicRecords) {
                     $this->saveDisputable($todoEqPublic, "App\\ClientReportEqPublicRecord",  $disputeEqPublicRecords,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoEqPublic)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqPublic)->delete();
+                }
             }
 
             if ($key == 'eq_account') {
@@ -888,12 +949,20 @@ class ClientDetailsController extends Controller
                 foreach ($value as $disputeEqAccounts) {
                     $this->saveDisputableAdditional($todoEqAccount, "App\\ClientReportEqAccount",  $disputeEqAccounts,0);
                 }
+                $checkToDo = Disputable::where('todo_id', $todoEqAccount)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqAccount)->delete();
+                }
             }
 
             if ($key == 'eq_inquiry') {
                 $todoEqInquiry = $this->saveToDo($clientId, $user->id, "Equifax Inquiry", "",0);
                 foreach ($value as $disputeEqInquiries) {
                     $this->saveDisputable($todoEqInquiry, "App\\ClientReportEqInquiry",  $disputeEqInquiries,0);
+                }
+                $checkToDo = Disputable::where('todo_id', $todoEqInquiry)->count('id');
+                if( is_null($checkToDo)){
+                    Todo::where('id', $todoEqInquiry)->delete();
                 }
             }
             return redirect()->route('client.details.index');
@@ -940,14 +1009,19 @@ class ClientDetailsController extends Controller
 
     public function saveDisputable($todoId, $type, $id, $status)
     {
-        Disputable::create([
-            'todo_id' => $todoId,
-            'disputable_type' => $type,
-            'disputable_id' => $id,
-            'status' => $status,
-            'additionanal_information'=>null
+        $check = Disputable::where('disputable_type', $type)
+           ->where('disputable_id', $id)->first();
+        if(empty($check)){
+            Disputable::create([
+                'todo_id' => $todoId,
+                'disputable_type' => $type,
+                'disputable_id' => $id,
+                'status' => $status,
+                'additionanal_information'=>null
 
-        ]);
+            ]);
+        }
+
         return true;
     }
 
@@ -961,13 +1035,17 @@ class ClientDetailsController extends Controller
             $json = $idInformation;
         }
 
-        Disputable::create([
-            'todo_id' => $todoId,
-            'disputable_type' => $type,
-            'disputable_id' => $disputeId,
-            'status' => $status,
-            'additional_information'=> $json
-        ]);
+        $check = Disputable::where('disputable_type', $type)
+            ->where('disputable_id', $disputeId)->first();
+        if(empty($check)) {
+            Disputable::create([
+                'todo_id' => $todoId,
+                'disputable_type' => $type,
+                'disputable_id' => $disputeId,
+                'status' => $status,
+                'additional_information' => $json
+            ]);
+        }
         return true;
     }
 
