@@ -49,7 +49,7 @@ class experianViewReport():
         options.add_argument('--disable-gpu')
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         options.set_preference("general.useragent.override", user_agent)
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         # options.add_argument('print.always_print_silent')
         # fp = webdriver.FirefoxProfile()
         # # 0 means to download to the desktop, 1 means to download to the default "Downloads" directory, 2 means to use the directory

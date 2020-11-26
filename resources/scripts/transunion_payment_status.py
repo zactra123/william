@@ -14,7 +14,7 @@ from os import path
 import datetime
 
 
-class transUnionMebership: 
+class transUnionMebership:
 
     def __init__(self, argumnets):
         self.username = sys.argv[1]
@@ -27,7 +27,7 @@ class transUnionMebership:
         options.add_argument("--disable-gpu")
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         options.set_preference("general.useragent.override", user_agent)
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
         fp = webdriver.FirefoxProfile()
         fp.set_preference("browser.download.folderList", 1)
         fp.set_preference("browser.helperApps.alwaysAsk.force", False)
@@ -62,12 +62,12 @@ class transUnionMebership:
                     'report_filepath': self.filepath_report,
                 }
             elif msg == "credit card information":
-            
+
                 return {
                     'status': 'error',
                     'error': 'Credit card information',
                     'report_filepath': self.filepath_report,
-                }    
+                }
             else:
                 return {
                     'status': 'success',
@@ -115,7 +115,7 @@ class transUnionMebership:
             self.driver.find_element_by_xpath(
                 '//*[@id="bodyContent"]/div/div[2]/div/div/div[2]/div[1]/button'
             ).click()
-            
+
             WebDriverWait(self.driver, 30).until(EC.url_to_be('https://membership.tui.transunion.com/tucm/dashboard.page'))
             WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[6]/form/div[2]/div/div[2]/div/a')))
             self.driver.find_element_by_xpath('/html/body/div[6]/form/div[2]/div/div[2]/div/a').click()
@@ -153,7 +153,7 @@ class transUnionMebership:
         # Clicking on Each Report to Expand
         # Real Estate
         self.driver.execute_script("$('.account-row').click()")
-       
+
 
         self.print_pdf('accounts')
 
@@ -169,7 +169,7 @@ class transUnionMebership:
         self.driver.execute_script("$('.account-toggle:contains(Payment Status)').click()")
         self.driver.execute_script("$('.history-show-more').click()")
 
-        time.sleep(5)     
+        time.sleep(5)
 
 
         time.sleep(3)
@@ -184,7 +184,7 @@ class transUnionMebership:
         with open(self.filepath_report, "a+") as f:
             sorted = json.dumps(jsondata, indent=4)
             f.write(sorted)
-       
+
         self.print_pdf('payments')
 
     def print_pdf(self, subName):
@@ -193,7 +193,7 @@ class transUnionMebership:
         total_height = self.driver.execute_script(js)
         self.driver.set_window_size(1920, 20000)
 
-        slices = [] 
+        slices = []
         offset = 0
         verbose = 1
         img = ''

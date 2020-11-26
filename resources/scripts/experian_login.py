@@ -67,7 +67,7 @@ class experianLogin:
                 "excludeSwitches", ["enable-automation"])
         options.add_experimental_option('prefs', profile)
         options.add_argument('--kiosk-printing')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
 
         self.driver = webdriver.Chrome(executable_path=os.environ['CHROME_DRIVER_PATH'], options=options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)

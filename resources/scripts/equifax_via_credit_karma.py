@@ -5,8 +5,8 @@ import xlwt
 import sys
 import xlrd
 import time
-# from seleniumwire import webdriver 
-from selenium import webdriver 
+# from seleniumwire import webdriver
+from selenium import webdriver
 from selenium.webdriver.chrome.options import DesiredCapabilities
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.common.keys import Keys
@@ -65,7 +65,7 @@ class equifaxCreditKarma:
                 "excludeSwitches", ["enable-automation"])
         options.add_experimental_option('prefs', profile)
         options.add_argument('--kiosk-printing')
-        # options.add_argument('--headless')
+        options.add_argument('--headless')
 
         self.driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=options)
 
@@ -112,7 +112,7 @@ class equifaxCreditKarma:
             self.driver.find_element_by_xpath(
                 '//*[@id="Logon"]').click()
             WebDriverWait(self.driver, 300).until(EC.url_to_be('https://www.creditkarma.com/dashboard'))
-            
+
             self.driver.get('https://www.creditkarma.com/credit-health/equifax/report')
             # WebDriverWait(self.driver, 20).until(EC.url_to_be('https://www.creditkarma.com/credit-health/equifax/report'))
             time.sleep(10)
@@ -138,7 +138,7 @@ class equifaxCreditKarma:
                         f.write(sorted)
         except:
             pass
-        
+
 
 equifax = equifaxCreditKarma(sys.argv)
 print(equifax.call())
