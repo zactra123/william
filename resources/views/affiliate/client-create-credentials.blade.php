@@ -21,7 +21,7 @@
                         <div class="card w-100">
                             <div class=" text-center">
                                 <p >
-                                    I will provide you the requested login credentials in a timely manner <a href="{{route('client.continue')}}">CLICK TO  CONTINUE.</a>
+                                    I will provide you the requested login credentials in a timely manner <a href="{{route('affiliate.client.continue', $clients->id )}}">CLICK TO  CONTINUE.</a>
                                 </p>
                             </div>
 

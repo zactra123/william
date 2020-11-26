@@ -483,19 +483,18 @@ class AffiliatesController extends Controller
             ->where('type', "TU_DIS")->pluck('created_at', 'id')->toArray();
 
         $requiredInfoArr = Todo::
-            leftJoin('disputables', 'todos.id','=','disputables.todo_id')
-            ->where('client_id', $client->id)
-            ->whereJsonContains('additional_information', ['security_word' => null])
-            ->pluck('disputables.id')
-            ->toArray();
-
-        $requiredInfoArr = Todo::
         leftJoin('disputables', 'todos.id','=','disputables.todo_id')
             ->where('client_id', $client->id)
             ->whereJsonContains('additional_information', ['security_word' => null])
             ->pluck('disputables.id')
             ->toArray();
 
+        if(!empty($requiredInfoArr)){
+            $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
+        }else{
+            $requiredInfo = [];
+
+        }
         $statusArray = DB::table('todos')
             ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
             ->where('todos.client_id', $client->id)
@@ -528,11 +527,28 @@ class AffiliatesController extends Controller
 
         ]);
 
-        $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
+
 
 
         return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
 
+    }
+
+    public function continue($id)
+    {
+
+        $affiliateId = Auth::user()->id;
+        $a = Affiliate::where('affiliate_id', $affiliateId)
+            ->where('user_id', $id)->first();
+        if(empty($a)){
+            return back();
+        }
+
+        $client = User::whereId($id)->first();
+        ClientDetail::where('user_id', $client->id)->update(['registration_steps' => 'review']);
+
+        $uploadUserDetail = UploadClientDetail::where('user_id', $client->id)->first();
+        return redirect(route('affiliate.client.profile', $client->id));
     }
 
     public function updateClient(Request $request, $id)

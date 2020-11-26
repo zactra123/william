@@ -148,7 +148,6 @@
                                                 <a href="#">here</a>.
                                             </p>
                                         @endif
-
                                     @if(!empty($requiredInfo))
                                             <h3>Please complete required data information are starting your dispute process!!!</h3>
                                     @endif

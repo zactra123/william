@@ -56,7 +56,6 @@ class ClientDetailsController extends Controller
 
     public function index(Escrow $escrow)
     {
-
         $client = Auth::user();
         $toDos = Todo::where('client_id', $client->id)->get();
         $status = [null => ''] + \App\Todo::STATUS;
@@ -74,6 +73,12 @@ class ClientDetailsController extends Controller
             ->pluck('disputables.id')
             ->toArray();
 
+        if(!empty($requiredInfoArr)){
+            $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
+        }else{
+            $requiredInfo = [];
+        }
+
         $statusArray = DB::table('todos')
             ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
             ->where('todos.client_id', $client->id)
@@ -81,7 +86,6 @@ class ClientDetailsController extends Controller
             ->select(DB::raw('COUNT(disputables.id) as count'), 'disputables.status as status')
             ->pluck('count', 'status')
             ->toArray();
-
 
         $statusInactive = Todo::
             leftJoin('disputables', 'todos.id','=','disputables.todo_id')
@@ -105,7 +109,6 @@ class ClientDetailsController extends Controller
 
         ]);
 
-        $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
         return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
     }
 
