@@ -222,7 +222,7 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::get('client-continue/{clientId}', 'AffiliatesController@continue')->name('affiliate.client.continue');
 
     Route::put('client-profile/{clientId}/update', 'AffiliatesController@updateClient')->name('affiliate.client.update');
-    Route::get('client-profile/{id}/credentials', 'AffiliatesController@credentials')->name('affiliate.credentials');
+    Route::get('client-profile/{id}/credentials/{source?}', 'AffiliatesController@credentials')->name('affiliate.credentials');
     Route::put('client-profile/{id}/credentials', 'AffiliatesController@credentialsUpdate')->name('affiliate.credentialsUpdate');
 
     Route::get('client/report/{type}', 'AffiliatesController@clientReport')->name('affiliate.client.report');
@@ -256,7 +256,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::post('important-information', 'ClientDetailsController@importantInformation')->name('client.important');
 
     Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
-    Route::get('credentials', 'ClientDetailsController@credentials')->name('client.credentials');
+    Route::get('credentials/{source?}', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');
     Route::get('add/driver-license-social-security', 'ClientDetailsController@addDlSs')->name('client.addDriverSocial');
     Route::post('add/driver-license-social-security', 'ClientDetailsController@storeDlSs')->name('client.storeDriverSocial');
