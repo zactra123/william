@@ -95,6 +95,12 @@ return [
             'driver' => 'monolog',
             'handler' => NullHandler::class,
         ],
+        'scraper' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/scraper/prudent.log'),
+            'level' => 'debug',
+            'days' => 14,
+        ],
     ],
 
 ];

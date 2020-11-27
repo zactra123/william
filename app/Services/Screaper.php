@@ -6,6 +6,7 @@ use App\ScraperError;
 use App\User;
 use App\ClientReport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class Screaper
@@ -13,11 +14,16 @@ class Screaper
     protected $client_id;
     protected $client;
     protected $arguments;
+    protected $logger;
 
     public function __construct($id = null)
     {
         $this->client_id = $id;
         $this->client = User::with(['credentials', 'clientDetails'])->find($id);
+
+        $this->logger = Log::channel('scraper');
+        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
+
         $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
             ->format("m/d/Y");
 
@@ -60,11 +66,13 @@ class Screaper
 
     public function transunion_dispute($arguments = [])
     {
+        $this->logger->debug("Fetching TransUnion Dispute Data:", ["arguments" => $arguments]);
         if (empty($arguments)) {
             $arguments = $this->arguments['transunion_dispute'];
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
+        $this->logger->debug("Command for Fetching TransUnion Dipute:", ["command" => $command]);
         $output = shell_exec($command);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
@@ -74,24 +82,29 @@ class Screaper
 
     public function transunion_membership( $arguments = [])
     {
+        $this->logger->debug("Fetching TransUnion Membership Data:", ["arguments" => $arguments]);
         if (empty($arguments)) {
             $arguments = $this->arguments['transunion_membership'];
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
+        $this->logger->debug("Command for Fetching TransUnion Membership:", ["command" => $command]);
+
         $output = shell_exec($command);
-        //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
+//        //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
         $this->prepare_transunion_membership_data(str_replace('\'', '"',$output));
         return $output;
     }
 
     public function experian_login($arguments = [])
     {
+        $this->logger->debug("Fetching Experian Login Data:", ["arguments" => $arguments]);
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_login'];
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
+        $this->logger->debug("Command for Fetching Experian Login:", ["command" => $command]);
         $output = shell_exec($command);
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
         return $output;
@@ -100,11 +113,13 @@ class Screaper
 
     public function experian_view_report($arguments = [])
     {
+        $this->logger->debug("Fetching Experian View Report Data:", ["arguments" => $arguments]);
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_view_report'];
         }
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
+        $this->logger->debug("Command for Fetching Experian View Report:", ["command" => $command]);
         $output = shell_exec($command);
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_experian_view_report_data(str_replace('\'', '"',$output));
@@ -113,14 +128,15 @@ class Screaper
 
     public function equifax_via_credit_karma($arguments = [])
     {
+        $this->logger->debug("Fetching Equifax Data:", ["arguments" => $arguments]);
         if (empty($arguments)) {
             $arguments = $this->arguments['equifax_credit_karma'];
         }
         set_time_limit(300);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
-//        $output = shell_exec($command);
-
-        $output = "{'status': 'success', 'report_filepath': 'reports/7/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
+        $this->logger->debug("Command for Fetching Equifax:", ["command" => $command]);
+        $output = shell_exec($command);
+//        $output = "{'status': 'success', 'report_filepath': 'reports/7/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
 
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_equifax_karma_report_data(str_replace('\'', '"',$output));
@@ -131,7 +147,7 @@ class Screaper
     private function make_run_command($script_name, $command_args)
     {
         $script_path = resource_path('scripts/'. $script_name);
-        $command_args = array_merge(['python', $script_path], $command_args);
+        $command_args = array_merge(['python3', $script_path], $command_args);
         $command = escapeshellcmd(implode( " ", $command_args));
         return $command;
     }
