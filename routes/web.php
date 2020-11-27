@@ -126,6 +126,9 @@ Route::group(['prefix'=>'owner'], function(){
     Route::delete('message/{id}','Owner\MessagesController@destroy')->name('owner.message.destroy');
     Route::post('message/user/data','Owner\MessagesController@userData')->name('owner.message.userData');
 
+//    testing url for scraper
+    Route::get('scraper-test/{client_id}', 'Owner\ClientsController@scrape');
+
 });
 
 Route::group(['prefix'=> 'admin'], function(){

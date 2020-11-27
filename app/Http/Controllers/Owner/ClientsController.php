@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\DisputesPricing;
 use App\Http\Controllers\Controller;
+use App\Services\Screaper;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use App\Auth;
@@ -187,6 +188,14 @@ class ClientsController extends Controller
             $pricing = new DisputesPricing(["user_id"=>$request->id]);
         }
         return view('owner.pricing._form', compact('pricing', 'default'));
+    }
+
+
+    public function scrape($client_id)
+    {
+        $scraper = new Screaper($client_id);
+        $scraper->transunion_membership();
+        dd("test");
     }
 
 }
