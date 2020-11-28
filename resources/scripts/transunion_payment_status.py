@@ -35,11 +35,11 @@ class transUnionMebership:
         fp.set_preference("Save as PDF", True)
         fp.set_preference("print save as pdf", True)
         fp.set_preference("browser.download.manager.showWhenStarting", False)
-        fp.set_preference("browser.helperApps.neverAsk.saveToDisk", mime_types)
-        fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
-        fp.set_preference("pdfjs.disabled", True)
+        #fp.set_preference("browser.helperApps.neverAsk.saveToDisk", mime_types)
+        #fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
+        #fp.set_preference("pdfjs.disabled", True)
 
-        self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options, firefox_profile=fp)
+        self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
         self.json_directory = '../storage/reports/' +self.db_id + '/transunion_payments'
 
