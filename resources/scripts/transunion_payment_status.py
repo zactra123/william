@@ -8,7 +8,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from colorama import init
 import os
 from os import path
 import datetime
@@ -28,6 +27,7 @@ class transUnionMebership:
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         options.set_preference("general.useragent.override", user_agent)
         options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
         fp = webdriver.FirefoxProfile()
         fp.set_preference("browser.download.folderList", 1)
         fp.set_preference("browser.helperApps.alwaysAsk.force", False)
@@ -76,7 +76,7 @@ class transUnionMebership:
         except Exception as e:
             return {
                 'status': 'error',
-                'error': e[0],
+                'error': e.args[0],
                 'report_filepath': self.filepath_report,
             }
 
@@ -155,7 +155,7 @@ class transUnionMebership:
         self.driver.execute_script("$('.account-row').click()")
 
 
-        self.print_pdf('accounts')
+        #self.print_pdf('accounts')
 
         # self.driver.execute_script('window.print();')
         # Waiting for pdf Saving
@@ -171,8 +171,6 @@ class transUnionMebership:
 
         time.sleep(5)
 
-
-        time.sleep(3)
         soup = BeautifulSoup(self.driver.page_source, u"html.parser")
 
         all_scripts = soup.find('script',attrs={'id':'UserData'})
@@ -185,7 +183,8 @@ class transUnionMebership:
             sorted = json.dumps(jsondata, indent=4)
             f.write(sorted)
 
-        self.print_pdf('payments')
+        #self.driver.execute_script('window.print();')
+        #self.print_pdf('payments')
 
     def print_pdf(self, subName):
         full_image = self.filename+subName+ '_%s.png'
@@ -210,3 +209,4 @@ class transUnionMebership:
 
 transUnion = transUnionMebership(sys.argv)
 print(transUnion.call())
+quit()
