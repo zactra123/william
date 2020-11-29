@@ -86,7 +86,8 @@ class Screaper
         if (empty($arguments)) {
             $arguments = $this->arguments['transunion_membership'];
         }
-        array_push($arguments, storage_path("reports/{$this->client_id}/transunion_membership"), $this->client_id);
+        array_push($arguments, storage_path("reports/{$this->client_id}/transunion_membership"));
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $this->logger->debug("Command for Fetching TransUnion Membership:", ["command" => $command]);
 
