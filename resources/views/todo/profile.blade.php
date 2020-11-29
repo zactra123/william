@@ -995,8 +995,6 @@
         </div>
     </div>
 
-
-
     <link rel="stylesheet" href="{{asset('css/lib/leaflet.css')}}" />
     <script src="{{asset('js/lib/leaflet.js')}}"></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
@@ -1005,7 +1003,7 @@
     <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
 
-    //document upload validation
+{{--    document upload validation--}}
     <script type="text/javascript">
         $(document).ready(function() {
             $("#doc_sunb").validate({
@@ -1025,7 +1023,7 @@
         })
     </script>
 
-    //hin chartna
+{{--    hin chartna--}}
     <script type="text/javascript">
         var per1 = $(".progress.p1").attr("data-1");
         var per2 = $(".progress.p1").attr("data-2");
@@ -1039,7 +1037,7 @@
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
 
-    //nkar mecacnel poqracnel
+{{--    nkar mecacnel poqracnel--}}
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -1167,7 +1165,7 @@
 
     </script>
 
-    //quue
+{{--    quue--}}
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -1248,7 +1246,7 @@
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 
-    //google map
+{{--    google map--}}
     <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
 
     </script>
@@ -1275,7 +1273,7 @@
         // })
     </script>
 
-    //ajax client profile
+{{--    ajax client profile--}}
     <script>
         $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
@@ -1308,7 +1306,7 @@
         })
     </script>
 
-    //map
+{{--    map--}}
     <script>
         $(document).ready(function(){
             var mymap = L.map('mapid')

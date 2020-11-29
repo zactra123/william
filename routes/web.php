@@ -73,6 +73,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
     Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
+    Route::any('admin/{adminId}/change-password', 'Owner\AdminsController@changePassword')->name('owner.admin.changePassword');
 
     Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
     Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
@@ -134,14 +135,11 @@ Route::group(['prefix'=>'owner'], function(){
 Route::group(['prefix'=> 'admin'], function(){
     Route::resource('/', 'AdminsController')->names('admin')->parameters([''=>'admin'])->except('show');
 
-
     Route::get('affiliate/list', 'AdminsController@affiliateList')->name('admin.affiliate.list');
     Route::post('client/report-number', 'AdminsController@clientReportNumber')->name('admin.client.report_number');
     Route::get('getNotifications', 'AdminsController@getNotifications');
 
     Route::get('client-profile-print/{id}', 'AdminsController@printPdfClientProfile')->name('admin.client.profilePdf');
-
-
 
     Route::post('message/completed', 'MessagesController@messageCompleted')->name('admin.message.ajax');
     Route::post('message/note', 'MessagesController@addNote')->name('admin.message.note');
@@ -188,7 +186,12 @@ Route::group(['prefix'=> 'receptionist'], function(){
 Route::group(['prefix'=> 'admins/'], function(){
 
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
+
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
+
+    Route::any('/change-password', 'TodosController@changePassword')->name('adminRec.changePassword');
+
+
     Route::put('client/{clientId}/update', 'TodosController@updateClient')->name('adminRec.client.update');
     Route::get('client/{client}/report/{type}', 'TodosController@clientReport')->name('adminRec.client.report');
     Route::get('todo/list', 'TodosController@toDoList')->name('adminRec.toDo.list');

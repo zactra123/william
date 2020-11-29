@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
+
     <style>
         .pass_show{position: relative}
 
@@ -24,9 +25,10 @@
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title">Reset Password</h2>
-            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Setup Password</span>
+            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Change Password</span>
         </div>
     </section>
+
 
 
     <section class="ms-user-account">
@@ -36,41 +38,45 @@
                 <div class="col-md-6 col-sm-12">
                     <div class="ms-ua-box">
 
-                        <div class="fullwidth-block">
-                                <div class="row justify-content-center">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <form method="POST" >
-                                                    @csrf
-                                                    <div class="form-group row pass_show">
-                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="PASSWORD">
+                        @if ($errors->any())
 
-                                                        @error('password')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
+                            <div class="alert alert-danger flash">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                @foreach($errors->all()  as $message)
+                                    <strong>{{ $message }}</strong>
+                                @endforeach
+                            </div>
+                        @endif
 
-                                                    <div class="form-group row">
-                                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="CONFIRM PASSWORD">
-                                                    </div>
 
-                                                    <div class="form-group row mb-0">
-                                                            <input type="submit" value="Set Password" class="ms-ua-submit">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                        <div class="ms-ua-form">
+                            {!! Form::open(['route'=>['owner.admin.changePassword', $admin->id],'method' => 'POST', "id"=>"change-password"]) !!}
+                            @method('PUT')
+                            @csrf
+
+                                <div class="form-group">
+                                    {{ strtoupper($admin->full_name)}} -  {{ strtoupper($admin->email)}}
                                 </div>
-                        </div>
 
+                                <div class="form-group pass_show">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password" data-toggle="password">
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Confirm Password">
+                                </div>
+
+                                <div class="col">
+                                    <input type="submit" value="Chnage Password" class="ms-ua-submit">
+                                </div>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <script type="text/javascript">
 

@@ -31,8 +31,8 @@
                                             <th class="col-md-2">FIRST NAME</th>
                                             <th class="col-md-2">LAST NAME</th>
                                             <th class="col-md-2">EMAIL</th>
-                                            <th class="col-md-4">NEGATIVE TYPE</th>
-                                            <th class="col-md-1">ACTION</th>
+                                            <th class="col-md-3">NEGATIVE TYPE</th>
+                                            <th class="col-md-2">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -46,6 +46,7 @@
                                                 <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
                                                 <td>
                                                     <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-square-o"></i></a>
+                                                    <a href="{{route('owner.admin.changePassword', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-key"></i></a>
                                                     <button class="btn delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button>
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                                 </td>

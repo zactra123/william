@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use PDF;
@@ -36,7 +37,8 @@ class TodosController extends Controller
             ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
             ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
             ->select('users.id as id', 'users.email as email',
-                DB::raw('CONCAT(users.last_name, " ",users.first_name) AS full_name'))
+                DB::raw('CONCAT(users.last_name, " ",users.first_name) AS full_name'),
+                DB::raw('CONCAT(u.last_name, " ",u.first_name) AS affiliate_name'))
             ->where('users.role', 'client')
             ->paginate(10);
 
@@ -405,8 +407,6 @@ class TodosController extends Controller
 
     }
 
-
-
     public function printPdfClientProfile($id)
     {
 
@@ -582,6 +582,35 @@ class TodosController extends Controller
             ];
         }
     }
+
+    public function changePassword(Request $request)
+    {
+        $admin = Auth::user();
+
+        if($request->method()=="GET"){
+            return view('todo.change-password', compact('admin'));
+        }elseif($request->method()=="PUT"){
+            $changePassword = $request->except("_token");
+
+            $validation = \Illuminate\Support\Facades\Validator::make($changePassword, [
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }
+            User::whereId($admin->id)->update([ 'password' => Hash::make($changePassword['password'])]);
+            if($admin->role == 'admin'){
+                return redirect('admin/');
+            }else{
+                return redirect('receptionist/message');
+            }
+        }
+
+    }
+
 
 
 

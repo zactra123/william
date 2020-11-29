@@ -32,7 +32,7 @@
                                             <th class="col-md-2">FIRST NAME</th>
                                             <th class="col-md-2">LAST NAME</th>
                                             <th class="col-md-2">EMAIL</th>
-                                            <th class="col-md-1">ACTION</th>
+                                            <th class="col-md-2">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -46,7 +46,7 @@
                                                 <td>
                                                     <a class="btn" href="{{route('owner.receptionist.edit', $receptionist['id'])}}"  data-id="{{ $receptionist['id'] }}" >
                                                         <i class="fa fa-pencil"></i></a>
-
+                                                    <a href="{{route('owner.admin.changePassword', $receptionist['id'])}}"  data-id="{{ $receptionist['id'] }}" ><i class="fa fa-key"></i></a>
                                                     <button class="btn  delete" data-id="{{ $receptionist['id'] }}" >
                                                         <i class="fa fa-trash"></i></button>
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">

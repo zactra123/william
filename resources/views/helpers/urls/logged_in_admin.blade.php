@@ -3,7 +3,9 @@
 
 
         <li class="menu-item"><a href="{{ route('admin.message.index')}}" >Messages</a></li>
-        <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>
+{{--        <li class="menu-item"><a href="{{ route('admin.client.list')}}" >User List</a></li>--}}
+        <li class="menu-item"><a href="{{ route('adminRec.client.list')}}" >User List</a></li>
+        <li class="menu-item"><a href="{{ route('adminRec.toDo.list')}}" >TO DO List</a></li>
 
         <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

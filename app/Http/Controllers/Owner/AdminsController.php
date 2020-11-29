@@ -8,6 +8,7 @@ use App\User;
 use App\AllowedIp;
 use App\NegativeType;
 use App\AdminSpecification;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AdminsController extends Controller
@@ -182,5 +183,38 @@ class AdminsController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
+    public function changePassword(Request $request,$adminId)
+    {
+        if($request->method()=="GET"){
+
+            $admin = User::where('id',$adminId)->whereIn('role', ['admin','receptionist'])->first();
+            return view('owner.admin.change-password', compact('admin'));
+        }elseif($request->method()=="PUT"){
+
+            $changePassword = $request->except("_token");
+
+            $validation = Validator::make($changePassword, [
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }
+
+            User::whereId($adminId)->update([ 'password' => Hash::make($changePassword['password'])]);
+
+            if(User::whereId($adminId)->first()->role == "admin"){
+                return redirect('owner/admin/list');
+            }else{
+                return redirect('owner/receptionist/list');
+            }
+
+        }
+
+    }
+
 
 }

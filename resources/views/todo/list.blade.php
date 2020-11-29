@@ -20,6 +20,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">FULL NAME</th>
+                                            <th scope="col">AFFILIATE NAME</th>
                                             <th scope="col">EMAIL</th>
 
                                         </tr>
@@ -32,6 +33,9 @@
                                                     <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
                                                     {{$user->full_name}}
                                                     </a>
+                                                </td>
+                                                <td>
+                                                    {{$user->affiliate_name??'-'}}
                                                 </td>
                                                 <td>{{$user->email}}</td>
 {{--                                                <td>{{$user->full_name?? "-"}}</td>--}}

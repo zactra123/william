@@ -1,4 +1,6 @@
 <li><a href="{{ url('receptionist/message') }}" class="branding pull-left">Home</a></li>
+<li class="menu-item"><a href="{{ route('adminRec.changePassword')}}" >Change Password</a></li>
+
 
 <li class="menu-item">
     <a href="{{ route('receptionist.liveChat.index')}}"> <span>Chat</span>

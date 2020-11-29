@@ -5,7 +5,7 @@
 <li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">USERS</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
         <li><a href="{{ route('owner.admin.list')}}">ADMINS</a></li>
-        <li><a href="{{ route('owner.receptionist.list')}}">Receptionist</a></li>
+        <li><a href="{{ route('owner.receptionist.list')}}">RECEPTIONIST</a></li>
         <li><a href="{{ route('owner.client.list')}}" >CLIENTS</a></li>
         <li><a href="{{ route('owner.affiliate.list')}}" >AFFILIATES</a></li>
     </ul>
