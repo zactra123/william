@@ -194,8 +194,10 @@ class ClientsController extends Controller
 
     public function scrape($client_id)
     {
-        $client = User::find($client_id);
-        ScrapeReports::dispatch($client, [], 'transunion_membership');
+        $scraper = new Screaper($client_id);
+        $scraper->transunion_membership();
+//        $client = User::find($client_id);
+//        ScrapeReports::dispatch($client, [], 'transunion_membership');
         dd("test");
     }
 
