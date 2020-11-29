@@ -8,6 +8,7 @@ use App\ClientReport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Process\Process;
 
 class Screaper
 {
@@ -88,7 +89,7 @@ class Screaper
         }
         array_push($arguments, storage_path("reports/{$this->client_id}/transunion_membership"));
         array_push($arguments, $this->client_id);
-        dd($arguments);
+
         $command = $this->make_run_command('transunion_payment_status.py',$arguments);
         $this->logger->debug("Command for Fetching TransUnion Membership:", ["command" => $command]);
 
@@ -149,9 +150,10 @@ class Screaper
     private function make_run_command($script_name, $command_args)
     {
         $script_path = resource_path('scripts/'. $script_name);
-        $command_args = array_merge(['python3', $script_path], $command_args);
+        $command_args = array_merge(['/usr/bin/python3', $script_path], $command_args);
         $command = escapeshellcmd(implode( " ", $command_args));
-        return $command;
+
+        return '/bin/bash --login -c "'.$command.'"';
     }
 
     public function prepare_experian_login_data($output)
