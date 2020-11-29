@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\DisputesPricing;
 use App\Http\Controllers\Controller;
+use App\Jobs\ScrapeReports;
 use App\Services\Screaper;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
@@ -193,8 +194,8 @@ class ClientsController extends Controller
 
     public function scrape($client_id)
     {
-        $scraper = new Screaper($client_id);
-        $scraper->transunion_membership();
+        $client = User::find($client_id);
+        ScrapeReports::dispatch($client, [], 'transunion_membership');
         dd("test");
     }
 
