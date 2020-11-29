@@ -18,7 +18,8 @@ class transUnionMebership:
     def __init__(self, argumnets):
         self.username = sys.argv[1]
         self.password = sys.argv[2]
-        self.db_id = sys.argv[3]
+        self.json_directory = sys.argv[3]
+        self.db_id = sys.argv[4]
 
         mime_types = "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml"
 
@@ -31,7 +32,7 @@ class transUnionMebership:
 
         self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
-        self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
+#         self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
 
         # create directory if not exist
         if not os.path.exists(self.json_directory):
