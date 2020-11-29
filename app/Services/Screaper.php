@@ -1401,9 +1401,7 @@ class Screaper
             return false;
         }
 
-//        $path = storage_path($data["report_filepath"]);
-        $path = storage_path('reports/36/transunion_payments/maga.json');
-        $json = json_decode(file_get_contents($path), true);
+        $json = json_decode($data["report_filepath"], true);
         $type = 'TU_MEM';
 
         $single = $json['Reports']['SINGLE_REPORT_TU'];
