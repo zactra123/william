@@ -23,10 +23,11 @@ class transUnionMebership:
         mime_types = "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml"
 
         options = webdriver.FirefoxOptions()
-        options.add_argument('--disable-gpu')
-        options.add_argument('--headless')
+        options.add_argument("--disable-gpu")
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         options.set_preference("general.useragent.override", user_agent)
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
 
         self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
@@ -34,7 +35,11 @@ class transUnionMebership:
 
         # create directory if not exist
         if not os.path.exists(self.json_directory):
-            os.makedirs(self.json_directory)
+            try:
+                original_umask = os.umask(0)
+                os.makedirs(self.json_directory)
+            finally:
+                os.umask(original_umask)
 
         self.filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
         self.filepath_report = self.json_directory +'/report_data_'+self.filename  + '.json'
@@ -198,4 +203,4 @@ class transUnionMebership:
 
 transUnion = transUnionMebership(sys.argv)
 print(transUnion.call())
-sys.exit()
+quit()
