@@ -28,20 +28,10 @@ class transUnionMebership:
         options.set_preference("general.useragent.override", user_agent)
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
-        fp = webdriver.FirefoxProfile()
-        fp.set_preference("browser.download.folderList", 1)
-        fp.set_preference("browser.helperApps.alwaysAsk.force", False)
-        fp.set_preference("print.always_print_silent", True)
-        fp.set_preference("Save as PDF", True)
-        fp.set_preference("print save as pdf", True)
-        fp.set_preference("browser.download.manager.showWhenStarting", False)
-        #fp.set_preference("browser.helperApps.neverAsk.saveToDisk", mime_types)
-        #fp.set_preference("plugin.disable_full_page_plugin_for_types", mime_types)
-        #fp.set_preference("pdfjs.disabled", True)
 
         self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
-        self.json_directory = '../storage/reports/' +self.db_id + '/transunion_payments'
+        self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
 
         # create directory if not exist
         if not os.path.exists(self.json_directory):
