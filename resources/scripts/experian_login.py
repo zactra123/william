@@ -75,7 +75,7 @@ class experianLogin:
 
         # create directory if not exist
         if not os.path.exists(self.json_directory):
-            os.makedirs(slef.json_directory)
+            os.makedirs(self.json_directory)
         filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
         self.filepath_report = self.json_directory +'/report_data_'+filename
         self.filepath_numbers = self.json_directory +'/report_numbers_'+filename
