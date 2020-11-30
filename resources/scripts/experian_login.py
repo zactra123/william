@@ -74,7 +74,7 @@ class experianLogin:
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
 
         # create directory if not exist
-        if not os.path.exists(json_directory):
+        if not os.path.exists(self.json_directory):
             os.makedirs(slef.json_directory)
         filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
         self.filepath_report = self.json_directory +'/report_data_'+filename
