@@ -97,7 +97,7 @@ class experianLogin:
         except Exception as e:
             return {
                 'status': 'error',
-                'error': e[0],
+                'error': e,
                 'report_filepath': self.filepath_report,
                 'numbers_filepath': self.filepath_numbers
             }
@@ -109,7 +109,7 @@ class experianLogin:
 
         #session = requests.Session()
         data = '{"username":"'+self.username+'","password":"' + \
-            self.password+'","clientId": "experian", "jsc":"7ta44j1eJNlY5BSo9z4ofjb75PaK4Vpjt4U_98uszHVyVxFAk.lzXJJIneGffLMC7EZ3QHPBirTYKUowRslzRQqwSM2icATNK0Wn_CvLG9mhORoVidPZW2AUMnGWVQdsCRUdFUFTc4s.QuyPB94UXuGlfUm9z9JIply_0x0uVMV0Yz3ccbbJYMLgiPFU77qZoOSix5ezdstlYysrhsui6SFLwke22b9QqgXK_Pmtd0UbUV8afuyPBCADLU35Y___rtpBSKxUC56MnGWpwoNSUC53ZXnN87gq1VWKqC1FJZ9fWi.uJtHoqvynx9MsFyxYM9Z.AmVuY6RcQs40Nk91kL3sgdmcKFvj_UaHzuETlfe2RjGATJ8QdvMK9BNr5xj6Knrgy4TIvRSwQ5BSp45BNlVnvLw24qgcCr__xoeFTe4JE_Bz2pU__zdYI25ke4VcvabzLf9aLdVI1Z5.Bzeua29Ua0Ve8mb40AK_IEkre0_0DumpSvkY2S9lF75uTQWUjoKnvi4yzGMEiu6BrONc5f80kOPUXlByHJmFANSroLKQ_0lNc1lF7qnAEnxj6KxG65aSEqtB1lF1qUd1.3zAq__bFnySmKJtCM12f9bc9eUeJ2DcYYIDbvRa2Ejt0wWkYYID4CmN7ulF1f4.9gJ0GV_L9.J9ielFCUC68mlFCUC68mlF8HaL9.Mc_L9.MEe0Nc6Dz.ICQiSyti_Nc5GeZhLOGR.NOzn.6fqew4LHAVv0tmRLfvIdzEpOcspBZUrsgkMfs.2KG","trustId":"385a4dbdb7cd4ff3a44a6f4965275ade"}'
+            self.password+'","clientId": "experian", "jsc":"7la44j1eJNlY5BSo9z4ofjb75PaK4Vpjt4U_98uszHVyVxFAk.lzXJJIneGffLMC7EZ3QHPBirTYKUowRslzRQqwSM2ighjB9igDN.TpZHgfLMC7AeLd7FmrpwoNN5uT2M6uJ6o6e0T.5yjaY1WMsiZRPrwXjm_3xRUdFUFTc4s.Nzl998tp7ppfAaZ6m1CdC5MQjGejuTDRNziCvTDfWrLLra4ML6B.EPm8LKfAaZ4ySy.aPjftckogtOwFPDLLMUbJlpMpwoNSUC56MnGWpwoNHHACVZXnN9133cDkKSijMhRCk6Hb9LarUqUdHz16rgPtTma1kxNGYidKw1VgN40N9csdmcKFvj9dyP4yfhwHCSFQ_v9NA2pNNW5BQYTrYetvqU1j8xiDyCY5DuXY5BNkOxfT0XwPIixBEjaCQucKFye4yP4yfhzI5a5CWJA0GrCEuWYKOIN.nySEw.PhHR5F9aL27ozbOKOOkToufjJ291Sp_evrW55uKXVFCowrFvWUjoKnvi9gJ2KZVsBhElNaU89O74gDvuA9hmVsgJ0Nc3QO_btyrYeycYYIDbvRa0Nc0QEtzmfWepK9bMe1Uws1LJoCLef80b37OTcBuXDCBuUhmNByzZ6m61DCBsJr8VYf4.9gJ.elF1x_Ff4.A2pWL90ftctDL90ftctDL9.Mfp9gJ.jMeKNc0QR9lFDSy.aPrRvxnS9lF3t8.fh2DkFnzeb.6eZq2hJ9b.0LMMAhZccDSRoRPaHEvwLNApw.2ni","trustId":"385a4dbdb7cd4ff3a44a6f4965275ade"}'
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
             'Accept': 'application/json',
