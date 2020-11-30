@@ -29,7 +29,8 @@ class experianLogin:
         self.pinn = arguments[4]
         self.dob = arguments[5]
         self.ssn = arguments[6]
-        self.db_id = arguments[7]
+        self.json_directory = arguments[7]
+        self.db_id = arguments[8]
         self.error_message = []
 
         PROXY = '143.110.151.242:3128'
@@ -72,13 +73,12 @@ class experianLogin:
         self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
 
-        json_directory = '../storage/reports/' + self.db_id + '/experian_login'
         # create directory if not exist
         if not os.path.exists(json_directory):
-            os.makedirs(json_directory)
+            os.makedirs(slef.json_directory)
         filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-        self.filepath_report = json_directory +'/report_data_'+filename
-        self.filepath_numbers = json_directory +'/report_numbers_'+filename
+        self.filepath_report = self.json_directory +'/report_data_'+filename
+        self.filepath_numbers = self.json_directory +'/report_numbers_'+filename
 
 
     def call(self):
