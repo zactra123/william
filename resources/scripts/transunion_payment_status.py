@@ -21,6 +21,8 @@ class transUnionMebership:
         self.json_directory = sys.argv[3]
         self.db_id = sys.argv[4]
 
+        os.environ["HOME"] = '/home/ubuntu'
+
         mime_types = "application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml"
 
         options = webdriver.FirefoxOptions()
@@ -29,9 +31,13 @@ class transUnionMebership:
         options.set_preference("general.useragent.override", user_agent)
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
-
-        self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
-
+        print('test')
+        try:
+            self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
+        except:
+            print(sys.exc_info())
+            sys.exit()
+        print('continue')
 #         self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
 
         # create directory if not exist
