@@ -35,8 +35,7 @@ class transUnionMebership:
         try:
             self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
         except:
-            ex_type, ex, tb = sys.exc_info()
-            traceback.print_tb(tb)
+            print(sys.exc_info())
             sys.exit()
         print('continue')
 #         self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
