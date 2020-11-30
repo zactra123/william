@@ -35,7 +35,8 @@ class experianViewReport():
         self.ssn3 = ssn_arr[2]
         self.report_numbers = arguments[3].split(',')
         self.rn_status = {}
-        self.db_id = arguments[4]
+        self.json_directory = arguments[4]
+        self.db_id = arguments[5]
         PROXY = '64.71.145.122:3128'
 
         webdriver.DesiredCapabilities.FIREFOX['proxy'] = {
@@ -65,7 +66,7 @@ class experianViewReport():
             executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
 
 
-        self.json_directory = '../storage/reports/' + self.db_id + '/experian_view_report'
+#         self.json_directory = '../storage/reports/' + self.db_id + '/experian_view_report'
         # create directory if not exist
         if not os.path.exists(self.json_directory):
             os.makedirs(self.json_directory)

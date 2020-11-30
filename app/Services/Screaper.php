@@ -105,7 +105,8 @@ class Screaper
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_login'];
         }
-        array_push($arguments, $storage_path = storage_path("reports/{$this->client_id}"), $this->client_id);
+        array_push($arguments, storage_path("reports/{$this->client_id}/experian_login"));
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_login.py',$arguments);
         $this->logger->debug("Command for Fetching Experian Login:", ["command" => $command]);
         $output = shell_exec($command);
@@ -153,7 +154,7 @@ class Screaper
         $command_args = array_merge(['/usr/bin/python3', $script_path], $command_args);
         $command = escapeshellcmd(implode( " ", $command_args));
 
-        return '/bin/bash --login -c "'.$command.'"';
+        return $command;
     }
 
     public function prepare_experian_login_data($output)
@@ -173,7 +174,7 @@ class Screaper
             return false;
         }
        // Save Experian Report Numbers -START-
-        $report_number_path = storage_path($data["numbers_filepath"]);
+        $report_number_path = $data["numbers_filepath"];
         $report_numbers = json_decode(file_get_contents($report_number_path), true);
 
         if ($report_numbers) {
@@ -189,7 +190,7 @@ class Screaper
         }
         // Save Experian Report Numbers -END-
 
-        $path = storage_path($data["report_filepath"]);
+        $path = $data["report_filepath"];
         $json = json_decode(file_get_contents($path), true);
         $type = 'EX_LOG';
 
@@ -1427,7 +1428,7 @@ class Screaper
             'report_number'=> $reportNumber,
             'current_address' => $currentAddress,
             'current_phone' => $currentPhone,
-            'file_path' => $path
+            'file_path' => $data["report_filepath"]
         ];
 
         //pahel es datan vercnel id
