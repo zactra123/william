@@ -110,6 +110,7 @@ class Screaper
         $command = $this->make_run_command('experian_login.py',$arguments);
         $this->logger->debug("Command for Fetching Experian Login:", ["command" => $command]);
         $output = shell_exec($command);
+        $this->logger->debug("OUTPUT Experian Login:", ["command" => $output]);
         $this->prepare_experian_login_data(str_replace('\'', '"',$output));
         return $output;
 
