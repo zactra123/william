@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import xlwt
 import xlrd, json
-import time,sys
+import time, sys, traceback
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support.ui import WebDriverWait
@@ -35,7 +35,8 @@ class transUnionMebership:
         try:
             self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), options=options)
         except:
-            print(sys.exc_info())
+            ex_type, ex, tb = sys.exc_info()
+            traceback.print_tb(tb)
             sys.exit()
         print('continue')
 #         self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
