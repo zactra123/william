@@ -179,8 +179,8 @@
             <ul>
                 <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
                 <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
-                <li><i class="fa {digit-class}"></i> Must contain at least 1 number</li>
-                <li><i class="fa {special-class}"></i> Must contain at least one of these special characters</li>
+                <li><i class="fa {digit-class}"></i> Must contain at least one number digit</li>
+                <li><i class="fa {special-class}"></i> Must contain at least one special characters</li>
             </ul>
         </div>
     </script>

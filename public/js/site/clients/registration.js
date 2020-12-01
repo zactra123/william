@@ -44,7 +44,8 @@ $(document).ready(function($) {
             // && other_special && repeating && consecutive && spaces && !include_email
     }, "Please pay attention on password requirements");
 
-    $('#password,#password-confirm').on('focus keyup', function(){
+    // $('#password,#password-confirm').on('focus keyup', function(){
+    $('#password').on('focus keyup', function(){
         var $this = this;
         $($this).popover({
             html: true,
@@ -110,7 +111,7 @@ $(document).ready(function($) {
         $($this).popover('update')
     })
 
-    $('#password,#password-confirm').on('focusout', function(){
+    $('#password').on('focusout', function(){
         $(this).popover('hide')
     })
 

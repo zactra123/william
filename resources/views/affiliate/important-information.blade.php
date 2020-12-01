@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="ADDRESS">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="FULL ADDRESS">
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
