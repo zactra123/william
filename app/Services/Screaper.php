@@ -78,7 +78,7 @@ class Screaper
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
         $this->logger->debug("Command for Fetching TransUnion Dipute:", ["command" => $command]);
         $output = shell_exec($command);
-        $this->logger->debug("OUTPUT TransUnion Dipute:", ["command" => $output]);
+        $this->logger->debug("OUTPUT TransUnion Dipute:", ["output" => $output]);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
@@ -98,6 +98,7 @@ class Screaper
         $this->logger->debug("Command for Fetching TransUnion Membership:", ["command" => $command]);
 
         $output = shell_exec($command);
+        $this->logger->debug("OUTPUT TransUnion Dipute:", ["output" => $output]);
 //        //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/alisa_khachatryan.json'}";
         $this->prepare_transunion_membership_data(str_replace('\'', '"',$output));
         return $output;
