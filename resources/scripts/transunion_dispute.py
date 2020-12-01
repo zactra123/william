@@ -102,7 +102,7 @@ class transunionDispute:
                 if msg == 're_login':
                     raise "Can't login: PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE."
 
-            self.print_pdf()
+#             self.print_pdf()
 
             return {
                 'status': 'success',
@@ -927,3 +927,4 @@ class transunionDispute:
 
 transunion = transunionDispute(sys.argv)
 print(transunion.call())
+quit()
