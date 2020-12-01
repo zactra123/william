@@ -19,6 +19,10 @@
         }
 
         .pass_show .ptxt:hover{color: #333333;}
+
+        .form-control[readonly]{
+            background-color: #fff !important;
+        }
     </style>
 
     <section class="header-title section-padding">
@@ -74,7 +78,8 @@
                                 </div>
                                 <div class="form-group pass_show">
 
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  data-toggle="password" placeholder="Password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  data-toggle="password" placeholder="Password" readonly
+                                           onfocus="this.removeAttribute('readonly');">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -89,7 +94,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Confirm Password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="Confirm Password" readonly
+                                           onfocus="this.removeAttribute('readonly');">
                                 </div>
                                 <div class="form-group">
                                     <input id="referred_by" type="text" class="form-control" name="referred_by" value="{{ old('referred_by') }}"  placeholder="Referred By (if any)">

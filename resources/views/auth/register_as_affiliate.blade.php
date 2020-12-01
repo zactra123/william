@@ -16,6 +16,10 @@
             transition: .3s ease all;
         }
         .pass_show .ptxt:hover{color: #333333;}
+
+        .form-control[readonly]{
+            background-color: #fff !important;
+        }
     </style>
 
 
@@ -36,7 +40,6 @@
                         </div>
                         <div class="ms-ua-form">
                             <form method="POST" id="registration-form" action="{{ route('register') }}" autocomplete="off">
-                                <input autocomplete="false" name="hidden" type="text" class="hidden">
                                 @csrf
                                 <div class="form-group">
                                     <input id="first_name" type="text" class="form-control" name="full_name" value="{{ old('full_name') }}"  placeholder="FULL NAME">
@@ -73,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="FULL ADDRESS">
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="FULL ADDRESS"  autocomplete="new-full_address">
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -91,7 +94,7 @@
 
                                 <div class="form-group">
                                     <input type="hidden" name="role" class="form-control" value="affiliate">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="E-MAIL ADDRESS">
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  placeholder="E-MAIL ADDRESS">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -99,7 +102,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group pass_show">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="PASSWORD">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="PASSWORD" readonly
+                                               onfocus="this.removeAttribute('readonly');">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -107,7 +111,8 @@
                                         @enderror
                                 </div>
                                 <div class="form-group">
-                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="CONFIRM PASSWORD">
+                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="CONFIRM PASSWORD" readonly
+                                            onfocus="this.removeAttribute('readonly');">
                                 </div>
 
                                 <div class="form-group">
@@ -174,6 +179,7 @@
         }
     </style>
 
+
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -184,9 +190,11 @@
             if($("#password").attr('type') == 'password'){
 
                 $("#password").attr('type', 'text')
-
+                $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash')
             }else{
+
                 $("#password").attr('type', 'password')
+                $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye')
             }
         });
 
