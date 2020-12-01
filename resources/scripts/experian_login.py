@@ -14,6 +14,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import requests
 from requests.auth import HTTPBasicAuth
+
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
 from pprint import pprint
 
 import os
@@ -33,7 +37,9 @@ class experianLogin:
         self.db_id = arguments[8]
         self.error_message = []
 
-        PROXY = '143.110.151.242:3128'
+        # PROXY = '143.110.151.242:3128'
+        # PROXY = '18.144.13.212:3128'
+        PROXY = '144.202.100.35:3128'
 
         webdriver.DesiredCapabilities.CHROME['proxy'] = {
             "httpProxy": PROXY,
@@ -62,16 +68,16 @@ class experianLogin:
         profile = {
             'printing.print_preview_sticky_settings.appState': json.dumps(appState)}
 
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("useAutomationExtension", False)
-        options.add_experimental_option(
+        self.options = webdriver.ChromeOptions()
+        self.options.add_experimental_option("useAutomationExtension", False)
+        self.options.add_experimental_option(
                 "excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('prefs', profile)
-        options.add_argument('--kiosk-printing')
-        options.add_argument('--headless')
+        self.options.add_experimental_option('prefs', profile)
+        self.options.add_argument('--kiosk-printing')
+        # options.add_argument('--headless')
 
-        self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
-        # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=options)
+        # self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=self.options)
+        # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
 
         # create directory if not exist
         if not os.path.exists(self.json_directory):
@@ -106,6 +112,11 @@ class experianLogin:
 
         session = requests.Session()
         session.proxies = self.proxies
+        retry = Retry(connect=3, backoff_factor=0.5)
+        adapter = HTTPAdapter(max_retries=retry)
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+
 
         #session = requests.Session()
         data = '{"username":"'+self.username+'","password":"' + \
@@ -200,6 +211,8 @@ class experianLogin:
             f.write(sorted)
 
     def login(self):
+
+        self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
         self.driver.get('https://usa.experian.com/login/index')
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
         uname = self.driver.find_element_by_xpath(
@@ -231,8 +244,20 @@ class experianLogin:
         if self.driver.current_url == 'https://usa.experian.com/member/overview':
             return True
 
+        
         try:
-            self.driver.get('https://usa.experian.com/login/ato/question')
+            WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-text/p/a')))
+
+            secretQuestion = self.driver.find_element_by_xpath('/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-text/p/a')
+            secretQuestion.click()
+        except:
+            pass
+
+        time.sleep(8)
+
+
+        try:
+            # self.driver.get('https://usa.experian.com/login/ato/question')
 
             teacher = self.driver.find_element_by_xpath(
                 '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-question/ecs-card/section[2]/div/app-security-question-page/ecs-form/form/ecs-input[1]/div/div[2]/input')
