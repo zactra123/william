@@ -72,10 +72,12 @@ class Screaper
         if (empty($arguments)) {
             $arguments = $this->arguments['transunion_dispute'];
         }
+        array_push($arguments,  storage_path("reports/{$this->client_id}/transunion_dispute"));
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('transunion_dispute.py',$arguments);
         $this->logger->debug("Command for Fetching TransUnion Dipute:", ["command" => $command]);
         $output = shell_exec($command);
+        $this->logger->debug("OUTPUT TransUnion Dipute:", ["command" => $output]);
 //        $output = "{'status': 'success', 'username': 'HERMINEM1988', 'password': 'M1988OVSESIAN', 'report_filepath': '../storage/reports/22/transunion_dispute/report_data_2020_08_03_22_16_31.json'} ";
 //        var_dump($output);
         $this->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
@@ -123,6 +125,7 @@ class Screaper
         if (empty($arguments)) {
             $arguments = $this->arguments['experian_view_report'];
         }
+        array_push($arguments, storage_path("reports/{$this->client_id}/exerian_view_reports"));
         array_push($arguments, $this->client_id);
         $command = $this->make_run_command('experian_view_report.py',$arguments);
         $this->logger->debug("Command for Fetching Experian View Report:", ["command" => $command]);
@@ -139,6 +142,8 @@ class Screaper
             $arguments = $this->arguments['equifax_credit_karma'];
         }
         set_time_limit(300);
+        array_push($arguments, storage_path("reports/{$this->client_id}/equifax"));
+        array_push($arguments, $this->client_id);
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
         $this->logger->debug("Command for Fetching Equifax:", ["command" => $command]);
         $output = shell_exec($command);
@@ -1085,8 +1090,7 @@ class Screaper
             return false;
         }
 
-        $path = storage_path($data["report_filepath"]);
-        $json = json_decode(file_get_contents($path), true);
+        $json = json_decode(file_get_contents($data["report_filepath"]), true);
 
         $type = 'TU_DIS';
         $single = $json['Reports']['SINGLE_REPORT_TU'];
@@ -1108,7 +1112,7 @@ class Screaper
             'report_number'=> $reportNumber,
             'current_address' => $currentAddress,
             'current_phone' => $currentPhone,
-            'file_path' => $path
+            'file_path' => $data["report_filepath"]
         ];
         $clientReport = ClientReport::create($dataClientReports);
 

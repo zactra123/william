@@ -52,7 +52,8 @@ class transunionDispute:
         self.secret_answer = 'TOYOTA'
 
         self.should_login = arguments[13]
-        self.db_id = arguments[14]
+        self.json_directory = arguments[14]
+        self.db_id = arguments[15]
 
         # webdriver
         options = webdriver.FirefoxOptions()
@@ -66,8 +67,7 @@ class transunionDispute:
 
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
-        self.json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
-        # create directory if not exist
+        self.json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'        # create directory if not exist
         if not os.path.exists(self.json_directory):
             os.makedirs(self.json_directory)
 
