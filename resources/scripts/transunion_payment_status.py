@@ -56,24 +56,27 @@ class transUnionMebership:
             msg = self.login()
 
             if msg =='Account Locked.':
+                self.driver.close()
                 return {
                     'status': 'error',
                     'error': 'Account Locked.',
                     'report_filepath': self.filepath_report,
                 }
             elif msg == "credit card information":
-
+                self.driver.close()
                 return {
                     'status': 'error',
                     'error': 'Credit card information',
                     'report_filepath': self.filepath_report,
                 }
             else:
+                self.driver.close()
                 return {
                     'status': 'success',
                     'report_filepath': self.filepath_report,
                 }
         except Exception as e:
+            self.driver.close()
             return {
                 'status': 'error',
                 'error': e.args[0],

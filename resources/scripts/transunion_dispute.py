@@ -102,7 +102,7 @@ class transunionDispute:
                     raise "Can't login: PLEASE LOG OFF THEN LOG BACK IN TO START A NEW DISPUTE."
 
 #             self.print_pdf()
-
+            self.driver.close()
             return {
                 'status': 'success',
                 'username': self.username,
@@ -110,9 +110,10 @@ class transunionDispute:
                 'report_filepath': self.filepath_report
             }
         except Exception as e:
+            self.driver.close()
             return {
                 'status': 'error',
-                'error': e[0],
+                'error': e.args[0],
                 'report_filepath': self.filepath_report
             }
 
