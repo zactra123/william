@@ -31,7 +31,11 @@ class transUnionMebership:
         options.set_preference("general.useragent.override", user_agent)
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
-        self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/var/www/python/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
+        try:
+            self.driver = webdriver.Firefox(executable_path=os.environ.get('GECKO_DRIVER_PATH', '/var/www/python/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
+        except Exception as e:
+            print(e)
+            sys.exit()
 
 #         self.json_directory = '../../storage/reports/' +self.db_id + '/transunion_payments'
 

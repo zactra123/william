@@ -63,10 +63,13 @@ class transunionDispute:
         options.add_argument('--headless')
         user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
         options.set_preference("general.useragent.override", user_agent)
-        self.driver = webdriver.Firefox(
-            # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
-            executable_path=os.environ.get('GECKO_DRIVER_PATH', '/var/www/python/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
-
+        try:
+            self.driver = webdriver.Firefox(
+                # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
+                executable_path=os.environ.get('GECKO_DRIVER_PATH', '/var/www/python/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
+        except Exception as e:
+            print(e)
+            sys.exit()
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
         self.json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'        # create directory if not exist
