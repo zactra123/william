@@ -400,7 +400,8 @@
         @else
             @include('helpers.urls.nav_bar_guest')
             <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a>
-            <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
+{{--            <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>--}}
+            <li><a href="{{ route('register.Affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
 
         @endif
 
