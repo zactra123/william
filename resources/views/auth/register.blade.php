@@ -39,7 +39,7 @@
                             <h3>Registration</h3>
                         </div>
                         <div class="ms-ua-form">
-                            <form method="POST" id="registration-form" action="{{ route('register') }}">
+                            <form method="POST" id="registration-form" action="{{ route('register') }}" autocomplete="off">
                                 @csrf
 
                                 <div class="form-group">
