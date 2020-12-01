@@ -55,6 +55,8 @@ class transunionDispute:
         self.json_directory = arguments[14]
         self.db_id = arguments[15]
 
+        os.environ["HOME"] = '/home/ubuntu'
+
         # webdriver
         options = webdriver.FirefoxOptions()
         options.add_argument('--disable-gpu')
