@@ -72,7 +72,6 @@ class transunionDispute:
             sys.exit()
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
-        self.json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'        # create directory if not exist
         if not os.path.exists(self.json_directory):
             os.makedirs(self.json_directory)
 
