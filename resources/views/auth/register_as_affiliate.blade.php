@@ -117,14 +117,14 @@
 
                                 <div class="form-group">
                                     <select class="form-control" name="secret_questions_id" id="secret_question">
-                                        <option disabled="disabled" selected="selected">Choose Secret Question</option>
+                                        <option disabled="disabled" selected="selected">CHOOSE SECRET QUESTION</option>
 
                                         @foreach($secrets as $value)
 
                                             <option value="{{$value->id}}">{{$value->question}}</option>
                                         @endforeach
                                         <option value="other">
-                                            Your own question
+                                            YOUR OWN QUESTION
 
                                         </option>
                                     </select>
