@@ -35,14 +35,15 @@ class Screaper
                     $this->client['credentials']['tu_password'],
                     $this->client['first_name'],
                     $this->client['last_name'],
-                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['number']]),
+                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['name']]),
                     $this->client['clientDetails']['city'],
                     $this->client['clientDetails']['state'],
                     $this->client['clientDetails']['zip'],
                     $this->client['email'],
                     $dob,
                     $this->client['clientDetails']['ssn'],
-                    $this->client['clientDetails']['phone_number']
+                    $this->client['clientDetails']['phone_number'],
+                    "True"
                 ],
             'transunion_membership' => [
                 $this->client['credentials']['tu_dis_login'],
