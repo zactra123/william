@@ -40,6 +40,7 @@
                         </div>
                         <div class="ms-ua-form">
                             <form method="POST" id="registration-form" action="{{ route('register') }}" autocomplete="off">
+                                <input autocomplete="false" name="hidden" type="text" class="hidden">
                                 @csrf
 
                                 <div class="form-group">
