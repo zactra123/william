@@ -52,6 +52,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        return redirect(route('register.Affiliate'));
         $secrets=DB::table('secret_questions')->where('user_id', null)
             ->select('question','id')->get();
         return view('auth.register',compact('secrets'));
@@ -105,6 +106,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        return redirect(route('register.Affiliate'))->status(301);
 
         if(isset($data['own_secter_question']) && $data['secret_questions_id'] == 'other'){
 
