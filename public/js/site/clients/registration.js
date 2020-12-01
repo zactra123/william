@@ -115,6 +115,12 @@ $(document).ready(function($) {
         $(this).popover('hide')
     })
 
+    $('#password-confirm').bind("cut copy paste",function(e) {
+        e.preventDefault();
+    });
+
+
+
     $('#registration-form').validate({
         rules: {
             "full_name": {
