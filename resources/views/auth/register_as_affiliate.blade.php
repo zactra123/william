@@ -53,8 +53,8 @@
                                     <input id="business_name" type="text" class="form-control" name="business_name" value="{{ old('referred_by') }}"  placeholder="COMPANY NAME (IF ANY)">
                                 </div>
                                 <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-md-6" style="margin: 0">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-5" style="margin: 0">
                                             <input id="ssn" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}"  placeholder="SOCIAL SECURITY NUMBER">
                                             @error('ssn')
                                             <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                             </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-1" style="margin: 0; padding: 0">
+                                        <div class="col-md-2" style="margin: 0; padding: 0; text-align: center;">
                                             OR
                                         </div>
                                         <div class="col-md-5">
