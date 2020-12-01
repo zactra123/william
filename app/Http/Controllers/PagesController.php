@@ -21,8 +21,13 @@ use Response;
 
 class PagesController extends Controller
 {
-    public function welcome(ReadPdfData $readPdfData)
+    public function welcome(ReadPdfData $readPdfData, Screaper $screaper)
     {
+
+//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/101/report_data_2020_11_30_21_49_56.json'}";
+//        $screaper = $screaper->prepare_transunion_membership_data(str_replace('\'', '"',$output));
+//        dd($screaper);
+
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogansFull = Db::table('slogans')

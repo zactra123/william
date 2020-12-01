@@ -19,50 +19,51 @@ class Screaper
 
     public function __construct($id = null)
     {
-        $this->client_id = $id;
-        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
-
-        $this->logger = Log::channel('scraper');
-        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
-
-        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
-            ->format("m/d/Y");
-
-        $this->arguments = [
-            'transunion_dispute' =>[
-                    $this->client['credentials']['tu_login'],
-                    $this->client['credentials']['tu_password'],
-                    $this->client['first_name'],
-                    $this->client['last_name'],
-                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['number']]),
-                    $this->client['clientDetails']['city'],
-                    $this->client['clientDetails']['state'],
-                    $this->client['clientDetails']['zip'],
-                    $this->client['email'],
-                    $dob,
-                    $this->client['clientDetails']['ssn'],
-                    $this->client['clientDetails']['phone_number']
-                ],
-            'transunion_membership' => [
-                $this->client['credentials']['tu_dis_login'],
-                $this->client['credentials']['tu_dis_password'],
-            ],
-            'experian_view_report' => [
-
-            ],
-            'experian_login' => [
-                $this->client['credentials']['ex_login'],
-                $this->client['credentials']['ex_password'],
-                $this->client['credentials']['ex_question'],
-                $this->client['credentials']['ex_pin'],
-                $dob,
-                $this->client['clientDetails']['ssn'],
-            ],
-            'equifax_credit_karma' => [
-                $this->client['credentials']['ck_login'],
-                $this->client['credentials']['ck_password']
-            ]
-        ];
+//        $this->client_id = $id;
+        $this->client_id = 2;
+//        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
+//
+//        $this->logger = Log::channel('scraper');
+//        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
+//
+//        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
+//            ->format("m/d/Y");
+//
+//        $this->arguments = [
+//            'transunion_dispute' =>[
+//                    $this->client['credentials']['tu_login'],
+//                    $this->client['credentials']['tu_password'],
+//                    $this->client['first_name'],
+//                    $this->client['last_name'],
+//                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['number']]),
+//                    $this->client['clientDetails']['city'],
+//                    $this->client['clientDetails']['state'],
+//                    $this->client['clientDetails']['zip'],
+//                    $this->client['email'],
+//                    $dob,
+//                    $this->client['clientDetails']['ssn'],
+//                    $this->client['clientDetails']['phone_number']
+//                ],
+//            'transunion_membership' => [
+//                $this->client['credentials']['tu_dis_login'],
+//                $this->client['credentials']['tu_dis_password'],
+//            ],
+//            'experian_view_report' => [
+//
+//            ],
+//            'experian_login' => [
+//                $this->client['credentials']['ex_login'],
+//                $this->client['credentials']['ex_password'],
+//                $this->client['credentials']['ex_question'],
+//                $this->client['credentials']['ex_pin'],
+//                $dob,
+//                $this->client['clientDetails']['ssn'],
+//            ],
+//            'equifax_credit_karma' => [
+//                $this->client['credentials']['ck_login'],
+//                $this->client['credentials']['ck_password']
+//            ]
+//        ];
     }
 
     public function transunion_dispute($arguments = [])
@@ -1392,7 +1393,9 @@ class Screaper
 
     public function prepare_transunion_membership_data($output)
     {
+        set_time_limit(300);
         $data = json_decode($output, true);
+
         if ($data["status"] != "success") {
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_membership'));
@@ -1407,7 +1410,13 @@ class Screaper
             return false;
         }
 
-        $json = json_decode($data["report_filepath"], true);
+//        $json = json_decode($data["report_filepath"], true);
+        $path =  resource_path(str_replace('../','',$data["report_filepath"]));
+
+//        $json = json_decode( $path, true);
+        $json = json_decode( file_get_contents($path), true);
+
+
         $type = 'TU_MEM';
 
         $single = $json['Reports']['SINGLE_REPORT_TU'];
@@ -1431,10 +1440,8 @@ class Screaper
             'current_phone' => $currentPhone,
             'file_path' => $data["report_filepath"]
         ];
-
         //pahel es datan vercnel id
         $clientReport = ClientReport::create($dataClientReports);
-
 
         $dataName = [];
         $aka = $single['AKA']['TUC'];
