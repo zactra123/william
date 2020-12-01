@@ -65,7 +65,7 @@ class transunionDispute:
         options.set_preference("general.useragent.override", user_agent)
         self.driver = webdriver.Firefox(
             # executable_path='/home/collab015/Documents/bcf/final_version/geckodriver', options=options)
-            executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), log_path='home/ubuntu/geckodriver.log', options=options)
+            executable_path=os.environ.get('GECKO_DRIVER_PATH', '/usr/bin/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
 
 
         # json_directory = '../storage/reports/' + self.db_id + '/transunion_dispute'
