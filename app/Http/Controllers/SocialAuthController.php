@@ -42,6 +42,14 @@ class SocialAuthController extends Controller
         $account = SocialAccount::where('provider','facebook')
             ->where('provider_user_id',$facebookUser->user['id'])
             ->first();
+        $userRole = session('user_role');
+
+
+        if(!$account && !$userRole){
+            return redirect()->to('/login')
+                ->withErrors(['error'=> "Please in first register with Facebook!!"]);
+        }
+
 
         if (!$account) {
             $user = User::where('email', $facebookUser->user['email'])->first();
@@ -60,7 +68,6 @@ class SocialAuthController extends Controller
                 ->withErrors("Something is wrong please re register !!");
             }
 
-            $userRole = session('user_role');
 
             $user = User::create([
                 'email' => $facebookUser->user['email'],
@@ -121,10 +128,18 @@ class SocialAuthController extends Controller
 
         $googleUser = Socialite::driver('google')->stateless()->user();
 
+
         $account = SocialAccount::where('provider','google')
             ->where('provider_user_id',$googleUser->user['id'])
             ->first();
+
+
         $userRole = session('user_role');
+        if(!$account && !$userRole){
+            return redirect()->to('/login')
+                ->withErrors(['error'=> "Please in first register with Gmail!!"]);
+        }
+
         if (!$account) {
             $account = new SocialAccount([
                 'provider_user_id' => $googleUser->user['id'],
