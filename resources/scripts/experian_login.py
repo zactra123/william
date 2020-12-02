@@ -39,20 +39,20 @@ class experianLogin:
 
         # PROXY = '143.110.151.242:3128'
         # PROXY = '18.144.13.212:3128'
-        PROXY = '144.202.100.35:3128'
+#         PROXY = '144.202.100.35:3128'
 
-        webdriver.DesiredCapabilities.CHROME['proxy'] = {
-            "httpProxy": PROXY,
-            "ftpProxy": PROXY,
-            "sslProxy": PROXY,
-            "proxyType": "MANUAL",
+#         webdriver.DesiredCapabilities.CHROME['proxy'] = {
+#             "httpProxy": PROXY,
+#             "ftpProxy": PROXY,
+#             "sslProxy": PROXY,
+#             "proxyType": "MANUAL",
+#
+#         }
 
-        }
-
-        self.proxies = {
-            "http": "http://%s"%PROXY,
-            "https": "http://%s"%PROXY
-        }
+#         self.proxies = {
+#             "http": "http://%s"%PROXY,
+#             "https": "http://%s"%PROXY
+#         }
 
         appState = {
             "recentDestinations": [
@@ -76,7 +76,7 @@ class experianLogin:
         self.options.add_argument('--kiosk-printing')
         # options.add_argument('--headless')
 
-        # self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=self.options)
+        self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=self.options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
 
         # create directory if not exist
@@ -93,7 +93,7 @@ class experianLogin:
             self.login()
             self.get_report()
             self.get_report_numbers()
-
+            self.driver.close()
             return {
                 'status': 'success',
                 'message': self.error_message,
@@ -101,6 +101,7 @@ class experianLogin:
                 'numbers_filepath': self.filepath_numbers
             }
         except Exception as e:
+            self.driver.close()
             return {
                 'status': 'error',
                 'error': e,
@@ -111,7 +112,7 @@ class experianLogin:
     def get_json(self):
 
         session = requests.Session()
-        session.proxies = self.proxies
+#         session.proxies = self.proxies
         retry = Retry(connect=3, backoff_factor=0.5)
         adapter = HTTPAdapter(max_retries=retry)
         session.mount('http://', adapter)
@@ -212,7 +213,7 @@ class experianLogin:
 
     def login(self):
 
-        self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
+#         self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
         self.driver.get('https://usa.experian.com/login/index')
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
         uname = self.driver.find_element_by_xpath(
@@ -244,7 +245,7 @@ class experianLogin:
         if self.driver.current_url == 'https://usa.experian.com/member/overview':
             return True
 
-        
+
         try:
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-public/ecs-public-template/div/div/div/div/div/app-text/p/a')))
 
