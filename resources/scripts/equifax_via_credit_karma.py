@@ -26,23 +26,24 @@ class equifaxCreditKarma:
     def __init__(self, arguments):
         self.username = arguments[1]
         self.password = arguments[2]
-        self.db_id = arguments[3]
+        self.json_directory = arguments[3]
+        self.db_id = arguments[4]
 
-        PROXY = '64.137.162.212:3128'
-        PROXY = '199.191.56.218:3128'
+#         PROXY = '64.137.162.212:3128'
+#         PROXY = '199.191.56.218:3128'
         # PROXY = '206.127.88.18:80'
         # PROXY = '199.195.252.161:8080'
         # PROXY = '206.221.176.130:3128'
         # PROXY = '45.77.68.5:3128'
 
         caps = webdriver.DesiredCapabilities.CHROME
-        caps['proxy'] = {
-            "httpProxy": PROXY,
-            "ftpProxy": PROXY,
-            "sslProxy": PROXY,
-            "proxyType": "MANUAL",
-
-        }
+#         caps['proxy'] = {
+#             "httpProxy": PROXY,
+#             "ftpProxy": PROXY,
+#             "sslProxy": PROXY,
+#             "proxyType": "MANUAL",
+#
+#         }
         caps['loggingPrefs'] = {'performance': 'ALL'}
         driver = webdriver.Chrome(desired_capabilities=caps)
         appState = {
@@ -69,13 +70,11 @@ class equifaxCreditKarma:
 
         self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
 
-
-        json_directory = '../storage/reports/' + self.db_id + '/experian_login'
         # create directory if not exist
-        if not os.path.exists(json_directory):
-            os.makedirs(json_directory)
+        if not os.path.exists(self.json_directory):
+            os.makedirs(self.json_directory)
         filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-        self.report_filepath = json_directory +'/report_numbers_'+filename
+        self.report_filepath = self.json_directory +'/report_numbers_'+filename
 
 
     def call(self):

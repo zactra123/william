@@ -149,6 +149,7 @@ class Screaper
         $command = $this->make_run_command('equifax_via_credit_karma.py',$arguments);
         $this->logger->debug("Command for Fetching Equifax:", ["command" => $command]);
         $output = shell_exec($command);
+        $this->logger->debug("OUTPUT Fetching Equifax:", ["output" => $output]);
 //        $output = "{'status': 'success', 'report_filepath': 'reports/7/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
 
 //        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
