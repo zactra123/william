@@ -19,52 +19,52 @@ class Screaper
 
     public function __construct($id = null)
     {
-        $this->client_id = $id;
-
-        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
-
-        $this->logger = Log::channel('scraper');
-        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
-
-        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
-            ->format("m/d/Y");
-
-        $this->arguments = [
-            'transunion_dispute' =>[
-                    $this->client['credentials']['tu_login'],
-                    $this->client['credentials']['tu_password'],
-                    $this->client['first_name'],
-                    $this->client['last_name'],
-                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['name']]),
-                    $this->client['clientDetails']['city'],
-                    $this->client['clientDetails']['state'],
-                    $this->client['clientDetails']['zip'],
-                    $this->client['email'],
-                    $dob,
-                    $this->client['clientDetails']['ssn'],
-                    $this->client['clientDetails']['phone_number'],
-                    "True"
-                ],
-            'transunion_membership' => [
-                $this->client['credentials']['tu_dis_login'],
-                $this->client['credentials']['tu_dis_password'],
-            ],
-            'experian_view_report' => [
-
-            ],
-            'experian_login' => [
-                $this->client['credentials']['ex_login'],
-                $this->client['credentials']['ex_password'],
-                $this->client['credentials']['ex_question'],
-                $this->client['credentials']['ex_pin'],
-                $dob,
-                $this->client['clientDetails']['ssn'],
-            ],
-            'equifax_credit_karma' => [
-                $this->client['credentials']['ck_login'],
-                $this->client['credentials']['ck_password']
-            ]
-        ];
+//        $this->client_id = $id;
+//
+//        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
+//
+//        $this->logger = Log::channel('scraper');
+//        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
+//
+//        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
+//            ->format("m/d/Y");
+//
+//        $this->arguments = [
+//            'transunion_dispute' =>[
+//                    $this->client['credentials']['tu_login'],
+//                    $this->client['credentials']['tu_password'],
+//                    $this->client['first_name'],
+//                    $this->client['last_name'],
+//                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['name']]),
+//                    $this->client['clientDetails']['city'],
+//                    $this->client['clientDetails']['state'],
+//                    $this->client['clientDetails']['zip'],
+//                    $this->client['email'],
+//                    $dob,
+//                    $this->client['clientDetails']['ssn'],
+//                    $this->client['clientDetails']['phone_number'],
+//                    "True"
+//                ],
+//            'transunion_membership' => [
+//                $this->client['credentials']['tu_dis_login'],
+//                $this->client['credentials']['tu_dis_password'],
+//            ],
+//            'experian_view_report' => [
+//
+//            ],
+//            'experian_login' => [
+//                $this->client['credentials']['ex_login'],
+//                $this->client['credentials']['ex_password'],
+//                $this->client['credentials']['ex_question'],
+//                $this->client['credentials']['ex_pin'],
+//                $dob,
+//                $this->client['clientDetails']['ssn'],
+//            ],
+//            'equifax_credit_karma' => [
+//                $this->client['credentials']['ck_login'],
+//                $this->client['credentials']['ck_password']
+//            ]
+//        ];
     }
 
     public function transunion_dispute($arguments = [])
@@ -1073,11 +1073,382 @@ class Screaper
 
         }
     }
-
     public function prepare_transunion_dispute_data($output)
     {
         set_time_limit(300);
+        $data = json_decode($output, true);
+        if($data['status'] != 'success') {
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
+            }
 
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
+
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
+            return false;
+        }
+
+        $json = json_decode(file_get_contents(resource_path(str_replace('..','',$data["report_filepath"]))), true);
+
+//        dd($json, $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0]['indicative']);
+
+        $saveTransUnion = isset( $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0])?
+            $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0]:null;
+
+        $type = 'TU_DIS';
+        $single = $json['Reports']['SINGLE_REPORT_TU'];
+        $full_name = $single['Name']["TUC"];
+
+        $phone = isset($saveTransUnion['indicative']['phone']['0']['number']['unparsed'])?
+            $saveTransUnion['indicative']['phone']['0']['number']['unparsed']:null;
+        $ssn = isset($saveTransUnion['indicative']['socialSecurity'][0]['number'])?$saveTransUnion['indicative']['socialSecurity'][0]['number']:null;
+        $dob = isset($saveTransUnion['indicative']['dateOfBirth'][0]['value'])?$saveTransUnion['indicative']['dateOfBirth'][0]['value']:null;;
+        $reportDate = $single['ReportDate']["TUC"];
+        $reportNumber = isset($saveTransUnion['fileNumber'])?$saveTransUnion['fileNumber']:null;
+        $currentAddress = $single['CurrentAddr']["TUC"];
+        $currentPhone = $phone;
+
+        $dataClientReports = [
+            'user_id' => $this->client_id,
+            'type' => $type,
+            'full_name' => $full_name,
+            'ssn' => $ssn,
+            'dob' => $dob,
+            'report_date' => $reportDate,
+            'report_number'=> $reportNumber,
+            'current_address' => $currentAddress,
+            'current_phone' => $currentPhone,
+            'file_path' => $data["report_filepath"]
+        ];
+//        $clientReport = ClientReport::create($dataClientReports);
+
+
+        $dataName = [];
+        $aka = isset($saveTransUnion['indicative']['name'])?$saveTransUnion['indicative']['name']:null;
+        if(!empty($aka)){
+            foreach($aka as $info){
+                if(isset($info['qualifier']) && $info['qualifier'] == 'ALSO_KNOWN_AS'){
+                    $dataName[] = [
+                        'full_name'=> $info['unparsed'],
+                        'nin'=> null
+                    ] ;
+                }
+            }
+        }
+
+        if(!empty($dataName)){
+//        $clientReport->clientNames()->createMany($dataName);
+        }
+
+        $dataPhone = [];
+
+        $currentPhone=[
+            'current'=> 1,
+            'number'=> $currentPhone,
+            'type'=> null
+        ] ;
+        array_push($dataPhone, $currentPhone);
+        if(!empty($saveTransUnion['indicative']['phone'])){
+
+            foreach($saveTransUnion['indicative']['phone'] as $infoPhone)
+            {
+                $dataPhone[] = [
+                    'client_report_id' => 'id',
+                    'current'=> 0,
+                    'number'=> isset($infoPhone['number']['unparsed'])?$infoPhone['number']['unparsed']:null,
+                    'type'=> null
+                ] ;
+            }
+        }
+
+//        $clientReport->clientPhones()->createMany($dataPhone);
+
+        $dataAddress = [];
+        $address = isset($saveTransUnion['indicative']['address'])?$saveTransUnion['indicative']['address']:null;
+
+//        dd( $saveTransUnion, $saveTransUnion['indicative']['address'], $address);
+
+        if(!empty($address)){
+            foreach($address as $infoAddress)
+            {
+                $dataAddress[] = [
+                    'current'=> $infoAddress['status']=="CURRENT" ?1:0,
+                    'street' =>isset($infoAddress['street']['unparsed'][0])?$infoAddress['street']['unparsed'][0]:null,
+                    'city' => isset($infoAddress['location']['city'])?$infoAddress['location']['city']:null,
+                    'state'=>isset($infoAddress['location']['state'])?$infoAddress['location']['state']:null,
+                    'zip'=> isset($infoAddress['location']['zipCode'])?$infoAddress['location']['zipCode']:null,
+                    'type'=>null,
+                    'ain'=>null,
+                    'geographical_code' => null,
+                    'date_reported'=>isset($infoAddress['dateReported']['value'])?$infoAddress['dateReported']['value']:null
+                ] ;
+            }
+        }
+
+//        $clientReport->clientAddresses()->createMany($dataAddress);
+
+        $employer =  isset($saveTransUnion['indicative']['employment'])?$saveTransUnion['indicative']['employment']:null;
+        $dataEmployer = [];
+
+        if (!empty($employer)) {
+            foreach($employer as $infoEmployer){
+                $dataEmployer[] = [
+                    'current'=> 0,
+                    'name' => isset($infoEmployer['employer']['unparsed'])?$infoEmployer['employer']['unparsed']:null,
+                    'occupation' => isset($infoEmployer['occupation'])?$infoEmployer['occupation']:null,
+                    'street' =>isset($infoEmployer['address']['street'])?$infoEmployer['address']['street']:null,
+                    'city' => isset($infoEmployer['address']['location']['city'])?$infoEmployer['address']['location']['city']:null,
+                    'state'=>isset($infoEmployer['address']['location']['state'])?$infoEmployer['address']['location']['state']:null,
+                    'zip'=> isset($infoEmployer['address']['location']['zipCode'])?$infoEmployer['address']['location']['zipCode']:null,
+                    'phone'=>null,
+                    'type'=>null,
+                ] ;
+            }
+        }
+//        $clientReport->clientEmployers()->createMany($dataEmployer);
+
+        $dataSummery= [
+            'open_accounts'=>$single['OpenAccts']['TUC'],
+            'total_accounts'=>$single['TotalAccounts']['TUC'],
+            'total_balances'=>$single['TotalBalances']['TUC'],
+            'close_accounts'=>$single['CloseAccounts']['TUC'],
+            'total_monthly_payment'=>$single['TotalMonthlyPayments']['TUC'],
+            'delinquent_account'=>$single['DelinquentAccounts']['TUC'],
+            'derogatory_account'=>$single['DerogatoryAccounts']['TUC'],
+            'public_records'=>$single['PublicRecords']['TUC'],
+            'inquiry_summary'=> null,
+        ];
+
+
+//        $clientReport->clientTuSummary()->create($dataSummery);
+
+        $credit = isset($saveTransUnion['custom']['credit'])?$saveTransUnion['custom']['credit']:null;
+
+        $dataPublicRecord = [];
+        $publicRecords =  isset($credit['publicRecord'])?$credit['publicRecord']:null;
+
+        if(!empty($publicRecords)) {
+            foreach ($publicRecords as $publicRecord) {
+
+                $street = isset($publicRecord['subscriber']['address']['street']['unparsed'][0])?$publicRecord['subscriber']['address']['street']['unparsed'][0]:null;
+                $location =isset($publicRecord['subscriber']['address']['location']['unparsed'] )?$publicRecord['subscriber']['address']['location']['unparsed'] :null;
+
+                $howFiled = null;
+                $status = null;
+                $assetsAmount = null;
+                $exemptAmount = null;
+                $remarks = null;
+                ;
+                if(!empty($single['PublicRecords']['TUC'])){
+                    foreach ($single['PubRecs'] as $type =>$infoPublicRec){
+
+                        if(!empty($infoPublicRec)){
+                            foreach($infoPublicRec as $records){
+                                $month = substr(str_replace(["/","-"],'',$records['DateFiled']['TUC']), 0,2);
+                                $date = substr(str_replace(["/","-"],'',$records['DateFiled']['TUC']), 2,2);
+                                $year = substr(str_replace(["/","-"],'',$records['DateFiled']['TUC']), 4,4);
+                                $dateFiled = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
+
+                                if($publicRecord['docketNumber'] == $records['ReferenceNumber']['TUC'] &&
+                                    date("Y-m-d",strtotime($publicRecord['dateFiled']['value'])) == $dateFiled){
+                                    $howFiled = $records['How Filed']['TUC'];
+                                    $status = $records['Status']['TUC'];
+                                    $assetsAmount = $records['AssetAmount']['TUC'];
+                                    $exemptAmount = $records['ExemptAmount']['TUC'];
+                                    $remarks = $records['Remarks']['TUC'];
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $dataPublicRecord[]=[
+                    "suppression_indicator" => $publicRecord['suppressionIndicator'],
+                    "name" =>isset($publicRecord['subscriber']['name']['unparsed'])?$publicRecord['subscriber']['name']['unparsed']:null,
+                    "public_record_handle" => $publicRecord['handle'],
+                    "address" => trim($street.' '. $location),
+                    "street" => $street,
+                    "city" => isset($publicRecord['subscriber']['address']['location']['city'])?$publicRecord['subscriber']['address']['location']['city']:null,
+                    "state" => isset($publicRecord['subscriber']['address']['location']['state'])?$publicRecord['subscriber']['address']['location']['state']:null,
+                    "zip" => isset($publicRecord['subscriber']['address']['location']['zipCode'])?$publicRecord['subscriber']['address']['location']['zipCode']:null,
+                    "docket_number" => $publicRecord['docketNumber'],
+                    "phone" => isset($publicRecord['subscriber']['phone']['number']['unparsed'])?$publicRecord['subscriber']['phone']['number']['unparsed']:null,
+                    "date_effective" => isset($publicRecord['dateEffective']['value'])?date( "Y-m-d",strtotime($publicRecord['dateEffective']['value'])):null,
+                    "liabilities" => $publicRecord['liabilities'],
+                    "date_effective_label" => $publicRecord['dateEffectiveLabel'],
+                    "date_filed" =>  isset($publicRecord['dateFiled']['value'])?date( "Y-m-d",strtotime($publicRecord['dateFiled']['value'])):null,
+                    "date_paid" => isset($publicRecord['datePaid']['value'])?date( "Y-m-d",strtotime($publicRecord['datePaid']['value'])):null,
+                    "type" => $publicRecord['publicRecordTypeDescription'],
+                    "court_type" => isset($publicRecord['source']['type'])?$publicRecord['source']['type']:null,
+                    "court_type_description" => isset($publicRecord['source']['courtTypeDescription'])?$publicRecord['source']['courtTypeDescription']:null,
+                    "responsibility" => $publicRecord['ecoadescription'],
+                    "assets" => $publicRecord['assets'],
+                    "amount" => $publicRecord['originalAmount'],
+                    "plaintiff" => $publicRecord['plaintiff'],
+                    "plaintiff_attorney" => $publicRecord['attorney'],
+                    "estimated_deletionDate" =>  isset($publicRecord['estimatedDeletionDate']['value'])?date( "Y-m-d",strtotime($publicRecord['estimatedDeletionDate']['value'])):null,
+                    'how_filed'=>$howFiled,
+                    'staus'=>$status,
+                    'assets_amount'=>$assetsAmount,
+                    'exempt_amount' => $exemptAmount,
+                    'remarks'=> $remarks,
+
+                ];
+
+            }
+        }
+
+//        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+//        $trades =  $json['TU_CONSUMER_DISCLOSURE']['trade'];
+        $trades = isset($credit['trade'])?$credit['trade']:null;
+//        if(!empty($trades)){
+//            foreach($trades as $trade){
+//                $type = "TU_DIS";
+//                $sub_type = "trade";
+//                $singleAccounts = $single['Accounts'];
+////                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
+//                $this->dataTransUnionAccount('1', $type, $sub_type, $trade, $singleAccounts);
+//            }
+//        }
+
+//        $collections =  $json['TU_CONSUMER_DISCLOSURE']['collection'];
+        $collections = isset($credit['collection'])?$credit['collection']:null;
+
+
+//        if(!empty($collections)){
+//            foreach($collections as $collection){
+//                $type = "TU_DIS";
+//                $sub_type = "collection";
+//                $singleAccounts = $single['Accounts'];
+//                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $collection, $singleAccounts);
+//            }
+//        }
+
+
+        $inquiries = isset($credit['inquiry'])?$credit['inquiry']:null;
+        $inquiriesPromotion = isset($credit['promotionalInquiry'])?$credit['promotionalInquiry']:null;
+        $inquiriesAccount = isset($credit['accountReviewInquiry'])?$credit['accountReviewInquiry']:null;
+        $dataInquiry = [];
+        if(!empty($inquiries)){
+            foreach ($inquiries as $inquiry) {
+                $dataInquiry[]=[
+                    "inquiry_type"=>'regularInquiry',
+                    "inquiry_id" => isset($inquiry['inquiryId'])?$inquiry['inquiryId']:null,
+                    "industry_code" => isset($inquiry['subscriber']['industryCode'])?$inquiry['subscriber']['industryCode']:null,
+                    "member_code" =>  isset($inquiry['subscriber']['memberCode'])?$inquiry['subscriber']['memberCode']:null,
+                    "description" => isset($inquiry['ecoadesignator'])?$inquiry['ecoadesignator']:null,
+                    "owner"=>null,
+                    "date_of_inquiry"=>null,
+                    "permissible_purpose" => isset($inquiry['permissiblePurposeDescription'])?$inquiry['permissiblePurposeDescription']:null,
+                    "subscriber_name" => isset($inquiry['subscriber']['name']['unparsed'])?$inquiry['subscriber']['name']['unparsed']:null,
+                    "requestor_name" => isset( $inquiry['requestor']['unparsed'])? $inquiry['requestor']['unparsed']:null,
+                    "subscriber_type" => isset($inquiry['subscriber']['subscriberType'])?$inquiry['subscriber']['subscriberType']:null,
+                    "date" => $inquiry['date']!= null?$this->dateFormat($inquiry['date']):null,
+                    "requested_on_dates" => $inquiry['combinedDates']!= null?$this->dateFormat($inquiry['combinedDates']):null,
+                    "requested_dates" => null,
+                    "inquiry_dates" => null,
+                    "address" =>isset($inquiry['subscriber']['address']['street']['unparsed'][0])?$inquiry['subscriber']['address']['street']['unparsed'][0]:null,
+                    "city" => isset($inquiry['subscriber']['address']['location']['city'])?$inquiry['subscriber']['address']['location']['city']:null,
+                    "state" => isset($inquiry['subscriber']['address']['location']['state'])?$inquiry['subscriber']['address']['location']['state']:null,
+                    "zip" => isset($inquiry['subscriber']['address']['location']['zipCode'])?$inquiry['subscriber']['address']['location']['zipCode']:null,
+                    "phone" => isset($inquiry['subscriber']['phone']['number']['unparsed'])?$inquiry['subscriber']['phone']['number']['unparsed']:null,
+                ];
+
+            }
+        }
+
+        if(!empty($inquiriesPromotion)){
+            foreach ($inquiriesPromotion as $inquiryProm) {
+
+                $inquiryDatesArr = $inquiryProm['inquiryDates']!= null?explode(',',$inquiryProm['inquiryDates']):null;
+                $inquiryDatesJson = null;
+                if($inquiryDatesArr!=null){
+                    $inquiryDates=[];
+                    foreach($inquiryDatesArr as $inquiryDate){
+                        $inquiryDates[] = $this->dateFormat(trim($inquiryDate));
+                    }
+                    $inquiryDatesJson = json_encode($inquiryDates);
+                }
+
+                $dataInquiry[]=[
+                    "inquiry_type"=>'promotionalInquiry',
+                    "inquiry_id" => null,
+                    "industry_code" => isset($inquiryProm['subscriber']['industryCode'])?$inquiryProm['subscriber']['industryCode']:null,
+                    "member_code" =>  isset($inquiryProm['subscriber']['memberCode'])?$inquiryProm['subscriber']['memberCode']:null,
+                    "description" => null,
+                    "owner"=> null,
+                    "date_of_inquiry"=>$inquiryProm['inquiryDate']!= null ? $this->dateFormat($inquiryProm['inquiryDate']) : null,
+                    "permissible_purpose" => isset($inquiryProm['permissiblePurpose'])?$inquiryProm['permissiblePurpose']:null,
+                    "subscriber_name" => isset($inquiryProm['subscriber']['name']['unparsed'])? $inquiryProm['subscriber']['name']['unparsed']:null,
+                    "requestor_name" => isset( $inquiryProm['requestor']['unparsed'])? $inquiryProm['requestor']['unparsed']:null,
+                    "subscriber_type" =>  isset($inquiry['subscriber']['subscriberType'])?$inquiry['subscriber']['subscriberType']:null,
+                    "date" => null,
+                    "requested_on_dates" => null,
+                    "requested_dates" => null,
+                    "inquiry_dates" => $inquiryDatesJson,
+                    "address" =>isset($inquiryProm['subscriber']['address']['street']['unparsed'][0])? $inquiryProm['subscriber']['address']['street']['unparsed'][0]:null,
+                    "city" => isset($inquiryProm['subscriber']['address']['location']['city'])? $inquiryProm['subscriber']['address']['location']['city']:null,
+                    "state" => isset($inquiryProm['subscriber']['address']['location']['state'])? $inquiryProm['subscriber']['address']['location']['state']:null,
+                    "zip" => isset($inquiryProm['subscriber']['address']['location']['zipCode'])? $inquiryProm['subscriber']['address']['location']['zipCode']:null,
+                    "phone" => isset($inquiryProm['subscriber']['phone']['number']['unparsed'])? $inquiryProm['subscriber']['phone']['number']['unparsed']:null,
+                ];
+            }
+        }
+
+        if(!empty($inquiriesAccount)){
+            foreach($inquiriesAccount as $inquiryAcc){
+
+                $dataInquiry[]=[
+                    "inquiry_type"=>'accountReviewInquiry',
+                    "inquiry_id" => null,
+                    "industry_code" => isset($inquiryAcc['subscriber']['industryCode'])?$inquiryAcc['subscriber']['industryCode']:null,
+                    "member_code" =>  isset($inquiryAcc['subscriber']['memberCode'])?$inquiryAcc['subscriber']['memberCode']:null,
+                    "description" => null,
+                    "owner"=>null,
+                    "date_of_inquiry"=>null,
+                    "permissible_purpose" => isset($inquiryAcc['permissiblePurposeDescription'])?$inquiryAcc['permissiblePurposeDescription']:null,
+                    "subscriber_name" => isset($inquiryAcc['subscriber']['name']['unparsed'])?$inquiryAcc['subscriber']['name']['unparsed']:null,
+                    "requestor_name" => isset( $inquiryAcc['requestor']['unparsed'])? $inquiryAcc['requestor']['unparsed']:null,
+                    "subscriber_type" => isset($inquiryAcc['subscriber']['subscriberType'])?$inquiryAcc['subscriber']['subscriberType']:null,
+                    "date" => null,
+                    "requested_on_dates" => $inquiryAcc['requestedOnDates']!= null?$this->dateFormat($inquiryAcc['requestedOnDates']):null,
+                    "requested_dates" => null,
+                    "inquiry_dates" => null,
+                    "address" =>isset($inquiryAcc['subscriber']['address']['street']['unparsed'][0])?$inquiryAcc['subscriber']['address']['street']['unparsed'][0]:null,
+                    "city" => isset($inquiryAcc['subscriber']['address']['location']['city'])?$inquiryAcc['subscriber']['address']['location']['city']:null,
+                    "state" => isset($inquiryAcc['subscriber']['address']['location']['state'])?$inquiryAcc['subscriber']['address']['location']['state']:null,
+                    "zip" => isset($inquiryAcc['subscriber']['address']['location']['zipCode'])?$inquiryAcc['subscriber']['address']['location']['zipCode']:null,
+                    "phone" => isset($inquiryAcc['subscriber']['phone']['number']['unparsed'])?$inquiryAcc['subscriber']['phone']['number']['unparsed']:null,
+                ];
+            }
+        }
+
+//
+//        $clientReport->clientTuInquiries()->createMany($dataInquiry);
+
+        $statements =  isset($saveTransUnion['consumerFileData']['consumerStatement'])?$saveTransUnion['consumerFileData']['consumerStatement']:null;
+
+        if(!empty($statements )){
+            $dataConsumerStatement = [];
+            foreach ($statements as $statement) {
+                $dataConsumerStatement[]=[
+                    'type'=>$statement['type'],
+                    'statement'=>$statement['text'],
+                    'description'=>$statement['expirationDescription'],
+                ];
+            }
+
+//        $clientReport->clientTuStatements()->createMany($dataConsumerStatement);
+        }
+
+    }
+
+    public function prepare_transunion_dispute_data_old($output)
+    {
+        set_time_limit(300);
         $data = json_decode($output, true);
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
@@ -1094,6 +1465,7 @@ class Screaper
         }
 
         $json = json_decode(file_get_contents($data["report_filepath"]), true);
+        dd($json);
 
         $type = 'TU_DIS';
         $single = $json['Reports']['SINGLE_REPORT_TU'];
@@ -2077,6 +2449,146 @@ class Screaper
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)
     {
+
+        $currentBalance = null;
+        $dateAccountStatus = null;
+        $dateReported = null;
+        $accountCondition = null;
+        $late30Count = null;
+        $late60Count = null;
+        $late90Count = null;
+        $worstPayStatus = null;
+        $payStatus = null;
+        $oldestYear  = null;
+        $subscriberCode  = null;
+        foreach ($singleAccounts as $accountKey => $accountValue){
+            if($accountKey != "Collection" && !empty($accountValue)){
+                foreach($accountValue as $accounts){
+                    $dateOpened = $this->dateFormat($accounts['dateOpened']['TUC']);
+                    $dateLastPayment = $this->dateFormat($accounts['dateLastPayment']['TUC']);
+
+                    if($data['dateOpened']==$dateOpened && $dateLastPayment==$data["lastPaymentDate"]){
+
+                        $currentBalance = $accounts['currentBalance']["TUC"];
+                        $dateAccountStatus = $accounts['dateAccountStatus']["TUC"]!=null?
+                            $this->dateFormat($accounts['dateAccountStatus']["TUC"]):null;
+                        $dateReported = $accounts['dateReported']["TUC"]!=null?
+                            $this->dateFormat($accounts['dateReported']["TUC"]):null;
+                        $accountCondition = $accounts['accountCondition']["TUC"];
+                        $late30Count = $accounts['late30Count']["TUC"];
+                        $late60Count = $accounts['late60Count']["TUC"];
+                        $late90Count = $accounts['late90Count']["TUC"];
+                        $worstPayStatus = $accounts['WorstPayStatus']["TUC"];
+                        $payStatus = $accounts['PayStatus']["TUC"];
+                        $oldestYear  = isset($accounts['oldestYear']["TUC"])?$accounts['oldestYear']["TUC"]:null;
+                        $subscriberCode  = isset($accounts["subscriberCode"]["TUC"])?$accounts["subscriberCode"]["TUC"]:null;
+
+                    }
+                }
+            }
+        }
+
+
+
+        $street = isset($data['subscriber']['address']['street']['unparsed'][0])?$data['subscriber']['address']['street']['unparsed'][0]:null;
+        $location =  isset($data['subscriber']['address']['location']['unparsed'])?$data['subscriber']['address']['location']['unparsed']:null;
+//        $addressFull = $this->splitAddress($data['address']);
+        $dataAccount = [
+            "type"=>$type,
+            "sub_type"=>$sub_type,
+            "suppression_flag" =>isset($data['suppressionFlag'])?$data['suppressionFlag']:null,
+            "adverse_flag" => isset($data['adverseFlag'])?$data['adverseFlag']:null,
+            "suppression_indicator" => isset($data['suppressionIndicator'])?$data['suppressionIndicator']:null,
+            "account_name" => isset($data['subscriber']['name']['unparsed'])?$data['subscriber']['name']['unparsed']:null,
+            "m_account_name" => isset($data['subscriber']['name']['unparsed'])?$data['subscriber']['name']['unparsed']:null,
+            "account_handle" => $data['handle'],
+            "address" => trim($street.' '.$location),
+            "street"=>$street,
+            "city"=> isset($data['subscriber']['address']['location']['city'])?$data['subscriber']['address']['location']['city']:null,
+            "state"=>isset($data['subscriber']['address']['location']['state'])?$data['subscriber']['address']['location']['state']:null,
+            "zip"=>isset($data['subscriber']['address']['location']['zipCode'])?$data['subscriber']['address']['location']['zipCode']:null,
+            "phone" => isset($data['subscriber']['phone']['number']['unparsed'])?$data['subscriber']['phone']['number']['unparsed']:null,
+            "account_number" => $data['accountNumber'],
+            "payment_frequency" => isset($data['terms']['paymentFrequency'])?$data['terms']['paymentFrequency']:null,
+            "payment_schedule_monthCount" => isset($data['terms']['paymentScheduleMonthCount'])?$data['terms']['paymentScheduleMonthCount']:null,
+            "scheduled_monthly_payment" => isset($data['terms']['scheduledMonthlyPayment'])?$data['terms']['scheduledMonthlyPayment']:null,
+            "date_opened" =>isset($data['dateOpened']['value'])?date("Y-m-d", strtotime($data['dateOpened']['value'])):null,
+//            "date_placed_for_collection" => $data['datePlacedForCollection'],
+            "responsibility" => $data['ecoadesignatorDescription'],
+            "account_type" => $data['portfolioType'],
+            "account_type_description" => $data['portfolioTypeDescription'],
+            "loan_type" => isset($data['loanType']['description'])?$data['loanType']['description']:null,
+//            "balance" => $data['balance'],
+            "date_effective_label" => $data['dateEffectiveLabel'],
+            "date_effective" => isset($data['dateEffective']['value'])?$data['dateEffective']['value']:null,
+//            "date_updated" => $data['dateUpdated'],
+//            "last_payment_amount" => $data['lastPaymentAmount'],
+//            "high_balance" => $data['highBalance'],
+//            "original_amount" => $data['originalAmount'],
+//            "original_charge_off" => $data['originalChargeOff'],
+//            "original_creditor" => $data['originalCreditor'],
+            "credit_limit" => isset($data['creditLimit'])?$data['creditLimit']:null,
+            "past_due" =>isset($data['pastDue'])?$data['pastDue']:null,
+            "pay_status" => isset($data['accountRatingDescription'])?$data['accountRatingDescription']:null,
+            "terms" => isset($data['terms']['description'])?$data['terms']['description']:null,
+            "date_closed" => isset($data['dateClosed']['value'])?date("Y-m-d", strtotime($data['dateClosed']['value'])):null,
+//            "date_paid" => $data['datePaid'],
+            "date_paid_out" => isset($data['datePaidOut']['value'])?date("Y-m-d", strtotime($data['datePaidOut']['value'])):null,
+            "max_delinquency" => isset($data['paymentHistory']['maxDelinquency']['maxDelinquencyDescription'])?$data['paymentHistory']['maxDelinquency']['maxDelinquencyDescription']:null,
+            "hist_high_credit_stmt" => isset($data['histHighCreditStmt'])?$data['histHighCreditStmt']:null,
+            "hist_credit_limit_stmt" => isset($data['histCreditLimitStmt'])?$data['histCreditLimitStmt']:null,
+//            "special_payment" => $data['specialPayment'],
+//            "mortgage_info" => $data['mortgageInfo'],
+//            "account_sale_info" => $data['accountSaleInfo'],
+            "estimated_deletion_date" => isset($data['estimatedDeletionDate']['value'])?date("Y-m-d", strtotime($data['estimatedDeletionDate']['value'])):null,
+//            "last_payment_date" => $data['lastPaymentDate'],
+            "account_history_start_date"=>isset($data['paymentHistory']['paymentPattern']['startDate']['value'])?date("Y-m-d", strtotime($data['paymentHistory']['paymentPattern']['startDate']['value'])):null,
+            "hist_balance_list" => isset($data['histBalanceList'])?$data['histBalanceList']:null,
+            "hist_payment_due_list" => isset($data['histPaymentDueList'])?$data['histPaymentDueList']:null,
+            "hist_payment_amt_list" => isset($data['histPaymentAmtList'])?$data['histPaymentAmtList']:null,
+            "hist_past_due_list" => isset($data['histPastDueList'])?$data['histPastDueList']:null,
+            "hist_credit_limit_list" => isset($data['histCreditLimitList'])?$data['histCreditLimitList']:null,
+            "hist_high_credit_list" => isset($data['histHighCreditList'])?$data['histHighCreditList']:null,
+            "hist_remark_list" => isset($data['histRemarkList'])?$data['histRemarkList']:null,
+            "remark" => $data['remark'],
+            "rating" => isset($data['paymentHistory']['paymentPattern']['text'])?$data['paymentHistory']['paymentPattern']['text']:null,
+            "current_balance"=> $currentBalance,
+            "date_account_status"=>$dateAccountStatus,
+            "date_reported"=> isset($data['dateReported']['value'])?date("Y-m-d", strtotime($data['dateReported']['value'])):null,
+            "account_condition"=>$accountCondition,
+            "late_30_count"=>isset($data['paymentHistory']['historicalCounters']['late30DaysTotal'])?$data['paymentHistory']['historicalCounters']['late30DaysTotal']:null,
+            "late_60_count"=>isset($data['paymentHistory']['historicalCounters']['late60DaysTotal'])?$data['paymentHistory']['historicalCounters']['late60DaysTotal']:null,
+            "late_90_count"=>isset($data['paymentHistory']['historicalCounters']['late90DaysTotal'])?$data['paymentHistory']['historicalCounters']['late90DaysTotal']:null,
+            "worst_pay_status"=>$worstPayStatus,
+            "m_pay_status"=>$payStatus,
+            "oldest_year"=>$oldestYear,
+            "subscriber_code"=>$subscriberCode
+        ];
+//        $account = $report->clientTuAccounts()->create($dataAccount);
+        $dataAccountHistory = [];
+//        foreach($data['paymentPattern'] as $paymentPattern){
+//            if(!empty($paymentPattern)){
+//                $dataAccountHistory = [];
+//                foreach($paymentPattern as $date => $value){
+//
+//                    $month = substr($date, 0,2);
+//                    $year = substr($date, 2,4);
+//                    $dataAccountHistory[] = [
+//                        'month'=>$month,
+//                        'year'=>$year,
+//                        'value'=>$value
+//
+//                    ];
+//                }
+//            }
+//        }
+        if(!empty($dataAccountHistory)){
+//            $account->accountPaymentHistories()->createMany($dataAccountHistory);
+        }
+    }
+
+    public function dataTransUnionAccountOld($report, $type, $sub_type, $data, $singleAccounts)
+    {
         $currentBalance = null;
         $dateAccountStatus = null;
         $dateReported = null;
@@ -2212,9 +2724,10 @@ class Screaper
 
     public function dateFormat($dateString)
     {
-        $month = substr($dateString, 0,2);
-        $date = substr($dateString, 2,2);
-        $year = substr($dateString, 4,4);
+        $string = str_replace(["/","-"],'',$dateString);
+        $month = substr($string, 0,2);
+        $date = substr($string, 2,2);
+        $year = substr($string, 4,4);
         $date = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
         return $date;
     }

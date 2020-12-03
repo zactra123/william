@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chat;
 use App\Events\ReceptionistLiveChat;
 use App\Jobs\ScrapeReports;
+use App\ScraperError;
 use App\User;
 use App\BankAddress;
 use App\Services\Screaper;
@@ -21,8 +22,15 @@ use Response;
 
 class PagesController extends Controller
 {
-    public function welcome(ReadPdfData $readPdfData)
+    public function welcome(ReadPdfData $readPdfData, Screaper $screaper)
     {
+
+//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/report_data_2020_12_01_22_06_27.json'}";
+        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/alisa_khach.json'}";
+//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/edward.json'}";
+        $screaper = $screaper->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
+        dd($screaper);
+
 
 
         $pageContentUp = DB::table('home_pages')->get();
