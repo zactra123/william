@@ -24,15 +24,6 @@ class PagesController extends Controller
 {
     public function welcome(ReadPdfData $readPdfData, Screaper $screaper)
     {
-
-        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/report_data_2020_12_01_22_06_27.json'}";
-//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/alisa_khach.json'}";
-//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/49/transunion_dispute/edward.json'}";
-        $screaper = $screaper->prepare_transunion_dispute_data(str_replace('\'', '"',$output));
-        dd($screaper);
-
-
-
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogansFull = Db::table('slogans')

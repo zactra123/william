@@ -18,6 +18,6 @@ class ClientReportTuAccountsPaymentHistory extends Model
 
     public function clientReportTuAccount()
     {
-        return $this->belongsTo('App/ClientReportTuAccount');
+        return $this->belongsTo('App\ClientReportTuAccount');
     }
 }

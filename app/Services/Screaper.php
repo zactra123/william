@@ -20,52 +20,52 @@ class Screaper
 
     public function __construct($id = null)
     {
-//        $this->client_id = $id;
-//
-//        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
-//
-//        $this->logger = Log::channel('scraper');
-//        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
-//
-//        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
-//            ->format("m/d/Y");
-//
-//        $this->arguments = [
-//            'transunion_dispute' =>[
-//                    $this->client['credentials']['tu_login'],
-//                    $this->client['credentials']['tu_password'],
-//                    $this->client['first_name'],
-//                    $this->client['last_name'],
-//                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['name']]),
-//                    $this->client['clientDetails']['city'],
-//                    $this->client['clientDetails']['state'],
-//                    $this->client['clientDetails']['zip'],
-//                    $this->client['email'],
-//                    $dob,
-//                    $this->client['clientDetails']['ssn'],
-//                    $this->client['clientDetails']['phone_number'],
-//                    "True"
-//                ],
-//            'transunion_membership' => [
-//                $this->client['credentials']['tu_dis_login'],
-//                $this->client['credentials']['tu_dis_password'],
-//            ],
-//            'experian_view_report' => [
-//
-//            ],
-//            'experian_login' => [
-//                $this->client['credentials']['ex_login'],
-//                $this->client['credentials']['ex_password'],
-//                $this->client['credentials']['ex_question'],
-//                $this->client['credentials']['ex_pin'],
-//                $dob,
-//                $this->client['clientDetails']['ssn'],
-//            ],
-//            'equifax_credit_karma' => [
-//                $this->client['credentials']['ck_login'],
-//                $this->client['credentials']['ck_password']
-//            ]
-//        ];
+        $this->client_id = $id;
+
+        $this->client = User::with(['credentials', 'clientDetails'])->find($id);
+
+        $this->logger = Log::channel('scraper');
+        $this->logger->debug("Starting Fetch report:", ["user_id" => $id]);
+
+        $dob = \DateTime::createFromFormat("Y-m-d", $this->client['clientDetails']['dob'])
+            ->format("m/d/Y");
+
+        $this->arguments = [
+            'transunion_dispute' =>[
+                    $this->client['credentials']['tu_login'],
+                    $this->client['credentials']['tu_password'],
+                    $this->client['first_name'],
+                    $this->client['last_name'],
+                    implode("_", [$this->client['clientDetails']['number'], $this->client['clientDetails']['name']]),
+                    $this->client['clientDetails']['city'],
+                    $this->client['clientDetails']['state'],
+                    $this->client['clientDetails']['zip'],
+                    $this->client['email'],
+                    $dob,
+                    $this->client['clientDetails']['ssn'],
+                    $this->client['clientDetails']['phone_number'],
+                    "True"
+                ],
+            'transunion_membership' => [
+                $this->client['credentials']['tu_dis_login'],
+                $this->client['credentials']['tu_dis_password'],
+            ],
+            'experian_view_report' => [
+
+            ],
+            'experian_login' => [
+                $this->client['credentials']['ex_login'],
+                $this->client['credentials']['ex_password'],
+                $this->client['credentials']['ex_question'],
+                $this->client['credentials']['ex_pin'],
+                $dob,
+                $this->client['clientDetails']['ssn'],
+            ],
+            'equifax_credit_karma' => [
+                $this->client['credentials']['ck_login'],
+                $this->client['credentials']['ck_password']
+            ]
+        ];
     }
 
     public function transunion_dispute($arguments = [])
@@ -1074,6 +1074,7 @@ class Screaper
 
         }
     }
+
     public function prepare_transunion_dispute_data($output)
     {
         set_time_limit(300);
@@ -1093,8 +1094,6 @@ class Screaper
         }
 
         $json = json_decode(file_get_contents(resource_path(str_replace('..','',$data["report_filepath"]))), true);
-
-//        dd($json, $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0]['indicative']);
 
         $saveTransUnion = isset( $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0])?
             $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0]:null;
@@ -1118,14 +1117,13 @@ class Screaper
             'full_name' => $full_name,
             'ssn' => $ssn,
             'dob' => $dob,
-            'report_date' => $reportDate,
+            'report_date' => date("Y-m-d", strtotime($reportDate)),
             'report_number'=> $reportNumber,
             'current_address' => $currentAddress,
             'current_phone' => $currentPhone,
             'file_path' => $data["report_filepath"]
         ];
-//        $clientReport = ClientReport::create($dataClientReports);
-
+        $clientReport = ClientReport::create($dataClientReports);
 
         $dataName = [];
         $aka = isset($saveTransUnion['indicative']['name'])?$saveTransUnion['indicative']['name']:null;
@@ -1135,17 +1133,15 @@ class Screaper
                     $dataName[] = [
                         'full_name'=> $info['unparsed'],
                         'nin'=> null
-                    ] ;
+                    ];
                 }
             }
         }
-
         if(!empty($dataName)){
-//        $clientReport->clientNames()->createMany($dataName);
+            $clientReport->clientNames()->createMany($dataName);
         }
 
         $dataPhone = [];
-
         $currentPhone=[
             'current'=> 1,
             'number'=> $currentPhone,
@@ -1153,24 +1149,19 @@ class Screaper
         ] ;
         array_push($dataPhone, $currentPhone);
         if(!empty($saveTransUnion['indicative']['phone'])){
-
             foreach($saveTransUnion['indicative']['phone'] as $infoPhone)
             {
                 $dataPhone[] = [
-                    'client_report_id' => 'id',
                     'current'=> 0,
                     'number'=> isset($infoPhone['number']['unparsed'])?$infoPhone['number']['unparsed']:null,
                     'type'=> null
                 ] ;
             }
         }
-
-//        $clientReport->clientPhones()->createMany($dataPhone);
+        $clientReport->clientPhones()->createMany($dataPhone);
 
         $dataAddress = [];
         $address = isset($saveTransUnion['indicative']['address'])?$saveTransUnion['indicative']['address']:null;
-
-//        dd( $saveTransUnion, $saveTransUnion['indicative']['address'], $address);
 
         if(!empty($address)){
             foreach($address as $infoAddress)
@@ -1188,12 +1179,12 @@ class Screaper
                 ] ;
             }
         }
-
-//        $clientReport->clientAddresses()->createMany($dataAddress);
+        if(!empty($dataAddress)){
+            $clientReport->clientAddresses()->createMany($dataAddress);
+        }
 
         $employer =  isset($saveTransUnion['indicative']['employment'])?$saveTransUnion['indicative']['employment']:null;
         $dataEmployer = [];
-
         if (!empty($employer)) {
             foreach($employer as $infoEmployer){
                 $dataEmployer[] = [
@@ -1209,7 +1200,9 @@ class Screaper
                 ] ;
             }
         }
-//        $clientReport->clientEmployers()->createMany($dataEmployer);
+        if(!empty($dataEmployer)){
+            $clientReport->clientEmployers()->createMany($dataEmployer);
+        }
 
         $dataSummery= [
             'open_accounts'=>$single['OpenAccts']['TUC'],
@@ -1222,9 +1215,7 @@ class Screaper
             'public_records'=>$single['PublicRecords']['TUC'],
             'inquiry_summary'=> null,
         ];
-
-
-//        $clientReport->clientTuSummary()->create($dataSummery);
+        $clientReport->clientTuSummary()->create($dataSummery);
 
         $credit = isset($saveTransUnion['custom']['credit'])?$saveTransUnion['custom']['credit']:null;
 
@@ -1236,13 +1227,12 @@ class Screaper
 
                 $street = isset($publicRecord['subscriber']['address']['street']['unparsed'][0])?$publicRecord['subscriber']['address']['street']['unparsed'][0]:null;
                 $location =isset($publicRecord['subscriber']['address']['location']['unparsed'] )?$publicRecord['subscriber']['address']['location']['unparsed'] :null;
-
                 $howFiled = null;
                 $status = null;
                 $assetsAmount = null;
                 $exemptAmount = null;
                 $remarks = null;
-                ;
+
                 if(!empty($single['PublicRecords']['TUC'])){
                     foreach ($single['PubRecs'] as $type =>$infoPublicRec){
 
@@ -1302,34 +1292,30 @@ class Screaper
             }
         }
 
-//        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
-//        $trades =  $json['TU_CONSUMER_DISCLOSURE']['trade'];
+        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+
         $trades = isset($credit['trade'])?$credit['trade']:null;
-//        dd($trades);
+
         if(!empty($trades)){
             foreach($trades as $trade){
                 $type = "TU_DIS";
                 $sub_type = "trade";
                 $singleAccounts = $single['Accounts'];
-//                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
-                $this->dataTransUnionAccount('1', $type, $sub_type, $trade, $singleAccounts);
+                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
             }
         }
 
-//        $collections =  $json['TU_CONSUMER_DISCLOSURE']['collection'];
         $collections = isset($credit['collection'])?$credit['collection']:null;
-//        dd($trades,$collections);
 
+        if(!empty($collections)){
+            foreach($collections as $collection){
+                $type = "TU_DIS";
+                $sub_type = "collection";
+                $singleAccounts = $single['Accounts'];
+                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $collection, $singleAccounts);
 
-//        if(!empty($collections)){
-//            foreach($collections as $collection){
-//                $type = "TU_DIS";
-//                $sub_type = "collection";
-//                $singleAccounts = $single['Accounts'];
-//                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $collection, $singleAccounts);
-//            }
-//        }
-
+            }
+        }
 
         $inquiries = isset($credit['inquiry'])?$credit['inquiry']:null;
         $inquiriesPromotion = isset($credit['promotionalInquiry'])?$credit['promotionalInquiry']:null;
@@ -1359,7 +1345,6 @@ class Screaper
                     "zip" => isset($inquiry['subscriber']['address']['location']['zipCode'])?$inquiry['subscriber']['address']['location']['zipCode']:null,
                     "phone" => isset($inquiry['subscriber']['phone']['number']['unparsed'])?$inquiry['subscriber']['phone']['number']['unparsed']:null,
                 ];
-
             }
         }
 
@@ -1374,7 +1359,6 @@ class Screaper
                     }
                     $inquiryDatesJson = json_encode($inquiryDates);
                 }
-
                 $dataInquiry[]=[
                     "inquiry_type"=>'promotionalInquiry',
                     "inquiry_id" => null,
@@ -1428,10 +1412,10 @@ class Screaper
             }
         }
 
-//
-//        $clientReport->clientTuInquiries()->createMany($dataInquiry);
+        $clientReport->clientTuInquiries()->createMany($dataInquiry);
 
-        $statements =  isset($saveTransUnion['consumerFileData']['consumerStatement'])?$saveTransUnion['consumerFileData']['consumerStatement']:null;
+        $statements =  isset($saveTransUnion['consumerFileData']['consumerStatement'])?
+            $saveTransUnion['consumerFileData']['consumerStatement']:null;
 
         if(!empty($statements )){
             $dataConsumerStatement = [];
@@ -1442,335 +1426,11 @@ class Screaper
                     'description'=>$statement['expirationDescription'],
                 ];
             }
-
-//        $clientReport->clientTuStatements()->createMany($dataConsumerStatement);
-        }
-        dd('asd');
-    }
-
-    public function prepare_transunion_dispute_data_old($output)
-    {
-        set_time_limit(300);
-        $data = json_decode($output, true);
-        if($data['status'] != 'success') {
-            if (!empty($data['error']['message'])){
-                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
-            }
-
-            ScraperError::create([
-                'user_id'=>$this->client_id,
-                'error'=>json_decode($data['error'])
-            ]);
-
-            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
-            return false;
-        }
-
-        $json = json_decode(file_get_contents($data["report_filepath"]), true);
-        dd($json);
-
-        $type = 'TU_DIS';
-        $single = $json['Reports']['SINGLE_REPORT_TU'];
-        $full_name = $single['Name']["TUC"];
-        $ssn = $json['TU_CONSUMER_DISCLOSURE']['Indicative']['SSN'];
-        $dob = $single['DOB']["TUC"];
-        $reportDate = $single['ReportDate']["TUC"];
-        $reportNumber = $json['TU_CONSUMER_DISCLOSURE']['Indicative']['FIN'];
-        $currentAddress = $single['CurrentAddr']["TUC"];
-        $currentPhone = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["CurrentPhone"];
-
-        $dataClientReports = [
-            'user_id' => $this->client_id,
-            'type' => $type,
-            'full_name' => $full_name,
-            'ssn' => $ssn,
-            'dob' => $dob,
-            'report_date' => $reportDate,
-            'report_number'=> $reportNumber,
-            'current_address' => $currentAddress,
-            'current_phone' => $currentPhone,
-            'file_path' => $data["report_filepath"]
-        ];
-        $clientReport = ClientReport::create($dataClientReports);
-
-        $dataName = [];
-        $aka = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["AKA"];
-        if(!empty($aka)){
-            foreach($aka as $info){
-                $dataName[] = [
-                    'full_name'=> $info,
-                    'nin'=> null
-                ] ;
-            }
-        }
-        $clientReport->clientNames()->createMany($dataName);
-
-        $dataPhone = [];
-
-        $currentPhone=[
-            'current'=> 1,
-            'number'=> $currentPhone,
-            'type'=> null
-        ] ;
-        array_push($dataPhone, $currentPhone);
-        if(!empty($json['TU_CONSUMER_DISCLOSURE']['Indicative']["Phone"])){
-
-            foreach($json['TU_CONSUMER_DISCLOSURE']['Indicative']["Phone"] as $infoPhone)
-            {
-                $dataPhone[] = [
-                    'client_report_id' => 'id',
-                    'current'=> 0,
-                    'number'=> $infoPhone,
-                    'type'=> null
-                ] ;
-            }
-        }
-        $clientReport->clientPhones()->createMany($dataPhone);
-
-        $dataAddress = [];
-        $address = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["Address"];
-        $addressPr = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["PreviousAddress"];
-        $cityCurrent = explode(',',$address['Location']);
-        $stateCurrent = explode(' ',trim($cityCurrent[1]));
-        $currentAddress = [
-            'current'=> 1,
-            'street' => $address['Street'],
-            'city' => $cityCurrent[0],
-            'state'=>trim($stateCurrent[0]),
-            'zip'=> trim($stateCurrent[1]),
-            'type'=>null,
-            'ain'=>null,
-            'geographical_code' => null,
-            'date_reported'=>$address['DateReported']
-        ] ;
-        array_push($dataAddress, $currentAddress);
-
-        if(!empty($addressPr)){
-            foreach($addressPr as $infoAddress)
-            {
-                $city = explode(',',$infoAddress['Location']);
-                $state = explode(' ',trim($city[1]));
-                $dataAddress[] = [
-                    'current'=> 0,
-                    'street' => $infoAddress['Street'],
-                    'city' => $city[0],
-                    'state'=>trim($state[0]),
-                    'zip'=> trim($state[1]),
-                    'type'=>null,
-                    'ain'=>null,
-                    'geographical_code' => null,
-                    'date_reported'=>$infoAddress['DateReported']
-                ] ;
-            }
-        }
-
-        $clientReport->clientAddresses()->createMany($dataAddress);
-
-        $currentEmployer =  $json['TU_CONSUMER_DISCLOSURE']['Indicative']['CurrentEmployer'];
-        $previousEmployer =  $json['TU_CONSUMER_DISCLOSURE']['Indicative']['PreviousEmployer'];
-        $dataEmployer = [];
-        $currentEmployerArr = [
-            'current'=> 1,
-            'name' => $currentEmployer['EmployerName'],
-            'occupation' => $currentEmployer['Occupation'],
-            'street' => $currentEmployer['Location'],
-            'city' => $currentEmployer['City'],
-            'state'=>$currentEmployer['State'],
-            'zip'=> null,
-            'phone'=>null,
-            'type'=>null,
-        ] ;
-        array_push($dataEmployer, $currentEmployerArr);
-        if (!empty($previousEmployer)) {
-            foreach($previousEmployer as $infoEmployer){
-                $dataEmployer[] = [
-                    'current'=> 0,
-                    'name' => $infoEmployer['EmployerName'],
-                    'occupation' => $infoEmployer['Occupation'],
-                    'street' => $infoEmployer['Location'],
-                    'city' => $infoEmployer['City'],
-                    'state'=>$infoEmployer['State'],
-                    'zip'=> null,
-                    'phone'=>null,
-                    'type'=>null,
-                ] ;
-            }
-        }
-        $clientReport->clientEmployers()->createMany($dataEmployer);
-
-        $dataSummery= [
-            'open_accounts'=>$single['OpenAccts']['TUC'],
-            'total_accounts'=>$single['TotalAccounts']['TUC'],
-            'total_balances'=>$single['TotalBalances']['TUC'],
-            'close_accounts'=>$single['CloseAccounts']['TUC'],
-            'total_monthly_payment'=>$single['TotalMonthlyPayments']['TUC'],
-            'delinquent_account'=>$single['DelinquentAccounts']['TUC'],
-            'derogatory_account'=>$single['DerogatoryAccounts']['TUC'],
-            'public_records'=>$single['PublicRecords']['TUC'],
-            'inquiry_summary'=> null,
-        ];
-        $clientReport->clientTuSummary()->create($dataSummery);
-
-        $dataPublicRecord = [];
-        $publicRecords =  $json['TU_CONSUMER_DISCLOSURE']['publicRecord'];
-
-        if(!empty($publicRecords)) {
-            foreach ($publicRecords as $publicRecord) {
-
-                $splitAddress = $this->splitAddress($publicRecord['address']);
-                $howFiled = null;
-                $status = null;
-                $assetsAmount = null;
-                $exemptAmount = null;
-
-                if(!empty($single['PublicRecords']['TUC'])){
-                    foreach ($single['PubRecs'] as $type =>$infoPublicRec){
-                        if(!empty($infoPublicRec)){
-                            foreach($infoPublicRec as $records){
-                                $month = substr($records['DateFiled']['TUC'], 0,2);
-                                $date = substr($records['DateFiled']['TUC'], 2,2);
-                                $year = substr($records['DateFiled']['TUC'], 4,4);
-                                $dateFiled = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
-                                if($publicRecord['docketNumber'] ==$records['ReferenceNumber']['TUC'] &&
-                                    $publicRecord['dateFiled'] == $dateFiled){
-                                    $howFiled = $records['How Filed']['TUC'];
-                                    $status = $records['Status']['TUC'];
-                                    $assetsAmount = $records['AssetAmount']['TUC'];
-                                    $exemptAmount = $records['ExemptAmount']['TUC'];
-                                    $remarks = $records['Remarks']['TUC'];
-
-                                }
-                            }
-                        }
-                    }
-                }
-
-                $dataPublicRecord[]=[
-                    "suppression_indicator" => $publicRecord['suppressionIndicator'],
-                    "name" => $publicRecord['name'],
-                    "public_record_handle" => $publicRecord['publicRecordHandle'],
-                    "address" => $publicRecord['address'],
-                    "street" => $splitAddress['street'],
-                    "city" => $splitAddress['city'],
-                    "state" => $splitAddress['state'],
-                    "zip" => $splitAddress['zip'],
-                    "docket_number" => $publicRecord['docketNumber'],
-                    "phone" => $publicRecord['phone'],
-                    "date_effective" => $publicRecord['dateEffective'],
-                    "liabilities" => $publicRecord['liabilities'],
-                    "date_effective_label" => $publicRecord['dateEffectiveLabel'],
-                    "date_filed" => $publicRecord['dateFiled'],
-                    "date_paid" => $publicRecord['datePaid'],
-                    "type" => $publicRecord['type'],
-                    "court_type" => $publicRecord['courtType'],
-                    "court_type_description" => $publicRecord['courtTypeDescription'],
-                    "responsibility" => $publicRecord['responsibility'],
-                    "assets" => $publicRecord['assets'],
-                    "amount" => $publicRecord['amount'],
-                    "plaintiff" => $publicRecord['plaintiff'],
-                    "plaintiff_attorney" => $publicRecord['plaintiffAttorney'],
-                    "estimated_deletionDate" => $publicRecord['estimatedDeletionDate'],
-                    'how_filed'=>$howFiled,
-                    'staus'=>$status,
-                    'assets_amount'=>$assetsAmount,
-                    'exempt_amount' => $exemptAmount,
-                    'remarks'=> $remarks,
-
-                ];
-
-            }
-        }
-        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
-
-        $trades =  $json['TU_CONSUMER_DISCLOSURE']['trade'];
-
-        if(!empty($trades)){
-            foreach($trades as $trade){
-                $type = "TU_DIS";
-                $sub_type = "trade";
-                $singleAccounts = $single['Accounts'];
-                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
-            }
-        }
-
-        $collections =  $json['TU_CONSUMER_DISCLOSURE']['collection'];
-
-        if(!empty($collections)){
-            foreach($collections as $collection){
-                $type = "TU_DIS";
-                $sub_type = "collection";
-                $singleAccounts = $single['Accounts'];
-                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $collection, $singleAccounts);
-            }
-        }
-
-        $inquiries =  $json['TU_CONSUMER_DISCLOSURE']['Inquiries'];
-        $dataInquiry = [];
-        foreach ($inquiries as $inquiryKey => $inquiryValues) {
-            if(!empty($inquiryValues)){
-                foreach($inquiryValues as $inquiryValue){
-                    $inquiryDatesJson = null;
-                    if($inquiryValue['InquiryDates']!=null){
-                        $inquiryDatesArr = explode(',',$inquiryValue['InquiryDates']);
-                        $inquiryDates=[];
-                        foreach($inquiryDatesArr as $inquiryDate){
-                            $inquiryDates[] = $this->dateFormat(trim($inquiryDate));
-                        }
-                        $inquiryDatesJson = json_encode($inquiryDates);
-                    }
-                    $state = null;
-                    $zipCode = null;
-                    $city = null;
-                    $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
-                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
-                    preg_match($addressState, $inquiryValue['Location'], $matcheSate);
-                    $state = isset($matcheSate[1])?$matcheSate[1]:null;
-                    if($state != null) {
-                        $explodeAddress = explode($state, $inquiryValue['Location']);
-                        $zipCode = isset($explodeAddress[1]) ? trim($explodeAddress[1]) : null;
-                        $city = isset($explodeAddress[1]) ? trim(str_replace(',','',$explodeAddress[1])) : null;
-                    }
-                    $dataInquiry[]=[
-                        "inquiry_type"=>$inquiryKey,
-                        "inquiry_id" => $inquiryValue['inquiryId'],
-                        "industry_code" => $inquiryValue['industryCode'],
-                        "member_code" => $inquiryValue['memberCode'],
-                        "description" => $inquiryValue['Description'],
-                        "owner"=>null,
-                        "date_of_inquiry"=>null,
-                        "permissible_purpose" => $inquiryValue['PermissiblePurpose'],
-                        "subscriber_name" => $inquiryValue['subscriberName'],
-                        "requestor_name" => $inquiryValue['requestorName'],
-                        "subscriber_type" => $inquiryValue['SubscriberType'],
-                        "date" => $inquiryValue['Date']!= null?$this->dateFormat($inquiryValue['Date']):null,
-                        "requested_on_dates" => $inquiryValue['RequestedOnDates']!= null?$this->dateFormat($inquiryValue['RequestedOnDates']):null,
-                        "requested_dates" => $inquiryValue['RequestedDates']!= null?$this->dateFormat($inquiryValue['RequestedDates']):null,
-                        "inquiry_dates" =>$inquiryDatesJson,
-                        "address" => $inquiryValue['Address'],
-                        "city" => $city,
-                        "state" => $state,
-                        "zip" => $zipCode,
-                        "phone" => $inquiryValue['Phone'],
-                    ];
-
-                }
-            }
-        }
-
-        $clientReport->clientTuInquiries()->createMany($dataInquiry);
-
-        $statements =  $json['TU_CONSUMER_DISCLOSURE']['ConsumerStatement'];
-        $dataConsumerStatement = [];
-        foreach ($statements as $statement) {
-            $dataConsumerStatement[]=[
-                'type'=>$statement['type'],
-                'statement'=>$statement['text'],
-                'description'=>$statement['expirationDescription'],
-            ];
-        }
-
         $clientReport->clientTuStatements()->createMany($dataConsumerStatement);
+        }
+
     }
+
 
     public function prepare_transunion_membership_data($output)
     {
@@ -1790,10 +1450,7 @@ class Screaper
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
-
-
         $json = json_decode( file_get_contents($data["report_filepath"]), true);
-
 
         $type = 'TU_MEM';
 
@@ -1818,7 +1475,6 @@ class Screaper
             'current_phone' => $currentPhone,
             'file_path' => $data["report_filepath"]
         ];
-
         $clientReport = ClientReport::create($dataClientReports);
 
         $dataName = [];
@@ -1827,7 +1483,6 @@ class Screaper
             $akas = explode('|',$aka);
             foreach($akas as $info){
                 $dataName[] = [
-                    'client_report_id' => 'id',
                     'full_name'=> trim($info),
                     'nin'=> null
                 ] ;
@@ -1840,7 +1495,6 @@ class Screaper
         $addressPr = $single['NEW-PreviousAddr']['TUC'];
 
         $currentAddress = [
-            'client_report_id' => 'id',
             'current'=> 1,
             'street' => $address[0]['street'],
             'city' => $address[0]['city'],
@@ -1854,11 +1508,8 @@ class Screaper
         array_push($dataAddress, $currentAddress);
 
         if(!empty($addressPr)){
-
-            foreach($addressPr as $infoAddress)
-            {
+            foreach($addressPr as $infoAddress){
                 $dataAddress[] = [
-                    'client_report_id' => 'id',
                     'current'=> 0,
                     'street' => $infoAddress['street'],
                     'city' => $infoAddress['city'],
@@ -1898,7 +1549,6 @@ class Screaper
             foreach($previousEmployer as $infoEmployer){
                 if($infoEmployer['name'] != null){
                     $dataEmployer[] = [
-                        'client_report_id' => 'id',
                         'current'=> 0,
                         'name' => $infoEmployer['name'],
                         'occupation' => null,
@@ -1912,6 +1562,7 @@ class Screaper
                 }
             }
         }
+
         $clientReport->clientEmployers()->createMany($dataEmployer);
 
         $dataSummery= [
@@ -1968,16 +1619,15 @@ class Screaper
                             'exempt_amount' => $records['ExemptAmount']['TUC'],
                             'remarks'=> $records['Remarks']['TUC'],
                         ];
-
-
                     }
                 }
             }
         }
 
-        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+        if(!empty($dataPublicRecord)){
+            $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+        }
 
-        $dataAccounts = [];
         foreach ($single['Accounts'] as $type =>$infoAccounts){
             if(!empty($infoAccounts)){
                 foreach($infoAccounts as $accounts){
@@ -2052,11 +1702,9 @@ class Screaper
                         "subscriber_code" =>isset($accounts['subscriberCode']["TUC"])?$accounts['subscriberCode']["TUC"]:null
                     ];
 
-
                     $account = $clientReport->clientTuAccounts()->create($dataAccount);
 
-
-                    if(isset($accounts["PaymentHistory-TUC"]) && !empty($accounts["PaymentHistory-TUC"])){
+                       if(isset($accounts["PaymentHistory-TUC"]) && !empty($accounts["PaymentHistory-TUC"])){
                         $i = 0;
                         $dataAccountHistory = [];
                         $value = null;
@@ -2066,7 +1714,6 @@ class Screaper
                             }else{
                                 $dateMonth = explode('-', $paymentPattern);
                                 $dataAccountHistory[] = [
-                                    'account_id'=>1,
                                     'month'=>$dateMonth[0],
                                     'year'=>$dateMonth[1],
                                     'value'=>$value
@@ -2076,7 +1723,7 @@ class Screaper
                             $i +=1;
 
                         }
-//                        $account->accountPaymentHistories()->createMany($dataAccountHistory);
+                        $account->accountPaymentHistories()->createMany($dataAccountHistory);
 
                     }
                 }
@@ -2088,7 +1735,6 @@ class Screaper
         if(!empty($inquiries)){
             foreach($inquiries as  $inquiryValues){
                 $dataInquiry[]=[
-                    "report_id"=>1,
                     "inquiry_type"=>null,
                     "inquiry_id" => null,
                     "industry_code" => null,
@@ -2112,11 +1758,8 @@ class Screaper
                 ];
 
             }
-
             $clientReport->clientTuInquiries()->createMany($dataInquiry);
-
         }
-
     }
 
     public function prepare_equifax_karma_report_data($output)
@@ -2451,7 +2094,6 @@ class Screaper
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)
     {
-//        dd($report, $type, $sub_type, $data, $singleAccounts);
         $currentBalance = null;
         $dateAccountStatus = null;
         $dateReported = null;
@@ -2489,10 +2131,8 @@ class Screaper
         }
 
 
-
         $street = isset($data['subscriber']['address']['street']['unparsed'][0])?$data['subscriber']['address']['street']['unparsed'][0]:null;
         $location =  isset($data['subscriber']['address']['location']['unparsed'])?$data['subscriber']['address']['location']['unparsed']:null;
-//        $addressFull = $this->splitAddress($data['address']);
         $dataAccount = [
             "type"=>$type,
             "sub_type"=>$sub_type,
@@ -2562,13 +2202,12 @@ class Screaper
             "worst_pay_status"=>$worstPayStatus,
             "m_pay_status"=>$payStatus,
             "oldest_year"=>$oldestYear,
-            "subscriber_code"=>$subscriberCode
+            "subscriber_code"=>$subscriberCode,
+            "secondary_agency"=>$data['secondaryAgency']
         ];
-//        $account = $report->clientTuAccounts()->create($dataAccount);
-
+        $account = $report->clientTuAccounts()->create($dataAccount);
         if(isset($data['paymentHistory']['paymentPattern'])){
             $dataAccountHistory = [];
-
             $startDate = date("Y-m-d", strtotime($data['paymentHistory']['paymentPattern']['startDate']['value']));
             $payments = str_split($data['paymentHistory']['paymentPattern']['text']);
 
@@ -2582,20 +2221,418 @@ class Screaper
 
                 $minus = $key+1;
                 $months = "-". $minus  ." months";
-                $date=  date("m-Y", strtotime($months, $time));
+                $date=  date("d-m-Y", strtotime($months, $time));
                 $dataAccountHistory[] = [
                     'month'=>date('m', strtotime($date)),
-                    'year'=>date('m', strtotime($date)),
+                    'year'=>date('Y', strtotime($date)),
                     'value'=>!empty($paymentPattern)?$paymentPattern->description:null
 
                 ];
             }
+            $account->accountPaymentHistories()->createMany($dataAccountHistory) ;
 
         }
 
-        if(!empty($dataAccountHistory)){
-//            $account->accountPaymentHistories()->createMany($dataAccountHistory);
+    }
+
+    public function dateFormat($dateString)
+    {
+        $string = str_replace(["/","-"],'',$dateString);
+        $month = substr($string, 0,2);
+        $date = substr($string, 2,2);
+        $year = substr($string, 4,4);
+        $date = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
+        return $date;
+    }
+
+    public function splitAddress($address)
+    {
+        $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
+                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
+
+        preg_match($addressState, $address, $matcheSate);
+        $state = isset($matcheSate[1])?$matcheSate[1]:null;
+
+        if($state != null){
+            $explodeAddress = explode(' '.$state.' ', $address);
+            $zipCode = isset($explodeAddress[1])?trim($explodeAddress[1]):null;
+            $city = null;
+            $street = null;
+            $aptRegex = "/(apt[A-z0-9]{1,2}\s|apt\s[A-z0-9]{1,2}\s|apt\s\#\s[A-z0-9]{1,2}\s|apt\s\#[A-z0-9]{1,2}\s
+                    |\#\s[A-z0-9]{1,2}\s|apta[A-z0-9]{1,2}\s|apta\s[A-z0-9]{1,2}\s|\#[A-z0-9]{1,2}|\#\s[A-z0-9]{1,2}
+                    |APTA\-[A-Z0-9]{1,2}|APTA\s\-[A-Z0-9]{1,2}|APTA\-\s[A-Z0-9]{1,2})/i";
+            $addressStreet = "/(STE+\s+[0-9]{1,}|street|st|AVENUE|AVE|PLACE|PL|ROAD|RD|SQUARE|SQ|Boulevard|BLVD|TERRACE|
+                        TER|Drive|DR|Court|CT|Building|BLDG|lane|ln|way)/i";
+
+            $poBoxReg = '/(.|)+(P\.O\. BOX|POB|PO BOX|PO Box|P O Box)\s[0-9]{1,}\s/im';
+            preg_match($poBoxReg, $explodeAddress[0], $matchesPoBox);
+
+            if(isset($matchesPoBox[0])){
+                $street = isset($matchesPoBox[0])?trim($matchesPoBox[0]):null;
+                $city = trim(str_replace([$street, ','], '', $explodeAddress[0]));
+                return [
+                    'street'=>$street,
+                    'state'=>$state,
+                    'city'=>$city,
+                    'zip'=>$zipCode,
+                ];
+            }else{
+                preg_match($aptRegex, $explodeAddress[0], $matchesApt);
+
+                if(isset($matchesApt[0])){
+                    $streetCity = explode($matchesApt[0], $explodeAddress[0]);
+                    $city = isset($streetCity[1])?trim($streetCity[1]):null;
+                    $street = trim($streetCity[0].$matchesApt[0]);
+                }else{
+                    preg_match_all($addressStreet, $explodeAddress[0], $matchesStreet);
+                    if (!empty($matchesStreet[0])) {
+                        $streetCity = explode($matchesStreet[0][count($matchesStreet[0])-1], $explodeAddress[0]);
+                        $city = isset($streetCity[1])?trim($streetCity[1]):null;
+                        $street = trim($streetCity[0].$matchesStreet[0][count($matchesStreet[0])-1]);
+                    }
+
+                }
+                return [
+                    'street'=>$street,
+                    'state'=>$state,
+                    'city'=>$city,
+                    'zip'=>$zipCode,
+                ];
+
+            }
+
+        }else{
+            return [
+                'street'=>null,
+                'state'=>$state,
+                'city'=>null,
+                'zip'=>null,
+            ];
         }
+    }
+
+    public function prepare_transunion_dispute_data_old($output)
+    {
+        set_time_limit(300);
+        $data = json_decode($output, true);
+        if($data['status'] != 'success') {
+            if (!empty($data['error']['message'])){
+                Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
+            }
+
+            ScraperError::create([
+                'user_id'=>$this->client_id,
+                'error'=>json_decode($data['error'])
+            ]);
+
+            // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
+            return false;
+        }
+
+        $json = json_decode(file_get_contents($data["report_filepath"]), true);
+        dd($json);
+
+        $type = 'TU_DIS';
+        $single = $json['Reports']['SINGLE_REPORT_TU'];
+        $full_name = $single['Name']["TUC"];
+        $ssn = $json['TU_CONSUMER_DISCLOSURE']['Indicative']['SSN'];
+        $dob = $single['DOB']["TUC"];
+        $reportDate = $single['ReportDate']["TUC"];
+        $reportNumber = $json['TU_CONSUMER_DISCLOSURE']['Indicative']['FIN'];
+        $currentAddress = $single['CurrentAddr']["TUC"];
+        $currentPhone = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["CurrentPhone"];
+
+        $dataClientReports = [
+            'user_id' => $this->client_id,
+            'type' => $type,
+            'full_name' => $full_name,
+            'ssn' => $ssn,
+            'dob' => $dob,
+            'report_date' => $reportDate,
+            'report_number'=> $reportNumber,
+            'current_address' => $currentAddress,
+            'current_phone' => $currentPhone,
+            'file_path' => $data["report_filepath"]
+        ];
+        $clientReport = ClientReport::create($dataClientReports);
+
+        $dataName = [];
+        $aka = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["AKA"];
+        if(!empty($aka)){
+            foreach($aka as $info){
+                $dataName[] = [
+                    'full_name'=> $info,
+                    'nin'=> null
+                ] ;
+            }
+        }
+        $clientReport->clientNames()->createMany($dataName);
+
+        $dataPhone = [];
+
+        $currentPhone=[
+            'current'=> 1,
+            'number'=> $currentPhone,
+            'type'=> null
+        ] ;
+        array_push($dataPhone, $currentPhone);
+        if(!empty($json['TU_CONSUMER_DISCLOSURE']['Indicative']["Phone"])){
+
+            foreach($json['TU_CONSUMER_DISCLOSURE']['Indicative']["Phone"] as $infoPhone)
+            {
+                $dataPhone[] = [
+                    'client_report_id' => 'id',
+                    'current'=> 0,
+                    'number'=> $infoPhone,
+                    'type'=> null
+                ] ;
+            }
+        }
+        $clientReport->clientPhones()->createMany($dataPhone);
+
+        $dataAddress = [];
+        $address = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["Address"];
+        $addressPr = $json['TU_CONSUMER_DISCLOSURE']['Indicative']["PreviousAddress"];
+        $cityCurrent = explode(',',$address['Location']);
+        $stateCurrent = explode(' ',trim($cityCurrent[1]));
+        $currentAddress = [
+            'current'=> 1,
+            'street' => $address['Street'],
+            'city' => $cityCurrent[0],
+            'state'=>trim($stateCurrent[0]),
+            'zip'=> trim($stateCurrent[1]),
+            'type'=>null,
+            'ain'=>null,
+            'geographical_code' => null,
+            'date_reported'=>$address['DateReported']
+        ] ;
+        array_push($dataAddress, $currentAddress);
+
+        if(!empty($addressPr)){
+            foreach($addressPr as $infoAddress)
+            {
+                $city = explode(',',$infoAddress['Location']);
+                $state = explode(' ',trim($city[1]));
+                $dataAddress[] = [
+                    'current'=> 0,
+                    'street' => $infoAddress['Street'],
+                    'city' => $city[0],
+                    'state'=>trim($state[0]),
+                    'zip'=> trim($state[1]),
+                    'type'=>null,
+                    'ain'=>null,
+                    'geographical_code' => null,
+                    'date_reported'=>$infoAddress['DateReported']
+                ] ;
+            }
+        }
+
+        $clientReport->clientAddresses()->createMany($dataAddress);
+
+        $currentEmployer =  $json['TU_CONSUMER_DISCLOSURE']['Indicative']['CurrentEmployer'];
+        $previousEmployer =  $json['TU_CONSUMER_DISCLOSURE']['Indicative']['PreviousEmployer'];
+        $dataEmployer = [];
+        $currentEmployerArr = [
+            'current'=> 1,
+            'name' => $currentEmployer['EmployerName'],
+            'occupation' => $currentEmployer['Occupation'],
+            'street' => $currentEmployer['Location'],
+            'city' => $currentEmployer['City'],
+            'state'=>$currentEmployer['State'],
+            'zip'=> null,
+            'phone'=>null,
+            'type'=>null,
+        ] ;
+        array_push($dataEmployer, $currentEmployerArr);
+        if (!empty($previousEmployer)) {
+            foreach($previousEmployer as $infoEmployer){
+                $dataEmployer[] = [
+                    'current'=> 0,
+                    'name' => $infoEmployer['EmployerName'],
+                    'occupation' => $infoEmployer['Occupation'],
+                    'street' => $infoEmployer['Location'],
+                    'city' => $infoEmployer['City'],
+                    'state'=>$infoEmployer['State'],
+                    'zip'=> null,
+                    'phone'=>null,
+                    'type'=>null,
+                ] ;
+            }
+        }
+        $clientReport->clientEmployers()->createMany($dataEmployer);
+
+        $dataSummery= [
+            'open_accounts'=>$single['OpenAccts']['TUC'],
+            'total_accounts'=>$single['TotalAccounts']['TUC'],
+            'total_balances'=>$single['TotalBalances']['TUC'],
+            'close_accounts'=>$single['CloseAccounts']['TUC'],
+            'total_monthly_payment'=>$single['TotalMonthlyPayments']['TUC'],
+            'delinquent_account'=>$single['DelinquentAccounts']['TUC'],
+            'derogatory_account'=>$single['DerogatoryAccounts']['TUC'],
+            'public_records'=>$single['PublicRecords']['TUC'],
+            'inquiry_summary'=> null,
+        ];
+        $clientReport->clientTuSummary()->create($dataSummery);
+
+        $dataPublicRecord = [];
+        $publicRecords =  $json['TU_CONSUMER_DISCLOSURE']['publicRecord'];
+
+        if(!empty($publicRecords)) {
+            foreach ($publicRecords as $publicRecord) {
+
+                $splitAddress = $this->splitAddress($publicRecord['address']);
+                $howFiled = null;
+                $status = null;
+                $assetsAmount = null;
+                $exemptAmount = null;
+
+                if(!empty($single['PublicRecords']['TUC'])){
+                    foreach ($single['PubRecs'] as $type =>$infoPublicRec){
+                        if(!empty($infoPublicRec)){
+                            foreach($infoPublicRec as $records){
+                                $month = substr($records['DateFiled']['TUC'], 0,2);
+                                $date = substr($records['DateFiled']['TUC'], 2,2);
+                                $year = substr($records['DateFiled']['TUC'], 4,4);
+                                $dateFiled = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
+                                if($publicRecord['docketNumber'] ==$records['ReferenceNumber']['TUC'] &&
+                                    $publicRecord['dateFiled'] == $dateFiled){
+                                    $howFiled = $records['How Filed']['TUC'];
+                                    $status = $records['Status']['TUC'];
+                                    $assetsAmount = $records['AssetAmount']['TUC'];
+                                    $exemptAmount = $records['ExemptAmount']['TUC'];
+                                    $remarks = $records['Remarks']['TUC'];
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $dataPublicRecord[]=[
+                    "suppression_indicator" => $publicRecord['suppressionIndicator'],
+                    "name" => $publicRecord['name'],
+                    "public_record_handle" => $publicRecord['publicRecordHandle'],
+                    "address" => $publicRecord['address'],
+                    "street" => $splitAddress['street'],
+                    "city" => $splitAddress['city'],
+                    "state" => $splitAddress['state'],
+                    "zip" => $splitAddress['zip'],
+                    "docket_number" => $publicRecord['docketNumber'],
+                    "phone" => $publicRecord['phone'],
+                    "date_effective" => $publicRecord['dateEffective'],
+                    "liabilities" => $publicRecord['liabilities'],
+                    "date_effective_label" => $publicRecord['dateEffectiveLabel'],
+                    "date_filed" => $publicRecord['dateFiled'],
+                    "date_paid" => $publicRecord['datePaid'],
+                    "type" => $publicRecord['type'],
+                    "court_type" => $publicRecord['courtType'],
+                    "court_type_description" => $publicRecord['courtTypeDescription'],
+                    "responsibility" => $publicRecord['responsibility'],
+                    "assets" => $publicRecord['assets'],
+                    "amount" => $publicRecord['amount'],
+                    "plaintiff" => $publicRecord['plaintiff'],
+                    "plaintiff_attorney" => $publicRecord['plaintiffAttorney'],
+                    "estimated_deletionDate" => $publicRecord['estimatedDeletionDate'],
+                    'how_filed'=>$howFiled,
+                    'staus'=>$status,
+                    'assets_amount'=>$assetsAmount,
+                    'exempt_amount' => $exemptAmount,
+                    'remarks'=> $remarks,
+
+                ];
+
+            }
+        }
+        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
+
+        $trades =  $json['TU_CONSUMER_DISCLOSURE']['trade'];
+
+        if(!empty($trades)){
+            foreach($trades as $trade){
+                $type = "TU_DIS";
+                $sub_type = "trade";
+                $singleAccounts = $single['Accounts'];
+                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
+            }
+        }
+
+        $collections =  $json['TU_CONSUMER_DISCLOSURE']['collection'];
+
+        if(!empty($collections)){
+            foreach($collections as $collection){
+                $type = "TU_DIS";
+                $sub_type = "collection";
+                $singleAccounts = $single['Accounts'];
+                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $collection, $singleAccounts);
+            }
+        }
+
+        $inquiries =  $json['TU_CONSUMER_DISCLOSURE']['Inquiries'];
+        $dataInquiry = [];
+        foreach ($inquiries as $inquiryKey => $inquiryValues) {
+            if(!empty($inquiryValues)){
+                foreach($inquiryValues as $inquiryValue){
+                    $inquiryDatesJson = null;
+                    if($inquiryValue['InquiryDates']!=null){
+                        $inquiryDatesArr = explode(',',$inquiryValue['InquiryDates']);
+                        $inquiryDates=[];
+                        foreach($inquiryDatesArr as $inquiryDate){
+                            $inquiryDates[] = $this->dateFormat(trim($inquiryDate));
+                        }
+                        $inquiryDatesJson = json_encode($inquiryDates);
+                    }
+                    $state = null;
+                    $zipCode = null;
+                    $city = null;
+                    $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
+                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
+                    preg_match($addressState, $inquiryValue['Location'], $matcheSate);
+                    $state = isset($matcheSate[1])?$matcheSate[1]:null;
+                    if($state != null) {
+                        $explodeAddress = explode($state, $inquiryValue['Location']);
+                        $zipCode = isset($explodeAddress[1]) ? trim($explodeAddress[1]) : null;
+                        $city = isset($explodeAddress[1]) ? trim(str_replace(',','',$explodeAddress[1])) : null;
+                    }
+                    $dataInquiry[]=[
+                        "inquiry_type"=>$inquiryKey,
+                        "inquiry_id" => $inquiryValue['inquiryId'],
+                        "industry_code" => $inquiryValue['industryCode'],
+                        "member_code" => $inquiryValue['memberCode'],
+                        "description" => $inquiryValue['Description'],
+                        "owner"=>null,
+                        "date_of_inquiry"=>null,
+                        "permissible_purpose" => $inquiryValue['PermissiblePurpose'],
+                        "subscriber_name" => $inquiryValue['subscriberName'],
+                        "requestor_name" => $inquiryValue['requestorName'],
+                        "subscriber_type" => $inquiryValue['SubscriberType'],
+                        "date" => $inquiryValue['Date']!= null?$this->dateFormat($inquiryValue['Date']):null,
+                        "requested_on_dates" => $inquiryValue['RequestedOnDates']!= null?$this->dateFormat($inquiryValue['RequestedOnDates']):null,
+                        "requested_dates" => $inquiryValue['RequestedDates']!= null?$this->dateFormat($inquiryValue['RequestedDates']):null,
+                        "inquiry_dates" =>$inquiryDatesJson,
+                        "address" => $inquiryValue['Address'],
+                        "city" => $city,
+                        "state" => $state,
+                        "zip" => $zipCode,
+                        "phone" => $inquiryValue['Phone'],
+                    ];
+
+                }
+            }
+        }
+
+        $clientReport->clientTuInquiries()->createMany($dataInquiry);
+
+        $statements =  $json['TU_CONSUMER_DISCLOSURE']['ConsumerStatement'];
+        $dataConsumerStatement = [];
+        foreach ($statements as $statement) {
+            $dataConsumerStatement[]=[
+                'type'=>$statement['type'],
+                'statement'=>$statement['text'],
+                'description'=>$statement['expirationDescription'],
+            ];
+        }
+
+        $clientReport->clientTuStatements()->createMany($dataConsumerStatement);
     }
 
     public function dataTransUnionAccountOld($report, $type, $sub_type, $data, $singleAccounts)
@@ -2730,84 +2767,6 @@ class Screaper
         }
         if(!empty($dataAccountHistory)){
             $account->accountPaymentHistories()->createMany($dataAccountHistory);
-        }
-    }
-
-    public function dateFormat($dateString)
-    {
-        $string = str_replace(["/","-"],'',$dateString);
-        $month = substr($string, 0,2);
-        $date = substr($string, 2,2);
-        $year = substr($string, 4,4);
-        $date = date("Y-m-d", strtotime($month.'/'.$date.'/'.$year));
-        return $date;
-    }
-
-    public function splitAddress($address)
-    {
-
-
-        $addressState = "/.+?(AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|
-                    MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)+\s+\b[0-9]{5}/";
-
-        preg_match($addressState, $address, $matcheSate);
-        $state = isset($matcheSate[1])?$matcheSate[1]:null;
-
-        if($state != null){
-            $explodeAddress = explode(' '.$state.' ', $address);
-            $zipCode = isset($explodeAddress[1])?trim($explodeAddress[1]):null;
-            $city = null;
-            $street = null;
-            $aptRegex = "/(apt[A-z0-9]{1,2}\s|apt\s[A-z0-9]{1,2}\s|apt\s\#\s[A-z0-9]{1,2}\s|apt\s\#[A-z0-9]{1,2}\s
-                    |\#\s[A-z0-9]{1,2}\s|apta[A-z0-9]{1,2}\s|apta\s[A-z0-9]{1,2}\s|\#[A-z0-9]{1,2}|\#\s[A-z0-9]{1,2}
-                    |APTA\-[A-Z0-9]{1,2}|APTA\s\-[A-Z0-9]{1,2}|APTA\-\s[A-Z0-9]{1,2})/i";
-            $addressStreet = "/(STE+\s+[0-9]{1,}|street|st|AVENUE|AVE|PLACE|PL|ROAD|RD|SQUARE|SQ|Boulevard|BLVD|TERRACE|
-                        TER|Drive|DR|Court|CT|Building|BLDG|lane|ln|way)/i";
-
-            $poBoxReg = '/(.|)+(P\.O\. BOX|POB|PO BOX|PO Box|P O Box)\s[0-9]{1,}\s/im';
-            preg_match($poBoxReg, $explodeAddress[0], $matchesPoBox);
-
-            if(isset($matchesPoBox[0])){
-                $street = isset($matchesPoBox[0])?trim($matchesPoBox[0]):null;
-                $city = trim(str_replace([$street, ','], '', $explodeAddress[0]));
-                return [
-                    'street'=>$street,
-                    'state'=>$state,
-                    'city'=>$city,
-                    'zip'=>$zipCode,
-                ];
-            }else{
-                preg_match($aptRegex, $explodeAddress[0], $matchesApt);
-
-                if(isset($matchesApt[0])){
-                    $streetCity = explode($matchesApt[0], $explodeAddress[0]);
-                    $city = isset($streetCity[1])?trim($streetCity[1]):null;
-                    $street = trim($streetCity[0].$matchesApt[0]);
-                }else{
-                    preg_match_all($addressStreet, $explodeAddress[0], $matchesStreet);
-                    if (!empty($matchesStreet[0])) {
-                        $streetCity = explode($matchesStreet[0][count($matchesStreet[0])-1], $explodeAddress[0]);
-                        $city = isset($streetCity[1])?trim($streetCity[1]):null;
-                        $street = trim($streetCity[0].$matchesStreet[0][count($matchesStreet[0])-1]);
-                    }
-
-                }
-                return [
-                    'street'=>$street,
-                    'state'=>$state,
-                    'city'=>$city,
-                    'zip'=>$zipCode,
-                ];
-
-            }
-
-        }else{
-            return [
-                'street'=>null,
-                'state'=>$state,
-                'city'=>null,
-                'zip'=>null,
-            ];
         }
     }
 }

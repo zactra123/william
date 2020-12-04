@@ -79,6 +79,11 @@ class ClientReportTuAccount extends Model
         'm_pay_status',
         'oldest_year',
         'subscriber_code',
+        'secondary_agency',
+    ];
+
+    protected $casts = [
+        'secondary_agency' => 'array'
     ];
 
     public function clientReport()
