@@ -6,6 +6,7 @@ use App\ScraperError;
 use App\User;
 use App\ClientReport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Process\Process;
@@ -1304,18 +1305,20 @@ class Screaper
 //        $clientReport->clientTuPublicRecords()->createMany($dataPublicRecord);
 //        $trades =  $json['TU_CONSUMER_DISCLOSURE']['trade'];
         $trades = isset($credit['trade'])?$credit['trade']:null;
-//        if(!empty($trades)){
-//            foreach($trades as $trade){
-//                $type = "TU_DIS";
-//                $sub_type = "trade";
-//                $singleAccounts = $single['Accounts'];
-////                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
-//                $this->dataTransUnionAccount('1', $type, $sub_type, $trade, $singleAccounts);
-//            }
-//        }
+//        dd($trades);
+        if(!empty($trades)){
+            foreach($trades as $trade){
+                $type = "TU_DIS";
+                $sub_type = "trade";
+                $singleAccounts = $single['Accounts'];
+//                $this->dataTransUnionAccount($clientReport, $type, $sub_type, $trade, $singleAccounts);
+                $this->dataTransUnionAccount('1', $type, $sub_type, $trade, $singleAccounts);
+            }
+        }
 
 //        $collections =  $json['TU_CONSUMER_DISCLOSURE']['collection'];
         $collections = isset($credit['collection'])?$credit['collection']:null;
+//        dd($trades,$collections);
 
 
 //        if(!empty($collections)){
@@ -1362,7 +1365,6 @@ class Screaper
 
         if(!empty($inquiriesPromotion)){
             foreach ($inquiriesPromotion as $inquiryProm) {
-
                 $inquiryDatesArr = $inquiryProm['inquiryDates']!= null?explode(',',$inquiryProm['inquiryDates']):null;
                 $inquiryDatesJson = null;
                 if($inquiryDatesArr!=null){
@@ -1443,7 +1445,7 @@ class Screaper
 
 //        $clientReport->clientTuStatements()->createMany($dataConsumerStatement);
         }
-
+        dd('asd');
     }
 
     public function prepare_transunion_dispute_data_old($output)
@@ -2449,7 +2451,7 @@ class Screaper
 
     public function dataTransUnionAccount($report, $type, $sub_type, $data, $singleAccounts)
     {
-
+//        dd($report, $type, $sub_type, $data, $singleAccounts);
         $currentBalance = null;
         $dateAccountStatus = null;
         $dateReported = null;
@@ -2475,9 +2477,7 @@ class Screaper
                         $dateReported = $accounts['dateReported']["TUC"]!=null?
                             $this->dateFormat($accounts['dateReported']["TUC"]):null;
                         $accountCondition = $accounts['accountCondition']["TUC"];
-                        $late30Count = $accounts['late30Count']["TUC"];
-                        $late60Count = $accounts['late60Count']["TUC"];
-                        $late90Count = $accounts['late90Count']["TUC"];
+
                         $worstPayStatus = $accounts['WorstPayStatus']["TUC"];
                         $payStatus = $accounts['PayStatus']["TUC"];
                         $oldestYear  = isset($accounts['oldestYear']["TUC"])?$accounts['oldestYear']["TUC"]:null;
@@ -2518,15 +2518,15 @@ class Screaper
             "account_type" => $data['portfolioType'],
             "account_type_description" => $data['portfolioTypeDescription'],
             "loan_type" => isset($data['loanType']['description'])?$data['loanType']['description']:null,
-//            "balance" => $data['balance'],
+            "balance" => isset($data['currentBalance'])?$data['currentBalance']:null,
             "date_effective_label" => $data['dateEffectiveLabel'],
-            "date_effective" => isset($data['dateEffective']['value'])?$data['dateEffective']['value']:null,
+            "date_effective" => isset($data['dateEffective']['value'])?date("Y-m-d", strtotime($data['dateEffective']['value'])):null,
 //            "date_updated" => $data['dateUpdated'],
-//            "last_payment_amount" => $data['lastPaymentAmount'],
-//            "high_balance" => $data['highBalance'],
-//            "original_amount" => $data['originalAmount'],
-//            "original_charge_off" => $data['originalChargeOff'],
-//            "original_creditor" => $data['originalCreditor'],
+            "last_payment_amount" => isset($data['mostRecentPayment']['amount'])?$data['mostRecentPayment']['amount']:null,
+            "high_balance" =>null,
+            "original_amount" => isset($data['highCredit'])?$data['highCredit']:null,
+            "original_charge_off" => isset($data['additionalTradeAccount']['original']['chargeOff'])?$data['additionalTradeAccount']['original']['chargeOff']:null,
+            "original_creditor" => isset($data['additionalTradeAccount']['original']['description'])?$data['additionalTradeAccount']['original']['description']:null,
             "credit_limit" => isset($data['creditLimit'])?$data['creditLimit']:null,
             "past_due" =>isset($data['pastDue'])?$data['pastDue']:null,
             "pay_status" => isset($data['accountRatingDescription'])?$data['accountRatingDescription']:null,
@@ -2541,7 +2541,7 @@ class Screaper
 //            "mortgage_info" => $data['mortgageInfo'],
 //            "account_sale_info" => $data['accountSaleInfo'],
             "estimated_deletion_date" => isset($data['estimatedDeletionDate']['value'])?date("Y-m-d", strtotime($data['estimatedDeletionDate']['value'])):null,
-//            "last_payment_date" => $data['lastPaymentDate'],
+            "last_payment_date" => isset($data['mostRecentPayment']['date']['value'])?date("Y-m-d", strtotime($data['mostRecentPayment']['date']['value'])):null,
             "account_history_start_date"=>isset($data['paymentHistory']['paymentPattern']['startDate']['value'])?date("Y-m-d", strtotime($data['paymentHistory']['paymentPattern']['startDate']['value'])):null,
             "hist_balance_list" => isset($data['histBalanceList'])?$data['histBalanceList']:null,
             "hist_payment_due_list" => isset($data['histPaymentDueList'])?$data['histPaymentDueList']:null,
@@ -2550,7 +2550,7 @@ class Screaper
             "hist_credit_limit_list" => isset($data['histCreditLimitList'])?$data['histCreditLimitList']:null,
             "hist_high_credit_list" => isset($data['histHighCreditList'])?$data['histHighCreditList']:null,
             "hist_remark_list" => isset($data['histRemarkList'])?$data['histRemarkList']:null,
-            "remark" => $data['remark'],
+            "remark" => isset($data['remark'])?json_encode($data['remark']):null,
             "rating" => isset($data['paymentHistory']['paymentPattern']['text'])?$data['paymentHistory']['paymentPattern']['text']:null,
             "current_balance"=> $currentBalance,
             "date_account_status"=>$dateAccountStatus,
@@ -2565,23 +2565,34 @@ class Screaper
             "subscriber_code"=>$subscriberCode
         ];
 //        $account = $report->clientTuAccounts()->create($dataAccount);
-        $dataAccountHistory = [];
-//        foreach($data['paymentPattern'] as $paymentPattern){
-//            if(!empty($paymentPattern)){
-//                $dataAccountHistory = [];
-//                foreach($paymentPattern as $date => $value){
-//
-//                    $month = substr($date, 0,2);
-//                    $year = substr($date, 2,4);
-//                    $dataAccountHistory[] = [
-//                        'month'=>$month,
-//                        'year'=>$year,
-//                        'value'=>$value
-//
-//                    ];
-//                }
-//            }
-//        }
+
+        if(isset($data['paymentHistory']['paymentPattern'])){
+            $dataAccountHistory = [];
+
+            $startDate = date("Y-m-d", strtotime($data['paymentHistory']['paymentPattern']['startDate']['value']));
+            $payments = str_split($data['paymentHistory']['paymentPattern']['text']);
+
+            foreach($payments as $key => $payment) {
+                $paymentPattern = Db::table('tu_payment_patterns')
+                    ->where('codes', $payment)
+                    ->first();
+
+                $time = mktime(0, 0, 0, date('m',strtotime($startDate)),
+                    date('d',strtotime($startDate)), date('Y',strtotime($startDate)));
+
+                $minus = $key+1;
+                $months = "-". $minus  ." months";
+                $date=  date("m-Y", strtotime($months, $time));
+                $dataAccountHistory[] = [
+                    'month'=>date('m', strtotime($date)),
+                    'year'=>date('m', strtotime($date)),
+                    'value'=>!empty($paymentPattern)?$paymentPattern->description:null
+
+                ];
+            }
+
+        }
+
         if(!empty($dataAccountHistory)){
 //            $account->accountPaymentHistories()->createMany($dataAccountHistory);
         }
