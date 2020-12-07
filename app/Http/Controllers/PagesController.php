@@ -22,7 +22,7 @@ use Response;
 
 class PagesController extends Controller
 {
-    public function welcome(ReadPdfData $readPdfData, Screaper $screaper)
+    public function welcome(ReadPdfData $readPdfData)
     {
         $pageContentUp = DB::table('home_pages')->get();
 
