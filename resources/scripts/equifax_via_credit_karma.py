@@ -83,10 +83,11 @@ class equifaxCreditKarma:
 
         self.driver.get('https://www.creditkarma.com/credit-health/equifax/credit-report')
         WebDriverWait(self.driver, 300).until(EC.url_to_be('https://www.creditkarma.com/credit-health/equifax/credit-report'))
-        time.sleep(5)
+        time.sleep(10)
 
         for request in self.driver.requests:
             self.process_browser_log_entry(request)
+        time.sleep(10)
 
     def process_browser_log_entry(self, request):
         try:
