@@ -5,9 +5,7 @@ import xlwt
 import sys
 import xlrd
 import time
-# from seleniumwire import webdriver
-from selenium import webdriver
-from selenium.webdriver.chrome.options import DesiredCapabilities
+from seleniumwire import webdriver
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -29,113 +27,76 @@ class equifaxCreditKarma:
         self.json_directory = arguments[3]
         self.db_id = arguments[4]
 
-#         PROXY = '64.137.162.212:3128'
-#         PROXY = '199.191.56.218:3128'
-        # PROXY = '206.127.88.18:80'
-        # PROXY = '199.195.252.161:8080'
-        # PROXY = '206.221.176.130:3128'
-        # PROXY = '45.77.68.5:3128'
-
-        caps = webdriver.DesiredCapabilities.CHROME
-#         caps['proxy'] = {
-#             "httpProxy": PROXY,
-#             "ftpProxy": PROXY,
-#             "sslProxy": PROXY,
-#             "proxyType": "MANUAL",
-#
-#         }
-        caps['loggingPrefs'] = {'performance': 'ALL'}
-        driver = webdriver.Chrome(desired_capabilities=caps)
-        appState = {
-            "recentDestinations": [
-                {
-                    "id": "Save as PDF",
-                    "origin": "local",
-                    "account": ""
-                }
-            ],
-            "selectedDestinationId": "Save as PDF",
-            "version": 2
-        }
-        profile = {
-            'printing.print_preview_sticky_settings.appState': json.dumps(appState)}
-
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("useAutomationExtension", False)
-        options.add_experimental_option(
-                "excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('prefs', profile)
-        options.add_argument('--kiosk-printing')
+        options = webdriver.FirefoxOptions()
+        options.add_argument('--disable-gpu')
         options.add_argument('--headless')
+        user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+        options.set_preference("general.useragent.override", user_agent)
+        try:
+            self.driver = webdriver.Firefox(
+                executable_path=os.environ.get('GECKO_DRIVER_PATH', '/var/www/python/geckodriver'), log_path='/home/ubuntu/geckodriver.log', options=options)
+        except Exception as e:
+            print(e)
+            sys.exit()
 
-        self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=options)
-
-        # create directory if not exist
         if not os.path.exists(self.json_directory):
             os.makedirs(self.json_directory)
         filename = datetime.datetime.now().strftime('%Y_%m_%d_%H_%M_%S') + '.json'
-        self.report_filepath = self.json_directory +'/report_numbers_'+filename
+        self.report_filepath = self.json_directory +'/report_'+filename
 
 
     def call(self):
         try:
             self.login()
-
+#             self.print_report()
+            self.driver.close()
             return {
                 'status': 'success',
                 'report_filepath': self.report_filepath
             }
         except Exception as e:
+            self.driver.close()
             return {
                 'status': 'error',
-                'error': e[0],
+                'error': e,
                 'report_filepath': self.report_filepath
             }
 
     def login(self):
+        self.driver.get('https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard')
+        time.sleep(5)
+
+        WebDriverWait(self.driver, 50).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
+        time.sleep(2)
+        uname = self.driver.find_element_by_xpath(
+            '//*[@id="username"]')
+        uname.click()
+        uname.send_keys(self.username)
+
+        upass = self.driver.find_element_by_xpath(
+            '//*[@id="password"]')
+        upass.click()
+        upass.send_keys(self.password)
+        self.driver.find_element_by_xpath(
+            '//*[@id="Logon"]').click()
+        WebDriverWait(self.driver, 300).until(EC.url_to_be('https://www.creditkarma.com/dashboard'))
+
+        self.driver.get('https://www.creditkarma.com/credit-health/equifax/credit-report')
+        WebDriverWait(self.driver, 300).until(EC.url_to_be('https://www.creditkarma.com/credit-health/equifax/credit-report'))
+        time.sleep(5)
+
+        for request in self.driver.requests:
+            self.process_browser_log_entry(request)
+
+    def process_browser_log_entry(self, request):
         try:
-            self.driver.get('https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard')
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
-            time.sleep(2)
-            uname = self.driver.find_element_by_xpath(
-                '//*[@id="username"]')
-            uname.click()
-
-            uname.send_keys(self.username)
-
-            upass = self.driver.find_element_by_xpath(
-                '//*[@id="password"]')
-            upass.click()
-            upass.send_keys(self.password)
-
-            self.driver.find_element_by_xpath(
-                '//*[@id="Logon"]').click()
-            WebDriverWait(self.driver, 300).until(EC.url_to_be('https://www.creditkarma.com/dashboard'))
-
-            self.driver.get('https://www.creditkarma.com/credit-health/equifax/report')
-            # WebDriverWait(self.driver, 20).until(EC.url_to_be('https://www.creditkarma.com/credit-health/equifax/report'))
-            time.sleep(10)
-            browser_log = self.driver.get_log('performance')
-
-            for request in browser_log:
-                self.process_browser_log_entry(request)
-        except:
-            pass
-        time.sleep(8)
-        self.driver.get('https://www.creditkarma.com/myfinances/creditreport/equifax/view/print#overview')
-        self.driver.execute_script('window.print();')
-
-    def process_browser_log_entry(self, entry):
-        response = json.loads(entry['message'])['message']
-        try:
-            if response["params"]["response"]:
-                if 'https://api.creditkarma.com/mobile/4.5' in response["params"]["response"]["url"]:
-                    body = self.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': response["params"]["requestId"]})['body']
-                    data = json.loads(body)[3]
+            if request.response:
+                if 'https://api.creditkarma.com/mobile/4.5' in request.url:
+                    data = json.loads(request.response.body)[1]["data"]["creditReportsV2"]["creditReport"]
                     with open(self.report_filepath, "a+") as f:
                         sorted = json.dumps(data, indent=4)
                         f.write(sorted)
-        except:
+        except Exception as e:
             pass
 
 

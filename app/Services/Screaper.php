@@ -151,9 +151,6 @@ class Screaper
         $this->logger->debug("Command for Fetching Equifax:", ["command" => $command]);
         $output = shell_exec($command);
         $this->logger->debug("OUTPUT Fetching Equifax:", ["output" => $output]);
-//        $output = "{'status': 'success', 'report_filepath': 'reports/7/equifax_karma/report_numbers_2020_09_02_08_49_17.json'}";
-
-//        $output = "{'status': 'success', 'report_filepath': '../storage/reports/areev/experian_view_report/report_data_2020_08_15_15_32_53.json'}";
         $this->prepare_equifax_karma_report_data(str_replace('\'', '"',$output));
         return true;
     }
@@ -1780,12 +1777,9 @@ class Screaper
             // @Todo: Errore save anel mi hat table-um vor heto nayenq inch xndira exel
             return false;
         }
-        $path = storage_path($data["report_filepath"]);
-        $json = json_decode(file_get_contents($path), true);
-        $type = 'EQ';
 
-        $data = $json['data']['creditReportsV2']['equifax'];
-        $equifax = count($data)>=1?$data[0]:null;
+        $type = 'EQ';
+        $equifax = json_decode(file_get_contents($data["report_filepath"]), true);
         $reportedDate = $equifax['dateReportPulled']!= null ? date('Y-m-d',strtotime($equifax['dateReportPulled'])):null;
         $full_name = null;
 
@@ -1797,8 +1791,7 @@ class Screaper
         }
 
         $dataClientReports = [
-//            'user_id' => $this->client_id,
-            'user_id' => 2,
+            'user_id' => $this->client_id,
             'type' => $type,
             'full_name' => $full_name,
             'ssn' => null,
@@ -1808,7 +1801,7 @@ class Screaper
             'current_address' => null,
             'current_phone' => null,
             'spouse' => null,
-            'file_path' => $path
+            'file_path' => $data["report_filepath"]
         ];
         $clientReport = ClientReport::create($dataClientReports);
 
