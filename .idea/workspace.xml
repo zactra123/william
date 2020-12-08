@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23cc027d-b9a6-4160-bb81-85cb5e3c5f36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/client/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ccc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ccc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client_details/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/todo/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/todo/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Screaper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Screaper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scripts/equifax_via_credit_karma.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scripts/equifax_via_credit_karma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/scripts/experian_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scripts/experian_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,6 +256,9 @@
       <workItem from="1577184438352" duration="8344000" />
       <workItem from="1577205490217" duration="4950000" />
       <workItem from="1605352710297" duration="5036000" />
+      <workItem from="1607092925404" duration="8034000" />
+      <workItem from="1607173971791" duration="25754000" />
+      <workItem from="1607349507830" duration="9832000" />
     </task>
     <servers />
   </component>
@@ -278,9 +279,10 @@
       <screen x="39" y="27" width="1327" height="741" />
     </state>
     <state x="393" y="135" width="618" height="586" key="find.popup/39.27.1327.741@39.27.1327.741" timestamp="1605356437702" />
-    <state x="365" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1605358137565">
-      <screen x="39" y="27" width="1327" height="741" />
+    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup" timestamp="1607095743609">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup/1920.0.1920.1080/39.27.1881.1053@1920.0.1920.1080" timestamp="1607095743609" />
     <state x="365" y="89" width="672" height="678" key="search.everywhere.popup/39.27.1327.741@39.27.1327.741" timestamp="1605358137565" />
   </component>
   <component name="XDebuggerManager">

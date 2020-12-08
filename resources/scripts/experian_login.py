@@ -5,6 +5,7 @@ import xlwt
 import sys
 import xlrd
 import time
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.options import DesiredCapabilities
 from selenium.webdriver.common.proxy import Proxy, ProxyType
@@ -53,7 +54,9 @@ class experianLogin:
 #             "http": "http://%s"%PROXY,
 #             "https": "http://%s"%PROXY
 #         }
-
+        caps = webdriver.DesiredCapabilities.CHROME
+        caps['loggingPrefs'] = {'performance': 'ALL'}
+        driver = webdriver.Chrome(desired_capabilities=caps)
         appState = {
             "recentDestinations": [
                 {
@@ -74,7 +77,7 @@ class experianLogin:
                 "excludeSwitches", ["enable-automation"])
         self.options.add_experimental_option('prefs', profile)
         self.options.add_argument('--kiosk-printing')
-        self.options.add_argument('--headless')
+#         self.options.add_argument('--headless')
 
         self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=self.options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
@@ -88,11 +91,14 @@ class experianLogin:
 
 
     def call(self):
+        self.login()
+        self.get_report()
+        sys.exit()
         try:
-            self.get_json()
+#             self.get_json()
             self.login()
             self.get_report()
-            self.get_report_numbers()
+#             self.get_report_numbers()
             self.driver.close()
             return {
                 'status': 'success',
@@ -215,7 +221,8 @@ class experianLogin:
 
 #         self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
         self.driver.get('https://usa.experian.com/login/index')
-        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
+        time.sleep(5)
+        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
         uname = self.driver.find_element_by_xpath(
             '//*[@id="username"]')
         uname.click()
@@ -325,7 +332,6 @@ class experianLogin:
                     'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
                     'message': block1.text.strip(),
                 })
-                return False
             except:
                 pass
 
@@ -377,11 +383,32 @@ class experianLogin:
             self.driver.switch_to.default_content
             self.driver.switch_to.window
             # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
-
+            time.sleep(15)
+            browser_log = self.driver.get_log('performance')
+            for request in browser_log:
+                self.process_browser_log_entry(request)
             time.sleep(3)
             # print(driver.current_window_handle)
             self.driver.execute_script('window.print();')
             time.sleep(5)
+
+    def process_browser_log_entry(self, entry):
+        response = json.loads(entry['message'])['message']
+        try:
+            if response["params"]["response"]:
+                if 'https://usa.experian.com/api/report/forcereload' in response["params"]["response"]["url"]:
+                    a = self.driver.execute_cdp_cmd('Network.replayXHR', {'requestId': response["params"]["requestId"]})
+                    print(a)
+                    time.sleep(5)
+                    body = self.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': response["params"]["requestId"]})
+                    print(body)
+#                     data = json.loads(body)
+#                     with open(self.report_filepath, "a+") as f:
+#                         sorted = json.dumps(data, indent=4)
+#                         f.write(sorted)
+        except Exception as e:
+            print(e)
+            pass
 
     def get_report_numbers(self):
         self.driver.switch_to_window(self.driver.window_handles[0])
@@ -450,5 +477,8 @@ class experianLogin:
                 sorted = json.dumps(repn, indent=4)
                 f.write(sorted)
 
+# display = Display(visible=0, size=(800, 600))
+# display.start()
 experian = experianLogin(sys.argv)
 print(experian.call())
+# display.close()
