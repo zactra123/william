@@ -93,7 +93,7 @@ class equifaxCreditKarma:
         try:
             if request.response:
                 if 'https://api.creditkarma.com/mobile/4.5' in request.url:
-                    if "creditReport" in request.response.body:
+                    if b'creditReport' in request.response.body:
                         body = json.loads(request.response.body)
                         with open(self.report_filepath, "a+") as f:
                             sorted = json.dumps(data, indent=4)
