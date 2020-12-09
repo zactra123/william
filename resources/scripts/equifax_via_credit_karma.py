@@ -96,7 +96,7 @@ class equifaxCreditKarma:
                     if b'creditReport' in request.response.body:
                         body = json.loads(request.response.body)
                         with open(self.report_filepath, "a+") as f:
-                            sorted = json.dumps(data, indent=4)
+                            sorted = json.dumps(body, indent=4)
                             f.write(sorted)
         except Exception as e:
             print(e)
