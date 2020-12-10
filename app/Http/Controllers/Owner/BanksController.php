@@ -360,9 +360,9 @@ class BanksController extends Controller
 
     public function storeBanksData()
     {
+        set_time_limit(1200);
         $collectionPath= storage_path('furnishers/collectionXumb.json');
         $collectionJson = json_decode(file_get_contents($collectionPath), true);
-
         foreach ($collectionJson as $collection){
             $additional = $collection;
             unset($additional['collection_street']);
@@ -373,7 +373,7 @@ class BanksController extends Controller
             unset($additional['collection_fax']);
             unset($additional['collection_name']);
 
-            $bankAddress[] = [
+            $bankAddress = [
                 'type' =>  'executive_address',
                 'street' =>$collection['collection_street'],
                 'city' =>$collection['collection_city'],
@@ -389,7 +389,6 @@ class BanksController extends Controller
             ] ;
             $credit_union = BankLogo::create($bankLogo);
             $bankAddress['bank_logo_id'] = $credit_union->id;
-
             BankAddress::create($bankAddress);
             BankAddress::create([
                 'bank_logo_id'=>$credit_union->id,
