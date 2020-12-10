@@ -360,13 +360,39 @@ class BanksController extends Controller
 
     public function storeBanksData()
     {
-        $creditUn = storage_path('furnishers/furnishers_for_remove.json');
-        $charters = json_decode(file_get_contents($creditUn), true);
-        foreach ($charters as $charter){
-            $credit_union = BankLogo::where("name", $charter["bank_name"])->get();
-            if ($credit_union->first()) {
-                $credit_union->first()->delete();
-            }
+        $collectionPath= storage_path('furnishers/collectionXumb.json');
+        $collectionJson = json_decode(file_get_contents($collectionPath), true);
+
+        foreach ($collectionJson as $collection){
+            $additional = $collection;
+            unset($additional['collection_street']);
+            unset($additional['collection_city']);
+            unset($additional['collection_state']);
+            unset($additional['collection_zip']);
+            unset($additional['collection_phone']);
+            unset($additional['collection_fax']);
+            unset($additional['collection_name']);
+
+            $bankAddress[] = [
+                'type' =>  'executive_address',
+                'street' =>$collection['collection_street'],
+                'city' =>$collection['collection_city'],
+                'state' =>$collection['collection_state'],
+                'zip' =>$collection['collection_zip'],
+                'phone_number' =>isset($collection['collection_phone'])?$collection['collection_phone']:null,
+                'fax_number' =>isset($collection['collection_fax'])?$collection['collection_fax']:null,
+
+            ];
+            $bankLogo =[
+                'name' =>$collection['collection_name'],
+                'additional_information'=>$additional
+            ] ;
+            $credit_union = BankLogo::create($bankLogo);
+            $bankAddress['bank_logo_id'] = $credit_union->id;
+
+            BankAddress::create($bankAddress);
+
+
         }
 
         dd('ok');

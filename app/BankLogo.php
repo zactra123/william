@@ -13,6 +13,10 @@ class BankLogo extends Model
         'name',
         'type',
         'path',
+        'additional_information'
+    ];
+    protected $casts = [
+        'additional_information' => 'array'
     ];
 
     const TYPES = [
