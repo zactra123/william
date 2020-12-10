@@ -391,6 +391,10 @@ class BanksController extends Controller
             $bankAddress['bank_logo_id'] = $credit_union->id;
 
             BankAddress::create($bankAddress);
+            BankAddress::create([
+                'bank_logo_id'=>$credit_union->id,
+                'type' =>  'registered_agent',
+            ]);
 
 
         }
