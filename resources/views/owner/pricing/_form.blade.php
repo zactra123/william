@@ -1,255 +1,535 @@
+<style>
+
+    .priceName{
+        width: 100%;
+        height: auto;
+        padding: 0;
+        float: left;
+    }
+    .price{
+        width: 20%;
+        height: auto;
+        padding: 0;
+        float: left;
+    }
+    .name{
+        width: 80%;
+        height: auto;
+        padding: 0;
+        float: left;
+
+    }
+
+</style>
+
 <input type="hidden" name="user_id" value="{{$pricing->user_id}}">
 <div class="form-group">
 
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input  type="text" class="form-control " name="inquiries" value="{{ $pricing->inquiries ?? $default->inquiries}}" placeholder="INQUIRIES" title="INQUIRIES">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right"> INQUIRIES $</label>
+                </div>
+                <div class="price">
+                    <input  type="text"  name="inquiries" value="{{ $pricing->inquiries ?? $default->inquiries}}"  title="INQUIRIES">
+                </div>
+            </div>
             {!! $errors->first('inquiries', '<p class="help-block">:message</p>') !!}
-
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control " name="personal_info" value="{{ $pricing->personal_info ?? $default->personal_info}}" placeholder="PERSONAL INFO" title="PERSONAL INFO">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">PERSONAL INFO $</label>
+                </div>
+                <div class="price">
+                    <input type="text" name="personal_info" value="{{ $pricing->personal_info ?? $default->personal_info}}"  title="PERSONAL INFO">
+                </div>
+            </div>
             {!! $errors->first('personal_info', '<p class="help-block">:message</p>') !!}
-
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control " name="fraud_alerts" value="{{ $pricing->fraud_alerts ?? $default->fraud_alerts}}" placeholder="FRAUD ALERTS" title="FRAUD ALERTS">
-            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">FRAUD ALERTS $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="fraud_alerts" value="{{ $pricing->fraud_alerts ?? $default->fraud_alerts}}"  title="FRAUD ALERTS">
+                </div>
+            </div>
+                    {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control " name="cc_accnt_bloking" value="{{ $pricing->cc_accnt_bloking ?? $default->cc_accnt_bloking }}" placeholder="CC ACCNT BLOCKING" title="CC ACCNT BLOCKING">
+            <div class="priceName">
+                <div class="name">
+                     <label style="float: right">CC ACCNT BLOCKING $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="cc_accnt_bloking" value="{{ $pricing->cc_accnt_bloking ?? $default->cc_accnt_bloking }}"  title="CC ACCNT BLOCKING">
+                </div>
+            </div>
             {!! $errors->first('cc_accnt_bloking', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO BLOCKING $</label>
+                </div>
+                <div class="price">
+                    <input type="text" class="form-control " name="auto_blocking" value="{{ $pricing->auto_blocking ?? $default->auto_blocking }}"  title="AUTO BLOCKING">
+                </div>
+            </div>
+                    {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
 
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control " name="auto_blocking" value="{{ $pricing->auto_blocking ?? $default->auto_blocking }}" placeholder="AUTO BLOCKING" title="AUTO BLOCKING">
-            {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control " name="mortgage_blocking" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking }}" placeholder="MORTGAGE BLOCKING" title="MORTGAGE BLOCKING">
-            {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
-
-        </div>
-    </div>
-</div>
-<div class="form-group ">
-    <div class="row">
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="p_loan_blocking" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}" placeholder="P. LOAN CLOCKING" title="P. LOAN CLOCKING">
-            {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="student_loan_blocking" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}" placeholder="STUDENT LOAN BLOCKING" title="STUDENT LOAN BLOCKING">
-            {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="cc_late" value="{{ $pricing->cc_late ?? $default->cc_late}}" placeholder="CC LATE" title="CC LATE">
-            {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MORTGAGE BLOCKING $</label>
+                </div>
+                <div class="price">
+                    <input type="text" class="form-control " name="mortgage_blocking" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking }}"  title="MORTGAGE BLOCKING">
+                </div>
+            </div>
+                    {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_late" value="{{ $pricing->auto_late ?? $default->auto_late}}" placeholder="AUTO LATE" title="AUTO LATE">
-            {!! $errors->first('auto_late', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">P. LOAN CLOCKING $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="p_loan_blocking" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="P. LOAN CLOCKING">
+                </div>
+            </div>
+                    {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
 
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="mortgage_late" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}" placeholder="MORTGAGE LATE" title="MORTGAGE LATE">
-            {!! $errors->first('auto_late', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">STUDENT LOAN BLOCKING $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="student_loan_blocking" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="STUDENT LOAN BLOCKING">
+                </div>
+            </div>
+                    {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="student_loan_late" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}" placeholder="STUDENT LOAN LATE" title="STUDENT LOAN LATE">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CC LATE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="cc_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CC LATE">
+                </div>
+            </div>
+                   {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="form-group ">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO LATE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_late" value="{{ $pricing->auto_late ?? $default->auto_late}}"  title="AUTO LATE">
+                </div>
+            </div>
+                    {!! $errors->first('auto_late', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MORTGAGE LATE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="mortgage_late" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}" title="MORTGAGE LATE">
+                </div>
+            </div>
+                    {!! $errors->first('auto_late', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">STUDENT LOAN LATE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="student_loan_late" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}" title="STUDENT LOAN LATE">
+                </div>
+            </div>
             {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
-
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="student_loan_charged_off" value="{{ $pricing->student_loan_charged_off ?? $default->student_loan_charged_off}}" placeholder="STUDENT LOAN CHARGED OFF" title="STUDENT LOAN LATE">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">STUDENT LOAN CHARGED OFF $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="student_loan_charged_off" value="{{ $pricing->student_loan_charged_off ?? $default->student_loan_charged_off}}"  title="STUDENT LOAN LATE">
+                </div>
+            </div>
             {!! $errors->first('student_loan_charged_off', '<p class="help-block">:message</p>') !!}
-
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="cc_charged_off" value="{{ $pricing->cc_charged_off ?? $default->cc_charged_off}}" placeholder="CC CHARGED OFF" title="CC CHARGED OFF">
-            {!! $errors->first('cc_charged_off', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CC CHARGED OFF $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="cc_charged_off" value="{{ $pricing->cc_charged_off ?? $default->cc_charged_off}}"  title="CC CHARGED OFF">
+                </div>
+            </div>
+                    {!! $errors->first('cc_charged_off', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_charged_off" value="{{ $pricing->auto_charged_off ?? $default->auto_charged_off }}" placeholder="AUTO CHARGED OFF" title="AUTO CHARGED OFF">
-            {!! $errors->first('auto_charged_off', '<p class="help-block">:message</p>') !!}
-
-        </div>
-    </div>
-</div>
-<div class="form-group ">
-    <div class="row">
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_repo" value="{{ $pricing->auto_repo ?? $default->auto_repo}}" placeholder="AUTO REPO" title="AUTO REPO">
-            {!! $errors->first('auto_repo', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_early_termination" value="{{ $pricing->auto_early_termination ?? $default->auto_early_termination}}" placeholder="AUTO EARLY TERMINATION" title="AUTO EARLY TERMINATION">
-            {!! $errors->first('auto_early_termination', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="settled" value="{{ $pricing->settled ?? $default->settled}}" placeholder="AUTO EARLY TERMINATION/SETTLED" title="AUTO EARLY TERMINATION/SETTLED">
-            {!! $errors->first('settled', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO CHARGED OFF $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_charged_off" value="{{ $pricing->auto_charged_off ?? $default->auto_charged_off }}" title="AUTO CHARGED OFF">
+                </div>
+            </div>
+                   {!! $errors->first('auto_charged_off', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="redeemed_repo" value="{{ $pricing->redeemed_repo ?? $default->redeemed_repo}}" placeholder="REDEEMED REPO" title="REDEEMED REPO">
-            {!! $errors->first('redeemed_repo', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO REPO $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_repo" value="{{ $pricing->auto_repo ?? $default->auto_repo}}"  title="AUTO REPO">
+                </div>
+            </div>
+                    {!! $errors->first('auto_repo', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="truck_trailer_neg" value="{{ $pricing->truck_trailer_neg ?? $default->truck_trailer_neg }}" placeholder="TRUCK TRAILER NEG" title="TRUCK TRAILER NEG">
-            {!! $errors->first('truck_trailer_neg', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO EARLY TERMINATION $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_early_termination" value="{{ $pricing->auto_early_termination ?? $default->auto_early_termination}}"  title="AUTO EARLY TERMINATION">
+                </div>
+            </div>
+                {!! $errors->first('auto_early_termination', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="mortgage_foreclosure" value="{{ $pricing->mortgage_foreclosure ?? $default->mortgage_foreclosure}}" placeholder="MORTGAGE FORECLOSURE" title="MORTGAGE FORECLOSURE">
-            {!! $errors->first('mortgage_foreclosure', '<p class="help-block">:message</p>') !!}
-        </div>
-    </div>
-</div>
-<div class="form-group ">
-    <div class="row">
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="mortgage_short_sale" value="{{ $pricing->mortgage_short_sale ?? $default->mortgage_short_sale }}" placeholder="MORTGAGE SHORT SALE" title="MORTGAGE SHORT SALE">
-            {!! $errors->first('mortgage_short_sale', '<p class="help-block">:message</p>') !!}
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="loan_modified" value="{{ $pricing->loan_modified ?? $default->loan_modified}}" placeholder="LOAN MODIFIED" title="LOAN MODIFIED">
-            {!! $errors->first('loan_modified', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="time_share_neg" value="{{ $pricing->time_share_neg ?? $default->time_share_neg}}" placeholder="TIME SHARE NEG" title="TIME SHARE NEG">
-            {!! $errors->first('time_share_neg', '<p class="help-block">:message</p>') !!}
-
-        </div>
-    </div>
-</div>
-<div class="form-group ">
-    <div class="row">
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="bankruptcies" value="{{ $pricing->bankruptcies ?? $default->bankruptcies}}" placeholder="BANKRUPTCIES" title="BANKRUPTCIES">
-            {!! $errors->first('bankruptcies', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="child_support" value="{{ $pricing->child_support ?? $default->child_support}}" placeholder="CHILD SUPPORT" title="CHILD SUPPORT">
-            {!! $errors->first('child_support', '<p class="help-block">:message</p>') !!}
-
-        </div>
-        <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="med_ca" value="{{ $pricing->med_ca ?? $default->med_ca}}" placeholder="MED CA" title="MED CA">
-            {!! $errors->first('med_ca', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO EARLY TERMINATION/SETTLED $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="settled" value="{{ $pricing->settled ?? $default->settled}}"  title="AUTO EARLY TERMINATION/SETTLED">
+                </div>
+            </div>
+                  {!! $errors->first('settled', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="cc_ca" value="{{ $pricing->cc_ca ?? $default->cc_ca}}" placeholder="CC CA" title="CC CA">
-            {!! $errors->first('cc_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">REDEEMED REPO $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="redeemed_repo" value="{{ $pricing->redeemed_repo ?? $default->redeemed_repo}}"  title="REDEEMED REPO">
+                </div>
+            </div>
+                    {!! $errors->first('redeemed_repo', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_ca" value="{{ $pricing->auto_ca ?? $default->auto_ca}}" placeholder="AUTO CA" title="AUTO CA">
-            {!! $errors->first('auto_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">TRUCK TRAILER NEG $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="truck_trailer_neg" value="{{ $pricing->truck_trailer_neg ?? $default->truck_trailer_neg }}" title="TRUCK TRAILER NEG">
+                </div>
+            </div>
+                 {!! $errors->first('truck_trailer_neg', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="utility_ca" value="{{ $pricing->utility_ca ?? $default->utility_ca}}" placeholder="UTILITY CA" title="UTILITY CA">
-            {!! $errors->first('utility_ca', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                  <label style="float: right">MORTGAGE FORECLOSURE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="mortgage_foreclosure" value="{{ $pricing->mortgage_foreclosure ?? $default->mortgage_foreclosure}}"  title="MORTGAGE FORECLOSURE">
+                </div>
+            </div>
+                    {!! $errors->first('mortgage_foreclosure', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="cellphone_ca" value="{{ $pricing->cellphone_ca ?? $default->cellphone_ca}}" placeholder="CELLPHONE CA" title="CELLPHONE CA">
-            {!! $errors->first('cellphone_ca', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MORTGAGE SHORT SALE $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="mortgage_short_sale" value="{{ $pricing->mortgage_short_sale ?? $default->mortgage_short_sale }}"  title="MORTGAGE SHORT SALE">
+                </div>
+            </div>
+                {!! $errors->first('mortgage_short_sale', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="mca_ca" value="{{ $pricing->mca_ca ?? $default->mca_ca }}" placeholder="MCA CA" title="MCA CA">
-            {!! $errors->first('mca_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">LOAN MODIFIED $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="loan_modified" value="{{ $pricing->loan_modified ?? $default->loan_modified}}"  title="LOAN MODIFIED">
+                </div>
+            </div>
+                    {!! $errors->first('loan_modified', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="misc_ca" value="{{ $pricing->misc_ca ?? $default->misc_ca}}" placeholder="MISC CA" title="MISC CA">
-            {!! $errors->first('misc_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">TIME SHARE NEG $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="time_share_neg" value="{{ $pricing->time_share_neg ?? $default->time_share_neg}}"  title="TIME SHARE NEG">
+                </div>
+            </div>
+                 {!! $errors->first('time_share_neg', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="auto_ins_ca" value="{{ $pricing->auto_ins_ca ?? $default->auto_ins_ca}}" placeholder="AUTO INS. CA" title="AUTO INS. CA">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">BANKRUPTCIES $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="bankruptcies" value="{{ $pricing->bankruptcies ?? $default->bankruptcies}}"  title="BANKRUPTCIES">
+                </div>
+            </div>
+                    {!! $errors->first('bankruptcies', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CHILD SUPPORT $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="child_support" value="{{ $pricing->child_support ?? $default->child_support}}" title="CHILD SUPPORT">
+                </div>
+            </div>
+                {!! $errors->first('child_support', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MED CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="med_ca" value="{{ $pricing->med_ca ?? $default->med_ca}}"  title="MED CA">
+                </div>
+            </div>
+                {!! $errors->first('med_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="form-group ">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CC CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="cc_ca" value="{{ $pricing->cc_ca ?? $default->cc_ca}}" title="CC CA">
+                </div>
+            </div>
+                {!! $errors->first('cc_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_ca" value="{{ $pricing->auto_ca ?? $default->auto_ca}}"  title="AUTO CA">
+                </div>
+            </div>
+                {!! $errors->first('auto_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">UTILITY CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="utility_ca" value="{{ $pricing->utility_ca ?? $default->utility_ca}}" title="UTILITY CA">
+                </div>
+            </div>
+                {!! $errors->first('utility_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="form-group ">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CELLPHONE CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="cellphone_ca" value="{{ $pricing->cellphone_ca ?? $default->cellphone_ca}}"  title="CELLPHONE CA">
+                </div>
+            </div>
+                {!! $errors->first('cellphone_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MCA CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="mca_ca" value="{{ $pricing->mca_ca ?? $default->mca_ca }}" title="MCA CA">
+                </div>
+            </div>
+                {!! $errors->first('mca_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">MISC CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="misc_ca" value="{{ $pricing->misc_ca ?? $default->misc_ca}}" title="MISC CA">
+                </div>
+            </div>
+                {!! $errors->first('misc_ca', '<p class="help-block">:message</p>') !!}
+        </div>
+    </div>
+</div>
+<div class="form-group ">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">AUTO INS. CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="auto_ins_ca" value="{{ $pricing->auto_ins_ca ?? $default->auto_ins_ca}}"  title="AUTO INS. CA">
+                </div>
+            </div>
             {!! $errors->first('auto_ins_ca', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="jewelery_ca" value="{{ $pricing->jewelery_ca ?? $default->jewelery_ca}}" placeholder="JEWELERY CA" title="JEWELERY CA">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">JEWELERY CA $</label>
+                </div>
+                <div class="price">
+                     <input type="text"  name="jewelery_ca" value="{{ $pricing->jewelery_ca ?? $default->jewelery_ca}}" title="JEWELERY CA">
+                </div>
+            </div>
             {!! $errors->first('jewelery_ca', '<p class="help-block">:message</p>') !!}
-
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="lease_agreement" value="{{ $pricing->lease_agreement ?? $default->lease_agreement}}" placeholder="RENTAL/LEASE AGREEMENT" title="RENTAL/LEASE AGREEMENT">
+            <div class="priceName">
+                <div class="name">
+                     <label style="float: right">RENTAL/LEASE AGREEMENT $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="lease_agreement" value="{{ $pricing->lease_agreement ?? $default->lease_agreement}}"  title="RENTAL/LEASE AGREEMENT">
+                </div>
+            </div>
             {!! $errors->first('lease_agreement', '<p class="help-block">:message</p>') !!}
-
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="pest_ca" value="{{ $pricing->pest_ca ?? $default->pest_ca}}" placeholder="PEST CA" title="PEST CA">
-            {!! $errors->first('pest_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                  <label style="float: right">PEST CA $</label>
+                </div>
+                    <div class="price">
+                    <input type="text"  name="pest_ca" value="{{ $pricing->pest_ca ?? $default->pest_ca}}"  title="PEST CA">
+                </div>
+            </div>
+                {!! $errors->first('pest_ca', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="deposit_accnt_ca" value="{{ $pricing->deposit_accnt_ca ?? $default->deposit_accnt_ca}}" placeholder="DEPOSIT ACCNT CA" title="DEPOSIT ACCNT CA">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">DEPOSIT ACCNT CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="deposit_accnt_ca" value="{{ $pricing->deposit_accnt_ca ?? $default->deposit_accnt_ca}}"  title="DEPOSIT ACCNT CA">
+                </div>
+            </div>
             {!! $errors->first('deposit_accnt_ca', '<p class="help-block">:message</p>') !!}
-
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="check_cashing_ca" value="{{ $pricing->check_cashing_ca ?? $default->check_cashing_ca}}" placeholder="CHECK CASHING CA" title="CHECK CASHING CA">
-            {!! $errors->first('check_cashing_ca', '<p class="help-block">:message</p>') !!}
-
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">CHECK CASHING CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="check_cashing_ca" value="{{ $pricing->check_cashing_ca ?? $default->check_cashing_ca}}"  title="CHECK CASHING CA">
+                </div>
+            </div>
+               {!! $errors->first('check_cashing_ca', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>
 <div class="form-group ">
     <div class="row">
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="law_firm_ca" value="{{ $pricing->law_firm_ca ?? $default->law_firm_ca }}" placeholder="LAW FIRM CA" title="LAW FIRM CA">
-            {!! $errors->first('law_firm_ca', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">LAW FIRM CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text"  name="law_firm_ca" value="{{ $pricing->law_firm_ca ?? $default->law_firm_ca }}" title="LAW FIRM CA">
+                </div>
+            </div>
+                {!! $errors->first('law_firm_ca', '<p class="help-block">:message</p>') !!}
         </div>
         <div class="col-md-4" style="margin: 0">
-            <input type="text" class="form-control phone" name="truck_load_ca" value="{{ $pricing->truck_load_ca ?? $default->truck_load_ca}}" placeholder="TRUCK LOAD CA" title="TRUCK LOAD CA">
-            {!! $errors->first('truck_load_ca', '<p class="help-block">:message</p>') !!}
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">TRUCK LOAD CA $</label>
+                </div>
+                <div class="price">
+                    <input type="text" name="truck_load_ca" value="{{ $pricing->truck_load_ca ?? $default->truck_load_ca}}" title="TRUCK LOAD CA">
+                </div>
+            </div>
+                    {!! $errors->first('truck_load_ca', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-sm-12">
+                <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
                         <div class="ms-ua-title">
                             <div class="form-group">
