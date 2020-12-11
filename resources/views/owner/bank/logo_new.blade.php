@@ -83,7 +83,7 @@
                     <div class="row m-2  pt-4">
                         <div class="col-md-8 pull-left">
                             <a class="btn btn-primary pull-left" href="{{ route('owner.bank.create')}}" role="button">
-                                ADD BANK
+                                ADD FURNISHERs/CRAs
                             </a>
                         </div>
                         <div class="col-md-4 pull-right">
