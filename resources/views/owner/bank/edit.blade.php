@@ -136,7 +136,24 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                        @if($bank->additional_information != null)
+                        <div class="ms-ua-box mt-2" id="account_additional_information">
+                        <div class="ms-ua-title mb-0">
+                            <div class="row">
+                                @foreach($bank->additional_information as $additionalInformation)
+                                <div class="col-md-12 text-left">
+                                        {{$additionalInformation!=null && $additionalInformation != 'null' ?$additionalInformation: ""}}
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        </div>
+                        @endif
+
+
+
 
                     <div class="ms-ua-box mt-2" id="account">
 {{--                        <div class="ms-ua-title mb-0">--}}

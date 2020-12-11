@@ -80,6 +80,7 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
+    Route::get('affiliate/{affiliateId}', 'Owner\ClientsController@affiliateShow')->name('owner.affiliate.show');
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
     Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');;
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
@@ -114,7 +115,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::post('/types/update_default', 'Owner\BanksController@update_type_default');
         Route::any('/keywords', 'Owner\BanksController@keywords');
 
-        Route::get('/store-data', 'Owner\BanksController@storeBanksData');
+        Route::get('affiliate/list', 'Owner\BanksController@storeBanksData');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');

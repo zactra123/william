@@ -131,6 +131,15 @@ class ClientsController extends Controller
         return view('owner.client.affiliate', compact('users'));
     }
 
+
+    public function affiliateShow($affiliateId)
+    {
+        $client = User::clients()->find($affiliateId);
+
+        return view('owner.client.affiliate-profile2', compact('client'));
+    }
+
+
     public function pricing(Request $request)
     {
         if ($request->method()=="POST") {
