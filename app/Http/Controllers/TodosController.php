@@ -373,6 +373,30 @@ class TodosController extends Controller
         return redirect(route('adminRec.client.profile', $userId));
     }
 
+    public function affiliateList()
+    {
+        $users = DB::table('users')
+            ->leftJoin('affiliates', 'affiliate_id', '=', 'users.id')
+            ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
+                'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
+            ->where('role', 'affiliate')
+            ->groupBy('users.id')
+            ->get();
+        return view('todo.affiliate', compact('users'));
+    }
+
+    public function affiliateProfile($affiliateId)
+    {
+        $affiliate = User::whereId($affiliateId)->where('role', 'affiliate')->first();
+
+        $clients = DB::table('affiliates')
+            ->join('users', 'affiliates.user_id', '=', 'users.id')
+            ->where('affiliates.affiliate_id', $affiliateId)
+            ->select('users.id as id', DB::raw('CONCAT(users.first_name ," ", users.last_name) as full_name'),
+                'users.email')
+            ->get();
+        return view('todo.affiliate-profile', compact('affiliate', 'clients'));
+    }
 
     public function sendEmail(Request $request)
     {

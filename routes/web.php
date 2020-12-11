@@ -188,6 +188,11 @@ Route::group(['prefix'=> 'admins/'], function(){
 
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
 
+    Route::get('affiliate','TodosController@affiliateList')->name('adminRec.affiliate.list');
+
+    Route::get('affiliate/{affiliate}','TodosController@affiliateProfile')->name('adminRec.affiliate.profile');
+
+
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
 
     Route::any('/change-password', 'TodosController@changePassword')->name('adminRec.changePassword');

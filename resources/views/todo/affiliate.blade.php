@@ -20,30 +20,25 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">FIRST NAME</th>
-                                            <th scope="col">LAST NAME</th>
+                                            <th scope="col">FULL NAME</th>
                                             <th scope="col">EMAI</th>
-                                            <th scope="col">CLIENT NUMBER</th>
-                                            <th scope="col">ACTIONS</th>
+                                            <th scope="col">CLIENTS</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($users as $key=> $user)
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
-                                                <td>{{$user->first_name}}</td>
-                                                <td>{{$user->last_name}}</td>
+                                                <td>
+                                                    <a href="{{route('adminRec.affiliate.profile', $user->id)}}" role="button">
+                                                    {{$user->first_name}} {{$user->last_name}}
+                                                    </a>
+                                                </td>
                                                 <td>{{$user->email}}</td>
-                                                <td>{{$user->client}}</td>
+                                                <td class="text-center">{{$user->client}}</td>
                                                 <td>
 {{--                                                    <a class="btn btn-secondary" href="{{ route('owner.affiliate.show',$user->id)}}"--}}
 {{--                                                       role="button"><span class="fa fa-file"></span></a>--}}
-
-                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-                                                    <button class="btn btn-danger delete" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button>
-
-
 
                                                     {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
 

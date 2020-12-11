@@ -14,4 +14,5 @@
 
 </li>
 <li class="menu-item"><a href="{{ route('adminRec.client.list')}}" >Client List</a></li>
+<li class="menu-item"><a href="{{ route('adminRec.affiliate.list')}}" >Affiliate List</a></li>
 <li class="menu-item"><a href="{{ route('adminRec.toDo.list')}}" >To Do List</a></li>

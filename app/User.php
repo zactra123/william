@@ -118,7 +118,7 @@ class   User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function affilate()
+    public function affiliate()
     {
         return $this->belongsTo('App\User','affiliates', 'user_id', 'affiliate_id');
     }
