@@ -501,6 +501,57 @@ class BanksController extends Controller
     }
 
 
+    public function collectionCheckMark()
+    {
+        $collection = BankLogo::where('additional_information', '!=', null)
+            ->get();
+
+        $rdPartyCa = [' Affilate', ' Miscellaneous services', ' Third party collections', ' Outsourced First Party or Billing Company', ' Commercial accounts accepted', ' All types of health care accounts', ' All types of professional accounts accepted',  ];
+        $assetBuyer = "Asset Buying Company";
+        $lawFirm = ['Law Firm','Legal collection network', 'Attorney', 'Partner', ' LLP', ' PC'];
+
+        $additionalInformation = [];
+        foreach ($collection as $id =>$item){
+
+            foreach($rdPartyCa as $check1){
+                if (strpos($item->additional_information['collection_info1'], $check1) !== FALSE) {
+                    $additionalInformation [$id] = ['0'=>"3RD PARTY CA"] ;
+                    break;
+                }elseif(strpos($item->additional_information['collection_info2'], $check1) !== FALSE){
+                    $additionalInformation [$id] = ['0'=>"3RD PARTY CA"] ;
+                    break;
+                }
+            }
+            if (strpos($item->additional_information['collection_info1'], $assetBuyer) !== FALSE) {
+                $additionalInformation [$id] = ['1'=>"ASSET BUYER CA"] ;
+                break;
+            }elseif(strpos($item->additional_information['collection_info2'], $assetBuyer) !== FALSE){
+                $additionalInformation [$id] = ['1'=>"ASSET BUYER CA"] ;
+                break;
+            }
+            foreach($lawFirm as $check2){
+                if (strpos($item->additional_information['collection_info1'], $check2) !== FALSE) {
+                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                    break;
+                }elseif(strpos($item->additional_information['collection_info2'], $check2) !== FALSE){
+                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                    break;
+                }elseif(strpos($item->name, $check2) !== FALSE){
+                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                    break;
+                }
+
+
+            }
+
+
+
+
+
+        }
+
+    }
+
     public function storeBanksData1()
     {
         $bank = BankLogo::where('additional_information', '!=', null)->get();

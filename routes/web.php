@@ -121,6 +121,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::get('affiliate/list/name', 'Owner\BanksController@addName');
         Route::get('affiliate/list/filterCa', 'Owner\BanksController@filterCaCollection');
         Route::get('affiliate/list/filter', 'Owner\BanksController@filterCollection');
+        Route::get('affiliate/list/check', 'Owner\BanksController@collectionCheckMark');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
