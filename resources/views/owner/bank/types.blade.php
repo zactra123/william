@@ -125,10 +125,33 @@
         </div>
     </script>
 
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/site/admins/types.js?v=2') }}" ></script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+
+    <script>
+        $(document).ready(function($) {
+            $('#equalBanks').validate({
+                rules: {
+
+                    "account_type[name]": {
+                        required: true
+                    },
+
+
+                },
+                errorPlacement: function(error, element) {
+                        error.insertAfter(element);
+
+                }
+            })
+
+        })
+
+
+    </script>
 
 @endsection
 

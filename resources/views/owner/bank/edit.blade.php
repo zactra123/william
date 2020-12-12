@@ -122,10 +122,26 @@
                                     </div>
 
                                 </div>
+                                <div id="collection_types" class="m-5">
+                                    <div class="row" id="collection_types_append">
+                                        <div class="col-md-4 ">
+                                            3RD PARTY CA
+                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            ASSET BUYER CA
+                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            LAW FIRM CA
+                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="account_types">
                                     <div class="row" id="account_types_append">
                                         @foreach($account_types as $typeId =>$typeName)
-                                            <div class="col-md-2 ">
+                                            <div class="col-md-3 ">
                                                 {{$typeName}}
                                                 <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}"  {{in_array($typeName, $bank_types)? "checked":''}} class="customcheck ex_name">
                                             </div>
@@ -138,19 +154,19 @@
                         </div>
 
                     </div>
-                        @if($bank->additional_information != null)
-                        <div class="ms-ua-box mt-2" id="account_additional_information">
-                        <div class="ms-ua-title mb-0">
-                            <div class="row">
-                                @foreach($bank->additional_information as $additionalInformation)
-                                <div class="col-md-12 text-left">
-                                        {{$additionalInformation!=null && $additionalInformation != 'null' ?$additionalInformation: ""}}
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        </div>
-                        @endif
+{{--                        @if($bank->additional_information != null)--}}
+{{--                        <div class="ms-ua-box mt-2" id="account_additional_information">--}}
+{{--                        <div class="ms-ua-title mb-0">--}}
+{{--                            <div class="row">--}}
+{{--                                @foreach($bank->additional_information as $additionalInformation)--}}
+{{--                                <div class="col-md-12 text-left">--}}
+{{--                                        {{$additionalInformation!=null && $additionalInformation != 'null' ?$additionalInformation: ""}}--}}
+{{--                                </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        </div>--}}
+{{--                        @endif--}}
 
 
 

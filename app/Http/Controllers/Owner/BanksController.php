@@ -44,6 +44,8 @@ class BanksController extends Controller
             return view('owner.bank.logo_new',compact('banksLogos'));
         }
 
+        $additionalInformation = $request->additional_information;
+
         $validation =  Validator::make($request->all(), [
             'name'=>['required', 'string', 'max:255'],
 
@@ -79,6 +81,7 @@ class BanksController extends Controller
         $bank = BankLogo::create([
             'name'=>$request->name,
             'path'=>$pathLogo,
+            'additional_information' => $additionalInformation
         ]);
 
         $account_addresses =  $request->bank_address;
@@ -146,6 +149,13 @@ class BanksController extends Controller
         }
         $id  = $request->id;
         $bank = BankLogo::find($id);
+        $bankLogo = $request->bank;
+
+        if (!empty($request->bank["additional_information"]["collection_type"])){
+            $bank_additonal_information = $bank->toArray()["additional_information"];
+            $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];
+            $bankLogo["additional_information"] = $bank_additonal_information;
+        }
 
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
@@ -154,7 +164,7 @@ class BanksController extends Controller
             if(!in_array($bankLogoExtension, $imageExtension)){
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
-            $bankLogo = $request->bank;
+
             $ext = $request->file('logo')->getClientOriginalExtension();
             $time = time();
             $pathLogo = $request->file("logo")->storeAs(
@@ -170,7 +180,7 @@ class BanksController extends Controller
 
             $bank->update($bankLogo);
         }else{
-            $bank->update($request->bank);
+            $bank->update($bankLogo);
 
         }
 
@@ -255,6 +265,16 @@ class BanksController extends Controller
     {
         if($request->isMethod("post")){
 
+            $accountType =$request->account_type;
+            $validation =  Validator::make($accountType, [
+                'name'=>['required', 'string', 'max:255'],
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }
             $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
             if ($check_type) {
                 return redirect()->route('owner.bank.types')
@@ -503,52 +523,52 @@ class BanksController extends Controller
 
     public function collectionCheckMark()
     {
+        set_time_limit(3000);
         $collection = BankLogo::where('additional_information', '!=', null)
             ->get();
 
-        $rdPartyCa = [' Affilate', ' Miscellaneous services', ' Third party collections', ' Outsourced First Party or Billing Company', ' Commercial accounts accepted', ' All types of health care accounts', ' All types of professional accounts accepted',  ];
+        $rdPartyCa = [' Affiliate', ' Miscellaneous services', 'Third Party Collections', 'Outsourced First Party or Billing Company', 'Commercial accounts accepted', 'All types of health care accounts', ' All types of professional accounts accepted',  ];
         $assetBuyer = "Asset Buying Company";
         $lawFirm = ['Law Firm','Legal collection network', 'Attorney', 'Partner', ' LLP', ' PC'];
 
-        $additionalInformation = [];
-        foreach ($collection as $id =>$item){
 
+        foreach ($collection as $id =>$item){
+            $additional_information = $item->additional_information;
+            $additional_information["collection_type"] = [];
             foreach($rdPartyCa as $check1){
-                if (strpos($item->additional_information['collection_info1'], $check1) !== FALSE) {
-                    $additionalInformation [$id] = ['0'=>"3RD PARTY CA"] ;
+                if (!empty($item->additional_information['collection_info1']) && strpos(strtolower($item->additional_information['collection_info1']), strtolower($check1)) !== FALSE) {
+                    $additional_information["collection_type"][] = "3RD PARTY CA" ;
                     break;
-                }elseif(strpos($item->additional_information['collection_info2'], $check1) !== FALSE){
-                    $additionalInformation [$id] = ['0'=>"3RD PARTY CA"] ;
+                }elseif(!empty($item->additional_information['collection_info2']) && strpos(strtolower($item->additional_information['collection_info2']), strtolower($check1)) !== FALSE){
+                    $additional_information["collection_type"][] = "3RD PARTY CA" ;
                     break;
                 }
             }
-            if (strpos($item->additional_information['collection_info1'], $assetBuyer) !== FALSE) {
-                $additionalInformation [$id] = ['1'=>"ASSET BUYER CA"] ;
-                break;
-            }elseif(strpos($item->additional_information['collection_info2'], $assetBuyer) !== FALSE){
-                $additionalInformation [$id] = ['1'=>"ASSET BUYER CA"] ;
-                break;
+            if (!empty($item->additional_information['collection_info1']) && strpos(strtolower($item->additional_information['collection_info1']), strtolower($assetBuyer)) !== FALSE) {
+                $additional_information["collection_type"][] =  "ASSET BUYER CA" ;
+            }elseif(!empty($item->additional_information['collection_info2']) && strpos(strtolower($item->additional_information['collection_info2']), strtolower($assetBuyer)) !== FALSE){
+                $additional_information["collection_type"][]= "ASSET BUYER CA" ;
             }
             foreach($lawFirm as $check2){
-                if (strpos($item->additional_information['collection_info1'], $check2) !== FALSE) {
-                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                if (!empty($item->additional_information['collection_info1']) && strpos(strtolower($item->additional_information['collection_info1']), strtolower($check2)) !== FALSE) {
+                    $additional_information["collection_type"][]= "LAW FIRM CA" ;
                     break;
-                }elseif(strpos($item->additional_information['collection_info2'], $check2) !== FALSE){
-                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                }elseif(!empty($item->additional_information['collection_info2']) && strpos(strtolower($item->additional_information['collection_info2']), strtolower($check2)) !== FALSE){
+                    $additional_information["collection_type"][] = "LAW FIRM CA" ;
                     break;
                 }elseif(strpos($item->name, $check2) !== FALSE){
-                    $additionalInformation [$id] = ['3'=>"LAW FIRM CA"] ;
+                    $additional_information["collection_type"][] = "LAW FIRM CA" ;
                     break;
                 }
 
-
             }
-
-
-
+            $item->additional_information = $additional_information;
+            $item->save();
 
 
         }
+        dd('ok');
+
 
     }
 

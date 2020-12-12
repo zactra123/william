@@ -65,9 +65,28 @@
                                     </div>
                                 </div>
 
+                                <div id="collection_types" class="m-5">
+                                    <div class="row" id="collection_types_append">
+                                        <div class="col-md-4 ">
+                                            3RD PARTY CA
+                                            <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            ASSET BUYER CA
+                                            <input name="additional_information[collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            LAW FIRM CA
+                                            <input name="additional_information[collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div id="account_types">
 
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -104,6 +123,13 @@
                                                 </div>
                                             </div>
                                         @endif
+                                            @if($type == 'executive_address')
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                    </div>
+                                                </div>
+                                            @endif
                                         <div class="row">
                                             {!! Form::hidden("bank_address[{$type}][0][type]", $type, ["class"=>"form-control"]) !!}
 
