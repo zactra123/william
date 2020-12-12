@@ -468,8 +468,8 @@ class experianLogin:
                 sorted = json.dumps(repn, indent=4)
                 f.write(sorted)
 
-# display = Display(visible=0, size=(800, 600))
-# display.start()
+display = Display(visible=0, size=(800, 600))
+display.start()
 experian = experianLogin(sys.argv)
 print(experian.call())
-# display.close()
+display.close()
