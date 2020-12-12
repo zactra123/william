@@ -392,8 +392,8 @@ class experianLogin:
                                 f.write(sorted)
                             break
                 except Exception as e:
-                print(e)
-                pass
+                    print(e)
+                    pass
             time.sleep(3)
             # print(driver.current_window_handle)
             self.driver.execute_script('window.print();')
