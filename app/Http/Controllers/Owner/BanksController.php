@@ -360,6 +360,7 @@ class BanksController extends Controller
 
     public function storeBanksData()
     {
+        dd('storeBanksData');
         set_time_limit(1200);
         $collectionPath= storage_path('furnishers/collectionXumb.json');
         $collectionJson = json_decode(file_get_contents($collectionPath), true);
@@ -399,6 +400,42 @@ class BanksController extends Controller
         }
 
         dd('ok');
+    }
+
+    public function storeBanksData1()
+    {
+        $bank = BankLogo::where('additional_information', '!=', null)->get();
+
+        $data = [];
+        $k = 0;
+        foreach ($bank as $item) {
+
+            $delete = BankLogo::
+                Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id' )
+               ->where('bank_logos.id', '!=', $item->id)
+                ->where('bank_logos.name', $item->name)
+                ->where('additional_information', '!=', null)
+                ->where('bank_addresses.type', 'executive_address')
+                ->where('bank_addresses.state', '!=', 'CA')
+                ->first();
+
+            if(!empty($delete)){
+                $k = $k+1;
+            }
+
+//            if(count($item->additional_information)>2){
+//                $name = explode(',', $item->additional_information['collection_contact1']);
+//            }else{
+//                $name = explode(',', $item->additional_information['collection_info1']);
+//            }
+//
+//            $data[] = [
+//                'bank_logo_id' =bankAddresses()>$item->id,
+//                'name'=>$name[0]
+//            ];
+        }
+        dd($k);
+
     }
 
 }

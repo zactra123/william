@@ -188,6 +188,13 @@
                                                     </div>
                                                 </div>
                                             @endif
+                                                @if($address->type == 'executive_address')
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12">
+                                                            {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             <div class="row">
                                                 {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control"]) !!}
                                                 {!! Form::hidden("bank_address[$address->type][$atid][type]", $address->type, ["class"=>"form-control"]) !!}

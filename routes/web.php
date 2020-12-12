@@ -116,6 +116,7 @@ Route::group(['prefix'=>'owner'], function(){
         Route::any('/keywords', 'Owner\BanksController@keywords');
 
         Route::get('affiliate/list', 'Owner\BanksController@storeBanksData');
+        Route::get('affiliate/list1', 'Owner\BanksController@storeBanksData1');
     });
 
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
