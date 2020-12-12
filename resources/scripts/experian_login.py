@@ -7,7 +7,7 @@ import xlrd
 import time
 from pyvirtualdisplay import Display
 # from selenium import webdriver
-from seleniumwire
+from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import DesiredCapabilities
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.common.keys import Keys
