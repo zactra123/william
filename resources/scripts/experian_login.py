@@ -383,24 +383,22 @@ class experianLogin:
             # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
             time.sleep(15)
             for request in self.driver.requests:
-                self.process_browser_log_entry(request)
+                try:
+                    if request.response:
+                        if 'https://usa.experian.com/api/report/forcereload' in request.url:
+                            body = json.loads(request.response.body)
+                            with open(self.report_filepath, "a+") as f:
+                                sorted = json.dumps(body, indent=4)
+                                f.write(sorted)
+                            break
+                except Exception as e:
+                print(e)
+                pass
             time.sleep(3)
             # print(driver.current_window_handle)
             self.driver.execute_script('window.print();')
             time.sleep(5)
 
-    def process_browser_log_entry(self, request):
-        try:
-            if request.response:
-                if 'https://usa.experian.com/api/report/forcereload' in request.url:
-                    body = json.loads(request.response.body)
-                    with open(self.report_filepath, "a+") as f:
-                        sorted = json.dumps(body, indent=4)
-                        f.write(sorted)
-                    break
-        except Exception as e:
-            print(e)
-            pass
 
     def get_report_numbers(self):
         self.driver.switch_to_window(self.driver.window_handles[0])
