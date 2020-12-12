@@ -402,6 +402,101 @@ class BanksController extends Controller
         dd('ok');
     }
 
+
+    public function addName()
+    {
+        $bank = BankLogo::where('additional_information', '!=', null)->get();
+        $data = [];
+        foreach ($bank as $item) {
+            if (count($item->additional_information) > 2) {
+                $name = explode(',', $item->additional_information['collection_contact1']);
+            } else {
+                $name = explode(',', $item->additional_information['collection_info1']);
+            }
+
+            $data[] = [
+                'bank_logo_id' => $item->id,
+                'name' => $name[0]
+            ];
+
+            $bankLogoId = $item->id;
+            $name = $name[0];
+//            BankAddress::where('bank_logo_id', $bankLogoId)
+//                ->where('type', 'executive_address')
+//                ->update(['name'=> $name]);
+        }
+        dd($data);
+    }
+
+    public function filterCaCollection()
+    {
+        $bank = BankLogo::
+            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            ->where('bank_addresses.state', "CA")
+            ->where('bank_logos.additional_information', '!=', null)
+            ->where('bank_addresses.type', 'executive_address')
+            ->select('bank_logos.id as bankId', 'bank_logos.name as bankName', 'bank_addresses.*')
+            ->get();
+
+        $deleteCollection = [];
+
+        foreach ($bank as $item){
+
+            if(in_array($item->bankId, $deleteCollection)){
+                continue;
+//                dd($item->bankId, $deleteCollection);
+            }
+
+            $delete = BankLogo::
+            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id' )
+                ->where('bank_logos.id', '!=', $item->bankId)
+                ->where('bank_logos.name', $item->bankName)
+                ->where('bank_addresses.name', $item->name)
+                ->where('additional_information', '!=', null)
+                ->where('bank_addresses.type', 'executive_address')
+                ->pluck('bank_logos.id')->toArray();
+
+            $deleteCollection = array_merge($deleteCollection, $delete);
+
+//            BankLogo::destroy(array_values($deleteCollection));
+        }
+        dd(array_values($deleteCollection));
+
+    }
+
+    public function filterCollection()
+    {
+        $bank = BankLogo::
+            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_logos.additional_information', '!=', null)
+                ->where('bank_addresses.type', 'executive_address')
+                ->select('bank_logos.id as bankId', 'bank_logos.name as bankName', 'bank_addresses.*')
+                ->get();
+
+        $deleteCollection = [];
+        foreach ($bank as $item){
+            if(in_array($item->bankId, $deleteCollection)){
+                continue;
+//                dd($item->bankId, $deleteCollection);
+            }
+
+            $delete = BankLogo::
+            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id' )
+                ->where('bank_logos.id', '!=', $item->bankId)
+                ->where('bank_logos.name', $item->bankName)
+                ->where('bank_addresses.name', $item->name)
+                ->where('additional_information', '!=', null)
+                ->where('bank_addresses.type', 'executive_address')
+                ->pluck('bank_logos.id')->toArray();
+
+            $deleteCollection = array_merge($deleteCollection, $delete);
+
+//            BankLogo::destroy(array_values($deleteCollection));
+        }
+        dd(array_values($deleteCollection));
+    }
+
+
     public function storeBanksData1()
     {
         $bank = BankLogo::where('additional_information', '!=', null)->get();
@@ -423,16 +518,7 @@ class BanksController extends Controller
                 $k = $k+1;
             }
 
-//            if(count($item->additional_information)>2){
-//                $name = explode(',', $item->additional_information['collection_contact1']);
-//            }else{
-//                $name = explode(',', $item->additional_information['collection_info1']);
-//            }
-//
-//            $data[] = [
-//                'bank_logo_id' =bankAddresses()>$item->id,
-//                'name'=>$name[0]
-//            ];
+
         }
         dd($k);
 
