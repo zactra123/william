@@ -399,12 +399,13 @@ class BanksController extends Controller
 
         }
 
-        dd('ok');
+        dd('ok+++');
     }
 
 
     public function addName()
     {
+        set_time_limit(1200);
         $bank = BankLogo::where('additional_information', '!=', null)->get();
         $data = [];
         foreach ($bank as $item) {
@@ -421,15 +422,16 @@ class BanksController extends Controller
 
             $bankLogoId = $item->id;
             $name = $name[0];
-//            BankAddress::where('bank_logo_id', $bankLogoId)
-//                ->where('type', 'executive_address')
-//                ->update(['name'=> $name]);
+            BankAddress::where('bank_logo_id', $bankLogoId)
+                ->where('type', 'executive_address')
+                ->update(['name'=> $name]);
         }
-        dd($data);
     }
 
     public function filterCaCollection()
     {
+        set_time_limit(3000);
+
         $bank = BankLogo::
             Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
             ->where('bank_addresses.state', "CA")
@@ -458,7 +460,7 @@ class BanksController extends Controller
 
             $deleteCollection = array_merge($deleteCollection, $delete);
 
-//            BankLogo::destroy(array_values($deleteCollection));
+            BankLogo::destroy(array_values($delete));
         }
         dd(array_values($deleteCollection));
 
@@ -466,6 +468,8 @@ class BanksController extends Controller
 
     public function filterCollection()
     {
+        set_time_limit(3000);
+
         $bank = BankLogo::
             Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
                 ->where('bank_logos.additional_information', '!=', null)
@@ -491,7 +495,7 @@ class BanksController extends Controller
 
             $deleteCollection = array_merge($deleteCollection, $delete);
 
-//            BankLogo::destroy(array_values($deleteCollection));
+            BankLogo::destroy(array_values($delete));
         }
         dd(array_values($deleteCollection));
     }
