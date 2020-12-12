@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\BankLogo;
 use Illuminate\Console\Command;
 
-class CollectionRemoveCADuplicates extends Command
+class CollectionRemoveCaDuplicates extends Command
 {
     /**
      * The name and signature of the console command.
@@ -19,7 +19,7 @@ class CollectionRemoveCADuplicates extends Command
      *
      * @var string
      */
-    protected $description = 'Remove from collections all duplicates for';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -39,7 +39,7 @@ class CollectionRemoveCADuplicates extends Command
     public function handle()
     {
         $bank = BankLogo::
-            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+        Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
             ->where('bank_addresses.state', "CA")
             ->where('bank_logos.additional_information', '!=', null)
             ->where('bank_addresses.type', 'executive_address')
@@ -55,7 +55,7 @@ class CollectionRemoveCADuplicates extends Command
             }
 
             $delete = BankLogo::
-                Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id' )
+            Join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id' )
                 ->where('bank_logos.id', '!=', $item->bankId)
                 ->where('bank_logos.name', $item->bankName)
                 ->where('bank_addresses.name', $item->name)
