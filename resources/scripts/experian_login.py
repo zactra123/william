@@ -92,14 +92,11 @@ class experianLogin:
 
 
     def call(self):
-        self.login()
-        self.get_report()
-        sys.exit()
         try:
 #             self.get_json()
             self.login()
             self.get_report()
-#             self.get_report_numbers()
+            self.get_report_numbers()
             self.driver.close()
             return {
                 'status': 'success',
@@ -396,7 +393,11 @@ class experianLogin:
         try:
             if request.response:
                 if 'https://usa.experian.com/api/report/forcereload' in request.url:
-                    print(request.response.body)
+                    body = json.loads(request.response.body)
+                        with open(self.report_filepath, "a+") as f:
+                            sorted = json.dumps(body, indent=4)
+                            f.write(sorted)
+                    break
         except Exception as e:
             print(e)
             pass
