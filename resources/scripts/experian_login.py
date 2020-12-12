@@ -6,7 +6,8 @@ import sys
 import xlrd
 import time
 from pyvirtualdisplay import Display
-from selenium import webdriver
+# from selenium import webdriver
+from seleniumwire
 from selenium.webdriver.chrome.options import DesiredCapabilities
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.common.keys import Keys
@@ -54,9 +55,9 @@ class experianLogin:
 #             "http": "http://%s"%PROXY,
 #             "https": "http://%s"%PROXY
 #         }
-        caps = webdriver.DesiredCapabilities.CHROME
-        caps['loggingPrefs'] = {'performance': 'ALL'}
-        driver = webdriver.Chrome(desired_capabilities=caps)
+#         caps = webdriver.DesiredCapabilities.CHROME
+#         caps['loggingPrefs'] = {'performance': 'ALL'}
+        driver = webdriver.Chrome()
         appState = {
             "recentDestinations": [
                 {
@@ -384,28 +385,18 @@ class experianLogin:
             self.driver.switch_to.window
             # driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + Keys.TAB)
             time.sleep(15)
-            browser_log = self.driver.get_log('performance')
-            for request in browser_log:
+            for request in self.driver.requests:
                 self.process_browser_log_entry(request)
             time.sleep(3)
             # print(driver.current_window_handle)
             self.driver.execute_script('window.print();')
             time.sleep(5)
 
-    def process_browser_log_entry(self, entry):
-        response = json.loads(entry['message'])['message']
+    def process_browser_log_entry(self, request):
         try:
-            if response["params"]["response"]:
-                if 'https://usa.experian.com/api/report/forcereload' in response["params"]["response"]["url"]:
-                    a = self.driver.execute_cdp_cmd('Network.replayXHR', {'requestId': response["params"]["requestId"]})
-                    print(a)
-                    time.sleep(5)
-                    body = self.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': response["params"]["requestId"]})
-                    print(body)
-#                     data = json.loads(body)
-#                     with open(self.report_filepath, "a+") as f:
-#                         sorted = json.dumps(data, indent=4)
-#                         f.write(sorted)
+            if request.response:
+                if 'https://usa.experian.com/api/report/forcereload' in request.url:
+                    print(request.response.body)
         except Exception as e:
             print(e)
             pass
