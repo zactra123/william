@@ -387,7 +387,7 @@ class experianLogin:
                     if request.response:
                         if 'https://usa.experian.com/api/report/forcereload' in request.url:
                             body = json.loads(request.response.body)
-                            with open(self.report_filepath, "a+") as f:
+                            with open(self.filepath_report, "a+") as f:
                                 sorted = json.dumps(body, indent=4)
                                 f.write(sorted)
                             break
