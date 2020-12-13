@@ -385,14 +385,13 @@ class experianLogin:
             for request in self.driver.requests:
                 try:
                     if request.response:
-                        if 'https://usa.experian.com/api/report/forcereload' in request.url:
+                        if 'https://usa.experian.com/api/dispute/cdis' in request.url:
                             body = json.loads(request.response.body)
                             with open(self.filepath_report, "a+") as f:
                                 sorted = json.dumps(body, indent=4)
                                 f.write(sorted)
                             break
                 except Exception as e:
-                    print(e)
                     pass
             time.sleep(3)
             # print(driver.current_window_handle)
@@ -471,4 +470,4 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 experian = experianLogin(sys.argv)
 print(experian.call())
-display.close()
+display.stop()
