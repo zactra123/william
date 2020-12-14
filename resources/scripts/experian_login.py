@@ -20,7 +20,6 @@ from requests.auth import HTTPBasicAuth
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-from pprint import pprint
 
 import os
 from os import path
@@ -56,8 +55,7 @@ class experianLogin:
 #             "https": "http://%s"%PROXY
 #         }
 #         caps = webdriver.DesiredCapabilities.CHROME
-#         caps['loggingPrefs'] = {'performance': 'ALL'}
-        driver = webdriver.Chrome()
+#         driver = webdriver.Chrome()
         appState = {
             "recentDestinations": [
                 {
@@ -78,7 +76,7 @@ class experianLogin:
                 "excludeSwitches", ["enable-automation"])
         self.options.add_experimental_option('prefs', profile)
         self.options.add_argument('--kiosk-printing')
-#         self.options.add_argument('--headless')
+        self.options.add_argument('--headless')
 
         self.driver = webdriver.Chrome(executable_path=os.environ.get('CHROME_DRIVER_PATH', '/usr/bin/chromedriver'), options=self.options)
         # self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
@@ -93,7 +91,6 @@ class experianLogin:
 
     def call(self):
         try:
-#             self.get_json()
             self.login()
             self.get_report()
             self.get_report_numbers()
@@ -113,111 +110,8 @@ class experianLogin:
                 'numbers_filepath': self.filepath_numbers
             }
 
-    def get_json(self):
-
-        session = requests.Session()
-#         session.proxies = self.proxies
-        retry = Retry(connect=3, backoff_factor=0.5)
-        adapter = HTTPAdapter(max_retries=retry)
-        session.mount('http://', adapter)
-        session.mount('https://', adapter)
-
-
-        #session = requests.Session()
-        data = '{"username":"'+self.username+'","password":"' + \
-            self.password+'","clientId": "experian", "jsc":"7la44j1eJNlY5BSo9z4ofjb75PaK4Vpjt4U_98uszHVyVxFAk.lzXJJIneGffLMC7EZ3QHPBirTYKUowRslzRQqwSM2ighjB9igDN.TpZHgfLMC7AeLd7FmrpwoNN5uT2M6uJ6o6e0T.5yjaY1WMsiZRPrwXjm_3xRUdFUFTc4s.Nzl998tp7ppfAaZ6m1CdC5MQjGejuTDRNziCvTDfWrLLra4ML6B.EPm8LKfAaZ4ySy.aPjftckogtOwFPDLLMUbJlpMpwoNSUC56MnGWpwoNHHACVZXnN9133cDkKSijMhRCk6Hb9LarUqUdHz16rgPtTma1kxNGYidKw1VgN40N9csdmcKFvj9dyP4yfhwHCSFQ_v9NA2pNNW5BQYTrYetvqU1j8xiDyCY5DuXY5BNkOxfT0XwPIixBEjaCQucKFye4yP4yfhzI5a5CWJA0GrCEuWYKOIN.nySEw.PhHR5F9aL27ozbOKOOkToufjJ291Sp_evrW55uKXVFCowrFvWUjoKnvi9gJ2KZVsBhElNaU89O74gDvuA9hmVsgJ0Nc3QO_btyrYeycYYIDbvRa0Nc0QEtzmfWepK9bMe1Uws1LJoCLef80b37OTcBuXDCBuUhmNByzZ6m61DCBsJr8VYf4.9gJ.elF1x_Ff4.A2pWL90ftctDL90ftctDL9.Mfp9gJ.jMeKNc0QR9lFDSy.aPrRvxnS9lF3t8.fh2DkFnzeb.6eZq2hJ9b.0LMMAhZccDSRoRPaHEvwLNApw.2ni","trustId":"385a4dbdb7cd4ff3a44a6f4965275ade"}'
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-            'Accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://usa.experian.com/',
-            'Content-Type': 'application/json',
-            'ADRUM': 'isAjax:true',
-            'Origin': 'https://usa.experian.com',
-            'Connection': 'keep-alive',
-            'TE': 'Trailers',
-        }
-
-        ress = session.post(
-            'https://usa.experian.com/api/securelogin/oauth/token', data=data, headers=headers)
-        headd = json.loads(ress.content)
-        if 'errors' in headd:
-            raise Exception(headd['errors'])
-
-        tokken = str(headd['token']['accessToken'])
-        tid = str(headd['trustId'])
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-            'Accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://usa.experian.com/',
-            'Authorization': tokken,
-            'Content-Type': 'application/json; charset=utf-8',
-            'ADRUM': 'isAjax:true',
-            'Origin': 'https://usa.experian.com',
-            'DNT': '1',
-            'Connection': 'keep-alive',
-            'TE': 'Trailers',
-        }
-        data = '{"answer":"'+str(self.question)+'","pin":"'+str(self.pinn)+'","trustDevice":true,"trustId":"' + \
-            str(tid)+'"}'
-        response = session.post('https://usa.experian.com/api/securelogin/submitquestion',
-                                headers=headers, data=data.encode('utf-8'))
-
-        main = json.loads(response.content)
-
-        try:
-            m_token = str(main['token']['accessToken'])
-        except:
-            m_token = tokken
-        try:
-            qdata = '{"dob": "1983-03-07","ssn": "618252314","trustDevice": true,"trustId": "' + \
-                str(tid)+'"}'
-            qheaders = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0',
-                'Accept': 'application/json',
-                'Accept-Language': 'en-US,en;q=0.5',
-                'Referer': 'https://usa.experian.com/',
-                'Authorization': m_token,
-                'Content-Type': 'application/json',
-                'ADRUM': 'isAjax:true',
-                'Connection': 'keep-alive',
-                'Cache-Control': 'max-age=0',
-                'TE': 'Trailers',
-                'DNT': '1',
-            }
-            qress = session.post(
-                'https://usa.experian.com/api/securelogin/submitdob', data=qdata.encode('utf-8'), headers=qheaders)
-
-            qheadd = json.loads(qress.content)
-            q_token = str(qheadd['token']['accessToken'])
-            m_token = q_token
-        except:
-            m_token = m_token
-            pass
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-            'Accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://usa.experian.com/',
-            'Authorization': m_token,
-            'Content-Type': 'application/json',
-            'ADRUM': 'isAjax:true',
-            'Connection': 'keep-alive',
-            'Cache-Control': 'max-age=0',
-            'TE': 'Trailers',
-        }
-
-        resp = session.get("https://usa.experian.com/api/dispute/cdis", headers=headers)
-        p_main = json.loads(resp.content)
-
-        with open(self.filepath_report, "a+") as f:
-            sorted = json.dumps(p_main, indent=4)
-            f.write(sorted)
 
     def login(self):
-
-#         self.driver = webdriver.Chrome(executable_path="C:/python/tests/python_new_scripts/ALLCREDITUNIONS/Furnisher_address/chromedriver.exe", options=self.options)
         self.driver.get('https://usa.experian.com/login/index')
         time.sleep(5)
         WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="username"]')))
