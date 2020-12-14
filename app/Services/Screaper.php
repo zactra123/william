@@ -1779,7 +1779,8 @@ class Screaper
         }
 
         $type = 'EQ';
-        $equifax = json_decode(file_get_contents($data["report_filepath"]), true);
+        $json = json_decode(file_get_contents($data["report_filepath"]), true);
+        $equifax = $json[1]["data"]["creditReportsV2"]["creditReport"];
         $reportedDate = $equifax['dateReportPulled']!= null ? date('Y-m-d',strtotime($equifax['dateReportPulled'])):null;
         $full_name = null;
 
