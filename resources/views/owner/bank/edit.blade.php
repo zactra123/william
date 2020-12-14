@@ -66,6 +66,11 @@
         transition: .2s;
     }
 
+    .responsive{
+        width: 100%;
+        height: auto;
+    }
+
 </style>
 
 @section('content')
@@ -115,29 +120,30 @@
                                     <div class="col-sm-3 hide form-group updateLogo files">
                                         <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-7">
                                         <div class="form-group">
                                             <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control" id="bank_name">
+                                        </div>
+                                        <div id="collection_types" class="m-5">
+                                            <div class="row" id="collection_types_append">
+                                                <div class="col-md-4 ">
+                                                    3RD PARTY CA
+                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-4 ">
+                                                    ASSET BUYER CA
+                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-4 ">
+                                                    LAW FIRM CA
+                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
-                                <div id="collection_types" class="m-5">
-                                    <div class="row" id="collection_types_append">
-                                        <div class="col-md-4 ">
-                                            3RD PARTY CA
-                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
-                                        </div>
-                                        <div class="col-md-4 ">
-                                            ASSET BUYER CA
-                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
-                                        </div>
-                                        <div class="col-md-4 ">
-                                            LAW FIRM CA
-                                            <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div id="account_types">
                                     <div class="row" id="account_types_append">
                                         @foreach($account_types as $typeId =>$typeName)
@@ -235,10 +241,20 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
+                                                    <div class="form-group col-sm-2">
+                                                       <img  class="responsive" src="/images/phone.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                                    <div class="form-group col-sm-2">
+                                                        <img  class="responsive" src="/images/fax.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -327,6 +343,32 @@
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="{{ asset('js/site/admins/banks.js?v=2') }}" ></script>
+    <script>
+        $(document).ready(function($) {
+
+            $.validator.addMethod("extension", function(value, element, param) {
+                param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
+                return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
+            },"Please enter a value with a valid extension.");
+
+            $('#bankInformation').validate({
+                rules: {
+                    "logo": {
+                        extension: "jpg,jpeg, png"
+                    },
+                },
+                messages: {
+                    "logo": {
+                        extension: "You're only allowed to upload jpg or png images."
+                    },
+
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                }
+            })
+        })
+    </script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 @endsection

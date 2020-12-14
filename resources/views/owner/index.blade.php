@@ -1,10 +1,20 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="container mt-5 pt-5">
-        <div class="row justify-content-center">
+
+
+    <section class="header-title section-padding">
+        <div class="container text-center">
 
         </div>
+    </section>
 
-    </div>
+    <section class="ms-working working-section section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+
+
+            </div> <!-- section-wrapper -->
+        </div>
+    </section>
 @endsection

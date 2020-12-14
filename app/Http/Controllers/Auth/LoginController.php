@@ -46,7 +46,7 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 'super admin':
-                $this->redirectTo = '/owner/message';
+                $this->redirectTo = '/owner';
                 return $this->redirectTo;
                 break;
             case 'affiliate':
