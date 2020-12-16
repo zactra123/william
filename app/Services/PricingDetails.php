@@ -8,53 +8,41 @@ use App\DisputesPricing;
 
 class PricingDetails
 {
+    protected $pricing;
 
-    public function personalInformation($affiliate,  $bureau)
+    public function __construct($affiliate)
     {
-
-        $price = DisputesPricing::where('user_id', $affiliate)->first();
-        if(empty($price)){
-            $price = DisputesPricing::where('user_id', null)->first();
+        $this->pricing = DisputesPricing::where('user_id', $affiliate)->first();
+        if(empty($this->pricing)){
+            $this->pricing = DisputesPricing::where('user_id', null)->first();
         }
-        $personalInfo = $price->personal_info;
-
-        return $personalInfo;
 
     }
-    public function statement( $affiliate,  $bureau, $statementId)
+
+    public function personalInformation()
     {
-        $price = DisputesPricing::where('user_id', $affiliate)->first();
-        if(empty($price)){
-            $price = DisputesPricing::where('user_id', null)->first();
-        }
-        $statement = $price->fraud_alerts;
-        return $statement;
-    }
-    public function inquiries( $affiliate,  $bureau, $inquiryId)
-    {
-        $price = DisputesPricing::where('user_id', $affiliate)->first();
-        if(empty($price)){
-            $price = DisputesPricing::where('user_id', null)->first();
-        }
-        $inquiryPrice = $price->inquiries;
-        return $inquiryPrice;
+        return $this->pricing->personal_info;;
     }
 
-    public function exAccountPrice($affiliate,  $bureau, $exAccountId)
+    public function statement()
+    {
+        return $this->pricing->fraud_alerts;
+    }
+
+    public function inquiries()
+    {
+        return $this->pricing->inquiries;
+    }
+
+    public function exAccountPrice($bureau, $exAccountId)
     {
         $exAccount = ClientReportExAccount::where('id', $exAccountId)->first();
 
         dd($exAccount->paymentHistories);
 
-        dd($affiliate,  $bureau, $exAccountId);
-
     }
-    public function tuAccountPrice($affiliate,  $bureau, $tuAccountId)
+    public function tuAccountPrice( $bureau, $tuAccountId)
     {
-        $price = DisputesPricing::where('user_id', $affiliate)->first();
-        if(empty($price)){
-            $price = DisputesPricing::where('user_id', null)->first();
-        }
 
         $tuAccount = ClientReportTuAccount::where('id', $tuAccountId)->first();
 
@@ -68,12 +56,8 @@ class PricingDetails
 
         if($subType == 'trade' && strpos($loanType, 'credit card') !== false
             && strpos($accountType, 'revolving') !== false){
-            $priceAccount =  $price->cc_charged_off;
-            $priceAccountBlock = $price->cc_accnt_bloking;
-
-
-
-
+            $priceAccount =  $this->pricing->cc_charged_off;
+            $priceAccountBlock = $this->pricing->cc_accnt_bloking;
         }
         dd($tuAccount);
 
@@ -84,7 +68,7 @@ class PricingDetails
 
 
     }
-    public function eqAccountPrice($affiliate,  $bureau, $eqAccountId)
+    public function eqAccountPrice($bureau, $eqAccountId)
     {
         $eqAccount = ClientReportExAccount::where('id', $eqAccountId)->first();
 

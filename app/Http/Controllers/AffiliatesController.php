@@ -756,14 +756,17 @@ class AffiliatesController extends Controller
         return view('affiliate.client-view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ', 'client'));
     }
 
-    public function negativeItemStore(Request $request, PricingDetails $pricingDetails, $id)
+    public function negativeItemStore(Request $request, $id)
     {
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
-        if(empty($a)){
+        if (empty($a)) {
             return back();
         }
+
+        $pricingDetails = new PricingDetails($a->id);
+
         $dispute = $request->except('_token');
 
         if(empty($dispute)){
@@ -818,24 +821,24 @@ class AffiliatesController extends Controller
 
             if(!isset($personalExPrice)){
                 if($key == 'ex_name' or 'ex_address' or $key == 'ex_employ' or $key == 'ex_phone' ){
-                    $personalExPrice = $pricingDetails->personalInformation($affiliateId, $key);
+                    $personalExPrice = $pricingDetails->personalInformation();
                 }
             }
             if(!isset($personalTuPrice)){
                 if($key == 'tu_name' or 'tu_address' or $key == 'tu_employ' or $key == 'tu_phone' ){
-                    $personalTuPrice = $pricingDetails->personalInformation($affiliateId, $key);
+                    $personalTuPrice = $pricingDetails->personalInformation();
                 }
             }
             if(!isset($personalEqPrice)){
                 if($key == 'eq_name' or 'eq_address' or $key == 'eq_employ' ){
-                    $personalEqPrice = $pricingDetails->personalInformation($affiliateId, $key);
+                    $personalEqPrice = $pricingDetails->personalInformation();
                 }
             }
 
             if ($key == 'ex_statement') {
                 foreach ($value as $disputeExStatements) {
-                    $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();
-                    $statementPricing = $pricingDetails->statement($affiliateId, $key, $disputeExStatements);
+                    $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();//???
+                    $statementPricing = $pricingDetails->statement();
                     $dataExStatement =  [
                         'statement'=> $exStatement,
                         'price'=>$statementPricing
@@ -847,7 +850,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeTuStatements) {
                     $tuStatement = ClientReportTuStatement::where('id', $disputeTuStatements)->first();
 
-                    $statementPricing = $pricingDetails->statement($affiliateId, $key, $disputeTuStatements);
+                    $statementPricing = $pricingDetails->statement();
                     $dataTuStatement =  [
                         'statement'=> $tuStatement,
                         'price'=>$statementPricing
@@ -880,7 +883,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeExAccounts) {
                     $exAccount = ClientReportExAccount::where('id', $disputeExAccounts)->first();
 
-                    $exAccountPricing = $pricingDetails->exAccountPrice($affiliateId, $key, $disputeExAccounts);
+                    $exAccountPricing = $pricingDetails->exAccountPrice($key, $disputeExAccounts);
                     $dataExInquiry =  [
                         'statement'=> '',
                         'price'=>''
@@ -893,7 +896,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeTuAccounts) {
                     $tuAccount = ClientReportTuAccount::where('id', $disputeTuAccounts)->first();
 
-                    $tuAccountPricing = $pricingDetails->tuAccountPrice($affiliateId, $key, $disputeTuAccounts);
+                    $tuAccountPricing = $pricingDetails->tuAccountPrice($key, $disputeTuAccounts);
                     $dataExInquiry =  [
                         'statement'=> '',
                         'price'=>''
@@ -913,7 +916,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeExInquiries) {
                     $exInquiry = ClientReportExInquiry::where('id', $disputeExInquiries)->first();
 
-                    $inquiryExPricing = $pricingDetails->inquiries($affiliateId, $key, $disputeExInquiries);
+                    $inquiryExPricing = $pricingDetails->inquiries();
                     $dataExInquiry =  [
                         'statement'=> $exInquiry,
                         'price'=>$inquiryExPricing
@@ -926,7 +929,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeTuInquiries) {
                     $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
 
-                    $inquiryTuPricing = $pricingDetails->inquiries($affiliateId, $key, $disputeTuInquiries);
+                    $inquiryTuPricing = $pricingDetails->inquiries();
                     $dataTuInquiry =  [
                         'statement'=> $tuInquiry,
                         'price'=>$inquiryTuPricing
@@ -940,7 +943,7 @@ class AffiliatesController extends Controller
 
                     $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
 
-                    $inquiryEqPricing = $pricingDetails->inquiries($affiliateId, $key, $disputeEqInquiries);
+                    $inquiryEqPricing = $pricingDetails->inquiries();
                     $dataTuInquiry =  [
                         'statement'=> $tuInquiry,
                         'price'=>$inquiryEqPricing
