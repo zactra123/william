@@ -289,7 +289,7 @@ class experianLogin:
                     pass
             time.sleep(3)
             # print(driver.current_window_handle)
-            self.driver.execute_script('window.print();')
+#             self.driver.execute_script('window.print();')
             time.sleep(5)
 
 
