@@ -143,20 +143,18 @@ class ClientsController extends Controller
     public function pricing(Request $request)
     {
         if ($request->method()=="POST") {
-            $pricing = $request->except(['_token', 'auto_repo']);
+            $pricing = $request->except(['_token']);
             $validate =new DisputesPricing();
 
             $validator =Validator::make($pricing,
                 $validate->rules
             );
-
             if ($validator->fails()) {
                 $default = DisputesPricing::default();
                 $pricing = DisputesPricing::where("user_id", $request->user_id)->first();
                 if (!$pricing) {
                     $pricing = new DisputesPricing(["user_id" => $request->user_id]);
                 }
-                dd($validator);
                 return view('owner.pricing._form', compact('pricing', 'default'))->withErrors($validator);
             }
 

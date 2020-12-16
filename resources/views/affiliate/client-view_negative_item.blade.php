@@ -53,7 +53,7 @@
 
 
 
-                <div class="Experian" style="display: block">
+                <div class="Experian" style="display: none">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
                         </div>
@@ -378,7 +378,7 @@
                                         </div>
 
                                         <div class="col-md-2">
-                                            <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                            <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                         </div>
                                         <div class="col-md-7">
                                             <span class="">{{$accounts->source_name}} </span>
@@ -485,7 +485,7 @@
                                         </div>
 
                                         <div class="col-md-2">
-                                            <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                            <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                         </div>
                                         <div class="col-md-7">
                                             <span class="">{{$accounts->source_name}} </span>
@@ -754,7 +754,7 @@
             @endif
 
             @if($clientReportsTU)
-                <div class="TransUnion" style="display: none">
+                <div class="TransUnion" style="display: block">
                 <div class="row mt20">
                     <div class="col-md-1 mt20">
                     </div>
@@ -963,7 +963,7 @@
                         <div class="mt20"></div>
                         <div class="chart-report">
                             <span style="font-weight: bold"> NEGATIVE ACCOUNTS</span>
-                            @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 'true') as $accounts)
+                            @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 1) as $accounts)
 
                             <div class="mt20"></div>
 
@@ -971,7 +971,7 @@
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-2">
-                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                        <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                    </div>
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->account_name}}</span>
@@ -1041,14 +1041,16 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($accounts->remark != null )
+                                    @if(!empty($accounts->remark))
                                         <div class="col-md-2">
                                             <div class="col-md-12">
                                                 <label class="form-text">REMARK</label>
                                             </div>
+                                            @foreach(json_decode($accounts->remark) as $remark)
                                             <div class="col-md-12">
-                                                <span class=""> {{$accounts->remark}} </span>
+                                                <span class=""> {{$remark->description}} </span>
                                             </div>
+                                            @endforeach
                                         </div>
                                     @endif
                                 </div>
@@ -1078,7 +1080,7 @@
                         <div class="mt20"></div>
                         <div class="chart-report">
                             <span style="font-weight: bold"> GOOD STANDING ACCOUNTS</span>
-                            @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 'false') as $accounts)
+                            @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 0) as $accounts)
 
                             <div class="mt20"></div>
 
@@ -1086,7 +1088,7 @@
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-2">
-                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                        <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                    </div>
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->account_name}}</span>
@@ -1156,14 +1158,17 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($accounts->remark != null )
+                                    @if(!empty($accounts->remark) )
                                         <div class="col-md-2">
                                             <div class="col-md-12">
                                                 <label class="form-text">REMARK</label>
                                             </div>
+                                            @foreach(json_decode($accounts->remark) as $remark)
+
                                             <div class="col-md-12">
-                                                <span class=""> {{$accounts->remark}} </span>
+                                                <span class=""> {{$remark->description}} </span>
                                             </div>
+                                            @endforeach
                                         </div>
                                     @endif
                                 </div>
@@ -1190,13 +1195,12 @@
                             <span style="font-weight: bold"> COLLECTION ACCOUNTS</span>
                             @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', null) as $accounts)
 
-                            <div class="mt20"></div>
-
+                                <div class="mt20"></div>
                                 <div class="row border" style="font-weight: bold">
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-2">
-                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                        <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                    </div>
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->account_name}}</span>
@@ -1266,14 +1270,16 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if($accounts->remark != null )
+                                    @if(!empty($accounts->remark) )
                                         <div class="col-md-2">
                                             <div class="col-md-12">
                                                 <label class="form-text">REMARK</label>
                                             </div>
-                                            <div class="col-md-12">
-                                                <span class=""> {{$accounts->remark}} </span>
-                                            </div>
+                                            @foreach(json_decode($accounts->remark) as $remark)
+                                                <div class="col-md-12">
+                                                    <span class=""> {{$remark->description}} </span>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     @endif
                                 </div>
@@ -1865,7 +1871,7 @@
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-2">
-                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                        <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                    </div>
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->name}}</span>
@@ -1983,7 +1989,7 @@
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-2">
-                                        <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px">
+                                        <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                     </div>
                                     <div class="col-md-7">
                                         <span class="">{{$accounts->name}}</span>
@@ -2060,7 +2066,7 @@
                                             </div>
                                             @foreach(json_decode($accounts->remarks) as $remark)
                                                 <div class="col-md-12">
-                                                    <span class=""> {{$remark}} </span>
+                                                    <span class=""> {{$remark->description}} </span>
                                                 </div>
                                             @endforeach
                                         </div>

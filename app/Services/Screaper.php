@@ -1076,6 +1076,7 @@ class Screaper
     {
         set_time_limit(300);
         $data = json_decode($output, true);
+
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'transunion_dispute'));
@@ -1090,7 +1091,8 @@ class Screaper
             return false;
         }
 
-        $json = json_decode(file_get_contents(resource_path(str_replace('..','',$data["report_filepath"]))), true);
+//        $json = json_decode(file_get_contents(resource_path(str_replace('..','',$data["report_filepath"]))), true);
+        $json = json_decode(file_get_contents(str_replace('..','',$data["report_filepath"])), true);
 
         $saveTransUnion = isset( $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0])?
             $json['TU_CONSUMER_DISCLOSURE']['reportData']['product'][0]['subject'][0]['subjectRecord'][0]:null;
@@ -2151,7 +2153,7 @@ class Screaper
             "responsibility" => $data['ecoadesignatorDescription'],
             "account_type" => $data['portfolioType'],
             "account_type_description" => $data['portfolioTypeDescription'],
-            "loan_type" => isset($data['loanType']['description'])?$data['loanType']['description']:null,
+            "loan_type" => isset($data['account']['description'])?$data['account']['description']:null,
             "balance" => isset($data['currentBalance'])?$data['currentBalance']:null,
             "date_effective_label" => $data['dateEffectiveLabel'],
             "date_effective" => isset($data['dateEffective']['value'])?date("Y-m-d", strtotime($data['dateEffective']['value'])):null,

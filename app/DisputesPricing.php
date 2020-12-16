@@ -60,7 +60,7 @@ class DisputesPricing extends Model
         'cc_accnt_bloking',
         'auto_blocking',
         'mortgage_blocking',
-        'p_loan_clocking',
+        'p_loan_blocking',
         'student_loan_blocking',
         'cc_late',
         'auto_late',

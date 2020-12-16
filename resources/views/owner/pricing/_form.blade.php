@@ -107,7 +107,7 @@
                     <label style="float: right">P. LOAN CLOCKING $</label>
                 </div>
                 <div class="price">
-                    <input type="text"  name="p_loan_blocking" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="P. LOAN CLOCKING">
+                    <input type="text"  name="p_loan_blocking" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="P. LOAN BLOCKING">
                 </div>
             </div>
                     {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
