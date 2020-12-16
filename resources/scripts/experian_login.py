@@ -93,7 +93,7 @@ class experianLogin:
         try:
             self.login()
             self.get_report()
-            self.get_report_numbers()
+#             self.get_report_numbers()
             self.driver.close()
             return {
                 'status': 'success',
