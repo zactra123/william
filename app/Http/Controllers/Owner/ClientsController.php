@@ -204,7 +204,7 @@ class ClientsController extends Controller
 //        $scraper = new Screaper($client_id);
 //        $scraper->transunion_membership();
         $client = User::find($client_id);
-        ScrapeReports::dispatch($client, [], 'equifax_via_credit_karma');
+        ScrapeReports::dispatch($client, [], 'experian_login');
         dd("test");
     }
 
