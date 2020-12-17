@@ -169,7 +169,7 @@ class Screaper
     {
         set_time_limit(300);
         $data = json_decode($output);
-        dd($data, $output);
+
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_login'));
