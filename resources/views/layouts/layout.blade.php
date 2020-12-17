@@ -36,7 +36,24 @@
     <script src="{{ asset('js/app.js?v=4') }}"></script>
 
     <style>
-
+        body:after{
+            content: "beta";
+            position: fixed;
+            width: 140px;
+            height: 25px;
+            background: #EE8E4A;
+            top: 15px;
+            left: -40px;
+            text-align: center;
+            font-size: 13px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fff;
+            line-height: 27px;
+            transform:rotate(-45deg);
+            z-index: 1000000;
+        }
         .header-section .navbar .navbar-collapse .navbar-nav li {
 
             text-transform: none !important;
