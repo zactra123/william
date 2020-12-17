@@ -93,21 +93,21 @@ class experianLogin:
         try:
             self.login()
             self.get_report()
-#             self.get_report_numbers()
+            self.get_report_numbers()
             self.driver.close()
             return {
-                'status': 'success',
-                'message': self.error_message,
-                'report_filepath': self.filepath_report,
-                'numbers_filepath': self.filepath_numbers
+                "status": "success",
+                "message": self.error_message,
+                "report_filepath": self.filepath_report,
+                "numbers_filepath": self.filepath_numbers
             }
         except Exception as e:
             self.driver.close()
             return {
-                'status': 'error',
-                'error': e,
-                'report_filepath': self.filepath_report,
-                'numbers_filepath': self.filepath_numbers
+                "status": "error",
+                "error": e,
+                "report_filepath": self.filepath_report,
+                "numbers_filepath": self.filepath_numbers
             }
 
 
@@ -220,9 +220,9 @@ class experianLogin:
                 block1 = soup.find('div', attrs={'class': 'dispute-error-found--block'})
                 from rest_framework import status
                 self.error_message.append( {
-                    'status': 'technical difficulties and cannot access your report',
-                    'code': status.HTTP_422_UNPROCESSABLE_ENTITY,
-                    'message': block1.text.strip(),
+                    "status": "technical difficulties and cannot access your report",
+                    "code": status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    "message": block1.text.strip(),
                 })
             except:
                 pass
@@ -363,5 +363,5 @@ class experianLogin:
 display = Display(visible=0, size=(800, 600))
 display.start()
 experian = experianLogin(sys.argv)
-print(experian.call())
+print(json.dumps(experian.call()))
 display.stop()

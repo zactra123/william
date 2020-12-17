@@ -117,7 +117,7 @@ class Screaper
         $this->logger->debug("Command for Fetching Experian Login:", ["command" => $command]);
         $output = shell_exec($command);
         $this->logger->debug("OUTPUT Experian Login:", ["command" => $output]);
-        $this->prepare_experian_login_data(str_replace('\'', '"',$output));
+        $this->prepare_experian_login_data($output);
         return $output;
 
     }
@@ -168,7 +168,8 @@ class Screaper
     public function prepare_experian_login_data($output)
     {
         set_time_limit(300);
-        $data = json_decode($output, true);
+        $data = json_decode($output);
+        dd($data, $output);
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_login'));
@@ -183,9 +184,14 @@ class Screaper
         }
        // Save Experian Report Numbers -START-
         $report_number_path = $data["numbers_filepath"];
-        $report_numbers = json_decode(file_get_contents($report_number_path), true);
 
-        if ($report_numbers) {
+        if (file_exist($report_number_path)) {
+            $report_numbers = json_decode(file_get_contents($report_number_path), true);
+        } else {
+            $this->logger->debug("REPORT NUMBERS: File Dont EXIST");
+        }
+
+        if (!empty($report_numbers)) {
             foreach ($report_numbers['Report Numbers'] as $report_number) {
                 $this->client->experianReportNumbers()->firstOrCreate(
                     ['number' => $report_number['Report Number']],
@@ -199,7 +205,12 @@ class Screaper
         // Save Experian Report Numbers -END-
 
         $path = $data["report_filepath"];
-        $json = json_decode(file_get_contents($path), true);
+        if (file_exist($data["report_filepath"])) {
+            $json = json_decode(file_get_contents($path), true);
+        } else {
+            $this->logger->debug("File Dont EXIST");
+            return "no report";
+        }
         $type = 'EX_LOG';
 
         $reportNumber = $json['id']?$json['id']:null;
