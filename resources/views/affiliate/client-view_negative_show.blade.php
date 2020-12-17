@@ -312,36 +312,36 @@
 
                         @if(!empty($data['ex_statement']))
                             @foreach(($data['ex_statement']) as $ex_statement)
-                                @if(!empty($ex_statement))
-                                    <div class="mt20 title-ex_statement-{{$ex_statement->id}}"></div>
-                                    <div class="chart-report title-ex_statement-{{$ex_statement->id}}">
+                                @if(!empty($ex_statement['ex_statement']))
+                                    <div class="mt20 title-ex_statement-{{$ex_statement['ex_statement']->id}}"></div>
+                                    <div class="chart-report title-ex_statement-{{$ex_statement['ex_statement']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-                                                <span class="">{{$ex_statement->statement}} </span>
+                                                <span class="">{{$ex_statement['ex_statement']->statement}} </span>
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="row">
-                                                    <div class="col-md-12   delete-name" data-attribute="title-ex_statement-{{$ex_statement->id}}">
+                                                    <div class="col-md-12   delete-name" data-attribute="title-ex_statement-{{$ex_statement['ex_statement']->id}}">
                                                         <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                         <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                                        <input type="hidden" name="ex_statement[{{$ex_statement->id}}][id]" value="{{$ex_statement->id}}">
+                                                        <input type="hidden" name="ex_statement[{{$ex_statement['ex_statement']->id}}][id]" value="{{$ex_statement['ex_statement']->id}}">
                                                     </div>
                                                 </div>
-                                                <div class="row mt20 title-ex_statement-{{$ex_statement->id}}" style="font-weight: bold" >
+                                                <div class="row mt20 title-ex_statement-{{$ex_statement['ex_statement']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12 ">
                                                         <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                         <label for="fix">Fix</label>
-                                                        <input type="radio" id="ex_statement-{{$ex_statement->id}}" data-name="{{$ex_statement->id}}" class="ex_statement_fix"  name="ex_statement[{{$ex_statement->id}}][type]" value="fix">
+                                                        <input type="radio" id="ex_statement-{{$ex_statement['ex_statement']->id}}" data-name="{{$ex_statement['ex_statement']->id}}" class="ex_statement_fix"  name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="fix">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="delete">Delete </label>
-                                                        <input type="radio"  class="ex_statement_fix" data-name="{{$ex_statement->id}}" name="ex_statement[{{$ex_statement->id}}][type]" value="delete">
+                                                        <input type="radio"  class="ex_statement_fix" data-name="{{$ex_statement['ex_statement']->id}}" name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="delete">
                                                     </div>
                                                 </div>
-                                                <div class="row  title-ex_statement-{{$ex_statement->id}}" style="font-weight: bold" >
+                                                <div class="row  title-ex_statement-{{$ex_statement['ex_statement']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12 ">
-                                                        <div id="exStatementInput-{{$ex_statement->id}}">
+                                                        <div id="exStatementInput-{{$ex_statement['ex_statement']->id}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -354,37 +354,36 @@
 
                         @if(!empty($data['tu_statement']))
                             @foreach(($data['tu_statement']) as $tu_statement)
-                                @if(!empty($tu_statement))
-                                    <div class="mt20 title-tu_statement-{{$tu_statement->id}}"></div>
-                                    <div class="chart-report title-tu_statement-{{$tu_statement->id}}">
+                                @if(!empty($tu_statement['tu_statement']))
+                                    <div class="mt20 title-tu_statement-{{$tu_statement['tu_statement']->id}}"></div>
+                                    <div class="chart-report title-tu_statement-{{$tu_statement['tu_statement']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-                                                <span class="">{{$tu_statement->statement}} {{$tu_statement->description}} </span>
+                                                <span class="">{{$tu_statement['tu_statement']->statement}} {{$tu_statement['tu_statement']->description}} </span>
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="row">
-                                                    <div class="col-md-12 delete-name" data-attribute="title-tu_statement-{{$tu_statement->id}}">
+                                                    <div class="col-md-12 delete-name" data-attribute="title-tu_statement-{{$tu_statement['tu_statement']->id}}">
                                                         <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                         <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                        <input type="hidden" name="tu_statement[{{$tu_statement->id}}][id]" value="{{$tu_statement->id}}">
+                                                        <input type="hidden" name="tu_statement[{{$tu_statement['tu_statement']->id}}][id]" value="{{$tu_statement['tu_statement']->id}}">
                                                     </div>
                                                 </div>
-                                                <div class="row mt20 title-tu_statement-{{$tu_statement->id}}" style="font-weight: bold" >
+                                                <div class="row mt20 title-tu_statement-{{$tu_statement['tu_statement']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12">
                                                         <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                         <label for="fix">Fix</label>
-                                                        <input type="radio" id=tu-{{$tu_statement->id}}" data-name="{{$tu_statement->id}}" class="tu_statement_fix"  name="tu_statement[{{$tu_statement->id}}][type]" value="fix">
+                                                        <input type="radio" id=tu-{{$tu_statement['tu_statement']->id}}" data-name="{{$tu_statement['tu_statement']->id}}" class="tu_statement_fix"  name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="fix">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="delete">Delete </label>
-                                                        <input type="radio"  class="tu_statement_fix" data-name="{{$tu_statement->id}}" name="tu_statement[{{$tu_statement->id}}][type]" value="delete">
+                                                        <input type="radio"  class="tu_statement_fix" data-name="{{$tu_statement['tu_statement']->id}}" name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="delete">
                                                     </div>
-
                                                 </div>
-                                                <div class="row mt20 title-tu_statement-{{$tu_statement->id}}" style="font-weight: bold" >
+                                                <div class="row mt20 title-tu_statement-{{$tu_statement['tu_statement']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12">
-                                                        <div id="tuStatementInput-{{$tu_statement->id}}">
+                                                        <div id="tuStatementInput-{{$tu_statement['tu_statement']->id}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -399,25 +398,25 @@
 
                         @if(!empty($data['ex_public']))
                             @foreach($data['ex_public'] as $ex_public)
-                                <div class="mt20 title-ex_public-{{$ex_public->id}}"></div>
-                                <div class="chart-report title-ex_public-{{$ex_public->id}}">
+                                <div class="mt20 title-ex_public-{{$ex_public['ex_public']->id}}"></div>
+                                <div class="chart-report title-ex_public-{{$ex_public['ex_public']->id}}">
                                     <div class="row " style="font-weight: bold">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-5">
                                             <div class="col-md-12">
-                                                <span class="form-text">{{$ex_public->source_name}}</span>
-                                                <span class="form-text" style="padding-left: 15px">{{$ex_public->source_id}}</span>
+                                                <span class="form-text">{{$ex_public['ex_public']->source_name}}</span>
+                                                <span class="form-text" style="padding-left: 15px">{{$ex_public['ex_public']->source_id}}</span>
                                             </div>
-                                            @if($ex_public->status !=null )
+                                            @if($ex_public['ex_public']->status !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">STATUS</label>
-                                                    <span class=""> {{$ex_public->status}} </span>
+                                                    <span class=""> {{$ex_public['ex_public']->status}} </span>
                                                 </div>
                                             @endif
-                                            @if($ex_public->on_record_until !=null )
+                                            @if($ex_public['ex_public']->on_record_until !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">ON RECORD UNTIL</label>
-                                                    <span class=""> {{$ex_public->on_record_until}} </span>
+                                                    <span class=""> {{$ex_public['ex_public']->on_record_until}} </span>
                                                 </div>
                                             @endif
                                             @if($ex_public->claim_amount !=null )
@@ -426,213 +425,187 @@
                                                     <span class=""> ${{$ex_public->claim_amount}}  </span>
                                                 </div>
                                             @endif
-                                            @if($ex_public->date_resolved != null )
+                                            @if($ex_public['ex_public']->date_resolved != null )
 
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE RESOLVED</label>
-                                                    <span class=""> {{date("m/d/Y",strtotime($ex_public->date_resolved))}} </span>
+                                                    <span class=""> {{date("m/d/Y",strtotime($ex_public['ex_public']->date_resolved))}} </span>
                                                 </div>
                                             @endif
 
 
                                         </div>
                                         <div class="col-md-6 p-0">
-                                            <div class="col-md-12 p-0 delete-name" data-attribute="title-ex_public-{{$ex_public->id}}">
+                                            <div class="col-md-12 p-0 delete-name" data-attribute="title-ex_public-{{$ex_public['ex_public']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span> <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                                <input type="hidden" name="ex_public[{{$ex_public->id}}][id]" value="{{$ex_public->id}}">
+                                                <input type="hidden" name="ex_public[{{$ex_public['ex_public']->id}}][id]" value="{{$ex_public['ex_public']->id}}">
 
                                             </div>
-                                            <div class="row mt20 title-ex_public-{{$ex_public->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-ex_public-{{$ex_public['ex_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 ">DISPUTE TYPE</div>
                                                 <div class="col-md-12 ">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="ex_public-{{$ex_public->id}}" data-name="{{$ex_public->id}}" class="ex_public_fix"  name="ex_public[{{$ex_public->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="ex_public-{{$ex_public['ex_public']->id}}" data-name="{{$ex_public['ex_public']->id}}" class="ex_public_fix"  name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="ex_public_fix" data-name="{{$ex_public->id}}" name="ex_public[{{$ex_public->id}}][type]" value="not_mine">
-
+                                                    <input type="radio"  class="ex_public_fix" data-name="{{$ex_public['ex_public']->id}}" name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="not_mine">
                                                 </div>
-
                                             </div>
-                                            <div class="row  title-ex_public-{{$ex_public->id}}" style="font-weight: bold" >
+                                            <div class="row  title-ex_public-{{$ex_public['ex_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 p-0 " >
-                                                    <div id="exPublicInput-{{$ex_public->id}}">
+                                                    <div id="exPublicInput-{{$ex_public['ex_public']->id}}">
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
-
-
-
                                     </div>
-
                                 </div>
                             @endforeach
                         @endif
 
                         @if(!empty($data['tu_public']))
                             @foreach($data['tu_public'] as $tu_public)
-                                <div class="mt20 title-tu_public-{{$tu_public->id}}"></div>
-                                <div class="chart-report title-tu_public-{{$tu_public->id}}">
+                                <div class="mt20 title-tu_public-{{$tu_public['tu_public']->id}}"></div>
+                                <div class="chart-report title-tu_public-{{$tu_public['tu_public']->id}}">
                                     <div class="row " style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-5">
                                             <div class="col-md-12">
-                                                <span class="form-text">{{$tu_public->name}}</span>
-                                                <span class="form-text" style="padding-left: 15px">{{$tu_public->docket_number}}</span>
+                                                <span class="form-text">{{$tu_public['tu_public']->name}}</span>
+                                                <span class="form-text" style="padding-left: 15px">{{$tu_public['tu_public']->docket_number}}</span>
                                             </div>
-
-
-                                            @if($tu_public->type !=null )
+                                            @if($tu_public['tu_public']->type !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">TYPE</label>
-                                                    <span class=""> {{$tu_public->type}} </span>
+                                                    <span class=""> {{$tu_public['tu_public']->type}} </span>
                                                 </div>
                                             @endif
-
-                                            @if($tu_public->date_filed !=null )
+                                            @if($tu_public['tu_public']->date_filed !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE FILED</label>
-                                                       <span class=""> {{date("m/d/Y",strtotime($tu_public->date_filed))}} </span>
+                                                       <span class=""> {{date("m/d/Y",strtotime($tu_public['tu_public']->date_filed))}} </span>
                                                 </div>
                                             @endif
 
-                                            @if($tu_public->on_record_until !=null )
+                                            @if($tu_public['tu_public']->on_record_until !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">ON RECORD UNTIL</label>
-                                                    <span class=""> {{$tu_public->on_record_until}} </span>
+                                                    <span class=""> {{$tu_public['tu_public']->on_record_until}} </span>
                                                 </div>
                                             @endif
-                                            @if($tu_public->court_type_description !=null )
+                                            @if($tu_public['tu_public']->court_type_description !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">TYPE DESCRIPTION</label>
-                                                    <span class=""> {{$tu_public->court_type_description}}  </span>
+                                                    <span class=""> {{$tu_public['tu_public']->court_type_description}}  </span>
                                                 </div>
                                             @endif
-                                            @if($tu_public->responsibility != null )
+                                            @if($tu_public['tu_public']->responsibility != null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE RESOLVED</label>
-                                                    <span class=""> {{$tu_public->responsibility}} </span>
+                                                    <span class=""> {{$tu_public['tu_public']->responsibility}} </span>
                                                 </div>
                                             @endif
 
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="col-md-12 delete-name" data-attribute="title-tu_public-{{$tu_public->id}}">
+                                            <div class="col-md-12 delete-name" data-attribute="title-tu_public-{{$tu_public['tu_public']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
-                                                <input type="hidden" name="tu_public[{{$tu_public->id}}][id]" value="{{$tu_public->id}}">
+                                                <input type="hidden" name="tu_public[{{$tu_public['tu_public']->id}}][id]" value="{{$tu_public['tu_public']->id}}">
                                             </div>
 
 
-                                            <div class="row mt20 title-tu_public-{{$tu_public->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-tu_public-{{$tu_public['tu_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12">DISPUTE TYPE</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="tu_public-{{$tu_public->id}}" data-name="{{$tu_public->id}}" class="tu_public_fix"  name="tu_public[{{$tu_public->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="tu_public-{{$tu_public['tu_public']->id}}" data-name="{{$tu_public['tu_public']->id}}" class="tu_public_fix"  name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="tu_public_fix" data-name="{{$tu_public->id}}" name="tu_public[{{$tu_public->id}}][type]" value="not_mine">
-
+                                                    <input type="radio"  class="tu_public_fix" data-name="{{$tu_public['tu_public']->id}}" name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="not_mine">
                                                 </div>
-
                                             </div>
-                                            <div class="row mt20 title-tu_public-{{$tu_public->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-tu_public-{{$tu_public['tu_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 " >
-                                                    <div id="tuPublicInput-{{$tu_public->id}}">
+                                                    <div id="tuPublicInput-{{$tu_public['tu_public']->id}}">
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
-
                                 </div>
                             @endforeach
-
-
                         @endif
 
                         @if(!empty($data['eq_public']))
                             @foreach($data['eq_public'] as $eq_public)
-                                <div class="mt20 title-eq_public-{{$eq_public->id}}"></div>
-                                <div class="chart-report title-eq_public-{{$eq_public->id}}">
+                                <div class="mt20 title-eq_public-{{$eq_public['eq_public']->id}}"></div>
+                                <div class="chart-report title-eq_public-{{$eq_public['eq_public']->id}}">
                                     <div class="row " style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-5">
                                             <div class="col-md-12">
-                                                <span class="form-text">{{$eq_public->name}}</span>
-                                                <span class="form-text" style="padding-left: 15px">{{$eq_public->reference_number}}</span>
+                                                <span class="form-text">{{$eq_public['eq_public']->name}}</span>
+                                                <span class="form-text" style="padding-left: 15px">{{$eq_public['eq_public']->reference_number}}</span>
                                             </div>
-                                            @if($eq_public->classification !=null )
+                                            @if($eq_public['eq_public']->classification !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">CLASSIFICATION</label>
-                                                    <span class=""> {{$eq_public->classification}} </span>
+                                                    <span class=""> {{$eq_public['eq_public']->classification}} </span>
                                                 </div>
                                             @endif
 
-                                            @if($eq_public->date_filed !=null )
+                                            @if($eq_public['eq_public']->date_filed !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE FILED</label>
-                                                    <span class=""> {{date("m/d/Y",strtotime($eq_public->date_filed))}} </span>
+                                                    <span class=""> {{date("m/d/Y",strtotime($eq_public['eq_public']->date_filed))}} </span>
                                                 </div>
                                             @endif
 
-                                            @if($eq_public->resposibility !=null )
+                                            @if($eq_public['eq_public']->resposibility !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">RESPONSIBILITY</label>
-                                                    <span class=""> {{$eq_public->resposibility}} </span>
+                                                    <span class=""> {{$eq_public['eq_public']->resposibility}} </span>
                                                 </div>
                                             @endif
-                                            @if($eq_public->category_type !=null )
+                                            @if($eq_public['eq_public']->category_type !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">CATEGORY TYPE</label>
-                                                    <span class=""> {{$eq_public->category_type}}  </span>
+                                                    <span class=""> {{$eq_public['eq_public']->category_type}}  </span>
                                                 </div>
                                             @endif
-                                            @if($eq_public->responsibility != null )
+                                            @if($eq_public['eq_public']->responsibility != null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">RESPONSIBILITY</label>
-                                                    <span class=""> {{$eq_public->responsibility}} </span>
+                                                    <span class=""> {{$eq_public['eq_public']->responsibility}} </span>
                                                 </div>
                                             @endif
-
-
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="col-md-12 delete-name" data-attribute="title-eq_public-{{$eq_public->id}}">
+                                            <div class="col-md-12 delete-name" data-attribute="title-eq_public-{{$eq_public['eq_public']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
-                                                <input type="hidden" name="tu_public[{{$eq_public->id}}][id]" value="{{$eq_public->id}}">
+                                                <input type="hidden" name="tu_public[{{$eq_public['eq_public']->id}}][id]" value="{{$eq_public['eq_public']->id}}">
                                             </div>
-                                            <div class="row mt20 title-eq_public-{{$eq_public->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-eq_public-{{$eq_public['eq_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-6 ">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="eq_public-{{$eq_public->id}}" data-name="{{$eq_public->id}}" class="eq_public_fix"  name="eq_public[{{$eq_public->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="eq_public-{{$eq_public['eq_public']->id}}" data-name="{{$eq_public['eq_public']->id}}" class="eq_public_fix"  name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="eq_public_fix" data-name="{{$eq_public->id}}" name="eq_public[{{$eq_public->id}}][type]" value="not_mine">
-
+                                                    <input type="radio"  class="eq_public_fix" data-name="{{$eq_public['eq_public']->id}}" name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="not_mine">
                                                 </div>
-
                                             </div>
                                             <div class="row mt20 title-eq_public-{{$eq_public->id}}" style="font-weight: bold" >
                                                 <div class="col-md-1">
                                                 </div>
-
                                                 <div class="col-md-11 " >
                                                     <div id="eqPublicInput-{{$eq_public->id}}">
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -642,88 +615,86 @@
 
                         @if(!empty($data['ex_account']))
                             @foreach($data['ex_account'] as $ex_account)
-                                <div class="mt20 title-ex_account-{{$ex_account->id}}"></div>
-                                <div class="chart-report title-ex_account-{{$ex_account->id}}">
+                                <div class="mt20 title-ex_account-{{$ex_account['ex_account']->id}}"></div>
+                                <div class="chart-report title-ex_account-{{$ex_account['ex_account']->id}}">
                                     <div class="row mt20 " style="font-weight: bold" >
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-5">
                                             <div class="col-md-12">
-                                                <span class="">{{$ex_account->source_name}} </span>
-                                                <span style="padding-left: 15px">    # {{$ex_account->source_id}}</span>
+                                                <span class="">{{$ex_account['ex_account']->source_name}} </span>
+                                                <span style="padding-left: 15px">    # {{$ex_account['ex_account']->source_id}}</span>
                                             </div>
 
-                                            @if($ex_account->opened_date !=null )
+                                            @if($ex_account['ex_account']->opened_date !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE OPENED</label>
-                                                    <span class=""> {{date("m/d/Y",strtotime($ex_account->opened_date))}} </span>
+                                                    <span class=""> {{date("m/d/Y",strtotime($ex_account['ex_account']->opened_date))}} </span>
                                                 </div>
                                             @endif
-                                            @if($ex_account->type !=null )
+                                            @if($ex_account['ex_account']->type !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">TYPE</label>
-                                                    <span class=""> {{$ex_account->type}} </span>
+                                                    <span class=""> {{$ex_account['ex_account']->type}} </span>
                                                 </div>
                                             @endif
-                                            @if($ex_account->status !=null )
+                                            @if($ex_account['ex_account']->status !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">STATUS</label>
-                                                    <span class=""> {{$ex_account->status}} </span>
+                                                    <span class=""> {{$ex_account['ex_account']->status}} </span>
                                                 </div>
                                             @endif
-                                            @if($ex_account->recent_balance_date !=null )
+                                            @if($ex_account['ex_account']->recent_balance_date !=null )
                                                 <div class="col-md-12">
                                                     <label class="form-text">RECENT BALANCE</label>
-                                                    <span class=""> ${{$ex_account->recent_balance_amount}}  as of {{date("d/m/Y",strtotime($ex_account->recent_balance_date))}} </span>
+                                                    <span class=""> ${{$ex_account['ex_account']->recent_balance_amount}}  as of {{date("d/m/Y",strtotime($ex_account['ex_account']->recent_balance_date))}} </span>
                                                 </div>
-
                                             @endif
-
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="col-md-12 p-0 delete-name" data-attribute="title-ex_account-{{$ex_account->id}}">
+                                            <div class="col-md-12 p-0 delete-name" data-attribute="title-ex_account-{{$ex_account['ex_account']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                <input type="hidden" name="ex_account[{{$ex_account->id}}][id]" value="{{$ex_account->id}}">
+                                                <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][id]" value="{{$ex_account['ex_account']->id}}">
                                             </div>
 
-                                            <div class="row mt20 title-ex_account-{{$ex_account->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-ex_account-{{$ex_account['ex_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12">DISPUTE TYEP</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="ex_account-{{$ex_account->id}}" data-name="{{$ex_account->id}}" class="ex_account_fix"  name="ex_account[{{$ex_account->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="ex_account-{{$ex_account['ex_account']->id}}" data-name="{{$ex_account['ex_account']->id}}" class="ex_account_fix"  name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="ex_account_fix" data-name="{{$ex_account->id}}" name="ex_account[{{$ex_account->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="ex_account_fix" data-name="{{$ex_account['ex_account']->id}}" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
-                                            <div class="row mt20 title-ex_account-{{$ex_account->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-ex_account-{{$ex_account['ex_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 " >
-                                                    <div id="exAccountInput-{{$ex_account->id}}">
+                                                    <div id="exAccountInput-{{$ex_account['ex_account']->id}}">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <?php $string =  strtoupper(str_replace('Never late', '',$ex_account->status))?>
+                                    <?php $string =  strtoupper(str_replace('Never late', '',$ex_account['ex_account']->status))?>
 
                                     @if(strpos($string, "LATE")!==false && strpos($string, "OPEN")!==false)
                                         <div class="row mt20 border " style="font-weight: bold" >
 
-                                            @if(strpos(strtoupper($ex_account->type), "CREDIT")!== false)
+                                            @if(strpos(strtoupper($ex_account['ex_account']->type), "CREDIT")!== false)
                                                 <div class="col-md-12">
                                                     <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                 </div>
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="credit">
+                                                            <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="credit">
 
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][expiration_date]" placeholder="EXPIRATION DATE">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][expiration_date]" placeholder="EXPIRATION DATE">
                                                         </div>
 
                                                     </div>
@@ -731,47 +702,47 @@
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                             @endif
 
-                                            @if(strpos(strtoupper($ex_account->type), "AUTO")!== false)
+                                            @if(strpos(strtoupper($ex_account['ex_account']->type), "AUTO")!== false)
                                                 <div class="col-md-12">
                                                     <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                 </div>
                                                 <div class="row mt-20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-4">
-                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="auto">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="auto">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][year]" placeholder="YEAR">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][year]" placeholder="YEAR">
                                                         </div>
 
                                                         <div class="col-md-4">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][make]" placeholder="MAKE">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][make]" placeholder="MAKE">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][model]" placeholder="MODEL">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][model]" placeholder="MODEL">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if(strpos(strtoupper($ex_account->type), "PERSONAL")!== false)
+                                            @if(strpos(strtoupper($ex_account['ex_account']->type), "PERSONAL")!== false)
                                                 <div class="col-md-12">
                                                     <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                 </div>
@@ -779,60 +750,60 @@
                                                 <div class="row mt20">
                                                     <div class="col-md-12">
                                                         <div class="col-md-6">
-                                                            <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="personal">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="personal">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="SECURITY WORD">
+                                                            <input class="form-control" type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="SECURITY WORD">
                                                         </div>
 
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if(strpos(strtoupper($ex_account->type), "STUDENT")!== false)
+                                            @if(strpos(strtoupper($ex_account['ex_account']->type), "STUDENT")!== false)
                                                 <div class="col-md-12">
                                                     <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="student">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                        <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="student">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][school_attened]" placeholder="SCHOOL ATTENDED">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][school_attened]" placeholder="SCHOOL ATTENDED">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                     </div>
                                                 </div>
 
                                             @endif
-                                            @if(strpos(strtoupper($ex_account->type), "MORTGAGE")!== false)
+                                            @if(strpos(strtoupper($ex_account['ex_account']->type), "MORTGAGE")!== false)
                                                 <div class="col-md-12">
                                                     <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="hidden" name="ex_account[{{$ex_account->id}}][type]" value="mortgage">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                        <input type="hidden" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="mortgage">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][propety_address]" placeholder="PROPERTY ADDRESS">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][propety_address]" placeholder="PROPERTY ADDRESS">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="col-md-12">
-                                                        <input type="text" name="ex_account[{{$ex_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                        <input type="text" name="ex_account[{{$ex_account['ex_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                     </div>
                                                 </div>
                                             @endif
@@ -1047,60 +1018,60 @@
                         @if(!empty($data['eq_account']))
                             @foreach($data['eq_account'] as $eq_account)
                                 @if(!empty($eq_account))
-                                    <div class="mt20 title-eq_account-{{$eq_account->id}}"></div>
-                                    <div class="chart-report title-eq_account-{{$eq_account->id}}">
+                                    <div class="mt20 title-eq_account-{{$eq_account['eq_account']->id}}"></div>
+                                    <div class="chart-report title-eq_account-{{$eq_account['eq_account']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="col-md-12">
-                                                    <span class="">{{$eq_account->name}} </span>
+                                                    <span class="">{{$eq_account['eq_account']->name}} </span>
                                                 </div>
-                                                @if($eq_account->date_opened !=null )
+                                                @if($eq_account['eq_account']->date_opened !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">DATE OPENED</label>
-                                                        <span class=""> {{date("m/d/Y",strtotime($eq_account->date_opened))}} </span>
+                                                        <span class=""> {{date("m/d/Y",strtotime($eq_account['eq_account']->date_opened))}} </span>
                                                     </div>
                                                 @endif
-                                                @if($eq_account->account_type !=null )
+                                                @if($eq_account['eq_account']->account_type !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">ACCOUNT TYPE</label>
-                                                        <span class=""> {{$eq_account->account_type}} </span>
+                                                        <span class=""> {{$eq_account['eq_account']->account_type}} </span>
                                                     </div>
                                                 @endif
-                                                @if($eq_account->loan_type !=null )
+                                                @if($eq_account['eq_account']->loan_type !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">ACCOUNT TITLE</label>
-                                                        <span class=""> {{$eq_account->account_title}} </span>
+                                                        <span class=""> {{$eq_account['eq_account']->account_title}} </span>
                                                     </div>
                                                 @endif
-                                                @if($eq_account->current_payment_status !=null )
+                                                @if($eq_account['eq_account']->current_payment_status !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">PAYMENT STATUS</label>>
-                                                        <span class="">{{$eq_account->current_payment_status}} </span>
+                                                        <span class="">{{$eq_account['eq_account']->current_payment_status}} </span>
                                                     </div>
                                                 @endif
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="col-md-12 p-0 delete-name" data-attribute="title-eq_account-{{$eq_account->id}}">
+                                                <div class="col-md-12 p-0 delete-name" data-attribute="title-eq_account-{{$eq_account['eq_account']->id}}">
                                                     <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                                    <input type="hidden" name="eq_account[{{$eq_account->id}}][id]" value="{{$eq_account->id}}">
+                                                    <input type="hidden" name="eq_account[{{$eq_account['eq_account']->id}}][id]" value="{{$eq_account['eq_account']->id}}">
                                                 </div>
                                             </div>
-                                            <div class="row mt20 title-eq_account-{{$eq_account->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-eq_account-{{$eq_account['eq_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12">DISPUTE TYEP</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="eq_account-{{$eq_account->id}}" data-name="{{$eq_account->id}}" class="eq_account_fix"  name="eq_account[{{$eq_account->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="eq_account-{{$eq_account['eq_account']->id}}" data-name="{{$eq_account['eq_account']->id}}" class="eq_account_fix"  name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="eq_account_fix" data-name="{{$eq_account->id}}" name="eq_account[{{$eq_account->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="eq_account_fix" data-name="{{$eq_account['eq_account']->id}}" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
-                                            <div class="row mt20 title-eq_account-{{$eq_account->id}}" style="font-weight: bold" >
+                                            <div class="row mt20 title-eq_account-{{$eq_account['eq_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12" >
-                                                    <div id="eqAccountInput-{{$eq_account->id}}">
+                                                    <div id="eqAccountInput-{{$eq_account['eq_account']->id}}">
                                                     </div>
                                                 </div>
 
@@ -1108,22 +1079,22 @@
 
                                         </div>
 
-                                        @if(($eq_account->late_30_count!==0 ||$eq_account->late_60_count!==0 || $eq_account->late_90_count!==0) && strpos(strtoupper($eq_account->account_status), "OPEN")!==false)
+                                        @if(($eq_account['eq_account']->late_30_count!==0 ||$eq_account['eq_account']->late_60_count!==0 || $eq_account['eq_account']->late_90_count!==0) && strpos(strtoupper($eq_account['eq_account']->account_status), "OPEN")!==false)
                                             <div class="row mt20 border " style="font-weight: bold" >
 
-                                                @if(strpos(strtoupper($eq_account->category_type), "CREDIT")!== false)
+                                                @if(strpos(strtoupper($eq_account['eq_account']->category_type), "CREDIT")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="credit">
+                                                                <input type="hidden" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="credit">
 
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][eqpiration_date]" placeholder="EXPIRATION DATE">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][eqpiration_date]" placeholder="EXPIRATION DATE">
                                                             </div>
 
                                                         </div>
@@ -1131,17 +1102,17 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                 @endif
 
-                                                @if(strpos(strtoupper($eq_account->category_type), "AUTO")!== false)
+                                                @if(strpos(strtoupper($eq_account['eq_account']->category_type), "AUTO")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
@@ -1149,29 +1120,29 @@
                                                         <div class="col-md-12">
                                                             <div class="col-md-4">
                                                                 <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="auto">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][year]" placeholder="YEAR">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][year]" placeholder="YEAR">
                                                             </div>
 
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][make]" placeholder="MAKE">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][make]" placeholder="MAKE">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][model]" placeholder="MODEL">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][model]" placeholder="MODEL">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(strpos(strtoupper($eq_account->category_type), "PERSONAL")!== false)
+                                                @if(strpos(strtoupper($eq_account['eq_account']->category_type), "PERSONAL")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
@@ -1179,60 +1150,60 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="personal">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->idd}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input type="hidden" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="personal">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="eq_account[{{$eq_account['eq_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
 
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(strpos(strtoupper($eq_account->category_type), "STUDENT")!== false)
+                                                @if(strpos(strtoupper($eq_account['eq_account']->category_type), "STUDENT")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="student">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="student">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][Scholl_attended]" placeholder="SCHOOL ATTENDED">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][school_attended]" placeholder="SCHOOL ATTENDED">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][secutity_word]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
 
                                                 @endif
-                                                @if(strpos(strtoupper($eq_account->category_type), "MORTGAGE")!== false)
+                                                @if(strpos(strtoupper($eq_account['eq_account']->category_type), "MORTGAGE")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" name="eq_account[{{$eq_account->id}}][type]" value="mortgage">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="hidden" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="mortgage">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][property_address]" placeholder="PROPERTY ADDRESS">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][property_address]" placeholder="PROPERTY ADDRESS">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="eq_account[{{$eq_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="eq_account[{{$eq_account['eq_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -1249,24 +1220,21 @@
                         @if(!empty($data['ex_inquiry']))
 
                             @foreach($data['ex_inquiry'] as $ex_inquiry)
-                                @if(!empty($ex_inquiry))
-                                    <div class="mt20 title-ex_inquiry-{{$ex_inquiry->id}}"></div>
-                                    <div class="chart-report title-ex_inquiry-{{$ex_inquiry->id}}">
+                                @if(!empty($ex_inquiry['ex_inquiry']))
+                                    <div class="mt20 title-ex_inquiry-{{$ex_inquiry['ex_inquiry']->id}}"></div>
+                                    <div class="chart-report title-ex_inquiry-{{$ex_inquiry['ex_inquiry']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-                                                <span class="">{{$ex_inquiry->source_name}} </span>
+                                                <span class="">{{$ex_inquiry['ex_inquiry']->source_name}} </span>
 
                                             </div>
-                                            <div class="col-md-2 delete-name" data-attribute="title-ex_inquiry-{{$ex_inquiry->id}}">
+                                            <div class="col-md-2 delete-name" data-attribute="title-ex_inquiry-{{$ex_inquiry['ex_inquiry']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
-
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                <input type="hidden" name="ex_inquiry[{{$ex_inquiry->id}}][id]" value="{{$ex_inquiry->id}}">
-
+                                                <input type="hidden" name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][id]" value="{{$ex_inquiry['ex_inquiry']->id}}">
                                             </div>
-
                                         </div>
 
                                         <div class="row mt20 " style="font-weight: bold" >
@@ -1278,15 +1246,11 @@
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry->id}}][type]" value="fraudulent">
-
+                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" value="fraudulent">
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry->id}}][type]" value="unauthorized">
-
+                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" value="unauthorized">
                                            </div>
-
                                         </div>
-
                                     </div>
                                 @endif
                             @endforeach
@@ -1294,24 +1258,21 @@
 
                         @if(!empty($data['tu_inquiry']))
                             @foreach($data['tu_inquiry'] as $tu_inquiry)
-                                @if(!empty($tu_inquiry))
+                                @if(!empty($tu_inquiry['tu_inquiry']))
 
-                                    <div class="mt20 title-tu_inquiry-{{$tu_inquiry->id}}"></div>
-                                    <div class="chart-report title-tu_inquiry-{{$tu_inquiry->id}}">
+                                    <div class="mt20 title-tu_inquiry-{{$tu_inquiry['tu_inquiry']->id}}"></div>
+                                    <div class="chart-report title-tu_inquiry-{{$tu_inquiry['tu_inquiry']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-                                                <span class="">{{$tu_inquiry->subscriber_name}} </span>
+                                                <span class="">{{$tu_inquiry['tu_inquiry']->subscriber_name}} </span>
                                             </div>
-                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$tu_inquiry->id}}">
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$tu_inquiry['tu_inquiry']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
-
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                <input type="hidden" name="tu_inquiry[{{$tu_inquiry->id}}][id]" value="{{$tu_inquiry->id}}">
-
+                                                <input type="hidden" name="tu_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][id]" value="{{$tu_inquiry['tu_inquiry']->id}}">
                                             </div>
-
                                         </div>
 
                                         <div class="row mt20 " style="font-weight: bold" >
@@ -1323,10 +1284,10 @@
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry->id}}][type]" value="fraudulent">
+                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" value="fraudulent">
 
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry->id}}][type]" value="unauthorized">
+                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" value="unauthorized">
 
                                             </div>
 
@@ -1338,46 +1299,37 @@
 
                         @if(!empty($data['eq_inquiry']))
                             @foreach($data['eq_inquiry'] as $eq_inquiry)
-                                @if(!empty($eq_inquiry))
+                                @if(!empty($eq_inquiry['eq_inquiry']))
 
-                                    <div class="mt20 title-eq_inquiry-{{$eq_inquiry->id}}"></div>
-                                    <div class="chart-report title-eq_inquiry-{{$eq_inquiry->id}}">
+                                    <div class="mt20 title-eq_inquiry-{{$eq_inquiry['eq_inquiry']->id}}"></div>
+                                    <div class="chart-report title-eq_inquiry-{{$eq_inquiry['eq_inquiry']->id}}">
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="col-md-12">{{$eq_inquiry->industry_name}}</div>
-                                                <div class="col-md-12">{{$eq_inquiry->name}}</div>
+                                                <div class="col-md-12">{{$eq_inquiry['eq_inquiry']->industry_name}}</div>
+                                                <div class="col-md-12">{{$eq_inquiry['eq_inquiry']->name}}</div>
                                             </div>
-                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$eq_inquiry->id}}">
+                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$eq_inquiry['eq_inquiry']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
-
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
-                                                <input type="hidden" name="eq_inquiry[{{$eq_inquiry->id}}][id]" value="{{$eq_inquiry->id}}">
-
+                                                <input type="hidden" name="eq_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][id]" value="{{$eq_inquiry['eq_inquiry']->id}}">
                                             </div>
-
                                         </div>
 
                                         <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-1">
                                             </div>
                                             <div class="col-md-6">
-
                                             </div>
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry->id}}][type]" value="fraudulent">
-
+                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" value="fraudulent">
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry->id}}][type]" value="unauthorized">
-
+                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" value="unauthorized">
                                             </div>
-
                                         </div>
-
-
                                     </div>
                                 @endif
                             @endforeach

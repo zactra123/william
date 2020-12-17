@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\ClientReportEqPublicRecord;
 use App\ClientReportExAccount;
+use App\ClientReportExPublicRecord;
 use App\ClientReportTuAccount;
+use App\ClientReportTuPublicRecord;
 use App\DisputesPricing;
 
 class PricingDetails
@@ -50,8 +53,8 @@ class PricingDetails
 
 
         $dataPrice = [
-            'inaccurate_price'=> $priceAccount,
-            'not_mine_type'=> $priceAccountBlock,
+            'inaccurate'=> $priceAccount,
+            'not_mine'=> $priceAccountBlock,
         ];
 
         dd($dataPrice);
@@ -83,11 +86,45 @@ class PricingDetails
 
         return $dataPrice;
     }
+
     public function eqAccountPrice($affiliate, $bureau, $eqAccountId)
     {
         $eqAccount = ClientReportExAccount::where('id', $eqAccountId)->first();
+        $priceAccount = null;
+        $priceAccountBlock = null;
         dd($eqAccount);
         dd($affiliate,  $bureau, $eqAccountId);
+    }
+
+    public function exPublicRecordPrice($bureau, $exPublicRecordId)
+    {
+        $exPublicRecord = ClientReportExPublicRecord::where('id', $exPublicRecordId)->first();
+        $pricePublicRecord = null;
+
+        dd($exPublicRecord);
+        return $pricePublicRecord;
+    }
+
+    public function tuPublicRecordPrice($bureau, $tuPublicRecordId)
+    {
+        $tuPublicRecord = ClientReportTuPublicRecord::where('id', $tuPublicRecordId)->first();
+        $pricePublicRecord = null;
+
+
+
+        dd($tuPublicRecord);
+        return $pricePublicRecord;
+
+    }
+
+    public function eqPublicRecorde($bureau, $eqPublicRecordId)
+    {
+        $eqPublicRecord = ClientReportEqPublicRecord::where('id', $$eqPublicRecordId)->first();
+        $pricePublicRecord = null;
+
+        dd($eqPublicRecord);
+        return $pricePublicRecord;
+
     }
 
     public function disputeType()

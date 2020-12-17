@@ -289,7 +289,11 @@ class AffiliatesController extends Controller
         }
 
         if ($client->clientDetails->registration_steps == 'documents') {
-            $client->clientDetails->update(['registration_steps' => 'credentials']);
+
+            $client->clientDetails->update([
+                'registration_steps' => 'credentials',
+                'expiration' => isset($clientData['expiration'])?$clientData['expiration']:null
+            ]);
         }
         $request->session()->put('bad',true);
 
@@ -528,16 +532,12 @@ class AffiliatesController extends Controller
 
         ]);
 
-
-
-
         return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
 
     }
 
     public function continue($id)
     {
-
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
@@ -554,7 +554,6 @@ class AffiliatesController extends Controller
 
     public function updateClient(Request $request, $id)
     {
-
         if(empty($request->file()) && is_null($request->client)){
             return redirect()->back()
                 ->withInput()
@@ -758,6 +757,7 @@ class AffiliatesController extends Controller
 
     public function negativeItemStore(Request $request, $id)
     {
+
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
@@ -765,7 +765,7 @@ class AffiliatesController extends Controller
             return back();
         }
 
-        $pricingDetails = new PricingDetails($a->id);
+        $pricingDetails = new PricingDetails($affiliateId);
 
         $dispute = $request->except('_token');
 
@@ -827,6 +827,7 @@ class AffiliatesController extends Controller
             if(!isset($personalTuPrice)){
                 if($key == 'tu_name' or 'tu_address' or $key == 'tu_employ' or $key == 'tu_phone' ){
                     $personalTuPrice = $pricingDetails->personalInformation();
+
                 }
             }
             if(!isset($personalEqPrice)){
@@ -840,7 +841,7 @@ class AffiliatesController extends Controller
                     $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();//???
                     $statementPricing = $pricingDetails->statement();
                     $dataExStatement =  [
-                        'statement'=> $exStatement,
+                        'ex_statement'=> $exStatement,
                         'price'=>$statementPricing
                     ];
                     $disputeExStatement[] = $dataExStatement;
@@ -852,7 +853,7 @@ class AffiliatesController extends Controller
 
                     $statementPricing = $pricingDetails->statement();
                     $dataTuStatement =  [
-                        'statement'=> $tuStatement,
+                        'tu_statement'=> $tuStatement,
                         'price'=>$statementPricing
                     ];
                     $disputeTuStatement[] = $dataTuStatement;
@@ -862,56 +863,69 @@ class AffiliatesController extends Controller
             if ($key == 'ex_public') {
                 foreach ($value as $disputeExPublicRecords) {
                     $exPublic = ClientReportExPublicRecord::where('id', $disputeExPublicRecords)->first();
-                    $disputeExPublicRecord[] = $exPublic;
+                    $exPublicRecordPrice =$pricingDetails->exPublicRecordPrice($disputeExPublicRecords);
+                    $dataExPublic =  [
+                        'ex_public'=> $exPublic,
+                        'price'=>$exPublicRecordPrice
+                    ];
+                    $disputeExPublicRecord[] = $dataExPublic;
                 }
             }
             if ($key == 'tu_public') {
                 foreach ($value as $disputeTuPublicRecords) {
                     $tuPublic = ClientReportTuPublicRecord::where('id', $disputeTuPublicRecords)->first();
-                    $disputeTuPublicRecord[] = $tuPublic;
+                    $tuPublicRecordPrice =$pricingDetails->tuPublicRecordPrice($disputeTuPublicRecords);
+                    $dataTuPublic =  [
+                        'tu_public'=> $tuPublic,
+                        'price'=>$tuPublicRecordPrice
+                    ];
+                    $disputeTuPublicRecord[] = $dataTuPublic;
                 }
             }
             if ($key == 'eq_public') {
                 foreach ($value as $disputeEqPublicRecords) {
 
-                    $tuPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
-                    $disputeEqPublicRecord[] = $tuPublic;
+                    $eqPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
+                    $tuPublicRecordPrice =$pricingDetails->tuPublicRecordPrice($disputeEqPublicRecords);
+                    $dataEqPublic =  [
+                        'eq_public'=> $eqPublic,
+                        'price'=>$tuPublicRecordPrice
+                    ];
+                    $disputeEqPublicRecord[] = $dataEqPublic;
                 }
             }
 
             if ($key == 'ex_accounts') {
                 foreach ($value as $disputeExAccounts) {
                     $exAccount = ClientReportExAccount::where('id', $disputeExAccounts)->first();
-
-
-
                     $exAccountPricing = $pricingDetails->exAccountPrice($key, $disputeExAccounts);
-                    $dataExInquiry =  [
-                        'statement'=> '',
-                        'price'=>''
+                    $dataExAccount =  [
+                        'ex_account'=> $exAccount,
+                        'price'=>$exAccountPricing
                     ];
-
-                    $disputeExAccount[] = $exAccount;
+                    $disputeExAccount[] = $dataExAccount;
                 }
             }
             if ($key == 'tu_account') {
                 foreach ($value as $disputeTuAccounts) {
                     $tuAccount = ClientReportTuAccount::where('id', $disputeTuAccounts)->first();
-
                     $tuAccountPricing = $pricingDetails->tuAccountPrice($key, $disputeTuAccounts);
-
                     $dataTuAccount =  [
                         'tu_account'=> $tuAccount,
                         'price'=>$tuAccountPricing
                     ];
-
                     $disputeTuAccount[] = $dataTuAccount;
                 }
             }
             if ($key == 'eq_account') {
                 foreach ($value as $disputeEqAccounts) {
-                    $tuAccount = ClientReportEqAccount:: where('id', $disputeEqAccounts)->first();
-                    $disputeEqAccount[] = $tuAccount;
+                    $eqAccount = ClientReportEqAccount:: where('id', $disputeEqAccounts)->first();
+                    $eqAccountPricing = $pricingDetails->eqAccountPrice($key, $disputeEqAccounts);
+                    $dataEqAccount =  [
+                        'eq_account'=> $eqAccount,
+                        'price'=>$eqAccountPricing
+                    ];
+                    $disputeTuAccount[] = $dataEqAccount;
                 }
             }
 
@@ -921,7 +935,7 @@ class AffiliatesController extends Controller
 
                     $inquiryExPricing = $pricingDetails->inquiries();
                     $dataExInquiry =  [
-                        'statement'=> $exInquiry,
+                        'ex_inquiry'=> $exInquiry,
                         'price'=>$inquiryExPricing
                     ];
 
@@ -931,28 +945,25 @@ class AffiliatesController extends Controller
             if ($key == 'tu_inquiry') {
                 foreach ($value as $disputeTuInquiries) {
                     $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
-
                     $inquiryTuPricing = $pricingDetails->inquiries();
                     $dataTuInquiry =  [
-                        'statement'=> $tuInquiry,
+                        'tu_inquiry'=> $tuInquiry,
                         'price'=>$inquiryTuPricing
                     ];
-
                     $disputeTuInquiry[] = $dataTuInquiry;
                 }
             }
             if ($key == 'eq_inquiry') {
                 foreach ($value as $disputeEqInquiries) {
 
-                    $tuInquiry = ClientReportTuInquiry::where('id', $disputeTuInquiries)->first();
+                    $eqInquiry = ClientReportTuInquiry::where('id', $disputeEqInquiries)->first();
 
                     $inquiryEqPricing = $pricingDetails->inquiries();
-                    $dataTuInquiry =  [
-                        'statement'=> $tuInquiry,
+                    $dataEqInquiry =  [
+                        'eq_inquiry'=> $eqInquiry,
                         'price'=>$inquiryEqPricing
                     ];
-
-                    $disputeEqInquiry[] = $dataTuInquiry;
+                    $disputeEqInquiry[] = $dataEqInquiry;
                 }
             }
 
