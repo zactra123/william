@@ -50,7 +50,8 @@ class DisputesPricing extends Model
         'deposit_accnt_ca' => 'required',
         'check_cashing_ca' => 'required',
         'law_firm_ca' => 'required',
-        'truck_load_ca' => 'required'
+        'truck_load_ca' => 'required',
+        'unknown'=>'required'
     ];
     protected $fillable = [
         'user_id',
@@ -94,7 +95,8 @@ class DisputesPricing extends Model
         'deposit_accnt_ca',
         'check_cashing_ca',
         'law_firm_ca',
-        'truck_load_ca'
+        'truck_load_ca',
+        'unknown'
     ];
 
     /**

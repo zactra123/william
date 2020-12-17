@@ -531,5 +531,16 @@
             </div>
                     {!! $errors->first('truck_load_ca', '<p class="help-block">:message</p>') !!}
         </div>
+        <div class="col-md-4" style="margin: 0">
+            <div class="priceName">
+                <div class="name">
+                    <label style="float: right">UNKNOWN $</label>
+                </div>
+                <div class="price">
+                    <input type="text" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}" title="UNKNOWN">
+                </div>
+            </div>
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+        </div>
     </div>
 </div>

@@ -845,88 +845,81 @@
 
                         @if(!empty($data['tu_account']))
                             @foreach($data['tu_account'] as $tu_account)
-                                @if(!empty($tu_account))
-                                    <div class="mt20 title-tu_account-{{$tu_account->id}}"></div>
-                                    <div class="chart-report title-tu_account-{{$tu_account->id}}">
-                                        <div class="row mt20 " style="font-weight: bold" >
 
+                                @if(!empty($tu_account['tu_account']))
+                                    <div class="mt20 title-tu_account-{{$tu_account['tu_account']->id}}"></div>
+                                    <div class="chart-report title-tu_account-{{$tu_account['tu_account']->id}}">
+                                        <div class="row mt20 " style="font-weight: bold" >
                                             <div class="col-md-5">
                                                 <div class="col-md-12">
-                                                    <span class="">{{$tu_account->account_name}} </span>
-                                                    <span style="padding-left: 15px">    # {{$tu_account->account_number}}</span>
+                                                    <span class="">{{$tu_account['tu_account']->account_name}} </span>
+                                                    <span style="padding-left: 15px">    # {{$tu_account['tu_account']->account_number}}</span>
                                                 </div>
-
-
-                                                @if($tu_account->date_opened !=null )
+                                                @if($tu_account['tu_account']->date_opened !=null )
                                                     <div class="col-md-12">
-                                                        <label class="form-text">DATE OPENED</label>
-                                                        <span class=""> {{date("m/d/Y",strtotime($tu_account->date_opened))}} </span>
+                                                        <label class="form-text">DATEOPENED</label>
+                                                        <span class=""> {{date("m/d/Y",strtotime($tu_account['tu_account']->date_opened))}} </span>
                                                     </div>
                                                 @endif
-                                                @if($tu_account->account_type_description !=null )
+                                                @if($tu_account['tu_account']->account_type_description !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">ACCOUNT TYPE</label>
-                                                        <span class=""> {{$tu_account->account_type_description}} </span>
+                                                        <span class=""> {{$tu_account['tu_account']->account_type_description}} </span>
                                                     </div>
                                                 @endif
-                                                @if($tu_account->loan_type !=null )
+                                                @if($tu_account['tu_account']->loan_type !=null )
                                                     <div class="col-md-12">
                                                         <label class="form-text">LOAN TYPE</label>
-                                                        <span class=""> {{$tu_account->loan_type}} </span>
+                                                        <span class=""> {{$tu_account['tu_account']->loan_type}} </span>
                                                     </div>
                                                 @endif
-                                                @if($tu_account->pay_status !=null )
+                                                @if($tu_account['tu_account']->pay_status !=null )
                                                    <div class="col-md-12">
                                                         <label class="form-text">PAY STATUS</label>
-                                                        <span class="">{{$tu_account->pay_status}} </span>
+                                                        <span class="">{{$tu_account['tu_account']->pay_status}} </span>
                                                     </div>
                                                 @endif
-
-
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="col-md-12 delete-name" data-attribute="title-tu_account-{{$tu_account->id}}">
+                                                <div class="col-md-12 delete-name" data-attribute="title-tu_account-{{$tu_account['tu_account']->id}}">
                                                     <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                     <i class="fa fa-check-square-o" aria-hidden="true" s></i>
-                                                    <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="{{$tu_account->id}}">
+                                                    <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="{{$tu_account['tu_account']->id}}">
                                                 </div>
-                                                <div class="row mt20 title-tu_account-{{$tu_account->id}}" style="font-weight: bold" >
+                                                <div class="row mt20 title-tu_account-{{$tu_account['tu_account']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12"DISPUTE TYPE></div>
                                                     <div class="col-md-12 ">
                                                         <label for="inaccurate">Inaccurate</label>
-                                                        <input type="radio" id="tu_account-{{$tu_account->id}}" data-name="{{$tu_account->id}}" class="tu_account_fix"  name="tu_account[{{$tu_account->id}}][id]" value="inaccurate">
+                                                        <input type="radio" id="tu_account-{{$tu_account['tu_account']->id}}" data-name="{{$tu_account['tu_account']->id}}" class="tu_account_fix"  name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="inaccurate">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="not-mine">Not Mine </label>
-                                                        <input type="radio"  class="tu_account_fix" data-name="{{$tu_account->id}}" name="tu_account[{{$tu_account->id}}][id]" value="not_mine">
+                                                        <input type="radio"  class="tu_account_fix" data-name="{{$tu_account['tu_account']->id}}" name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="not_mine">
                                                     </div>
-
                                                 </div>
-                                                <div class="row mt20 title-tu_account-{{$tu_account->id}}" style="font-weight: bold" >
+                                                <div class="row mt20 title-tu_account-{{$tu_account['tu_account']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12" >
-                                                        <div id="tuAccountInput-{{$tu_account->id}}">
+                                                        <div id="tuAccountInput-{{$tu_account['tu_account']->id}}">
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
-
                                         </div>
-                                        @if(($tu_account->late_30_count!==0 ||$tu_account->late_60_count!==0 || $tu_account->late_90_count!==0) && strpos(strtoupper($tu_account->account_type), "OPEN")!==false)
+                                        @if(($tu_account['tu_account']->late_30_count!==0 ||$tu_account['tu_account']->late_60_count!==0 || $tu_account['tu_account']->late_90_count!==0) && strpos(strtoupper($tu_account['tu_account']->account_type), "OPEN")!==false)
                                             <div class="row mt20 border " style="font-weight: bold" >
 
-                                                @if(strpos(strtoupper($tu_account->loan_type), "CREDIT")!== false)
+                                                @if(strpos(strtoupper($tu_account['tu_account']->loan_type), "CREDIT")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="credit">
+                                                                <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="credit">
 
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][expiration_date]" placeholder="EXPIRATION DATE">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][expiration_date]" placeholder="EXPIRATION DATE">
                                                             </div>
 
                                                         </div>
@@ -934,48 +927,48 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][cvc]" placeholder="CVC (CARD VERIFICATION CODE)">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                 @endif
 
-                                                @if(strpos(strtoupper($tu_account->loan_type), "AUTO")!== false)
+                                                @if(strpos(strtoupper($tu_account['tu_account']->loan_type), "AUTO")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
                                                     <div class="row mt-20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-4">
-                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="auto">
+                                                                <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="auto">
 
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][year]" placeholder="YEAR">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][year]" placeholder="YEAR">
                                                             </div>
 
                                                             <div class="col-md-4">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][make]" placeholder="MAKE">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][make]" placeholder="MAKE">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][model]" placeholder="MODEL">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][model]" placeholder="MODEL">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(strpos(strtoupper($tu_account->loan_type), "PERSONAL")!== false)
+                                                @if(strpos(strtoupper($tu_account['tu_account']->loan_type), "PERSONAL")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
@@ -983,63 +976,63 @@
                                                     <div class="row mt20">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                                <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="personal">
+                                                                <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="personal">
 
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                                <input class="form-control" type="text" name="tu_account[{{$tu_account['tu_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                             </div>
 
                                                         </div>
                                                     </div>
                                                 @endif
-                                                @if(strpos(strtoupper($tu_account->loan_type), "STUDENT")!== false)
+                                                @if(strpos(strtoupper($tu_account['tu_account']->loan_type), "STUDENT")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="student">
+                                                            <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="student">
 
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][account_number]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][school_attended]" placeholder="SCHOOL ATTENDED">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][school_attended]" placeholder="SCHOOL ATTENDED">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
 
                                                 @endif
-                                                @if(strpos(strtoupper($tu_account->loan_type), "MORTGAGE")!== false)
+                                                @if(strpos(strtoupper($tu_account['tu_account']->loan_type), "MORTGAGE")!== false)
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" name="tu_account[{{$tu_account->id}}][id]" value="mortgage">
+                                                            <input type="hidden" name="tu_account[{{$tu_account['tu_account']->id}}][id]" value="mortgage">
 
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][school_attended]" placeholder="FULL ACCOUNT NUMBER">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][school_attended]" placeholder="FULL ACCOUNT NUMBER">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][property_address]" placeholder="PROPERTY ADDRESS">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][property_address]" placeholder="PROPERTY ADDRESS">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="col-md-12">
-                                                            <input type="text" name="tu_account[{{$tu_account->id}}][security_word]" placeholder="SECURITY WORD">
+                                                            <input type="text" name="tu_account[{{$tu_account['tu_account']->id}}][security_word]" placeholder="SECURITY WORD">
                                                         </div>
                                                     </div>
                                                 @endif
@@ -1107,7 +1100,7 @@
                                             </div>
                                             <div class="row mt20 title-eq_account-{{$eq_account->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12" >
-                                                    <div id="eqAccountInput-{{$tu_account->id}}">
+                                                    <div id="eqAccountInput-{{$eq_account->id}}">
                                                     </div>
                                                 </div>
 
@@ -1554,13 +1547,14 @@
 
             $(".tu_account_fix").click(function(){
 
-                console.log('dsadadad')
 
                 var id = $(this).attr('data-name')
 
                 var name = "tu_account["+id+"][type]"
+                console.log(name)
 
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
+                    console.log('dasdasda++++')
                     var add = '<div id="tuAccountAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
                     add = add + '<div class="col-md-12">Choose an ownership reason.</div>'

@@ -883,6 +883,8 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeExAccounts) {
                     $exAccount = ClientReportExAccount::where('id', $disputeExAccounts)->first();
 
+
+
                     $exAccountPricing = $pricingDetails->exAccountPrice($key, $disputeExAccounts);
                     $dataExInquiry =  [
                         'statement'=> '',
@@ -897,12 +899,13 @@ class AffiliatesController extends Controller
                     $tuAccount = ClientReportTuAccount::where('id', $disputeTuAccounts)->first();
 
                     $tuAccountPricing = $pricingDetails->tuAccountPrice($key, $disputeTuAccounts);
-                    $dataExInquiry =  [
-                        'statement'=> '',
-                        'price'=>''
+
+                    $dataTuAccount =  [
+                        'tu_account'=> $tuAccount,
+                        'price'=>$tuAccountPricing
                     ];
 
-                    $disputeTuAccount[] = $tuAccount;
+                    $disputeTuAccount[] = $dataTuAccount;
                 }
             }
             if ($key == 'eq_account') {

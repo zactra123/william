@@ -5,7 +5,6 @@
         .charts {
             color: #16181b !important;
         }
-
         .chart-report {
             /*background-color: #d4ddec;*/
             padding: 15px;
@@ -53,7 +52,7 @@
 
 
 
-                <div class="Experian" style="display: none">
+                <div class="Experian" style="display: block">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
                         </div>
@@ -754,7 +753,7 @@
             @endif
 
             @if($clientReportsTU)
-                <div class="TransUnion" style="display: block">
+                <div class="TransUnion" style="display: none">
                 <div class="row mt20">
                     <div class="col-md-1 mt20">
                     </div>
@@ -1037,7 +1036,7 @@
                                                 <label class="form-text">PAY STATUS</label>
                                             </div>
                                             <div class="col-md-12">
-                                                <span class=""> {{$accounts->pay_status}} </span>
+                                                <span class=""> {{htmlspecialchars_decode($accounts->pay_status)}} </span>
                                             </div>
                                         </div>
                                     @endif
@@ -1055,7 +1054,7 @@
                                     @endif
                                 </div>
 
-                            @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
+                            @if($accounts->accountPaymentHistories->whereIn('value', ["Account 30 days past due date","Account 60 days past due date",'Account 90 days past due date'] )->first() )
                                     <div class="row mt20 ">
                                         <div class="col-md-1">
 
@@ -1066,7 +1065,7 @@
                                         <div class="col-md-1">
 
                                         </div>
-                                        @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
+                                        @foreach($accounts->accountPaymentHistories->whereIn('value',["Account 30 days past due date","Account 60 days past due date",'Account 90 days past due date'] ) as $payment)
                                             <div class="col-md-3">
                                                 LATE {{$payment->value}} AS OF {{$payment->month}}/{{$payment->year}}
 
@@ -1154,7 +1153,7 @@
                                                 <label class="form-text">PAY STATUS</label>
                                             </div>
                                             <div class="col-md-12">
-                                                <span class=""> {{$accounts->pay_status}} </span>
+                                                <span class=""> {{htmlspecialchars_decode($accounts->pay_status)}} </span>
                                             </div>
                                         </div>
                                     @endif
