@@ -16,6 +16,14 @@ class FetchReports implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $client;
+
+    /**
+     * The number of seconds the job can run before timing out.
+     *
+     * @var int
+     */
+    public $timeout = 3600;// one hour
+    
     /**
      * Create a new job instance.
      *
