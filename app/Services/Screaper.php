@@ -168,7 +168,7 @@ class Screaper
     public function prepare_experian_login_data($output)
     {
         set_time_limit(300);
-        $data = json_decode($output);
+        $data = json_decode($output,true);
 
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
