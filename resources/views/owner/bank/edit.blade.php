@@ -326,12 +326,21 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-2">
+                            <img  class="responsive" src="/images/phone.png">
+                        </div>
+                        <div class="form-group col-sm-10">
                         {!! Form::text("bank_address[{type}][{account_type_id}][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
-                        {!! Form::text("bank_address[{type}][{account_type_id}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                        <div class="form-group col-sm-2">
+                            <img  class="responsive" src="/images/fax.png">
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {!! Form::text("bank_address[{type}][{account_type_id}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
