@@ -185,7 +185,7 @@ class Screaper
        // Save Experian Report Numbers -START-
         $report_number_path = $data["numbers_filepath"];
 
-        if (file_exist($report_number_path)) {
+        if (file_exists($report_number_path)) {
             $report_numbers = json_decode(file_get_contents($report_number_path), true);
         } else {
             $this->logger->debug("REPORT NUMBERS: File Dont EXIST");
@@ -205,7 +205,7 @@ class Screaper
         // Save Experian Report Numbers -END-
 
         $path = $data["report_filepath"];
-        if (file_exist($data["report_filepath"])) {
+        if (file_exists($data["report_filepath"])) {
             $json = json_decode(file_get_contents($path), true);
         } else {
             $this->logger->debug("File Dont EXIST");
@@ -220,7 +220,7 @@ class Screaper
             $full_name = $json['consumerName']['firstName'].' '.$json['consumerName']['lastName'];
         }
         $dob = isset($json['consumerDOB']['dateOfBirth'])?$json['consumerDOB']['dateOfBirth']:null;
-
+        $spouse = !empty($json['spouse']["name"]) ? implode(" ",$json['spouse']["name"]) : null;
         $dataClientReports = [
             'user_id' => $this->client_id,
             'type' => $type,
@@ -231,7 +231,7 @@ class Screaper
             'report_number'=> $reportNumber,
             'current_address' => null,
             'current_phone' => null,
-            'spouse' => $json['spouse'],
+            'spouse' => $spouse,
             'file_path' => $path
         ];
         $clientReport = ClientReport::create($dataClientReports);
