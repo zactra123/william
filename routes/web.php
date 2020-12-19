@@ -16,10 +16,8 @@
 //});
 
 Route::get('/', 'PagesController@welcome' );
-Route::get('more-information/{url}', 'PagesController@moreInformation')->name('more.information');
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
-
 Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
 Route::get('contact', 'PagesController@contacts')->name('contact');
 Route::post('contact/send-message', 'PagesController@contactsSendMessage')->name('contact.sendMessage');
@@ -27,13 +25,10 @@ Route::get('credit-repair-resources', 'PagesController@creditRepiarResouces')->n
 Route::get('free-credit-repair', 'PagesController@creditFreeRepiar')->name('credit.free.repair');
 Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
-Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
 Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
-
 
 Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
     if ($req->channel_name == 'presence-LiveChat') {
-
         return \Illuminate\Support\Facades\Broadcast::auth($req);
     }
 });
@@ -97,7 +92,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::group(["prefix" => "report"], function(){
         Route::get('/', 'Owner\ReportsController@index')->name("owner.reports.index");
     });
-    
+
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
     Route::post('message/note', 'Owner\MessagesController@addNote')->name('owner.message.note');
 

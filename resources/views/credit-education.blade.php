@@ -127,7 +127,7 @@
                                     <div class="modal-body">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h3>{{$content->title}}</h3>
-                                        <p><?php echo htmlspecialchars_decode(htmlspecialchars($info->content, ENT_QUOTES));  ?></p>
+                                        <p><?php echo htmlspecialchars_decode(htmlspecialchars($content->content, ENT_QUOTES));  ?></p>
                                     </div>
                                 </div>
                             </div>
