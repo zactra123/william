@@ -21,7 +21,7 @@ $(document).ready(function($) {
         var id = $(this).attr('data-id'),
             token = $("meta[name='csrf-token']").attr("content");
         $.ajax({
-            url: "/owner/furnishers/types/" + id,
+            url: "/admins/furnishers/types/" + id,
             type: 'DELETE',
             data: {
                 "id": id,
@@ -37,7 +37,7 @@ $(document).ready(function($) {
         var  equal_bank_id = $(this).attr('data-equal-id'),
                 self = this;
         $.ajax({
-            url: '/owner/furnishers/equal-bank',
+            url: '/admins/furnishers/equal-bank',
             type: 'DELETE',
             data: {
                 "_token": $("meta[name='csrf-token']").attr("content"),
@@ -68,7 +68,7 @@ $('.selectize-multiple').selectize({
     },
     load: function(query, callback) {
         $.ajax({
-            url: '/owner/furnishers/keywords',
+            url: '/admins/furnishers/keywords',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -90,7 +90,7 @@ $('.selectize-multiple').selectize({
             key_words = this.items,
             token = $("meta[name='csrf-token']").attr("content");
         $.ajax({
-            url: '/owner/furnishers/types/update_keywords',
+            url: '/admins/furnishers/types/update_keywords',
             type: 'POST',
             data: {
                 "_token": token,
@@ -114,7 +114,7 @@ $('.is_default_account_type').on('change', function() {
          token = $("meta[name='csrf-token']").attr("content");
 
     $.ajax({
-        url: '/owner/furnishers/types/update_default',
+        url: '/admins/furnishers/types/update_default',
         type: 'POST',
         data: {
             "_token": token,

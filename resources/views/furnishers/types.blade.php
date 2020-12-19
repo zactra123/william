@@ -47,7 +47,7 @@
 
 
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "BANK EQUAL NAMES", 'route' => ["Home"=> '/owner',"BANK NAMES" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BANK EQUAL NAMES", 'route' => ["Home"=> '/admins',"BANK NAMES" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="col-md-3 col-sm-12"></div>
@@ -55,7 +55,7 @@
                 <div class="ms-ua-box">
                     <div class="ms-ua-title">
                         <div class="col-md-12">
-                            {!! Form::open(['route' => ['owner.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
+                            {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
                                 @csrf
                                 <div class="row m-2">
                                     <div class="col-md-3">
@@ -127,7 +127,7 @@
 
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/site/admins/types.js?v=2') }}" ></script>
+    <script src="{{ asset('js/site/admin/types.js?v=2') }}" ></script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 

@@ -74,7 +74,7 @@
 
     </style>
 
-    @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/owner',"CLIENTS LIST" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"CLIENTS LIST" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
@@ -82,7 +82,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="row m-2  pt-4">
                         <div class="col-md-8 pull-left">
-                            <a class="btn btn-primary pull-left" href="{{ route('owner.bank.create')}}" role="button">
+                            <a class="btn btn-primary pull-left" href="{{ route('admins.bank.create')}}" role="button">
                                 ADD FURNISHERs/CRAs
                             </a>
                         </div>
@@ -103,10 +103,10 @@
                     <div class="ms-ua-box">
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination">
-                            <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('owner.bank.show', ['type'=> request()->type])}}">ALL</a></li>
-                            <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="btn btn-primary cicl" href="{{ route('owner.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                            <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                            <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="btn btn-primary cicl" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
                             @foreach($alphas as $alpha)
-                                <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('owner.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                                <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -119,14 +119,14 @@
                                                 <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                                     <div class="card mb-4 box-shadow" >
                                                         @if($logos->checkUrlAttribute())
-                                                            <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                            <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
                                                         @else
-                                                            <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                            <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
                                                         @endif
 
                                                         <div class="card-body">
                                                             <div class="card-text mt-5">
-                                                                <div class="bank-name b"  onclick="location.href='{{route("owner.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
+                                                                <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
 
                                                                 <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
                                                                     <span> <i class="fa fa-trash"></i> </span>
@@ -176,7 +176,7 @@
                 var id = $(this).attr('data-id'),
                 token = $("meta[name='csrf-token']").attr("content");
                 $.ajax({
-                    url: "/owner/furnishers/logo/" + id,
+                    url: "/admins/furnishers/logo/" + id,
                     type: 'DELETE',
                     data: {
                         "id": id,

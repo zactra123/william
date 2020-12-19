@@ -74,7 +74,7 @@
 </style>
 
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/owner',"{$bank->name}" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="col-md-12 col-sm-12">
@@ -83,7 +83,7 @@
 
                     </div>
                     <div class="col-md-4 pull-right">
-                        <form action="/owner/furnishers" method="get">
+                        <form action="/admins/furnishers" method="get">
                             <div class="row">
                                 <div class="col-md-8 form-group">
                                     <input type="text" name="term"  class="form-control" >
@@ -100,7 +100,7 @@
                     $states = [null=>''] + \App\BankAddress::STATES;
                     $types = [null=>''] + \App\BankLogo::TYPES;
                 ?>
-                    {!! Form::open(['route' => ['owner.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
+                    {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
                     <div class="ms-ua-box">
@@ -351,7 +351,7 @@
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script src="{{ asset('js/site/admins/banks.js?v=2') }}" ></script>
+    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
     <script>
         $(document).ready(function($) {
 

@@ -156,7 +156,7 @@ $(document).ready(function($) {
         var bankName = $(this).val()
         var token = $("meta[name='csrf-token']").attr("content");
         $.ajax({
-            url: "/owner/furnishers/bank-name",
+            url: "/admins/furnishers/bank-name",
             method:"POST",
             data:{bank_name:bankName, _token: token},
             success: function (result) {

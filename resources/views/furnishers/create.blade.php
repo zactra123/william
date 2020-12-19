@@ -25,7 +25,7 @@
     }
 </style>
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "CREARE BANK", 'route' => ["Home"=> '/owner',"Bank" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "CREARE BANK", 'route' => ["Home"=> '/admins/furnishers',"Bank" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
@@ -36,7 +36,7 @@
 
                         </div>
                         <div class="col-md-4 pull-right">
-                            <form action="/owner/furnishers" method="get">
+                            <form action="/admins/furnishers" method="get">
                                 <div class="row">
                                     <div class="col-md-8 form-group">
                                         <input type="text" name="term"  class="form-control" >
@@ -53,7 +53,7 @@
                     $states = [null=>''] + \App\BankAddress::STATES;
                     $types = [null=>''] + \App\BankLogo::TYPES;
                     ?>
-                    {!! Form::open(['route' => ['owner.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+                    {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                     @csrf
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
@@ -278,7 +278,7 @@
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script src="{{ asset('js/site/admins/banks.js?v=2') }}" ></script>
+    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
 
     <script>
         $(document).ready(function($) {

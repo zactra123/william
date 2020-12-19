@@ -158,15 +158,7 @@ Route::group(['prefix'=> 'admin'], function(){
     Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
     Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
 
-
-    Route::group(["prefix"=>"bank"], function(){
-        Route::get('/logo','BanksController@showBankLogo')->name("admin.bank.show");
-        Route::delete('/logo/{id}','BanksController@deleteBankLogo')->name("admin.bank.delete");
     });
-
-
-
-});
 
 Route::group(['prefix'=> 'receptionist'], function(){
 
@@ -192,18 +184,28 @@ Route::group(['prefix'=> 'receptionist'], function(){
 
 Route::group(['prefix'=> 'admins/'], function(){
 
+    Route::group(["prefix"=>"furnishers"], function(){
+        Route::post('/bank-name','BanksController@banKName');
+        Route::get('/','BanksController@showBankLogo')->name("admins.bank.show");
+        Route::get('/add','BanksController@create')->name("admins.bank.create");
+        Route::post('/add','BanksController@store')->name("admins.bank.store");
+        Route::delete('/logo/{id}','BanksController@deleteBankLogo')->name("admins.bank.delete");
+        Route::get('/edit/{id}','BanksController@edit')->name("admins.bank.edit");
+        Route::put('/edit/{id}','BanksController@update')->name("admins.bank.update");
+        Route::delete('/delete/bank-phone/{id}','BanksController@deleteBankPhone')->name("admins.bankPhone.delete");
+        Route::any('/types', 'BanksController@types')->name("admins.bank.types");
+        Route::delete('/types/{id}', 'BanksController@delete_types');
+        Route::post('/types/update_keywords', 'BanksController@update_type_keywords');
+        Route::post('/types/update_default', 'BanksController@update_type_default');
+        Route::any('/keywords', 'BanksController@keywords');
+
+    });
+
     Route::get('client','TodosController@clientList')->name('adminRec.client.list');
-
     Route::get('affiliate','TodosController@affiliateList')->name('adminRec.affiliate.list');
-
     Route::get('affiliate/{affiliate}','TodosController@affiliateProfile')->name('adminRec.affiliate.profile');
-
-
     Route::get('client/{client}/profile', 'TodosController@profile')->name('adminRec.client.profile');
-
     Route::any('/change-password', 'TodosController@changePassword')->name('adminRec.changePassword');
-
-
     Route::put('client/{clientId}/update', 'TodosController@updateClient')->name('adminRec.client.update');
     Route::get('client/{client}/report/{type}', 'TodosController@clientReport')->name('adminRec.client.report');
     Route::get('todo/list', 'TodosController@toDoList')->name('adminRec.toDo.list');
@@ -215,11 +217,8 @@ Route::group(['prefix'=> 'admins/'], function(){
     Route::get('client/{id}/credentials', 'TodosController@credentials')->name('adminRec.credentials');
     Route::put('client/{id}/credentials', 'TodosController@credentialsUpdate')->name('adminRec.credentialsUpdate');
     Route::post('client/send-email', 'TodosController@sendEmail')->name('adminRec.sendEmail');
-
     Route::get('client-profile-print/{id}', 'TodosController@printPdfClientProfile')->name('adminRec.profilePdf');
     Route::post('client/report/queue', 'TodosController@queueReport')->name('adminRec.client.queue');
-
-
 });
 
 
