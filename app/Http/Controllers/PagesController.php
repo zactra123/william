@@ -22,19 +22,23 @@ use Response;
 
 class PagesController extends Controller
 {
-
-    public function welcome()
+    /**
+     * INDEX PAGE ACTION
+     * @receive
+     *
+     * @return \Illuminate\View\View "new-home-page1" with params
+     * @params pageContentUp, slogans
+     */    public function welcome()
     {
         $pageContentUp = DB::table('home_pages')->get();
 
         $slogansFull = Db::table('slogans')
-//            ->whereRaw('LENGTH(slogan) < 70')
             ->inRandomOrder()
-//            ->limit(5)
             ->select('slogan','author')->get()->toArray();
 
-
         $slogans = [];
+        // Slogans should not be more than 60 characters
+        // In case of long slogans divide to array with 60 less strings
         foreach ($slogansFull as $key =>$slogan) {
 
             $slogans [$key]['author'] = $slogan->author;
@@ -64,12 +68,19 @@ class PagesController extends Controller
         return view('new-home-page1', compact('pageContentUp', 'slogans'));
     }
 
+    /**
+     * INDEX PAGE ACTION
+     * @receive url
+     *  $url using to get content from home_pages table
+     *
+     * @return \Illuminate\View\View "more-information" with param
+     * @param contents
+     */
     public function moreInformation($url)
     {
         $contents = DB::table('home_pages')->where('url', $url)
             ->get();
-
-
+        
         return view('more-information', compact('contents'));
     }
 
