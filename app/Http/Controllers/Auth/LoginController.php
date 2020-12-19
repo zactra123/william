@@ -35,7 +35,6 @@ class LoginController extends Controller
     protected $maxAttempts = 2;
     public function redirectTo()
     {
-
         switch(Auth::user()->role){
             case 'admin':
                 $this->redirectTo = 'admin';
@@ -62,7 +61,6 @@ class LoginController extends Controller
                 return $this->redirectTo;
         }
 
-        // return $next($request);
     }
 
     /**
@@ -72,11 +70,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-
         $this->middleware('guest')->except('logout');
     }
-
-
 
     /**
      * Handle a login request to the application.
@@ -186,7 +181,6 @@ class LoginController extends Controller
             }else{
                 return back()->withErrors( ['error', "ANSWER IS INCORRECT"] );
             }
-
         }
 
     }
@@ -209,7 +203,6 @@ class LoginController extends Controller
 
                 auth()->login($user->first());
                 return redirect(route('login.infoFirst'))->with('success', "your data saved");
-
             }
 
 

@@ -98,32 +98,7 @@ Route::group(['prefix'=>'owner'], function(){
     Route::group(["prefix" => "report"], function(){
         Route::get('/', 'Owner\ReportsController@index')->name("owner.reports.index");
     });
-
-
-    Route::group(["prefix"=>"furnishers"], function(){
-        Route::post('/bank-name','Owner\BanksController@banKName');
-        Route::get('/','Owner\BanksController@showBankLogo')->name("owner.bank.show");
-        Route::get('/add','Owner\BanksController@create')->name("owner.bank.create");
-        Route::post('/add','Owner\BanksController@store')->name("owner.bank.store");
-        Route::delete('/logo/{id}','Owner\BanksController@deleteBankLogo')->name("owner.bank.delete");
-        Route::get('/edit/{id}','Owner\BanksController@edit')->name("owner.bank.edit");
-        Route::put('/edit/{id}','Owner\BanksController@update')->name("owner.bank.update");
-        Route::delete('/delete/bank-phone/{id}','Owner\BanksController@deleteBankPhone')->name("owner.bankPhone.delete");
-        Route::any('/types', 'Owner\BanksController@types')->name("owner.bank.types");
-        Route::delete('/types/{id}', 'Owner\BanksController@delete_types');
-        Route::post('/types/update_keywords', 'Owner\BanksController@update_type_keywords');
-        Route::post('/types/update_default', 'Owner\BanksController@update_type_default');
-        Route::any('/keywords', 'Owner\BanksController@keywords');
-
-        Route::get('affiliate/list', 'Owner\BanksController@storeBanksData');
-        Route::get('affiliate/list1', 'Owner\BanksController@storeBanksData1');
-
-        Route::get('affiliate/list/name', 'Owner\BanksController@addName');
-        Route::get('affiliate/list/filterCa', 'Owner\BanksController@filterCaCollection');
-        Route::get('affiliate/list/filter', 'Owner\BanksController@filterCollection');
-        Route::get('affiliate/list/check', 'Owner\BanksController@collectionCheckMark');
-    });
-
+    
     Route::post('message/completed', 'Owner\MessagesController@messageCompleted')->name('owner.message.ajax');
     Route::post('message/note', 'Owner\MessagesController@addNote')->name('owner.message.note');
 

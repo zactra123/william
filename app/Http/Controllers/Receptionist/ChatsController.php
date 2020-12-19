@@ -95,9 +95,7 @@ class ChatsController extends Controller
             'recipient' =>$recipientData,
             'chats' => $chats
         ] ;
-
         return Response::json($data);
-
     }
 
     public function unreads(Request $request)
@@ -119,7 +117,6 @@ class ChatsController extends Controller
                 'recipient_guest' =>$guest,
                 'guest_user' => $user,
                 'recipient_user' => null
-
             ] ;
 
         }elseif($recipientType=="User"){
@@ -130,13 +127,9 @@ class ChatsController extends Controller
                 'recipient_guest' =>null,
                 'guest_user' => null,
                 'recipient_user' => $user
-
             ] ;
         }
-
-
         return Response::json($data);
-
 
     }
 

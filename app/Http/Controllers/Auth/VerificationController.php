@@ -58,7 +58,6 @@ class VerificationController extends Controller
             }
         }
 
-
         Auth::login($user, true);
         return redirect($this->redirectPath())->with('verified', true);
     }
@@ -99,7 +98,6 @@ class VerificationController extends Controller
                 return $this->redirectTo;
         }
 
-        // return $next($request);
     }
 
     /**

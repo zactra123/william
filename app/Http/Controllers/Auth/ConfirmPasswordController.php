@@ -29,7 +29,6 @@ class ConfirmPasswordController extends Controller
     protected $redirectTo;
     public function redirectTo()
     {
-
         switch(Auth::user()->role){
             case 'admin':
                 $this->redirectTo = 'admin';

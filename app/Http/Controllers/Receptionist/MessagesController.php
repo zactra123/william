@@ -23,7 +23,6 @@ class MessagesController extends Controller
 
     public function index(Request $request)
     {
-
         $admins = User::where('role', 'admin')->get()
             ->pluck('full_name', 'id');
 
@@ -31,7 +30,6 @@ class MessagesController extends Controller
         {
 
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
-
 
             $messages = Message::whereDate('call_date', '>=', $start)->get();
             if ($request->type == 'completed' || $request->type == 'pending'){
@@ -51,7 +49,6 @@ class MessagesController extends Controller
             return Response::json($data);
         }
 
-
         return view('receptionist.message.index',compact('admins'));
     }
 
@@ -63,7 +60,6 @@ class MessagesController extends Controller
             return Response::json(["error" => "Not Found"], 404);
         }
 
-
         $data= [
             "message" => $message,
             "note" => $note
@@ -74,7 +70,6 @@ class MessagesController extends Controller
 
     public function create(Request $request)
     {
-
         $insertArr = [
             'name' => $request->full_name,
             'phone_number' => $request->phone_number,
@@ -82,7 +77,6 @@ class MessagesController extends Controller
             'title'=> $request->title,
             'start_date' => $request->start_date,
             'description' => $request->description,
-
         ];
 
         $validation = Validator::make($insertArr, [
@@ -91,12 +85,10 @@ class MessagesController extends Controller
             'title' => ['required'],
             'description'=> ['required'],
             'phone_number'=> ['required'],
-
-
         ]);
+
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
-
         }else {
             $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
@@ -123,9 +115,8 @@ class MessagesController extends Controller
             'title' => ['required'],
             'description'=> ['required'],
             'phone_number'=> ['required'],
-
-
         ]);
+
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
 
@@ -133,7 +124,6 @@ class MessagesController extends Controller
             $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
-
 
             $messageHistory = Message::where('id', $request->id)->first()->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
@@ -143,7 +133,6 @@ class MessagesController extends Controller
 
             $message = Message::where('id', $request->id)->update($insertArr);
             return Response::json($message);
-
         }
 
 
@@ -199,9 +188,6 @@ class MessagesController extends Controller
             QuestionNote::create($note);
             return redirect()->route('receptionist.message.index');
         }
-
-
-
     }
 
 
@@ -219,7 +205,5 @@ class MessagesController extends Controller
 
         return Response::json($data);
     }
-
-
 
 }

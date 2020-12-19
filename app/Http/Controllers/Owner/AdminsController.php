@@ -89,7 +89,6 @@ class AdminsController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $admin = $request->admin;
         $admin['id'] = $id;
 
@@ -157,23 +156,20 @@ class AdminsController extends Controller
 
     public function show(Request $request)
     {
-        dd('in show');
+
     }
 
     public function list()
     {
-
         $admins = User::where('role', 'admin')
             ->paginate(10);
 
         return view('owner.admin.list', compact( 'admins'));
-
     }
 
     public function deleteIp(Request $request)
     {
        $id = $request->id;
-
         try {
             AllowedIp::where('id', $id)->delete();
 

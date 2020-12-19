@@ -41,7 +41,6 @@ class SlogansController extends Controller
 
     public function destroy($id)
     {
-
         try {
             Slogan::where('id', $id)->delete();
         } catch (\Exception $e) {

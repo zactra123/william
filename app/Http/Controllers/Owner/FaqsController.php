@@ -69,7 +69,6 @@ class FaqsController extends Controller
     }
     public function destroy($id)
     {
-
         try {
             Faq::where('id', $id)->delete();
         } catch (\Exception $e) {
@@ -86,7 +85,6 @@ class FaqsController extends Controller
     }
     public function questionDelete($id)
     {
-
         try {
             Question::where('id', $id)->delete();
         } catch (\Exception $e) {
@@ -94,9 +92,6 @@ class FaqsController extends Controller
         }
 
         return response()->json(['status' => 'success']);
-
     }
-
-
 
 }

@@ -27,11 +27,9 @@ class MessagesController extends Controller
             ->select('id', DB::raw('CONCAT(last_name, " ",first_name) AS full_name'))
             ->pluck('full_name', 'id');
 
-
         if(request()->ajax())
         {
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
-
 
             $messages = Message::whereDate('call_date', '>=', $start)->get();
             if ($request->type == 'completed' || $request->type == 'pending'){
@@ -50,8 +48,6 @@ class MessagesController extends Controller
             }
             return Response::json($data);
         }
-
-
         return view('owner.message.index',compact('admins'));
     }
 
@@ -62,7 +58,6 @@ class MessagesController extends Controller
         if (empty($message)) {
             return Response::json(["error" => "Not Found"], 404);
         }
-
 
         $data= [
             "message" => $message,
@@ -134,7 +129,6 @@ class MessagesController extends Controller
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
 
-
             $messageHistory = Message::where('id', $request->id)->first()->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
             unset($messageHistory['id']);
@@ -143,26 +137,20 @@ class MessagesController extends Controller
 
             $message = Message::where('id', $request->id)->update($insertArr);
             return Response::json($message);
-
         }
-
     }
 
     public function destroy($id)
     {
-
         if ($messageHistory = Message::where('id', $id)->first()) {
 
             $messageHistory = $messageHistory->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
             unset($messageHistory['id']);
-
             MessageHistory::create($messageHistory);
             Message::find($id)->delete();
-
             return Response::json(["success" => true]);
         }
-
         return Response::json(["error"=> "Not Found"], 404);
     }
 
@@ -186,20 +174,17 @@ class MessagesController extends Controller
             'user_id' => ['required'],
             'message_id' => ['required'],
             'notes'=> ['required', 'string'],
-
         ]);
 
         if ($validation->fails()) {
             return redirect()->back()
                 ->withInput()
                 ->withErrors($validation);
-
         }else{
 
             QuestionNote::create($note);
             return redirect()->route('admin.message.index');
         }
-
     }
 
     public function userData(Request $request)
@@ -213,7 +198,6 @@ class MessagesController extends Controller
             ->first();
 
         $data = $data!= null?$data:'';
-
         return Response::json($data);
     }
 }

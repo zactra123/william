@@ -39,7 +39,6 @@ class AdminsController extends Controller
             return Response::json($messages);
         }
 
-
         return view('admin.message.index');
     }
 
@@ -54,7 +53,6 @@ class AdminsController extends Controller
             ->paginate(10);
 
         return view('admin.user-list', compact( 'users'));
-
     }
 
     public function affiliateList()
@@ -110,7 +108,7 @@ class AdminsController extends Controller
         return $pdf->download('invoice.pdf');
         return view('admin.client-profile-pdf', compact('client'));
 
-        dd($client); 
+        dd($client);
 
         $pdf = $pdf->setPaper('a4', 'portrait');
 

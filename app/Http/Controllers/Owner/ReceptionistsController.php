@@ -19,7 +19,6 @@ class ReceptionistsController extends Controller
 
     public function create()
     {
-
         return view('owner.receptionist.create');
     }
 

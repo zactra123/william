@@ -86,17 +86,6 @@ class ClientsController extends Controller
 
             ]);
 
-//        @Todo: haskanal vortex enq pahum report numbernere
-//        ReportNumber::cretae([
-//
-//            'user_id'=>$data['user_id'],
-//            'ex_number'=>$data['ex_number'],
-//            'eq_number'=>$data['eq_number'],
-//            'tu_number'=>$data['tu_number'],
-//            'ftc_number'=>$data['ftc_number'],
-//            'dr_number'=>$data['dr_number'],
-//        ]);
-
         echo json_encode(['success'=>1,'data'=>$data]);
         return;
 

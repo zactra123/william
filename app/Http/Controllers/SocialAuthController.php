@@ -50,7 +50,6 @@ class SocialAuthController extends Controller
                 ->withErrors(['error'=> "Please in first register with Facebook!!"]);
         }
 
-
         if (!$account) {
             $user = User::where('email', $facebookUser->user['email'])->first();
             if ($user) {
@@ -63,11 +62,9 @@ class SocialAuthController extends Controller
                 'provider' => 'facebook'
             ]);
             if(session('user_role') == null){
-
                 return redirect()->to('/login')
                 ->withErrors("Something is wrong please re register !!");
             }
-
 
             $user = User::create([
                 'email' => $facebookUser->user['email'],
@@ -93,7 +90,6 @@ class SocialAuthController extends Controller
                 event(new Verified($user));
             }
 
-
             $account->user()->associate($user);
             $account->save();
 
@@ -111,28 +107,22 @@ class SocialAuthController extends Controller
 
         }else{
             return redirect()->to('/affiliate');
-
         }
     }
 
     public function redirectGoogle(Request $request)
     {
         session(['user_role' => $request->users]);
-
         return Socialite::driver('google')->redirect();
-
     }
 
     public function callbackGoogle()
     {
-
         $googleUser = Socialite::driver('google')->stateless()->user();
-
 
         $account = SocialAccount::where('provider','google')
             ->where('provider_user_id',$googleUser->user['id'])
             ->first();
-
 
         $userRole = session('user_role');
         if(!$account && !$userRole){
@@ -146,7 +136,6 @@ class SocialAuthController extends Controller
                 'provider' => 'google'
             ]);
             $user = User::where('email', $googleUser->user['email'])->first();
-
 
             if ($user) {
 
@@ -193,10 +182,5 @@ class SocialAuthController extends Controller
         }
 
     }
-
-
-
-
-
 
 }

@@ -28,7 +28,6 @@ class TodosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
 
     public function clientList()
@@ -496,18 +495,18 @@ class TodosController extends Controller
         $day = date('d', strtotime($date));
 
         switch (($year - 4) % 12) {
-            case  0: $zodiacYear = 'Rat';       break;
-            case  1: $zodiacYear = 'Ox';            break;
-            case  2: $zodiacYear = 'Tiger';     break;
-            case  3: $zodiacYear = 'Rabbit';    break;
-            case  4: $zodiacYear = 'Dragon';    break;
-            case  5: $zodiacYear = 'Snake';     break;
-            case  6: $zodiacYear = 'Horse';     break;
-            case  7: $zodiacYear = 'Goat';  break;
-            case  8: $zodiacYear = 'Monkey';    break;
-            case  9: $zodiacYear = 'Rooster';   break;
-            case 10: $zodiacYear = 'Dog';   break;
-            case 11: $zodiacYear = 'Pig';   break;
+            case  0: $zodiacYear = 'Rat'; break;
+            case  1: $zodiacYear = 'Ox'; break;
+            case  2: $zodiacYear = 'Tiger'; break;
+            case  3: $zodiacYear = 'Rabbit'; break;
+            case  4: $zodiacYear = 'Dragon'; break;
+            case  5: $zodiacYear = 'Snake'; break;
+            case  6: $zodiacYear = 'Horse'; break;
+            case  7: $zodiacYear = 'Goat'; break;
+            case  8: $zodiacYear = 'Monkey'; break;
+            case  9: $zodiacYear = 'Rooster'; break;
+            case 10: $zodiacYear = 'Dog'; break;
+            case 11: $zodiacYear = 'Pig'; break;
         }
 
         if     ( ( $month == 3 && $day > 20 ) || ( $month == 4 && $day < 20 ) ) { $zodiacMonth = "Aries";}
@@ -634,10 +633,5 @@ class TodosController extends Controller
         }
 
     }
-
-
-
-
-
 
 }

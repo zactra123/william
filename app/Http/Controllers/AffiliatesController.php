@@ -700,7 +700,6 @@ class AffiliatesController extends Controller
 
     public function clientReport(Request $request)
     {
-
         $clientReportsEQ = null;
         $clientReportsTU = null;
         $clientReportsEX = null;

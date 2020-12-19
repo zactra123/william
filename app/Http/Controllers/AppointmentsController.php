@@ -29,7 +29,6 @@ class AppointmentsController extends Controller
 
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
 
-
             $appointments = Message::whereDate('call_date', '>=', $start)->get();
             if ($request->type == 'completed' || $request->type == 'pending'){
                 $appointments = $appointments->where('completed', $request->type == 'completed');
@@ -60,7 +59,6 @@ class AppointmentsController extends Controller
             return Response::json(["error" => "Not Found"], 404);
         }
 
-
         $data= [
             "appointment" => $appointment,
             "note" => $note
@@ -73,7 +71,6 @@ class AppointmentsController extends Controller
 
     public function create(Request $request)
     {
-
         $insertArr = [
             'name' => $request->full_name,
             'phone_number' => $request->phone_number,
@@ -81,7 +78,6 @@ class AppointmentsController extends Controller
             'title'=> $request->title,
             'start_date' => $request->start_date,
             'description' => $request->description,
-
         ];
 
         $validation = Validator::make($insertArr, [
@@ -90,7 +86,6 @@ class AppointmentsController extends Controller
             'title' => ['required'],
             'description'=> ['required'],
             'phone_number'=> ['required'],
-
 
         ]);
         if ($validation->fails()) {
@@ -142,10 +137,7 @@ class AppointmentsController extends Controller
 
             $appointment = Message::where('id', $request->id)->update($insertArr);
             return Response::json($appointment);
-
         }
-
-
     }
 
     public function destroy($id)
