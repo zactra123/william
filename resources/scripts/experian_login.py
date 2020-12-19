@@ -94,7 +94,7 @@ class experianLogin:
             self.login()
             self.get_report()
 #             self.get_report_numbers()
-            self.driver.close()
+            self.driver.quit()
             return {
                 "status": "success",
                 "message": self.error_message,
@@ -102,7 +102,7 @@ class experianLogin:
                 "numbers_filepath": self.filepath_numbers
             }
         except Exception as e:
-            self.driver.close()
+            self.driver.quit()
             return {
                 "status": "error",
                 "error": e,
