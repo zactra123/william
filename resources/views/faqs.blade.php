@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-4">
                             <h2 >Send Your Question</h2>
-                            <form action="{{route('faqs.store')}}" method="POST">
+                            <form action="{{route('faqs')}}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">

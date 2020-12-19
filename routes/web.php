@@ -28,8 +28,7 @@ Route::get('free-credit-repair', 'PagesController@creditFreeRepiar')->name('cred
 Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::get('credit-education/{url}', 'PagesController@creditEducationInfo')->name('credit.educationInfo');
-Route::get('faqs', 'PagesController@faqs')->name('faqs');
-Route::post('faqs', 'PagesController@faqs')->name('faqs.store');
+Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 
 
 Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {

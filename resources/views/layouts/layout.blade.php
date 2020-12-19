@@ -270,7 +270,7 @@
 </div>
 {{--@include('helpers.chat-box')--}}
 @auth
-    @if(Auth::user()->role == 'client')
+    @if(Auth::user()->role == 'client' || Auth::user()->role == 'affiliate')
         @include('helpers.chat-box')
     @endif
 @else

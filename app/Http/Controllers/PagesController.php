@@ -22,7 +22,8 @@ use Response;
 
 class PagesController extends Controller
 {
-    public function welcome(ReadPdfData $readPdfData)
+
+    public function welcome()
     {
         $pageContentUp = DB::table('home_pages')->get();
 
@@ -34,7 +35,7 @@ class PagesController extends Controller
 
 
         $slogans = [];
-        foreach ($slogansFull as $key =>$slogan){
+        foreach ($slogansFull as $key =>$slogan) {
 
             $slogans [$key]['author'] = $slogan->author;
             if (strlen($slogan->slogan) < 60) {
@@ -77,7 +78,7 @@ class PagesController extends Controller
     {
         $title = 'Credit Education';
         $contents = HomePageContent::all();
-       return view('credit-education', compact('contents','title'));
+        return view('credit-education', compact('contents','title'));
     }
 
 //    public function creditEducationInfo($url)
@@ -107,20 +108,15 @@ class PagesController extends Controller
         if($request->method() =='GET'){
 
             $faqs = Faq::all();
-
             return view('faqs', compact('faqs', 'title'));
         }
-
         if($request->post()){
-
             $validation = Validator::make($request->except('_token'), [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255'],
                 'question' => ['required', 'string', 'max:255'],
-
             ]);
             if ($validation->fails()) {
-
                 return redirect()->back()
                     ->withInput()
                     ->withErrors($validation);
