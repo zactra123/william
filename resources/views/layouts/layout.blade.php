@@ -235,13 +235,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="appointmentDetailsModalLabel">Appiontments</h4>
+                <h4 class="modal-title" id="appointmentDetailsModalLabel">Appointments</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div>You have <span class="apointments-count"></span> appiontments in the next 10 mintes</div>
+                <div>You have <span class="apointments-count"></span> appointments in the next 10 minutes</div>
                 <div class="appointments-info">
 
                 </div>

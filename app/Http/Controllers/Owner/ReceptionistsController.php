@@ -12,16 +12,46 @@ use Illuminate\Http\Request;
 
 class ReceptionistsController extends Controller
 {
+    /**
+     * ReceptionistsController constructor.
+     * Should access only logged in user with Super Admin("superadmin") Role
+     * Super Admin can view receptionists list, create, update or delete an receptionist
+     * Created receptionist should have Ip address(es), which require to access Admin pages
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'superadmin']);
     }
 
+    /**
+     * @return \Illuminate\View\View "owner.receptionist.index" with @receptionists
+     * @receptionists Users with role "receptionist" paginated 10
+     */
+    public function index()
+    {
+        $receptionists = User::where('role', 'receptionist')
+            ->paginate(10);
+        return view('owner.receptionist.index', compact( 'receptionists'));
+
+    }
+
+    /**
+     * @return \Illuminate\View\View "owner.receptionist.create"
+     *
+     */
     public function create()
     {
         return view('owner.receptionist.create');
     }
 
+    /**
+     * Create User with Receptionist Role (receptionist)
+     * assign specific Ip Address(es) from which admin can access to the website
+     * after creating admin sending confirmation Email, where admin can specify their password
+     * @param Request $request
+     * request structure [admin=>[first_name:required, last_name:required, email:required, ip_address:array,optional]]
+     * @return redirect on success receptionist.index, on failed receptionist.create
+     */
     public function store(Request $request)
     {
         $receptionist = $request->receptionist;
@@ -42,7 +72,6 @@ class ReceptionistsController extends Controller
             'role'=>'receptionist',
         ]);
         foreach($receptionist['ip_address'] as $ipAddress){
-
             AllowedIp::create([
                 'user_id'=> $user->id,
                 'ip_address' => $ipAddress,
@@ -51,9 +80,13 @@ class ReceptionistsController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return redirect('owner/receptionist/list');
+        return redirect(route('owner.receptionist.index'));
     }
-
+    /**
+     * Update User with Receptionist Role (receptionist)
+     * @param $id
+     * @return \Illuminate\View\View 'owner.receptionist.edit', @receptionist
+     */
     public function edit($id)
     {
         $receptionist = User::where('id', $id)
@@ -63,6 +96,13 @@ class ReceptionistsController extends Controller
         return view('owner.receptionist.edit', compact('receptionist'));
     }
 
+    /**
+     * Update existing User with Receptionist Role (receptionist)
+     * assign specific Ip Address(es) from which admin can access to the website
+     * @param Request $request
+     * request structure [admin=>[first_name:required, last_name:required, email:required, ip_address:array[ip_address, id],optional]]
+     * @return redirect on success receptionist.index, on failed receptionist.edit
+     */
     public function update(Request $request, $id)
     {
         $receptionist = $request->receptionist;
@@ -74,7 +114,7 @@ class ReceptionistsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return redirect()->back()
+            return redirect(route('owner.receptionist.edit', ["receptionist" => $id]))
                 ->withInput()
                 ->withErrors($validation);
         }
@@ -87,28 +127,29 @@ class ReceptionistsController extends Controller
                 'role'=>'receptionist',
             ]);
 
-        if(!empty($receptionist["ip_address"])){
-            foreach($receptionist["ip_address"]  as $key => $ip_id){
-
-                if( AllowedIp::where('id', $key)->first()!= null){
-                    AllowedIp::where('id', $key)->update(['ip_address'=> $ip_id]);
+        if(isset($request->admin['ip_address'])){
+            foreach($request->admin['ip_address'] as $ip){
+                if (!empty($ip['id'])) {
+                    if( AllowedIp::where('id', $ip['id'])->first()!= null){
+                        AllowedIp::where('id', $ip['id'])->update(['ip_address'=> $ip['ip_address']]);
+                    }
+                } else {
+                    AllowedIp::create([
+                        'user_id'=> $id,
+                        'ip_address'=> $ip['ip_address']
+                    ]);
                 }
             }
         }
 
-        if(!empty($receptionist["ip_address_new"])) {
-            foreach($receptionist['ip_address_new'] as $newIp){
-                AllowedIp::create([
-                    'user_id'=> $id,
-                    'ip_address'=> $newIp
-                ]);
-            }
-        }
-
-
-        return redirect('owner/receptionist/list');
+        return redirect(route('owner.receptionist.index'));
     }
 
+    /**
+     * Should remove existing Receptionist from database
+     * @param $id
+     * @return JsonResponse
+     */
     public function destroy($id)
     {
         try {
@@ -121,22 +162,15 @@ class ReceptionistsController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public function list()
-    {
-        $receptionists = User::where('role', 'receptionist')
-            ->paginate(20);
-
-        return view('owner.receptionist.list', compact( 'receptionists'));
-
-    }
-
+    /**
+     * Should Remove Allowed Ip address from database
+     * @param Request $request structure [id:allowed_ips.id,required]
+     * @return JsonResponse
+     */
     public function deleteIp(Request $request)
     {
-        $id = $request->id;
-
         try {
-            AllowedIp::where('id', $id)->delete();
-
+            AllowedIp::where('id', $request->id)->delete();
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
         }

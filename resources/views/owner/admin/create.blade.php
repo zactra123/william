@@ -20,19 +20,19 @@
                                     @endforeach
                                 </div>
                                 <div class="row " style="margin: 10px">
-                                    <a class="btn btn-light"  href="{{route('owner.admin.list')}}">Back</a>
+                                    <a class="btn btn-light"  href="{{route('owner.admin.index')}}">Back</a>
                                 </div>
                             </div>
 
                             <div class="card-body ">
-                                {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
+                                {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!}
 
                                 <div class="form-group row font justify-content-center">
 
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('admin[first_name]', old('admin.first_name'), ['class' => 'form-control', 'placeholder' =>'FIRST NAME']) }}
+                                            {{ Form::text('admin[first_name]', old('admin.first_name'), ['class' => 'form-control', 'placeholder' =>'FIRST NAME','required']) }}
                                         </div>
                                     </div>
 
@@ -42,7 +42,7 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('admin[last_name]', old('admin.last_name'), ['class' => 'form-control', 'placeholder'=>'LAST NAME']) }}
+                                            {{ Form::text('admin[last_name]', old('admin.last_name'), ['class' => 'form-control', 'placeholder'=>'LAST NAME', 'required']) }}
                                         </div>
                                     </div>
 
@@ -53,7 +53,7 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12">
-                                            {{ Form::email('admin[email]', old('admin.email'), ['class' => 'form-control','placeholder'=>'E-MAIL',  'required autocomplete'=>"email"]) }}
+                                            {{ Form::email('admin[email]', old('admin.email'), ['class' => 'form-control','placeholder'=>'E-MAIL',  'required'=>"email"]) }}
                                         </div>
                                     </div>
 
@@ -69,7 +69,7 @@
                                 <div class="form-group row font justify-content-center">
                                     <div class="col-md-12 tab-selector">
                                         <div class="col-md-10 form-group">
-                                            {{ Form::text('admin[ip_address][]', old('admin.ip_address'), ['class' => 'form-control', 'placeholder'=>'IP ADDRESS']) }}
+                                            {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address', 'placeholder'=>'IP ADDRESS']) }}
                                         </div>
                                         <div class="col-md-2 form-group">
                                             <input class="btn btn-block add-ip-address" type="button" value="Add"/>
@@ -95,36 +95,9 @@
             </div>
         </div>
     </section>
-
-{{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
-    <script>
-
-        $(document).ready(function () {
-            var i=0;
-
-            $(".add-ip-address").on('click', function(){
-                i++
-                console.log('dasdasd')
-                var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
-                var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
-                var addIp = "<input type='text' name=admin[ip_address][] class = 'form-control col-10' placeholder = 'IP ADDRESS'> </div>"
-                addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-block" type="button" data-target="'+i+'" value="Delete"/></div>'
-                newDiv += addIp + "</div></div>";
-                $("#newIp").append(newDiv);
-
-            })
-
-            $(document).delegate('.delete-ip-address', 'click', function(){
-                var  deleteId = $(this).attr("data-target")
-                console.log(deleteId)
-                $( "div" ).remove( '#delete-'+deleteId );
-
-            });
-
-        })
-
-
-    </script>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/site/owner/admins.js') }}"></script>
 
 @endsection
 

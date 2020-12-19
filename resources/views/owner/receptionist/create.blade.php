@@ -15,7 +15,7 @@
                         <div class="card">
 
                             <div class="row m-2">
-                                <a class="btn btn-light"  href="{{route('owner.receptionist.list')}}">Back</a>
+                                <a class="btn btn-light"  href="{{route('owner.receptionist.index')}}">Back</a>
                             </div>
 
                             @foreach ($errors->all() as $error)

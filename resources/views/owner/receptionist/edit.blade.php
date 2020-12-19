@@ -19,7 +19,7 @@
                                 @endforeach
                             </div>
                             <div class="row m-2">
-                                <a class="btn btn-light"  href="{{route('owner.receptionist.list')}}">BACK</a>
+                                <a class="btn btn-light"  href="{{route('owner.receptionist.index')}}">BACK</a>
                             </div>
                             <div class="card-body ">
                                 {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}

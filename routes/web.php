@@ -56,6 +56,16 @@ Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify
 
 Route::group(['prefix'=>'owner'], function(){
 
+    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
+
+    Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');
+    Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
+    Route::any('admin/{adminId}/change-password', 'Owner\AdminsController@changePassword')->name('owner.admin.changePassword');
+
+    Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');
+    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
+
+
     Route::get('home-page-content', 'Owner\SuperAdminsController@homePageContent')->name('owner.home.content');
     Route::get('create/home-page-content', 'Owner\SuperAdminsController@homePageContentCreate')->name('owner.home.content.create');
     Route::post('create/home-page-content', 'Owner\SuperAdminsController@homePageContentStore')->name('owner.home.content.store');
@@ -64,19 +74,14 @@ Route::group(['prefix'=>'owner'], function(){
     Route::put('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentUpdate')->name('owner.home.content.update');
     Route::delete('delete/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentDestroy')->name('owner.home.content.destroy');
 
-    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
-    Route::get('admin/list', 'Owner\AdminsController@list')->name('owner.admin.list');
-    Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
-    Route::any('admin/{adminId}/change-password', 'Owner\AdminsController@changePassword')->name('owner.admin.changePassword');
 
-    Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
-    Route::get('receptionist/list', 'Owner\ReceptionistsController@list')->name('owner.receptionist.list');
+
+
 
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
     Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
     Route::get('affiliate/{affiliateId}', 'Owner\ClientsController@affiliateShow')->name('owner.affiliate.show');
-    Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');;
-    Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');;
+
     Route::resource('client', 'Owner\ClientsController')->names('owner.client');
     Route::post('client/report-number', 'ClientsController@clientReportNumber')->name('owner.client.report_number');
     ROUTE::any('pricing', 'Owner\ClientsController@pricing')->name('owner.pricing');

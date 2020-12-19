@@ -197,7 +197,7 @@ class   User extends Authenticatable implements MustVerifyEmail
     public function getFullNameAttribute()
     {
         if ($this->role == 'affiliate') {
-            $business = ucfirst($this->ClientDetails->business_name);
+            $business = $this->ClientDetails ? ucfirst($this->ClientDetails->business_name) : "";
             $full_name = ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
             return "$business ($full_name)";
         }

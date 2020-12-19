@@ -2,8 +2,8 @@
     <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
 
         <li class="menu-item"><a href="{{ route('owner.reports.index')}}">Reports</a></li>
-        <li class="menu-item"><a href="{{ route('owner.admin.list')}}">Admin List</a></li>
-        <li class="menu-item"><a href="{{ route('owner.receptionist.list')}}">Receptionist</a></li>
+        <li class="menu-item"><a href="{{ route('owner.admin.index')}}">Admin List</a></li>
+        <li class="menu-item"><a href="{{ route('owner.receptionist.index')}}">Receptionist</a></li>
         <li class="menu-item"> <a href="{{ url('owner/message')}}">Messages</a> </li>
         <li class="menu-item"><a href="{{ route('owner.client.list')}}" >User List</a></li>
         <li class="menu-item"><a href="{{route('owner.home.content')}}">Credit Education</a></li>

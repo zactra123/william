@@ -13,21 +13,53 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminsController extends Controller
 {
-
+    /**
+     * AdminsController constructor.
+     * Should access only logged in user with Super Admin("superadmin") Role
+     * Super Admin can view admins list, create, update or delete an admin
+     * Created admin should have Ip address(es), which require to access Admin pages
+     * Super Admin can assign multiple Negative Types, on which Admin should work on
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'superadmin']);
     }
 
+    /**
+     * @return \Illuminate\View\View "owner.admin.index" with @admins
+     * @admins Users with role "admin" paginated 10
+     */
+    public function index()
+    {
+        $admins = User::where('role', 'admin')
+            ->paginate(10);
+
+        return view('owner.admin.index', compact( 'admins'));
+    }
+
+    /**
+     *  Newly created admins can have multiple negative Types
+     *  Using Negative Types to determine on which Disputes admin should work
+     * @return \Illuminate\View\View "owner.admin.create" with @negativeType
+     * @negativeType form "negative_types table"
+     */
     public function create()
     {
-
         $negativeType = NegativeType::all()
             ->pluck('name', 'id')
             ->toArray();
         return view('owner.admin.create', compact('negativeType'));
     }
 
+    /**
+     * Create User with Admin Role (admin)
+     * assign specific Ip Address(es) from which admin can access to the website
+     * assign specific Negative Types which should be stored on "admin_specifications" table
+     * after creating admin sending confirmation Email, where admin can specify their password
+     * @param Request $request
+     * request structure [admin=>[first_name:required, last_name:required, email:required, negative_types:array,required, ip_address:array,optional]]
+     * @return redirect on success admin.index, on failed admin.create
+     */
     public function store(Request $request)
     {
         $admin = $request->admin;
@@ -38,13 +70,10 @@ class AdminsController extends Controller
             'negative_types' => ['required'],
         ]);
 
-
         if($validation->fails()){
-            $negativeType = NegativeType::all()
-                ->pluck('name', 'id')
-                ->toArray();
-            return view('owner.admin.create', compact('negativeType'))->withErrors($validation);
+            return redirect(route('owner.admin.create'))->withErrors($validation);
         }
+
         $user = User::create([
             'first_name' => $admin['first_name'],
             'last_name' => $admin['last_name'],
@@ -52,28 +81,31 @@ class AdminsController extends Controller
             'role'=>'admin',
         ]);
 
-        $userId = $user->id;
 
         foreach($admin['ip_address'] as $ipAddress){
-
             AllowedIp::create([
-                'user_id'=> $userId,
+                'user_id'=> $user->id,
                 'ip_address' => $ipAddress
             ]);
        }
 
         foreach($admin['negative_types'] as $negativeTypes){
             AdminSpecification::create([
-                'user_id' => $userId,
+                'user_id' => $user->id,
                 'negative_types_id' => $negativeTypes,
             ]);
         }
 
         $user->sendEmailVerificationNotification();
 
-        return redirect('owner/admin/list');
+        return redirect('owner/admin');
     }
 
+    /**
+     * Update User with Admin Role (admin)
+     * @param $id
+     * @return \Illuminate\View\View 'owner.admin.edit', @admin, @negativeType
+     */
     public function edit($id)
     {
         $admin = User::where('id', $id)
@@ -87,10 +119,17 @@ class AdminsController extends Controller
         return view('owner.admin.edit', compact('admin', 'negativeType'));
     }
 
+    /**
+     * Update existing User with Admin Role (admin)
+     * assign specific Ip Address(es) from which admin can access to the website
+     * assign specific Negative Types which should be stored on "admin_specifications" table
+     * @param Request $request
+     * request structure [admin=>[first_name:required, last_name:required, email:required, negative_types:array,required, ip_address:array[ip_address, id],optional]]
+     * @return redirect on success admin.index, on failed admin.edit
+     */
     public function update(Request $request, $id)
     {
         $admin = $request->admin;
-        $admin['id'] = $id;
 
         $validation =  Validator::make($admin, [
             'first_name' => ['required', 'string', 'max:255'],
@@ -100,12 +139,12 @@ class AdminsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return redirect()->back()
+            return redirect(route('owner.admin.edit', ["admin"=>$id]))
                 ->withInput()
                 ->withErrors($validation);
         }
 
-        User::where('id', $admin['id'])
+        User::where('id', $id)
             ->update([
                 'first_name' => $admin['first_name'],
                 'last_name' => $admin['last_name'],
@@ -113,34 +152,36 @@ class AdminsController extends Controller
                 'role'=>'admin',
         ]);
 
-        AdminSpecification::where('user_id', $admin['id'])->delete();
+        AdminSpecification::where('user_id', $id)->delete();
 
         foreach($admin['negative_types'] as $negativeTypes){
             AdminSpecification::create([
-                'user_id' => $admin['id'],
+                'user_id' => $id,
                 'negative_types_id' => $negativeTypes,
             ]);
         }
         if(isset($request->admin['ip_address'])){
-            foreach($request->admin['ip_address'] as $key =>$ip_address){
-
-                if( AllowedIp::where('id', $key)->first()!= null){
-                    AllowedIp::where('id', $key)->update(['ip_address'=> $ip_address]);
+            foreach($request->admin['ip_address'] as $ip){
+                if (!empty($ip['id'])) {
+                    if( AllowedIp::where('id', $ip['id'])->first()!= null){
+                        AllowedIp::where('id', $ip['id'])->update(['ip_address'=> $ip['ip_address']]);
+                    }
+                } else {
+                    AllowedIp::create([
+                        'user_id'=> $id,
+                        'ip_address'=> $ip['ip_address']
+                    ]);
                 }
             }
         }
-        if(isset($request->admin['ip_address_new'])){
-            foreach($request->admin['ip_address_new'] as $newIp){
-                AllowedIp::create([
-                    'user_id'=> $admin['id'],
-                    'ip_address'=> $newIp
-                ]);
-            }
-        }
-
-        return redirect('owner/admin/list');
+        return redirect(route('owner.admin.index'));
     }
 
+    /**
+     * Should remove existing Admin from database
+     * @param $id
+     * @return JsonResponse
+     */
     public function destroy($id)
     {
         try {
@@ -154,19 +195,11 @@ class AdminsController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public function show(Request $request)
-    {
-
-    }
-
-    public function list()
-    {
-        $admins = User::where('role', 'admin')
-            ->paginate(10);
-
-        return view('owner.admin.list', compact( 'admins'));
-    }
-
+    /**
+     * Should Remove Allowed Ip address from database
+     * @param Request $request structure [id:allowed_ips.id,required]
+     * @return JsonResponse
+     */
     public function deleteIp(Request $request)
     {
        $id = $request->id;
@@ -180,14 +213,15 @@ class AdminsController extends Controller
         return response()->json(['status' => 'success']);
     }
 
+    /**
+     * @param Request $request
+     * request structure [password:required]
+     * @param $adminId
+     * @return \Illuminate\View\View
+     */
     public function changePassword(Request $request,$adminId)
     {
-        if($request->method()=="GET"){
-
-            $admin = User::where('id',$adminId)->whereIn('role', ['admin','receptionist'])->first();
-            return view('owner.admin.change-password', compact('admin'));
-        }elseif($request->method()=="PUT"){
-
+        if($request->method()=="PUT"){
             $changePassword = $request->except("_token");
 
             $validation = Validator::make($changePassword, [
@@ -203,14 +237,13 @@ class AdminsController extends Controller
             User::whereId($adminId)->update([ 'password' => Hash::make($changePassword['password'])]);
 
             if(User::whereId($adminId)->first()->role == "admin"){
-                return redirect('owner/admin/list');
+                return redirect(route('owner.admin.index'));
             }else{
-                return redirect('owner/receptionist/list');
+                return redirect('owner.receptionist.index');
             }
-
         }
 
+        $admin = User::where('id',$adminId)->whereIn('role', ['admin','receptionist'])->first();
+        return view('owner.admin.change-password', compact('admin'));
     }
-
-
 }
