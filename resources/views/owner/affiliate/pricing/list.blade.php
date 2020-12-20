@@ -32,10 +32,10 @@
 
                         </div>
                         <div class="ms-ua-form">
-                            {!! Form::open(['route' => "owner.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+                            {!! Form::open(['route' => "owner.affiliate.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                             @csrf
                             <div id="price-list">
-                                @include('owner.pricing._form', ["pricing" =>$default_price_list, "default" => $default_price_list])
+                                @include('owner.affiliate.pricing._form', ["pricing" =>$default_price_list, "default" => $default_price_list])
                             </div>
 
 

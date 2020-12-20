@@ -65,6 +65,12 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');
     Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
 
+    Route::resource('client', 'Owner\ClientsController')->names('owner.client')->only(['index', 'destroy']);
+
+    Route::resource('affiliate', 'Owner\AffiliatesController')->names('owner.affiliate')->only(['index', 'destroy']);
+
+    ROUTE::any('pricing', 'Owner\AffiliatesController@pricing')->name('owner.affiliate.pricing');
+    ROUTE::get('pricing-affiliate', 'Owner\AffiliatesController@affiliate');
 
     Route::get('home-page-content', 'Owner\SuperAdminsController@homePageContent')->name('owner.home.content');
     Route::get('create/home-page-content', 'Owner\SuperAdminsController@homePageContentCreate')->name('owner.home.content.create');
@@ -78,14 +84,12 @@ Route::group(['prefix'=>'owner'], function(){
 
 
 
-    Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
-    Route::get('affiliate/list', 'Owner\ClientsController@affiliateList')->name('owner.affiliate.list');
-    Route::get('affiliate/{affiliateId}', 'Owner\ClientsController@affiliateShow')->name('owner.affiliate.show');
 
-    Route::resource('client', 'Owner\ClientsController')->names('owner.client');
+
+
+
     Route::post('client/report-number', 'ClientsController@clientReportNumber')->name('owner.client.report_number');
-    ROUTE::any('pricing', 'Owner\ClientsController@pricing')->name('owner.pricing');
-    ROUTE::get('pricing-affiliate', 'Owner\ClientsController@pricing_affiliate');
+
 
     Route::resource('faqs', 'Owner\FaqsController')->names('owner.faqs')->except('show');
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
