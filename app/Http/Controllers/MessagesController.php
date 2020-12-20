@@ -7,23 +7,25 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Response;
 use Auth;
-use App\User;
 use App\Message;
 use App\MessageHistory;
 use App\QuestionNote;
 
 
 
-
 class MessagesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     public function index(Request $request)
     {
-        if(request()->ajax())
-        {
+        if(request()->ajax()){
             $messages = Message::whereDate('call_date', '>=', $request->start)
-                                    ->whereDate('call_date', '<=', $request->end);
+                ->whereDate('call_date', '<=', $request->end);
             if ($request->type == 'completed' || $request->type == 'pending'){
                 $messages = $messages->where('completed', $request->type == 'completed');
             }
@@ -31,11 +33,8 @@ class MessagesController extends Controller
 
             return Response::json($messages);
         }
-
-
         return view('admin.message.index');
     }
-
 
     public function show($id)
     {
@@ -44,7 +43,6 @@ class MessagesController extends Controller
         if (empty($message)) {
             return Response::json(["error" => "Not Found"], 404);
         }
-
         $data= [
             "message" => $message,
             "note" => $note
@@ -63,7 +61,6 @@ class MessagesController extends Controller
             'title'=> strtoupper($request->title),
             'start_date' => $request->start_date,
             'description' => $request->description,
-
         ];
 
         $validation = Validator::make($insertArr, [

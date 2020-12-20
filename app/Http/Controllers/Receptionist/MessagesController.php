@@ -28,14 +28,12 @@ class MessagesController extends Controller
 
         if(request()->ajax())
         {
-
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
 
             $messages = Message::whereDate('call_date', '>=', $start)->get();
             if ($request->type == 'completed' || $request->type == 'pending'){
                 $messages = $messages->where('completed', $request->type == 'completed');
             }
-
             $data =[];
 
             foreach($messages as $message){
@@ -59,7 +57,6 @@ class MessagesController extends Controller
         if (empty($message)) {
             return Response::json(["error" => "Not Found"], 404);
         }
-
         $data= [
             "message" => $message,
             "note" => $note
@@ -96,7 +93,6 @@ class MessagesController extends Controller
 
             $message = Message::create($insertArr);
             return Response::json($message);
-
         }
 
     }
@@ -108,7 +104,6 @@ class MessagesController extends Controller
             'phone_number' => $request->phone_number,
             'title'=> $request->title,
             'description' => $request->description,
-
         ];
 
         $validation = Validator::make($insertArr, [
@@ -124,34 +119,26 @@ class MessagesController extends Controller
             $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
-
             $messageHistory = Message::where('id', $request->id)->first()->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
             unset($messageHistory['id']);
-
             MessageHistory::create($messageHistory);
-
             $message = Message::where('id', $request->id)->update($insertArr);
             return Response::json($message);
         }
-
 
     }
 
     public function destroy($id)
     {
-
         if ($messageHistory = Message::where('id', $id)->first()) {
-
             $messageHistory = $messageHistory->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
             unset($messageHistory['id']);
             MessageHistory::create($messageHistory);
             Message::find($id)->delete();
-
             return Response::json(["success" => true]);
         }
-
         return Response::json(["error"=> "Not Found"], 404);
     }
 
@@ -160,9 +147,7 @@ class MessagesController extends Controller
         $messageId = $request->id;
         Message::where('id', $messageId)
             ->update(['completed' => 1]);
-
         return response()->json(['status' => 'success']);
-
     }
 
     public function addNote(Request $request)
@@ -202,7 +187,6 @@ class MessagesController extends Controller
             ->first();
 
         $data = $data!= null?$data:'';
-
         return Response::json($data);
     }
 

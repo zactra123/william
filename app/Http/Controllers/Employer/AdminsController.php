@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employer;
+use App\Http\Controllers\Controller;
 use App\ClientReport;
-use App\Disputable;
 use App\Message;
-use App\Todo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
 use App\User;
-use App\ClientDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Response;
 use PDF;
 
@@ -21,12 +20,11 @@ class AdminsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admins']);
     }
 
     public function index(Request $request)
     {
-
         if(request()->ajax())
         {
             $messages = Message::whereDate('call_date', '>=', $request->start)
@@ -38,35 +36,48 @@ class AdminsController extends Controller
 
             return Response::json($messages);
         }
-
         return view('admin.message.index');
     }
 
-    public function list()
+    public function changePassword(Request $request)
     {
-        $users = DB::table('users')
-            ->leftJoin('affiliates', 'affiliates.user_id', '=', 'users.id')
-            ->leftJoin('users as u', 'u.id', '=', 'affiliates.affiliate_id')
-            ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
-                'users.email as email', DB::raw('CONCAT(u.last_name, " ",u.first_name) AS full_name'))
-            ->where('users.role', 'client')
-            ->paginate(10);
+        $admin = Auth::user();
 
-        return view('admin.user-list', compact( 'users'));
+        if($request->method()=="GET"){
+            return view('employer.change-password', compact('admin'));
+        }elseif($request->method()=="PUT"){
+            $changePassword = $request->except("_token");
+
+            $validation = \Illuminate\Support\Facades\Validator::make($changePassword, [
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }
+            User::whereId($admin->id)->update([ 'password' => Hash::make($changePassword['password'])]);
+            if($admin->role == 'admin'){
+                return redirect('admins/');
+            }else{
+                return redirect('receptionist/message');
+            }
+        }
+
     }
 
-    public function affiliateList()
+    //es el piti tarvi urish tex
+    public function getNotifications()
     {
-        $users = DB::table('users')
-            ->leftJoin('affiliates', 'affiliate_id', '=', 'users.id')
-            ->select('users.id as id', 'users.first_name as first_name', 'users.last_name as last_name',
-                'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
-            ->where('role', 'affiliate')
-            ->groupBy('users.id')
-            ->paginate(10);
-        return view('admin.affiliate-list', compact('users'));
+        $appointments = Message::where("call_date", ">", date("Y-m-d H:i:s"))
+            ->where("call_date", "<", date("Y-m-d H:i:s", strtotime("+10 minutes")))
+            ->get();
+        return Response::json($appointments);
     }
 
+
+    //es peteq chi piti jnjvi
     public function clientReport(Request $request)
     {
         $clientReportsEQ = null;
@@ -99,28 +110,7 @@ class AdminsController extends Controller
             'equifaxDate','experianDate','transunionDate'));
     }
 
-
-    public function printPdfClientProfile($id)
-    {
-
-        $client = User::clients()->find($id);
-        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
-        return $pdf->download('invoice.pdf');
-        return view('admin.client-profile-pdf', compact('client'));
-
-        dd($client);
-
-        $pdf = $pdf->setPaper('a4', 'portrait');
-
-        return  $pdf->stream('client-profile'.$id.'.pdf');
-        return view('admin.client-profile-pdf', compact('client'));
-
-        return $pdf->download('client-profile'.$id.'.pdf');
-
-    }
-
-
-//Twilio
+    //Twilio
     public function sendSms( Request $request )
     {
 
@@ -172,55 +162,23 @@ class AdminsController extends Controller
         }
     }
 
-
-
-
-    public function clientReportNumber(Request $request)
+    //es peteq chi piti jnjvi
+    public function printPdfClientProfile($id)
     {
+        $client = User::clients()->find($id);
+        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
+        return $pdf->download('invoice.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
 
-        $data = $request->except('_token');
+        dd($client);
 
-        $fullName = explode(' ',$data['full_name']);
-        $firstName = $fullName['0'];
-        $lastName = !emtpy($fullName['1'])?$fullName['1']:"";
+        $pdf = $pdf->setPaper('a4', 'portrait');
 
-        $update = User::where('id', $data['user_id'])->update([
-            'first_name'=> strtoupper($firstName),
-            'full_name'=> strtoupper($lastName)
-        ]);
+        return  $pdf->stream('client-profile'.$id.'.pdf');
+        return view('admin.client-profile-pdf', compact('client'));
 
-        $updateClient = ClientDetail::where('user_id', $data['user_id'])
-            ->update([
-                'sex' =>$data['sex'],
-                'address' => strtoupper($data['address']),
-                'phone_number'=> $data['phone_number'],
+        return $pdf->download('client-profile'.$id.'.pdf');
 
-            ]);
-
-//        @Todo: haskanal vortex enq pahum report numbernere
-//        ReportNumber::cretae([
-//
-//            'user_id'=>$data['user_id'],
-//            'ex_number'=>$data['ex_number'],
-//            'eq_number'=>$data['eq_number'],
-//            'tu_number'=>$data['tu_number'],
-//            'ftc_number'=>$data['ftc_number'],
-//            'dr_number'=>$data['dr_number'],
-//        ]);
-
-        echo json_encode(['success'=>1,'data'=>$data]);
-        return;
-
-    }
-
-    public function getNotifications()
-    {
-        $appointments = Message::where("call_date", ">", date("Y-m-d H:i:s"))
-            ->where("call_date", "<", date("Y-m-d H:i:s", strtotime("+10 minutes")))
-            ->get();
-
-
-        return Response::json($appointments);
     }
 
 }

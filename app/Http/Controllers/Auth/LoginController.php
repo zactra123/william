@@ -37,7 +37,7 @@ class LoginController extends Controller
     {
         switch(Auth::user()->role){
             case 'admin':
-                $this->redirectTo = 'admin';
+                $this->redirectTo = 'admins';
                 return $this->redirectTo;
                 break;
                 case 'receptionist':

@@ -38,12 +38,10 @@ class SocialAuthController extends Controller
             'first_name', 'last_name', 'email', 'gender', 'birthday'
         ])->stateless()->user();
 
-
         $account = SocialAccount::where('provider','facebook')
             ->where('provider_user_id',$facebookUser->user['id'])
             ->first();
         $userRole = session('user_role');
-
 
         if(!$account && !$userRole){
             return redirect()->to('/login')
@@ -56,7 +54,6 @@ class SocialAuthController extends Controller
                 return redirect()->to('/login')
                     ->withErrors("User with this mail was already registered!!");
             }
-
             $account = new SocialAccount([
                 'provider_user_id' => $facebookUser->user['id'],
                 'provider' => 'facebook'
@@ -110,12 +107,22 @@ class SocialAuthController extends Controller
         }
     }
 
+    /**
+     * Create a redirect method to gmail api.
+     *
+     * @return void
+     */
     public function redirectGoogle(Request $request)
     {
         session(['user_role' => $request->users]);
         return Socialite::driver('google')->redirect();
     }
 
+    /**
+     * Return a callback method from facebook api.
+     *
+     * @return callback URL from facebook
+     */
     public function callbackGoogle()
     {
         $googleUser = Socialite::driver('google')->stateless()->user();
@@ -129,7 +136,6 @@ class SocialAuthController extends Controller
             return redirect()->to('/login')
                 ->withErrors(['error'=> "Please in first register with Gmail!!"]);
         }
-
         if (!$account) {
             $account = new SocialAccount([
                 'provider_user_id' => $googleUser->user['id'],
@@ -172,7 +178,6 @@ class SocialAuthController extends Controller
                 return redirect()->to('/affiliate')->with('success','Congrats! You just did something really wise');
             }
         }
-
         auth()->login($account->user);
         if(Auth::user()->role == 'client'){
             return redirect()->to('/client/details');
@@ -182,5 +187,4 @@ class SocialAuthController extends Controller
         }
 
     }
-
 }
