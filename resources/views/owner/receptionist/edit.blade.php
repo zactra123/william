@@ -22,7 +22,7 @@
                                 <a class="btn btn-light"  href="{{route('owner.receptionist.index')}}">BACK</a>
                             </div>
                             <div class="card-body ">
-                                {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right']) !!}
+                                {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right  admin-form', 'novalidate'=> 'novalidate']) !!}
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group row font justify-content-center">
@@ -30,7 +30,7 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('receptionist[first_name]', $receptionist->first_name, ['class' => 'form-control'])}}
+                                            {{ Form::text('receptionist[first_name]', $receptionist->first_name, ['class' => 'form-control', 'required'])}}
                                         </div>
                                     </div>
 
@@ -40,7 +40,7 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('receptionist[last_name]', $receptionist->last_name, ['class' => 'form-control'])}}
+                                            {{ Form::text('receptionist[last_name]', $receptionist->last_name, ['class' => 'form-control', 'required'])}}
                                         </div>
                                     </div>
 
@@ -51,7 +51,7 @@
                                     <div class="col-md-12 tab-selector">
 
                                         <div class="col-md-12">
-                                            {{ Form::email('receptionist[email]', $receptionist->email, ['class' => 'form-control',  'required autocomplete'=>"email"]) }}
+                                            {{ Form::email('receptionist[email]', $receptionist->email, ['class' => 'form-control', 'required']) }}
                                         </div>
                                     </div>
 
@@ -62,10 +62,11 @@
                                         <div class="col-md-12 tab-selector">
 
                                             <div class="col-sm-10 form-group">
-                                                {{ Form::text('receptionist[ip_address]['.$value->id.']', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
+                                                {{Form::hidden('receptionist[ip_address]['.$value->id.'][id]', $value->id)}}
+                                                {{ Form::text('receptionist[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control col-10', 'placeholder'=>'IP ADDRESS']) }}
                                             </div>
                                             <div class="col-sm-2 form-group">
-                                                <input class="ip-address  btn btn-block " type="button" data-target={{$value->id}} value="Delete"/>
+                                                <input class="remove-ip-address  btn btn-block " type="button" data-target={{$value->id}} value="Delete"/>
                                             </div>
                                         </div>
                                     </div>
@@ -95,49 +96,9 @@
     </section>
 
 
-    <script>
-
-            $(document).ready(function () {
-                var i=0;
-
-                $(".add-ip-address").on('click', function(){
-                    var newDiv = "<div class='form-group row font justify-content-center' ><div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
-                    var addIp = "<input type='text' name=receptionist[ip_address_new][] class = 'form-control col-9' placeholder = 'IP ADDRESS'></div>"
-                    addIp +=  '<div class="col-sm-2 form-group">  <input class="delete-ip-address  btn btn-block" type="button" value="Delete"/></div>'
-                    newDiv += addIp + "</div></div></div>";+
-                        $("#newIp").append(newDiv);
-
-                })
-
-                $(document).delegate('.delete-ip-address', 'click', function(){
-                    $(this ).parents('.form-group').remove();
-
-                });
-
-
-
-                $('.ip-address').click( function(){
-                    var  deleteId = $(this).attr("data-target")
-                    var token = "<?= csrf_token()?>";
-                    $.ajax(
-                        {
-                            url: "delete/ip-address/" + deleteId,
-                            type: 'DELETE',
-                            data: {
-                                "id": deleteId,
-                                "_token": token,
-                            },
-                            success: function () {
-                                $(this).parents(".form-group").delete();
-                                console.log("it Works");
-                            }.bind(this)
-                        });
-
-                });
-
-
-            })
-        </script>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/site/owner/receptionists.js') }}"></script>
 
 @endsection
 

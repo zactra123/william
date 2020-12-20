@@ -49,7 +49,7 @@ class ReceptionistsController extends Controller
      * assign specific Ip Address(es) from which admin can access to the website
      * after creating admin sending confirmation Email, where admin can specify their password
      * @param Request $request
-     * request structure [admin=>[first_name:required, last_name:required, email:required, ip_address:array,optional]]
+     * request structure [receptionist=>[first_name:required, last_name:required, email:required, ip_address:array,optional]]
      * @return redirect on success receptionist.index, on failed receptionist.create
      */
     public function store(Request $request)
@@ -100,7 +100,7 @@ class ReceptionistsController extends Controller
      * Update existing User with Receptionist Role (receptionist)
      * assign specific Ip Address(es) from which admin can access to the website
      * @param Request $request
-     * request structure [admin=>[first_name:required, last_name:required, email:required, ip_address:array[ip_address, id],optional]]
+     * request structure [receptionist=>[first_name:required, last_name:required, email:required, ip_address:array[ip_address, id],optional]]
      * @return redirect on success receptionist.index, on failed receptionist.edit
      */
     public function update(Request $request, $id)
@@ -127,8 +127,8 @@ class ReceptionistsController extends Controller
                 'role'=>'receptionist',
             ]);
 
-        if(isset($request->admin['ip_address'])){
-            foreach($request->admin['ip_address'] as $ip){
+        if(isset($request->receptionist['ip_address'])){
+            foreach($request->receptionist['ip_address'] as $ip){
                 if (!empty($ip['id'])) {
                     if( AllowedIp::where('id', $ip['id'])->first()!= null){
                         AllowedIp::where('id', $ip['id'])->update(['ip_address'=> $ip['ip_address']]);
