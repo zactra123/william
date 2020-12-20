@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReportExAccount extends Model
 {
-    const ACCOUNT_TYPES = [
-        "CC" => [],
-        "AUTO" => [],
-        "PERSONAL LOAN" => [],
-        "MORTGAGE" => [],
-        "" => [],
+    private $ACCOUNT_TYPES = [
+        "CC" => ['credit card', 'charge card', 'business credit'],
+        "AUTO" => ['auto lease', 'auto loan'],
+        "PERSONAL LOAN" => ['unsecured', 'secured loan', 'line of credit',  'note loan', 'sales contract'],
+        "MORTGAGE" => ['mortgage', 'fha mortgage', 'home equity', 'rental'],
+        "CA"=>['collection', 'debt buyer'],
+        "STUDENT LOAN" =>['education','education loan'],
+        "UTILITY " =>['cell phone','utility'],
+        "PUBLIC RECORD" => ['child support', 'family support'],
     ];
 
     protected $fillable = [
@@ -96,6 +99,15 @@ class ClientReportExAccount extends Model
 
     public function account_type()
     {
-        return "CC";
+        $type = strtolower($this->type);
+        foreach($this->ACCOUNT_TYPES as $key => $accounts){
+            foreach($accounts as $account){
+                if(strpos($type, $account) !== false){
+                    return $key;
+                }
+            }
+
+        }
+        return "UNKNOWN";
     }
 }

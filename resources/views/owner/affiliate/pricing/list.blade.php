@@ -54,7 +54,6 @@
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 
-
     <script>
         $(document).ready(function(){
             $('.selectize').selectize({
@@ -96,6 +95,55 @@
         });
 
     </script>
+
+    <script>
+        $(document).ready(function(){
+
+            $(".collection").keyup( function() {
+
+                var id = $(this).attr('data-id')
+                var min = $("#min-"+id).val()
+                var max = $("#max-"+id).val()
+                var percent = $("#percent-"+id).val()
+                var fee = $("#fee-"+id).val()
+                if( $("#min-"+id).val().length === 0 ) {
+                    min = 0;
+                }else{
+                    min = parseFloat(min)
+                }
+                if( $("#max-"+id).val().length === 0 ) {
+                    max = 0;
+                }else{
+                    max = parseFloat(max)
+                }
+                if( $("#percent-"+id).val().length === 0 ) {
+                    percent = 0;
+                }else{
+                    percent = parseFloat(percent)
+                }
+                if( $("#fee-"+id).val().length === 0 ) {
+                    fee = 0;
+                }else{
+                    fee = parseFloat(fee)
+                }
+
+                var minPrice = fee + (percent/100)*min
+                var maxPrice = fee + (percent/100)*max
+                if(id == 3){
+                    maxPrice = fee + (percent/100)*min
+                }
+
+                $("#min-price-"+id).val(minPrice.toFixed(1))
+                $("#max-price-"+id).val(maxPrice.toFixed(1))
+
+
+            });
+
+        });
+
+    </script>
+
+
 @endsection
 
 

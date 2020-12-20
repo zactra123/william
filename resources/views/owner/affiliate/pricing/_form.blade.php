@@ -17,7 +17,20 @@
         height: auto;
         padding: 0;
         float: left;
+    }
 
+
+    .priceCA{
+        width: 40%;
+        height: auto;
+        padding: 0;
+        float: left;
+    }
+    .nameCA{
+        width: 60%;
+        height: auto;
+        padding: 0;
+        float: left;
     }
 
 </style>
@@ -137,48 +150,7 @@
             </div>
         </div>
     </div>
-
     <div class="form-group">
-
-        <div class="row">
-            <div class="col-md-4" style="margin: 0">
-                <div class="priceName">
-                    <div class="name">
-                        <label style="float: right">MORTGAGE LATE  $</label>
-                    </div>
-                    <div class="price">
-                        <input  type="text"  name="mortgage_late" value=""  title="MORTGAGE LATE ">
-                    </div>
-                </div>
-                {!! $errors->first('inquiries', '<p class="help-block">:message</p>') !!}
-            </div>
-            <div class="col-md-4" style="margin: 0">
-                <div class="priceName">
-                    <div class="name">
-                        <label style="float: right">PUBLIC RECORD $</label>
-                    </div>
-                    <div class="price">
-                        <input type="text" name="public_records" value=""  title="PUBLIC RECORD">
-                    </div>
-                </div>
-                {!! $errors->first('p_loan_late', '<p class="help-block">:message</p>') !!}
-            </div>
-            <div class="col-md-4" style="margin: 0">
-                <div class="priceName">
-                    <div class="name">
-                        <label style="float: right">CREDIT CARD BLOCKING $</label>
-                    </div>
-                    <div class="price">
-                        <input type="text"  name="cc_blocking" value=""  title="CREDIT CARD BLOCKING">
-                    </div>
-                </div>
-                {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-
         <div class="row">
             <div class="col-md-4" style="margin: 0">
                 <div class="priceName">
@@ -261,49 +233,71 @@
                 <label style="float: right"> COLLECTIONS </label>
             </div>
         </div>
-        @for($i = 0; $i < 5; $i++)
+        @for($i = 0; $i < 4; $i++)
             <div class="row pt-3">
-                <div class="col-md-10">
-                    <div class="col-md-3" style="margin: 0">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-2 p-0" style="margin: 0">
                         <div class="priceName">
-                            <div class="name">
-                                <label style="float: right">MINIMUM $</label>
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
                             </div>
-                            <div class="price">
-                                <input type="text"  name="collection[{{$i}}][minimum]" value=""  title="MINIMUM">
+                            <div class="priceCA">
+                                <input type="text" name="collection[{{$i}}][minimum]" value="" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
-                    <div class="col-md-3" style="margin: 0">
+                    <div class="col-md-2 " style="margin: 0">
                         <div class="priceName">
-                            <div class="name">
-                                <label style="float: right">MAXIMUM $</label>
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
                             </div>
-                            <div class="price">
-                                <input type="text"  name="collection[{{$i}}][minimum]" value=""  title="MAXIMUM">
+                            <div class="priceCA">
+                                <input type="text"  name="collection[{{$i}}][minimum]" value="" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
-                    <div class="col-md-3" style="margin: 0">
+                    <div class="col-md-2" style="margin: 0">
                         <div class="priceName">
-                            <div class="name">
-                                <label style="float: right">PERCENTAGE $</label>
+                            <div class="nameCA">
+                                <label style="float: right">% $</label>
                             </div>
-                            <div class="price">
-                                <input type="text"  name="collection[{{$i}}][percentage]" value=""  title="PERCENTAGE">
+                            <div class="priceCA">
+                                <input type="text"  name="collection[{{$i}}][percentage]" value="" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
-                    <div class="col-md-3" style="margin: 0">
+                    <div class="col-md-2" style="margin: 0">
                         <div class="priceName">
-                            <div class="name">
-                                <label style="float: right">ADDITIONAL FEE $</label>
+                            <div class="namCA">
+                                <label style="float: left">ADD FEE $</label>
                             </div>
-                            <div class="price">
-                                <input type="text"  name="collection[{{$i}}][additional_fee]" value=""  title="ADDITIONAL FEE">
+                            <div class="priceCA">
+                                <input type="text"  name="collection[{{$i}}][additional_fee]" value=""  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-2" style="margin: 0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN/PRICE$</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="collection[{{$i}}][min_price]" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-2" style="margin: 0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX/PRICE$</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="collection[{{$i}}][max_price]" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\ClientReportEqAccount;
 use App\ClientReportEqPublicRecord;
 use App\ClientReportExAccount;
 use App\ClientReportExPublicRecord;
@@ -39,7 +40,9 @@ class PricingDetails
     public function exAccountPrice($bureau, $exAccountId)
     {
         $exAccount = ClientReportExAccount::where('id', $exAccountId)->first();
-        $type = $exAccount->type;
+        $type = $exAccount->account_type();
+        dd($type);
+
         $status = $exAccount->status;
         $priceAccount = null;
         $priceAccountBlock = null;
@@ -64,6 +67,11 @@ class PricingDetails
     public function tuAccountPrice( $bureau, $tuAccountId)
     {
         $tuAccount = ClientReportTuAccount::where('id', $tuAccountId)->first();
+
+        $type = $tuAccount->account_type();
+        dd($type);
+
+
         $subType = $tuAccount->sub_type;
         $loanType = strtolower($tuAccount->loan_type);
         $dateClose = $tuAccount->date_closed;
@@ -87,9 +95,12 @@ class PricingDetails
         return $dataPrice;
     }
 
-    public function eqAccountPrice($affiliate, $bureau, $eqAccountId)
+    public function eqAccountPrice($bureau, $eqAccountId)
     {
-        $eqAccount = ClientReportExAccount::where('id', $eqAccountId)->first();
+        $eqAccount = ClientReportEqAccount::where('id', $eqAccountId)->first();
+
+        $type = $eqAccount->account_type();
+        dd($type);
         $priceAccount = null;
         $priceAccountBlock = null;
         dd($eqAccount);

@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReportEqAccount extends Model
 {
+    private $ACCOUNT_TYPES = [
+        "CC" => ['business credit Card', 'credit card', 'flexible spending credit Card', 'charge account'],
+        "AUTO" => ['auto', 'auto lease'],
+        "PERSONAL LOAN" => ['unsecured', 'unsecured loan', 'line of credit', 'note loan'],
+        "MORTGAGE" => ['mortgage','conventional re mortgage', 'home equity line of credit'],
+        "CA"=>['collection account', 'factoring company account', 'debt buyer'],
+        "STUDENT LOAN" =>['education','education Loan'],
+        "UTILITY " =>['telecommunication/cellular','utility company'],
+        "PUBLIC RECORD" => ['child support', 'family support'],
+    ];
+
     protected $table = 'client_report_eq_accounts';
     protected $fillable = [
         'client_report_id',
@@ -83,6 +94,22 @@ class ClientReportEqAccount extends Model
     public function dispute()
     {
         return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportEqAccount');
+    }
+
+    public function account_type()
+    {
+        $type = strtolower($this->account_type);
+
+        foreach($this->ACCOUNT_TYPES as $key => $accounts){
+            foreach($accounts as $account){
+                if(strpos($type, $account) !== false){
+                     return $key;
+                }
+            }
+
+        }
+        return "UNKNOWN";
+
     }
 
 }

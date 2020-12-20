@@ -6,6 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReportTuAccount extends Model
 {
+    private $ACCOUNT_TYPES = [
+        "CC" => ['credit card','business credit card', 'credit card/flexible spending credit card',
+            'secured credit card', 'charge account'],
+        "AUTO" => ['auto','auto lease','automobile','recreational merchandise', 'installment sales contract'],
+        "PERSONAL LOAN" => ['secured', 'unsecured', 'line of credit'],
+        "MORTGAGE" => ['mortgage','conventional real estate mtg ','conventional real estate mortgage',
+            'home equity loan'],
+        "CA"=>['debt buyer', 'collection','collection agency/attorney'],
+        "STUDENT LOAN" =>['student','student loan'],
+        "UTILITY " =>['telecommunications/cellular', 'utility', 'utility company'],
+        "PUBLIC RECORD" => ['child support', 'family support'],
+    ];
+
+
     protected $table = 'client_report_tu_accounts';
 
     protected $fillable = [
@@ -106,6 +120,22 @@ class ClientReportTuAccount extends Model
     public function dispute()
     {
         return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportTuAccount');
+    }
+
+    public function account_type()
+    {
+        $type = strtolower($this->loanType);
+
+        foreach($this->ACCOUNT_TYPES as $key => $accounts){
+            foreach($accounts as $account){
+                if(strpos($type, $account) !== false){
+                    return $key;
+                }
+            }
+
+        }
+        return "UNKNOWN";
+
     }
 
 }
