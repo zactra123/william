@@ -69,8 +69,8 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::resource('affiliate', 'Owner\AffiliatesController')->names('owner.affiliate')->only(['index', 'destroy']);
 
-    ROUTE::any('pricing', 'Owner\AffiliatesController@pricing')->name('owner.affiliate.pricing');
-    ROUTE::get('pricing-affiliate', 'Owner\AffiliatesController@affiliate');
+    Route::any('affiliate/pricing', 'Owner\AffiliatesController@pricing')->name('owner.affiliate.pricing');
+    Route::get('affiliate/pricing-affiliate', 'Owner\AffiliatesController@affiliate');
 
     Route::get('home-page-content', 'Owner\SuperAdminsController@homePageContent')->name('owner.home.content');
     Route::get('create/home-page-content', 'Owner\SuperAdminsController@homePageContentCreate')->name('owner.home.content.create');

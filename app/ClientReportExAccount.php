@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientReportExAccount extends Model
 {
+    const ACCOUNT_TYPES = [
+        "CC" => [],
+        "AUTO" => [],
+        "PERSONAL LOAN" => [],
+        "MORTGAGE" => [],
+        "" => [],
+    ];
+
     protected $fillable = [
         'client_report_id',
         'is_dispute',
@@ -86,4 +94,8 @@ class ClientReportExAccount extends Model
         return $this->belongsTo("App\Disputable", 'id','disputable_id')->where('disputables.disputable_type', 'App\\ClientReportExAccount');
     }
 
+    public function account_type()
+    {
+        return "CC";
+    }
 }

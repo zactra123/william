@@ -162,23 +162,6 @@ class AdminsController extends Controller
         }
     }
 
-    //es peteq chi piti jnjvi
-    public function printPdfClientProfile($id)
-    {
-        $client = User::clients()->find($id);
-        $pdf = PDF::loadView('admin.client-profile-pdf', compact('client'));
-        return $pdf->download('invoice.pdf');
-        return view('admin.client-profile-pdf', compact('client'));
 
-        dd($client);
-
-        $pdf = $pdf->setPaper('a4', 'portrait');
-
-        return  $pdf->stream('client-profile'.$id.'.pdf');
-        return view('admin.client-profile-pdf', compact('client'));
-
-        return $pdf->download('client-profile'.$id.'.pdf');
-
-    }
 
 }
