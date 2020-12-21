@@ -248,20 +248,24 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-2 " style="margin: 0">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label style="float: right">MAX $</label>
+                        @if($i < 3)
+                            <div class="priceName">
+                                <div class="nameCA">
+                                    <label style="float: right">MAX $</label>
+                                </div>
+                                <div class="priceCA">
+                                        <input type="text"  name="collection[{{$i}}][minimum]" value="" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
+
+
+                                </div>
                             </div>
-                            <div class="priceCA">
-                                <input type="text"  name="collection[{{$i}}][minimum]" value="" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-                            </div>
-                        </div>
+                        @endif
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-2" style="margin: 0">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">% $</label>
+                                <label style="float: right">% </label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="collection[{{$i}}][percentage]" value="" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
@@ -292,14 +296,16 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-2" style="margin: 0">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label style="float: right">MAX/PRICE$</label>
+                        @if($i < 3)
+                            <div class="priceName">
+                                <div class="nameCA">
+                                    <label style="float: right">MAX/PRICE$</label>
+                                </div>
+                                <div class="priceCA">
+                                    <input type="text"  name="collection[{{$i}}][max_price]" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                </div>
                             </div>
-                            <div class="priceCA">
-                                <input type="text"  name="collection[{{$i}}][max_price]" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                            </div>
-                        </div>
+                        @endif
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>

@@ -100,9 +100,9 @@ class ClientReportExAccount extends Model
     public function account_type()
     {
         $type = strtolower($this->type);
-        foreach($this->ACCOUNT_TYPES as $key => $accounts){
+        foreach ($this->ACCOUNT_TYPES as $key => $accounts) {
             foreach($accounts as $account){
-                if(strpos($type, $account) !== false){
+                if(strpos($account, $type) !== false){
                     return $key;
                 }
             }

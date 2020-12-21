@@ -113,7 +113,7 @@ class PricingDetails
         if($type == "CA"){
             $price = $this->collectionPricing($tuAccount->original_amount);
             $priceInaccurate = $price;
-            $priceNotMine =$price;
+            $priceNotMine = $price;
         }elseif($type == "CC"){
             $priceType = $this->priceTypeTu($tuAccount);
             switch ($priceType) {
@@ -125,11 +125,7 @@ class PricingDetails
 
         }elseif($type == "AUTO"){
             $priceType = $this->priceTypeTu($tuAccount);
-            switch ($priceType) {
-                case  'BLOCKING': $inaccurate =  $this->pricing->auto_blocking; break;
-                case  'LATE': $inaccurate =  $this->pricing->auto_late;
-            }
-            $priceInaccurate = $inaccurate;
+            $priceInaccurate = $priceType == "BLOCKING" ? $this->pricing->auto_blocking : $this->pricing->auto_late;
             $priceNotMine = $this->pricing->auto_blocking;
 
         }elseif($type == "PERSONAL LOAN"){
@@ -162,7 +158,6 @@ class PricingDetails
         }elseif($type == "UTILITY"){
             $priceInaccurate = $this->pricing->utility;
             $priceNotMine = $this->pricing->utility;
-
         }elseif($type == "PUBLIC RECORD"){
             $priceInaccurate = $this->pricing->public_recorde;
             $priceNotMine = $this->pricing->public_recorde;
@@ -336,106 +331,100 @@ class PricingDetails
     {
         if(strpos($account->account_status, 'close')!== false){
             return 'BLOCKING';
-        }else{
-           $late30 =  $account->late_30_count;
-           $late60 =  $account->late_30_count;
-           $late90 =  $account->late_30_count;
-
-           if($late30 < 2 && $late60 == 0 && $late90 == 0){
-               return 'LATE';
-           }else{
-               return 'BLOCKING';
-           }
         }
+
+        $late30 =  $account->late_30_count;
+        $late60 =  $account->late_60_count;
+        $late90 =  $account->late_90_count;
+
+        if($late30 < 3 && $late60 == 0 && $late90 == 0){
+           return 'LATE';
+        }
+
+       return 'BLOCKING';
+
     }
 
     public function priceTypeEqStudent($account)
     {
-        if(strpos($account->account_status, 'close')!== flase){
+        if (strpos($account->account_status, 'close')!== flase) {
             return 'BLOCKING';
-        }else{
-            $late30 =  $account->late_30_count;
-            $late60 =  $account->late_30_count;
-            $late90 =  $account->late_30_count;
-
-            if(($late30 < 4 || $late60 < 3) && $late90 == 0){
-                return 'LATE';
-            }else{
-                return 'BLOCKING';
-            }
         }
 
+        $late30 =  $account->late_30_count;
+        $late60 =  $account->late_30_count;
+        $late90 =  $account->late_30_count;
+
+        if(($late30 < 4 || $late60 < 3) && $late90 == 0){
+            return 'LATE';
+        }
+        return 'BLOCKING';
     }
 
     public function priceTypeTu($account)
     {
-        $rating  =$account->rating;
-        $ratingArray = str_split($rating);
-        $countRating = array_count_values($ratingArray);
-        $dateClose = $account->date_closed;
-
-        $late30 = isset($countRating[2])?$countRating[2]:null;
-        $late60 = isset($countRating[3])?$countRating[3]:null;
-        $late90 = isset($countRating[4])?$countRating[4]:null;
-        $late150 = isset($countRating[5])?$countRating[5]:null;
-        $late150up = isset($countRating[6])?$countRating[6]:null;
-        $unrated = isset($countRating["X"])?$countRating["X"]:null;
-        $unratedR = isset($countRating["Y"])?$countRating["Y"]:null;
-        $voluntary = isset($countRating["J"])?$countRating["J"]:null;
-        $repossession = isset($countRating["K"])?$countRating["K"]:null;
-        $collection= isset($countRating["G"])?$countRating["G"]:null;
-        $chargeOff= isset($countRating["L"])?$countRating["L"]:null;
-        $foreclosure= isset($countRating["H"])?$countRating["H"]:null;
-
-        if($dateClose!== false){
+        if ($account->date_closed != null) {
             return 'BLOCKING';
-        }else{
-
-           if($late30 < 2 && ($late60 == 0 && $late90 == 0 && $late150 == 0 && $late150up == 0 && $unrated == 0
-                   && $unratedR == 0 && $voluntary == 0 && $repossession == 0 && $collection == 0 && $chargeOff == 0 &&
-                   $foreclosure == 0)){
-               return 'LATE';
-           }else{
-               return 'BLOCKING';
-           }
         }
+
+        $lates = $this->tuLates($account->rating);
+
+
+
+        if(
+            $lates["30"] < 3&& $lates["60"] == 0  &&
+            $lates["90"] == 0 && $lates["150"] == 0 &&
+            $lates["150+"] == 0 && $lates["unrated"] == 0 &&
+            $lates["unratedR"] == 0 && $lates["voluntary"] == 0 &&
+            $lates["repossession"] == 0 && $lates["collection"] == 0 &&
+            $lates["chargeOff"] == 0 && $lates["foreclosure"] == 0
+        ) {
+            return 'LATE';
+        }
+
+       return 'BLOCKING';
     }
 
     public function priceTypeTuStudent($account)
     {
-        $rating  =$account->rating;
-        $ratingArray = str_split($rating);
-        $countRating = array_count_values($ratingArray);
-        $dateClose = $account->date_closed;
-
-        $late30 = isset($countRating[2])?$countRating[2]:null;
-        $late60 = isset($countRating[3])?$countRating[3]:null;
-        $late90 = isset($countRating[4])?$countRating[4]:null;
-        $late150 = isset($countRating[5])?$countRating[5]:null;
-        $late150up = isset($countRating[6])?$countRating[6]:null;
-        $unrated = isset($countRating["X"])?$countRating["X"]:null;
-        $unratedR = isset($countRating["Y"])?$countRating["Y"]:null;
-        $voluntary = isset($countRating["J"])?$countRating["J"]:null;
-        $repossession = isset($countRating["K"])?$countRating["K"]:null;
-        $collection= isset($countRating["G"])?$countRating["G"]:null;
-        $chargeOff= isset($countRating["L"])?$countRating["L"]:null;
-        $foreclosure= isset($countRating["H"])?$countRating["H"]:null;
-
-        if($dateClose!== false){
+        if ($account->date_closed != null) {
             return 'BLOCKING';
-        }else{
+        }
+        $lates = $this->tuLates($account->rating);
 
-            if(($late30 < 4 || $late60 < 3) && ($late90 == 0 && $late150 == 0 && $late150up == 0 && $unrated == 0
-                    && $unratedR == 0 && $voluntary == 0 && $repossession == 0 && $collection == 0 && $chargeOff == 0 &&
-                    $foreclosure == 0)){
-                return 'LATE';
-            }else{
-                return 'BLOCKING';
-            }
+        if(
+            $lates["30"] < 4 && $lates["60"] < 3  &&
+            $lates["90"] == 0 && $lates["150"] == 0 &&
+            $lates["150+"] == 0 && $lates["unrated"] == 0 &&
+            $lates["unratedR"] == 0 && $lates["voluntary"] == 0 &&
+            $lates["repossession"] == 0 && $lates["collection"] == 0 &&
+            $lates["chargeOff"] == 0 && $lates["foreclosure"] == 0
+            ) {
+            return 'LATE';
         }
 
+        return 'BLOCKING';
     }
 
+    public function tuLates($rating){
+        $ratingArray = str_split($rating);
+        $countRating = array_count_values($ratingArray);
+        $lates = [];
+        $lates["30"] = isset($countRating[2])?$countRating[2]:null;
+        $lates["60"] = isset($countRating[3])?$countRating[3]:null;
+        $lates["90"] = isset($countRating[4])?$countRating[4]:null;
+        $lates["150"] = isset($countRating[5])?$countRating[5]:null;
+        $lates["150+"] = isset($countRating[6])?$countRating[6]:null;
+        $lates["unrated"] = isset($countRating["X"])?$countRating["X"]:null;
+        $lates["unratedR"] = isset($countRating["Y"])?$countRating["Y"]:null;
+        $lates["voluntary"] = isset($countRating["J"])?$countRating["J"]:null;
+        $lates["repossession"] = isset($countRating["K"])?$countRating["K"]:null;
+        $lates["collection"] = isset($countRating["G"])?$countRating["G"]:null;
+        $lates["chargeOff"] = isset($countRating["L"])?$countRating["L"]:null;
+        $lates["foreclosure"] = isset($countRating["H"])?$countRating["H"]:null;
+
+        return $lates;
+    }
 
 
 }
