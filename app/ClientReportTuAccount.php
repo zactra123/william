@@ -124,7 +124,11 @@ class ClientReportTuAccount extends Model
 
     public function account_type()
     {
-        $type = strtolower($this->loanType);
+        $type = strtolower($this->loan_type);
+
+        if($this->sub_type == 'collection'){
+            return "CA";
+        }
 
         foreach($this->ACCOUNT_TYPES as $key => $accounts){
             foreach($accounts as $account){
@@ -132,7 +136,6 @@ class ClientReportTuAccount extends Model
                     return $key;
                 }
             }
-
         }
         return "UNKNOWN";
 

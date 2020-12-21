@@ -98,11 +98,15 @@ class ClientReportEqAccount extends Model
 
     public function account_type()
     {
-        $type = strtolower($this->account_type);
+        $accountType = strtolower($this->account_type);
+        $type = $this->type;
 
+        if($type == 'collection'){
+            return "CA";
+        }
         foreach($this->ACCOUNT_TYPES as $key => $accounts){
             foreach($accounts as $account){
-                if(strpos($type, $account) !== false){
+                if(strpos($accountType, $account) !== false){
                      return $key;
                 }
             }

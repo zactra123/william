@@ -2006,7 +2006,7 @@ class Screaper
                         'worst_pay_status'=>$account['worstPayStatus'],
                         'has_limit'=>isset($account['hasLimit'])?$account['hasLimit']:null,
                         'utilization_percentage'=>isset($account['utilizationPercentage'])?$account['utilizationPercentage']:null,
-                        'term_month'=>isset($account['accountType'])?$account['accountType']:null
+                        'term_month'=>isset($account['termMonths'])?$account['termMonths']:null
                     ];
 
                     $accountSave = $clientReport->clientEqAccounts()->create($dataAccount);
