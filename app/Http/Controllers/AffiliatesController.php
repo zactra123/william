@@ -797,14 +797,12 @@ class AffiliatesController extends Controller
                     $disputeName[] = $name;
                 }
             }
-
             if ($key == 'ex_employ' or $key == 'tu_employ' or $key == 'eq_employ') {
                 foreach ($value as $dispute_name) {
                     $name = ClientReportEmployer::where('id', $dispute_name)->first();
                     $disputeEmployer[] = $name;
                 }
             }
-
             if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
                 foreach ($value as $disputeAddresses) {
                     $address = ClientReportAddress::where('id', $disputeAddresses)->first();
@@ -824,13 +822,13 @@ class AffiliatesController extends Controller
                 }
             }
             if(!isset($personalTuPrice)){
-                if($key == 'tu_name' or 'tu_address' or $key == 'tu_employ' or $key == 'tu_phone' ){
+                if($key == 'tu_name' or $key == 'tu_address' or $key == 'tu_employ' or $key == 'tu_phone' ){
                     $personalTuPrice = $pricingDetails->personalInformation();
 
                 }
             }
             if(!isset($personalEqPrice)){
-                if($key == 'eq_name' or 'eq_address' or $key == 'eq_employ' ){
+                if($key == 'eq_name' or $key == 'eq_address' or $key == 'eq_employ' ){
                     $personalEqPrice = $pricingDetails->personalInformation();
                 }
             }
@@ -862,7 +860,7 @@ class AffiliatesController extends Controller
             if ($key == 'ex_public') {
                 foreach ($value as $disputeExPublicRecords) {
                     $exPublic = ClientReportExPublicRecord::where('id', $disputeExPublicRecords)->first();
-                    $exPublicRecordPrice =$pricingDetails->exPublicRecordPrice($disputeExPublicRecords);
+                    $exPublicRecordPrice =$pricingDetails->publicRecordPrice();
                     $dataExPublic =  [
                         'ex_public'=> $exPublic,
                         'price'=>$exPublicRecordPrice
@@ -873,7 +871,7 @@ class AffiliatesController extends Controller
             if ($key == 'tu_public') {
                 foreach ($value as $disputeTuPublicRecords) {
                     $tuPublic = ClientReportTuPublicRecord::where('id', $disputeTuPublicRecords)->first();
-                    $tuPublicRecordPrice =$pricingDetails->tuPublicRecordPrice($disputeTuPublicRecords);
+                    $tuPublicRecordPrice =$pricingDetails->publicRecordPrice();
                     $dataTuPublic =  [
                         'tu_public'=> $tuPublic,
                         'price'=>$tuPublicRecordPrice
@@ -885,7 +883,7 @@ class AffiliatesController extends Controller
                 foreach ($value as $disputeEqPublicRecords) {
 
                     $eqPublic = ClientReportEqPublicRecord::where('id', $disputeEqPublicRecords)->first();
-                    $tuPublicRecordPrice =$pricingDetails->tuPublicRecordPrice($disputeEqPublicRecords);
+                    $tuPublicRecordPrice =$pricingDetails->publicRecordPrice();
                     $dataEqPublic =  [
                         'eq_public'=> $eqPublic,
                         'price'=>$tuPublicRecordPrice
@@ -937,7 +935,6 @@ class AffiliatesController extends Controller
                         'ex_inquiry'=> $exInquiry,
                         'price'=>$inquiryExPricing
                     ];
-
                     $disputeExInquiry[] = $dataExInquiry;
                 }
             }
@@ -968,14 +965,11 @@ class AffiliatesController extends Controller
 
         }
 
-        if(isset($personalExPrice) or isset($personalTuPrice) or isset($personalEqPrice)){
-            $personalInfoPrice = isset($personalExPrice)?$personalExPrice:null +
-            isset($personalTuPrice)?$personalTuPrice:null + isset($personalEqPrice)?$personalEqPrice:null;
-        }else{
-            $personalInfoPrice = null;
-        }
-
-
+        $dataPersonalPrice = [
+            'ex_personal' =>isset($personalExPrice)?$personalExPrice:null,
+            'tu_personal' =>isset($personalTuPrice)?$personalTuPrice:null,
+            'eq_personal' =>isset($personalEqPrice)?$personalEqPrice:null,
+        ];
 
 
         $data = [
@@ -983,6 +977,7 @@ class AffiliatesController extends Controller
             'employ' => $disputeEmployer,
             'address' => $disputeAddress,
             'phone' => $disputePhone,
+            'personal_price' =>$dataPersonalPrice,
             'ex_public' => $disputeExPublicRecord,
             'ex_account' => $disputeExAccount,
             'ex_inquiry' => $disputeExInquiry,

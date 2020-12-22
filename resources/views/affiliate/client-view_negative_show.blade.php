@@ -310,6 +310,68 @@
                             </div>
                         @endif
 
+                        @if(!empty($data['personal_price']))
+
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row" >
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6" style="font-weight: bold">
+                                        <span style="font-weight: bold; font-size: 16px">PERSONAL INFORMATION: PRICE </span>
+                                    </div>
+
+                                    <div class="col-md-2" >
+                                    </div>
+
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+
+                                    <div class="row mt20 border title-personal-information">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-2 delete-name" data-attribute="title-personal-information">
+
+                                        </div>
+                                    </div>
+\
+                                    <div class="row m-2 title-personal-information" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-5 " >
+                                            <div  id="personalInfoPrice">
+                                                @if(!empty($data['personal_price']['ex_personal']['inaccurate']) )
+                                                <div class="col-md-12">
+                                                   EXPERINA PERSOANL INFORMATION PRICE $
+                                                    <div class="price" id="exPersonalInfo"> {{$data['personal_price']['ex_personal']['inaccurate']}}</div>
+                                                </div>
+                                                @endif
+                                                @if(!empty($data['personal_price']['tu_personal']['inaccurate']))
+                                                    <div class="col-md-12">
+                                                        TRANS UNION PERSOANL INFORMATION PRICE $
+                                                        <div  class="price" id="tuPersonalInfo">{{$data['personal_price']['tu_personal']['inaccurate']}}</div>
+                                                    </div>
+                                                @endif
+                                                @if(!empty($data['personal_price']['tu_personal']['inaccurate']) )
+                                                    <div class="col-md-12">
+                                                        EQUOFAX PERSOANL INFORMATION PRICE $
+                                                        <div class="price" id="eqPersonalInfo"> {{$data['personal_price']['eq_personal']['inaccurate']}}</div>
+                                                    </div>
+                                                @endif
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </div>
+                        @endif
+
                         @if(!empty($data['ex_statement']))
                             @foreach(($data['ex_statement']) as $ex_statement)
                                 @if(!empty($ex_statement['ex_statement']))
@@ -333,10 +395,10 @@
                                                     <div class="col-md-12 ">
                                                         <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                         <label for="fix">Fix</label>
-                                                        <input type="radio" id="ex_statement-{{$ex_statement['ex_statement']->id}}" data-name="{{$ex_statement['ex_statement']->id}}" class="ex_statement_fix"  name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="fix">
+                                                        <input type="radio" id="ex_statement-{{$ex_statement['ex_statement']->id}}" data-name="{{$ex_statement['ex_statement']->id}}" data-price="{{$ex_statement['price']['inaccurate']}}" class="ex_statement_fix"  name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="fix">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="delete">Delete </label>
-                                                        <input type="radio"  class="ex_statement_fix" data-name="{{$ex_statement['ex_statement']->id}}" name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="delete">
+                                                        <input type="radio"  class="ex_statement_fix" data-name="{{$ex_statement['ex_statement']->id}}" data-price="{{$ex_statement['price']['not_mine']}}" name="ex_statement[{{$ex_statement['ex_statement']->id}}][type]" value="delete">
                                                     </div>
                                                 </div>
                                                 <div class="row  title-ex_statement-{{$ex_statement['ex_statement']->id}}" style="font-weight: bold" >
@@ -345,6 +407,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row  title-ex_statement-{{$ex_statement['ex_statement']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12 ">
+                                                        <div id="exStatementPrice-{{$ex_statement['ex_statement']->id}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -375,10 +444,10 @@
                                                     <div class="col-md-12">
                                                         <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                         <label for="fix">Fix</label>
-                                                        <input type="radio" id=tu-{{$tu_statement['tu_statement']->id}}" data-name="{{$tu_statement['tu_statement']->id}}" class="tu_statement_fix"  name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="fix">
+                                                        <input type="radio" id=tu-{{$tu_statement['tu_statement']->id}}" data-name="{{$tu_statement['tu_statement']->id}}" data-price="{{$tu_statement['price']['inaccurate']}}" class="tu_statement_fix"  name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="fix">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="delete">Delete </label>
-                                                        <input type="radio"  class="tu_statement_fix" data-name="{{$tu_statement['tu_statement']->id}}" name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="delete">
+                                                        <input type="radio"  class="tu_statement_fix" data-name="{{$tu_statement['tu_statement']->id}}" data-price="{{$tu_statement['price']['inaccurate']}}"  name="tu_statement[{{$tu_statement['tu_statement']->id}}][type]" value="delete">
                                                     </div>
                                                 </div>
                                                 <div class="row mt20 title-tu_statement-{{$tu_statement['tu_statement']->id}}" style="font-weight: bold" >
@@ -387,6 +456,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="row mt20 title-tu_statement-{{$tu_statement['tu_statement']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12">
+                                                        <div id="tuStatementPrice-{{$tu_statement['tu_statement']->id}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
 
@@ -445,15 +522,21 @@
                                                 <div class="col-md-12 ">DISPUTE TYPE</div>
                                                 <div class="col-md-12 ">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="ex_public-{{$ex_public['ex_public']->id}}" data-name="{{$ex_public['ex_public']->id}}" class="ex_public_fix"  name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="ex_public-{{$ex_public['ex_public']->id}}" data-name="{{$ex_public['ex_public']->id}}" data-price="{{$ex_public['price']['inaccurate']}}" class="ex_public_fix"  name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="ex_public_fix" data-name="{{$ex_public['ex_public']->id}}" name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="ex_public_fix" data-name="{{$ex_public['ex_public']->id}}" data-price="{{$ex_public['price']['not_mine']}}" name="ex_public[{{$ex_public['ex_public']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
                                             <div class="row  title-ex_public-{{$ex_public['ex_public']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 p-0 " >
                                                     <div id="exPublicInput-{{$ex_public['ex_public']->id}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row  title-ex_public-{{$ex_public['ex_public']->id}}" style="font-weight: bold" >
+                                                <div class="col-md-12 p-0 " >
+                                                    <div id="exPublicPrice-{{$ex_public['ex_public']->id}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -520,10 +603,10 @@
                                                 <div class="col-md-12">DISPUTE TYPE</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="tu_public-{{$tu_public['tu_public']->id}}" data-name="{{$tu_public['tu_public']->id}}" class="tu_public_fix"  name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="tu_public-{{$tu_public['tu_public']->id}}" data-name="{{$tu_public['tu_public']->id}}"  data-price="{{$tu_public['price']['inaccurate']}}" class="tu_public_fix"  name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="tu_public_fix" data-name="{{$tu_public['tu_public']->id}}" name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="tu_public_fix" data-name="{{$tu_public['tu_public']->id}}" data-price="{{$tu_public['price']['not_mine']}}"  name="tu_public[{{$tu_public['tu_public']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
                                             <div class="row mt20 title-tu_public-{{$tu_public['tu_public']->id}}" style="font-weight: bold" >
@@ -532,6 +615,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row mt20 title-tu_public-{{$tu_public['tu_public']->id}}" style="font-weight: bold" >
+                                                <div class="col-md-12 " >
+                                                    <div id="tuPublicPrice-{{$tu_public['tu_public']->id}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -593,10 +683,10 @@
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-6 ">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="eq_public-{{$eq_public['eq_public']->id}}" data-name="{{$eq_public['eq_public']->id}}" class="eq_public_fix"  name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="eq_public-{{$eq_public['eq_public']->id}}" data-name="{{$eq_public['eq_public']->id}}" data-price="{{$eq_public['price']['inaccurate']}}" class="eq_public_fix"  name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="eq_public_fix" data-name="{{$eq_public['eq_public']->id}}" name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="eq_public_fix" data-name="{{$eq_public['eq_public']->id}}"  data-price="{{$eq_public['price']['not_mine']}}" name="eq_public[{{$eq_public['eq_public']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
                                             <div class="row mt20 title-eq_public-{{$eq_public->id}}" style="font-weight: bold" >
@@ -604,6 +694,14 @@
                                                 </div>
                                                 <div class="col-md-11 " >
                                                     <div id="eqPublicInput-{{$eq_public->id}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt20 title-eq_public-{{$eq_public->id}}" style="font-weight: bold" >
+                                                <div class="col-md-1">
+                                                </div>
+                                                <div class="col-md-11 " >
+                                                    <div id="eqPublicPrice-{{$eq_public->id}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -662,15 +760,21 @@
                                                 <div class="col-md-12">DISPUTE TYEP</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="ex_account-{{$ex_account['ex_account']->id}}" data-name="{{$ex_account['ex_account']->id}}" class="ex_account_fix"  name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="ex_account-{{$ex_account['ex_account']->id}}" data-name="{{$ex_account['ex_account']->id}}"  data-price="{{$ex_account['price']['inaccurate']}}" class="ex_account_fix"  name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="ex_account_fix" data-name="{{$ex_account['ex_account']->id}}" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="ex_account_fix" data-name="{{$ex_account['ex_account']->id}}" data-price="{{$ex_account['price']['not_mine']}}" name="ex_account[{{$ex_account['ex_account']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
                                             <div class="row mt20 title-ex_account-{{$ex_account['ex_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12 " >
                                                     <div id="exAccountInput-{{$ex_account['ex_account']->id}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt20 title-ex_account-{{$ex_account['ex_account']->id}}" style="font-weight: bold" >
+                                                <div class="col-md-12 " >
+                                                    <div id="exAccountPrice-{{$ex_account['ex_account']->id}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -861,15 +965,21 @@
                                                     <div class="col-md-12"DISPUTE TYPE></div>
                                                     <div class="col-md-12 ">
                                                         <label for="inaccurate">Inaccurate</label>
-                                                        <input type="radio" id="tu_account-{{$tu_account['tu_account']->id}}" data-name="{{$tu_account['tu_account']->id}}" class="tu_account_fix"  name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="inaccurate">
+                                                        <input type="radio" id="tu_account-{{$tu_account['tu_account']->id}}" data-name="{{$tu_account['tu_account']->id}}" data-price="{{$tu_account['price']['inaccurate']}}" class="tu_account_fix"  name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="inaccurate">
                                                         <label class="p-2" for="fraudulent">or</label>
                                                         <label for="not-mine">Not Mine </label>
-                                                        <input type="radio"  class="tu_account_fix" data-name="{{$tu_account['tu_account']->id}}" name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="not_mine">
+                                                        <input type="radio"  class="tu_account_fix" data-name="{{$tu_account['tu_account']->id}}"  data-price="{{$tu_account['price']['not_mine']}}" name="tu_account[{{$tu_account['tu_account']->id}}][type]" value="not_mine">
                                                     </div>
                                                 </div>
                                                 <div class="row mt20 title-tu_account-{{$tu_account['tu_account']->id}}" style="font-weight: bold" >
                                                     <div class="col-md-12" >
                                                         <div id="tuAccountInput-{{$tu_account['tu_account']->id}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt20 title-tu_account-{{$tu_account['tu_account']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12" >
+                                                        <div id="tuAccountPrice-{{$tu_account['tu_account']->id}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1015,8 +1125,7 @@
                             @endforeach
                         @endif
 
-                        @if(!empty($data['eq_account']))
-                            @foreach($data['eq_account'] as $eq_account)
+                        @if(!empty($data['eq_account']))                            @foreach($data['eq_account'] as $eq_account)
                                 @if(!empty($eq_account))
                                     <div class="mt20 title-eq_account-{{$eq_account['eq_account']->id}}"></div>
                                     <div class="chart-report title-eq_account-{{$eq_account['eq_account']->id}}">
@@ -1063,15 +1172,22 @@
                                                 <div class="col-md-12">DISPUTE TYEP</div>
                                                 <div class="col-md-12">
                                                     <label for="inaccurate">Inaccurate</label>
-                                                    <input type="radio" id="eq_account-{{$eq_account['eq_account']->id}}" data-name="{{$eq_account['eq_account']->id}}" class="eq_account_fix"  name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="inaccurate">
+                                                    <input type="radio" id="eq_account-{{$eq_account['eq_account']->id}}" data-name="{{$eq_account['eq_account']->id}}" data-price="{{$eq_account['price']['inaccurate']}}" class="eq_account_fix"  name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="inaccurate">
                                                     <label class="p-2" for="fraudulent">or</label>
                                                     <label for="not-mine">Not Mine </label>
-                                                    <input type="radio"  class="eq_account_fix" data-name="{{$eq_account['eq_account']->id}}" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="not_mine">
+                                                    <input type="radio"  class="eq_account_fix" data-name="{{$eq_account['eq_account']->id}}" data-price="{{$eq_account['price']['not_mine']}}" name="eq_account[{{$eq_account['eq_account']->id}}][type]" value="not_mine">
                                                 </div>
                                             </div>
                                             <div class="row mt20 title-eq_account-{{$eq_account['eq_account']->id}}" style="font-weight: bold" >
                                                 <div class="col-md-12" >
                                                     <div id="eqAccountInput-{{$eq_account['eq_account']->id}}">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row mt20 title-eq_account-{{$eq_account['eq_account']->id}}" style="font-weight: bold" >
+                                                <div class="col-md-12" >
+                                                    <div id="eqAccountPrice-{{$eq_account['eq_account']->id}}">
                                                     </div>
                                                 </div>
 
@@ -1246,10 +1362,19 @@
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" value="fraudulent">
+                                                <input type="radio"  class="ex_inquiry_fix"  data-name="{{$ex_inquiry['ex_inquiry']->id}}" name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" data-price="{{$ex_inquiry['price']['inaccurate']}}" value="fraudulent">
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" value="unauthorized">
-                                           </div>
+                                                <input type="radio" class="ex_inquiry_fix" data-name="{{$ex_inquiry['ex_inquiry']->id}}" name="ex_inquiry[{{$ex_inquiry['ex_inquiry']->id}}][type]" data-price="{{$ex_inquiry['price']['not_mine']}}" value="unauthorized">
+
+                                                <div class="row mt20 title-ex_inquiry-{{$ex_inquiry['ex_inquiry']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12" >
+                                                        <div id="exInquiryPrice-{{$ex_inquiry['ex_inquiry']->id}}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
@@ -1284,11 +1409,18 @@
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" value="fraudulent">
+                                                <input type="radio"class="tu_inquiry_fix"  data-name="{{$eq_inquiry['tu_inquiry']->id}}" name="tu_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" data-price="{{$tu_inquiry['price']['inaccurate']}}" value="fraudulent">
 
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" value="unauthorized">
+                                                <input type="radio" class="tu_inquiry_fix" data-name="{{$tu_inquiry['eq_inquiry']->id}}" name="tu_inquiry[{{$tu_inquiry['tu_inquiry']->id}}][type]" data-price="{{$tu_inquiry['price']['not_mine']}}" value="unauthorized">
 
+                                                <div class="row mt20 title-tu_inquiry-{{$tu_inquiry['tu_inquiry']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12" >
+                                                        <div id="tuInquiryPrice-{{$tu_inquiry['tu_inquiry']->id}}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
 
                                         </div>
@@ -1310,7 +1442,7 @@
                                                 <div class="col-md-12">{{$eq_inquiry['eq_inquiry']->industry_name}}</div>
                                                 <div class="col-md-12">{{$eq_inquiry['eq_inquiry']->name}}</div>
                                             </div>
-                                            <div class="col-md-2 delete-name" data-attribute="title-tu_inquiry-{{$eq_inquiry['eq_inquiry']->id}}">
+                                            <div class="col-md-2 delete-name" data-attribute="title-eq_inquiry-{{$eq_inquiry['eq_inquiry']->id}}">
                                                 <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                                 <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%"></i>
                                                 <input type="hidden" name="eq_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][id]" value="{{$eq_inquiry['eq_inquiry']->id}}">
@@ -1325,9 +1457,17 @@
                                             <div class="col-md-4 ">
                                                 <div class="col-md-12 p-0">DISPUTE TYPE</div>
                                                 <label for="fraudulent">Fraudulent</label>
-                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" value="fraudulent">
+                                                <input type="radio" class="eq_inquiry_fix"  name="eq_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" data-name="{{$eq_inquiry['eq_inquiry']->id}}" data-price="{{$eq_inquiry['price']['inaccurate']}}" value="fraudulent">
                                                 <label for="unauthorized">Unauthorized </label>
-                                                <input type="radio"  name="ex_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" value="unauthorized">
+                                                <input type="radio"  class="eq_inquiry_fix" name="eq_inquiry[{{$eq_inquiry['eq_inquiry']->id}}][type]" data-name="{{$eq_inquiry['eq_inquiry']->id}}" data-price="{{$eq_inquiry['price']['not_mine']}}" value="unauthorized">
+
+                                                <div class="row mt20 title-eq_inquiry-{{$eq_inquiry['eq_inquiry']->id}}" style="font-weight: bold" >
+                                                    <div class="col-md-12" >
+                                                        <div id="eqInquiryPrice-{{$eq_inquiry['eq_inquiry']->id}}">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1335,7 +1475,19 @@
                             @endforeach
                         @endif
 
+                        <div class="row mt20 title-sum-price" style="font-weight: bold" >
+                            <div class="col-md-12" >
+                                <div class="col-md-10">
+                                    <label>TOTAL PRICE </label>
+                                </div>
 
+                                <div class="col-md-2" >
+                                    <div id="sumPrice">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="row mt20">
                             <div class="col-md-5"></div>
@@ -1420,29 +1572,49 @@
 
             $(".ex_statement_fix").click(function(){
                 var id = $(this).attr('data-name')
+                var price = $(this).attr('data-price')
                 var name = "ex_statement["+id+"][type]"
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_statement['+id+'][price]" value="'+price+'"></div>'
+
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="exStatementPhone-'+id+'"><input class="form-control" type="text" name="ex_statement['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="exStatementAdd'+id+'"><input class="form-control" type="text" name="ex_statement['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+
                     $( "#exStatementInput-"+id+"" ).html( $( add ) );
+                    $( "#exStatementPrice-"+id+"" ).html( $( addPrice ) );
                 }else{
                     $("#exStatementPhone-"+id+"").remove();
+                    $( "#exStatementPrice-"+id+"" ).html( $( addPrice ) );
+
                 }
             })
 
             $(".tu_statement_fix").click(function(){
                 var id = $(this).attr('data-name')
                 var name = "tu_statement["+id+"][type]"
+
+                var price = $(this).attr('data-price')
+                var addPrice = '<div><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="tu_statement['+id+'][price]" value="'+price+'" ></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="tuStatementPhone-'+id+'"><input class="form-control" type="text" name="tu_statement['+id+'][type]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="tuStatementAdd-'+id+'"><input class="form-control" type="text" name="tu_statement['+id+'][type]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
                     $( "#tuStatementInput-"+id+"" ).html( $( add ) );
+                    $( "#tuStatementPrice-"+id+"" ).html( $( addPrice ) );
                 }else{
-                    $("#tuStatementPhone-"+id+"").remove();
+                    $("#tuStatementAdd-"+id+"").remove();
+                    $( "#tuStatementPrice-"+id+"" ).html( $( addPrice ) );
                 }
             })
 
             $(".ex_account_fix").click(function(){
                 var id = $(this).attr('data-name')
                 var name = "ex_account["+id+"][type]"
+
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_account['+id+'][additional]" value="'+price+'" ></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     var add = '<div id="exAccountAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
@@ -1463,9 +1635,13 @@
 
                     console.log(id,'+++++++')
                     $( "#exAccountInput-"+id+"" ).html(  add  );
+                    $( "#exAccountPrice-"+id+"" ).html( $( addPrice ) );
+
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     $( "#exAccountInput-"+id+"" ).html(inaccurate);
+                    $( "#exAccountPrice-"+id+"" ).html( $( addPrice ) );
+
                 }
             })
 
@@ -1503,7 +1679,10 @@
                 var id = $(this).attr('data-name')
 
                 var name = "tu_account["+id+"][type]"
-                console.log(name)
+
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="tu_account['+id+'][price]" value="'+price+'" ></div>'
+
 
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     console.log('dasdasda++++')
@@ -1523,9 +1702,12 @@
                     add = add +'<div class="col-md-12"> <div id = "tuAccountNotMineF-'+id+'"></div></div>'
 
                     $( "#tuAccountInput-"+id+"" ).html(  add  );
+                    $( "#tuAccountPrice-"+id+"" ).html( $( addPrice ) );
+
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     $( "#tuAccountInput-"+id+"" ).html(inaccurate);
+                    $( "#tuAccountPrice-"+id+"" ).html( $( addPrice ) );
                 }
             })
 
@@ -1572,6 +1754,10 @@
                 var id = $(this).attr('data-name')
                 var name = "eq_account["+id+"][type]"
 
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="eq_account['+id+'][price]" value="'+price+'" ></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     var add = '<div id="eqAccountAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
@@ -1589,10 +1775,14 @@
                     add = add +'<div class="col-md-12"> <div id = "eqAccountNotMineF-'+id+'"></div></div>'
 
                     $( "#eqAccountInput-"+id+"" ).html(  add  );
+                    $( "#eqAccountPrice-"+id+"" ).html( $( addPrice ) );
+
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     console.log(id)
                     $( "#eqAccountInput-"+id+"" ).html(inaccurate);
+                    $( "#eqAccountPrice-"+id+"" ).html( $( addPrice ) );
+
                 }
             })
 
@@ -1638,6 +1828,11 @@
             $(".ex_public_fix").click(function(){
                 var id = $(this).attr('data-name')
                 var name = "ex_public["+id+"][type]"
+
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_public['+id+'][price]" value="'+price+'" ></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     var add = '<div id="exPublicAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
@@ -1658,9 +1853,11 @@
 
                     console.log(id,'+++++++')
                     $( "#exPublicInput-"+id+"" ).html(  add  );
+                    $( "#exPublicPrice-"+id+"" ).html( $( addPrice ) );
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     $( "#exPublicInput-"+id+"" ).html(inaccurate);
+                    $( "#exPublicPrice-"+id+"" ).html( $( addPrice ) );
                 }
             })
 
@@ -1700,6 +1897,11 @@
 
                 var name = "tu_public["+id+"][type]"
 
+
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="tu_public['+id+'][price]" vlaue="'+price+'"></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     var add = '<div id="tuPublicAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
@@ -1717,9 +1919,11 @@
                     add = add +'<div class="col-md-12"> <div id = "tuPublicNotMineF-'+id+'"></div></div>'
 
                     $( "#tuPublicInput-"+id+"" ).html(  add  );
+                    $( "#tuPublicPrice-"+id+"" ).html( $( addPrice ) );
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     $( "#tuPublicInput-"+id+"" ).html(inaccurate);
+                    $( "#tuPublicPrice-"+id+"" ).html( $( addPrice ) );
                 }
             })
 
@@ -1766,6 +1970,10 @@
                 var id = $(this).attr('data-name')
                 var name = "eq_public["+id+"][type]"
 
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="eq_public['+id+'][price]" value="'+price+'"></div>'
+
+
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {
                     var add = '<div id="eqPublicAdd-'+id+'">'
                     add = add + '<div class="col-md-12">Ownership is related to your responsibility, or liability, for the account.</div>'
@@ -1783,10 +1991,13 @@
                     add = add +'<div class="col-md-12"> <div id = "eqPublicNotMineF-'+id+'"></div></div>'
 
                     $( "#eqPublicInput-"+id+"" ).html(  add  );
+                    $( "#eqPublicPrice-"+id+"" ).html( $( addPrice ) );
+
                 }else{
                     var  inaccurate = '<labale>I disagree with the reported data. Please conduct a credit audit on all reported data.</labale>'
                     console.log(id)
                     $( "#eqPublicInput-"+id+"" ).html(inaccurate);
+                    $( "#eqPublicPrice-"+id+"" ).html( $( addPrice ) );
                 }
             })
 
@@ -1794,6 +2005,7 @@
 
                 var id = $(this).attr('data-name')
                 var name = "eq_public["+id+"][reason]"
+
                 if ($("input[name='"+name+"']:checked").val() == 'n-2') {
 
                     $( "#eqPublicNotMineAddT-"+id+"" ).remove()
@@ -1827,6 +2039,65 @@
                     $( "#eqPublicNotMineAddF-"+id+"" ).remove()
                 }
             })
+
+            $(".ex_inquiry_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "ex_inquiry["+id+"][type]"
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_inquiry['+id+'][price]" value="'+price+'"></div>'
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+
+                    $( "#exInquiryPrice-"+id+"" ).html( $( addPrice ) );
+                }else{
+                    $( "#exInquiryPrice-"+id+"" ).html( $( addPrice ) );
+
+                }
+            })
+
+            $(".tu_inquiry_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "tu_inquiry["+id+"][type]"
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="tu_inquiry['+id+'][price]" value="'+price+'"></div>'
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+
+                    $( "#tuInquiryPrice-"+id+"" ).html( $( addPrice ) );
+                }else{
+                    $( "#tuInquiryPrice-"+id+"" ).html( $( addPrice ) );
+
+                }
+            })
+
+            $(".eq_inquiry_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "eq_inquiry["+id+"][type]"
+                var price = $(this).attr('data-price')
+                var addPrice = '<div ><lable>PRICE</lable> $<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="eq_inquiry['+id+'][price]" value="'+price+'"></div>'
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+
+                    $( "#eqInquiryPrice-"+id+"" ).html( $( addPrice ) );
+                }else{
+                    $( "#eqInquiryPrice-"+id+"" ).html( $( addPrice ) );
+
+                }
+            })
+
+            $(document).change( function(){
+               var price = null
+                var all = $(".price").map(function() {
+                    price = price + parseFloat(this.innerHTML)
+                    return price;
+                }).get();
+
+
+                $( "#sumPrice" ).html( all[all.length-1] );
+
+
+            })
+
 
         });
     </script>

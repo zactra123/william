@@ -63,7 +63,7 @@
                 valueField: 'id',
                 onChange: function(value) {
                     $.ajax({
-                        url: '/owner/pricing-affiliate',
+                        url: '/owner/affiliate/pricing-affiliate',
                         type: 'GET',
                         dataType: 'html',
                         data: {
@@ -81,12 +81,13 @@
 
                 data = $('#bankInformation').serialize()
                 $.ajax({
-                    url: '/owner/pricing',
+                    url: '/owner/affiliate/pricing',
                     type: 'POST',
                     dataType: 'html',
                     data: data,
                     success: function(res) {
                         $("#price-list").html(res)
+
                     }
                 });
             })
@@ -95,11 +96,10 @@
         });
 
     </script>
-
     <script>
         $(document).ready(function(){
 
-            $(".collection").keyup( function() {
+            $(document).delegate('.collection', "keyup", function() {
 
                 var id = $(this).attr('data-id')
                 var min = $("#min-"+id).val()
@@ -111,11 +111,14 @@
                 }else{
                     min = parseFloat(min)
                 }
-                if( $("#max-"+id).val().length === 0 ) {
-                    max = 0;
-                }else{
-                    max = parseFloat(max)
+                if(id < 3){
+                    if( $("#max-"+id).val().length === 0 ) {
+                        max = 0;
+                    }else{
+                        max = parseFloat(max)
+                    }
                 }
+
                 if( $("#percent-"+id).val().length === 0 ) {
                     percent = 0;
                 }else{
@@ -128,16 +131,16 @@
                 }
 
                 var minPrice = fee + (percent/100)*min
-                var maxPrice = fee + (percent/100)*max
-                if(id == 3){
-                    maxPrice = fee + (percent/100)*min
-                }
 
+                if(id == 3){
+                    var maxPrice = fee + (percent/100)*min
+                }else{ maxPrice = fee + (percent/100)*max}
+
+                console.log('dasd')
                 $("#min-price-"+id).val(minPrice.toFixed(1))
                 $("#max-price-"+id).val(maxPrice.toFixed(1))
-
-
             });
+
 
         });
 

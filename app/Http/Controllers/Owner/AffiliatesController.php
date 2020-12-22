@@ -59,6 +59,7 @@ class AffiliatesController extends Controller
                 $validate->rules
             );
             if ($validator->fails()) {
+                dd($pricing);
                 $default = DisputesPricing::default();
                 $pricing = DisputesPricing::where("user_id", $request->user_id)->first();
                 if (!$pricing) {
@@ -66,6 +67,7 @@ class AffiliatesController extends Controller
                 }
                 return view('owner.affiliate.pricing._form', compact('pricing', 'default'))->withErrors($validator);
             }
+
 
             if(isset($pricing['user_id'])){
                 $disputePricing = DisputesPricing::where('user_id', $pricing['user_id']);
