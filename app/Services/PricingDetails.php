@@ -210,8 +210,8 @@ class PricingDetails
 
     public function publicRecordPrice()
     {
-        $priceInaccurate = $this->public_recorde;
-        $priceNotMine = $this->public_recorde;
+        $priceInaccurate = $this->pricing->public_record;
+        $priceNotMine = $this->pricing->public_record;
         $dataPrice = [
             'inaccurate'=> $priceInaccurate,
             'not_mine'=> $priceNotMine,

@@ -496,10 +496,10 @@
                                                     <span class=""> {{$ex_public['ex_public']->on_record_until}} </span>
                                                 </div>
                                             @endif
-                                            @if($ex_public->claim_amount !=null )
-                                                <div class="col-md-12">
+                                            @if($ex_public['ex_public']->claim_amount !=null )
+                                                ex_account                                                <div class="col-md-12">
                                                     <label class="form-text">CLAIM AMOUNT</label>
-                                                    <span class=""> ${{$ex_public->claim_amount}}  </span>
+                                                    <span class=""> ${{$ex_public['ex_public']->claim_amount}}  </span>
                                                 </div>
                                             @endif
                                             @if($ex_public['ex_public']->date_resolved != null )
@@ -1612,7 +1612,7 @@
                 var name = "ex_account["+id+"][type]"
 
                 var price = $(this).attr('data-price')
-                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_account['+id+'][additional]" value="'+price+'" ></div>'
+                var addPrice = '<div ><lable>PRICE</lable>$<span class="price">'+price+'</span> <input class="form-control" type="hidden" name="ex_account['+id+'][price]" value="'+price+'" ></div>'
 
 
                 if ($("input[name='"+name+"']:checked").val() == 'not_mine') {

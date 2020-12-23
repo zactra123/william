@@ -59,7 +59,6 @@ class AffiliatesController extends Controller
                 $validate->rules
             );
             if ($validator->fails()) {
-                dd($pricing);
                 $default = DisputesPricing::default();
                 $pricing = DisputesPricing::where("user_id", $request->user_id)->first();
                 if (!$pricing) {

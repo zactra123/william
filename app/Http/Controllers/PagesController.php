@@ -104,7 +104,7 @@ class PagesController extends Controller
      *$url using to get content from faqs table
      * @return \Illuminate\View\View "faqs" with param
      * @param faqs, title
-     * @save faqs question on faqs table
+     * @save faqs question on questions table
      */
     public function faqs(Request $request)
     {
