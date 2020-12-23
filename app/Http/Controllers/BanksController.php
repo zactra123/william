@@ -203,6 +203,12 @@ class BanksController extends Controller
 
         $existing_names = $bank->equalBanks->pluck('name')->toArray();
         $eqs = explode(',', $request->equal_banks);
+        $removeArray = array_values(array_diff($existing_names, $eqs));
+        if(!empty($removeArray)){
+            $removeExistingName= $bank->equalBanks()->whereIn('name', $removeArray)->delete();
+            $existing_names = $bank->equalBanks->pluck('name')->toArray();
+        }
+
         foreach($eqs as $eb) {
             if (!in_array($eb, $existing_names)) {
                 $bank->equalBanks()->create(["name" => $eb]);
