@@ -142,7 +142,6 @@ class BanksController extends Controller
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
-
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('owner.bank.logo_new',compact('banksLogos'));
         }
@@ -210,7 +209,7 @@ class BanksController extends Controller
             }
         }
 
-        return redirect()->route('furnishers.show');
+        return redirect()->route('admins.bank.show');
 
     }
 
