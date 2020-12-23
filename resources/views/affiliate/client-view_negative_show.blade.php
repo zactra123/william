@@ -82,7 +82,7 @@
                                         <div class="col-md-4 delete-name ex_personal" data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
+                                            <input type="hidden" name="ex_name[{{$names->id}}][id]" value="{{$names->id}}">
                                         </div>
                                     </div>
                                     <div class="row mt20 title-name-{{$names->id}}" style="font-weight: bold" >
@@ -93,10 +93,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="name_fix"  name="name[{{$names->id}}][type]" value="fix">
+                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="ex_name_fix"  name="ex_name[{{$names->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="name_fix" data-name="{{$names->id}}" name="name[{{$names->id}}][type]" value="delete">
+                                            <input type="radio"  class="ex_name_fix" data-name="{{$names->id}}" name="ex_name[{{$names->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -150,7 +150,7 @@
                                         <div class="col-md-4 delete-name tu_personal"   data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
+                                            <input type="hidden" name="tu_name[{{$names->id}}][id]" value="{{$names->id}}">
                                         </div>
                                     </div>
                                     <div class="row mt20 title-name-{{$names->id}}" style="font-weight: bold" >
@@ -161,10 +161,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="name_fix"  name="name[{{$names->id}}][type]" value="fix">
+                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="tu_name_fix"  name="tu_name[{{$names->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="name_fix" data-name="{{$names->id}}" name="name[{{$names->id}}][type]" value="delete">
+                                            <input type="radio"  class="tu_name_fix" data-name="{{$names->id}}" name="tu_name[{{$names->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -218,7 +218,7 @@
                                         <div class="col-md-4 delete-name eq_personal" data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
+                                            <input type="hidden" name="eq_name[{{$names->id}}][id]" value="{{$names->id}}">
                                         </div>
                                     </div>
                                     <div class="row mt20 title-name-{{$names->id}}" style="font-weight: bold" >
@@ -229,10 +229,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="name_fix"  name="name[{{$names->id}}][type]" value="fix">
+                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="eq_name_fix"  name="eq_name[{{$names->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="name_fix" data-name="{{$names->id}}" name="name[{{$names->id}}][type]" value="delete">
+                                            <input type="radio"  class="eq_name_fix" data-name="{{$names->id}}" name="eq_name[{{$names->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -286,7 +286,7 @@
                                         <div class="col-md-2 delete-name ex_personal" data-attribute="title-employer-{{$employer->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
+                                            <input type="hidden" name="ex_employer[{{$employer->id}}][id]" value="{{$employer->id}}">
                                         </div>
                                     </div>
 
@@ -298,10 +298,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
+                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="ex_employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
+                                            <input type="radio"  class="ex_employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
                                         </div>
                                     </div>
                                     <div class="row m-2 title-employer-{{$employer->id}}" style="font-weight: bold" >
@@ -355,7 +355,7 @@
                                         <div class="col-md-2 delete-name tu_personal" data-attribute="title-employer-{{$employer->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
+                                            <input type="hidden" name="tu_employer[{{$employer->id}}][id]" value="{{$employer->id}}">
                                         </div>
                                     </div>
 
@@ -367,10 +367,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
+                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="tu_employer_fix"  name="tu_employer[{{$employer->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
+                                            <input type="radio"  class="tu_employer_fix" data-name="{{$employer->id}}" name="tu_employer[{{$employer->id}}][type]" value="delete">
                                         </div>
                                     </div>
                                     <div class="row m-2 title-employer-{{$employer->id}}" style="font-weight: bold" >
@@ -424,7 +424,7 @@
                                         <div class="col-md-2 delete-name eq_personal" data-attribute="title-employer-{{$employer->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
+                                            <input type="hidden" name="eq_employer[{{$employer->id}}][id]" value="{{$employer->id}}">
                                         </div>
                                     </div>
 
@@ -436,10 +436,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
+                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="eq_employer_fix"  name="eq_employer[{{$employer->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
+                                            <input type="radio"  class="eq_employer_fix" data-name="{{$employer->id}}" name="eq_employer[{{$employer->id}}][type]" value="delete">
                                         </div>
                                     </div>
                                     <div class="row m-2 title-employer-{{$employer->id}}" style="font-weight: bold" >
@@ -489,7 +489,7 @@
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="address[{{$address->id}}][id]" value="{{$address->id}}">
+                                            <input type="hidden" name="ex_address[{{$address->id}}][id]" value="{{$address->id}}">
                                         </div>
                                     </div>
 
@@ -502,10 +502,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="address_fix"  name="address[{{$address->id}}][type]" value="fix">
+                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="ex_address_fix"  name="ex_address[{{$address->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="address_fix" data-name="{{$address->id}}" name="address[{{$address->id}}][type]" value="delete">
+                                            <input type="radio"  class="ex_address_fix" data-name="{{$address->id}}" name="ex_address[{{$address->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -553,7 +553,7 @@
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="address[{{$address->id}}][id]" value="{{$address->id}}">
+                                            <input type="hidden" name="tu_address[{{$address->id}}][id]" value="{{$address->id}}">
                                         </div>
                                     </div>
 
@@ -566,10 +566,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="address_fix"  name="address[{{$address->id}}][type]" value="fix">
+                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="tu_address_fix"  name="tu_address[{{$address->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="address_fix" data-name="{{$address->id}}" name="address[{{$address->id}}][type]" value="delete">
+                                            <input type="radio"  class="tu_address_fix" data-name="{{$address->id}}" name="tu_address[{{$address->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -617,7 +617,7 @@
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                            <input type="hidden" name="address[{{$address->id}}][id]" value="{{$address->id}}">
+                                            <input type="hidden" name="eq_address[{{$address->id}}][id]" value="{{$address->id}}">
                                         </div>
                                     </div>
 
@@ -630,10 +630,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="address_fix"  name="address[{{$address->id}}][type]" value="fix">
+                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="eq_address_fix"  name="eq_address[{{$address->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="address_fix" data-name="{{$address->id}}" name="address[{{$address->id}}][type]" value="delete">
+                                            <input type="radio"  class="eq_address_fix" data-name="{{$address->id}}" name="eq_address[{{$address->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -679,7 +679,7 @@
                                         <div class="col-md-2 delete-name ex_personal" data-attribute="title-phone-{{$phone->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <input type="hidden" name="phone[{{$phone->id}}][id]" value="{{$phone->id}}">
+                                            <input type="hidden" name="ex_phone[{{$phone->id}}][id]" value="{{$phone->id}}">
                                         </div>
                                     </div>
                                     <div class="row mt20 title-phone-{{$phone->id}}" style="font-weight: bold" >
@@ -690,10 +690,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="phone-{{$phone->id}}" data-name="{{$phone->id}}" class="phone_fix"  name="phone[{{$phone->id}}][type]" value="fix">
+                                            <input type="radio" id="phone-{{$phone->id}}" data-name="{{$phone->id}}" class="ex_phone_fix"  name="ex_phone[{{$phone->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="phone_fix" data-name="{{$phone->id}}" name="phone[{{$phone->id}}][type]" value="delete">
+                                            <input type="radio"  class="ex_phone_fix" data-name="{{$phone->id}}" name="ex_phone[{{$phone->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -739,7 +739,7 @@
                                         <div class="col-md-2 delete-name tu_personal" data-attribute="title-phone-{{$phone->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                                            <input type="hidden" name="phone[{{$phone->id}}][id]" value="{{$phone->id}}">
+                                            <input type="hidden" name="tu_phone[{{$phone->id}}][id]" value="{{$phone->id}}">
                                         </div>
                                     </div>
                                     <div class="row mt20 title-phone-{{$phone->id}}" style="font-weight: bold" >
@@ -750,10 +750,10 @@
                                         <div class="col-md-4 ">
                                             <div class="col-md-12 p-0" >DISPUTE TYPE</div>
                                             <label for="fix">Fix</label>
-                                            <input type="radio" id="phone-{{$phone->id}}" data-name="{{$phone->id}}" class="phone_fix"  name="phone[{{$phone->id}}][type]" value="fix">
+                                            <input type="radio" id="phone-{{$phone->id}}" data-name="{{$phone->id}}" class="tu_phone_fix"  name="tu_phone[{{$phone->id}}][type]" value="fix">
                                             <label class="p-2" for="fraudulent">or</label>
                                             <label for="delete">Delete </label>
-                                            <input type="radio"  class="phone_fix" data-name="{{$phone->id}}" name="phone[{{$phone->id}}][type]" value="delete">
+                                            <input type="radio"  class="tu_phone_fix" data-name="{{$phone->id}}" name="tu_phone[{{$phone->id}}][type]" value="delete">
                                         </div>
 
                                     </div>
@@ -1981,14 +1981,42 @@
                 $( "."+name ).remove();
             })
 
-            $(".name_fix").click(function(){
+            $(".ex_name_fix").click(function(){
 
                 var id = $(this).attr('data-name')
 
-                var name = "name["+id+"][type]"
+                var name = "ex_name["+id+"][type]"
 
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="addName-'+id+'"><input class="form-control" type="text" name="name['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="addName-'+id+'"><input class="form-control" type="text" name="ex_name['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#nameInput-"+id+"" ).html( $( add ) );
+                }else{
+                    console.log(id)
+                    $("#addName-"+id+"").remove();
+                }
+            })
+            $(".tu_name_fix").click(function(){
+
+                var id = $(this).attr('data-name')
+
+                var name = "tu_name["+id+"][type]"
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addName-'+id+'"><input class="form-control" type="text" name="tu_name['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#nameInput-"+id+"" ).html( $( add ) );
+                }else{
+                    console.log(id)
+                    $("#addName-"+id+"").remove();
+                }
+            })
+            $(".eq_name_fix").click(function(){
+
+                var id = $(this).attr('data-name')
+
+                var name = "eq_name["+id+"][type]"
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addName-'+id+'"><input class="form-control" type="text" name="eq_name['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
                     $( "#nameInput-"+id+"" ).html( $( add ) );
                 }else{
                     console.log(id)
@@ -1996,14 +2024,43 @@
                 }
             })
 
-            $(".employer_fix").click(function(){
+
+            $(".ex_employer_fix").click(function(){
 
                 var id = $(this).attr('data-name')
 
-                var name = "employer["+id+"][type]"
+                var name = "ex_employer["+id+"][type]"
 
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="addEmployer-'+id+'"><input class="form-control" type="text" name="employer['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="addEmployer-'+id+'"><input class="form-control" type="text" name="ex_employer['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#employerInput-"+id+"" ).html( $( add ) );
+                }else{
+                    console.log(id)
+                    $("#addEmployer-"+id+"").remove();
+                }
+            })
+            $(".tu_employer_fix").click(function(){
+
+                var id = $(this).attr('data-name')
+
+                var name = "tu_employer["+id+"][type]"
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addEmployer-'+id+'"><input class="form-control" type="text" name="tu_employer['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#employerInput-"+id+"" ).html( $( add ) );
+                }else{
+                    console.log(id)
+                    $("#addEmployer-"+id+"").remove();
+                }
+            })
+            $(".eq_employer_fix").click(function(){
+
+                var id = $(this).attr('data-name')
+
+                var name = "eq_employer["+id+"][type]"
+
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addEmployer-'+id+'"><input class="form-control" type="text" name="eq_employer['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
                     $( "#employerInput-"+id+"" ).html( $( add ) );
                 }else{
                     console.log(id)
@@ -2011,23 +2068,52 @@
                 }
             })
 
-
-            $(".address_fix").click(function(){
+            $(".ex_address_fix").click(function(){
                 var id = $(this).attr('data-name')
-                var name = "address["+id+"][type]"
+                var name = "ex_address["+id+"][type]"
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="addAddress-'+id+'"><input class="form-control" type="text" name="address['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="addAddress-'+id+'"><input class="form-control" type="text" name="ex_address['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#addressInput-"+id+"" ).html( $( add ) );
+                }else{
+                    $("#addAddress-"+id+"").remove();
+                }
+            })
+            $(".tu_address_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "tu_address["+id+"][type]"
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addAddress-'+id+'"><input class="form-control" type="text" name="tu_address['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#addressInput-"+id+"" ).html( $( add ) );
+                }else{
+                    $("#addAddress-"+id+"").remove();
+                }
+            })
+            $(".eq_address_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "eq_address["+id+"][type]"
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addAddress-'+id+'"><input class="form-control" type="text" name="eq_address['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
                     $( "#addressInput-"+id+"" ).html( $( add ) );
                 }else{
                     $("#addAddress-"+id+"").remove();
                 }
             })
 
-            $(".phone_fix").click(function(){
+            $(".ex_phone_fix").click(function(){
+                var id = $(this).attr('data-name')
+                var name = "ex_phone["+id+"][type]"
+                if ($("input[name='"+name+"']:checked").val() == 'fix') {
+                    var add = '<div id="addPhone-'+id+'"><input class="form-control" type="text" name="ex_phone['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    $( "#phoneInput-"+id+"" ).html( $( add ) );
+                }else{
+                    $("#addPhone-"+id+"").remove();
+                }
+            })
+            $(".tu_phone_fix").click(function(){
                 var id = $(this).attr('data-name')
                 var name = "phone["+id+"][type]"
                 if ($("input[name='"+name+"']:checked").val() == 'fix') {
-                    var add = '<div id="addPhone-'+id+'"><input class="form-control" type="text" name="phone['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
+                    var add = '<div id="addPhone-'+id+'"><input class="form-control" type="text" name="tu_phone['+id+'][additional]" placeholder="PLEASE WRITE CORRECT VERSION"></div>'
                     $( "#phoneInput-"+id+"" ).html( $( add ) );
                 }else{
                     $("#addPhone-"+id+"").remove();
@@ -2570,7 +2656,7 @@
                 }).get();
 
                 $( "#sumPrice" ).html( all[all.length-1] );
-                
+
             })
 
 
