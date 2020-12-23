@@ -49,7 +49,7 @@
                     <div class="col-md-10 mt20">
                         {!! Form::open(['route' => ['affiliate.negative.contract', $userId], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
 
-                        @if(!empty($data['name']))
+                        @if(!empty($data['ex_name']))
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row mt20">
@@ -66,7 +66,7 @@
                                     </div>
 
                                 </div>
-                                @foreach($data['name'] as $names)
+                                @foreach($data['ex_name'] as $names)
 
                                     <div class="row mt20 border title-name-{{$names->id}}">
                                         <div class="col-md-1">
@@ -79,7 +79,7 @@
 
                                         </div>
 
-                                        <div class="col-md-4 delete-name" data-attribute="title-name-{{$names->id}}">
+                                        <div class="col-md-4 delete-name ex_personal" data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
                                             <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
@@ -117,7 +117,143 @@
 
                         @endif
 
-                        @if(!empty($data['employ']))
+                        @if(!empty($data['tu_name']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> PERSONAL INFORMATION: DISPUTE TRANS UNION NAME</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="font-weight: bold; font-size: 16px"></span>
+                                    </div>
+
+                                </div>
+                                @foreach($data['tu_name'] as $names)
+
+                                    <div class="row mt20 border title-name-{{$names->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold"> {{$names->full_name}} </span>
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
+                                        <div class="col-md-4 delete-name tu_personal"   data-attribute="title-name-{{$names->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" ></i>
+                                            <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt20 title-name-{{$names->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="name_fix"  name="name[{{$names->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="name_fix" data-name="{{$names->id}}" name="name[{{$names->id}}][type]" value="delete">
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="nameInput-{{$names->id}}">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                @endforeach
+                            </div>
+
+                        @endif
+
+                        @if(!empty($data['eq_name']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px"> PERSONAL INFORMATION: DISPUTE EQUIFAX NAME</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="font-weight: bold; font-size: 16px"></span>
+                                    </div>
+
+                                </div>
+                                @foreach($data['eq_name'] as $names)
+
+                                    <div class="row mt20 border title-name-{{$names->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold"> {{$names->full_name}} </span>
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
+                                        <div class="col-md-4 delete-name eq_personal" data-attribute="title-name-{{$names->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true" ></i>
+                                            <input type="hidden" name="name[{{$names->id}}][id]" value="{{$names->id}}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt20 title-name-{{$names->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="name_fix"  name="name[{{$names->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="name_fix" data-name="{{$names->id}}" name="name[{{$names->id}}][type]" value="delete">
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="nameInput-{{$names->id}}">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                @endforeach
+                            </div>
+
+                        @endif
+
+                        @if(!empty($data['ex_employ']))
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row mt20">
@@ -134,7 +270,7 @@
                                     </div>
 
                                 </div>
-                                @foreach($data['employ'] as $employer)
+                                @foreach($data['ex_employ'] as $employer)
 
                                     <div class="row mt20 border title-employer-{{$employer->id}}">
                                         <div class="col-md-1">
@@ -147,7 +283,7 @@
 
                                         </div>
 
-                                        <div class="col-md-2 delete-name" data-attribute="title-employer-{{$employer->id}}">
+                                        <div class="col-md-2 delete-name ex_personal" data-attribute="title-employer-{{$employer->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                                             <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
@@ -186,14 +322,152 @@
 
                         @endif
 
-                        @if(!empty($data['address']))
+                        @if(!empty($data['tu_employ']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px">PERSONAL INFORMATION: DISPUTE EMPLOYER</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="font-weight: bold; font-size: 16px"></span>
+                                    </div>
+
+                                </div>
+                                @foreach($data['tu_employ'] as $employer)
+
+                                    <div class="row mt20 border title-employer-{{$employer->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold"> {{$employer->name}} </span>
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
+                                        <div class="col-md-2 delete-name tu_personal" data-attribute="title-employer-{{$employer->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                            <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt20 title-employer-{{$employer->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
+                                        </div>
+                                    </div>
+                                    <div class="row m-2 title-employer-{{$employer->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="employerInput-{{$employer->id}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                @endforeach
+                            </div>
+
+                        @endif
+
+                        @if(!empty($data['eq_employ']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row mt20">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span style="font-weight: bold; font-size: 16px">PERSONAL INFORMATION: DISPUTE EMPLOYER</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="font-weight: bold; font-size: 16px"></span>
+                                    </div>
+
+                                </div>
+                                @foreach($data['eq_employ'] as $employer)
+
+                                    <div class="row mt20 border title-employer-{{$employer->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold"> {{$employer->name}} </span>
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                        </div>
+
+                                        <div class="col-md-2 delete-name eq_personal" data-attribute="title-employer-{{$employer->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                            <input type="hidden" name="employer[{{$employer->id}}][id]" value="{{$employer->id}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt20 title-employer-{{$employer->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="employer-{{$employer->id}}" data-name="{{$employer->id}}" class="employer_fix"  name="employer[{{$employer->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="employer_fix" data-name="{{$employer->id}}" name="employer[{{$employer->id}}][type]" value="delete">
+                                        </div>
+                                    </div>
+                                    <div class="row m-2 title-employer-{{$employer->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="employerInput-{{$employer->id}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                @endforeach
+                            </div>
+
+                        @endif
+
+                        @if(!empty($data['ex_address']))
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row">
                                     <div class="col-md-1">
                                     </div>
                                     <div class="col-md-6" style="font-weight: bold; font-size: 16px">
-                                        PERSONAL INFORMATION: DISPUTE ADDRESS
+                                        PERSONAL INFORMATION: DISPUTE EXPERIAN ADDRESS
                                     </div>
                                     <div class="col-md-2" style="font-weight: bold">
 
@@ -201,7 +475,7 @@
 
                                 </div>
 
-                                @foreach($data['address'] as $address)
+                                @foreach($data['ex_address'] as $address)
                                     <div class="row mt20 border title-address-{{$address->id}}" style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
@@ -211,7 +485,7 @@
                                             <span class="">{{$address->state}}, </span>
                                             <span class="">{{$address->zip}}</span>
                                         </div>
-                                        <div class="col-md-2 delete-name" data-attribute="title-address-{{$address->id}}">
+                                        <div class="col-md-2 delete-name ex_personal" data-attribute="title-address-{{$address->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
 
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
@@ -250,7 +524,135 @@
                             </div>
                         @endif
 
-                        @if(!empty($data['phone']))
+                        @if(!empty($data['tu_address']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6" style="font-weight: bold; font-size: 16px">
+                                        PERSONAL INFORMATION: DISPUTE TRANS UNION ADDRESS
+                                    </div>
+                                    <div class="col-md-2" style="font-weight: bold">
+
+                                    </div>
+
+                                </div>
+
+                                @foreach($data['tu_address'] as $address)
+                                    <div class="row mt20 border title-address-{{$address->id}}" style="font-weight: bold">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="">{{$address->street}}, </span>
+                                            <span class="">{{$address->city}}, </span>
+                                            <span class="">{{$address->state}}, </span>
+                                            <span class="">{{$address->zip}}</span>
+                                        </div>
+                                        <div class="col-md-2 delete-name tu_personal" data-attribute="title-address-{{$address->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+
+                                            <i class="fa fa-check-square-o" aria-hidden="true" ></i>
+                                            <input type="hidden" name="address[{{$address->id}}][id]" value="{{$address->id}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt20 title-address-{{$address->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="address_fix"  name="address[{{$address->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="address_fix" data-name="{{$address->id}}" name="address[{{$address->id}}][type]" value="delete">
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-2 title-address-{{$address->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="addressInput-{{$address->id}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(!empty($data['eq_address']))
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6" style="font-weight: bold; font-size: 16px">
+                                        PERSONAL INFORMATION: DISPUTE EQUIFAX ADDRESS
+                                    </div>
+                                    <div class="col-md-2" style="font-weight: bold">
+
+                                    </div>
+
+                                </div>
+
+                                @foreach($data['eq_address'] as $address)
+                                    <div class="row mt20 border title-address-{{$address->id}}" style="font-weight: bold">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="">{{$address->street}}, </span>
+                                            <span class="">{{$address->city}}, </span>
+                                            <span class="">{{$address->state}}, </span>
+                                            <span class="">{{$address->zip}}</span>
+                                        </div>
+                                        <div class="col-md-2 delete-name eq_personal" data-attribute="title-address-{{$address->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+
+                                            <i class="fa fa-check-square-o" aria-hidden="true" ></i>
+                                            <input type="hidden" name="address[{{$address->id}}][id]" value="{{$address->id}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt20 title-address-{{$address->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="address-{{$address->id}}" data-name="{{$address->id}}" class="address_fix"  name="address[{{$address->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="address_fix" data-name="{{$address->id}}" name="address[{{$address->id}}][type]" value="delete">
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-2 title-address-{{$address->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="addressInput-{{$address->id}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(!empty($data['ex_phone']))
 
                             <div class="mt20"></div>
                             <div class="chart-report">
@@ -267,14 +669,14 @@
                                     <div class="col-md-1">
                                     </div>
                                 </div>
-                                @foreach($data['phone'] as $phone)
+                                @foreach($data['ex_phone'] as $phone)
                                     <div class="row mt20 border title-phone-{{$phone->id}}">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-6">
                                             <span style="font-weight: bold">{{$phone->number}} </span>
                                         </div>
-                                        <div class="col-md-2 delete-name" data-attribute="title-phone-{{$phone->id}}">
+                                        <div class="col-md-2 delete-name ex_personal" data-attribute="title-phone-{{$phone->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i>
                                             <input type="hidden" name="phone[{{$phone->id}}][id]" value="{{$phone->id}}">
@@ -309,6 +711,67 @@
                                 @endforeach
                             </div>
                         @endif
+
+                        @if(!empty($data['tu_phone']))
+
+                            <div class="mt20"></div>
+                            <div class="chart-report">
+                                <div class="row" >
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-6" style="font-weight: bold">
+                                        <span style="font-weight: bold; font-size: 16px">PERSONAL INFORMATION: DISPUTE PHONE # </span>
+                                    </div>
+
+                                    <div class="col-md-2" >
+                                    </div>
+
+                                    <div class="col-md-1">
+                                    </div>
+                                </div>
+                                @foreach($data['tu_phone'] as $phone)
+                                    <div class="row mt20 border title-phone-{{$phone->id}}">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span style="font-weight: bold">{{$phone->number}} </span>
+                                        </div>
+                                        <div class="col-md-2 delete-name tu_personal" data-attribute="title-phone-{{$phone->id}}">
+                                            <span style="font-weight: bold; font-size: 16px">DESELECT</span>
+                                            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                            <input type="hidden" name="phone[{{$phone->id}}][id]" value="{{$phone->id}}">
+                                        </div>
+                                    </div>
+                                    <div class="row mt20 title-phone-{{$phone->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="col-md-12 p-0" >DISPUTE TYPE</div>
+                                            <label for="fix">Fix</label>
+                                            <input type="radio" id="phone-{{$phone->id}}" data-name="{{$phone->id}}" class="phone_fix"  name="phone[{{$phone->id}}][type]" value="fix">
+                                            <label class="p-2" for="fraudulent">or</label>
+                                            <label for="delete">Delete </label>
+                                            <input type="radio"  class="phone_fix" data-name="{{$phone->id}}" name="phone[{{$phone->id}}][type]" value="delete">
+                                        </div>
+
+                                    </div>
+                                    <div class="row m-2 title-phone-{{$phone->id}}" style="font-weight: bold" >
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                        <div class="col-md-4 " >
+                                            <div id="phoneInput-{{$phone->id}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
 
                         @if(!empty($data['personal_price']))
 
@@ -347,19 +810,19 @@
                                         <div class="col-md-5 " >
                                             <div  id="personalInfoPrice">
                                                 @if(!empty($data['personal_price']['ex_personal']['inaccurate']) )
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 " id="exPersonalInfo">
                                                    EXPERINA PERSOANL INFORMATION PRICE $
-                                                    <div class="price" id="exPersonalInfo"> {{$data['personal_price']['ex_personal']['inaccurate']}}</div>
+                                                    <div class="price" > {{$data['personal_price']['ex_personal']['inaccurate']}}</div>
                                                 </div>
                                                 @endif
                                                 @if(!empty($data['personal_price']['tu_personal']['inaccurate']))
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" id="tuPersonalInfo">
                                                         TRANS UNION PERSOANL INFORMATION PRICE $
-                                                        <div  class="price" id="tuPersonalInfo">{{$data['personal_price']['tu_personal']['inaccurate']}}</div>
+                                                        <div  class="price" >{{$data['personal_price']['tu_personal']['inaccurate']}}</div>
                                                     </div>
                                                 @endif
                                                 @if(!empty($data['personal_price']['tu_personal']['inaccurate']) )
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" id="tuPersonalInfo">
                                                         EQUOFAX PERSOANL INFORMATION PRICE $
                                                         <div class="price" id="eqPersonalInfo"> {{$data['personal_price']['eq_personal']['inaccurate']}}</div>
                                                     </div>
@@ -1125,7 +1588,8 @@
                             @endforeach
                         @endif
 
-                        @if(!empty($data['eq_account']))                            @foreach($data['eq_account'] as $eq_account)
+                        @if(!empty($data['eq_account']))
+                            @foreach($data['eq_account'] as $eq_account)
                                 @if(!empty($eq_account))
                                     <div class="mt20 title-eq_account-{{$eq_account['eq_account']->id}}"></div>
                                     <div class="chart-report title-eq_account-{{$eq_account['eq_account']->id}}">
@@ -2085,18 +2549,31 @@
                 }
             })
 
-            $(document).change( function(){
+            $(document).on('change click', function(){
+                var exPersonal = $('.ex_personal').length
+                var tuPersonal = $('.tu_personal').length
+                var eqPersonal = $('.eq_personal').length
+                if(exPersonal == 0){
+                    $('#exPersonalInfo').remove()
+                }
+                if(tuPersonal == 0){
+                    $('#tuPersonalInfo').remove()
+                }
+                if(eqPersonal == 0){
+                    $('#eqPersonalInfo').remove()
+                }
+
                var price = null
                 var all = $(".price").map(function() {
                     price = price + parseFloat(this.innerHTML)
                     return price;
                 }).get();
 
-
                 $( "#sumPrice" ).html( all[all.length-1] );
-
-
+                
             })
+
+
 
 
         });

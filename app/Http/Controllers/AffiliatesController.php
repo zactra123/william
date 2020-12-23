@@ -773,10 +773,17 @@ class AffiliatesController extends Controller
         };
         $userId = User::whereId($id)->first()->id;
 
-        $disputeName = [];
-        $disputeEmployer = [];
-        $disputeAddress = [];
-        $disputePhone = [];
+        $disputeExName = [];
+        $disputeTuName = [];
+        $disputeEqName = [];
+        $disputeExEmployer = [];
+        $disputeTuEmployer = [];
+        $disputeEqEmployer = [];
+        $disputeExAddress = [];
+        $disputeTuAddress = [];
+        $disputeEqAddress = [];
+        $disputeExPhone = [];
+        $disputeTuPhone = [];
         $disputeExPublicRecord = [];
         $disputeExAccount = [];
         $disputeExInquiry = [];
@@ -791,28 +798,73 @@ class AffiliatesController extends Controller
 
         foreach ($dispute as $key => $value) {
 
-            if ($key == 'ex_name' or $key == 'tu_name' or $key == 'eq_name') {
+            if ($key == 'ex_name') {
                 foreach ($value as $dispute_name) {
                     $name = ClientReportName::where('id', $dispute_name)->first();
-                    $disputeName[] = $name;
+                    $disputeExName[] = $name;
                 }
             }
-            if ($key == 'ex_employ' or $key == 'tu_employ' or $key == 'eq_employ') {
+            if ($key == 'tu_name') {
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportName::where('id', $dispute_name)->first();
+                    $disputeTuName[] = $name;
+                }
+            }
+            if ($key == 'eq_name') {
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportName::where('id', $dispute_name)->first();
+                    $disputeEqName[] = $name;
+                }
+            }
+
+            if ($key == 'ex_employ') {
                 foreach ($value as $dispute_name) {
                     $name = ClientReportEmployer::where('id', $dispute_name)->first();
-                    $disputeEmployer[] = $name;
+                    $disputeExEmployer[] = $name;
                 }
             }
-            if ($key == 'ex_address' or $key == 'tu_address' or $key == 'eq_address') {
+            if ($key == 'tu_employ') {
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportEmployer::where('id', $dispute_name)->first();
+                    $disputeTuEmployer[] = $name;
+                }
+            }
+            if ($key == 'eq_employ') {
+                foreach ($value as $dispute_name) {
+                    $name = ClientReportEmployer::where('id', $dispute_name)->first();
+                    $disputeEqEmployer[] = $name;
+                }
+            }
+
+            if ($key == 'ex_address') {
                 foreach ($value as $disputeAddresses) {
                     $address = ClientReportAddress::where('id', $disputeAddresses)->first();
-                    $disputeAddress[] = $address;
+                    $disputeExAddress[] = $address;
                 }
             }
-            if ($key == 'ex_phone' or $key == 'tu_phone') {
+            if ($key == 'tu_address' ) {
+                foreach ($value as $disputeAddresses) {
+                    $address = ClientReportAddress::where('id', $disputeAddresses)->first();
+                    $disputeTuAddress[] = $address;
+                }
+            }
+            if ( $key == 'eq_address') {
+                foreach ($value as $disputeAddresses) {
+                    $address = ClientReportAddress::where('id', $disputeAddresses)->first();
+                    $disputeEqAddress[] = $address;
+                }
+            }
+
+            if ($key == 'ex_phone') {
                 foreach ($value as $disputePhones) {
                     $phone = ClientReportPhone::where('id', $disputePhones)->first();
-                    $disputePhone[] = $phone;
+                    $disputeExPhone[] = $phone;
+                }
+            }
+            if ( $key == 'tu_phone') {
+                foreach ($value as $disputePhones) {
+                    $phone = ClientReportPhone::where('id', $disputePhones)->first();
+                    $disputeTuPhone[] = $phone;
                 }
             }
 
@@ -973,10 +1025,17 @@ class AffiliatesController extends Controller
 
 
         $data = [
-            'name' => $disputeName,
-            'employ' => $disputeEmployer,
-            'address' => $disputeAddress,
-            'phone' => $disputePhone,
+            'ex_name' => $disputeExName,
+            'tu_name' => $disputeTuName,
+            'eq_name' => $disputeEqName,
+            'ex_employ' => $disputeExEmployer,
+            'tu_employ' => $disputeTuEmployer,
+            'eq_employ' => $disputeEqEmployer,
+            'ex_address' => $disputeExAddress,
+            'tu_address' => $disputeTuAddress,
+            'eq_address' => $disputeEqAddress,
+            'ex_phone' => $disputeExPhone,
+            'tu_phone' => $disputeTuPhone,
             'personal_price' =>$dataPersonalPrice,
             'ex_public' => $disputeExPublicRecord,
             'ex_account' => $disputeExAccount,
