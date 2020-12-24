@@ -128,13 +128,17 @@ class BanksController extends Controller
             $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
         }
 
-        $bank_addresses = $bank->bankAddresses;
+//        $bank_addresses = $bank->bankAddresses;
+        $bank_addresses = $bank->bankAddresses()
+            ->orderBy(\DB::raw('CASE WHEN type = "executive_address" THEN 0
+                                WHEN type = "registered_agent" THEN 1
+                                END'))
+            ->orderBy('type')
+            ->get();
+
         $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
 
-
-
         return view('furnishers.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses', 'bank_types'));
-
     }
 
     public function update(Request $request)
@@ -250,7 +254,6 @@ class BanksController extends Controller
 
     public function deleteBankLogo(Request $request)
     {
-
         $logId = $request->id;
 
         $delete = BankLogo::find($logId);
@@ -258,10 +261,11 @@ class BanksController extends Controller
             Storage::delete($delete->path);
         }
         $delete->delete();
-        return response()->json(['status' => 'success']);
-
-
-    }
+        if($request->ajax()){
+            return response()->json(['status' => 'success']);
+        }
+        return redirect()->route('admins.bank.show');
+   }
 
     public function types(Request $request)
     {
@@ -376,5 +380,17 @@ class BanksController extends Controller
         $account_type->update(['type' => (int) ($request->type == "true")]);
         return response()->json(['status' => 'success']);
     }
+
+    public function filter(Request $request)
+    {
+
+        $collection = BankLogo::where('additional_information', '!=', null)->get();
+
+        $banksLogos = BankLogo::where('name', 'LIKE', "%bank%")->get();
+
+        dd($collection, $banksLogos);
+
+    }
+
 
 }

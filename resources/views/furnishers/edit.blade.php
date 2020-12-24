@@ -79,8 +79,17 @@
         <div class="container">
             <div class="col-md-12 col-sm-12">
                 <div class="row m-2  pt-4">
-                    <div class="col-md-8 pull-left">
+                    <div class="col-md-2 pull-left">
+                        <form method="POST" action="{{route('admins.bank.delete', $bank->id)}}">
+                            @csrf
+                            @method("DELETE")
 
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger delete-furnisher" value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 pull-left">
                     </div>
                     <div class="col-md-4 pull-right">
                         <form action="/admins/furnishers" method="get">
@@ -108,8 +117,6 @@
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
-
-
                                     <div class="col-sm-3 form-group changeLogo">
                                         @if($bank->checkUrlAttribute())
                                             <img src="{{$bank->getUrlAttribute()}}" width="100px">
@@ -143,7 +150,6 @@
                                     </div>
 
                                 </div>
-
                                 <div id="account_types">
                                     <div class="row" id="account_types_append">
                                         @foreach($account_types as $typeId =>$typeName)
@@ -151,8 +157,6 @@
                                                 {{$typeName}}
                                                 <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}"  {{in_array($typeName, $bank_types)? "checked":''}} class="customcheck ex_name">
                                             </div>
-
-
                                         @endforeach
                                     </div>
                                 </div>
@@ -203,6 +207,14 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 addresses " id="address-{{$address->type}}-{{$address->account_type_id}}">
+
+                                            @if($address->type == 'executive_address')
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                    </div>
+                                                </div>
+                                            @endif
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
@@ -210,13 +222,7 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                                @if($address->type == 'executive_address')
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12">
-                                                            {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
-                                                        </div>
-                                                    </div>
-                                                @endif
+
                                             <div class="row">
                                                 {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control"]) !!}
                                                 {!! Form::hidden("bank_address[$address->type][$atid][type]", $address->type, ["class"=>"form-control"]) !!}
@@ -377,6 +383,36 @@
                 }
             })
         })
+    </script>
+
+    <script>
+        $('.delete-furnisher').click(function(e){
+            e.preventDefault() // Don't post the form, unless confirmed
+
+            bootbox.confirm({
+                title: "Destroy  this FURNISHER/CRAs?",
+                message: "Do you really want to delete this record?",
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancel',
+                        className: 'btn-success'
+
+                    },
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Confirm',
+                        className: 'btn-danger'
+
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $(e.target).closest('form').submit() // Post the surrounding form
+                    }
+                }
+            });
+
+
+        });
     </script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
