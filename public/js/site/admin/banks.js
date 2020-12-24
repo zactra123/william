@@ -58,6 +58,15 @@ $(document).ready(function($) {
 
     })
 
+    $('#bank-type').change(function(){
+        console.log($(this).val())
+        //Show only when type is collection
+        if ($(this).val() == 3){
+            $("#collection_types").removeClass("hidden");
+        } else {
+            $("#collection_types").addClass("hidden");
+        }
+    });
 
     $(document).on('click', '.expand-address', function(){
         var target = $(this).attr('data-address')
