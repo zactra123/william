@@ -112,22 +112,29 @@ class BanksController extends Controller
     {
         $id  = $request->id;
         $bank = BankLogo::find($id);
-        $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
-        $keywordId = null;
-        foreach($keyWords as $key=>$words){
-            if (strpos(strtoupper($bank->name),$words) !== false) {
-                $keywordId = $key;
-                break;
-            }
-        }
-        if($keywordId !=null){
+        // Show only collection account types
+        if ($bank->type == 3) {
+            $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
             $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
                 ->pluck('account_type_id')->toArray();
             $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-        }else{
-            $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
+        } else {
+            $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
+            $keywordId = null;
+            foreach($keyWords as $key=>$words){
+                if (strpos(strtoupper($bank->name),$words) !== false) {
+                    $keywordId = $key;
+                    break;
+                }
+            }
+            if($keywordId !=null){
+                $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
+                    ->pluck('account_type_id')->toArray();
+                $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
+            }else{
+                $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
+            }
         }
-
 //        $bank_addresses = $bank->bankAddresses;
         $bank_addresses = $bank->bankAddresses()
             ->orderBy(\DB::raw('CASE WHEN type = "executive_address" THEN 0
@@ -331,6 +338,16 @@ class BanksController extends Controller
     public function banKName(Request $request)
     {
         $bankName = $request->bank_name;
+        $type = $request->type;
+
+        // Show only collection account types
+        if ($type == 3) {
+            $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
+            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
+                ->pluck('account_type_id')->toArray();
+            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
+            return Response::json($account_types);
+        }
         $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
         $keywordId = null;
         foreach($keyWords as $key=>$words){

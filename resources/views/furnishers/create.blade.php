@@ -67,7 +67,7 @@
                                             <input type="text" name="name"  class="form-control" placeholder="BANK NAME" id="bank_name">
                                         </div>
 
-                                        <div id="collection_types" class="m-5">
+                                        <div id="collection_types" class="m-5 hidden">
                                             <div class="row" id="collection_types_append">
                                                 <div class="col-md-4 ">
                                                     3RD PARTY CA
@@ -82,6 +82,12 @@
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                             </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            {!! Form::select("bank[type]", \App\BankLogo::TYPES,  1, ['class'=>'form-control', 'id' => "bank-type"]); !!}
                                         </div>
 
                                     </div>

@@ -161,13 +161,18 @@ $(document).ready(function($) {
         $(".updateLogo").removeClass("hide")
 
     });
-    $(document).on('change', '#bank_name' ,function(){
-        var bankName = $(this).val()
+    $(document).on('change', '#bank_name, #bank-type' ,function(){
+        var bankName = $('#bank_name').val()
+        var bankType = $('#bank-type').val()
         var token = $("meta[name='csrf-token']").attr("content");
         $.ajax({
             url: "/admins/furnishers/bank-name",
             method:"POST",
-            data:{bank_name:bankName, _token: token},
+            data:{
+                bank_name:bankName,
+                type: bankType,
+                _token: token
+            },
             success: function (result) {
 
                 html ='<div class="row" id="account_types_append">'
