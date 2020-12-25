@@ -104,7 +104,7 @@ class BanksController extends Controller
             }
         }
 
-        return redirect()->route('furnishers.show', ['type'=> $bank->type??'all']);
+        return redirect()->route('admins.bank.show', ['type'=> $bank->type??'all']);
 
     }
 
