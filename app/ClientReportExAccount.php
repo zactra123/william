@@ -10,7 +10,7 @@ class ClientReportExAccount extends Model
         "CC" => ['credit card', 'charge card', 'business credit'],
         "AUTO" => ['auto lease', 'auto loan'],
         "PERSONAL LOAN" => ['unsecured', 'secured loan', 'line of credit',  'note loan', 'sales contract'],
-        "MORTGAGE" => ['mortgage', 'fha mortgage', 'home equity', 'rental'],
+        "MORTGAGE" => ['mortgage', 'fha mortgage', 'home equity', 'rental', 'secured loc'],
         "CA"=>['collection', 'debt buyer'],
         "STUDENT LOAN" =>['education','education loan'],
         "UTILITY " =>['cell phone','utility'],
