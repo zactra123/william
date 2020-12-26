@@ -14,7 +14,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h1>Content</h1>
-                                    {!! Form::open(['route' => ['owner.home.content.update', $content->url], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
+                                    {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
                                     @method('PUT')
                                     @csrf
                                     <div class="form-group row font">

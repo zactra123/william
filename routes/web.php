@@ -72,13 +72,9 @@ Route::group(['prefix'=>'owner'], function(){
     Route::any('affiliate/pricing', 'Owner\AffiliatesController@pricing')->name('owner.affiliate.pricing');
     Route::get('affiliate/pricing-affiliate', 'Owner\AffiliatesController@pricing_affiliate');
 
-    Route::get('home-page-content', 'Owner\SuperAdminsController@homePageContent')->name('owner.home.content');
-    Route::get('create/home-page-content', 'Owner\SuperAdminsController@homePageContentCreate')->name('owner.home.content.create');
-    Route::post('create/home-page-content', 'Owner\SuperAdminsController@homePageContentStore')->name('owner.home.content.store');
-    Route::get('view/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentShow')->name('owner.home.content.show');
-    Route::get('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentEdit')->name('owner.home.content.edit');
-    Route::put('edit/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentUpdate')->name('owner.home.content.update');
-    Route::delete('delete/home-page-content/{url}', 'Owner\SuperAdminsController@homePageContentDestroy')->name('owner.home.content.destroy');
+
+    Route::resource('credit-education', 'Owner\CreditEducationsController')->names('owner.credit.education');
+
 
 
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');

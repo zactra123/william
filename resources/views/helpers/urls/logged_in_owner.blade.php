@@ -6,7 +6,7 @@
         <li class="menu-item"><a href="{{ route('owner.receptionist.index')}}">Receptionist</a></li>
         <li class="menu-item"> <a href="{{ url('owner/message')}}">Messages</a> </li>
         <li class="menu-item"><a href="{{ route('owner.client.index')}}" >User List</a></li>
-        <li class="menu-item"><a href="{{route('owner.home.content')}}">Credit Education</a></li>
+        <li class="menu-item"><a href="{{route('owner.credit.education.index')}}">Credit Education</a></li>
         <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

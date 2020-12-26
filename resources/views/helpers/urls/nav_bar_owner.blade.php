@@ -22,7 +22,7 @@
 
 <li><a href="{{ url('owner/message')}}">MESSAGES</a></li>
 <li><a href="{{ route('owner.affiliate.pricing')}}">PRICING</a></li>
-<li><a href="{{route('owner.home.content')}}">EDUCATIONS</a></li>
+<li><a href="{{route('owner.credit.education.index')}}">EDUCATIONS</a></li>
 <li class="dropdown menu-item"><a href="#"  data-toggle="dropdown">SLOGANS</a>
     <ul id="products-menu" class="dropdown-menu clearfix" role="menu">
         <li><a href="{{route('owner.slogans.index')}}">VIEW SLOGANS</a></li>
