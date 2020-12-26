@@ -104,8 +104,6 @@
     <script src="{{asset('owl-carrosel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/js/jquery-ui.js')}}"></script>
 
-
-
 <!-- Revolution Slider -->
     <script src="{{asset('js/revolution/jquery.themepunch.revolution.min.js')}}"></script>
     <script src="{{asset('js/revolution/jquery.themepunch.tools.min.js')}}"></script>
@@ -186,23 +184,22 @@
 
                     @if (Route::has('login'))
                         @auth
-                            @if(Auth::user()->role == 'client')
-                                @include('helpers.urls.logged_in_client')
-                            @elseif((Auth::user()->role == 'affiliate'))
-                                @include('helpers.urls.logged_in_affiliate')
-                            @elseif((Auth::user()->role == 'admin'))
-                                @include('helpers.urls.logged_in_admin')
-                            @elseif((Auth::user()->role == 'affiliate'))
-                                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>
-                            @elseif((Auth::user()->role == 'receptionist'))
-                                @include('helpers.urls.logged_in_receptionist')
-                            @else
-                                @include('helpers.urls.logged_in_owner')
-{{--                                <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">Home</a></li>--}}
-                            @endif
+
+                            <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/admin') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
+                                <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
+                                    <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
+                                                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            LOG OUT  <i class="fa fa-power-off"></i></a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+
                         @else
                             <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a></li>
-
 
                             @if (Route::has('register'))
 {{--                                <li><a href="{{ route('register') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>--}}
@@ -393,27 +390,33 @@
     <ul class="menu-wrapper">
 
         @if(Auth::user())
-            @if(Auth::user()->role == 'client')
-                @include('helpers.urls.nav_bar_client')
-                @if(!empty(Auth::user()->clientDetails))
-                    @if(Auth::user()->clientDetails->registration_steps != 'registered')
-                        <li ><a href="{{route('client.details.edit', Auth::user()->id)}}">EDIT DETAILS</a></li>
-                        <li ><a href="{{route('client.addDriverSocial')}}">UPLOAD DL & SS </a></li>
-                        <li><a href="{{route('client.credentials')}}">CREDENTIALS</a></li>
-                    @endif
-                @endif
-                <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                       LOG OUT <i class="fa fa-power-off"></i></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
 
+            @if(Auth::user()->role == 'client')
+                @include('helpers.urls.logged_in_client')
+            @elseif((Auth::user()->role == 'affiliate'))
+                @include('helpers.urls.logged_in_affiliate')
+                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">NOME</a></li>
+                @include('helpers.urls.logged_in_affiliate')
+            @elseif((Auth::user()->role == 'admin'))
+                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">NOME</a></li>
+                @include('helpers.urls.logged_in_admin')
+            @elseif((Auth::user()->role == 'receptionist'))
+                <li class="menu-item"> <a href="{{ url('receptionist/message') }}"> HOME</a> </li>
+                @include('helpers.urls.logged_in_receptionist')
             @else
+                <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">HOME</a></li>
+                @include('helpers.urls.logged_in_owner')
 
             @endif
+
+            <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                    LOG OUT <i class="fa fa-power-off"></i></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
         @else
             @include('helpers.urls.nav_bar_guest')
             <li><a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="">Login</a>

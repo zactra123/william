@@ -1,13 +1,13 @@
-<li><a href="{{url('/client/details')}}">Home</a></li>
+<li><a href="{{url('/client/details')}}">HOME</a></li>
 
-{{--    @if(!empty(Auth::user()->clientDetails))--}}
-{{--        @if(Auth::user()->clientDetails->registration_steps != 'registered')--}}
-{{--        <li ><a href="{{route('client.details.edit', Auth::user()->id)}}">Edit details</a></li>--}}
-{{--        <li ><a href="{{route('client.addDriverSocial')}}">Upload DL & SS </a></li>--}}
-{{--        <li><a href="{{route('client.credentials')}}">Credentials</a></li>--}}
-{{--        @endif--}}
-{{--    @else--}}
-{{--        <li><a href="{{route('client.details.create')}}">Add your Details</a></li>--}}
+@if(!empty(Auth::user()->clientDetails))
+    @if(Auth::user()->clientDetails->registration_steps != 'registered')
+    <li ><a href="{{route('client.details.edit', Auth::user()->id)}}">EDIT DETAILS</a></li>
+    <li ><a href="{{route('client.addDriverSocial')}}">UPLOAD DL & SS </a></li>
+    <li><a href="{{route('client.credentials')}}">CREDENTIALS</a></li>
+    @endif
+@else
+    <li><a href="{{route('client.details.create')}}">ADD YOUR DETAILS</a></li>
 
-{{--    @endif--}}
+@endif
 
