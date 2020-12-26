@@ -421,6 +421,32 @@
             <li><a href="{{ route('register.Affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">Registration</a></li>
 
         @endif
+            <script>
+                $(document).ready(function(){
+                    setInterval(getAppiontments(), 10 * 60 * 1000);
+                });
+
+                getAppiontments = function(){
+                    $.ajax({
+                        url: "/admin/getNotifications",
+                        type: "get",
+                        success: function(result){
+                            if (result.length > 0) {
+                                console.log(result.length)
+                                $("#appointmentNotifier .apointments-count").text(result.length)
+                                $("#appointmentNotifier .appointments-info").text()
+                                $.each( result, function(i, e){
+                                    var appointment = '<div class="text-primary">'+ e.name + '</div>';
+                                    $("#appointmentNotifier .appointments-info").append(appointment)
+                                });
+                                $("#appointmentNotifier").modal("show");
+                            }
+                        }
+                    })
+                }
+
+            </script>
+
 
 
     </ul> <!-- menu-wrapper -->
