@@ -3,18 +3,24 @@
 namespace App\Services;
 
 use App\ClientReportEqAccount;
-use App\ClientReportEqPublicRecord;
 use App\ClientReportExAccount;
-use App\ClientReportExPublicRecord;
 use App\ClientReportTuAccount;
-use App\ClientReportTuPublicRecord;
 use App\DisputesPricing;
 use Illuminate\Support\Facades\DB;
 
 class PricingDetails
 {
+    /**
+     * PricingDetails Services.
+     * determines the price and returns
+     * on the selected disputes depending on the price assigned affiliate
+     */
     protected $pricing;
 
+    /**
+     * determines the price assigned affiliate
+     * if not assigned price, takes default price
+     */
     public function __construct($affiliate)
     {
         $this->pricing = DisputesPricing::where('user_id', $affiliate)->first();
@@ -23,6 +29,10 @@ class PricingDetails
         }
     }
 
+    /**
+     * determines the price for personal information
+     * name, employ, address
+     */
     public function personalInformation()
     {
         $dataPrice = [
@@ -32,6 +42,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for statement (fraud alert)
+     */
     public function statement()
     {
         $dataPrice = [
@@ -41,6 +54,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for inquiries
+     */
     public function inquiries()
     {
         $dataPrice = [
@@ -50,6 +66,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for experian credit report data account or collection
+     */
     public function exAccountPrice($bureau, $exAccountId)
     {
         $exAccount = ClientReportExAccount::where('id', $exAccountId)->first();
@@ -104,6 +123,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for trans union credit data account or collection
+     */
     public function tuAccountPrice( $bureau, $tuAccountId)
     {
         $tuAccount = ClientReportTuAccount::where('id', $tuAccountId)->first();
@@ -159,6 +181,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for equifax credit data via credit karma  account or collection
+     */
     public function eqAccountPrice($bureau, $eqAccountId)
     {
         $eqAccount = ClientReportEqAccount::where('id', $eqAccountId)->first();
@@ -208,6 +233,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for all credit credit bureaus report data public record
+     */
     public function publicRecordPrice()
     {
         $priceInaccurate = $this->pricing->public_record;
@@ -220,6 +248,9 @@ class PricingDetails
         return $dataPrice;
     }
 
+    /**
+     * determines the price for collection type of credit
+     */
     public function collectionPricing($balance){
 
         foreach ($this->pricing->collection as $value){
@@ -233,6 +264,9 @@ class PricingDetails
         return $price;
     }
 
+    /**
+     * determines the equifax price type blocking or late
+     */
     public function priceTypeEq($account)
     {
         if(strpos($account->account_status, 'close')!== false){
@@ -249,6 +283,9 @@ class PricingDetails
        return 'BLOCKING';
     }
 
+    /**
+     * determines the equifax for type of account student loan  price type blocking or late
+     */
     public function priceTypeEqStudent($account)
     {
         if (strpos($account->account_status, 'close')!== flase) {
@@ -265,6 +302,9 @@ class PricingDetails
         return 'BLOCKING';
     }
 
+    /**
+     * determines the trans union price type blocking or late
+     */
     public function priceTypeTu($account)
     {
         if ($account->date_closed != null) {
@@ -287,6 +327,9 @@ class PricingDetails
        return 'BLOCKING';
     }
 
+    /**
+     * determines the trans union for type of account student loan  price type blocking or late
+     */
     public function priceTypeTuStudent($account)
     {
         if ($account->date_closed != null) {
@@ -307,6 +350,9 @@ class PricingDetails
         return 'BLOCKING';
     }
 
+    /**
+     * determines the experian price type blocking or late
+     */
     public function priceExType($account)
     {
 
@@ -336,6 +382,9 @@ class PricingDetails
         return 'BLOCKING';
     }
 
+    /**
+     * determines the experian for type of account student loan  price type blocking or late
+     */
     public function priceExStudentType($account)
     {
         if(strpos($account->status, "open") !== false){
@@ -364,6 +413,9 @@ class PricingDetails
         return 'BLOCKING';
     }
 
+    /**
+     * determines  and count trans union type and late
+     */
     public function tuLates($rating){
         $ratingArray = str_split($rating);
         $countRating = array_count_values($ratingArray);
@@ -384,6 +436,9 @@ class PricingDetails
         return $lates;
     }
 
+    /**
+     * determines  and count experian type and late
+     */
     public function exLates($rating)
     {
         $lates = [];

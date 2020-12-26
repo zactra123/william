@@ -4,8 +4,21 @@ namespace App\Services;
 
 class ClientDetailsNewData
 {
+    /**
+     * ClientDetailsNewData Services.
+     * Reads a date from documents  driver license and social security returns
+     * value expiration, date date of birth, address (number, name, city, state, zip)
+     * sex first and last name and social security number
+     */
+
     private $OCR_URL = "https://api.idanalyzer.com";
 
+
+    /**
+     *check driver license file size if size more than 1mb resize image else call to api
+     * for read document data
+     *
+     */
     public function getImageDriverLicense($path, $name, $extension)
     {
         $driverLicenseSize = false;
@@ -31,10 +44,12 @@ class ClientDetailsNewData
 //        $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
 
         return $resultDriverLicense;
-
-
     }
 
+    /**
+     *check social security file size if size more than 1mb resize image else call to api
+     * for read document data
+     */
     public function getImageSocialSecurity($path, $name, $extension)
     {
 
@@ -60,6 +75,9 @@ class ClientDetailsNewData
 
     }
 
+    /**
+     *call to api for read data from document
+     */
     public function getImageData($input)
     {
         $fileData = base64_encode(file_get_contents(public_path($input)));
@@ -92,8 +110,11 @@ class ClientDetailsNewData
         }
     }
 
-
-
+    /**
+     * Reads a date from documents  driver license returns
+     * value expiration, date date of birth, address (number, name, city, state, zip)
+     * sex first and last name
+     */
     public function dirverLicenseProcessing($text)
     {
         if(isset($text['error']) ){
@@ -123,6 +144,10 @@ class ClientDetailsNewData
 
     }
 
+    /**
+     * Reads a date from documents social security returns
+     * value social security
+     */
     public function socialSecurityProccessing($text)
     {
         if(isset($text['error']) ){
@@ -136,6 +161,9 @@ class ClientDetailsNewData
 
     }
 
+    /**
+     *resize file (driver license or social security)
+     */
     public function  resizeImage($path, $name)
     {
         if (!is_dir(str_replace('/'.$name,'',$path). '/draft')) {

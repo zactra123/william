@@ -18,12 +18,21 @@ use Illuminate\Support\Facades\Validator;
 class ClientsController extends Controller
 {
 
+
+    /**
+     * ClientsController constructor.
+     * Should access only logged in user with Super Admin("superadmin") Role
+     * Super Admin can view client list
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'superadmin']);
     }
 
-
+    /**
+     * @return \Illuminate\View\View "owner.client.index" with @users
+     * @admins Users with role "client" paginated 10
+     */
     public function index()
     {
         $users = User::clients()
@@ -36,6 +45,12 @@ class ClientsController extends Controller
         return view('owner.client.index', compact( 'users'));
     }
 
+
+    /**
+     * Should remove existing Client from database
+     * @param $userId
+     * @return JsonResponse
+     */
     public function destroy($userId)
     {
         try {
@@ -48,6 +63,7 @@ class ClientsController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
 
     public function clientReportNumber(Request $request)
     {

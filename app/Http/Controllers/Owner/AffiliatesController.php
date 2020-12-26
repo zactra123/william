@@ -18,10 +18,16 @@ use Illuminate\Support\Facades\Validator;
 class AffiliatesController extends Controller
 {
 
+    /**
+     *AffiliatesController constructor.
+     * Should access only logged in user with Super Admin("superadmin") Role
+     * Super Admin can view affiliate list
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'superadmin']);
     }
+
 
 
     public function index()
