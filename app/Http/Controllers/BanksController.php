@@ -154,7 +154,6 @@ class BanksController extends Controller
 
     public function update(Request $request)
     {
-        dd($request->all());
 
         if($request->term != null){
 
