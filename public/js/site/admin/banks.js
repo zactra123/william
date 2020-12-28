@@ -218,6 +218,7 @@ $(document).ready(function($) {
     })
 
     $('.selectize-name').selectize({
+        delimiter: '____',
         searchField: 'name',
         labelField: 'name',
         valueField: 'name',
@@ -256,23 +257,23 @@ $(document).ready(function($) {
                 $zip = $item.parents('.addresses').find('.us-zip'),
                 $phone = $item.parents('.addresses').find('.phone'),
                 $fax = $item.parents('.addresses').find('.fax');
-            if ($item.attr('data-street') != undefined) {
+            if ($item.attr('data-street') != "undefined") {
                 $street.val($item.attr('data-street'))
             }
-            if ($item.attr('data-city') != undefined) {
+            if ($item.attr('data-city') != "undefined") {
                 $city.val($item.attr('data-city'))
             }
-            if ($item.attr('data-state') != undefined) {
+            if ($item.attr('data-state') != "undefined") {
                 selectize = $state.eq(0).data('selectize')
                 selectize.setValue(selectize.search($item.attr('data-state')).items[0].id)
             }
-            if ($item.attr('data-zip') != undefined) {
+            if ($item.attr('data-zip') != "undefined") {
                 $zip.val($item.attr('data-zip'))
             }
-            if ($item.attr('data-phone_number') != undefined) {
+            if ($item.attr('data-phone_number') != "undefined") {
                 $phone.val($item.attr('data-phone_number'))
             }
-            if ($item.attr('data-fax_number') != undefined) {
+            if ($item.attr('data-fax_number') != "undefined") {
                 $fax.val($item.attr('data-fax_number'))
             }
             $('.us-phone').trigger('input');
