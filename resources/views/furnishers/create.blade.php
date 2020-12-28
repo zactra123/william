@@ -297,7 +297,7 @@
             $('#bankInformation').validate({
                 rules: {
                     "logo": {
-                        extension: "jpg,jpeg, png"
+                        extension: "jpg,jpeg,png"
                     },
                 },
                 messages: {
