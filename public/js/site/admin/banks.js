@@ -43,7 +43,6 @@ $(document).ready(function($) {
             target = $(this).attr('data-account')
             self = $('#select-account')[0].selectize
 
-        console.log(target, 'DASDAD')
 
         self.removeItem(option)
         $(target).addClass('hidden')
@@ -215,6 +214,68 @@ $(document).ready(function($) {
 
         }else{
             $('#addresses_container').find('#dispute-address-'+ id).remove()
+        }
+    })
+
+    $('.selectize-name').selectize({
+        searchField: 'name',
+        labelField: 'name',
+        valueField: 'name',
+        maxItems: 1,
+        create: function(input) {
+            account_type = this.$input.parents('tr').attr('data-id');
+            return {
+                name: input
+            };
+        },
+        load: function(query, callback) {
+            $.ajax({
+                url: '/admins/furnishers/address-autocomplete',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    search_key: query
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                    callback(res);
+                }
+            });
+        },
+        render: {
+            item: function (data) {
+                return "<div data-street='" + data.street + "' data-city='" + data.city + "' data-state='" + data.state + "' data-zip='" + data.zip + "' data-phone_number='" + data.phone_number + "'  data-fax_number='" + data.fax_number + "' class='item'>" + data.name + " </div>";
+            }
+        },
+        onItemAdd: function (value, $item) {
+            var $street = $item.parents('.addresses').find('.street'),
+                $city = $item.parents('.addresses').find('.city'),
+                $state = $item.parents('.addresses').find('.state'),
+                $zip = $item.parents('.addresses').find('.us-zip'),
+                $phone = $item.parents('.addresses').find('.phone'),
+                $fax = $item.parents('.addresses').find('.fax');
+            if ($item.attr('data-street') != undefined) {
+                $street.val($item.attr('data-street'))
+            }
+            if ($item.attr('data-city') != undefined) {
+                $city.val($item.attr('data-city'))
+            }
+            if ($item.attr('data-state') != undefined) {
+                selectize = $state.eq(0).data('selectize')
+                selectize.setValue(selectize.search($item.attr('data-state')).items[0].id)
+            }
+            if ($item.attr('data-zip') != undefined) {
+                $zip.val($item.attr('data-zip'))
+            }
+            if ($item.attr('data-phone_number') != undefined) {
+                $phone.val($item.attr('data-phone_number'))
+            }
+            if ($item.attr('data-fax_number') != undefined) {
+                $fax.val($item.attr('data-fax_number'))
+            }
+            $('.us-phone').trigger('input');
         }
     })
 });

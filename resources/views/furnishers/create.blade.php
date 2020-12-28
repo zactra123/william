@@ -131,7 +131,7 @@
                                         @if($type == 'registered_agent')
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
-                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"selectize-name w-100", "placeholder"=>"Agent Name"]) !!}
                                                 </div>
                                             </div>
                                         @endif
@@ -147,15 +147,15 @@
 
                                             <div class="form-group col-sm-4">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                {!! Form::text("bank_address[{$type}][0][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
+                                                {!! Form::text("bank_address[{$type}][0][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                             </div>
                                             <div class="form-group col-sm-3">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                {!! Form::text("bank_address[{$type}][0][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
+                                                {!! Form::text("bank_address[{$type}][0][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                             </div>
                                             <div class="form-group col-sm-2">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                {!! Form::select("bank_address[{$type}][0][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
+                                                {!! Form::select("bank_address[{$type}][0][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                             </div>
                                             <div class="form-group col-sm-3">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
@@ -168,7 +168,7 @@
                                                     <img  class="responsive" src="/images/phone.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
-                                                    {!! Form::text("bank_address[{$type}][0][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
@@ -176,7 +176,7 @@
                                                     <img  class="responsive" src="/images/fax.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
-                                                {!! Form::text("bank_address[{$type}][0][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                                {!! Form::text("bank_address[{$type}][0][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                 </div>
                                             </div>
 

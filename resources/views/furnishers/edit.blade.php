@@ -224,32 +224,29 @@
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::select('todo[user_id]',[""=>""]+$registredAgent ,$address->id, ['class'=>'selectize-owner', 'id' => 'select-account']); !!}
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'selectize-name w-100', 'placeholder' => 'Agent Name']); !!}
 
 
-                                                    </div>
-                                                    <div class="form-group col-sm-12">
-                                                        {!! Form::hidden("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
                                                     </div>
                                                 </div>
                                             @endif
 
                                             <div class="row">
-                                                {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control="]) !!}
                                                 {!! Form::hidden("bank_address[$address->type][$atid][type]", $address->type, ["class"=>"form-control"]) !!}
                                                 {!! Form::hidden("bank_address[$address->type][$atid][id]", $address->id, ["class"=>"form-control"]) !!}
 
                                                 <div class="form-group col-sm-4">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                    {!! Form::text("bank_address[$address->type][$atid][street]",  $address->street, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
+                                                    {!! Form::text("bank_address[$address->type][$atid][street]",  $address->street, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-3">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                    {!! Form::text("bank_address[$address->type][$atid][city]", $address->city, ["class"=>"form-control","placeholder"=>"City"]) !!}
+                                                    {!! Form::text("bank_address[$address->type][$atid][city]", $address->city, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                    {!! Form::select("bank_address[$address->type][$atid][state]", $states,  $address->state, ['class'=>'selectize-single','placeholder' => 'State']); !!}
+                                                    {!! Form::select("bank_address[$address->type][$atid][state]", $states,  $address->state, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                                 </div>
                                                 <div class="form-group col-sm-3">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
@@ -262,7 +259,7 @@
                                                        <img  class="responsive" src="/images/phone.png">
                                                     </div>
                                                     <div class="form-group col-sm-10">
-                                                    {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
+                                                    {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
@@ -270,7 +267,7 @@
                                                         <img  class="responsive" src="/images/fax.png">
                                                     </div>
                                                     <div class="form-group col-sm-10">
-                                                        {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
+                                                        {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                     </div>
                                                 </div>
 
@@ -372,48 +369,6 @@
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
-    <script>
-        $(document).ready(function(){
-            $('.selectize-owner').selectize({
-                onChange: function(name) {
-                    console.log('dasdasd');
-                    var todo_id = this.$input.parents('tr').attr('data-id'),
-                        token = $("meta[name='csrf-token']").attr("content");
-                    $.ajax({
-                        url: '/admins/furnishers/assign/register-agent',
-                        type: 'POST',
-                        data: {
-                            "_token": token,
-                            id: todo_id,
-                            user_id : value
-                        },
-                        success: function (result) {
-                            console.log(result)
-                        },
-                        error: function (error) {
-                            console.log(error)
-                        }
-                    })
-                }
-
-            })
-
-            $('.selectize-owner').on('change', function(){
-                console.log('dasdasd')
-                $(this).attr("name");
-
-            })
-
-
-
-        });
-
-    </script>
-
-
-
-
-
     <script>
         $(document).ready(function($) {
 
