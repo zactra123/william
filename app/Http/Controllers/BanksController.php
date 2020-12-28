@@ -110,6 +110,7 @@ class BanksController extends Controller
 
     public function edit(Request $request)
     {
+
         $id  = $request->id;
         $bank = BankLogo::find($id);
         // Show only collection account types
@@ -118,7 +119,9 @@ class BanksController extends Controller
             $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
                 ->pluck('account_type_id')->toArray();
             $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-        } else {
+        } elseif($bank->type == 5){
+            $account_types = null;
+        }else{
             $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
             $keywordId = null;
             foreach($keyWords as $key=>$words){
@@ -144,12 +147,15 @@ class BanksController extends Controller
             ->get();
 
         $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
+        $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
 
-        return view('furnishers.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses', 'bank_types'));
+        return view('furnishers.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses', 'bank_types', 'registredAgent'));
     }
 
     public function update(Request $request)
     {
+        dd($request->all());
+
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
@@ -244,17 +250,82 @@ class BanksController extends Controller
 
     public function showBankLogo(Request $request)
     {
-        $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
+        if(!is_null($request->term)){
+            $chars = [' ', '.', '-', '(', ')'];
+            $phoneFaxZip =str_replace($chars, '', $request->term);
+            $banksLogos = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_addresses.type', 'executive_address');
+
+            $searchName = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                    ->where('bank_addresses.type', 'executive_address');
+            $searchName = $searchName->where('bank_logos.name', 'LIKE', "%{$request->term}%")->first();
+            if(!empty($searchName)){
+                $banksLogos =  $banksLogos->where('bank_logos.name', 'LIKE', "%{$request->term}%");
+            }
+
+            $searchExName = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_addresses.type', 'executive_address');
+            $searchExName = $searchExName->where('bank_addresses.name', 'LIKE', "%{$request->term}%")->first();
+
+            if(empty($searchName) && !empty($searchExName)){
+                $banksLogos =  $banksLogos->where('bank_addresses.name', 'LIKE', "%{$request->term}%");
+            }
+
+            $searchExStreet = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                    ->where('bank_addresses.type', 'executive_address');
+            $searchExStreet = $searchExStreet->where('bank_addresses.street', 'LIKE', "%{$request->term}%")->first();
+
+            if(empty($searchName) && empty($searchExName) && !empty($searchExStreet)){
+                $banksLogos =  $banksLogos->where('bank_addresses.street', 'LIKE', "%{$request->term}%");
+            }
+
+            $searchExPhone = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_addresses.type', 'executive_address');
+            $searchExPhone = $searchExPhone
+                ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")->first();;
+            if(empty($searchName) && empty($searchExName) && empty($searchExStreet) && !empty($searchExPhone)){
+                $banksLogos = $banksLogos->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+            }
+
+            $searchExFax = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_addresses.type', 'executive_address');
+            $searchExFax = $searchExFax
+                ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")->first();;
+            if(empty($searchName) && empty($searchExName) && empty($searchExStreet) && empty($searchExPhone) && !empty($searchExFax)){
+                $banksLogos = $banksLogos->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+            }
+            $searchExZip = BankLogo::
+                join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where('bank_addresses.type', 'executive_address');
+            $searchExZip = $searchExZip
+                ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")->first();;
+            if(empty($searchName) && empty($searchExName) && empty($searchExStreet) && empty($searchExPhone) && empty($searchExFax) && !empty($searchExZip)){
+                $banksLogos = $banksLogos->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+            }
+
+        }else{
+            $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
+        }
+
+        if(!is_null($request->type) && $request->type != 'all'){
+
+            $banksLogos = $banksLogos->whereIn('type', $request->type);
+        }
 
         if (!empty($request->character)) {
             if ($request->character == '#'){
                 $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
-
             } else {
                 $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
             }
         }
-        $banksLogos = $banksLogos->orderBy('name')->paginate(20);
+        $banksLogos = $banksLogos->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
         return view('furnishers.logo_new',compact('banksLogos'));
 
     }
@@ -396,6 +467,11 @@ class BanksController extends Controller
 
         $account_type->update(['type' => (int) ($request->type == "true")]);
         return response()->json(['status' => 'success']);
+    }
+
+    public function getRegisteredAgent(Request $request)
+    {
+        dd($request->all());
     }
 
     public function filter(Request $request)

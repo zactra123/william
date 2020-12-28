@@ -81,18 +81,23 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="row m-2  pt-4">
-                        <div class="col-md-8 pull-left">
+                        <div class="col-md-3 pull-left">
                             <a class="btn btn-primary pull-left" href="{{ route('admins.bank.create')}}" role="button">
                                 ADD FURNISHERs/CRAs
                             </a>
                         </div>
-                        <div class="col-md-4 pull-right">
+                        <div class="col-md-9 pull-right">
                             <form >
                                 <div class="row">
-                                    <div class="col-md-8 form-group">
+
+                                    <div class="col-md-4 form-group">
+                                        {!! Form::select("type[]", \App\BankLogo::TYPES, null, ['multiple'=>'multiple', 'class'=>'form-control', 'id' => "bank-type"]); !!}
+
+                                    </div>
+                                    <div class="col-md-5 form-group">
                                         <input type="text" name="term" value="{{request()->term}}" class="form-control" >
                                     </div>
-                                    <div class="col-md-4  form-group">
+                                    <div class="col-md-3  form-group">
                                         <input type="submit" value="Search" class="form-control">
                                     </div>
                                 </div>

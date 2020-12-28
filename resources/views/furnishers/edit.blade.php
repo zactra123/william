@@ -224,7 +224,12 @@
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
+                                                        {!! Form::select('todo[user_id]',[""=>""]+$registredAgent ,$address->id, ['class'=>'selectize-owner', 'id' => 'select-account']); !!}
+
+
+                                                    </div>
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::hidden("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Agent Name"]) !!}
                                                     </div>
                                                 </div>
                                             @endif
@@ -359,11 +364,56 @@
 
 
     </script>
+
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+    <script>
+        $(document).ready(function(){
+            $('.selectize-owner').selectize({
+                onChange: function(name) {
+                    console.log('dasdasd');
+                    var todo_id = this.$input.parents('tr').attr('data-id'),
+                        token = $("meta[name='csrf-token']").attr("content");
+                    $.ajax({
+                        url: '/admins/furnishers/assign/register-agent',
+                        type: 'POST',
+                        data: {
+                            "_token": token,
+                            id: todo_id,
+                            user_id : value
+                        },
+                        success: function (result) {
+                            console.log(result)
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        }
+                    })
+                }
+
+            })
+
+            $('.selectize-owner').on('change', function(){
+                console.log('dasdasd')
+                $(this).attr("name");
+
+            })
+
+
+
+        });
+
+    </script>
+
+
+
+
+
     <script>
         $(document).ready(function($) {
 
@@ -421,7 +471,7 @@
         });
     </script>
 
-    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+
 @endsection
 
 

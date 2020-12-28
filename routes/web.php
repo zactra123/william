@@ -167,7 +167,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::post('/types/update_default', 'BanksController@update_type_default');
         Route::any('/keywords', 'BanksController@keywords');
 
-        Route::any('affiliate/filter', 'BanksController@filter');
+        Route::post('assign/register-agent', 'BanksController@getRegisteredAgent');
 
 
     });
