@@ -89,17 +89,27 @@
                         <div class="col-md-9 pull-right">
                             <form >
                                 <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-6">
+                                        <div class=" form-group">
+                                            <input type="text" name="term" value="{{request()->term}}" class="form-control" placeholder="SEARCH...">
+                                        </div>
+                                        <div class="form-group">
+                                            {!! Form::select("type[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->type, ['multiple'=>'multiple', 'class'=>' selectize', 'id' => "bank-type"]); !!}
 
-                                    <div class="col-md-4 form-group">
-                                        {!! Form::select("type[]", \App\BankLogo::TYPES, null, ['multiple'=>'multiple', 'class'=>'form-control', 'id' => "bank-type"]); !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class=" form-group">
+                                            <input type="submit" value="Search" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    </div>
-                                    <div class="col-md-5 form-group">
-                                        <input type="text" name="term" value="{{request()->term}}" class="form-control" >
-                                    </div>
-                                    <div class="col-md-3  form-group">
-                                        <input type="submit" value="Search" class="form-control">
-                                    </div>
+                                <div class="row">
+
+
+
                                 </div>
                             </form>
                         </div>
@@ -158,6 +168,8 @@
             <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
         </div>
     </script>
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover({
@@ -192,6 +204,8 @@
                     }
                 });
             })
+
+            $(".selectize").selectize({plugins: ['remove_button']})
         })
 
     </script>
