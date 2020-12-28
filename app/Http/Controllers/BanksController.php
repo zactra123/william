@@ -278,7 +278,7 @@ class BanksController extends Controller
                 $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
             }
         }
-        $banksLogos = $banksLogos->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
+        $banksLogos = $banksLogos->groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
         return view('furnishers.logo_new',compact('banksLogos'));
 
     }
