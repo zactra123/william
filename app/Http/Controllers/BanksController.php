@@ -120,7 +120,7 @@ class BanksController extends Controller
                 ->pluck('account_type_id')->toArray();
             $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
         } elseif($bank->type == 5){
-            $account_types = null;
+            $account_types = [];
         }else{
             $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
             $keywordId = null;
@@ -364,6 +364,10 @@ class BanksController extends Controller
         $bankName = $request->bank_name;
         $type = $request->type;
 
+        // Don't show any type if medical service provider was selected
+        if ($type == 5) {
+            return Response::json([]);
+        }
         // Show only collection account types
         if ($type == 3) {
             $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
