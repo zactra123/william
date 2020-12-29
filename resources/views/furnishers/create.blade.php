@@ -244,16 +244,14 @@
                                                 {!! Form::text("bank_address[{$type}][0][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                 </div>
                                             </div>
-                                            @if($type == 'executive_address')
-                                                <div class="form-group col-sm-4">
-                                                    <div class="form-group col-sm-2 p-0">
-                                                        <img  class="responsive" src="/images/email.png">
-                                                    </div>
-                                                    <div class="form-group col-sm-10">
-                                                        {!! Form::email("bank_address[$type][0][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                                                    </div>
+                                            <div class="form-group col-sm-4">
+                                                <div class="form-group col-sm-2 p-0">
+                                                    <img  class="responsive" src="/images/email.png">
                                                 </div>
-                                            @endif
+                                                <div class="form-group col-sm-10">
+                                                    {!! Form::email("bank_address[$type][0][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>

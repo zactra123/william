@@ -333,7 +333,7 @@
                                                         {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                     </div>
                                                 </div>
-                                                @if($address->type == 'executive_address')
+
                                                 <div class="form-group col-sm-4">
                                                     <div class="form-group col-sm-2 p-1">
                                                         <img  class="responsive" src="/images/email.png">
@@ -342,7 +342,7 @@
                                                         {!! Form::email("bank_address[$address->type][$atid][email]", $address->email, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                     </div>
                                                 </div>
-                                                @endif
+
 
 
 

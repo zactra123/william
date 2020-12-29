@@ -428,7 +428,7 @@ class BanksController extends Controller
     public function address_autocomplete(Request $request)
     {
         $addresses = BankAddress::where('type', 'registered_agent')
-            ->where('name', "like", "%{$request->search_key}%")->get()->toArray();
+            ->where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
 
         return response()->json($addresses);
     }

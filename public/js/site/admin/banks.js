@@ -237,7 +237,8 @@ $(document).ready(function($) {
                 $state = $(event.target).parents('.addresses').find('.state'),
                 $zip = $(event.target).parents('.addresses').find('.us-zip'),
                 $phone = $(event.target).parents('.addresses').find('.phone'),
-                $fax = $(event.target).parents('.addresses').find('.fax');
+                $fax = $(event.target).parents('.addresses').find('.fax'),
+                $email = $(event.target).parents('.addresses').find('.email');
             if (!!ui.item.street) {
                 console.log(ui.item.street)
                 $street.val(ui.item.street)
@@ -259,6 +260,9 @@ $(document).ready(function($) {
             if (!!ui.item.fax_number) {
                 $fax.val(ui.item.fax_number)
                 $fax.trigger('input');
+            }
+            if (!!ui.item.email) {
+                $email.val(ui.item.email)
             }
         }
     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
