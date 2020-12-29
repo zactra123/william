@@ -217,67 +217,54 @@ $(document).ready(function($) {
         }
     })
 
-    $('.selectize-name').selectize({
-        delimiter: '____',
-        searchField: 'name',
-        labelField: 'name',
-        valueField: 'name',
-        maxItems: 1,
-        create: function(input) {
-            account_type = this.$input.parents('tr').attr('data-id');
-            return {
-                name: input
-            };
-        },
-        load: function(query, callback) {
+    $( ".autocomplete-name" ).autocomplete({
+        source: function( request, response ) {
             $.ajax({
                 url: '/admins/furnishers/address-autocomplete',
-                type: 'GET',
-                dataType: 'json',
+                dataType: "json",
                 data: {
-                    search_key: query
+                    search_key: request.term
                 },
-                error: function() {
-                    callback();
-                },
-                success: function(res) {
-                    callback(res);
+                success: function( data ) {
+                    response( data );
                 }
             });
         },
-        render: {
-            item: function (data) {
-                return "<div data-street='" + data.street + "' data-city='" + data.city + "' data-state='" + data.state + "' data-zip='" + data.zip + "' data-phone_number='" + data.phone_number + "'  data-fax_number='" + data.fax_number + "' class='item'>" + data.name + " </div>";
+        select: function( event, ui ) {
+            ui.item.value = ui.item.name
+            var $street = $(event.target).parents('.addresses').find('.street'),
+                $city = $(event.target).parents('.addresses').find('.city'),
+                $state = $(event.target).parents('.addresses').find('.state'),
+                $zip = $(event.target).parents('.addresses').find('.us-zip'),
+                $phone = $(event.target).parents('.addresses').find('.phone'),
+                $fax = $(event.target).parents('.addresses').find('.fax');
+            if (!!ui.item.street) {
+                console.log(ui.item.street)
+                $street.val(ui.item.street)
             }
-        },
-        onItemAdd: function (value, $item) {
-            var $street = $item.parents('.addresses').find('.street'),
-                $city = $item.parents('.addresses').find('.city'),
-                $state = $item.parents('.addresses').find('.state'),
-                $zip = $item.parents('.addresses').find('.us-zip'),
-                $phone = $item.parents('.addresses').find('.phone'),
-                $fax = $item.parents('.addresses').find('.fax');
-            if ($item.attr('data-street') != "undefined") {
-                $street.val($item.attr('data-street'))
+            if (!!ui.item.city) {
+                $city.val(ui.item.city)
             }
-            if ($item.attr('data-city') != "undefined") {
-                $city.val($item.attr('data-city'))
-            }
-            if ($item.attr('data-state') != "undefined") {
+            if (!!ui.item.state) {
                 selectize = $state.eq(0).data('selectize')
-                selectize.setValue(selectize.search($item.attr('data-state')).items[0].id)
+                selectize.setValue(selectize.search(ui.item.state).items[0].id)
             }
-            if ($item.attr('data-zip') != "undefined") {
-                $zip.val($item.attr('data-zip'))
+            if (!!ui.item.zip) {
+                $zip.val(ui.item.zip)
             }
-            if ($item.attr('data-phone_number') != "undefined") {
-                $phone.val($item.attr('data-phone_number'))
+            if (!!ui.item.phone_number) {
+                $phone.val(ui.item.phone_number)
+                $phone.trigger('input');
             }
-            if ($item.attr('data-fax_number') != "undefined") {
-                $fax.val($item.attr('data-fax_number'))
+            if (!!ui.item.fax_number) {
+                $fax.val(ui.item.fax_number)
+                $fax.trigger('input');
             }
-            $('.us-phone').trigger('input');
         }
-    })
-
+    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+            .attr( "data-value", item.name )
+            .append( item.name )
+            .appendTo( ul );
+    };
 });

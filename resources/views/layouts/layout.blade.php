@@ -431,7 +431,7 @@
 
                 getAppiontments = function(){
                     $.ajax({
-                        url: "/admin/getNotifications",
+                        url: "/admins/getNotifications",
                         type: "get",
                         success: function(result){
                             if (result.length > 0) {
