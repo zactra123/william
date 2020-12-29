@@ -119,7 +119,7 @@ class BanksController extends Controller
             $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
                 ->pluck('account_type_id')->toArray();
             $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-        } elseif($bank->type == 5){
+        }elseif($bank->type == 5 || $bank->type == 4){
             $account_types = [];
         }else{
             $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
@@ -260,15 +260,14 @@ class BanksController extends Controller
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
-
                 });
 
         }else{
             $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
         }
 
-        if(!is_null($request->type) && $request->type != 'all'){
-            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->type);
+        if(!is_null($request->types)){
+            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
         }
 
         if (!empty($request->character)) {
@@ -364,8 +363,8 @@ class BanksController extends Controller
         $bankName = $request->bank_name;
         $type = $request->type;
 
-        // Don't show any type if medical service provider was selected
-        if ($type == 5) {
+        // Don't show any type if medical service provider or CRAs was selected
+        if ($type == 5 || $type == 4) {
             return Response::json([]);
         }
         // Show only collection account types

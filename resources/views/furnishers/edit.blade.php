@@ -3,12 +3,15 @@
 
 
 <style>
-
-    .selectize-input,.selectize-select{
+    .selectize-input,{
         border: 1px solid #000 !important;
         border-radius: 8px !important;
     }
 
+    .state, .agent {
+        border: 1px solid #000 !important;
+        border-radius: 8px !important;
+    }
 
     .ms-ua-box {
         background-color: #ffffff !important;
@@ -89,17 +92,31 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-6 pull-left">
+                    <div class="col-md-2 pull-left">
                     </div>
-                    <div class="col-md-4 pull-right">
+                    <div class="col-md-9 pull-right ">
+
                         <form action="/admins/furnishers" method="get">
                             <div class="row">
-                                <div class="col-md-8 form-group">
-                                    <input type="text" name="term"  class="form-control" >
+                                <div class="col-md-2"></div>
+                                <div class="col-md-6 ">
+                                    <div class=" form-group">
+                                        <input type="text" name="term" value="{{request()->term}}" class="form-control " placeholder="SEARCH...">
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->types, ['multiple'=>'multiple', 'class'=>'selectize-type']); !!}
+
+                                    </div>
                                 </div>
-                                <div class="col-md-4  form-group">
-                                    <input type="submit" value="Search" class="form-control">
+                                <div class="col-md-4">
+                                    <div class=" form-group">
+                                        <input type="submit" value="Search" class="form-control">
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
+
                             </div>
                         </form>
                     </div>
@@ -224,7 +241,7 @@
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'selectize-name w-100', 'placeholder' => 'Agent Name']); !!}
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'selectize-name w-100 agent', 'placeholder' => 'Agent Name']); !!}
 
 
                                                     </div>
@@ -393,6 +410,7 @@
                     error.insertAfter(element);
                 }
             })
+            $(".selectize-type").selectize({plugins: ['remove_button']})
         })
     </script>
 
