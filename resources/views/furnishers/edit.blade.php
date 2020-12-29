@@ -4,12 +4,7 @@
 
 <style>
 
-    .selectize-input,.selectize-select{
-        border: 1px solid #000 !important;
-        border-radius: 8px !important;
-    }
-
-    .state {
+    #bankInformation .selectize-input,.selectize-select{
         border: 1px solid #000 !important;
         border-radius: 8px !important;
     }
@@ -320,7 +315,7 @@
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                                     {!! Form::text("bank_address[$address->type][$atid][zip]",  $address->zip, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                 </div>
-                                            </di
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-4">
                                                     <div class="form-group col-sm-2 p-1">

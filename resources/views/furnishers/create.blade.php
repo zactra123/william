@@ -2,16 +2,60 @@
 
 <style>
 
-    .selectize-input,{
+    #bankInformation .selectize-input,.selectize-select{
         border: 1px solid #000 !important;
         border-radius: 8px !important;
     }
 
-    .state, .agent {
-        border: 1px solid #000 !important;
-        border-radius: 8px !important;
+    .ui-autocomplete {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        list-style: none;
+        font-size: 14px;
+        text-align: left;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
     }
 
+    .ui-autocomplete > li > div {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333333;
+        white-space: nowrap;
+    }
+
+    .ui-menu-item:hover {
+        text-decoration: none;
+        color: #262626;
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+
+    .ui-helper-hidden-accessible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
     .ms-ua-box {
         background-color: #ffffff !important;
         border-radius: 4px !important;
@@ -152,7 +196,7 @@
                                         @if($type == 'registered_agent')
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
-                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"selectize-name w-100 agent", "placeholder"=>"Agent Name"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name"]) !!}
                                                 </div>
                                             </div>
                                         @endif
