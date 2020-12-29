@@ -50,7 +50,7 @@
                                             <input type="text" name="term" value="{{request()->term}}" class="form-control " placeholder="SEARCH...">
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->types, ['multiple'=>'multiple', 'class'=>'selectize-type  dddd', 'id' => "bank-type"]); !!}
+                                            {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->types, ['multiple'=>'multiple', 'class'=>'selectize-type']); !!}
 
                                         </div>
                                     </div>
@@ -184,22 +184,32 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-sm-6">
-                                                <div class="form-group col-sm-2">
+                                            <div class="form-group col-sm-4">
+                                                <div class="form-group col-sm-2 p-0">
                                                     <img  class="responsive" src="/images/phone.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[{$type}][0][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                 </div>
                                             </div>
-                                            <div class="form-group col-sm-6">
-                                                <div class="form-group col-sm-2">
+                                            <div class="form-group col-sm-4">
+                                                <div class="form-group col-sm-2 p-0">
                                                     <img  class="responsive" src="/images/fax.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                 {!! Form::text("bank_address[{$type}][0][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                 </div>
                                             </div>
+                                            @if($type == 'executive_address')
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/email.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::email("bank_address[$type][0][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                    </div>
+                                                </div>
+                                            @endif
 
                                         </div>
                                     </div>

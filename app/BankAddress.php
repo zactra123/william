@@ -18,7 +18,8 @@ class BankAddress extends Model
         'zip',
         'phone_number',
         'fax_number',
-        'name'
+        'name',
+        'email'
     ];
 
     const TYPES = [

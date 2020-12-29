@@ -14,12 +14,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build
 }
 
 $( document ).on( "click keyup", ".us-phone", function() {
-    $('.us-phone').mask('(000) 000-0000');
+    $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
     // $('.us-zip').mask('00000');
 });
 
 $(document).ready(function($) {
-    $('.us-phone').mask('(000) 000-0000');
+    $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
     // $('.us-zip').mask('00000');
     $('.selectize').selectize({
         closeAfterSelect: true,

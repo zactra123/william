@@ -24,7 +24,9 @@ class BankLogo extends Model
         2 => "CREDIT UNION",
         3 => "COLLECTION",
         4 => "CRA",
-        5=> "MED SERVICES PROVIDER"
+        5 => "MED SERVICES PROVIDER",
+        6 => "UTILITY PROVIDER",
+        7 => "CASH ADVANCE/CHECK CASHING"
     ];
 
     public function checkUrlAttribute()

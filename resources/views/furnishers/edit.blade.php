@@ -269,24 +269,36 @@
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                                     {!! Form::text("bank_address[$address->type][$atid][zip]",  $address->zip, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                 </div>
-                                            </div>
+                                            </di
                                             <div class="row">
-                                                <div class="form-group col-sm-6">
-                                                    <div class="form-group col-sm-2">
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-1">
                                                        <img  class="responsive" src="/images/phone.png">
                                                     </div>
-                                                    <div class="form-group col-sm-10">
+                                                    <div class="form-group col-sm-10 p-1">
                                                     {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="form-group col-sm-2">
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-1">
                                                         <img  class="responsive" src="/images/fax.png">
                                                     </div>
-                                                    <div class="form-group col-sm-10">
+                                                    <div class="form-group col-sm-10 p-1">
                                                         {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                     </div>
                                                 </div>
+                                                @if($address->type == 'executive_address')
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-1">
+                                                        <img  class="responsive" src="/images/email.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10 p-1">
+                                                        {!! Form::email("bank_address[$address->type][$atid][email]", $address->email, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                    </div>
+                                                </div>
+                                                @endif
+
+
 
                                             </div>
                                         </div>
@@ -411,6 +423,7 @@
                 }
             })
             $(".selectize-type").selectize({plugins: ['remove_button']})
+
         })
     </script>
 
