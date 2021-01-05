@@ -29,6 +29,14 @@ class BankLogo extends Model
         7 => "CASH ADVANCE/CHECK CASHING"
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($model) {
+            $model->name = is_null($model->name) ? null : strtoupper($model->name);
+        });
+    }
+
     public function checkUrlAttribute()
     {
         return Storage::disk('s3')->has($this->path);

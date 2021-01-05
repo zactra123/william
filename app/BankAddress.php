@@ -92,6 +92,18 @@ class BankAddress extends Model
         "WY"=> "WY",
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($model) {
+            $model->name = is_null($model->name) ? null : strtoupper($model->name);
+            $model->street = is_null($model->street) ? null : strtoupper($model->street);
+            $model->city = is_null($model->city) ? null : strtoupper($model->city);
+            $model->state = is_null($model->state) ? null : strtoupper($model->state);
+            $model->email = is_null($model->email) ? null : strtoupper($model->email);
+        });
+    }
+
     public function bank()
     {
         return $this->belongsTo('App\BankLogo');
