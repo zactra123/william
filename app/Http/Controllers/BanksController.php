@@ -78,17 +78,20 @@ class BanksController extends Controller
 
         }
         $bank = BankLogo::create([
-            'name'=>$request->name,
+            'name' => strtoupper($request->name),
             'path'=>$pathLogo,
             'additional_information' => $additionalInformation
         ]);
 
         $account_addresses =  $request->bank_address;
+
         foreach ( $account_addresses as $addresses) {
             foreach($addresses as $address) {
-
-                $address['bank_logo_id'] = $bank->id;
-                BankAddress::create($address);
+                $upperCaseAddress['bank_logo_id'] = $bank->id;
+                $type = $address['type'];
+                $upperCaseAddress = array_map('strtoupper', $address);
+                $upperCaseAddress['type'] = $type;
+                BankAddress::create($upperCaseAddress);
             }
         }
 
@@ -98,7 +101,7 @@ class BanksController extends Controller
             foreach($eqs as $name){
                 $data = [
                     'bank_logo_id' => $bank->id,
-                    'name'=>$name
+                    'name'=>strtoupper($name)
                 ];
                 EqualBank::create($data);
             }
@@ -154,7 +157,6 @@ class BanksController extends Controller
 
     public function update(Request $request)
     {
-
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
@@ -164,7 +166,7 @@ class BanksController extends Controller
         $id  = $request->id;
         $bank = BankLogo::find($id);
         $bankLogo = $request->bank;
-
+        $bankLogo['name'] = strtoupper($request->bank['name']);
         if (!empty($request->bank["additional_information"]["collection_type"])){
             $bank_additonal_information = $bank->toArray()["additional_information"];
             $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];
@@ -208,7 +210,12 @@ class BanksController extends Controller
                         "type" => $address['type'],
                         "account_type_id" => $address['account_type_id']
                     ]);
-                $bank_address->update($address);
+
+                $type = $address['type'];
+                $upperCaseAddress = array_map('strtoupper', $address);
+                $upperCaseAddress['type'] = $type;
+
+                $bank_address->update($upperCaseAddress);
                 $addresses_ids[] = $bank_address->id;
             }
         }
@@ -227,7 +234,7 @@ class BanksController extends Controller
 
         foreach($eqs as $eb) {
             if (!in_array($eb, $existing_names)) {
-                $bank->equalBanks()->create(["name" => $eb]);
+                $bank->equalBanks()->create(["name" => strtoupper($eb)]);
             }
         }
 
