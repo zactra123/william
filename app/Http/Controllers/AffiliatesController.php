@@ -41,17 +41,29 @@ use App\UploadClientDetail;
 class AffiliatesController extends Controller
 {
 
+    /**
+     * AffiliatesController constructor.
+     * Should access logged in users with Affiliate ("affiliate") Role
+     * affiliate can create clients, view your clients list, add client credentials
+     * documents and other information
+     * affiliate can be view client report and dispute them
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'verified' ,'affiliate']);
     }
 
+    /**
+     * @return \Illuminate\View\View "affiliate.index" with @clients
+     * @clients Users with role "clients" and assign affiliate
+     */
     public function index()
     {
         $affiliateId = Auth::user()->id;
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
         return view('affiliate.index', compact('clients'));
     }
+
 
     public function importantInformation(Request $request)
     {
@@ -64,7 +76,7 @@ class AffiliatesController extends Controller
 
             return view('affiliate.important-information', compact('client', 'secrets'));
 
-        } elseif ($request->method() == "POST") {
+        }elseif ($request->method() == "POST") {
             $id = Auth::user()->id;
 
             $affiliate = $request->except('_token');
@@ -110,12 +122,22 @@ class AffiliatesController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\View\View "affiliate.client-create" with @secrets
+     * affiliate create users with role client and assign affiliate
+     */
     public function createClient()
     {
         $secrets=DB::table('secret_questions')->where('user_id', null)->select('question','id')->get();
         return view('affiliate.client-create', compact('secrets'));
     }
 
+    /**
+     * Add clients documents (driver license and social security card)
+     * @param Request $request
+     * request structure [email:required, phone_number:required, sex:required, secret_questions_id:required, secret_answer:required]
+     * @return redirect on success affiliate.client.document, on failed affiliate.create.client
+     */
     public function storeClient(Request $request)
     {
 
@@ -172,6 +194,11 @@ class AffiliatesController extends Controller
 
     }
 
+
+    /**
+     * @return \Illuminate\View\View "affiliate.client-create-dl-ss" with @clients and @step
+     * affiliate add clients document (driver license and social security card )
+     */
     public function addClientDocumnet($client)
     {
         $affiliateId = Auth::user()->id;
@@ -183,11 +210,18 @@ class AffiliatesController extends Controller
         }
         $clients = User::where('id', $client)->first();
         $step = $clients->clientDetails->registration_steps;
-
         return view('affiliate.client-create-dl-ss', compact('clients', 'step'));
-
     }
 
+    /**
+     * add client document (driver license and social security)
+     * call  clientDetailsNewData returns value expiration date,
+     * date of birth, address (number, name, city, state, zip)
+     * sex first and last name and social security number
+     * @param Request $request
+     * request structure [driver_license:required, social_security:required]
+     * @return redirect on success affiliate.client.credentials, on failed affiliate.client.documents
+     */
     public function storeDLSS(Request $request, ClientDetailsNewData $clientDetailsNewData)
     {
         $userId = $request->client;
@@ -309,6 +343,10 @@ class AffiliatesController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\View\View "affiliate.client-create-credentials" with @clients and @step
+     * affiliate adds client credentials for credit bureaus (experian, trans union, equifax etc )
+     */
     public function addCredentials(Request $request)
     {
         $user = $request->clientId;
@@ -320,12 +358,16 @@ class AffiliatesController extends Controller
         }
         $clients = User::where('id', $user)->first();
         $step = $clients->clientDetails->registration_steps;
-        $uploadUserDetail = UploadClientDetail::where('user_id', $user)->first();
-
-        return view('affiliate.client-create-credentials', compact('clients', 'step', 'uploadUserDetail'));
+        return view('affiliate.client-create-credentials', compact('clients', 'step'));
 
     }
 
+    /**
+     * add client credentials
+     * @param Request $request
+     * request structure []
+     * @return redirect on success affiliate.clientReview, on failed affiliate.client.credentials
+     */
     public function storeCredentials(Request $request)
     {
         $user = $request->clientId;
@@ -354,6 +396,10 @@ class AffiliatesController extends Controller
 
    }
 
+    /**
+     * @return \Illuminate\View\View "affiliate.client-review" with @clients, @step and @uploadUserDetail
+     * affiliate review client details uploaded form document and  rules and if there are inconsistencies
+     */
     public function clientReview(Request $request)
     {
         $user = $request->clientId;
@@ -366,14 +412,17 @@ class AffiliatesController extends Controller
         $client = User::where('id', $user)->first();
         $step = $client->clientDetails->registration_steps;
         $uploadUserDetail = UploadClientDetail::where('user_id', $user)->first();
-
         return view('affiliate.client-review', compact('client', 'step','uploadUserDetail'));
-
     }
 
+    /**
+     * add client credentials
+     * @param Request $request
+     * request structure [client[full_name:required, sex:required, address:required]]
+     * @return redirect on success affiliate.client.profile, on failed affiliate.clientReview
+     */
     public function storeReview(Request $request, $id)
     {
-
         $user = $request->clientId;
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
@@ -381,8 +430,6 @@ class AffiliatesController extends Controller
         if(empty($a)){
             return back();
         }
-
-
         $data = $request->client;
         $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
         $full_name = explode(" ", $data["full_name"]);
@@ -399,7 +446,6 @@ class AffiliatesController extends Controller
         ]);
 
         if ($validation->fails()) {
-
             if (!empty($uploaded)) {
                 return redirect()->back()
                     ->withInput()
@@ -449,6 +495,11 @@ class AffiliatesController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\View\View "affiliate.affiliate.client-profile" with @client, @toDos, @status,
+     * @reportsDateEX, @reportsDateEQ, @reportsDateTU, @requiredInfo, @statusDispute
+     * affiliate view client profile
+     */
     public function clientProfile(Request $request, $id)
     {
 
@@ -533,9 +584,12 @@ class AffiliatesController extends Controller
         ]);
 
         return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
-
     }
 
+    /**
+     * skip client registration steps and redirect client profile
+     * @return \Illuminate\View\View "affiliate.affiliate.client-profile" with @id
+     */
     public function continue($id)
     {
         $affiliateId = Auth::user()->id;
@@ -691,6 +745,10 @@ class AffiliatesController extends Controller
 
     }
 
+    /**
+     * view client credentials
+     * @return \Illuminate\View\View "affiliate.client-credentials" with @client and @source
+     */
     public function credentials(Request $request, $id)
     {
         $client = User::find($id);
@@ -1319,7 +1377,6 @@ class AffiliatesController extends Controller
     }
 
 
-
     public function credentialsUpdate(Request $request)
     {
         $userId = $request->id;
@@ -1338,6 +1395,9 @@ class AffiliatesController extends Controller
         return redirect(route('affiliate.client.profile', $userId));
     }
 
+    /**
+     * split address string
+     */
     public function splitAddress($address)
     {
 

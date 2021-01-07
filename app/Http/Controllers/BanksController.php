@@ -22,23 +22,81 @@ use function RingCentral\Psr7\str;
 
 class BanksController extends Controller
 {
+
+    /**
+     * BanksController constructor.
+     * Should access logged in users with Super Admin,  admin and receptionist
+     * ("superadmin","admin", "receptionist") Roles
+     * Users can view furnisher list, create, update or delete an furnishers
+     * Created furnisher (bank, credit union etc..)
+     *
+     */
     public function __construct()
     {
         $this->middleware(['auth', 'admins']);
     }
 
+    /**
+     * @return \Illuminate\View\View "furnishers.logo_new" with @banksLogos
+     * @banksLogos  form "bank_logo table" all furnishers
+     * @banksLogos furnishers paginated 20
+     */
+    public function showBankLogo(Request $request)
+    {
+        if(!is_null($request->term)){
+            $chars = [' ', '.', '-', '(', ')'];
+            $phoneFaxZip =str_replace($chars, '', $request->term);
+            $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where(function($query) use($request, $phoneFaxZip)  {
+                    $query->where('bank_logos.name', 'LIKE', "%{$request->term}%")
+                        ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
+                        ->orWhere('bank_addresses.street', 'LIKE', "%{$request->term}%")
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+                });
+
+        }else{
+            $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
+        }
+
+        if(!is_null($request->types)){
+            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
+        }
+
+        if (!empty($request->character)) {
+            if ($request->character == '#'){
+                $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
+            } else {
+                $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
+            }
+        }
+        $banksLogos = $banksLogos->groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
+        return view('furnishers.logo_new',compact('banksLogos'));
+
+    }
+
+    /**
+     *  Newly created furnishers can have multiple addresses
+     * @return \Illuminate\View\View "furnishers.create" with @account_types
+     * @account_types form "account_types table"
+     */
     public function create()
     {
         $account_types = AccountType::all()->pluck('name', 'id')->toArray();
         return view('furnishers.create', compact( 'account_types'));
     }
 
+    /**
+     * Create furnisher with type bank, credit union, CRA, med services provider, etc...
+     * @param Request $request
+     * request structure []
+     * @return redirect on success admins.bank.show, on failed furnishers.create
+     */
     public function store(Request $request)
     {
         if($request->term != null){
-
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
-
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('furnishers.logo_new',compact('banksLogos'));
         }
@@ -104,9 +162,18 @@ class BanksController extends Controller
         }
 
         return redirect()->route('admins.bank.show', ['type'=> $bank->type??'all']);
-
     }
 
+
+    /**
+     * Update Furnishers
+     * @param $id
+     * @return \Illuminate\View\View 'furnishers.edit', @bnak, @account_types,
+     * @bank_addresses, @bank_types, @registredAgent,
+     *  @bank edited furnishers
+     * @account_types form "account_types table"
+     * @bank_addresses edited furnishers addresses sorted in first executive address
+     */
     public function edit(Request $request)
     {
 
@@ -148,9 +215,15 @@ class BanksController extends Controller
         $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
         $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
 
-        return view('furnishers.edit', compact('bank', 'account_types', 'bank_accounts', 'bank_addresses', 'bank_types', 'registredAgent'));
+        return view('furnishers.edit', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent'));
     }
 
+    /**
+     * Update existing Furnishers
+     * @param Request $request
+     * request structure []
+     * @return redirect on success admin.index, on failed furnishers.edit
+     */
     public function update(Request $request)
     {
         if($request->term != null){
@@ -233,53 +306,11 @@ class BanksController extends Controller
 
     }
 
-    public function  deleteBankPhone(Request $request)
-    {
-        try {
-            BankPhoneNumber::whereId($request->id)->delete();;
-
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
-        }
-
-        return response()->json(['status' => 'success']);
-    }
-
-    public function showBankLogo(Request $request)
-    {
-        if(!is_null($request->term)){
-            $chars = [' ', '.', '-', '(', ')'];
-            $phoneFaxZip =str_replace($chars, '', $request->term);
-            $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
-                ->where(function($query) use($request, $phoneFaxZip)  {
-                    $query->where('bank_logos.name', 'LIKE', "%{$request->term}%")
-                        ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
-                        ->orWhere('bank_addresses.street', 'LIKE', "%{$request->term}%")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
-                });
-
-        }else{
-            $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
-        }
-
-        if(!is_null($request->types)){
-            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
-        }
-
-        if (!empty($request->character)) {
-            if ($request->character == '#'){
-                $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
-            } else {
-                $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
-            }
-        }
-        $banksLogos = $banksLogos->groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
-        return view('furnishers.logo_new',compact('banksLogos'));
-
-    }
-
+    /**
+     * Should remove existing Furnisher from database
+     * @param $id
+     * @return JsonResponse
+     */
     public function deleteBankLogo(Request $request)
     {
         $logId = $request->id;
@@ -293,69 +324,14 @@ class BanksController extends Controller
             return response()->json(['status' => 'success']);
         }
         return redirect()->route('admins.bank.show');
-   }
-
-    public function types(Request $request)
-    {
-        if($request->isMethod("post")){
-
-            $accountType =$request->account_type;
-            $validation =  Validator::make($accountType, [
-                'name'=>['required', 'string', 'max:255'],
-            ]);
-
-            if ($validation->fails()){
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
-            }
-            $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
-            if ($check_type) {
-                return redirect()->route('owner.bank.types')
-                    ->withErrors("FURNISHER TYPE ALREADY EXIST");
-            }
-            $accountType = AccountType::create($request->account_type);
-            $key_words = explode(',', $request->account_type_keys["key_word"]);
-            $accountTypeKeys = [];
-
-            foreach($key_words as $key) {
-                $accountKeys = AccountTypeKeys::firstOrCreate(
-                    ['key_word' =>$key]
-                )->id;
-                $accountTypeKeys[]= ["account_type_key_id" => $accountKeys];
-            }
-            if(!empty($accountTypeKeys)) {
-                $accountType->AccountTypeKeyWord()->createMany($accountTypeKeys);
-            }
-            return redirect()->route('furnishers.types');
-
-        }
-
-        $accountTypes = AccountType::with('accountKeys')->get();
-
-        return view('furnishers.types',compact('accountTypes'));
     }
 
-    public function delete_types($id)
-    {
-        AccountType::destroy($id);
-        return response()->json(['status' => 'success']);
-    }
-
-    public function keywords(Request $request)
-    {
-        $result = AccountTypeKeys::where('account_type_keys.key_word', 'LIKE', "%{$request->search_key}%")->get(["id","key_word"]);
-
-        return response()->json($result);
-    }
-
-    public function removeEqualBank(Request $request)
-    {
-        EqualBank::find($request->equal_bank_id)->delete();
-
-        return response()->json('success');
-    }
-
+    /**
+     * On change bank name returned  account types of the depend on the furnisher
+     * types and account types keywords from date base     *
+     * @param $bank_name
+     * @return JsonResponse
+     */
     public function banKName(Request $request)
     {
         $bankName = $request->bank_name;
@@ -392,6 +368,93 @@ class BanksController extends Controller
         return Response::json($data);
     }
 
+    /**
+     * autocomplete furnisher registered agent addresses from database
+     * @param $search_key
+     * @return JsonResponse registered agent addresses
+     */
+    public function address_autocomplete(Request $request)
+    {
+        $addresses = BankAddress::where('type', 'registered_agent')
+            ->where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
+
+        return response()->json($addresses);
+    }
+
+    //es action petq chi el
+    public function  deleteBankPhone(Request $request)
+    {
+        try {
+            BankPhoneNumber::whereId($request->id)->delete();;
+
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
+        return response()->json(['status' => 'success']);
+    }
+    //es action petq chi el
+    public function removeEqualBank(Request $request)
+    {
+        EqualBank::find($request->equal_bank_id)->delete();
+
+        return response()->json('success');
+    }
+
+    /**
+     * @return \Illuminate\View\View "furnishers.types" with @accountTypes
+     * @accountTypes  form "account_types table"
+     *
+     * Create account types with type default or not
+     * Add keyword on account type keys table
+     * @param Request $request
+     * request structure ['account_type'=>['name', 'type'], 'account_type_keys'=>['key_word']]
+     * @return redirect on success furnishers.types, on failed return back with errors
+     *
+     */
+    public function types(Request $request)
+    {
+        if($request->isMethod("post")){
+
+            $accountType =$request->account_type;
+            $validation =  Validator::make($accountType, [
+                'name'=>['required', 'string', 'max:255'],
+            ]);
+
+            if ($validation->fails()){
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors($validation);
+            }
+            $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
+            if ($check_type) {
+                return redirect()->route('owner.bank.types')
+                    ->withErrors("FURNISHER TYPE ALREADY EXIST");
+            }
+            $accountType = AccountType::create($request->account_type);
+            $key_words = explode(',', $request->account_type_keys["key_word"]);
+            $accountTypeKeys = [];
+
+            foreach($key_words as $key) {
+                $accountKeys = AccountTypeKeys::firstOrCreate(
+                    ['key_word' =>$key]
+                )->id;
+                $accountTypeKeys[]= ["account_type_key_id" => $accountKeys];
+            }
+            if(!empty($accountTypeKeys)) {
+                $accountType->AccountTypeKeyWord()->createMany($accountTypeKeys);
+            }
+            return redirect()->route('furnishers.types');
+        }
+        $accountTypes = AccountType::with('accountKeys')->get();
+        return view('furnishers.types',compact('accountTypes'));
+    }
+
+    /**
+     * Update account type key words
+     * @param $request
+     * @return JsonResponse
+     */
     public function update_type_keywords(Request $request)
     {
         $account_type = AccountType::find($request->account_type);
@@ -412,6 +475,11 @@ class BanksController extends Controller
         return response()->json(['status' => 'success']);
     }
 
+    /**
+     * Update account type  types (default or not)
+     * @param $request
+     * @return JsonResponse
+     */
     public function update_type_default(Request $request)
     {
         $account_type = AccountType::find($request->account_type);
@@ -423,12 +491,25 @@ class BanksController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public function address_autocomplete(Request $request)
+    /**
+     * Should remove existing account types from database
+     * @param $id
+     * @return JsonResponse
+     */
+    public function delete_types($id)
     {
-        $addresses = BankAddress::where('type', 'registered_agent')
-            ->where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
-
-        return response()->json($addresses);
+        AccountType::destroy($id);
+        return response()->json(['status' => 'success']);
     }
 
+    /**
+     * Selectize key word for added
+     * @param $request->search_key
+     *@return JsonResponse
+     */
+    public function keywords(Request $request)
+    {
+        $result = AccountTypeKeys::where('account_type_keys.key_word', 'LIKE', "%{$request->search_key}%")->get(["id","key_word"]);
+        return response()->json($result);
+    }
 }

@@ -175,6 +175,10 @@ class RegisterController extends Controller
         return $user;
     }
 
+
+    /**
+     * split address string
+     */
     public function splitAddress($address)
     {
 
