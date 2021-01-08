@@ -125,7 +125,7 @@ $('.is_default_account_type').on('change', function() {
             console.log(result)
         },
         error: function (error) {
-            console.log(error)
+            location.reload()
         }
     })
 })

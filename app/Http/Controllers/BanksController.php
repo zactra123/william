@@ -381,26 +381,6 @@ class BanksController extends Controller
         return response()->json($addresses);
     }
 
-    //es action petq chi el
-    public function  deleteBankPhone(Request $request)
-    {
-        try {
-            BankPhoneNumber::whereId($request->id)->delete();;
-
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
-        }
-
-        return response()->json(['status' => 'success']);
-    }
-    //es action petq chi el
-    public function removeEqualBank(Request $request)
-    {
-        EqualBank::find($request->equal_bank_id)->delete();
-
-        return response()->json('success');
-    }
-
     /**
      * @return \Illuminate\View\View "furnishers.types" with @accountTypes
      * @accountTypes  form "account_types table"
@@ -428,7 +408,7 @@ class BanksController extends Controller
             }
             $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
             if ($check_type) {
-                return redirect()->route('owner.bank.types')
+                return redirect()->route('admins.bank.types')
                     ->withErrors("FURNISHER TYPE ALREADY EXIST");
             }
             $accountType = AccountType::create($request->account_type);
@@ -444,7 +424,7 @@ class BanksController extends Controller
             if(!empty($accountTypeKeys)) {
                 $accountType->AccountTypeKeyWord()->createMany($accountTypeKeys);
             }
-            return redirect()->route('furnishers.types');
+            return redirect()->route('admins.bank.types');
         }
         $accountTypes = AccountType::with('accountKeys')->get();
         return view('furnishers.types',compact('accountTypes'));
@@ -484,7 +464,7 @@ class BanksController extends Controller
     {
         $account_type = AccountType::find($request->account_type);
         if (!$account_type) {
-//            throw error that account Type not found
+            return response('Account Type not found', 404);
         }
 
         $account_type->update(['type' => (int) ($request->type == "true")]);
