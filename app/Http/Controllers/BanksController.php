@@ -145,7 +145,7 @@ class BanksController extends Controller
 
         foreach ( $account_addresses as $addresses) {
             foreach($addresses as $address) {
-                BankAddress::create($address);
+                $bank->bankAddresses()->create($address);
             }
         }
 
