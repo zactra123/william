@@ -71,7 +71,20 @@
         .popover.top{
             width: fit-content;
         }
-
+        .pagination.custom li > a, span{
+            width: fit-content;
+            margin: 0;
+        }
+        @media (min-width: 767px) {
+            .pagination.alphabetical li > a, span{
+                float: unset;
+                margin: 0;
+            }
+            .pagination.custom li > a, span{
+                width: 4%;
+                margin: 0;
+            }
+        }
     </style>
 
     @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"CLIENTS LIST" => "#"]])
@@ -107,55 +120,60 @@
                                 </div>
 
                                 <div class="row">
-
-
-
+                                    
                                 </div>
                             </form>
                         </div>
 
                     </div>
-                    <div class="ms-ua-box">
+                    <div class="container">
                         <?php $alphas = range('A', 'Z');?>
-                        <ul class="pagination">
-                            <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
-                            <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="btn btn-primary cicl" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                        <ul class="pagination alphabetical">
+                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
                             @foreach($alphas as $alpha)
-                                <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="btn btn-primary rounded" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
                             @endforeach
                         </ul>
+                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
                     </div>
-                    <div class="col-md-11">
-                        <div class="card">
-                                <div class="album py-5 bg-light">
-                                    <div class="container">
-                                        <div class="row">
-                                            @foreach($banksLogos as  $logos)
-                                                <div class="col-md-3" title="{{strtoupper($logos->name)}}">
-                                                    <div class="card mb-4 box-shadow" >
-                                                        @if($logos->checkUrlAttribute())
-                                                            <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
-                                                        @else
-                                                            <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
-                                                        @endif
+                    <div class="album py-5 bg-light">
+                        <div class="container">
+                            <div class="row">
+                                @foreach($banksLogos as  $logos)
+                                    <div class="col-md-3" title="{{strtoupper($logos->name)}}">
+                                        <div class="card mb-4 box-shadow" >
+                                            @if($logos->checkUrlAttribute())
+                                                <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                            @else
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                            @endif
 
-                                                        <div class="card-body">
-                                                            <div class="card-text mt-5">
-                                                                <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
+                                            <div class="card-body">
+                                                <div class="card-text mt-5">
+                                                    <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
 
-                                                                <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
-                                                                    <span> <i class="fa fa-trash"></i> </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                                        <span> <i class="fa fa-trash"></i> </span>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {{ $banksLogos->appends(request()->except('page'))->links() }}
+                                @endforeach
+                            </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <?php $alphas = range('A', 'Z');?>
+                        <ul class="pagination alphabetical">
+                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                            @foreach($alphas as $alpha)
+                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                            @endforeach
+                        </ul>
+                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
                     </div>
                 </div>
             </div>
