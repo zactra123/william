@@ -128,7 +128,7 @@
                     </div>
                     <div class="container">
                         <?php $alphas = range('A', 'Z');?>
-                        <ul class="pagination alphabetical">
+                        <ul class="pagination alphabetical ">
                             <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
                             @foreach($alphas as $alpha)
