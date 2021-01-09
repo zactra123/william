@@ -139,6 +139,7 @@ $(document).ready(function($) {
 
     $('.selectize-multiple').selectize({
         plugins: ['remove_button'],
+        selectOnTab: true,
         delimiter: ',',
         persist: true,
         preload: true,
