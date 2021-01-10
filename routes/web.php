@@ -11,9 +11,27 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/home', function () {
+    if (Auth::user()){
+        switch (Auth::user()->role){
+            case "super admin":
+                return redirect('/owner');
+                break;
+            case "receptionist":
+            case "admin":
+                return redirect('/admins');
+                break;
+            case "affiliate":
+                return redirect('/affiliate');
+                break;
+            case "client":
+                return redirect('/client/details');
+                break;
+        }
+    } else {
+        return redirect('/');
+    }
+});
 
 Route::get('/', 'PagesController@welcome' );
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');

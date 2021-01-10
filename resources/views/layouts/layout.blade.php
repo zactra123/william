@@ -185,7 +185,7 @@
                     @if (Route::has('login'))
                         @auth
 
-                            <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/admin') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
+                            <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/home') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
                                 <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
                                     <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
                                                                        onclick="event.preventDefault();
@@ -398,7 +398,7 @@
                 <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">NOME</a></li>
                 @include('helpers.urls.logged_in_affiliate')
             @elseif((Auth::user()->role == 'admin'))
-                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">NOME</a></li>
+                <li><a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="">HOME</a></li>
                 @include('helpers.urls.logged_in_admin')
             @elseif((Auth::user()->role == 'receptionist'))
                 <li class="menu-item"> <a href="{{ url('receptionist/message') }}"> HOME</a> </li>
