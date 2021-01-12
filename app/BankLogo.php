@@ -60,7 +60,10 @@ class BankLogo extends Model
         38 => "FUNERAL GOODS/SERVICES",
         39 => "PUBLIC STORAGE COMPANY",
         40 => "SBA LENDER",
-        41 => "TRAFFIC COURT/TICKET"
+        41 => "TRAFFIC COURT/TICKET",
+        42 => "PEST CONTROL COMPANY",
+        43 => "MOTORCYCLE FINANCE COMPANY",
+        44 => "LAW FIRM"
     ];
 
     protected static function boot()
