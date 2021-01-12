@@ -47,10 +47,12 @@ class BanksController extends Controller
             $chars = [' ', '.', '-', '(', ')'];
             $phoneFaxZip =str_replace($chars, '', $request->term);
             $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip)  {
                     $query->where('bank_logos.name', 'LIKE', "%{$request->term}%")
                         ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
                         ->orWhere('bank_addresses.street', 'LIKE', "%{$request->term}%")
+                        ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
