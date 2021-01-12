@@ -8282,7 +8282,10 @@ input[type="submit"] {
 .pdf-upload.active{
     display: block;
 }
-.files{ position:relative}
+.files{
+    position:relative;
+    z-index: 10
+}
 
 .color input{ background-color:#f1f1f1;}
 

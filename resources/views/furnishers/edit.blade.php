@@ -180,7 +180,7 @@
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
-                                    <div class="col-sm-3 form-group changeLogo">
+                                    <div class="col-sm-3 form-group changeLogo files">
                                         @if($bank->checkUrlAttribute())
                                             <img src="{{$bank->getUrlAttribute()}}" width="100px">
                                         @else
