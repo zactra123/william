@@ -139,7 +139,8 @@ class BanksController extends Controller
         }
         $bank = BankLogo::create([
             'name' => $request->name,
-            'path'=>$pathLogo,
+            'path'=> $pathLogo,
+            'type'=> $request->bank['type'],
             'additional_information' => $additionalInformation
         ]);
 
@@ -228,6 +229,7 @@ class BanksController extends Controller
      */
     public function update(Request $request)
     {
+
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
