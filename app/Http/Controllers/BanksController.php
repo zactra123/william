@@ -181,7 +181,7 @@ class BanksController extends Controller
     {
 
         $id  = $request->id;
-        $bank = BankLogo::find($id);
+        $bank = BankLogo::findOrFail($id);
         // Show only collection account types
         if ($bank->type == 3) {
             $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
