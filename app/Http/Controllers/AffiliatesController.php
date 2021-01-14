@@ -1114,7 +1114,6 @@ class AffiliatesController extends Controller
     public function negativeItemContract(Request $request, $id)
     {
 
-        dd($request->all());
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
@@ -1184,9 +1183,11 @@ class AffiliatesController extends Controller
             }
 
             if ($key == 'ex_account') {
-                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
+
+//                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
                 foreach ($value as $disputeExAccounts) {
-                    $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
+                    $this->experianAccountDsiputeReasone($disputeExAccounts['id']);
+//                    $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
                 }
                 $checkToDo = Disputable::where('todo_id', $todoExAccount)->count('id');
                 if( is_null($checkToDo)){
@@ -1354,7 +1355,6 @@ class AffiliatesController extends Controller
 
     public function saveDisputableAdditional($todoId, $type, $idInformation, $status)
     {
-
         $disputeId = $idInformation['id'];
         $json  = null;
         if(count($idInformation)>1){
@@ -1376,7 +1376,6 @@ class AffiliatesController extends Controller
         return true;
     }
 
-
     public function credentialsUpdate(Request $request)
     {
         $userId = $request->id;
@@ -1395,6 +1394,756 @@ class AffiliatesController extends Controller
         return redirect(route('affiliate.client.profile', $userId));
     }
 
+
+    /*
+     * dispute reasoner ashxatoxneri hamar voroshelu
+     * funkcianer en vory karox texapoxvi arandzin service mej
+     */
+
+    public function experianAccountDsiputeReasone($accountId)
+    {
+        $exAccount = ClientReportExAccount::whereId($accountId)->first();
+
+        if($exAccount->account_type() != "CA"){
+
+            $type = $exAccount->type;
+            $responsibility = $exAccount->responsibility;
+
+            if(strpos(strtolower($exAccount->status), "close") !== false){
+                $openClose  = "Close";
+            }else{
+                $openClose = "Open";
+            }
+            $paymentLate = $this->exPaymentHistories($exAccount);
+
+        }else{
+            //collectioni logikan;
+        }
+
+
+    }
+
+    public function exPaymentHistories($account)
+    {
+        $countByType = $account->paymentHistories()->groupBy('status')->select(DB::Raw('COUNT(id) as count'), 'status')
+            ->pluck('count', 'status')->toArray();
+        $status = $account->paymentHistories()->pluck('status', 'id')->toArray();
+        $lates = $this->exLates($countByType);
+
+        $keys30 = array_keys($status, "30");
+        $keys60 = array_keys($status, "60");
+        $keys90 = array_keys($status, "90");
+        $keys120 = array_keys($status, "120");
+        $keys150 = array_keys($status, "150");
+        $keys180 = array_keys($status, "180");
+
+        $count30DaysLate = !empty($keys30)?$this->countDaysLate($keys30):null;
+        $count60DaysLate = !empty($keys60)?$this->countDaysLate($keys60):null;
+        $count90DaysLate = !empty($keys90)?$this->countDaysLate($keys90):null;
+        $count120DaysLate = !empty($keys120)?$this->countDaysLate($keys120):null;
+        $count150DaysLate = !empty($keys150)?$this->countDaysLate($keys150):null;
+        $count180DaysLate = !empty($keys180)?$this->countDaysLate($keys180):null;
+        $consicutiveLateDays = [];
+
+
+        $j = 0;
+        if(!is_null($count30DaysLate)){
+            foreach($count30DaysLate as $value){
+                $next = $this->get_next($status, $value['last_key']);
+                $consicutiveLateDays[$j] = $value['count']. " 30 DAYS LATE";
+
+                if($next['value'] == "60"){
+                    $key60 = array_search($next['key'], array_combine( array_keys($count60DaysLate), array_column($count60DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count60DaysLate[$key60]['count']. " 60 DAYS LATE";
+                    $next60 = $this->get_next($status, $count60DaysLate[$key60]['last_key']);
+                    unset($count60DaysLate[$key60]);
+                    if($next60['value'] == "90") {
+                        $key90 = array_search($next60['key'], array_combine( array_keys($count90DaysLate), array_column($count90DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count90DaysLate[$key90]['count']. " 90 DAYS LATE";
+                        $next120 = $this->get_next($status, $count90DaysLate[$key90]['last_key']);
+                        unset($count90DaysLate[$key90]);
+                        if($next120['value'] == "120") {
+                            $key120 = array_search($next120['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                            $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                            unset($count120DaysLate[$key120]);
+                            if($next150['value'] == "150") {
+                                $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                                $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                                unset($count150DaysLate[$key150]);
+                                if($next180['value'] == "180") {
+                                    $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                    unset($count180DaysLate[$key180]);
+                                }
+                            }elseif($next150['value'] == "180") {
+                                $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                unset($count180DaysLate[$key180]);
+                            }
+                        }elseif($next120['value'] == "150") {
+                            $key150 = array_search($next120['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                            $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                            unset($count150DaysLate[$key150]);
+                            if($next180['value'] == "180") {
+                                $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                unset($count180DaysLate[$key180]);
+                            }
+                        }elseif($next120['value'] == "180") {
+                            $key180 = array_search($next120['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next60['value'] == "120"){
+                        $key120 = array_search($next60['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                        $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                        unset($count120DaysLate[$key120]);
+                        if($next150['value'] == "150") {
+                            $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                            $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                            unset($count150DaysLate[$key150]);
+                            if($next180['value'] == "180") {
+                                $key180 = array_search($next180['key'], array_column($count180DaysLate, 'first_key'));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                unset($count180DaysLate[$key180]);
+                            }
+                        }elseif($next150['value'] == "180") {
+                            $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next60['value'] == "150") {
+                        $key150 = array_search($next60['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] . " " . $count180DaysLate[$key180]['count'] . " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next60['value'] == "180") {
+                        $key180 = array_search($next60['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+
+                }elseif($next['value'] == "90") {
+                    $key90 = array_search($next['key'], array_combine( array_keys($count90DaysLate), array_column($count90DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count90DaysLate[$key90]['count']. " 90 DAYS LATE";
+                    $next120 = $this->get_next($status, $count90DaysLate[$key90]['last_key']);
+                    unset($count90DaysLate[$key90]);
+                    if($next120['value'] == "120") {
+                        $key120 = array_search($next120['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                        $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                        unset($count120DaysLate[$key120]);
+                        if($next150['value'] == "150") {
+                            $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                            $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                            unset($count150DaysLate[$key150]);
+                            if($next180['value'] == "180") {
+                                $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                unset($count180DaysLate[$key180]);
+                            }
+                        }elseif($next150['value'] == "180") {
+                            $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next120['value'] == "150") {
+                        $key150 = array_search($next120['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next120['value'] == "180"){
+                        $key180 = array_search($next120['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next['value'] == "120"){
+                    $key120 = array_search($next['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count60DaysLate[$key120]['count']. " 120 DAYS LATE";
+                    $next150 = $this->get_next($status, $count150DaysLate[$key120]['last_key']);
+                    unset($count120DaysLate[$key120]);
+                    if($next150['value'] == "150") {
+                        $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next150['value'] == "180") {
+                        $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next['value'] == "150"){
+                    $key150 = array_search($next['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                    $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                    unset($count150DaysLate[$key150]);
+                    if($next180['value'] == "180") {
+                        $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+
+                }elseif($next['value'] == "180"){
+                    $key180 = array_search($next['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                    unset($count180DaysLate[$key180]);
+                }
+                $j = $j+ 1;
+            }
+        }
+
+        if(!empty($count60DaysLate)){
+            foreach($count60DaysLate as $value){
+                $next60 = $this->get_next($status, $value['last_key']);
+                $consicutiveLateDays[$j] = $value['count']. " 60 DAYS LATE";
+
+                if($next60['value'] == "90") {
+                    $key90 = array_search($next60['key'], array_combine( array_keys($count90DaysLate), array_column($count90DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count90DaysLate[$key90]['count']. " 90 DAYS LATE";
+                    $next120 = $this->get_next($status, $count90DaysLate[$key90]['last_key']);
+                    unset($count90DaysLate[$key90]);
+                    if($next120['value'] == "120") {
+                        $key120 = array_search($next120['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                        $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                        unset($count120DaysLate[$key120]);
+                        if($next150['value'] == "150") {
+                            $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                            $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                            unset($count150DaysLate[$key150]);
+                            if($next180['value'] == "180") {
+                                $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                                $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                                unset($count180DaysLate[$key180]);
+                            }
+                        }elseif($next150['value'] == "180") {
+                            $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next120['value'] == "150") {
+                        $key150 = array_search($next120['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next120['value'] == "180") {
+                        $key180 = array_search($next120['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next60['value'] == "120"){
+                    $key120 = array_search($next60['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                    $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                    unset($count120DaysLate[$key120]);
+                    if($next150['value'] == "150") {
+                        $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_column($count180DaysLate, 'first_key'));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next150['value'] == "180") {
+                        $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next60['value'] == "150") {
+                    $key150 = array_search($next60['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                    $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                    unset($count150DaysLate[$key150]);
+                    if($next180['value'] == "180") {
+                        $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] . " " . $count180DaysLate[$key180]['count'] . " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next60['value'] == "180") {
+                    $key180 = array_search($next60['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                    unset($count180DaysLate[$key180]);
+                }
+
+
+                $j = $j+ 1;
+            }
+        }
+
+        if(!empty($count90DaysLate)){
+            foreach($count90DaysLate as $value){
+                $next120 = $this->get_next($status, $value['last_key']);
+                $consicutiveLateDays[$j] = $value['count']. " 90 DAYS LATE";
+
+                if($next120['value'] == "120") {
+                    $key120 = array_search($next120['key'], array_combine( array_keys($count120DaysLate), array_column($count120DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count120DaysLate[$key120]['count']. " 120 DAYS LATE";
+                    $next150 = $this->get_next($status, $count120DaysLate[$key120]['last_key']);
+                    unset($count120DaysLate[$key120]);
+                    if($next150['value'] == "150") {
+                        $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                        $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                        unset($count150DaysLate[$key150]);
+                        if($next180['value'] == "180") {
+                            $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                            $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                            unset($count180DaysLate[$key180]);
+                        }
+                    }elseif($next150['value'] == "180") {
+                        $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next120['value'] == "150") {
+                    $key150 = array_search($next120['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                    $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                    unset($count150DaysLate[$key150]);
+                    if($next180['value'] == "180") {
+                        $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next120['value'] == "180") {
+                    $key180 = array_search($next120['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                    unset($count180DaysLate[$key180]);
+                }
+
+
+                $j = $j+ 1;
+            }
+        }
+
+        if(!empty($count120DaysLate)){
+            foreach($count120DaysLate as $value){
+                $next150 = $this->get_next($status, $value['last_key']);
+                $consicutiveLateDays[$j] = $value['count']. " 120 DAYS LATE";
+
+                if($next150['value'] == "150") {
+                    $key150 = array_search($next150['key'], array_combine( array_keys($count150DaysLate), array_column($count150DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count150DaysLate[$key150]['count']. " 150 DAYS LATE";
+                    $next180 = $this->get_next($status, $count150DaysLate[$key150]['last_key']);
+                    unset($count150DaysLate[$key150]);
+                    if($next180['value'] == "180") {
+                        $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                        $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                        unset($count180DaysLate[$key180]);
+                    }
+                }elseif($next150['value'] == "180") {
+                    $key180 = array_search($next150['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                    unset($count180DaysLate[$key180]);
+                }
+
+                $j = $j+ 1;
+            }
+        }
+
+        if(!empty($count150DaysLate)){
+            foreach($count150DaysLate as $value){
+                $next180 = $this->get_next($status, $value['last_key']);
+                $consicutiveLateDays[$j] = $value['count']. " 150 DAYS LATE";
+
+                if($next180['value'] == "180") {
+                    $key180 = array_search($next180['key'], array_combine( array_keys($count180DaysLate), array_column($count180DaysLate, 'first_key')));
+                    $consicutiveLateDays[$j] = $consicutiveLateDays[$j] ." ".$count180DaysLate[$key180]['count']. " 180 DAYS LATE";
+                    unset($count180DaysLate[$key180]);
+                }
+
+
+                $j = $j+ 1;
+            }
+        }
+
+        if(!empty($count180DaysLate)){
+            foreach($count180DaysLate as $value){
+                $consicutiveLateDays[$j] = $value['count']. " 180 DAYS LATE";
+
+                $j = $j+ 1;
+            }
+        }
+
+        dd($consicutiveLateDays, $lates);
+        dd($count30DaysLate,'++++++', empty($count60DaysLate), $count90DaysLate, empty($count120DaysLate), $count150DaysLate, $count180DaysLate);
+
+//
+//
+//        dd('das');
+//
+//        $key30 = array_search("30", $status);
+//        if($key30 !== false){
+//            $count30 = 1;
+//            $next = $this->count30DaysLate($key30, $status, $count30);
+//        }else{
+//            $count30 = 0;
+//            $next = null;
+//        }
+//        if( $lates["CRD"] != 0 || $lates["FS"] != 0 ||
+//            $lates["F"] != 0 || $lates["VS"] != 0 ||
+//            $lates["R"] != 0 || $lates["PBC"] != 0 ||
+//            $lates["IC"] != 0 || $lates["G"] != 0 ||
+//            $lates["D"] != 0 || $lates["C"] != 0 ||
+//            $lates["CO"] != 0 || $lates["CLS"] != 0){
+//
+//            //harcnel $lates["CLS"]
+////            @Todo: QNNARKEL
+//         return " ";
+//        }
+//
+//
+//        if( $lates["60"] == 0 &&  $lates["90"] == 0 &&
+//            $lates["120"] == 0 && $lates["150"] == 0 &&
+//            $lates["180"] == 0
+//        ){
+//            if (is_null($lates["30"])) {
+//                return "NO LATE";
+//            }
+//            if ( $lates["30"] == 1) {
+//                return  "SIMPLE 30 DAYS LATE";
+//            }else {
+//
+//                if($next['count'] == $lates["30"]){
+//                    return  $next['count'] ."CONSECUTIVE 30 DAYS LATE";
+//                }else{
+//                    dd( $lates["30"]. " NON CONSECUTIVE 30 days late");
+//
+//                    return $lates["30"]. " NON CONSECUTIVE 30 days late";
+//                }
+//            }
+//        }
+//
+//        if ($lates["90"] == 0 && $lates["120"] == 0 &&
+//            $lates["150"] == 0 && $lates["180"] == 0 ) {
+//            if ($lates["60"] == 1) {
+//                if ($lates["30"] == 0) {
+//                    return "SIMPLE 60 DAYS LATE";
+//                }
+//
+//                if ($lates["30"] == 1) {
+//                    if ($next['value'] == "60") {
+//                        return "CONSECUTIVE SIMPLE 30 DAYS LATE, 60 DAYS LATE";
+//                    } else {
+//                        dd('asdasd');
+//                        return "NON CONSECUTIVE SIMPLE 30 DAYS LATE, 60 DAYS LATE";
+//                    }
+//                } else {
+//                    if ($next['value'] == "60") {
+//                        if ( $next['prev_key'] == end($keys30)) {
+//                            return  "CONSECUTIVE".$count30 ." 30 DAYS LATE,  SIMPLE 60 DAYS LATE";
+//                        } else {
+//                            return " ";
+//                        }
+//                    }
+//
+//                    if( $next['prev_key'] == end($keys30)){
+//                        return  "CONSECUTIVE". $count30 . "  30 day late and NON CONSECUTIVE SIMPLE 60 day late";
+//                    }elseif( $next['prev_key'] != end($keys30)){
+//                        $next30Key = $this->get_next($status, $next['prev_key']);
+//                        $countCons30 = 1;
+//                        $countCons30Next = $this->count30DaysLate($next30Key, $status, $count30);
+//                        if($countCons30Next['value'] == "60" && $countCons30Next['prev_key'] != end($keys30)){
+//                            return $count30." 30 days late and CONSECUTIVE". $countCons30 ."30 day late and SIMPLE 60 day late";
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
+
+//      if(
+//            $lates["30"] == 1 && $lates["60"] == 1 &&
+//            $countByType["90"] == 0 && $lates["120"] == 0 &&
+//            $countByType["150"] == 0 && $lates["180"] == 0
+//
+//      ){
+//            if($next['value'] == "60"){
+//                return  "CONSECUTIVE SIMPLE 30 day late, 60 day late";
+//            }else{
+//                return  "NON CONSECUTIVE SIMPLE 30 day late, 60 day late";
+//            }
+//        }elseif(
+//            $lates["30"] >= 1 && $lates["60"] == 1 &&
+//            $countByType["90"] == 0 && $lates["120"] == 0 &&
+//            $countByType["150"] == 0 && $lates["180"] == 0 &&
+//
+//        ){
+//            if($next['value'] == "60" && $next['prev_key'] == end($keys30)){
+//                return  "CONSECUTIVE".$count30 ."30 day late,  SIMPLE 60 day late";
+//            }elseif($next['value'] != "60" && $next['prev_key'] == end($keys30)){
+//                return  "CONSECUTIVE". $count30 . "  30 day late and SIMPLE 60 day late";
+//            }elseif($next['value'] != "60" && $next['prev_key'] != end($keys30)){
+//                $next30Key = $this->get_next($status, $next['prev_key']);
+//                $countCons30 = 1;
+//                $countCons30Next = $this->count30DaysLate($next30Key, $status, $count30);
+//                if($countCons30Next['value'] == "60" && $countCons30Next['prev_key'] != end($keys30)){
+//                    return $count30." 30 days late and CONSECUTIVE". $countCons30 ."30 day late and SIMPLE 60 day late";
+//                }
+//
+//            }
+//        }
+
+        if($key30 !== false) {
+            $count30 = 1;
+            $next = $this->count30DaysLate($key30, $status, $count30);
+
+            if ($next['value'] == "OK" && $lates["60"] == 0 &&
+                $countByType["90"] == 0 && $lates["120"] == 0 &&
+                $countByType["150"] == 0 && $lates["180"] == 0 &&
+                $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                $lates["F"] == 0 && $lates["VS"] == 0 &&
+                $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                $lates["IC"] == 0 && $lates["G"] == 0 &&
+                $lates["D"] == 0 && $lates["C"] == 0 &&
+                $lates["CO"] == 0 && $lates["CLS"] == 0
+                && end($keys30) == $next['prev_key']) {
+                return $count30 . " 30 day late";
+            }elseif($next['value'] == "OK" &&
+                $countByType["90"] == 0 && $lates["120"] == 0 &&
+                $countByType["150"] == 0 && $lates["180"] == 0 &&
+                $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                $lates["F"] == 0 && $lates["VS"] == 0 &&
+                $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                $lates["IC"] == 0 && $lates["G"] == 0 &&
+                $lates["D"] == 0 && $lates["C"] == 0 &&
+                $lates["CO"] == 0 && $lates["CLS"] == 0
+                && end($keys30) != $next['prev_key']){
+                return $lates['30'] . " 30 day late";
+            }
+
+        }
+
+        dd(array_keys($status, "OK") , $status);
+
+
+
+        if($key30 !== false){
+            $count30 = 1;
+            $next = $this->count30DaysLate($key30, $status, $count30);
+            if($next['value'] == "OK" && $lates["60"] == 0  &&
+                $countByType["90"] == 0 && $lates["120"] == 0 &&
+                $countByType["150"] == 0 && $lates["180"] == 0 &&
+                $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                $lates["F"] == 0 && $lates["VS"] == 0 &&
+                $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                $lates["IC"] == 0 && $lates["G"] == 0 &&
+                $lates["D"] == 0 && $lates["C"] == 0 &&
+                $lates["CO"] == 0 && $lates["CLS"] == 0){
+
+                $count30 = $lates["60"]> $count30? $lates["60"]:$count30;
+                return $count30." 30 day late";
+
+            }elseif($next['value'] == "60"){
+                $next90 = $this->get_next($status, $next['key']);
+
+                if($next90['value'] == "OK" && $lates["60"] == 1  &&
+                    $countByType["90"] == 0 && $lates["120"] == 0 &&
+                    $countByType["150"] == 0 && $lates["180"] == 0 &&
+                    $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                    $lates["F"] == 0 && $lates["VS"] == 0 &&
+                    $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                    $lates["IC"] == 0 && $lates["G"] == 0 &&
+                    $lates["D"] == 0 && $lates["C"] == 0 &&
+                    $lates["CO"] == 0 && $lates["CLS"] == 0){
+                    return $count30." 30 day late,  60 day late";
+                }elseif($next90 == '90'){
+                    $next120 = $this->get_next($status, $next90['key']);
+                    if($next120['value'] == "OK"  && $lates["120"] == 0 &&
+                        $countByType["150"] == 0 && $lates["180"] == 0 &&
+                        $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                        $lates["F"] == 0 && $lates["VS"] == 0 &&
+                        $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                        $lates["IC"] == 0 && $lates["G"] == 0 &&
+                        $lates["D"] == 0 && $lates["C"] == 0 &&
+                        $lates["CO"] == 0 && $lates["CLS"] == 0){
+                        return $count30." 30 day late,  60 day late,  90 day late";
+                    } elseif($next120 = "120"){
+                        $next150 = $this->get_next($status, $next120['key']);
+                        if($next120['value'] == "OK"  && $lates["120"] == 0 &&
+                            $countByType["150"] == 0 && $lates["180"] == 0 &&
+                            $lates["CRD"] == 0 && $lates["FS"] == 0 &&
+                            $lates["F"] == 0 && $lates["VS"] == 0 &&
+                            $lates["R"] == 0 && $lates["PBC"] == 0 &&
+                            $lates["IC"] == 0 && $lates["G"] == 0 &&
+                            $lates["D"] == 0 && $lates["C"] == 0 &&
+                            $lates["CO"] == 0 && $lates["CLS"] == 0){
+                            return $count30." 30 day late,  60 day late,  90 day late, 120 day late";
+                        }elseif($next150 = "150") {
+                            $next180 = $this->get_next($status, $next150['key']);
+                        }
+                    }
+
+
+                }
+            }
+
+
+            dd($next,  $countByType);
+        }
+
+
+
+    }
+
+
+
+
+    public function countDaysLate($lateKeys)
+    {
+        $countDaysLate = [];
+        $first = null;
+        $count = 0;
+        $i = 0;
+        foreach($lateKeys as $key => $late30){
+            if(count($lateKeys) == 1){
+                $countDaysLate[0] = [
+                    'count'=>1,
+                    'last_key' => $late30,
+                    'first_key'=> $late30
+                ];
+            }elseif(count($lateKeys) == 2){
+                if(isset($lateKeys[$key+1])){
+                    if($lateKeys[$key+1] - $late30 === 1){
+                        $count = 2;
+                        $countDaysLate[$i]['count'] = $count;
+                        $countDaysLate[$i]['count'] = $lateKeys[$key+1];
+                        $countDaysLate[$i]['first_key'] = is_null($first)?$lateKeys[0]:$countDaysLate[$i]['first_key'];
+                        break;
+                    }else{
+                        $count = 1;
+                        $countDaysLate[$i]['count'] = $count;
+                        $countDaysLate[$i]['last_key'] = $lateKeys[$key];
+                        $countDaysLate[$i]['first_key'] = $lateKeys[$key];
+                        $i = $i + 1;
+                    }
+                }else{
+                    $count = 1;
+                    $countDaysLate[$i]['count'] = $count;
+                    $countDaysLate[$i]['last_key'] = $lateKeys[$key];
+                    $countDaysLate[$i]['first_key'] = $lateKeys[$key];
+                    $i = $i + 1;
+                }
+            }elseif($key < count($lateKeys)-2){
+                if($lateKeys[$key+1] - $late30 === 1){
+                    $count = $count + 1;
+                    $countDaysLate[$i]['count'] = $count;
+                    $countDaysLate[$i]['count'] = $lateKeys[$key+1];
+                    $countDaysLate[$i]['first_key'] = is_null($first)?$lateKeys[0]:$countDaysLate[$i]['first_key'];
+                }else{
+
+                    $count = $count + 1;
+                    $countDaysLate[$i]['count'] = $count;
+                    $countDaysLate[$i]['last_key'] = $late30;
+                    $countDaysLate[$i]['first_key'] = is_null($first)?$lateKeys[0]:$countDaysLate[$i]['first_key'];
+
+                    if($key < count($lateKeys)-3){
+                        $i = $i + 1;
+                        $count = 0;
+                        $first = $lateKeys[$key+1];
+                        $countDaysLate[$i]['count'] = $count;
+                        $countDaysLate[$i]['last_key'] = $lateKeys[$key+1];
+                        $countDaysLate[$i]['first_key'] = $lateKeys[$key+1];
+                    }
+                }
+            }else{
+                if($late30 - $lateKeys[$key-1] === 1){
+                    $count = $count + 1;
+                    $countDaysLate[$i]['count'] = $count;
+                    $countDaysLate[$i]['last_key'] = $late30;
+                    $countDaysLate[$i]['first_key'] = !isset($countDaysLate[$i]['first_key'])?$lateKeys[0]:$countDaysLate[$i]['first_key'];
+                }else{
+                    $i = $i + 1;
+                    $count = 1;
+                    $countDaysLate[$i]['count'] = $count;
+                    $countDaysLate[$i]['last_key'] = $late30;
+                    $countDaysLate[$i]['first_key'] = $late30;
+                }
+            }
+        }
+        return $countDaysLate;
+    }
+
+    public function  get_next($array, $key)
+    {
+       $currentKey = key($array);
+       while ($currentKey !== null && $currentKey != $key) {
+           next($array);
+           $currentKey = key($array);
+       }
+
+       $value = next($array);
+       $key = key($array);
+
+        return ['key' => $key, 'value' => $value];
+    }
+
+    public function count30DaysLate($key30, $status, $count30)
+    {
+        $next =  $this->get_next($status, $key30);
+        if($next['value'] == $status[$key30]){
+            $count30 = $count30 + 1;
+            return $this->count30DaysLate( $next['key'], $status, $count30);
+        }else{
+            return ['prev_key'=>$key30,  'key'=>$next['key'], 'value'=>$next['value'], 'count'=> $count30];
+        }
+
+    }
+
+
+    public function exLates($rating)
+    {
+        $lates = [];
+        $lates["30"] = isset($rating['30'])?$rating['30']:null;
+        $lates["60"] = isset($rating['60'])?$rating['60']:null;
+        $lates["90"] = isset($rating['90'])?$rating['90']:null;
+        $lates["120"] = isset($rating['120'])?$rating['120']:null;
+        $lates["150"] = isset($rating['150'])?$rating['150']:null;
+        $lates["180"] = isset($rating["180"])?$rating["180"]:null;
+        $lates["CRD"] = isset($rating["CRD"])?$rating["Y"]:null;
+        $lates["FS"] = isset($rating["FS"])?$rating["FS"]:null;
+        $lates["F"] = isset($rating["F"])?$rating["F"]:null;
+        $lates["VS"] = isset($rating["VS"])?$rating["VS"]:null;
+        $lates["R"] = isset($rating["R"])?$rating["R"]:null;
+        $lates["PBC"] = isset($rating["PBC"])?$rating["PBC"]:null;
+        $lates["IC"] = isset($rating["IC"])?$rating["IC"]:null;
+        $lates["G"] = isset($rating["G"])?$rating["G"]:null;
+        $lates["D"] = isset($rating["D"])?$rating["D"]:null;
+        $lates["C"] = isset($rating["C"])?$rating["C"]:null;
+        $lates["CO"] = isset($rating["CO"])?$rating["CO"]:null;
+        $lates["CLS"] = isset($rating["CLS"])?$rating["CLS"]:null;
+
+        return $lates;
+    }
     /**
      * split address string
      */
