@@ -44,18 +44,20 @@ class BanksController extends Controller
     public function showBankLogo(Request $request)
     {
         if(!is_null($request->term)){
-            $chars = [' ', '.', '-', '(', ')'];
-            $phoneFaxZip =str_replace($chars, '', $request->term);
+            $phoneFaxZip =preg_replace('/[^0-9]/', '', $request->term);
             $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
                 ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip)  {
                     $query->where('bank_logos.name', 'LIKE', "%{$request->term}%")
                         ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
                         ->orWhere('bank_addresses.street', 'LIKE', "%{$request->term}%")
-                        ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+                        ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%");
+                        if ($phoneFaxZip) {
+                            $query = $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                                ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                                ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+                        }
+
                 });
 
         }else{
