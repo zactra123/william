@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ClientReportExAccount extends Model
 {
@@ -109,5 +110,185 @@ class ClientReportExAccount extends Model
 
         }
         return "UNKNOWN";
+    }
+
+    /**
+     *
+     *
+     * return $late_status(string), $need_attention(array)
+     */
+    public function lates()
+    {
+        $late_status = '';
+        $need_attention = [];
+
+
+        $countByType = $this->paymentHistories()->groupBy('status')->select(DB::Raw('COUNT(id) as count'), 'status')
+            ->pluck('count', 'status')->toArray();
+        $payments = $this->paymentHistories()->orderBy('id', 'DESC')->get()->toArray();
+        $account_statueses = array_keys($countByType);
+
+        $negative_statuses = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES;
+
+        // getting late status for account dispute reason
+        foreach (array_reverse($negative_statuses) as $status) {
+            if (in_array($status, $account_statueses)) {
+                if ($status != 30) {
+                    $late_status = "{$status}-DAYS LATE";
+                    break;
+                } else {
+                    $late_status =  count($account_statueses['30']) > 1 ? "SIMPLE 30-DAYS LATE" : count($account_statueses['30']) . "x 30-DAYS LATE";
+                }
+            }
+        }
+
+        foreach($payments as $key=>&$payment) {
+            if (in_array($payment["status"], ["OK", "CLS", "ND"])) {
+                continue;
+            }
+
+            switch ($payment["status"]) {
+                case "30":
+                   continue;
+                    break;
+                case "60":
+                    if (empty($payments[$key-1]['status']) || $payments[$key-1]['status'] == 'OK'){
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payment['year']}-{$payment['month']}-{$payment['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} 60-DATES LATE WITHOUT 30-DAYS LATE",
+                            "case" => 1,
+                            "id" => $payment["id"],
+                        ];
+
+                    }
+
+                    if (!empty($payments[$key-1]['status']) && $payments[$key-1]['status'] == "60"){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payments[$key-1]['year']}-{$payments[$key-1]['month']}-{$payments[$key-1]['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} CONSECUTIVE 60-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payments[$key-1]["id"],
+                        ];
+                    }
+
+                    break;
+                case "90":
+                    if (empty($payments[$key-1]['status']) || !in_array($payments[$key-1]['status'], [60, 90])){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payment['year']}-{$payment['month']}-{$payment['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} 90-DATES LATE WITHOUT 60-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payment["id"],
+                        ];
+                    }
+
+                    if (!empty($payments[$key-1]['status']) && $payments[$key-1]['status'] == "90"){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payments[$key-1]['year']}-{$payments[$key-1]['month']}-{$payments[$key-1]['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} CONSECUTIVE 90-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payments[$key-1]["id"],
+                        ];
+                    }
+                    break;
+                case "120":
+                    if (empty($payments[$key-1]['status']) || !in_array($payments[$key-1]['status'], [90, 120])){
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payment['year']}-{$payment['month']}-{$payment['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} 120-DATES LATE WITHOUT 60-DAYS LATE",
+                            "case" => 3,
+                            "id" => $payment["id"],
+                        ];
+                    }
+                    if (!empty($payments[$key-1]['status']) && $payments[$key-1]['status'] == "120"){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payments[$key-1]['year']}-{$payments[$key-1]['month']}-{$payments[$key-1]['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} CONSECUTIVE 120-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payments[$key-1]["id"],
+                        ];
+                    }
+                    break;
+                case "150":
+                    if (empty($payments[$key-1]['status']) || !in_array($payments[$key-1]['status'], [120, 150])){
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payment['year']}-{$payment['month']}-{$payment['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} 150-DATES LATE WITHOUT 120-DAYS LATE",
+                            "case" => 4,
+                            "id" => $payment["id"],
+                        ];
+                    }
+
+                    if (!empty($payments[$key-1]['status']) && $payments[$key-1]['status'] == "150"){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payments[$key-1]['year']}-{$payments[$key-1]['month']}-{$payments[$key-1]['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} CONSECUTIVE 150-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payments[$key-1]["id"],
+                        ];
+                    }
+
+                    break;
+                case "180":
+                    if (empty($payments[$key-1]['status']) || !in_array($payments[$key-1]['status'], [120, 150])){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payment['year']}-{$payment['month']}-{$payment['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} 180-DATES LATE WITHOUT 150-DAYS LATE",
+                            "case" => 5,
+                            "id" => $payment["id"],
+                        ];
+                    }
+                    if (!empty($payments[$key-1]['status']) && $payments[$key-1]['status'] == "180"){
+                        $payment['consecutive'] = true;
+                        if (!empty($payments[$key-1]['consecutive'])){
+                            continue;
+                        }
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$payments[$key-1]['year']}-{$payments[$key-1]['month']}-{$payments[$key-1]['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} CONSECUTIVE 180-DAYS LATE",
+                            "case" => 2,
+                            "id" => $payments[$key-1]["id"],
+                        ];
+                    }
+                    break;
+            }
+        }
+
+
+        return ["status" => $late_status, "need_attention" => $need_attention];
     }
 }

@@ -1183,15 +1183,23 @@ class AffiliatesController extends Controller
             }
 
             if ($key == 'ex_account') {
-
 //                $todoExAccount = $this->saveToDo($clientId, $user->id, "Experian Account", "",0);
                 foreach ($value as $disputeExAccounts) {
-                    $this->experianAccountDsiputeReasone($disputeExAccounts['id']);
-//                    $this->saveDisputableAdditional($todoExAccount, "App\\ClientReportExAccount",  $disputeExAccounts,0);
-                }
-                $checkToDo = Disputable::where('todo_id', $todoExAccount)->count('id');
-                if( is_null($checkToDo)){
-                    Todo::where('id', $todoExAccount)->delete();
+                    $disputeReason = $this->experianAccountDsiputeReasone($disputeExAccounts['id']);
+                    $todo = Todo::create([
+                        "client_id" => $clientId,
+                        "user_id" => $user->id,
+                        "title" => $disputeReason["name"]
+                    ]);
+                    $disputable = $todo->disputes()->createMany([
+                        [
+                            "disputable_id" => $disputeExAccounts['id'],
+                            "disputable_type" => "App\\ClientReportExAccount",
+                            "additional_information" => [
+                                "attention" => $disputeReason['attention']
+                            ]
+                        ]
+                    ]);
                 }
             }
 
@@ -1406,15 +1414,17 @@ class AffiliatesController extends Controller
 
         if($exAccount->account_type() != "CA"){
 
-            $type = $exAccount->type;
             $responsibility = $exAccount->responsibility;
+            $openClose = strpos(strtolower($exAccount->status), "close") !== false ? "Close" : "Open";
+            $type = $exAccount->type;
+            $late_statues = $exAccount->lates();
 
-            if(strpos(strtolower($exAccount->status), "close") !== false){
-                $openClose  = "Close";
-            }else{
-                $openClose = "Open";
-            }
-            $paymentLate = $this->exPaymentHistories($exAccount);
+//            $paymentLate = $this->exPaymentHistories($exAccount);
+            return  [
+                "name" => strtoupper("{$openClose} {$responsibility} {$type} {$late_statues['status']}"),
+                "attention" => $late_statues["need_attention"]
+            ];
+
 
         }else{
             //collectioni logikan;

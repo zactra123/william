@@ -54,7 +54,7 @@ class ClientDetailsController extends Controller
         $this->middleware('client', ['except' => 'store']);
     }
 
-    public function index(Escrow $escrow)
+    public function index()
     {
         $client = Auth::user();
         $toDos = Todo::where('client_id', $client->id)->get();
@@ -633,7 +633,7 @@ class ClientDetailsController extends Controller
     {
         $client = Auth::user();
         $clientReportsTU = ClientReport::where('user_id', $client->id)->where('type', "TU_DIS")->first();
-        $clientReportsEX = ClientReport::where('user_id', $client->id)->where('type', "EX_LOG")->first();
+        $clientReportsEX = ClientReport::where('user_id', $client->id)->where('type', "EX_LOG")->latest()->first();
         $clientReportsEQ = ClientReport::where('user_id', $client->id)->where('type', "EQ")->first();
         return view('client_details.view_negative_item', compact('clientReportsEX', 'clientReportsTU', 'clientReportsEQ'));
     }
