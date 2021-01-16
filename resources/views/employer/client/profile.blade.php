@@ -15,7 +15,9 @@
 
         }
 
-
+        .charts {
+            color: #16181b !important;
+        }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -251,12 +253,6 @@
             text-align: center;
         }
 
-
-
-
-
-
-
         .social {
             display: block;
         }
@@ -332,7 +328,9 @@
         .date_of_birth:hover  .zodiac{
             display:block;
         }
-
+        .showDetails{
+            cursor: pointer;
+        }
 
     </style>
 
@@ -613,11 +611,11 @@
                                         <div class="col-md-1 font-weight-normal">#</div>
                                         <div class="col-md-1 font-weight-normal"></div>
                                         <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
-                                        <div class="col-md-2">STATUS</div>
+                                        <div class="col-md-2" style="font-weight: bold">STATUS</div>
                                     </div>
                                     @foreach($toDos->where('status', 2) as $todo)
 
-                                        <div class="row">
+                                        <div class="row" style="font-weight: bold">
                                             <div class="col-md-1 font-weight-normal">
                                                 {{$loop->iteration}}
                                             </div>
@@ -648,14 +646,14 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-1 font-weight-normal">#</div>
-                                        <div class="col-md-1 font-weight-normal"></div>
+                                        <div class="col-md-1 font-weight-normal" style="font-weight: bold">VIEW</div>
                                         <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
-                                        <div class="col-md-2">STATUS</div>
+                                        <div class="col-md-2" style="font-weight: bold">STATUS</div>
                                     </div>
                                     @foreach($toDos->where('status', '!=',2) as $todo)
 
-                                        <div class="row">
-                                            <div class="col-md-1 font-weight-normal">
+                                        <div class="row" style="font-weight: bold">
+                                            <div class="col-md-1 font-weight-normal showDetails" data-id ="{{$todo->id}}">
                                                 {{$loop->iteration}}
                                             </div>
                                             <div class="col-md-1 updateview" data-id="{{$todo->id}}">
@@ -677,6 +675,10 @@
                         </div>
                     </div>
                 </section>
+                <div id="account-details">
+
+                </div>
+
                 <section class="charts">
                     <div class="container-fluid">
                         <div class="chart-container">
@@ -1278,6 +1280,7 @@
         $(document).ready(function() {
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');
+            $('.phone').mask('(000) 000-0000');
 
             $(".updateview").click(function(){
                 var  todo = $(this).attr("data-id");
@@ -1302,6 +1305,30 @@
 
                     }
                 });
+            })
+
+            $(".showDetails").click(function(){
+                var  todo = $(this).attr("data-id");
+
+                console.log(todo,  'asd')
+                $.ajax({
+                    url: '/admins/client/todo/details',
+                    type: "get",
+                    data: {
+                        "id": todo
+                    },
+                    dataType: "html",
+                    success: function(response) {
+
+                        var result =JSON.parse(response)
+                        $("#account-details").html(result.view);
+
+                    },
+                    error: function(error) {
+
+                    }
+                });
+
             })
         })
     </script>

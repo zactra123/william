@@ -208,6 +208,7 @@ Route::group(['prefix'=> 'admins/'], function(){
     Route::post('todo/change-assignment', 'Employer\TodosController@changeTodoAssignment')->name('adminRec.todo.assignment');
     Route::post('client/profile/todo', 'Employer\TodosController@clientToDo')->name('adminRec.client.todo');
     Route::put('client/todo/{todoId}', 'Employer\TodosController@clientToDoUpdate')->name('adminRec.client.todoUpdate');
+    Route::get('client/todo/details', 'Employer\TodosController@toDodetails');
 
 
 });

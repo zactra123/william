@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employer;
 
+use App\ClientReportExAccount;
 use App\Http\Controllers\Controller;
 use App\Disputable;
 use App\Todo;
@@ -120,10 +121,33 @@ class TodosController extends Controller
         return redirect()->route('adminRec.client.profile', $client);
     }
 
+    public function toDoDetails(Request $request)
+    {
+        $todo = Todo::whereId($request->id)->first();
+        $dispute  = Disputable::where('todo_id', $request->id)->first();
+        if($dispute->disputable_type == "App\ClientReportExAccount"){
+            $exAccount = ClientReportExAccount::whereId($dispute->disputable_id)->first();
+
+            $view = view('helpers.account-details', compact('exAccount'))->render();
+//////
+//            return $view;
+//            dd($view);
+
+            return response()->json(['status' => 200, 'view' => $view]);
+        }
+        dd($exAccount);
+
+
+
+
+
+
+    }
+
     public function disputeDestroy($id)
     {
         try {
-            $todoId = Disputable::where('id', $id)->fisrt()->todo_id;
+            $todoId = Disputable::where('id', $id)->first()->todo_id;
             Disputable::where('id', $id)->delete();
             if(empty(Disputable::where('todo_id', $todoId)->first())){
                 Todo::where('id', $todoId)->delete();
