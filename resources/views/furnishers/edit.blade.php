@@ -194,19 +194,15 @@
                                         <div class="form-group">
                                             <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control" id="bank_name">
                                         </div>
-                                        <div id="collection_types" class="m-5 {{$bank->type != 3 ? "hidden" : ""}}">
+                                        <div id="collection_types" class="m-5 {{$bank->type == 4 || $bank->type == 44 ? "" : "hidden"}}">
                                             <div class="row" id="collection_types_append">
-                                                <div class="col-md-4 ">
-                                                     3RD PARTY CA
-                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}}>
+                                                <div class="col-md-6 ">
+                                                    3RD PARTY COLLECTOR
+                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY COLLECTOR"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY COLLECTOR", $bank->additional_information["collection_type"])) ? "checked":''}}>
                                                 </div>
-                                                <div class="col-md-4 ">
-                                                    ASSET BUYER CA
-                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}}>
-                                                </div>
-                                                <div class="col-md-4 ">
-                                                    LAW FIRM CA
-                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="LAW FIRM CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("LAW FIRM CA", $bank->additional_information["collection_type"])) ? "checked":''}}>
+                                                <div class="col-md-6 {{ $bank->type != 4 ? "hidden" : ""}}">
+                                                    DEBT BUYER
+                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}}>
                                                 </div>
                                             </div>
                                         </div>
