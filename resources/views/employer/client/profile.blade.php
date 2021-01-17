@@ -610,7 +610,7 @@
                                     <div class="row">
                                         <div class="col-md-1 font-weight-normal">#</div>
                                         <div class="col-md-1 font-weight-normal"></div>
-                                        <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
+                                        <div class="col-md-4"><span  style="font-weight: bold">TITLE</span></div>
                                         <div class="col-md-2" style="font-weight: bold">STATUS</div>
                                     </div>
                                     @foreach($toDos->where('status', 2) as $todo)
@@ -623,7 +623,7 @@
                                                 <i class="fa fa-eye"></i>
                                             </div>
 
-                                            <div class="col-md-3"> {{$todo->title}}</div>
+                                            <div class="col-md-4"> {{$todo->title}}</div>
                                             <div class="col-md-2">{{$status[$todo->status]}}</div>
                                             <div class="col-md-3">
 
@@ -647,7 +647,7 @@
                                     <div class="row">
                                         <div class="col-md-1 font-weight-normal">#</div>
                                         <div class="col-md-1 font-weight-normal" style="font-weight: bold">VIEW</div>
-                                        <div class="col-md-3"><span  style="font-weight: bold">TITLE</span></div>
+                                        <div class="col-md-4"><span  style="font-weight: bold">TITLE</span></div>
                                         <div class="col-md-2" style="font-weight: bold">STATUS</div>
                                     </div>
                                     @foreach($toDos->where('status', '!=',2) as $todo)
@@ -660,13 +660,8 @@
                                                 <i class="fa fa-eye"></i>
                                             </div>
 
-                                            <div class="col-md-3"> {{$todo->title}}</div>
-                                            <div class="col-md-2">{{$status[$todo->status]}}</div>
-                                            <div class="col-md-3">
-
-
-
-                                            </div>
+                                            <div class="col-md-4  showDetails" data-id ="{{$todo->id}}"> {{$todo->title}}</div>
+                                            <div class="col-md-2  showDetails" data-id ="{{$todo->id}}">{{$status[$todo->status]}}</div>
                                         </div>
                                     @endforeach
                                 </div>

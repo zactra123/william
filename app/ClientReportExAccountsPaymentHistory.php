@@ -15,14 +15,14 @@ class ClientReportExAccountsPaymentHistory extends Model
         120,//Account 120 days past due
         150,//Account 150 days past due
         180,//Account 180 days past due
-//        'CRD',//Creditor received deed
-//        'FS',// Foreclosure proceedings started
-//        'F',//Foreclosed
-//        'VS',//Voluntarily surrendered
-//        'R',//Repossession
-//        'PBC',//Paid by creditor
-//        'IC',// Insurance claim
-//        'G',// Claim filed with government
+//        'CRD',//Creditor received deed => MORTGAGES
+//        'FS',// Foreclosure proceedings started => MORTGAGES
+//        'F',//Foreclosed => MORTGAGES
+//        'VS',//Voluntarily surrendered => AUTO
+//        'R',//Repossession => AUTO
+//        'PBC',//Paid by creditor => ?
+//        'IC',// Insurance claim => AUTO
+//        'G',// Claim filed with government =>STUDENT
 //        'D',//Defaulted on contract
 //        'C',//Collection
 //        'CO',//Charge off

@@ -40,11 +40,11 @@
 
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> BALANCE </div>
-                            <div class=" col-md-6"> {{strtoupper($exAccount->high_balance)}} </div>
+                            <div class=" col-md-6"> $ {{$exAccount->high_balance}} </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> {{strtoupper($exAccount->credit_limit_label)}} </div>
-                            <div class=" col-md-6"> {{strtoupper($exAccount->credit_limit)}} </div>
+                            <div class=" col-md-6"> $ {{$exAccount->credit_limit}} </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> TERMS</div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> MONTHLY PAYMENT</div>
-                            <div class=" col-md-6"> {{strtoupper($exAccount->monthly_payment)?? "N/A"}} </div>
+                            <div class=" col-md-6"> {{!empty($exAccount->monthly_payment)? "$ {$exAccount->monthly_payment}": "N/A"}} </div>
                         </div>
 
                         <div class="row">
@@ -106,6 +106,20 @@
                 @if(!empty($exAccount->paymentHistories))
 
                     <h3 class="mt-5">PAYMENT HISTORY</h3>
+                    @if(!empty($dispute["additional_information"]["attention"]))
+                        <h3 class="mt-5 text-danger">Attentions</h3>
+                        @foreach($dispute["additional_information"]["attention"] as $attention)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>
+                                    <span>{{$attention["text"]}}</span>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+
+                    @endif
                     <div class="row mt-5" >
                         @foreach($exAccount->paymentHistories()->orderBy("id", "DESC")->get() as $payment)
                             <div class="col-md-2" >
@@ -116,8 +130,15 @@
                         @endforeach
                     </div>
                 @endif
+                @if(!empty($exAccount->payStates->toArray()))
+                    <div class="row mt-5" style="font-weight: bold">
+                        @foreach($exAccount->payStates as $pay)
+                            <div class="col-md-12">{{$pay->name}}</div>
+                        @endforeach
+                    </div>
+                @endif
 
-                @if(!empty($exAccount->balanceHistories))
+                @if(!empty($exAccount->balanceHistories->toArray()))
                     <h3 class="mt-5" >BALANCE HISTORY</h3>
                     <div class="row" style="font-weight: bold">
                         <div class="col-md-3">DATE</div>
@@ -128,14 +149,21 @@
                     @foreach($exAccount->balanceHistories as $balance)
                         <div class="row">
                             <div class="col-md-3">{{$balance->date}}</div>
-                            <div class="col-md-3">$ {{$balance->amount}}</div>
-                            <div class="col-md-3">$ {{$balance->amount_sch}}</div>
-                            <div class="col-md-3">$ {{$balance->amount_act}}</div>
+                            <div class="col-md-3">{{$balance->amount}}</div>
+                            <div class="col-md-3">{{$balance->amount_sch}}</div>
+                            <div class="col-md-3">{{$balance->amount_act}}</div>
                         </div>
 
                     @endforeach
                 @endif
 
+                @if(!empty($exAccount->limitHighBalance->toArray()))
+                    <div class="row mt-5" style="font-weight: bold">
+                        @foreach($exAccount->limitHighBalance as $balance)
+                            <div class="col-md-12">{{$balance->name}}</div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
