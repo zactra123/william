@@ -15,7 +15,8 @@ class ClientReportTuAccount extends Model
             'home equity loan'],
         "CA"=>['debt buyer', 'collection','collection agency/attorney'],
         "STUDENT LOAN" =>['student','student loan'],
-        "UTILITY " =>['telecommunications/cellular', 'utility', 'utility company'],
+        "UTILITY " =>['utility', 'utility company'],
+        "CELL PHONE " =>['telecommunications/cellular'],
         "PUBLIC RECORD" => ['child support', 'family support'],
     ];
 

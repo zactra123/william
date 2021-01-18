@@ -11,9 +11,10 @@ class ClientReportEqAccount extends Model
         "AUTO" => ['auto', 'auto lease'],
         "PERSONAL LOAN" => ['unsecured', 'unsecured loan', 'line of credit', 'note loan'],
         "MORTGAGE" => ['mortgage','conventional re mortgage', 'home equity line of credit'],
-        "CA"=>['collection account', 'factoring company account', 'debt buyer'],
-        "STUDENT LOAN" =>['education','education Loan'],
-        "UTILITY " =>['telecommunication/cellular','utility company'],
+        "CA"=> ['collection account', 'factoring company account', 'debt buyer'],
+        "STUDENT LOAN" => ['education','education Loan'],
+        "UTILITY " => ['utility company'],
+        "CELL PHONE" => ['telecommunications/cellular'],
         "PUBLIC RECORD" => ['child support', 'family support'],
     ];
 

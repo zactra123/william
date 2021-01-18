@@ -26,6 +26,7 @@ class DisputesPricing extends Model
         'public_record' => 'required',
         'collection' => 'required',
         'utility_blocking' => 'required',
+        'cell_blocking'=>'required',
         'unknown'=>'required'
     ];
     protected $fillable = [
@@ -46,7 +47,8 @@ class DisputesPricing extends Model
         'public_record',
         'collection',
         'utility_blocking',
-        'unknown'=>'required'
+        'cell_blocking',
+        'unknown'
     ];
     protected $casts = [
         'collection' => 'array'

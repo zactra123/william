@@ -15,6 +15,7 @@ class ClientReportExAccount extends Model
         "CA"=>['collection', 'debt buyer'],
         "STUDENT LOAN" =>['education','education loan'],
         "UTILITY " =>['cell phone','utility'],
+        "CELL PHONE" =>['cell phone'],
         "PUBLIC RECORD" => ['child support', 'family support'],
     ];
 

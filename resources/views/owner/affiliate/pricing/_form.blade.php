@@ -227,6 +227,17 @@
     </div>
     <div class="form-group">
         <div class="row">
+            <div class="col-md-4" style="margin: 0">
+                <div class="priceName">
+                    <div class="name">
+                        <label style="float: right">CELL PHONE $</label>
+                    </div>
+                    <div class="price">
+                        <input type="text"  name="cell_blocking" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
+                    </div>
+                </div>
+                {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
+            </div>
 
             <div class="col-md-4" style="margin: 0">
                 <div class="priceName">
