@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankLogo;
 use App\ClientReport;
 use App\ClientReportAddress;
 use App\ClientReportEmployer;
@@ -20,6 +21,7 @@ use App\ClientReportTuPublicRecord;
 use App\ClientReportTuStatement;
 use App\Credential;
 use App\Disputable;
+use App\EqualBank;
 use App\Jobs\FetchReports;
 use App\SecretQuestion;
 use App\Services\ClientDetailsNewData;
@@ -1138,6 +1140,7 @@ class AffiliatesController extends Controller
                     Todo::where('id', $todoName)->delete();
                 }
             }
+
             if ($key == 'employer') {
                 $todoEmployer = $this->saveToDo($clientId, $user->id, "Employer", "",0);
                 foreach ($value as $dispute_name) {
@@ -1411,10 +1414,11 @@ class AffiliatesController extends Controller
     public function experianAccountDsiputeReasone($accountId)
     {
         $exAccount = ClientReportExAccount::whereId($accountId)->first();
+        $responsibility = $exAccount->responsibility;
+
 
         if($exAccount->account_type() != "CA"){
 
-            $responsibility = $exAccount->responsibility;
             $openClose = strpos(strtolower($exAccount->status), "close") !== false ? "Close" : "Open";
             $type = $exAccount->type;
             $late_statues = $exAccount->lates();
@@ -1427,10 +1431,147 @@ class AffiliatesController extends Controller
 
 
         }else{
-            //collectioni logikan;
+
+            $type =$this->getCollectionType($exAccount);
+            return  [
+                "name" => strtoupper(" COLLECTION /{$exAccount->type} {$responsibility} {$type['type']}"),
+                "attention" => "see differents if exist"
+            ];
+
+
         }
 
 
+    }
+
+    public function getCollectionType($exAccount)
+    {
+        $reportId = $exAccount->client_report_id;
+        $exAccounts =   ClientReportExAccount::where('client_report_id', $reportId)
+            ->where("id", "!=", $exAccount->id);
+
+        $exAccountsName = $exAccounts ->pluck('source_name', 'id')->toArray();
+        $exAccountsNumber = $exAccounts->pluck('source_id', 'id')->toArray();
+        $exAccountsSold = array_filter($exAccounts->pluck('sold_to', 'id')->toArray());
+        $originalCreditor = BankLogo::where('name', $exAccount->source_name)->first();
+        $equalName  = EqualBank::where('bank_logo_id', $originalCreditor->id)->pluck('name')->toArray();
+        array_push($equalName, $originalCreditor->name);
+
+        $findNameKey = array_search($exAccount->source_name, $exAccountsName);
+        $findNameId = array_search($exAccount->source_id, $exAccountsNumber);
+        $intersectEqual = array_intersect(array_map('strtolower', $exAccountsName), array_map('strtolower', $equalName));
+
+        if($findNameKey !== false || $findNameId !== false){
+            $account = ClientReportExAccount::whereId($findNameKey)->first();
+            $statusDate = $account->status_date;
+            $status = $account->status;
+            $reWrittenOff = "/([0-9\,\s]{2,})+written off/m";
+            $rePastDue = "/([0-9\,\s]{2,})+past due as/m";
+            preg_match($reWrittenOff, $status, $matchWrittenOff);
+            preg_match($rePastDue, $status, $matchPastDue);
+
+            $writtenOff = isset($matchWrittenOff[1])?trim($matchWrittenOff[1]):null;
+            $pastDue = isset($matchPastDue[1])?trim($matchPastDue[1]):null;
+            $balance  = !empty($account->credit_limit)?$account->credit_limit:$account->high_balance;
+            $balanceCA  = !empty($exAccounts->credit_limit)?$exAccounts->credit_limit:$exAccounts->high_balance;
+            $diff = $writtenOff - $pastDue;
+            $diffOriginalPast = $balance - $pastDue;
+            $diffOriginalWritten = $balance - $pastDue;
+            $diffWrittenOffCollection = $writtenOff - $balanceCA;
+            $diffPastCollection = $pastDue - $balanceCA;
+            $diffBalanceCollection = $balance - $balanceCA;
+
+            if(!empty($exAccountsSold) && array_search($exAccount->orginal_name, $exAccountsSold) == $findNameKey){
+                return  [
+                        'type'=> $account->type,
+                        'offset' => [
+                            $diff,
+                            $diffOriginalPast,
+                            $diffOriginalWritten,
+                            $diffWrittenOffCollection,
+                            $diffPastCollection,
+                            $diffBalanceCollection,
+                        ]
+                    ];
+            }else{
+                $offset  = 0.09 * ($balance);
+                if($diff <= $offset &&  $diffOriginalPast <= $offset &&
+                    $diffOriginalWritten <= $offset && $diffWrittenOffCollection <= $offset &&
+                    $diffPastCollection <= $offset && $diffBalanceCollection <= $offset) {
+                    return   [
+                        'type'=> $account->type,
+                        'offset' => [
+                            $diff,
+                            $diffOriginalPast,
+                            $diffOriginalWritten,
+                            $diffWrittenOffCollection,
+                            $diffPastCollection,
+                            $diffBalanceCollection,
+                        ]
+                    ];
+                }
+            }
+        }elseif(!empty($intersectEqual) && count($intersectEqual)>1){
+            $accountIds = array_keys($intersectEqual);
+            foreach($accountIds as $id){
+                $account = ClientReportExAccount::whereId($id)->first();
+                $statusDate = $account->status_date;
+                $status = $account->status;
+                $reWrittenOff = "/([0-9\,\s]{2,})written off/m";
+                $rePastDue = "/([0-9\,\s]{2,})+past due as/m";
+
+                preg_match($reWrittenOff, $status, $matchWrittenOff);
+                preg_match($rePastDue, $status, $matchPastDue);
+
+                $writtenOff = isset($matchWrittenOff[1])?trim($matchWrittenOff[1]):null;
+                $pastDue = isset($matchPastDue[1])?trim($matchPastDue[1]):null;
+
+                $diff = $writtenOff - $pastDue;
+                $balance  = !empty($account->credit_limit)?$account->credit_limit:$account->high_balance;
+                $balanceCA  = !empty($exAccounts->credit_limit)?$exAccounts->credit_limit:$exAccounts->high_balance;
+                $diffOriginalPast = $balance - $pastDue;
+                $diffOriginalWritten = $balance - $pastDue;
+                $diffWrittenOffCollection = $writtenOff - $balanceCA;
+                $diffPastCollection = $pastDue - $balanceCA;
+                $diffBalanceCollection = $balance - $balanceCA;
+
+                if(!empty($exAccountsSold) && array_search($exAccount->orginal_name, $exAccountsSold) !== false){
+                    return     [
+                        'type'=> $account->type,
+                        'offset' => [
+                            $diff,
+                            $diffOriginalPast,
+                            $diffOriginalWritten,
+                            $diffWrittenOffCollection,
+                            $diffPastCollection,
+                            $diffBalanceCollection,
+                        ]
+                    ];
+                }else{
+                    $offset  = 0.09 * ($balance);
+                    if($diff <= $offset &&  $diffOriginalPast <= $offset &&
+                        $diffOriginalWritten <= $offset && $diffWrittenOffCollection <= $offset &&
+                        $diffPastCollection <= $offset && $diffBalanceCollection <= $offset) {
+                        return     [
+                            'type'=> $account->type,
+                            'offset' => [
+                                $diff,
+                                $diffOriginalPast,
+                                $diffOriginalWritten,
+                                $diffWrittenOffCollection,
+                                $diffPastCollection,
+                                $diffBalanceCollection,
+                            ]
+                        ];
+                    }
+                }
+            }
+        }else{
+            return [
+                'type'=> $originalCreditor->type,
+                'offset' => []
+            ];
+        }
     }
 
     public function exPaymentHistories($account)
@@ -2025,9 +2166,6 @@ class AffiliatesController extends Controller
 
     }
 
-
-
-
     public function countDaysLate($lateKeys)
     {
         $countDaysLate = [];
@@ -2128,7 +2266,6 @@ class AffiliatesController extends Controller
         }
 
     }
-
 
     public function exLates($rating)
     {
