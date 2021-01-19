@@ -51,7 +51,7 @@ class BanksController extends Controller
                 ->where(function($query) use($request, $phoneFaxZip)  {
                     $query->where('bank_logos.name', 'LIKE', "%{$request->term}%")
                         ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
-                        ->orWhere('bank_addresses.street', 'LIKE', "%{$request->term}%")
+                        ->orWhereRAW("CONCAT(COALESCE(bank_addresses.street, ''), ' ', COALESCE(bank_addresses.city, ''), ' ', COALESCE(bank_addresses.state, '')) LIKE '%{$request->term}%'")
                         ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%");
                         if ($phoneFaxZip) {
                             $query = $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
