@@ -1419,11 +1419,11 @@ class AffiliatesController extends Controller
 
         if($exAccount->account_type() != "CA"){
 
-            $openClose = strpos(strtolower($exAccount->status), "close") !== false ? "Close" : "Open";
-            $type = $exAccount->type;
-            $late_statues = $exAccount->lates();
+//            $openClose = strpos(strtolower($exAccount->status), "close") !== false ? "Close" : "Open";
+//            $type = $exAccount->type;
+            $late_statues = $exAccount->getTodoAttributes();
 
-//            $paymentLate = $this->exPaymentHistories($exAccount);
+            $paymentLate = $this->exPaymentHistories($exAccount);
             return  [
                 "name" => strtoupper("{$openClose} {$responsibility} {$type} {$late_statues['status']}"),
                 "attention" => $late_statues["need_attention"]

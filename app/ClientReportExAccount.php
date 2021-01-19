@@ -14,7 +14,7 @@ class ClientReportExAccount extends Model
         "MORTGAGE" => ['mortgage', 'fha mortgage', 'home equity', 'rental', 'secured loc'],
         "CA"=>['collection', 'debt buyer'],
         "STUDENT LOAN" =>['education','education loan'],
-        "UTILITY " =>['cell phone','utility'],
+        "UTILITY " =>['utility'],
         "CELL PHONE" =>['cell phone'],
         "PUBLIC RECORD" => ['child support', 'family support'],
     ];
@@ -116,38 +116,101 @@ class ClientReportExAccount extends Model
     /**
      *
      *
-     * return $late_status(string), $need_attention(array)
+     * return $status(string), $need_attention(array)
      */
-    public function lates()
+    public function getTodoAttributes()
     {
-        $late_status = '';
+        $status = '';
         $need_attention = [];
-
+        $openClose = strpos(strtolower($this->status), "close") !== false ? "Close" : "Open";
 
         $countByType = $this->paymentHistories()->groupBy('status')->select(DB::Raw('COUNT(id) as count'), 'status')
             ->pluck('count', 'status')->toArray();
-        $payments = $this->paymentHistories()->orderBy('id', 'DESC')->get()->toArray();
+        $payments = $this->paymentHistories()->orderBy('id', 'DESC')->get();
         $account_statueses = array_keys($countByType);
 
-        $negative_statuses = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES;
+        switch ($this->account_type()) {
+            case "CC":
+                $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+                foreach ($cc_charge_off as $type) {
+                    if (in_array(strtoupper($type), $account_statueses)) {
+                        $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                        $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+//                      // in the case when account type is cc the minimum lates are 180 before charge off
+                        if ($prev["value"] != 180) {
+                            if (in_array(strtoupper($prev['value']), $cc_charge_off)) {
+                                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
 
-        // getting late status for account dispute reason
-        foreach (array_reverse($negative_statuses) as $status) {
-            if (in_array($status, $account_statueses)) {
-                if ($status != 30) {
-                    $late_status = "{$status}-DAYS LATE";
-                    break;
-                } else {
-                    $late_status =  count($account_statueses['30']) > 1 ? "SIMPLE 30-DAYS LATE" : count($account_statueses['30']) . "x 30-DAYS LATE";
+                                if ($prev["value"] != 180) {
+                                    $status = strtoupper("Irregular {$this->responsibility} {$this->type} charge off");
+                                    $prev = $payments->find($prev["key"]);
+                                    $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                        ->format("M/Y");
+                                    $need_attention[] = [
+                                        "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                                        "case" => 11,
+                                        "id" => $prev["id"],
+                                    ];
+                                } else {
+                                    $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
+                                }
+
+                                break;
+                            }
+                        }
+                        $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
+
+                        break;
+                    }
                 }
-            }
+                break;
+            case "AUTO":
+                $status = "Regular charge off";
+                break;
+            case "PERSONAL LOAN":
+                $status = "Regular charge off";
+                break;
+            case "MORTGAGE":
+                $status = "Regular charge off";
+                break;
+            case "STUDENT LOAN":
+                $status = "Regular charge off";
+                break;
+            case "UTILITY":
+            case "CELL PHONE":
+            case "PUBLIC RECORD":
+                $charge_off_types = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+                foreach ($charge_off_types as $type) {
+                    if (in_array($type, $account_statueses)) {
+                        $status = strtoupper("{$this->responsibility} {$this->type} charge off");
+                    }
+                }
+                break;
         }
 
-        foreach($payments as $key=>&$payment) {
+        $negative_late_statuses = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["lates"];
+        // if not Charge OFF Status get from payment histories as late
+        if (empty($status)) {
+            // getting late status for account dispute reason
+            $late_type = 'WITHOUT LATE';
+            foreach (array_reverse($negative_late_statuses) as $late_status) {
+                if (in_array($status, $account_statueses)) {
+                    if ($status != 30) {
+                        $late_type = "{$status}-DAYS LATE";
+                        break;
+                    } else {
+                        $late_type =  count($account_statueses['30']) == 1 ? "SIMPLE 30-DAYS LATE" : count($account_statueses['30']) . "x 30-DAYS LATE";
+                    }
+                }
+            }
+            $status = strtoupper("$openClose {$this->responsibility} {$this->type} {$late_type}");
+        }
+
+        dd($status, $need_attention);
+        foreach($payments->toArray() as $key=>&$payment) {
             if (in_array($payment["status"], ["OK", "CLS", "ND"])) {
                 continue;
             }
-
             switch ($payment["status"]) {
                 case "30":
                    continue;
@@ -189,7 +252,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} 90-DATES LATE WITHOUT 60-DAYS LATE",
-                            "case" => 2,
+                            "case" => 3,
                             "id" => $payment["id"],
                         ];
                     }
@@ -203,7 +266,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} CONSECUTIVE 90-DAYS LATE",
-                            "case" => 2,
+                            "case" => 4,
                             "id" => $payments[$key-1]["id"],
                         ];
                     }
@@ -214,7 +277,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} 120-DATES LATE WITHOUT 60-DAYS LATE",
-                            "case" => 3,
+                            "case" => 5,
                             "id" => $payment["id"],
                         ];
                     }
@@ -227,7 +290,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} CONSECUTIVE 120-DAYS LATE",
-                            "case" => 2,
+                            "case" => 6,
                             "id" => $payments[$key-1]["id"],
                         ];
                     }
@@ -238,7 +301,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} 150-DATES LATE WITHOUT 120-DAYS LATE",
-                            "case" => 4,
+                            "case" => 7,
                             "id" => $payment["id"],
                         ];
                     }
@@ -252,7 +315,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} CONSECUTIVE 150-DAYS LATE",
-                            "case" => 2,
+                            "case" => 8,
                             "id" => $payments[$key-1]["id"],
                         ];
                     }
@@ -268,7 +331,7 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} 180-DATES LATE WITHOUT 150-DAYS LATE",
-                            "case" => 5,
+                            "case" => 9,
                             "id" => $payment["id"],
                         ];
                     }
@@ -281,15 +344,35 @@ class ClientReportExAccount extends Model
                             ->format("M/Y");
                         $need_attention[] = [
                             "text" => "{$date} CONSECUTIVE 180-DAYS LATE",
-                            "case" => 2,
+                            "case" => 10,
                             "id" => $payments[$key-1]["id"],
                         ];
                     }
                     break;
             }
+
+
+
+
         }
 
 
         return ["status" => $late_status, "need_attention" => $need_attention];
+    }
+
+
+
+    private function get_prev($array, $key)
+    {
+         $currentKey = key($array);
+         while ($currentKey !== null && $currentKey != $key) {
+             next($array);
+             $currentKey = key($array);
+         }
+
+         $value = prev($array);
+         $key = key($array);
+
+         return ['key' => $key, 'value' => $value];
     }
 }
