@@ -44,7 +44,8 @@ class BanksController extends Controller
     public function showBankLogo(Request $request)
     {
         if(!is_null($request->term)){
-            $phoneFaxZip =preg_replace('/[^0-9]/', '', $request->term);
+            $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->term);
+
             $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
                 ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip)  {
