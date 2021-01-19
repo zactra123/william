@@ -118,7 +118,7 @@
 
     <section class="header-title section-padding">
         <div class="container text-center">
-            <h2 class="title"> Credit Resources </h2>
+            <h2 class="title"> CLIENT REGISTRATION STEPS </h2>
             <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Affiliate</span>
         </div>
     </section>

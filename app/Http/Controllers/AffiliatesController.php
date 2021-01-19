@@ -26,6 +26,7 @@ use App\Jobs\FetchReports;
 use App\SecretQuestion;
 use App\Services\ClientDetailsNewData;
 use App\Services\PricingDetails;
+use App\Services\Screaper;
 use App\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -425,6 +426,7 @@ class AffiliatesController extends Controller
      */
     public function storeReview(Request $request, $id)
     {
+
         $user = $request->clientId;
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
@@ -487,10 +489,11 @@ class AffiliatesController extends Controller
             ]);
             $client_details->update($clientDetails);
             $uploaded->delete();
-            FetchReports::dispatch($client);
+//            FetchReports::dispatch($client);
 //            if ($registration_steps == 'review') {
 //                return redirect(route('client.details.create'));
 //            }
+
             return redirect(route('affiliate.client.profile', $id))->with('success', "your data saved");
 
         }
@@ -504,6 +507,10 @@ class AffiliatesController extends Controller
      */
     public function clientProfile(Request $request, $id)
     {
+//        ini_set('MAX_EXECUTION_TIME', '-1');
+//        $output = "{'status': 'success', 'report_filepath': 'C:/xampp/htdocs/ccc/resources/storage/reports/manuk_karapetian.json','numbers_filepath': null }";
+//        $scraper = new Screaper($id);
+//        $scraper->prepare_experian_login_data(str_replace('\'', '"',$output));
 
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)

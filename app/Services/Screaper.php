@@ -169,7 +169,6 @@ class Screaper
     {
         set_time_limit(300);
         $data = json_decode($output,true);
-
         if($data['status'] != 'success') {
             if (!empty($data['error']['message'])){
                 Mail::send(new ScraperNotifications($this->client, $data['error']['message'], 'experian_login'));
@@ -203,7 +202,6 @@ class Screaper
             }
         }
         // Save Experian Report Numbers -END-
-
         $path = $data["report_filepath"];
         if (file_exists($data["report_filepath"])) {
             $json = json_decode(file_get_contents($path), true);
@@ -236,8 +234,6 @@ class Screaper
         ];
         $clientReport = ClientReport::create($dataClientReports);
 
-
-
         if(!empty($json['consumerInfoNames'])){
             $dataName = [];
             foreach($json['consumerInfoNames'] as $info){
@@ -252,7 +248,6 @@ class Screaper
                 ] ;
             }
             $clientReport->clientNames()->createMany($dataName);
-
         }
 
         if(!empty($json['consumerInfoPhones'])){
@@ -268,7 +263,6 @@ class Screaper
                 ] ;
             }
             $clientReport->ClientPhones()->createMany($dataPhone);
-
         }
 
         if(!empty($json['consumerInfoAddresses'])){
@@ -322,7 +316,6 @@ class Screaper
                 ] ;
             }
             $clientReport->clientEmployers()->createMany($dataEmployer);
-
         }
 
         if (!empty($json['statements'])) {
@@ -410,7 +403,6 @@ class Screaper
                 ];
                 $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
 
-
                 if (!empty($infoNegativeTrade['payStates'])) {
                     $dataAccountPayStates = [];
                     foreach ($infoNegativeTrade['payStates'] as $payState) {
@@ -425,7 +417,6 @@ class Screaper
                     $dataAccountLimitHighBalances = [];
                     foreach ($infoNegativeTrade['limitHighBalances'] as $limitHighBalances) {
                         $dataAccountLimitHighBalances[] = [
-                            'experian_account_id' => 'id',
                             'name' => $limitHighBalances
                         ];
                     }
@@ -435,7 +426,7 @@ class Screaper
                     $dataAccountBalanceHistories = [];
                     foreach ($infoNegativeTrade['balanceHistories'] as $balanceHis) {
                         $dataAccountBalanceHistories[] = [
-                            'experian_account_id' => 'id',
+                            "date" => $balanceHis['date'],
                             "amount" => $balanceHis['amount'],
                             "date_pr" => $balanceHis['datePR'],
                             "amount_sch" => $balanceHis['amountSch'],
@@ -443,14 +434,12 @@ class Screaper
                         ];
                     }
                     $exAccount->balanceHistories()->createMany($dataAccountBalanceHistories);
-
                 }
 
                 if (!empty($infoNegativeTrade['paymentHistories'])) {
                     $dataAccountPaymentHistories = [];
                     foreach ($infoNegativeTrade['paymentHistories'] as $paymentHistories) {
                         $dataAccountPaymentHistories[] = [
-                            'experian_account_id' => 'id',
                             "month" => $paymentHistories['month'],
                             "day" => $paymentHistories['day'],
                             "year" => $paymentHistories['year'],
@@ -458,7 +447,6 @@ class Screaper
                         ];
                     }
                     $exAccount->paymentHistories()->createMany($dataAccountPaymentHistories);
-
                 }
             }
         }
@@ -519,7 +507,6 @@ class Screaper
                         ];
                     }
                     $exAccountPos->payStates()->createMany($dataAccountPayStatesPos);
-
                 }
 
                 if (!empty($infoPositiveTrade['limitHighBalances'])) {
@@ -530,8 +517,8 @@ class Screaper
                         ];
                     }
                     $exAccountPos->limitHighBalance()->createMany($dataAccountLimitHighBalancesPos);
-
                 }
+
                 if (!empty($infoPositiveTrade['balanceHistories'])) {
                     $dataAccountBalanceHistoriesPos = [];
                     foreach ($infoPositiveTrade['balanceHistories'] as $balanceHis) {
@@ -544,7 +531,6 @@ class Screaper
                         ];
                     }
                     $exAccountPos->balanceHistories()->createMany($dataAccountBalanceHistoriesPos);
-
                 }
 
                 if (!empty($infoPositiveTrade['paymentHistories'])) {
@@ -558,7 +544,6 @@ class Screaper
                         ];
                     }
                     $exAccountPos->paymentHistories()->createMany($dataAccountPaymentHistoriesPos);
-
                 }
             }
         }
@@ -849,9 +834,9 @@ class Screaper
                             'name' => $payState
                         ];
                     }
-
                     $exAccountNeg->payStates()->createMany($dataAccountPayStatesNeg);
                 }
+
                 if (!empty($negativeAccount['account_history'])) {
                     $dataAccountPaymentHistoriesNeg = [];
                     foreach ($negativeAccount['account_history'] as $paymentHistories) {
@@ -862,10 +847,9 @@ class Screaper
                             "status" => $paymentHistories['value'],
                         ];
                     }
-
                     $exAccountNeg->paymentHistories()->createMany($dataAccountPaymentHistoriesNeg);
-
                 }
+
                 if(!empty($negativeAccount['balance_history'])){
                     $dataAccountLimitHighBalancesNeg = [];
                     $dataAccountBalanceHistoriesNeg = [];
@@ -988,6 +972,7 @@ class Screaper
                     $exAccount->paymentHistories()->createMany($dataAccountBalanceHistories);
 
                 }
+                
                 if(!empty($positiveAccount['balance_history'])){
                     $dataAccountBalanceHistories = [];
                     $dataAccountLimitHighBalances = [];
