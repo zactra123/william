@@ -159,6 +159,18 @@ class ClientReportExAccount extends Model
                                 $chargeOff = true;
                                 break;
                             }
+                            $status = strtoupper("Irregular {$this->responsibility} {$this->type} charge off");
+                            $prev = $payments->find($prev["key"]);
+                            $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                ->format("M/Y");
+                            $need_attention[] = [
+                                "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                                "case" => 11,
+                                "id" => $prev["id"],
+                            ];
+                            $chargeOff = true;
+                            break;
+
                         }
                         $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
                         $chargeOff = true;
@@ -553,16 +565,21 @@ class ClientReportExAccount extends Model
             if(!is_null($writtenOff) && !is_null($pastDue)){
                 if((max($writtenOff, $pastDue) == $writtenOff)){
                     $diff = $writtenOff - $pastDue;
-                    $need_attention[] = [
-                        "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
-                        "case" => 13,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
+                            "case" => 13,
+                        ];
+                    }
                 }else{
                     $diff = $pastDue - $writtenOff;
-                    $need_attention[] = [
-                        "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
-                        "case" => 14,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
+                            "case" => 14,
+                        ];
+                    }
+
                 }
 
             }
@@ -570,32 +587,41 @@ class ClientReportExAccount extends Model
             if(!is_null($pastDue)){
                 if(max($balance, $pastDue) == $balance){
                     $diff = $balance - $pastDue;
-                    $need_attention[] = [
-                        "text" => "BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
-                        "case" => 15,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
+                            "case" => 15,
+                        ];
+                    }
                 }else{
                     $diff = $writtenOff - $balance;
-                    $need_attention[] = [
-                        "text" => "PAST DUE MORE THAN BALANCE AS OF $ {$diff} ",
-                        "case" => 16,
-                    ];
+
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "PAST DUE MORE THAN BALANCE AS OF $ {$diff} ",
+                            "case" => 16,
+                        ];
+                    }
                 }
             }
 
             if(!is_null($writtenOff) ){
                 if(max($balance, $writtenOff) == $balance){
                     $diff = $balance - $pastDue;
-                    $need_attention[] = [
-                        "text" => "BALANCE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
-                        "case" => 17,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "BALANCE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
+                            "case" => 17,
+                        ];
+                    }
                 }else{
                     $diff = $writtenOff - $balance;
-                    $need_attention[] = [
-                        "text" => "WRITTEN OFF MORE THAN BALANCE AS OF $ {$diff} ",
-                        "case" => 18,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "WRITTEN OFF MORE THAN BALANCE AS OF $ {$diff} ",
+                            "case" => 18,
+                        ];
+                    }
                 }
             }
 
@@ -610,86 +636,106 @@ class ClientReportExAccount extends Model
             if(!is_null($writtenOff) && !is_null($pastDue)){
                 if(max($writtenOff, $pastDue) == $writtenOff){
                     $diff = $writtenOff - $pastDue;
-                    $need_attention[] = [
-                        "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
-                        "case" => 20,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
+                            "case" => 20,
+                        ];
+                    }
                 }else{
                     $diff = $pastDue - $writtenOff;
-                    $need_attention[] = [
-                        "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
-                        "case" => 21,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
+                            "case" => 21,
+                        ];
+                    }
                 }
             }
 
             if( !is_null($pastDue)){
                 if(max($highBalance, $pastDue) == $highBalance){
                     $diff = $balance - $pastDue;
-                    $need_attention[] = [
-                        "text" => "HIGH BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
-                        "case" => 22,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "HIGH BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
+                            "case" => 22,
+                        ];
+                    }
                 }else{
                     $diff = $writtenOff - $highBalance;
-                    $need_attention[] = [
-                        "text" => "PAST DUE MORE THAN HIGH BALANCE AS OF $ {$diff} ",
-                        "case" => 23,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "PAST DUE MORE THAN HIGH BALANCE AS OF $ {$diff} ",
+                            "case" => 23,
+                        ];
+                    }
                 }
             }
             if( !is_null($writtenOff)){
                 if(max($highBalance, $writtenOff) == $highBalance){
                     $diff = $balance - $pastDue;
-                    $need_attention[] = [
-                        "text" => "HIGH BALANCE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
-                        "case" => 24,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "HIGH BALANCE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
+                            "case" => 24,
+                        ];
+                    }
                 }else{
                     $diff = $writtenOff - $highBalance;
-                    $need_attention[] = [
-                        "text" => "WRITTEN OFF MORE THAN HIGH BALANCE AS OF $ {$diff} ",
-                        "case" => 25,
-                    ];
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "WRITTEN OFF MORE THAN HIGH BALANCE AS OF $ {$diff} ",
+                            "case" => 25,
+                        ];
+                    }
                 }
 
             }
         }
         if(!empty($creditLimit)){
             if( $writtenOff - $creditLimit > 0.15*($creditLimit)){
-                $precent = ($writtenOff / $creditLimit)*100;
                 $diff =  $writtenOff - $creditLimit;
-                $need_attention[] = [
-                    "text" => strtoupper("WRITTEN OFF MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
-                    "case" => 26,
-                ];
+                $precent = ($diff / $creditLimit)*100;
+                if ($diff != 0) {
+                    $need_attention[] = [
+                        "text" => strtoupper("WRITTEN OFF MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "case" => 26,
+                    ];
+                }
             }
 
             if( $pastDue - $creditLimit > 0.15*($creditLimit)){
-                $precent = ($pastDue / $creditLimit)*100;
                 $diff =  $pastDue - $creditLimit;
-                $need_attention[] = [
-                    "text" => strtoupper("PAST DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
-                    "case" => 27,
-                ];
+                $precent = ($diff / $creditLimit)*100;
+                if ($diff != 0) {
+                    $need_attention[] = [
+                        "text" => strtoupper("PAST DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "case" => 27,
+                    ];
+                }
             }
 
             if(!is_null($balance) && ($balance- $creditLimit > 0.15*($creditLimit))){
-                $precent = ($balance / $creditLimit)*100;
                 $diff =  $balance - $creditLimit;
-                $need_attention[] = [
-                    "text" => strtoupper("BALANCE DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
-                    "case" => 28,
-                ];
+                $precent = ($diff / $creditLimit)*100;
+                if ($diff != 0) {
+                    $need_attention[] = [
+                        "text" => strtoupper("BALANCE DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "case" => 28,
+                    ];
+                }
             }
 
             if(is_null($balance) && ($highBalance- $creditLimit > 0.15*($creditLimit))){
                 $precent = ($highBalance / $creditLimit)*100;
                 $diff =  $highBalance - $creditLimit;
-                $need_attention[] = [
-                    "text" => strtoupper("BALANCE DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
-                    "case" => 29,
-                ];
+                if ($diff != 0) {
+                    $need_attention[] = [
+                        "text" => strtoupper("BALANCE DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "case" => 29,
+                    ];
+                }
             }
         }
 

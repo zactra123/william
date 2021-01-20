@@ -1424,14 +1424,12 @@ class AffiliatesController extends Controller
 
 //            $openClose = strpos(strtolower($exAccount->status), "close") !== false ? "Close" : "Open";
 //            $type = $exAccount->type;
-            $late_statues = $exAccount->getTodoAttributes();
+            $status = $exAccount->getTodoAttributes();
 
-            dd($late_statues);
-
-            $paymentLate = $this->exPaymentHistories($exAccount);
+//            $paymentLate = $this->exPaymentHistories($exAccount);
             return  [
-                "name" => strtoupper("{$openClose} {$responsibility} {$type} {$late_statues['status']}"),
-                "attention" => $late_statues["need_attention"]
+                "name" => $status["status"],
+                "attention" => $status["need_attention"]
             ];
 
 

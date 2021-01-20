@@ -64,7 +64,8 @@ class BankLogo extends Model
         42 => "PEST CONTROL COMPANY",
         43 => "MOTORCYCLE FINANCE COMPANY",
         44 => "LAW FIRM",
-        45 => "CHECK VERIFICATION"
+        45 => "CHECK VERIFICATION",
+        46 => "TOW TRUCK COMPANY"
     ];
 
     protected static function boot()
