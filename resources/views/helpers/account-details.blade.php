@@ -37,11 +37,21 @@
 
                     </div>
                     <div class="col-md-6">
-
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> BALANCE </div>
-                            <div class=" col-md-6"> $ {{$exAccount->high_balance}} </div>
+                            <div class=" col-md-6">  {{!empty($exAccount->recent_balance_amount)? "$ ". $exAccount->recent_balance_amount: "N/A"}} </div>
                         </div>
+
+                       <div class="row">
+                           <div class="col-md-6" style="font-weight: bold"> RECENT BALANCE DATE</div>
+                           <div class=" col-md-6"> {{!empty($exAccount->recent_balance_date)? strtoupper($exAccount->recent_balance_date) : "N/A"}} </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-md-6" style="font-weight: bold"> RECENT PAYMENT</div>
+                           <div class=" col-md-6">
+                               {{!empty($exAccount->recent_balance_pay_amount)? "$ ". $exAccount->recent_balance_pay_amount: "N/A"}}
+                           </div>
+                       </div>
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> {{strtoupper($exAccount->credit_limit_label)}} </div>
                             <div class=" col-md-6"> $ {{$exAccount->credit_limit}} </div>
@@ -49,14 +59,6 @@
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> TERMS</div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->term)}} </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> RECENT BALANCE DATE</div>
-                            <div class=" col-md-6"> {{strtoupper($exAccount->recent_balance_date)?? "N/A"}} </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> RECENT PAYMENT</div>
-                            <div class=" col-md-6"> {{strtoupper($exAccount->recent_balance_pay_amount) ?? "N/A"}} </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6" style="font-weight: bold"> MONTHLY PAYMENT</div>

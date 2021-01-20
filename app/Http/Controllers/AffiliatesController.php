@@ -507,11 +507,7 @@ class AffiliatesController extends Controller
      */
     public function clientProfile(Request $request, $id)
     {
-//        ini_set('MAX_EXECUTION_TIME', '-1');
-//        $output = "{'status': 'success', 'report_filepath': 'C:/xampp/htdocs/ccc/resources/storage/reports/manuk_karapetian.json','numbers_filepath': null }";
-//        $scraper = new Screaper($id);
-//        $scraper->prepare_experian_login_data(str_replace('\'', '"',$output));
-
+//
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
@@ -1430,6 +1426,8 @@ class AffiliatesController extends Controller
 //            $type = $exAccount->type;
             $late_statues = $exAccount->getTodoAttributes();
 
+            dd($late_statues);
+
             $paymentLate = $this->exPaymentHistories($exAccount);
             return  [
                 "name" => strtoupper("{$openClose} {$responsibility} {$type} {$late_statues['status']}"),
@@ -1453,6 +1451,7 @@ class AffiliatesController extends Controller
 
     public function getCollectionType($exAccount)
     {
+
         $reportId = $exAccount->client_report_id;
         $exAccounts =   ClientReportExAccount::where('client_report_id', $reportId)
             ->where("id", "!=", $exAccount->id);
@@ -1479,8 +1478,8 @@ class AffiliatesController extends Controller
 
             $writtenOff = isset($matchWrittenOff[1])?trim($matchWrittenOff[1]):null;
             $pastDue = isset($matchPastDue[1])?trim($matchPastDue[1]):null;
-            $balance  = !empty($account->credit_limit)?$account->credit_limit:$account->high_balance;
-            $balanceCA  = !empty($exAccounts->credit_limit)?$exAccounts->credit_limit:$exAccounts->high_balance;
+            $balance  = !empty($account->recent_balance_amount)?$account->recent_balance_amount:$account->high_balance;
+            $balanceCA  = !empty($exAccounts->recent_balance_amount)?$exAccounts->recent_balance_amount:$exAccounts->high_balance;
             $diff = $writtenOff - $pastDue;
             $diffOriginalPast = $balance - $pastDue;
             $diffOriginalWritten = $balance - $pastDue;

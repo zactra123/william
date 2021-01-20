@@ -972,7 +972,7 @@ class Screaper
                     $exAccount->paymentHistories()->createMany($dataAccountBalanceHistories);
 
                 }
-                
+
                 if(!empty($positiveAccount['balance_history'])){
                     $dataAccountBalanceHistories = [];
                     $dataAccountLimitHighBalances = [];
