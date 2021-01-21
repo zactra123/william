@@ -137,8 +137,6 @@ class ClientReportExAccount extends Model
                 $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
                 $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
                 $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
-                dd($status, $need_attention, $this);
-
                 break;
             case "AUTO":
                 $regularOrNot = $this->getRegular();
@@ -387,8 +385,7 @@ class ClientReportExAccount extends Model
                     ];
             }
         }
-        $need_attention = isset($need_attention)?array_merge($need_attention, $need_attention_charge_off):$need_attention_charge_off;
-
+        
 
         return ["status" => $status, "need_attention" => $need_attention];
     }
