@@ -132,116 +132,29 @@ class ClientReportExAccount extends Model
 
         switch ($this->account_type()) {
             case "CC":
-                $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
-                foreach ($cc_charge_off as $type) {
-                    if (in_array(strtoupper($type), $account_statueses)) {
-                        $payment_statuses = $payments->pluck("status", 'id')->toArray();
-                        $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-//                      // in the case when account type is cc the minimum lates are 180 before charge off
-                        if ($prev["value"] != 180) {
-                            if (in_array(strtoupper($prev['value']), $cc_charge_off)) {
-                                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                $regularOrNot = $this->getRegular();
+                $name_attention = $this->need_attention_charge_off();
+                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
+                $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
+                dd($status, $need_attention, $this);
 
-                                if ($prev["value"] != 180) {
-                                    $status = strtoupper("Irregular {$this->responsibility} {$this->type} charge off");
-                                    $prev = $payments->find($prev["key"]);
-                                    $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
-                                        ->format("M/Y");
-                                    $need_attention[] = [
-                                        "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
-                                        "case" => 11,
-                                        "id" => $prev["id"],
-                                    ];
-                                } else {
-                                    $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
-
-                                }
-                                $chargeOff = true;
-                                break;
-                            }
-                            $status = strtoupper("Irregular {$this->responsibility} {$this->type} charge off");
-                            $prev = $payments->find($prev["key"]);
-                            $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
-                                ->format("M/Y");
-                            $need_attention[] = [
-                                "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
-                                "case" => 11,
-                                "id" => $prev["id"],
-                            ];
-                            $chargeOff = true;
-                            break;
-
-                        }
-                        $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
-                        $chargeOff = true;
-                        break;
-                    }
-                }
                 break;
             case "AUTO":
-                $charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
-                foreach ($charge_off as $type) {
-                    if (in_array(strtoupper($type), $account_statueses)) {
-                        $status = strtoupper("Irregular {$this->responsibility} {$this->type} CHARGE OFF");
-                        $chargeOff = true;
-                        break;
-                    }
-                }
-                if(!empty($status)){
-                    break;
-                }
-                $auto_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["auto"];
-                foreach ($auto_charge_off as $type) {
-                    if (in_array(strtoupper($type), $account_statueses)) {
-                       $name = [
-                             "CRD" => "VOLUNTARILY SURRENDERED",
-                             "FS"=> "REPOSSESSION",
-                             "F" => "INSURANCE CLAIM"
-                           ];
-                        $status = strtoupper("Irregular {$this->responsibility} {$this->type} {$name[$type]}");
-                        $chargeOff = true;
-                        break;
-                    }
-                }
-
+                $regularOrNot = $this->getRegular();
+                $name_attention = $this->need_attention_charge_off();
+                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
+                $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
             case "PERSONAL LOAN":
-                $charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
-                foreach ($charge_off as $type) {
-                    if (in_array(strtoupper($type), $account_statueses)) {
-                        $payment_statuses = $payments->pluck("status", 'id')->toArray();
-                        $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-//                      // in the case when account type is  personal loan the minimum late are 120 before charge off
-                        if ($prev["value"] != 120) {
-                            if (in_array(strtoupper($prev['value']), $charge_off)) {
-                                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-
-                                if ($prev["value"] != 120) {
-                                    $status = strtoupper("Irregular {$this->responsibility} {$this->type} CHARGE OFF");
-                                    $chargeOff = true;
-                                    $prev = $payments->find($prev["key"]);
-                                    $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
-                                        ->format("M/Y");
-                                    $need_attention[] = [
-                                        "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
-                                        "case" => 11,
-                                        "id" => $prev["id"],
-                                    ];
-                                } else {
-                                    $status = strtoupper("Regular {$this->responsibility} {$this->type} CHARGE OFF");
-                                    $chargeOff = true;
-                                }
-
-                                break;
-                            }
-                        }
-                        $status = strtoupper("Regular {$this->responsibility} {$this->type} CHARGE OFF");
-                        $chargeOff = true;
-
-                        break;
-                    }
-                }
+                $regularOrNot = $this->getRegular();
+                $name_attention = $this->need_attention_charge_off();
+                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
+                $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
+
             case "MORTGAGE":
                 $mortgage_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["mortgage"];
                 foreach ($mortgage_charge_off as $type) {
@@ -284,54 +197,11 @@ class ClientReportExAccount extends Model
                 }
                 break;
             case "STUDENT LOAN":
-                $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
-                foreach ($cc_charge_off as $type) {
-                    if (in_array(strtoupper($type), $account_statueses)) {
-                        $payment_statuses = $payments->pluck("status", 'id')->toArray();
-                        $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-//                      // in the case when account type is student loan the minimum lates are 180 before charge off
-                        if ($prev["value"] != 180) {
-                            if (in_array(strtoupper($prev['value']), $cc_charge_off)) {
-                                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-
-                                if ($prev["value"] != 180) {
-                                    $status = strtoupper("Irregular {$this->responsibility} {$this->type} CHARGE OFF");
-                                    $chargeOff = true;
-                                    $prev = $payments->find($prev["key"]);
-                                    $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
-                                        ->format("M/Y");
-                                    $need_attention[] = [
-                                        "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
-                                        "case" => 11,
-                                        "id" => $prev["id"],
-                                    ];
-                                } else {
-                                    $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
-                                    $chargeOff = true;
-                                }
-
-                                break;
-                            }
-                        }
-                        $status = strtoupper("Regular {$this->responsibility} {$this->type} charge off");
-                        $chargeOff = true;
-
-                        break;
-                    }
-                }
-                if (in_array(strtoupper(ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["student"]), $account_statueses)) {
-                    $payment_statuses = $payments->pluck("status", 'id')->toArray();
-                    $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
-//                      // in the case when account type is cc the minimum lates are 180 before charge off
-                    if ($prev["value"] != 180) {
-                        $status = strtoupper("IRREGULAR {$this->responsibility} {$this->type} CLAIM FILED WITH GOVERNMENT");
-                        $chargeOff = true;
-                        break;
-                    }
-                    $status = strtoupper("Regular {$this->responsibility} {$this->type} CLAIM FILED WITH GOVERNMENT");
-                    $chargeOff = true;
-                    break;
-                }
+                $regularOrNot = $this->getRegular();
+                $name_attention = $this->need_attention_charge_off();
+                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
+                $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
             case "UTILITY":
             case "CELL PHONE":
@@ -339,16 +209,14 @@ class ClientReportExAccount extends Model
                 $charge_off_types = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
                 foreach ($charge_off_types as $type) {
                     if (in_array($type, $account_statueses)) {
-                        $status = strtoupper("{$this->responsibility} {$this->type} charge off");
-                        $chargeOff = true;
+                        $name_attention = $this->need_attention_charge_off();
+                        $status = strtoupper("{$this->type} charge off")." ".$name_attention['name_part'];
+                        $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                     }
                 }
                 break;
         }
-        if($chargeOff){
 
-          $need_attention_charge_off =  isset($need_attention) ? array_merge($need_attention, $this->need_attention_charge_off()) :  $this->need_attention_charge_off();
-        }
         $negative_late_statuses = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["lates"];
         // if not Charge OFF Status get from payment histories as late
         if (empty($status)) {
@@ -542,6 +410,9 @@ class ClientReportExAccount extends Model
     }
     private function need_attention_charge_off ()
     {
+        $name_part = null;
+        $need_attention = [];
+
         $status = $this->status;
         $reWrittenOff = "/([0-9\,\s]{2,})+written off/m";
         $rePastDue = "/([0-9\,\s]{2,})+past due as/m";
@@ -550,65 +421,67 @@ class ClientReportExAccount extends Model
 
         $writtenOff = isset($matchWrittenOff[1])?trim(str_replace(",", "",$matchWrittenOff[1])):null;
         $pastDue = isset($matchPastDue[1])?trim(str_replace(",", "",$matchPastDue[1])):null;
-        $creditLimit =  $this->credit_limit;
+        if($writtenOff != null && $pastDue == null){
+            $pastDue = $writtenOff;
+        }
+
+        $creditLimit =  $this->credit_limit_label == "Credit Limit"?$this->credit_limit: null;
+
+
         $balance = str_replace(",", "", $this->recent_balance_amount);
         $highBalance =  $this->high_balance;
+
 
         if((!is_null($writtenOff) || !is_null($pastDue)) && !empty($balance)){
 
             if(($writtenOff != $pastDue) || ($pastDue != $balance) && (!is_null($writtenOff) && !is_null($pastDue))){
+
                 $need_attention[] = [
                     "text" => "WRITTEN OFF, PAST DUE AND BALANCE ARE NOT EQUAL",
                     "case" => 12,
                 ];
+
+            }else{
+                $name_part = $name_part == null ? strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT IS EQUAL PAST DUE AND RECENT BALANCE"): $name_part;
             }
+
             if(!is_null($writtenOff) && !is_null($pastDue)){
                 if((max($writtenOff, $pastDue) == $writtenOff)){
                     $diff = $writtenOff - $pastDue;
+                    $precent = round(($diff / $pastDue)*100, 2);
                     if ($diff != 0) {
+                        $name_part = $name_part == null ?strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT MORE THAN PAST DUE  $ {$diff}  % {$precent}"): $name_part;
                         $need_attention[] = [
                             "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
                             "case" => 13,
                         ];
                     }
+
                 }else{
                     $diff = $pastDue - $writtenOff;
+                    $precent = round(($diff / $pastDue)*100, 2);
+
                     if ($diff != 0) {
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT LESS THAN PAST DUE  $ {$diff}  % {$precent}"): $name_part;
+
                         $need_attention[] = [
                             "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
                             "case" => 14,
                         ];
+                    }else{
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT IS EQUAL TO PAST DUE "): $name_part;
                     }
 
                 }
 
-            }
-
-            if(!is_null($pastDue)){
-                if(max($balance, $pastDue) == $balance){
-                    $diff = $balance - $pastDue;
-                    if ($diff != 0) {
-                        $need_attention[] = [
-                            "text" => "BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
-                            "case" => 15,
-                        ];
-                    }
-                }else{
-                    $diff = $writtenOff - $balance;
-
-                    if ($diff != 0) {
-                        $need_attention[] = [
-                            "text" => "PAST DUE MORE THAN BALANCE AS OF $ {$diff} ",
-                            "case" => 16,
-                        ];
-                    }
-                }
             }
 
             if(!is_null($writtenOff) ){
                 if(max($balance, $writtenOff) == $balance){
                     $diff = $balance - $pastDue;
                     if ($diff != 0) {
+
+
                         $need_attention[] = [
                             "text" => "BALANCE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
                             "case" => 17,
@@ -624,6 +497,37 @@ class ClientReportExAccount extends Model
                     }
                 }
             }
+
+            if(!is_null($pastDue)){
+                if(max($balance, $pastDue) == $balance){
+                    $diff = $balance - $pastDue;
+                    $precent = round(($diff / $pastDue)*100, 2);
+
+                    if ($diff != 0) {
+
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE  AMOUNT LESS THAN PAST DUE  ${$diff}  % {$precent}"): $name_part;
+                        $need_attention[] = [
+                            "text" => "BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
+                            "case" => 15,
+                        ];
+                    }else{
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE  AMOUNT IS EQUAL TO PAST DUE") : $name_part;
+                    }
+                }else{
+                    $diff = $writtenOff - $balance;
+                    $precent = round(($diff / $pastDue)*100, 2);
+                    $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE AMOUNT LESS THAN PAST DUE  ${$diff}  % {$precent}"): null;
+
+                    if ($diff != 0) {
+                        $need_attention[] = [
+                            "text" => "PAST DUE MORE THAN BALANCE AS OF $ {$diff} ",
+                            "case" => 16,
+                        ];
+                    }
+                }
+            }
+
+
 
         }elseif((!is_null($writtenOff) || !is_null($pastDue)) && empty($balance) && !empty($highBalance) ){
             if(($writtenOff != $pastDue) || ($pastDue != $balance) ){
@@ -672,6 +576,7 @@ class ClientReportExAccount extends Model
                     }
                 }
             }
+
             if( !is_null($writtenOff)){
                 if(max($highBalance, $writtenOff) == $highBalance){
                     $diff = $balance - $pastDue;
@@ -696,7 +601,7 @@ class ClientReportExAccount extends Model
         if(!empty($creditLimit)){
             if( $writtenOff - $creditLimit > 0.15*($creditLimit)){
                 $diff =  $writtenOff - $creditLimit;
-                $precent = ($diff / $creditLimit)*100;
+                $precent = round(($diff / $creditLimit)*100, 2);
                 if ($diff != 0) {
                     $need_attention[] = [
                         "text" => strtoupper("WRITTEN OFF MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
@@ -707,7 +612,7 @@ class ClientReportExAccount extends Model
 
             if( $pastDue - $creditLimit > 0.15*($creditLimit)){
                 $diff =  $pastDue - $creditLimit;
-                $precent = ($diff / $creditLimit)*100;
+                $precent = round(($diff / $creditLimit)*100, 2);
                 if ($diff != 0) {
                     $need_attention[] = [
                         "text" => strtoupper("PAST DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
@@ -718,8 +623,10 @@ class ClientReportExAccount extends Model
 
             if(!is_null($balance) && ($balance- $creditLimit > 0.15*($creditLimit))){
                 $diff =  $balance - $creditLimit;
-                $precent = ($diff / $creditLimit)*100;
+                $precent = round(($diff / $creditLimit)*100, 2);
                 if ($diff != 0) {
+
+                    $name_part = strtoupper(" CHARGE OFF RECENT BALANCE % {$precent} MORE THAN CREDIT LIMIT");
                     $need_attention[] = [
                         "text" => strtoupper("BALANCE DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
                         "case" => 28,
@@ -742,7 +649,7 @@ class ClientReportExAccount extends Model
 
         if($this->account_type() == "AUTO"){
 
-            if(strpos($this->status,'Repossession') === false &&
+            if(strpos($this->status,'Repossession') !== false &&
                 ($this->trem != "NA" || !empty($this->trem )) && !empty($creditLimit) && is_null($writtenOff)){
 
                 $countByType = $this->paymentHistories()->groupBy('status')->select(DB::Raw('COUNT(id) as count'), 'status')
@@ -758,7 +665,258 @@ class ClientReportExAccount extends Model
                }
             }
         }
-        return $need_attention;
+
+        return [
+            'name_part' => $name_part,
+            'need_attention' => $need_attention,
+        ];
+
+    }
+
+    //account regular charfe off or irregular charge off
+    private function getRegular()
+    {
+        $regular_status = null;
+        $need_attention = [];
+        $countByType = $this->paymentHistories()->groupBy('status')->select(DB::Raw('COUNT(id) as count'), 'status')
+            ->pluck('count', 'status')->toArray();
+        $payments = $this->paymentHistories()->orderBy('id', 'DESC')->get();
+        $account_statueses = array_keys($countByType);
+
+        $creditLimit = $this->credit_limit_label == "Credit Limit"?$this->credit_limit:null;
+        $regular_status = $creditLimit == null ?"NO CREDIT LIMIT ": $regular_status;
+
+        if($this->account_type() == "CC"){
+            $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+            foreach ($cc_charge_off as $type) {
+                if (in_array(strtoupper($type), $account_statueses)) {
+                    $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                    $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                      // in the case when account type is cc the minimum late are 180 before charge off
+                    if ($prev["value"] != 180) {
+                        if (in_array(strtoupper($prev['value']), $cc_charge_off) || $prev['value'] == "CLS") {
+                            $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                            if ($prev["value"] != 180) {
+                                $prev = $payments->find($prev["key"]);
+                                $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                    ->format("M/Y");
+
+                                $need_attention[] = [
+                                    "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                                    "case" => 11,
+                                    "id" => $prev["id"],
+                                ];
+
+                                $regular_status = strtoupper($regular_status."IRREGULAR {$this->type}");
+
+                            }else{
+                                $regular_status = strtoupper($regular_status."REGULAR {$this->type}");
+                            }
+                            break;
+                        }
+                        $prev = $payments->find($prev["key"]);
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                            "case" => 11,
+                            "id" => $prev["id"],
+                        ];
+
+                        $regular_status = strtoupper($regular_status."IRREGULAR {$this->type}");
+                        break;
+                    }
+                    $regular_status = strtoupper($regular_status."REGULAR {$this->type}");
+                    break;
+                }
+            }
+        }
+
+        if($this->account_type() == "AUTO"){
+            $auto_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["auto"];
+            foreach ($auto_charge_off as $type) {
+                if (in_array(strtoupper($type), $account_statueses)) {
+                    $name = [
+                        "VS" => "VOLUNTARILY SURRENDERED",
+                        "R"=> "REPOSSESSION",
+                        "I" => "INSURANCE CLAIM"
+                    ];
+                    $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                    $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                    // in the case when account type is auto the minimum late are 60 before charge off
+                    if ($prev["value"] != 60) {
+                        $prev = $payments->find($prev["key"]);
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} MISSING FULL 60 DAYS LATE BEFORE {$name[$type]}",
+                            "case" => 11,
+                            "id" => $prev["id"],
+                        ];
+                        $regular_status = strtoupper($regular_status."IRREGULAR {$this->type} {$name[$type]}");
+                        break;
+                    }
+                    $regular_status = strtoupper($regular_status."REGULAR {$this->type} {$name[$type]}");;
+                    break;
+
+                }
+            }
+
+            if($regular_status == null || $regular_status == "NO CREDIT LIMIT"){
+                $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+                foreach ($cc_charge_off as $type) {
+                    if (in_array(strtoupper($type), $account_statueses)) {
+                        $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                        $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                        // in the case when account type is cc the minimum late are 180 before charge off
+                        if ($prev["value"] != 60) {
+                            if (in_array(strtoupper($prev['value']), $cc_charge_off)) {
+                                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+                                if ($prev["value"] != 60) {
+                                    $prev = $payments->find($prev["key"]);
+                                    $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                        ->format("M/Y");
+
+                                    $need_attention[] = [
+                                        "text" => "{$date} MISSING FULL 60 DAYS LATE BEFORE CHARGE OFF",
+                                        "case" => 11,
+                                        "id" => $prev["id"],
+                                    ];
+
+                                    $regular_status = strtoupper($regular_status."IRREGULAR {$this->type}");;
+
+                                }else{
+                                    $regular_status = strtoupper($regular_status."REGULAR {$this->type}");;
+                                }
+                                break;
+                            }
+                            $prev = $payments->find($prev["key"]);
+                            $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                ->format("M/Y");
+                            $need_attention[] = [
+                                "text" => "{$date} MISSING FULL 60 DAYS LATE BEFORE CHARGE OFF",
+                                "case" => 11,
+                                "id" => $prev["id"],
+                            ];
+                            $regular_status = strtoupper($regular_status."IRREGULAR {$this->type}");;
+                            break;
+                        }
+                        $regular_status = strtoupper($regular_status."IRREGULAR {$this->type}");;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        if($this->account_type() == "PERSONAL LOAN"){
+            $charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+            foreach ($charge_off as $type) {
+                if (in_array(strtoupper($type), $account_statueses)) {
+                    $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                    $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+//                      // in the case when account type is  personal loan the minimum late are 120 before charge off
+                    if ($prev["value"] != 120) {
+                        if (in_array(strtoupper($prev['value']), $charge_off)) {
+                            $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+
+                            if ($prev["value"] != 120) {
+                                $regular_status = $regular_status. strtoupper("Irregular {$this->type}");
+
+                                $prev = $payments->find($prev["key"]);
+                                $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                    ->format("M/Y");
+                                $need_attention[] = [
+                                    "text" => "{$date} MISSING FULL 120 DAYS LATE BEFORE CHARGE OFF",
+                                    "case" => 11,
+                                    "id" => $prev["id"],
+                                ];
+                            } else {
+                                $regular_status = $regular_status. strtoupper("regular {$this->type}");
+
+                            }
+                            break;
+                        }
+                        $prev = $payments->find($prev["key"]);
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                            ->format("M/Y");
+                        $regular_status = $regular_status. strtoupper("Irregular {$this->type}");
+                        $need_attention[] = [
+                            "text" => "{$date} MISSING FULL 120 DAYS LATE BEFORE CHARGE OFF",
+                            "case" => 11,
+                            "id" => $prev["id"],
+                        ];
+                        break;
+                    }
+                    $regular_status = $regular_status. strtoupper("regular {$this->type}");
+                    break;
+                }
+            }
+        }
+
+        if($this->account_type() == "STUDENT LOAN"){
+            $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
+            foreach ($cc_charge_off as $type) {
+
+                if (in_array(strtoupper($type), $account_statueses)) {
+                    $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                    $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+//                      // in the case when account type is student loan the minimum late are 180 before charge off
+
+                    if ($prev["value"] != 180) {
+                        if (in_array(strtoupper($prev['value']), $cc_charge_off)) {
+                            $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+
+                            if ($prev["value"] != 180) {
+                                $regular_status = $regular_status. strtoupper("Irregular {$this->type}");
+                                $prev = $payments->find($prev["key"]);
+                                $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                                    ->format("M/Y");
+                                $need_attention[] = [
+                                    "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                                    "case" => 11,
+                                    "id" => $prev["id"],
+                                ];
+                            } else {
+                                $regular_status = $regular_status. strtoupper("Regular {$this->type}");
+                            }
+
+                            break;
+                        }
+                        $prev = $payments->find($prev["key"]);
+                        $date = \DateTime::createFromFormat("Y-M-d", "{$prev['year']}-{$prev['month']}-{$prev['day']}")
+                            ->format("M/Y");
+                        $need_attention[] = [
+                            "text" => "{$date} MISSING FULL 180 DAYS LATE BEFORE CHARGE OFF",
+                            "case" => 11,
+                            "id" => $prev["id"],
+                        ];
+                        $regular_status = $regular_status. strtoupper("Irregular {$this->type}");
+
+                    }
+                    $regular_status = $regular_status. strtoupper("regular {$this->type}");
+
+                    break;
+                }
+            }
+
+            if (in_array(strtoupper(ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["student"]), $account_statueses)) {
+                $payment_statuses = $payments->pluck("status", 'id')->toArray();
+                $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+//                      // in the case when account type is cc the minimum lates are 180 before charge off
+                if ($prev["value"] != 180) {
+                    $regular_status = $regular_status. strtoupper("IRREGULAR {$this->type} CLAIM FILED WITH GOVERNMENT");
+
+                }
+                $regular_status = $regular_status. strtoupper("Regular {$this->responsibility} {$this->type} CLAIM FILED WITH GOVERNMENT");
+
+            }
+        }
+
+        return [
+            "regular_status" => $regular_status,
+            "need_attention" => $need_attention,
+        ];
 
     }
 }
