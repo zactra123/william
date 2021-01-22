@@ -389,7 +389,6 @@ class ClientReportExAccount extends Model
             }
         }
 
-        dd($status, $need_attention, 'zzzz');
 
         return ["status" => $status, "need_attention" => $need_attention];
     }
