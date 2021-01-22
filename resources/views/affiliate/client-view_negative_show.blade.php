@@ -801,7 +801,7 @@
 
                                         </div>
                                     </div>
-\
+
                                     <div class="row m-2 title-personal-information" style="font-weight: bold" >
                                         <div class="col-md-1">
                                         </div>

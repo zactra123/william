@@ -130,29 +130,32 @@ class ClientReportExAccount extends Model
         $account_statueses = array_keys($countByType);
         $chargeOff = false;
 
+
         switch ($this->account_type()) {
             case "CC":
                 $regularOrNot = $this->getRegular();
-                $name_attention = $this->need_attention_charge_off();
-                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $charge = !is_null($regularOrNot['regular_status'])?true:false;
+                $name_attention = $this->need_attention_charge_off($charge);
+                $status = (!is_null($regularOrNot['regular_status']) || !is_null($name_attention['name_part']))?$regularOrNot['regular_status']." ".$name_attention['name_part']:null;
                 $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
                 $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
             case "AUTO":
                 $regularOrNot = $this->getRegular();
-                $name_attention = $this->need_attention_charge_off();
-                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $charge = !is_null($regularOrNot['regular_status'])?true:false;
+                $name_attention = $this->need_attention_charge_off($charge);
+                $status = (!is_null($regularOrNot['regular_status']) || !is_null($name_attention['name_part']))?$regularOrNot['regular_status']." ".$name_attention['name_part']:null;
                 $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
                 $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
             case "PERSONAL LOAN":
                 $regularOrNot = $this->getRegular();
-                $name_attention = $this->need_attention_charge_off();
-                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $charge = !is_null($regularOrNot['regular_status'])?true:false;
+                $name_attention = $this->need_attention_charge_off($charge);
+                $status = (!is_null($regularOrNot['regular_status']) || !is_null($name_attention['name_part']))?$regularOrNot['regular_status']." ".$name_attention['name_part']:null;
                 $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
                 $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
-
             case "MORTGAGE":
                 $mortgage_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["mortgage"];
                 foreach ($mortgage_charge_off as $type) {
@@ -196,8 +199,9 @@ class ClientReportExAccount extends Model
                 break;
             case "STUDENT LOAN":
                 $regularOrNot = $this->getRegular();
-                $name_attention = $this->need_attention_charge_off();
-                $status = $regularOrNot['regular_status']." ".$name_attention['name_part'];
+                $charge = !is_null($regularOrNot['regular_status'])?true:false;
+                $name_attention = $this->need_attention_charge_off($charge);
+                $status = (!is_null($regularOrNot['regular_status']) || !is_null($name_attention['name_part']))?$regularOrNot['regular_status']." ".$name_attention['name_part']:null;
                 $need_attention = !is_null($regularOrNot["need_attention"])?array_merge($need_attention, $regularOrNot["need_attention"]):$need_attention;
                 $need_attention = !is_null($name_attention["need_attention"])?array_merge($need_attention, $name_attention["need_attention"]):$need_attention;
                 break;
@@ -214,25 +218,24 @@ class ClientReportExAccount extends Model
                 }
                 break;
         }
-
         $negative_late_statuses = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["lates"];
         // if not Charge OFF Status get from payment histories as late
         if (empty($status)) {
             // getting late status for account dispute reason
             $late_type = 'WITHOUT LATE';
             foreach (array_reverse($negative_late_statuses) as $late_status) {
-                if (in_array($status, $account_statueses)) {
-                    if ($status != 30) {
-                        $late_type = "{$status}-DAYS LATE";
+                if (in_array($late_status, $account_statueses)) {
+                    if ($late_status != 30) {
+                        $late_type = "{$late_status}-DAYS LATE";
                         break;
                     } else {
-                        $late_type =  count($account_statueses['30']) == 1 ? "SIMPLE 30-DAYS LATE" : count($account_statueses['30']) . "x 30-DAYS LATE";
+//                        $late_type =  count($account_statueses['30']) == 1 ? "SIMPLE 30-DAYS LATE" : count($account_statueses['30']) . "x 30-DAYS LATE";
+                        $late_type =  $countByType['30'] == 1 ? "SIMPLE 30-DAYS LATE" : $countByType['30'] . "x 30-DAYS LATE";
                     }
                 }
             }
             $status = strtoupper("$openClose {$this->responsibility} {$this->type} {$late_type}");
         }
-
         foreach($payments->toArray() as $key=>&$payment) {
             if (in_array($payment["status"], ["OK", "CLS", "ND"])) {
                 continue;
@@ -385,7 +388,8 @@ class ClientReportExAccount extends Model
                     ];
             }
         }
-        
+
+        dd($status, $need_attention, 'zzzz');
 
         return ["status" => $status, "need_attention" => $need_attention];
     }
@@ -405,7 +409,7 @@ class ClientReportExAccount extends Model
 
          return ['key' => $key, 'value' => $value];
     }
-    private function need_attention_charge_off ()
+    private function need_attention_charge_off ($chargeOff)
     {
         $name_part = null;
         $need_attention = [];
@@ -424,10 +428,8 @@ class ClientReportExAccount extends Model
 
         $creditLimit =  $this->credit_limit_label == "Credit Limit"?$this->credit_limit: null;
 
-
         $balance = str_replace(",", "", $this->recent_balance_amount);
         $highBalance =  $this->high_balance;
-
 
         if((!is_null($writtenOff) || !is_null($pastDue)) && !empty($balance)){
 
@@ -447,7 +449,7 @@ class ClientReportExAccount extends Model
                     $diff = $writtenOff - $pastDue;
                     $precent = round(($diff / $pastDue)*100, 2);
                     if ($diff != 0) {
-                        $name_part = $name_part == null ?strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT MORE THAN PAST DUE  $ {$diff}  % {$precent}"): $name_part;
+                        $name_part = $name_part == null ?strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT MORE THAN PAST DUE  $ {$diff} ({$precent}%)"): $name_part;
                         $need_attention[] = [
                             "text" => "WRITTEN OFF MORE THAN PAST DUE AS OF $ {$diff} ",
                             "case" => 13,
@@ -459,7 +461,7 @@ class ClientReportExAccount extends Model
                     $precent = round(($diff / $pastDue)*100, 2);
 
                     if ($diff != 0) {
-                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT LESS THAN PAST DUE  $ {$diff}  % {$precent}"): $name_part;
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF WRITTEN OFF AMOUNT LESS THAN PAST DUE  $ {$diff}  ({$precent}% )"): $name_part;
 
                         $need_attention[] = [
                             "text" => "PAST DUE MORE THAN WRITTEN OFF AS OF $ {$diff} ",
@@ -502,7 +504,7 @@ class ClientReportExAccount extends Model
 
                     if ($diff != 0) {
 
-                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE  AMOUNT LESS THAN PAST DUE  ${$diff}  % {$precent}"): $name_part;
+                        $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE  AMOUNT LESS THAN PAST DUE  ${$diff}  ({$precent}%) "): $name_part;
                         $need_attention[] = [
                             "text" => "BALANCE MORE THAN PAST DUE AS OF $ {$diff} ",
                             "case" => 15,
@@ -513,7 +515,7 @@ class ClientReportExAccount extends Model
                 }else{
                     $diff = $writtenOff - $balance;
                     $precent = round(($diff / $pastDue)*100, 2);
-                    $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE AMOUNT LESS THAN PAST DUE  ${$diff}  % {$precent}"): null;
+                    $name_part = $name_part == null ? strtoupper(" CHARGE OFF RECENT BALANCE AMOUNT LESS THAN PAST DUE  ${$diff} ({$precent}%)"): null;
 
                     if ($diff != 0) {
                         $need_attention[] = [
@@ -601,7 +603,7 @@ class ClientReportExAccount extends Model
                 $precent = round(($diff / $creditLimit)*100, 2);
                 if ($diff != 0) {
                     $need_attention[] = [
-                        "text" => strtoupper("WRITTEN OFF MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "text" => strtoupper("WRITTEN OFF MORE THAN {$this->credit_limit_label} AS OF $ {$diff}   ({$precent}%) "),
                         "case" => 26,
                     ];
                 }
@@ -612,31 +614,36 @@ class ClientReportExAccount extends Model
                 $precent = round(($diff / $creditLimit)*100, 2);
                 if ($diff != 0) {
                     $need_attention[] = [
-                        "text" => strtoupper("PAST DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "text" => strtoupper("PAST DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  ({$precent}%) "),
                         "case" => 27,
                     ];
                 }
             }
 
-            if(!is_null($balance) && ($balance- $creditLimit > 0.15*($creditLimit))){
-                $diff =  $balance - $creditLimit;
-                $precent = round(($diff / $creditLimit)*100, 2);
-                if ($diff != 0) {
+            if(!is_null($balance) && $balance !="") {
+                if (($balance - $creditLimit > 0.15 * ($creditLimit))) {
+                    $diff = $balance - $creditLimit;
+                    $precent = round(($diff / $creditLimit) * 100, 2);
+                    if ($diff != 0) {
 
-                    $name_part = strtoupper(" CHARGE OFF RECENT BALANCE % {$precent} MORE THAN CREDIT LIMIT");
-                    $need_attention[] = [
-                        "text" => strtoupper("BALANCE DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
-                        "case" => 28,
-                    ];
+                        $name_part = strtoupper(" CHARGE OFF RECENT BALANCE {$precent}% MORE THAN CREDIT LIMIT");
+                        $need_attention[] = [
+                            "text" => strtoupper("BALANCE DUE MORE THAN {$this->credit_limit_label} AS OF $ {$diff}  ({$precent}%) "),
+                            "case" => 28,
+                        ];
+                    }
                 }
             }
 
-            if(is_null($balance) && ($highBalance- $creditLimit > 0.15*($creditLimit))){
+
+            if((is_null($balance) || $balance =="") && ($highBalance- $creditLimit > 0.15*($creditLimit))){
                 $precent = ($highBalance / $creditLimit)*100;
                 $diff =  $highBalance - $creditLimit;
                 if ($diff != 0) {
+                    $name_part = strtoupper(" CHARGE OFF HIGH BALANCE {$precent}% MORE THAN CREDIT LIMIT");
+
                     $need_attention[] = [
-                        "text" => strtoupper("BALANCE DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  % $precent "),
+                        "text" => strtoupper("HIGH BALANCE DUE MORE THAN $ {$this->credit_limit_label} AS OF $ {$diff}  ({$precent}%) "),
                         "case" => 29,
                     ];
                 }
@@ -662,7 +669,9 @@ class ClientReportExAccount extends Model
                }
             }
         }
-
+        if($chargeOff){
+            $name_part = $name_part == null?"CHARGE OFF":$name_part;
+        }
         return [
             'name_part' => $name_part,
             'need_attention' => $need_attention,
@@ -680,8 +689,8 @@ class ClientReportExAccount extends Model
         $payments = $this->paymentHistories()->orderBy('id', 'DESC')->get();
         $account_statueses = array_keys($countByType);
 
-        $creditLimit = $this->credit_limit_label == "Credit Limit"?$this->credit_limit:null;
-        $regular_status = $creditLimit == null ?"NO CREDIT LIMIT ": $regular_status;
+        $regular_status = ($this->credit_limit == null ||$this->credit_limit == "") ?strtoupper("NO {$this->credit_limit_label} "): $regular_status;
+
 
         if($this->account_type() == "CC"){
             $cc_charge_off = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES["collection_charge_off"];
@@ -740,6 +749,16 @@ class ClientReportExAccount extends Model
                     ];
                     $payment_statuses = $payments->pluck("status", 'id')->toArray();
                     $prev = $this->get_prev($payment_statuses, array_search($type, $payment_statuses));
+
+                    $count = array_search($type, $payment_statuses);
+                    $a = array_key_first($payment_statuses) - $count;
+                    $new_arr = array_slice($payment_statuses, $a, $count +1, true);
+                    $late = ClientReportExAccountsPaymentHistory::NEGATIVE_TYPES['lates'];
+                    if(!empty(array_intersect($new_arr, $late))){
+                        $regular_status = strtoupper($regular_status."IRREGULAR {$this->type} PAST DUE AFTER {$name[$type]}");
+
+                    }
+
                     // in the case when account type is auto the minimum late are 60 before charge off
                     if ($prev["value"] != 60) {
                         $prev = $payments->find($prev["key"]);
@@ -750,10 +769,14 @@ class ClientReportExAccount extends Model
                             "case" => 11,
                             "id" => $prev["id"],
                         ];
-                        $regular_status = strtoupper($regular_status."IRREGULAR {$this->type} {$name[$type]}");
+                        if($regular_status == null) {
+                            $regular_status = strtoupper($regular_status . "IRREGULAR {$this->type} {$name[$type]}");
+                        }
                         break;
                     }
-                    $regular_status = strtoupper($regular_status."REGULAR {$this->type} {$name[$type]}");;
+                    if($regular_status == null){
+                        $regular_status = strtoupper($regular_status."REGULAR {$this->type} {$name[$type]}");;
+                    }
                     break;
 
                 }

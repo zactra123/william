@@ -932,8 +932,9 @@ class AffiliatesController extends Controller
             }
 
             if(!isset($personalExPrice)){
-                if($key == 'ex_name' or 'ex_address' or $key == 'ex_employ' or $key == 'ex_phone' ){
+                if($key == 'ex_name' or $key == 'ex_address' or $key == 'ex_employ' or $key == 'ex_phone' ){
                     $personalExPrice = $pricingDetails->personalInformation();
+                    dd($personalExPrice);
                 }
             }
             if(!isset($personalTuPrice)){
@@ -944,10 +945,10 @@ class AffiliatesController extends Controller
             }
             if(!isset($personalEqPrice)){
                 if($key == 'eq_name' or $key == 'eq_address' or $key == 'eq_employ' ){
+
                     $personalEqPrice = $pricingDetails->personalInformation();
                 }
             }
-
             if ($key == 'ex_statement') {
                 foreach ($value as $disputeExStatements) {
                     $exStatement = ClientReportExStatement::where('id', $disputeExStatements)->first();//???
@@ -1085,7 +1086,6 @@ class AffiliatesController extends Controller
             'tu_personal' =>isset($personalTuPrice)?$personalTuPrice:null,
             'eq_personal' =>isset($personalEqPrice)?$personalEqPrice:null,
         ];
-
 
         $data = [
             'ex_name' => $disputeExName,
