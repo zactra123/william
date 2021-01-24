@@ -197,11 +197,11 @@
                                         <div id="collection_types" class="m-5 {{$bank->type == 4 || $bank->type == 44 ? "" : "hidden"}}">
                                             <div class="row" id="collection_types_append">
                                                 <div class="col-md-6 ">
-                                                    3RD PARTY COLLECTOR
+                                                    3RD PARTY CA
                                                     <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY COLLECTOR"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY COLLECTOR", $bank->additional_information["collection_type"])) ? "checked":''}}>
                                                 </div>
                                                 <div class="col-md-6 {{ $bank->type != 4 ? "hidden" : ""}}">
-                                                    DEBT BUYER
+                                                    ASSET/DEBT BUYER
                                                     <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}}>
                                                 </div>
                                             </div>

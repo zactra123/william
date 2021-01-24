@@ -139,7 +139,7 @@
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                                 <div class="col-md-4 ">
-                                                    ASSET BUYER CA
+                                                    ASSET/DEBT BUYER
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="ASSET BUYER CA"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET BUYER CA", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                                 <div class="col-md-4 ">
