@@ -344,18 +344,11 @@ class BanksController extends Controller
         $bankName = $request->bank_name;
         $type = $request->type;
         // Don't show any type if medical service provider or CRAs was selected
-        if (in_array($type, [4,5,6,7])) {
+        if (in_array($type, [3,4,5,6,7])) {
 
             return Response::json([]);
         }
-        // Show only collection account types
-        if ($type == 3) {
-            $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
-            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
-                ->pluck('account_type_id')->toArray();
-            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-            return Response::json($account_types);
-        }
+
         $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
         $keywordId = null;
         foreach($keyWords as $key=>$words){

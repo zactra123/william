@@ -57,15 +57,6 @@ $(document).ready(function($) {
 
     })
 
-    $('#bank-type').change(function(){
-        console.log($(this).val())
-        //Show only when type is collection
-        if ($(this).val() == 3){
-            $("#collection_types").removeClass("hidden");
-        } else {
-            $("#collection_types").addClass("hidden");
-        }
-    });
 
     $(document).on('click', '.expand-address', function(){
         var target = $(this).attr('data-address')
@@ -165,6 +156,11 @@ $(document).ready(function($) {
         var bankName = $('#bank_name').val()
         var bankType = $('#bank-type').val()
         var token = $("meta[name='csrf-token']").attr("content");
+        $('#collection_types .col-md-6').addClass("hidden")
+        if (bankType == 4 || bankType ==44) {
+            console.log(bankType)
+            $('.collection-'+bankType).removeClass("hidden")
+        }
         $.ajax({
             url: "/admins/furnishers/bank-name",
             method:"POST",
