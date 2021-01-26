@@ -84,35 +84,7 @@
                         <div class="col-md-3 pull-left">
 
                         </div>
-                        <div class="col-md-9 pull-right ">
-
-                            <form action="/admins/furnishers" method="get">
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-6 ">
-                                        <div class=" form-group">
-                                            <input type="text" name="term" value="{{request()->term}}" class="form-control " placeholder="SEARCH...">
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->types, ['multiple'=>'multiple', 'class'=>'selectize-type']); !!}
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class=" form-group">
-                                            <input type="submit" value="Search" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-
-                                </div>
-                            </form>
-                        </div>
-
-
-
+                        @include('furnishers.search')
                     </div>
                     <?php
                     $states = [null=>''] + \App\BankAddress::STATES;
@@ -134,7 +106,7 @@
 
                                         <div id="collection_types" class="m-5 hidden">
                                             <div class="row" id="collection_types_append">
-                                                <div class="col-md-4  collection-4">
+                                                <div class="col-md-4  collection-4 collection-44">
                                                     3RD PARTY CA
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
                                                 </div>

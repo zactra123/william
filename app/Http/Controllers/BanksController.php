@@ -70,6 +70,11 @@ class BanksController extends Controller
             $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
         }
 
+        if ($request->no_logo) {
+            $banksLogos = $banksLogos->where('bank_logos.path', null);
+        }
+
+
         if (!empty($request->character)) {
             if ($request->character == '#'){
                 $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
