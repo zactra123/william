@@ -180,6 +180,9 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::put('/edit/{id}','BanksController@update')->name("admins.bank.update");
         Route::delete('/delete/bank-phone/{id}','BanksController@deleteBankPhone')->name("admins.bankPhone.delete");
         Route::any('/types', 'BanksController@types')->name("admins.bank.types");
+        Route::any('/judicial/days', 'BanksController@mortgageDays')->name("admins.mortgage.days");
+        Route::get('/mortgage/state', 'BanksController@state');
+
         Route::delete('/types/{id}', 'BanksController@delete_types');
         Route::post('/types/update_keywords', 'BanksController@update_type_keywords');
         Route::post('/types/update_default', 'BanksController@update_type_default');

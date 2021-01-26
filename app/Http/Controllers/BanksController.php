@@ -11,6 +11,7 @@ use App\BankPhoneNumber;
 use App\EqualBank;
 use App\Http\Controllers\Controller;
 
+use App\State;
 use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Support\Facades\Storage;
 use Response;
@@ -489,7 +490,40 @@ class BanksController extends Controller
      */
     public function keywords(Request $request)
     {
+        dd('asd');
         $result = AccountTypeKeys::where('account_type_keys.key_word', 'LIKE', "%{$request->search_key}%")->get(["id","key_word"]);
         return response()->json($result);
+    }
+
+    /**
+     * @return \Illuminate\View\View "furnishers.judicial_day" with
+     * @accountTypes  form "states table"
+     *
+     * Create mortgage judicial non judicial days for state
+     *
+     */
+    public function mortgageDays(Request $request)
+    {
+//        $a = ["CT", "DE", "DC","FL","HI","IL","IN","IA","KS", "KY","LA","ME","NJ","NM","NY","ND","OH","OK","PA","SC","VT","WI"];
+//        $b = ["AL","AK","AZ","CA","CO","GA","ID","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NC","OR","RI","SD","TN","TX","UT","VA","WA","WV","WY"];
+//        State::whereIn('name', $a)->update(['type'=>2]);
+//        State::whereIn('name', $b)->update(['type'=>1]);
+//        dd('ok');
+
+        $stateArr = State::all()->pluck('name', 'id')->toArray();
+        if ($request->method()=="POST") {
+            $id =$request->id;
+            $days = $request->except(['_token', 'id']);
+            State::whereId($id)->update($days);
+        }
+        $states = State::all()->sortBy('type');
+        return view('furnishers.judicial_day', compact('stateArr', 'states'));
+    }
+
+    public function state(Request $request)
+    {
+        $state = State::where("id", $request->id)->first();
+        $states = State::all()->sortBy('type');
+        return view('furnishers._form', compact('state', 'states'));
     }
 }
