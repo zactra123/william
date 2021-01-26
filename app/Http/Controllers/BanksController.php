@@ -220,7 +220,7 @@ class BanksController extends Controller
         $bank_addresses = $bank->bankAddresses()
             ->orderBy(\DB::raw('CASE WHEN type = "executive_address" THEN 0
                                 WHEN type = "registered_agent" THEN 1
-                                END'))
+                                ELSE 2 END'))
             ->orderBy('type')
             ->get();
 
