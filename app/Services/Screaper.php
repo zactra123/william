@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+use App\BankAddress;
+use App\EqualBank;
 use App\Mail\ScraperNotifications;
 use App\ScraperError;
 use App\User;
@@ -402,6 +404,9 @@ class Screaper
                     "subscriber_statement" => $infoNegativeTrade['subscriberStatement'],
                 ];
                 $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
+                $this->addEqualName($infoNegativeTrade['sourceName'],  $infoNegativeTrade['sourceAddress']['street'],
+                    $infoNegativeTrade['sourceAddress']['city'],   $infoNegativeTrade['sourceAddress']['state'],
+                    $infoNegativeTrade['sourceAddress']['zip'],  $infoNegativeTrade['sourceAddress']['telephone']['number']);
 
                 if (!empty($infoNegativeTrade['payStates'])) {
                     $dataAccountPayStates = [];
@@ -498,6 +503,9 @@ class Screaper
                 ];
 
                 $exAccountPos = $clientReport->clientExAccounts()->create($dataAccountPos);
+                $this->addEqualName($infoPositiveTrade['sourceName'],  $infoPositiveTrade['sourceAddress']['street'],
+                    $infoPositiveTrade['sourceAddress']['city'],   $infoPositiveTrade['sourceAddress']['state'],
+                    $infoPositiveTrade['sourceAddress']['zip'],  $infoPositiveTrade['sourceAddress']['telephone']['number']);
 
                 if (!empty($infoPositiveTrade['payStates'])) {
                     $dataAccountPayStatesPos = [];
@@ -826,6 +834,8 @@ class Screaper
                     "subscriber_statement" => null,
                 ];
                 $exAccountNeg = $clientReport->clientExAccounts()->create($dataAccountNeg);
+                $this->addEqualName($negativeAccount['account_name'],  $negativeAccount['address'], $negativeAccount['city'],
+                    $negativeAccount['state'], $negativeAccount['zip'],  $negativeAccount['phone']);
 
                 if (!empty($negativeAccount['pay_states'])) {
                     $dataAccountPayStatesNeg = [];
@@ -949,6 +959,9 @@ class Screaper
                     "subscriber_statement" => null,
                 ];
                 $exAccount = $clientReport->clientExAccounts()->create($dataAccount);
+
+                $this->addEqualName($positiveAccount['account_name'],  $positiveAccount['address'], $positiveAccount['city'],
+                    $positiveAccount['state'], $positiveAccount['zip'],  $positiveAccount['phone']);
 
                 if (!empty($positiveAccount['payStates'])) {
                     $dataAccountPayStates = [];
@@ -1699,6 +1712,10 @@ class Screaper
 
                     $account = $clientReport->clientTuAccounts()->create($dataAccount);
 
+                    $this->addEqualName($dataAccount['account_name'],  $dataAccount['street'], $dataAccount['city'],
+                        $dataAccount['state'], $dataAccount['zip'],  $dataAccount['phone']);
+
+
                        if(isset($accounts["PaymentHistory-TUC"]) && !empty($accounts["PaymentHistory-TUC"])){
                         $i = 0;
                         $dataAccountHistory = [];
@@ -1996,6 +2013,9 @@ class Screaper
 
                     $accountSave = $clientReport->clientEqAccounts()->create($dataAccount);
 
+                    $this->addEqualName($dataAccount['name'],  $dataAccount['street'], $dataAccount['city'],
+                        $dataAccount['state'], $dataAccount['zip'],  $dataAccount['phone']);
+
                     if(isset($account["payments"]['paymentHistory']) && !empty($account["payments"]["paymentHistory"])) {
 
                         $dataAccountHistory = [];
@@ -2079,7 +2099,8 @@ class Screaper
 
             $account = $clientReport->clientEqAccounts()->create($dataAccount);
 
-
+            $this->addEqualName($dataAccount['name'],  $dataAccount['street'], $dataAccount['city'],
+                $dataAccount['state'], $dataAccount['zip'],  $dataAccount['phone']);
 
         }
     }
@@ -2198,6 +2219,9 @@ class Screaper
             "secondary_agency"=>$data['secondaryAgency']
         ];
         $account = $report->clientTuAccounts()->create($dataAccount);
+
+        $this->addEqualName($data['account_name'],  $data['street'], $data['city'], $data['state'], $data['zip'],  $data['phone']);
+
         if(isset($data['paymentHistory']['paymentPattern'])){
             $dataAccountHistory = [];
             $startDate = date("Y-m-d", strtotime($data['paymentHistory']['paymentPattern']['startDate']['value']));
@@ -2761,4 +2785,24 @@ class Screaper
             $account->accountPaymentHistories()->createMany($dataAccountHistory);
         }
     }
+
+    private function addEqualName($name, $street, $city, $state, $zip, $phone)
+    {
+        $phoneReplace =str_replace(['(',')','-','.',','], '', $phone);
+        $checkAddress = BankAddress::where('type', 'executive_address')->where('street', $street)
+            ->where('city', $city)->where('state', $state)->where('zip',$zip)
+            ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneReplace}%'")
+            ->first();
+        if(!empty($checkAddress)){
+            EqualBank::firstOrCreate([
+                'bank_logo_id' => $checkAddress->bank_logo_id,
+                'name' => $name,
+
+            ]);
+        }
+        return;
+    }
 }
+
+
+
