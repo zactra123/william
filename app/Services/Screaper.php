@@ -2800,7 +2800,6 @@ class Screaper
 
             ]);
         }
-        return;
     }
 }
 
