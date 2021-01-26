@@ -112,10 +112,6 @@ class StatesSeeder extends Seeder
                 'name' =>'TN',
             ],
             [
-                'full_name' =>'Tennessee',
-                'name' =>'TN',
-            ],
-            [
                 'full_name' =>'Alabama',
                 'name' =>'AL',
             ],
