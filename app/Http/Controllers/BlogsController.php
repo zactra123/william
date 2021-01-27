@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Response;
 
 class BlogsController extends Controller
 {
@@ -48,7 +50,7 @@ class BlogsController extends Controller
         }
         $data['path'] = $pathTitleImage;
         Blog::create($data);
-        return redirect()->route('bank.index');
+        return redirect()->route('blog.index');
     }
     public function edit($id)
     {
@@ -108,6 +110,27 @@ class BlogsController extends Controller
         }
         return redirect()->route('blog.index');
 
+    }
+
+    public function upload_tinymce_images(Request $request)
+    {
+            $imagesBankLogo = $request->file("file");
+            $imageExtension = ['png', 'jpg', 'jpeg'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return Response::json(["error"=>"Please upload the correct file format ( PNG, JPG)"], 400);
+            }
+
+            $ext = $request->file('file')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file("file")->storeAs(
+                'blogs/tinymce',
+                "furnisher_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
+
+
+        return Response::json(["location"=> Storage::disk('s3')->url($pathLogo)], 200);
     }
 
 }

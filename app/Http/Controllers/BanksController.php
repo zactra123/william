@@ -495,7 +495,6 @@ class BanksController extends Controller
      */
     public function keywords(Request $request)
     {
-        dd('asd');
         $result = AccountTypeKeys::where('account_type_keys.key_word', 'LIKE', "%{$request->search_key}%")->get(["id","key_word"]);
         return response()->json($result);
     }

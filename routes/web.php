@@ -194,15 +194,8 @@ Route::group(['prefix'=> 'admins/'], function(){
 
     });
 
-    Route::group(["prefix"=>"blog"], function(){
-        Route::delete('/{id}', 'BlogsController@destroy')->name("blog.destroy");
-        Route::get('/{url}', 'BlogsController@show')->name("blog.show");
-        Route::get('/blog/{id}/edit', 'BlogsController@edit')->name("blog.edit");
-        Route::resource('/', 'BlogsController')->names('blog')->except('show', 'edit', 'destroy');
-
-
-    });
-
+    Route::resource('blogs', 'BlogsController')->names('blog');
+    Route::post('/blogs/upload_tinymce_images', 'BlogsController@upload_tinymce_images');
 
 
 

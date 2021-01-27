@@ -224,7 +224,7 @@ class PagesController extends Controller
     {
         $toDay = date('Y-m-d');
 
-        $blogs = Blog::where('published_date', '>',$toDay)->paginate(15);
+        $blogs = Blog::where('published_date', '<',$toDay)->paginate(15);
         return view('blog', compact("blogs"));
     }
     public function blogShow($url)

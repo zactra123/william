@@ -2,11 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23cc027d-b9a6-4160-bb81-85cb5e3c5f36" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/imagetools/plugin.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/site/admin/blogs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ccc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ccc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BanksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BanksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Screaper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Screaper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scripts/equifax_via_credit_karma.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scripts/equifax_via_credit_karma.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scripts/experian_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scripts/experian_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/jquery.tinymce.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/jquery.tinymce.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/license.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/license.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/advlist/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/advlist/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/anchor/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/anchor/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autolink/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autolink/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autoresize/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autoresize/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autosave/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/autosave/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/bbcode/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/bbcode/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/charmap/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/charmap/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/code/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/code/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/colorpicker/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/colorpicker/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/contextmenu/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/contextmenu/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/directionality/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/directionality/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/emoticons/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/emoticons/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/fullpage/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/fullpage/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/fullscreen/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/fullscreen/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/hr/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/hr/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/image/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/image/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/importcss/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/importcss/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/insertdatetime/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/insertdatetime/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/legacyoutput/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/legacyoutput/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/link/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/link/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/lists/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/lists/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/media/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/media/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/nonbreaking/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/nonbreaking/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/noneditable/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/noneditable/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/pagebreak/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/pagebreak/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/paste/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/paste/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/preview/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/preview/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/print/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/print/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/save/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/save/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/searchreplace/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/searchreplace/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/spellchecker/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/spellchecker/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/tabfocus/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/tabfocus/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/table/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/table/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/template/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/template/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/textcolor/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/textcolor/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/textpattern/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/textpattern/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualblocks/css/visualblocks.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualblocks/css/visualblocks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualblocks/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualblocks/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualchars/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/visualchars/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/wordcount/plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/plugins/wordcount/plugin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/content.inline.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/content.inline.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/content.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/content.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce-small.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/fonts/tinymce.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/skin.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/skins/lightgray/skin.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/themes/modern/theme.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/themes/modern/theme.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lib/tinymce/tinymce.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lib/tinymce/tinymce.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/blog/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/blog/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +215,17 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpword" />
       <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
       <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/bringyourownideas/laravel-sitemap" />
+      <path value="$PROJECT_DIR$/vendor/vdb/php-spider" />
+      <path value="$PROJECT_DIR$/vendor/vdb/uri" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/react/http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kHLgvOjmCc8uhI0v5XdOg7SnjV" />
@@ -168,7 +239,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css/client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js/lib/tinymce/plugins/imagetools" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -181,11 +252,11 @@
       <recent name="C:\xampp\htdocs\ccc\resources\views\client_details" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js/lib/tinymce/plugins/imagetools" />
+      <recent name="$PROJECT_DIR$/public/js/site/admin" />
       <recent name="$PROJECT_DIR$/public/css/client" />
       <recent name="$PROJECT_DIR$/resources/views/helpers" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="C:\xampp\htdocs\ccc\app\Services" />
-      <recent name="C:\xampp\htdocs\ccc\resources\views\helpers" />
     </key>
   </component>
   <component name="RunManager">
@@ -259,6 +330,8 @@
       <workItem from="1607092925404" duration="8034000" />
       <workItem from="1607173971791" duration="25754000" />
       <workItem from="1607349507830" duration="9832000" />
+      <workItem from="1611692595866" duration="2425000" />
+      <workItem from="1611756029748" duration="8272000" />
     </task>
     <servers />
   </component>
@@ -275,14 +348,19 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="393" y="135" width="618" height="586" key="find.popup" timestamp="1605356437702">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state x="393" y="135" width="618" height="586" key="find.popup/39.27.1327.741@39.27.1327.741" timestamp="1605356437702" />
-    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup" timestamp="1607095743609">
+    <state x="2632" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611761750641">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup/1920.0.1920.1080/39.27.1881.1053@1920.0.1920.1080" timestamp="1607095743609" />
+    <state x="2632" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/39.27.1881.1053@1920.0.1920.1080" timestamp="1611761750641" />
+    <state x="2432" y="157" width="895" height="855" key="find.popup" timestamp="1611762092952">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2432" y="157" width="895" height="855" key="find.popup/1920.0.1920.1080/39.27.1881.1053@1920.0.1920.1080" timestamp="1611762092952" />
+    <state x="393" y="135" width="618" height="586" key="find.popup/39.27.1327.741@39.27.1327.741" timestamp="1605356437702" />
+    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup" timestamp="1611762102339">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2392" y="90" width="973" height="989" key="search.everywhere.popup/1920.0.1920.1080/39.27.1881.1053@1920.0.1920.1080" timestamp="1611762102339" />
     <state x="365" y="89" width="672" height="678" key="search.everywhere.popup/39.27.1327.741@39.27.1327.741" timestamp="1605358137565" />
   </component>
   <component name="XDebuggerManager">
