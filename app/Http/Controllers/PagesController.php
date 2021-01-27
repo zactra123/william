@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Blog;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;
@@ -218,4 +219,18 @@ class PagesController extends Controller
         $title = 'Privacy Policy';
         return view('privacy-policy', compact('title'));
     }
+
+    public function blog()
+    {
+        $toDay = date('Y-m-d');
+
+        $blogs = Blog::where('published_date', '>',$toDay)->paginate(15);
+        return view('blog', compact("blogs"));
+    }
+    public function blogShow($url)
+    {
+        $blog = Blog::where('url', $url)->first();
+        return view('blog-show', compact("blog"));
+    }
+
 }

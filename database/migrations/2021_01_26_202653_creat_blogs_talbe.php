@@ -16,6 +16,7 @@ class CreatBlogsTalbe extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->nullable();
+            $table->string('url')->nullable();
             $table->string('path')->nullable();
             $table->text('article')->nullable();
             $table->date('published_date')->nullable();

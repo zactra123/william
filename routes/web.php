@@ -45,6 +45,8 @@ Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
+Route::get('news-room', 'PagesController@blog')->name('blog');
+Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
 
 Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
     if ($req->channel_name == 'presence-LiveChat') {
@@ -74,7 +76,7 @@ Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify
 
 Route::group(['prefix'=>'owner'], function(){
 
-    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');;
+    Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');
 
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
@@ -191,6 +193,18 @@ Route::group(['prefix'=> 'admins/'], function(){
 
 
     });
+
+    Route::group(["prefix"=>"blog"], function(){
+        Route::delete('/{id}', 'BlogsController@destroy')->name("blog.destroy");
+        Route::get('/{url}', 'BlogsController@show')->name("blog.show");
+        Route::get('/blog/{id}/edit', 'BlogsController@edit')->name("blog.edit");
+        Route::resource('/', 'BlogsController')->names('blog')->except('show', 'edit', 'destroy');
+
+
+    });
+
+
+
 
 
     Route::get('client','Employer\ClientsController@clientList')->name('adminRec.client.list');

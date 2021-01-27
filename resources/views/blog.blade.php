@@ -87,7 +87,7 @@
         }
     </style>
 
-    @include('helpers.breadcrumbs', ['title'=> "BLOGS", 'route' => ["Home"=> '/admins/blogs',"news-room" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BLOGS", 'route' => ["Home"=> '/admins/blogs',"BLOG" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
@@ -102,26 +102,36 @@
                     </div>
                     <div class="album py-5 bg-light">
                         <div class="container">
-                            <div class="row">
+                            <div class="row ">
                                 @foreach($blogs as  $blog)
-                                    <div class="col-md-4" title="{{strtoupper($blog->title)}}">
+                                    <div class="col-md-4 pt-5" title="{{strtoupper($blog->title)}}">
                                         <div class="card mb-8 box-shadow" >
-                                            <img class="card-img-top banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" alt="Card image cap">
+                                            <img class="card-img-top banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" alt="Card image cap">
+                                            <div class="card-body">
+                                                <div class="card-text p-2 mt-3">
+                                                    <div class="bank-name b"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" >
+                                                        <label>{{strtoupper($blog->title)}}</label>
+                                                    </div>
+                                                    <div class="bank-name b"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" >
+                                                        <label>{{date("M/d/Y", strtotime($blog->published_date))}}</label>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
 
 
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("blog.show", $blog->url)}}'" > {{strtoupper($blog->title)}}</div>
+                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" > <label>READ MORE</label></div>
 
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $blog->id}}" >
-                                                        <span> <i class="fa fa-trash"></i> </span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-                                {{$blogs->link()}}
+                                {{$blogs->links()}}
                             </div>
                         </div>
                     </div>
