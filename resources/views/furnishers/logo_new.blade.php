@@ -103,6 +103,8 @@
 
                     </div>
                     <div class="container">
+
+
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination alphabetical ">
                             <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
@@ -112,7 +114,22 @@
                             @endforeach
                         </ul>
                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+
                     </div>
+                    <div class="row">
+                        <div class="col-md-9 ">
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <div class="col-md-8 p-1">
+                                <input class="form-control" type="text" id="go-to-page" name="page_number" placeholder="PAGE #">
+                            </div>
+                            <div class="col-md-4 p-1 pl-2 ">
+                                <button class="form-control" id="go-to">GO TO</button>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="album py-5 bg-light">
                         <div class="container">
                             <div class="row">
@@ -150,6 +167,8 @@
                             @endforeach
                         </ul>
                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+
+
                     </div>
                 </div>
             </div>
@@ -166,6 +185,12 @@
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script>
         $(document).ready(function () {
+
+            $("#go-to").click(function () {
+                var page =  $("#go-to-page").val();
+                location.href = '/admins/furnishers?page='+ page
+            })
+
             $('[data-toggle="popover"]').popover({
                 html:true,
                 title: "ARE YOU SURE?",
