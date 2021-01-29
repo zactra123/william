@@ -78,7 +78,7 @@
                     <label style="float: right">{{$state->full_name}} ({{$state->name}})</label>
                 </div>
             </div>
-            @if($state->type == 2)
+            @if($state->type == 1)
                 <div class="col-md-2" style="margin: 0">
                     <div class="priceName">
                         <div class="name">
