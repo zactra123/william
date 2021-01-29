@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class State extends Model
 {
@@ -14,4 +15,8 @@ class State extends Model
         2 => "JUDICIAL"
     ];
 
+
+    public function flag(){
+        return Storage::disk('s3')->url($this->path);
+    }
 }

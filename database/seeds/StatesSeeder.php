@@ -236,7 +236,7 @@ class StatesSeeder extends Seeder
                 'full_name' =>'Kansas',
                 'name' =>'KS',
                 'type' =>2,
-                'path' =>'Flag_of_Kansas.png',
+                'path' =>'states/Flag_of_Kansas.png',
             ],
             [
                 'full_name' =>'Montana',
