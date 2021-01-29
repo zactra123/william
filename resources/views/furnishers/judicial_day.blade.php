@@ -1,42 +1,43 @@
 @extends('layouts.layout')
 
-<style>
-
-    .selectize-input,.selectize-select{
-        border: 1px solid #000 !important;
-        border-radius: 8px !important;
-    }
-
-
-    .ms-ua-box {
-        background-color: #ffffff !important;
-        border-radius: 4px !important;
-        padding: 15px;
-        box-shadow: 0 0 5px 1px #0000005c;
-        opacity: 1;
-    }
-    .priceName{
-        width: 100%;
-        height: auto;
-        padding: 0;
-        float: left;
-    }
-    .price{
-        width: 40%;
-        height: auto;
-        padding: 0;
-        float: left;
-    }
-    .name{
-        width: 60%;
-        height: auto;
-        padding: 0;
-        float: left;
-    }
-
-</style>
 
 @section('content')
+
+    <style>
+
+        .selectize-input,.selectize-select{
+            border: 1px solid #000 !important;
+            border-radius: 8px !important;
+        }
+
+
+        .ms-ua-box {
+            background-color: #ffffff !important;
+            border-radius: 4px !important;
+            padding: 15px;
+            box-shadow: 0 0 5px 1px #0000005c;
+            opacity: 1;
+        }
+        .priceName{
+            width: 100%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .price{
+            width: 40%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+        .name{
+            width: 60%;
+            height: auto;
+            padding: 0;
+            float: left;
+        }
+
+    </style>
     @include('helpers.breadcrumbs', ['title'=> "STATES INFORMATION", 'route' => ["Home"=> '/owner',"STATES INFORMATION" => "#"]])
 
     <section class="ms-user-account">
@@ -46,7 +47,7 @@
                     <div class="ms-ua-box">
                         <div class="ms-ua-title">
                             <div class="form-group">
-                                <div class="col-md-2" style="margin: 0">
+                                <div class="col-md-6" style="margin: 0">
 
                                 {!! Form::select('affiliates', ["" => "SELECT STATE", "judicial" =>"JUDICIAL","non_judicial" =>"NON JUDICIAL", "all" =>"ALL STATES" ] + $stateArr, null, ['class'=>'selectize']); !!}
                                 </div>
