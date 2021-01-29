@@ -190,6 +190,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::post('/types/update_default', 'BanksController@update_type_default');
         Route::any('/keywords', 'BanksController@keywords');
         Route::get('/address-autocomplete', 'BanksController@address_autocomplete');
+        Route::get('/parent-bank', 'BanksController@parent_bank');
 
 
     });

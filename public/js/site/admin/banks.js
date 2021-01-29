@@ -154,13 +154,20 @@ $(document).ready(function($) {
     });
     $(document).on('change', '#bank_name, #bank-type' ,function(){
         var bankName = $('#bank_name').val()
-        var bankType = $('#bank-type').val()
+        // var bankType = $('#bank-type').val()
+        var bankType = $("select[name='bank[type]']").val()
         var token = $("meta[name='csrf-token']").attr("content");
+
         $('#collection_types .col-md-6').addClass("hidden")
+
         if (bankType == 4 || bankType ==44) {
-            console.log(bankType)
             $('.collection-'+bankType).removeClass("hidden")
         }
+        if(bankType == 18){
+            $('.parent').removeClass("hidden")
+        }
+
+
         $.ajax({
             url: "/admins/furnishers/bank-name",
             method:"POST",
@@ -240,27 +247,6 @@ $(document).ready(function($) {
                 console.log(ui.item.street)
                 $street.val(ui.item.street)
             }
-            if (!!ui.item.city) {
-                $city.val(ui.item.city)
-            }
-            if (!!ui.item.state) {
-                selectize = $state.eq(0).data('selectize')
-                selectize.setValue(selectize.search(ui.item.state).items[0].id)
-            }
-            if (!!ui.item.zip) {
-                $zip.val(ui.item.zip)
-            }
-            if (!!ui.item.phone_number) {
-                $phone.val(ui.item.phone_number)
-                $phone.trigger('input');
-            }
-            if (!!ui.item.fax_number) {
-                $fax.val(ui.item.fax_number)
-                $fax.trigger('input');
-            }
-            if (!!ui.item.email) {
-                $email.val(ui.item.email)
-            }
         }
     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
         return $( "<li>" )
@@ -268,4 +254,60 @@ $(document).ready(function($) {
             .append( item.name )
             .appendTo( ul );
     };
+
+
+    $( ".autocomplete-bank" ).autocomplete({
+        source: function( request, response ) {
+            $.ajax({
+                url: '/admins/furnishers/parent-bank',
+                dataType: "json",
+                data: {
+                    search_key: request.term
+                },
+                success: function( data ) {
+                    response( data );
+                }
+            });
+        },
+        select: function( event, ui ) {
+            ui.item.value = ui.item.name
+            var $id = $(event.target).parents('.banks').find('.parent_id')
+
+            if (!!ui.item.id) {
+                console.log(ui.item.id, 'dasdasd')
+                $id.val(ui.item.id)
+            }
+
+        }
+    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+            .attr( "data-value", item.name )
+            .append( item.name )
+            .appendTo( ul );
+    };
+
+
+     $('#bankInformationSave').submit(function(e){
+
+         e.preventDefault();
+         var data = $(this).serialize();
+         $('#exampleModal').modal('toggle'); //or  $('#IDModal').modal('hide');
+
+         $.ajax({
+             url: '/admins/furnishers/add',
+             type: "POST",
+             data: data,
+             success: function( data ) {
+                 $(".autocomplete-bank").val(data['parent_name'])
+                 $(".parent_id").val(data['parent_id'])
+             }
+         });
+
+     })
+
+
+
+
+
+
 });

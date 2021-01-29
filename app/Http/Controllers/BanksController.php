@@ -95,7 +95,8 @@ class BanksController extends Controller
     public function create()
     {
         $account_types = AccountType::all()->pluck('name', 'id')->toArray();
-        return view('furnishers.create', compact( 'account_types'));
+        $banks = BankLogo::all()->pluck('name', 'id')->toArray();
+        return view('furnishers.create', compact( 'account_types', 'banks'));
     }
 
     /**
@@ -172,6 +173,10 @@ class BanksController extends Controller
                 EqualBank::create($data);
             }
         }
+        if($request->ajax()){
+
+            return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
+        }
 
         return redirect()->route('admins.bank.show', ['type'=> $bank->type??'all']);
     }
@@ -191,6 +196,8 @@ class BanksController extends Controller
 
         $id  = $request->id;
         $bank = BankLogo::findOrFail($id);
+        $banks = BankLogo::all()->pluck('name', 'id')->toArray();
+
         // Show only collection account types
         if ($bank->type == 3) {
             $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
@@ -227,7 +234,7 @@ class BanksController extends Controller
         $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
         $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
 
-        return view('furnishers.edit', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent'));
+        return view('furnishers.edit', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent', 'banks'));
     }
 
     /**
@@ -238,7 +245,6 @@ class BanksController extends Controller
      */
     public function update(Request $request)
     {
-
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
@@ -349,6 +355,7 @@ class BanksController extends Controller
     {
         $bankName = $request->bank_name;
         $type = $request->type;
+
         // Don't show any type if medical service provider or CRAs was selected
         if (in_array($type, [3,4,5,6,7])) {
 
@@ -385,6 +392,18 @@ class BanksController extends Controller
             ->where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
 
         return response()->json($addresses);
+    }
+
+    /**
+     * autocomplete furnisher registered agent addresses from database
+     * @param $search_key
+     * @return JsonResponse registered agent addresses
+     */
+    public function parent_bank(Request $request)
+    {
+        $banks = BankLogo::where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
+
+        return response()->json($banks);
     }
 
     /**
