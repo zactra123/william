@@ -104,13 +104,13 @@
                                             <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
                                         </div>
 
-                                        <div class="m-5 collection_types hidden">
+                                        <div class="m-5 collection_types ">
                                             <div class="row" id="collection_types_append">
-                                                <div class="col-md-4  collection-4 collection-44">
+                                                <div class="col-md-6 hidden collection-4 collection-44">
                                                     3RD PARTY CA
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
                                                 </div>
-                                                <div class="col-md-4  collection-4 collection-44">
+                                                <div class="col-md-6 hidden collection-4 collection-44">
                                                     ASSET/DEBT BUYER
                                                     <input name="additional_information[collection_type][]"  type="checkbox" value ="ASSET/DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET/DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>

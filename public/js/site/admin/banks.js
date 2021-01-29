@@ -323,7 +323,6 @@ $(document).ready(function($) {
         },
         submitHandler: function(form) {
             var data = $(form).serialize();
-            console.log()
             $.ajax({
                 url: '/admins/furnishers/add',
                 type: "POST",
