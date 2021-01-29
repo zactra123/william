@@ -50,7 +50,7 @@ class BanksController extends Controller
             $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
                 ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip)  {
-                    $query->whereRaw("(REPLACE(REPLACE(bank_logos.name, ',', ''), '.', '')LIKE '%{$request->term}%'")
+                    $query->whereRaw("REPLACE(REPLACE(bank_logos.name, ',', ''), '.', '') LIKE '%{$request->term}%'")
                         ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
                         ->orWhereRAW("CONCAT(COALESCE(bank_addresses.street, ''), ' ', COALESCE(bank_addresses.city, ''), ' ', COALESCE(bank_addresses.state, '')) LIKE '%{$request->term}%'")
                         ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%");
