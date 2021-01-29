@@ -539,14 +539,26 @@ class BanksController extends Controller
             $days = $request->except(['_token', 'id']);
             State::whereId($id)->update($days);
         }
-        $states = State::all()->sortBy('type');
+        $states = null ;
         return view('furnishers.judicial_day', compact('stateArr', 'states'));
     }
 
     public function state(Request $request)
     {
-        $state = State::where("id", $request->id)->first();
-        $states = State::all()->sortBy('type');
+        if($request->id == "all"){
+            $state = null;
+            $states = State::all()->sortBy('name');
+        }elseif($request->id == "judicial"){
+            $state = null;
+            $states = State::where('type', 2)->orderBy('name')->get();
+        }elseif($request->id == "non_judicial"){
+            $state = null;
+            $states = State::where('type', 1)->orderBy('name')->get();
+        }else{
+            $state =  State::whereId($request->id)->first();
+            $states =null;
+        }
+
         return view('furnishers._form', compact('state', 'states'));
     }
 }

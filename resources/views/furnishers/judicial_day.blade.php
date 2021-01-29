@@ -22,13 +22,13 @@
         float: left;
     }
     .price{
-        width: 20%;
+        width: 40%;
         height: auto;
         padding: 0;
         float: left;
     }
     .name{
-        width: 80%;
+        width: 60%;
         height: auto;
         padding: 0;
         float: left;
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <div class="col-md-2" style="margin: 0">
 
-                                {!! Form::select('affiliates', ["" => "SELECT STATE"] + $stateArr, null, ['class'=>'selectize']); !!}
+                                {!! Form::select('affiliates', ["" => "SELECT STATE", "judicial" =>"JUDICIAL","non_judicial" =>"NON JUDICIAL", "all" =>"ALL STATES" ] + $stateArr, null, ['class'=>'selectize']); !!}
                                 </div>
                             </div>
 
