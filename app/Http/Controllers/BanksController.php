@@ -115,7 +115,7 @@ class BanksController extends Controller
 
         $additionalInformation = $request->additional_information;
 
-        $validation =  Validator::make($request->all(), [
+        $validation =  Validator::make($request->bank, [
             'name'=>['required', 'string', 'max:255'],
 
         ]);
@@ -148,7 +148,7 @@ class BanksController extends Controller
 
         }
         $bank = BankLogo::create([
-            'name' => $request->name,
+            'name' => $request->bank['name'],
             'path'=> $pathLogo,
             'type'=> $request->bank['type'],
             'additional_information' => $additionalInformation
@@ -209,7 +209,7 @@ class BanksController extends Controller
         }else{
             $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
             $keywordId = null;
-            foreach($keyWords as $key=>$words){
+            foreach ($keyWords as $key=>$words) {
                 if (strpos(strtoupper($bank->name),$words) !== false) {
                     $keywordId = $key;
                     break;
@@ -527,12 +527,6 @@ class BanksController extends Controller
      */
     public function mortgageDays(Request $request)
     {
-//        $a = ["CT", "DE", "DC","FL","HI","IL","IN","IA","KS", "KY","LA","ME","NJ","NM","NY","ND","OH","OK","PA","SC","VT","WI"];
-//        $b = ["AL","AK","AZ","CA","CO","GA","ID","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NC","OR","RI","SD","TN","TX","UT","VA","WA","WV","WY"];
-//        State::whereIn('name', $a)->update(['type'=>2]);
-//        State::whereIn('name', $b)->update(['type'=>1]);
-//        dd('ok');
-
         $stateArr = State::select(DB::raw('CONCAT(full_name, "(",name,")") AS name'), 'id')->pluck('name', 'id')->toArray();
         if ($request->method()=="POST") {
             $id =$request->id;

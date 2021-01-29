@@ -152,21 +152,24 @@ $(document).ready(function($) {
         $(".updateLogo").removeClass("hide")
 
     });
-    $(document).on('change', '#bank_name, #bank-type' ,function(){
-        var bankName = $('#bank_name').val()
-        // var bankType = $('#bank-type').val()
-        var bankType = $("select[name='bank[type]']").val()
-        var token = $("meta[name='csrf-token']").attr("content");
+    $(document).on('change', '.bank_name, .bank-type' ,function(){
+        $form = $(this).parents('form')
+        var bankName = $form.find('.bank_name').val(),
+            bankType = $form.find('.bank-type').val(),
+            token = $("meta[name='csrf-token']").attr("content");
 
-        $('#collection_types .col-md-6').addClass("hidden")
+        $form.find('.collection_types .col-md-6').addClass("hidden")
 
         if (bankType == 4 || bankType ==44) {
-            $('.collection-'+bankType).removeClass("hidden")
+            $form.find('.collection-'+bankType).removeClass("hidden")
         }
         if(bankType == 18){
             $('.parent').removeClass("hidden")
+        }else {
+            $('.parent').addClass("hidden")
+            $(".autocomplete-bank").val("")
+            $(".autocomplete-bank").trigger('keydown')
         }
-
 
         $.ajax({
             url: "/admins/furnishers/bank-name",
@@ -187,9 +190,9 @@ $(document).ready(function($) {
                 }
                 html = html+ '</div>'
 
-                $('#account_types').find('#account_types_append').remove()
+                $form.find('.account_types_append').remove()
 
-                $("#account_types").html(html);
+                $form.find(".account_types").html(html);
 
 
             },
@@ -222,6 +225,7 @@ $(document).ready(function($) {
     })
 
     $( ".autocomplete-name" ).autocomplete({
+        autoFocus: true,
         source: function( request, response ) {
             $.ajax({
                 url: '/admins/furnishers/address-autocomplete',
@@ -244,7 +248,6 @@ $(document).ready(function($) {
                 $fax = $(event.target).parents('.addresses').find('.fax'),
                 $email = $(event.target).parents('.addresses').find('.email');
             if (!!ui.item.street) {
-                console.log(ui.item.street)
                 $street.val(ui.item.street)
             }
         }
@@ -270,6 +273,7 @@ $(document).ready(function($) {
             });
         },
         select: function( event, ui ) {
+            console.log(event, ui)
             ui.item.value = ui.item.name
             var $id = $(event.target).parents('.banks').find('.parent_id')
 
@@ -286,24 +290,54 @@ $(document).ready(function($) {
             .appendTo( ul );
     };
 
+    $('.autocomplete-bank').on('keydown', function(){
+        $('input[name="bank[parent_id]"]').val("")
+    })
 
-     $('#bankInformationSave').submit(function(e){
+    $('#bankInformation').validate({
+        ignore: [],
+        rules: {
+             "bank[name]": {
+                 required: true
+             },
+            "bank[parent_id]": {
+                required: function(){
+                     return !!$(".autocomplete-bank").val()
+                }
+            }
+        },
+        messages:{
+            "bank[parent_id]": {
+                required: "Parent bank doesn't exist"
+            }
+        }
 
-         e.preventDefault();
-         var data = $(this).serialize();
-         $('#exampleModal').modal('toggle'); //or  $('#IDModal').modal('hide');
 
-         $.ajax({
-             url: '/admins/furnishers/add',
-             type: "POST",
-             data: data,
-             success: function( data ) {
-                 $(".autocomplete-bank").val(data['parent_name'])
-                 $(".parent_id").val(data['parent_id'])
-             }
-         });
+    })
+    $('#parentBankInformation').validate({
+        ignore: [],
+        rules: {
+            "bank[name]": {
+                required: true
+            },
+        },
+        submitHandler: function(form) {
+            var data = $(form).serialize();
+            console.log()
+            $.ajax({
+                url: '/admins/furnishers/add',
+                type: "POST",
+                data: data,
+                success: function( data ) {
+                    $('#exampleModal').modal('toggle'); //or  $('#IDModal').modal('hide');
+                    $(".autocomplete-bank").val(data['parent_name'])
+                    $(".parent_id").val(data['parent_id'])
+                    $('#parentBankInformation')[0].reset()
+                }
+            });
+        }
 
-     })
+    })
 
 
 

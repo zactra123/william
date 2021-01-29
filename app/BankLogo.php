@@ -10,6 +10,7 @@ class BankLogo extends Model
     protected $table = 'bank_logos';
 
     protected $fillable =[
+        'parent_id',
         'name',
         'type',
         'path',
@@ -110,6 +111,11 @@ class BankLogo extends Model
     public function bankTypes()
     {
         return $this->belongsToMany('App\AccountType', 'bank_addresses','bank_logo_id', 'account_type_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\BankLogo', 'parent_id');
     }
 
 }

@@ -101,10 +101,10 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <input type="text" name="name"  class="form-control" placeholder="BANK NAME" id="bank_name">
+                                            <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
                                         </div>
 
-                                        <div id="collection_types" class="m-5 hidden">
+                                        <div class="m-5 collection_types hidden">
                                             <div class="row" id="collection_types_append">
                                                 <div class="col-md-4  collection-4 collection-44">
                                                     3RD PARTY CA
@@ -120,15 +120,29 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            {!! Form::select("bank[type]", \App\BankLogo::TYPES,  1, ['class'=>'form-control', 'id' => "bank-type"]); !!}
+                                            {!! Form::select("bank[type]", \App\BankLogo::TYPES,  1, ['class'=>'form-control bank-type']); !!}
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="row parent hidden">
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="form-group banks ">
+                                            {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
+                                            {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
                                     </div>
                                 </div>
 
 
 
-                                <div id="account_types">
+                                <div class="account_types">
 
                                 </div>
 
@@ -260,6 +274,22 @@
         </div>
     </section>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog w-100" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Create Parent Bank</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ms-user-account">
+                    @include('furnishers._add_bank')
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/html" id="address-template">
         <div id="dispute-address-{id}">
             <div class="row expand-address" data-address="#address-{type}">
@@ -326,9 +356,7 @@
     </script>
 
 
-    <script>
 
-    </script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
