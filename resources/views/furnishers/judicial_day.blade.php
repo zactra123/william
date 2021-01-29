@@ -18,23 +18,8 @@
             box-shadow: 0 0 5px 1px #0000005c;
             opacity: 1;
         }
-        .priceName{
-            width: 100%;
-            height: auto;
-            padding: 0;
-            float: left;
-        }
-        .price{
-            width: 40%;
-            height: auto;
-            padding: 0;
-            float: left;
-        }
-        .name{
-            width: 60%;
-            height: auto;
-            padding: 0;
-            float: left;
+        .states-box {
+            min-height: 300px;
         }
 
     </style>
@@ -43,7 +28,7 @@
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 states-box">
                     <div class="ms-ua-box">
                         <div class="ms-ua-title">
                             <div class="form-group">

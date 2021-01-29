@@ -6,7 +6,7 @@
         <div class="row" >
             <div class="col-md-1" style="margin: 0">
                 <div class="priceName">
-                        <img src=" {{$state->flag()}} ">
+                        <img src=" {{$state->flag()}} " class="w-100">
 
                 </div>
             </div>
