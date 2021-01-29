@@ -37,7 +37,7 @@
 </style>
 
 @section('content')
-    @include('helpers.breadcrumbs', ['title'=> "PRICING LIST", 'route' => ["Home"=> '/owner',"PRICING LIST" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "STATES INFORMATION", 'route' => ["Home"=> '/owner',"STATES INFORMATION" => "#"]])
 
     <section class="ms-user-account">
         <div class="container">
