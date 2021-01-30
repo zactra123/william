@@ -527,32 +527,27 @@ class BanksController extends Controller
      */
     public function mortgageDays(Request $request)
     {
+        if($request->type == 'non_judicial'){
+            $states = State::where('type', 1)->orderBy('name')->get();
+        }elseif($request->type == 'judicial'){
+            $states = State::where('type', 2)->orderBy('name')->get();
+        }else{
+            $states = State::all()->sortBy('name');
+        }
+
         $stateArr = State::select(DB::raw('CONCAT(full_name, "(",name,")") AS name'), 'id')->pluck('name', 'id')->toArray();
         if ($request->method()=="POST") {
             $id =$request->id;
             $days = $request->except(['_token', 'id']);
             State::whereId($id)->update($days);
         }
-        $states = null ;
+
         return view('furnishers.judicial_day', compact('stateArr', 'states'));
     }
 
     public function state(Request $request)
     {
-        if($request->id == "all"){
-            $state = null;
-            $states = State::all()->sortBy('name');
-        }elseif($request->id == "judicial"){
-            $state = null;
-            $states = State::where('type', 2)->orderBy('name')->get();
-        }elseif($request->id == "non_judicial"){
-            $state = null;
-            $states = State::where('type', 1)->orderBy('name')->get();
-        }else{
-            $state =  State::whereId($request->id)->first();
-            $states =null;
-        }
-
-        return view('furnishers._form', compact('state', 'states'));
+        $state =  State::whereId($request->id)->first();
+        return view('furnishers._form', compact('state'));
     }
 }
