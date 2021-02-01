@@ -19,6 +19,7 @@ $( document ).on( "click keyup", ".us-phone", function() {
 });
 
 $(document).ready(function($) {
+
     $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
     // $('.us-zip').mask('00000');
     $('.selectize').selectize({
@@ -152,6 +153,19 @@ $(document).ready(function($) {
         $(".updateLogo").removeClass("hide")
 
     });
+
+    var currentForm = $(this).parents('form')
+    var trustyType = $('input[name="bank_address[trusty][0][name]"]').val()
+
+    if(trustyType === undefined &&  currentForm.find('.bank-type').val()==29){
+        currentForm.find('.trusty').removeClass("hidden")
+        $("input, select, textarea", $(".trusty")).removeAttr("disabled");
+    }else{
+        currentForm.find('.trusty').addClass("hidden")
+        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
+    }
+
+
     $(document).on('change', '.bank_name, .bank-type' ,function(){
         $form = $(this).parents('form')
         var bankName = $form.find('.bank_name').val(),
@@ -159,10 +173,18 @@ $(document).ready(function($) {
             token = $("meta[name='csrf-token']").attr("content");
 
         $form.find('.collection_types .col-md-6').addClass("hidden")
+        $form.find('.trusty_address .trusty').addClass("hidden")
+        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
 
         if (bankType == 4 || bankType ==44) {
             $form.find('.collection-'+bankType).removeClass("hidden")
         }
+
+        if(bankType == 29 &&  $('input[name="bank_address[trusty][0][name]"]').val()===undefined){
+            $form.find('.trusty').removeClass("hidden")
+            $("input, select, textarea", $(".trusty")).removeAttr("disabled");
+        }
+
         if(bankType == 18){
             $('.parent').removeClass("hidden")
         }else {

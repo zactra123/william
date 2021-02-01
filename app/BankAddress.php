@@ -28,6 +28,7 @@ class BankAddress extends Model
         'governing_authority'=>'GOVERNING AUTHORITY',
         'legal_department_address'=>'LEGAL DEPARTMENT ADDRESS',
         'registered_agent'=>'REGISTERED AGENT',
+        'trusty'=>'TRUSTY',
     ];
 
     const STATES = [

@@ -249,7 +249,6 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 addresses " id="address-{{$address->type}}-{{$address->account_type_id}}">
-
                                             @if($address->type == 'executive_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
@@ -259,9 +258,16 @@
                                             @endif
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
-                                                    <div class="form-group col-sm-12">
+                                                    <div class="form-group coddl-sm-12">
                                                         {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Agent Name']); !!}
 
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if($address->type == 'trusty')
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Trusty Name']); !!}
                                                     </div>
                                                 </div>
                                             @endif
@@ -317,8 +323,73 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 @endforeach
+                                    <div class="trusty_address">
+                                        <div class="row expand-address trusty hidden" data-address="#address-trusty">
+                                            <div class="col-md-6"><label for="">TRUSTY</label>  </div>
+                                            <div class="col-md-6 text-right">
+                                                <button type="button">
+                                                    <i class="fa fa-minus-circle"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 addresses hidden trusty " id="address-trusty">
+                                            <div class="row">
+                                                <div class="form-group col-sm-12">
+                                                    {!! Form::text("bank_address[trusty][0][name]", null, ["class"=>"form-control", "placeholder"=>"Trusty Name"]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                {!! Form::hidden("bank_address[trusty][0][type]", 'trusty', ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[trusty][0][account_type_id]", null, ["class"=>"form-control="]) !!}
+
+                                                <div class="form-group col-sm-6">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                                    {!! Form::text("bank_address[trusty][0][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                                                </div>
+                                                <div class="form-group col-sm-3">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                                    {!! Form::text("bank_address[trusty][0][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                                                </div>
+                                                <div class="form-group col-sm-1">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                                    {!! Form::select("bank_address[trusty][0][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                                                </div>
+                                                <div class="form-group col-sm-2">
+                                                    {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                                    {!! Form::text("bank_address[trusty][0][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/phone.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::text("bank_address[trusty][0][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/fax.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::text("bank_address[trusty][0][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/email.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::email("bank_address[trusty][0][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                             <div class="row"></div>
                         </div>

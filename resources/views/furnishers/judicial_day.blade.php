@@ -63,29 +63,15 @@
             cursor: pointer;
         }
         .bank-name {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            display:inline-block;
-            width: 80%;
-            height: 1.2em;
-            white-space: nowrap;
+            width: 100%;
+            height: auto;
             cursor: pointer;
+            text-align: center;
+        }
+        .size{
+            font-size: 0.75em;
         }
 
-        .pagination.custom li > a, span{
-            width: fit-content;
-            margin: 0;
-        }
-        @media (min-width: 767px) {
-            .pagination.alphabetical li > a, span{
-                float: unset;
-                margin: 0;
-            }
-            .pagination.custom li > a, span{
-                width: 4%;
-                margin: 0;
-            }
-        }
     </style>
     @include('helpers.breadcrumbs', ['title'=> "STATES INFORMATION", 'route' => ["Home"=> '/owner',"STATES INFORMATION" => "#"]])
 
@@ -114,10 +100,11 @@
                                 <div class="card mb-4 box-shadow" >
                                     <img  class="card-img-top state-card w-100" data-id="{{$state->id}}" src=" {{$state->flag()}} " >
                                     <div class="card-body">
-                                        <div class="card-text mt-5">
-                                            <div class="bank-name b" > {{strtoupper($state->full_name). " (".strtoupper($state->name) . ")"}}</div>
-
-
+                                        <div class="card-text ">
+                                            <div class="row text-center size" ><label class="size-changer">{{strtoupper($state->full_name)}}</label> </div>
+                                        </div>
+                                        <div class="card-text ">
+                                            <div class="bank-name" ><label>{{strtoupper($state->name)}}</label></div>
                                         </div>
                                     </div>
                                 </div>
