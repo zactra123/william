@@ -92,7 +92,7 @@
                     ?>
                     {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                     @csrf
-                    <div class="ms-ua-box">
+                    <div class="ms-ua-box">an
                         <div class="ms-ua-form">
                             <div class="ms-ua-title mb-0">
                                 <div class="row">

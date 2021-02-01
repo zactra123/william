@@ -154,17 +154,6 @@ $(document).ready(function($) {
 
     });
 
-    var currentForm = $(this).parents('form')
-    var trustyType = $('input[name="bank_address[trusty][0][name]"]').val()
-
-    if(trustyType === undefined &&  currentForm.find('.bank-type').val()==29){
-        currentForm.find('.trusty').removeClass("hidden")
-        $("input, select, textarea", $(".trusty")).removeAttr("disabled");
-    }else{
-        currentForm.find('.trusty').addClass("hidden")
-        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
-    }
-
 
     $(document).on('change', '.bank_name, .bank-type' ,function(){
         $form = $(this).parents('form')
@@ -174,15 +163,15 @@ $(document).ready(function($) {
 
         $form.find('.collection_types .col-md-6').addClass("hidden")
         $form.find('.trusty_address .trusty').addClass("hidden")
-        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
+        $(".trusty").attr("disabled", "disabled");
 
         if (bankType == 4 || bankType ==44) {
             $form.find('.collection-'+bankType).removeClass("hidden")
         }
 
-        if(bankType == 29 &&  $('input[name="bank_address[trusty][0][name]"]').val()===undefined){
+        if(bankType == 29){
             $form.find('.trusty').removeClass("hidden")
-            $("input, select, textarea", $(".trusty")).removeAttr("disabled");
+            $(".trusty").removeAttr("disabled");
         }
 
         if(bankType == 18){
