@@ -239,6 +239,10 @@
                                 <?php $trusty = null; ?>
                                 @foreach($bank_addresses as $address)
                                     <?php $atid = intval($address->account_type_id); ?>
+                                        @if($address->type == 'trusty')
+                                            @continue($trusty = $address)
+                                        @endif
+
                                     <div id="dispute-address-{{$atid}}">
                                         <div class="row expand-address" data-address="#address-{{$address->type}}-{{$address->account_type_id}}">
                                             <div class="col-md-6"><label for="">{{(!empty($address->accountType))?$address->accountType->name : '' }} {{str_replace("ADDRESS","",\App\BankAddress::TYPES[$address->type])}}</label>  </div>
@@ -264,9 +268,7 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if($address->type == 'trusty')
-                                                @continue($trusty = $address)
-                                            @endif
+
 
                                             <div class="row">
                                                 {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control="]) !!}
@@ -321,7 +323,7 @@
                                     </div>
                                 @endforeach
                                     <div class="trusty_address">
-                                        <formset {{$bank->type != 29 ? "disabled": ''}} class="trusty">
+                                        <formset disabled={{$bank->type != 29 ? "disabled": ''}} class="trusty">
                                             <div class="row expand-address {{$bank->type != 29 ? "hidden": ''}} " data-address="#address-trusty">
                                                 <div class="col-md-6"><label for="">TRUSTY</label>  </div>
                                                 <div class="col-md-6 text-right">

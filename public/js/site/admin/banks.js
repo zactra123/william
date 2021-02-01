@@ -164,6 +164,8 @@ $(document).ready(function($) {
         $form.find('.collection_types .col-md-6').addClass("hidden")
         $form.find('.trusty_address .trusty').addClass("hidden")
         $(".trusty").attr("disabled", "disabled");
+        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
+
 
         if (bankType == 4 || bankType ==44) {
             $form.find('.collection-'+bankType).removeClass("hidden")
@@ -171,7 +173,8 @@ $(document).ready(function($) {
 
         if(bankType == 29){
             $form.find('.trusty').removeClass("hidden")
-            $(".trusty").removeAttr("disabled");
+            $("input, select, textarea", $(".trusty")).removeAttr("disabled", "disabled");
+
         }
 
         if(bankType == 18){
