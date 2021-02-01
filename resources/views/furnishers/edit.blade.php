@@ -263,7 +263,7 @@
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group coddl-sm-12">
-                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Agent Name']); !!}
+                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Agent Name', "data-type"=> 'registered_agent']); !!}
 
                                                     </div>
                                                 </div>
@@ -323,7 +323,7 @@
                                     </div>
                                 @endforeach
                                     <div class="trusty_address">
-                                        <formset disabled={{$bank->type != 29 ? "disabled": ''}} class="trusty">
+                                        <formset {{$bank->type != 29 ? "disabled": ''}} class="trusty">
                                             <div class="row expand-address {{$bank->type != 29 ? "hidden": ''}} " data-address="#address-trusty">
                                                 <div class="col-md-6"><label for="">TRUSTY</label>  </div>
                                                 <div class="col-md-6 text-right">
@@ -335,7 +335,7 @@
                                             <div class="col-md-12 addresses {{$bank->type != 29 ? "hidden": ''}}  " id="address-trusty">
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[trusty][0][name]", !empty($trusty) ? $trusty["name"]:'', ["class"=>"form-control", "placeholder"=>"Trusty Name"]) !!}
+                                                        {!! Form::text("bank_address[trusty][0][name]", !empty($trusty) ? $trusty["name"]:'', ["class"=>"autocomplete-name form-control", "placeholder"=>"Trusty Name", "data-type"=> 'trusty']) !!}
                                                     </div>
                                                 </div>
                                                 <div class="row">

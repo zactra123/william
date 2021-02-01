@@ -107,7 +107,7 @@ class BanksController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->term != null){
+        if ($request->term != null) {
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('furnishers.logo_new',compact('banksLogos'));
@@ -155,6 +155,10 @@ class BanksController extends Controller
         ]);
 
         $account_addresses =  $request->bank_address;
+        // Only mortgage lander can have trusty
+        if ($bank->type != 29) {
+            unset($account_addresses['trusty']);
+        }
 
         foreach ( $account_addresses as $addresses) {
             foreach($addresses as $address) {
@@ -288,7 +292,12 @@ class BanksController extends Controller
         }
 
         $addresses_ids = [];
-        foreach ($request->bank_address as $addresses) {
+        $account_addresses =  $request->bank_address;
+        // Only mortgage lander can have trusty
+        if ($bank->type != 29) {
+            unset($account_addresses['trusty']);
+        }
+        foreach ($account_addresses as $addresses) {
             foreach ($addresses as $address){
                 $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
 
@@ -388,7 +397,7 @@ class BanksController extends Controller
      */
     public function address_autocomplete(Request $request)
     {
-        $addresses = BankAddress::where('type', 'registered_agent')
+        $addresses = BankAddress::where('type', $request->type)
             ->where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
 
         return response()->json($addresses);

@@ -178,7 +178,7 @@
                                         @if($type == 'registered_agent')
                                             <div class="row">
                                                 <div class="form-group col-sm-12">
-                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                                 </div>
                                             </div>
                                         @endif
@@ -251,11 +251,11 @@
                                             <div class="col-md-12 addresses trusty hidden" id="address-trusty">
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[trusty][0][name]", null, ["class"=>"form-control", "placeholder"=>"Trusty Name"]) !!}
+                                                        {!! Form::text("bank_address[trusty][0][name]", null, ["class"=>"form-control autocomplete-name w-100", "placeholder"=>"Trusty Name", "data-type"=> 'trusty']) !!}
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    {!! Form::hidden("bank_address[trusty][0][type]", 'trusty', ["class"=>"form-control trusty", "disabled"=>"disabled"]) !!}
+                                                    {!! Form::hidden("bank_address[trusty][0][type]", 'trusty', ["class"=>"form-control"]) !!}
 
                                                     <div class="form-group col-sm-6">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}

@@ -164,7 +164,7 @@ $(document).ready(function($) {
         $form.find('.collection_types .col-md-6').addClass("hidden")
         $form.find('.trusty_address .trusty').addClass("hidden")
         $(".trusty").attr("disabled", "disabled");
-        $("input, select, textarea", $(".trusty")).attr("disabled", "disabled");
+        $(".trusty input,.trusty select").attr("disabled", "disabled");
 
 
         if (bankType == 4 || bankType ==44) {
@@ -173,7 +173,7 @@ $(document).ready(function($) {
 
         if(bankType == 29){
             $form.find('.trusty').removeClass("hidden")
-            $("input, select, textarea", $(".trusty")).removeAttr("disabled", "disabled");
+            $(".trusty input,.trusty select").removeAttr("disabled", "disabled");
 
         }
 
@@ -245,7 +245,8 @@ $(document).ready(function($) {
                 url: '/admins/furnishers/address-autocomplete',
                 dataType: "json",
                 data: {
-                    search_key: request.term
+                    search_key: request.term,
+                    type: this.element.attr('data-type')
                 },
                 success: function( data ) {
                     response( data );
