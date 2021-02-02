@@ -16,7 +16,7 @@
             opacity: 1;
         }
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "PRICING LIST", 'route' => ["Home"=> '/owner',"PRICING LIST" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BLOG", 'route' => ["Home"=> '#',"BLOG" => "#"]])
 
     <section class="ms-user-account">
         <div class="container">

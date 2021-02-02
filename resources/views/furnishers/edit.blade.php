@@ -178,6 +178,40 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="m-5 mortgage_lender_type ">
+                                            <div class="row" id="mortgage_lender_type_append">
+                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    CONVENTIONAL
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="CONVENTIONAL"  {{( !empty( $bank->additional_information["mortgage_lander_type"]) && in_array("CONVENTIONAL", $bank->additional_information["mortgage_lander_type"])) ? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    GOVERNMENT INSURED
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="GOVERNMENT INSURED"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("GOVERNMENT INSURED", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6 mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    JUMBO
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="JUMBO"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("JUMBO", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    ADJSUTABLE-RATE
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6  mortgage-lender-29">
+                                                    FIXED-RATEb
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    HELOC
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="HELOC"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("HELOC", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
+                                                    PRIVATE MONEY
+                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="PRIVATE MONEY"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("PRIVATE MONEY", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -236,11 +270,11 @@
 {{--                        </div>--}}
                         <div class="ms-ua-form pl-4 pr-4 ">
                             <div id="addresses_container">
-                                <?php $trusty = null; ?>
+                                <?php $trustee = null; ?>
                                 @foreach($bank_addresses as $address)
                                     <?php $atid = intval($address->account_type_id); ?>
-                                        @if($address->type == 'trusty')
-                                            @continue($trusty = $address)
+                                        @if($address->type == 'trustee')
+                                            @continue($trustee = $address)
                                         @endif
 
                                     <div id="dispute-address-{{$atid}}">
@@ -252,7 +286,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 addresses " id="address-{{$address->type}}-{{$address->account_type_id}}">
+                                        <div class="col-md-12 addresses" id="address-{{$address->type}}-{{$address->account_type_id}}">
                                             @if($address->type == 'executive_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
@@ -262,7 +296,7 @@
                                             @endif
                                             @if($address->type == 'registered_agent')
                                                 <div class="row">
-                                                    <div class="form-group coddl-sm-12">
+                                                    <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Agent Name', "data-type"=> 'registered_agent']); !!}
 
                                                     </div>
@@ -322,41 +356,41 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                    <div class="trusty_address">
-                                        <formset {{$bank->type != 29 ? "disabled": ''}} class="trusty">
-                                            <div class="row expand-address {{$bank->type != 29 ? "hidden": ''}} " data-address="#address-trusty">
-                                                <div class="col-md-6"><label for="">TRUSTY</label>  </div>
+                                    <div class="trustee_address">
+                                        <formset {{$bank->type != 29 ? "disabled": ''}} class="trustee">
+                                            <div class="row expand-address trustee {{$bank->type != 29 ? "hidden": ''}} " data-address="#address-trustee">
+                                                <div class="col-md-6"><label for="">TRUSTEE</label>  </div>
                                                 <div class="col-md-6 text-right">
                                                     <button type="button">
                                                         <i class="fa fa-minus-circle"></i>
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 addresses {{$bank->type != 29 ? "hidden": ''}}  " id="address-trusty">
+                                            <div class="col-md-12 addresses trustee {{$bank->type != 29 ? "hidden": ''}}" id="address-trustee">
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[trusty][0][name]", !empty($trusty) ? $trusty["name"]:'', ["class"=>"autocomplete-name form-control", "placeholder"=>"Trusty Name", "data-type"=> 'trusty']) !!}
+                                                        {!! Form::text("bank_address[trustee][0][name]", !empty($trustee) ? $trustee["name"]:'', ["class"=>"autocomplete-trust form-control", "placeholder"=>"trustee Name", "data-type"=> 'trustee']) !!}
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    {!! Form::hidden("bank_address[trusty][0][type]", 'trusty', ["class"=>"form-control"]) !!}
-                                                    {!! Form::hidden("bank_address[trusty][0][account_type_id]", null, ["class"=>"form-control="]) !!}
+                                                    {!! Form::hidden("bank_address[trustee][0][type]", 'trustee', ["class"=>"form-control"]) !!}
+                                                    {!! Form::hidden("bank_address[trustee][0][account_type_id]", null, ["class"=>"form-control="]) !!}
 
                                                     <div class="form-group col-sm-6">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                        {!! Form::text("bank_address[trusty][0][street]",  !empty($trusty) ? $trusty["street"]:'', ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                                                        {!! Form::text("bank_address[trustee][0][street]",  !empty($trustee) ? $trustee["street"]:'', ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                                     </div>
                                                     <div class="form-group col-sm-3">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                        {!! Form::text("bank_address[trusty][0][city]",   !empty($trusty) ? $trusty["city"]:'', ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                                                        {!! Form::text("bank_address[trustee][0][city]",   !empty($trustee) ? $trustee["city"]:'', ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                                     </div>
                                                     <div class="form-group col-sm-1">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                        {!! Form::select("bank_address[trusty][0][state]", $states,  !empty($trusty) ? $trusty["state"]:'', ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                                                        {!! Form::select("bank_address[trustee][0][state]", $states,  !empty($trustee) ? $trustee["state"]:'', ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                                     </div>
                                                     <div class="form-group col-sm-2">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                                                        {!! Form::text("bank_address[trusty][0][zip]",  !empty($trusty) ? $trusty["zip"]:'', ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                                        {!! Form::text("bank_address[trustee][0][zip]",  !empty($trustee) ? $trustee["zip"]:'', ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -365,7 +399,7 @@
                                                             <img  class="responsive" src="/images/phone.png">
                                                         </div>
                                                         <div class="form-group col-sm-10">
-                                                            {!! Form::text("bank_address[trusty][0][phone_number]",!empty($trusty) ? $trusty["phone_number"]:'', ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                                                            {!! Form::text("bank_address[trustee][0][phone_number]",!empty($trustee) ? $trustee["phone_number"]:'', ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-sm-4">
@@ -373,7 +407,7 @@
                                                             <img  class="responsive" src="/images/fax.png">
                                                         </div>
                                                         <div class="form-group col-sm-10">
-                                                            {!! Form::text("bank_address[trusty][0][fax_number]", !empty($trusty) ? $trusty["fax_number"]:'', ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                            {!! Form::text("bank_address[trustee][0][fax_number]", !empty($trustee) ? $trustee["fax_number"]:'', ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-sm-4">
@@ -381,7 +415,7 @@
                                                             <img  class="responsive" src="/images/email.png">
                                                         </div>
                                                         <div class="form-group col-sm-10">
-                                                            {!! Form::email("bank_address[trusty][0][email]", !empty($trusty) ? $trusty["email"]:'', ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                            {!! Form::email("bank_address[trustee][0][email]", !empty($trustee) ? $trustee["email"]:'', ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                         </div>
                                                     </div>
 

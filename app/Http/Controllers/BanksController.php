@@ -559,4 +559,70 @@ class BanksController extends Controller
         $state =  State::whereId($request->id)->first();
         return view('furnishers._form', compact('state'));
     }
+
+    public function trustee()
+    {
+        $trustee = BankAddress::where('type', 'trustee')->groupBy('name')->paginate(10);
+        return view('furnishers.trustee.index', compact('trustee'));
+    }
+
+    public function addTrustee()
+    {
+        return view('furnishers.trustee.create');
+    }
+
+
+    public function storeTrustee(Request $request)
+    {
+        $trustee = $request->trustee;
+        BankAddress::firstorCreate($trustee);
+        return redirect()->route('admins.trustee');
+
+    }
+
+    public function editTrustee($id)
+    {
+        $trustee = BankAddress::whereId($id)->first();
+        return view('furnishers.trustee.edit', compact('trustee'));
+    }
+
+
+    public function updateTrustee(Request $request)
+    {
+        $update = BankAddress::whereId($request->id)->first();
+        $trustee = $request->trustee;
+        BankAddress::where('type', 'trustee')
+            ->where('name', $update->name)
+            ->where('street', $update->street)
+            ->where('city', $update->city)
+            ->where('zip', $update->city)
+            ->where('phone_number', $update->phone_number)
+            ->where('fax_number', $update->fax_number)
+            ->where('email', $update->email)
+            ->update($trustee);
+
+        return redirect()->route('admins.trustee');
+    }
+    public function deleteTrustee(Request $request)
+    {
+        $update = BankAddress::whereId($request->id)->first();
+        $nullable = ['name'=>null, 'street'=>null, 'city'=>null, 'state'=>null, 'phone_number'=>null, 'fax_number'=>null,  'email'=>null];
+        BankAddress::where('type', 'trustee')
+            ->where('bank_logo_id', '!=', null)
+            ->where('name', $update->name)
+            ->where('street', $update->street)
+            ->where('city', $update->city)
+            ->where('zip', $update->city)
+            ->where('phone_number', $update->phone_number)
+            ->where('fax_number', $update->fax_number)
+            ->where('email', $update->email)
+            ->update($nullable);
+        if($update->bank_logo_id == null){
+            $update->delete();
+        }
+
+        return response()->json(['status' => 'success']);
+    }
+
+
 }

@@ -162,18 +162,25 @@ $(document).ready(function($) {
             token = $("meta[name='csrf-token']").attr("content");
 
         $form.find('.collection_types .col-md-6').addClass("hidden")
-        $form.find('.trusty_address .trusty').addClass("hidden")
-        $(".trusty").attr("disabled", "disabled");
-        $(".trusty input,.trusty select").attr("disabled", "disabled");
+        $form.find('.mortgage_lender_type .col-md-6').addClass("hidden")
+
+        $form.find('.trustee_address .trustee').addClass("hidden")
+        $(".trustee").attr("disabled", "disabled");
+        $(".trustee input,.trustee select").attr("disabled", "disabled");
 
 
         if (bankType == 4 || bankType ==44) {
             $form.find('.collection-'+bankType).removeClass("hidden")
         }
 
+        if (bankType == 29) {
+            $form.find('.mortgage-lender-'+bankType).removeClass("hidden")
+        }
+
         if(bankType == 29){
-            $form.find('.trusty').removeClass("hidden")
-            $(".trusty input,.trusty select").removeAttr("disabled", "disabled");
+            console.log('mortgage')
+            $form.find('.trustee').removeClass("hidden")
+            $(".trustee input,.trustee select").removeAttr("disabled", "disabled");
 
         }
 
@@ -264,6 +271,83 @@ $(document).ready(function($) {
                 $email = $(event.target).parents('.addresses').find('.email');
             if (!!ui.item.street) {
                 $street.val(ui.item.street)
+            }
+            if (!!ui.item.city) {
+                $city.val(ui.item.city)
+            }
+            if (!!ui.item.state) {
+                selectize = $state.eq(0).data('selectize')
+                selectize.setValue(selectize.search(ui.item.state).items[0].id)
+            }
+            if (!!ui.item.zip) {
+                $zip.val(ui.item.zip)
+            }
+            if (!!ui.item.phone_number) {
+                $phone.val(ui.item.phone_number)
+                $phone.trigger('input');
+            }
+            if (!!ui.item.fax_number) {
+                $fax.val(ui.item.fax_number)
+                $fax.trigger('input');
+            }
+            if (!!ui.item.email) {
+                $email.val(ui.item.email)
+            }
+        }
+    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+            .attr( "data-value", item.name )
+            .append( item.name )
+            .appendTo( ul );
+    };
+    $( ".autocomplete-trust" ).autocomplete({
+        autoFocus: true,
+        source: function( request, response ) {
+            $.ajax({
+                url: '/admins/furnishers/address-autocomplete',
+                dataType: "json",
+                data: {
+                    search_key: request.term,
+                    type: this.element.attr('data-type')
+                },
+                success: function( data ) {
+                    response( data );
+                }
+            });
+        },
+        select: function( event, ui ) {
+            ui.item.value = ui.item.name
+            var $street = $(event.target).parents('.addresses').find('.street'),
+                $city = $(event.target).parents('.addresses').find('.city'),
+                $state = $(event.target).parents('.addresses').find('.state'),
+                $zip = $(event.target).parents('.addresses').find('.us-zip'),
+                $phone = $(event.target).parents('.addresses').find('.phone'),
+                $fax = $(event.target).parents('.addresses').find('.fax'),
+                $email = $(event.target).parents('.addresses').find('.email');
+
+            if (!!ui.item.street) {
+                $street.val(ui.item.street)
+            }
+            if (!!ui.item.city) {
+                $city.val(ui.item.city)
+            }
+            if (!!ui.item.state) {
+                selectize = $state.eq(0).data('selectize')
+                selectize.setValue(selectize.search(ui.item.state).items[0].id)
+            }
+            if (!!ui.item.zip) {
+                $zip.val(ui.item.zip)
+            }
+            if (!!ui.item.phone_number) {
+                $phone.val(ui.item.phone_number)
+                $phone.trigger('input');
+            }
+            if (!!ui.item.fax_number) {
+                $fax.val(ui.item.fax_number)
+                $fax.trigger('input');
+            }
+            if (!!ui.item.email) {
+                $email.val(ui.item.email)
             }
         }
     }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {

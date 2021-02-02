@@ -96,7 +96,7 @@
                 <div class="">
                     <div class="row p-2">
                         @foreach($states as $state)
-                            <div class="col-md-2" title="{{strtoupper($state->full_name)}}">
+                            <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                                 <div class="card mb-4 box-shadow" >
                                     <img  class="card-img-top state-card w-100" data-id="{{$state->id}}" src=" {{$state->flag()}} " >
                                     <div class="card-body">

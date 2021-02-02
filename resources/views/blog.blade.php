@@ -87,7 +87,7 @@
         }
     </style>
 
-    @include('helpers.breadcrumbs', ['title'=> "BLOGS", 'route' => ["Home"=> '/admins/blogs',"BLOG" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "BLOGS", 'route' => ["Home"=> '/',"BLOG" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
