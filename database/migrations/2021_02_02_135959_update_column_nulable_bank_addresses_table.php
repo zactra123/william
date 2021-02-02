@@ -13,15 +13,13 @@ class UpdateColumnNulableBankAddressesTable extends Migration
      */
     public function up()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         Schema::table('bank_addresses', function (Blueprint $table) {
-            $table->dropForeign(['bank_logo_id']);
+            $table->dropForeign('bank_logo_id');
             $table->unsignedBigInteger('bank_logo_id')->nullable()->change();
             $table->foreign('bank_logo_id', 'bank_logo_id')->references('id')->on('bank_logos')->onDelete('cascade');
 
         });
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
