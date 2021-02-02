@@ -57,7 +57,7 @@
         .card-img-top {
             width: 100%;
             height: 100px;
-            object-fit: contain;
+            object-fit: fill;
         }
         .state-card {
             cursor: pointer;
