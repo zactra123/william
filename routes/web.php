@@ -192,6 +192,8 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::post('/trustee/{id}/edit','BanksController@updateTrustee')->name("admins.trustee.update");
         Route::delete('/trustee/{id}','BanksController@deleteTrustee');
 
+        Route::get('/trustee/change','BanksController@changeTrustee');
+
         Route::delete('/types/{id}', 'BanksController@delete_types');
         Route::post('/types/update_keywords', 'BanksController@update_type_keywords');
         Route::post('/types/update_default', 'BanksController@update_type_default');

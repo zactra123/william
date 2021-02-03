@@ -197,7 +197,7 @@
                                                     <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                                 <div class="col-md-6  mortgage-lender-29">
-                                                    FIXED-RATEb
+                                                    FIXED-RATE
                                                     <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                                 <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">

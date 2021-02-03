@@ -157,7 +157,7 @@ class BanksController extends Controller
         $account_addresses =  $request->bank_address;
         // Only mortgage lander can have trusty
         if ($bank->type != 29) {
-            unset($account_addresses['trusty']);
+            unset($account_addresses['trustee']);
         }
 
         foreach ( $account_addresses as $addresses) {
@@ -622,6 +622,54 @@ class BanksController extends Controller
         }
 
         return response()->json(['status' => 'success']);
+    }
+
+
+
+    public function changeTrustee()
+    {
+        $trustee = BankAddress::where('type', 'trustee')->groupBy('name')->get();
+
+        foreach($trustee as $value)
+        {
+            $bank= BankLogo::create([
+                'name'=> $value->name,
+                'type' => 47
+            ]);
+
+
+            $bank->bankAddresses()->createMany([
+                [
+                    'account_type_id'=> null,
+                    'type' => 'executive_address',
+                    'street' => $value->street,
+                    'city' => $value->city,
+                    'state'=> $value->state,
+                    'zip'=> $value->zip,
+                    'phone_number'=> $value->phone_number,
+                    'fax_number'=> $value->fax_number,
+                    'name'=> $value->name,
+                    'email'=> $value->email
+
+                ],
+                [
+                    'account_type_id'=> null,
+                    'type'=> 'registered_agent',
+                    'street'=> null,
+                    'city'=> null,
+                    'state'=> null,
+                    'zip'=> null,
+                    'phone_number'=> null,
+                    'fax_number'=> null,
+                    'name'=> null,
+                    'email'=> null
+
+                ]
+            ]);
+        }
+
+        dd('ok');
+
     }
 
 
