@@ -185,12 +185,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::any('/judicial/days', 'BanksController@mortgageDays')->name("admins.mortgage.days");
         Route::get('/mortgage/state', 'BanksController@state');
 
-        Route::get('/trustee', 'BanksController@trustee')->name("admins.trustee");
-        Route::get('/trustee/add','BanksController@addTrustee')->name("admins.trustee.create");
-        Route::post('/trustee/add','BanksController@storeTrustee')->name("admins.trustee.store");
-        Route::get('/trustee/{id}/edit','BanksController@editTrustee')->name("admins.trustee.edit");
-        Route::post('/trustee/{id}/edit','BanksController@updateTrustee')->name("admins.trustee.update");
-        Route::delete('/trustee/{id}','BanksController@deleteTrustee');
+
 
         Route::get('/trustee/change','BanksController@changeTrustee');
 

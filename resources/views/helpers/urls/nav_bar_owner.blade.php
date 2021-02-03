@@ -16,7 +16,6 @@
     <ul id="products-menu" class="dropdown-menu scrolled-content" role="menu">
         <li><a href="{{ route('admins.bank.show')}}">FURNISHERs/CRAs</a></li>
         <li><a href="{{ route('admins.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
-        <li><a href="{{ route('admins.trustee')}}">SHOW TRUSTEE</a></li>
         <li><a href="{{ route('admins.mortgage.days')}}">MORTGAGE JUDICIAL DAYS</a></li>
     </ul>
 </li>
