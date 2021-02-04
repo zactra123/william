@@ -71,6 +71,7 @@ class Kernel extends HttpKernel
         'receptionist' => \App\Http\Middleware\Receptionist::class,
         'superadmin' => \App\Http\Middleware\SuperAdmin::class,
         'admins' => \App\Http\Middleware\Admins::class,
+        'seo' => \App\Http\Middleware\Seo::class,
 
     ];
 

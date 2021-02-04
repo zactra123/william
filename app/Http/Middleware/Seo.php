@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Seo
 {
@@ -15,10 +16,11 @@ class Seo
      */
     public function handle($request, Closure $next)
     {
+
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        elseif ( Auth::user()->role == 'client'){
+        elseif ( Auth::user()->role != 'seo'){
             return redirect()->to('/');
         }
         return $next($request);

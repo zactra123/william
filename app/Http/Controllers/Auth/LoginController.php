@@ -35,6 +35,7 @@ class LoginController extends Controller
     protected $maxAttempts = 2;
     public function redirectTo()
     {
+
         switch(Auth::user()->role){
             case 'admin':
                 $this->redirectTo = 'admins';
@@ -54,6 +55,10 @@ class LoginController extends Controller
                 break;
             case 'client':
                 $this->redirectTo = '/client/details';
+                return $this->redirectTo;
+                break;
+            case 'seo':
+                $this->redirectTo = '/admins/blogs';
                 return $this->redirectTo;
                 break;
             default:

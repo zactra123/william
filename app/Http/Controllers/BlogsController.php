@@ -10,6 +10,11 @@ use Response;
 
 class BlogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'seo']);
+    }
+
     public function index()
     {
         $blogs = Blog::all();

@@ -1,24 +1,19 @@
-
-
-
-
-
-
 @extends('layouts.layout')
 
-<style>
-    .ms-ua-box {
-        background-color: #ffffff !important;
-        border-radius: 4px !important;
-        padding: 15px;
-        box-shadow: 0 0 5px 1px #0000005c;
-        opacity: 1;
-    }
-
-
-</style>
 
 @section('content')
+    <style>
+        .ms-ua-box {
+            background-color: #ffffff !important;
+            border-radius: 4px !important;
+            padding: 15px;
+            box-shadow: 0 0 5px 1px #0000005c;
+            opacity: 1;
+        }
+
+
+    </style>
+
     @include('helpers.breadcrumbs', ['title'=> "BLOG", 'route' => ["Home"=> '#',"EDIT BLOG" => "#"]])
 
     <section class="ms-user-account">
@@ -48,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="article" rows="5" cols="40" class="form-control tinymce-editor">{{$blog->article}}</textarea>
+                            <textarea name="article" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -61,43 +56,8 @@
         </div>
     </section>
 
-
-    <script>
-
-        $(document).ready(function(){
-            $('#date').focus(function () {
-
-                this.type='date';
-            });
-            $('#date').click(function () {
-                this.type='date';
-            })  ;
-            $('#date').blur(function () {
-                if(this.value==''){this.type='text'};
-            });
-
-        })
-
-    </script>
-
     <script src="/js/lib/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: 'textarea.tinymce-editor',
-            height: 250,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code wordcount'
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright alignjustify | bullist numlist outdent indent | ' +
-                'removeformat | help',
-            content_css: '//www.tiny.cloud/css/codepen.min.css'
-        });
-    </script>
+    <script src="{{ asset('js/site/admin/blogs.js?v=2') }}" ></script>
 
 
 @endsection

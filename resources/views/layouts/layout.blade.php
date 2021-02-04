@@ -242,6 +242,8 @@
                             @include('helpers.urls.nav_bar_admin')
                         @elseif(Auth::user()->role == 'receptionist')
                             @include('helpers.urls.nav_bar_receptionist')
+                        @elseif(Auth::user()->role == 'seo')
+                            @include('helpers.urls.nav_bar_seo')
                         @endif
                     @else
                         @include('helpers.urls.nav_bar_guest')
@@ -471,6 +473,9 @@
             @elseif((Auth::user()->role == 'receptionist'))
                 <li class="menu-item"> <a href="{{ url('receptionist/message') }}"> HOME</a> </li>
                 @include('helpers.urls.logged_in_receptionist')
+            @elseif((Auth::user()->role == 'seo'))
+                <li class="menu-item"> <a href="{{ url('admins/blogs') }}"> HOME</a> </li>
+                @include('helpers.urls.logged_in_seo')
             @else
                 <li><a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="">HOME</a></li>
                 @include('helpers.urls.logged_in_owner')

@@ -27,6 +27,9 @@ Route::get('/home', function () {
             case "client":
                 return redirect('/client/details');
                 break;
+            case "seo":
+                return redirect('/admins/blogs');
+                break;
         }
     } else {
         return redirect('/');
@@ -184,7 +187,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::any('/types', 'BanksController@types')->name("admins.bank.types");
         Route::any('/judicial/days', 'BanksController@mortgageDays')->name("admins.mortgage.days");
         Route::get('/mortgage/state', 'BanksController@state');
-        
+
         Route::delete('/types/{id}', 'BanksController@delete_types');
         Route::post('/types/update_keywords', 'BanksController@update_type_keywords');
         Route::post('/types/update_default', 'BanksController@update_type_default');
