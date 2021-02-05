@@ -36,6 +36,10 @@ Route::get('/home', function () {
     }
 });
 
+
+
+
+
 Route::get('/', 'PagesController@welcome' );
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
@@ -50,6 +54,8 @@ Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Route::get('news-room', 'PagesController@blog')->name('blog');
 Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
+
+Route::get('shear/{social}/{url}', 'PagesController@shareSocial')->name('shear');
 
 Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
     if ($req->channel_name == 'presence-LiveChat') {

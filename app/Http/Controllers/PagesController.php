@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Blog;
+use Share;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\Question;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use App\Faq;
 use App\ContactMessage;
@@ -231,6 +233,23 @@ class PagesController extends Controller
     {
         $blog = Blog::where('url', $url)->first();
         return view('blog-show', compact("blog"));
+    }
+
+    /**
+     * social shear
+     */
+
+    public function shareSocial($social, $url)
+    {
+        $blog = Blog::where('url', $url)->first();
+        $route = url('news-room')."/".$url ;
+        if ($social == 'linkedin') {
+            return Share::load($route, $blog->title)->linkedin();
+        } elseif ($social == 'facebook') {
+            return redirect(Share::load($route, $blog->title)->facebook()) ;
+        } elseif ($social == 'twitter') {
+            return Share::load($route, $blog->title)->twitter();
+        }
     }
 
 }

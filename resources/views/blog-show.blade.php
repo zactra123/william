@@ -94,13 +94,22 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
 
-                    <div class="container">
-                        <h2>{{$blog->title}}</h2>
+                    <div class=" ms-ua-box">
+                            <h2>{{$blog->title}}</h2>
+
                     </div>
                     <div class="album py-5 bg-light">
                         <div class="container">
                             <?php  echo htmlspecialchars_decode(htmlspecialchars($blog->article, ENT_QUOTES))?>
+
                         </div>
+                    </div>
+                    <div class=ms-ua-social">
+
+                        <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" > <i class="fa fa-facebook-square" ></i></a>
+                        <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}"> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
                     </div>
                 </div>
             </div>

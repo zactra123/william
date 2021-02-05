@@ -43,8 +43,11 @@
         .box-shadow { box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1); }
 
         .card-img-top {
-            width: 100%;
-            height: auto;
+            height: 250px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
             object-fit: contain;
         }
         .delete{
@@ -111,7 +114,6 @@
                                     <div class="col-md-4 pt-5" title="{{strtoupper($blog->title)}}">
                                         <div class="card mb-8 box-shadow" >
                                                 <img class="card-img-top banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" alt="Card image cap">
-
 
                                             <div class="card-body">
                                                 <div class="card-text p-2 mt-3">

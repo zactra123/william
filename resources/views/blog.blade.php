@@ -43,8 +43,11 @@
         .box-shadow { box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1); }
 
         .card-img-top {
-            width: 100%;
-            height: auto;
+            height: 250px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
             object-fit: contain;
         }
         .delete{
@@ -109,10 +112,10 @@
                                             <img class="card-img-top banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" alt="Card image cap">
                                             <div class="card-body">
                                                 <div class="card-text p-2 mt-3">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" >
+                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
                                                         <label>{{strtoupper($blog->title)}}</label>
                                                     </div>
-                                                    <div class="bank-name b"  onclick="location.href='{{route("blog.edit", $blog->id)}}'" >
+                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
                                                         <label>{{date("M/d/Y", strtotime($blog->published_date))}}</label>
                                                     </div>
 
@@ -121,13 +124,6 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="card-body">
-                                                <div class="card-text mt-5">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" > <label>READ MORE</label></div>
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 @endforeach

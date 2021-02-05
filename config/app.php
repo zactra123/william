@@ -138,7 +138,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -185,8 +184,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 //        Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
-
-        Rainwater\Active\ActiveServiceProvider::class
+        Rainwater\Active\ActiveServiceProvider::class,
+        /*
+         * Packages for social-share
+         */
+        Chencha\Share\ShareServiceProvider::class
 
 
     ],
@@ -245,7 +247,11 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
-        'Active' => Rainwater\Active\ActiveFacade::class
+        'Active' => Rainwater\Active\ActiveFacade::class,
+        /*
+         * for social-share
+         */
+        'Share' => Chencha\Share\ShareFacade::class,
 
 
     ],
