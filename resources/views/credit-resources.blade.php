@@ -1,6 +1,12 @@
 
 @extends('layouts.layout')
 
+@section('meta')
+    <title>Credit Resources - the most popular resources to improve your score</title>
+    <meta name="description" content="Credit Resources help keep your credit in tip-top shape. We offer resources
+        that will help you - Mint, AnnualCreditReport.com, NerdWallet, CreditKarma.">
+@endsection
+
 @section('content')
 
 

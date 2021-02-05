@@ -1,6 +1,12 @@
 
 @extends('layouts.layout')
 
+@section('meta')
+    <title>Prudent Credit Solutions - leader in credit repair industry Who We Are?</title>
+    <meta name="description" content="Prudent Credit Solutions helps dispute and correct inaccuracies on credit
+        reports, improve credit history, achieve reasonable credit-fitness goals.">
+@endsection
+
 @section('content')
     <div class="breadcrumbs">
         <div class="container">

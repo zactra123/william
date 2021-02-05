@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 
+@section('meta')
+    <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
+    <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
+         FICO credit score ranges, how rebuild, create and maintain good credit.">
+@endsection
+
 @section('content')
 
     <style>

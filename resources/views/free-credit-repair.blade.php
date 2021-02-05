@@ -1,6 +1,12 @@
 
 @extends('layouts.layout')
 
+@section('meta')
+    <title>4 Helpful Tips on How to Get an Excellent Credit Score</title>
+    <meta name="description" content="How to improve credit score and keep it in healthy shape? Follow these four
+        tips, you won’t have to worry about your credit ever going down the drain.">
+@endsection
+
 @section('content')
 
 
@@ -88,7 +94,7 @@
                         is to reach out to credit bureaus immediately and dispute the mistake, or better yet, you will
                         hire a professional credit repair company such as Prudent Credit Solutions, Inc to handle that
                         matter swiftly on your behalf.
-     
+
                     </p>
 
 

@@ -243,12 +243,14 @@ class PagesController extends Controller
     {
         $blog = Blog::where('url', $url)->first();
         $route = url('news-room')."/".$url ;
+        $route = "https://prudentscores.com/";
+//        dd($route);
         if ($social == 'linkedin') {
-            return Share::load($route, $blog->title)->linkedin();
+            return redirect(Share::load($route, $blog->title)->linkedin());
         } elseif ($social == 'facebook') {
             return redirect(Share::load($route, $blog->title)->facebook()) ;
         } elseif ($social == 'twitter') {
-            return Share::load($route, $blog->title)->twitter();
+            return redirect(Share::load($route, $blog->title)->twitter());
         }
     }
 

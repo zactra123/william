@@ -87,8 +87,9 @@
                         @include('furnishers.search')
                     </div>
                     <?php
-                    $states = [null=>''] + \App\BankAddress::STATES;
-                    $types = [null=>''] + \App\BankLogo::TYPES;
+                        $states = [null=>''] + \App\BankAddress::STATES;
+                        $types =  \App\BankLogo::TYPES;
+                        asort($types)
                     ?>
                     {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                     @csrf
@@ -154,7 +155,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            {!! Form::select("bank[type]", \App\BankLogo::TYPES,  1, ['class'=>'form-control bank-type']); !!}
+                                            {!! Form::select("bank[type]", $types,  1, ['class'=>'form-control bank-type']); !!}
                                         </div>
 
                                     </div>

@@ -1,5 +1,10 @@
-
 @extends('layouts.layout')
+
+@section('meta')
+    <title>Privacy Policy - What Information do we collect? </title>
+    <meta name="description" content="In this privacy policy, we make it as clear as possible to you what information
+         we collect, how we use it and what rights you have in relation to it. ">
+@endsection
 
 @section('content')
 

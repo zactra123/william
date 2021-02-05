@@ -142,7 +142,8 @@
                 </div>
                 <?php
                     $states = [null=>''] + \App\BankAddress::STATES;
-                    $types = [null=>''] + \App\BankLogo::TYPES;
+                    $types =  \App\BankLogo::TYPES;
+                    asort($types)
                 ?>
                     {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
@@ -215,7 +216,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            {!! Form::select("bank[type]", \App\BankLogo::TYPES,  $bank->type, ['class'=>'form-control bank-type']); !!}
+                                            {!! Form::select("bank[type]", $types,  $bank->type, ['class'=>'form-control bank-type']); !!}
                                         </div>
 
                                     </div>

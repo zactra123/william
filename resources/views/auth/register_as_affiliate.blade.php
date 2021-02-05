@@ -1,5 +1,9 @@
 @extends('layouts.layout')
-
+@section('meta')
+    <title>Register as an affiliate on Prudent Credit Solutions</title>
+    <meta name="description" content="Register on Prudent Credit Solutions - credit restoration firm. Ensure your
+        credit history reflects accurate information.We set the industry standards.">
+@endsection
 @section('content')
 
     <style>

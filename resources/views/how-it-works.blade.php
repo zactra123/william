@@ -1,7 +1,11 @@
 
 @extends('layouts.layout')
 
-
+@section('meta')
+    <title>How Prudent Credit Solutions work for credit restoration? Get to know!</title>
+    <meta name="description" content="Decided to hire our firm? Find out how Prudent Credit Solutions work for credit
+         restoration? Stages and rules. Relax and expect to hear some good news!">
+@endsection
 @section('content')
 
     <section class="header-title section-padding">

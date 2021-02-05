@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+@section('meta')
+    <title>Login to achieve all your reasonable credit-fitness goals</title>
+    <meta name="description" content="Login - we help our clients escape stressful situations: bankruptcies,
+        foreclosures, and other financial hardship. Improve your credit history!">
+@endsection
 
 @section('content')
 

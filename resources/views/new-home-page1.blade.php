@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 
+{{--@section('meta')--}}
+{{--    <title>Superior credit restoration firm - Prudent Credit Solutions </title>--}}
+{{--    <meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment--}}
+{{--        Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">--}}
+{{--@endsection--}}
+
 @section('content')
 
     <section class="slider-section">

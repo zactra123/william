@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+    @yield('meta')
+
+    @if (!trim($__env->yieldContent('meta')))
+        <title>Prudent Credit Solutions </title>
+    @endif
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,58 +35,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="canonical" href="{{ url()->current() }}" />
-
-    @if(Request::url() == "https://prudentscores.com")
-        <title>Superior credit restoration firm - Prudent Credit Solutions </title>
-        <meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment
-        Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">
-    @elseif(Request::url() == "https://prudentscores.com/who-we-are")
-        <title>Prudent Credit Solutions - leader in credit repair industry Who We Are?</title>
-        <meta name="description" content="Prudent Credit Solutions helps dispute and correct inaccuracies on credit
-        reports, improve credit history, achieve reasonable credit-fitness goals.">
-    @elseif(Request::url() == "https://prudentscores.com/how-it-works")
-        <title>How Prudent Credit Solutions work for credit restoration? Get to know!</title>
-        <meta name="description" content="Decided to hire our firm? Find out how Prudent Credit Solutions work for credit
-         restoration? Stages and rules. Relax and expect to hear some good news!">
-    @elseif(Request::url() == "https://prudentscores.com/credit-education")
-        <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
-        <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
-         FICO credit score ranges, how rebuild, create and maintain good credit.">
-    @elseif(Request::url() == "https://prudentscores.com/login")
-        <title>Login to achieve all your reasonable credit-fitness goals</title>
-        <meta name="description" content="Login - we help our clients escape stressful situations: bankruptcies,
-        foreclosures, and other financial hardship. Improve your credit history!">
-    @elseif(Request::url() == "https://prudentscores.com/register-as-affiliate")
-        <title>Register as an affiliate on Prudent Credit Solutions</title>
-        <meta name="description" content="Register on Prudent Credit Solutions - credit restoration firm. Ensure your
-        credit history reflects accurate information.We set the industry standards.">
-    @elseif(Request::url() == "https://prudentscores.com/legality-credit-repair")
-        <title>Is Repair Legal in All 50 States? Prudent Credit Solutions</title>
-        <meta name="description" content="Credit repair is a legal way to improve damaged credit history and raise credit
-         score. It's a federally protect right. Get more information on our website.">
-    @elseif(Request::url() == "https://prudentscores.com/credit-repair-resources")
-        <title>Credit Resources - the most popular resources to improve your score</title>
-        <meta name="description" content="Credit Resources help keep your credit in tip-top shape. We offer resources
-        that will help you - Mint, AnnualCreditReport.com, NerdWallet, CreditKarma.">
-    @elseif(Request::url() == "https://prudentscores.com/faqs")
-        <title>Frequently asked questions about credit repair and scores</title>
-        <meta name="description" content="Get answers about frequently asked questions about credit repair and scores.
-        What is a late payment? What is a 'charge-off'? Can credit repair benefit me?">
-    @elseif(Request::url() == "https://prudentscores.com/free-credit-repair")
-        <title>4 Helpful Tips on How to Get an Excellent Credit Score</title>
-        <meta name="description" content="How to improve credit score and keep it in healthy shape? Follow these four
-        tips, you won’t have to worry about your credit ever going down the drain.">
-    @elseif(Request::url() == "https://www.myfico.com/fico-credit-score-estimator/estimator")
-        <title>How to Estimate Your FICO Score? Credit Score Free Calculator</title>
-        <meta name="description" content="What is my credit score? How to estimate your credit score? Answer ten simple
-        questions and estimate your actual credit score with this free score. ">
-    @elseif(Request::url() == "https://prudentscores.com/pravicy-policy")
-        <title>Privacy Policy - What Information do we collect? </title>
-        <meta name="description" content="In this privacy policy, we make it as clear as possible to you what information
-         we collect, how we use it and what rights you have in relation to it. ">
-    @else
-        <title>Prudent Credit Solutions </title>
-    @endif
 
 <!-- Bootstrap -->
     <link href="{{asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
