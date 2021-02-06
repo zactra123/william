@@ -117,7 +117,7 @@
                                                         <label>{{strtoupper($blog->title)}}</label>
                                                     </div>
                                                     <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
-                                                        <label>{{date("M/d/Y", strtotime($blog->published_date))}}</label>
+                                                        <label>{{date("F j, Y", strtotime($blog->published_date))}}</label>
                                                     </div>
 
 
@@ -128,6 +128,8 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            </div>
+                            <div class="text-center">
                                 {{$blogs->links()}}
                             </div>
                         </div>

@@ -222,27 +222,46 @@ class PagesController extends Controller
         return view('privacy-policy', compact('title'));
     }
 
+    /**
+     * News room PAGE ACTION
+     * @return \Illuminate\View\View "blog", $blogs(all published blogs with pagination)
+     */
     public function blog()
     {
-        $toDay = date('Y-m-d');
-
-        $blogs = Blog::where('published_date', '<',$toDay)->paginate(15);
+        $today = date('Y-m-d');
+        // Show blog based on published date
+        $blogs = Blog::where('published_date', '<',$today)->orderBy('published_date', 'desc')->paginate(15);
         return view('blog', compact("blogs"));
     }
+    /**
+     * Direct News room PAGE ACTION
+     * @return \Illuminate\View\View "blog", $blog()
+     */
     public function blogShow($url)
     {
         $blog = Blog::where('url', $url)->first();
+        // Redirect to Not found if blog not exist
+        if(!$blog) {
+            return abort(404);
+        }
+
         return view('blog-show', compact("blog"));
     }
 
     /**
-     * social shear
+     * Share Blog via: LINKEDIN, FACEBOOK, TWITTER
+     * SOCIAL SHARING
      */
-
     public function shareSocial($social, $url)
     {
         $blog = Blog::where('url', $url)->first();
+        // Redirect to Not found if blog not exist
+        if(!$blog) {
+            return abort(404);
+        }
+        // generate sharing url
         $route = url('news-room', ['url'=> $url]);
+
         if ($social == 'linkedin') {
             return redirect(Share::load($route, $blog->title)->linkedin());
         } elseif ($social == 'facebook') {
