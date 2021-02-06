@@ -63,12 +63,10 @@ class BlogsController extends Controller
         return view("blog.edit", compact('blog'));
     }
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        $id = $request->id;
         $blog = Blog::whereId($id);
-
-        $data = $request->except("_token", "attach");
+        $data = $request->except("_token",  "_method", "attach");
         if(!empty($request['attach'])){
             $titleImage  = $request->file("attach");
             $imageExtension = [ 'png', 'jpg', 'jpeg'];
@@ -90,7 +88,7 @@ class BlogsController extends Controller
         }
 
         $blog->update($data);
-        return redirect()->route('bank.index');
+        return redirect()->route('blog.index');
     }
 
 

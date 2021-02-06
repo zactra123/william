@@ -49,6 +49,7 @@
             margin-right: auto;
             width: auto;
             object-fit: contain;
+            width: 100%;
         }
         .delete{
             z-index: 10;

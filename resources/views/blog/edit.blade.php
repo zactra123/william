@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="article" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
+                            <textarea name="article" rows="5" cols="40" class="form-control tinymce-editor">{{$blog->article}}</textarea>
                         </div>
 
                         <div class="form-group">

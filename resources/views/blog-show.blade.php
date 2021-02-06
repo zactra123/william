@@ -1,5 +1,19 @@
 @extends('layouts.layout')
 
+@section('meta')
+    <?php
+        $description = strip_tags($blog->article);
+        $description = substr(str_replace('&nbsp;', ' ', $description), 0, 157)
+    ?>
+    <title> Prudent Credit Solutions: {{$blog->title}} </title>
+    <meta property="description" content="{{$description}} {{(strlen(strip_tags($blog->article)) > 157) ? '...': ''}}" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:title" content="Prudent Credit Solutions: {{$blog->title}}" />
+    <meta property="og:description" content="{{$description}} {{(strlen(strip_tags($blog->article)) > 157) ? '...': ''}}" />
+    <meta property="og:image" content="{{URL::asset($blog->path)}}" />
+@endsection
+
 @section('content')
     <style>
         :root {
@@ -94,9 +108,15 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
 
-                    <div class=" ms-ua-box">
-                            <h2>{{$blog->title}}</h2>
-
+                    <div class=" ms-ua-box pb-1">
+                        <h2>{{$blog->title}}</h2>
+                        <span ><i>Published at:</i> {{date("F j, Y", strtotime($blog->published_date))}}</span>
+                        <div>
+                            <span class="text-secondary"><i>Share via:</i> </span>
+                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"> <i class="fa fa-facebook-square" ></i></a>
+                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                     <div class="album py-5 bg-light">
                         <div class="container">
@@ -108,7 +128,7 @@
 
                         <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"> <i class="fa fa-facebook-square" ></i></a>
                         <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
 
                     </div>
                 </div>
