@@ -87,7 +87,7 @@
         }
     </style>
 
-    @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"CLIENTS LIST" => "#"]])
+    @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"AUTHORITIES" => "#"]])
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
@@ -95,11 +95,10 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="row m-2  pt-4">
                         <div class="col-md-3 pull-left">
-                            <a class="btn btn-primary pull-left" href="{{ route('admins.bank.create')}}" role="button">
-                                ADD FURNISHERs/CRAs
+                            <a class="btn btn-primary pull-left" href="{{ route('admins.authority.create')}}" role="button">
+                                AUTHORITY
                             </a>
                         </div>
-                        @include('furnishers.search')
 
                     </div>
                     <div class="container">
@@ -107,13 +106,13 @@
 
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination alphabetical ">
-                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
-                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="#">ALL</a></li>
+                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="#">#</a></li>
                             @foreach($alphas as $alpha)
-                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.authority.index', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
                             @endforeach
                         </ul>
-                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+                        {{ $authorities->appends(request()->except('page'))->links('helpers.pagination')}}
 
                     </div>
                     <div class="row">
@@ -133,20 +132,20 @@
                     <div class="album py-5 bg-light">
                         <div class="container">
                             <div class="row">
-                                @foreach($banksLogos as  $logos)
-                                    <div class="col-md-3" title="{{strtoupper($logos->name)}}">
+                                @foreach($authorities  as $authority)
+                                    <div class="col-md-3" title="{{strtoupper($authority->name)}}">
                                         <div class="card mb-4 box-shadow" >
-                                            @if($logos->checkUrlAttribute())
-                                                <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                            @if($authority->checkUrlAttribute())
+                                                <img class="card-img-top banks-card" src="{{$authority->getUrlAttribute()}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
                                             @else
-                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
                                             @endif
 
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
+                                                    <div class="bank-name b"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" > {{strtoupper($authority->name)}}</div>
 
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $authority->id}}" >
                                                         <span> <i class="fa fa-trash"></i> </span>
                                                     </div>
                                                 </div>
@@ -160,13 +159,13 @@
                     <div class="container">
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination alphabetical">
-                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.authority.index', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
                             @foreach($alphas as $alpha)
-                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.authority.index', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
                             @endforeach
                         </ul>
-                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+                        {{ $authorities->appends(request()->except('page'))->links('helpers.pagination')}}
 
 
                     </div>
@@ -212,7 +211,7 @@
                 var id = $(this).attr('data-id'),
                 token = $("meta[name='csrf-token']").attr("content");
                 $.ajax({
-                    url: "/admins/furnishers/logo/" + id,
+                    url: "/admins/authorities/" + id,
                     type: 'DELETE',
                     data: {
                         "id": id,

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Authority;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class AuthoritiesController extends Controller
@@ -24,10 +26,8 @@ class AuthoritiesController extends Controller
     }
     public function store(Request $request)
     {
-
-        $additionalInformation = $request->additional_information;
-
-        $validation =  Validator::make($request->bank, [
+        $authority= $request->authority;
+        $validation =  Validator::make($authority, [
             'name'=>['required', 'string', 'max:255'],
 
         ]);
@@ -42,7 +42,7 @@ class AuthoritiesController extends Controller
 
 
             $imagesBankLogo = $request->file("logo");
-            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
             $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
             if(!in_array($bankLogoExtension, $imageExtension)){
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
@@ -52,79 +52,71 @@ class AuthoritiesController extends Controller
             $ext = $request->file('logo')->getClientOriginalExtension();
             $time = time();
             $pathLogo = $request->file('logo')->storeAs(
-                'bank_logos',
-                "furnisher_$time.$ext",
+                'authorities',
+                "authorities_$time.$ext",
                 ['disk'=>'s3', 'visibility'=>'public']
             );
 
 
         }
-        $bank = BankLogo::create([
-            'name' => $request->bank['name'],
-            'path'=> $pathLogo,
-            'type'=> $request->bank['type'],
-            'additional_information' => $additionalInformation
-        ]);
-
-        $account_addresses =  $request->bank_address;
-        // Only mortgage lander can have trusty
-        if ($bank->type != 29) {
-            unset($account_addresses['trustee']);
-        }
-
-        foreach ( $account_addresses as $addresses) {
-            foreach($addresses as $address) {
-                $bank->bankAddresses()->create($address);
-            }
-        }
-
-        $equalBanks = $request->equal_banks;
-        if($equalBanks != null){
-            $eqs = explode(',', $equalBanks);
-            foreach($eqs as $name){
-                $data = [
-                    'bank_logo_id' => $bank->id,
-                    'name'=>strtoupper($name)
-                ];
-                EqualBank::create($data);
-            }
-        }
-        if($request->ajax()){
-
-            return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
-        }
-
-        return redirect()->route('admins.bank.show', ['type'=> $bank->type??'all']);
-
-
+        $authority['path'] = $pathLogo;
+        Authority::create($authority);
+        return redirect()->route('admins.authority.index');
     }
 
     public function edit($id)
     {
-        $authorities = Authority::whereId($id)->first();
-        return view("furnishers.authority.edit", compact('authorities'));
+        $authority = Authority::whereId($id)->first();
+        return view("furnishers.authority.edit", compact('authority'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
+        $authority = Authority::find($id);
+        $update = $request->authority;
+
+        if($request->logo != null){
+            $imagesBankLogo = $request->file("logo");
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file("logo")->storeAs(
+                'authorities',
+                "authorities_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
+            $update['path'] = $pathLogo;
+
+            if($authority->checkUrlAttribute()) {
+                Storage::delete($authority->path);
+            }
+            $authority->update($update);
+        }else{
+            $authority->update($update);
+        }
+        return redirect()->route('admins.authority.index');
     }
 
 
 
     public function destroy(Request $request)
     {
-        $id = $request->id;
-        $delete = Authority::find($id);
-        if(file_exists($delete->first()->path)){
-            unlink($delete->first()->path);
+        $authorityId = $request->id;
+        $delete = Authority::find($authorityId);
+        if($delete->checkUrlAttribute()) {
+            Storage::delete($delete->path);
         }
         $delete->delete();
-
         if($request->ajax()){
             return response()->json(['status' => 'success']);
         }
-        return redirect()->route('furnishers.authority.index');
+        return redirect()->route('admins.authority.index');
     }
 
 }

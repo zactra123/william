@@ -24,6 +24,7 @@ class CreateAuthoritiesTable extends Migration
             $table->string('fax_number')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+            $table->json('furnisher_types')->nullable();
             $table->timestamps();
         });
     }
