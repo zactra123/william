@@ -100,7 +100,6 @@
                             </a>
                         </div>
                         @include('furnishers.search')
-
                     </div>
                     <div class="container">
 
@@ -188,7 +187,14 @@
 
             $("#go-to").click(function () {
                 var page =  $("#go-to-page").val();
-                location.href = '/admins/furnishers?page='+ page
+                var url = window.location.href;
+                if(url.search("&page")!== false){
+                    url = url.split("&page")[0] + '&page='
+                }else{
+                    url = url + '&page='
+                }
+
+                location.href = url+ page
             })
 
             $('[data-toggle="popover"]').popover({

@@ -227,7 +227,7 @@
                                         <div class="row">
                                             {!! Form::hidden("bank_address[{$type}][0][type]", $type, ["class"=>"form-control"]) !!}
 
-                                            <div class="form-group col-sm-6">
+                                            <div class="form-group col-sm-5">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                                 {!! Form::text("bank_address[{$type}][0][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                             </div>
@@ -235,7 +235,7 @@
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                                 {!! Form::text("bank_address[{$type}][0][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                             </div>
-                                            <div class="form-group col-sm-1">
+                                            <div class="form-group col-sm-2">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                                 {!! Form::select("bank_address[{$type}][0][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                             </div>
@@ -292,7 +292,7 @@
                                                 <div class="row">
                                                     {!! Form::hidden("bank_address[trustee][0][type]", 'trustee', ["class"=>"form-control"]) !!}
 
-                                                    <div class="form-group col-sm-6">
+                                                    <div class="form-group col-sm-5">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                                         {!! Form::text("bank_address[trustee][0][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                                     </div>
@@ -300,7 +300,7 @@
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                                         {!! Form::text("bank_address[trustee][0][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                                     </div>
-                                                    <div class="form-group col-sm-1">
+                                                    <div class="form-group col-sm-2">
                                                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                                         {!! Form::select("bank_address[trustee][0][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                                     </div>
@@ -406,7 +406,7 @@
                     {!! Form::hidden("bank_address[{type}][{account_type_id}][account_type_id]", "{account_type_id}", ["class"=>"form-control"]) !!}
                     {!! Form::hidden("bank_address[{type}][{account_type_id}][type]", "dispute_address", ["class"=>"form-control"]) !!}
 
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-5">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                         {!! Form::text("bank_address[{type}][{account_type_id}][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
                     </div>
@@ -414,7 +414,7 @@
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                         {!! Form::text("bank_address[{type}][{account_type_id}][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
                     </div>
-                    <div class="form-group col-sm-1">
+                    <div class="form-group col-sm-2">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                         {!! Form::select("bank_address[{type}][{account_type_id}][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
                     </div>

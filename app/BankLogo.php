@@ -67,7 +67,15 @@ class BankLogo extends Model
         44 => "LAW FIRM",
         45 => "CHECK VERIFICATION",
         46 => "TOW TRUCK COMPANY",
-        47 => "TRUSTEE"
+        47 => "TRUSTEE",
+        48=> "SAVINGS ASSOCIATIONS",
+        49=> "MORTGAGE SERVICER",
+        50=> "NATIONAL BANK",
+        51=> "STATE CHARTERED BANK",
+        52=> "FEDERAL SAVINGS ASSOCIATION",
+        53=> "FOREIGN BANK",
+        54=> "STATE SAVINGS ASSOCIATION",
+        55=> "FEDERAL CREDIT UNION",
 
     ];
 

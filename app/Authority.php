@@ -13,6 +13,7 @@ class Authority extends Model
 
         'name',
         'path',
+        'ex_name',
         'street',
         'city',
         'state',
