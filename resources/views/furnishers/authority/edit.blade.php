@@ -190,7 +190,7 @@
 
                                         <div class="row">
                                             <div class="form-group col-sm-12">
-                                                {!! Form::text("authority[ex_name]", $authority->street, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                {!! Form::text("authority[ex_name]", $authority->ex_name, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                             </div>
                                         </div>
 
