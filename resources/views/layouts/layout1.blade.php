@@ -70,7 +70,7 @@
         <div class="site-navi contact-info row">
             <div class="logo-block col-6 col-lg-2">
                 <a href="#" title="Home">
-                    <img src="img/logo.png" alt="logo">
+                    <img src="{{asset("images/new/logo.png")}}" alt="logo">
                 </a>
             </div>
             <div class="navigation-block col-6 col-lg-10 row">
@@ -84,18 +84,52 @@
                 <div class="navigation col-12">
                     <nav class="col-md-8">
                         <ul class="nav-block">
-                            <li class="nav-item"><a title="Home" href="#">Home</a></li>
-                            <li class="nav-item"><a title="How It Works" href="#">How It Works</a></li>
-                            <li class="nav-item"><a title="Credit Education" href="#">Credit Education</a></li>
-                            <li class="nav-item"><a title="About As" href="#">About As</a></li>
-                            <li class="nav-item"><a title="Blog" href="#">Blog</a></li>
+
+                            @if(Auth::user())
+                                @if(Auth::user()->role == 'client')
+                                    @include('helpers.urls.nav_bar_client')
+                                @elseif(Auth::user()->role == 'affiliate')
+                                    @include('helpers.urls.nav_bar_affiliate')
+                                @elseif(Auth::user()->role == 'super admin')
+                                    @include('helpers.urls.nav_bar_owner')
+                                @elseif(Auth::user()->role == 'admin')
+                                    @include('helpers.urls.nav_bar_admin')
+                                @elseif(Auth::user()->role == 'receptionist')
+                                    @include('helpers.urls.nav_bar_receptionist')
+                                @elseif(Auth::user()->role == 'seo')
+                                    @include('helpers.urls.nav_bar_seo')
+                                @endif
+                            @else
+                                @include('helpers.urls.nav_bar_guest')
+                            @endif
+
                         </ul>
                     </nav>
                     <div class="account-block col-md-4">
-                        <ul class="nav-block">
-                            <li class="nav-item"><a href='login.html'>Log In</a></li>
-                            <li class="nav-item"><a href='sign_up.html'>Registration</a></li>
-                        </ul>
+                        @if (Route::has('login'))
+                            @auth
+
+                                <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/home') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
+                                    <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
+                                        <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
+                                                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                LOG OUT  <i class="fa fa-power-off"></i></a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            @else
+                                <ul class="nav-block">
+                                    <li class="nav-item"><a href="{{ route('login') }}">Log In</a></li>
+                                    <li class="nav-item"><a href="{{ route('register.Affiliate') }}">Registration</a></li>
+                                </ul>
+                            @endauth
+                        @endif
+
                     </div>
                 </div>
             </div>

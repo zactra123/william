@@ -57,7 +57,7 @@ class PagesController extends Controller
             $slogans[$key]['slogan'] = $textSlogan;
         }
 
-        return view('new-home-page1', compact('pageContentUp', 'slogans'));
+        return view('home-page', compact('pageContentUp', 'slogans'));
     }
 
     /**
