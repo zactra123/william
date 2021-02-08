@@ -96,7 +96,7 @@
                     <div class="row m-2  pt-4">
                         <div class="col-md-3 pull-left">
                             <a class="btn btn-primary pull-left" href="{{ route('admins.authority.create')}}" role="button">
-                                AUTHORITY
+                                ADD AUTHORITY
                             </a>
                         </div>
 

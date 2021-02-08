@@ -134,8 +134,14 @@
                                     <div class="col-md-12 addresses " id="address">
 
                                         <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                {!! Form::text("authority[ex_name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                            </div>
+                                        </div>
 
-                                            <div class="form-group col-sm-6">
+                                        <div class="row">
+
+                                            <div class="form-group col-sm-5">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                                 {!! Form::text("authority[street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                             </div>
@@ -143,7 +149,7 @@
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                                 {!! Form::text("authority[city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                             </div>
-                                            <div class="form-group col-sm-1">
+                                            <div class="form-group col-sm-2">
                                                 {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                                 {!! Form::select("authority[state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                             </div>
