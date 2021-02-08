@@ -76,6 +76,7 @@ class BankLogo extends Model
         53=> "FOREIGN BANK",
         54=> "STATE SAVINGS ASSOCIATION",
         55=> "FEDERAL CREDIT UNION",
+        56=> "RENT PAYMENT PLATFORM",
 
     ];
 
