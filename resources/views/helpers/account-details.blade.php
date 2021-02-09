@@ -4,6 +4,16 @@
         <div class="chart-container">
             <div class="content">
                 <h2>ACCOUNT DETAILS</h2>
+                @if($exAccount->account_type()=="AUTO")
+
+                <div class="row" >
+                    <div class="col-md-12">
+                        <a href="#" data-toggle="modal" data-target="#question" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> ACCOUNT QUESTIONS</a>
+
+                    </div>
+                </div>
+                @endif
+
                 <div class="row" >
                     <div class="col-md-6">
                         <div class="row">
@@ -171,3 +181,136 @@
     </div>
 </section>
 
+
+<div class="modal fade" id="question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ACCOUNT QUSETION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['route' => ['adminRec.client.todo'], 'method' => 'POST', 'id' => 'update_info',  'class' => 'm-form m-form--label-align-right']) !!}
+
+                @csrf
+                <div class="form row">
+                    <div class="form-group col-md-12">
+                        <input  type="text" class="date form-control" placeholder="PAYMENT DUE DATE">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="text" class="date form-control" placeholder="PAYMENT DUE DATE CHANGED">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input type="text" class="date form-control" placeholder="PAYMENT DATE">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        {{ Form::text('client[full_name]', null, ['class' => 'form-control m-input', 'placeholder' => 'BALANCE ON REPO']) }}
+                    </div>
+                    <div class="form-group col-md-12">
+
+                        {{ Form::select('client[sex]', [''=>'EVENT OFF DEFAULT','0'=>'NO PAYMENT', '1'=>'NO INSURANCE', '2'=>'BROKE'],  null, ['class'=>'col-md-10  form-control', 'id'=>'event_default']) }}
+                    </div>
+                    <div class="form-group col-md-12">
+
+                        {{ Form::text('test', null, ['class' => 'form-control m-input hidden', 'id'=>'count_past_due', 'placeholder' => 'COUNT PAST DUE PAYMENT']) }}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input  type="text" class="date form-control" placeholder="REPO DATE">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input  type="text" class="date form-control" placeholder="NOTICE DATE">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input  type="text" class="date form-control" placeholder="CLIENT DELIVERY DATE">
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{ Form::select('client[sex]', [''=>'AVTON TANELUC HETO INCH EN AREL','0'=>'???????', '1'=>'???????', '2'=>'???????'],  null, ['class'=>'col-md-10  form-control']) }}
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'INCH GNOVA CAXVEL']) }}
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'DISPUTED']) }}
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'service_count', 'placeholder' => 'qani angama service travel']) }}
+                    </div>
+                    <div id="services_date">
+
+                    </div>
+
+
+
+                </div>
+
+                <button type="submit" value="Update" class="btn btn-primary">SUBMIT</button>
+                {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #ui-datepicker-div {
+        background: #fefefe;
+    }
+</style>
+
+
+<script type="text/html" id="date_of_service">
+
+    <div class="form-group col-md-12 sevice">
+        <input  type="text" class="date form-control" placeholder="CLIENT DELIVERY DATE">
+    </div>
+
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.date').datepicker({
+            format: 'MM/DD/YYYY',
+            locale: 'en'
+        });
+    })
+
+    $(document).on('change', '#event_default' ,function(){
+        $form = $(this).parents('form')
+        var type = $form.find('#event_default').val()
+        if(type == 0 ){
+            $('#count_past_due').removeClass('hidden')
+        }else{
+            $('#count_past_due').addClass('hidden')
+        }
+
+    })
+
+    $(document).on('change', '#service_count' ,function(){
+        var count  = $(this).val()
+        if(count != 0){
+            $('.sevice').remove()
+
+            for(var i =1; i<= count; i++ ){
+                var address_template =  $("#date_of_service").html()
+                address_template = address_template.replace(/{id}/g, i)
+
+                $("#services_date").append(address_template);
+            }
+        }else{
+            $('.sevice').remove()
+        }
+
+    })
+
+
+</script>

@@ -127,6 +127,7 @@ class TodosController extends Controller
         $dispute  = Disputable::where('todo_id', $request->id)->first();
         if($dispute->disputable_type == "App\ClientReportExAccount"){
             $exAccount = ClientReportExAccount::whereId($dispute->disputable_id)->first();
+//            dd($exAccount->getTodoAttributes());
 
             $view = view('helpers.account-details', compact('exAccount', "dispute"))->render();
 //////

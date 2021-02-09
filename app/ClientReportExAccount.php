@@ -408,6 +408,7 @@ class ClientReportExAccount extends Model
 
          return ['key' => $key, 'value' => $value];
     }
+
     private function need_attention_charge_off ($chargeOff)
     {
         $name_part = null;
