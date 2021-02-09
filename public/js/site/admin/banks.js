@@ -184,7 +184,7 @@ $(document).ready(function($) {
 
         }
 
-        if(bankType == 18){
+        if(bankType == 18 || bankType == 19 || bankType == 20){
             $('.parent').removeClass("hidden")
         }else {
             $('.parent').addClass("hidden")
