@@ -136,9 +136,9 @@
                                     <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                         <div class="card mb-4 box-shadow" >
                                             @if($logos->checkUrlAttribute())
-                                                <img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                               <a href="{{route("admins.bank.edit", $logos->id)}}'"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                             @else
-                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap">
+                                                <a href="{{route("admins.bank.edit", $logos->id)}}'"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                             @endif
 
                                             <div class="card-body">

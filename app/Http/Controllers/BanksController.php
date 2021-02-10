@@ -330,7 +330,8 @@ class BanksController extends Controller
             }
         }
 
-        return redirect()->route('admins.bank.show');
+//        return redirect()->route('admins.bank.show');
+        return redirect()->back();
 
     }
 
