@@ -5155,6 +5155,7 @@
     </div>
 </div>
 
+
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
         <h3>REPOSSESSION</h3>
@@ -5194,7 +5195,7 @@
                                 <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
-                                <input type="text"  name="credit_card_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                                <input type="text"  name="auto_lease_r[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
