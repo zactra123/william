@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    @yield('meta')
-
-    @if (!trim($__env->yieldContent('meta')))
-        <title>Prudent Credit Solutions </title>
-    @endif
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
+    {{--  Meta data   --}}
+    @yield('meta')
+    @if (!trim($__env->yieldContent('meta')))
+        <title>Prudent Credit Solutions </title>
+    @endif
+    {{--  Meta data END   --}}
+
+
+    {{-- Canonical url   --}}
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    {{--  Fav Icon   --}}
+    <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('/icons/apple-icon-57x57.png')}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('/icons/apple-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{URL::asset('/icons/apple-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{URL::asset('/icons/apple-icon-76x76.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{URL::asset('/icons/apple-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{URL::asset('/icons/apple-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{URL::asset('/icons/apple-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{URL::asset('/icons/apple-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{URL::asset('/icons/apple-icon-180x180.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{URL::asset('/icons/android-icon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('/icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{URL::asset('/icons/favicon-96x96.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('/icons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{URL::asset('/icons/manifest.json')}}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    {{--  Fav Icon  END  --}}
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 
+    <script src="{{ asset('js/app.js?v=4') }}"></script>
     <link rel="stylesheet" href="{{asset('css/new/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/new/owl/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('css/new/owl/owl.theme.default.css')}}">
     <script type="text/javascript" src="{{ asset('js/new/general.js') }}"></script>
     <script src="{{ asset('js/new/owl/owl.carousel.js') }}"></script>
-    <title>Home Page</title>
 </head>
 <body>
 

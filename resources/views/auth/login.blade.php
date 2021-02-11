@@ -22,6 +22,7 @@
         @endif
         <div class="login-form">
             <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <h3 class="title">Login</h3>
                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" placeholder="E-Mail Address"  autofocus>
                 @error('email')
