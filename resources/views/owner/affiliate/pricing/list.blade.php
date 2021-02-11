@@ -24,12 +24,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
                         <div class="ms-ua-title">
                             <div class="form-group">
                                 {!! Form::select('affiliates', ["" => "DEFAULT"] + $affiliates, null, ['class'=>'selectize']); !!}
                             </div>
-
                         </div>
                         <div class="ms-ua-form">
                             {!! Form::open(['route' => "owner.affiliate.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
@@ -45,7 +43,6 @@
                             </div>
                             {!! Form::close() !!}
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
