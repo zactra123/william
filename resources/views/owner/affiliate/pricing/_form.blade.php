@@ -1021,7 +1021,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="credit_card_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1030,11 +1030,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                       <strong class="add_range" class="btn form-control" data-type="credit_card" id="add_credit_card_0" data-id="0">ADD RANGE</strong>
+                       <strong class="add_range" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="credit_card_range">
+            <div id="credit_card_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1064,7 +1064,7 @@
                 <div class="col-md-3">
                     <div class="priceName">
                         <div class="nameCA">
-                            <label style="float: right">PRICE </label>
+                            <label style="float: right">PRICE  $</label>
                         </div>
                         <div class="priceCA">
                             <input type="text"   id="credit_card_co_price_last"class="collection" title="PRICE">
@@ -1107,7 +1107,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="charge_card_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1116,11 +1116,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card" id="add_charge_card_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="charge_card_range">
+            <div id="charge_card_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1150,7 +1150,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="charge_card_co_price_last"class="collection" title="PRICE">
@@ -1193,7 +1193,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="sales_contract_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1202,11 +1202,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract" id="add_sales_contract_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="sales_contract_range">
+            <div id="sales_contract_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1236,7 +1236,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="sales_contract_co_price_last"class="collection" title="PRICE">
@@ -1279,7 +1279,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="unsecured_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1288,11 +1288,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured" id="add_unsecured_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="unsecured_range">
+            <div id="unsecured_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1322,10 +1322,10 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
-                                <input type="text"   id="unsecured_co_price_last"class="collection" title="PRICE">
+                                <input type="text"   id="unsecured_co_price_last" class="collection" title="PRICE">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1365,7 +1365,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="line_credit_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1374,11 +1374,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit" id="add_line_credit_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="line_credit_range">
+            <div id="line_credit_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1408,7 +1408,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="line_credit_co_price_last"class="collection" title="PRICE">
@@ -1451,7 +1451,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="home_equity_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1460,11 +1460,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity" id="add_home_equity_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="home_equity_range">
+            <div id="home_equity_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1494,7 +1494,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="home_equity_co_price_last"class="collection" title="PRICE">
@@ -1537,7 +1537,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="home_equity_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1546,11 +1546,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education" id="add_education_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="education_range">
+            <div id="education_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1580,7 +1580,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="education_co_price_last"class="collection" title="PRICE">
@@ -1623,7 +1623,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="utility_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1632,11 +1632,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility" id="add_utility_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="utility_range">
+            <div id="utility_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1666,7 +1666,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="utility_co_price_last"class="collection" title="PRICE">
@@ -1709,7 +1709,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="child_support_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1718,11 +1718,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support" id="add_child_support_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="child_support_range">
+            <div id="child_support_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1752,10 +1752,270 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="child_support_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <div class="form-group">
+            <h4>AUTO LEASE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_lease_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_lease_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_lease_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_lease_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>AUTO LOAN</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_loan_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_loan_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_loan_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_loan_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>RECREATIONAL MERCHANDISE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="r_m_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="r_m_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="r_m_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="r_m_co_price_last"class="collection" title="PRICE">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1803,7 +2063,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="credit_card_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1812,11 +2072,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_s" id="add_credit_card_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="credit_card_s_range">
+            <div id="credit_card_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1846,7 +2106,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="credit_card_s_co_price_last"class="collection" title="PRICE">
@@ -1889,7 +2149,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="charge_card_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1898,11 +2158,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_s" id="add_charge_card_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="charge_card_s_range">
+            <div id="charge_card_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -1932,7 +2192,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="charge_card_s_co_price_last"class="collection" title="PRICE">
@@ -1975,7 +2235,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="sales_contracts_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -1984,11 +2244,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_s" id="add_sales_contract_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="sales_contract_s_range">
+            <div id="sales_contract_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2018,7 +2278,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="sales_contract_s_co_price_last"class="collection" title="PRICE">
@@ -2061,7 +2321,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="unsecured_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2070,11 +2330,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="unsecured_s_range">
+            <div id="unsecured_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2104,7 +2364,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="unsecured_s_co_price_last"class="collection" title="PRICE">
@@ -2147,7 +2407,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="line_credit_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2156,11 +2416,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_s" id="add_line_credit_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="line_credit_s_range">
+            <div id="line_credit_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2190,7 +2450,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="line_credit_s_co_price_last"class="collection" title="PRICE">
@@ -2233,7 +2493,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="home_equity_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2246,7 +2506,7 @@
                     </div>
                 </div>
             </div>
-            <div id="home_equity_s_range">
+            <div id="home_equity_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2276,7 +2536,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="home_equity_s_co_price_last"class="collection" title="PRICE">
@@ -2319,7 +2579,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="education_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2328,11 +2588,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_s" id="add_education_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="education_s_range">
+            <div id="education_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2362,7 +2622,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="education_s_co_price_last"class="collection" title="PRICE">
@@ -2405,7 +2665,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="utility_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2414,11 +2674,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_s" id="add_utility_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="utility_s_range">
+            <div id="utility_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2448,7 +2708,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="utility_s_co_price_val_last"class="collection" title="PRICE">
@@ -2491,7 +2751,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="child_support_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2500,11 +2760,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_s" id="add_child_support_s_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="child_support_s_range">
+            <div id="child_support_s_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2534,7 +2794,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="child_support_s_price_last"class="collection" title="PRICE">
@@ -2547,6 +2807,267 @@
         </div>
 
     </div>
+    <div>
+        <div class="form-group">
+            <h4>AUTO LEASE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_lease_s_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_s_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_lease_s_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_lease_s_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_lease_s_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>AUTO LOAN</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_loan_s_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_s_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_s_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_loan_s_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_loan_s_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_loan_s_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>RECREATIONAL MERCHANDISE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="r_m_s_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_s_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="r_m_s_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="r_m_s_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="r_m_s_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 <div class="ms-ua-box mb-4">
@@ -2585,7 +3106,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="credit_card_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2594,11 +3115,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_d" id="add_credit_card_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="credit_card_d_range">
+            <div id="credit_card_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2628,7 +3149,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="credit_card_d_co_price_last"class="collection" title="PRICE">
@@ -2671,7 +3192,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="charge_card_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2680,11 +3201,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_d" id="add_charge_card_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="charge_card_d_range">
+            <div id="charge_card_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2714,7 +3235,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="charge_card_d_co_price_last"class="collection" title="PRICE">
@@ -2757,7 +3278,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="sales_contract_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2766,11 +3287,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_d" id="add_sales_contract_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="sales_contract_d_range">
+            <div id="sales_contract_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2800,7 +3321,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="sales_contract_d_co_price_last"class="collection" title="PRICE">
@@ -2843,7 +3364,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="unsecured_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2852,11 +3373,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_d" id="add_unsecured_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="unsecured_d_range">
+            <div id="unsecured_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2886,7 +3407,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="unsecured_d_co_price_last"class="collection" title="PRICE">
@@ -2929,7 +3450,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="line_credit_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -2938,11 +3459,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_d" id="add_line_credit_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="line_credit_d_range">
+            <div id="line_credit_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -2972,7 +3493,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="line_credit_d_co_price_last"class="collection" title="PRICE">
@@ -3015,7 +3536,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="home_equity_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3024,11 +3545,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_d" id="add_home_equity_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="home_equity_d_range">
+            <div id="home_equity_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3058,7 +3579,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="home_equity_d_co_price_last"class="collection" title="PRICE">
@@ -3101,7 +3622,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="education_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3110,11 +3631,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_d" id="add_education_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="education_d_range">
+            <div id="education_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3144,7 +3665,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="education_d_co_price_last"class="collection" title="PRICE">
@@ -3187,7 +3708,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="utility_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3196,11 +3717,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_d" id="add_utility_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="utility_d_range">
+            <div id="utility_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3230,7 +3751,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="utility_d_co_price_val_last"class="collection" title="PRICE">
@@ -3273,7 +3794,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="child_support_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3282,11 +3803,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_d" id="add_child_support_d_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="child_support_d_range">
+            <div id="child_support_d_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3316,7 +3837,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="child_support_d_price_last"class="collection" title="PRICE">
@@ -3328,6 +3849,267 @@
             </div>
         </div>
     </div>
+    <div>
+        <div class="form-group">
+            <h4>AUTO LEASE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_lease_d_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_d_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_lease_d_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_lease_d_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_lease_d_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>AUTO LOAN</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_loan_d_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_d_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_d_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_loan_d_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_loan_d_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_loan_d_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>RECREATIONAL MERCHANDISE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="r_m_d_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_d_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="r_m_d_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="r_m_d_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="r_m_d_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 <div class="ms-ua-box mb-4">
@@ -3366,7 +4148,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="credit_card_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3375,11 +4157,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_sd" id="add_credit_card_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="credit_card_sd_range">
+            <div id="credit_card_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3409,7 +4191,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="credit_card_sd_co_price_last"class="collection" title="PRICE">
@@ -3452,7 +4234,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="charge_card_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3461,11 +4243,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_sd" id="add_charge_card_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="charge_card_sd_range">
+            <div id="charge_card_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3495,7 +4277,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="charge_card_sd_co_price_last"class="collection" title="PRICE">
@@ -3538,7 +4320,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="sales_contracts_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3547,11 +4329,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_sd" id="add_sales_contract_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="sales_contract_sd_range">
+            <div id="sales_contract_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3581,7 +4363,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="sales_contract_sd_co_price_last"class="collection" title="PRICE">
@@ -3624,7 +4406,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="unsecured_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3633,11 +4415,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_sd" id="add_unsecured_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="unsecured_sd_range">
+            <div id="unsecured_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3667,7 +4449,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="unsecured_sd_co_price_last"class="collection" title="PRICE">
@@ -3710,7 +4492,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="line_credit_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3719,11 +4501,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_sd" id="add_line_credit_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="line_credit_sd_range">
+            <div id="line_credit_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3753,7 +4535,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="line_credit_sd_co_price_last"class="collection" title="PRICE">
@@ -3796,7 +4578,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="home_equity_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3805,11 +4587,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_sd" id="add_home_equity_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="home_equity_sd_range">
+            <div id="home_equity_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3839,7 +4621,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="home_equity_sd_co_price_last"class="collection" title="PRICE">
@@ -3882,7 +4664,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="education_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3891,11 +4673,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_sd" id="add_education_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="education_sd_range">
+            <div id="education_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -3925,7 +4707,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="education_sd_co_price_last"class="collection" title="PRICE">
@@ -3968,7 +4750,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="utility_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -3977,11 +4759,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_sd" id="add_utility_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="utility_sd_range">
+            <div id="utility_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -4011,7 +4793,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="utility_sd_co_price_val_last"class="collection" title="PRICE">
@@ -4054,7 +4836,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"  name="child_support_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
@@ -4063,11 +4845,11 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_sd" id="add_child_support_sd_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0">ADD RANGE</strong>
                     </div>
                 </div>
             </div>
-            <div id="child_support_sd_range">
+            <div id="child_support_sd_co_range">
 
             </div>
             <div class="row pt-3">
@@ -4097,7 +4879,7 @@
                     <div class="col-md-3">
                         <div class="priceName">
                             <div class="nameCA">
-                                <label style="float: right">PRICE </label>
+                                <label style="float: right">PRICE  $</label>
                             </div>
                             <div class="priceCA">
                                 <input type="text"   id="child_support_sd_price_last"class="collection" title="PRICE">
@@ -4110,7 +4892,538 @@
         </div>
 
     </div>
+
+    <div>
+        <div class="form-group">
+            <h4>AUTO LEASE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_lease_sd_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_sd_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_lease_sd_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_lease_sd_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_lease_sd_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>AUTO LOAN</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_loan_sd_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_sd_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_loan_sd_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_loan_sd_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_loan_sd_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>RECREATIONAL MERCHANDISE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="r_m_sd_co[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_sd_co[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="r_m_sd_co_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="r_m_sd_co_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="r_m_sd_co_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<div class="ms-ua-box mb-4">
+    <div class="row text-center m-5">
+        <h3>REPOSSESSION</h3>
+    </div>
+    <div>
+        <div class="form-group">
+            <h4>AUTO LEASE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_lease_r[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_lease_r[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="credit_card_sd_co[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_lease_r_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_lease_r_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_lease_r_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>AUTO LOAN</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="auto_loan_r[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_r[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="auto_loan_r[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="auto_loan_r_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="auto_loan_r_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="auto_loan_r_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>RECREATIONAL MERCHANDISE</h4>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text" name="r_m_r[0][minimum]" value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_r[0][maximum]" value="{{ $pricing->collection[0]['maximum'] ?? $default->collection[0]['maximum']}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
+
+
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  name="r_m_r[0][price]" value="{{ $pricing->collection[0]['percentage'] ?? $default->collection[0]['percentage']}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <strong class="add_range" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0">ADD RANGE</strong>
+                    </div>
+                </div>
+            </div>
+            <div id="r_m_r_range">
+
+            </div>
+            <div class="row pt-3">
+                <div class="col-md-12 p-0">
+                    <div class="col-md-3 p-0">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MIN $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"  value="{{ $pricing->collection[0]['minimum'] ?? $default->collection[0]['minimum']}}" id="r_m_r_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">MAX $</label>
+                            </div>
+                            <div class="priceCA">
+                                <strong> INFINITE</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="priceName">
+                            <div class="nameCA">
+                                <label style="float: right">PRICE  $</label>
+                            </div>
+                            <div class="priceCA">
+                                <input type="text"   id="r_m_r_price_last"class="collection" title="PRICE">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
 
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
@@ -6793,8 +8106,8 @@
         var last = parseInt(dataId) + 2
         $("#add_"+type+"_"+dataId).addClass("Hidden")
         $("#remove_"+type+"_"+dataId).addClass("Hidden")
-        $("#"+type+"_charge_off_min_val_last").attr('name', type+'_co['+last+'][minimum]')
-        $("#"+type+"_charge_off_price_val_last").attr('name', type+'_co['+last+'][price]')
+        $("#"+type+"_min_val_last").attr('name', type+'_co['+last+'][minimum]')
+        $("#"+type+"_price_last").attr('name', type+'_co['+last+'][price]')
 
         var charge_off_range =  $("#charge_off_range").html()
         charge_off_range = charge_off_range.replace(/{type}/g, type)
@@ -6808,10 +8121,11 @@
         var dataId  = $(this).attr('data-id')
         var id = parseInt(dataId) - 1
         var last = parseInt(dataId)
+        console.log("#"+type+"_"+dataId)
         $("#add_"+type+"_"+id).removeClass("Hidden")
         $("#remove_"+type+"_"+id).removeClass("Hidden")
-        $("#"+type+"_charge_off_min_val_last").attr('name', type+'_co['+last+'][minimum]')
-        $("#"+type+"_charge_off_price_val_last").attr('name', type+'_co['+last+'][price]')
+        $("#"+type+"_min_val_last").attr('name', type+'_co['+last+'][minimum]')
+        $("#"+type+"_price_last").attr('name', type+'_co['+last+'][price]')
         $("#charge_"+type+"_"+dataId).remove()
 
     })
