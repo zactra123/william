@@ -178,11 +178,21 @@ $(document).ready(function($) {
         }
 
         if(bankType == 29){
-            console.log('mortgage')
             $form.find('.trustee').removeClass("hidden")
             $(".trustee input,.trustee select").removeAttr("disabled", "disabled");
 
         }
+
+        $( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
+
+
+        if(bankType == 3) {
+            $('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS")
+        } else {
+            $('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
+        }
+
+
         if([14, 18, 19,20, 21, 23, 24, 26, 27, 31,32, 43, 33, 30, 28].includes(parseInt(bankType))){
             $('.parent').removeClass("hidden")
         }else {

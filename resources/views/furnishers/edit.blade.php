@@ -271,12 +271,9 @@
 {{--                        </div>--}}
                         <div class="ms-ua-form pl-4 pr-4 ">
                             <div id="addresses_container">
-                                <?php $trustee = null; ?>
+
                                 @foreach($bank_addresses as $address)
                                     <?php $atid = intval($address->account_type_id); ?>
-                                        @if($address->type == 'trustee')
-                                            @continue($trustee = $address)
-                                        @endif
 
                                     <div id="dispute-address-{{$atid}}">
                                         <div class="row expand-address" data-address="#address-{{$address->type}}-{{$address->account_type_id}}">
@@ -357,73 +354,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                    <div class="trustee_address">
-                                        <formset {{$bank->type != 29 ? "disabled": ''}} class="trustee">
-                                            <div class="row expand-address trustee {{$bank->type != 29 ? "hidden": ''}} " data-address="#address-trustee">
-                                                <div class="col-md-6"><label for="">TRUSTEE</label>  </div>
-                                                <div class="col-md-6 text-right">
-                                                    <button type="button">
-                                                        <i class="fa fa-minus-circle"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 addresses trustee {{$bank->type != 29 ? "hidden": ''}}" id="address-trustee">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[trustee][0][name]", !empty($trustee) ? $trustee["name"]:'', ["class"=>"autocomplete-trust form-control", "placeholder"=>"trustee Name", "data-type"=> 'trustee']) !!}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    {!! Form::hidden("bank_address[trustee][0][type]", 'trustee', ["class"=>"form-control"]) !!}
-                                                    {!! Form::hidden("bank_address[trustee][0][account_type_id]", null, ["class"=>"form-control="]) !!}
-
-                                                    <div class="form-group col-sm-5">
-                                                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                        {!! Form::text("bank_address[trustee][0][street]",  !empty($trustee) ? $trustee["street"]:'', ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
-                                                    </div>
-                                                    <div class="form-group col-sm-3">
-                                                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                        {!! Form::text("bank_address[trustee][0][city]",   !empty($trustee) ? $trustee["city"]:'', ["class"=>"form-control city","placeholder"=>"City"]) !!}
-                                                    </div>
-                                                    <div class="form-group col-sm-2">
-                                                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                        {!! Form::select("bank_address[trustee][0][state]", $states,  !empty($trustee) ? $trustee["state"]:'', ['class'=>'selectize-single state','placeholder' => 'State']); !!}
-                                                    </div>
-                                                    <div class="form-group col-sm-2">
-                                                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                                                        {!! Form::text("bank_address[trustee][0][zip]",  !empty($trustee) ? $trustee["zip"]:'', ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-sm-4">
-                                                        <div class="form-group col-sm-2 p-0">
-                                                            <img  class="responsive" src="/images/phone.png">
-                                                        </div>
-                                                        <div class="form-group col-sm-10">
-                                                            {!! Form::text("bank_address[trustee][0][phone_number]",!empty($trustee) ? $trustee["phone_number"]:'', ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-4">
-                                                        <div class="form-group col-sm-2 p-0">
-                                                            <img  class="responsive" src="/images/fax.png">
-                                                        </div>
-                                                        <div class="form-group col-sm-10">
-                                                            {!! Form::text("bank_address[trustee][0][fax_number]", !empty($trustee) ? $trustee["fax_number"]:'', ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-sm-4">
-                                                        <div class="form-group col-sm-2 p-0">
-                                                            <img  class="responsive" src="/images/email.png">
-                                                        </div>
-                                                        <div class="form-group col-sm-10">
-                                                            {!! Form::email("bank_address[trustee][0][email]", !empty($trustee) ? $trustee["email"]:'', ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </formset>
-                                    </div>
+                              
 
                             </div>
                             <div class="row"></div>
@@ -471,70 +402,6 @@
     </div>
 
 
-
-    <script type="text/html" id="address-template">
-        <div id="dispute-address-{id}">
-            <div class="row expand-address" data-address="#address-{type}">
-                <div class="col-md-6"><label for="">{name}</label>  </div>
-                <div class="col-md-6 text-right">
-                    <button type="button">
-                        <i class="fa fa-minus-circle"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-12 addresses " id="address-{type}">
-                <div class="row">
-                    {!! Form::hidden("bank_address[{type}][{account_type_id}][account_type_id]", "{account_type_id}", ["class"=>"form-control"]) !!}
-                    {!! Form::hidden("bank_address[{type}][{account_type_id}][type]", "dispute_address", ["class"=>"form-control"]) !!}
-
-                    <div class="form-group col-sm-5">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                        {!! Form::text("bank_address[{type}][{account_type_id}][street]",  null, ["class"=>"form-control", "placeholder"=>"Street"]) !!}
-                    </div>
-                    <div class="form-group col-sm-3">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                        {!! Form::text("bank_address[{type}][{account_type_id}][city]",   null, ["class"=>"form-control","placeholder"=>"City"]) !!}
-                    </div>
-                    <div class="form-group col-sm-2">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                        {!! Form::select("bank_address[{type}][{account_type_id}][state]", $states,  null, ['class'=>'selectize-single','placeholder' => 'State']); !!}
-                    </div>
-                    <div class="form-group col-sm-2">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                        {!! Form::text("bank_address[{type}][{account_type_id}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2  p-1">
-                            <img  class="responsive" src="/images/phone.png">
-                        </div>
-                        <div class="form-group col-sm-10">
-                        {!! Form::text("bank_address[{type}][{account_type_id}][phone_number]",null, ["class"=>"us-phone form-control", "placeholder"=>"Phone number"]) !!}
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2  p-1">
-                            <img  class="responsive" src="/images/fax.png">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            {!! Form::text("bank_address[{type}][{account_type_id}][fax_number]", null, ["class"=>"us-phone form-control", "placeholder"=>"Fax number"]) !!}
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2 p-1">
-                            <img  class="responsive" src="/images/email.png">
-                        </div>
-                        <div class="form-group col-sm-10 p-1">
-                            {!! Form::email("bank_address[{type}][{account_type_id}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
@@ -597,8 +464,6 @@
                     }
                 }
             });
-
-
         });
     </script>
 

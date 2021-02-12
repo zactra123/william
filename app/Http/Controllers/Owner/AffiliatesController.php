@@ -57,7 +57,14 @@ class AffiliatesController extends Controller
 
     public function pricing(Request $request)
     {
+        [
+            "personal" => ['inqury'=>10, 'personal_info' =>15, 'fraud_alert'=>20],
+            'late' => []
+
+        ];
+        ["credit_card"=>[],"charge_card"=>[]];
         if ($request->method()=="POST") {
+            dd($request->all());
             $pricing = $request->except(['_token']);
             $validate =new DisputesPricing();
 

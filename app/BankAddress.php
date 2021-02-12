@@ -24,11 +24,9 @@ class BankAddress extends Model
 
     const TYPES = [
         'dispute_address'=>'DISPUTE ADDRESS',
+        'fraud_address' => 'FRAUD DISPUTE ADDRESS',
         'executive_address'=>'EXECUTIVE ADDRESS',
-        'governing_authority'=>'GOVERNING AUTHORITY',
-        'legal_department_address'=>'LEGAL DEPARTMENT ADDRESS',
         'registered_agent'=>'REGISTERED AGENT',
-        'trustee'=>'TRUSTEE',
     ];
 
     const STATES = [
