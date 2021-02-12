@@ -183,8 +183,7 @@ $(document).ready(function($) {
             $(".trustee input,.trustee select").removeAttr("disabled", "disabled");
 
         }
-
-        if(bankType == 18 || bankType == 19 || bankType == 20){
+        if([14, 18, 19,20, 21, 23, 24, 26, 27, 31,32, 43, 33, 30, 28].includes(parseInt(bankType))){
             $('.parent').removeClass("hidden")
         }else {
             $('.parent').addClass("hidden")

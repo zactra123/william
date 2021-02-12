@@ -115,19 +115,7 @@
                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-9 ">
-                        </div>
-                        <div class="col-md-3 p-0">
-                            <div class="col-md-8 p-1">
-                                <input class="form-control" type="text" id="go-to-page" name="page_number" placeholder="PAGE #">
-                            </div>
-                            <div class="col-md-4 p-1 pl-2 ">
-                                <button class="form-control" id="go-to">GO TO</button>
-                            </div>
 
-                        </div>
-                    </div>
 
                     <div class="album py-5 bg-light">
                         <div class="container">
@@ -185,16 +173,14 @@
     <script>
         $(document).ready(function () {
 
-            $("#go-to").click(function () {
-                var page =  $("#go-to-page").val();
-                var url = window.location.href;
-                if(url.search("&page")!== false){
-                    url = url.split("&page")[0] + '&page='
-                }else{
-                    url = url + '&page='
-                }
+            $(".go-to").click(function () {
+                var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
+                let url = new URL(window.location.href);
+                let params = new URLSearchParams(url.search.slice(1));
 
-                location.href = url+ page
+                params.append('page', page);
+                url.search = params
+                location.href = url.toString()
             })
 
             $('[data-toggle="popover"]').popover({
@@ -230,7 +216,7 @@
                 });
             })
 
-            $(".selectize").selectize({plugins: ['remove_button']})
+            $(".selectize").selectize({selectOnTab: true,plugins: ['remove_button']})
         })
 
     </script>

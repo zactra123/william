@@ -7,7 +7,8 @@
                     <input type="text" name="term" value="{{request()->term}}" class="form-control" placeholder="SEARCH...">
                 </div>
                 <div class="form-group">
-                    {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + \App\BankLogo::TYPES, request()->types, ['multiple'=>'multiple', 'class'=>' selectize', 'id' => "bank-type"]); !!}
+                    <?php $types = \App\BankLogo::TYPES;   asort($types)?>
+                    {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>' selectize', 'id' => "bank-type"]); !!}
 
                 </div>
                 <div class="form-group">

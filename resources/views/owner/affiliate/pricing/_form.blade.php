@@ -1030,7 +1030,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                       <strong class="add_range" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1116,7 +1116,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1202,7 +1202,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1288,7 +1288,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1374,7 +1374,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1460,7 +1460,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1546,7 +1546,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1632,7 +1632,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1718,7 +1718,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1806,7 +1806,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1892,7 +1892,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -1978,7 +1978,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2072,7 +2072,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2158,7 +2158,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2244,7 +2244,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2330,7 +2330,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2416,7 +2416,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2502,7 +2502,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_s_co" id="add_home_equity_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="home_equity_s_co" id="add_home_equity_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2588,7 +2588,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2674,7 +2674,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2760,7 +2760,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2848,7 +2848,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -2934,7 +2934,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3020,7 +3020,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3115,7 +3115,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3201,7 +3201,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3287,7 +3287,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3373,7 +3373,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3459,7 +3459,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3545,7 +3545,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3631,7 +3631,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3717,7 +3717,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3803,7 +3803,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3890,7 +3890,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -3976,7 +3976,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4062,7 +4062,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4157,7 +4157,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4243,7 +4243,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4329,7 +4329,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4415,7 +4415,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4501,7 +4501,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4587,7 +4587,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4673,7 +4673,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4759,7 +4759,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4845,7 +4845,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -4934,7 +4934,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -5020,7 +5020,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -5106,7 +5106,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -5201,7 +5201,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -5287,7 +5287,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -5373,7 +5373,7 @@
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <strong class="add_range" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0">ADD RANGE</strong>
+                        <strong class="add_range h3" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                     </div>
                 </div>
             </div>
@@ -8084,9 +8084,9 @@
                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
             </div>
             <div class="col-md-3">
-                <strong class="add_range" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" >ADD RANGE</strong>
+                <strong class="add_range pr-5 h3" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
 
-                <strong class="remove_range" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}">REMOVE RANGE</strong>
+                <strong class="remove_range h3" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
             </div>
 
         </div>
@@ -8105,8 +8105,8 @@
         var dataId  = $(this).attr('data-id')
         var id = parseInt(dataId) + 1
         var last = parseInt(dataId) + 2
-        $("#add_"+type+"_"+dataId).addClass("Hidden")
-        $("#remove_"+type+"_"+dataId).addClass("Hidden")
+        $("#add_"+type+"_"+dataId).addClass("hidden")
+        $("#remove_"+type+"_"+dataId).addClass("hidden")
         $("#"+type+"_min_val_last").attr('name', type+'_co['+last+'][minimum]')
         $("#"+type+"_price_last").attr('name', type+'_co['+last+'][price]')
 
@@ -8122,9 +8122,8 @@
         var dataId  = $(this).attr('data-id')
         var id = parseInt(dataId) - 1
         var last = parseInt(dataId)
-        console.log("#"+type+"_"+dataId)
-        $("#add_"+type+"_"+id).removeClass("Hidden")
-        $("#remove_"+type+"_"+id).removeClass("Hidden")
+        $("#add_"+type+"_"+id).removeClass("hidden")
+        $("#remove_"+type+"_"+id).removeClass("hidden")
         $("#"+type+"_min_val_last").attr('name', type+'_co['+last+'][minimum]')
         $("#"+type+"_price_last").attr('name', type+'_co['+last+'][price]')
         $("#charge_"+type+"_"+dataId).remove()
