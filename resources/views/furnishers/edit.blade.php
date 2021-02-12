@@ -223,7 +223,7 @@
 
 
                                 </div>
-                                <div class="row parent {{in_array($bank->type, [18, 19,20]) ? "hidden": ''}}">
+                                <div class="row parent {{in_array($bank->type, [18, 19,20]) ? "": 'hidden'}}">
                                     <div class="col-md-3">
 
                                     </div>
