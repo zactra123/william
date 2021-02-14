@@ -135,7 +135,8 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-2 pull-left">
+                    <div class="col-md-2">
+                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">ADD FURNISHER</a>
                     </div>
                     @include('furnishers.search')
 
@@ -235,7 +236,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
-                                </div>
+                                    </div>
 
 
                                 </div>
@@ -259,102 +260,93 @@
 
 
                     <div class="ms-ua-box mt-2" id="account">
-{{--                        <div class="ms-ua-title mb-0">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-6 text-left"><h4>Addresses</h4> </div>--}}
-{{--                                <div class="col-md-6 text-right">--}}
-{{--                                    <button type="button" class="remove-equal-bank">--}}
-{{--                                        <i class="fa fa-close"></i>--}}
-{{--                                    </button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+
                         <div class="ms-ua-form pl-4 pr-4 ">
                             <div id="addresses_container">
-
-                                @foreach($bank_addresses as $address)
-                                    <?php $atid = intval($address->account_type_id); ?>
-
-                                    <div id="dispute-address-{{$atid}}">
-                                        <div class="row expand-address" data-address="#address-{{$address->type}}-{{$address->account_type_id}}">
-                                            <div class="col-md-6"><label for="">{{(!empty($address->accountType))?$address->accountType->name : '' }} {{str_replace("ADDRESS","",\App\BankAddress::TYPES[$address->type])}}</label>  </div>
+                                @foreach(\App\BankAddress::TYPES as $type=>$name)
+                                    @php($address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null)
+                                    <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
+                                        <div class="row expand-address" data-address="#address-{{$type}}">
+                                            <div class="col-md-6"><label for="">{{$name}}</label></div>
                                             <div class="col-md-6 text-right">
                                                 <button type="button">
                                                     <i class="fa fa-minus-circle"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 addresses" id="address-{{$address->type}}-{{$address->account_type_id}}">
-                                            @if($address->type == 'executive_address')
+                                        <div class="col-md-12 addresses " id="address-{{$type}}">
+                                            @if($type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if($address->type == 'registered_agent')
+                                            @if($type == 'executive_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$address->type}][$atid][name]", $address->name, ['class'=>'autocomplete-name w-100 form-control', 'placeholder' => 'Agent Name', "data-type"=> 'registered_agent']); !!}
-
+                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>
                                                 </div>
                                             @endif
-
-
+                                            @if($type == 'dispute_address')
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                                                    </div>
+                                                </div>
+                                            @endif
                                             <div class="row">
-                                                {!! Form::hidden("bank_address[$address->type][$atid][account_type_id]", $address->account_type_id, ["class"=>"form-control="]) !!}
-                                                {!! Form::hidden("bank_address[$address->type][$atid][type]", $address->type, ["class"=>"form-control"]) !!}
-                                                {!! Form::hidden("bank_address[$address->type][$atid][id]", $address->id, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$type][0][type]", $type, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$type][0][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
 
                                                 <div class="form-group col-sm-5">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                    {!! Form::text("bank_address[$address->type][$atid][street]",  $address->street, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][street]",  !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-3">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                    {!! Form::text("bank_address[$address->type][$atid][city]", $address->city, ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][city]",   !empty($address) ? $address['city'] : null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                    {!! Form::select("bank_address[$address->type][$atid][state]", $states,  $address->state, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                                                    {!! Form::select("bank_address[{$type}][0][state]", $states,  !empty($address) ? $address['state'] : null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                                                    {!! Form::text("bank_address[$address->type][$atid][zip]",  $address->zip, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][0][zip]",  !empty($address) ? $address['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-4">
-                                                    <div class="form-group col-sm-2 p-1">
-                                                       <img  class="responsive" src="/images/phone.png">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/phone.png">
                                                     </div>
-                                                    <div class="form-group col-sm-10 p-1">
-                                                    {!! Form::text("bank_address[$address->type][$atid][phone_number]",$address->phone_number, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::text("bank_address[{$type}][0][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-4">
-                                                    <div class="form-group col-sm-2 p-1">
+                                                    <div class="form-group col-sm-2 p-0">
                                                         <img  class="responsive" src="/images/fax.png">
                                                     </div>
-                                                    <div class="form-group col-sm-10 p-1">
-                                                        {!! Form::text("bank_address[$address->type][$atid][fax_number]", $address->fax_number, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::text("bank_address[{$type}][0][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-4">
+                                                    <div class="form-group col-sm-2 p-0">
+                                                        <img  class="responsive" src="/images/email.png">
+                                                    </div>
+                                                    <div class="form-group col-sm-10">
+                                                        {!! Form::email("bank_address[$type][0][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group col-sm-4">
-                                                    <div class="form-group col-sm-2 p-1">
-                                                        <img  class="responsive" src="/images/email.png">
-                                                    </div>
-                                                    <div class="form-group col-sm-10 p-1">
-                                                        {!! Form::email("bank_address[$address->type][$atid][email]", $address->email, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </formset>
                                 @endforeach
-                              
 
                             </div>
                             <div class="row"></div>
@@ -390,7 +382,7 @@
         <div class="modal-dialog w-100" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Create Parent Bank</h3>
+                    <h3 class="modal-title" id="exampleModalLabel">CREATE FURINSHER</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

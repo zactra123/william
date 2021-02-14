@@ -183,20 +183,20 @@ $(document).ready(function($) {
 
         }
 
-        $( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
+        $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
 
 
         if(bankType == 3) {
-            $('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS")
+            $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS")
         } else {
-            $('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
+            $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
         }
 
 
         if([14, 18, 19,20, 21, 23, 24, 26, 27, 31,32, 43, 33, 30, 28].includes(parseInt(bankType))){
-            $('.parent').removeClass("hidden")
+            $form.find('.parent').removeClass("hidden")
         }else {
-            $('.parent').addClass("hidden")
+            $form.find('.parent').addClass("hidden")
             $(".autocomplete-bank").val("")
             $(".autocomplete-bank").trigger('keydown')
         }

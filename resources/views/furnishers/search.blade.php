@@ -1,8 +1,7 @@
-<div class="col-md-9 pull-right">
+<div class="col-md-7 pull-right">
     <form action="/admins/furnishers" method="get">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class=" form-group">
                     <input type="text" name="term" value="{{request()->term}}" class="form-control" placeholder="SEARCH...">
                 </div>

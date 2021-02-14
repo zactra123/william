@@ -229,11 +229,9 @@ class BanksController extends Controller
         }
 //        $bank_addresses = $bank->bankAddresses;
         $bank_addresses = $bank->bankAddresses()
-            ->orderBy(\DB::raw('CASE WHEN type = "executive_address" THEN 0
-                                WHEN type = "registered_agent" THEN 1
-                                ELSE 2 END'))
-            ->orderBy('type')
-            ->get();
+            ->get()->mapWithKeys(function ($address) {
+                return [$address->type => $address];
+            });
 
         $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
         $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();

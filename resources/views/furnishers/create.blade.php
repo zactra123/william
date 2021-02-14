@@ -186,21 +186,10 @@
                     </div>
 
                     <div class="ms-ua-box mt-2" id="account">
-{{--                            <div class="ms-ua-title mb-0">--}}
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-md-6 text-left"><h4>Addresses</h4> </div>--}}
-{{--                                    <div class="col-md-6 text-right">--}}
-{{--                                        <button type="button" class="remove-account-type">--}}
-{{--                                            <i class="fa fa-close"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="ms-ua-form pl-4 pr-4 ">
-
                                 <div id="addresses_container">
-                                @foreach(['dispute_address' => 'DISPUTE ADDRESS','fraud_address' => 'FRAUD DISPUTE ADDRESS', 'executive_address'=>'EXECUTIVE ADDRESS', 'registered_agent'=>'REGISTERED AGENT'] as $type=>$name)
-                                    <formset class="{{$type =='fraud_address'? 'hidden': ''}} {{$type}}">
+                                @foreach(\App\BankAddress::TYPES as $type=>$name)
+                                    <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
                                         <div class="row expand-address" data-address="#address-{{$type}}">
                                             <div class="col-md-6"><label for="">{{$name}}</label>  </div>
                                             <div class="col-md-6 text-right">
@@ -309,8 +298,6 @@
 
                         </div>
                 </div>
-
-
 
                 {!! Form::close() !!}
             </div>
