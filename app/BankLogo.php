@@ -40,7 +40,7 @@ class BankLogo extends Model
         17 => "AUTO FINANCE COMPANY",
         18 => "CREDIT CARD ISSUER",
         19 => "PERSONAL LOAN LENDER",
-        20 => "STORE CHARGE CARD",
+        20 => "CHARGE CARD",
         21 => "MCA LENDER",
         22 => "AUTO INSURANCE COMPANY",
         23 => "SOLOR SYSTEM PROVIDER",
@@ -113,11 +113,12 @@ class BankLogo extends Model
         ],
 
         17 => [
-                1 => "REGULAR DISPUTE",
+                1 => "LEASE",
                 2 => "LOAN",
                 3 => "SUB-PRIME",
                 5 => "TITLE LOAN",
-                6 => "TRACK FINANCE"
+                6 => "TRACK FINANCE",
+                7 => "CAR RENTAL",
         ],
         20 => [
                 1 => "DEPARTMENT STORE",
@@ -125,9 +126,11 @@ class BankLogo extends Model
                 3 => "FURNITURE STORE",
                 4 => "BUILDING MATERIALS",
                 5 => "MED FINANCE",
-                6 => "MUSIC STORE FINANCE",
+                6 => "MUSIC STORE",
                 7 => "GAS/FUEL",
                 8 => "TIRE SHOP",
+                9 => "AUTO MAINTENANCE",
+                10 => "HOUSEHOLD ITEMS/APPLIENCES",
         ],
         29 => [
                 1 => "CONVENTIONAL",
