@@ -107,13 +107,14 @@ class BanksController extends Controller
      */
     public function store(Request $request)
     {
+
         if ($request->term != null) {
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('furnishers.logo_new',compact('banksLogos'));
         }
 
-        $additionalInformation = $request->additional_information;
+        $additionalInformation = $request->bank['additional_information'];
 
         $validation =  Validator::make($request->bank, [
             'name'=>['required', 'string', 'max:255'],
@@ -147,6 +148,7 @@ class BanksController extends Controller
 
 
         }
+
         $bank = BankLogo::create([
             'name' => $request->bank['name'],
             'path'=> $pathLogo,
@@ -155,15 +157,16 @@ class BanksController extends Controller
         ]);
 
         $account_addresses =  $request->bank_address;
-        // Only mortgage lander can have trusty
-        if ($bank->type != 29) {
-            unset($account_addresses['trustee']);
+        if ($bank->type != 3) {
+            unset($account_addresses['fraud_address']);
         }
 
-        foreach ( $account_addresses as $addresses) {
-            foreach($addresses as $address) {
-                $bank->bankAddresses()->create($address);
-            }
+        if (!in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])))  {
+            unset($account_addresses['qwr_address']);
+        }
+
+        foreach($account_addresses as $address) {
+            $bank->bankAddresses()->create($address);
         }
 
         $equalBanks = $request->equal_banks;
@@ -202,38 +205,11 @@ class BanksController extends Controller
         $bank = BankLogo::findOrFail($id);
         $banks = BankLogo::all()->pluck('name', 'id')->toArray();
 
-        // Show only collection account types
-        if ($bank->type == 3) {
-            $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
-            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
-                ->pluck('account_type_id')->toArray();
-            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-        }elseif(in_array($bank->type, [4,5,6,7])){
-            $account_types = [];
-        }else{
-            $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
-            $keywordId = null;
-            foreach ($keyWords as $key=>$words) {
-                if (strpos(strtoupper($bank->name),$words) !== false) {
-                    $keywordId = $key;
-                    break;
-                }
-            }
-            if($keywordId !=null){
-                $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
-                    ->pluck('account_type_id')->toArray();
-                $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-            }else{
-                $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
-            }
-        }
-//        $bank_addresses = $bank->bankAddresses;
         $bank_addresses = $bank->bankAddresses()
             ->get()->mapWithKeys(function ($address) {
                 return [$address->type => $address];
             });
 
-        $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
         $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
 
         return view('furnishers.edit', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent', 'banks'));
@@ -294,45 +270,33 @@ class BanksController extends Controller
 
         $addresses_ids = [];
         $account_addresses =  $request->bank_address;
-        // Only mortgage lander can have trusty
-        if ($bank->type != 29) {
-            unset($account_addresses['trusty']);
+        if ($bank->type != 3) {
+            unset($account_addresses['fraud_address']);
         }
 
-        foreach ($account_addresses as  $type => $addresses) {
-            if($type == "qwr_address" && ($bank->type != 55 && $bank->type != 2)){
-                continue;
-            }elseif($type == "qwr_address" && $bank->additional_information['types']){
-                continue;
-            }
-            if($type == "fraud_address" && ($bank->type != 55 && $bank->type != 2)){
-                continue;
-            }
-            foreach ($addresses as $address){
-
-//                $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
-
-                $bank_address = $bank->bankAddresses()->firstorCreate(
-                    [
-                        "type" => $address['type'],
-//                        "account_type_id" => $address['account_type_id']
-                    ]);
-
-                $bank_address->update($address);
-                $addresses_ids[] = $bank_address->id;
-            }
+        if (!in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])))  {
+            unset($account_addresses['qwr_address']);
         }
+
+        foreach ($account_addresses as $address){
+            $bank_address = $bank->bankAddresses()->firstorCreate(
+                [
+                    "type" => $address['type']
+                ]);
+
+            $bank_address->update($address);
+            $addresses_ids[] = $bank_address->id;
+        }
+
         if ($addresses_ids){
             $bank->bankAddresses()->whereNotIn('id', $addresses_ids)->delete();
         }
-
 
         $existing_names = $bank->equalBanks->pluck('name')->toArray();
         $eqs = explode(',', $request->equal_banks);
         $removeArray = array_values(array_diff($existing_names, $eqs));
         if(!empty($removeArray)){
-            $removeExistingName= $bank->equalBanks()->whereIn('name', $removeArray)->delete();
-            $existing_names = $bank->equalBanks->pluck('name')->toArray();
+            $bank->equalBanks()->whereIn('name', $removeArray)->delete();
         }
 
         foreach($eqs as $eb) {
@@ -341,7 +305,6 @@ class BanksController extends Controller
             }
         }
 
-//        return redirect()->route('admins.bank.show');
         return redirect()->back();
 
     }

@@ -82,55 +82,44 @@ class BankLogo extends Model
     ];
 
     const SUB_TYPES = [
-
+        1 => [
+          1 => "DEPOSIT ACCOUNT",
+          2 => "CARD ISSUER"
+        ],
         2 =>[
-            'credit_union'=> [
                 1 => "DEPOSIT ACCOUNTS",
                 2 => "MORTGAGE",
                 3 => "AUTO LOAN",
                 4 => "RV LOAN",
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
-            ]
         ],
         4 =>[
-            'collection'=> [
                 1 => "3RD PARTY CA",
                 2 => "ASSET/DEBT BUYER",
-
-            ]
         ],
         7 =>[
-            'utility_provider' =>[
                 1 => "WATER/POWER",
                 2 => "GAZ",
-            ]
         ],
         12 => [
-            'home_cable_provider'=>[
                 1 => "CABLE/TV",
                 2 => "INTERNET",
                 3 => "HOME PHONE",
-            ]
         ],
         13 => [
-            'home_security_provider' =>[
                 1 => "EQUIPMENT",
                 2 => "MONITORING",
-            ]
         ],
 
         17 => [
-            'auto_finance' =>[
                 1 => "REGULAR DISPUTE",
                 2 => "LOAN",
                 3 => "SUB-PRIME",
                 5 => "TITLE LOAN",
                 6 => "TRACK FINANCE"
-            ]
         ],
         20 => [
-            'charge_card' =>[
                 1 => "DEPARTMENT STORE",
                 2 => "JEWELRY STORE",
                 3 => "FURNITURE STORE",
@@ -139,10 +128,8 @@ class BankLogo extends Model
                 6 => "MUSIC STORE FINANCE",
                 7 => "GAS/FUEL",
                 8 => "TIRE SHOP",
-            ]
         ],
         29 => [
-            'mortgage_lender'=>[
                 1 => "CONVENTIONAL",
                 2 => "GOVERNMENT INSURED",
                 3 => "JUMBO",
@@ -150,28 +137,21 @@ class BankLogo extends Model
                 5 => "FIXED-RATE",
                 6 => "HELOC",
                 7 => "PRIVATE MONEY",
-            ]
         ],
         35 => [
-            'child_support' =>[
                 1 => "CHILD SUPPORT",
                 2 => "FAMILY SUPPORT",
-            ]
         ],
         44 =>[
-            'law_firm'=> [
                 1 => "3RD PARTY CA",
-            ]
         ],
         55 => [
-            'federal_credit_union'=> [
                 1 => "DEPOSIT ACCOUNTS",
                 2 => "MORTGAGE",
                 3 => "AUTO LOAN",
                 4 => "RV LOAN",
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
-            ]
         ]
     ];
 

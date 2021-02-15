@@ -141,12 +141,12 @@
                     @include('furnishers.search')
 
                 </div>
-                <?php
-                    $states = [null=>''] + \App\BankAddress::STATES;
-                    $types =  \App\BankLogo::TYPES;
-                    $subTypes =  \App\BankLogo::SUB_TYPES;
-                    asort($types)
-                ?>
+                    @php
+                        $states = [null=>''] + \App\BankAddress::STATES;
+                        $types =  \App\BankLogo::TYPES;
+                        $subTypes =  \App\BankLogo::SUB_TYPES;
+                        asort($types)
+                    @endphp
                     {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
                     @method('PUT')
                     @csrf
@@ -171,74 +171,22 @@
                                             {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
 
                                         </div>
-                                        @if(isset($subTypes[$bank->type]))
-                                            @foreach($subTypes[$bank->type] as $key => $value)
-                                                <div class="m-5 {{$key}}">
-                                                    <div class="row" id="bank_type_append">
-                                                        @foreach($value as $type)
-                                                            <div class="col-md-6">
-                                                                {{$type}}
-                                                                <input name="bank[additional_information][type][{{$key}}]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["type"][$key]) && in_array($type, $bank->additional_information["type"][$key])) ? "checked":''}}>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
+
                                         <div class="m-5">
                                             <div class="row">
-                                                <div  id="sub_bank_type_append">
-
+                                                <div  class="bank_sub_type_append">
+                                                    @if(isset($subTypes[$bank->type]))
+                                                        @foreach($subTypes[$bank->type] as $key => $type)
+                                                            <div class="col-md-6">
+                                                                {{$type}}
+                                                                <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
 
-
-                                        <div class="m-5 collection_types">
-                                            <div class="row" id="collection_types_append collection-4 collection-44">
-                                                <div class="col-md-6 collection-4 collection-44 {{$bank->type == 4 || $bank->type == 44 ? "" : "hidden"}}">
-                                                    3RD PARTY CA
-                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}}>
-                                                </div>
-                                                <div class="col-md-6 collection-4 collection-44 {{ $bank->type != 4 ? "hidden" : ""}}">
-                                                    ASSET/DEBT BUYER
-                                                    <input name="bank[additional_information][collection_type][]"  type="checkbox" value="ASSET/DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET/DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}}>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="m-5 mortgage_lender_type ">
-                                            <div class="row" id="mortgage_lender_type_append">
-                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    CONVENTIONAL
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="CONVENTIONAL"  {{( !empty( $bank->additional_information["mortgage_lander_type"]) && in_array("CONVENTIONAL", $bank->additional_information["mortgage_lander_type"])) ? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    GOVERNMENT INSURED
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="GOVERNMENT INSURED"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("GOVERNMENT INSURED", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    JUMBO
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="JUMBO"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("JUMBO", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    ADJSUTABLE-RATE
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6  mortgage-lender-29  {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    FIXED-RATE
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    HELOC
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="HELOC"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("HELOC", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6  mortgage-lender-29 {{$bank->type == 29 ? "" : "hidden"}}">
-                                                    PRIVATE MONEY
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="PRIVATE MONEY"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("PRIVATE MONEY", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-
-                                            </div>
-                                        </div>
 
                                     </div>
                                     <div class="col-md-2">
@@ -263,35 +211,28 @@
                                     <div class="col-md-2">
                                         <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
                                     </div>
-
-
                                 </div>
 
-
-                                <div class="account_types">
-                                    <div class="row" class="account_types_append">
-                                        @foreach($account_types as $typeId =>$typeName)
-                                            <div class="col-md-3 ">
-                                                {{$typeName}}
-                                                <input name="account_type[]" data-type="{{$typeName}}" type="checkbox" id="name-{{$typeId}}" value ="{{$typeId}}"  {{in_array($typeName, $bank_types)? "checked":''}} class="customcheck ex_name">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
                     </div>
 
-
-
                     <div class="ms-ua-box mt-2" id="account">
-
                         <div class="ms-ua-form pl-4 pr-4 ">
                             <div id="addresses_container">
                                 @foreach(\App\BankAddress::TYPES as $type=>$name)
-                                    @php($address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null)
-                                    <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
+                                    @php
+                                        $address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null;
+                                        $hidden = false;
+                                        if ($type == 'fraud_address') {
+                                            $hidden = $bank->type != 3;
+                                        }
+                                        if ($type == 'qwr_address'){
+                                            $hidden = !in_array($bank->type, [2, 55]);
+                                        }
+                                    @endphp
+                                    <formset class="{{$hidden? 'hidden': ''}} {{$type}}">
                                         <div class="row expand-address" data-address="#address-{{$type}}">
                                             <div class="col-md-6"><label for="">{{$name}}</label></div>
                                             <div class="col-md-6 text-right">
@@ -315,7 +256,7 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if($type == 'dispute_address')
+                                            @if($type == 'dispute_address' || $type == 'qwr_address' ||  $type == 'fraud_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
@@ -429,7 +370,7 @@
 
             <div class="col-md-6 remove_sub_type">
                 {value}
-                <input name="bank[additional_information][type][{index}]"  type="checkbox" value ="{value}">
+                <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{value}">
             </div>
 
         </script>

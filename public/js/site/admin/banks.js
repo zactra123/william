@@ -155,51 +155,20 @@ $(document).ready(function($) {
     });
 
 
-    $(document).on('change', '.bank_name, .bank-type' ,function(){
+    $(document).on('change', '.bank-type' ,function(){
         $form = $(this).parents('form')
-        var bankName = $form.find('.bank_name').val(),
-            bankType = $form.find('.bank-type').val(),
+        var bankType = $form.find('.bank-type').val(),
             token = $("meta[name='csrf-token']").attr("content");
-
-        $form.find('.collection_types .col-md-6').addClass("hidden")
-        $form.find('.mortgage_lender_type .col-md-6').addClass("hidden")
-
-        $form.find('.trustee_address .trustee').addClass("hidden")
-        $(".trustee").attr("disabled", "disabled");
-        $(".trustee input,.trustee select").attr("disabled", "disabled");
-
 
         console.log(types, bankType, types[bankType])
 
-        if(types[bankType] !== undefined){
-            $("#bank_type_append").remove()
-            $(".remove_sub_type").remove()
-            $.each( types[bankType], function(index, item) {
+        $form.find(".bank_sub_type_append").html('')
+        $.each( types[bankType], function(index, item) {
+            var sub_types =  $("#sub_types_append").html()
+            sub_types = sub_types.replace(/{value}/g, item)
 
-                $.each( item, function(key,value) {
-                    var sub_types =  $("#sub_types_append").html()
-                    sub_types = sub_types.replace(/{value}/g, value)
-                        .replace(/{index}/g, index)
-
-                    $("#sub_bank_type_append").append(sub_types);
-                });
-
-            });
-        }
-
-        if (bankType == 4 || bankType ==44) {
-            $form.find('.collection-'+bankType).removeClass("hidden")
-        }
-
-        if (bankType == 29) {
-            $form.find('.mortgage-lender-'+bankType).removeClass("hidden")
-        }
-
-        if(bankType == 29){
-            $form.find('.trustee').removeClass("hidden")
-            $(".trustee input,.trustee select").removeAttr("disabled", "disabled");
-
-        }
+            $form.find(".bank_sub_type_append").append(sub_types);
+        });
 
         $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
 
@@ -219,43 +188,20 @@ $(document).ready(function($) {
             $(".autocomplete-bank").trigger('keydown')
         }
 
-        $.ajax({
-            url: "/admins/furnishers/bank-name",
-            method:"POST",
-            data:{
-                bank_name:bankName,
-                type: bankType,
-                _token: token
-            },
-            success: function (result) {
+    });
 
-                html ='<div class="row" id="account_types_append">'
-                for( let val in result){
+    $(document).on('change', '.bank_sub_type_append input', function(){
+        var $form = $(this).parents('form'),
+            bankType = $form.find('.bank-type').val()
 
-                    html = html +'<div class="col-md-2">'+result[val]+'<input name="account_type[]" data-type="'+result[val]
-
-                    html = html +'" type="checkbox" id="name-'+val+'" value ="'+val+'" class="customcheck ex_name"></div>'
-                }
-                html = html+ '</div>'
-
-                $form.find('.account_types_append').remove()
-
-                $form.find(".account_types").html(html);
-
-
-            },
-
-            error:function (err,state) {
-                console.log(err)
-            }
-        });
+        condition =  ((bankType == 2 || bankType == 55) && ($form.find('input[name="bank[additional_information][sub_type][]"][value="MORTGAGE"]:checked').length > 0))
+        $form.find( ".qwr_address" ).toggleClass( 'hidden',!condition );
 
     });
 
     $(document).on('click', '.customcheck' ,function(){
         var id  = $(this).attr('id').replace('name-', '')
         var accountType = $(this).attr('data-type')
-        console.log(id, accountType)
         if(this.checked) {
             var address_template =  $("#address-template").html()
             address_template = address_template.replace(/{type}/g,"dispute_address")
