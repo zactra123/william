@@ -81,6 +81,63 @@ class BankLogo extends Model
 
     ];
 
+    const SUB_TYPES = [
+
+        2 => [
+            1 => "DEPOSIT ACCOUNTS",
+            2 => "MORTGAGE",
+            3 => "AUTO LOAN",
+            4 => "RV LOAN",
+            5 => "RV LOAN",
+            6 => "PERSONAL LOAN",
+            7 => "CREDIT CARD",
+        ],
+        7 =>[
+            1 => "WATER/POWER",
+            2 => "GAZ",
+        ],
+        12 => [
+            1 => "CABLE/TV",
+            2 => "INTERNET",
+            3 => "HOME PHONE",
+        ],
+        13 => [
+            1 => "EQUIPMENT",
+            2 => "MONITORING",
+        ],
+
+        17 => [
+            1 => "REGULAR DISPUTE",
+            2 => "LOAN",
+            3 => "SUB-PRIME",
+            5 => "TITLE LOAN",
+            6 => "TRACK FINANCE"
+        ],
+        20 => [
+            1 => "DEPARTMENT STORE",
+            2 => "JEWELRY STORE",
+            3 => "FURNITURE STORE",
+            5 => "BUILDING MATERIALS",
+            6 => "MED FINANCE",
+            7 => "MUSIC STORE FINANCE",
+            8 => "GAS/FUEL",
+            9 => "TIRE SHOP",
+        ],
+        35 => [
+            1 => "CHILD SUPPORT",
+            2 => "FAMILY SUPPORT",
+        ],
+        55 => [
+            1 => "DEPOSIT ACCOUNTS",
+            2 => "MORTGAGE",
+            3 => "AUTO LOAN",
+            4 => "RV LOAN",
+            5 => "RV LOAN",
+            6 => "PERSONAL LOAN",
+            7 => "CREDIT CARD",
+        ]
+    ];
+
     protected static function boot()
     {
         parent::boot();

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Employer;
+use App\CourtJudge;
 use App\EqualCourt;
 use App\Http\Controllers\Controller;
 use App\Court;
@@ -33,45 +34,18 @@ class CourtsController extends Controller
      */
     public function index(Request $request)
     {
+        $courts = Court::where('name', 'LIKE', "%{$request->term}%");
 
-//        if(!is_null($request->term)){
-//            $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->term);
+        if (!empty($request->character)) {
+            if ($request->character == '#'){
+                $courts = $courts->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
+            } else {
+                $courts = $courts->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
+            }
+        }
+        $courts =$courts->groupBy('name')->paginate(20);
+        return view('employer.court.index', compact('courts'));
 //
-//            $courts = Court::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
-//                ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
-//                ->where(function($query) use($request, $phoneFaxZip)  {
-//                    $query->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(bank_logos.name, ',', ''), '.', ''), '\'', ''),'\"', '') LIKE '%{$request->term}%'")
-//                        ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
-//                        ->orWhereRAW("CONCAT(COALESCE(bank_addresses.street, ''), ' ', COALESCE(bank_addresses.city, ''), ' ', COALESCE(bank_addresses.state, '')) LIKE '%{$request->term}%'")
-//                        ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%");
-//                    if ($phoneFaxZip) {
-//                        $query = $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-//                            ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
-//                            ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
-//                    }
-//
-//                });
-//
-//        }else{
-//            $banksLogos = Court::where('bank_logos.name', 'LIKE', "%{$request->term}%");
-//        }
-//
-//        if(!is_null($request->types)){
-//            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
-//        }
-//
-//
-//
-//        if (!empty($request->character)) {
-//            if ($request->character == '#'){
-//                $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
-//            } else {
-//                $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
-//            }
-//        }
-//        $banksLogos =Court::groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
-        return view('employer.court.index');
-
     }
 
     /**
@@ -85,14 +59,14 @@ class CourtsController extends Controller
     }
 
     /**
-     * Create furnisher with type bank, credit union, CRA, med services provider, etc...
+     * Create court with type federal, state,
      * @param Request $request
      * request structure []
-     * @return redirect on success admins.bank.show, on failed furnishers.create
+     * @return redirect on success admins.court.show, on failed court.create
      */
     public function store(Request $request)
     {
-        $validation =  Validator::make($request->bank, [
+        $validation =  Validator::make($request->court, [
             'name'=>['required', 'string', 'max:255'],
 
         ]);
@@ -122,6 +96,7 @@ class CourtsController extends Controller
         }
         $courtInfo = $request->court;
         $courtInfo['path'] = $pathLogo;
+
         $court = Court::create($courtInfo);
 
         $judges_infos = $request->judge;
@@ -157,48 +132,11 @@ class CourtsController extends Controller
      */
     public function edit(Request $request)
     {
+        $id  = $request->court;
+        $court = Court::findOrFail($id);
 
-        $id  = $request->id;
-        $bank = BankLogo::findOrFail($id);
-        $banks = BankLogo::all()->pluck('name', 'id')->toArray();
 
-        // Show only collection account types
-        if ($bank->type == 3) {
-            $keywordId = AccountTypeKeys::where('key_word', 'collection')->first()->id;
-            $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
-                ->pluck('account_type_id')->toArray();
-            $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-        }elseif(in_array($bank->type, [4,5,6,7])){
-            $account_types = [];
-        }else{
-            $keyWords = AccountTypeKeys::get()->pluck('key_word','id')->toArray();
-            $keywordId = null;
-            foreach ($keyWords as $key=>$words) {
-                if (strpos(strtoupper($bank->name),$words) !== false) {
-                    $keywordId = $key;
-                    break;
-                }
-            }
-            if($keywordId !=null){
-                $accType = AccountTypeKeyWord::where('account_type_key_id', $keywordId)
-                    ->pluck('account_type_id')->toArray();
-                $account_types = AccountType::whereIn('id', $accType)->pluck('name', 'id')->toArray();
-            }else{
-                $account_types = AccountType::where('type', true)->pluck('name', 'id')->toArray();
-            }
-        }
-//        $bank_addresses = $bank->bankAddresses;
-        $bank_addresses = $bank->bankAddresses()
-            ->orderBy(\DB::raw('CASE WHEN type = "executive_address" THEN 0
-                                WHEN type = "registered_agent" THEN 1
-                                ELSE 2 END'))
-            ->orderBy('type')
-            ->get();
-
-        $bank_types = $bank->bankTypes()->pluck('account_types.name')->toArray();
-        $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
-
-        return view('furnishers.edit', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent', 'banks'));
+        return view('employer.court.edit', compact('court'));
     }
 
     /**
@@ -207,28 +145,17 @@ class CourtsController extends Controller
      * request structure []
      * @return redirect on success admin.index, on failed furnishers.edit
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        if($request->term != null){
 
-            $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
-            $banksLogos = $banksLogos->orderBy('name')->paginate(20);
-            return view('owner.bank.logo_new',compact('banksLogos'));
-        }
-        $id  = $request->id;
-        $bank = BankLogo::find($id);
-        $bankLogo = $request->bank;
-        if (!empty($request->bank["additional_information"]["collection_type"])){
-            $bank_additonal_information = $bank->toArray()["additional_information"];
-            $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];
-            $bankLogo["additional_information"] = $bank_additonal_information;
-        }
+        $court = Court::find($id);
+        $courtInfo = $request->court;
 
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
             $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-            if(!in_array($bankLogoExtension, $imageExtension)){
+            $courtLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($courtLogoExtension, $imageExtension)){
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
 
@@ -239,59 +166,49 @@ class CourtsController extends Controller
                 "furnisher_$time.$ext",
                 ['disk'=>'s3', 'visibility'=>'public']
             );
-            $bankLogo['path'] = $pathLogo;
+            $courtInfo['path'] = $pathLogo;
 
-            if($bank->checkUrlAttribute()) {
-                Storage::delete($bank->path);
+            if($court->checkUrlAttribute()) {
+                Storage::delete($court->path);
             }
 
-            $bank->update($bankLogo);
+            $court->update($courtInfo);
         }else{
-            $bank->update($bankLogo);
-
+            $court->update($courtInfo);
         }
 
-        $addresses_ids = [];
-        $account_addresses =  $request->bank_address;
-        // Only mortgage lander can have trusty
-        if ($bank->type != 29) {
-            unset($account_addresses['trusty']);
+        $judges_infos = $request->judge;
+        $judgeId = $court->courtJudges()->pluck('id')->toArray();
+
+        $delete = array_diff($judgeId, array_column($judges_infos, 'id'));
+        if(!empty($delete)){
+            CourtJudge::destroy($delete);
         }
-        foreach ($account_addresses as $addresses) {
-            foreach ($addresses as $address){
-                $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
 
-                $bank_address = $bank->bankAddresses()->firstorCreate(
-                    [
-                        "type" => $address['type'],
-                        "account_type_id" => $address['account_type_id']
-                    ]);
-
-                $bank_address->update($address);
-                $addresses_ids[] = $bank_address->id;
+        foreach ( $judges_infos as $judge) {
+            if(isset($judge['id'])){
+                CourtJudge::whereId($judge['id'])->update($judge);
+            }else{
+                $court->courtJudges()->create($judge);
             }
         }
-        if ($addresses_ids){
-            $bank->bankAddresses()->whereNotIn('id', $addresses_ids)->delete();
-        }
 
 
-        $existing_names = $bank->equalBanks->pluck('name')->toArray();
-        $eqs = explode(',', $request->equal_banks);
+        $existing_names = $court->equalCourts()->pluck('name')->toArray();
+        $eqs = explode(',', $request->equal_courts);
         $removeArray = array_values(array_diff($existing_names, $eqs));
         if(!empty($removeArray)){
-            $removeExistingName= $bank->equalBanks()->whereIn('name', $removeArray)->delete();
-            $existing_names = $bank->equalBanks->pluck('name')->toArray();
+            $removeExistingName= $court->equalCourts()->whereIn('name', $removeArray)->delete();
+            $existing_names = $court->equalCourts()->pluck('name')->toArray();
         }
 
         foreach($eqs as $eb) {
             if (!in_array($eb, $existing_names)) {
-                $bank->equalBanks()->create(["name" => strtoupper($eb)]);
+                $court->equalCourts()->create(["name" => strtoupper($eb)]);
             }
         }
 
-//        return redirect()->route('admins.bank.show');
-        return redirect()->back();
+        return redirect()->route('admins.court.index');
 
     }
 

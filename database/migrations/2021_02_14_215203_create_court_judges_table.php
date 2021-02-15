@@ -17,7 +17,10 @@ class CreateCourtJudgesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('court_id');
             $table->foreign('court_id')->references('id')->on('courts')->onDelete('cascade');
-            $table->string("fill_name");
+            $table->string("full_name")->nullable();
+            $table->string("email")->nullable();
+            $table->string("phone_number")->nullable();
+            $table->string("room_number")->nullable();
             $table->timestamps();
         });
     }

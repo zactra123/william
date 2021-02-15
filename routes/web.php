@@ -205,6 +205,8 @@ Route::group(['prefix'=> 'admins/'], function(){
     });
 
     Route::resource('authorities', 'AuthoritiesController')->except('show')->names('admins.authority');
+    Route::resource('court', 'Employer\CourtsController')->except('show')->names('admins.court');
+
 
     Route::resource('blogs', 'BlogsController')->names('blog');
     Route::post('/blogs/upload_tinymce_images', 'BlogsController@upload_tinymce_images');

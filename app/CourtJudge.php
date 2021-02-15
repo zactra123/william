@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourtJudges extends Model
+class CourtJudge extends Model
 {
-    protected $table = 'equal_courts';
+    protected $table = 'court_judges';
 
     protected $fillable = [
         'court_id',
