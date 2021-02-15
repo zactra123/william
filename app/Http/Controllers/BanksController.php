@@ -108,13 +108,14 @@ class BanksController extends Controller
     public function store(Request $request)
     {
 
+
         if ($request->term != null) {
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
             return view('furnishers.logo_new',compact('banksLogos'));
         }
 
-        $additionalInformation = $request->bank['additional_information'];
+        $additionalInformation = $request->bank['additional_information']?? [];
 
         $validation =  Validator::make($request->bank, [
             'name'=>['required', 'string', 'max:255'],

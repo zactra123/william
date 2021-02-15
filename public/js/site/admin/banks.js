@@ -160,8 +160,6 @@ $(document).ready(function($) {
         var bankType = $form.find('.bank-type').val(),
             token = $("meta[name='csrf-token']").attr("content");
 
-        console.log(types, bankType, types[bankType])
-
         $form.find(".bank_sub_type_append").html('')
         $.each( types[bankType], function(index, item) {
             var sub_types =  $("#sub_types_append").html()
@@ -212,11 +210,11 @@ $(document).ready(function($) {
             $('#dispute-address-'+ id).find('.selectize-single').selectize({
                 selectOnTab: true,
             })
-
         }else{
             $('#addresses_container').find('#dispute-address-'+ id).remove()
         }
     })
+
     if ($( ".autocomplete-name" ).length > 0) {
         $( ".autocomplete-name" ).autocomplete({
             autoFocus: true,
@@ -275,65 +273,6 @@ $(document).ready(function($) {
         };
     }
 
-    if($( ".autocomplete-trust" ).length > 0) {
-        $( ".autocomplete-trust" ).autocomplete({
-            autoFocus: true,
-            source: function( request, response ) {
-                $.ajax({
-                    url: '/admins/furnishers/address-autocomplete',
-                    dataType: "json",
-                    data: {
-                        search_key: request.term,
-                        type: this.element.attr('data-type')
-                    },
-                    success: function( data ) {
-                        response( data );
-                    }
-                });
-            },
-            select: function( event, ui ) {
-                ui.item.value = ui.item.name
-                var $street = $(event.target).parents('.addresses').find('.street'),
-                    $city = $(event.target).parents('.addresses').find('.city'),
-                    $state = $(event.target).parents('.addresses').find('.state'),
-                    $zip = $(event.target).parents('.addresses').find('.us-zip'),
-                    $phone = $(event.target).parents('.addresses').find('.phone'),
-                    $fax = $(event.target).parents('.addresses').find('.fax'),
-                    $email = $(event.target).parents('.addresses').find('.email');
-
-                if (!!ui.item.street) {
-                    $street.val(ui.item.street)
-                }
-                if (!!ui.item.city) {
-                    $city.val(ui.item.city)
-                }
-                if (!!ui.item.state) {
-                    selectize = $state.eq(0).data('selectize')
-                    selectize.setValue(selectize.search(ui.item.state).items[0].id)
-                }
-                if (!!ui.item.zip) {
-                    $zip.val(ui.item.zip)
-                }
-                if (!!ui.item.phone_number) {
-                    $phone.val(ui.item.phone_number)
-                    $phone.trigger('input');
-                }
-                if (!!ui.item.fax_number) {
-                    $fax.val(ui.item.fax_number)
-                    $fax.trigger('input');
-                }
-                if (!!ui.item.email) {
-                    $email.val(ui.item.email)
-                }
-            }
-        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-            return $( "<li>" )
-                .attr( "data-value", item.name )
-                .append( item.name )
-                .appendTo( ul );
-        };
-    }
-
 
     if ($( ".autocomplete-bank" ).length >0 ){
         $( ".autocomplete-bank" ).autocomplete({
@@ -350,12 +289,10 @@ $(document).ready(function($) {
                 });
             },
             select: function( event, ui ) {
-                console.log(event, ui)
                 ui.item.value = ui.item.name
                 var $id = $(event.target).parents('.banks').find('.parent_id')
 
                 if (!!ui.item.id) {
-                    console.log(ui.item.id, 'dasdasd')
                     $id.val(ui.item.id)
                 }
 
@@ -423,8 +360,31 @@ $(document).ready(function($) {
         ignore: [],
         rules: {
             "bank[name]": {
-                required: true
+                required: true,
+                remote: {
+                    url: "/admins/furnishers/check/name",
+                    type: "POST",
+                    cache: false,
+                    dataType: "json",
+                    data: {
+                        name: function() { return $("#parentBankInformation .bank_name").val();},
+                        _token: function (){return  $("meta[name='csrf-token']").attr("content");}
+                    },
+                    dataFilter: function(response) {
+                        if(jQuery.parseJSON(response).status == true) {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                }
             },
+        },
+        messages:{
+            "bank[name]": {
+                remote: "This name already exist"
+            }
+
         },
         submitHandler: function(form) {
             var data = $(form).serialize();
