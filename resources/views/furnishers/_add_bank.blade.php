@@ -3,7 +3,7 @@ $states = [null=>''] + \App\BankAddress::STATES;
 $types = [null=>''] + \App\BankLogo::TYPES;
 asort($types)
 ?>
-{!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+{!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'parentBankInformation']) !!}
 @csrf
 <div class="ms-ua-box">
     <div class="ms-ua-form">

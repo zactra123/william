@@ -572,6 +572,26 @@ class BanksController extends Controller
         return view('furnishers._form', compact('state'));
     }
 
+    public function checkName(Request $request)
+    {
+        $name = $request->name;
+        $id = $request->id;
+        $check = BankLogo::where('name', $name);
+        if($id != null ){
+            $check = $check->where('id', '!=', $id);
+        }
+        if(empty($check->first())){
+
+            return response()->json(['status' => true]);
+
+        }else{
+            return response()->json(['status' => false]);
+        }
+
+
+    }
+
+
 
 
 }

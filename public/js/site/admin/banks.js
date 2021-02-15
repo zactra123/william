@@ -431,7 +431,28 @@ $(document).ready(function($) {
         ignore: [],
         rules: {
              "bank[name]": {
-                 required: true
+                 required: true,
+                 remote: {
+                     url: "/admins/furnishers/check/name",
+                     type: "POST",
+                     cache: false,
+                     dataType: "json",
+                     data: {
+                         id: function() { return $("#bankInformation .bank_id").val();
+                         },
+
+                         name: function() { return $("#bankInformation .bank_name").val();
+                         },
+                         _token: function (){return  $("meta[name='csrf-token']").attr("content");}
+                     },
+                     dataFilter: function(response) {
+                         if(jQuery.parseJSON(response).status == true) {
+                             return true;
+                         }else{
+                            return false;
+                         }
+                     }
+                 }
              },
             "bank[parent_id]": {
                 required: function(){
@@ -442,8 +463,13 @@ $(document).ready(function($) {
         messages:{
             "bank[parent_id]": {
                 required: "Parent bank doesn't exist"
+            },
+            "bank[name]": {
+                remote: "This name already exist"
             }
-        }
+
+        },
+
 
 
     })

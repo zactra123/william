@@ -167,7 +167,9 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control" id="bank_name">
+                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name">
+                                            {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
+
                                         </div>
                                         @if(isset($subTypes[$bank->type]))
                                             @foreach($subTypes[$bank->type] as $key => $value)

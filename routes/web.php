@@ -200,6 +200,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::any('/keywords', 'BanksController@keywords');
         Route::get('/address-autocomplete', 'BanksController@address_autocomplete');
         Route::get('/parent-bank', 'BanksController@parent_bank');
+        Route::post('/check/name', 'BanksController@checkName');
 
 
     });
