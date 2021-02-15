@@ -245,43 +245,43 @@
                                             @if($type == 'registered_agent')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
+                                                        {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                                     </div>
                                                 </div>
                                             @endif
                                             @if($type == 'executive_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                                        {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>
                                                 </div>
                                             @endif
                                             @if($type == 'dispute_address' || $type == 'qwr_address' ||  $type == 'fraud_address')
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
-                                                        {!! Form::text("bank_address[{$type}][0][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                                                        {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
                                                     </div>
                                                 </div>
                                             @endif
                                             <div class="row">
-                                                {!! Form::hidden("bank_address[$type][0][type]", $type, ["class"=>"form-control"]) !!}
-                                                {!! Form::hidden("bank_address[$type][0][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$type][type]", $type, ["class"=>"form-control"]) !!}
+                                                {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
 
                                                 <div class="form-group col-sm-5">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
-                                                    {!! Form::text("bank_address[{$type}][0][street]",  !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][street]",  !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-3">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
-                                                    {!! Form::text("bank_address[{$type}][0][city]",   !empty($address) ? $address['city'] : null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][city]",   !empty($address) ? $address['city'] : null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                                                    {!! Form::select("bank_address[{$type}][0][state]", $states,  !empty($address) ? $address['state'] : null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                                                    {!! Form::select("bank_address[{$type}][state]", $states,  !empty($address) ? $address['state'] : null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                                                    {!! Form::text("bank_address[{$type}][0][zip]",  !empty($address) ? $address['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                                                    {!! Form::text("bank_address[{$type}][zip]",  !empty($address) ? $address['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -290,7 +290,7 @@
                                                         <img  class="responsive" src="/images/phone.png">
                                                     </div>
                                                     <div class="form-group col-sm-10">
-                                                        {!! Form::text("bank_address[{$type}][0][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                                                        {!! Form::text("bank_address[{$type}][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-4">
@@ -298,7 +298,7 @@
                                                         <img  class="responsive" src="/images/fax.png">
                                                     </div>
                                                     <div class="form-group col-sm-10">
-                                                        {!! Form::text("bank_address[{$type}][0][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                        {!! Form::text("bank_address[{$type}][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-4">
@@ -306,7 +306,7 @@
                                                         <img  class="responsive" src="/images/email.png">
                                                     </div>
                                                     <div class="form-group col-sm-10">
-                                                        {!! Form::email("bank_address[$type][0][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                        {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                     </div>
                                                 </div>
 
@@ -340,6 +340,7 @@
                 <div class="col mt-5">
                     <input type="submit" value="Save" class="ms-ua-submit">
                 </div>
+                {!! Form::hidden('referrer', request()->headers->get('referer')) !!}
                 {!! Form::close() !!}
             </div>
         </div>

@@ -186,7 +186,7 @@ class BanksController extends Controller
             return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
         }
 
-        return redirect()->route('admins.bank.show', ['type'=> $bank->type??'all']);
+        return redirect()->route('admins.bank.show', ['types'=> $bank->type??'all']);
     }
 
 
@@ -201,7 +201,6 @@ class BanksController extends Controller
      */
     public function edit(Request $request)
     {
-
         $id  = $request->id;
         $bank = BankLogo::findOrFail($id);
         $banks = BankLogo::all()->pluck('name', 'id')->toArray();
@@ -306,7 +305,7 @@ class BanksController extends Controller
             }
         }
 
-        return redirect()->back();
+        return redirect()->to($request->referrer);
 
     }
 
