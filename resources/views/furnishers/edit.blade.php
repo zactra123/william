@@ -144,6 +144,7 @@
                 <?php
                     $states = [null=>''] + \App\BankAddress::STATES;
                     $types =  \App\BankLogo::TYPES;
+                    $subTypes =  \App\BankLogo::SUB_TYPES;
                     asort($types)
                 ?>
                     {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
@@ -168,6 +169,29 @@
                                         <div class="form-group">
                                             <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control" id="bank_name">
                                         </div>
+                                        @if(isset($subTypes[$bank->type]))
+                                            @foreach($subTypes[$bank->type] as $key => $value)
+                                                <div class="m-5 {{$key}}">
+                                                    <div class="row" id="bank_type_append">
+                                                        @foreach($value as $type)
+                                                            <div class="col-md-6">
+                                                                {{$type}}
+                                                                <input name="bank[additional_information][type][{{$key}}]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["type"][$key]) && in_array($type, $bank->additional_information["type"][$key])) ? "checked":''}}>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        <div class="m-5">
+                                            <div class="row">
+                                                <div  id="sub_bank_type_append">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <div class="m-5 collection_types">
                                             <div class="row" id="collection_types_append collection-4 collection-44">
                                                 <div class="col-md-6 collection-4 collection-44 {{$bank->type == 4 || $bank->type == 44 ? "" : "hidden"}}">
@@ -198,7 +222,7 @@
                                                     ADJSUTABLE-RATE
                                                     <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
-                                                <div class="col-md-6  mortgage-lender-29">
+                                                <div class="col-md-6  mortgage-lender-29  {{$bank->type == 29 ? "" : "hidden"}}">
                                                     FIXED-RATE
                                                     <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
@@ -393,7 +417,20 @@
         </div>
     </div>
 
+        <script>
+           var types = {!!  json_encode(\App\BankLogo::SUB_TYPES) !!};
 
+        </script>
+
+
+        <script type="text/html" id="sub_types_append">
+
+            <div class="col-md-6 remove_sub_type">
+                {value}
+                <input name="bank[additional_information][type][{index}]"  type="checkbox" value ="{value}">
+            </div>
+
+        </script>
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>

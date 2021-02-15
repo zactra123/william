@@ -256,11 +256,14 @@ class BanksController extends Controller
         $id  = $request->id;
         $bank = BankLogo::find($id);
         $bankLogo = $request->bank;
+
+
         if (!empty($request->bank["additional_information"]["collection_type"])){
             $bank_additonal_information = $bank->toArray()["additional_information"];
             $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];
             $bankLogo["additional_information"] = $bank_additonal_information;
         }
+
 
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
@@ -295,14 +298,24 @@ class BanksController extends Controller
         if ($bank->type != 29) {
             unset($account_addresses['trusty']);
         }
-        foreach ($account_addresses as $addresses) {
+
+        foreach ($account_addresses as  $type => $addresses) {
+            if($type == "qwr_address" && ($bank->type != 55 && $bank->type != 2)){
+                continue;
+            }elseif($type == "qwr_address" && $bank->additional_information['types']){
+                continue;
+            }
+            if($type == "fraud_address" && ($bank->type != 55 && $bank->type != 2)){
+                continue;
+            }
             foreach ($addresses as $address){
-                $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
+
+//                $address['account_type_id'] = intval($address['account_type_id']) !=0 ?intval($address['account_type_id']): null;
 
                 $bank_address = $bank->bankAddresses()->firstorCreate(
                     [
                         "type" => $address['type'],
-                        "account_type_id" => $address['account_type_id']
+//                        "account_type_id" => $address['account_type_id']
                     ]);
 
                 $bank_address->update($address);

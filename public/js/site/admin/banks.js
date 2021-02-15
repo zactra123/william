@@ -169,6 +169,24 @@ $(document).ready(function($) {
         $(".trustee input,.trustee select").attr("disabled", "disabled");
 
 
+        console.log(types, bankType, types[bankType])
+
+        if(types[bankType] !== undefined){
+            $("#bank_type_append").remove()
+            $(".remove_sub_type").remove()
+            $.each( types[bankType], function(index, item) {
+
+                $.each( item, function(key,value) {
+                    var sub_types =  $("#sub_types_append").html()
+                    sub_types = sub_types.replace(/{value}/g, value)
+                        .replace(/{index}/g, index)
+
+                    $("#sub_bank_type_append").append(sub_types);
+                });
+
+            });
+        }
+
         if (bankType == 4 || bankType ==44) {
             $form.find('.collection-'+bankType).removeClass("hidden")
         }

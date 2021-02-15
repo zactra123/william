@@ -83,58 +83,95 @@ class BankLogo extends Model
 
     const SUB_TYPES = [
 
-        2 => [
-            1 => "DEPOSIT ACCOUNTS",
-            2 => "MORTGAGE",
-            3 => "AUTO LOAN",
-            4 => "RV LOAN",
-            5 => "RV LOAN",
-            6 => "PERSONAL LOAN",
-            7 => "CREDIT CARD",
+        2 =>[
+            'credit_union'=> [
+                1 => "DEPOSIT ACCOUNTS",
+                2 => "MORTGAGE",
+                3 => "AUTO LOAN",
+                4 => "RV LOAN",
+                5 => "PERSONAL LOAN",
+                6 => "CREDIT CARD",
+            ]
+        ],
+        4 =>[
+            'collection'=> [
+                1 => "3RD PARTY CA",
+                2 => "ASSET/DEBT BUYER",
+
+            ]
         ],
         7 =>[
-            1 => "WATER/POWER",
-            2 => "GAZ",
+            'utility_provider' =>[
+                1 => "WATER/POWER",
+                2 => "GAZ",
+            ]
         ],
         12 => [
-            1 => "CABLE/TV",
-            2 => "INTERNET",
-            3 => "HOME PHONE",
+            'home_cable_provider'=>[
+                1 => "CABLE/TV",
+                2 => "INTERNET",
+                3 => "HOME PHONE",
+            ]
         ],
         13 => [
-            1 => "EQUIPMENT",
-            2 => "MONITORING",
+            'home_security_provider' =>[
+                1 => "EQUIPMENT",
+                2 => "MONITORING",
+            ]
         ],
 
         17 => [
-            1 => "REGULAR DISPUTE",
-            2 => "LOAN",
-            3 => "SUB-PRIME",
-            5 => "TITLE LOAN",
-            6 => "TRACK FINANCE"
+            'auto_finance' =>[
+                1 => "REGULAR DISPUTE",
+                2 => "LOAN",
+                3 => "SUB-PRIME",
+                5 => "TITLE LOAN",
+                6 => "TRACK FINANCE"
+            ]
         ],
         20 => [
-            1 => "DEPARTMENT STORE",
-            2 => "JEWELRY STORE",
-            3 => "FURNITURE STORE",
-            5 => "BUILDING MATERIALS",
-            6 => "MED FINANCE",
-            7 => "MUSIC STORE FINANCE",
-            8 => "GAS/FUEL",
-            9 => "TIRE SHOP",
+            'charge_card' =>[
+                1 => "DEPARTMENT STORE",
+                2 => "JEWELRY STORE",
+                3 => "FURNITURE STORE",
+                4 => "BUILDING MATERIALS",
+                5 => "MED FINANCE",
+                6 => "MUSIC STORE FINANCE",
+                7 => "GAS/FUEL",
+                8 => "TIRE SHOP",
+            ]
+        ],
+        29 => [
+            'mortgage_lender'=>[
+                1 => "CONVENTIONAL",
+                2 => "GOVERNMENT INSURED",
+                3 => "JUMBO",
+                4 => "ADJSUTABLE-RATE",
+                5 => "FIXED-RATE",
+                6 => "HELOC",
+                7 => "PRIVATE MONEY",
+            ]
         ],
         35 => [
-            1 => "CHILD SUPPORT",
-            2 => "FAMILY SUPPORT",
+            'child_support' =>[
+                1 => "CHILD SUPPORT",
+                2 => "FAMILY SUPPORT",
+            ]
+        ],
+        44 =>[
+            'law_firm'=> [
+                1 => "3RD PARTY CA",
+            ]
         ],
         55 => [
-            1 => "DEPOSIT ACCOUNTS",
-            2 => "MORTGAGE",
-            3 => "AUTO LOAN",
-            4 => "RV LOAN",
-            5 => "RV LOAN",
-            6 => "PERSONAL LOAN",
-            7 => "CREDIT CARD",
+            'federal_credit_union'=> [
+                1 => "DEPOSIT ACCOUNTS",
+                2 => "MORTGAGE",
+                3 => "AUTO LOAN",
+                4 => "RV LOAN",
+                5 => "PERSONAL LOAN",
+                6 => "CREDIT CARD",
+            ]
         ]
     ];
 

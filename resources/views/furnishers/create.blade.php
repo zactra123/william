@@ -104,54 +104,59 @@
                                         <div class="form-group">
                                             <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
                                         </div>
+                                        <div class="m-5">
+                                            <div class="row">
+                                                <div  id="sub_bank_type_append">
 
-                                        <div class="m-5 collection_types ">
-                                            <div class="row" id="collection_types_append">
-                                                <div class="col-md-6 hidden collection-4 collection-44">
-                                                    3RD PARTY CA
-                                                    <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden collection-4 collection-44">
-                                                    ASSET/DEBT BUYER
-                                                    <input name="additional_information[collection_type][]"  type="checkbox" value ="ASSET/DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET/DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">
                                                 </div>
                                             </div>
                                         </div>
 
+{{--                                        <div class="m-5 collection_types ">--}}
+{{--                                            <div class="row" id="collection_types_append">--}}
+{{--                                                <div class="col-md-6 hidden collection-4 collection-44">--}}
+{{--                                                    3RD PARTY CA--}}
+{{--                                                    <input name="additional_information[collection_type][]"  type="checkbox" value ="3RD PARTY CA"  {{( !empty( $bank->additional_information["collection_type"]) && in_array("3RD PARTY CA", $bank->additional_information["collection_type"])) ? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden collection-4 collection-44">--}}
+{{--                                                    ASSET/DEBT BUYER--}}
+{{--                                                    <input name="additional_information[collection_type][]"  type="checkbox" value ="ASSET/DEBT BUYER"  {{(!empty( $bank->additional_information["collection_type"]) && in_array("ASSET/DEBT BUYER", $bank->additional_information["collection_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                        <div class=" mortgage_lender_type ">--}}
+{{--                                            <div class="row" id="mortgage_lender_type_append">--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-19">--}}
+{{--                                                    CONVENTIONAL--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="CONVENTIONAL"  {{( !empty( $bank->additional_information["mortgage_lander_type"]) && in_array("CONVENTIONAL", $bank->additional_information["mortgage_lander_type"])) ? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    GOVERNMENT INSURED--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="GOVERNMENT INSURED"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("GOVERNMENT INSURED", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    JUMBO--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="JUMBO"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("JUMBO", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    ADJSUTABLE-RATE--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    FIXED-RATE--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    HELOC--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="HELOC"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("HELOC", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 hidden mortgage-lender-29">--}}
+{{--                                                    PRIVATE MONEY--}}
+{{--                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="PRIVATE MONEY"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("PRIVATE MONEY", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">--}}
+{{--                                                </div>--}}
 
-                                        <div class=" mortgage_lender_type ">
-                                            <div class="row" id="mortgage_lender_type_append">
-                                                <div class="col-md-6 hidden mortgage-lender-19">
-                                                    CONVENTIONAL
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="CONVENTIONAL"  {{( !empty( $bank->additional_information["mortgage_lander_type"]) && in_array("CONVENTIONAL", $bank->additional_information["mortgage_lander_type"])) ? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    GOVERNMENT INSURED
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="GOVERNMENT INSURED"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("GOVERNMENT INSURED", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    JUMBO
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="JUMBO"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("JUMBO", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    ADJSUTABLE-RATE
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="ADJSUTABLE-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("ADJSUTABLE-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    FIXED-RATE
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="FIXED-RATE"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("FIXED-RATE", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    HELOC
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="HELOC"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("HELOC", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-                                                <div class="col-md-6 hidden mortgage-lender-29">
-                                                    PRIVATE MONEY
-                                                    <input name="additional_information[mortgage_lender_type][]"  type="checkbox" value ="PRIVATE MONEY"  {{(!empty( $bank->additional_information["mortgage_lander_type"]) && in_array("PRIVATE MONEY", $bank->additional_information["mortgage_lander_type"]))? "checked":''}} class="customcheck ex_name">
-                                                </div>
-
-                                            </div>
-                                        </div>
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -321,7 +326,20 @@
     </div>
 
 
+    <script>
+        var types = {!!  json_encode(\App\BankLogo::SUB_TYPES) !!};
 
+    </script>
+
+
+    <script type="text/html" id="sub_types_append">
+
+        <div class="col-md-6 remove_sub_type">
+            {value}
+            <input name="bank[additional_information][type][{index}]"  type="checkbox" value ="{value}">
+        </div>
+
+    </script>
 
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
