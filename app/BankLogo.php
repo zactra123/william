@@ -37,7 +37,7 @@ class BankLogo extends Model
         14 => "JEWELERY STORE",
         15 => "RESIDENTIAL RENT/LEASE PROVIDER",
         16 => "(HOA) HOMEOWNER’S ASSOCIATION",
-        17 => "AUTO FINANCE COMPANY",
+        17 => "AUTOMOBILE",
         18 => "CREDIT CARD ISSUER",
         19 => "PERSONAL LOAN LENDER",
         20 => "CHARGE CARD",
@@ -115,9 +115,10 @@ class BankLogo extends Model
         17 => [
                 1 => "LEASE",
                 2 => "LOAN",
-                3 => "SUB-PRIME",
+                3 => "RV/RECREATIONAL LOAN",
+                4 => "SUB-PRIME",
                 5 => "TITLE LOAN",
-                6 => "TRACK FINANCE",
+                6 => "TRUCK FINANCE",
                 7 => "CAR RENTAL",
         ],
         20 => [
