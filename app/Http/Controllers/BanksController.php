@@ -87,6 +87,21 @@ class BanksController extends Controller
 
     }
 
+    public function show($id)
+    {
+        $bank = BankLogo::findOrFail($id);
+        $banks = BankLogo::all()->pluck('name', 'id')->toArray();
+
+        $bank_addresses = $bank->bankAddresses()
+            ->get()->mapWithKeys(function ($address) {
+                return [$address->type => $address];
+            });
+
+        $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
+
+        return view('furnishers._show_bank', compact('bank', 'account_types', 'bank_addresses', 'bank_types', 'registredAgent', 'banks'));
+    }
+
     /**
      *  Newly created furnishers can have multiple addresses
      * @return \Illuminate\View\View "furnishers.create" with @account_types
@@ -146,8 +161,6 @@ class BanksController extends Controller
                 "furnisher_$time.$ext",
                 ['disk'=>'s3', 'visibility'=>'public']
             );
-
-
         }
 
         $bank = BankLogo::create([

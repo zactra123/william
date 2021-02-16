@@ -404,7 +404,42 @@ $(document).ready(function($) {
     })
 
 
+    $('.show-parent-bank').on('click', function(){
+        id = $(this).parents('form').find('.parent_id').val()
 
+        if (!id) {
+            alert("PARENT BANK NOT DEFINED")
+            return false;
+        }
+
+        $.ajax({
+            url: '/admins/furnishers/'+id,
+            type: "GET",
+            success: function( data ) {
+                $('#parentModal').find('.modal-body').html(data)
+                $('#parentModal .selectize-single').selectize({
+                    selectOnTab: true,
+                })
+                $('#parentModal .selectize-multiple').selectize({
+                    plugins: ['remove_button'],
+                    selectOnTab: true,
+                    delimiter: ',',
+                    persist: true,
+                    preload: true,
+                    labelField: 'name',
+                    valueField: 'name',
+                    create: function(input) {
+                        return {
+                            value: input,
+                            name: input
+                        };
+                    }
+                });
+                $('#parentModal').modal('toggle');
+
+            }
+        });
+    })
 
 
 

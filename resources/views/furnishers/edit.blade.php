@@ -209,7 +209,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
+                                        <a href="#" class="btn show-parent-bank form-control">SHOW BANK INFO</a>
                                     </div>
                                 </div>
 
@@ -360,6 +360,23 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="parentModal" tabindex="-1" role="dialog" aria-labelledby="parentModalLabel" aria-hidden="true">
+        <div class="modal-dialog w-100" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="parentModalLabel">PARENT BANK INFORMATION</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ms-user-account">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
         <script>
            var types = {!!  json_encode(\App\BankLogo::SUB_TYPES) !!};

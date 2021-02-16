@@ -21,7 +21,7 @@ class BankLogo extends Model
     ];
 
     const TYPES = [
-        1 => "BANK",
+//        1 => "BANK",
         2 => "CREDIT UNION",
         3 => "CREDIT BUREAU",
         4 => "COLLECTION",
@@ -60,7 +60,7 @@ class BankLogo extends Model
         37 => "CASINO/GAMBLING",
         38 => "FUNERAL GOODS/SERVICES",
         39 => "PUBLIC STORAGE COMPANY",
-        40 => "NON-BANK SBA LENDER",
+        40 => "SBA LENDER",
         41 => "TRAFFIC COURT/TICKET",
         42 => "PEST CONTROL COMPANY",
         43 => "MOTORCYCLE FINANCE COMPANY",
@@ -78,15 +78,10 @@ class BankLogo extends Model
         55 => "FEDERAL CREDIT UNION",
         56 => "RENT PAYMENT PLATFORM",
         57 => "LIFE INSURANCE",
-        58 => "BANK-SBA LENDER",
-
+        58 => "PRIVATE BANK",
     ];
 
     const SUB_TYPES = [
-        1 => [
-          1 => "DEPOSIT ACCOUNT",
-          2 => "CARD ISSUER"
-        ],
         2 =>[
                 1 => "DEPOSIT ACCOUNTS",
                 2 => "MORTGAGE",
@@ -154,8 +149,32 @@ class BankLogo extends Model
                 1 => "CHILD SUPPORT",
                 2 => "FAMILY SUPPORT",
         ],
+        40 =>[
+            1 => "NON-BANK",
+            2 => "BANK"
+        ],
         44 =>[
                 1 => "3RD PARTY CA",
+        ],
+        48 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
+        ],
+        50 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
+        ],
+        51 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
+        ],
+        52 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
+        ],
+        53 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
         ],
         55 => [
                 1 => "DEPOSIT ACCOUNTS",
@@ -164,7 +183,11 @@ class BankLogo extends Model
                 4 => "RV LOAN",
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
-        ]
+        ],
+        58 => [
+            1 => "DEPOSIT ACCOUNT",
+            2 => "CARD ISSUER"
+        ],
     ];
 
     protected static function boot()
