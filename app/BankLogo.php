@@ -60,7 +60,7 @@ class BankLogo extends Model
         37 => "CASINO/GAMBLING",
         38 => "FUNERAL GOODS/SERVICES",
         39 => "PUBLIC STORAGE COMPANY",
-        40 => "SBA LENDER",
+        40 => "NON-BANK SBA LENDER",
         41 => "TRAFFIC COURT/TICKET",
         42 => "PEST CONTROL COMPANY",
         43 => "MOTORCYCLE FINANCE COMPANY",
@@ -68,16 +68,17 @@ class BankLogo extends Model
         45 => "CHECK VERIFICATION",
         46 => "TOW TRUCK COMPANY",
         47 => "TRUSTEE",
-        48=>  "SAVINGS ASSOCIATIONS",
+        48=>  "SAVINGS & LOANS",
         49 => "MORTGAGE SERVICER",
         50 => "NATIONAL BANK",
         51 => "STATE CHARTERED BANK",
-        52 => "FEDERAL SAVINGS ASSOCIATION",
+        52 => "FSB",
         53 => "FOREIGN BANK",
         54 => "STATE SAVINGS ASSOCIATION",
         55 => "FEDERAL CREDIT UNION",
         56 => "RENT PAYMENT PLATFORM",
         57 => "LIFE INSURANCE",
+        58 => "BANK-SBA LENDER",
 
     ];
 

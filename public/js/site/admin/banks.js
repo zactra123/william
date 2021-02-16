@@ -178,7 +178,7 @@ $(document).ready(function($) {
         }
 
 
-        if([14, 18, 19,20, 21, 23, 24, 26, 27, 31,32, 43, 33, 30, 28].includes(parseInt(bankType))){
+        if([14, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType))){
             $form.find('.parent').removeClass("hidden")
         }else {
             $form.find('.parent').addClass("hidden")
