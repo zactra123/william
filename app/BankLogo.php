@@ -26,15 +26,15 @@ class BankLogo extends Model
         3 => "CREDIT BUREAU",
         4 => "COLLECTION",
         5 => "MED SERVICE PROVIDER",
-//        6 => "MED FINANCE PROVIDER",CHARGE CARD
+//        6 => "MED FINANCE PROVIDER",CHARGE CARD+
         7 => "UTILITY PROVIDER",
         8 => "CHECK CASHING/PAYDAY LOAN",
-//        9 => "PAYDAY LOAN",CHARGE CARD
+//        9 => "PAYDAY LOAN",CHARGE CARD+
         10 => "CHECK GUARANTEE PROVIDER",
         11 => "CELLULAR SERVICE PROVIDER",
         12 => "INTERNET/CABLE/HOME PHONE PROVIDER",
         13 => "HOME SECURITY PROVIDER",
-//        14 => "JEWELERY STORE",
+//        14 => "JEWELERY STORE",+
         15 => "RESIDENTIAL RENT/LEASE PROVIDER",
         16 => "(HOA) HOMEOWNER’S ASSOCIATION",
         17 => "AUTOMOBILE",
@@ -44,15 +44,15 @@ class BankLogo extends Model
         21 => "MCA LENDER",
         22 => "AUTO INSURANCE COMPANY",
         23 => "SOLOR SYSTEM PROVIDER",
-//        24 => "HOUSEHOLD ITEM/APPLIANCE",CHARGE CARD
-//        25 => "TRUCK LOAN",AUTOMOBILE
-//        26 => "TRUCK TRAILER LENDER",AUTOMOBILE
-//        27 => "RV FINANCE",AUTOMOBILE
+//        24 => "HOUSEHOLD ITEM/APPLIANCE",CHARGE CARD+
+//        25 => "TRUCK LOAN",AUTOMOBILE+
+//        26 => "TRUCK TRAILER LENDER",AUTOMOBILE+
+//        27 => "RV FINANCE",AUTOMOBILE+
         28 => "STUDENT LOAN",
         29 => "MORTGAGE LENDER",
         30 => "HELOC LENDER",
         31 => "TIMESHARE/RESORT COMPANY",
-//        32 => "IMMIGRANT LOAN LENDER",PERSONAL LOAN
+//        32 => "IMMIGRANT LOAN LENDER",PERSONAL LOAN?
         33 => "CC MERCHANT SERVICES",
 //        34 => "FEDERAL BK COURT",
         35 => "CHILD/FAMILY SUPPORT",
@@ -120,6 +120,9 @@ class BankLogo extends Model
                 5 => "TITLE LOAN",
                 6 => "TRUCK FINANCE",
                 7 => "CAR RENTAL",
+        ],
+        19 => [
+            1 => "IMMIGRANT LOAN LENDER"
         ],
         20 => [
                 1 => "DEPARTMENT STORE",

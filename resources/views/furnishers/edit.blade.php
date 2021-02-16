@@ -229,7 +229,7 @@
                                             $hidden = $bank->type != 3;
                                         }
                                         if ($type == 'qwr_address'){
-                                            $hidden = !in_array($bank->type, [2, 55]);
+                                            $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
                                         }
                                     @endphp
                                     <formset class="{{$hidden? 'hidden': ''}} {{$type}}">
