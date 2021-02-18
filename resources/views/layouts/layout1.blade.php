@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="{{asset('css/new/owl/owl.theme.default.css')}}">
     <script type="text/javascript" src="{{ asset('js/new/general.js') }}"></script>
     <script src="{{ asset('js/new/owl/owl.carousel.js') }}"></script>
+    @yield('scripts')
 </head>
 <body>
 
@@ -146,7 +147,7 @@
                                 @else
                                     <ul class="nav-block">
                                         <li class="nav-item"><a href="{{ route('login') }}">Log In</a></li>
-                                        <li class="nav-item"><a href="{{ route('register.Affiliate') }}">Registration</a></li>
+                                        <li class="nav-item"><a href="{{ route('register') }}">Registration</a></li>
                                     </ul>
                                 @endauth
                             @endif

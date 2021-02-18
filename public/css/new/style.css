@@ -1186,19 +1186,19 @@ section.login .background-image{
 .register_or label input {
     padding-left: 5px;
 }
-#register_form p.required {
+.register_form p.required {
     display: none !important;
 }
-#register_form div.password {
+.register_form div.password {
     width: 100%;
     position: relative;
 }
-#register_form div.password svg {
+.register_form div.password svg {
     width: 18px;
     height: 18px;
 }
-#register_form div.password #eye_open,
-#register_form div.password #eye_close {
+.register_form div.password #eye_open,
+.register_form div.password #eye_close {
     transition: all .3s ease-in-out;
     position: absolute;
     cursor: pointer;
@@ -1228,7 +1228,49 @@ section.register .background-image{
     width: 100%;
     object-fit: cover;
 }
+section.register .login-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.88rem;
+}
+section.register .login-social a:not(:last-child) {
+    margin-bottom: 1.16rem;
+}
+section.register .login-social a {
+    width: 18.88rem;
+    height: 2.44rem;
+    color: #FFFFFF;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 700;
+}
+section.register .login-social svg {
+    width: 1.33rem;
+    height: 1.33rem;
+    position: absolute;
+    left: 15px;
+    transform: translateY(0);
+    transition: all .3s ease-in-out;
+}
+section.register .login-social a:hover svg {
+    animation-name: hover;
+    animation-duration: .3s;
+}
+section.register .login-social a.login-facebook {
+    background-color: #3B5998;
+    border: solid 2px #3B5998;
+    color: #FFFFFF;
 
+}
+section.register .login-social a.login-google {
+    border: solid 2px #94A2B3;
+    color: #272D4E;
+    background-color: #FFFFFF;
+}
 /*  #Additional_red  */
 
 .register-form{
