@@ -48,7 +48,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return redirect(route('register.Affiliate'));
+
+//        return redirect(route('register.Affiliate'));
         $secrets=DB::table('secret_questions')->where('user_id', null)
             ->select('question','id')->get();
         return view('auth.register',compact('secrets'));

@@ -1,6 +1,12 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('content')
+
+
+
+
+
+
 
     <style>
         .pass_show{position: relative}

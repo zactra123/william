@@ -8,49 +8,47 @@
 
 @section('content')
 
-
     <section class="login">
         <img class="background-image" src="{{asset('images/new/login_bck.jpg')}}" alt="background">
-        @if ($errors->any())
-
-            <div class="alert alert-danger flash">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                @foreach($errors->all()  as $message)
-                    <strong>{{ $message }}</strong>
-                @endforeach
-            </div>
-        @endif
         <div class="login-form">
-            <form method="POST" action="{{ route('login') }}">
+            @if ($errors->any())
+                <div class="alert alert-danger flash">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    @foreach($errors->all()  as $message)
+                        <strong>{{ $message }}</strong>
+                    @endforeach
+                </div>
+            @endif
+
+            <form id="login_form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <h3 class="title">Login</h3>
-                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" placeholder="E-Mail Address"  autofocus>
+                <input type="email" name="email"  class="@error('email') is-invalid @enderror" autofocus value="{{ old('email') }}" id="email" placeholder="E-Mail-adress">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password" data-toggle="password">
+
+                <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password" data-toggle="password">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
                 <div class="login-information">
-                    <label for="remember"><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> Remember me!</label>
+                    <label for="remember"><input type="checkbox" id="remember" name="remember"> Remember me!</label>
+                    <a class="forgot" id="forgot_login" href="{{route('login.infoFirst')}}">Forget Login Information?</a>
+                        @if (Route::has('password.request'))
+                            <a class="forgot text-right" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+                </div>
 
-                    <a class="btn btn-link" style="text-decoration: underline" href="{{route('login.infoFirst')}}">
-                        Forget Login Information?
-                    </a>
+                <div class="basic-button login-box">
+                    <input class="login" type="submit" value="Login" name="">
                 </div>
-                <div class="login-information">
-                    @if (Route::has('password.request'))
-                        <a class="btn btn-link" style="text-decoration: underline" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif
-                </div>
-                <input class="basic-button login" type="submit" value="Login" name="">
             </form>
 
             <div class="login-social">
@@ -78,7 +76,7 @@
                 </a>
             </div>
             <p class="login_sign-up">
-                Don't have an account? <a href="{{route('register.Affiliate')}}">Sign up</a>
+                Don't have an account? <a href="{{route('register')}}">Sign up</a>
             </p>
             <!-- <img class="login-background" src="img/header_banner_img_bck.png" alt="background"> -->
 
@@ -138,7 +136,5 @@
             </div>
         </div>
     </section>
-
-
 @endsection
 

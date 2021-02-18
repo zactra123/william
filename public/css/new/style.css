@@ -1,18 +1,23 @@
-/*
+/*-------------------*
 *--------------------*
     #Home-page
 *--------------------*
-    #Login
 *--------------------*
-
-
-*/
-
-
+    #Login-form
+*--------------------*
+*--------------------*
+    #Register-form
+*--------------------*
+*--------------------*
+    #Additional_red
+*--------------------*
+*--------------------*/
+strong {
+	font-weight: bold;
+}
 input{
     transition: all .3s ease-in-out;
 }
-
 html{
 	font-size: 14px;
 }
@@ -68,6 +73,8 @@ body {
 	margin-left: 10px;
 	color: red;
 }
+
+/*  #Home-page  */
 header{
 	display: flex;
     flex-direction: column;
@@ -78,7 +85,20 @@ header{
     left: 0;
     top: 0;
     width: 100%;
-
+}
+div.select {
+    width: 100%;
+    position: relative;
+}
+div.select svg {
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 section.header{
     padding-top: 70px;
@@ -104,7 +124,7 @@ header .close-mobile{
 	justify-content: space-between;
 }
 .header-links a {
-    padding: 1rem 2.5rem;
+    padding: 0.48rem 2rem;
 }
 nav {
 	display: flex;
@@ -192,28 +212,28 @@ nav {
 	width: 18.4rem;
 }
 .chat #chat_header p > svg{
-	width: 1.42rem;
-    height: 1.57rem;
+	width: 1.5rem;
+    height: 1.5rem;
 }
 .chat #chat_header p{
     position: absolute;
-    top: 4px;
-    transform: translateX(-50%);
+    top: 8px;
     left: 50%;
-    display: flex;
-    align-items: center;
-    width: 73%;
-    justify-content: space-between;
     margin: 0;
+    width: 13rem;
+    display: flex;
     font-size: 1rem;
-    white-space: nowrap;
-    font-weight: 500;
     color: #FFFFFF;
+    font-weight: 500;
+    align-items: center;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    justify-content: space-between;
 }
 .chat .body {
     bottom: -100%;
-	padding: 1rem;
-    width: 30.4rem;
+	padding: 2rem 2.5rem;
+    width: 36.4rem;
     position: fixed;
 	height: 29.5rem;
 	border-radius: 25px;
@@ -259,9 +279,6 @@ nav {
     outline: none;
     transition: .3s ease-in-out;
 }
-#chat_form  input{
-	width: 100%;
-}
 #chat_form input[type="text"],
 #chat_form textarea {
 	width: 100%;
@@ -281,7 +298,7 @@ nav {
 	margin-top: 10px;
 }
 #chat_form .form-submit input{
-	padding: 1rem 4.28rem;
+    padding: 0.42rem 2.95rem;
 	background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
 	border-radius: 50px;
 	color: #FFFFFF;
@@ -434,7 +451,7 @@ nav {
 .banner-background {
     position: absolute;
     right: -3.5rem;
-    bottom: 2rem;
+    bottom: 0.5rem;
     z-index: 0;
     height: 13.3rem;
 }
@@ -593,7 +610,7 @@ section.about-us{
 }
 section.about-us .about-us-inner{
 	padding: 100px 0;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 section.about-us video{
@@ -614,12 +631,12 @@ section.about-us video{
 }
 section.about-us p{
 	font-size: 1rem;
+    margin-bottom: 2rem;
 	line-height: 2.22rem;
 }
 section.about-us .basic-button {
-    padding: 1rem 2.14rem;
+	padding: 0.473rem 2.09rem;
     font-size: 1rem;
-    text-transform: uppercase;
 }
 section.about-us .banner-background {
     position: absolute;
@@ -660,7 +677,7 @@ section.help .help-inner .name p{
     margin-bottom: 0.2rem;
 }
 section.help .help-inner .name .name-point {
-    padding: 3px .5rem;
+    padding: 1.16rem 1.7rem;
     margin-bottom: 1rem;
     font-size: 1.2rem;
     color: #FFFFFF;
@@ -675,12 +692,11 @@ section.help .help-inner .block {
 	justify-content: center;
 }
 section.help .help-inner .help-description {
-	background-color: #FFFFFF;
-	padding: 1rem;
-    border-radius: 15px;
     opacity: 0;
 	display: none;
-	width: 80%;
+	width: 33.83rem;
+    border-radius: 15px;
+	background-color: #FFFFFF;
 }
 section.help .help-inner .help-description.first {
 	display: block;
@@ -688,54 +704,51 @@ section.help .help-inner .help-description.first {
 }
 section.help .help-inner .help-description .modal-heading {
 	display: flex;
-	align-items: center;
-	padding: 0 1rem;
+    	align-items: center;
+    padding: 1rem 1rem 0 0;
 	justify-content: flex-end;
 }
 section.help .help-inner .help-description h6 {
 	margin: 0;
-	color: #94A2B3;
-    padding-bottom: 1.5rem;
+	color: #000000;
     font-size: 1.33rem;
+    padding-bottom: 1.33rem;
 }
 section.help .help-inner .help-description .modal-body p {
 	font-size: 1rem;
-	color: #94A2B3;
+	color: #000000;
+    margin: 0;
 }
 section.help .help-inner .help-description .modal-body{
-	padding: 0 1rem !important;
+    padding: 0 2rem 2rem !important;
 }
 a.name-point span{
-    padding: 1rem 1.2rem;
-    overflow: hidden;
+	position: relative;
 }
 a.name-point.active span{
-    background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
+	position: relative;
     text-transform: capitalize;
     display: inline-block;
     text-decoration: none;
     border-radius: 40px;
-	position: relative;
-	overflow: hidden;
     color: #FFFFFF;
+}
+a.name-point span::after{
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	content: '';
+	width: 0;
+	height: 4px;
+	transition: all .3s ease-in-out;
+	background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
 }
 a.name-point.active :hover{
     color: #FFFFFF;
 }
 a.name-point.active span::after{
-	content: "";
-    background-color: #FFFFFF;
-    transform: rotate(-45deg);
-    transition: all .4s ease-in-out;
-    position: absolute;
-    opacity: 0.2;
-    height: 100%;
-    width: 100%;
-    left: -100%;
-    top: 0;
-}
-a.name-point.active:hover span::after{
-	left: 100%;
+	width: 100%;
+	opacity: 1;
 }
 /*Report*/
 section.report .report-inner {
@@ -771,7 +784,7 @@ section.report .report-item .body:hover {
     border: 2px solid #fa6444;
 }
 section.report .report-item h6 {
-	color: #94A2B3;
+	color: #000000;
     margin: 0;
     line-height: 1.92rem;
     margin-bottom: 2.67rem;
@@ -796,7 +809,7 @@ section.education {
 	background-color: #F2F2F2;
 	padding: 45px 0;
 }
-section.education .education-inner .credit-graph .graph {
+.credit-graph .graph {
 	height: 85%;
     width: 100%;
     display: flex;
@@ -807,7 +820,7 @@ section.education .education-inner .credit-graph .graph {
     bottom: 6.2%;
     overflow: hidden;
 }
-section.education .education-inner .credit-graph {
+.credit-graph {
    height: 425px;
     width: 85%;
     display: flex;
@@ -816,13 +829,13 @@ section.education .education-inner .credit-graph {
     cursor: pointer;
     position: relative;
 }
-section.education .education-inner .credit-graph img {
+.credit-graph img {
 	object-fit: contain;
 	position: absolute;
 	transform: translateY(0);
     transition: all 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-section.education .education-inner .credit-graph .graph_bottom_block {
+.credit-graph .graph_bottom_block {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -880,16 +893,16 @@ section.education .education-inner .credit-graph .graph_bottom_block {
     left: 1.57%;
     bottom: -1.411%;
 }
-section.education .education-inner .credit-graph #graph_yellow:hover {
+.credit-graph #graph_yellow:hover {
 	transform: translateY(-19%);
 }
-section.education .education-inner .credit-graph #graph_violet:hover {
+.credit-graph #graph_violet:hover {
     transform: translateY(-19%);
 }
-section.education .education-inner .credit-graph #graph_red:hover {
+.credit-graph #graph_red:hover {
     transform: translateY(-19.7%) translateX(-1%);
 }
-section.education .education-inner .credit-graph #graph_green:hover {
+.credit-graph #graph_green:hover {
 	transform: translateY(-19%);
 }
 section.education .education-inner {
@@ -899,18 +912,19 @@ section.education .education-inner {
 }
 section.education h3.title{
 	font-size: 2rem;
-	color: #505050;
+	color: #000000;
 	text-transform: uppercase;
 	text-align: center;
 	padding-top: 2.14rem;
 }
 section.education .text-block h3.title{
-	text-transform: capitalize;
 	padding-top: 0;
+    text-align: left;
 	margin-bottom: 1.78rem;
+	text-transform: capitalize;
 }
 section.education .text-block p{
-	color: #94A2B3;
+	color: #000000;
 	font-size: 1rem;
 	line-height: 2.22rem;
 }
@@ -919,9 +933,8 @@ section.education .education-inner .img-block img {
 	object-fit: cover;
 }
 section.education .education-inner .basic-button {
-	padding: 0.85rem 2.85rem;
-    font-size: 1.55rem;
-    margin-top: 1.78rem;
+    padding: 0.474rem 2rem;
+    font-size: 1rem;
 }
 /* Footer */
 footer .footer-bck {
@@ -993,7 +1006,7 @@ footer .map {
 }
 footer .map iframe{
 	width: 100% !important;
-	height: 14.08rem;
+	height: 13.08rem;
 	border-radius: 15px;
 	outline: none;
 }
@@ -1007,7 +1020,6 @@ footer .map h6{
     margin-top: 1rem;
 }
 
-
 /* #Login */
 
 section.login {
@@ -1020,10 +1032,10 @@ section.login {
     z-index: 7;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
     color: #94A2B3;
-    padding: 25px;
+    padding: 1rem 3.5rem 4.55rem;
     background-color: #EFF3FC;
     border-radius: 25px;
-    width: 409px;
+    width: 35.5rem;
 }
 .login-form .login-background{
     position: absolute;
@@ -1039,16 +1051,19 @@ section.login {
 }
 .login-form .title{
     padding-bottom: 1rem;
+	font-size: 2rem;
+	color: #566090;
 }
 .login-form input:not([type="submit"]),
 .login-form select{
     width: 100%;
     height: 3rem;
-    border-radius: 1rem;
     outline: none;
     padding-left: 16px;
-    border: 1px solid #94A2B3;
+	font-size: 0.77rem;
     margin-bottom: 15px;
+    border-radius: 1rem;
+    border: 1px solid #94A2B3;
 }
 .login-form input[type="checkbox"] {
     width: auto;
@@ -1065,57 +1080,60 @@ section.login {
     padding-left: 10px;
 }
 .login-form label {
-    display: flex;
     align-items: center;
+	font-size: 0.77rem;
+    display: flex;
     margin: 0;
 }
 .login-form .forgot,
 .login-form .login_sign-up a {
     color: #299EF3;
+	font-size: 0.77rem;
 }
-.login-form .login {
-    width: 80%;
-    height: 3rem;
+.login-form .login-box {
+    width: 18.88rem;
+    height: 2.44rem;
     outline: none;
     border: none;
-    margin-top: 2rem;
+    margin-top: 3.4rem;
 }
 .login-form .login-social {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 2.88rem;
 }
 .login-form .login-social a:not(:last-child) {
-    margin-bottom: 15px;
+    margin-bottom: 1.16rem;
 }
 .login-form .login-social a {
-    width: 80%;
-color: #FFFFFF;
+    width: 18.88rem;
+    height: 2.44rem;
+	color: #FFFFFF;
     border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3rem;
     position: relative;
     font-weight: 700;
 }
 .login-form .login-social svg {
-    width: 25px;
-    height: 25px;
+    width: 1.33rem;
+    height: 1.33rem;
     position: absolute;
     left: 15px;
     transform: translateY(0);
-    transition: all .3 ease-in-out;
+    transition: all .3s ease-in-out;
 }
 .login-form .login-social a:hover svg {
     animation-name: hover;
     animation-duration: .3s;
 }
 .login-form .login_sign-up {
-    text-align: center;
     margin: 0;
     margin-top: 10px;
+    text-align: center;
+	font-size: 0.77rem;;
 }
 @keyframes hover{
     0%{
@@ -1153,6 +1171,9 @@ section.login .background-image{
     width: 100%;
     object-fit: cover;
 }
+
+/*  #Register-form  */
+
 .register_or {
     width: 100%;
     display: flex;
@@ -1168,8 +1189,536 @@ section.login .background-image{
 #register_form p.required {
     display: none !important;
 }
+#register_form div.password {
+    width: 100%;
+    position: relative;
+}
+#register_form div.password svg {
+    width: 18px;
+    height: 18px;
+}
+#register_form div.password #eye_open,
+#register_form div.password #eye_close {
+    transition: all .3s ease-in-out;
+    position: absolute;
+    cursor: pointer;
+    right: 15px;
+    top: 10px;
+}
+#register_form div.password #eye_open.disabled,
+#register_form div.password #eye_close.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
 
+section.register{
+    padding-top: 170px;
+    padding-bottom: 100px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, rgba(194, 237, 255, 0.76) 0%, rgba(229, 239, 255, 0.58) 100%);background: linear-gradient(180deg, rgba(194, 237, 255, 0.76) 0%, rgba(229, 239, 255, 0.58) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.register .background-image{
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
+/*  #Additional_red  */
+
+.register-form{
+    z-index: 7;
+    color: #94A2B3;
+    width: 44.11rem;
+    position: relative;
+    border-radius: 25px;
+    background-color: #EFF3FC;
+    padding: 1rem 0 4.55rem;
+    transition: all .4s ease-in-out;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+}
+
+.register-form.large{
+    width: 43.88rem;
+}
+.register-form.big{
+    width: 44.88rem;
+}
+.register-form.big{
+    padding: 1rem 4.6rem 4.55rem;
+}
+.register-form form {
+    opacity: 1;
+    z-index: 7;
+    width: 100%;
+    display: flex;
+    left: 0;
+    padding: 0 3.5rem;
+    align-items: center;
+    flex-direction: column;
+    pointer-events: all;
+    transition: all .3s ease-in-out;
+    height: 100%;
+}
+.register-form.big form,
+.register-form.large form {
+    padding: 0 3rem;
+}
+.register-form .none{
+    opacity: 0;
+    display: none;
+}
+.register-form .title{
+    padding-bottom: 2.11rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #566090;
+}
+.register-form input:not([type="submit"]),
+.register-form select{
+    width: 100%;
+    height: 2.447rem;
+    outline: none;
+    color: #6e757d;
+    font-size: 0.77rem;
+    padding-left: 16px;
+    padding-right: 12px;
+    margin-bottom: 15px;
+    border-radius: 1rem;
+    border: 1px solid #94A2B3;
+    background-color: #FFFFFF;
+}
+.register-form input[type="radio"]{
+    width: auto;
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+
+.register-form input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    margin-right: 8px;
+}
+.register-form .login {
+    width: 18.88rem;
+    height: 2.44rem;
+    outline: none;
+    border: none;
+}
+.register-form .registration-stages {
+    display: flex;
+    width: 36rem;
+    margin: 0 auto;
+    flex: 0 0 35rem;
+    cursor: pointer;
+    overflow: hidden;
+    justify-content: center;
+}
+.register-form .registration-stages .registration-stage:not(:last-child){
+    margin-right: 8px;
+}
+.register-form .registration-stages .registration-stage {
+    display: flex;
+    flex: 0 0 15%;
+    width: 15%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+}
+.register-form .registration-stages .registration-stage.up {
+    transform: translateY(-100%);
+}
+.register-form .registration-stages .registration-stage.hidden {
+    flex: 0;
+    width: 0;
+    margin: 0!important;
+}
+.register-form .registration-stage .stage-img {
+    display: flex;
+    width: 3.83rem;
+    height: 3.83rem;
+    position: relative;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    justify-content: center;
+    transition: all 1s ease-in-out;
+    border: solid 0.222rem transparent;
+}
+.register-form .registration-stage:not(:first-child) .stage-img:before {
+    content: '';
+    left: -2.1rem;
+    width: 0;
+    height: 0.25rem;
+    width: 1.60rem;
+    position: absolute;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    transition: all 2s ease-in-out;
+    transition-delay: 1s;
+}
+.register-form .registration-stage.prepare .stage-img:before{
+    background-color: #299EF3;
+}
+.register-form .registration-stage.active .stage-img{
+    border-color: #299EF3;
+}
+.register-form .registration-stage .stage-img svg path{
+    transition: all 1s ease-in-out;
+}
+.register-form .registration-stage.active .stage-img svg path{
+    fill: #299EF3!important;
+}
+.register-form .registration-stage .stage-img svg{
+    width: 60%;
+    height: auto;
+    fill: #94A2B3;
+    object-fit: cover;
+    transition: all 1s ease-in-out;
+}
+.register-form .registration-stage .stage-title {
+    font-size: 0.77rem;
+    margin-top: 0.61rem;
+    transition: all 1s ease-in-out;
+    white-space: nowrap;
+}
+.register-form .registration-stage.active .stage-title{
+    color: #299EF3;
+}
+div .basic-button .login{
+    width: 18.88rem;
+    height: 2.28rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    color: #FFFFFF;
+}
+div.basic-button{
+    background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
+    text-transform: capitalize;
+    margin-top: 0.833rem;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+div.basic-button:hover{
+    color: #FFFFFF;
+}
+div.basic-button::after{
+    content: "";
+    background-color: #FFFFFF;
+    transform: rotate(-45deg);
+    transition: all .6s ease-in-out;
+    pointer-events: none;
+    position: absolute;
+    opacity: 0.2;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    top: 0;
+}
+div.basic-button:hover::after{
+    left: 100%;
+}
+#add_client_2 {
+    margin-top: 2.277rem;
+}
+#add_client_2 {
+    margin-top: 2.94;
+}
+#add_client_3 {
+    margin-top: 1.16rem;
+}
+.title_r {
+    color: #F63664;
+    font-weight: 700;
+    margin-bottom: 1.55rem;
+}
+.upload-images{
+    display: flex;
+    justify-content: space-between;
+}
+.upload-active{
+    margin-top: 2.277rem;
+}
+.upload-images .upload-img{
+    flex: 0 0 48%;
+}
+.upload-images .upload-img img{
+    width: 100%;
+    height: 11rem;
+    object-fit: cover;
+}
+.upload-title{
+    font-size: 0.77rem;
+    margin-bottom: 0.944rem;
+}
+.upload-img-box{
+    position: relative;
+}
+.upload-img-box input{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    height: 4.05rem!important;
+    cursor: pointer;
+    margin: 0!important;
+    padding: unset!important;
+    border-radius: unset!important;
+}
+.upload-btn {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    height: 4.05rem;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+}
+.upload-btn button {
+    border: unset;
+    outline: unset;
+    padding: 0.5rem;
+    display: flex;
+    width: 2.72rem;
+    height: 2.72rem;
+    border-radius: 100%;
+    background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
+    align-items: center;
+    justify-content: center;
+}
+.basic-button .upload {
+    margin-top: 4rem;
+}
+#add_client_3 p {
+    color: #000000;
+    font-size: 0.77rem;
+    margin-bottom: 0.83rem;
+}
+#add_client_3 a {
+    color: #3B5998;
+    font-size: 0.77rem;
+}
+.login-type-title {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1.05rem;
+}
+.login-type-title p {
+    margin: 0;
+}
+.login-type-title .logo-block {
+    width: 5.5rem;
+}
+.login-type-title img {
+    object-fit: cover;
+    width: 100%;
+}
+#add_client_4 p{
+    font-size: 0.77rem;
+}
+.finish {
+    opacity: 1;
+    z-index: 7;
+    margin-top: 2.61rem;
+    pointer-events: all;
+}
+.finish p {
+    margin: 0;
+    color: #000000;
+    text-align: center;
+    font-size: 0.778rem;
+}
+.finish .finish-title {
+    font-size: 2rem;
+    color: #566090;
+    align-items: center;
+}
+.finish-img {
+    margin-top: 3.11rem;
+    margin-bottom: 3.66rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.finish-img .img-block {
+    padding: 3rem;
+    display: flex;
+    width: 16.61rem;
+    height: 15.61rem;
+    align-items: center;
+    border-radius: 25px;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+.finish-img .img-block img {
+    width: 100%;
+    object-fit: cover;
+}
+a.finish-reg {
+    display: flex;
+    color: #FFFFFF;
+    margin: 0 auto;
+    width: 18.88rem;
+    height: 2.44rem;
+    font-size: 1.33rem;
+    align-items: center;
+    border-radius: 25px;
+    justify-content: center;
+    background-color: #299EF3;
+}
+
+label.register-type {
+    width: 14.22rem;
+    height: 7.11rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    background-color: #FFFFFF;
+}
+label.register-type-box {
+    display: flex;
+    justify-content: space-between;
+}
+.register-form .register-type-box {
+    display: flex;
+    align-items: center;
+    margin: 4.44rem 0;
+    width: 80%;
+    justify-content: space-between;
+}
+.register-form .register-type-box label {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px #94A2B3;
+}
+.register-form .register-type-box label.active {
+    border-color: #007bff;
+}
+.register-form .register-type-box label svg {
+    fill: #94A2B3;
+}
+.register-form .register-type-box label.active svg {
+    fill: #007bff;
+}
+.register-form .register-type-box .type-icon {
+    display: flex;
+    justify-content: center;
+}
+.register-form .register-type-box span {
+    display: flex;
+    align-items: center;
+}
+.register-form .register-type-box span input {
+    margin-right: 5px;
+}
+/*  #Good-credit  */
+
+.credit-page header {
+    padding-bottom: 2.8rem;
+    background-color: #FFFFFF;
+}
+section.good-credit {
+    padding-bottom: 3rem;
+    padding-top: 10.71rem;
+    background-color: #F2F2F2;
+}
+section.good-credit .title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+}
+.credit-page p,
+.credit-page li {
+    font-size: 0.9rem;
+}
+section.good-credit h5 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+section.fico{
+    padding-bottom: 3.27rem;
+    padding-top: 1.6rem;
+    background-color: #FFFFFF;
+}
+.credit-page .title{
+    font-weight: 700;
+    font-size: 1rem;
+}
+section.fico .img-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+section.fico img {
+    width: 100%;
+    object-fit: cover;
+}
+section.fico p {
+    margin-bottom: 2.667rem;
+}
+section.vantage-score{
+    background-color: #F2F2F2;
+    padding-top: 2.05rem;
+    padding-bottom: 3.388rem;
+}
+section.credit-score{
+    padding: 1.7rem 0;
+}
+section.credit-score .row {
+    align-items: center;
+}
+section.credit-score .title {
+    font-size: 1.33rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+section.credit-score .img-block img{
+    width: 100%;
+    object-fit: cover;
+}
+section.credit-history {
+    background-color: #F2F2F2;
+    padding-top: 1.94rem;
+    padding-bottom: 3.8rem;
+}
+section.credit-history h5.title:first-child {
+    color: #249081;
+}
+section.credit-history h5.title:nth-of-type(2) {
+    color: #79BFCF;
+}
+section.credit-history h5.title:nth-of-type(3) {
+    color: #D73D42;
+}
+section.credit-history h5.title:nth-of-type(4) {
+    color: #FFB837;
+}
+section.credit-history h5.title:last-of-type {
+    color: #A676AF;
+}
 @media (min-width: 991){
 	.header-links {
 		display: flex;
@@ -1190,6 +1739,9 @@ section.login .background-image{
 	.basic-container {
 		max-width: 85vw;
 	}
+    .container.small {
+        max-width: 900px;
+    }
 }
 @media (min-width: 1400px){
 	html{
@@ -1217,18 +1769,35 @@ section.login .background-image{
 	}
 }
 @media (min-width: 1700px){
+	html {
+		font-size: 18px;
+	}
 	.banner-img .slider-nav{
 	    left: 13.3rem;
 	}
+	.container {
+		max-width: 1554px;;
+	}
+    .credit-graph {
+        width: 61%;
+    }
+}
+@media (max-width: 1400px){
+    .finish .finish-title{
+        font-size: 1.8rem;
+    }
 }
 @media (max-width: 1200px){
-	section.education .education-inner .credit-graph {
+	.credit-graph {
 		height: 346px;
 		width: 82%;
 	}
-	section.education .education-inner .credit-graph .graph {
+	.credit-graph .graph {
 		bottom: 5.2%;
 	}
+    .container.small {
+        max-width: 800px;
+    }
 }
 @media (max-width: 991px){
 	header {
@@ -1420,11 +1989,11 @@ section.login .background-image{
 	section.report .report-inner {
 		height: unset;
 	}
-	section.education .education-inner .credit-graph {
+	.credit-graph {
 	    height: 32vw;
 	    width: 41vw;
 	}
-	section.education .education-inner .credit-graph .graph {
+	.credit-graph .graph {
 		bottom: 3.2%;
 	}
 	footer .footer {
@@ -1432,6 +2001,12 @@ section.login .background-image{
 		padding: 2rem 0;
 		justify-content: center;
 	}
+    section.fico .row {
+        flex-direction: column-reverse;
+    }
+    section.good-credit {
+        padding-top: 12.71rem;
+    }
 }
 @media (max-width: 768px){
 	.header-slider {
@@ -1474,7 +2049,6 @@ section.login .background-image{
 		order: 3;
 		margin: 0;
 	}
-
 	section.about-us .about-us-inner {
 		height: unset;
 		padding: 20px 0;
@@ -1501,7 +2075,7 @@ section.login .background-image{
 	section.about-us .banner-background{
 		height: 66%;
 	}
-	section.education .education-inner .credit-graph .graph {
+	.credit-graph .graph {
     	bottom: 2.2%;
 	}
 	footer .footer-bck {
@@ -1540,12 +2114,44 @@ section.login .background-image{
 	section.report .report-inner {
 		padding: 50px 0;
 	}
+    .register-form.large,
+    .register-form.big {
+        width: 95vw;
+    }
+    .register-form.big,
+    .register-form.large{
+        padding: 1rem 1rem 4.55rem;
+    }
+    .credit-page header {
+        padding-bottom: 1.8rem;
+    }
+    section.credit-score{
+        text-align: center;
+    }
+    .register-form .register-type-box{
+        flex-direction: column;
+    }
+}
+@media(max-width: 680px){
+    .register-form .registration-stages {
+        width: unset;
+    }
+    .upload-title {
+        height: 2rem;
+    }
+    .register-form .registration-stage.active .stage-img:before{
+        display: none;
+    }
 }
 @media(max-width: 575px){
-	section.education .education-inner .credit-graph .graph {
+    .register-form{
+        width: 95vw;
+        padding: 1rem 1.5rem 4.55rem;
+    }
+	.credit-graph .graph {
    		bottom: 2.9%;
 	}
-	section.education .education-inner .credit-graph {
+	.credit-graph {
 	    width: 75vw;
    		height: 60vw;
 	}
@@ -1554,6 +2160,9 @@ section.login .background-image{
 	#viewport{
 		height: 15rem;
 	}
+    section.good-credit {
+        padding-top: 14.71rem;
+    }
 }
 @media(max-width: 420px){
 	#chat_form .contact {
@@ -1575,7 +2184,7 @@ section.login .background-image{
 	.video-box::after{
 		width: 90%;
 	}
-	section.education .education-inner .credit-graph .graph {
+	.credit-graph .graph {
 		bottom: -0.1%;
 	}
 }
@@ -1597,5 +2206,19 @@ section.login .background-image{
 	}
 	section.help .help-inner .name .name-point{
 		font-size: 1.1rem;
+	}
+}
+
+/* new styles */
+
+@media (max-width: 440px){
+	label.social_number p {
+		text-align: center;
+	}
+	.register_or {
+		flex-direction: column;
+	}
+	.login-form label {
+		width: 100%;
 	}
 }

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
 
     {{--  Meta data   --}}
     @yield('meta')
@@ -12,7 +12,6 @@
         <title>Prudent Credit Solutions </title>
     @endif
     {{--  Meta data END   --}}
-
 
     {{-- Canonical url   --}}
     <link rel="canonical" href="{{ url()->current() }}" />
@@ -39,7 +38,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
     <link rel="stylesheet" href="{{asset('css/new/style.css')}}">
@@ -93,8 +91,8 @@
         </div>
         <div class="site-navi contact-info row">
             <div class="logo-block col-6 col-lg-2">
-                <a href="#" title="Home">
-                    <img src="{{asset("images/new/logo.png")}}" alt="logo">
+                <a href="/" title="Home">
+                    <img src="{{asset('images/new/logo.png')}}" alt="logo">
                 </a>
             </div>
             <div class="navigation-block col-6 col-lg-10 row">
@@ -108,7 +106,6 @@
                 <div class="navigation col-12">
                     <nav class="col-md-8">
                         <ul class="nav-block">
-
                             @if(Auth::user())
                                 @if(Auth::user()->role == 'client')
                                     @include('helpers.urls.nav_bar_client')
@@ -126,34 +123,34 @@
                             @else
                                 @include('helpers.urls.nav_bar_guest')
                             @endif
-
                         </ul>
                     </nav>
                     <div class="account-block col-md-4">
-                        @if (Route::has('login'))
-                            @auth
+                        <ul class="nav-block">
+                            @if (Route::has('login'))
+                                @auth
 
-                                <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/home') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
-                                    <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
-                                        <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
-                                                                           onclick="event.preventDefault();
+                                    <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/home') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
+                                        <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
+                                            <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
+                                                                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                LOG OUT  <i class="fa fa-power-off"></i></a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </li>
+                                                    LOG OUT  <i class="fa fa-power-off"></i></a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                @else
+                                    <ul class="nav-block">
+                                        <li class="nav-item"><a href="{{ route('login') }}">Log In</a></li>
+                                        <li class="nav-item"><a href="{{ route('register.Affiliate') }}">Registration</a></li>
                                     </ul>
-                                </li>
-
-                            @else
-                                <ul class="nav-block">
-                                    <li class="nav-item"><a href="{{ route('login') }}">Log In</a></li>
-                                    <li class="nav-item"><a href="{{ route('register.Affiliate') }}">Registration</a></li>
-                                </ul>
-                            @endauth
-                        @endif
-
+                                @endauth
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -162,10 +159,25 @@
 </header>
 
 
-
 @yield('content')
 
 
+<div class="modal fade" id="partner_with_us" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p style="text-align: justify">
+                    We are always looking to partner with independent sales representatives.
+                    To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
+                        partners@prudentscores.com</a> and one of our representatives will contact you promptly.
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 @if(Auth::user()  && Auth::user()->role == 'client')
     <footer class="footer-section">
@@ -196,21 +208,21 @@
                             <div class="second-block col-12 col-md-4">
                                 <h6 class="title">Information</h6>
                                 <ul class="contact-information">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Partner with Us</a></li>
-                                    <li><a href="#">Is Credit Repair Legal?</a></li>
-                                    <li><a href="#">Resources</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
+                                    <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?</a></li>
+                                    <li><a href="{{route('credit.repair')}}">Resources</a></li>
                                     <li><a href="#">Newsroom</a></li>
                                 </ul>
                             </div>
                             <div class="thirth-block col-12 col-md-4">
                                 <h6 class="title">Customer Service</h6>
                                 <ul class="contact-information">
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a href="#">Good Credit Tips</a></li>
-                                    <li><a href="#">Score Estimator</a></li>
-                                    <li><a href="#">Identity Theft</a></li>
-                                    <li><a href="#">Privacy Policy/Terms of Use</a></li>
+                                    <li><a href="{{route('faqs')}}">FAQs</a></li>
+                                    <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
+                                    <li><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator</a></li>
+                                    <li><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></li>
+                                    <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -227,6 +239,9 @@
         </div>
     </footer>
 @endif
+
+
+
 
 
 <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.">

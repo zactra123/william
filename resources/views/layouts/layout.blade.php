@@ -369,7 +369,7 @@
                                         <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
                                         <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?   </a></li>
                                         <li><a href="{{route('credit.repair')}}">Resources</a></li>
-                                        <li><a href="#">Newsroom</a></li>
+                                        <li><a href="{{route('blog')}}">Newsroom</a></li>
                                     </ul>
                                 </div>
                             </div>
