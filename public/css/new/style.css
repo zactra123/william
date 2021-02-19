@@ -1186,24 +1186,25 @@ section.login .background-image{
 .register_or label input {
     padding-left: 5px;
 }
-.register_form p.required {
+#register_form p.required {
     display: none !important;
 }
-.register_form div.password {
+#register_form div.password {
     width: 100%;
     position: relative;
 }
-.register_form div.password svg {
+#register_form div.password svg {
     width: 18px;
     height: 18px;
 }
-.register_form div.password #eye_open,
-.register_form div.password #eye_close {
+#register_form div.password #eye_open,
+#register_form div.password #eye_close {
     transition: all .3s ease-in-out;
     position: absolute;
     cursor: pointer;
     right: 15px;
     top: 10px;
+
 }
 #register_form div.password #eye_open.disabled,
 #register_form div.password #eye_close.disabled {

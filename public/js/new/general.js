@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    let $confirm = $('#client-registration .register_password_confirm');
+    let $confirm = $('.register_password_confirm');
     $confirm.on('input', function(){
-        let $pass = $('#client-registration .register_password').val();
+        let $pass = $('.register_password').val();
         if( $pass === $confirm.val() ){
             $confirm.removeClass('error');
             $confirm.addClass('not-error');
@@ -11,21 +11,6 @@ $(document).ready(function(){
         }
         console.log($pass === $confirm.val());
     })
-
-    let $confirmAffiliate = $('#affiliate-registration .register_password_confirm');
-    $confirmAffiliate.on('input', function(){
-        let $pass = $('#affiliate-registration .register_password').val();
-        if( $pass === $confirmAffiliate.val() ){
-            $confirmAffiliate.removeClass('error');
-            $confirmAffiliate.addClass('not-error');
-        } else {
-            $confirmAffiliate.removeClass('not-error');
-            $confirmAffiliate.addClass('error');
-        }
-        console.log($pass === $confirm.val());
-    })
-
-
 })
 
 $(document).ready(function(){
@@ -572,12 +557,13 @@ $(document).ready(function(){
     let $pass = $('#register_password');
     let $hide = $('#eye_close');
     let $show = $('#eye_open');
-    $hide.on('click', ()=>{
+    $(document).on('click', '#eye_close', ()=>{
+        console.log('asd')
         $show.removeClass('disabled');
         $hide.addClass('disabled');
         $pass.attr('type', 'password');
     });
-    $show.on('click', ()=>{
+    $(document).on('click', '#eye_open', ()=>{
         $hide.removeClass('disabled');
         $show.addClass('disabled');
         $pass.attr('type', 'text');

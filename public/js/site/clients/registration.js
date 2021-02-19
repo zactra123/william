@@ -84,63 +84,7 @@
 //
 //
 //
-//     $('#registration-form').validate({
-//         rules: {
-//             "full_name": {
-//                 required: true,
-//                 valid_full_name:true,
-//             },
-//             "phone_number": {
-//                 required: true
-//             },
-//             'ssn': {
-//
-//                 required: '#ein_id:blank'
-//
-//             },
-//             'ein': {
-//                 required: '#ssn_id:blank'
-//
-//             },
-//             "dob": {
-//                 required: true
-//             },
-//             "sex": {
-//                 required: true
-//             },
-//             "secret_question": {
-//                 required: true
-//             },
-//             "secret_answer": {
-//                 required: true
-//             },
-//             "email": {
-//                 required: true,
-//                 email: true
-//             },
-//             "password": {
-//                 required: true,
-//                 password_requirements: true
-//             },
-//             "password_confirmation": {
-//                 required: true,
-//                 equalTo: "#password"
-//             }
-//         },
-//         messages: {
-//             "password": 'Please use valid password format',
-//             "password_confirmation": {
-//                 equalTo: "Password confirmation doesn't match Password"
-//             }
-//         },
-//         errorPlacement: function(error, element) {
-//             if (element.attr("name") == "sex") {
-//                 error.insertAfter($(element).closest("div"));
-//             } else {
-//                 error.insertAfter(element);
-//             }
-//         }
-//     })
+//     $('#registration-form').validate()
 //
 //
 //     $('#client-registration-form').submit(function () {
@@ -158,13 +102,97 @@
 //     })
 // });
 
+var validationOptions = {
+        validClass: "not-error",
+        rules: {
+            "full_name": {
+                required: true,
+                valid_full_name:true,
+            },
+            "phone_number": {
+                required: true
+            },
+            'ssn': {
+                required: {
+                    depends: function(){
+                        return $('input[name="ein"]').val() == undefined || $('input[name="ein"]').val() == ''
+                    }
+                },
+                valid_length: {
+                    param: 11,
+                    depends: function(element) {
+                        return $('input[name="ssn"]').val() != ''
+                    }
+                }
 
-$(document).ready(function(){
-    $('.ssn').mask('000-00-0000')
-    $('.ein').mask('00-0000000')
-    $('.phone').mask('(000) 000-0000')
+            },
+            'ein': {
+                required: {
+                    depends: function(){
+                        return $('input[name="ssn"]').val() == undefined || !$('input[name="ssn"]').valid()
+                    }
+                },
+                valid_length: {
+                    param: 10,
+                    depends: function(element) {
+                        return  $('input[name="ein"]').val() != undefined && $('input[name="ein"]').val() != ''
+                    }
+                }
 
-})
+            },
+            "dob": {
+                required: true
+            },
+            "sex": {
+                required: true
+            },
+            "secret_question": {
+                required: true
+            },
+            "secret_answer": {
+                required: true
+            },
+            "email": {
+                required: true,
+                email: true
+            },
+            "password": {
+                required: true,
+                password_requirements: true
+            },
+            "password_confirmation": {
+                required: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            "password": 'Please use valid password format',
+            "password_confirmation": {
+                equalTo: "Password confirmation doesn't match Password"
+            }
+        },
+        errorPlacement: function(error, element) {
+            element.removeClass('not-error')
+        },
+    }
+
+$.validator.addMethod("password_requirements", function (value, element) {
+        var valid_length = !!value.match(/^(.{8,20})$/gm)
+        var upper_lower = !!value.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
+        var digit = !!value.match(/\d/gm)
+        var special = !!value.match(/\W|_/g)
+
+        return valid_length && upper_lower && digit && special
+            // && other_special && repeating && consecutive && spaces && !include_email
+    }, "Please pay attention on password requirements");
+
+$.validator.addMethod("valid_full_name", function (value, element) {
+        return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
+    }, "Please write your full name in this pattern first name middle name last name!!");
+
+$.validator.addMethod("valid_length", function (value, element, require_length) {
+    return value.length == require_length
+}, "This field is not valid!");
 
 $(document).ready(function(){
 
@@ -172,8 +200,16 @@ $(document).ready(function(){
     $('form.additional-reg').submit(function(e){
         e.preventDefault();
         $type = $("input[type='radio']:checked").val()
-        $(`.registration-form[data-type="${$type}"]`).removeClass("none")
-        $(`.registration-form:not([data-type="${$type}"])`).addClass("none")
+        $form = $(`[id="${$type}-registration-form"]`).html()
+        $(`.register_form`).html($form)
+
+        $('.ssn').mask('000-00-0000')
+        $('.ein').mask('00-0000000')
+        $('.phone').mask('(000) 000-0000')
+        //Validation Start
+        $('#register_form').validate(validationOptions)
+        //Validation End
+
 
         let $old_id = Number($(this).attr('data-id'));
         let $new_id = $old_id + 1;
@@ -207,4 +243,51 @@ $(document).ready(function(){
             },800)
         }
     });
+
+
+    $(document).on('focus keyup','#register_password', function(){
+        var $this = this;
+        $($this).popover({
+            html: true,
+            trigger: 'manual',
+            content: function () {
+                var default_class = 'fa-check-circle text-secondary',
+                    success_class = 'fa-check-circle text-success',
+                    failed_class = 'fa-minus-circle text-danger',
+                    password_requirements_template = $('#password-requirements').html(),
+                    password = $($this).val();
+
+                if (!password.length) {
+                    password_requirements = password_requirements_template
+                        .replace('{length-class}', default_class)
+                        .replace('{letters-class}', default_class)
+                        .replace('{digit-class}', default_class)
+                        .replace('{special-class}', default_class)
+                } else {
+                    valid_length = !!password.match(/^(.{8,20})$/gm)
+                    upper_lower = !!password.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
+                    digit = !!password.match(/\d/gm)
+                    special = !!password.match(/\W|_/g)
+
+                    password_requirements = password_requirements_template
+                        .replace('{length-class}', valid_length ? success_class : failed_class)
+                        .replace('{letters-class}', upper_lower ? success_class : failed_class)
+                        .replace('{digit-class}', digit ? success_class : failed_class)
+                        .replace('{special-class}', special ? success_class : failed_class)
+                }
+
+
+                return password_requirements
+            },
+            title: 'Password Requirements',
+            placement: (window.innerWidth <1000 ? 'bottom' : 'right')
+        })
+
+        $($this).popover('show')
+        $($this).popover('update')
+    })
+
+    $('#password').on('focusout', function(){
+        $(this).popover('hide')
+    })
 });
