@@ -299,7 +299,7 @@ $(document).ready(function(){
         $($this).popover('update')
     })
 
-    $('#password').on('focusout', function(){
+    $(document).on('focusout','#register_password', function(){
         $(this).popover('hide')
     })
 });
