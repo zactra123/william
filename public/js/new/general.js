@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    let $confirm = $('#register_password_confirm');
+    let $confirm = $('#client-registration .register_password_confirm');
     $confirm.on('input', function(){
-        let $pass = $('#register_password').val();
+        let $pass = $('#client-registration .register_password').val();
         if( $pass === $confirm.val() ){
             $confirm.removeClass('error');
             $confirm.addClass('not-error');
@@ -11,6 +11,21 @@ $(document).ready(function(){
         }
         console.log($pass === $confirm.val());
     })
+
+    let $confirmAffiliate = $('#affiliate-registration .register_password_confirm');
+    $confirmAffiliate.on('input', function(){
+        let $pass = $('#affiliate-registration .register_password').val();
+        if( $pass === $confirmAffiliate.val() ){
+            $confirmAffiliate.removeClass('error');
+            $confirmAffiliate.addClass('not-error');
+        } else {
+            $confirmAffiliate.removeClass('not-error');
+            $confirmAffiliate.addClass('error');
+        }
+        console.log($pass === $confirm.val());
+    })
+
+
 })
 
 $(document).ready(function(){
@@ -168,10 +183,12 @@ $(document).ready(function(){
         Valid($input, $val, $type, 'input');
         console.log('input');
     });
-    $('.register_form input[type="text"], #register_form input[type="tel"], #register_form input[type="email"], #register_form input#register_password').on('propertychange input', function(){
+    $('.register_form input[type="text"], .register_form input[type="tel"], .register_form input[type="email"], .register_form input.register_password').on('propertychange input', function(){
+        console.log('asd');
         $input = $(this);
         $val = $input.val();
         $type = $input.attr('type');
+        console.log('password')
         Valid($input, $val, $type, 'input');
     });
 });
@@ -192,19 +209,35 @@ $('form#login_form').on('submit', function(e){
 
 
 
-var $correct_tel = /^([+_0-9])+/;
-var $correct_name = /^(([a-zA-Zа-яА-Я]+[" "]?))+$/;
+var $correct_tel = /^([+_0-9()])+/;
+// var $correct_name = /^(([a-zA-Zа-яА-Я]+[" "]?))+$/;
+//es poxeci
+var $correct_name = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
 var $correct_mail = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+
+//es em avelacrel
+var $correct_full_name = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig;
+
+var $length = /^(.{8,20})$/gm;
+var $upperCase = /(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm;
+var $digit = /\d/gm;
+var $symbol = /\W|_/g;
 
 
 var $minLengthTel = 6;
 var $minLengthInput = 2;
+//es em avelacrel
+var $minLengthTelSSNEIN = 10;
+
 
 function Valid(input, val, type, validType ){
+
     this.input = input;
     this.val = val;
     this.type = type;
+    this.name = input.attr("name");
     this.validType = validType;
+
     switch(this.type){
         case 'tel':
             this.recVal = $correct_tel;
@@ -219,8 +252,17 @@ function Valid(input, val, type, validType ){
 
     // Vision validation on input
 
-    if( this.validType == "input" ){
 
+//es poxel em
+// else if ('password' == this.type){
+// if(this.val != ''){
+//     this.input.removeClass('error').addClass('not-error');
+// } else {
+//     this.input.removeClass('not-error').addClass('error');
+// }
+
+
+    if( this.validType == "input" ){
         // Remove Wordpress contact form error
         let $thisForm = this.input.parent('form');
         if( $thisForm.find('.wpcf7-response-output').length > 0 ){
@@ -230,8 +272,35 @@ function Valid(input, val, type, validType ){
         }
 
         console.log($thisForm.find('.error').length > 0)
-        if('tel' == this.type ){
-            if(this.val != '' && this.val.length > $minLengthTel && this.recVal.test(this.val)){
+
+        if( this.type == "text" && this.name == 'full_name'){
+            if(this.val != '' && this.val.length > $minLengthTel && this.$correct_full_name.test(this.val)){
+                this.input.siblings('.required').hide('fast', function(){$(this).remove();});
+                this.input.removeClass('error').addClass('not-error');
+                if( this.input.siblings('.wpcf7-not-valid-tip') ){this.input.siblings('.wpcf7-not-valid-tip').slideUp('fast');}
+            } else {
+                this.input.removeClass('not-error').addClass('error');
+            }
+
+        } else if ( this.type == "text" && (this.name == 'ssn' || this.name == 'ein')){
+            if(this.val != '' && this.val.length >= $minLengthTelSSNEIN){
+                this.input.siblings('.required').hide('fast', function(){$(this).remove();});
+                this.input.removeClass('error').addClass('not-error');
+                if( this.input.siblings('.wpcf7-not-valid-tip') ){this.input.siblings('.wpcf7-not-valid-tip').slideUp('fast');}
+            } else {
+                this.input.removeClass('not-error').addClass('error');
+            }
+
+        } else if (this.type == "text" && this.name == 'address' ){
+            if(this.val != '' && this.val.length >= $minLengthTelSSNEIN){
+                this.input.siblings('.required').hide('fast', function(){$(this).remove();});
+                this.input.removeClass('error').addClass('not-error');
+                if( this.input.siblings('.wpcf7-not-valid-tip') ){this.input.siblings('.wpcf7-not-valid-tip').slideUp('fast');}
+            } else {
+                this.input.removeClass('not-error').addClass('error');
+            }
+        }  else if(this.type =='tel' && this.name == 'phone_number'){
+            if(this.val != '' && this.val.length > $minLengthTel && this.$correct_tel.test(this.val)){
                 this.input.siblings('.required').hide('fast', function(){$(this).remove();});
                 this.input.removeClass('error').addClass('not-error');
                 if( this.input.siblings('.wpcf7-not-valid-tip') ){this.input.siblings('.wpcf7-not-valid-tip').slideUp('fast');}
@@ -246,12 +315,15 @@ function Valid(input, val, type, validType ){
             } else {
                 this.input.removeClass('not-error').addClass('error');
             }
-        }  else if ('password' == this.type){
-            if(this.val != ''){
+        }  else if (this.type == 'password'){
+            if(this.val != '' && (this.$length.test(this.val) && this.$upperCase.test(this.val)
+                && this.$digit.test(this.val) && this.$symbol.test(this.val))){
                 this.input.removeClass('error').addClass('not-error');
             } else {
                 this.input.removeClass('not-error').addClass('error');
             }
+
+
         } else if('radio' != this.type && 'checkbox' != this.type && 'file' != this.type && 'name' != this.type) {
             if(this.val != '' && this.val.length > $minLengthInput && this.recVal.test(this.val)){
                 this.input.siblings('.required').hide('fast', function(){$(this).remove();});

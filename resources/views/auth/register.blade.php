@@ -4,7 +4,7 @@
     <section class="register">
         <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
         <div class="register-form" data-id="1">
-            <h3 class="title">Add Client</h3>
+            <h3 class="title">Registration</h3>
             <div class="registration-stages">
                 <a class="registration-stage" data-id="1">
                     <div class="stage-img">
@@ -114,23 +114,32 @@
             </form>
 
             <div  data-id="2" class="register_form additional-reg none">
+
+                {{--broker registration form--}}
                 <div class="registration-form none" data-type="broker">
-                    <form >
-                        <input type="text" name="register_name" placeholder="Full name">
+                    <form id="client-registration"  method="post" action="{{ route('register') }}" autocomplete="off">
+                        @csrf
+                        <input type="hidden" name="role" class="form-control" value="client">
+
+                        <input type="text" name="full_name" placeholder="Full name">
                         <div class="register_or">
                             <label for="social_number" class="social_number">
-                                <input type="number" id="social_number" placeholder="Social Security Number">
+                                <input id="social_number" type="text" class="form-control ssn" name="ssn" value="{{ old('ssn') }}"  placeholder="Social Security Number">
                             </label>
                             <p>or</p>
                             <label for="ein_number" class="ein_number">
-                                <input type="number" id="ein_number" disabled placeholder="EIN Number">
+                                <input id="ein_number" type="text" class="form-control ein" name="ein" value="{{ old('ein') }}"  placeholder="EIN Number">
                             </label>
                         </div>
-                        <input type="text" name="register_address" placeholder="Full Address">
-                        <input type="tel" name="register_phone" placeholder="Phone Number">
-                        <input type="email" name="register_email" placeholder="E-Mail Address">
+                        <input type="text" name="address" placeholder="Full Address" value="{{ old('address') }}"  autocomplete="new-full_address">
+
+                        <input type="tel" class="form-control phone" name="phone_number" placeholder="Phone Number"  value="{{ old('phone_number') }}">
+
+                        <input type="email" name="email" placeholder="E-Mail Address">
+
                         <div class="password">
-                            <input id="register_password" type="password" name="register_password" placeholder="Password">
+
+                            <input class="register_password" type="password" name="password" placeholder="Password">
                             <div id="eye_open">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z"/>
@@ -142,25 +151,36 @@
                                 </svg>
                             </div>
                         </div>
-                        <input id="register_password_confirm" type="password" name="register_confirm_password" placeholder="Confirm Password">
-                        <input type="text" name="register_question" placeholder="Choose secret question">
-                        <select>
-                            <option selected disabled>Choose secret question</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                        <input class="register_password_confirm" type="password" name="password_confirmation" placeholder="Confirm Password">
+                        <select class="form-control" name="secret_questions_id" id="secret_question">
+                            <option disabled="disabled" selected="selected">Choose Secret Question</option>
+                            @foreach($secrets as $value)
+                                <option value="{{$value->id}}">{{$value->question}}</option>
+                            @endforeach
+                            <option value="other">
+                                Your Own question
+                            </option>
                         </select>
+                        <div class="none" id="custom-secret-question">
+                            <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
+                        </div>
+                        <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                        @error('secret_answer')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                         <div class="basic-button">
                             <input class="login" type="submit" value="Register" name="">
                         </div>
                     </form>
-
                     <div class="login-social">
-                        <a class="login-facebook" href="#" target="_blank" title="facebook">
+                        <a class="login-facebook" href="{{route('facebook.login', ['users'=>'affiliate'])}}" target="_blank" title="facebook">
                             <svg id="Bold" fill="#FFFFFF" enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m15.997 3.985h2.191v-3.816c-.378-.052-1.678-.169-3.192-.169-3.159 0-5.323 1.987-5.323 5.639v3.361h-3.486v4.266h3.486v10.734h4.274v-10.733h3.345l.531-4.266h-3.877v-2.939c.001-1.233.333-2.077 2.051-2.077z"/></svg>
                             Register with Facebook
                         </a>
-                        <a class="login-google" href="#" target="_blank" title="google">
+                        <a class="login-google"href="{{route('google.login', ['users'=>'affiliate'])}}" target="_blank" title="google">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                         <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256
@@ -181,14 +201,21 @@
                     </div>
                 </div>
 
+
+
+
+
+                {{--client registration form--}}
                 <div class="registration-form" data-type="client">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form id="affilate-registration" method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <input type="hidden" name="role" class="form-control" value="client">
                         <input type="text" name="full_name" placeholder="Full name">
-                        <label for="social_number" class="social_number">
-                            <input type="number" id="social_number" placeholder="Social Security Number">
-                        </label>
-                        <input type="text" name="register_address" placeholder="Full Address">
-                        <input type="tel" name="phone_number" placeholder="Phone Number">
+{{--                        <label for="social_number" class="social_number">--}}
+                            <input type="text" class="ssn" placeholder="Social Security Number">
+{{--                        </label>--}}
+                        <input type="text" name="address" placeholder="Full Address">
+                        <input type="tel" class="phone " name="phone_number" placeholder="Phone Number">
                         <input type="email" name="email" placeholder="E-Mail Address">
                         <input type="text" name="referred_by" placeholder="Referred By (if any)">
                         <select name="sex" id="gender">
@@ -198,7 +225,7 @@
                             <option value="O">Non-Binary</option>
                         </select>
                         <div class="password">
-                            <input id="register_password" type="password" name="password" placeholder="Password" readonly
+                            <input class="register_password" type="password" name="password" placeholder="Password" readonly
                                    onfocus="this.removeAttribute('readonly');">
                             <div id="eye_open">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -211,25 +238,38 @@
                                 </svg>
                             </div>
                         </div>
-                        <input id="register_password_confirm" type="password" name="password_confirmation" placeholder="Confirm Password">
+                        <input class="register_password_confirm" type="password" name="password_confirmation" placeholder="Confirm Password">
                         <input type="text" name="register_question" placeholder="Choose secret question">
-                        <select>
-                            <option selected disabled>Choose secret question</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+
+                        <select class="form-control" name="secret_questions_id" id="secret_question">
+                            <option disabled="disabled" selected="selected">Choose Secret Question</option>
+                            @foreach($secrets as $value)
+                                <option value="{{$value->id}}">{{$value->question}}</option>
+                            @endforeach
+                            <option value="other">
+                                Your Own question
+                            </option>
                         </select>
+                        <div class="none" id="custom-secret-question">
+                            <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
+                        </div>
+                        <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+                        @error('secret_answer')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                         <div class="basic-button">
                             <input class="login" type="submit" value="Register" name="">
                         </div>
                     </form>
-
                     <div class="login-social">
-                        <a class="login-facebook" href="#" target="_blank" title="facebook">
+                        <a class="login-facebook" href="{{route('facebook.login', ['users'=>'client'])}}" target="_blank" title="facebook">
                             <svg id="Bold" fill="#FFFFFF" enable-background="new 0 0 24 24" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m15.997 3.985h2.191v-3.816c-.378-.052-1.678-.169-3.192-.169-3.159 0-5.323 1.987-5.323 5.639v3.361h-3.486v4.266h3.486v10.734h4.274v-10.733h3.345l.531-4.266h-3.877v-2.939c.001-1.233.333-2.077 2.051-2.077z"/></svg>
                             Log in with Facebook
                         </a>
-                        <a class="login-google" href="#" target="_blank" title="google">
+                        <a class="login-google" href="{{route('google.login', ['users'=>'client'])}}" target="_blank" title="google">
                             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                         <path style="fill:#FBBB00;" d="M113.47,309.408L95.648,375.94l-65.139,1.378C11.042,341.211,0,299.9,0,256
@@ -261,5 +301,17 @@
 
 @section('scripts')
     <script src="{{ asset('js/site/clients/registration.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script id="password-requirements" type="text/html">
+        <div>
+            <ul>
+                <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
+                <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
+                <li><i class="fa {digit-class}"></i> Must contain at least one number digit</li>
+                <li><i class="fa {special-class}"></i> Must contain at least one special characters</li>
+            </ul>
+        </div>
+    </script>
+
 @endsection
 

@@ -158,7 +158,16 @@
 //     })
 // });
 
+
 $(document).ready(function(){
+    $('.ssn').mask('000-00-0000')
+    $('.ein').mask('00-0000000')
+    $('.phone').mask('(000) 000-0000')
+
+})
+
+$(document).ready(function(){
+
     let $type = 'client';
     $('form.additional-reg').submit(function(e){
         e.preventDefault();
