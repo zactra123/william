@@ -211,6 +211,18 @@ $(document).ready(function(){
         //Validation End
 
 
+        $(document).on('change', '#secret_question', function(){
+            if ($(this).val() == "other") {
+                $("#custom-secret-question").removeClass('none')
+            } else {
+                $("#custom-secret-question").addClass('none')
+            }
+        })
+
+        $(document).bind("cut copy paste", '#register_password',function(e) {
+            e.preventDefault();
+        });
+
         let $old_id = Number($(this).attr('data-id'));
         let $new_id = $old_id + 1;
         $(`.additional-reg[data-id="${$old_id}"]`).addClass('none').removeClass('active').hide();

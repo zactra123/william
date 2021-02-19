@@ -554,19 +554,20 @@ $(document).ready(function(){
     }
 });
 $(document).ready(function(){
-    let $pass = $('#register_password');
-    let $hide = $('#eye_close');
-    let $show = $('#eye_open');
+    // let $pass = $('#register_password');
+    // let $hide = $('#eye_close');
+    // let $show = $('#eye_open');
     $(document).on('click', '#eye_close', ()=>{
         console.log('asd')
-        $show.removeClass('disabled');
-        $hide.addClass('disabled');
-        $pass.attr('type', 'password');
+        $('#eye_open').removeClass('disabled');
+        $('#eye_close').addClass('disabled');
+        $('#register_password').attr('type', 'password');
     });
     $(document).on('click', '#eye_open', ()=>{
-        $hide.removeClass('disabled');
-        $show.addClass('disabled');
-        $pass.attr('type', 'text');
+        console.log('asdasd')
+        $('#eye_close').removeClass('disabled');
+        $('#eye_open').addClass('disabled');
+        $('#register_password').attr('type', 'text');
     });
 });
 

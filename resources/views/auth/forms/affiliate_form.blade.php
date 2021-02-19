@@ -45,10 +45,10 @@
                 Your Own question
             </option>
         </select>
-        <div class="none" id="custom-secret-question">
-            <input name="own_secter_question" type="text" class="form-control" placeholder="OWN QUESTION">
+        <div class="none w-100" id="custom-secret-question">
+            <input name="own_secter_question" type="text" class="form-control" placeholder="OWN question">
         </div>
-        <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" placeholder="PLEASE ANSWER IN SECRET QUESTION">
+        <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" placeholder="Please answer in secret question">
         @error('secret_answer')
         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
