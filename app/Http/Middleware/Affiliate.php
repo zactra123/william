@@ -52,6 +52,10 @@ class Affiliate
                 return redirect()->to('affiliate/important-information');
             }
 
+            if(auth()->user()->clientDetails->registration_steps == 'registered'){
+                return redirect()->to('email/verify');
+            }
+
         }
         return $next($request);
 

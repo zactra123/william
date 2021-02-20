@@ -1,7 +1,7 @@
 <div class="registration-form" data-type="broker">
     <form id="register_form"  method="post" action="{{ route('register') }}" autocomplete="off">
         @csrf
-        <input type="hidden" name="role" class="form-control" value="client">
+        <input type="hidden" name="role" class="form-control" value="affiliate">
 
         <input type="text" name="full_name" placeholder="Full name">
         <div class="register_or">
@@ -34,7 +34,7 @@
                 </svg>
             </div>
         </div>
-        <input class="register_password_confirm" type="password" name="password_confirmation" placeholder="Confirm Password" readonly
+        <input id="register_password_confirm" type="password" name="password_confirmation" placeholder="Confirm Password" readonly
                onfocus="this.removeAttribute('readonly');">
         <select class="form-control" name="secret_questions_id" id="secret_question">
             <option disabled="disabled" selected="selected">Choose Secret Question</option>

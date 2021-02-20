@@ -56,6 +56,9 @@ class VerificationController extends Controller
             if ($user->role == "client") {
                 $user->clientDetails->update(["registration_steps" => "documents"]);
             }
+            if ($user->role == "affiliate") {
+                $user->clientDetails->update(["registration_steps" => "finished"]);
+            }
         }
 
         Auth::login($user, true);

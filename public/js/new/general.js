@@ -558,13 +558,11 @@ $(document).ready(function(){
     // let $hide = $('#eye_close');
     // let $show = $('#eye_open');
     $(document).on('click', '#eye_close', ()=>{
-        console.log('asd')
         $('#eye_open').removeClass('disabled');
         $('#eye_close').addClass('disabled');
         $('#register_password').attr('type', 'password');
     });
     $(document).on('click', '#eye_open', ()=>{
-        console.log('asdasd')
         $('#eye_close').removeClass('disabled');
         $('#eye_open').addClass('disabled');
         $('#register_password').attr('type', 'text');

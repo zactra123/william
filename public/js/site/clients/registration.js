@@ -162,7 +162,7 @@ var validationOptions = {
             },
             "password_confirmation": {
                 required: true,
-                equalTo: "#password"
+                equalTo: "#register_password_confirm"
             }
         },
         messages: {
