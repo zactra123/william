@@ -150,8 +150,8 @@ class BankLogo extends Model
                 2 => "FAMILY SUPPORT",
         ],
         40 =>[
-            1 => "NON-BANK",
-            2 => "BANK"
+            1 => "NON-BANK SBA LENDER",
+            2 => "BANK-SBA LENDER"
         ],
         44 =>[
                 1 => "3RD PARTY CA",

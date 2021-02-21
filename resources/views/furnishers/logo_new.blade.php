@@ -183,6 +183,19 @@
                 location.href = url.toString()
             })
 
+            $('.go-to-page').keypress(function (e) {
+                var key = e.which;
+                if(key == 13){
+                    var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
+                    let url = new URL(window.location.href);
+                    let params = new URLSearchParams(url.search.slice(1));
+                    params.append('page', page);
+                    url.search = params
+                    location.href = url.toString()
+                }
+            });
+
+
             $('[data-toggle="popover"]').popover({
                 html:true,
                 title: "ARE YOU SURE?",

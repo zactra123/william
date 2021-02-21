@@ -199,7 +199,7 @@ class BanksController extends Controller
             return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
         }
 
-        return redirect()->route('admins.bank.show', ['types'=> $bank->type??'all']);
+        return redirect()->route('admins.bank.show', ['types'=> [$bank->type] ??'all']);
     }
 
 

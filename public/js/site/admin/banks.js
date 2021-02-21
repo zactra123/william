@@ -177,8 +177,7 @@ $(document).ready(function($) {
             $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
         }
 
-
-        if([14, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType))){
+        if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType))){
             $form.find('.parent').removeClass("hidden")
         }else {
             $form.find('.parent').addClass("hidden")
@@ -187,6 +186,23 @@ $(document).ready(function($) {
         }
 
     });
+
+    $(document).on('click','.bank_sub_type_append', function(){
+        $form = $(this).parents('form')
+        var bankType = $form.find('.bank-type').val();
+
+        console.log( $("input[type='checkbox']:checked").val())
+        if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
+            $('input[name="locationthemes"]:checked').each(function() {
+                console.log(this.value);
+            });
+            $form.find('.parent').removeClass("hidden")
+        } else {
+            $form.find('.parent').addClass("hidden")
+            $(".autocomplete-bank").val("")
+            $(".autocomplete-bank").trigger('keydown')
+        }
+    })
 
     $(document).on('change', '.bank_sub_type_append input', function(){
         var $form = $(this).parents('form'),

@@ -187,7 +187,6 @@
                                             </div>
                                         </div>
 
-
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -198,7 +197,7 @@
 
 
                                 </div>
-                                <div class="row parent {{in_array($bank->type, [14, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30]) ? "": 'hidden'}}">
+                                <div class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
                                     <div class="col-md-3">
 
                                     </div>
