@@ -130,19 +130,35 @@
                         <ul class="nav-block">
                             @if (Route::has('login'))
                                 @auth
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span>
+                                        </a>
 
-                                    <li class="dropdown menu-item sign-hide" ><a href="#" onclick="location.href='{{ url('/home') }}'" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>
-                                        <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">
-                                            <li class="menu-item sign-hide"><a href="{{ route('logout') }}"
-                                                                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                    LOG OUT  <i class="fa fa-power-off"></i></a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item"
+                                               href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                                LOG OUT
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </div>
+{{--                                    <li class="dropdown nav-item sign-hide" ><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>--}}
+{{--                                        <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">--}}
+{{--                                            <li class="menu-item sign-hide"><a href="{{ route('logout') }}"--}}
+{{--                                                                               onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                                    LOG OUT  <i class="fa fa-power-off"></i></a>--}}
+{{--                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--                                                    @csrf--}}
+{{--                                                </form>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
 
                                 @else
                                     <ul class="nav-block">

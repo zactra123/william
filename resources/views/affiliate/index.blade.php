@@ -69,6 +69,7 @@
                 </div>
             </div>
         @endif
+
         <div class=" affiliate-dashboard w-100  @if(Auth::user()->clientDetails->registration_steps != 'finished') d-none @endif" >
             <div class="container">
                 <div class="page-content">

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $('section').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
+})
+
+$(document).ready(function(){
     let $confirm = $('.register_password_confirm');
     $confirm.on('input', function(){
         let $pass = $('.register_password').val();
@@ -7,6 +11,7 @@ $(document).ready(function(){
             $confirm.addClass('not-error');
         } else {
             $confirm.removeClass('not-error');
+            $confirm.addClass('error');
             $confirm.addClass('error');
         }
         console.log($pass === $confirm.val());
