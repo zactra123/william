@@ -114,7 +114,7 @@ class AffiliatesController extends Controller
             $affiliateDetails['state'] = $splitAddress['state'];
             $affiliateDetails['zip'] =$splitAddress['zip'];
             $affiliateDetails['address'] = strtoupper($affiliate['address']);
-            $affiliateDetails['registration_steps'] = "finished";
+            $affiliateDetails['registration_steps'] = "registered";
 
             User::where('id', $userId)->update([
                 'first_name' => $affiliate["first_name"],
@@ -135,6 +135,7 @@ class AffiliatesController extends Controller
                 'business_name'=>$affiliate["business_name"],
                 'ein'=>$affiliate["ein"],
                 'ssn'=>$affiliate["ssn"],
+                'registration_steps' => $affiliateDetails['registration_steps']
             ]);
 
             return redirect()->to('/affiliate');
