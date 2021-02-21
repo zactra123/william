@@ -26,6 +26,7 @@ use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use App\Todo;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Auth;
@@ -115,6 +116,7 @@ class ClientDetailsController extends Controller
     public function create(Request $request)
     {
         $client = Auth::user();
+        $secrets = DB::table('secret_questions')->whereRaw("user_id IS NULL OR user_id = $client->id")->select('question', 'id')->get();
 
         if ($client->clientAttachments->whereIn("category", ["DL", "SS"])->count() == 2) {
             if ($request->skip) {
@@ -122,7 +124,7 @@ class ClientDetailsController extends Controller
             }
         }
         $uploadUserDetail = UploadClientDetail::where('user_id', $client->id)->first();
-        return view('client_details.create', compact('client', 'uploadUserDetail'));
+        return view('client_details.create', compact('client', 'uploadUserDetail', 'secrets'));
     }
 
     public function store(Request $request)
@@ -248,22 +250,29 @@ class ClientDetailsController extends Controller
 
     public function credentialsStore(Request $request)
     {
+        try {
 
-        $userId = Auth::user()->id;
-        $data = $request['client'];
-        $data['user_id'] = $userId;
+            $userId = Auth::user()->id;
+            $data = $request['client'];
+            $data['user_id'] = $userId;
 
-        if (empty(Credential::where('user_id', $userId)->first())) {
-            Credential::create($data);
-        } else {
-            Credential::where('user_id', $userId)->update($data);
+            if (empty(Credential::where('user_id', $userId)->first())) {
+                Credential::create($data);
+            } else {
+                Credential::where('user_id', $userId)->update($data);
+            }
+            $clientDetails = ClientDetail::where('user_id', $userId)->first();
+            if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
+                $clientDetails->update(["registration_steps" => "review"]);
+            }
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            if ($request->is('ajax')) {
+                return response()->json(['msg' => $e->getMessage()], 400);
+            }
         }
-        $clientDetails = ClientDetail::where('user_id', $userId)->first();
-        if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
-            $clientDetails->update(["registration_steps" => "review"]);
-        }
-
         return redirect('client/details');
+
     }
 
     public function addDlSs()
@@ -276,183 +285,115 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData, ClientDetailsNewData $clientDetailsNewData)
     {
-        $client = Auth::user()->id;
-        if (empty($request['driver_license']) || empty($request['social_security'])) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Please upload both files');
-        }
+        try {
+            $client = Auth::user()->id;
+            if (empty($request['driver_license']) || empty($request['social_security'])) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'Please upload both files');
+            }
 
-        $imagesDriverLicense = $request->file("driver_license");
-        $imagesSocialSecurity = $request->file("social_security");
+            $imagesDriverLicense = $request->file("driver_license");
+            $imagesSocialSecurity = $request->file("social_security");
 
-        $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-        $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
-        $socialSecurityExtension = strtolower($imagesSocialSecurity->getClientOriginalExtension());
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $driverLicenseExtension = strtolower($imagesDriverLicense->getClientOriginalExtension());
+            $socialSecurityExtension = strtolower($imagesSocialSecurity->getClientOriginalExtension());
 
-        if (!in_array($driverLicenseExtension, $imageExtension) || !in_array($socialSecurityExtension, $imageExtension)) {
-            return redirect()->back()->with('error', 'Please upload the correct file format (PDF, PNG, JPG)');
-        }
+            if (!in_array($driverLicenseExtension, $imageExtension)) {
+                throw ValidationException::withMessages(['driver_license'=> 'Please upload the correct file format (PDF, PNG, JPG)']);
+            }
 
-        $path = "files/client/details/image/" . $client . "/";
+            if(!in_array($socialSecurityExtension, $imageExtension)) {
+                throw ValidationException::withMessages(['social_security'=> 'Please upload the correct file format (PDF, PNG, JPG)']);
+            }
 
-        $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
-        $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
+            $path = "files/client/details/image/" . $client . "/";
 
-        $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
-        $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
+            $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
+            $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
 
-        $pathDriverLicense = '/' . $path . $nameDriverLicense;
-        $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
+            $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
+            $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
+
+            $pathDriverLicense = '/' . $path . $nameDriverLicense;
+            $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
 
 
 
-        $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
-        $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
+            $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
+            $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
 
-        if(isset($resultDriverLicense['error']) && isset($resultSocialSecurity['error'])){
-             $error = [
-                 'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect',
-                 'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
-             ];
-            return redirect()->back()->withErrors($error);
-        }elseif(isset($resultDriverLicense['error'])){
-            $error = [
-                'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect'
+            if(isset($resultDriverLicense['error']) && isset($resultSocialSecurity['error'])){
+                 $error = [
+                     'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect',
+                     'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
+                 ];
+                throw ValidationException::withMessages($error);
+            }elseif(isset($resultDriverLicense['error'])){
+                $error = [
+                    'driver_license'=>'Your uploaded Driver License/ID is not readable or incorrect'
+                ];
+                throw ValidationException::withMessages($error);
+            }elseif(isset($resultSocialSecurity['error'])){
+                $error = [
+                    'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
+                ];
+
+                throw ValidationException::withMessages($error);
+            }
+
+            $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
+            $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);
+            $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
+            $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
+            $clientData['user_id'] = $client;
+
+            $clientAttachmentData = [
+                [
+                    'user_id' => $client,
+                    'path' => $pathDriverLicense,
+                    'file_name' => $nameDriverLicense,
+                    'category' => 'DL',
+                    'type' => $driverLicenseExtension
+                ],
+                [
+                    'user_id' => $client,
+                    'path' => $pathSocialSecurity,
+                    'file_name' => $nameSocialSecurity,
+                    'category' => 'SS',
+                    'type' => $socialSecurityExtension
+                ]
             ];
-            return redirect()->back()->withErrors($error);
-        }elseif(isset($resultSocialSecurity['error'])){
-            $error = [
-                'social_security'=> 'Your uploaded Social Security Card is not readable or incorrect'
-            ];
-            return redirect()->back()->withErrors($error);
+
+            if (empty(ClientAttachment::where('user_id', $client)->first())) {
+                ClientAttachment::insert($clientAttachmentData);
+            } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'DL')->first())) {
+
+                ClientAttachment::insert($clientAttachmentData[0]);
+                ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
+            } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'SS')->first())) {
+
+                ClientAttachment::insert($clientAttachmentData[1]);
+                ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
+            } else {
+                ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
+                ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
+
+            }
+            $c = Auth::user();
+
+            if ($c->clientDetails->registration_steps == 'documents') {
+                $c->clientDetails->update(['registration_steps' => 'credentials']);
+            }
+
+
+            $upload = UploadClientDetail::create(array_merge($user, $clientData));
+            return response()->json(['status' => 'success', 'uploadedData'=> $upload->toArray()]);
+
+        } catch (\Exception $e) {
+            return response()->json(['msg' => $e->getMessage()], 400);
         }
-
-        $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
-        $clientData =  Arr::except($resultDriverLicense, ['first_name', 'last_name']);
-        $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
-        $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
-        $clientData['user_id'] = $client;
-
-        $clientAttachmentData = [
-            [
-                'user_id' => $client,
-                'path' => $pathDriverLicense,
-                'file_name' => $nameDriverLicense,
-                'category' => 'DL',
-                'type' => $driverLicenseExtension
-            ],
-            [
-                'user_id' => $client,
-                'path' => $pathSocialSecurity,
-                'file_name' => $nameSocialSecurity,
-                'category' => 'SS',
-                'type' => $socialSecurityExtension
-            ]
-        ];
-
-        if (empty(ClientAttachment::where('user_id', $client)->first())) {
-            ClientAttachment::insert($clientAttachmentData);
-        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'DL')->first())) {
-
-            ClientAttachment::insert($clientAttachmentData[0]);
-            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
-        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'SS')->first())) {
-
-            ClientAttachment::insert($clientAttachmentData[1]);
-            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
-        } else {
-            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
-            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
-
-        }
-        $c = Auth::user();
-
-//        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
-//            $request->session()->put('bad',true);
-//        }elseif ($c->clientDetails->registration_steps =='documents') {
-//            $c->clientDetails->update(['registration_steps'=>'credentials']);
-//        }
-
-        if ($c->clientDetails->registration_steps == 'documents') {
-            $c->clientDetails->update(['registration_steps' => 'credentials']);
-        }
-//        $request->session()->put('bad',true);
-
-
-        if (empty(ClientDetail::where('user_id', $client)->first())) {
-            User::where('id', $client)->update($user);
-            ClientDetail::create($clientData);
-        } else {
-            UploadClientDetail::insert(array_merge($user, $clientData));
-        }
-        return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
-
-
-//        $resultDriverLicense = $clientDetailsData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
-//        $resultSocialSecurity = $clientDetailsData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
-
-//        $user = Arr::only($resultDriverLicense, ['first_name', 'last_name']);
-//        $clientData = $resultDriverLicense;
-//        $clientData['ssn'] = isset($resultSocialSecurity['ssn']) ? $resultSocialSecurity['ssn'] : '';
-//        $clientData["dob"] = isset($clientData['dob']) ? date('Y-m-d', strtotime($clientData['dob'])) : '';
-//        $clientData['user_id'] = $client;
-//
-//
-//        $clientAttachmentData = [
-//            [
-//                'user_id' => $client,
-//                'path' => $pathDriverLicense,
-//                'file_name' => $nameDriverLicense,
-//                'category' => 'DL',
-//                'type' => $driverLicenseExtension
-//            ],
-//            [
-//                'user_id' => $client,
-//                'path' => $pathSocialSecurity,
-//                'file_name' => $nameSocialSecurity,
-//                'category' => 'SS',
-//                'type' => $socialSecurityExtension
-//            ]
-//        ];
-//
-//        if (empty(ClientAttachment::where('user_id', $client)->first())) {
-//            ClientAttachment::insert($clientAttachmentData);
-//        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'DL')->first())) {
-//
-//            ClientAttachment::insert($clientAttachmentData[0]);
-//            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
-//        } elseif (empty(ClientAttachment::where('user_id', $client)->where('category', 'SS')->first())) {
-//
-//            ClientAttachment::insert($clientAttachmentData[1]);
-//            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
-//        } else {
-//            ClientAttachment::where('user_id', $client)->where('category', 'DL')->update($clientAttachmentData[0]);
-//            ClientAttachment::where('user_id', $client)->where('category', 'SS')->update($clientAttachmentData[1]);
-//
-//        }
-//        $c = Auth::user();
-//
-//        if(count($resultDriverLicense) != 9 || count($resultSocialSecurity) != 3){
-//            $request->session()->put('bad',true);
-//        }elseif ($c->clientDetails->registration_steps =='documents') {
-//            $c->clientDetails->update(['registration_steps'=>'credentials']);
-//        }
-//
-//        if ($c->clientDetails->registration_steps == 'documents') {
-//            $c->clientDetails->update(['registration_steps' => 'credentials']);
-//        }
-//        $request->session()->put('bad',true);
-
-
-//        if (empty(ClientDetail::where('user_id', $client)->first())) {
-//            User::where('id', $client)->update($user);
-//            ClientDetail::create($clientData);
-//        } else {
-//            UploadClientDetail::insert(array_merge($user, $clientData));
-//        }
-//        return redirect(route('client.details.edit', compact('client')))->with('success', "Please check your data");
-//
     }
 
     public function updateDriver(Request $request)
@@ -558,16 +499,8 @@ class ClientDetailsController extends Controller
 
     public function importantInformation(Request $request)
     {
-        $userId = Auth::user()->id;
-        if ($request->method() == "GET") {
-
-            $client = User::where('id', $userId)->first();
-
-            $secrets = DB::table('secret_questions')->select('question', 'id')->get();
-
-            return view('client_details.important-information', compact('client', 'secrets'));
-
-        } elseif ($request->method() == "POST") {
+        try {
+            $userId = Auth::user()->id;
 
             $clientData = $request->except('_token');
 
@@ -587,8 +520,9 @@ class ClientDetailsController extends Controller
                 'sex' => $clientData["sex"],
                 'registration_steps' => 'documents'
             ]);
-
-            return redirect()->to('/client/registration-steps');
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
         }
     }
 

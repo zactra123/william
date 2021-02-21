@@ -586,16 +586,23 @@ $(document).ready(function(){
     $id_social.change(function(){
         readURL(this,$social_img);
     });
+
+    let fileTypes = ['jpg', 'jpeg', 'png'];
+
     function readURL(input, image) {
+        var extension = input.files[0].name.split('.').pop().toLowerCase(),
+            isSuccess = fileTypes.indexOf(extension) > -1;
+        if(!isSuccess) {
+            return false
+        }
+
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function (e) {
                 image.attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
-
 });
 

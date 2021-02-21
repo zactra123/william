@@ -203,25 +203,10 @@ $(document).ready(function(){
         $form = $(`[id="${$type}-registration-form"]`).html()
         $(`.register_form`).html($form)
 
-        $('.ssn').mask('000-00-0000')
-        $('.ein').mask('00-0000000')
-        $('.phone').mask('(000) 000-0000')
+
         //Validation Start
         $('#register_form').validate(validationOptions)
         //Validation End
-
-
-        $(document).on('change', '#secret_question', function(){
-            if ($(this).val() == "other") {
-                $("#custom-secret-question").removeClass('none')
-            } else {
-                $("#custom-secret-question").addClass('none')
-            }
-        })
-
-        $(document).bind("cut copy paste", '#register_password',function(e) {
-            e.preventDefault();
-        });
 
         let $old_id = Number($(this).attr('data-id'));
         let $new_id = $old_id + 1;
@@ -233,6 +218,22 @@ $(document).ready(function(){
         $('html, body').animate({
             scrollTop: ($('.register-form').offset().top - 50)
         }, 1000);
+    });
+
+    $('.ssn').mask('000-00-0000')
+    $('.ein').mask('00-0000000')
+    $('.phone').mask('(000) 000-0000')
+
+    $(document).on('change', '#secret_question', function(){
+        if ($(this).val() == "other") {
+            $("#custom-secret-question").removeClass('none')
+        } else {
+            $("#custom-secret-question").addClass('none')
+        }
+    })
+
+    $(document).bind("cut copy paste", '#register_password',function(e) {
+        e.preventDefault();
     });
 
     let $register_type = $('input[name="register_type"]');

@@ -73,13 +73,13 @@ class SocialAuthController extends Controller
                 ClientDetail::create([
                     'user_id' => $user->id,
                     'dob' => $facebookUser->user['birthday'],
-                    'registration_steps' => 'documents'
+                    'registration_steps' => 'important_information'
 
                 ]);
             }else{
                 ClientDetail::create([
                     'user_id' => $user->id,
-                    'registration_steps' => 'documents'
+                    'registration_steps' => 'important_information'
                 ]);
             }
 

@@ -285,7 +285,6 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
 Route::group(['prefix' =>'client'], function() {
 
-    Route::get('important-information', 'ClientDetailsController@importantInformation');
     Route::post('important-information', 'ClientDetailsController@importantInformation')->name('client.important');
 
     Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
