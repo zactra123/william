@@ -240,6 +240,8 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('important-information', 'AffiliatesController@importantInformation');
     Route::post('important-information', 'AffiliatesController@importantInformation')->name('affiliate.important');
+    Route::get('check-as-finished', 'AffiliatesController@checkAsFinished');
+
 
     Route::get('create-client', 'AffiliatesController@createClient')->name('affiliate.create.client');
     Route::post('store-client', 'AffiliatesController@storeClient')->name('affiliate.store.client');

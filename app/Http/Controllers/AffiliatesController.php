@@ -62,9 +62,25 @@ class AffiliatesController extends Controller
      */
     public function index()
     {
+
         $affiliateId = Auth::user()->id;
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
         return view('affiliate.index', compact('clients'));
+    }
+
+    /**
+     *  Check current user as completely finished registration steps
+     *  return AJAX response
+     */
+    public function checkAsFinished()
+    {
+        try {
+            Auth::user()->clientDetails()->update(['registration_steps' => 'finished']);
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
+        }
+
     }
 
 

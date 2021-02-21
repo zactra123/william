@@ -1,11 +1,6 @@
 @extends('layouts.layout1')
 
-
-
-
 @section('content')
-
-
     <section class="register">
         <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
         <div class="register-form" data-id="1">
@@ -37,6 +32,7 @@
                         <h3 class="stage-title">Registration</h3>
                     </div>
                 </a>
+
                 <a class="registration-stage" data-id="3" data-type="only_broker">
                     <div class="stage-img">
                         <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -69,6 +65,7 @@
                         <h3 class="stage-title">Reviews</h3>
                     </div>
                 </a>
+
                 <a class="registration-stage" data-id="finish">
                     <div class="stage-img">
                         <svg width="37" height="37" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +116,7 @@
 
         @include('helpers.chat')
     </section>
+@endsection
 
 @section('scripts')
     <script>

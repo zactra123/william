@@ -420,7 +420,6 @@ function ValidOnSubmit ( $form, e ){
         $currentForm.find('.modal-submit-btn').removeClass('error');
 
         let $data = $currentForm.serializeArray();
-        console.log($('.kitchen-basic-file-input').prop('files'));
     }
 
 }
