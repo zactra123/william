@@ -1,8 +1,7 @@
 <form id="register_form" data-id="2" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
 
 @csrf
-<input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Client Email" required autocomplete="email">
-<label class="email-error none">The email has already been taken.</label>
+    <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Client Email" required autocomplete="email">
     <input id="phone_number" class="phone" type="text" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : null}}"  required autocomplete="phone_number" placeholder="Phone Number">
 
     {{ Form::select('sex', [''=>'Gender','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], null , ['class'=>'form-control', 'id'=>'gender']) }}

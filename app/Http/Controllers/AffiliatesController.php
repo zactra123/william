@@ -153,7 +153,6 @@ class AffiliatesController extends Controller
         if($request->client){
             $client = User::whereId($request->client)->first();
         }
-        dd($client);
 
         $secrets=DB::table('secret_questions')->where('user_id', null)->select('question','id')->get();
         return view('affiliate.client-create', compact('secrets', 'client'));
@@ -179,7 +178,7 @@ class AffiliatesController extends Controller
 
             if ($validation->fails()){
                 if ( $request->ajax()) {
-                    return response()->json(['status' => 'success', 'validation'=>$validation->messages()]);
+                    throw ValidationException::withMessages($validation->messages()->toArray());
                 }
                 return redirect()->back()
                     ->withInput()
@@ -228,25 +227,6 @@ class AffiliatesController extends Controller
 
         return redirect(route('affiliate.client.document', ['client'=>$userId]));
 
-    }
-
-
-    /**
-     * @return \Illuminate\View\View "affiliate.client-create-dl-ss" with @clients and @step
-     * affiliate add clients document (driver license and social security card )
-     */
-    public function addClientDocumnet($client)
-    {
-        $affiliateId = Auth::user()->id;
-        $a = Affiliate::where('affiliate_id', $affiliateId)
-            ->where('user_id', $client)->first();
-
-        if(empty($a)){
-            return back();
-        }
-        $clients = User::where('id', $client)->first();
-        $step = $clients->clientDetails->registration_steps;
-        return view('affiliate.client-create-dl-ss', compact('clients', 'step'));
     }
 
     /**
@@ -394,26 +374,6 @@ class AffiliatesController extends Controller
             }
         }
         return redirect(route('affiliate.client.credentials', compact('clientId')))->with('success', "Please check your data");
-
-    }
-
-    /**
-     * @return \Illuminate\View\View "affiliate.client-create-credentials" with @clients and @step
-     * affiliate adds client credentials for credit bureaus (experian, trans union, equifax etc )
-     */
-    public function addCredentials(Request $request)
-    {
-        $user = $request->clientId;
-        $affiliateId = Auth::user()->id;
-        $a = Affiliate::where('affiliate_id', $affiliateId)
-            ->where('user_id', $user)->first();
-        if(empty($a)){
-            return back();
-        }
-        $clients = User::where('id', $user)->first();
-        $step = $clients->clientDetails->registration_steps;
-        return view('affiliate.client-create-credentials', compact('clients', 'step'));
-
     }
 
     /**
@@ -422,8 +382,6 @@ class AffiliatesController extends Controller
      * request structure []
      * @return redirect on success affiliate.clientReview, on failed affiliate.client.credentials
      */
-
-
     public function storeCredentials(Request $request)
     {
         try{
@@ -432,7 +390,7 @@ class AffiliatesController extends Controller
             $a = Affiliate::where('affiliate_id', $affiliateId)
                 ->where('user_id', $user)->first();
             if(empty($a)){
-                return back();
+                throw ValidationException::withMessages(['Auth' => 'No access']);
             }
             $data = $request['client'];
             $data['user_id'] = $user;
@@ -457,25 +415,6 @@ class AffiliatesController extends Controller
    }
 
     /**
-     * @return \Illuminate\View\View "affiliate.client-review" with @clients, @step and @uploadUserDetail
-     * affiliate review client details uploaded form document and  rules and if there are inconsistencies
-     */
-    public function clientReview(Request $request)
-    {
-        $user = $request->clientId;
-        $affiliateId = Auth::user()->id;
-        $a = Affiliate::where('affiliate_id', $affiliateId)
-            ->where('user_id', $user)->first();
-        if(empty($a)){
-            return back();
-        }
-        $client = User::where('id', $user)->first();
-        $step = $client->clientDetails->registration_steps;
-        $uploadUserDetail = UploadClientDetail::where('user_id', $user)->first();
-        return view('affiliate.client-review', compact('client', 'step','uploadUserDetail'));
-    }
-
-    /**
      * add client credentials
      * @param Request $request
      * request structure [client[full_name:required, sex:required, address:required]]
@@ -483,52 +422,38 @@ class AffiliatesController extends Controller
      */
     public function storeReview(Request $request, $id)
     {
-
-        $user = $request->clientId;
-        $affiliateId = Auth::user()->id;
-        $a = Affiliate::where('affiliate_id', $affiliateId)
-            ->where('user_id', $user)->first();
-        if(empty($a)){
-            return back();
-        }
-        $data = $request->client;
-        $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
-        $full_name = explode(" ", $data["full_name"]);
-        $data["first_name"] = array_shift($full_name);
-        $data["last_name"] = implode(" ", $full_name);
-        $uploaded = UploadClientDetail::where("user_id", $id);
-        $validation = Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-//            'dob' => ['required'],
-            'sex' => ['required'],
-//            'ssn' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-        ]);
-
-        if ($validation->fails()) {
-            if (!empty($uploaded)) {
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+        try {
+            $user = $request->clientId;
+            $affiliateId = Auth::user()->id;
+            $a = Affiliate::where('affiliate_id', $affiliateId)
+                ->where('user_id', $user)->first();
+            if(empty($a)){
+                throw ValidationException::withMessages(['Auth' => 'No access']);
             }
-            return back()->withErrors( $validation );
+            $data = $request->client;
+            $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
+            $full_name = explode(" ", $data["full_name"]);
+            $data["first_name"] = array_shift($full_name);
+            $data["last_name"] = implode(" ", $full_name);
+            $uploaded = UploadClientDetail::where("user_id", $id);
+            $validation = Validator::make($data, [
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+    //            'dob' => ['required'],
+                'sex' => ['required'],
+    //            'ssn' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+            ]);
 
-        } else {
+            if ($validation->fails()) {
+                throw ValidationException::withMessages($validation->messages()->toArray());
+            }
 
             $user = Arr::only($data, ['first_name', 'last_name']);
             $clientDetails = Arr::except($data, ['full_name', 'first_name', 'last_name', 'sex_uploaded']);
 
-            $fullAddress = explode(',', str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
-//            if (isset($fullAddress[2])) {
-//                preg_match('/[A-Z]{2}/m', $fullAddress[2], $match);
-//                $state = isset($match[0]) ? $match[0] : null;
-//                $zip = str_replace([$state, ' '], '', $fullAddress[2]);
-//            }
-
             $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
             $client_details = ClientDetail::where('user_id', $id)->first();
-            $registration_steps = $client_details->registration_steps;
 
             preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
             $clientDetails ["number"] = isset($number[0])?$number[0]:null;
@@ -546,15 +471,13 @@ class AffiliatesController extends Controller
             ]);
             $client_details->update($clientDetails);
             $uploaded->delete();
-//            FetchReports::dispatch($client);
-//            if ($registration_steps == 'review') {
-//                return redirect(route('client.details.create'));
-//            }
 
-            return redirect(route('affiliate.client.profile', $id))->with('success', "your data saved");
-
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            if ($request->is('ajax')) {
+                return response()->json(['msg' => $e->getMessage()], 400);
+            }
         }
-
     }
 
     /**

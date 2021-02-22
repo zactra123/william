@@ -7,7 +7,7 @@
     <section class="register">
         <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
         <div class="register-form {{($client!= null ? $client->clientDetails->registration_steps:'')  =='documents'? "large": 'big'}}" data-id="1">
-            <h3 class="title">Registration</h3>
+            <h3 class="title">Add Client</h3>
             @include('helpers.affilate_steps',['user' => auth()->user()])
             @include('affiliate.add_client.registered', ['current_page'=>  $client == null ?'active' : 'none' ])
             @include('affiliate.add_client.documents', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='documents' ?'active' : 'none' ])

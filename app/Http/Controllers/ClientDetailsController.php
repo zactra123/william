@@ -176,42 +176,27 @@ class ClientDetailsController extends Controller
 
     public function update(Request $request)
     {
+        try {
+            $data = $request->client;
+            $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
+            $full_name = explode(" ", $data["full_name"]);
+            $data["first_name"] = array_shift($full_name);
+            $data["last_name"] = implode(" ", $full_name);
+            $id = Auth::user()->id;
+            $uploaded = UploadClientDetail::where("user_id", $id);
+            $validation = Validator::make($data, [
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'sex' => ['required'],
+                'address' => ['required', 'string', 'max:255'],
+            ]);
 
-        $data = $request->client;
-        $data["sex"] = isset($data["sex"]) ? $data["sex"] : $data["sex_uploaded"];
-        $full_name = explode(" ", $data["full_name"]);
-        $data["first_name"] = array_shift($full_name);
-        $data["last_name"] = implode(" ", $full_name);
-        $id = Auth::user()->id;
-        $uploaded = UploadClientDetail::where("user_id", $id);
-        $validation = Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-//            'dob' => ['required'],
-            'sex' => ['required'],
-//            'ssn' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-        ]);
-
-        if ($validation->fails()) {
-
-            if (!empty($uploaded)) {
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+            if ($validation->fails()) {
+                throw ValidationException::withMessages($validation->messages());
             }
-            return view('client_details.create')->withErrors($validation);
-        } else {
 
             $user = Arr::only($data, ['first_name', 'last_name']);
             $clientDetails = Arr::except($data, ['full_name', 'first_name', 'last_name', 'sex_uploaded']);
-
-            $fullAddress = explode(',', str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
-//            if (isset($fullAddress[2])) {
-//                preg_match('/[A-Z]{2}/m', $fullAddress[2], $match);
-//                $state = isset($match[0]) ? $match[0] : null;
-//                $zip = str_replace([$state, ' '], '', $fullAddress[2]);
-//            }
 
             $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
             $client_details = ClientDetail::where('user_id', $id)->first();
@@ -233,12 +218,19 @@ class ClientDetailsController extends Controller
             ]);
             $client_details->update($clientDetails);
             $uploaded->delete();
-            if ($registration_steps == 'review') {
-                FetchReports::dispatch($client);
-                return redirect(route('client.details.create'));
+
+            if ($request->method('ajax')) {
+                return response()->json(['status' => 'success']);
             }
             return redirect(route('client.details.index'))->with('success', "your data saved");
 
+        } catch (\Exception $e) {
+            if ($request->method('ajax')) {
+                return response()->json(['msg' => $e->getMessage()], 400);
+            }
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($e->getMessage());
         }
     }
 
@@ -251,7 +243,6 @@ class ClientDetailsController extends Controller
     public function credentialsStore(Request $request)
     {
         try {
-
             $userId = Auth::user()->id;
             $data = $request['client'];
             $data['user_id'] = $userId;
@@ -265,9 +256,12 @@ class ClientDetailsController extends Controller
             if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
                 $clientDetails->update(["registration_steps" => "review"]);
             }
-            return response()->json(['status' => 'success']);
+
+            if ($request->method('ajax')) {
+                return response()->json(['status' => 'success']);
+            }
         } catch (\Exception $e) {
-            if ($request->is('ajax')) {
+            if ($request->method('ajax')) {
                 return response()->json(['msg' => $e->getMessage()], 400);
             }
         }

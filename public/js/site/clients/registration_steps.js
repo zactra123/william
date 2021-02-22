@@ -69,6 +69,7 @@ var documentValidationOptions = {
     }
 }
 var reviewValidationOptions = {
+    validClass: "not-error",
     rules: {
         "client[full_name]": {
             required:true,
@@ -95,9 +96,10 @@ var reviewValidationOptions = {
     },
     submitHandler: function(form) {
         var data = $(form).serialize();
+        console.log('asd')
         $.ajax({
-            url: '/client/important-information',
-            type: "POST",
+            url: $(form).attr('action'),
+            type: "PUT",
             data: data,
             success: function( data ) {
                 registrationStepsSwitch(Number($(form).attr('data-id')))
@@ -146,6 +148,11 @@ $.validator.addMethod("extension", function(value, element, param) {
     return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
 },"Please enter a value with a valid extension.");
 
+$.validator.addMethod("valid_address", function(value, element) {
+    // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
+    return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
+}, "Not valid address format.");
+
 registrationStepsSwitch = function($old_id) {
     let $forms_count = Number($('.additional-reg:last').attr('data-id'));
     let $new_id = $old_id + 1;
@@ -164,7 +171,7 @@ registrationStepsSwitch = function($old_id) {
     }
 
         if( $new_id == 3 ){
-            $('.register-form').addClass('large');
+            $('.register-form').removeClass('big').addClass('large');
         }
         if( $new_id > 3 ){
             $('.register-form').removeClass('large').addClass('big');
@@ -192,10 +199,5 @@ $(document).ready(function(){
         e.preventDefault();
         credentials(this)
     })
-    // $('#add_client_5').validate(reviewValidationOptions)
-    $('#add_client_5').submit(function(e){
-        e.preventDefault();
-        registrationStepsSwitch(Number($(this).attr('data-id')))
-    })
-
+    $('#add_client_5').validate(reviewValidationOptions)
 });
