@@ -282,6 +282,9 @@ class ClientDetailsController extends Controller
         try {
             $client = Auth::user()->id;
             if (empty($request['driver_license']) || empty($request['social_security'])) {
+                if ($request->method('ajax')) {
+                    throw ValidationException::withMessages(['file'=>'Please upload both files']);
+                }
                 return redirect()->back()
                     ->withInput()
                     ->with('error', 'Please upload both files');

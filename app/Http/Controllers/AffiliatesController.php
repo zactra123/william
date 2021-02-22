@@ -64,7 +64,6 @@ class AffiliatesController extends Controller
      */
     public function index()
     {
-
         $affiliateId = Auth::user()->id;
         $clients = Affiliate::where('affiliate_id', $affiliateId)->get();
         return view('affiliate.index', compact('clients'));
@@ -82,7 +81,6 @@ class AffiliatesController extends Controller
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
         }
-
     }
 
     public function importantInformation(Request $request)
@@ -180,9 +178,7 @@ class AffiliatesController extends Controller
                 if ( $request->ajax()) {
                     throw ValidationException::withMessages($validation->messages()->toArray());
                 }
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+                return redirect()->back()->withInput()->withErrors($validation);
             }
 
             if(isset($clientData['own_secter_question']) && $clientData['secret_questions_id'] == 'other'){
@@ -249,7 +245,7 @@ class AffiliatesController extends Controller
                 ->where('user_id', $userId)->first();
             if(empty($a)){
                 if ( $request->ajax()) {
-                    return response()->json(['status' => 'success', 'user'=>"Not user"]);
+                    throw ValidationException::withMessages(['Auth' => 'No access']);
                 }
                 return back();
             }
@@ -259,9 +255,7 @@ class AffiliatesController extends Controller
                 if ( $request->ajax()) {
                     return response()->json(['status' => 'success', 'file'=>'Please upload both files']);
                 }
-                return redirect()->back()
-                    ->withInput()
-                    ->with('error', 'Please upload both files');
+                return redirect()->back()->withInput()->with('error', 'Please upload both files');
             }
 
             $imagesDriverLicense = $request->file("driver_license");
@@ -730,6 +724,25 @@ class AffiliatesController extends Controller
         $source = $request->source;
         return view('affiliate.client-credentials', compact('client', 'source'));
     }
+
+    public function credentialsUpdate(Request $request)
+    {
+        $userId = $request->id;
+        $data = $request['client'];
+        $data['user_id'] = $userId;
+
+        if (empty(Credential::where('user_id', $userId)->first())) {
+            Credential::create($data);
+        } else {
+            Credential::where('user_id', $userId)->update($data);
+        }
+        $clientDetails = ClientDetail::where('user_id', $userId)->first();
+        if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
+            $clientDetails->update(["registration_steps" => "review"]);
+        }
+        return redirect(route('affiliate.client.profile', $userId));
+    }
+
 
     public function clientReport(Request $request)
     {
@@ -1360,23 +1373,6 @@ class AffiliatesController extends Controller
         return true;
     }
 
-    public function credentialsUpdate(Request $request)
-    {
-        $userId = $request->id;
-        $data = $request['client'];
-        $data['user_id'] = $userId;
-
-        if (empty(Credential::where('user_id', $userId)->first())) {
-            Credential::create($data);
-        } else {
-            Credential::where('user_id', $userId)->update($data);
-        }
-        $clientDetails = ClientDetail::where('user_id', $userId)->first();
-        if (!empty($clientDetails) && $clientDetails->registration_steps == 'credentials') {
-            $clientDetails->update(["registration_steps" => "review"]);
-        }
-        return redirect(route('affiliate.client.profile', $userId));
-    }
 
 
     /*
