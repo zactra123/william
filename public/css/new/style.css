@@ -79,7 +79,7 @@ header{
 	display: flex;
     flex-direction: column;
     position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
     position: absolute;
     z-index: 9;
     left: 0;
