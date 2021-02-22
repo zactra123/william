@@ -1,9 +1,8 @@
-var importantValidationOptions = {
+var registerValidationOptions = {
         validClass: "not-error",
         rules: {
-            "full_name": {
+            "email": {
                 required: true,
-                valid_full_name:true,
             },
             "phone_number": {
                 required: true
@@ -24,12 +23,24 @@ var importantValidationOptions = {
         submitHandler: function(form) {
             var data = $(form).serialize();
             $.ajax({
-                url: '/client/important-information',
+                url: '/affiliate/store-client ',
                 type: "POST",
                 data: data,
                 success: function( data ) {
-                    console.log('id:', $(form).attr('data-id'))
-                    registrationStepsSwitch(Number($(form).attr('data-id')))
+                    console.log(data.client,'+++++')
+                    if(data.validation){
+                        $("#email").removeClass('not-error').addClass('error')
+                        $(".email-error").removeClass('none').addClass('active')
+                    }else{
+                        $("#email").removeClass('error').addClass('not-error')
+                        $(".email-error").removeClass('active').addClass('none')
+                        registrationStepsSwitch(Number($(form).attr('data-id')))
+                        console.log('id:', $(form).attr('data-id'))
+                    }
+                },
+                error: function(error, data) {
+                    // location.reload()
+
                 }
             });
         }
@@ -54,16 +65,23 @@ var documentValidationOptions = {
     },
     submitHandler: function(form) {
         var data = new FormData(form)
+        var id = $("#add_client_3").attr('data-client')
+
         $.ajax({
-            url: '/client/add/driver-license-social-security',
+            url: '/affiliate/client-details/create/dl-ss/'+id,
             type: "POST",
             data: data,
             cache:false,
             contentType: false,
             processData: false,
             success: function( data ) {
-                setupReviewData(data)
-                registrationStepsSwitch(Number($(form).attr('data-id')))
+                if(data.validation){
+                    $("#email").removeClass('not-error').addClass('error')
+                    $(".email-error").removeClass('none').addClass('active')
+                }else{
+                    setupReviewData(data)
+                    registrationStepsSwitch(Number($(form).attr('data-id')))
+                }
             }
         });
     }
@@ -95,11 +113,13 @@ var reviewValidationOptions = {
     },
     submitHandler: function(form) {
         var data = $(form).serialize();
+        var id = $("#add_client_5").attr('data-client');
         $.ajax({
-            url: '/client/important-information',
+            url: '/affiliate/ affiliate/client-review/'+id,
             type: "POST",
             data: data,
             success: function( data ) {
+
                 registrationStepsSwitch(Number($(form).attr('data-id')))
             }
         });
@@ -108,6 +128,8 @@ var reviewValidationOptions = {
 
 setupReviewData = function(data) {
     $form = $('#add_client_5')
+    $("#add_client_5").attr('data-client', data.uploadedData.user_id)
+
     if (!!data.uploadedData.first_name || !!data.uploadedData.last_name) {
         $form.find('[name="client[full_name]"]').val(`${data.uploadedData.first_name} ${data.uploadedData.last_name}`)
     }
@@ -123,11 +145,13 @@ setupReviewData = function(data) {
 }
 var credentials = function(form){
     data = $(form).serialize()
+    var id = $("#add_client_4").attr('data-client')
     $.ajax({
-        url: '/client/credentials-store',
+        url: '/affiliate/client-credentials/'+id,
         type: "POST",
         data: data,
         success: function( data ) {
+            $("#add_client_5").attr('data-client', data.client)
             registrationStepsSwitch(Number($(form).attr('data-id')))
         }
     });
@@ -184,15 +208,14 @@ $(document).ready(function(){
         }
     })
     $('.phone').mask('(000) 000-0000')
-    $('.ssn').mask('000-00-0000')
 
-    $('#register_form').validate(importantValidationOptions)
+    $('#register_form').validate(registerValidationOptions)
     $('#add_client_3').validate(documentValidationOptions)
     $('#add_client_4').submit(function(e){
         e.preventDefault();
         credentials(this)
     })
-    // $('#add_client_5').validate(reviewValidationOptions)
+    $('#add_client_5').validate(reviewValidationOptions)
     $('#add_client_5').submit(function(e){
         e.preventDefault();
         registrationStepsSwitch(Number($(this).attr('data-id')))

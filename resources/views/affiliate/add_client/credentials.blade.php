@@ -1,4 +1,4 @@
-<form id="add_client_4" data-id="4" data-type="only_broker" class="add-client additional-reg {{$current_page}}" novalidate>
+<form id="add_client_4" data-client="{{$client!=null?$client->id:""}}" data-id="4" data-type="only_broker" class="add-client additional-reg {{$current_page}}" novalidate>
 
     @csrf
     <p>I will provide you the requested login credentials in a timely manner <a onclick="($('#add_client_4').submit())">CLICK TO CONTINUE.</a></p>
@@ -19,7 +19,7 @@
     </div>
     <input type="text" name="client[ex_login]" placeholder="Username">
     <input type="password" name="client[ex_password]" placeholder="Password">
-    <input type="text" name="client[ex_question]" placeholder="Answer to sequrity question">
+    <input type="text" name="client[ex_question]" placeholder="Answer to security question">
     <input type="number" name="client[ex_pin]" placeholder="4-Digit pin number">
 
     <div class="login-type-title">
@@ -30,8 +30,8 @@
     </div>
     <input type="text" name="client[tu_login]" placeholder="Username">
     <input type="password" name="client[tu_password]" placeholder="Password">
-    <input type="text" name="client[tu_question]" placeholder="Sequrity Question">
-    <input type="text" name="client[tu_answer]" placeholder="Sequrity Answer">
+    <input type="text" name="client[tu_question]" placeholder="Security Question">
+    <input type="text" name="client[tu_answer]" placeholder="Security Answer">
 
     <div class="login-type-title">
         <div class="logo-block">

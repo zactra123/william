@@ -1,6 +1,7 @@
 
-<form id="add_client_3" data-id="3" data-type="only_broker" class="add-client additional-reg {{$current_page}}" enctype="multipart/form-data">
+<form id="add_client_3" data-client="{{$client!=null?$client->id:""}}" data-id="3" data-type="only_broker" class="add-client additional-reg {{$current_page}}" enctype="multipart/form-data">
     @csrf
+
     <h3 class="title_r">Incorect</h3>
     <div class="upload-images">
         <div class="upload-img">

@@ -1,4 +1,4 @@
-<form id="add_client_5" data-id="5" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
+<form id="add_client_5" data-client="{{$client!=null?$client->id:""}}" data-id="5" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
     @csrf
     <p>Please verify your information and make changes if necessary</p>
     <input type="text" name="client[full_name]" placeholder="Full Name">
