@@ -123,7 +123,6 @@ class BanksController extends Controller
     public function store(Request $request)
     {
 
-
         if ($request->term != null) {
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
             $banksLogos = $banksLogos->orderBy('name')->paginate(20);
@@ -166,6 +165,7 @@ class BanksController extends Controller
         $bank = BankLogo::create([
             'name' => $request->bank['name'],
             'path'=> $pathLogo,
+            'no_logo'=> isset($request->bank['no_logo'])?true:false,
             'type'=> $request->bank['type'],
             'additional_information' => $additionalInformation
         ]);
@@ -246,7 +246,7 @@ class BanksController extends Controller
         $bank = BankLogo::find($id);
         $bankLogo = $request->bank;
 
-
+        $bankLogo['no_logo'] = isset($request->bank['no_logo'])?true:false;
         if (!empty($request->bank["additional_information"]["collection_type"])){
             $bank_additonal_information = $bank->toArray()["additional_information"];
             $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];

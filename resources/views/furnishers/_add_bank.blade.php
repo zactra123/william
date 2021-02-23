@@ -9,8 +9,14 @@ asort($types)
     <div class="ms-ua-form">
         <div class="ms-ua-title mb-0">
             <div class="row">
-                <div class="col-sm-3 form-group files">
-                    <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
+                <div class="col-md-3">
+                    <div class="col-sm-12 form-group files">
+                        <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
+
+                    </div>
+                    <div class="col-md-12">
+                        NO LOGO <input type="checkbox" value="true" name="bank[no_logo]"   >
+                    </div>
                 </div>
                 <div class="col-md-7">
                     <div class="form-group">

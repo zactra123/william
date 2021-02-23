@@ -14,6 +14,7 @@ class BankLogo extends Model
         'name',
         'type',
         'path',
+        'no_logo',
         'additional_information'
     ];
     protected $casts = [
