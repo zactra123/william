@@ -91,6 +91,8 @@ class BankLogo extends Model
                 4 => "RV LOAN",
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
+                7 => "BUSINESS LOAN",
+                8 => "STUDENT LOAN"
         ],
         4 =>[
                 1 => "3RD PARTY CA",
@@ -186,6 +188,8 @@ class BankLogo extends Model
                 4 => "RV LOAN",
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
+                7 => "BUSINESS LOAN",
+                8 => "STUDENT LOAN"
         ],
         58 => [
             1 => "DEPOSIT ACCOUNT",
