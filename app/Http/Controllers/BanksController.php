@@ -195,7 +195,6 @@ class BanksController extends Controller
             }
         }
         if($request->ajax()){
-
             return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
         }
 
@@ -316,6 +315,9 @@ class BanksController extends Controller
             if (!in_array($eb, $existing_names)) {
                 $bank->equalBanks()->create(["name" => strtoupper($eb)]);
             }
+        }
+        if($request->ajax()){
+            return response()->json(['statsus'=>'success']);
         }
 
         return redirect()->to($request->referrer);

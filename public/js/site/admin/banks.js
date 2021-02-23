@@ -420,6 +420,54 @@ $(document).ready(function($) {
     })
 
 
+    $('#parentBankInformationEdit').validate({
+        ignore: [],
+        rules: {
+            "bank[name]": {
+                required: true,
+                remote: {
+                    url: "/admins/furnishers/check/name",
+                    type: "POST",
+                    cache: false,
+                    dataType: "json",
+                    data: {
+                        name: function() { return $("#parentBankInformation .bank_name").val();},
+                        _token: function (){return  $("meta[name='csrf-token']").attr("content");}
+                    },
+                    dataFilter: function(response) {
+                        if(jQuery.parseJSON(response).status == true) {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                }
+            },
+        },
+        messages:{
+            "bank[name]": {
+                remote: "This name already exist"
+            }
+
+        },
+        submitHandler: function(form) {
+            var data = $(form).serialize();
+            $.ajax({
+                url: '/admins/furnishers/add',
+                type: "POST",
+                data: data,
+                success: function( data ) {
+                    $('#exampleModal').modal('toggle'); //or  $('#IDModal').modal('hide');
+                    $(".autocomplete-bank").val(data['parent_name'])
+                    $(".parent_id").val(data['parent_id'])
+                    $('#parentBankInformation')[0].reset()
+                }
+            });
+        }
+
+    })
+
+
     $('.show-parent-bank').on('click', function(){
         id = $(this).parents('form').find('.parent_id').val()
 
