@@ -7,7 +7,7 @@
                 </div>
                 <div class="form-group">
                     <?php $types = \App\BankLogo::TYPES;   asort($types)?>
-                    {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>' selectize', 'id' => "bank-type"]); !!}
+                    {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>' selectize-type', 'id' => "bank-type"]); !!}
 
                 </div>
                 <div class="form-group">

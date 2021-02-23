@@ -19,8 +19,15 @@ asort($types)
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="form-group">
-                        <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {!! Form::select("bank[type]", $types,  51, ['class'=>'selectize-single bank-type']); !!}
+                        </div>
                     </div>
                     <div class="m-5">
                         <div class="row">
@@ -34,13 +41,9 @@ asort($types)
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        {!! Form::select("bank[type]", $types,  51, ['class'=>'form-control bank-type']); !!}
-                    </div>
 
                 </div>
+
             </div>
             <div class="row parent hidden">
                 <div class="col-md-3">

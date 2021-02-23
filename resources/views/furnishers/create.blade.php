@@ -100,19 +100,29 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="col-sm-12 form-group files">
-                                            <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" >
+                                            <input class="bank_logo_class file-box" type="file" name="logo"  id="bank_logo" tabindex="3" >
 
 
                                         </div>
+
                                         <div class="col-md-12">
                                             NO LOGO <input type="checkbox" value="true" name="bank[no_logo]"   >
                                         </div>
                                     </div>
+                                    <div class="col-md-9">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
+                                            </div>
 
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                {!! Form::select("bank[type]", $types,  51, ['class'=>'selectize-single bank-type']); !!}
+                                            </div>
+                                        </div>
+
+
                                         <div class="m-5">
                                             <div class="row">
                                                 <div  class="bank_sub_type_append">
@@ -126,12 +136,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            {!! Form::select("bank[type]", $types,  51, ['class'=>'form-control bank-type']); !!}
-                                        </div>
 
-                                    </div>
                                 </div>
                                 <div class="row parent hidden">
                                     <div class="col-md-3">
@@ -310,7 +315,6 @@
 
     <script>
         $(document).ready(function($) {
-
             $.validator.addMethod("extension", function(value, element, param) {
                 param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
                 return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
@@ -331,6 +335,7 @@
                     error.insertAfter(element);
                 }
             })
+
             $(".selectize-type").selectize({plugins: ['remove_button']})
         })
     </script>
