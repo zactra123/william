@@ -79,6 +79,7 @@ class BankLogo extends Model
         56 => "RENT PAYMENT PLATFORM",
         57 => "LIFE INSURANCE",
         58 => "PRIVATE BANK",
+        59 => "BOAT FINANCING",
     ];
 
     const SUB_TYPES = [
@@ -144,6 +145,7 @@ class BankLogo extends Model
                 5 => "FIXED-RATE",
                 6 => "HELOC",
                 7 => "PRIVATE MONEY",
+                8 => "STATED INCOME",
         ],
         35 => [
                 1 => "CHILD SUPPORT",
