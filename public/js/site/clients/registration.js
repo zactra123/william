@@ -202,7 +202,9 @@ $(document).ready(function(){
         $type = $("input[type='radio']:checked").val()
         $form = $(`[id="${$type}-registration-form"]`).html()
         $(`.register_form`).html($form)
-
+        $('.ssn').mask('000-00-0000')
+        $('.ein').mask('00-0000000')
+        $('.phone').mask('(000) 000-0000')
 
         //Validation Start
         $('#register_form').validate(validationOptions)
@@ -219,10 +221,6 @@ $(document).ready(function(){
             scrollTop: ($('.register-form').offset().top - 50)
         }, 1000);
     });
-
-    $('.ssn').mask('000-00-0000')
-    $('.ein').mask('00-0000000')
-    $('.phone').mask('(000) 000-0000')
 
     $(document).on('change', '#secret_question', function(){
         if ($(this).val() == "other") {
