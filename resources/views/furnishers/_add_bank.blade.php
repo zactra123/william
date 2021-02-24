@@ -179,6 +179,7 @@ asort($types)
                 <input type="submit" value="Save" class="ms-ua-submit">
 
             </div>
+        </div>
             {!! Form::close() !!}
         </div>
     </div>

@@ -7,7 +7,7 @@ asort($types)
     <div class="container">
         <div class="col-md-12 col-sm-12">
 
-            {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
+            {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'parentBankInformationEdit','enctype'=>'multipart/form-data' ]) !!}
             @method('PUT')
             @csrf
             <div class="ms-ua-box">
@@ -174,6 +174,10 @@ asort($types)
                     <div class="row"></div>
                 </div>
             </div>
+            <div class="col mt-5">
+                <input type="submit" value="Save" class="ms-ua-submit">
+            </div>
+
             {!! Form::close() !!}
         </div>
     </div>

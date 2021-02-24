@@ -317,7 +317,7 @@ class BanksController extends Controller
             }
         }
         if($request->ajax()){
-            return response()->json(['statsus'=>'success']);
+            return response()->json(['parent_id'=>$bank->id, 'parent_name'=>$bank->name]);
         }
 
         return redirect()->to($request->referrer);
