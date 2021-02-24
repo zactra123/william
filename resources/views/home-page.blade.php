@@ -22,7 +22,7 @@
                         </h4>
                     </div>
                     <div class="header-links">
-                        <a href="#" class="basic-button">Get Started</a>
+                        <a href="{{route('login')}}" class="basic-button">Get Started</a>
                     </div>
                 </div>
                 <div class="banner-img col-12 col-md-7">
@@ -413,7 +413,7 @@
                         </figure>
                     </div>
                 </div>
-                <a href="#" class="basic-button">Get started</a>
+                <a href="{{route('login')}}" class="basic-button">Get started</a>
             </div>
         </div>
     </section>
