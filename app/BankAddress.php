@@ -26,7 +26,7 @@ class BankAddress extends Model
         'dispute_address'=>'DISPUTE ADDRESS',
         'fraud_address' => 'FRAUD DISPUTE ADDRESS',
         'qwr_address' => 'QWR ADDRESS',
-        'executive_address'=>'EXECUTIVE ADDRESS',
+        'executive_address'=>'EXECUTIVE CONTACT',
         'registered_agent'=>'REGISTERED AGENT',
     ];
 

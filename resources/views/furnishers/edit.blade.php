@@ -256,6 +256,8 @@
                                         <div class="col-md-12 addresses " id="address-{{$type}}">
                                             @if($type == 'registered_agent')
                                                 <div class="row">
+                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
+
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                                     </div>
@@ -263,7 +265,6 @@
                                             @endif
                                             @if($type == 'executive_address')
                                                 <div class="row">
-                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">ADD ADDRESS INFO FOR REGISTERED AGENT</a></div>
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>
