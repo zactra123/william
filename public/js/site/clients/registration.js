@@ -195,9 +195,12 @@ $.validator.addMethod("valid_length", function (value, element, require_length) 
 }, "This field is not valid!");
 
 $(document).ready(function(){
+    $('.ssn').mask('000-00-0000')
+    $('.ein').mask('00-0000000')
+    $('.phone').mask('(000) 000-0000')
 
     let $type = 'client';
-    $('form.additional-reg').submit(function(e){
+    $('form.additional-reg').on('submit', function(e){
         e.preventDefault();
         $type = $("input[type='radio']:checked").val()
         $form = $(`[id="${$type}-registration-form"]`).html()
@@ -220,9 +223,7 @@ $(document).ready(function(){
         }, 1000);
     });
 
-    $('.ssn').mask('000-00-0000')
-    $('.ein').mask('00-0000000')
-    $('.phone').mask('(000) 000-0000')
+
 
     $(document).on('change', '#secret_question', function(){
         if ($(this).val() == "other") {

@@ -9,12 +9,12 @@
 
 @section('content')
 
-    <section class="header">
+    <section class="header text-page">
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
         <div class="container header-banner">
 
         </div>
-        <div class="container">
+        <div class="container free-credit-inner">
             <div class="section-title text-center">
                 <h1>Free Credit Repair</h1>
                 <div class="mt-5"></div>

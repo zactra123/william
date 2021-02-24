@@ -1,5 +1,12 @@
 @extends('layouts.layout1')
 
+@section('scripts')
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+@endsection
+
 @section('meta')
     <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
     <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
@@ -7,8 +14,6 @@
 @endsection
 
 @section('content')
-
-
 
     <section class="good-credit">
         <div class="container small">
@@ -157,14 +162,16 @@
     </section>
     <section class="credit-score">
         <div class="container small">
-            <div class="row">
-                <div class="credit-score-text col-12 col-lg-6">
+            <div class="row credit">
+                <div class="credit-score-text col-12 col-md-6">
                     <h3 class="title">5 Common Factors of your Credit Score</h3>
                     <p>The five common factors that determine a credit score are listed below, in order of importance.</p>
                 </div>
-                <div class="credit-score-img col-12 col-lg-6">
+                <div class="credit-score-img col-12 col-md-6">
                     <div class="img-block">
-                        <img src="{{asset('images/new/credit_education.png')}}" alt="">
+                        <figure class="highcharts-figure">
+                            <div id="container"></div>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -201,15 +208,6 @@
             </ul>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
 
 
 {{--    <style>--}}
@@ -365,5 +363,4 @@
 
 
 @endsection
-
 

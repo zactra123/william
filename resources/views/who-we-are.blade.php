@@ -15,7 +15,7 @@
 
         </div>
 
-        <div class="container header-banner">
+        <div class="container header-banner about-us">
             <div class="container">
                 <div class="section-title text-center">
                     <h2>{{env('PROJECT')}}</h2>
