@@ -89,6 +89,7 @@ asort($types)
                                     @endif
                                     @if($type == 'executive_address')
                                         <div class="row">
+                                            <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">ADD ADDRESS INFO FOR REGISTERED AGENT</a></div>
                                             <div class="form-group col-sm-12">
                                                 {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                             </div>

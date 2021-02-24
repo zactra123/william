@@ -372,6 +372,7 @@ $(document).ready(function($) {
 
 
     })
+
     $('#parentBankInformation').validate({
         ignore: [],
         rules: {
@@ -451,6 +452,30 @@ $(document).ready(function($) {
                     }
                 });
                 $('#parentModal').modal('toggle');
+                $('.paste-register').on('click', function(){
+                    var name =   $("#parentModal input[name='bank_address[executive_address][name]']").val();
+                    var street =   $("#parentModal input[name='bank_address[executive_address][street]']").val();
+                    var city =   $("#parentModal input[name='bank_address[executive_address][city]']").val();
+                    var state =   $("#parentModal select[name='bank_address[executive_address][state]']").val();
+                    var zip =   $("#parentModal input[name='bank_address[executive_address][zip]']").val();
+                    var phone =   $("#parentModal input[name='bank_address[executive_address][phone_number]']").val();
+                    var fax =   $("#parentModal input[name='bank_address[executive_address][fax_number]']").val();
+                    var email =   $("#parentModal input[name='bank_address[executive_address][email]']").val();
+
+                    $("#parentModal input[name='bank_address[registered_agent][name]']").val(name);
+                    $("#parentModal input[name='bank_address[registered_agent][street]']").val(street);
+                    $("#parentModal input[name='bank_address[registered_agent][city]']").val(city);
+
+                    var $select = $("#parentModal select[name='bank_address[registered_agent][state]']").selectize();
+                    var selectize = $select[0].selectize;
+                    selectize.setValue(selectize.search(state).items[0].id);
+
+                    $("#parentModal input[name='bank_address[registered_agent][zip]']").val(zip);
+                    $("#parentModal input[name='bank_address[registered_agent][phone_number]']").val(phone);
+                    $("#parentModal input[name='bank_address[registered_agent][fax_number]']").val(fax);
+                    $("#parentModal input[name='bank_address[registered_agent][email]']").val(email);
+                } )
+
                 $('#parentBankInformationEdit').validate({
 
                     ignore: [],
@@ -507,6 +532,32 @@ $(document).ready(function($) {
             }
         });
     })
+
+    $('.paste-register').on('click', function(){
+        var name =   $("input[name='bank_address[executive_address][name]']").val();
+        var street =   $("input[name='bank_address[executive_address][street]']").val();
+        var city =   $("input[name='bank_address[executive_address][city]']").val();
+        var state =   $("select[name='bank_address[executive_address][state]']").val();
+        var zip =   $("input[name='bank_address[executive_address][zip]']").val();
+        var phone =   $("input[name='bank_address[executive_address][phone_number]']").val();
+        var fax =   $("input[name='bank_address[executive_address][fax_number]']").val();
+        var email =   $("input[name='bank_address[executive_address][email]']").val();
+
+        $("input[name='bank_address[registered_agent][name]']").val(name);
+        $("input[name='bank_address[registered_agent][street]']").val(street);
+        $("input[name='bank_address[registered_agent][city]']").val(city);
+
+        var $select = $("select[name='bank_address[registered_agent][state]']").selectize();
+        var selectize = $select[0].selectize;
+        selectize.setValue(selectize.search(state).items[0].id);
+
+        $("input[name='bank_address[registered_agent][zip]']").val(zip);
+        $("input[name='bank_address[registered_agent][phone_number]']").val(phone);
+        $("input[name='bank_address[registered_agent][fax_number]']").val(fax);
+        $("input[name='bank_address[registered_agent][email]']").val(email);
+    } )
+
+
 
 
 

@@ -181,7 +181,7 @@
 
 
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-9">
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name">
@@ -263,6 +263,7 @@
                                             @endif
                                             @if($type == 'executive_address')
                                                 <div class="row">
+                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">ADD ADDRESS INFO FOR REGISTERED AGENT</a></div>
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>

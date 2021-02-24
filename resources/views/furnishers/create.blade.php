@@ -114,15 +114,12 @@
                                             <div class="form-group">
                                                 <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
                                             </div>
-
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 {!! Form::select("bank[type]", $types,  51, ['class'=>'selectize-single bank-type']); !!}
                                             </div>
                                         </div>
-
-
                                         <div class="m-5">
                                             <div class="row">
                                                 <div  class="bank_sub_type_append">
@@ -179,6 +176,8 @@
                                             @endif
                                             @if($type == 'executive_address')
                                                 <div class="row">
+                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">ADD ADDRESS INFO FOR REGISTERED AGENT</a></div>
+
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>
