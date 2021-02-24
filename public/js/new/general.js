@@ -372,7 +372,6 @@ function Valid(input, val, type, validType ){
 
 };
 
-
 function ValidOnSubmit ( $form, e ){
     this.e = e;
     $currentForm = $($form)
@@ -476,6 +475,66 @@ $(document).ready(function(){
     })
 });
 
+$(document).ready(function(){
+    $('.graph-point').hover(function(){
+        let $id = $(this).attr('data-graph');
+        $(this).siblings().removeClass('active');
+        $(`.graph-path[data-graph="${$id}"]`).siblings().removeClass('active');
+        $(this).addClass('active');
+        $(`.graph-path[data-graph="${$id}"]`).addClass('active');
+    })
+    $('.credit-graph').mouseleave(function(){
+        $(this).find('.active').removeClass('active');
+        console.log('leave');
+    });
+
+    Highcharts.chart('container', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 70,
+                beta: 0
+            },
+            backgroundColor: 'transparent',
+        },
+        title: false,
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 60,
+                dataLabels: {
+                    enabled: false,
+                    format: '{point.name}'
+                },
+                slicedOffset: 40,
+                colors: ['#88e0b1','#9de8e1','#ff5872','#ffd000','#a676af',]
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: false,
+            data: [
+                ['Payment history', 35.0],
+                ['Outstanding balances', 30.0],
+                ['Credit hitory', 15.0],
+                ['Types of credit', 10.0],
+                ['Inquiries', 10.0],
+            ]
+        }]
+    });
+    
+})
+
 // home page slider
 
 $(document).ready(function() {
@@ -522,7 +581,7 @@ $(document).ready(function() {
         smartSpeed: 2000,
         autoplayTimeout: 5000,
 
-        margin: 20,
+        margin: 0,
         responsiveClass: true,
         dots: false,
         nav: false,

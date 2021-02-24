@@ -1,17 +1,35 @@
 /*-------------------*
 *--------------------*
     #Home-page
+        ##Education
+        ##Chart
 *--------------------*
 *--------------------*
-    #Login-form
+    #Login
 *--------------------*
 *--------------------*
-    #Register-form
+    #Register
 *--------------------*
 *--------------------*
-    #Additional_red
+    #Additional-reg
+*--------------------*
+*--------------------*
+    #Good-credit
+*--------------------*
+*--------------------*
+    #Faq-Page
+*--------------------*
+*--------------------*
+    #About-us
+*--------------------*
+*--------------------*
+    #Blog
+*--------------------*
+*--------------------*
+    #Medias
 *--------------------*
 *--------------------*/
+
 strong {
 	font-weight: bold;
 }
@@ -86,14 +104,19 @@ header{
     top: 0;
     width: 100%;
 }
+.navigation,.account-block,.navigation-block{
+    padding-right: 0;
+}
 div.select {
     width: 100%;
     position: relative;
 }
 div.select svg {
     position: absolute;
-    right: 0;
-    top: 5px;
+    height: 0.7rem;
+    width: 0.8rem;
+    top: 0.86rem;
+    right: 1.1rem;
 }
 select{
     -webkit-appearance: none;
@@ -197,6 +220,9 @@ nav {
     align-items: center;
     margin: 0 auto;
     transition: all .5s ease-in-out;
+}
+#chat_header_hide_text {
+    width: unset;
 }
 .chat #chat_header{
 	cursor: pointer;
@@ -397,6 +423,13 @@ nav {
 	flex-direction: column;
 	justify-content: center;
 }
+.header-banner.about-us {
+    margin-top: 3rem;
+    padding-bottom: 4rem;
+}
+.header-banner.about-us h2 {
+    margin-bottom: 1.5rem;
+}
 .img-block {
     width: 100%;
 }
@@ -437,7 +470,8 @@ nav {
 .img-block{
 	position: relative;
 	display: flex;
-	justify-content: center;
+    justify-content: center;
+    align-items: center;
 }
 #slidewrapper img{
 	object-fit: cover;
@@ -804,10 +838,13 @@ section.report .report-item .icon {
 section.report .report-item .icon img {
 	object-fit: cover;
 }
-/* Education */
+/* ##Education */
+
 section.education {
 	background-color: #F2F2F2;
-	padding: 45px 0;
+}
+.education-inner .img-block{
+    flex-direction: column;
 }
 .credit-graph .graph {
 	height: 85%;
@@ -826,85 +863,54 @@ section.education {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    cursor: pointer;
     position: relative;
 }
-.credit-graph img {
-	object-fit: contain;
-	position: absolute;
-	transform: translateY(0);
-    transition: all 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+/* ##Chart */
+
+#container {
+    height: 400px;
+    width: 44rem;
 }
-.credit-graph .graph_bottom_block {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 1em auto;
 }
-#graph_bottom_stroke {
-	z-index: 6;
-    bottom: -18px;
-    width: 107.24%;
-    opacity: 1;
-    left: -3.46%;
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #EBEBEB;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
 }
-#graph_bottom {
-	z-index: 1;
-    width: 101.88%;
-	height: 68.2%;
-	bottom: 0;
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
 }
-#graph_yellow{
-    width: 45.35%;
-    height: 51.52%;
-	object-fit: contain;
-	z-index: 3;
-    left: 4.27%;
-    top: 29.2%;
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
 }
-#graph_violet {
-	width: 27.24%;
-    height: 50.11%;
-	object-fit: contain;
-	z-index: 2;
-    top: 25.50%;
-    left: 25.66%;
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
 }
-#graph_green {
-	width: 48.81%;
-    height: 74.58%;
-	object-fit: contain;
-	z-index: 4;
-    bottom: 0;
-    right: 1.63%;
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
 }
-#graph_blue {
-    width: 65.35%;
-    height: 53.64%;
-	object-fit: contain;
-    z-index: 5;
-    bottom: -8.23%;
-    left: 18.74%;
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
 }
-#graph_red {
-    width: 48.34%;
-    height: 56.47%;
-	object-fit: contain;
-	z-index: 4;
-    left: 1.57%;
-    bottom: -1.411%;
+.highcharts-description {
+    width: 100%;
 }
-.credit-graph #graph_yellow:hover {
-	transform: translateY(-19%);
+.highcharts-credits{
+    display: none;
 }
-.credit-graph #graph_violet:hover {
-    transform: translateY(-19%);
-}
-.credit-graph #graph_red:hover {
-    transform: translateY(-19.7%) translateX(-1%);
-}
-.credit-graph #graph_green:hover {
-	transform: translateY(-19%);
-}
+
 section.education .education-inner {
 	align-items: center;
 	padding: 50px 0;
@@ -1172,7 +1178,7 @@ section.login .background-image{
     object-fit: cover;
 }
 
-/*  #Register-form  */
+/*  #Register  */
 
 .register_or {
     width: 100%;
@@ -1186,6 +1192,9 @@ section.login .background-image{
 .register_or label input {
     padding-left: 5px;
 }
+#register_form {
+    margin-top: 2rem;
+}
 #register_form p.required {
     display: none !important;
 }
@@ -1194,8 +1203,8 @@ section.login .background-image{
     position: relative;
 }
 #register_form div.password svg {
-    width: 18px;
-    height: 18px;
+    width: 1.26rem;
+    height: 1.26rem;
 }
 #register_form div.password #eye_open,
 #register_form div.password #eye_close {
@@ -1203,7 +1212,7 @@ section.login .background-image{
     position: absolute;
     cursor: pointer;
     right: 15px;
-    top: 10px;
+    top: 5px;
 
 }
 #register_form div.password #eye_open.disabled,
@@ -1272,8 +1281,13 @@ section.register .login-social a.login-google {
     color: #272D4E;
     background-color: #FFFFFF;
 }
-/*  #Additional_red  */
+/*  #Additional-reg  */
 
+.reg-verify {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
 .register-form{
     z-index: 7;
     color: #94A2B3;
@@ -1310,7 +1324,7 @@ section.register .login-social a.login-google {
 }
 .register-form.big form,
 .register-form.large form {
-    padding: 0 3rem;
+    padding: 0 1rem;
 }
 .register-form .none{
     opacity: 0;
@@ -1486,6 +1500,12 @@ div.basic-button:hover::after{
 #add_client_3 {
     margin-top: 1.16rem;
 }
+#add_client_5 {
+    margin-top: 1rem;
+}
+#add_client_5 p {
+    color: #000000;
+}
 .title_r {
     color: #F63664;
     font-weight: 700;
@@ -1576,8 +1596,13 @@ div.basic-button:hover::after{
     object-fit: cover;
     width: 100%;
 }
-#add_client_4 p{
+#add_client_4 a {
+    color: #3B5998;
+    white-space: nowrap;
+}
+#add_client_4 p {
     font-size: 0.77rem;
+    color: #000000;
 }
 .finish {
     opacity: 1;
@@ -1595,6 +1620,7 @@ div.basic-button:hover::after{
     font-size: 2rem;
     color: #566090;
     align-items: center;
+    text-align: center;
 }
 .finish-img {
     margin-top: 3.11rem;
@@ -1675,6 +1701,7 @@ label.register-type-box {
 .register-form .register-type-box span input {
     margin-right: 5px;
 }
+
 /*  #Good-credit  */
 
 .credit-page header {
@@ -1724,11 +1751,22 @@ section.fico p {
 }
 section.vantage-score{
     background-color: #F2F2F2;
-    padding-top: 2.05rem;
+    padding-top: 2.05r em;
     padding-bottom: 3.388rem;
+}
+section.credit-score figure {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+section.credit-score #container {
+    width: 34rem;
 }
 section.credit-score{
     padding: 1.7rem 0;
+    display: flex;
+    align-items: center;
 }
 section.credit-score .row {
     align-items: center;
@@ -1738,9 +1776,9 @@ section.credit-score .title {
     font-weight: 700;
     text-transform: uppercase;
 }
-section.credit-score .img-block img{
-    width: 100%;
-    object-fit: cover;
+section.credit-score .img-block{
+    height: 13rem;
+    margin-bottom: 3rem;
 }
 section.credit-history {
     background-color: #F2F2F2;
@@ -1762,6 +1800,129 @@ section.credit-history h5.title:nth-of-type(4) {
 section.credit-history h5.title:last-of-type {
     color: #A676AF;
 }
+
+/* #Faq-Page */
+
+.faq-page {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+.faq-page .question-form h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.faq-body {
+    display: none;
+    padding-right: 3rem;
+}
+.faq-page .form-inner {
+    display: flex;
+    flex-direction: column;
+}
+.faq-block {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.faq-block:not(:last-child) {
+    margin-bottom: 15px;
+}
+.faq-block i {
+    transform: rotate(0);
+    transition: all .3s ease-in-out;
+}
+.faq-block.active i {
+    transform: rotate(180deg);
+}
+.faq-page input:not([type="submit"]) {
+    width: 100%;
+    height: 2.447rem;
+    outline: none;
+    color: #6e757d;
+    font-size: 0.77rem;
+    padding-left: 16px;
+    padding-right: 12px;
+    border-radius: 1rem;
+    border: 1px solid #94A2B3;
+    background-color: #FFFFFF;
+}
+.faq-page .basic-button {
+    margin: 0 auto;
+    width: 60%;
+}
+.faq-page .basic-button input {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-radius: 25px;
+}
+.faq-page textarea {
+    background-color: #FFFFFF;
+    color: #6e757d;
+    font-size: 0.77rem;
+    border-radius: 1rem;
+    border: 1px solid #94A2B3;
+}
+
+/* #About-us */
+
+.header-banner.about-us h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+}
+
+section.text-page {
+    padding-bottom: 5rem;
+}
+.free-credit-inner h2 {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* #Blog */
+
+.blog-page {
+    margin-top: unset;
+    padding-bottom: 5rem;
+}
+.card {
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.55);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    transform: scale(1);
+}
+.card:hover {
+    transform: scale(1.01);
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+}
+.card .img-block img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.card {
+    border: 2px solid #cfcecd;
+    background-color: #f2f2f2;
+}
+.card label {
+    margin: 0;
+}
+.card .card-text .title{
+    font-size: 1.5rem;
+    color: #1495cf;
+}
+.card .card-text .date {
+    text-transform: uppercase;
+    color: #666666;
+}
+
+/* #Medias */
+
 @media (min-width: 991){
 	.header-links {
 		display: flex;
@@ -1796,7 +1957,7 @@ section.credit-history h5.title:last-of-type {
 }
 @media (min-width: 1460px){
 	html{
-		font-size: 17px;
+		font-size: 16px;
 	}
 	.chat {
 		bottom: -2px;
@@ -1822,7 +1983,10 @@ section.credit-history h5.title:last-of-type {
 		max-width: 1554px;;
 	}
     .credit-graph {
-        width: 61%;
+        width: 100%;
+    }
+    #container {
+        width: 48rem;
     }
 }
 @media (max-width: 1400px){
@@ -2050,6 +2214,15 @@ section.credit-history h5.title:last-of-type {
     section.good-credit {
         padding-top: 12.71rem;
     }
+    #container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    #container {
+        width: 32rem;
+    }
 }
 @media (max-width: 768px){
 	.header-slider {
@@ -2070,10 +2243,19 @@ section.credit-history h5.title:last-of-type {
 	    justify-content: center;
     	padding-top: 35px;
     	width: 100%;
-	}
+    }
+    .header-banner.about-us {
+        margin-top: .6rem;
+    }
 	.header-banner .banner-text{
 		margin-top: 35px;
-	}
+    }
+    .header-banner.about-us {
+        margin-top: .6rem;
+    }
+    .header-banner.about-us h2 {
+       margin-bottom: 1rem;
+    }
 	.nav-bar {
 		flex-direction: column-reverse;
 		padding-top: 15px;
@@ -2174,6 +2356,10 @@ section.credit-history h5.title:last-of-type {
     .register-form .register-type-box{
         flex-direction: column;
     }
+    section.credit-score .img-block {
+        height: 35vw;
+    }
+    
 }
 @media(max-width: 680px){
     .register-form .registration-stages {
@@ -2185,19 +2371,41 @@ section.credit-history h5.title:last-of-type {
     .register-form .registration-stage.active .stage-img:before{
         display: none;
     }
-}
-@media(max-width: 575px){
     .register-form{
-        width: 95vw;
+        width: 90vw;
         padding: 1rem 1.5rem 4.55rem;
     }
+    #container {
+        width: 29rem;
+    }
+}
+@media(max-width: 575px){
 	.credit-graph .graph {
    		bottom: 2.9%;
 	}
 	.credit-graph {
 	    width: 75vw;
-   		height: 60vw;
-	}
+   		height: 70vw;
+    }
+    .register-form .registration-stages {
+        flex-wrap: wrap;
+    }
+    .register-form .registration-stage:not(:first-child) .stage-img:before {
+        content: unset;
+    }
+    .register-form .registration-stages .registration-stage {
+        flex: 0 0 25%;
+        width: 25%;
+    }
+    .register-form .register-type-box {
+        margin: 2rem;
+    }
+    .register-form form {
+        padding: 0 1.5rem;
+    }
+    #add_client_3 {
+        padding: 1rem 1rem;
+    }
 }
 @media(max-width: 500px){
 	#viewport{
@@ -2205,6 +2413,19 @@ section.credit-history h5.title:last-of-type {
 	}
     section.good-credit {
         padding-top: 14.71rem;
+    }
+    .register-form{
+        width: 95vw;
+        padding: 1rem 1.5rem 4.55rem;
+    }
+    .upload-images {
+        flex-direction: column;
+    }
+    .upload-images .upload-img {
+        margin-bottom: 10px;
+    }
+    #add_client_3 {
+        padding: 0 3rem;
     }
 }
 @media(max-width: 420px){
@@ -2229,7 +2450,13 @@ section.credit-history h5.title:last-of-type {
 	}
 	.credit-graph .graph {
 		bottom: -0.1%;
-	}
+    }
+    .login-type-title {
+        flex-direction: column;
+    }
+    #container {
+        width: 22rem;
+    }
 }
 @media(min-width: 768px) and (max-width: 991px){
 	.banner-background {
@@ -2242,7 +2469,7 @@ section.credit-history h5.title:last-of-type {
 }
 @media(min-width: 991px) and (max-width: 1260px){
 	html{
-		font-size: 13px;
+		font-size: 12px;
 	}
 	a.name-point span{
     	padding: 1rem 1.4rem;

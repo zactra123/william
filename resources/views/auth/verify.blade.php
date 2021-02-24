@@ -87,7 +87,7 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-3 col-sm-12"></div>
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 reg-verify">
 
                         @if (session('resent'))
                             <div class="alert alert-success" role="alert">

@@ -1,5 +1,12 @@
 @extends('layouts.layout1')
 
+@section('scripts')
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+@endsection
+
 @section('content')
     <section class="header">
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
@@ -135,7 +142,7 @@
                         <a data-id="chexsystems" class="name-point "><span>ChexSystems</span></a>
                     </p>
                 </div>
-                <div class="block col-12 col-md-6">
+                <div class="block col-12 col-md-8 col-lg-6">
                     <div class="help-description first" data-id="bankruptcies">
                         <div class="modal-heading">
                             <button class="close">x</button>
@@ -388,7 +395,7 @@
         <div class="container">
             <h3 class="title">Credit Education</h3>
             <div class="education-inner row">
-                <div class="text-block col-12 col-lg-5">
+                <div class="text-block col-12 col-md-5">
                     <h3 class="title">Credit Score Pie Chart</h3>
                     <p>
                         In the 1800s, most credit transactions were conducted by businesses, not by consumers. As
@@ -399,19 +406,11 @@
                         Subscribers to the Mercantile Agency (renamed R.G.
                     </p>
                 </div>
-                <div class="img-block col-12 col-lg-7">
+                <div class="img-block col-12 col-md-7">
                     <div class="credit-graph">
-                        <div class="graph">
-                            <img id="graph_violet" src="{{asset("images/new//violet.png")}}" alt="credit_education">
-                            <img id="graph_green" src="{{asset("images/new/green.png")}}" alt="credit_education">
-                            <img id="graph_blue" src="{{asset("images/new/blue.png")}}" alt="credit_education">
-                            <img id="graph_red" usemap="#red" src="{{asset("images/new/red.png")}}" alt="credit_education">
-                            <img id="graph_yellow" src="{{asset("images/new/yellow.png")}}" alt="credit_education">
-                        </div>
-                        <div class="graph_bottom_block">
-                            <img id="graph_bottom_stroke" src="{{asset("images/new/bottom-stroke_2.png")}}" alt="credit_education">
-                            <img id="graph_bottom" src="{{asset("images/new/bottom.png")}}" alt="credit_education">
-                        </div>
+                        <figure class="highcharts-figure">
+                            <div id="container"></div>
+                        </figure>
                     </div>
                 </div>
                 <a href="#" class="basic-button">Get started</a>
@@ -419,3 +418,4 @@
         </div>
     </section>
 @endsection
+

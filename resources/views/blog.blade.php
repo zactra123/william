@@ -5,7 +5,6 @@
         :root {
             --jumbotron-padding-y: 3rem;
         }
-
         .jumbotron {
             padding-top: var(--jumbotron-padding-y);
             padding-bottom: var(--jumbotron-padding-y);
@@ -30,16 +29,6 @@
         .jumbotron .container {
             max-width: 40rem;
         }
-
-        footer {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-        }
-
-        footer p {
-            margin-bottom: .25rem;
-        }
-
         .box-shadow { box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1); }
 
         .card-img-top {
@@ -92,11 +81,7 @@
     </style>
     <section class="header">
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
-        <div class="container header-banner">
-
-        </div>
-
-        <div class="container header-banner">
+        <div class="container header-banner blog-page">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
@@ -113,22 +98,20 @@
                             <div class="row ">
                                 @foreach($blogs as  $blog)
                                     <div class="col-md-4 pt-5" title="{{strtoupper($blog->title)}}">
-                                        <div class="card mb-8 box-shadow" >
-                                            <img class="card-img-top banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" alt="Card image cap">
+                                        <div class="card mb-8" >
+                                            <div class="img-block">
+                                                <img class="card-img banks-card" src="{{$blog->path}}"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" alt="Card image cap">
+                                            </div>
                                             <div class="card-body">
-                                                <div class="card-text p-2 mt-3">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
+                                                <div class="card-text p-2">
+                                                    <div class="title"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
                                                         <label>{{strtoupper($blog->title)}}</label>
                                                     </div>
-                                                    <div class="bank-name b"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
+                                                    <div class="date"  onclick="location.href='{{route("home.blog.show", $blog->url)}}'" >
                                                         <label>{{date("F j, Y", strtotime($blog->published_date))}}</label>
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 @endforeach

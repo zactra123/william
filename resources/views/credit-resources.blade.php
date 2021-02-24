@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <section class="header">
+    <section class="header text-page">
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
         <div class="container header-banner">
 
