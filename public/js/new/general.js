@@ -37,6 +37,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    let $one_time = true;
     let $chat_height = $('#chat_body').height();
     let $chat = $('#chat_body');
     let $chat_header = $('#chat_header');
@@ -57,25 +58,29 @@ $(document).ready(function(){
             $contact_description.removeClass('active');
         } else{
             $chat.css({'bottom': '0'});
-            $contact_description.addClass('active');
-            setTimeout(function() {
-                $contact_description.animate({
-                    'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
-                    'left': ($phone.offset().left - $contact_description.width()),
-                }, 300);
+            if( $one_time ) {
+                $contact_description.addClass('active');
                 setTimeout(function() {
                     $contact_description.animate({
-                        'top': ($phone.offset().top - (($contact_description.height()*4))),
-                        'opacity': 0.6,
-                    });
+                        'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
+                        'left': ($phone.offset().left - $contact_description.width()),
+                    }, 300);
                     setTimeout(function() {
                         $contact_description.animate({
-                            'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
-                            'opacity':0
-                        }, 300);
-                    }, 3200);
-                },250);
-            },500);
+                            'top': ($phone.offset().top - (($contact_description.height()*4))),
+                            'opacity': 0.6,
+                        });
+                        setTimeout(function() {
+                            $contact_description.animate({
+                                'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
+                                'opacity':0
+                            }, 300);
+                        $contact_description.removeClass('active');
+                        }, 3200);
+                    },250);
+                },500);
+                $one_time = false;
+            }
         }
         $chat.toggleClass('show');
         $chat_header.toggleClass('hide');
