@@ -178,13 +178,38 @@ $(document).ready(function($) {
         }
 
         if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType))){
+            if(parseInt(bankType) == 29){
+                $form.find('.show-parent-field').removeClass('hide');
+                $form.find('.parent-show').addClass('hide');
+                $form.find('.autocomplete-bank').val('');
+                $form.find('.parent_id').val('');
+
+            }else{
+                $form.find('.show-parent-field').addClass('hide');
+                $form.find('.hide-parent-field').addClass('hide');
+                $form.find('.show-parent-field').removeClass("hidden")
+            }
             $form.find('.parent').removeClass("hidden")
+
         }else {
             $form.find('.parent').addClass("hidden")
             $(".autocomplete-bank").val("")
             $(".autocomplete-bank").trigger('keydown')
         }
+    });
 
+    $(document).on('click', '.show-parent-field', function(){
+        $('.parent-show').removeClass('hide');
+        $('.show-parent-field').addClass('hide');
+        $('.hide-parent-field').removeClass('hide');
+    });
+
+    $(document).on('click', '.hide-parent-field', function(){
+        $('.parent-show').addClass('hide');
+        $('.show-parent-field').removeClass('hide');
+        $('.hide-parent-field').addClass('hide');
+        $('.autocomplete-bank').val('');
+        $('.parent_id').val('');
     });
 
     $(document).on('click','.bank_sub_type_append', function(){
@@ -562,3 +587,4 @@ $(document).ready(function($) {
 
 
 });
+

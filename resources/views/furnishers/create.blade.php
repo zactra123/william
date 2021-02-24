@@ -137,17 +137,23 @@
                                 </div>
                                 <div class="row parent hidden">
                                     <div class="col-md-3">
+                                        <a  class="btn show-parent-field form-control hide">ADD PARENT</a>
+                                        <a  class="btn hide hide-parent-field form-control hide">HIDE PARENT</a>
+                                    </div>
+                                    <div class="col-md-9 parent-show">
+                                        <div class="col-md-9 ">
+                                            <div class="form-group banks ">
+                                                {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
+                                                {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
+                                        </div>
 
                                     </div>
-                                    <div class="col-md-7">
-                                        <div class="form-group banks ">
-                                            {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
-                                            {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn form-control">ADD BANK</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
