@@ -51,5 +51,11 @@ class ClientDetail extends Model
     }
 
 
+    public function full_address()
+    {
+        return ucfirst($this->address) . ' ' . ucfirst($this->zip);
+    }
+
+
 
 }

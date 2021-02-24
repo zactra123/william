@@ -1,70 +1,47 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('content')
 
+    <section class="register">
+        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
+        <div class="register-form" data-id="1">
+            <div class="title">
+                <h3 >Rest Login information</h3>
+            </div>
+            <div class="register_form">
+                <div class="title">
+                    <h4>Step 2: Answer Your Secret Question</h4>
+                </div>
+                @if ($errors->any())
 
-    <section class="header-title section-padding">
-        <div class="container text-center">
-            <h2 class="title"> RESET LOGIN INFORMATION</h2>
-            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; RESET LOGIN INFORMATION</span>
-        </div>
-    </section>
-
-
-
-    <!-- Login Area Start -->
-    <section class="ms-user-account">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="ms-ua-box">
-                        <div class="ms-ua-title">
-                            <h4>Step 2: Answer Your Secret Question</h4>
-                        </div>
-                        @if ($errors->any())
-
-                            <div class="alert alert-danger flash">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                @foreach($errors->all()  as $message)
-                                    <strong>{{ $message }}</strong>
-                                @endforeach
-                            </div>
-                        @endif
-                        <div class="card-body ">
-                            {!! Form::open(['route' => 'login.infoSecondSend', 'method' => 'POST', 'id' => 'loginInformation2',  'class' => 'm-form m-form--label-align-right']) !!}
-                            @csrf
-
-
-                            <div class="form-group row font justify-content-center">
-                                <div class="col-md-12 tab-selector">
-                                    <div class="col-md-12">
-                                        {{$client->question}}
-                                    </div>
-                                </div>
-                            </div>
-                            <input name="id" type="hidden" value="{{$client->id}}">
-                            <div class="form-group row font justify-content-center">
-
-                                <div class="col-md-12 tab-selector">
-                                    <div class="col-md-12" class="col-md-12 ">
-                                        {{ Form::text('answer', old('answer'), ['class' => 'form-control m-input',  'placeholder' => 'ANSWER SECRET QUESTION']) }}
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                            <div class="col"><input type="submit" value="Next Step" class="ms-ua-submit"></div>
-                            {!! Form::close() !!}
-                        </div>
-
+                <div class="alert alert-danger flash">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    @foreach($errors->all()  as $message)
+                        <strong>{{ $message }}</strong>
+                    @endforeach
+                </div>
+                @endif
+                {!! Form::open(['route' => 'login.infoSecondSend', 'method' => 'POST', 'id' => 'loginInformation2',  'class' => 'm-form m-form--label-align-right']) !!}
+                @csrf
+                <div class="form-group w-100 mb-0">
+                    <div class="col-md-12 p-0">
+                        {{$client->question}}
                     </div>
                 </div>
+                <input name="id" type="hidden" value="{{$client->id}}">
+                <div class="form-group w-100 mb-0">
+                    <div class="col-md-12 p-0">
+                        {{ Form::text('answer', old('answer'), ['class' => 'form-control m-input',  'placeholder' => 'ANSWER SECRET QUESTION']) }}
+                    </div>
+                </div>
+                <div class="basic-button"><input type="submit" value="Next Step" class="login"></div>
+                {!! Form::close() !!}
+
             </div>
         </div>
-    </section>
 
+        @include('helpers.chat')
+    </section>
 
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
@@ -72,9 +49,6 @@
 
     <script>
         $(document).ready(function(){
-
-
-
 
             $("#loginInformation2").validate({
                 rules: {

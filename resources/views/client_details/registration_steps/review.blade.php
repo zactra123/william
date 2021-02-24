@@ -1,187 +1,22 @@
-<style>
-    .remove-data:hover{
-        color: #e3342f;
-    }
-</style>
-
-<div class="card w-75">
-    <div class="text-center">
-        <h3>PLEASE VERIFY YOUR INFORMATION AND MAKE CHANGES IF NECESSARY</h3>
-
+<form id="add_client_5" action="{{route('client.details.update', $client)}}" data-id="5" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
+    @csrf
+    <p>Please verify your information and make changes if necessary</p>
+    {{ Form::text('client[full_name]', !empty($uploadUserDetail) && $uploadUserDetail->full_name() != null ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input',  'placeholder' => 'Full Name']) }}
+    {{ Form::date('client[dob]', !empty($uploadUserDetail) && !empty($uploadUserDetail->dob) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'Date of birth']) }}
+    {{ Form::text('client[ssn]', !empty($uploadUserDetail) ? $uploadUserDetail->ssn :  $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'Social security number']) }}
+    {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->full_address() :  $client->clientDetails->full_address(), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+    <div class="select">
+        {{ Form::select('client[sex_uploaded]', [''=>'Gender','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : $client->clientDetails->sex , ['class'=>'form-control']) }}
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+            xml:space="preserve">
+            <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751
+                c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0
+                c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>
+        </svg>
     </div>
-    <div class="card-body ">
-        {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
-        @method('PUT')
-        @csrf
-        <div class="form-group row font justify-content-center">
 
-            <div class="col-md-12 tab-selector">
-                <div class="col-md-12" class="col-md-12 ">
-                    {{ Form::text('client[full_name]', !empty($uploadUserDetail) && $uploadUserDetail->full_name() != null ? $uploadUserDetail->full_name() : $client->full_name(), ['class' => 'form-control m-input',  'placeholder' => 'FULL NAME']) }}
-                </div>
-            </div>
-
-        </div>
-
-        <div class="form-group row font justify-content-center">
-
-            <div class="col-md-12 tab-selector">
-                <div class="col-md-12">
-
-                    {{ Form::date('client[dob]', !empty($uploadUserDetail) && !empty($uploadUserDetail->dob) ? $uploadUserDetail->dob : $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
-                </div>
-            </div>
-
-        </div>
-        <div class="form-group row font justify-content-center">
-            <div class="col-md-12 tab-selector">
-                <div class="col-md-12">
-                    {{ Form::text('client[ssn]', !empty($uploadUserDetail) ? $uploadUserDetail->ssn :  $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
-                </div>
-            </div>
-        </div>
-        <div class="form-group row font justify-content-center">
-            <div class="col-md-12 tab-selector">
-                <div class="col-md-12">
-                    {{ Form::text('client[address]',  !empty($uploadUserDetail) ? $uploadUserDetail->address :  $client->clientDetails->address, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-                </div>
-            </div>
-        </div>
-{{--        <div class="form-group row font justify-content-center">--}}
-{{--            <div class="col-md-12 tab-selector">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    {{ Form::text('client[zip]',  !empty($uploadUserDetail) ? $uploadUserDetail->zip :  $client->clientDetails->ssn, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'ZIP CODE']) }}--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <div class="form-group row font justify-content-center">
-            <div class="col-md-12 tab-selector">
-                <div class="col-md-12 sex_options">
-                    {{ Form::select('client[sex_uploaded]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : $client->clientDetails->sex , ['class'=>'col-md-10  form-control']) }}
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group row mb-0 font">
-            <div class="col-md-offset-5">
-                <button type="submit" class="btn btn-primary">
-                    Submit
-                </button>
-            </div>
-        </div>
-        {!! Form::close() !!}
+    <div class="basic-button">
+        <input class="login" type="submit" value="Submit" name="">
     </div>
-</div>
-
-
-
-<script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places">
-
-</script>
-
-
-<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-<script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-
-<script>
-    $(document).ready(function(){
-
-        autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var place = autocomplete.getPlace();
-            $("#address").val(place.formatted_address)
-            for (var i = 0; i < place.address_components.length; i++) {
-                for (var j = 0; j < place.address_components[i].types.length; j++) {
-                    if (place.address_components[i].types[j] == "postal_code") {
-                        $("#zip").val(place.address_components[i].long_name);
-
-                    }
-                }
-            }
-        });
-
-        $(".ssn").mask("999-99-9999");
-        $('#phone_number').mask('(000) 000-0000');
-
-        $('#date').focus(function () {
-
-            this.type='date';
-        });
-        $('#date').click(function () {
-            this.type='date';
-        })  ;
-        $('#date').blur(function () {
-            if(this.value==''){this.type='text'};
-        });
-
-
-
-        $(".cancel-changes").click(function(){
-            location.reload()
-        });
-
-        $('.tab-selector i').click(function(){
-            $parent = $(this).parents(".form-group")
-            $parent.removeClass("has-error");
-            $parent.next(".warning-message").remove();
-            $(this).parents(".tab-selector").remove();
-            $parent.children(".tab-selector").find(".col-md-1").remove()
-        });
-
-        $.validator.addMethod("one_option", function(value, element) {
-            if (element.name.indexOf("sex") != -1){
-                return $(".sex_options").length < 2
-            }
-            return $("[name='" +element.name+ "']").length < 2;
-        }, "Please choose one of the options");
-
-        $.validator.addMethod("valid_ssn", function(value, element) {
-            console.log(value, element)
-            return !!value.match(/[0-9]{3}-[0-9]{2}-[0-9]{4}/g);
-        }, "Not valid ssn format.");
-
-        $.validator.addMethod("valid_address", function(value, element) {
-            // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
-            return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
-        }, "Not valid address format.");
-
-        $("#clientDetailsForm").validate({
-            rules: {
-                "client[full_name]": {
-                    required:true,
-                    one_option: true
-                },
-                "client[dob]": {
-                    required:true,
-                    one_option: true
-                },
-                "client[ssn]": {
-                    required:true,
-                    valid_ssn: true
-                },
-                "client[address]": {
-                    required:true,
-                    one_option: true,
-                    valid_address: true
-                },
-                "client[zip]": {
-                    required:true,
-                    one_option: true
-                },
-                "client[sex]": {
-                    required:   true,
-                    one_option: true
-                },
-                "client[sex_uploaded]": {
-                    required:true
-                }
-            },
-            errorPlacement: function(error, element) {
-                error.insertAfter($(element).parents(".form-group"));
-            }
-        })
-    })
-
-</script>
+</form>

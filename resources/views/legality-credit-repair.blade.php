@@ -1,5 +1,5 @@
 
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('meta')
     <title>Is Repair Legal in All 50 States? Prudent Credit Solutions</title>
@@ -9,215 +9,89 @@
 
 @section('content')
 
-    <section class="header-title section-padding">
-        <div class="container text-center">
-            <h2 class="title"> Legality of the Credit Repair </h2>
-            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Legality of the Credit Repair</span>
+    <section class="header">
+        <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
+        <div class="container header-banner">
+
         </div>
-    </section>
 
-    <section class="ms-working working-section section-padding">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Legality of the Credit Repair</h2>
-                <div class="border-2"></div>
-                <div class="wrapper-content">
-                    <h2>Is Credit Repair Legal?</h2>
-                    <p style="text-align: left">
-                        Credit repair may not have the best reputation as financial services go, but it's a
-                        federally protect right. Two primary credit repair laws guarantee consumers the right to
-                        correct errors in their credit reports. They are the Fair Credit Reporting Act (FCRA)
-                        and the Credit Repair Organizations Act (CROA). There are also laws in every state that
-                        regulate the credit repair industry and service providers.
-                    </p>
-                    <p style="text-align: justify">
-                        It's important to note that credit repair is legal in all 50 states. There's a federal
-                        law that guarantees consumers the right to dispute information in their credit report to
-                        have it corrected. There's also a federal law that outlines how credit repair companies
-                        can provide services to consumers. These two laws set the foundation for how credit
-                        repair works in the U.S.
-                    </p>
+        <div class="container header-banner">
+                <div class="section-title text-center">
+                    <h2>Legality of the Credit Repair</h2>
+                    <div class="wrapper-content mt-5">
+                        <h2>Is Credit Repair Legal?</h2>
+                        <p style="text-align: left">
+                            Credit repair may not have the best reputation as financial services go, but it's a
+                            federally protect right. Two primary credit repair laws guarantee consumers the right to
+                            correct errors in their credit reports. They are the Fair Credit Reporting Act (FCRA)
+                            and the Credit Repair Organizations Act (CROA). There are also laws in every state that
+                            regulate the credit repair industry and service providers.
+                        </p>
+                        <p style="text-align: justify">
+                            It's important to note that credit repair is legal in all 50 states. There's a federal
+                            law that guarantees consumers the right to dispute information in their credit report to
+                            have it corrected. There's also a federal law that outlines how credit repair companies
+                            can provide services to consumers. These two laws set the foundation for how credit
+                            repair works in the U.S.
+                        </p>
 
-{{--                    <h2>Rights to credit repair granted by the FCRA</h2>--}}
+                    </div> <!-- section-title -->
+                </div>
 
-{{--                    <p style="text-align: justify">--}}
-{{--                        When it comes to credit repair, the Fair Credit Reporting Act outlines the process--}}
-{{--                        credit bureaus must follow.--}}
-{{--                    </p>--}}
-{{--                    <ul style="text-align: left">--}}
-{{--                        <li>--}}
-{{--                            Credit reporting agencies (CRAs) must accept disputes from consumers free--}}
-{{--                            of charge.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            They must respond within 30 days, but if there is any follow-up, then they--}}
-{{--                            have an additional 15 days to respond.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            The bureau must contact the lender or original provider of the information to--}}
-{{--                            verify it within five business days.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            The agency has a right to terminate a dispute if it's deemed frivolous or--}}
-{{--                            irrelevant. If they do, they must inform you of the termination within five--}}
-{{--                            business days.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            If a disputed item cannot be verified, it must be removed.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            The CRA must then provide you with a free copy of your credit report so you--}}
-{{--                            can confirm the item is gone.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            If the item can be verified, the dispute gets rejected.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            If this happens, the consumer has a right to include a 100-word statement in--}}
-{{--                            their credit report. This explains your dispute to lenders reviewing your report.--}}
-{{--                            However, the negative information would still affect your credit score.--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
+        </div>
 
-{{--                    <h2>Regulations set by CROA</h2>--}}
+        <div class="chat" id="chat">
+            <div class="header" id="chat_header">
+                <svg width="368" viewBox="0 0 368 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 22.5049C19.6 42.9049 6 50.0049 0 51.0049H368C352 49.5049 342 21.0049 341.5 21.5049C333.1 3.90485 315 -0.161814 307 0.00485253C223 0.171519 55 0.404853 55 0.00485253C37.4 0.404853 28.3333 15.1715 26 22.5049Z" fill="url(#paint0_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="16.5" y1="26" x2="353" y2="26" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F63565"/>
+                            <stop offset="1" stop-color="#FA6642"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <p>
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.625 5.25H6.125C5.642 5.25 5.25 5.642 5.25 6.125C5.25 6.608 5.642 7 6.125 7H16.625C17.108 7 17.5 6.608 17.5 6.125C17.5 5.642 17.108 5.25 16.625 5.25Z" fill="white"/>
+                        <path d="M13.125 8.75H6.125C5.642 8.75 5.25 9.142 5.25 9.625C5.25 10.108 5.642 10.5 6.125 10.5H13.125C13.608 10.5 14 10.108 14 9.625C14 9.142 13.608 8.75 13.125 8.75Z" fill="white"/>
+                        <path d="M19.25 0H3.5C1.56975 0 0 1.56975 0 3.5V21C0 21.3395 0.196 21.6493 0.504 21.7927C0.62125 21.847 0.749 21.875 0.875 21.875C1.07625 21.875 1.27575 21.805 1.435 21.672L6.44175 17.5H19.25C21.1803 17.5 22.75 15.9303 22.75 14V3.5C22.75 1.56975 21.1803 0 19.25 0ZM21 14C21 14.9642 20.216 15.75 19.25 15.75H6.125C5.92025 15.75 5.7225 15.8218 5.565 15.953L1.75 19.1327V3.5C1.75 2.53575 2.534 1.75 3.5 1.75H19.25C20.216 1.75 21 2.53575 21 3.5V14Z" fill="white"/>
+                        <path d="M24.5 7C24.017 7 23.625 7.392 23.625 7.875C23.625 8.358 24.017 8.75 24.5 8.75C25.466 8.75 26.25 9.53575 26.25 10.5V25.3032L23.296 22.9408C23.142 22.8183 22.9478 22.75 22.75 22.75H10.5C9.534 22.75 8.75 21.9642 8.75 21V20.125C8.75 19.642 8.358 19.25 7.875 19.25C7.392 19.25 7 19.642 7 20.125V21C7 22.9303 8.56975 24.5 10.5 24.5H22.442L26.5773 27.8092C26.7365 27.9352 26.9307 28 27.125 28C27.2528 28 27.3822 27.972 27.5047 27.9142C27.8075 27.7673 28 27.461 28 27.125V10.5C28 8.56975 26.4303 7 24.5 7Z" fill="white"/>
+                    </svg>
+                    <span id="chat_header_hide_text" >
+						Talk to us, we are online!
+					</span>
+                </p>
+            </div>
+            <div class="body" id="chat_body">
+                <div class="chat-title">
+                    <h3>Chat</h3>
+                    <div id="chat_close">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.1988 12.0197L23.5439 2.6743C24.1521 2.06642 24.1521 1.08357 23.5439 0.475685C22.936 -0.132195 21.9532 -0.132195 21.3453 0.475685L11.9999 9.82109L2.65474 0.475685C2.04658 -0.132195 1.064 -0.132195 0.456124 0.475685C-0.152041 1.08357 -0.152041 2.06642 0.456124 2.6743L9.80125 12.0197L0.456124 21.3651C-0.152041 21.973 -0.152041 22.9559 0.456124 23.5637C0.759068 23.867 1.15739 24.0193 1.55543 24.0193C1.95347 24.0193 2.35152 23.867 2.65474 23.5637L11.9999 14.2183L21.3453 23.5637C21.6485 23.867 22.0466 24.0193 22.4446 24.0193C22.8426 24.0193 23.2407 23.867 23.5439 23.5637C24.1521 22.9559 24.1521 21.973 23.5439 21.3651L14.1988 12.0197Z" fill="#94A2B3"/>
+                        </svg>
+                    </div>
 
-{{--                    <p style="text-align: justify">--}}
-{{--                        The primary purpose if CROA is to define what companies or organizations have a legal--}}
-{{--                        right to provide credit repair services. Then it outlines how those services must be--}}
-{{--                        provided.--}}
-{{--                    </p>--}}
-{{--                    <ol style="text-align: left">--}}
-{{--                        <li>--}}
-{{--                            The law defines a credit repair company as an entity that sells services related to--}}
-{{--                            maintain accuracy in a consumer's credit report.--}}
-{{--                            <ol>--}}
-{{--                                <li  type="a">--}}
-{{--                                    This does not include financial institutions, lenders, credit card issuers,--}}
-{{--                                    or nonprofit organizations, such as consumer credit counseling agencies.--}}
-{{--                                </li>--}}
-{{--                            </ol>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            There are five primary business practices that CROA strictly prohibits:--}}
-{{--                            <ul>--}}
-{{--                                <li>--}}
-{{--                                    This does not include financial institutions, lenders, credit card issuers,--}}
-{{--                                    or nonprofit organizations, such as consumer credit counseling agencies.--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                            <ol>--}}
-{{--                                <li  type="a">--}}
-{{--                                    They can't alter your identity or advise you to do so to hide adverse information--}}
-{{--                                    incurred in your report.--}}
-{{--                                </li>--}}
-{{--                                <li  type="a">--}}
-{{--                                    They can't make untrue or misleading claims about the services they provide.--}}
-{{--                                </li>--}}
-{{--                                <li  type="a">--}}
-{{--                                    Companies also can't engage in any practice that would constitute fraud under other--}}
-{{--                                    federal laws.--}}
-{{--                                </li>--}}
-{{--                                <li  type="a">--}}
-{{--                                    Finally, they can't charge advance fees and must adequately perform all services as--}}
-{{--                                    you pay for them.--}}
-{{--                                </li>--}}
-{{--                            </ol>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            A credit repair company must also provide detailed disclosure of what their services--}}
-{{--                            do and how much it costs. They must give you this disclosure before you sign a contract!--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            A credit repair company must also provide detailed disclosure of what their services--}}
-{{--                            do and how much it costs. They must give you this disclosure before you sign a contract!--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            They can't penalize you with fees if you decide to cancel--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            It prohibits companies from making you sign away your rights to cancel or sue and--}}
-{{--                            protects your rights to seek damages if the service is not up to standards.--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            It gives you the right to sue a company for up to five years after the service was provided.--}}
-{{--                        </li>--}}
-{{--                    </ol>--}}
-
-{{--                    <h2>State Laws that regulate credit repair</h2>--}}
-
-{{--                    <p style="text-align: justify">--}}
-{{--                        In addition to the two federal credit repair laws, almost every state has its credit--}}
-{{--                        repair laws, as well. Most state laws stipulate that a credit repair company must have--}}
-{{--                        a state-licensed attorney on staff. In other words, only a credit repair attorney--}}
-{{--                        authorized to practice in that state is legally allowed to make disputes on your behalf.--}}
-{{--                        This gives you an easy way to make sure that a credit repair company is legitimate. If--}}
-{{--                        they don't have state-licensed attorneys for your state on staff, then buyer beware! The--}}
-{{--                        service may be a scam. California is not one of them.--}}
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        Some states require the company to be bonded to work for clients in that particular--}}
-{{--                        state. Other states establish more specific systems for when fees can be assessed and--}}
-{{--                        prohibited acts that credit repair companies can't engage in without breaking the law.--}}
-{{--                        Disclaimers and disclosures that are legally required can also be set by the state, as--}}
-{{--                        well as standards for advertising and making claims during sales calls.--}}
-
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        If you want to know your state's specific consumer protections for credit repair, contact--}}
-{{--                        your state Attorney General's office. They can provide information about your state's--}}
-{{--                        credit repair laws and help you understand the legalese, so you don't have to read the--}}
-{{--                        code yourself to know what rights you have.--}}
-
-{{--                    </p>--}}
-
-{{--                    <h2>How common are credit repair scams?</h2>--}}
-
-{{--                    <p style="text-align: justify">--}}
-{{--                        In 2018, the CFPB received over 1,000 complaints about credit repair companies. Of those,--}}
-{{--                        one-third of the complaints were related to frauds and scams. Another 16% complained--}}
-{{--                        about misleading advertising claims, 12% got hit with unexpected fees, and 10% did not--}}
-{{--                        receive the proper disclosures.--}}
-
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        Scams do happen, which is why it's so important to know your rights, both federally and--}}
-{{--                        in your state. The benefit of correcting mistakes in your report to fix your credit is--}}
-{{--                        immense and professional help can give you an edge. However, you don't want to add a--}}
-{{--                        fraud complaint onto your list of financial to-dos! So, check with your State Attorney--}}
-{{--                        General and proceed accordingly if you decide to get professional help.--}}
-
-{{--                    </p>--}}
-
-{{--                    <h2>What to do if you think you're the victim of a credit repair scam</h2>--}}
-
-{{--                    <p style="text-align: justify">--}}
-{{--                        If a company violates any of the rights outlined above or doesn't follow the laws in your--}}
-{{--                        state, you have a right to sue and a right to file a formal complaint against the--}}
-{{--                        company. Here's what you should do if you think a company didn't follow the letter of--}}
-{{--                        the law and tried to scam you:--}}
-
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        1.	File a complaint with the Federal Trade Commission at--}}
-{{--                        <a href="https://www.ftccomplaintassistant.gov/" target="_blank">https://www.ftccomplaintassistant.gov/</a>--}}
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        2.	Then contact your state Attorney General's office to file a complaint with that office as well.--}}
-{{--                    </p>--}}
-{{--                    <p style="text-align: justify">--}}
-{{--                        Note that complaints made to the FTC don't mean that they will help you sue the company.--}}
-{{--                        It would be best if you usually pursued a civil lawsuit on your own. The point of filing--}}
-{{--                        complaints is to get the company into the federal database of consumer complaints. If--}}
-{{--                        they receive enough complaints, then they go after the company with fines and possible--}}
-{{--                        business closure. By contrast, your state AG's office may decide to file a class-action--}}
-{{--                        lawsuit against a company if they receive enough complaints. But if you believe you're--}}
-{{--                        the victim of a scam, don't wait for your AG to act! Instead, talk to an attorney about--}}
-{{--                        pursuing a civil lawsuit on your own.--}}
-
-{{--                    </p>--}}
-
-                </div> <!-- section-title -->
+                </div>
+                <form action="" id="chat_form">
+                    <p>You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
+                    <input type="text" placeholder="Your full name">
+                    <div class="contact">
+                        <label for="email" class="email-label">
+                            <input type="email" id="email" placeholder="E-mail Address">
+                        </label>
+                        <p>or</p>
+                        <label for="phone" class="phone-label">
+                            <input type="tel" id="phone" disabled placeholder="Phone Number">
+                        </label>
+                    </div>
+                    <textarea placeholder="write your message" cols="30" rows="10"></textarea>
+                    <div class="form-submit">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+
 @endsection

@@ -48,7 +48,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return redirect(route('register.Affiliate'));
+
+//        return redirect(route('register.Affiliate'));
         $secrets=DB::table('secret_questions')->where('user_id', null)
             ->select('question','id')->get();
         return view('auth.register',compact('secrets'));
@@ -105,6 +106,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         if(isset($data['own_secter_question']) && $data['secret_questions_id'] == 'other'){
 
            $secreteQuestion =  SecretQuestion::create([
@@ -136,17 +138,14 @@ class RegisterController extends Controller
         }
 
         if($data['role'] == 'affiliate'){
-
             $splitAddress = $this->splitAddress(str_replace([", USA", ",USA"], '', strtoupper($data['address'])));
-
             preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
             $data["number"] = isset($number[0])?$number[0]:null;
             $data['name'] = trim(str_replace($data ["number"], '', $splitAddress['street']));
             $data['city'] = $splitAddress['city'];
             $data['state'] = $splitAddress['state'];
             $data['zip'] =$splitAddress['zip'];
-            $data['registration_steps'] = "finished";
-
+            $data['registration_steps'] = "registered";
 
             ClientDetail::create([
                 'user_id' => $id,
@@ -170,8 +169,6 @@ class RegisterController extends Controller
                 'referred_by'=>isset($data['referred_by'])?$data['referred_by']:null,
             ]);
         }
-
-
         return $user;
     }
 

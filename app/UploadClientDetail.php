@@ -9,7 +9,7 @@ class UploadClientDetail extends Model
     protected $table = 'upload_client_details';
 
     protected $fillable = [
-        'user_id' => 'required',
+        'user_id',
         'first_name',
         'last_name',
         'ssn',
@@ -33,5 +33,10 @@ class UploadClientDetail extends Model
             return null;
         }
 
+    }
+
+    public function full_address()
+    {
+        return ucfirst($this->address) . ' ' . ucfirst($this->zip);
     }
 }

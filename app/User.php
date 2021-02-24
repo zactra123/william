@@ -128,6 +128,11 @@ class   User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\ClientDetail');
     }
 
+    public function uploadClientDetails()
+    {
+        return $this->hasOne('App\UploadClientDetail');
+    }
+
     public function reports()
     {
         return $this->hasMany('App\ClientReport');
