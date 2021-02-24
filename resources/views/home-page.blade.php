@@ -95,15 +95,15 @@
         <div class="container">
             <div class="about-us-inner row">
                 <div class="information-block col-12 col-md-6">
+                    <h4> We have over 18 years of experience in the credit repair industry</h4>
                     <p>
-                        In the 1800s, most credit transactions were conducted by businesses, not by consumers. As
-                        business transactions increased, commercial lenders needed to create a way to standardize credit
-                        evaluation. In 1841, the Mercantile Agency solicited information from correspondents throughout
-                        the United States to systemize a borrower's "character and assets." However, this data
-                        considered too subjective by many as the opinions noted racial, class, and gender biases.
-                        Subscribers to the Mercantile Agency (renamed R.G.
+                        As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.
+                        Prudent Credit Solutions employs experts who work diligently on acquiring new and superb
+                        knowledge concerning the credit restoration industry and use that knowledge to help you
+                        strategically dispute and correct inaccuracies on your credit reports, build better credit,
+                        and enhance borrowing power for your personal or professional needs.
                     </p>
-                    <a href="#" class="basic-button">Read more</a>
+                    <a href="{{route('whoWeAre')}}" class="basic-button">Read more</a>
                 </div>
                 <div class="video-block col-12 col-md-6">
                     <div class="video-box">
@@ -360,7 +360,7 @@
                             <div class="icon">
                                 <img src="{{asset("images/new/analytics_icon.png")}}" alt="analytics_icon">
                             </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
+                            <h6>Highlight errors on your credit report and make a plan to dispute them</h6>
                         </div>
                     </div>
                     <div class="report-item">
@@ -368,7 +368,7 @@
                             <div class="icon">
                                 <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
                             </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
+                            <h6>Identify bad debts that have opportunities to negotiate for lower payments</h6>
                         </div>
                     </div>
                     <div class="report-item">
@@ -376,7 +376,7 @@
                             <div class="icon">
                                 <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
                             </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
+                            <h6>Help you build good habits to keep your credit score in tip top shape</h6>
                         </div>
                     </div>
                     <div class="report-item">
@@ -413,7 +413,7 @@
                         </figure>
                     </div>
                 </div>
-                <a href="{{route('login')}}" class="basic-button">Get started</a>
+                <a href="{{route('credit.education')}}" class="basic-button">Read More</a>
             </div>
         </div>
     </section>

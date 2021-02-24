@@ -92,7 +92,7 @@
         </div>
         <div class="site-navi contact-info row">
             <div class="logo-block col-6 col-lg-2">
-                <a href="/" title="Home">
+                <a href="/home" title="Home">
                     <img src="{{asset('images/new/logo.png')}}" alt="logo">
                 </a>
             </div>
@@ -252,7 +252,7 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>COPYRIGHT WOOCOMMERCE 2020 - <a href="#">PRIVACY POLICY</a></p>
+            <p>COPYRIGHT WOOCOMMERCE 2020 - <a href="{{route('pravicy')}}">PRIVACY POLICY</a></p>
         </div>
     </footer>
 @endif
