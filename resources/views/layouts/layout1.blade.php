@@ -13,6 +13,21 @@
     @endif
     {{--  Meta data END   --}}
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "company": "Prudent Credit Solution",
+      "author": {
+        "@type": "Person",
+        "name": "Mary Stone"
+      },
+      "datePublished": "2018-03-10",
+      "description": "This coffee cake is awesome and perfect for parties.",
+      "prepTime": "PT20M"
+    }
+    </script>
+
     {{-- Canonical url   --}}
     <link rel="canonical" href="{{ url()->current() }}" />
 
