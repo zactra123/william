@@ -1,5 +1,9 @@
 @extends('layouts.layout1')
-
+@section('meta')
+    <title>Superior credit restoration firm - Prudent Credit Solutions </title>
+    <meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment
+        Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">
+@endsection
 @section('scripts')
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-3d.js"></script>
