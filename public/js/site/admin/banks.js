@@ -1,7 +1,5 @@
-var pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-    expand = function(target, selector){
+expand = function(target, selector){
     if ($(target).hasClass('hidden')) {
         $(target).removeClass('hidden')
         $(selector).find('i').removeClass('fa-plus-circle')
@@ -63,48 +61,6 @@ $(document).ready(function($) {
         var target = $(this).attr('data-address')
         expand(target, this)
     })
-
-
-    $(".file-box").on("change", function(e){
-        var file = e.target.files[0]
-        var _this = this
-        if(file.type == "application/pdf"){
-            var fileReader = new FileReader();
-            fileReader.onload = function() {
-                var pdfData = new Uint8Array(this.result);
-                var loadingTask = pdfjsLib.getDocument({data: pdfData});
-                loadingTask.promise.then(function(pdf) {
-                    // Fetch the first page
-                    var pageNumber = 1;
-                    pdf.getPage(pageNumber).then(function(page) {
-                        var scale = 1.5;
-                        var viewport = page.getViewport({scale: scale});
-
-                        // Prepare canvas using PDF page dimensions
-                        var canvas = $("#pdfViewer")[0];
-                        var context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        // Render PDF page into canvas context
-                        var renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        var renderTask = page.render(renderContext);
-                        renderTask.promise.then(function () {
-                            // console.log(canvas.toDataURL("image/png", 0.8))
-                            $(_this).css('background-image', 'url("'+ $('#pdfViewer').get(0).toDataURL("image/jpeg", 0.8) +'")');
-                            $(_this).css('background-size', '200px');
-
-                        });
-                    });
-                }, function (reason) {
-                    console.error(reason);
-                });
-            };
-            fileReader.readAsArrayBuffer(file);
-        }
-    });
 
     $("#bank_logo").change(function(e) {
         $(this).removeClass('driver_license')
@@ -582,8 +538,20 @@ $(document).ready(function($) {
         $("input[name='bank_address[registered_agent][email]']").val(email);
     } )
 
+    $('.add-additional').on('click', function(){
+        var n = Number(Date.now());
+        additional = $('#addtional_address_template').html()
+            .replaceAll('{i}', n)
+        $(additional).insertBefore('.additional-addresses')
+        $('.selectize-single').selectize({
+            selectOnTab: true,
+        })
+        $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
+    })
 
-
+    $(document).on('click', '.remove-address button', function(){
+        $(this).parents('formset').remove()
+    })
 
 
 });

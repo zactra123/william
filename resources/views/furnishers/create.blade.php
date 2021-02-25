@@ -163,6 +163,12 @@
                             <div class="ms-ua-form pl-4 pr-4 ">
                                 <div id="addresses_container">
                                 @foreach(\App\BankAddress::TYPES as $type=>$name)
+                                    @if($type == 'additional_address')
+                                        <div class="row additional-addresses">
+                                            <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit  form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                        </div>
+                                        @continue
+                                    @endif
                                     <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
                                         <div class="row expand-address" data-address="#address-{{$type}}">
                                             <div class="col-md-6"><label for="">{{$name}}</label>  </div>
@@ -190,7 +196,7 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
+                                            @if(in_array($type, ['dispute_address', 'qwr_address', 'fraud_address']))
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
@@ -313,10 +319,74 @@
 
     </script>
 
+    <script type="text/html" id="addtional_address_template">
+        <formset class="additional_address">
+            <div class="row remove-address">
+                <div class="col-md-6"><label for="">ADDITIONAL ADDRESS</label>  </div>
+                <div class="col-md-6 text-right">
+                    <button type="button">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12 addresses " id="address-additional_address-{i}">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                    </div>
+                </div>
+                <div class="row">
+                    {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
+
+                    <div class="form-group col-sm-5">
+                        {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                    </div>
+                    <div class="form-group col-sm-3">
+                        {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                    </div>
+                    <div class="form-group col-sm-2">
+                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                        {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                    </div>
+                    <div class="form-group col-sm-2">
+                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                        {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-2 p-0">
+                            <img  class="responsive" src="/images/phone.png">
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-2 p-0">
+                            <img  class="responsive" src="/images/fax.png">
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-2 p-0">
+                            <img  class="responsive" src="/images/email.png">
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </formset>
+    </script>
+
     <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
     <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
 
     <script>

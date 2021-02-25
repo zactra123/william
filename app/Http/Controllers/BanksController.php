@@ -194,9 +194,15 @@ class BanksController extends Controller
         if (!in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])))  {
             unset($account_addresses['qwr_address']);
         }
+        $additional_addresses = $account_addresses['additional_address'];
+        unset($account_addresses['additional_address']);
 
         foreach($account_addresses as $address) {
             $bank->bankAddresses()->create($address);
+        }
+
+        if (!empty($additional_addresses)) {
+            $bank->bankAddresses()->createMany($additional_addresses);
         }
 
         $equalBanks = $request->equal_banks;
@@ -233,10 +239,22 @@ class BanksController extends Controller
         $bank = BankLogo::findOrFail($id);
         $banks = BankLogo::all()->pluck('name', 'id')->toArray();
 
-        $bank_addresses = $bank->bankAddresses()
-            ->get()->mapWithKeys(function ($address) {
-                return [$address->type => $address];
-            });
+        $addresses = $bank->bankAddresses()
+            ->get();
+        $bank_addresses = [];
+        foreach ($addresses as $address) {
+
+            if ($address->type == 'additional_address') {
+
+                if ( empty($bank_addresses[$address->type])) {
+                    $bank_addresses[$address->type] = [0=>$address];
+                } else {
+                    array_push($bank_addresses[$address->type], $address);
+                }
+                continue;
+            }
+            $bank_addresses[$address->type] = $address;
+        }
 
         $registredAgent = BankLogo::where('type', 'registered_agent')->pluck('name', 'id')->toArray();
 
@@ -251,8 +269,6 @@ class BanksController extends Controller
      */
     public function update(Request $request)
     {
-
-
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
@@ -300,6 +316,7 @@ class BanksController extends Controller
 
         $addresses_ids = [];
         $account_addresses =  $request->bank_address;
+
         if ($bank->type != 3) {
             unset($account_addresses['fraud_address']);
         }
@@ -307,6 +324,9 @@ class BanksController extends Controller
         if (!in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])))  {
             unset($account_addresses['qwr_address']);
         }
+
+        $additional_addresses = !empty($account_addresses['additional_address']) ? $account_addresses['additional_address']: false;
+        unset($account_addresses['additional_address']);
 
         foreach ($account_addresses as $address){
             $bank_address = $bank->bankAddresses()->firstorCreate(
@@ -316,6 +336,18 @@ class BanksController extends Controller
 
             $bank_address->update($address);
             $addresses_ids[] = $bank_address->id;
+        }
+
+        if (!empty($additional_addresses)) {
+            foreach ($additional_addresses as $address){
+                if (!empty($address->id)) {
+                    $bank_address = $bank->bankAddresses()->find($address->id);
+                    $bank_address->update($address);
+                } else {
+                    $bank_address = $bank->bankAddresses()->create($address);
+                }
+                $addresses_ids[] = $bank_address->id;
+            }
         }
 
         if ($addresses_ids){
