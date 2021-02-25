@@ -44,7 +44,7 @@
         <div class="container">
             <div class="about-us-inner row">
                 <div class="information-block col-12 col-md-6">
-                    <h4> We have over 18 years of experience in the credit repair industry</h4>
+                    <h4> We have over {{date("Y")-2003}} years of experience in the credit repair industry</h4>
                     <p>
                         As a superior credit restoration firm, Prudent Credit Solutions sets the industry standards.
                         Prudent Credit Solutions employs experts who work diligently on acquiring new and superb
