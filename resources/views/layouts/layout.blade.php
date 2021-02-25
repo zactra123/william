@@ -56,6 +56,28 @@
     <link href="{{asset('css/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "http:\/\/schema.org",
+            "@type": "LocalBusiness",
+            "name": "Prudent Credit Solutions",
+            "email": "info@prudentscores.com",
+            "description": "Prudent Credit Solutions helps dispute and correct inaccuracies on credit
+                            reports, improve credit history, achieve reasonable credit-fitness goals.
+                            Decided to hire our firm? Find out how Prudent Credit Solutions work for credit
+                            restoration? Stages and rules. Relax and expect to hear some good news!"
+            "openingHours": "Mo,Tu,We,Th 09:00-17:30",
+            "url":"https://prudentscores.com/",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Commerce",
+                "addressRegion": "CA",
+                "postalCode": "90040",
+                "streetAddress": "800 S. Eastern Ave., Suite 500"
+                 "telephone": "(1 84) 43 37 83 36"
+            },
+        }
+    </script>
 
     <style>
         body:after{

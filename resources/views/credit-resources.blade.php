@@ -18,21 +18,21 @@
                 <h1>Credit Resources</h1>
                 <div class="border-2"></div>
                 <div class="mt-5">
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Credit Resources - Need some trusted resources to help keep your credit in tip-top shape? Or
                         perhaps you’d like to educate yourself on how to improve your score? Having the right tools with
                         a trusted reputation and track history proven to help is vital. Here are some popular resources
                         that will get the job done right for you
                     </p>
                     <h2>Mint</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Mint is an online software that helps you budget your money, monitor your credit, and
                         help you find opportunities to improve your finances. Furthermore, they provide you with
                         even more tools and resources to continue educating yourself on personal finance!
                     </p>
 
                     <h2>AnnualCreditReport.com</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         It’s the law that every US citizen can get a free credit report without impacting your score.
                         This can be obtained with AnnualCreditReport.com. It allows you to monitor your credit year over
                         year and gives you a very detailed outline of every debt listed on your credit.
@@ -40,7 +40,7 @@
                     </p>
 
                     <h2>NerdWallet</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         NerdWallet is an educational resource to help you understand all things related to money. This
                         includes credit cards, banking, investing, mortgages, loans, insurance, personal finance, and
                         even traveling! Along with their educational resources, they partner with some of the top
@@ -49,7 +49,7 @@
                     </p>
 
                     <h2>CreditKarma</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         CreditKarma.com is a generic monitoring app that allows its subscribers to get a basic
                         TransUnion and Equifax credit information, including but not limited to credit scores.
                     </p>

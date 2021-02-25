@@ -23,7 +23,7 @@
                     <div class="wrapper-content">
                     </div> <!-- section-title -->
                     <div class="wrapper-content">
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify">
                             At Prudent Credit Solutions, we have over eighteen years of experience in the credit repair industry.
                             As a superior credit restoration firm, we set the industry standards. Prudent Credit Solutions
                             employs experts who work diligently on acquiring new and superb knowledge concerning the credit
@@ -31,13 +31,13 @@
                             inaccuracies on your credit reports, build better credit, and enhance borrowing power for your
                             personal or professional needs.
                         </p>
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify">
                             We know the stress that bankruptcies, foreclosures, and other financial hardship can create – and we
                             are proud to help our clients escape those stressful situations. We combine timing, technique,
                             services, and practical solutions in helping our clients to improve their credit history and achieve
                             all their reasonable credit-fitness goals and enhance their borrowing power.
                         </p>
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify" >
                             Most of the other credit repair firms are in letter writing business. Writing dispute letters is a
                             “lazy man’s” approach to credit repair – one with minimal results and the constant danger of removed
                             items being re-inserted into credit reports. Those firms usually charge consumers a monthly fee for
@@ -47,7 +47,7 @@
                             correct or remove an incomplete, unverifiable, misleading, frivolous, erroneous, obsolete,
                             inaccurate, unauthorized, or fraudulent credit item from your credit reports.
                         </p>
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify">
                             Furthermore, due to our established name in the industry, Exceed Capital Lending, a financial lender
                             dedicated to helping people build solid credit files, has generously agreed to finance our clients’
                             credit restoration contracts. This agreement serves our clients further by providing an opportunity
@@ -57,10 +57,10 @@
                             strategy.
 
                         </p>
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify">
                             Our firm is registered and bonded and is in full compliance with the Credit Repair Organizations Act.
                         </p>
-                        <p class="pr-4 pl-4 who-font"  style="text-align: justify">
+                        <p class="pr-4 pl-4 who-font text-justify">
                             Our expertise and unique approach to credit restoration goes a long way toward establishing ourselves
                             as a premier credit repair solutions entity. Over 95% of our business comes from referrals,
                             illustrating our devotion to helping our clients succeed. We are zealously looking forward to

@@ -20,7 +20,7 @@
                 <div class="mt-5"></div>
                 <div class="wrapper-content">
                     <h2>3 Tips to Keeping Your Credit Score in Healthy Shape</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         The best way to keep your credit in tip-top shape is to avoid it from ever getting nasty in the
                         first place! Sure, this is much easier said than done. Let’s face it; life sometimes happens
                         before we’ve had a second even to breathe! With that said, if you follow these four tips
@@ -29,19 +29,19 @@
                     </p>
 
                     <h2>1.	Monitor Your Credit Score Regularly</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         How do you monitor your credit report? Did you know that
                         everyone can get a free credit report every year without affecting your credit score? Yup! It’s
                         the law. To do so, you need to head over to AnnualCreditReport.com and click on “Request your
                         free credit reports” located at the top of the page.
                     </p>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         After filling in your contact information and verifying your identity, you can print out a
                         detailed report of your credit profile. It will detail all the current debts you have, their
                         balances, how often you pay on time, how often you have late payments, and whether you have any
                         bad debts such as collections.
                     </p>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Taking advantage of your free annual credit report is vital to keeping your credit score in
                         check. Doing so will help you identify errors before they get out of hand, keeps you informed on
                         how banks view your financial profile, and ultimately allows you to maintain a healthy credit
@@ -51,12 +51,12 @@
 
 
                     <h2>2.	Make Your Debt Payments on Time</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Perhaps the most common reason someone’s credit score drops are due to late payments. One late
                         payment can affect your score dramatically. Two late payments are even worse, and more than that
                         is just a downhill slipping slide.
                     </p>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Credit bureaus will identify how many payments are less than 30 days late and how many are less
                         than 60 days late. If it’s more than 60 days late, there’s a good chance to go to collections.
                         A perfect on-time payment history says novels to a bank about how likely you will repay a loan
@@ -66,7 +66,7 @@
                     </p>
 
                     <h2>3.	Keep Your Balances Low</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Another common issue that has a significant impact on how your credit is scored is your total
                         balances owed and, specifically, the average balances are of your revolving debt (credit cards
                         and lines of credit). If you keep your revolving credit balances above 30% - 50% of their total
@@ -74,14 +74,14 @@
                         reviewing your profile to lend you money.
 
                     </p>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Keeping your total balances ideally below 30% of your total limit allows you to stay off the
                         radar in terms of holding high balances, while also allowing you to make monthly payments,
                         indicating you can keep making your payments on time.
 
                     </p>
                     <h2>4.	Dispute Credit Report Errors ASAP!</h2>
-                    <p style="text-align: justify">
+                    <p class="text-justify">
                         Upon regularly monitoring your credit, you’ll notice errors in your credit reports as soon as
                         they are updated. When you see something you don’t recognize on your credit report, the first
                         thing you should do is reach out to the company that owns that debt. You’ll often notice some
