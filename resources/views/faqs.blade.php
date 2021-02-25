@@ -66,7 +66,7 @@
                 </div>
 
         </div>
-
+        @include('helpers.chat')
     </section>
 
 

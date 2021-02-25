@@ -69,7 +69,6 @@ connectToChannel = function(recipient, type) {
 };
 
 addAllMessages = function (data){
-    // console.log(data)
     $(".chat-content").html("");
     return $.each(data , function(index, message){
 
@@ -80,10 +79,10 @@ addAllMessages = function (data){
 
 addMessageToChat = function(message) {
 
+
     if ($(".chat-content").find(`[data-message-id='${message.id}']`).length > 0){
         return false;
     }
-    console.log(message)
     var message_date = new Date(message.created_at);
     var time = message_date.toLocaleTimeString('en-US', {hour: "2-digit", minute: "2-digit" });
     var message_template = $("#chat-message-to-admin-template").html();
@@ -97,7 +96,6 @@ addMessageToChat = function(message) {
         $(".chat-content").append(message_template);
         return false;
     }
-
     message_template = message_template.replace(/{message}/g, message.message)
                                         .replace(/{time}/g, time)
                                         .replace(/{message-id}/g, message.id);
@@ -105,7 +103,9 @@ addMessageToChat = function(message) {
 };
 
 $(document).ready(function(){
-    $(".open-chatbox-btn").click(function(){
+    $(".open-chatbox").click(function(){
+        $(".defined-user").hide();
+
         var guest = $(this).data("guestId"),
             user = $(this).data('userId');
         if(guest != '' || user != '') {
@@ -118,14 +118,14 @@ $(document).ready(function(){
                 .then(function(data){
                     $(".not-defined-user").hide();
                     $(".defined-user").show();
-                    $(".chat-popup").show();
-                    $(this).hide();
+                    // $(".chat-popup").show();
+                    // $(this).hide();
                     connectToChannel(recipient.id, recipient.type)
                 }.bind(this));
             return false
         }
-        $(".chat-popup").show();
-        $(this).hide();
+        // $(".chat-popup").show();
+        // $(this).hide();
     });
     $('.us-phone').mask('(000) 000-0000');
     $(".not-defined-user form").validate({
@@ -168,10 +168,7 @@ $(document).ready(function(){
 
     $(".defined-user form").submit(function(e){
         e.preventDefault();
-
         var message = $(this).find(".textinput").val();
-
-        console.log(message)
         if(message != ''){
             postNewMessage(recipient, message)
                 .then(function(data){
