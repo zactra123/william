@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('section').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
+    $('body').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
 })
 
 $(document).ready(function(){
@@ -537,7 +537,7 @@ $(document).ready(function(){
             ]
         }]
     });
-    
+
 })
 
 // home page slider
