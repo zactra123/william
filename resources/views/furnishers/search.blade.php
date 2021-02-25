@@ -11,6 +11,15 @@
 
                 </div>
                 <div class="form-group">
+                    <?php $states = \App\BankAddress::STATES;   asort($types)?>
+                    {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>'selectize-single state'] ); !!}
+
+{{--                        {!! Form::select("bank_address[{$type}][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}--}}
+
+
+                </div>
+
+                <div class="form-group">
                     <input class="form-check-input" type="checkbox" name="no_logo"  {{ request()->no_logo ? 'checked' : '' }}>
                     <label for="checkbox"> WITHOUT LOGO</label>
                 </div>
@@ -28,3 +37,13 @@
         </div>
     </form>
 </div>
+
+
+<script>
+    $(document).ready(function($) {
+
+        $('.selectize-single').selectize({
+            selectOnTab: true,
+        })
+    });
+</script>

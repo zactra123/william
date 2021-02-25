@@ -44,6 +44,7 @@ class BanksController extends Controller
      */
     public function showBankLogo(Request $request)
     {
+
         if(!is_null($request->term)){
             $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->term);
 
@@ -62,8 +63,22 @@ class BanksController extends Controller
 
                 });
 
+            if(!is_null($request->states)){
+                $banksLogos = BankLogo::where('bank_addresses.type',  "executive_address")
+                    ->where('bank_addresses.satete', $request->states);
+            }
+
         }else{
-            $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
+//            $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
+            if(!is_null($request->states)){
+                $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                    ->where('bank_addresses.type',  "executive_address")
+                    ->where('bank_addresses.satete', $request->states)
+                    ->where('bank_logos.name', 'LIKE', "%{$request->term}%");
+            }else{
+                $banksLogos = BankLogo::where('bank_logos.name', 'LIKE', "%{$request->term}%");
+            }
+
         }
 
         if(!is_null($request->types)){
@@ -74,7 +89,6 @@ class BanksController extends Controller
             $banksLogos = $banksLogos->where('bank_logos.path', null);
         }
 
-
         if (!empty($request->character)) {
             if ($request->character == '#'){
                 $banksLogos = $banksLogos->whereRaw("TRIM(LOWER(name)) NOT REGEXP '^[a-z]'");
@@ -82,6 +96,8 @@ class BanksController extends Controller
                 $banksLogos = $banksLogos->whereRaw("LOWER(`name`) LIKE '{$request->character}%'");
             }
         }
+
+
         $banksLogos = $banksLogos->groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
         return view('furnishers.logo_new',compact('banksLogos'));
 
@@ -235,6 +251,8 @@ class BanksController extends Controller
      */
     public function update(Request $request)
     {
+
+
         if($request->term != null){
 
             $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
