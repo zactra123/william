@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                {!! Form::select("bank[type]", $types,  51, ['class'=>'selectize-single bank-type']); !!}
+                                                {!! Form::select("bank[type]", $types,  null, ['class'=>'selectize-single bank-type']); !!}
                                             </div>
                                         </div>
                                         <div class="m-5">
@@ -346,7 +346,7 @@
                     </div>
                     <div class="form-group col-sm-2">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                        {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
+                        {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
                     </div>
                     <div class="form-group col-sm-2">
                         {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}

@@ -29,9 +29,13 @@ $(document).ready(function($) {
             }
         },
     })
-    $('.selectize-single').selectize({
+
+    $('.selectize-state').selectize({
         selectOnTab: true,
+        persist: false,
+        preload: true,
     })
+
     $( document ).on( "load", "#addresses_container", function() {
         $('.cpf').mask('999.999.999-99');
     });
@@ -542,8 +546,9 @@ $(document).ready(function($) {
         var n = Number(Date.now());
         additional = $('#addtional_address_template').html()
             .replaceAll('{i}', n)
+            .replace('{class}', 'selectize-single')
         $(additional).insertBefore('.additional-addresses')
-        $('.selectize-single').selectize({
+        $('.additional-addresses').prev().find('.selectize-single').selectize({
             selectOnTab: true,
         })
         $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
