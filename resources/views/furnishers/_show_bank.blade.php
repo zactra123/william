@@ -70,6 +70,18 @@ asort($types)
                                     $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
                                 }
                             @endphp
+                            @if($type == 'additional_address')
+                                <?php if (!empty($bank_addresses[$type])) { ?>
+                                @foreach($bank_addresses[$type] as $addresses)
+                                    @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ])
+                                @endforeach
+                                <?php } ?>
+
+                                <div class="row additional-addresses">
+                                    <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit  form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                </div>
+                                @continue
+                            @endif
                             <formset class="{{$hidden? 'hidden': ''}} {{$type}}" disabled>
                                 <div class="row expand-address" data-address="#address-{{$type}}">
                                     <div class="col-md-6"><label for="">{{$name}}</label></div>

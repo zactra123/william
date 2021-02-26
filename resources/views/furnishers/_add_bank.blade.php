@@ -71,6 +71,12 @@ asort($types)
                 <div class="ms-ua-form pl-4 pr-4 ">
                     <div id="addresses_container">
                         @foreach(\App\BankAddress::TYPES as $type=>$name)
+                            @if($type == 'additional_address')
+                                <div class="row additional-addresses">
+                                    <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit  form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                </div>
+                                @continue
+                            @endif
                             <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
                                 <div class="row expand-address" data-address="#address-{{$type}}">
                                     <div class="col-md-6"><label for="">{{$name}}</label>  </div>

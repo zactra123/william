@@ -139,7 +139,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">ADD
+                        <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">ADD
                             FURNISHER</a>
                     </div>
                     @include('furnishers.search')
@@ -390,7 +390,7 @@
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog w-100" role="document">
             <div class="modal-content ">
@@ -405,6 +405,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="modal fade" id="parentModal" tabindex="-1" role="dialog" aria-labelledby="parentModalLabel"
              aria-hidden="true">

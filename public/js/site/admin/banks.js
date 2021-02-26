@@ -460,6 +460,18 @@ $(document).ready(function($) {
                     $("#parentModal input[name='bank_address[registered_agent][fax_number]']").val(fax);
                     $("#parentModal input[name='bank_address[registered_agent][email]']").val(email);
                 } )
+                $('.add-additional').on('click', function(){
+                    var n = Number(Date.now());
+                    additional = $('#addtional_address_template').html()
+                        .replaceAll('{i}', n)
+                        .replace('{class}', 'selectize-single')
+                    $(additional).insertBefore('.additional-addresses')
+                    $('.additional-addresses').prev().find('.selectize-single').selectize({
+                        selectOnTab: true,
+                    })
+                    $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
+                })
+
 
                 $('#parentBankInformationEdit').validate({
 

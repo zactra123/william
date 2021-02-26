@@ -10,12 +10,9 @@
                     {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>' selectize-type', 'id' => "bank-type"]); !!}
 
                 </div>
-                <div class="form-group">
+                <div class="form-group state-filter hide">
                     <?php $states = \App\BankAddress::STATES;   asort($types)?>
                     {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>'selectize-single state'] ); !!}
-
-{{--                        {!! Form::select("bank_address[{$type}][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}--}}
-
 
                 </div>
 
@@ -44,6 +41,17 @@
 
         $('.selectize-single').selectize({
             selectOnTab: true,
+        });
+        $(document).on('change', '#bank-type' ,function() {
+            var bankType = $('#bank-type').val();
+            console.log(bankType)
+            if(bankType.includes("2") || bankType.includes("55")){
+                $('.state-filter').removeClass('hide');
+            }else{
+                $('.state-filter').addClass('hide');
+
+            }
         })
+
     });
 </script>
