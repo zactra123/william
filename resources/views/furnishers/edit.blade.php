@@ -222,12 +222,12 @@
                             <div
                                 class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
                                 <div class="col-md-3">
-                                    <a class="btn show-parent-field form-control {{$bank->type == 29?"":"hide"}}">ADD
+                                    <a class="btn show-parent-field form-control">ADD
                                         PARENT</a>
-                                    <a class="btn hide hide-parent-field form-control {{$bank->type == 29?"":"hide"}}">HIDE
+                                    <a class="btn hide hide-parent-field form-control">HIDE
                                         PARENT</a>
                                 </div>
-                                <div class="col-md-9 parent-show {{$bank->type == 29?"hide":""}}">
+                                <div class="col-md-9 parent-show">
                                     <div class="col-md-9">
                                         <div class="form-group banks ">
                                             {!! Form::text("bank[parent_name]", $bank->parent ? $bank->parent->name : null, ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
