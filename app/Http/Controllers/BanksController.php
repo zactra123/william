@@ -194,7 +194,7 @@ class BanksController extends Controller
         if (!in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])))  {
             unset($account_addresses['qwr_address']);
         }
-        $additional_addresses = $account_addresses['additional_address'];
+        $additional_addresses = !empty($account_addresses['additional_address']) ? $account_addresses['additional_address'] : false;
         unset($account_addresses['additional_address']);
 
         foreach($account_addresses as $address) {
