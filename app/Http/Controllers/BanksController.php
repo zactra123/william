@@ -48,7 +48,7 @@ class BanksController extends Controller
         if(!is_null($request->term)){
             $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->term);
             $name =str_replace([' ', ',','.','\'', '"'],'',$request->term);
-            $banksLogos = BankLogo::join('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            $banksLogos = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
                 ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip, $name)  {
                     $query->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_logos.name, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'")
@@ -62,7 +62,7 @@ class BanksController extends Controller
                         }
 
                 });
-
+            $banksLogos->get();
             if(!is_null($request->states)){
                 $banksLogos = BankLogo::where('bank_addresses.type',  "executive_address")
                     ->where('bank_addresses.state', $request->states);
