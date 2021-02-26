@@ -383,7 +383,7 @@ $(document).ready(function($) {
         },
         messages:{
             "bank[name]": {
-                remote: "This name already exist"
+                remote: "COMPANY EXISTS"
             }
 
         },
