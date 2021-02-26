@@ -136,20 +136,21 @@ $(document).ready(function($) {
         } else {
             $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
         }
+        console.log(bankType);
+        if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType)) || bankType == ""){
 
-        if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30].includes(parseInt(bankType))){
-            if(parseInt(bankType) == 29){
-                $form.find('.show-parent-field').removeClass('hide');
-                $form.find('.parent-show').addClass('hide');
-                $form.find('.autocomplete-bank').val('');
-                $form.find('.parent_id').val('');
-
-            }else{
+            if($form.find('.parent_id').val() !== ""){
+                $form.find('.hide-parent-field').removeClass('hide');
                 $form.find('.show-parent-field').addClass('hide');
+                $form.find('.parent').removeClass("hidden" );
+                $form.find('.parent-show').removeClass('hide');
+            }else{
+                $form.find('.show-parent-field').removeClass('hide');
                 $form.find('.hide-parent-field').addClass('hide');
-                $form.find('.show-parent-field').removeClass("hidden")
+                $form.find('.parent-show').addClass('hide');
+                $form.find('.parent').removeClass("hidden" )
             }
-            $form.find('.parent').removeClass("hidden")
+
 
         }else {
             $form.find('.parent').addClass("hidden")
@@ -165,6 +166,7 @@ $(document).ready(function($) {
     });
 
     $(document).on('click', '.hide-parent-field', function(){
+        console.log('dasdasd')
         $('.parent-show').addClass('hide');
         $('.show-parent-field').removeClass('hide');
         $('.hide-parent-field').addClass('hide');
@@ -176,18 +178,15 @@ $(document).ready(function($) {
         $form = $(this).parents('form')
         var bankType = $form.find('.bank-type').val();
 
-        console.log( $("input[type='checkbox']:checked").val())
         if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
-            $('input[name="locationthemes"]:checked').each(function() {
-                console.log(this.value);
-            });
+
             $form.find('.parent').removeClass("hidden")
-        } else {
+        } else if(parseInt(bankType) == 40) {
             $form.find('.parent').addClass("hidden")
             $(".autocomplete-bank").val("")
             $(".autocomplete-bank").trigger('keydown')
         }
-    })
+    });
 
     $(document).on('change', '.bank_sub_type_append input', function(){
         var $form = $(this).parents('form'),
@@ -349,7 +348,7 @@ $(document).ready(function($) {
                 required: "Parent bank doesn't exist"
             },
             "bank[name]": {
-                remote: "This name already exist"
+                remote: "COMPANY EXISTS"
             }
 
         },
