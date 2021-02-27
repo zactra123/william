@@ -165,23 +165,28 @@ class BankLogo extends Model
         ],
         48 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
         50 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
         51 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
         52 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
         53 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
         55 => [
                 1 => "DEPOSIT ACCOUNTS",
@@ -195,7 +200,8 @@ class BankLogo extends Model
         ],
         58 => [
             1 => "DEPOSIT ACCOUNT",
-            2 => "CARD ISSUER"
+            2 => "CARD ISSUER",
+            3 => "BANK-SBA LENDER"
         ],
     ];
 
