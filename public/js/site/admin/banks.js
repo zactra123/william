@@ -266,7 +266,9 @@ $(document).ready(function($) {
         }else{
             $('#addresses_container').find('#dispute-address-'+ id).remove()
         }
-    })
+    });
+
+
 
     if ($( ".autocomplete-name" ).length > 0) {
         $( ".autocomplete-name" ).autocomplete({
@@ -325,7 +327,6 @@ $(document).ready(function($) {
                 .appendTo( ul );
         };
     }
-
 
     if ($( ".autocomplete-bank" ).length >0 ){
         $( ".autocomplete-bank" ).autocomplete({
