@@ -12,6 +12,7 @@ class BankAddress extends Model
         'bank_logo_id',
         'account_type_id',
         'type',
+        'copied',
         'street',
         'city',
         'state',
