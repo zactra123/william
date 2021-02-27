@@ -25,7 +25,7 @@ class BankAddress extends Model
 
     const TYPES = [
         'executive_address'=>'ENTITY ADDRESS',
-        'dispute_address'=>'ENTITY MAILING ADDRESS',
+        'dispute_address'=>'MAILING ADDRESS',
         'additional_address'=>'ADDITIONAL ADDRESS',
         'fraud_address' => 'FRAUD DISPUTE ADDRESS',
         'qwr_address' => 'QWR ADDRESS',

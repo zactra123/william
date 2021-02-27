@@ -93,7 +93,8 @@ class BankLogo extends Model
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
                 7 => "BUSINESS LOAN",
-                8 => "STUDENT LOAN"
+                8 => "STUDENT LOAN",
+                9 => "BANK-SBA LENDER"
         ],
         4 =>[
                 1 => "3RD PARTY CA",
@@ -196,7 +197,8 @@ class BankLogo extends Model
                 5 => "PERSONAL LOAN",
                 6 => "CREDIT CARD",
                 7 => "BUSINESS LOAN",
-                8 => "STUDENT LOAN"
+                8 => "STUDENT LOAN",
+                9 => "BANK-SBA LENDER"
         ],
         58 => [
             1 => "DEPOSIT ACCOUNT",

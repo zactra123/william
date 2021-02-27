@@ -82,7 +82,29 @@ class BanksController extends Controller
         }
 
         if(!is_null($request->types)){
-            $banksLogos = $banksLogos->whereIn('bank_logos.type', $request->types);
+            $non_b_sba = array_search('NON-BANK SBA LENDER', $request->types);
+            $b_sba = array_search('BANK-SBA LENDER', $request->types);
+            $types = $request->types;
+            if ($non_b_sba !== false) {
+                unset($types[$non_b_sba]);
+            }
+
+            if ($b_sba !== false) {
+                unset($types[$b_sba]);
+            }
+
+            if ($b_sba !== false && $non_b_sba !== false) {
+                array_push($types, 40);
+            }
+            $banksLogos = $banksLogos->where(function($query) use($types, $non_b_sba, $b_sba)  {
+               $query->whereIn('bank_logos.type', $types);
+               if ($non_b_sba !== false) {
+                   $query = $query->orWhereRaw("bank_logos.additional_information LIKE '%NON-BANK SBA LENDER%'");
+               }
+                if ($b_sba !== false) {
+                    $query = $query->orWhereRaw("bank_logos.additional_information LIKE '%BANK-SBA LENDER%'");
+                }
+            });
         }
 
         if ($request->no_logo) {

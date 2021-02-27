@@ -58,7 +58,7 @@
                     <input type="text" name="term" value="{{request()->term}}" class="form-control autocomplete-search" placeholder="SEARCH...">
                 </div>
                 <div class="form-group">
-                    <?php $types = \App\BankLogo::TYPES;   asort($types)?>
+                    <?php $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' => 'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER']; asort($types)?>
                     {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>' selectize-type', 'id' => "bank-type"]); !!}
 
                 </div>
