@@ -269,12 +269,6 @@ class BanksController extends Controller
      */
     public function update(Request $request)
     {
-        if($request->term != null){
-
-            $banksLogos = BankLogo::where('name', 'LIKE', "%{$request->term}%");
-            $banksLogos = $banksLogos->orderBy('name')->paginate(20);
-            return view('owner.bank.logo_new',compact('banksLogos'));
-        }
         $id  = $request->id;
         $bank = BankLogo::find($id);
         $bankLogo = $request->bank;
@@ -285,7 +279,6 @@ class BanksController extends Controller
             $bank_additonal_information["collection_type"] = $request->bank["additional_information"]["collection_type"];
             $bankLogo["additional_information"] = $bank_additonal_information;
         }
-
 
         if($request->logo != null){
             $imagesBankLogo = $request->file("logo");
@@ -313,6 +306,19 @@ class BanksController extends Controller
             $bank->update($bankLogo);
 
         }
+
+        //update child bank executive address
+        $childBank = BankLogo::where('parent_id', $bank->id);
+        if($childBank->first()){
+            $childBankId =  $childBank->pluck('id')->toArray();
+            $parentAddress = $request->bank_address['executive_address'];
+            unset($parentAddress['id']);
+            BankAddress::whereIn('bank_logo_id', $childBankId)
+                ->where('copied', true)
+                ->where('type', 'executive_address')->update($parentAddress);
+
+        }
+
 
         $addresses_ids = [];
         $account_addresses =  $request->bank_address;
@@ -353,6 +359,7 @@ class BanksController extends Controller
         if ($addresses_ids){
             $bank->bankAddresses()->whereNotIn('id', $addresses_ids)->delete();
         }
+
 
         $existing_names = $bank->equalBanks->pluck('name')->toArray();
         $eqs = explode(',', $request->equal_banks);
@@ -615,11 +622,27 @@ class BanksController extends Controller
         }else{
             return response()->json(['status' => false]);
         }
-
-
     }
 
+    public function exCopied(Request $request)
+    {
+        $bank = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            ->where('bank_logos.id',$request->parent_id)
+            ->where('bank_addresses.type', 'executive_address')
+            ->select("bank_addresses.*")
+            ->first();
 
-
+        $exAddress = [
+            "name" =>$bank->name,
+            "street" =>$bank->street,
+            "city" =>$bank->city,
+            "state" => $bank->state,
+            "zip" =>$bank->zip,
+            "phone_number" =>$bank->phone_number,
+            "fax_number" =>$bank->fax_number,
+            "email" => $bank->email,
+        ];
+        return response()->json($exAddress);
+    }
 
 }

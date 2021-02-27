@@ -188,6 +188,59 @@ $(document).ready(function($) {
         }
     });
 
+    if($('.parent_id').val()==""){
+        $(".executive_copied").hide()
+    }
+    $(document).on('change click keydown', function(){
+        if($('.parent_id').val()!=""){
+            $(".executive_copied").show()
+        }
+    })
+
+
+    $(document).on('click','.executive_copied', function(){
+        if($("input[name='bank_address[executive_address][copied]']:checked").val()){
+            $form = $(this).parents('form')
+            var parent_id = $form.find('.parent_id').val();
+
+
+            $.ajax({
+                url: '/admins/furnishers/executive-copied',
+                type: "POST",
+                data: {
+                    "_token": $("meta[name='csrf-token']").attr("content"),
+                    'parent_id': parent_id
+                },
+                success: function( data ) {
+                    $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
+                    $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
+                    $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
+                    if(data.state != null){
+                        var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
+                        var selectize = $select[0].selectize;
+                        selectize.setValue(selectize.search(data.state).items[0].id);
+                    }
+                    $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
+                    $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
+                    $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
+                    $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
+                }
+            });
+
+        }else{
+            $form.find("input[name='bank_address[executive_address][name]']").val('');
+            $form.find("input[name='bank_address[executive_address][street]']").val('');
+            $form.find("input[name='bank_address[executive_address][city]']").val('');
+            $form.find("select[name='bank_address[executive_address][state]']").val('');
+            $form.find("input[name='bank_address[executive_address][zip]']").val('');
+            $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
+            $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
+            $form.find("input[name='bank_address[executive_address][email]']").val('');
+        }
+
+
+    });
+
     $(document).on('change', '.bank_sub_type_append input', function(){
         var $form = $(this).parents('form'),
             bankType = $form.find('.bank-type').val()

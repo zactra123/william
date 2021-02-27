@@ -190,7 +190,10 @@
                                             @endif
                                             @if($type == 'executive_address')
                                                 <div class="row">
-
+                                                    <div class="col-md-12 executive_copied">
+                                                        COPY PARENT EXECUTIVE CONTACT <input type="checkbox" value="true"
+                                                                                             name="bank_address[{{$type}}][copied]" >
+                                                    </div>
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                                                     </div>
