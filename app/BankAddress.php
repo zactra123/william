@@ -24,11 +24,11 @@ class BankAddress extends Model
     ];
 
     const TYPES = [
-        'dispute_address'=>'DISPUTE ADDRESS',
+        'executive_address'=>'ENTITY ADDRESS',
+        'dispute_address'=>'ENTITY MAILING ADDRESS',
         'additional_address'=>'ADDITIONAL ADDRESS',
         'fraud_address' => 'FRAUD DISPUTE ADDRESS',
         'qwr_address' => 'QWR ADDRESS',
-        'executive_address'=>'EXECUTIVE CONTACT',
         'registered_agent'=>'REGISTERED AGENT',
     ];
 
