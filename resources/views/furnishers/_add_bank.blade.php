@@ -167,7 +167,7 @@ asort($types)
 
                 <div class="ms-ua-title mb-0">
                     <div class="row">
-                        <div class="col-md-6 text-left"><h4>NAMES ON CRAs</h4> </div>
+                        <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4> </div>
                         <div class="col-md-6 text-right">
                             <button type="button" class="remove-equal-bank">
                                 <i class="fa fa-close"></i>
