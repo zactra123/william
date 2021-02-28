@@ -63,11 +63,11 @@
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
-    <link rel="stylesheet" href="{{asset('css/new/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/new/owl/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('css/new/owl/owl.theme.default.css')}}">
-    <script type="text/javascript" src="{{ asset('js/new/general.js') }}"></script>
-    <script src="{{ asset('js/new/owl/owl.carousel.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/new_style.min.css') }}">
+
+{{--    <link rel="stylesheet" href="{{asset('css/new/style.css')}}">--}}
+{{--    <link rel="stylesheet" href="{{asset('css/new/owl/owl.carousel.css')}}">--}}
+{{--    <link rel="stylesheet" href="{{asset('css/new/owl/owl.theme.default.css')}}">--}}
     @yield('scripts')
 </head>
 <body>
@@ -109,7 +109,7 @@
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
                     </svg>
-                    <p>info@prudentscores.com</p>
+                    <p class="company-email">&nbsp;info&nbsp;@prudentscores&nbsp;.com</p>
                 </a>
             </div>
         </div>
@@ -238,7 +238,7 @@
                                 <h6 class="title">Connect with us</h6>
                                 <ul class="contact-information">
                                     <li><a href="tel:1-844-337-8336">1-844-337-8336</a></li>
-                                    <li><a href="mailto:info@prudentscores.com">info@prudentscores.com</a></li>
+                                    <li><a href="mailto:info@prudentscores.com" class="company-email">info@prudentscores.com</a></li>
                                     <li><p>5800 S. Eastern Ave., Suite 500</p></li>
                                     <li><p>Commerce, CA 90040</p></li>
                                     <li><p>Working Hours:</p></li>

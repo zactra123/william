@@ -100,11 +100,6 @@
 
 </div>
 
-
-<script src="{{ asset('/js/lib/jquery.validate.min.js') }}" defer></script>
-<script src="{{ asset('/js/lib/jquery.mask.min.js') }}" defer></script>
-<script src="{{ asset('/js/guest-chat-box.js?v=2') }}" defer></script>
-
 <script id="chat-message-to-admin-template" type="text/html">
     <div class="my-message message p-2" data-message-id="{message-id}">
         <p>{message}</p>

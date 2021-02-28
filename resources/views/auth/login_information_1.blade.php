@@ -67,9 +67,6 @@
         @include('helpers.chat')
     </section>
 
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
 
     <script>
         $(document).ready(function(){
@@ -103,15 +100,6 @@
                         required: '#ssn_:blank',
                         equalTo: "#ein"
                     },
-
-                    // "client[ssn]": {
-                    //     required:true,
-                    //     one_option: true
-                    // },
-                    // "client[ssn_confirm]": {
-                    //     required:true,
-                    //     equalTo: "#ssn"
-                    // }
                 },
                 errorPlacement: function(error, element) {
                     error.insertAfter($(element).parents(".form-group"));

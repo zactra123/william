@@ -1,4 +1,8 @@
 {
+    "/js/affiliate.js": "/js/affiliate.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/new_style.min.css": "/css/new_style.min.css",
+    "/js/registration.js": "/js/registration.js",
+    "/js/registration_steps.js": "/js/registration_steps.js"
 }

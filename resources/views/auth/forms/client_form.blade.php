@@ -4,7 +4,7 @@
         <input type="hidden" name="role" class="form-control" value="client">
         <input type="text" name="full_name" placeholder="Full name">
         <input type="text" name="ssn" class="ssn" id="social_number" placeholder="Social Security Number">
-        <input type="text" name="address" placeholder="Full Address">
+        <input type="text" id="address" name="address" placeholder="Full Address">
         <input type="tel" class="phone " name="phone_number" placeholder="Phone Number">
         <input type="email" name="email" placeholder="E-Mail Address">
         <input type="text" name="referred_by" placeholder="Referred By (if any)">

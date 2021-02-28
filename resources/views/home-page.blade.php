@@ -337,7 +337,7 @@
             </div>
         </div>
     </section>
-    <section class="education">
+    <section class="education education-chart">
         <div class="container">
             <h3 class="title">Credit Education</h3>
             <div class="education-inner row">

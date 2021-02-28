@@ -126,6 +126,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/site/affiliates/index.js?v=2') }}" ></script>
+    <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 @endsection
 

@@ -43,10 +43,6 @@
         @include('helpers.chat')
     </section>
 
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/additional-methods.min.js') }}" ></script>
-
     <script>
         $(document).ready(function(){
 

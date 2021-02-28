@@ -123,7 +123,7 @@
         var $type ="{{auth()->user()->role}}"
     </script>
 
-    <script src="{{ asset('js/site/clients/verify.js?v=2') }}" ></script>
+    <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 
 
 @endsection

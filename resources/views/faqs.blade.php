@@ -70,48 +70,4 @@
     </section>
 
 
-
-    <script>
-        $(document).ready(function(){
-            let $block = $('.faq-block');
-            let $siblings = $('.faq-block');
-            $block.click(function(){
-                let $id = $(this).attr('data-id');
-                let $desc = $(`.faq-body[data-id="${$id}"]`);
-                $desc.siblings('.faq-body.active').slideUp().removeClass('active');
-                $(this).toggleClass('active');
-                $desc.toggleClass('active').slideToggle();
-            });
-
-            // $('.show1').click(func                                                                                                                tion(){
-            //     $className = (this).className;
-            //     $show = $className.replace('col-md-1 show1 title1-', '');
-            //     console.log($show);
-
-
-            //     $('.hideShow').css('display','none');
-            //     $('.hide1').css('display','none');
-            //     $('.show1').css('display','block');
-            //     $('.desc-'+$show).css('display','block');
-            //     $('.title1-'+$show).css('display','none');
-            //     $('.title2-'+$show).css('display','block');
-
-            // })
-
-            // $('.hide1').click(function(){
-
-            //     $className = (this).className;
-            //     $show = $className.replace('col-md-1 hide1 title2-', '');
-            //     $('.desc-'+$show).css('display','none');
-            //     $('.title1-'+$show).css('display','block');
-            //     $('.title2-'+$show).css('display','none');
-
-            // })
-
-
-        })
-
-
-    </script>
-
 @endsection

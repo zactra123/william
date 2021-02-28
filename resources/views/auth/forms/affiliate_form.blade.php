@@ -13,7 +13,7 @@
                 <input id="ein_number" type="text" class="form-control ein" name="ein" value="{{ old('ein') }}"  placeholder="EIN Number">
             </label>
         </div>
-        <input type="text" name="address" placeholder="Full Address" value="{{ old('address') }}"  autocomplete="new-full_address">
+        <input type="text" id="address" name="address" placeholder="Full Address" value="{{ old('address') }}"  autocomplete="new-full_address">
 
         <input type="tel" class="form-control phone" name="phone_number" placeholder="Phone Number"  value="{{ old('phone_number') }}">
 

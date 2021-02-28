@@ -137,10 +137,7 @@
     <script>
         var $type ="{{auth()->user()->role}}"
     </script>
-    <script src="{{ asset('js/site/clients/verify.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/site/affiliates/important_info.js?v=2') }}" ></script>
+    <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 
 @endsection
 

@@ -7,3 +7,10 @@
 
 require('./bootstrap');
 require('validate.js');
+require('./owl/owl.carousel.js');
+require('./lib/jquery.mask.min.js');
+require('./lib/jquery.validate.min.js');
+require('./lib/additional-methods.min');
+
+require('./general');
+require('./guest-chat-box.js');

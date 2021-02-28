@@ -127,10 +127,8 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/site/clients/registration.js?v=2') }}" ></script>
-
+    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
+    <script src="{{ asset('js/registration.js?v=2') }}" ></script>
     <script id="password-requirements" type="text/html">
         <div>
             <p><i class="fa {length-class}"></i> Must be between 8 and 20</p>
