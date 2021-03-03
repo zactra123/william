@@ -22,7 +22,7 @@
             "description": "Prudent Credit Solutions helps dispute and correct inaccuracies on credit
                             reports, improve credit history, achieve reasonable credit-fitness goals.
                             Decided to hire our firm? Find out how Prudent Credit Solutions work for credit
-                            restoration? Stages and rules. Relax and expect to hear some good news!"
+                            restoration? Stages and rules. Relax and expect to hear some good news!",
             "openingHours": "Mo,Tu,We,Th 09:00-17:30",
             "url":"https://prudentscores.com/",
             "address": {

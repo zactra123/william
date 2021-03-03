@@ -667,4 +667,58 @@ class BanksController extends Controller
         return response()->json($exAddress);
     }
 
+    public function changeAddress()
+    {
+        $creditUnion = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            ->where('bank_logos.type', '2')
+            ->where('bank_addresses.type', 'executive_address')
+            ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.street, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%POBOX%'")
+            ->select('bank_addresses.id')
+            ->pluck('id')->toArray();
+
+        $federalCreditUnion = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            ->where('bank_logos.type', '55')
+            ->where('bank_addresses.type', 'executive_address')
+            ->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.street, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%POBOX%'")
+            ->select('bank_addresses.id')
+            ->pluck('bank_addresses.id')->toArray();
+        $this->changeDisputeAddress($creditUnion,'2');
+        $this->changeDisputeAddress($federalCreditUnion,'55');
+        dd('ok');
+    }
+    public function changeDisputeAddress($union, $type)
+    {
+        foreach($union as $id){
+
+            $nullAddress = [
+                "name" => null,
+                "street" => null,
+                "city" => null,
+                "state" => null,
+                "zip" => null,
+                "phone_number" => null,
+                "fax_number" => null,
+                "email" => null,
+            ];
+
+            $exChange = BankAddress::whereId($id)->where('type', 'executive_address')
+                ->select('name','street', 'city','state', 'zip', 'phone_number', 'fax_number', 'email' )
+                ->first()->toArray();
+
+            $exChange['street'] = str_replace(['PO BOX','PO. BOX', 'P.O BOX'],'P.O. BOX',  $exChange['street']);
+
+            $bankLogoId = BankAddress::whereId($id)->first();
+            $name = BankLogo::whereId($bankLogoId->bank_logo_id)->first();
+            if($type = '55'){
+                $exChange['name'] = !is_null($exChange['name'])?$exChange['name']:str_replace(['FEDERAL CREDIT UNION'],'FCU', $name);
+            }else{
+                $exChange['name'] = !is_null($exChange['name'])?$exChange['name']:str_replace(['CREDIT UNION'],'CU',  $name);
+            }
+
+            BankAddress::where('bank_logo_id',$bankLogoId->bank_logo_id)->where('type', 'dispute_address')->update($exChange);
+            $bankLogoId->update($nullAddress);
+
+        }
+    }
+
 }

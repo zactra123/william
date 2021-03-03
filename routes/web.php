@@ -206,6 +206,8 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::get('/{id}', 'BanksController@show');
 
 
+        Route::get('/banks/address-change', 'BanksController@changeAddress');
+
     });
 
     Route::resource('authorities', 'AuthoritiesController')->except('show')->names('admins.authority');
