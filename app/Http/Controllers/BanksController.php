@@ -698,7 +698,7 @@ class BanksController extends Controller
             $name = ["name" => null];
             $disChange = BankAddress::whereId($id)->first();
 
-            if(!is_null($disChange->name) && !preg_match('/CU$/', $disChange->name)){
+            if(!is_null($disChange->name) && !preg_match('/(\sCU|\sFCU)$/', $disChange->name)){
                 $executive = BankAddress::where('bank_logo_id',$disChange->bank_logo_id)->where('type', 'executive_address')->first();
 
                 if(is_null($executive->name)){
@@ -712,6 +712,7 @@ class BanksController extends Controller
                     }else{
                         $exChange['name'] = str_replace(['CREDIT UNION'],'CU',  $name);
                     }
+                    $disChange->upadet($exChange);
                 }else{
                     continue;
                 }
