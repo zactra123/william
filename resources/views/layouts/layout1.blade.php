@@ -30,7 +30,7 @@
                 "addressLocality": "Commerce",
                 "addressRegion": "CA",
                 "postalCode": "90040",
-                "streetAddress": "800 S. Eastern Ave., Suite 500"
+                "streetAddress": "800 S. Eastern Ave., Suite 500",
                  "telephone": "(1 84) 43 37 83 36"
             },
         }
