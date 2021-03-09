@@ -1,5 +1,12 @@
 @extends('layouts.layout1')
 
+@section('meta')
+    <title>Prudent Credit Solutions: News Room</title>
+    <meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment
+        Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">
+    <meta name="keywords" content="credit repair blogs, list of credit repair blogs, credit repair strategies blogs, credit repair companies blog, credit repair business blog">
+@endsection
+
 @section('content')
     <style>
         :root {

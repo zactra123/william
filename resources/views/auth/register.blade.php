@@ -1,5 +1,12 @@
 @extends('layouts.layout1')
 
+@section('meta')
+    <title>Register on Prudent Credit Solutions</title>
+    <meta name="description" content="Register on Prudent Credit Solutions - credit restoration firm. Ensure your credit history reflects accurate information.We set the industry standards.">
+    <meta name="keywords" content="register credit repair, register prudent scores">
+
+@endsection
+
 @section('content')
     <section class="register">
         <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">

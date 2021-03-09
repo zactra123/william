@@ -4,6 +4,7 @@
     <title>Privacy Policy - What Information do we collect? </title>
     <meta name="description" content="In this privacy policy, we make it as clear as possible to you what information
          we collect, how we use it and what rights you have in relation to it. ">
+    <meta name="keywords" content="privacy policy prudent scores, terms of use prudent scores">
 @endsection
 
 @section('content')

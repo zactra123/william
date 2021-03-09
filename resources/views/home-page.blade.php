@@ -3,6 +3,7 @@
     <title>Superior credit restoration firm - Prudent Credit Solutions </title>
     <meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment
         Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">
+    <meta name="keywords" content="how to fix credit score fast, what is considered good credit, build better credit, credit restoration, credit restoration near me">
 @endsection
 @section('scripts')
     <script src="https://code.highcharts.com/highcharts.js"></script>

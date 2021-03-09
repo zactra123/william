@@ -11,6 +11,8 @@
     <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
     <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
          FICO credit score ranges, how rebuild, create and maintain good credit.">
+    <meta name="keywords" content="what is a good fico credit score, what is good credit score, what is a good vantagescore">
+
 @endsection
 
 @section('content')

@@ -4,6 +4,8 @@
     <title>Login to achieve all your reasonable credit-fitness goals</title>
     <meta name="description" content="Login - we help our clients escape stressful situations: bankruptcies,
         foreclosures, and other financial hardship. Improve your credit history!">
+    <meta name="keywords" content="login credit repair, lexington law credit repair login, alex miller credit repair login, login prudent scores">
+
 @endsection
 
 @section('content')

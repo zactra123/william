@@ -5,6 +5,8 @@
     <title>Credit Resources - the most popular resources to improve your score</title>
     <meta name="description" content="Credit Resources help keep your credit in tip-top shape. We offer resources
         that will help you - Mint, AnnualCreditReport.com, NerdWallet, CreditKarma.">
+    <meta name="keywords" content="monitor your credit report, does credit karma monitor your credit, mint banking, online service mint, AnnualCreditReport, NerdWallet, CreditKarma">
+
 @endsection
 
 @section('content')

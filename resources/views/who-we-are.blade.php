@@ -5,6 +5,8 @@
     <title>Prudent Credit Solutions - leader in credit repair industry Who We Are?</title>
     <meta name="description" content="Prudent Credit Solutions helps dispute and correct inaccuracies on credit
         reports, improve credit history, achieve reasonable credit-fitness goals.">
+    <meta name="keywords" content="top credit repair companies, credit repair companies near me, best credit repair services, fast credit repair, improving credit ratings">
+
 @endsection
 
 @section('content')

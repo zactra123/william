@@ -5,6 +5,8 @@
     <title>Frequently asked questions about credit repair and scores</title>
     <meta name="description" content="Get answers about frequently asked questions about credit repair and scores.
         What is a late payment? What is a 'charge-off'? Can credit repair benefit me?">
+    <meta name="keywords" content="What do credit repair companies do, what are the three main credit bureaus, building better credit">
+
 @endsection
 
 @section('content')
