@@ -137,7 +137,7 @@ $(document).ready(function($) {
             $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS")
         }
         console.log(bankType);
-        if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60].includes(parseInt(bankType)) || bankType == ""){
+        if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
 
             if($form.find('.parent_id').val() !== ""){
                 $form.find('.hide-parent-field').removeClass('hide');

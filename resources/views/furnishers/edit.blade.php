@@ -191,7 +191,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}"
-                                                   class="form-control bank_name">
+                                                   class="form-control bank_name" placeholder="COMPANY NAME">
                                             {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
 
                                         </div>
@@ -220,7 +220,7 @@
                                 </div>
                             </div>
                             <div
-                                class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
+                                class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
                                 <div class="col-md-3">
                                     <a class="btn show-parent-field form-control">ADD
                                         PARENT</a>

@@ -31,7 +31,7 @@ class BankLogo extends Model
         7 => "UTILITY PROVIDER",
         8 => "CHECK CASHING/PAYDAY LOAN",
 //        9 => "PAYDAY LOAN",CHARGE CARD+
-        10 => "CHECK GUARANTEE PROVIDER",
+//        10 => "CHECK GUARANTEE PROVIDER",
         11 => "CELLULAR SERVICE PROVIDER",
         12 => "INTERNET/CABLE/HOME PHONE PROVIDER",
         13 => "HOME SECURITY PROVIDER",
@@ -54,7 +54,7 @@ class BankLogo extends Model
         30 => "HELOC LENDER",
         31 => "TIMESHARE/RESORT COMPANY",
 //        32 => "IMMIGRANT LOAN LENDER",PERSONAL LOAN?
-        33 => "CC MERCHANT SERVICES",
+//        33 => "CC MERCHANT SERVICES",
 //        34 => "FEDERAL BK COURT",
         35 => "CHILD/FAMILY SUPPORT",
         36 => "SOCIAL SECURITY ADMIN.",
@@ -66,7 +66,7 @@ class BankLogo extends Model
         42 => "PEST CONTROL COMPANY",
         43 => "MOTORCYCLE FINANCE COMPANY",
         44 => "LAW FIRM",
-        45 => "CHECK VERIFICATION",
+//        45 => "CHECK VERIFICATION",
         46 => "TOW TRUCK COMPANY",
         47 => "TRUSTEE",
         48=>  "SAVINGS & LOANS",
@@ -81,7 +81,10 @@ class BankLogo extends Model
         57 => "LIFE INSURANCE",
         58 => "PRIVATE BANK",
         59 => "BOAT FINANCING",
-        60 => "EQUIPMENT FINANCE"
+        60 => "EQUIPMENT FINANCE",
+        61 => "PAYMENT PROCESSOR",
+        62 => "PAYDAY MONEY CENTER",
+        63 => "ESCROW"
     ];
 
     const SUB_TYPES = [
@@ -119,7 +122,6 @@ class BankLogo extends Model
                 2 => "LOAN",
                 3 => "RV/RECREATIONAL LOAN",
                 4 => "SUB-PRIME",
-                5 => "TITLE LOAN",
                 6 => "TRUCK FINANCE",
                 7 => "CAR RENTAL",
         ],
@@ -205,6 +207,23 @@ class BankLogo extends Model
             2 => "CARD ISSUER",
             3 => "BANK-SBA LENDER"
         ],
+        61 => [
+            1 => "CHECK VERIFICATION",
+            2 => "CHECK GUARANTEE",
+            3 => "CREDIT CARD PROCESSING",
+        ],
+        62 => [
+            1 => "CHECK CASHING",
+            2 => "PAYDAY LOAN",
+            3 => "LOAN BY PHONE",
+            4 => "CAR EQUITY LOAN"
+        ],
+        63 => [
+            1 => "RESIDENTIAL",
+            2 => "COMMERICAL",
+            3 => "GENERAL",
+            4 => "BUSINESS"
+        ]
     ];
 
     protected static function boot()

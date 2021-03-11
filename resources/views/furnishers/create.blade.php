@@ -112,7 +112,7 @@
                                     <div class="col-md-9">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="BANK NAME" >
+                                                <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="COMPANY NAME" >
                                             </div>
                                         </div>
                                         <div class="col-md-4">
