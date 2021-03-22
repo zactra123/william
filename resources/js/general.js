@@ -600,10 +600,10 @@ $(document).on('ready', function(){
             reader.readAsDataURL(input.files[0]);
         }
     }
-});
 
-$(document).delegate('#home_video', 'click', function(){
-    $('#play_button').toggleClass('show');
+    $(document).on('#home_video', 'click', function(){
+        $('#play_button').toggleClass('show');
+    });
 });
 
 
