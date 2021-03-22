@@ -1,8 +1,8 @@
-$(document).ready(function(){
-    $('body').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
+$(document).on('ready', function(){
+    $('section').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
 })
 
-$(document).ready(function(){
+$(document).on('ready', function(){
     let $confirm = $('.register_password_confirm');
     $confirm.on('input', function(){
         let $pass = $('.register_password').val();
@@ -18,7 +18,7 @@ $(document).ready(function(){
     })
 })
 
-$(document).ready(function(){
+$(document).on('ready', function(){
     let $reg_form = $('.register_form:visible');
 
     let $ein = $reg_form.find('input#ein_number');
@@ -36,8 +36,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-    let $one_time = true;
+$(document).on('ready', function(){
     let $chat_height = $('#chat_body').height();
     let $chat = $('#chat_body');
     let $chat_header = $('#chat_header');
@@ -58,29 +57,25 @@ $(document).ready(function(){
             $contact_description.removeClass('active');
         } else{
             $chat.css({'bottom': '0'});
-            if( $one_time ) {
-                $contact_description.addClass('active');
+            $contact_description.addClass('active');
+            setTimeout(function() {
+                $contact_description.animate({
+                    'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
+                    'left': ($phone.offset().left - $contact_description.width()),
+                }, 300);
                 setTimeout(function() {
                     $contact_description.animate({
-                        'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
-                        'left': ($phone.offset().left - $contact_description.width()),
-                    }, 300);
+                        'top': ($phone.offset().top - (($contact_description.height()*4))),
+                        'opacity': 0.6,
+                    });
                     setTimeout(function() {
                         $contact_description.animate({
-                            'top': ($phone.offset().top - (($contact_description.height()*4))),
-                            'opacity': 0.6,
-                        });
-                        setTimeout(function() {
-                            $contact_description.animate({
-                                'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
-                                'opacity':0
-                            }, 300);
-                        $contact_description.removeClass('active');
-                        }, 3200);
-                    },250);
-                },500);
-                $one_time = false;
-            }
+                            'top': ($phone.offset().top - (($contact_description.height()*4) + 30)),
+                            'opacity':0
+                        }, 300);
+                    }, 3200);
+                },250);
+            },500);
         }
         $chat.toggleClass('show');
         $chat_header.toggleClass('hide');
@@ -161,7 +156,7 @@ $(document).ready(function(){
 });
 
 var $basicErrorText, $formErrorText, $formSuccessText, $mailErrorText, $telErrorText;
-$(document).ready(function(){
+$(document).on('ready', function(){
     window.$basicErrorText = $('#contact_error_basic_text').val();
     window.$formErrorText = $('#contact_form_error_text').val();
     window.$formTechErrorText = 'Form have a some technical error';
@@ -170,7 +165,7 @@ $(document).ready(function(){
     window.$telErrorText = $('#contact_error_phone_text').val();
 });
 
-$(document).ready(function(){
+$(document).on('ready', function(){
     $('#chat_form input[type="text"], #chat_form input[type="tel"], #chat_form input[type="email"]').on('propertychange input', function(){
         $input = $(this);
         $val = $input.val();
@@ -377,6 +372,7 @@ function Valid(input, val, type, validType ){
 
 };
 
+
 function ValidOnSubmit ( $form, e ){
     this.e = e;
     $currentForm = $($form)
@@ -432,7 +428,7 @@ function ValidOnSubmit ( $form, e ){
     }
 
 }
-$(document).ready(function(){
+$(document).on('ready', function(){
     let $link = $('a.name-point');
     $link.hover(function(){
         let $block_id = $(this).attr("data-id");
@@ -450,7 +446,7 @@ $(document).ready(function(){
         $(this).addClass('active');
     });
     let $button = $('button.close')
-    $button.click(function(){
+    $button.on('click', function(){
         let $active_block = $(this).parents('.help-description');
         let $active_link = $active_block.attr('data-id');
         let $active_button = $(`a.name-point[data-id="${$active_link}"]`);
@@ -465,11 +461,11 @@ $(document).ready(function(){
 
 // Toggle menu
 
-$(document).ready(function(){
-    $('#close_toggle').click(function(){
+$(document).on('ready', function(){
+    $('#close_toggle').on('click', function(){
         $('.navigation').removeClass('show');
     });
-    $('#toggle_menu').click(function(){
+    $('#toggle_menu').on('click', function(){
         $('.navigation').toggleClass('show');
         $(this).toggleClass('active');
         if( $('.navigation').hasClass('show') ){
@@ -480,69 +476,9 @@ $(document).ready(function(){
     })
 });
 
-$(document).ready(function(){
-    $('.graph-point').hover(function(){
-        let $id = $(this).attr('data-graph');
-        $(this).siblings().removeClass('active');
-        $(`.graph-path[data-graph="${$id}"]`).siblings().removeClass('active');
-        $(this).addClass('active');
-        $(`.graph-path[data-graph="${$id}"]`).addClass('active');
-    })
-    $('.credit-graph').mouseleave(function(){
-        $(this).find('.active').removeClass('active');
-        console.log('leave');
-    });
-
-    Highcharts.chart('container', {
-        chart: {
-            type: 'pie',
-            options3d: {
-                enabled: true,
-                alpha: 70,
-                beta: 0
-            },
-            backgroundColor: 'transparent',
-        },
-        title: false,
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 60,
-                dataLabels: {
-                    enabled: false,
-                    format: '{point.name}'
-                },
-                slicedOffset: 40,
-                colors: ['#88e0b1','#9de8e1','#ff5872','#ffd000','#a676af',]
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: false,
-            data: [
-                ['Payment history', 35.0],
-                ['Outstanding balances', 30.0],
-                ['Credit hitory', 15.0],
-                ['Types of credit', 10.0],
-                ['Inquiries', 10.0],
-            ]
-        }]
-    });
-
-})
-
 // home page slider
 
-$(document).ready(function() {
+$(document).on('ready', function() {
 
     $('#home_report_slider').owlCarousel({
         loop: true,
@@ -586,7 +522,7 @@ $(document).ready(function() {
         smartSpeed: 2000,
         autoplayTimeout: 5000,
 
-        margin: 0,
+        margin: 20,
         responsiveClass: true,
         dots: false,
         nav: false,
@@ -607,7 +543,7 @@ $(document).ready(function() {
     })
 })
 
-$(document).ready(function(){
+$(document).on('ready', function(){
     if( $(document).innerWidth() < 991 ){
         let $text = $('section.education .text-block p');
         if( $text.text().length > 326 ){
@@ -621,7 +557,7 @@ $(document).ready(function(){
         };
     }
 });
-$(document).ready(function(){
+$(document).on('ready', function(){
     // let $pass = $('#register_password');
     // let $hide = $('#eye_close');
     // let $show = $('#eye_open');
@@ -637,7 +573,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
+$(document).on('ready', function(){
 
     let $id_card = $("#upload_id");
     let $id_img = $('#id_card');
@@ -670,3 +606,6 @@ $(document).ready(function(){
     }
 });
 
+$(document).delegate('#home_video', 'click', function(){
+    $('#play_button').toggleClass('show');
+});

@@ -12,7 +12,6 @@
         <title>Prudent Credit Solutions </title>
     @endif
     {{--  Meta data END   --}}
-
     <script type="application/ld+json">
         {
             "@context": "http:\/\/schema.org",
@@ -64,10 +63,6 @@
 
     <script src="{{ asset('js/app.js?v=4') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css') }}">
-
-{{--    <link rel="stylesheet" href="{{asset('css/new/style.css')}}">--}}
-{{--    <link rel="stylesheet" href="{{asset('css/new/owl/owl.carousel.css')}}">--}}
-{{--    <link rel="stylesheet" href="{{asset('css/new/owl/owl.theme.default.css')}}">--}}
     @yield('scripts')
 </head>
 <body>
@@ -75,20 +70,6 @@
 <header>
     <div class="container nav-bar">
         <div class="header-info">
-            <div class="time-block contact-info">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0)">
-                        <path d="M14.3164 4.20996C13.985 4.37028 13.8464 4.76904 14.0067 5.10026C14.4447 6.00505 14.6667 6.98031 14.6667 8C14.6667 11.6759 11.6759 14.6667 8 14.6667C4.32406 14.6667 1.33333 11.6759 1.33333 8C1.33333 4.32406 4.32406 1.33333 8 1.33333C9.52328 1.33333 10.9543 1.83073 12.1387 2.77165C12.4259 3.00098 12.846 2.95296 13.0754 2.66471C13.3047 2.37663 13.2567 1.95703 12.9683 1.72803C11.5661 0.613607 9.8016 0 8 0C3.58903 0 0 3.58903 0 8C0 12.411 3.58903 16 8 16C12.411 16 16 12.411 16 8C16 6.77767 15.7331 5.60628 15.2067 4.51969C15.0467 4.18766 14.6466 4.04932 14.3164 4.20996Z" fill="#F63664"/>
-                        <path d="M7.99999 2.66675C7.63199 2.66675 7.33333 2.96541 7.33333 3.33341V8.00008C7.33333 8.36808 7.63199 8.66675 7.99999 8.66675H11.3333C11.7013 8.66675 12 8.36808 12 8.00008C12 7.63208 11.7013 7.33342 11.3333 7.33342H8.66666V3.33341C8.66666 2.96541 8.368 2.66675 7.99999 2.66675Z" fill="#F63664"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0">
-                            <rect width="16" height="16" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-                <p>Mon - Fri: 9:00 a.m. - 5:30 p.m.</p>
-            </div>
             <div class="phone-block contact-info">
                 <a href="tel:1-844-337-8336">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,17 +90,17 @@
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
                     </svg>
-                    <p class="company-email">&nbsp;info&nbsp;@prudentscores&nbsp;.com</p>
+                    <p>&nbsp;info&nbsp;@prudentscores&nbsp;.com</p>
                 </a>
             </div>
         </div>
         <div class="site-navi contact-info row">
-            <div class="logo-block col-6 col-lg-2">
-                <a href="/home" title="Home">
+            <div class="logo-block col-6 col-lg-3">
+                <a href="/" title="Home">
                     <img src="{{asset('images/new/logo.png')}}" alt="logo">
                 </a>
             </div>
-            <div class="navigation-block col-6 col-lg-10 row">
+            <div class="navigation-block col-6 col-lg-9 row">
                 <div class="mobile-menu">
                     <button id="toggle_menu">
                         <span></span>
@@ -238,7 +219,7 @@
                                 <h6 class="title">Connect with us</h6>
                                 <ul class="contact-information">
                                     <li><a href="tel:1-844-337-8336">1-844-337-8336</a></li>
-                                    <li><a href="mailto:info@prudentscores.com" class="company-email">info@prudentscores.com</a></li>
+                                    <li><a href="mailto:info@prudentscores.com"  class="company-email">&nbsp;info&nbsp;@prudentscores&nbsp;.com</a></li>
                                     <li><p>5800 S. Eastern Ave., Suite 500</p></li>
                                     <li><p>Commerce, CA 90040</p></li>
                                     <li><p>Working Hours:</p></li>
@@ -272,6 +253,29 @@
                         <h6>by appointment only</h6>
                     </div>
                 </div>
+                <div class="social-media">
+                    <div class="facebook-icon">
+                        <a href="facebook">
+                            <svg viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.6183 1.90681C23.713 2.22025 22.7278 2.44584 21.713 2.5337C22.7666 2.03132 23.5556 1.23765 23.9319 0.301583C22.9433 0.773626 21.8602 1.10463 20.7308 1.27991C20.2587 0.874872 19.6878 0.552197 19.0535 0.331995C18.4193 0.111794 17.7354 -0.00121528 17.0444 9.85551e-06C14.2485 9.85551e-06 12 1.81895 12 4.05106C12 4.36451 12.0473 4.67795 12.1243 4.97953C7.93787 4.80381 4.20414 3.19858 1.72189 0.740882C1.2696 1.36092 1.03258 2.06692 1.0355 2.7854C1.0355 4.19116 1.92603 5.4307 3.28402 6.1597C2.48374 6.1344 1.7022 5.95785 1.00296 5.64441V5.69428C1.00296 7.66282 2.73669 9.29416 5.04734 9.66935C4.61349 9.75979 4.16718 9.80607 3.71893 9.80707C3.39053 9.80707 3.07988 9.78095 2.76627 9.74533C3.40532 11.3506 5.26627 12.5165 7.48224 12.5545C5.74852 13.6444 3.57692 14.2856 1.21893 14.2856C0.795858 14.2856 0.405325 14.2737 0 14.2357C2.23669 15.3874 4.89053 16.0522 7.74852 16.0522C17.0266 16.0522 22.1035 9.88306 22.1035 4.52836C22.1035 4.35264 22.1035 4.17692 22.0887 4.0012C23.071 3.42417 23.9319 2.70942 24.6183 1.90681Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="twitter-icon">
+                        <a href="twitter">
+                            <svg viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.6172 0C5.09516 0 0.618164 3.59336 0.618164 8.02545C0.618164 12.0306 4.27416 15.3502 9.05516 15.9546V10.3458H6.51516V8.02545H9.05516V6.25727C9.05516 4.24428 10.5482 3.13425 12.8312 3.13425C13.9252 3.13425 15.0712 3.29077 15.0712 3.29077V5.26442H13.8072C12.5672 5.26442 12.1792 5.88405 12.1792 6.51892V8.02385H14.9502L14.5072 10.3442H12.1792V15.953C16.9602 15.3518 20.6161 12.0314 20.6161 8.02545C20.6161 3.59336 16.1392 0 10.6172 0Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="instagram-icon">
+                        <a href="instagram">
+                            <svg viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.7319 5.34961C8.89563 5.34961 7.39712 6.55233 7.39712 8.02612C7.39712 9.49991 8.89563 10.7026 10.7319 10.7026C12.5681 10.7026 14.0666 9.49991 14.0666 8.02612C14.0666 6.55233 12.5681 5.34961 10.7319 5.34961ZM20.7336 8.02612C20.7336 6.91777 20.7461 5.81945 20.6686 4.71311C20.591 3.42806 20.2258 2.28758 19.055 1.34789C17.8817 0.40619 16.4632 0.115047 14.8622 0.0528023C13.4812 -0.00944223 12.1128 0.000597234 10.7344 0.000597234C9.35344 0.000597234 7.98502 -0.00944223 6.60658 0.0528023C5.0055 0.115047 3.58454 0.408198 2.41375 1.34789C1.24046 2.28959 0.877715 3.42806 0.800163 4.71311C0.722611 5.82146 0.735119 6.91978 0.735119 8.02612C0.735119 9.13247 0.722611 10.2328 0.800163 11.3391C0.877715 12.6242 1.24296 13.7647 2.41375 14.7044C3.58705 15.6461 5.0055 15.9372 6.60658 15.9994C7.98752 16.0617 9.35594 16.0516 10.7344 16.0516C12.1153 16.0516 13.4837 16.0617 14.8622 15.9994C16.4632 15.9372 17.8842 15.644 19.055 14.7044C20.2283 13.7627 20.591 12.6242 20.6686 11.3391C20.7486 10.2328 20.7336 9.13448 20.7336 8.02612ZM10.7319 12.1443C7.89245 12.1443 5.6009 10.3051 5.6009 8.02612C5.6009 5.74717 7.89245 3.90795 10.7319 3.90795C13.5713 3.90795 15.8628 5.74717 15.8628 8.02612C15.8628 10.3051 13.5713 12.1443 10.7319 12.1443ZM16.073 4.70106C15.41 4.70106 14.8747 4.27137 14.8747 3.73928C14.8747 3.20719 15.41 2.77751 16.073 2.77751C16.7359 2.77751 17.2713 3.20719 17.2713 3.73928C17.2715 3.86563 17.2406 3.99077 17.1805 4.10753C17.1203 4.22429 17.0321 4.33038 16.9207 4.41972C16.8094 4.50906 16.6773 4.5799 16.5318 4.62817C16.3863 4.67645 16.2304 4.70122 16.073 4.70106Z" fill="white"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer-copyright">
@@ -292,32 +296,5 @@
 <p class="description" id="contact_description">
     Click on input to change the contact method
 </p>
-
-
-<!-- <div id="viewport">
-                         <ul id="slidewrapper">
-                             <li>
-                                 <img src="img/header_banner_img.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_2.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_3.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_4.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_5.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_6.png" alt="banner-img">
-                             </li>
-                             <li>
-                                 <img src="img/header_banner_img_7.png" alt="banner-img">
-                             </li>
-                         </ul>
-                     </div> -->
 </body>
 </html>

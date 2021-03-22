@@ -106,6 +106,10 @@ header{
     top: 0;
     width: 100%;
 }
+.logo-block a {
+    display: block;
+    max-width: 14.677rem;
+}
 .navigation,.account-block,.navigation-block{
     padding-right: 0;
 }
@@ -219,7 +223,7 @@ nav {
     position: fixed;
     bottom: -1px;
     right: 14.28rem;
-    z-index: 8;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -442,7 +446,7 @@ nav {
     background-color: #1fa7f2;
     padding: 1.78rem;
     border-radius: 10px;
-    z-index: 9;
+    z-index: 12;
     color: #ffffff;
     display: none;
     opacity: 0;
@@ -541,6 +545,11 @@ nav {
 .img-block {
     width: 100%;
 }
+#header_slider .owl-carousel .owl-stage-outer{
+    border-radius: 25px;
+    background-color: rgb(0 0 0 / 5%);
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 10%);
+}
 #header_slider .owl-nav:not(.disabled) {
     display: flex;
     justify-content: flex-start;
@@ -575,12 +584,12 @@ nav {
 /*.img-block{
 	width: 45vw;
 }*/
-.img-block{
+/* .img-block{
 	position: relative;
 	display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 #slidewrapper img{
 	object-fit: cover;
 	height: 100%;
@@ -594,8 +603,9 @@ nav {
     position: absolute;
     right: -3.5rem;
     bottom: 0.5rem;
-    z-index: 0;
     height: 13.3rem;
+    opacity: 0.4;
+    z-index: 0;
 }
 .banner-img{
 	position: relative;
@@ -771,6 +781,20 @@ section.about-us video{
     height: 100%;
     transform: translateX(-50%);
 }
+#play_button {
+    display: none;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 8;
+    position: absolute;
+    pointer-events: none;
+    width: 6.11rem;
+    height: 6.11rem;
+    left: 50%;
+    top: 50%;
+}
+#play_button.show {
+    display: block;
+}
 section.about-us p{
 	font-size: 1rem;
     margin-bottom: 2rem;
@@ -802,7 +826,7 @@ section.help .help-inner {
 	align-items: center;
 }
 section.help h2.title {
-	font-size: 3.4rem;
+	font-size: 2.58rem;
 	color: #FFFFFF;
 	text-align: center;
 	padding-top: 2.14rem;
@@ -819,8 +843,8 @@ section.help .help-inner .name p{
     margin-bottom: 0.2rem;
 }
 section.help .help-inner .name .name-point {
-    padding: 1.16rem 1.7rem;
-    margin-bottom: 1rem;
+    padding: 1.16rem 0;
+    width: 33.3%;
     font-size: 1.2rem;
     color: #FFFFFF;
     display: flex;
@@ -835,7 +859,8 @@ section.help .help-inner .block {
 }
 section.help .help-inner .help-description {
     opacity: 0;
-	display: none;
+    display: none;
+    position: absolute;
 	width: 33.83rem;
     border-radius: 15px;
 	background-color: #FFFFFF;
@@ -878,10 +903,11 @@ a.name-point.active span{
 a.name-point span::after{
 	position: absolute;
 	bottom: -2px;
-	left: 0;
+    left: 50%;
+    transform: translateX(-50%);
 	content: '';
 	width: 0;
-	height: 4px;
+	height: 3px;
 	transition: all .3s ease-in-out;
 	background: linear-gradient(90deg, #F63565 0%, #FA6940 100%);
 }
@@ -889,7 +915,7 @@ a.name-point.active :hover{
     color: #FFFFFF;
 }
 a.name-point.active span::after{
-	width: 100%;
+	width: calc(100% + 15px);
 	opacity: 1;
 }
 /*Report*/
@@ -949,7 +975,8 @@ section.report .report-item .icon img {
 /* ##Education */
 
 section.education {
-	background-color: #F2F2F2;
+    background-color: #F2F2F2;
+    overflow: hidden;
 }
 .education-inner .img-block{
     flex-direction: column;
@@ -966,8 +993,8 @@ section.education {
     overflow: hidden;
 }
 .credit-graph {
-   height: 425px;
-    width: 85%;
+   /* height: 425px;
+    width: 85%; */
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -977,11 +1004,14 @@ section.education {
 /* ##Chart */
 
 #container {
-    height: 400px;
     width: 44rem;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .highcharts-figure, .highcharts-data-table table {
-    min-width: 310px;
+    min-width: 310px; 
     max-width: 800px;
     margin: 1em auto;
 }
@@ -1043,14 +1073,14 @@ section.education .text-block p{
 	line-height: 2.22rem;
 }
 section.education .education-inner .img-block img {
-	width: 100%;
+	width: 75%;
 	object-fit: cover;
 }
 section.education .education-inner .basic-button {
     padding: 0.474rem 2rem;
     font-size: 1rem;
 }
-/* Footer */
+/* #Footer */
 footer .footer-bck {
 	background-image: url('/images/new/footer_bck.jpg');
 	background-size: cover;
@@ -1133,7 +1163,32 @@ footer .map h6{
     margin: 0;
     margin-top: 1rem;
 }
-
+footer .social-media {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+footer .social-media > div {
+    margin-right: 2rem;
+}
+footer .social-media .facebook-icon svg{
+    width: 1.38rem;
+    height: 0.94rem;
+}
+footer .social-media .twitter-icon svg{
+    width: 1.16rem;
+    height: 0.88rem;
+}
+footer .social-media .instagram-icon svg{
+    width: 1.16rem;
+    height: 0.94rem;
+}
+footer .social-media svg {
+    transition: all .3s ease-in-out;
+}
+footer .social-media svg:hover {
+    transform: scale(1.5);
+}
 /* #Login */
 
 section.login {
@@ -1850,6 +1905,11 @@ section.fico .img-title {
     text-align: center;
     text-transform: uppercase;
 }
+section.fico .img-box{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 section.fico img {
     width: 100%;
     object-fit: cover;
@@ -1857,19 +1917,24 @@ section.fico img {
 section.fico p {
     margin-bottom: 2.667rem;
 }
+section.fico .img-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 section.vantage-score{
     background-color: #F2F2F2;
     padding-top: 2.05r em;
     padding-bottom: 3.388rem;
 }
-section.credit-score figure {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+section.credit-score .img-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-section.credit-score #container {
-    width: 34rem;
+section.credit-score .img-block img{
+    width: 80%;
 }
 section.credit-score{
     padding: 1.7rem 0;
@@ -1883,10 +1948,6 @@ section.credit-score .title {
     font-size: 1.33rem;
     font-weight: 700;
     text-transform: uppercase;
-}
-section.credit-score .img-block{
-    height: 13rem;
-    margin-bottom: 3rem;
 }
 section.credit-history {
     background-color: #F2F2F2;
@@ -1908,7 +1969,10 @@ section.credit-history h5.title:nth-of-type(4) {
 section.credit-history h5.title:last-of-type {
     color: #A676AF;
 }
-
+.credit-score-img .img-block img {
+    object-fit: cover;
+    width: 100%;
+}
 /* #Faq-Page */
 
 .faq-page {
@@ -2082,7 +2146,10 @@ section.text-page {
 	}
 	footer .footer {
 		padding-bottom: 100px;
-	}
+    }
+    section.education .education-inner .img-block img {
+        width: 80%;
+    }
 }
 @media (min-width: 1700px){
 	html {
@@ -2098,7 +2165,7 @@ section.text-page {
         width: 100%;
     }
     #container {
-        width: 48rem;
+        width: 40rem;
     }
 }
 @media (max-width: 1400px){
@@ -2107,13 +2174,13 @@ section.text-page {
     }
 }
 @media (max-width: 1200px){
-	.credit-graph {
+	/* .credit-graph {
 		height: 346px;
 		width: 82%;
 	}
 	.credit-graph .graph {
 		bottom: 5.2%;
-	}
+	} */
     .container.small {
         max-width: 800px;
     }
@@ -2266,9 +2333,10 @@ section.text-page {
 		flex-direction: column;
 	}
 		section.help .help-inner .name .name-point{
-		padding: 0;
 		margin: 0;
-	    display: inline-block;
+		padding: 0;
+        margin-bottom: 10px;
+        display: inline-block;
 	}
 	a.name-point span {
 		display: inline-block;
@@ -2280,7 +2348,7 @@ section.text-page {
 		background-color: #FFFFFF;
 		padding: 1rem;
 		border-radius: 15px;
-		width: 82vw;
+		width: 90vw;
 	}
 	section.help .help-inner .name {
 	    justify-content: center;
@@ -2292,7 +2360,10 @@ section.text-page {
 		flex-direction: column;
 		width: unset;
 		justify-content: unset;
-	}
+    }
+    section.help .help-inner .name .name-point{
+        width: unset;
+    }
 	section.help .help-inner .block {
 		position: absolute;
 	    top: 50%;
@@ -2308,13 +2379,13 @@ section.text-page {
 	section.report .report-inner {
 		height: unset;
 	}
-	.credit-graph {
+	/* .credit-graph {
 	    height: 32vw;
 	    width: 41vw;
-	}
-	.credit-graph .graph {
+	} */
+	/* .credit-graph .graph {
 		bottom: 3.2%;
-	}
+	} */
 	footer .footer {
 		height: unset;
 		padding: 2rem 0;
@@ -2333,7 +2404,10 @@ section.text-page {
         transform: translateX(-50%) translateY(-50%);
     }
     #container {
-        width: 32rem;
+        width: 33rem;
+    }
+    section.fico .img-box{
+        margin: 30px 0;
     }
 }
 @media (max-width: 768px){
@@ -2468,10 +2542,16 @@ section.text-page {
     .register-form .register-type-box{
         flex-direction: column;
     }
-    section.credit-score .img-block {
-        height: 35vw;
+	/* .credit-graph {
+	    height: 48vw;
+	    width: 38vw;
+	} */
+    #container {
+        width: 45rem;
     }
-
+    section.fico .img-part {
+        margin: 30px 0;
+    }
 }
 @media(max-width: 680px){
     .register-form .registration-stages {
@@ -2492,13 +2572,13 @@ section.text-page {
     }
 }
 @media(max-width: 575px){
-	.credit-graph .graph {
+	/* .credit-graph .graph {
    		bottom: 2.9%;
 	}
 	.credit-graph {
 	    width: 75vw;
    		height: 70vw;
-    }
+    } */
     .register-form .registration-stages {
         flex-wrap: wrap;
     }
@@ -2518,6 +2598,29 @@ section.text-page {
     #add_client_3 {
         padding: 1rem 1rem;
     }
+    #container {
+        width: 42rem;
+    }
+}
+@media(max-width: 530px){
+    .login-form {
+        width: 93vw;
+        padding: 1rem 2rem 1.55rem;
+    }
+    .login-form .login-information {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .login-form .forgot, .login-form .login_sign-up a {
+        align-self: center;
+    }
+    .login-form .login-box,
+    .login-form .login-social {
+        margin-top: 1.5rem;
+    }
+    .login-form label {
+        margin-bottom: 5px;
+    }
 }
 @media(max-width: 500px){
 	#viewport{
@@ -2527,7 +2630,7 @@ section.text-page {
         padding-top: 14.71rem;
     }
     .register-form{
-        width: 95vw;
+        width: 93vw;
         padding: 1rem 1.5rem 4.55rem;
     }
     .upload-images {
@@ -2538,6 +2641,12 @@ section.text-page {
     }
     #add_client_3 {
         padding: 0 3rem;
+    }
+    #container {
+        width: 37rem;
+    }
+    #chat_form input {
+        width: 100%;
     }
 }
 @media(max-width: 420px){
@@ -2567,7 +2676,7 @@ section.text-page {
         flex-direction: column;
     }
     #container {
-        width: 22rem;
+        width: 28rem;
     }
 }
 @media(min-width: 768px) and (max-width: 991px){
@@ -2603,7 +2712,4 @@ section.text-page {
 	.login-form label {
 		width: 100%;
 	}
-}
-.company-email {
-    word-spacing: -3px;
 }

@@ -11,8 +11,6 @@
     <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
     <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
          FICO credit score ranges, how rebuild, create and maintain good credit.">
-    <meta name="keywords" content="what is a good fico credit score, what is good credit score, what is a good vantagescore">
-
 @endsection
 
 @section('content')
@@ -36,7 +34,58 @@
             </div>
         </div>
 
-        @include('helpers.chat')
+        <div class="chat" id="chat">
+            <div class="header" id="chat_header">
+                <svg width="368" viewBox="0 0 368 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26 22.5049C19.6 42.9049 6 50.0049 0 51.0049H368C352 49.5049 342 21.0049 341.5 21.5049C333.1 3.90485 315 -0.161814 307 0.00485253C223 0.171519 55 0.404853 55 0.00485253C37.4 0.404853 28.3333 15.1715 26 22.5049Z" fill="url(#paint0_linear)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="16.5" y1="26" x2="353" y2="26" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F63565"/>
+                            <stop offset="1" stop-color="#FA6642"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <p>
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.625 5.25H6.125C5.642 5.25 5.25 5.642 5.25 6.125C5.25 6.608 5.642 7 6.125 7H16.625C17.108 7 17.5 6.608 17.5 6.125C17.5 5.642 17.108 5.25 16.625 5.25Z" fill="white"/>
+                        <path d="M13.125 8.75H6.125C5.642 8.75 5.25 9.142 5.25 9.625C5.25 10.108 5.642 10.5 6.125 10.5H13.125C13.608 10.5 14 10.108 14 9.625C14 9.142 13.608 8.75 13.125 8.75Z" fill="white"/>
+                        <path d="M19.25 0H3.5C1.56975 0 0 1.56975 0 3.5V21C0 21.3395 0.196 21.6493 0.504 21.7927C0.62125 21.847 0.749 21.875 0.875 21.875C1.07625 21.875 1.27575 21.805 1.435 21.672L6.44175 17.5H19.25C21.1803 17.5 22.75 15.9303 22.75 14V3.5C22.75 1.56975 21.1803 0 19.25 0ZM21 14C21 14.9642 20.216 15.75 19.25 15.75H6.125C5.92025 15.75 5.7225 15.8218 5.565 15.953L1.75 19.1327V3.5C1.75 2.53575 2.534 1.75 3.5 1.75H19.25C20.216 1.75 21 2.53575 21 3.5V14Z" fill="white"/>
+                        <path d="M24.5 7C24.017 7 23.625 7.392 23.625 7.875C23.625 8.358 24.017 8.75 24.5 8.75C25.466 8.75 26.25 9.53575 26.25 10.5V25.3032L23.296 22.9408C23.142 22.8183 22.9478 22.75 22.75 22.75H10.5C9.534 22.75 8.75 21.9642 8.75 21V20.125C8.75 19.642 8.358 19.25 7.875 19.25C7.392 19.25 7 19.642 7 20.125V21C7 22.9303 8.56975 24.5 10.5 24.5H22.442L26.5773 27.8092C26.7365 27.9352 26.9307 28 27.125 28C27.2528 28 27.3822 27.972 27.5047 27.9142C27.8075 27.7673 28 27.461 28 27.125V10.5C28 8.56975 26.4303 7 24.5 7Z" fill="white"/>
+                    </svg>
+                    <span id="chat_header_hide_text" >
+                        Talk to us, we are online!
+                    </span>
+                </p>
+            </div>
+            <div class="body" id="chat_body">
+                <div class="chat-title">
+                    <h3>Chat</h3>
+                    <div id="chat_close">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.1988 12.0197L23.5439 2.6743C24.1521 2.06642 24.1521 1.08357 23.5439 0.475685C22.936 -0.132195 21.9532 -0.132195 21.3453 0.475685L11.9999 9.82109L2.65474 0.475685C2.04658 -0.132195 1.064 -0.132195 0.456124 0.475685C-0.152041 1.08357 -0.152041 2.06642 0.456124 2.6743L9.80125 12.0197L0.456124 21.3651C-0.152041 21.973 -0.152041 22.9559 0.456124 23.5637C0.759068 23.867 1.15739 24.0193 1.55543 24.0193C1.95347 24.0193 2.35152 23.867 2.65474 23.5637L11.9999 14.2183L21.3453 23.5637C21.6485 23.867 22.0466 24.0193 22.4446 24.0193C22.8426 24.0193 23.2407 23.867 23.5439 23.5637C24.1521 22.9559 24.1521 21.973 23.5439 21.3651L14.1988 12.0197Z" fill="#94A2B3"/>
+                        </svg>
+                    </div>
+
+                </div>
+                <form action="" id="chat_form">
+                    <p>You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
+                    <input type="text" placeholder="Your full name">
+                    <div class="contact">
+                        <label for="email" class="email-label">
+                            <input type="email" id="email" placeholder="E-mail Address">
+                        </label>
+                        <p>or</p>
+                        <label for="phone" class="phone-label">
+                            <input type="tel" id="phone" disabled placeholder="Phone Number">
+                        </label>
+                    </div>
+                    <textarea placeholder="write your message" cols="30" rows="10"></textarea>
+                    <div class="form-submit">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
 
     <section class="fico">
@@ -56,8 +105,10 @@
                 </div>
                 <div class="fico-image col-12 col-lg-6">
                     <h6 class="title img-title">Credit Score Chart and Range</h6>
-                    <div class="img-box">
-                        <img src="{{asset('images/new/fico_graph.png')}}">
+                    <div class="img-part">
+                        <div class="img-box">
+                            <img src="{{asset('images/new/fico_graph.png')}}">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,7 +162,7 @@
 
         </div>
     </section>
-    <section class="credit-score education-chart">
+    <section class="credit-score">
         <div class="container small">
             <div class="row credit">
                 <div class="credit-score-text col-12 col-md-6">
@@ -120,9 +171,7 @@
                 </div>
                 <div class="credit-score-img col-12 col-md-6">
                     <div class="img-block">
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                        </figure>
+                        <img src="{{asset("images/new/credit_education.png")}}" alt="credit eductaion">
                     </div>
                 </div>
             </div>
@@ -159,6 +208,158 @@
             </ul>
         </div>
     </section>
+
+
+{{--    <style>--}}
+{{--        .modal-body {--}}
+{{--          max-height: 500px;--}}
+{{--        }--}}
+
+{{--        div.tab-content > div:nth-of-type(odd) {--}}
+{{--            background: #f5f5f5;--}}
+{{--            border-radius: 5px;--}}
+{{--        }--}}
+
+{{--        .striped {--}}
+{{--            padding: 10px;--}}
+{{--        }--}}
+{{--        .ms-edu-tab-content .nav-tabs-wrapper {--}}
+{{--            max-height: 90vh;--}}
+{{--        }--}}
+{{--        .scrolled-content {--}}
+{{--            overflow-y: scroll;--}}
+{{--        }--}}
+{{--        .scrolled-content::-webkit-scrollbar {--}}
+{{--            display: none;--}}
+{{--        }--}}
+{{--    </style>--}}
+{{--    <section class="header-title section-padding">--}}
+{{--        <div class="container text-center">--}}
+{{--            <h2 class="title">Credit Education</h2>--}}
+{{--            <span class="sub-title"><a href="{{ url('/') }}">Home</a> &gt; Credit Education</span>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <!-- Credit Education -->--}}
+{{--    <section class="ms-working working-section section-padding">--}}
+{{--        <div class="container">--}}
+{{--            <div class="section-title text-center">--}}
+{{--                <h2>Credit Score Pie Chart</h2>--}}
+{{--                <div class="border-2"></div>--}}
+{{--            </div> <!-- section-title -->--}}
+
+{{--            <div class="section-wrapper text-center">--}}
+{{--                <div class="row justify-content-center">--}}
+
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="55%" src="{{asset('images/chart1.jpg')}}"  alt="">--}}
+{{--                        </div>--}}
+
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart2.png')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Credit & Debit History</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart3.jpg')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Account Blance Ratio</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <div class="wrapper-content">--}}
+{{--                            <img width="100%" src="{{asset('images/chart4.jpg')}}" alt="">--}}
+{{--                            <h4 style="font-size: 20px">Length of Credit Ratio</h4>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                        </div>--}}
+{{--                </div>--}}
+{{--            </div> <!-- section-wrapper -->--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <section class="ms-edu ms-edu-desktop">--}}
+{{--        <div class="container-fluid">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-3 ms-edu-tab">--}}
+{{--                    <div class="ms-edu-tab-content">--}}
+{{--                        <!--<a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Tabs</a>-->--}}
+{{--                        <ul id="nav-tabs-wrapper" class="nav nav-tabs nav-pills nav-stacked well">--}}
+{{--                            @foreach($contents as  $content)--}}
+{{--                            <li class="{{$content->id==1?'active':''}}"><a href="#{{$content->url}}" data-toggle="tab">{{$content->title}}</a></li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-9 ">--}}
+{{--                    <div class="ms-edu-tab-content">--}}
+{{--                        <div class="tab-content nav-tabs-wrapper scrolled-content ">--}}
+{{--                            @foreach($contents as $info)--}}
+{{--                                <div role="tabpanel" class="striped" id="{{$info->url}}">--}}
+{{--                                    <h3>{{$info->title}}</h3>--}}
+
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                            </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <section class="ms-edu ms-edu-mobile">--}}
+{{--        <div class="container-fluid">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-3 ms-edu-tab">--}}
+{{--                    <div class="ms-edu-tab-content">--}}
+{{--                        <!--<a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Tabs</a>-->--}}
+{{--                        <ul class="nav nav-tabs nav-pills nav-stacked well">--}}
+{{--                            @foreach($contents as  $content)--}}
+{{--                            <li><a href="#{{$content->url}}-1" data-toggle="modal">{{$content->title}}</a></li>--}}
+
+{{--                            @endforeach--}}
+
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-sm-9">--}}
+{{--                    <div class="tab-content">--}}
+{{--                        @foreach($contents as  $content)--}}
+{{--                        <div class="modal fade" id="{{$content->url}}-1" role="dialog">--}}
+{{--                            <div class="modal-dialog modal-dialog-centered">--}}
+{{--                                <div class="modal-content">--}}
+{{--                                    <div class="modal-body">--}}
+{{--                                        <button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+{{--                                        <h3>{{$content->title}}</h3>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <script src="{{ asset('js/lib/jquery.mCustomScrollbar.min.js') }}" ></script>--}}
+{{--    <script>--}}
+{{--        $(document).ready(function(){--}}
+{{--            $("a").on('click', function(event) {--}}
+{{--                if (this.hash !== "") {--}}
+{{--                    event.preventDefault();--}}
+
+{{--                    var hash = this.hash;--}}
+
+{{--                    $('html, body').animate({--}}
+{{--                        scrollTop: $(hash).offset().top--}}
+{{--                    }, 500, function(){--}}
+{{--                        console.log(window.location.hash)--}}
+{{--                        window.location.hash = hash;--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+
 
 
 @endsection

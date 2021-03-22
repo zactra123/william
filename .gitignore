@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/files
+/public/image
+/public/.htaccess
 /storage/*.key
 /vendor
 /storage/reports
