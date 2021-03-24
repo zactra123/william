@@ -476,7 +476,7 @@ $(document).on('ready', function(){
 
 // home page slider
 
-$(document).on('ready', function() {
+$(document).ready( function() {
 
     $('#home_report_slider').owlCarousel({
         loop: true,
