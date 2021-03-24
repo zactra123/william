@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('body').css({'min-height': `calc(100vh - ${$('footer').outerHeight()}px`})
 })
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     let $confirm = $('.register_password_confirm');
     $confirm.on('input', function(){
         let $pass = $('.register_password').val();
@@ -18,7 +18,7 @@ $(document).on('ready', function(){
     })
 })
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     let $reg_form = $('.register_form:visible');
 
     let $ein = $reg_form.find('input#ein_number');
@@ -36,7 +36,7 @@ $(document).on('ready', function(){
     });
 });
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     let $chat_height = $('#chat_body').height();
     let $chat = $('#chat_body');
     let $chat_header = $('#chat_header');
@@ -156,7 +156,7 @@ $(document).on('ready', function(){
 });
 
 var $basicErrorText, $formErrorText, $formSuccessText, $mailErrorText, $telErrorText;
-$(document).on('ready', function(){
+$(document).ready( function(){
     window.$basicErrorText = $('#contact_error_basic_text').val();
     window.$formErrorText = $('#contact_form_error_text').val();
     window.$formTechErrorText = 'Form have a some technical error';
@@ -165,7 +165,7 @@ $(document).on('ready', function(){
     window.$telErrorText = $('#contact_error_phone_text').val();
 });
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     $('#chat_form input[type="text"], #chat_form input[type="tel"], #chat_form input[type="email"]').on('propertychange input', function(){
         $input = $(this);
         $val = $input.val();
@@ -426,7 +426,7 @@ function ValidOnSubmit ( $form, e ){
     }
 
 }
-$(document).on('ready', function(){
+$(document).ready( function(){
     let $link = $('a.name-point');
     $link.hover(function(){
         let $block_id = $(this).attr("data-id");
@@ -459,7 +459,7 @@ $(document).on('ready', function(){
 
 // Toggle menu
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     $('#close_toggle').on('click', function(){
         $('.navigation').removeClass('show');
     });
@@ -539,7 +539,7 @@ $(document).ready( function() {
     })
 })
 
-$(document).on('ready', function(){
+$(document).ready( function(){
     if( $(document).innerWidth() < 991 ){
         let $text = $('section.education .text-block p');
         if( $text.text().length > 326 ){
@@ -553,7 +553,7 @@ $(document).on('ready', function(){
         };
     }
 });
-$(document).on('ready', function(){
+$(document).ready( function(){
     // let $pass = $('#register_password');
     // let $hide = $('#eye_close');
     // let $show = $('#eye_open');
@@ -569,7 +569,7 @@ $(document).on('ready', function(){
     });
 });
 
-$(document).on('ready', function(){
+$(document).ready( function(){
 
     let $id_card = $("#upload_id");
     let $id_img = $('#id_card');
@@ -608,7 +608,7 @@ $(document).on('ready', function(){
 
 
 
-$(document).ready(function(){
+$(document).ready( function(){
     let $block = $('.faq-block');
     let $siblings = $('.faq-block');
     $block.click(function(){
