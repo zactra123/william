@@ -601,7 +601,7 @@ $(document).ready( function(){
         }
     }
 
-    $(document).on('#home_video', 'click', function(){
+    $('#home_video').on('click', function(){
         $('#play_button').toggleClass('show');
     });
 });
