@@ -61,8 +61,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
-    <script src="{{ asset('js/app.js?v=4') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/new_style.min.css') }}">
+    <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
     @yield('scripts')
 </head>
 <body>
