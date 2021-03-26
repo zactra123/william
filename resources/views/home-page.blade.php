@@ -22,7 +22,7 @@
                         </h4>
                     </div>
                     <div class="header-links">
-                        <a href="#" class="basic-button">Get Started</a>
+                        <a href="{{route('login')}}" class="basic-button">Get Started</a>
                     </div>
                 </div>
                 <div class="banner-img col-12 col-md-6">
@@ -104,7 +104,7 @@
                         considered too subjective by many as the opinions noted racial, class, and gender biases.
                         Subscribers to the Mercantile Agency (renamed R.G.
                     </p>
-                    <a href="#" class="basic-button">Read more</a>
+                    <a href="{{route('whoWeAre')}}" class="basic-button">Read more</a>
                 </div>
                 <div class="video-block col-12 col-md-6">
                     <div class="video-box">
@@ -420,7 +420,7 @@
                         <img src="{{asset("images/new/credit_education.png")}}" alt="credit eductaion">
                     </div>
                 </div>
-                <a href="#" class="basic-button">Get started</a>
+                <a href="{{route('credit.education')}}" class="basic-button">Read More</a>
             </div>
         </div>
     </section>
