@@ -29,7 +29,7 @@
                     <div class="owl-carousel"  id="header_slider" >
                         @for($i = 1; $i<=9; $i++)
                             <div class="header-img-block">
-                                <img src="{{asset("images/new/header_banner_img_{$i}.png")}}" alt="banner-img">
+                                <img src="{{asset("images/new/header_banner_img_{$i}.jpg")}}" alt="banner-img">
                             </div>
                         @endfor
                     </div>

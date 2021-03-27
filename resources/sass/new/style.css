@@ -1225,7 +1225,7 @@ section.login {
 }
 .login-form input:not([type="submit"]),
 .login-form select{
-    width: 100%;
+    width: 25rem;
     height: 3rem;
     outline: none;
     padding-left: 16px;
@@ -2409,6 +2409,9 @@ section.text-page {
     section.fico .img-box{
         margin: 30px 0;
     }
+    #play_button.show {
+        display: none;
+    }
 }
 @media (max-width: 768px){
     .header-slider {
@@ -2482,6 +2485,9 @@ section.text-page {
     }
     section.education .education-inner .basic-button {
         padding: 0.85rem 5.85rem;
+    }
+    section.education .education-inner .img-block {
+        margin: 30px 0;
     }
     section.about-us .banner-background{
         height: 66%;
