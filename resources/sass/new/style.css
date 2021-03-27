@@ -1073,7 +1073,7 @@ section.education .text-block p{
     line-height: 2.22rem;
 }
 section.education .education-inner .img-block img {
-    width: 75%;
+    width: 25rem;
     object-fit: cover;
 }
 section.education .education-inner .basic-button {
@@ -2146,9 +2146,6 @@ section.text-page {
     }
     footer .footer {
         padding-bottom: 100px;
-    }
-    section.education .education-inner .img-block img {
-        width: 80%;
     }
 }
 @media (min-width: 1700px){

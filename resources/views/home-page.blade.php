@@ -174,7 +174,7 @@
                             <button class="close">x</button>
                         </div>
                         <div class='modal-body'>
-                            <h6>Mortgage</h6>
+                            <h6>Mortgage Negatives</h6>
                             <p>
                                 A delinquent mortgage is a home loan for which the borrower has failed to
                                 make payments as required in the loan documents. A mortgage will be considered delinquent or
