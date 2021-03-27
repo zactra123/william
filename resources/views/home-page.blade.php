@@ -385,7 +385,7 @@
                             <div class="icon">
                                 <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
                             </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
+                            <h6>Highlight errors on your credit report and make a plan to dispute them</h6>
                         </div>
                     </div>
                     <div class="report-item">
@@ -393,7 +393,15 @@
                             <div class="icon">
                                 <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
                             </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
+                            <h6>Identify bad debts that have opportunities to negotiate for lower payments</h6>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <div class="body">
+                            <div class="icon">
+                                <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
+                            </div>
+                            <h6>Help you build good habits to keep your credit score in tip top shape</h6>
                         </div>
                     </div>
                 </div>
