@@ -359,22 +359,6 @@
                     <div class="report-item">
                         <div class="body">
                             <div class="icon">
-                                <img src="{{asset("images/new/analysing_icon.png")}}" alt="analysing_icon">
-                            </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
-                        </div>
-                    </div>
-                    <div class="report-item">
-                        <div class="body">
-                            <div class="icon">
-                                <img src="{{asset("images/new/analytics_icon.png")}}" alt="analytics_icon">
-                            </div>
-                            <h6>Analyze your finances and credit score to identify areas for improvement</h6>
-                        </div>
-                    </div>
-                    <div class="report-item">
-                        <div class="body">
-                            <div class="icon">
                                 <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
                             </div>
                             <h6>Analyze your finances and credit score to identify areas for improvement</h6>
