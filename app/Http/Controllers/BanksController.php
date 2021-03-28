@@ -52,9 +52,9 @@ class BanksController extends Controller
                 ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
                 ->where(function($query) use($request, $phoneFaxZip, $name)  {
                     $query->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_logos.name, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'")
-                        ->orWhere('bank_addresses.name', 'LIKE', "%{$request->term}%")
+                        ->orWhereRAW("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(`bank_addresses`.`name`, ''), ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'")
                         ->orWhereRAW("CONCAT(COALESCE(bank_addresses.street, ''), ' ', COALESCE(bank_addresses.city, ''), ' ', COALESCE(bank_addresses.state, '')) LIKE '%{$request->term}%'")
-                        ->orWhere('equal_banks.name', 'LIKE', "%{$request->term}%");
+                        ->orWhereRAW("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(COALESCE(`equal_banks`.`name`, ''), ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'");
                         if ($phoneFaxZip) {
                             $query = $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                                 ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
@@ -479,7 +479,23 @@ class BanksController extends Controller
      */
     public function parent_bank(Request $request)
     {
-        $banks = BankLogo::where('name', "like", "%{$request->search_key}%")->groupBy('name')->get()->toArray();
+
+        $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->search_key);
+        $name =str_replace([' ', ',','.','\'', '"'],'',$request->search_key);
+        $banks = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+            ->leftJoin('equal_banks', 'bank_logos.id', '=', 'equal_banks.bank_logo_id')
+            ->where(function($query) use($request, $phoneFaxZip, $name)  {
+                $query->whereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_logos.name, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'")
+                    ->orWhereRAW("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.name, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'")
+                    ->orWhereRAW("CONCAT(COALESCE(bank_addresses.street, ''), ' ', COALESCE(bank_addresses.city, ''), ' ', COALESCE(bank_addresses.state, '')) LIKE '%{$request->search_key}%'")
+                    ->orWhereRAW("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(equal_banks.name, ',', ''), '.', ''), '\'', ''),'\"', ''),' ','') LIKE '%{$name}%'");
+                    if ($phoneFaxZip) {
+                        $query = $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                            ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                            ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+                    }
+
+            })->select('bank_logos.*')->groupBy('bank_logos.name')->get()->toArray();
 
         return response()->json($banks);
     }
