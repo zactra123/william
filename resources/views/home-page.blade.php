@@ -1,12 +1,5 @@
 @extends('layouts.layout1')
 
-@section('scripts')
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-@endsection
-
 @section('content')
     <section class="header">
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">

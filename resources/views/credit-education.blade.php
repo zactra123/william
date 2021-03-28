@@ -1,11 +1,5 @@
 @extends('layouts.layout1')
 
-@section('scripts')
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-@endsection
 
 @section('meta')
     <title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
