@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="header">
-        <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
+        <img class="background-image"  src="{{asset("images/new/header-background.jpg?v=".env('ASSET_VERSION'))}}" alt="background">
         <div class="container header-banner">
             <div class="header-slider row">
                 <div class="banner-text col-12 col-md-5">
@@ -22,11 +22,11 @@
                     <div class="owl-carousel"  id="header_slider" >
                         @for($i = 1; $i<=9; $i++)
                             <div class="header-img-block">
-                                <img src="{{asset("images/new/header_banner_img_{$i}.jpg")}}" alt="banner-img">
+                                <img src="{{asset("images/new/header_banner_img_{$i}.jpg?v=".env('ASSET_VERSION'))}}" alt="banner-img">
                             </div>
                         @endfor
                     </div>
-                    <img class="banner-background" src="{{asset("images/new/header_banner_img_bck.png")}}" alt="background">
+                    <img class="banner-background" src="{{asset("images/new/header_banner_img_bck.png?v=".env('ASSET_VERSION'))}}" alt="background">
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <img class="banner-background" src="{{asset("images/new/header_banner_img_bck.png")}}" alt="background">
+                        <img class="banner-background" src="{{asset("images/new/header_banner_img_bck.png?v=".env('ASSET_VERSION'))}}" alt="background">
                     </div>
                 </div>
             </div>
@@ -352,7 +352,7 @@
                     <div class="report-item">
                         <div class="body">
                             <div class="icon">
-                                <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
+                                <img src="{{asset("images/new/deal_icon.png?v=".env('ASSET_VERSION'))}}" alt="deal_icon">
                             </div>
                             <h6>Analyze your finances and credit score to identify areas for improvement</h6>
                         </div>
@@ -360,7 +360,7 @@
                     <div class="report-item">
                         <div class="body">
                             <div class="icon">
-                                <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
+                                <img src="{{asset("images/new/deal_icon.png?v=".env('ASSET_VERSION'))}}" alt="deal_icon">
                             </div>
                             <h6>Highlight errors on your credit report and make a plan to dispute them</h6>
                         </div>
@@ -368,7 +368,7 @@
                     <div class="report-item">
                         <div class="body">
                             <div class="icon">
-                                <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
+                                <img src="{{asset("images/new/deal_icon.png?v=".env('ASSET_VERSION'))}}" alt="deal_icon">
                             </div>
                             <h6>Identify bad debts that have opportunities to negotiate for lower payments</h6>
                         </div>
@@ -376,7 +376,7 @@
                     <div class="report-item">
                         <div class="body">
                             <div class="icon">
-                                <img src="{{asset("images/new/deal_icon.png")}}" alt="deal_icon">
+                                <img src="{{asset("images/new/deal_icon.png?v=".env('ASSET_VERSION'))}}" alt="deal_icon">
                             </div>
                             <h6>Help you build good habits to keep your credit score in tip top shape</h6>
                         </div>
@@ -402,7 +402,7 @@
                 </div>
                 <div class="img-block col-12 col-md-7">
                     <div class="credit-graph">
-                        <img src="{{asset("images/new/credit_education.png")}}" alt="credit eductaion">
+                        <img src="{{asset("images/new/credit_education.png?v=".env('ASSET_VERSION'))}}" alt="credit eductaion">
                     </div>
                 </div>
                 <a href="{{route('credit.education')}}" class="basic-button">Read More</a>

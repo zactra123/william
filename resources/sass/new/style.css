@@ -32,6 +32,10 @@
 *--------------------*
 *--------------------*/
 
+:root {
+    color-scheme: light; /* both supported */
+}
+
 strong {
     font-weight: bold;
 }
