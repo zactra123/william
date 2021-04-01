@@ -539,20 +539,20 @@ $(document).ready( function() {
     })
 })
 
-$(document).ready( function(){
-    if( $(document).innerWidth() < 991 ){
-        let $text = $('section.education .text-block p');
-        if( $text.text().length > 326 ){
-            $text.text($text.text().substr(0, 326) + "...");
-            $text.append('<a href="#" class="read_more">Read more</a>');
-        };
-        let $text_2 = $('.about-us .information-block p');
-        if( $text_2.text().length > 326 ){
-            $text_2.text($text_2.text().substr(0, 326) + "...");
-            $text_2.append('<a href="#" class="read_more">Read more</a>');
-        };
-    }
-});
+// $(document).ready( function(){
+//     if( $(document).innerWidth() < 991 ){
+//         let $text = $('section.education .text-block p');
+//         if( $text.text().length > 326 ){
+//             $text.text($text.text().substr(0, 326) + "...");
+//             $text.append('<a href="#" class="read_more">Read more</a>');
+//         };
+//         let $text_2 = $('.about-us .information-block p');
+//         if( $text_2.text().length > 326 ){
+//             $text_2.text($text_2.text().substr(0, 326) + "...");
+//             $text_2.append('<a href="#" class="read_more">Read more</a>');
+//         };
+//     }
+// });
 $(document).ready( function(){
     // let $pass = $('#register_password');
     // let $hide = $('#eye_close');
