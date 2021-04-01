@@ -2469,9 +2469,9 @@ section.text-page {
         padding: 20px 0;
         padding-bottom: 40px;
     }
-    section.about-us .basic-button{
-        display: none;
-    }
+    /*section.about-us .basic-button{*/
+    /*    display: none;*/
+    /*}*/
     .information-block {
         margin-bottom: 25px;
     }
