@@ -64,6 +64,14 @@
     <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
     @yield('scripts')
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9BDPYSVBK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-R9BDPYSVBK');
+    </script>
 </head>
 <body>
 
