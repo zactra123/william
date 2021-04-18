@@ -11,7 +11,7 @@
 
     <section class="good-credit">
         <div class="container small">
-            <h1 class="title">Credit Education</h1>
+            <h1 class="title">What Is Considered a Good Credit Score?</h1>
             <div class="credit-education-text">
                 <h5>What is good credit score</h5>
                 <p>

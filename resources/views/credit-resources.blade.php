@@ -17,7 +17,7 @@
         </div>
         <div class="container">
             <div class="section-title text-center">
-                <h1>Credit Resources</h1>
+                <h1>Credit Resources - Credit Scores, Reports and Management</h1>
                 <div class="border-2"></div>
                 <div class="mt-5">
                     <p class="text-justify">

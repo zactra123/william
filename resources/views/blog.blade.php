@@ -101,7 +101,7 @@
                     </div>
                     <div class="album py-5 ">
                         <div class="container">
-                            <h1 class="text-center">Newsroom</h1>
+                            <h1 class="text-center">The Official Prudent Scores Credit Repair Blog</h1>
                             <div class="row ">
                                 @foreach($blogs as  $blog)
                                     <div class="col-md-4 pt-5" title="{{strtoupper($blog->title)}}">

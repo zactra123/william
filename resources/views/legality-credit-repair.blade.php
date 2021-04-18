@@ -18,7 +18,7 @@
 
         <div class="container header-banner">
                 <div class="section-title text-center">
-                    <h2>Legality of the Credit Repair</h2>
+                    <h1>Is credit repair legal in all 50 states?</h1>
                     <div class="wrapper-content mt-5">
                         <h2>Is Credit Repair Legal?</h2>
                         <p class="text-justify">

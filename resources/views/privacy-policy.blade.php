@@ -18,6 +18,7 @@
 
 
                         <div class="container">
+                            <h1 class="d-none">How Prudent Scores Protects Customer Data - Privacy Policy</h1>
 
 
                             <noscript>

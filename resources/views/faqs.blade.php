@@ -29,6 +29,7 @@
         <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
         <div class="container header-banner faq-page">
             <div class="container">
+                <h1 class="text-center">Frequently Asked Questions - Prudent Scores</h1>
                     <div class="section-title">
                         <div class="wrapper-content" >
                             <div class="row  mr-0 ml-0">

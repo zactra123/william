@@ -20,7 +20,7 @@
         <div class="container header-banner about-us">
             <div class="container">
                 <div class="section-title text-center">
-                    <h2>{{env('PROJECT')}}</h2>
+                    <h1>Prudent Scores - Improving credit ratings and score, fast credit repair</h1>
 
                     <div class="wrapper-content">
                     </div> <!-- section-title -->

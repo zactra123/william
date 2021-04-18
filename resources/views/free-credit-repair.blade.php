@@ -18,7 +18,7 @@
         </div>
         <div class="container free-credit-inner">
             <div class="section-title text-center">
-                <h1>Free Credit Repair</h1>
+                <h1>How do you maintain a healthy credit score?</h1>
                 <div class="mt-5"></div>
                 <div class="wrapper-content">
                     <h2>3 Tips to Keeping Your Credit Score in Healthy Shape</h2>
