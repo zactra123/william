@@ -103,6 +103,12 @@ class BankLogo extends Model
                 1 => "3RD PARTY CA",
                 2 => "ASSET/DEBT BUYER",
         ],
+        5 => [
+          1 => 'NON-FOR-PROFIT',
+          2 => 'FOR PROFIT',
+          3 => 'PRIVATE DR. PRACTICE',
+          4 => 'LAB'
+        ],
         7 =>[
                 1 => "WATER/POWER",
                 2 => "GAZ",
