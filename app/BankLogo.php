@@ -104,8 +104,8 @@ class BankLogo extends Model
                 2 => "ASSET/DEBT BUYER",
         ],
         5 => [
-          1 => 'NON-FOR-PROFIT',
-          2 => 'FOR PROFIT',
+          1 => 'NON-FOR-PROFIT HOSPITAL',
+          2 => 'FOR-PROFIT HOSPITAL',
           3 => 'PRIVATE DR. PRACTICE',
           4 => 'LAB'
         ],
