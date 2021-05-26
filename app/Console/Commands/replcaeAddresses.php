@@ -38,7 +38,7 @@ class replcaeAddresses extends Command
      */
     public function handle()
     {
-        $bank_addresses = BankAddress::all();
+        $bank_addresses = BankAddress::whereRaw('bank_addresses.street IS NOT NULL')->get();
 
         foreach ($bank_addresses as $address) {
             if( strpos(strtoupper($address->street),"AVENUE OF STARS") == false) {
