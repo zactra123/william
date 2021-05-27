@@ -184,6 +184,7 @@ Route::group(['prefix'=> 'admins/'], function(){
     Route::group(["prefix"=>"furnishers"], function(){
         Route::post('/bank-name','BanksController@banKName');
         Route::get('/','BanksController@showBankLogo')->name("admins.bank.show");
+        Route::get('/missing-field','BanksController@bankMissingFields')->name("admins.bank.missing");
         Route::get('/add','BanksController@create')->name("admins.bank.create");
         Route::post('/add','BanksController@store')->name("admins.bank.store");
         Route::delete('/logo/{id}','BanksController@deleteBankLogo')->name("admins.bank.delete");

@@ -51,7 +51,7 @@
 </style>
 
 <div class="col-md-7 pull-right">
-    <form action="/admins/furnishers" method="get">
+    <form action="{{!empty($url) ? $url : '/admins/furnishers'}}" method="get">
         <div class="row">
             <div class="col-md-8">
                 <div class=" form-group">
