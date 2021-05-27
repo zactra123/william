@@ -10,10 +10,10 @@
         @endif
 
         @if($paginator->currentPage() > 10)
-            <li class="hidden-xs"><a href="{{ $paginator->url(1) }}">{{ 1 }}</a></li>
+            <li ><a href="{{ $paginator->url(1) }}">{{ 1 }}</a></li>
             @endif
         @if($paginator->currentPage() > 11)
-            <li><span class="hidden-xs">...</span></li>
+            <li><span>...</span></li>
         @endif
 
         @foreach(range(1, $paginator->lastPage()) as $i)
@@ -22,7 +22,7 @@
                     @if ($i == $paginator->currentPage())
                         <li class="active"><span>{{ $i }}</span></li>
                     @else
-                        <li><a class="hidden-xs" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                        <li><a  href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
                     @endif
                 @endif
 
@@ -31,7 +31,7 @@
                     @if ($i == $paginator->currentPage())
                         <li class="active"><span>{{ $i }}</span></li>
                     @else
-                        <li><a class="hidden-xs" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                        <li><a  href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
                     @endif
                 @endif
             @else
@@ -39,15 +39,15 @@
                     @if ($i == $paginator->currentPage())
                         <li class="active"><span>{{ $i }}</span></li>
                     @else
-                        <li><a class="hidden-xs" href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
+                        <li><a  href="{{ $paginator->url($i) }}">{{ $i }}</a></li>
                     @endif
                 @endif
             @endif
         @endforeach
 
         @if($paginator->currentPage() < $paginator->lastPage() - 10)
-            <li><span class="hidden-xs">...</span></li>
-            <li class="hidden-xs"><a href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
+            <li><span >...</span></li>
+            <li ><a href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
         @endif
 
         {{-- Next Page Link --}}
