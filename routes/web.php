@@ -204,6 +204,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::get('/address-autocomplete', 'BanksController@address_autocomplete');
         Route::get('/parent-bank', 'BanksController@parent_bank');
         Route::post('/check/name', 'BanksController@checkName');
+        Route::get('/med-serv', 'BanksController@med_serv');
         Route::get('/{id}', 'BanksController@show');
 
 

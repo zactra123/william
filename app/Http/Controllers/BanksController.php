@@ -822,4 +822,33 @@ class BanksController extends Controller
         }
     }
 
+    public function med_serv(){
+        $file = file_get_contents(storage_path("furnishers/med.json"));
+        $data = json_decode($file, true);
+        $attention = [];
+        foreach ($data as $k=>$med) {
+            $bank = BankLogo::where("name",  "like", $med['name'])->first();
+            if (!empty($bank)) {
+                unset($data[$k]);
+                $attention[$k] = [$med, $bank];
+                continue;
+            }
+            $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $med['phone']);
+            $bank = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->where(function($query) use($phoneFaxZip)  {
+                    $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
+                        ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.zip, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'");
+                })->pluck('bank_logos.name', 'bank_logos.id')->toArray();
+
+            if (!empty($bank)) {
+                unset($data[$k]);
+                $attention[$k] = [$med, $bank];
+                continue;
+            }
+
+        }
+        dd($attention, $data);
+    }
+
 }

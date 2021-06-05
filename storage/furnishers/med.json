@@ -1,0 +1,4016 @@
+[
+    {
+        "name": "AGNEWS STATE HOSPITAL",
+        "href": "/hospital/AGNEWS-STATE-HOSPITAL-SAN-JOSE-CA",
+        "address": "3500 ZANKER ROAD",
+        "city": "SAN JOSE",
+        "state": "CA",
+        "zip": "95134",
+        "phone": "408-451-6000"
+    },
+    {
+        "name": "Fremont Medical Center",
+        "href": "/hospital/Fremont-Medical-Center-Yuba-City-CA",
+        "address": "989 Plumas Street",
+        "city": "Yuba City",
+        "state": "CA",
+        "zip": "95991-4087",
+        "phone": "530-751-4000"
+    },
+    {
+        "name": "Marshall Medical Center",
+        "href": "/hospital/Marshall-Medical-Center-Placerville-CA",
+        "address": "1100 Marshall Way",
+        "city": "Placerville",
+        "state": "CA",
+        "zip": "95667-6599",
+        "phone": "530-622-1441"
+    },
+    {
+        "name": "Santa Ynez Vly Cottage Hosp",
+        "href": "/hospital/Santa-Ynez-Vly-Cottage-Hosp-Solvang-CA",
+        "address": "2050 Viborg Road",
+        "city": "Solvang",
+        "state": "CA",
+        "zip": "93463-2295",
+        "phone": "805-688-6431"
+    },
+    {
+        "name": "Whittier Hospital Medical Ctr",
+        "href": "/hospital/Whittier-Hospital-Medical-Ctr-Whittier-CA",
+        "address": "9080 Colima Road",
+        "city": "Whittier",
+        "state": "CA",
+        "zip": "90605-1600",
+        "phone": "562-945-3561"
+    },
+    {
+        "name": "Alameda Cnty Medical Center",
+        "href": "/hospital/Alameda-Cnty-Medical-Center-Oakland-CA",
+        "address": "1411 East 31st Street",
+        "city": "Oakland",
+        "state": "CA",
+        "zip": "94602-1018",
+        "phone": "510-437-4800"
+    },
+    {
+        "name": "French Hospital Medical Ctr",
+        "href": "/hospital/French-Hospital-Medical-Ctr-San-Luis-Obispo-CA",
+        "address": "1911 Johnson Avenue",
+        "city": "San Luis Obispo",
+        "state": "CA",
+        "zip": "93401-4131",
+        "phone": "805-543-5353"
+    },
+    {
+        "name": "Mayers Memorial Hosp Dist",
+        "href": "/hospital/Mayers-Memorial-Hosp-Dist-Fall-River-Mills-CA",
+        "address": "43563 Highway 299 East",
+        "city": "Fall River Mills",
+        "state": "CA",
+        "zip": "96028-0459",
+        "phone": "530-336-5511"
+    },
+    {
+        "name": "Scripps Green Hospital",
+        "href": "/hospital/Scripps-Green-Hospital-La-Jolla-CA",
+        "address": "10666 North Torrey Pines Road",
+        "city": "La Jolla",
+        "state": "CA",
+        "zip": "92037-1093",
+        "phone": "858-455-9100"
+    },
+    {
+        "name": "Woodland Healthcare",
+        "href": "/hospital/Woodland-Healthcare-Woodland-CA",
+        "address": "1325 Cottonwood Street",
+        "city": "Woodland",
+        "state": "CA",
+        "zip": "95695-5199",
+        "phone": "530-662-3961"
+    },
+    {
+        "name": "Alameda County Medical Center",
+        "href": "/hospital/Alameda-County-Medical-Center-San-Leandro-CA",
+        "address": "15400 Foothill Boulevard",
+        "city": "San Leandro",
+        "state": "CA",
+        "zip": "94578-1009",
+        "phone": "510-437-4800"
+    },
+    {
+        "name": "Fresno Heart & Surgical Hosp",
+        "href": "/hospital/Fresno-Heart-Surgical-Hosp-Fresno-CA",
+        "address": "15 East Audubon Drive",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93720",
+        "phone": "559-433-8000"
+    },
+    {
+        "name": "MEMORIAL HOSPITAL LOS BANOS",
+        "href": "/hospital/MEMORIAL-HOSPITAL-LOS-BANOS-LOS-BANOS----CA",
+        "address": "520 WEST I ST",
+        "city": "LOS BANOS",
+        "state": "CA",
+        "zip": "93635",
+        "phone": "209-826-0591"
+    },
+    {
+        "name": "Scripps Mem Hosp-La Jolla",
+        "href": "/hospital/Scripps-Mem-Hosp-La-Jolla-La-Jolla-CA",
+        "address": "9888 Genesee Avenue",
+        "city": "La Jolla",
+        "state": "CA",
+        "zip": "92037-1200",
+        "phone": "858-626-4123"
+    },
+    {
+        "name": "Alameda Hospital",
+        "href": "/hospital/Alameda-Hospital-Alameda-CA",
+        "address": "2070 Clinton Avenue",
+        "city": "Alameda",
+        "state": "CA",
+        "zip": "94501-4397",
+        "phone": "510-522-3700"
+    },
+    {
+        "name": "Fresno Surgical Hospital",
+        "href": "/hospital/Fresno-Surgical-Hospital-Fresno-CA",
+        "address": "6125 North Fresno Street",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93710-5207",
+        "phone": "559-431-8000"
+    },
+    {
+        "name": "Memorial Hospital of Gardena",
+        "href": "/hospital/Memorial-Hospital-of-Gardena-Gardena-CA",
+        "address": "1145 West Redondo Beach Blvd",
+        "city": "Gardena",
+        "state": "CA",
+        "zip": "90247-3528",
+        "phone": "310-532-4200"
+    },
+    {
+        "name": "Scripps Mem Hospital-Encinitas",
+        "href": "/hospital/Scripps-Mem-Hospital-Encinitas-Encinitas-CA",
+        "address": "354 Santa Fe Drive",
+        "city": "Encinitas",
+        "state": "CA",
+        "zip": "92024-5182",
+        "phone": "760-633-6501"
+    },
+    {
+        "name": "Alhambra Hospital",
+        "href": "/hospital/Alhambra-Hospital-Rosemead-CA",
+        "address": "4619 North Rosemead Boulevard",
+        "city": "Rosemead",
+        "state": "CA",
+        "zip": "91770-1478",
+        "phone": "626-286-1191"
+    },
+    {
+        "name": "Garden Grove Hosp & Med Ctr",
+        "href": "/hospital/Garden-Grove-Hosp-Med-Ctr-Garden-Grove-CA",
+        "address": "12601 Garden Grove Boulevard",
+        "city": "Garden Grove",
+        "state": "CA",
+        "zip": "92843-1908",
+        "phone": "714-537-5160"
+    },
+    {
+        "name": "Memorial Medical Center",
+        "href": "/hospital/Memorial-Medical-Center-Modesto-CA",
+        "address": "1700 Coffee Road",
+        "city": "Modesto",
+        "state": "CA",
+        "zip": "95355-2869",
+        "phone": "209-526-4500"
+    },
+    {
+        "name": "Scripps Mercy Hospital",
+        "href": "/hospital/Scripps-Mercy-Hospital-San-Diego-CA",
+        "address": "4077 Fifth Avenue",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92103-2105",
+        "phone": "619-294-8111"
+    },
+    {
+        "name": "Alhambra Hospital Medical Ctr",
+        "href": "/hospital/Alhambra-Hospital-Medical-Ctr-Alhambra-CA",
+        "address": "100 South Raymond Avenue",
+        "city": "Alhambra",
+        "state": "CA",
+        "zip": "91801-3199",
+        "phone": "626-570-1606"
+    },
+    {
+        "name": "Garfield Medical Center",
+        "href": "/hospital/Garfield-Medical-Center-Monterey-Park-CA",
+        "address": "525 North Garfield Avenue",
+        "city": "Monterey Park",
+        "state": "CA",
+        "zip": "91754-1205",
+        "phone": "626-573-2222"
+    },
+    {
+        "name": "Mendocino Coast Dist Hospital",
+        "href": "/hospital/Mendocino-Coast-Dist-Hospital-Fort-Bragg-CA",
+        "address": "700 River Drive",
+        "city": "Fort Bragg",
+        "state": "CA",
+        "zip": "95437-5495",
+        "phone": "707-961-1234"
+    },
+    {
+        "name": "Selma Community Hospital",
+        "href": "/hospital/Selma-Community-Hospital-Selma-CA",
+        "address": "1141 Rose Avenue",
+        "city": "Selma",
+        "state": "CA",
+        "zip": "93662-3241",
+        "phone": "559-891-1000"
+    },
+    {
+        "name": "Alta Bates Summit Med Center",
+        "href": "/hospital/Alta-Bates-Summit-Med-Center-Oakland-CA",
+        "address": "350 Hawthorne Avenue",
+        "city": "Oakland",
+        "state": "CA",
+        "zip": "94609-3100",
+        "phone": "510-655-4000"
+    },
+    {
+        "name": "Gateways Hosp & Mntl Hlth Ctr",
+        "href": "/hospital/Gateways-Hosp-Mntl-Hlth-Ctr-Los-Angeles-CA",
+        "address": "1891 Effie Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90026-1711",
+        "phone": "323-644-2000"
+    },
+    {
+        "name": "Menifee Valley Medical Center",
+        "href": "/hospital/Menifee-Valley-Medical-Center-Sun-City-CA",
+        "address": "28400 Mccall Boulevard",
+        "city": "Sun City",
+        "state": "CA",
+        "zip": "92585-9537",
+        "phone": "951-679-8888"
+    },
+    {
+        "name": "Seneca Healthcare District",
+        "href": "/hospital/Seneca-Healthcare-District-Chester-CA",
+        "address": "130 Brentwood Drive",
+        "city": "Chester",
+        "state": "CA",
+        "zip": "96020-0737",
+        "phone": "530-258-2151"
+    },
+    {
+        "name": "Alta Bates Summit Med Ctr",
+        "href": "/hospital/Alta-Bates-Summit-Med-Ctr-Berkeley-CA",
+        "address": "2450 Ashby Avenue",
+        "city": "Berkeley",
+        "state": "CA",
+        "zip": "94705-2067",
+        "phone": "510-204-4444"
+    },
+    {
+        "name": "George L Mee Memorial Hospital",
+        "href": "/hospital/George-L-Mee-Memorial-Hospital-King-City-CA",
+        "address": "300 Canal Street",
+        "city": "King City",
+        "state": "CA",
+        "zip": "93930-3431",
+        "phone": "831-385-6000"
+    },
+    {
+        "name": "Menlo Park Surgical Hospital",
+        "href": "/hospital/Menlo-Park-Surgical-Hospital-Menlo-Park-CA",
+        "address": "570 Willow Road",
+        "city": "Menlo Park",
+        "state": "CA",
+        "zip": "94025-2617",
+        "phone": "650-324-8500"
+    },
+    {
+        "name": "Sequoia Hospital",
+        "href": "/hospital/Sequoia-Hospital-Redwood-City-CA",
+        "address": "170 Alameda De Las Pulgas",
+        "city": "Redwood City",
+        "state": "CA",
+        "zip": "94062-2799",
+        "phone": "650-369-5811"
+    },
+    {
+        "name": "Alvarado Hosp Medical Center",
+        "href": "/hospital/Alvarado-Hosp-Medical-Center-San-Diego-CA",
+        "address": "6655 Alvarado Road",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92120-5208",
+        "phone": "619-287-3270"
+    },
+    {
+        "name": "Glendale Adventist Medical Ctr",
+        "href": "/hospital/Glendale-Adventist-Medical-Ctr-Glendale-CA",
+        "address": "1509 Wilson Terrace",
+        "city": "Glendale",
+        "state": "CA",
+        "zip": "91206-4098",
+        "phone": "818-409-8000"
+    },
+    {
+        "name": "Mercy General Hospital",
+        "href": "/hospital/Mercy-General-Hospital-Sacramento-CA",
+        "address": "4001 'j' Street",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95819-3600",
+        "phone": "916-453-4545"
+    },
+    {
+        "name": "Seton Medical Center",
+        "href": "/hospital/Seton-Medical-Center-Daly-City-CA",
+        "address": "1900 Sullivan Avenue",
+        "city": "Daly City",
+        "state": "CA",
+        "zip": "94015-2229",
+        "phone": "650-992-4000"
+    },
+    {
+        "name": "Anaheim General Hospital",
+        "href": "/hospital/Anaheim-General-Hospital-Anaheim-CA",
+        "address": "3350 West Ball Road",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92804-3799",
+        "phone": "714-827-6700"
+    },
+    {
+        "name": "Glendale Mem Hosp & Hlth Ctr",
+        "href": "/hospital/Glendale-Mem-Hosp-Hlth-Ctr-Glendale-CA",
+        "address": "1420 South Central Avenue",
+        "city": "Glendale",
+        "state": "CA",
+        "zip": "91204-2594",
+        "phone": "818-502-1900"
+    },
+    {
+        "name": "Mercy Hospital",
+        "href": "/hospital/Mercy-Hospital-Bakersfield-CA",
+        "address": "2215 Truxtun Avenue",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93301-3698",
+        "phone": "661-632-5000"
+    },
+    {
+        "name": "Seton Medical Center Coastside",
+        "href": "/hospital/Seton-Medical-Center-Coastside-Moss-Beach-CA",
+        "address": "600 Marine Boulevard",
+        "city": "Moss Beach",
+        "state": "CA",
+        "zip": "94038-9641",
+        "phone": "650-563-7100"
+    },
+    {
+        "name": "Anaheim Memorial Medical Ctr",
+        "href": "/hospital/Anaheim-Memorial-Medical-Ctr-Anaheim-CA",
+        "address": "1111 West La Palma Avenue",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92801-2881",
+        "phone": "714-774-1450"
+    },
+    {
+        "name": "Glenn Medical Center",
+        "href": "/hospital/Glenn-Medical-Center-Willows-CA",
+        "address": "1133 West Sycamore Street",
+        "city": "Willows",
+        "state": "CA",
+        "zip": "95988-2745",
+        "phone": "530-934-1800"
+    },
+    {
+        "name": "Mercy Hospital of Folsom",
+        "href": "/hospital/Mercy-Hospital-of-Folsom-Folsom-CA",
+        "address": "1650 Creekside Drive",
+        "city": "Folsom",
+        "state": "CA",
+        "zip": "95630-3405",
+        "phone": "916-983-7400"
+    },
+    {
+        "name": "Sharp Chula Vista Med Ctr",
+        "href": "/hospital/Sharp-Chula-Vista-Med-Ctr-Chula-Vista-CA",
+        "address": "751 Medical Center Court",
+        "city": "Chula Vista",
+        "state": "CA",
+        "zip": "91911-6617",
+        "phone": "619-482-5800"
+    },
+    {
+        "name": "Antelope Valley Hospital",
+        "href": "/hospital/Antelope-Valley-Hospital-Lancaster-CA",
+        "address": "1600 West Avenue 'j'",
+        "city": "Lancaster",
+        "state": "CA",
+        "zip": "93534-2894",
+        "phone": "661-949-5000"
+    },
+    {
+        "name": "Goleta Valley Cottage Hospital",
+        "href": "/hospital/Goleta-Valley-Cottage-Hospital-Santa-Barbara-CA",
+        "address": "351 South Patterson Avenue",
+        "city": "Santa Barbara",
+        "state": "CA",
+        "zip": "93111-2496",
+        "phone": "805-967-3411"
+    },
+    {
+        "name": "Mercy Medical Center Merced",
+        "href": "/hospital/Mercy-Medical-Center-Merced-Merced-CA",
+        "address": "301 East 13th Street",
+        "city": "Merced",
+        "state": "CA",
+        "zip": "95340-6211",
+        "phone": "209-385-7000"
+    },
+    {
+        "name": "Sharp Coronado Hospital",
+        "href": "/hospital/Sharp-Coronado-Hospital-Coronado-CA",
+        "address": "250 Prospect Place",
+        "city": "Coronado",
+        "state": "CA",
+        "zip": "92118-1943",
+        "phone": "619-522-3600"
+    },
+    {
+        "name": "Arrowhead Regional Medical Ctr",
+        "href": "/hospital/Arrowhead-Regional-Medical-Ctr-Colton-CA",
+        "address": "400 North Pepper Avenue",
+        "city": "Colton",
+        "state": "CA",
+        "zip": "92324-1819",
+        "phone": "909-580-1000"
+    },
+    {
+        "name": "Good Samaritan Hospital",
+        "href": "/hospital/Good-Samaritan-Hospital-Los-Angeles-CA",
+        "address": "1225 Wilshire Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90017-1901",
+        "phone": "213-977-2121"
+    },
+    {
+        "name": "Mercy Medical Center Mt Shasta",
+        "href": "/hospital/Mercy-Medical-Center-Mt-Shasta-Mount-Shasta-CA",
+        "address": "914 Pine Street",
+        "city": "Mount Shasta",
+        "state": "CA",
+        "zip": "96067-2143",
+        "phone": "530-926-6111"
+    },
+    {
+        "name": "Sharp Grossmont Hospital",
+        "href": "/hospital/Sharp-Grossmont-Hospital-La-Mesa-CA",
+        "address": "5555 Grossmont Center Drive",
+        "city": "La Mesa",
+        "state": "CA",
+        "zip": "91942-3019",
+        "phone": "619-740-6000"
+    },
+    {
+        "name": "Arroyo Grande Comm Hospital",
+        "href": "/hospital/Arroyo-Grande-Comm-Hospital-Arroyo-Grande-CA",
+        "address": "345 South Halcyon Road",
+        "city": "Arroyo Grande",
+        "state": "CA",
+        "zip": "93420-3899",
+        "phone": "805-489-4261"
+    },
+    {
+        "name": "Good Samaritan Hospital",
+        "href": "/hospital/Good-Samaritan-Hospital-San-Jose-CA",
+        "address": "2425 Samaritan Drive",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95124-3997",
+        "phone": "408-559-2011"
+    },
+    {
+        "name": "Mercy Medical Center Redding",
+        "href": "/hospital/Mercy-Medical-Center-Redding-Redding-CA",
+        "address": "2175 Rosaline Avenue",
+        "city": "Redding",
+        "state": "CA",
+        "zip": "96001-2509",
+        "phone": "530-225-6000"
+    },
+    {
+        "name": "Sharp Mary Birch Hospital",
+        "href": "/hospital/Sharp-Mary-Birch-Hospital-San-Diego-CA",
+        "address": "3003 Health Center Drive",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92123",
+        "phone": "858-939-3400"
+    },
+    {
+        "name": "Atascadero State Hospital",
+        "href": "/hospital/Atascadero-State-Hospital-Atascadero-CA",
+        "address": "10333 El Camino Real",
+        "city": "Atascadero",
+        "state": "CA",
+        "zip": "93422-7001",
+        "phone": "805-468-2000"
+    },
+    {
+        "name": "Good Samaritan Hospital",
+        "href": "/hospital/Good-Samaritan-Hospital-Bakersfield-CA",
+        "address": "901 Olive Drive",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93308-4144",
+        "phone": "661-399-4461"
+    },
+    {
+        "name": "Mercy San Juan Medical Center",
+        "href": "/hospital/Mercy-San-Juan-Medical-Center-Carmichael-CA",
+        "address": "6501 Coyle Avenue",
+        "city": "Carmichael",
+        "state": "CA",
+        "zip": "95608-0306",
+        "phone": "916-537-5000"
+    },
+    {
+        "name": "Sharp Memorial Hospital",
+        "href": "/hospital/Sharp-Memorial-Hospital-San-Diego-CA",
+        "address": "7901 Frost Street",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92123-2701",
+        "phone": "858-939-3400"
+    },
+    {
+        "name": "Aurora Charter Oak Hospital",
+        "href": "/hospital/Aurora-Charter-Oak-Hospital-Covina-CA",
+        "address": "1161 East Covina Boulevard",
+        "city": "Covina",
+        "state": "CA",
+        "zip": "91724-1599",
+        "phone": "626-966-1632"
+    },
+    {
+        "name": "Greater El Monte Comm Hospital",
+        "href": "/hospital/Greater-El-Monte-Comm-Hospital-El-Monte-CA",
+        "address": "1701 Santa Anita Avenue",
+        "city": "El Monte",
+        "state": "CA",
+        "zip": "91733-3411",
+        "phone": "626-579-7777"
+    },
+    {
+        "name": "Methodist Hosp of Sacramento",
+        "href": "/hospital/Methodist-Hosp-of-Sacramento-Sacramento-CA",
+        "address": "7500 Hospital Drive",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95823-5477",
+        "phone": "916-423-3000"
+    },
+    {
+        "name": "Shasta Regional Medical Center",
+        "href": "/hospital/Shasta-Regional-Medical-Center-Redding-CA",
+        "address": "1100 Butte Street",
+        "city": "Redding",
+        "state": "CA",
+        "zip": "96001-0853",
+        "phone": "530-244-5454"
+    },
+    {
+        "name": "Aurora Las Encinas Hospital",
+        "href": "/hospital/Aurora-Las-Encinas-Hospital-Pasadena-CA",
+        "address": "2900 East Del Mar Boulevard",
+        "city": "Pasadena",
+        "state": "CA",
+        "zip": "91107-4399",
+        "phone": "626-795-9901"
+    },
+    {
+        "name": "Hanford Comm Medical Center",
+        "href": "/hospital/Hanford-Comm-Medical-Center-Hanford-CA",
+        "address": "450 North Greenfield Avenue",
+        "city": "Hanford",
+        "state": "CA",
+        "zip": "93230-3513",
+        "phone": "559-582-9000"
+    },
+    {
+        "name": "Methodist Hosp of Southern CA",
+        "href": "/hospital/Methodist-Hosp-of-Southern-CA-Arcadia-CA",
+        "address": "300 West Huntington Drive",
+        "city": "Arcadia",
+        "state": "CA",
+        "zip": "91007-3473",
+        "phone": "626-898-8000"
+    },
+    {
+        "name": "Sherman Oaks Hospital",
+        "href": "/hospital/Sherman-Oaks-Hospital-Sherman-Oaks-CA",
+        "address": "4929 Van Nuys Boulevard",
+        "city": "Sherman Oaks",
+        "state": "CA",
+        "zip": "91403-1702",
+        "phone": "818-981-7111"
+    },
+    {
+        "name": "Aurora San Diego Hospital",
+        "href": "/hospital/Aurora-San-Diego-Hospital-San-Diego-CA",
+        "address": "11878 Avenue Of Industry",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92128-3423",
+        "phone": "858-487-3200"
+    },
+    {
+        "name": "Hazel Hawkins Mem Hosp",
+        "href": "/hospital/Hazel-Hawkins-Mem-Hosp-Hollister-CA",
+        "address": "911 Sunset Drive",
+        "city": "Hollister",
+        "state": "CA",
+        "zip": "95023-5695",
+        "phone": "831-637-5711"
+    },
+    {
+        "name": "Metropolitan State Hospital",
+        "href": "/hospital/Metropolitan-State-Hospital-Norwalk-CA",
+        "address": "11401 Bloomfield Avenue",
+        "city": "Norwalk",
+        "state": "CA",
+        "zip": "90650",
+        "phone": "562-863-7011"
+    },
+    {
+        "name": "Shriners Hospitals for Children",
+        "href": "/hospital/Shriners-Hospitals-for-Children-Los-Angeles",
+        "address": "3160 Geneva Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90020-1199",
+        "phone": "213-388-3151"
+    },
+    {
+        "name": "Aurora Vista Del Mar Hospital",
+        "href": "/hospital/Aurora-Vista-Del-Mar-Hospital-Ventura-CA",
+        "address": "801 SEneca Street",
+        "city": "Ventura",
+        "state": "CA",
+        "zip": "93001-1411",
+        "phone": "805-653-6434"
+    },
+    {
+        "name": "Healdsburg District Hospital",
+        "href": "/hospital/Healdsburg-District-Hospital-Healdsburg-CA",
+        "address": "1375 University Street",
+        "city": "Healdsburg",
+        "state": "CA",
+        "zip": "95448-3382",
+        "phone": "707-431-6500"
+    },
+    {
+        "name": "Miller Children's Hospital",
+        "href": "/hospital/Miller-Childrens-Hospital-Long-Beach-CA",
+        "address": "2801 Atlantic Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90806",
+        "phone": "562-933-5437"
+    },
+    {
+        "name": "Shriners Hosps for Children",
+        "href": "/hospital/Shriners-Hosps-for-Children-Los-Angeles-CA",
+        "address": "3160 Geneva Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90020-1199",
+        "phone": "213-388-3151"
+    },
+    {
+        "name": "Bakersfield Heart Hospital",
+        "href": "/hospital/Bakersfield-Heart-Hospital-Bakersfield-CA",
+        "address": "3001 Sillect Avenue",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93308-6337",
+        "phone": "661-316-6000"
+    },
+    {
+        "name": "Healthbridge Child Rehab Hosp",
+        "href": "/hospital/Healthbridge-Child-Rehab-Hosp-Orange-CA",
+        "address": "393 South Tustin Street",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92868",
+        "phone": "714-289-2400"
+    },
+    {
+        "name": "Mills-Peninsula Health Servs",
+        "href": "/hospital/Mills-Peninsula-Health-Servs-Burlingame-CA",
+        "address": "1501 TROUSDALE DRIVE",
+        "city": "Burlingame",
+        "state": "CA",
+        "zip": "94010-3282",
+        "phone": "650-696-5400"
+    },
+    {
+        "name": "Shriners Hosps for Children",
+        "href": "/hospital/Shriners-Hosps-for-Children-Sacramento-CA",
+        "address": "2425 Stockton Boulevard",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95817-2215",
+        "phone": "916-453-2000"
+    },
+    {
+        "name": "Bakersfield Memorial Hospital",
+        "href": "/hospital/Bakersfield-Memorial-Hospital-Bakersfield-CA",
+        "address": "420 34th Street",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93301-2237",
+        "phone": "661-327-1792"
+    },
+    {
+        "name": "HEALTHSOUTH Bakersfield Hosp",
+        "href": "/hospital/HEALTHSOUTH-Bakersfield-Hosp-Bakersfield-CA",
+        "address": "5001 Commerce Drive",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93309-0689",
+        "phone": "661-323-5500"
+    },
+    {
+        "name": "MIRACLE MILE MEDICAL CENTER",
+        "href": "/hospital/MIRACLE-MILE-MEDICAL-CENTER-LOS-ANGELES-CA",
+        "address": "6000 SAN VICENTE BLVD",
+        "city": "LOS ANGELES",
+        "state": "CA",
+        "zip": "90036",
+        "phone": "323-930-1040"
+    },
+    {
+        "name": "Sierra Nevada Mem Hospital",
+        "href": "/hospital/Sierra-Nevada-Mem-Hospital-Grass-Valley-CA",
+        "address": "155 Glasson Way",
+        "city": "Grass Valley",
+        "state": "CA",
+        "zip": "95945-5723",
+        "phone": "530-274-6000"
+    },
+    {
+        "name": "Banner Lassen Medical Center",
+        "href": "/hospital/Banner-Lassen-Medical-Center-Susanville-CA",
+        "address": "1800 Spring Ridge Drive",
+        "city": "Susanville",
+        "state": "CA",
+        "zip": "96130-4809",
+        "phone": "530-252-2000"
+    },
+    {
+        "name": "HEALTHSOUTH Tustin Rehab Hosp",
+        "href": "/hospital/HEALTHSOUTH-Tustin-Rehab-Hosp-Tustin-CA",
+        "address": "14851 Yorba Street",
+        "city": "Tustin",
+        "state": "CA",
+        "zip": "92780-2925",
+        "phone": "714-832-9200"
+    },
+    {
+        "name": "Mission Community Hospital",
+        "href": "/hospital/Mission-Community-Hospital-Panorama-City-CA",
+        "address": "14850 Roscoe Boulevard",
+        "city": "Panorama City",
+        "state": "CA",
+        "zip": "91402",
+        "phone": "818-787-2222"
+    },
+    {
+        "name": "Sierra View District Hospital",
+        "href": "/hospital/Sierra-View-District-Hospital-Porterville-CA",
+        "address": "465 West Putnam Avenue",
+        "city": "Porterville",
+        "state": "CA",
+        "zip": "93257-3320",
+        "phone": "559-784-1110"
+    },
+    {
+        "name": "Barlow Respiratory Hospital",
+        "href": "/hospital/Barlow-Respiratory-Hospital-Los-Angeles-CA",
+        "address": "2000 Stadium Way",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90026-2696",
+        "phone": "213-250-4200"
+    },
+    {
+        "name": "Hemet Valley Medical Center",
+        "href": "/hospital/Hemet-Valley-Medical-Center-Hemet-CA",
+        "address": "1117 East Devonshire Avenue",
+        "city": "Hemet",
+        "state": "CA",
+        "zip": "92543-3083",
+        "phone": "951-652-2811"
+    },
+    {
+        "name": "Mission Hospital",
+        "href": "/hospital/Mission-Hospital-Mission-Viejo-CA",
+        "address": "27700 Medical Center Road",
+        "city": "Mission Viejo",
+        "state": "CA",
+        "zip": "92691-6426",
+        "phone": "949-364-1400"
+    },
+    {
+        "name": "Sierra Vista Hospital",
+        "href": "/hospital/Sierra-Vista-Hospital-Sacramento-CA",
+        "address": "8001 Bruceville Road",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95823-2329",
+        "phone": "916-288-0300"
+    },
+    {
+        "name": "Barstow Community Hospital",
+        "href": "/hospital/Barstow-Community-Hospital-Barstow-CA",
+        "address": "555 South Seventh Street",
+        "city": "Barstow",
+        "state": "CA",
+        "zip": "92311-3086",
+        "phone": "760-256-1761"
+    },
+    {
+        "name": "Henry Mayo Newhall Mem Hosp",
+        "href": "/hospital/Henry-Mayo-Newhall-Mem-Hosp-Valencia-CA",
+        "address": "23845 Mcbean Parkway",
+        "city": "Valencia",
+        "state": "CA",
+        "zip": "91355-2083",
+        "phone": "661-253-8000"
+    },
+    {
+        "name": "Modoc Medical Center",
+        "href": "/hospital/Modoc-Medical-Center-Alturas-CA",
+        "address": "228 Mcdowell Street",
+        "city": "Alturas",
+        "state": "CA",
+        "zip": "96101-3915",
+        "phone": "530-233-5131"
+    },
+    {
+        "name": "Sierra Vista Regional Med Ctr",
+        "href": "/hospital/Sierra-Vista-Regional-Med-Ctr-San-Luis-Obispo-CA",
+        "address": "1010 Murray Street",
+        "city": "San Luis Obispo",
+        "state": "CA",
+        "zip": "93405-8800",
+        "phone": "805-546-7600"
+    },
+    {
+        "name": "Barton Healthcare System",
+        "href": "/hospital/Barton-Healthcare-System-South-Lake-Tahoe-CA",
+        "address": "2170 South Avenue",
+        "city": "South Lake Tahoe",
+        "state": "CA",
+        "zip": "96150-7008",
+        "phone": "530-541-3420"
+    },
+    {
+        "name": "Heritage Oaks Hospital",
+        "href": "/hospital/Heritage-Oaks-Hospital-Sacramento-CA",
+        "address": "4250 Auburn Boulevard",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95841-4164",
+        "phone": "916-489-3336"
+    },
+    {
+        "name": "Montclair Hospital Medical Ctr",
+        "href": "/hospital/Montclair-Hospital-Medical-Ctr-Montclair-CA",
+        "address": "5000 San Bernardino Street",
+        "city": "Montclair",
+        "state": "CA",
+        "zip": "91763-2326",
+        "phone": "909-625-5411"
+    },
+    {
+        "name": "Sierra-Kings District Hospital",
+        "href": "/hospital/Sierra-Kings-District-Hospital-Reedley-CA",
+        "address": "372 West Cypress Avenue",
+        "city": "Reedley",
+        "state": "CA",
+        "zip": "93654-2199",
+        "phone": "559-638-8155"
+    },
+    {
+        "name": "Bayview Hosp & Mental System",
+        "href": "/hospital/Bayview-Hosp-Mental-System-Chula-Vista-CA",
+        "address": "330 Moss Street",
+        "city": "Chula Vista",
+        "state": "CA",
+        "zip": "91911-2005",
+        "phone": "619-426-6310"
+    },
+    {
+        "name": "Hi-Desert Medical Center",
+        "href": "/hospital/Hi-Desert-Medical-Center-Joshua-Tree-CA",
+        "address": "6601 White Feather Road",
+        "city": "Joshua Tree",
+        "state": "CA",
+        "zip": "92252-6601",
+        "phone": "760-366-3711"
+    },
+    {
+        "name": "Monterey Park Hospital",
+        "href": "/hospital/Monterey-Park-Hospital-Monterey-Park-CA",
+        "address": "900 South Atlantic Boulevard",
+        "city": "Monterey Park",
+        "state": "CA",
+        "zip": "91754-4780",
+        "phone": "626-570-9000"
+    },
+    {
+        "name": "Simi Valley Hosp & Hlth Care",
+        "href": "/hospital/Simi-Valley-Hosp-Hlth-Care-Simi-Valley-CA",
+        "address": "2975 North Sycamore Drive",
+        "city": "Simi Valley",
+        "state": "CA",
+        "zip": "93065-1201",
+        "phone": "805-955-6000"
+    },
+    {
+        "name": "Bear Valley Community Hospital",
+        "href": "/hospital/Bear-Valley-Community-Hospital-Big-Bear-Lake-CA",
+        "address": "41870 Garstin Road",
+        "city": "Big Bear Lake",
+        "state": "CA",
+        "zip": "92315",
+        "phone": "909-866-6501"
+    },
+    {
+        "name": "Hoag Mem Hospital Presbyterian",
+        "href": "/hospital/Hoag-Mem-Hospital-Presbyterian-Newport-Beach-CA",
+        "address": "One Hoag Drive",
+        "city": "Newport Beach",
+        "state": "CA",
+        "zip": "92663-4120",
+        "phone": "949-764-4624"
+    },
+    {
+        "name": "Moreno Valley Community Hosp",
+        "href": "/hospital/Moreno-Valley-Community-Hosp-Moreno-Valley-CA",
+        "address": "27300 Iris Avenue",
+        "city": "Moreno Valley",
+        "state": "CA",
+        "zip": "92555-4800",
+        "phone": "951-243-0811"
+    },
+    {
+        "name": "Sonoma Developmental Center",
+        "href": "/hospital/Sonoma-Developmental-Center-Eldridge-CA",
+        "address": "15000 Arnold Drive",
+        "city": "Eldridge",
+        "state": "CA",
+        "zip": "95431",
+        "phone": "707-938-6000"
+    },
+    {
+        "name": "Bellflower Medical Center",
+        "href": "/hospital/Bellflower-Medical-Center-Bellflower-CA",
+        "address": "9542 East Artesia Boulevard",
+        "city": "Bellflower",
+        "state": "CA",
+        "zip": "90706-6511",
+        "phone": "562-925-8355"
+    },
+    {
+        "name": "Hollywood Community Hospital",
+        "href": "/hospital/Hollywood-Community-Hospital-Los-Angeles-CA",
+        "address": "6245 De Longpre Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90028-9001",
+        "phone": "323-462-2271"
+    },
+    {
+        "name": "Motion Picture & Tel Hospital",
+        "href": "/hospital/Motion-Picture-Tel-Hospital-Woodland-Hills-CA",
+        "address": "23388 Mulholland Drive",
+        "city": "Woodland Hills",
+        "state": "CA",
+        "zip": "91364-2733",
+        "phone": "818-876-1888"
+    },
+    {
+        "name": "Sonoma Valley Hospital",
+        "href": "/hospital/Sonoma-Valley-Hospital-Sonoma-CA",
+        "address": "347 Andrieux Street",
+        "city": "Sonoma",
+        "state": "CA",
+        "zip": "95476-6811",
+        "phone": "707-935-5000"
+    },
+    {
+        "name": "Beverly Hospital",
+        "href": "/hospital/Beverly-Hospital-Montebello-CA",
+        "address": "309 West Beverly Boulevard",
+        "city": "Montebello",
+        "state": "CA",
+        "zip": "90640-4308",
+        "phone": "323-726-1222"
+    },
+    {
+        "name": "Hollywood Presby Medical Ctr",
+        "href": "/hospital/Hollywood-Presby-Medical-Ctr-Los-Angeles-CA",
+        "address": "1300 North Vermont Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90027-0069",
+        "phone": "323-913-4800"
+    },
+    {
+        "name": "Mountain Community Med Servs",
+        "href": "/hospital/Mountain-Community-Med-Servs-Weaverville-CA",
+        "address": "410 North Taylor Street",
+        "city": "Weaverville",
+        "state": "CA",
+        "zip": "96093",
+        "phone": "530-623-5541"
+    },
+    {
+        "name": "Sonora Regional Medical Center",
+        "href": "/hospital/Sonora-Regional-Medical-Center-Sonora-CA",
+        "address": "1000 Greenley Road",
+        "city": "Sonora",
+        "state": "CA",
+        "zip": "95370-4819",
+        "phone": "209-532-5000"
+    },
+    {
+        "name": "Biggs-Gridley Mem Hospital",
+        "href": "/hospital/Biggs-Gridley-Mem-Hospital-Gridley-CA",
+        "address": "240 Spruce Street",
+        "city": "Gridley",
+        "state": "CA",
+        "zip": "95948-2216",
+        "phone": "530-846-5671"
+    },
+    {
+        "name": "Huntington Beach Hospital",
+        "href": "/hospital/Huntington-Beach-Hospital-Huntington-Beach-CA",
+        "address": "17772 Beach Boulevard",
+        "city": "Huntington Beach",
+        "state": "CA",
+        "zip": "92647-6819",
+        "phone": "714-842-1473"
+    },
+    {
+        "name": "Mountains Community Hospital",
+        "href": "/hospital/Mountains-Community-Hospital-Lake-Arrowhead-CA",
+        "address": "29101 Hospital Road",
+        "city": "Lake Arrowhead",
+        "state": "CA",
+        "zip": "92352",
+        "phone": "909-336-3651"
+    },
+    {
+        "name": "South Coast Medical Center",
+        "href": "/hospital/South-Coast-Medical-Center-Laguna-Beach-CA",
+        "address": "31872 Coast Highway",
+        "city": "Laguna Beach",
+        "state": "CA",
+        "zip": "92651-6775",
+        "phone": "949-499-1311"
+    },
+    {
+        "name": "Brotman Medical Center",
+        "href": "/hospital/Brotman-Medical-Center-Culver-City-CA",
+        "address": "3828 Delmas Terrace",
+        "city": "Culver City",
+        "state": "CA",
+        "zip": "90232-6806",
+        "phone": "310-836-7000"
+    },
+    {
+        "name": "Huntington Memorial Hospital",
+        "href": "/hospital/Huntington-Memorial-Hospital-Pasadena-CA",
+        "address": "100 West California Boulevard",
+        "city": "Pasadena",
+        "state": "CA",
+        "zip": "91105-3097",
+        "phone": "626-397-5000"
+    },
+    {
+        "name": "Napa State Hospital",
+        "href": "/hospital/Napa-State-Hospital-Napa-CA",
+        "address": "2100 Napa-Vallejo Highway",
+        "city": "Napa",
+        "state": "CA",
+        "zip": "94558-6293",
+        "phone": "707-253-5000"
+    },
+    {
+        "name": "Southern Inyo Healthcare Dist",
+        "href": "/hospital/Southern-Inyo-Healthcare-Dist-Lone-Pine-CA",
+        "address": "501 East Locust Street",
+        "city": "Lone Pine",
+        "state": "CA",
+        "zip": "93545-1009",
+        "phone": "760-876-5501"
+    },
+    {
+        "name": "California Hospital Med Center",
+        "href": "/hospital/California-Hospital-Med-Center-Los-Angeles-CA",
+        "address": "1401 South Grand Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90015-3010",
+        "phone": "213-748-2411"
+    },
+    {
+        "name": "Impact Drug Treatment Center",
+        "href": "/hospital/Impact-Drug-Treatment-Center-Pasadena-CA",
+        "address": "1680 North Fair Oaks Avenue",
+        "city": "Pasadena",
+        "state": "CA",
+        "zip": "91103-1642",
+        "phone": "323-681-2575"
+    },
+    {
+        "name": "Natividad Medical Center",
+        "href": "/hospital/Natividad-Medical-Center-Salinas-CA",
+        "address": "1441 Constitution Boulevard",
+        "city": "Salinas",
+        "state": "CA",
+        "zip": "93906-3100",
+        "phone": "831-755-4111"
+    },
+    {
+        "name": "St Bernardine Medical Ctr",
+        "href": "/hospital/St-Bernardine-Medical-Ctr-San-Bernardino-CA",
+        "address": "2101 North Waterman Avenue",
+        "city": "San Bernardino",
+        "state": "CA",
+        "zip": "92404-4836",
+        "phone": "909-883-8711"
+    },
+    {
+        "name": "California Medical Facility",
+        "href": "/hospital/California-Medical-Facility-Vacaville-CA",
+        "address": "1600 California Drive",
+        "city": "Vacaville",
+        "state": "CA",
+        "zip": "95696-2000",
+        "phone": "707-448-6841"
+    },
+    {
+        "name": "Inland Valley Medical Center",
+        "href": "/hospital/Inland-Valley-Medical-Center-Wildomar-CA",
+        "address": "36485 Inland Valley Drive",
+        "city": "Wildomar",
+        "state": "CA",
+        "zip": "92595-9700",
+        "phone": "951-677-1111"
+    },
+    {
+        "name": "Naval Hospital",
+        "href": "/hospital/Naval-Hospital-Lemoore-CA",
+        "address": "937 Franklin Avenue",
+        "city": "Lemoore",
+        "state": "CA",
+        "zip": "93246-5004",
+        "phone": "559-998-4201"
+    },
+    {
+        "name": "St Elizabeth Community Hosp",
+        "href": "/hospital/St-Elizabeth-Community-Hosp-Red-Bluff-CA",
+        "address": "2550 Sister Mary Columba Drive",
+        "city": "Red Bluff",
+        "state": "CA",
+        "zip": "96080-4397",
+        "phone": "530-529-8000"
+    },
+    {
+        "name": "California Mens Colony Hosp",
+        "href": "/hospital/California-Mens-Colony-Hosp-San-Luis-Obispo-CA",
+        "address": "Highway 1",
+        "city": "San Luis Obispo",
+        "state": "CA",
+        "zip": "93409-8101",
+        "phone": "805-547-7913"
+    },
+    {
+        "name": "Jerold Phelps Community Hosp",
+        "href": "/hospital/Jerold-Phelps-Community-Hosp-Garberville-CA",
+        "address": "733 Cedar Street",
+        "city": "Garberville",
+        "state": "CA",
+        "zip": "95542-3201",
+        "phone": "707-923-3921"
+    },
+    {
+        "name": "Naval Hospital",
+        "href": "/hospital/Naval-Hospital-Camp-Pendleton-CA",
+        "address": "NULL",
+        "city": "Camp Pendleton",
+        "state": "CA",
+        "zip": "92055-5191",
+        "phone": "760-725-1304"
+    },
+    {
+        "name": "St Francis Medical Center",
+        "href": "/hospital/St-Francis-Medical-Center-Lynwood-CA",
+        "address": "3630 East Imperial Highway",
+        "city": "Lynwood",
+        "state": "CA",
+        "zip": "90262-2636",
+        "phone": "310-900-8900"
+    },
+    {
+        "name": "California Pacific Med Center",
+        "href": "/hospital/California-Pacific-Med-Center-San-Francisco-CA",
+        "address": "2333 Buchanan Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94115-1925",
+        "phone": "415-563-4321"
+    },
+    {
+        "name": "Jerry L Pettis Mem Vet Med Ctr",
+        "href": "/hospital/Jerry-L-Pettis-Mem-Vet-Med-Ctr-Loma-Linda-CA",
+        "address": "11201 Benton Street",
+        "city": "Loma Linda",
+        "state": "CA",
+        "zip": "92357",
+        "phone": "909-825-7084"
+    },
+    {
+        "name": "Naval Hospital",
+        "href": "/hospital/Naval-Hospital-Twentynine-Palms-CA",
+        "address": "NULL",
+        "city": "Twentynine Palms",
+        "state": "CA",
+        "zip": "92278",
+        "phone": "760-830-2190"
+    },
+    {
+        "name": "St Helena Hospital",
+        "href": "/hospital/St-Helena-Hospital-Saint-Helena-CA",
+        "address": "10 Woodland Road",
+        "city": "Saint Helena",
+        "state": "CA",
+        "zip": "94574",
+        "phone": "707-963-3611"
+    },
+    {
+        "name": "Canyon Ridge Hospital",
+        "href": "/hospital/Canyon-Ridge-Hospital-Chino-CA",
+        "address": "5353 'g' Street",
+        "city": "Chino",
+        "state": "CA",
+        "zip": "91710-5250",
+        "phone": "909-590-3700"
+    },
+    {
+        "name": "John C Fremont Healthcare",
+        "href": "/hospital/John-C-Fremont-Healthcare-Mariposa-CA",
+        "address": "5189 Hospital Road",
+        "city": "Mariposa",
+        "state": "CA",
+        "zip": "95338-9524",
+        "phone": "209-966-3631"
+    },
+    {
+        "name": "Naval Medical Center",
+        "href": "/hospital/Naval-Medical-Center-San-Diego-CA",
+        "address": "34800 Bob Wilson Drive",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92134-5000",
+        "phone": "619-532-6400"
+    },
+    {
+        "name": "St Helena Hospital-Center",
+        "href": "/hospital/St-Helena-Hospital-Center-Vallejo-CA",
+        "address": "525 Oregon Street",
+        "city": "Vallejo",
+        "state": "CA",
+        "zip": "94590-3201",
+        "phone": "707-648-2200"
+    },
+    {
+        "name": "Casa Colina Hosp for Rehab Med",
+        "href": "/hospital/Casa-Colina-Hosp-for-Rehab-Med-Pomona-CA",
+        "address": "255 East Bonita Avenue",
+        "city": "Pomona",
+        "state": "CA",
+        "zip": "91767-1933",
+        "phone": "909-596-7733"
+    },
+    {
+        "name": "John F Kennedy Memorial Hosp",
+        "href": "/hospital/John-F-Kennedy-Memorial-Hosp-Indio-CA",
+        "address": "47111 Monroe Street",
+        "city": "Indio",
+        "state": "CA",
+        "zip": "92201",
+        "phone": "760-347-6191"
+    },
+    {
+        "name": "Newport Bay Hospital",
+        "href": "/hospital/Newport-Bay-Hospital-Newport-Beach-CA",
+        "address": "1501 East 16th Street",
+        "city": "Newport Beach",
+        "state": "CA",
+        "zip": "92663-5924",
+        "phone": "949-650-9750"
+    },
+    {
+        "name": "St John's Pleasant Valley Hosp",
+        "href": "/hospital/St-Johns-Pleasant-Valley-Hosp-Camarillo-CA",
+        "address": "2309 Antonio Avenue",
+        "city": "Camarillo",
+        "state": "CA",
+        "zip": "93010-1414",
+        "phone": "805-389-5800"
+    },
+    {
+        "name": "Catalina Island Medical Center",
+        "href": "/hospital/Catalina-Island-Medical-Center-Avalon-CA",
+        "address": "100 Falls Canyon Road",
+        "city": "Avalon",
+        "state": "CA",
+        "zip": "90704",
+        "phone": "310-510-0700"
+    },
+    {
+        "name": "John Muir Behavioral Hlth",
+        "href": "/hospital/John-Muir-Behavioral-Hlth-Concord-CA",
+        "address": "2740 Grant Street",
+        "city": "Concord",
+        "state": "CA",
+        "zip": "94520",
+        "phone": "925-674-4100"
+    },
+    {
+        "name": "NorthBay Medical Center",
+        "href": "/hospital/NorthBay-Medical-Center-Fairfield-CA",
+        "address": "1200 B Gale Wilson Boulevard",
+        "city": "Fairfield",
+        "state": "CA",
+        "zip": "94533-3587",
+        "phone": "707-429-3600"
+    },
+    {
+        "name": "St John's Regional Med Center",
+        "href": "/hospital/St-Johns-Regional-Med-Center-Oxnard-CA",
+        "address": "1600 North Rose Avenue",
+        "city": "Oxnard",
+        "state": "CA",
+        "zip": "93030-3723",
+        "phone": "805-988-2500"
+    },
+    {
+        "name": "Cedars-Sinai Medical Center",
+        "href": "/hospital/Cedars-Sinai-Medical-Center-Los-Angeles-CA",
+        "address": "8700 Beverly Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90048-1865",
+        "phone": "310-423-5000"
+    },
+    {
+        "name": "John Muir Medical Center",
+        "href": "/hospital/John-Muir-Medical-Center-Walnut-Creek-CA",
+        "address": "1601 Ygnacio Valley Road",
+        "city": "Walnut Creek",
+        "state": "CA",
+        "zip": "94598-3194",
+        "phone": "925-939-3000"
+    },
+    {
+        "name": "NorthBay VacaValley Hospital",
+        "href": "/hospital/NorthBay-VacaValley-Hospital-Vacaville-CA",
+        "address": "1000 Nut Tree Road",
+        "city": "Vacaville",
+        "state": "CA",
+        "zip": "95687-4100",
+        "phone": "707-446-4000"
+    },
+    {
+        "name": "St Joseph Hospital",
+        "href": "/hospital/St-Joseph-Hospital-Orange-CA",
+        "address": "1100 West Stewart Drive",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92668-3891",
+        "phone": "714-633-9111"
+    },
+    {
+        "name": "Centinela Freeman Med Center",
+        "href": "/hospital/Centinela-Freeman-Med-Center-Marina-Del-Rey-CA",
+        "address": "4650 Lincoln Boulevard",
+        "city": "Marina Del Rey",
+        "state": "CA",
+        "zip": "90292-6360",
+        "phone": "310-823-8911"
+    },
+    {
+        "name": "John Muir Medical Center",
+        "href": "/hospital/John-Muir-Medical-Center-Concord-CA",
+        "address": "2540 East Street",
+        "city": "Concord",
+        "state": "CA",
+        "zip": "94520",
+        "phone": "925-682-8200"
+    },
+    {
+        "name": "Northern Calif Rehab Hospital",
+        "href": "/hospital/Northern-Calif-Rehab-Hospital-Redding-CA",
+        "address": "2801 Eureka Way",
+        "city": "Redding",
+        "state": "CA",
+        "zip": "96001",
+        "phone": "530-246-9000"
+    },
+    {
+        "name": "St Joseph Hospital",
+        "href": "/hospital/St-Joseph-Hospital-Eureka-CA",
+        "address": "2700 Dolbeer Street",
+        "city": "Eureka",
+        "state": "CA",
+        "zip": "95501-4799",
+        "phone": "707-445-8121"
+    },
+    {
+        "name": "Centinela Freeman Med Center",
+        "href": "/hospital/Centinela-Freeman-Med-Center-Inglewood-CA",
+        "address": "333 North Prairie Avenue",
+        "city": "Inglewood",
+        "state": "CA",
+        "zip": "90301-4514",
+        "phone": "310-674-7050"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Sacramento-CA",
+        "address": "6600 Bruceville Road",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95823-4671",
+        "phone": "916-688-2430"
+    },
+    {
+        "name": "Northern Inyo Hospital",
+        "href": "/hospital/Northern-Inyo-Hospital-Bishop-CA",
+        "address": "150 Pioneer Lane",
+        "city": "Bishop",
+        "state": "CA",
+        "zip": "93514-2599",
+        "phone": "760-873-5811"
+    },
+    {
+        "name": "St Joseph's Behavioral Ctr",
+        "href": "/hospital/St-Josephs-Behavioral-Ctr-Stockton-CA",
+        "address": "2510 North California Street",
+        "city": "Stockton",
+        "state": "CA",
+        "zip": "95204-5502",
+        "phone": "209-461-2000"
+    },
+    {
+        "name": "Centinela Freeman Med Center - Hardy",
+        "href": "/hospital/Centinela-Freeman-Med-Center-Hardy-Inglewood-CA",
+        "address": "555 East Hardy Street",
+        "city": "Inglewood",
+        "state": "CA",
+        "zip": "90301-4011",
+        "phone": "310-673-4660"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Panorama-City-CA",
+        "address": "13652 Cantara Street",
+        "city": "Panorama City",
+        "state": "CA",
+        "zip": "91402-5497",
+        "phone": "818-375-2000"
+    },
+    {
+        "name": "Northridge Hosp Medical Center",
+        "href": "/hospital/Northridge-Hosp-Medical-Center-Northridge-CA",
+        "address": "18300 Roscoe Boulevard",
+        "city": "Northridge",
+        "state": "CA",
+        "zip": "91328-4167",
+        "phone": "818-885-8500"
+    },
+    {
+        "name": "St Joseph's Medical Center",
+        "href": "/hospital/St-Josephs-Medical-Center-Stockton-CA",
+        "address": "1800 North California Street",
+        "city": "Stockton",
+        "state": "CA",
+        "zip": "95204-6019",
+        "phone": "209-943-2000"
+    },
+    {
+        "name": "Central Valley General Hosp",
+        "href": "/hospital/Central-Valley-General-Hosp-Hanford-CA",
+        "address": "1025 North Douty Street",
+        "city": "Hanford",
+        "state": "CA",
+        "zip": "93230-3722",
+        "phone": "559-583-2100"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Woodland-Hills-CA",
+        "address": "5601 Desoto Avenue",
+        "city": "Woodland Hills",
+        "state": "CA",
+        "zip": "91365-6701",
+        "phone": "818-719-3800"
+    },
+    {
+        "name": "Novato Community Hospital",
+        "href": "/hospital/Novato-Community-Hospital-Novato-CA",
+        "address": "180 Rowland Way",
+        "city": "Novato",
+        "state": "CA",
+        "zip": "94945-5009",
+        "phone": "415-209-1300"
+    },
+    {
+        "name": "St Jude Medical Center",
+        "href": "/hospital/St-Jude-Medical-Center-Fullerton-CA",
+        "address": "101 East Valencia Mesa Drive",
+        "city": "Fullerton",
+        "state": "CA",
+        "zip": "92835-3809",
+        "phone": "714-992-3000"
+    },
+    {
+        "name": "CENTURY CITY DOCTORS HOSPITAL",
+        "href": "/hospital/CENTURY-CITY-DOCTORS-HOSPITAL-LOS-ANGELES-CA",
+        "address": "2070 CENTURY PARK EAST",
+        "city": "LOS ANGELES",
+        "state": "CA",
+        "zip": "90067",
+        "phone": "310-772-4915"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Los-Angeles-CA",
+        "address": "6041 Cadillac Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90034-1702",
+        "phone": "323-857-2201"
+    },
+    {
+        "name": "O'Connor Hospital",
+        "href": "/hospital/OConnor-Hospital-San-Jose-CA",
+        "address": "2105 Forest Avenue",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95128-1471",
+        "phone": "408-947-2500"
+    },
+    {
+        "name": "St Louise Regional Hospital",
+        "href": "/hospital/St-Louise-Regional-Hospital-Gilroy-CA",
+        "address": "9400 No Name Uno",
+        "city": "Gilroy",
+        "state": "CA",
+        "zip": "95020-3528",
+        "phone": "408-848-2000"
+    },
+    {
+        "name": "Chapman Medical Center",
+        "href": "/hospital/Chapman-Medical-Center-Orange-CA",
+        "address": "2601 East Chapman Avenue",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92869-3206",
+        "phone": "714-633-0011"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Oakland-CA",
+        "address": "280 West Macarthur Boulevard",
+        "city": "Oakland",
+        "state": "CA",
+        "zip": "94611-5693",
+        "phone": "510-752-1000"
+    },
+    {
+        "name": "Oak Valley Hospital District",
+        "href": "/hospital/Oak-Valley-Hospital-District-Oakdale-CA",
+        "address": "350 South Oak Street",
+        "city": "Oakdale",
+        "state": "CA",
+        "zip": "95361-3519",
+        "phone": "209-847-3011"
+    },
+    {
+        "name": "St Luke's Hospital",
+        "href": "/hospital/St-Lukes-Hospital-San-Francisco-CA",
+        "address": "3555 Cesar Chavez Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94110-4490",
+        "phone": "415-647-8600"
+    },
+    {
+        "name": "Children's Hosp & Research Ctr",
+        "href": "/hospital/Childrens-Hosp-Research-Ctr-Oakland-CA",
+        "address": "747 52nd Street",
+        "city": "Oakland",
+        "state": "CA",
+        "zip": "94609-1809",
+        "phone": "510-428-3000"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-San-Francisco-CA",
+        "address": "2425 GEARY BLVD",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94115-3358",
+        "phone": "415-833-2000"
+    },
+    {
+        "name": "OJAI VALLEY COMMUNITY HOSPITAL",
+        "href": "/hospital/OJAI-VALLEY-COMMUNITY-HOSPITAL-OJAI-CA",
+        "address": "1306 MARICOPA HWY",
+        "city": "OJAI",
+        "state": "CA",
+        "zip": "93023",
+        "phone": "805-640-2280"
+    },
+    {
+        "name": "St Mary Medical Center",
+        "href": "/hospital/St-Mary-Medical-Center-Apple-Valley-CA",
+        "address": "18300 Highway 18",
+        "city": "Apple Valley",
+        "state": "CA",
+        "zip": "92307-2255",
+        "phone": "760-242-2311"
+    },
+    {
+        "name": "Children's Hosp of Orange Cnty",
+        "href": "/hospital/Childrens-Hosp-of-Orange-Cnty-Orange-CA",
+        "address": "455 South Main Street",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92868-3874",
+        "phone": "714-997-3000"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Hayward-CA",
+        "address": "27400 Hesperian Boulevard",
+        "city": "Hayward",
+        "state": "CA",
+        "zip": "94545-4235",
+        "phone": "510-784-4000"
+    },
+    {
+        "name": "Olympia Medical Center",
+        "href": "/hospital/Olympia-Medical-Center-Los-Angeles-CA",
+        "address": "5900 West Olympic Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90036",
+        "phone": "310-657-5900"
+    },
+    {
+        "name": "St Mary Medical Center",
+        "href": "/hospital/St-Mary-Medical-Center-Long-Beach-CA",
+        "address": "1050 Linden Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90813",
+        "phone": "562-491-9000"
+    },
+    {
+        "name": "Children's Hospital at Mission",
+        "href": "/hospital/Childrens-Hospital-at-Mission-Mission-Viejo-CA",
+        "address": "27700 Medical Center Road",
+        "city": "Mission Viejo",
+        "state": "CA",
+        "zip": "92691-6426",
+        "phone": "949-364-1400"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-South-San-Francisco-CA",
+        "address": "1200 El Camino Real",
+        "city": "South San Francisco",
+        "state": "CA",
+        "zip": "94080-3299",
+        "phone": "650-742-2000"
+    },
+    {
+        "name": "Orange Coast Memorial Med Ctr",
+        "href": "/hospital/Orange-Coast-Memorial-Med-Ctr-Fountain-Valley-CA",
+        "address": "9920 Talbert Avenue",
+        "city": "Fountain Valley",
+        "state": "CA",
+        "zip": "92708-5153",
+        "phone": "714-378-7000"
+    },
+    {
+        "name": "St Mary's Medical Center",
+        "href": "/hospital/St-Marys-Medical-Center-San-Francisco-CA",
+        "address": "450 Stanyan Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94117-1079",
+        "phone": "415-668-1000"
+    },
+    {
+        "name": "Children's Hospital Central CA",
+        "href": "/hospital/Childrens-Hospital-Central-CA-Madera-CA",
+        "address": "9300 Valley Children's Place",
+        "city": "Madera",
+        "state": "CA",
+        "zip": "93636-8762",
+        "phone": "559-353-3000"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Walnut-Creek-CA",
+        "address": "1425 South Main Street",
+        "city": "Walnut Creek",
+        "state": "CA",
+        "zip": "94596-5300",
+        "phone": "925-295-4000"
+    },
+    {
+        "name": "Oroville Hospital",
+        "href": "/hospital/Oroville-Hospital-Oroville-CA",
+        "address": "2767 Olive Highway",
+        "city": "Oroville",
+        "state": "CA",
+        "zip": "95966-6118",
+        "phone": "530-533-8500"
+    },
+    {
+        "name": "St Rose Hospital",
+        "href": "/hospital/St-Rose-Hospital-Hayward-CA",
+        "address": "27200 Calaroga Avenue",
+        "city": "Hayward",
+        "state": "CA",
+        "zip": "94545-4383",
+        "phone": "510-264-4000"
+    },
+    {
+        "name": "Childrens Hospital Los Angeles",
+        "href": "/hospital/Childrens-Hospital-Los-Angeles-Los-Angeles-CA",
+        "address": "4650 Sunset Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90027-6062",
+        "phone": "323-660-2450"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Redwood-City-CA",
+        "address": "1150 Veterans Boulevard",
+        "city": "Redwood City",
+        "state": "CA",
+        "zip": "94063-2037",
+        "phone": "650-299-2000"
+    },
+    {
+        "name": "Pacific Alliance Med Center",
+        "href": "/hospital/Pacific-Alliance-Med-Center-Los-Angeles-CA",
+        "address": "531 West College Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90012-2315",
+        "phone": "213-624-8411"
+    },
+    {
+        "name": "St Vincent Medical Center",
+        "href": "/hospital/St-Vincent-Medical-Center-Los-Angeles-CA",
+        "address": "2131 West Third Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90057-7992",
+        "phone": "213-484-7111"
+    },
+    {
+        "name": "Chinese Hospital",
+        "href": "/hospital/Chinese-Hospital-San-Francisco-CA",
+        "address": "845 Jackson Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94133-4899",
+        "phone": "415-982-2400"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-San-Rafael-CA",
+        "address": "99 Montecillo Road",
+        "city": "San Rafael",
+        "state": "CA",
+        "zip": "94903-3308",
+        "phone": "415-444-2000"
+    },
+    {
+        "name": "Pacific Hospital of Long Beach",
+        "href": "/hospital/Pacific-Hospital-of-Long-Beach-Long-Beach-CA",
+        "address": "2776 Pacific Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90806-2699",
+        "phone": "562-595-1911"
+    },
+    {
+        "name": "Stanford Hospital and Clinics",
+        "href": "/hospital/Stanford-Hospital-and-Clinics-Palo-Alto-CA",
+        "address": "300 Pasteur Drive",
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip": "94304-2299",
+        "phone": "650-723-4000"
+    },
+    {
+        "name": "Chino Valley Medical Center",
+        "href": "/hospital/Chino-Valley-Medical-Center-Chino-CA",
+        "address": "5451 Walnut Avenue",
+        "city": "Chino",
+        "state": "CA",
+        "zip": "91710-2672",
+        "phone": "909-464-8600"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Vallejo-CA",
+        "address": "975 SEreno Drive",
+        "city": "Vallejo",
+        "state": "CA",
+        "zip": "94589-2441",
+        "phone": "707-651-1000"
+    },
+    {
+        "name": "Pacifica Hosp of the Valley",
+        "href": "/hospital/Pacifica-Hosp-of-the-Valley-Sun-Valley-CA",
+        "address": "9449 San Fernando Road",
+        "city": "Sun Valley",
+        "state": "CA",
+        "zip": "91352-1421",
+        "phone": "818-767-3310"
+    },
+    {
+        "name": "Stanislaus Surgical Hospital",
+        "href": "/hospital/Stanislaus-Surgical-Hospital-Modesto-CA",
+        "address": "1421 Oakdale Road",
+        "city": "Modesto",
+        "state": "CA",
+        "zip": "95355-3359",
+        "phone": "209-572-2700"
+    },
+    {
+        "name": "Chowchilla Dist Mem Hospital",
+        "href": "/hospital/Chowchilla-Dist-Mem-Hospital-Chowchilla-CA",
+        "address": "1104 Ventura Avenue",
+        "city": "Chowchilla",
+        "state": "CA",
+        "zip": "93610-2298",
+        "phone": "559-665-3781"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Baldwin-Park-CA",
+        "address": "1011 Baldwin Park Boulevard",
+        "city": "Baldwin Park",
+        "state": "CA",
+        "zip": "91706-5806",
+        "phone": "626-851-1011"
+    },
+    {
+        "name": "Palm Drive Hospital",
+        "href": "/hospital/Palm-Drive-Hospital-Sebastopol-CA",
+        "address": "501 Petaluma Avenue",
+        "city": "Sebastopol",
+        "state": "CA",
+        "zip": "95472-4281",
+        "phone": "707-823-8511"
+    },
+    {
+        "name": "Surprise Valley Healthcare",
+        "href": "/hospital/Surprise-Valley-Healthcare-Cedarville-CA",
+        "address": "741 North Main Street",
+        "city": "Cedarville",
+        "state": "CA",
+        "zip": "96104",
+        "phone": "530-279-6111"
+    },
+    {
+        "name": "Citrus Valley Medical Center",
+        "href": "/hospital/Citrus-Valley-Medical-Center-West-Covina-CA",
+        "address": "1115 South Sunset Avenue",
+        "city": "West Covina",
+        "state": "CA",
+        "zip": "91790-3940",
+        "phone": "626-962-4011"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Bellflower-CA",
+        "address": "9400 East Rosecrans Avenue",
+        "city": "Bellflower",
+        "state": "CA",
+        "zip": "90706-2246",
+        "phone": "562-461-3000"
+    },
+    {
+        "name": "Palo Alto Center of Palo Alto Medical Foundation",
+        "href": "/hospital/Palo-Alto-Center-Palo-Alto-CA",
+        "address": "795 El Camino Real",
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip": "94301",
+        "phone": "650-321-4121"
+    },
+    {
+        "name": "Sutter Amador Hospital",
+        "href": "/hospital/Sutter-Amador-Hospital-Jackson-CA",
+        "address": "200 Mission Boulevard",
+        "city": "Jackson",
+        "state": "CA",
+        "zip": "95642-2132",
+        "phone": "209-223-7500"
+    },
+    {
+        "name": "Citrus Valley Medical Center",
+        "href": "/hospital/Citrus-Valley-Medical-Center-Covina-CA",
+        "address": "210 West San Bernardino Road",
+        "city": "Covina",
+        "state": "CA",
+        "zip": "91723-1901",
+        "phone": "626-331-7331"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Harbor-City-CA",
+        "address": "25825 South Vermont Avenue",
+        "city": "Harbor City",
+        "state": "CA",
+        "zip": "90710-3599",
+        "phone": "310-325-5111"
+    },
+    {
+        "name": "Palo Verde Hospital",
+        "href": "/hospital/Palo-Verde-Hospital-Blythe-CA",
+        "address": "250 North First Street",
+        "city": "Blythe",
+        "state": "CA",
+        "zip": "92225-1702",
+        "phone": "760-922-4115"
+    },
+    {
+        "name": "Sutter Auburn Faith Hospital",
+        "href": "/hospital/Sutter-Auburn-Faith-Hospital-Auburn-CA",
+        "address": "11815 Education Street",
+        "city": "Auburn",
+        "state": "CA",
+        "zip": "95602-2410",
+        "phone": "530-888-4500"
+    },
+    {
+        "name": "City of Angels Medical Center",
+        "href": "/hospital/City-of-Angels-Medical-Center-Los-Angeles-CA",
+        "address": "1711 West Temple Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90026",
+        "phone": "213-989-6100"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Anaheim-CA",
+        "address": "441 North Lakeview Avenue",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92807-3089",
+        "phone": "714-279-4000"
+    },
+    {
+        "name": "Palomar Medical Center",
+        "href": "/hospital/Palomar-Medical-Center-Escondido-CA",
+        "address": "555 East Valley Parkway",
+        "city": "Escondido",
+        "state": "CA",
+        "zip": "92025-3084",
+        "phone": "760-739-3000"
+    },
+    {
+        "name": "Sutter Center for Psychiatry",
+        "href": "/hospital/Sutter-Center-for-Psychiatry-Sacramento-CA",
+        "address": "7700 Folsom Boulevard",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95826-2608",
+        "phone": "916-386-3000"
+    },
+    {
+        "name": "City of Hope Natl Medical Ctr",
+        "href": "/hospital/City-of-Hope-Natl-Medical-Ctr-Duarte-CA",
+        "address": "1500 East Duarte Road",
+        "city": "Duarte",
+        "state": "CA",
+        "zip": "91010-3012",
+        "phone": "626-359-8111"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-San-Diego-CA",
+        "address": "4647 Zion Avenue",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92120-2507",
+        "phone": "619-528-5000"
+    },
+    {
+        "name": "Paradise Valley Hospital",
+        "href": "/hospital/Paradise-Valley-Hospital-National-City-CA",
+        "address": "2400 East Fourth Street",
+        "city": "National City",
+        "state": "CA",
+        "zip": "91950-2099",
+        "phone": "619-470-4321"
+    },
+    {
+        "name": "Sutter Coast Hospital",
+        "href": "/hospital/Sutter-Coast-Hospital-Crescent-City-CA",
+        "address": "800 East Washington Boulevard",
+        "city": "Crescent City",
+        "state": "CA",
+        "zip": "95531-8359",
+        "phone": "707-464-8511"
+    },
+    {
+        "name": "Clovis Community Medical Ctr",
+        "href": "/hospital/Clovis-Community-Medical-Ctr-Clovis-CA",
+        "address": "2755 Herndon Avenue",
+        "city": "Clovis",
+        "state": "CA",
+        "zip": "93611-6800",
+        "phone": "559-324-4000"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Santa-Clara-CA",
+        "address": "900 Kiely Boulevard",
+        "city": "Santa Clara",
+        "state": "CA",
+        "zip": "95051-5329",
+        "phone": "408-236-6400"
+    },
+    {
+        "name": "Parkview Comm Hosp Med Ctr",
+        "href": "/hospital/Parkview-Comm-Hosp-Med-Ctr-Riverside-CA",
+        "address": "3865 Jackson Street",
+        "city": "Riverside",
+        "state": "CA",
+        "zip": "92503-3998",
+        "phone": "951-688-2211"
+    },
+    {
+        "name": "Sutter Davis Hospital",
+        "href": "/hospital/Sutter-Davis-Hospital-Davis-CA",
+        "address": "2000 Sutter Place",
+        "city": "Davis",
+        "state": "CA",
+        "zip": "95616-6201",
+        "phone": "530-756-6440"
+    },
+    {
+        "name": "Coalinga Regional Medical Ctr",
+        "href": "/hospital/Coalinga-Regional-Medical-Ctr-Coalinga-CA",
+        "address": "1191 Phelps Avenue",
+        "city": "Coalinga",
+        "state": "CA",
+        "zip": "93210-9609",
+        "phone": "559-935-6400"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-San-Jose-CA",
+        "address": "250 Hospital Parkway",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95119-1199",
+        "phone": "408-972-7000"
+    },
+    {
+        "name": "Patient's Hospital of Redding",
+        "href": "/hospital/Patients-Hospital-of-Redding-Redding-CA",
+        "address": "2900 Eureka Way",
+        "city": "Redding",
+        "state": "CA",
+        "zip": "96001",
+        "phone": "530-225-8700"
+    },
+    {
+        "name": "Sutter Delta Medical Center",
+        "href": "/hospital/Sutter-Delta-Medical-Center-Antioch-CA",
+        "address": "3901 Lone Tree Way",
+        "city": "Antioch",
+        "state": "CA",
+        "zip": "94509-6200",
+        "phone": "925-779-7200"
+    },
+    {
+        "name": "Coast Plaza Doctors Hospital",
+        "href": "/hospital/Coast-Plaza-Doctors-Hospital-Norwalk-CA",
+        "address": "13100 Studebaker Road",
+        "city": "Norwalk",
+        "state": "CA",
+        "zip": "90650-2531",
+        "phone": "562-868-3751"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Riverside-CA",
+        "address": "10800 Magnolia Avenue",
+        "city": "Riverside",
+        "state": "CA",
+        "zip": "92505-3000",
+        "phone": "951-353-2000"
+    },
+    {
+        "name": "Patton State Hospital",
+        "href": "/hospital/Patton-State-Hospital-Patton-CA",
+        "address": "3102 East Highland Avenue",
+        "city": "Patton",
+        "state": "CA",
+        "zip": "92369",
+        "phone": "909-425-7000"
+    },
+    {
+        "name": "SUTTER GENERAL HOSPITAL",
+        "href": "/hospital/SUTTER-GENERAL-HOSPITAL-SACRAMENTO----CA",
+        "address": "2801 L STREET",
+        "city": "SACRAMENTO",
+        "state": "CA",
+        "zip": "95816",
+        "phone": "916-733-8999"
+    },
+    {
+        "name": "Coastal Communities Hospital",
+        "href": "/hospital/Coastal-Communities-Hospital-Santa-Ana-CA",
+        "address": "2701 South Bristol Street",
+        "city": "Santa Ana",
+        "state": "CA",
+        "zip": "92704-6201",
+        "phone": "714-754-5454"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Fontana-CA",
+        "address": "9961 Sierra Avenue",
+        "city": "Fontana",
+        "state": "CA",
+        "zip": "92335-6720",
+        "phone": "909-427-5000"
+    },
+    {
+        "name": "Petaluma Valley Hospital",
+        "href": "/hospital/Petaluma-Valley-Hospital-Petaluma-CA",
+        "address": "400 North Mcdowell Boulevard",
+        "city": "Petaluma",
+        "state": "CA",
+        "zip": "94954-2369",
+        "phone": "707-778-1111"
+    },
+    {
+        "name": "Sutter Lakeside Hospital",
+        "href": "/hospital/Sutter-Lakeside-Hospital-Lakeport-CA",
+        "address": "5176 Hill Road East",
+        "city": "Lakeport",
+        "state": "CA",
+        "zip": "95453-6300",
+        "phone": "707-262-5001"
+    },
+    {
+        "name": "College Hospital",
+        "href": "/hospital/College-Hospital-Cerritos-CA",
+        "address": "10802 College Place",
+        "city": "Cerritos",
+        "state": "CA",
+        "zip": "90703-1579",
+        "phone": "562-924-9581"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Santa-Rosa-CA",
+        "address": "401 Bicentennial Way",
+        "city": "Santa Rosa",
+        "state": "CA",
+        "zip": "95403-2192",
+        "phone": "707-571-4000"
+    },
+    {
+        "name": "Pioneers Mem Healthcare Dist",
+        "href": "/hospital/Pioneers-Mem-Healthcare-Dist-Brawley-CA",
+        "address": "207 West Legion Road",
+        "city": "Brawley",
+        "state": "CA",
+        "zip": "92227-7780",
+        "phone": "760-351-3333"
+    },
+    {
+        "name": "Sutter Maternity & Surgery Ctr",
+        "href": "/hospital/Sutter-Maternity-Surgery-Ctr-Santa-Cruz-CA",
+        "address": "2900 Chanticleer Avenue",
+        "city": "Santa Cruz",
+        "state": "CA",
+        "zip": "95065-1816",
+        "phone": "831-477-2200"
+    },
+    {
+        "name": "College Hospital Costa Mesa",
+        "href": "/hospital/College-Hospital-Costa-Mesa-Costa-Mesa-CA",
+        "address": "301 Victoria Street",
+        "city": "Costa Mesa",
+        "state": "CA",
+        "zip": "92627-7131",
+        "phone": "949-642-2734"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Fresno-CA",
+        "address": "7300 North Fresno Street",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93720-2941",
+        "phone": "559-448-4500"
+    },
+    {
+        "name": "Placentia-Linda Hospital",
+        "href": "/hospital/Placentia-Linda-Hospital-Placentia-CA",
+        "address": "1301 North Rose Drive",
+        "city": "Placentia",
+        "state": "CA",
+        "zip": "92870-3899",
+        "phone": "714-993-2000"
+    },
+    {
+        "name": "Sutter Medical Center",
+        "href": "/hospital/Sutter-Medical-Center-Santa-Rosa-CA",
+        "address": "3325 Chanate Road",
+        "city": "Santa Rosa",
+        "state": "CA",
+        "zip": "95404-1707",
+        "phone": "707-576-4000"
+    },
+    {
+        "name": "Colorado River Medical Center",
+        "href": "/hospital/Colorado-River-Medical-Center-Needles-CA",
+        "address": "1401 Bailey Avenue",
+        "city": "Needles",
+        "state": "CA",
+        "zip": "92363-3103",
+        "phone": "760-326-4531"
+    },
+    {
+        "name": "Kaiser Foundation Hospital",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Manteca-CA",
+        "address": "1777 West Yosemite Avenue",
+        "city": "Manteca",
+        "state": "CA",
+        "zip": "95337-5187",
+        "phone": "209-825-3500"
+    },
+    {
+        "name": "Plumas District Hospital",
+        "href": "/hospital/Plumas-District-Hospital-Quincy-CA",
+        "address": "1065 Bucks Lake Road",
+        "city": "Quincy",
+        "state": "CA",
+        "zip": "95971-9599",
+        "phone": "530-283-2121"
+    },
+    {
+        "name": "Sutter Medical Center",
+        "href": "/hospital/Sutter-Medical-Center-Sacramento-CA",
+        "address": "5151 F Street",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95819-3295",
+        "phone": "916-454-3333"
+    },
+    {
+        "name": "Colusa Regional Medical Center",
+        "href": "/hospital/Colusa-Regional-Medical-Center-Colusa-CA",
+        "address": "199 East Webster Street",
+        "city": "Colusa",
+        "state": "CA",
+        "zip": "95932-2954",
+        "phone": "530-458-5821"
+    },
+    {
+        "name": "Kaiser Foundation Hospital - Morse Ave",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Morse-Ave-Sacramento-CA",
+        "address": "2025 Morse Avenue",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95825-2115",
+        "phone": "916-973-5000"
+    },
+    {
+        "name": "Pomerado Hospital",
+        "href": "/hospital/Pomerado-Hospital-Poway-CA",
+        "address": "15615 Pomerado Road",
+        "city": "Poway",
+        "state": "CA",
+        "zip": "92064-2460",
+        "phone": "858-485-6511"
+    },
+    {
+        "name": "Sutter Roseville Medical Ctr",
+        "href": "/hospital/Sutter-Roseville-Medical-Ctr-Roseville-CA",
+        "address": "One Medical Plaza",
+        "city": "Roseville",
+        "state": "CA",
+        "zip": "95661-3037",
+        "phone": "916-781-1000"
+    },
+    {
+        "name": "Comm Hosp Monterey Peninsula",
+        "href": "/hospital/Comm-Hosp-Monterey-Peninsula-Monterey-CA",
+        "address": "23625 Holman Highway",
+        "city": "Monterey",
+        "state": "CA",
+        "zip": "93940-5902",
+        "phone": "831-624-5311"
+    },
+    {
+        "name": "Kaiser Foundation Hospital - Sunset Blvd",
+        "href": "/hospital/Kaiser-Foundation-Hospital-Sunset-Blvd-Los-Angeles-CA",
+        "address": "4867 Sunset Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90027-5969",
+        "phone": "323-783-4011"
+    },
+    {
+        "name": "Pomona Valley Hosp Medical Ctr",
+        "href": "/hospital/Pomona-Valley-Hosp-Medical-Ctr-Pomona-CA",
+        "address": "1798 North Garey Avenue",
+        "city": "Pomona",
+        "state": "CA",
+        "zip": "91767-2918",
+        "phone": "909-865-9500"
+    },
+    {
+        "name": "Sutter Solano Medical Center",
+        "href": "/hospital/Sutter-Solano-Medical-Center-Vallejo-CA",
+        "address": "300 Hospital Drive",
+        "city": "Vallejo",
+        "state": "CA",
+        "zip": "94589-2517",
+        "phone": "707-554-4444"
+    },
+    {
+        "name": "Comm Hosp of Huntington Park",
+        "href": "/hospital/Comm-Hosp-of-Huntington-Park-Huntington-Park-CA",
+        "address": "2623 East Slauson Avenue",
+        "city": "Huntington Park",
+        "state": "CA",
+        "zip": "90255-2900",
+        "phone": "323-583-1931"
+    },
+    {
+        "name": "Kaweah Delta Health Care Dist",
+        "href": "/hospital/Kaweah-Delta-Health-Care-Dist-Visalia-CA",
+        "address": "400 West Mineral King Blvd",
+        "city": "Visalia",
+        "state": "CA",
+        "zip": "93291-6263",
+        "phone": "559-624-2000"
+    },
+    {
+        "name": "Porterville Developmental Ctr",
+        "href": "/hospital/Porterville-Developmental-Ctr-Porterville-CA",
+        "address": "26501 Avenue 140",
+        "city": "Porterville",
+        "state": "CA",
+        "zip": "93257-9430",
+        "phone": "559-782-2222"
+    },
+    {
+        "name": "Sutter Tracy Community Hosp",
+        "href": "/hospital/Sutter-Tracy-Community-Hosp-Tracy-CA",
+        "address": "1420 North Tracy Boulevard",
+        "city": "Tracy",
+        "state": "CA",
+        "zip": "95376-3497",
+        "phone": "209-835-1500"
+    },
+    {
+        "name": "Comm Hosp of San Bernardino",
+        "href": "/hospital/Comm-Hosp-of-San-Bernardino-San-Bernardino-CA",
+        "address": "1805 Medical Center Drive",
+        "city": "San Bernardino",
+        "state": "CA",
+        "zip": "92411-1214",
+        "phone": "909-887-6333"
+    },
+    {
+        "name": "Kentfield Rehab & Spec Hosp",
+        "href": "/hospital/Kentfield-Rehab-Spec-Hosp-San-Rafael-CA",
+        "address": "1125 Sir Francis Drake Blvd",
+        "city": "San Rafael",
+        "state": "CA",
+        "zip": "94904-1455",
+        "phone": "415-456-9680"
+    },
+    {
+        "name": "Presbyterian Intercomm Hosp",
+        "href": "/hospital/Presbyterian-Intercomm-Hosp-Whittier-CA",
+        "address": "12401 Washington Boulevard",
+        "city": "Whittier",
+        "state": "CA",
+        "zip": "90602-1099",
+        "phone": "562-698-0811"
+    },
+    {
+        "name": "Tahoe Forest Hospital District",
+        "href": "/hospital/Tahoe-Forest-Hospital-District-Truckee-CA",
+        "address": "10121 Pine Avenue",
+        "city": "Truckee",
+        "state": "CA",
+        "zip": "96161-4856",
+        "phone": "530-587-6011"
+    },
+    {
+        "name": "Comm Hospital of Los Gatos",
+        "href": "/hospital/Comm-Hospital-of-Los-Gatos-Los-Gatos-CA",
+        "address": "815 Pollard Road",
+        "city": "Los Gatos",
+        "state": "CA",
+        "zip": "95032-1438",
+        "phone": "408-378-6131"
+    },
+    {
+        "name": "Kern Medical Center",
+        "href": "/hospital/Kern-Medical-Center-Bakersfield-CA",
+        "address": "1830 Flower Street",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93305-4186",
+        "phone": "661-326-2000"
+    },
+    {
+        "name": "Promise Hospital of East LA",
+        "href": "/hospital/Promise-Hospital-of-East-LA-Los-Angeles-CA",
+        "address": "443 South Soto Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90033-4398",
+        "phone": "323-261-1181"
+    },
+    {
+        "name": "Tarzana Treatment Center",
+        "href": "/hospital/Tarzana-Treatment-Center-Tarzana-CA",
+        "address": "18646 Oxnard Street",
+        "city": "Tarzana",
+        "state": "CA",
+        "zip": "91356",
+        "phone": "818-996-1051"
+    },
+    {
+        "name": "Community Behavioral Hlth Ctr",
+        "href": "/hospital/Community-Behavioral-Hlth-Ctr-Fresno-CA",
+        "address": "7171 North Cedar Avenue",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93720-3311",
+        "phone": "559-449-8000"
+    },
+    {
+        "name": "Kern Valley Healthcare Dist",
+        "href": "/hospital/Kern-Valley-Healthcare-Dist-Lake-Isabella-CA",
+        "address": "6412 Laurel Avenue",
+        "city": "Lake Isabella",
+        "state": "CA",
+        "zip": "93240-1628",
+        "phone": "760-379-2681"
+    },
+    {
+        "name": "Promise Hospital of East LA",
+        "href": "/hospital/Promise-Hospital-of-East-LA-Paramount-CA",
+        "address": "16453 South Colorado Avenue",
+        "city": "Paramount",
+        "state": "CA",
+        "zip": "90723-5000",
+        "phone": "562-531-3110"
+    },
+    {
+        "name": "Tehachapi Vly Healthcare Dist",
+        "href": "/hospital/Tehachapi-Vly-Healthcare-Dist-Tehachapi-CA",
+        "address": "115 West 'e' Street",
+        "city": "Tehachapi",
+        "state": "CA",
+        "zip": "93561",
+        "phone": "661-823-3000"
+    },
+    {
+        "name": "Community Hospital Long Beach",
+        "href": "/hospital/Community-Hospital-Long-Beach-Long-Beach-CA",
+        "address": "1720 Termino Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90804-2180",
+        "phone": "562-498-1000"
+    },
+    {
+        "name": "Kindred Hosp-San Francisco",
+        "href": "/hospital/Kindred-Hosp-San-Francisco-San-Leandro-CA",
+        "address": "2800 Benedict Drive",
+        "city": "San Leandro",
+        "state": "CA",
+        "zip": "94577-6840",
+        "phone": "510-357-8300"
+    },
+    {
+        "name": "Promise Hospital of San Diego",
+        "href": "/hospital/Promise-Hospital-of-San-Diego-San-Diego-CA",
+        "address": "5550 University Avenue",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92105-2307",
+        "phone": "619-582-3516"
+    },
+    {
+        "name": "Temple Community Hospital",
+        "href": "/hospital/Temple-Community-Hospital-Los-Angeles-CA",
+        "address": "235 North Hoover Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90004-3672",
+        "phone": "213-382-7252"
+    },
+    {
+        "name": "Community Hospital of Gardena",
+        "href": "/hospital/Community-Hospital-of-Gardena-Gardena-CA",
+        "address": "1246 West 155th Street",
+        "city": "Gardena",
+        "state": "CA",
+        "zip": "90247-4011",
+        "phone": "310-323-5330"
+    },
+    {
+        "name": "Kindred Hospital - La Mirada",
+        "href": "/hospital/Kindred-Hospital-La-Mirada-La-Mirada-CA",
+        "address": "14900 East Imperial Highway",
+        "city": "La Mirada",
+        "state": "CA",
+        "zip": "90638",
+        "phone": "562-944-1900"
+    },
+    {
+        "name": "Providence Holy Cross Med Ctr",
+        "href": "/hospital/Providence-Holy-Cross-Med-Ctr-San-Fernando-CA",
+        "address": "15031 Rinaldi Street",
+        "city": "San Fernando",
+        "state": "CA",
+        "zip": "91346-9600",
+        "phone": "818-365-8051"
+    },
+    {
+        "name": "Thousand Oaks Surgical Hosp",
+        "href": "/hospital/Thousand-Oaks-Surgical-Hosp-Thousand-Oaks-CA",
+        "address": "401 East Rolling Oaks Drive",
+        "city": "Thousand Oaks",
+        "state": "CA",
+        "zip": "91361",
+        "phone": "805-777-7750"
+    },
+    {
+        "name": "Community Memorial Health Syst",
+        "href": "/hospital/Community-Memorial-Health-Syst-Ventura-CA",
+        "address": "147 North Brent Street",
+        "city": "Ventura",
+        "state": "CA",
+        "zip": "93003-2854",
+        "phone": "805-652-5011"
+    },
+    {
+        "name": "Kindred Hospital - Modesto",
+        "href": "/hospital/Kindred-Hospital-Modesto-Modesto-CA",
+        "address": "730 17th Street",
+        "city": "Modesto",
+        "state": "CA",
+        "zip": "95354",
+        "phone": "209-523-9006"
+    },
+    {
+        "name": "Providence Saint Joseph Ctr",
+        "href": "/hospital/Providence-Saint-Joseph-Ctr-Burbank-CA",
+        "address": "501 South Buena Vista Street",
+        "city": "Burbank",
+        "state": "CA",
+        "zip": "91505-4866",
+        "phone": "818-843-5111"
+    },
+    {
+        "name": "Torrance Memorial Med Center",
+        "href": "/hospital/Torrance-Memorial-Med-Center-Torrance-CA",
+        "address": "3330 Lomita Boulevard",
+        "city": "Torrance",
+        "state": "CA",
+        "zip": "90505-5002",
+        "phone": "310-325-9110"
+    },
+    {
+        "name": "Community Regional Medical Ctr",
+        "href": "/hospital/Community-Regional-Medical-Ctr-Fresno-CA",
+        "address": "2823 Fresno Street",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93721-1324",
+        "phone": "559-459-6000"
+    },
+    {
+        "name": "Kindred Hospital San Gabriel",
+        "href": "/hospital/Kindred-Hospital-San-Gabriel-West-Covina-CA",
+        "address": "845 North Lark Ellen Avenue",
+        "city": "West Covina",
+        "state": "CA",
+        "zip": "91791-1069",
+        "phone": "626-339-5451"
+    },
+    {
+        "name": "Queen of the Valley Med Ctr",
+        "href": "/hospital/Queen-of-the-Valley-Med-Ctr-Napa-CA",
+        "address": "1000 Trancas Street",
+        "city": "Napa",
+        "state": "CA",
+        "zip": "94558-2906",
+        "phone": "707-252-4411"
+    },
+    {
+        "name": "Tri-City Medical Center",
+        "href": "/hospital/Tri-City-Medical-Center-Oceanside-CA",
+        "address": "4002 Vista Way",
+        "city": "Oceanside",
+        "state": "CA",
+        "zip": "92056-4506",
+        "phone": "760-724-8411"
+    },
+    {
+        "name": "Continental Rehab Hospital",
+        "href": "/hospital/Continental-Rehab-Hospital-San-Diego-CA",
+        "address": "555 Washington Street",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92103",
+        "phone": "619-260-8300"
+    },
+    {
+        "name": "Kindred Hospital Santa Ana",
+        "href": "/hospital/Kindred-Hospital-Santa-Ana-Santa-Ana-CA",
+        "address": "1901 North College Avenue",
+        "city": "Santa Ana",
+        "state": "CA",
+        "zip": "92706-2334",
+        "phone": "714-564-7800"
+    },
+    {
+        "name": "Rady Children Hosp & Hlth Ctr",
+        "href": "/hospital/Rady-Children-Hosp-Hlth-Ctr-San-Diego-CA",
+        "address": "3020 Children's Way",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92123-4282",
+        "phone": "858-576-1700"
+    },
+    {
+        "name": "Tri-City Regional Medical Ctr",
+        "href": "/hospital/Tri-City-Regional-Medical-Ctr-Hawaiian-Gardens-CA",
+        "address": "21530 South Pioneer Boulevard",
+        "city": "Hawaiian Gardens",
+        "state": "CA",
+        "zip": "90716",
+        "phone": "562-860-0401"
+    },
+    {
+        "name": "Contra Costa Reg Medical Ctr",
+        "href": "/hospital/Contra-Costa-Reg-Medical-Ctr-Martinez-CA",
+        "address": "2500 Alhambra Avenue",
+        "city": "Martinez",
+        "state": "CA",
+        "zip": "94553-3156",
+        "phone": "925-370-5000"
+    },
+    {
+        "name": "Kindred Hospital-Brea",
+        "href": "/hospital/Kindred-Hospital-Brea-Brea-CA",
+        "address": "875 North Brea Boulevard",
+        "city": "Brea",
+        "state": "CA",
+        "zip": "92821-2606",
+        "phone": "714-529-6842"
+    },
+    {
+        "name": "Rancho Los Amigos Center",
+        "href": "/hospital/Rancho-Los-Amigos-Center-Downey-CA",
+        "address": "7601 East Imperial Highway",
+        "city": "Downey",
+        "state": "CA",
+        "zip": "90242-3496",
+        "phone": "562-401-7022"
+    },
+    {
+        "name": "Tulare Local Health Care Dist",
+        "href": "/hospital/Tulare-Local-Health-Care-Dist-Tulare-CA",
+        "address": "869 Cherry Street",
+        "city": "Tulare",
+        "state": "CA",
+        "zip": "93274-2207",
+        "phone": "559-688-0821"
+    },
+    {
+        "name": "Corcoran District Hospital",
+        "href": "/hospital/Corcoran-District-Hospital-Corcoran-CA",
+        "address": "1310 Hanna Avenue",
+        "city": "Corcoran",
+        "state": "CA",
+        "zip": "93212-2395",
+        "phone": "559-992-5051"
+    },
+    {
+        "name": "Kindred Hospital-Los Angeles",
+        "href": "/hospital/Kindred-Hospital-Los-Angeles-Los-Angeles-CA",
+        "address": "5525 West Slauson Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90056-1067",
+        "phone": "310-642-0325"
+    },
+    {
+        "name": "Rancho Springs Medical Center",
+        "href": "/hospital/Rancho-Springs-Medical-Center-Murrieta-CA",
+        "address": "25500 Medical Center Drive",
+        "city": "Murrieta",
+        "state": "CA",
+        "zip": "92562-5965",
+        "phone": "951-696-6000"
+    },
+    {
+        "name": "Tuolumne General Hospital (Closed)",
+        "href": "/hospital/Tuolumne-General-Hospital-Sonora-CA",
+        "address": "101 Hospital Road",
+        "city": "Sonora",
+        "state": "CA",
+        "zip": "95370-5297",
+        "phone": "209-533-7100"
+    },
+    {
+        "name": "Corona Regional Medical Center",
+        "href": "/hospital/Corona-Regional-Medical-Center-Corona-CA",
+        "address": "800 South Main Street",
+        "city": "Corona",
+        "state": "CA",
+        "zip": "92882-3420",
+        "phone": "951-737-4343"
+    },
+    {
+        "name": "Kindred Hospital-Ontario",
+        "href": "/hospital/Kindred-Hospital-Ontario-Ontario-CA",
+        "address": "550 North Monterey Avenue",
+        "city": "Ontario",
+        "state": "CA",
+        "zip": "91764-3399",
+        "phone": "909-391-0333"
+    },
+    {
+        "name": "Redbud Community Hospital",
+        "href": "/hospital/Redbud-Community-Hospital-Clearlake-CA",
+        "address": "15630 18th Avenue",
+        "city": "Clearlake",
+        "state": "CA",
+        "zip": "95422-9339",
+        "phone": "707-994-6486"
+    },
+    {
+        "name": "Tustin Hospital & Medical Ctr",
+        "href": "/hospital/Tustin-Hospital-Medical-Ctr-Tustin-CA",
+        "address": "14662 NEwport Avenue",
+        "city": "Tustin",
+        "state": "CA",
+        "zip": "92680-6064",
+        "phone": "714-838-9600"
+    },
+    {
+        "name": "Dameron Hospital",
+        "href": "/hospital/Dameron-Hospital-Stockton-CA",
+        "address": "525 West Acacia Street",
+        "city": "Stockton",
+        "state": "CA",
+        "zip": "95203-2484",
+        "phone": "209-944-5550"
+    },
+    {
+        "name": "Kindred Hospital-Sacramento",
+        "href": "/hospital/Kindred-Hospital-Sacramento-Folsom-CA",
+        "address": "223 Fargo Way",
+        "city": "Folsom",
+        "state": "CA",
+        "zip": "95630-2961",
+        "phone": "916-351-9151"
+    },
+    {
+        "name": "Redgate Memorial Hospital",
+        "href": "/hospital/Redgate-Memorial-Hospital-Long-Beach-CA",
+        "address": "1775 Chestnut Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90813-1674",
+        "phone": "562-599-8444"
+    },
+    {
+        "name": "Twin Cities Community Hospital",
+        "href": "/hospital/Twin-Cities-Community-Hospital-Templeton-CA",
+        "address": "1100 Las Tablas Road",
+        "city": "Templeton",
+        "state": "CA",
+        "zip": "93465-9704",
+        "phone": "805-434-3500"
+    },
+    {
+        "name": "David Grant Medical Center",
+        "href": "/hospital/David-Grant-Medical-Center-Travis-Afb-CA",
+        "address": "101 Bodin Circle",
+        "city": "Travis Afb",
+        "state": "CA",
+        "zip": "94535-1800",
+        "phone": "707-423-7300"
+    },
+    {
+        "name": "Kindred Hospital-San Diego",
+        "href": "/hospital/Kindred-Hospital-San-Diego-San-Diego-CA",
+        "address": "1940 El Cajon Boulevard",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92104-1096",
+        "phone": "619-543-4500"
+    },
+    {
+        "name": "Redlands Community Hospital",
+        "href": "/hospital/Redlands-Community-Hospital-Redlands-CA",
+        "address": "350 Terracina Boulevard",
+        "city": "Redlands",
+        "state": "CA",
+        "zip": "92373-4897",
+        "phone": "909-335-5500"
+    },
+    {
+        "name": "UCLA Medical Center",
+        "href": "/hospital/UCLA-Medical-Center-Los-Angeles-CA",
+        "address": "10833 Le Conte Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90095-3075",
+        "phone": "310-825-9111"
+    },
+    {
+        "name": "DAVIES MEDICAL CENTER",
+        "href": "/hospital/DAVIES-MEDICAL-CENTER-SAN-FRANCISCO-CA",
+        "address": "CASTRO  DUBOCE STS",
+        "city": "SAN FRANCISCO",
+        "state": "CA",
+        "zip": "94114",
+        "phone": "415-600-6000"
+    },
+    {
+        "name": "Kindred Hospital-Westminster",
+        "href": "/hospital/Kindred-Hospital-Westminster-Westminster-CA",
+        "address": "200 Hospital Circle",
+        "city": "Westminster",
+        "state": "CA",
+        "zip": "92683-3910",
+        "phone": "714-893-4541"
+    },
+    {
+        "name": "Redwood Memorial Hospital",
+        "href": "/hospital/Redwood-Memorial-Hospital-Fortuna-CA",
+        "address": "3300 Renner Drive",
+        "city": "Fortuna",
+        "state": "CA",
+        "zip": "95540-3198",
+        "phone": "707-725-3361"
+    },
+    {
+        "name": "UCLA Neuropsychiatric Hosp",
+        "href": "/hospital/UCLA-Neuropsychiatric-Hosp-Los-Angeles-CA",
+        "address": "760 Westwood Plaza",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90095-8353",
+        "phone": "310-825-0511"
+    },
+    {
+        "name": "Del Amo Hospital",
+        "href": "/hospital/Del-Amo-Hospital-Torrance-CA",
+        "address": "23700 Camino Del Sol",
+        "city": "Torrance",
+        "state": "CA",
+        "zip": "90505-5000",
+        "phone": "310-530-1151"
+    },
+    {
+        "name": "Kingsburg Medical Center",
+        "href": "/hospital/Kingsburg-Medical-Center-Kingsburg-CA",
+        "address": "1200 Smith Street",
+        "city": "Kingsburg",
+        "state": "CA",
+        "zip": "93631-2216",
+        "phone": "559-897-5841"
+    },
+    {
+        "name": "Regional Med Ctr of San Jose",
+        "href": "/hospital/Regional-Med-Ctr-of-San-Jose-San-Jose-CA",
+        "address": "225 North Jackson Avenue",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95116-1691",
+        "phone": "408-259-5000"
+    },
+    {
+        "name": "UCSF Medical Center",
+        "href": "/hospital/UCSF-Medical-Center-San-Francisco-CA",
+        "address": "500 Parnassus Avenue",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94143-0296",
+        "phone": "415-476-1000"
+    },
+    {
+        "name": "Delano Regional Medical Center",
+        "href": "/hospital/Delano-Regional-Medical-Center-Delano-CA",
+        "address": "1401 Garces Highway",
+        "city": "Delano",
+        "state": "CA",
+        "zip": "93215-3690",
+        "phone": "661-725-4800"
+    },
+    {
+        "name": "La County Central Jail Hosp",
+        "href": "/hospital/La-County-Central-Jail-Hosp-Los-Angeles-CA",
+        "address": "441 Bauchet Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90012-2994",
+        "phone": "213-473-6100"
+    },
+    {
+        "name": "Rehab Inst at Santa Barbara",
+        "href": "/hospital/Rehab-Inst-at-Santa-Barbara-Santa-Barbara-CA",
+        "address": "2415 De La Vina Street",
+        "city": "Santa Barbara",
+        "state": "CA",
+        "zip": "93105-3819",
+        "phone": "805-687-7444"
+    },
+    {
+        "name": "Ukiah Valley Medical Center",
+        "href": "/hospital/Ukiah-Valley-Medical-Center-Ukiah-CA",
+        "address": "275 Hospital Drive",
+        "city": "Ukiah",
+        "state": "CA",
+        "zip": "95482-4531",
+        "phone": "707-462-3111"
+    },
+    {
+        "name": "Desert Regional Medical Center",
+        "href": "/hospital/Desert-Regional-Medical-Center-Palm-Springs-CA",
+        "address": "1150 North Indian Canyon Drive",
+        "city": "Palm Springs",
+        "state": "CA",
+        "zip": "92262-4872",
+        "phone": "760-323-6511"
+    },
+    {
+        "name": "La Palma Intercommunity Hosp",
+        "href": "/hospital/La-Palma-Intercommunity-Hosp-La-Palma-CA",
+        "address": "7901 Walker Street",
+        "city": "La Palma",
+        "state": "CA",
+        "zip": "90623-1722",
+        "phone": "714-670-7400"
+    },
+    {
+        "name": "Rideout Memorial Hospital",
+        "href": "/hospital/Rideout-Memorial-Hospital-Marysville-CA",
+        "address": "726 Fourth Street",
+        "city": "Marysville",
+        "state": "CA",
+        "zip": "95901-5600",
+        "phone": "530-749-4300"
+    },
+    {
+        "name": "Univ of CA",
+        "href": "/hospital/Univ-of-CA-Sacramento-CA",
+        "address": "Davis Med Ctr",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95817-2282",
+        "phone": "916-734-2011"
+    },
+    {
+        "name": "Desert Valley Hospital",
+        "href": "/hospital/Desert-Valley-Hospital-Wildomar-CA",
+        "address": "16850 Bear Valley Road",
+        "city": "Wildomar",
+        "state": "CA",
+        "zip": "92395-5794",
+        "phone": "760-241-8000"
+    },
+    {
+        "name": "LAC-Harbor-UCLA Med Center",
+        "href": "/hospital/LAC-Harbor-UCLA-Med-Center-Torrance-CA",
+        "address": "1000 West Carson Street",
+        "city": "Torrance",
+        "state": "CA",
+        "zip": "90502-2004",
+        "phone": "310-222-2345"
+    },
+    {
+        "name": "Ridgecrest Regional Hospital",
+        "href": "/hospital/Ridgecrest-Regional-Hospital-Ridgecrest-CA",
+        "address": "1081 North China Lake Blvd",
+        "city": "Ridgecrest",
+        "state": "CA",
+        "zip": "93555-3198",
+        "phone": "760-446-3551"
+    },
+    {
+        "name": "Univ of CA  Davis Med Ctr",
+        "href": "/hospital/Univ-of-CA-Davis-Med-Ctr-Sacramento-CA",
+        "address": "2315 Stockton Boulevard",
+        "city": "Sacramento",
+        "state": "CA",
+        "zip": "95817-2282",
+        "phone": "916-734-2011"
+    },
+    {
+        "name": "Doctors Hosp of West Covina",
+        "href": "/hospital/Doctors-Hosp-of-West-Covina-West-Covina-CA",
+        "address": "725 South Orange Avenue",
+        "city": "West Covina",
+        "state": "CA",
+        "zip": "91790-2614",
+        "phone": "626-338-8481"
+    },
+    {
+        "name": "LAC-Martin Luther King Hosp",
+        "href": "/hospital/LAC-Martin-Luther-King-Hosp-Los-Angeles-CA",
+        "address": "12021 South Wilmington Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90059-3019",
+        "phone": "310-668-4321"
+    },
+    {
+        "name": "Riverside Community Hospital",
+        "href": "/hospital/Riverside-Community-Hospital-Riverside-CA",
+        "address": "4445 Magnolia Avenue",
+        "city": "Riverside",
+        "state": "CA",
+        "zip": "92501-4199",
+        "phone": "951-788-3000"
+    },
+    {
+        "name": "Univ of CA Irvine Med Ctr",
+        "href": "/hospital/Univ-of-CA-Irvine-Med-Ctr-Orange-CA",
+        "address": "101 The City Drive",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92868-3298",
+        "phone": "714-456-6011"
+    },
+    {
+        "name": "Doctors Hospital of Manteca",
+        "href": "/hospital/Doctors-Hospital-of-Manteca-Manteca-CA",
+        "address": "1205 East North Street",
+        "city": "Manteca",
+        "state": "CA",
+        "zip": "95336-4900",
+        "phone": "209-823-3111"
+    },
+    {
+        "name": "LAC-Olive View-UCLA Med Ctr",
+        "href": "/hospital/LAC-Olive-View-UCLA-Med-Ctr-Sylmar-CA",
+        "address": "14445 Olive View Drive",
+        "city": "Sylmar",
+        "state": "CA",
+        "zip": "91342-1495",
+        "phone": "818-364-1555"
+    },
+    {
+        "name": "Riverside County Reg Med Ctr",
+        "href": "/hospital/Riverside-County-Reg-Med-Ctr-Moreno-Valley-CA",
+        "address": "26520 Cactus Avenue",
+        "city": "Moreno Valley",
+        "state": "CA",
+        "zip": "92555-3911",
+        "phone": "951-486-4000"
+    },
+    {
+        "name": "Univ of CA San Diego Med Ctr",
+        "href": "/hospital/Univ-of-CA-San-Diego-Med-Ctr-San-Diego-CA",
+        "address": "200 West Arbor Drive",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92103-8970",
+        "phone": "619-543-6222"
+    },
+    {
+        "name": "Doctors Medical Center",
+        "href": "/hospital/Doctors-Medical-Center-San-Pablo-CA",
+        "address": "2000 Vale Road",
+        "city": "San Pablo",
+        "state": "CA",
+        "zip": "94806-3808",
+        "phone": "510-970-5000"
+    },
+    {
+        "name": "LAC/USC Medical Center",
+        "href": "/hospital/LAC-USC-Medical-Center-Los-Angeles-CA",
+        "address": "1200 North State Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90033-1029",
+        "phone": "323-226-2622"
+    },
+    {
+        "name": "Robert H Ballard Rehab Hosp",
+        "href": "/hospital/Robert-H-Ballard-Rehab-Hosp-San-Bernardino-CA",
+        "address": "1760 West 16th Street",
+        "city": "San Bernardino",
+        "state": "CA",
+        "zip": "92411",
+        "phone": "909-473-1200"
+    },
+    {
+        "name": "University Medical Center",
+        "href": "/hospital/University-Medical-Center-Fresno-CA",
+        "address": "445 South Cedar Avenue",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93702-2998",
+        "phone": "559-459-4000"
+    },
+    {
+        "name": "Doctors Medical Center",
+        "href": "/hospital/Doctors-Medical-Center-Modesto-CA",
+        "address": "1441 Florida Avenue",
+        "city": "Modesto",
+        "state": "CA",
+        "zip": "95350-4418",
+        "phone": "209-578-1211"
+    },
+    {
+        "name": "Laguna Honda Hosp & Rehab Ctr",
+        "href": "/hospital/Laguna-Honda-Hosp-Rehab-Ctr-San-Francisco-CA",
+        "address": "375 Laguna Honda Boulevard",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94116-1499",
+        "phone": "415-759-2300"
+    },
+    {
+        "name": "Saddleback Mem Medical Center",
+        "href": "/hospital/Saddleback-Mem-Medical-Center-San-Clemente-CA",
+        "address": "654 Camino De Los Mares",
+        "city": "San Clemente",
+        "state": "CA",
+        "zip": "92673-2827",
+        "phone": "949-496-1122"
+    },
+    {
+        "name": "USC University Hospital",
+        "href": "/hospital/USC-University-Hospital-Los-Angeles-CA",
+        "address": "1500 San Pablo Street",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90033-4587",
+        "phone": "323-442-8500"
+    },
+    {
+        "name": "Dominican Hospital",
+        "href": "/hospital/Dominican-Hospital-Santa-Cruz-CA",
+        "address": "1555 Soquel Drive",
+        "city": "Santa Cruz",
+        "state": "CA",
+        "zip": "95065-1794",
+        "phone": "831-462-7700"
+    },
+    {
+        "name": "Lakewood Regional Medical Ctr",
+        "href": "/hospital/Lakewood-Regional-Medical-Ctr-Lakewood-CA",
+        "address": "3700 East South Street",
+        "city": "Lakewood",
+        "state": "CA",
+        "zip": "90712-1498",
+        "phone": "562-531-2550"
+    },
+    {
+        "name": "Saddleback Memorial Med Center",
+        "href": "/hospital/Saddleback-Memorial-Med-Center-Laguna-Hills-CA",
+        "address": "24451 Health Center Drive",
+        "city": "Laguna Hills",
+        "state": "CA",
+        "zip": "92653-3689",
+        "phone": "949-837-4500"
+    },
+    {
+        "name": "USC-Norris Cancer Ctr & Hosp",
+        "href": "/hospital/USC-Norris-Cancer-Ctr-Hosp-Los-Angeles-CA",
+        "address": "1441 Eastlake Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90033-3804",
+        "phone": "323-865-3000"
+    },
+    {
+        "name": "Downey Regional Medical Center",
+        "href": "/hospital/Downey-Regional-Medical-Center-Downey-CA",
+        "address": "11500 Brookshire Avenue",
+        "city": "Downey",
+        "state": "CA",
+        "zip": "90241-4917",
+        "phone": "562-904-5000"
+    },
+    {
+        "name": "Lancaster Community Hospital",
+        "href": "/hospital/Lancaster-Community-Hospital-Lancaster-CA",
+        "address": "43830 North Tenth Street West",
+        "city": "Lancaster",
+        "state": "CA",
+        "zip": "93534-4895",
+        "phone": "661-948-4781"
+    },
+    {
+        "name": "Saint Agnes Medical Center",
+        "href": "/hospital/Saint-Agnes-Medical-Center-Fresno-CA",
+        "address": "1303 East Herndon Avenue",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93720-3309",
+        "phone": "559-450-3000"
+    },
+    {
+        "name": "VA Greater LA Hlthcare System",
+        "href": "/hospital/VA-Greater-LA-Hlthcare-System-Los-Angeles-CA",
+        "address": "11301 Wilshire Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90073-1003",
+        "phone": "310-478-3711"
+    },
+    {
+        "name": "East Los Angeles Doctors Hosp",
+        "href": "/hospital/East-Los-Angeles-Doctors-Hosp-Los-Angeles-CA",
+        "address": "4060 East Whittier Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90023-2526",
+        "phone": "323-268-5514"
+    },
+    {
+        "name": "Lanterman Developmental Center",
+        "href": "/hospital/Lanterman-Developmental-Center-Pomona-CA",
+        "address": "3530 Pomona Boulevard",
+        "city": "Pomona",
+        "state": "CA",
+        "zip": "91768-3238",
+        "phone": "909-444-7200"
+    },
+    {
+        "name": "Saint Francis Memorial Hosp",
+        "href": "/hospital/Saint-Francis-Memorial-Hosp-San-Francisco-CA",
+        "address": "900 Hyde Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94109-4899",
+        "phone": "415-353-6000"
+    },
+    {
+        "name": "VA Long Beach Healthcare Syst",
+        "href": "/hospital/VA-Long-Beach-Healthcare-Syst-Long-Beach-CA",
+        "address": "5901 East Seventh Street",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90822-5201",
+        "phone": "562-826-8000"
+    },
+    {
+        "name": "East Valley Hospital Med Ctr",
+        "href": "/hospital/East-Valley-Hospital-Med-Ctr-Glendora-CA",
+        "address": "150 West Route 66",
+        "city": "Glendora",
+        "state": "CA",
+        "zip": "91740-6207",
+        "phone": "626-852-5000"
+    },
+    {
+        "name": "LAUREL GROVE HOSPITAL (Closed)",
+        "href": "/hospital/LAUREL-GROVE-HOSPITAL-CASTRO-VALLEY-CA",
+        "address": "19933 LAKE CHABOT RD",
+        "city": "",
+        "state": "CA",
+        "zip": "STRO VALLEY                 ,",
+        "phone": "510-537-1234"
+    },
+    {
+        "name": "Saint John's Health Center",
+        "href": "/hospital/Saint-Johns-Health-Center-Santa-Monica-CA",
+        "address": "1328 Twenty Second Street",
+        "city": "Santa Monica",
+        "state": "CA",
+        "zip": "90404-2091",
+        "phone": "310-829-5511"
+    },
+    {
+        "name": "VA Palo Alto Health Care Syst",
+        "href": "/hospital/VA-Palo-Alto-Health-Care-Syst-Palo-Alto-CA",
+        "address": "3801 Miranda Avenue",
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip": "94304-1207",
+        "phone": "650-493-5000"
+    },
+    {
+        "name": "Eastern Plumas Dist Hospital",
+        "href": "/hospital/Eastern-Plumas-Dist-Hospital-Portola-CA",
+        "address": "500 First Avenue",
+        "city": "Portola",
+        "state": "CA",
+        "zip": "96122-9406",
+        "phone": "530-832-6500"
+    },
+    {
+        "name": "Little Company of Mary",
+        "href": "/hospital/Little-Company-of-Mary-San-Pedro-CA",
+        "address": "1300 West Seventh Street",
+        "city": "San Pedro",
+        "state": "CA",
+        "zip": "90732-3505",
+        "phone": "310-832-3311"
+    },
+    {
+        "name": "Salinas Vly Mem Hthcare Syst",
+        "href": "/hospital/Salinas-Vly-Mem-Hthcare-Syst-Salinas-CA",
+        "address": "450 East Romie Lane",
+        "city": "Salinas",
+        "state": "CA",
+        "zip": "93901-4098",
+        "phone": "831-757-4333"
+    },
+    {
+        "name": "VA San Diego Healthcare System",
+        "href": "/hospital/VA-San-Diego-Healthcare-System-San-Diego-CA",
+        "address": "3350 Lajolla Village Drive",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92161-0002",
+        "phone": "858-552-8585"
+    },
+    {
+        "name": "Eastern Plumas Health Care",
+        "href": "/hospital/Eastern-Plumas-Health-Care-Loyalton-CA",
+        "address": "700 Third Street",
+        "city": "Loyalton",
+        "state": "CA",
+        "zip": "96118-0178",
+        "phone": "530-993-1225"
+    },
+    {
+        "name": "Little Company of Mary Hosp",
+        "href": "/hospital/Little-Company-of-Mary-Hosp-Torrance-CA",
+        "address": "4101 Torrance Boulevard",
+        "city": "Torrance",
+        "state": "CA",
+        "zip": "90503-4698",
+        "phone": "310-540-7676"
+    },
+    {
+        "name": "San Antonio Community Hospital",
+        "href": "/hospital/San-Antonio-Community-Hospital-Upland-CA",
+        "address": "999 San Bernardino Road",
+        "city": "Upland",
+        "state": "CA",
+        "zip": "91786-4920",
+        "phone": "909-985-2811"
+    },
+    {
+        "name": "Valley Presbyterian Hospital",
+        "href": "/hospital/Valley-Presbyterian-Hospital-Van-Nuys-CA",
+        "address": "15107 Vanowen Street",
+        "city": "Van Nuys",
+        "state": "CA",
+        "zip": "91405-4598",
+        "phone": "818-782-6600"
+    },
+    {
+        "name": "EDEN MEDICAL CENTER",
+        "href": "/hospital/EDEN-MEDICAL-CENTER-CASTRO-VALLEY---CA",
+        "address": "20103 LAKE CHABOT ROAD",
+        "city": "",
+        "state": "CA",
+        "zip": "STRO VALLEY                 ,",
+        "phone": "510-537-1234"
+    },
+    {
+        "name": "Lodi Memorial Hospital",
+        "href": "/hospital/Lodi-Memorial-Hospital-Lodi-CA",
+        "address": "975 South Fairmont Avenue",
+        "city": "Lodi",
+        "state": "CA",
+        "zip": "95240-5179",
+        "phone": "209-334-3411"
+    },
+    {
+        "name": "San Diego Cnty Psych Hospital",
+        "href": "/hospital/San-Diego-Cnty-Psych-Hospital-San-Diego-CA",
+        "address": "3853 Rosecrans Street",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92110-3115",
+        "phone": "619-692-8211"
+    },
+    {
+        "name": "ValleyCare Medical Center",
+        "href": "/hospital/ValleyCare-Medical-Center-Pleasanton-CA",
+        "address": "5555 West Las Positas Blvd",
+        "city": "Pleasanton",
+        "state": "CA",
+        "zip": "94588-4000",
+        "phone": "925-847-3000"
+    },
+    {
+        "name": "Eisenhower Medical Ctr",
+        "href": "/hospital/Eisenhower-Medical-Ctr-Rancho-Mirage-CA",
+        "address": "39000 Bob Hope Drive",
+        "city": "Rancho Mirage",
+        "state": "CA",
+        "zip": "92270-3221",
+        "phone": "760-340-3911"
+    },
+    {
+        "name": "Loma Linda Univ Behavioral Ctr",
+        "href": "/hospital/Loma-Linda-Univ-Behavioral-Ctr-Redlands-CA",
+        "address": "1710 Barton Road",
+        "city": "Redlands",
+        "state": "CA",
+        "zip": "92373-5304",
+        "phone": "909-558-9200"
+    },
+    {
+        "name": "San Diego Hospice",
+        "href": "/hospital/San-Diego-Hospice-San-Diego-CA",
+        "address": "4311 Third Avenue",
+        "city": "San Diego",
+        "state": "CA",
+        "zip": "92103-7499",
+        "phone": "619-688-1600"
+    },
+    {
+        "name": "Ventura County Medical Center",
+        "href": "/hospital/Ventura-County-Medical-Center-Ventura-CA",
+        "address": "3291 Loma Vista Road",
+        "city": "Ventura",
+        "state": "CA",
+        "zip": "93003-3099",
+        "phone": "805-652-6000"
+    },
+    {
+        "name": "El Camino Hospital",
+        "href": "/hospital/El-Camino-Hospital-Mountain-View-CA",
+        "address": "2500 Grant Road",
+        "city": "Mountain View",
+        "state": "CA",
+        "zip": "94040",
+        "phone": "650-940-7000"
+    },
+    {
+        "name": "Loma Linda University Med Ctr",
+        "href": "/hospital/Loma-Linda-University-Med-Ctr-Loma-Linda-CA",
+        "address": "11234 Anderson Street",
+        "city": "Loma Linda",
+        "state": "CA",
+        "zip": "92354-2870",
+        "phone": "909-558-4000"
+    },
+    {
+        "name": "San Dimas Community Hospital",
+        "href": "/hospital/San-Dimas-Community-Hospital-San-Dimas-CA",
+        "address": "1350 West Covina Boulevard",
+        "city": "San Dimas",
+        "state": "CA",
+        "zip": "91773-3219",
+        "phone": "909-599-6811"
+    },
+    {
+        "name": "Verdugo Hills Hospital",
+        "href": "/hospital/Verdugo-Hills-Hospital-Glendale-CA",
+        "address": "1812 Verdugo Boulevard",
+        "city": "Glendale",
+        "state": "CA",
+        "zip": "91208-1409",
+        "phone": "818-790-7100"
+    },
+    {
+        "name": "El Centro Regional Medical Ctr",
+        "href": "/hospital/El-Centro-Regional-Medical-Ctr-El-Centro-CA",
+        "address": "1415 Ross Avenue",
+        "city": "El Centro",
+        "state": "CA",
+        "zip": "92243-4398",
+        "phone": "760-339-7100"
+    },
+    {
+        "name": "Lompoc Healthcare District",
+        "href": "/hospital/Lompoc-Healthcare-District-Lompoc-CA",
+        "address": "508 East Hickory Street",
+        "city": "Lompoc",
+        "state": "CA",
+        "zip": "93436-7337",
+        "phone": "805-737-3300"
+    },
+    {
+        "name": "San Francisco Gen Hosp Med Ctr",
+        "href": "/hospital/San-Francisco-Gen-Hosp-Med-Ctr-San-Francisco-CA",
+        "address": "1001 Potrero Avenue",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94110-3594",
+        "phone": "415-206-8000"
+    },
+    {
+        "name": "Veterans Affairs Med Center",
+        "href": "/hospital/Veterans-Affairs-Med-Center-San-Francisco-CA",
+        "address": "4150 Clement Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94121-1598",
+        "phone": "415-221-4810"
+    },
+    {
+        "name": "Emanuel Medical Center",
+        "href": "/hospital/Emanuel-Medical-Center-Turlock-CA",
+        "address": "825 Delbon Avenue",
+        "city": "Turlock",
+        "state": "CA",
+        "zip": "95382-2016",
+        "phone": "209-667-4200"
+    },
+    {
+        "name": "Long Beach Memorial Med Ctr",
+        "href": "/hospital/Long-Beach-Memorial-Med-Ctr-Long-Beach-CA",
+        "address": "2801 Atlantic Avenue",
+        "city": "Long Beach",
+        "state": "CA",
+        "zip": "90806-1737",
+        "phone": "562-933-2000"
+    },
+    {
+        "name": "San Gabriel Valley Med Ctr",
+        "href": "/hospital/San-Gabriel-Valley-Med-Ctr-San-Gabriel-CA",
+        "address": "438 West Las Tunas Drive",
+        "city": "San Gabriel",
+        "state": "CA",
+        "zip": "91776-1216",
+        "phone": "626-289-5454"
+    },
+    {
+        "name": "Veterans Affairs Med Center",
+        "href": "/hospital/Veterans-Affairs-Med-Center-Fresno-CA",
+        "address": "2615 East Clinton Avenue",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93703-2223",
+        "phone": "559-225-6100"
+    },
+    {
+        "name": "Encino-Tarzana Reg Med Center",
+        "href": "/hospital/Encino-Tarzana-Reg-Med-Center-Tarzana-CA",
+        "address": "18321 Clark Street",
+        "city": "Tarzana",
+        "state": "CA",
+        "zip": "91356-3521",
+        "phone": "818-881-0800"
+    },
+    {
+        "name": "Los Alamitos Medical Center",
+        "href": "/hospital/Los-Alamitos-Medical-Center-Los-Alamitos-CA",
+        "address": "3751 Katella Avenue",
+        "city": "Los Alamitos",
+        "state": "CA",
+        "zip": "90720-3164",
+        "phone": "562-598-1311"
+    },
+    {
+        "name": "San Gorgonio Memorial Hospital",
+        "href": "/hospital/San-Gorgonio-Memorial-Hospital-Banning-CA",
+        "address": "600 N Highland Springs Avenue",
+        "city": "Banning",
+        "state": "CA",
+        "zip": "92220-3046",
+        "phone": "951-845-1121"
+    },
+    {
+        "name": "Veterans Home of California",
+        "href": "/hospital/Veterans-Home-of-California-Yountville-CA",
+        "address": "100 California Drive",
+        "city": "Yountville",
+        "state": "CA",
+        "zip": "94599-1411",
+        "phone": "707-944-4500"
+    },
+    {
+        "name": "Encino-Tarzana Reg Med Ctr",
+        "href": "/hospital/Encino-Tarzana-Reg-Med-Ctr-Encino-CA",
+        "address": "16237 Ventura Boulevard",
+        "city": "Encino",
+        "state": "CA",
+        "zip": "91436-2201",
+        "phone": "818-995-5000"
+    },
+    {
+        "name": "Los Angeles Community Hospital",
+        "href": "/hospital/Los-Angeles-Community-Hospital-Los-Angeles-CA",
+        "address": "4081 East Olympic Boulevard",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90023-3330",
+        "phone": "323-267-0477"
+    },
+    {
+        "name": "San Joaquin Community Hospital",
+        "href": "/hospital/San-Joaquin-Community-Hospital-Bakersfield-CA",
+        "address": "2615 Chester Avenue",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zip": "93301-2006",
+        "phone": "661-395-3000"
+    },
+    {
+        "name": "Victor Valley Community Hosp",
+        "href": "/hospital/Victor-Valley-Community-Hosp-Wildomar-CA",
+        "address": "15248 11th Street",
+        "city": "Wildomar",
+        "state": "CA",
+        "zip": "92395",
+        "phone": "760-245-8691"
+    },
+    {
+        "name": "Enloe Medical Center",
+        "href": "/hospital/Enloe-Medical-Center-Chico-CA",
+        "address": "1531 Esplanade",
+        "city": "Chico",
+        "state": "CA",
+        "zip": "95926-3310",
+        "phone": "530-332-7300"
+    },
+    {
+        "name": "Los Angeles Metro Med Center",
+        "href": "/hospital/Los-Angeles-Metro-Med-Center-Los-Angeles-CA",
+        "address": "2231 South Western Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90018-1302",
+        "phone": "323-730-7300"
+    },
+    {
+        "name": "San Joaquin General Hospital",
+        "href": "/hospital/San-Joaquin-General-Hospital-French-Camp-CA",
+        "address": "500 West Hospital Road",
+        "city": "French Camp",
+        "state": "CA",
+        "zip": "95231",
+        "phone": "209-468-6000"
+    },
+    {
+        "name": "Vista Specialty Hospital",
+        "href": "/hospital/Vista-Specialty-Hospital-Baldwin-Park-CA",
+        "address": "14148 East Francisquito Avenue",
+        "city": "Baldwin Park",
+        "state": "CA",
+        "zip": "91706",
+        "phone": "626-388-2700"
+    },
+    {
+        "name": "Fairchild Medical Center",
+        "href": "/hospital/Fairchild-Medical-Center-Yreka-CA",
+        "address": "444 Bruce Street",
+        "city": "Yreka",
+        "state": "CA",
+        "zip": "96097-3450",
+        "phone": "530-842-4121"
+    },
+    {
+        "name": "Los Robles Hosp & Med Center",
+        "href": "/hospital/Los-Robles-Hosp-Med-Center-Thousand-Oaks-CA",
+        "address": "215 West Janss Road",
+        "city": "Thousand Oaks",
+        "state": "CA",
+        "zip": "91360-1847",
+        "phone": "805-497-2727"
+    },
+    {
+        "name": "San Joaquin Vly Rehab Hosp",
+        "href": "/hospital/San-Joaquin-Vly-Rehab-Hosp-Fresno-CA",
+        "address": "7173 North Sharon Avenue",
+        "city": "Fresno",
+        "state": "CA",
+        "zip": "93720-3329",
+        "phone": "559-436-3600"
+    },
+    {
+        "name": "Washington Health Care Dist",
+        "href": "/hospital/Washington-Health-Care-Dist-Fremont-CA",
+        "address": "2000 Mowry Avenue",
+        "city": "Fremont",
+        "state": "CA",
+        "zip": "94538-1746",
+        "phone": "510-797-1111"
+    },
+    {
+        "name": "FAIRVIEW DEVELOPMENTAL CENTER",
+        "href": "/hospital/FAIRVIEW-DEVELOPMENTAL-CENTER-COSTA-MESA-CA",
+        "address": "2501 HARBOR BOULEVARD",
+        "city": "COSTA MESA",
+        "state": "CA",
+        "zip": "92626",
+        "phone": "714-957-5000"
+    },
+    {
+        "name": "Lucile Packard Children's Hosp",
+        "href": "/hospital/Lucile-Packard-Childrens-Hosp-Palo-Alto-CA",
+        "address": "725 Welch Road",
+        "city": "Palo Alto",
+        "state": "CA",
+        "zip": "94304-1601",
+        "phone": "650-497-8000"
+    },
+    {
+        "name": "SAN LEANDRO HOSPITAL",
+        "href": "/hospital/SAN-LEANDRO-HOSPITAL-SAN-LEANDRO----CA",
+        "address": "13855 E 14TH STREET",
+        "city": "SAN LEANDRO",
+        "state": "CA",
+        "zip": "94578",
+        "phone": "510-667-4510"
+    },
+    {
+        "name": "Watsonville Community Hospital",
+        "href": "/hospital/Watsonville-Community-Hospital-Watsonville-CA",
+        "address": "75 Nielson Street",
+        "city": "Watsonville",
+        "state": "CA",
+        "zip": "95076-2468",
+        "phone": "831-724-4741"
+    },
+    {
+        "name": "Fallbrook Hospital",
+        "href": "/hospital/Fallbrook-Hospital-Fallbrook-CA",
+        "address": "624 East Elder Street",
+        "city": "Fallbrook",
+        "state": "CA",
+        "zip": "92028-3099",
+        "phone": "760-728-1191"
+    },
+    {
+        "name": "Mad River Community Hospital",
+        "href": "/hospital/Mad-River-Community-Hospital-Arcata-CA",
+        "address": "3800 Janes Road",
+        "city": "Arcata",
+        "state": "CA",
+        "zip": "95521-4788",
+        "phone": "707-822-3621"
+    },
+    {
+        "name": "San Mateo Medical Center",
+        "href": "/hospital/San-Mateo-Medical-Center-San-Mateo-CA",
+        "address": "222 West 39th Avenue",
+        "city": "San Mateo",
+        "state": "CA",
+        "zip": "94403-4398",
+        "phone": "650-573-2222"
+    },
+    {
+        "name": "Weed Army Community Hospital",
+        "href": "/hospital/Weed-Army-Community-Hospital-Fort-Irwin-CA",
+        "address": "Inner Loop Rd & 4th St",
+        "city": "Fort Irwin",
+        "state": "CA",
+        "zip": "92310-5065",
+        "phone": "760-380-3108"
+    },
+    {
+        "name": "Feather River Hospital",
+        "href": "/hospital/Feather-River-Hospital-Paradise-CA",
+        "address": "5974 Pentz Road",
+        "city": "Paradise",
+        "state": "CA",
+        "zip": "95969-5509",
+        "phone": "530-877-9361"
+    },
+    {
+        "name": "Madera Community Hospital",
+        "href": "/hospital/Madera-Community-Hospital-Madera-CA",
+        "address": "1250 East Almond Avenue",
+        "city": "Madera",
+        "state": "CA",
+        "zip": "93637-5696",
+        "phone": "559-675-5501"
+    },
+    {
+        "name": "San Ramon Regional Med Center",
+        "href": "/hospital/San-Ramon-Regional-Med-Center-San-Ramon-CA",
+        "address": "6001 Norris Canyon Road",
+        "city": "San Ramon",
+        "state": "CA",
+        "zip": "94583-5400",
+        "phone": "925-275-9200"
+    },
+    {
+        "name": "West Anaheim Medical Center",
+        "href": "/hospital/West-Anaheim-Medical-Center-Anaheim-CA",
+        "address": "3033 West Orange Avenue",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92804-3184",
+        "phone": "714-827-3000"
+    },
+    {
+        "name": "Foothill Presbyterian Hospital",
+        "href": "/hospital/Foothill-Presbyterian-Hospital-Glendora-CA",
+        "address": "250 South Grand Avenue",
+        "city": "Glendora",
+        "state": "CA",
+        "zip": "91741-4218",
+        "phone": "626-963-8411"
+    },
+    {
+        "name": "Mammoth Hospital",
+        "href": "/hospital/Mammoth-Hospital-Mammoth-Lakes-CA",
+        "address": "85 Sierra Park Road",
+        "city": "Mammoth Lakes",
+        "state": "CA",
+        "zip": "93546-0660",
+        "phone": "760-934-3311"
+    },
+    {
+        "name": "Santa Barbara Cottage Hospital",
+        "href": "/hospital/Santa-Barbara-Cottage-Hospital-Santa-Barbara-CA",
+        "address": "Pueblo At Bath Streets",
+        "city": "Santa Barbara",
+        "state": "CA",
+        "zip": "93105-4390",
+        "phone": "805-682-7111"
+    },
+    {
+        "name": "West Hills Hosp & Med Center",
+        "href": "/hospital/West-Hills-Hosp-Med-Center-Canoga-Park-CA",
+        "address": "7300 Medical Center Drive",
+        "city": "Canoga Park",
+        "state": "CA",
+        "zip": "91307-1902",
+        "phone": "818-676-4000"
+    },
+    {
+        "name": "Fountain Valley Reg Hosp",
+        "href": "/hospital/Fountain-Valley-Reg-Hosp-Fountain-Valley-CA",
+        "address": "17100 Euclid Street",
+        "city": "Fountain Valley",
+        "state": "CA",
+        "zip": "92708-4043",
+        "phone": "714-966-7200"
+    },
+    {
+        "name": "Marian Medical Center",
+        "href": "/hospital/Marian-Medical-Center-Santa-Maria-CA",
+        "address": "1400 East Church Street",
+        "city": "Santa Maria",
+        "state": "CA",
+        "zip": "93454-5906",
+        "phone": "805-739-3000"
+    },
+    {
+        "name": "Santa Clara Valley Med Center",
+        "href": "/hospital/Santa-Clara-Valley-Med-Center-San-Jose-CA",
+        "address": "751 South Bascom Avenue",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95128-2604",
+        "phone": "408-885-5000"
+    },
+    {
+        "name": "Western Med Ctr-Santa Ana",
+        "href": "/hospital/Western-Med-Ctr-Santa-Ana-Santa-Ana-CA",
+        "address": "1001 North Tustin Avenue",
+        "city": "Santa Ana",
+        "state": "CA",
+        "zip": "92705-3577",
+        "phone": "714-835-3555"
+    },
+    {
+        "name": "Frank R Howard Mem Hospital",
+        "href": "/hospital/Frank-R-Howard-Mem-Hospital-Willits-CA",
+        "address": "One Madrone Street",
+        "city": "Willits",
+        "state": "CA",
+        "zip": "95490-4225",
+        "phone": "707-459-6801"
+    },
+    {
+        "name": "Marin General Hospital",
+        "href": "/hospital/Marin-General-Hospital-Greenbrae-CA",
+        "address": "250 Bon Air Road",
+        "city": "Greenbrae",
+        "state": "CA",
+        "zip": "94904-1784",
+        "phone": "415-925-7000"
+    },
+    {
+        "name": "Santa Monica UCLA Med Center",
+        "href": "/hospital/Santa-Monica-UCLA-Med-Center-Santa-Monica-CA",
+        "address": "1250 16th Street",
+        "city": "Santa Monica",
+        "state": "CA",
+        "zip": "90404",
+        "phone": "310-319-4000"
+    },
+    {
+        "name": "Western Medical Center Anaheim",
+        "href": "/hospital/Western-Medical-Center-Anaheim-Anaheim-CA",
+        "address": "1025 South Anaheim Boulevard",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92805-5806",
+        "phone": "714-533-6220"
+    },
+    {
+        "name": "Fremont Hospital",
+        "href": "/hospital/Fremont-Hospital-Fremont-CA",
+        "address": "39001 Sundale Drive",
+        "city": "Fremont",
+        "state": "CA",
+        "zip": "94538-2005",
+        "phone": "510-796-1100"
+    },
+    {
+        "name": "Mark Twain St Joseph's Hosp",
+        "href": "/hospital/Mark-Twain-St-Josephs-Hosp-San-Andreas-CA",
+        "address": "768 Mountain Ranch Road",
+        "city": "San Andreas",
+        "state": "CA",
+        "zip": "95249-9707",
+        "phone": "209-754-3521"
+    },
+    {
+        "name": "Santa Rosa Memorial Hospital",
+        "href": "/hospital/Santa-Rosa-Memorial-Hospital-Santa-Rosa-CA",
+        "address": "1165 Montgomery Drive",
+        "city": "Santa Rosa",
+        "state": "CA",
+        "zip": "95405-4897",
+        "phone": "707-546-3210"
+    },
+    {
+        "name": "White Memorial Medical Center",
+        "href": "/hospital/White-Memorial-Medical-Center-Los-Angeles-CA",
+        "address": "1720 Cesar E Chavez Avenue",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90033-2481",
+        "phone": "323-268-5000"
+    }
+]
