@@ -823,6 +823,7 @@ class BanksController extends Controller
     }
 
     public function med_serv(){
+        set_time_limit(0);
         $file = file_get_contents(storage_path("furnishers/med.json"));
         $data = json_decode($file, true);
         $attention = [];
