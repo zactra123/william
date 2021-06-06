@@ -828,7 +828,9 @@ class BanksController extends Controller
         $data = json_decode($file, true);
         $attention = [];
         foreach ($data as $k=>$med) {
-            $bank = BankLogo::where("name",  "like", $med['name'])->first();
+            $bank = BankLogo::where("name",  "like", $med['name'])
+                ->whereNotNull('path')
+                ->first();
             if (!empty($bank)) {
                 unset($data[$k]);
                 $attention[$k] = [$med, $bank];
@@ -836,6 +838,7 @@ class BanksController extends Controller
             }
             $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $med['phone']);
             $bank = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
+                ->whereNotNull('path')
                 ->where(function($query) use($phoneFaxZip)  {
                     $query->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.phone_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
                         ->orWhereRaw("REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(bank_addresses.fax_number, ',', ''), '.', ''), '(', ''), ')', ''), ' ', ''), '-', '') LIKE '%{$phoneFaxZip}%'")
