@@ -822,12 +822,17 @@ class BanksController extends Controller
         }
     }
 
-    public function med_serv(){
-        set_time_limit(0);
+    public function med_serv()
+    {
+        #Delete all existing Med services and insert from the other resource
+        BankLogo::where('type', 5)->whereNull('path')->delete();
+
         $file = file_get_contents(storage_path("furnishers/med.json"));
         $data = json_decode($file, true);
         $attention = [];
         foreach ($data as $k=>$med) {
+
+
             $bank = BankLogo::where("name",  "like", $med['name'])
                 ->whereNotNull('path')
                 ->first();
@@ -851,6 +856,29 @@ class BanksController extends Controller
                 continue;
             }
 
+            $bank =
+                [
+                    "name" => $med["name"],
+                    "type" => 5,
+                    "bank_addresses" => [
+                        [
+                            "type" => "executive_address",
+                            "street" => $med["address"],
+                            "city" => $med["city"],
+                            "state" => $med["state"],
+                            "zip" => $med["zip"],
+                            "phone_number" => $med["phone"],
+                        ],
+                        [
+                            "type" => "registered_agent"
+                        ]
+                    ],
+                ];
+            if (!empty($med["additinoal_information"]))
+                $bank["additional_information"] = $med["additinoal_information"];
+
+            $b =  BankLogo::create($bank);
+            $b->bankAddresses()->createMany($bank["bank_addresses"]);
         }
         dd($attention, $data);
     }

@@ -15,7 +15,12 @@
         "city": "Yuba City",
         "state": "CA",
         "zip": "95991-4087",
-        "phone": "530-751-4000"
+        "phone": "530-751-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Marshall Medical Center",
@@ -24,7 +29,12 @@
         "city": "Placerville",
         "state": "CA",
         "zip": "95667-6599",
-        "phone": "530-622-1441"
+        "phone": "530-622-1441",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Santa Ynez Vly Cottage Hosp",
@@ -33,7 +43,12 @@
         "city": "Solvang",
         "state": "CA",
         "zip": "93463-2295",
-        "phone": "805-688-6431"
+        "phone": "805-688-6431",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Whittier Hospital Medical Ctr",
@@ -42,7 +57,12 @@
         "city": "Whittier",
         "state": "CA",
         "zip": "90605-1600",
-        "phone": "562-945-3561"
+        "phone": "562-945-3561",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alameda Cnty Medical Center",
@@ -60,7 +80,12 @@
         "city": "San Luis Obispo",
         "state": "CA",
         "zip": "93401-4131",
-        "phone": "805-543-5353"
+        "phone": "805-543-5353",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mayers Memorial Hosp Dist",
@@ -78,7 +103,12 @@
         "city": "La Jolla",
         "state": "CA",
         "zip": "92037-1093",
-        "phone": "858-455-9100"
+        "phone": "858-455-9100",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Woodland Healthcare",
@@ -87,7 +117,12 @@
         "city": "Woodland",
         "state": "CA",
         "zip": "95695-5199",
-        "phone": "530-662-3961"
+        "phone": "530-662-3961",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alameda County Medical Center",
@@ -105,7 +140,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93720",
-        "phone": "559-433-8000"
+        "phone": "559-433-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "MEMORIAL HOSPITAL LOS BANOS",
@@ -123,7 +163,12 @@
         "city": "La Jolla",
         "state": "CA",
         "zip": "92037-1200",
-        "phone": "858-626-4123"
+        "phone": "858-626-4123",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alameda Hospital",
@@ -141,7 +186,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93710-5207",
-        "phone": "559-431-8000"
+        "phone": "559-431-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Memorial Hospital of Gardena",
@@ -150,7 +200,12 @@
         "city": "Gardena",
         "state": "CA",
         "zip": "90247-3528",
-        "phone": "310-532-4200"
+        "phone": "310-532-4200",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Scripps Mem Hospital-Encinitas",
@@ -159,7 +214,12 @@
         "city": "Encinitas",
         "state": "CA",
         "zip": "92024-5182",
-        "phone": "760-633-6501"
+        "phone": "760-633-6501",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alhambra Hospital",
@@ -168,7 +228,12 @@
         "city": "Rosemead",
         "state": "CA",
         "zip": "91770-1478",
-        "phone": "626-286-1191"
+        "phone": "626-286-1191",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Garden Grove Hosp & Med Ctr",
@@ -177,7 +242,12 @@
         "city": "Garden Grove",
         "state": "CA",
         "zip": "92843-1908",
-        "phone": "714-537-5160"
+        "phone": "714-537-5160",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Memorial Medical Center",
@@ -186,7 +256,12 @@
         "city": "Modesto",
         "state": "CA",
         "zip": "95355-2869",
-        "phone": "209-526-4500"
+        "phone": "209-526-4500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Scripps Mercy Hospital",
@@ -195,7 +270,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92103-2105",
-        "phone": "619-294-8111"
+        "phone": "619-294-8111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alhambra Hospital Medical Ctr",
@@ -204,7 +284,12 @@
         "city": "Alhambra",
         "state": "CA",
         "zip": "91801-3199",
-        "phone": "626-570-1606"
+        "phone": "626-570-1606",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Garfield Medical Center",
@@ -213,7 +298,12 @@
         "city": "Monterey Park",
         "state": "CA",
         "zip": "91754-1205",
-        "phone": "626-573-2222"
+        "phone": "626-573-2222",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mendocino Coast Dist Hospital",
@@ -231,7 +321,12 @@
         "city": "Selma",
         "state": "CA",
         "zip": "93662-3241",
-        "phone": "559-891-1000"
+        "phone": "559-891-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alta Bates Summit Med Center",
@@ -240,7 +335,12 @@
         "city": "Oakland",
         "state": "CA",
         "zip": "94609-3100",
-        "phone": "510-655-4000"
+        "phone": "510-655-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Gateways Hosp & Mntl Hlth Ctr",
@@ -249,7 +349,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90026-1711",
-        "phone": "323-644-2000"
+        "phone": "323-644-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Menifee Valley Medical Center",
@@ -276,7 +381,12 @@
         "city": "Berkeley",
         "state": "CA",
         "zip": "94705-2067",
-        "phone": "510-204-4444"
+        "phone": "510-204-4444",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "George L Mee Memorial Hospital",
@@ -285,7 +395,12 @@
         "city": "King City",
         "state": "CA",
         "zip": "93930-3431",
-        "phone": "831-385-6000"
+        "phone": "831-385-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Menlo Park Surgical Hospital",
@@ -294,7 +409,12 @@
         "city": "Menlo Park",
         "state": "CA",
         "zip": "94025-2617",
-        "phone": "650-324-8500"
+        "phone": "650-324-8500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sequoia Hospital",
@@ -303,7 +423,12 @@
         "city": "Redwood City",
         "state": "CA",
         "zip": "94062-2799",
-        "phone": "650-369-5811"
+        "phone": "650-369-5811",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Alvarado Hosp Medical Center",
@@ -312,7 +437,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92120-5208",
-        "phone": "619-287-3270"
+        "phone": "619-287-3270",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Glendale Adventist Medical Ctr",
@@ -321,7 +451,12 @@
         "city": "Glendale",
         "state": "CA",
         "zip": "91206-4098",
-        "phone": "818-409-8000"
+        "phone": "818-409-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy General Hospital",
@@ -330,7 +465,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95819-3600",
-        "phone": "916-453-4545"
+        "phone": "916-453-4545",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Seton Medical Center",
@@ -339,7 +479,12 @@
         "city": "Daly City",
         "state": "CA",
         "zip": "94015-2229",
-        "phone": "650-992-4000"
+        "phone": "650-992-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Anaheim General Hospital",
@@ -348,7 +493,12 @@
         "city": "Anaheim",
         "state": "CA",
         "zip": "92804-3799",
-        "phone": "714-827-6700"
+        "phone": "714-827-6700",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Glendale Mem Hosp & Hlth Ctr",
@@ -357,7 +507,12 @@
         "city": "Glendale",
         "state": "CA",
         "zip": "91204-2594",
-        "phone": "818-502-1900"
+        "phone": "818-502-1900",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy Hospital",
@@ -366,7 +521,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93301-3698",
-        "phone": "661-632-5000"
+        "phone": "661-632-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Seton Medical Center Coastside",
@@ -375,7 +535,12 @@
         "city": "Moss Beach",
         "state": "CA",
         "zip": "94038-9641",
-        "phone": "650-563-7100"
+        "phone": "650-563-7100",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Anaheim Memorial Medical Ctr",
@@ -384,7 +549,12 @@
         "city": "Anaheim",
         "state": "CA",
         "zip": "92801-2881",
-        "phone": "714-774-1450"
+        "phone": "714-774-1450",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Glenn Medical Center",
@@ -393,7 +563,12 @@
         "city": "Willows",
         "state": "CA",
         "zip": "95988-2745",
-        "phone": "530-934-1800"
+        "phone": "530-934-1800",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy Hospital of Folsom",
@@ -402,7 +577,12 @@
         "city": "Folsom",
         "state": "CA",
         "zip": "95630-3405",
-        "phone": "916-983-7400"
+        "phone": "916-983-7400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sharp Chula Vista Med Ctr",
@@ -411,7 +591,12 @@
         "city": "Chula Vista",
         "state": "CA",
         "zip": "91911-6617",
-        "phone": "619-482-5800"
+        "phone": "619-482-5800",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Antelope Valley Hospital",
@@ -429,7 +614,12 @@
         "city": "Santa Barbara",
         "state": "CA",
         "zip": "93111-2496",
-        "phone": "805-967-3411"
+        "phone": "805-967-3411",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy Medical Center Merced",
@@ -438,7 +628,12 @@
         "city": "Merced",
         "state": "CA",
         "zip": "95340-6211",
-        "phone": "209-385-7000"
+        "phone": "209-385-7000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sharp Coronado Hospital",
@@ -447,7 +642,12 @@
         "city": "Coronado",
         "state": "CA",
         "zip": "92118-1943",
-        "phone": "619-522-3600"
+        "phone": "619-522-3600",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Arrowhead Regional Medical Ctr",
@@ -465,7 +665,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90017-1901",
-        "phone": "213-977-2121"
+        "phone": "213-977-2121",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy Medical Center Mt Shasta",
@@ -474,7 +679,12 @@
         "city": "Mount Shasta",
         "state": "CA",
         "zip": "96067-2143",
-        "phone": "530-926-6111"
+        "phone": "530-926-6111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sharp Grossmont Hospital",
@@ -483,7 +693,12 @@
         "city": "La Mesa",
         "state": "CA",
         "zip": "91942-3019",
-        "phone": "619-740-6000"
+        "phone": "619-740-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Arroyo Grande Comm Hospital",
@@ -492,7 +707,12 @@
         "city": "Arroyo Grande",
         "state": "CA",
         "zip": "93420-3899",
-        "phone": "805-489-4261"
+        "phone": "805-489-4261",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Good Samaritan Hospital",
@@ -501,7 +721,12 @@
         "city": "San Jose",
         "state": "CA",
         "zip": "95124-3997",
-        "phone": "408-559-2011"
+        "phone": "408-559-2011",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy Medical Center Redding",
@@ -510,7 +735,12 @@
         "city": "Redding",
         "state": "CA",
         "zip": "96001-2509",
-        "phone": "530-225-6000"
+        "phone": "530-225-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sharp Mary Birch Hospital",
@@ -519,7 +749,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92123",
-        "phone": "858-939-3400"
+        "phone": "858-939-3400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Atascadero State Hospital",
@@ -537,7 +772,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93308-4144",
-        "phone": "661-399-4461"
+        "phone": "661-399-4461",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mercy San Juan Medical Center",
@@ -546,7 +786,12 @@
         "city": "Carmichael",
         "state": "CA",
         "zip": "95608-0306",
-        "phone": "916-537-5000"
+        "phone": "916-537-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sharp Memorial Hospital",
@@ -555,7 +800,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92123-2701",
-        "phone": "858-939-3400"
+        "phone": "858-939-3400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Aurora Charter Oak Hospital",
@@ -564,7 +814,12 @@
         "city": "Covina",
         "state": "CA",
         "zip": "91724-1599",
-        "phone": "626-966-1632"
+        "phone": "626-966-1632",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Greater El Monte Comm Hospital",
@@ -573,7 +828,12 @@
         "city": "El Monte",
         "state": "CA",
         "zip": "91733-3411",
-        "phone": "626-579-7777"
+        "phone": "626-579-7777",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Methodist Hosp of Sacramento",
@@ -582,7 +842,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95823-5477",
-        "phone": "916-423-3000"
+        "phone": "916-423-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Shasta Regional Medical Center",
@@ -591,7 +856,12 @@
         "city": "Redding",
         "state": "CA",
         "zip": "96001-0853",
-        "phone": "530-244-5454"
+        "phone": "530-244-5454",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Aurora Las Encinas Hospital",
@@ -600,7 +870,12 @@
         "city": "Pasadena",
         "state": "CA",
         "zip": "91107-4399",
-        "phone": "626-795-9901"
+        "phone": "626-795-9901",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hanford Comm Medical Center",
@@ -609,7 +884,12 @@
         "city": "Hanford",
         "state": "CA",
         "zip": "93230-3513",
-        "phone": "559-582-9000"
+        "phone": "559-582-9000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Methodist Hosp of Southern CA",
@@ -618,7 +898,12 @@
         "city": "Arcadia",
         "state": "CA",
         "zip": "91007-3473",
-        "phone": "626-898-8000"
+        "phone": "626-898-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sherman Oaks Hospital",
@@ -627,7 +912,12 @@
         "city": "Sherman Oaks",
         "state": "CA",
         "zip": "91403-1702",
-        "phone": "818-981-7111"
+        "phone": "818-981-7111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Aurora San Diego Hospital",
@@ -636,7 +926,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92128-3423",
-        "phone": "858-487-3200"
+        "phone": "858-487-3200",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hazel Hawkins Mem Hosp",
@@ -663,7 +958,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90020-1199",
-        "phone": "213-388-3151"
+        "phone": "213-388-3151",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Aurora Vista Del Mar Hospital",
@@ -672,7 +972,12 @@
         "city": "Ventura",
         "state": "CA",
         "zip": "93001-1411",
-        "phone": "805-653-6434"
+        "phone": "805-653-6434",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Healdsburg District Hospital",
@@ -690,7 +995,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90806",
-        "phone": "562-933-5437"
+        "phone": "562-933-5437",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Shriners Hosps for Children",
@@ -699,7 +1009,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90020-1199",
-        "phone": "213-388-3151"
+        "phone": "213-388-3151",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Bakersfield Heart Hospital",
@@ -708,7 +1023,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93308-6337",
-        "phone": "661-316-6000"
+        "phone": "661-316-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Healthbridge Child Rehab Hosp",
@@ -717,7 +1037,12 @@
         "city": "Orange",
         "state": "CA",
         "zip": "92868",
-        "phone": "714-289-2400"
+        "phone": "714-289-2400",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mills-Peninsula Health Servs",
@@ -726,7 +1051,12 @@
         "city": "Burlingame",
         "state": "CA",
         "zip": "94010-3282",
-        "phone": "650-696-5400"
+        "phone": "650-696-5400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Shriners Hosps for Children",
@@ -735,7 +1065,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95817-2215",
-        "phone": "916-453-2000"
+        "phone": "916-453-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Bakersfield Memorial Hospital",
@@ -744,7 +1079,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93301-2237",
-        "phone": "661-327-1792"
+        "phone": "661-327-1792",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "HEALTHSOUTH Bakersfield Hosp",
@@ -753,7 +1093,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93309-0689",
-        "phone": "661-323-5500"
+        "phone": "661-323-5500",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "MIRACLE MILE MEDICAL CENTER",
@@ -771,7 +1116,12 @@
         "city": "Grass Valley",
         "state": "CA",
         "zip": "95945-5723",
-        "phone": "530-274-6000"
+        "phone": "530-274-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Banner Lassen Medical Center",
@@ -780,7 +1130,12 @@
         "city": "Susanville",
         "state": "CA",
         "zip": "96130-4809",
-        "phone": "530-252-2000"
+        "phone": "530-252-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "HEALTHSOUTH Tustin Rehab Hosp",
@@ -789,7 +1144,12 @@
         "city": "Tustin",
         "state": "CA",
         "zip": "92780-2925",
-        "phone": "714-832-9200"
+        "phone": "714-832-9200",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mission Community Hospital",
@@ -798,7 +1158,12 @@
         "city": "Panorama City",
         "state": "CA",
         "zip": "91402",
-        "phone": "818-787-2222"
+        "phone": "818-787-2222",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sierra View District Hospital",
@@ -816,7 +1181,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90026-2696",
-        "phone": "213-250-4200"
+        "phone": "213-250-4200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hemet Valley Medical Center",
@@ -834,7 +1204,12 @@
         "city": "Mission Viejo",
         "state": "CA",
         "zip": "92691-6426",
-        "phone": "949-364-1400"
+        "phone": "949-364-1400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sierra Vista Hospital",
@@ -843,7 +1218,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95823-2329",
-        "phone": "916-288-0300"
+        "phone": "916-288-0300",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Barstow Community Hospital",
@@ -852,7 +1232,12 @@
         "city": "Barstow",
         "state": "CA",
         "zip": "92311-3086",
-        "phone": "760-256-1761"
+        "phone": "760-256-1761",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Henry Mayo Newhall Mem Hosp",
@@ -861,7 +1246,12 @@
         "city": "Valencia",
         "state": "CA",
         "zip": "91355-2083",
-        "phone": "661-253-8000"
+        "phone": "661-253-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Modoc Medical Center",
@@ -879,7 +1269,12 @@
         "city": "San Luis Obispo",
         "state": "CA",
         "zip": "93405-8800",
-        "phone": "805-546-7600"
+        "phone": "805-546-7600",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Barton Healthcare System",
@@ -888,7 +1283,12 @@
         "city": "South Lake Tahoe",
         "state": "CA",
         "zip": "96150-7008",
-        "phone": "530-541-3420"
+        "phone": "530-541-3420",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Heritage Oaks Hospital",
@@ -897,7 +1297,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95841-4164",
-        "phone": "916-489-3336"
+        "phone": "916-489-3336",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Montclair Hospital Medical Ctr",
@@ -906,7 +1311,12 @@
         "city": "Montclair",
         "state": "CA",
         "zip": "91763-2326",
-        "phone": "909-625-5411"
+        "phone": "909-625-5411",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sierra-Kings District Hospital",
@@ -924,7 +1334,12 @@
         "city": "Chula Vista",
         "state": "CA",
         "zip": "91911-2005",
-        "phone": "619-426-6310"
+        "phone": "619-426-6310",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hi-Desert Medical Center",
@@ -942,7 +1357,12 @@
         "city": "Monterey Park",
         "state": "CA",
         "zip": "91754-4780",
-        "phone": "626-570-9000"
+        "phone": "626-570-9000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Simi Valley Hosp & Hlth Care",
@@ -951,7 +1371,12 @@
         "city": "Simi Valley",
         "state": "CA",
         "zip": "93065-1201",
-        "phone": "805-955-6000"
+        "phone": "805-955-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Bear Valley Community Hospital",
@@ -969,7 +1394,12 @@
         "city": "Newport Beach",
         "state": "CA",
         "zip": "92663-4120",
-        "phone": "949-764-4624"
+        "phone": "949-764-4624",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Moreno Valley Community Hosp",
@@ -996,7 +1426,12 @@
         "city": "Bellflower",
         "state": "CA",
         "zip": "90706-6511",
-        "phone": "562-925-8355"
+        "phone": "562-925-8355",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hollywood Community Hospital",
@@ -1005,7 +1440,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90028-9001",
-        "phone": "323-462-2271"
+        "phone": "323-462-2271",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Motion Picture & Tel Hospital",
@@ -1014,7 +1454,12 @@
         "city": "Woodland Hills",
         "state": "CA",
         "zip": "91364-2733",
-        "phone": "818-876-1888"
+        "phone": "818-876-1888",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sonoma Valley Hospital",
@@ -1032,7 +1477,12 @@
         "city": "Montebello",
         "state": "CA",
         "zip": "90640-4308",
-        "phone": "323-726-1222"
+        "phone": "323-726-1222",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Hollywood Presby Medical Ctr",
@@ -1041,7 +1491,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90027-0069",
-        "phone": "323-913-4800"
+        "phone": "323-913-4800",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mountain Community Med Servs",
@@ -1059,7 +1514,12 @@
         "city": "Sonora",
         "state": "CA",
         "zip": "95370-4819",
-        "phone": "209-532-5000"
+        "phone": "209-532-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Biggs-Gridley Mem Hospital",
@@ -1068,7 +1528,12 @@
         "city": "Gridley",
         "state": "CA",
         "zip": "95948-2216",
-        "phone": "530-846-5671"
+        "phone": "530-846-5671",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Huntington Beach Hospital",
@@ -1077,7 +1542,12 @@
         "city": "Huntington Beach",
         "state": "CA",
         "zip": "92647-6819",
-        "phone": "714-842-1473"
+        "phone": "714-842-1473",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mountains Community Hospital",
@@ -1095,7 +1565,12 @@
         "city": "Laguna Beach",
         "state": "CA",
         "zip": "92651-6775",
-        "phone": "949-499-1311"
+        "phone": "949-499-1311",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Brotman Medical Center",
@@ -1104,7 +1579,12 @@
         "city": "Culver City",
         "state": "CA",
         "zip": "90232-6806",
-        "phone": "310-836-7000"
+        "phone": "310-836-7000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Huntington Memorial Hospital",
@@ -1113,7 +1593,12 @@
         "city": "Pasadena",
         "state": "CA",
         "zip": "91105-3097",
-        "phone": "626-397-5000"
+        "phone": "626-397-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Napa State Hospital",
@@ -1140,7 +1625,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90015-3010",
-        "phone": "213-748-2411"
+        "phone": "213-748-2411",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Impact Drug Treatment Center",
@@ -1149,7 +1639,12 @@
         "city": "Pasadena",
         "state": "CA",
         "zip": "91103-1642",
-        "phone": "323-681-2575"
+        "phone": "323-681-2575",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Natividad Medical Center",
@@ -1167,7 +1662,12 @@
         "city": "San Bernardino",
         "state": "CA",
         "zip": "92404-4836",
-        "phone": "909-883-8711"
+        "phone": "909-883-8711",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "California Medical Facility",
@@ -1185,7 +1685,12 @@
         "city": "Wildomar",
         "state": "CA",
         "zip": "92595-9700",
-        "phone": "951-677-1111"
+        "phone": "951-677-1111",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Naval Hospital",
@@ -1203,7 +1708,12 @@
         "city": "Red Bluff",
         "state": "CA",
         "zip": "96080-4397",
-        "phone": "530-529-8000"
+        "phone": "530-529-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "California Mens Colony Hosp",
@@ -1239,7 +1749,12 @@
         "city": "Lynwood",
         "state": "CA",
         "zip": "90262-2636",
-        "phone": "310-900-8900"
+        "phone": "310-900-8900",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "California Pacific Med Center",
@@ -1248,7 +1763,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94115-1925",
-        "phone": "415-563-4321"
+        "phone": "415-563-4321",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Jerry L Pettis Mem Vet Med Ctr",
@@ -1275,7 +1795,12 @@
         "city": "Saint Helena",
         "state": "CA",
         "zip": "94574",
-        "phone": "707-963-3611"
+        "phone": "707-963-3611",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Canyon Ridge Hospital",
@@ -1284,7 +1809,12 @@
         "city": "Chino",
         "state": "CA",
         "zip": "91710-5250",
-        "phone": "909-590-3700"
+        "phone": "909-590-3700",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "John C Fremont Healthcare",
@@ -1311,7 +1841,12 @@
         "city": "Vallejo",
         "state": "CA",
         "zip": "94590-3201",
-        "phone": "707-648-2200"
+        "phone": "707-648-2200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Casa Colina Hosp for Rehab Med",
@@ -1320,7 +1855,12 @@
         "city": "Pomona",
         "state": "CA",
         "zip": "91767-1933",
-        "phone": "909-596-7733"
+        "phone": "909-596-7733",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "John F Kennedy Memorial Hosp",
@@ -1329,7 +1869,12 @@
         "city": "Indio",
         "state": "CA",
         "zip": "92201",
-        "phone": "760-347-6191"
+        "phone": "760-347-6191",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Newport Bay Hospital",
@@ -1338,7 +1883,12 @@
         "city": "Newport Beach",
         "state": "CA",
         "zip": "92663-5924",
-        "phone": "949-650-9750"
+        "phone": "949-650-9750",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St John's Pleasant Valley Hosp",
@@ -1347,7 +1897,12 @@
         "city": "Camarillo",
         "state": "CA",
         "zip": "93010-1414",
-        "phone": "805-389-5800"
+        "phone": "805-389-5800",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Catalina Island Medical Center",
@@ -1365,7 +1920,12 @@
         "city": "Concord",
         "state": "CA",
         "zip": "94520",
-        "phone": "925-674-4100"
+        "phone": "925-674-4100",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "NorthBay Medical Center",
@@ -1374,7 +1934,12 @@
         "city": "Fairfield",
         "state": "CA",
         "zip": "94533-3587",
-        "phone": "707-429-3600"
+        "phone": "707-429-3600",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St John's Regional Med Center",
@@ -1383,7 +1948,12 @@
         "city": "Oxnard",
         "state": "CA",
         "zip": "93030-3723",
-        "phone": "805-988-2500"
+        "phone": "805-988-2500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Cedars-Sinai Medical Center",
@@ -1392,7 +1962,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90048-1865",
-        "phone": "310-423-5000"
+        "phone": "310-423-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "John Muir Medical Center",
@@ -1401,7 +1976,12 @@
         "city": "Walnut Creek",
         "state": "CA",
         "zip": "94598-3194",
-        "phone": "925-939-3000"
+        "phone": "925-939-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "NorthBay VacaValley Hospital",
@@ -1410,7 +1990,12 @@
         "city": "Vacaville",
         "state": "CA",
         "zip": "95687-4100",
-        "phone": "707-446-4000"
+        "phone": "707-446-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Joseph Hospital",
@@ -1419,7 +2004,12 @@
         "city": "Orange",
         "state": "CA",
         "zip": "92668-3891",
-        "phone": "714-633-9111"
+        "phone": "714-633-9111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Centinela Freeman Med Center",
@@ -1428,7 +2018,12 @@
         "city": "Marina Del Rey",
         "state": "CA",
         "zip": "90292-6360",
-        "phone": "310-823-8911"
+        "phone": "310-823-8911",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "John Muir Medical Center",
@@ -1437,7 +2032,12 @@
         "city": "Concord",
         "state": "CA",
         "zip": "94520",
-        "phone": "925-682-8200"
+        "phone": "925-682-8200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Northern Calif Rehab Hospital",
@@ -1446,7 +2046,12 @@
         "city": "Redding",
         "state": "CA",
         "zip": "96001",
-        "phone": "530-246-9000"
+        "phone": "530-246-9000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Joseph Hospital",
@@ -1455,7 +2060,12 @@
         "city": "Eureka",
         "state": "CA",
         "zip": "95501-4799",
-        "phone": "707-445-8121"
+        "phone": "707-445-8121",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Centinela Freeman Med Center",
@@ -1464,7 +2074,12 @@
         "city": "Inglewood",
         "state": "CA",
         "zip": "90301-4514",
-        "phone": "310-674-7050"
+        "phone": "310-674-7050",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1473,7 +2088,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95823-4671",
-        "phone": "916-688-2430"
+        "phone": "916-688-2430",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Northern Inyo Hospital",
@@ -1491,7 +2111,12 @@
         "city": "Stockton",
         "state": "CA",
         "zip": "95204-5502",
-        "phone": "209-461-2000"
+        "phone": "209-461-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Centinela Freeman Med Center - Hardy",
@@ -1509,7 +2134,12 @@
         "city": "Panorama City",
         "state": "CA",
         "zip": "91402-5497",
-        "phone": "818-375-2000"
+        "phone": "818-375-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Northridge Hosp Medical Center",
@@ -1518,7 +2148,12 @@
         "city": "Northridge",
         "state": "CA",
         "zip": "91328-4167",
-        "phone": "818-885-8500"
+        "phone": "818-885-8500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Joseph's Medical Center",
@@ -1527,7 +2162,12 @@
         "city": "Stockton",
         "state": "CA",
         "zip": "95204-6019",
-        "phone": "209-943-2000"
+        "phone": "209-943-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Central Valley General Hosp",
@@ -1536,7 +2176,12 @@
         "city": "Hanford",
         "state": "CA",
         "zip": "93230-3722",
-        "phone": "559-583-2100"
+        "phone": "559-583-2100",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1545,7 +2190,12 @@
         "city": "Woodland Hills",
         "state": "CA",
         "zip": "91365-6701",
-        "phone": "818-719-3800"
+        "phone": "818-719-3800",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Novato Community Hospital",
@@ -1554,7 +2204,12 @@
         "city": "Novato",
         "state": "CA",
         "zip": "94945-5009",
-        "phone": "415-209-1300"
+        "phone": "415-209-1300",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Jude Medical Center",
@@ -1563,7 +2218,12 @@
         "city": "Fullerton",
         "state": "CA",
         "zip": "92835-3809",
-        "phone": "714-992-3000"
+        "phone": "714-992-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "CENTURY CITY DOCTORS HOSPITAL",
@@ -1581,7 +2241,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90034-1702",
-        "phone": "323-857-2201"
+        "phone": "323-857-2201",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "O'Connor Hospital",
@@ -1590,7 +2255,12 @@
         "city": "San Jose",
         "state": "CA",
         "zip": "95128-1471",
-        "phone": "408-947-2500"
+        "phone": "408-947-2500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Louise Regional Hospital",
@@ -1599,7 +2269,12 @@
         "city": "Gilroy",
         "state": "CA",
         "zip": "95020-3528",
-        "phone": "408-848-2000"
+        "phone": "408-848-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Chapman Medical Center",
@@ -1608,7 +2283,12 @@
         "city": "Orange",
         "state": "CA",
         "zip": "92869-3206",
-        "phone": "714-633-0011"
+        "phone": "714-633-0011",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1617,7 +2297,12 @@
         "city": "Oakland",
         "state": "CA",
         "zip": "94611-5693",
-        "phone": "510-752-1000"
+        "phone": "510-752-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Oak Valley Hospital District",
@@ -1626,7 +2311,12 @@
         "city": "Oakdale",
         "state": "CA",
         "zip": "95361-3519",
-        "phone": "209-847-3011"
+        "phone": "209-847-3011",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Luke's Hospital",
@@ -1635,7 +2325,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94110-4490",
-        "phone": "415-647-8600"
+        "phone": "415-647-8600",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Children's Hosp & Research Ctr",
@@ -1644,7 +2339,12 @@
         "city": "Oakland",
         "state": "CA",
         "zip": "94609-1809",
-        "phone": "510-428-3000"
+        "phone": "510-428-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1653,7 +2353,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94115-3358",
-        "phone": "415-833-2000"
+        "phone": "415-833-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "OJAI VALLEY COMMUNITY HOSPITAL",
@@ -1671,7 +2376,12 @@
         "city": "Apple Valley",
         "state": "CA",
         "zip": "92307-2255",
-        "phone": "760-242-2311"
+        "phone": "760-242-2311",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Children's Hosp of Orange Cnty",
@@ -1680,7 +2390,12 @@
         "city": "Orange",
         "state": "CA",
         "zip": "92868-3874",
-        "phone": "714-997-3000"
+        "phone": "714-997-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1689,7 +2404,12 @@
         "city": "Hayward",
         "state": "CA",
         "zip": "94545-4235",
-        "phone": "510-784-4000"
+        "phone": "510-784-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Olympia Medical Center",
@@ -1698,7 +2418,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90036",
-        "phone": "310-657-5900"
+        "phone": "310-657-5900",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Mary Medical Center",
@@ -1707,7 +2432,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90813",
-        "phone": "562-491-9000"
+        "phone": "562-491-9000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Children's Hospital at Mission",
@@ -1716,7 +2446,12 @@
         "city": "Mission Viejo",
         "state": "CA",
         "zip": "92691-6426",
-        "phone": "949-364-1400"
+        "phone": "949-364-1400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1725,7 +2460,12 @@
         "city": "South San Francisco",
         "state": "CA",
         "zip": "94080-3299",
-        "phone": "650-742-2000"
+        "phone": "650-742-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Orange Coast Memorial Med Ctr",
@@ -1734,7 +2474,12 @@
         "city": "Fountain Valley",
         "state": "CA",
         "zip": "92708-5153",
-        "phone": "714-378-7000"
+        "phone": "714-378-7000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Mary's Medical Center",
@@ -1743,7 +2488,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94117-1079",
-        "phone": "415-668-1000"
+        "phone": "415-668-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Children's Hospital Central CA",
@@ -1752,7 +2502,12 @@
         "city": "Madera",
         "state": "CA",
         "zip": "93636-8762",
-        "phone": "559-353-3000"
+        "phone": "559-353-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1761,7 +2516,12 @@
         "city": "Walnut Creek",
         "state": "CA",
         "zip": "94596-5300",
-        "phone": "925-295-4000"
+        "phone": "925-295-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Oroville Hospital",
@@ -1770,7 +2530,12 @@
         "city": "Oroville",
         "state": "CA",
         "zip": "95966-6118",
-        "phone": "530-533-8500"
+        "phone": "530-533-8500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Rose Hospital",
@@ -1779,7 +2544,12 @@
         "city": "Hayward",
         "state": "CA",
         "zip": "94545-4383",
-        "phone": "510-264-4000"
+        "phone": "510-264-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Childrens Hospital Los Angeles",
@@ -1788,7 +2558,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90027-6062",
-        "phone": "323-660-2450"
+        "phone": "323-660-2450",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1797,7 +2572,12 @@
         "city": "Redwood City",
         "state": "CA",
         "zip": "94063-2037",
-        "phone": "650-299-2000"
+        "phone": "650-299-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Pacific Alliance Med Center",
@@ -1806,7 +2586,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90012-2315",
-        "phone": "213-624-8411"
+        "phone": "213-624-8411",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "St Vincent Medical Center",
@@ -1815,7 +2600,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90057-7992",
-        "phone": "213-484-7111"
+        "phone": "213-484-7111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Chinese Hospital",
@@ -1824,7 +2614,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94133-4899",
-        "phone": "415-982-2400"
+        "phone": "415-982-2400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1833,7 +2628,12 @@
         "city": "San Rafael",
         "state": "CA",
         "zip": "94903-3308",
-        "phone": "415-444-2000"
+        "phone": "415-444-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Pacific Hospital of Long Beach",
@@ -1842,7 +2642,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90806-2699",
-        "phone": "562-595-1911"
+        "phone": "562-595-1911",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Stanford Hospital and Clinics",
@@ -1851,7 +2656,12 @@
         "city": "Palo Alto",
         "state": "CA",
         "zip": "94304-2299",
-        "phone": "650-723-4000"
+        "phone": "650-723-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Chino Valley Medical Center",
@@ -1860,7 +2670,12 @@
         "city": "Chino",
         "state": "CA",
         "zip": "91710-2672",
-        "phone": "909-464-8600"
+        "phone": "909-464-8600",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1869,7 +2684,12 @@
         "city": "Vallejo",
         "state": "CA",
         "zip": "94589-2441",
-        "phone": "707-651-1000"
+        "phone": "707-651-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Pacifica Hosp of the Valley",
@@ -1878,7 +2698,12 @@
         "city": "Sun Valley",
         "state": "CA",
         "zip": "91352-1421",
-        "phone": "818-767-3310"
+        "phone": "818-767-3310",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Stanislaus Surgical Hospital",
@@ -1887,7 +2712,12 @@
         "city": "Modesto",
         "state": "CA",
         "zip": "95355-3359",
-        "phone": "209-572-2700"
+        "phone": "209-572-2700",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Chowchilla Dist Mem Hospital",
@@ -1905,7 +2735,12 @@
         "city": "Baldwin Park",
         "state": "CA",
         "zip": "91706-5806",
-        "phone": "626-851-1011"
+        "phone": "626-851-1011",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Palm Drive Hospital",
@@ -1914,7 +2749,12 @@
         "city": "Sebastopol",
         "state": "CA",
         "zip": "95472-4281",
-        "phone": "707-823-8511"
+        "phone": "707-823-8511",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Surprise Valley Healthcare",
@@ -1932,7 +2772,12 @@
         "city": "West Covina",
         "state": "CA",
         "zip": "91790-3940",
-        "phone": "626-962-4011"
+        "phone": "626-962-4011",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1941,7 +2786,12 @@
         "city": "Bellflower",
         "state": "CA",
         "zip": "90706-2246",
-        "phone": "562-461-3000"
+        "phone": "562-461-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Palo Alto Center of Palo Alto Medical Foundation",
@@ -1959,7 +2809,12 @@
         "city": "Jackson",
         "state": "CA",
         "zip": "95642-2132",
-        "phone": "209-223-7500"
+        "phone": "209-223-7500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Citrus Valley Medical Center",
@@ -1968,7 +2823,12 @@
         "city": "Covina",
         "state": "CA",
         "zip": "91723-1901",
-        "phone": "626-331-7331"
+        "phone": "626-331-7331",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -1977,7 +2837,12 @@
         "city": "Harbor City",
         "state": "CA",
         "zip": "90710-3599",
-        "phone": "310-325-5111"
+        "phone": "310-325-5111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Palo Verde Hospital",
@@ -1995,7 +2860,12 @@
         "city": "Auburn",
         "state": "CA",
         "zip": "95602-2410",
-        "phone": "530-888-4500"
+        "phone": "530-888-4500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "City of Angels Medical Center",
@@ -2004,7 +2874,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90026",
-        "phone": "213-989-6100"
+        "phone": "213-989-6100",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2013,7 +2888,12 @@
         "city": "Anaheim",
         "state": "CA",
         "zip": "92807-3089",
-        "phone": "714-279-4000"
+        "phone": "714-279-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Palomar Medical Center",
@@ -2031,7 +2911,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95826-2608",
-        "phone": "916-386-3000"
+        "phone": "916-386-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "City of Hope Natl Medical Ctr",
@@ -2040,7 +2925,12 @@
         "city": "Duarte",
         "state": "CA",
         "zip": "91010-3012",
-        "phone": "626-359-8111"
+        "phone": "626-359-8111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2049,7 +2939,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92120-2507",
-        "phone": "619-528-5000"
+        "phone": "619-528-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Paradise Valley Hospital",
@@ -2058,7 +2953,12 @@
         "city": "National City",
         "state": "CA",
         "zip": "91950-2099",
-        "phone": "619-470-4321"
+        "phone": "619-470-4321",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sutter Coast Hospital",
@@ -2067,7 +2967,12 @@
         "city": "Crescent City",
         "state": "CA",
         "zip": "95531-8359",
-        "phone": "707-464-8511"
+        "phone": "707-464-8511",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Clovis Community Medical Ctr",
@@ -2076,7 +2981,12 @@
         "city": "Clovis",
         "state": "CA",
         "zip": "93611-6800",
-        "phone": "559-324-4000"
+        "phone": "559-324-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2085,7 +2995,12 @@
         "city": "Santa Clara",
         "state": "CA",
         "zip": "95051-5329",
-        "phone": "408-236-6400"
+        "phone": "408-236-6400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Parkview Comm Hosp Med Ctr",
@@ -2103,7 +3018,12 @@
         "city": "Davis",
         "state": "CA",
         "zip": "95616-6201",
-        "phone": "530-756-6440"
+        "phone": "530-756-6440",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Coalinga Regional Medical Ctr",
@@ -2121,7 +3041,12 @@
         "city": "San Jose",
         "state": "CA",
         "zip": "95119-1199",
-        "phone": "408-972-7000"
+        "phone": "408-972-7000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Patient's Hospital of Redding",
@@ -2130,7 +3055,12 @@
         "city": "Redding",
         "state": "CA",
         "zip": "96001",
-        "phone": "530-225-8700"
+        "phone": "530-225-8700",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sutter Delta Medical Center",
@@ -2139,7 +3069,12 @@
         "city": "Antioch",
         "state": "CA",
         "zip": "94509-6200",
-        "phone": "925-779-7200"
+        "phone": "925-779-7200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Coast Plaza Doctors Hospital",
@@ -2148,7 +3083,12 @@
         "city": "Norwalk",
         "state": "CA",
         "zip": "90650-2531",
-        "phone": "562-868-3751"
+        "phone": "562-868-3751",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2157,7 +3097,12 @@
         "city": "Riverside",
         "state": "CA",
         "zip": "92505-3000",
-        "phone": "951-353-2000"
+        "phone": "951-353-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Patton State Hospital",
@@ -2184,7 +3129,12 @@
         "city": "Santa Ana",
         "state": "CA",
         "zip": "92704-6201",
-        "phone": "714-754-5454"
+        "phone": "714-754-5454",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2193,7 +3143,12 @@
         "city": "Fontana",
         "state": "CA",
         "zip": "92335-6720",
-        "phone": "909-427-5000"
+        "phone": "909-427-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Petaluma Valley Hospital",
@@ -2202,7 +3157,12 @@
         "city": "Petaluma",
         "state": "CA",
         "zip": "94954-2369",
-        "phone": "707-778-1111"
+        "phone": "707-778-1111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sutter Lakeside Hospital",
@@ -2211,7 +3171,12 @@
         "city": "Lakeport",
         "state": "CA",
         "zip": "95453-6300",
-        "phone": "707-262-5001"
+        "phone": "707-262-5001",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "College Hospital",
@@ -2220,7 +3185,12 @@
         "city": "Cerritos",
         "state": "CA",
         "zip": "90703-1579",
-        "phone": "562-924-9581"
+        "phone": "562-924-9581",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2229,7 +3199,12 @@
         "city": "Santa Rosa",
         "state": "CA",
         "zip": "95403-2192",
-        "phone": "707-571-4000"
+        "phone": "707-571-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Pioneers Mem Healthcare Dist",
@@ -2247,7 +3222,12 @@
         "city": "Santa Cruz",
         "state": "CA",
         "zip": "95065-1816",
-        "phone": "831-477-2200"
+        "phone": "831-477-2200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "College Hospital Costa Mesa",
@@ -2256,7 +3236,12 @@
         "city": "Costa Mesa",
         "state": "CA",
         "zip": "92627-7131",
-        "phone": "949-642-2734"
+        "phone": "949-642-2734",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2265,7 +3250,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93720-2941",
-        "phone": "559-448-4500"
+        "phone": "559-448-4500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Placentia-Linda Hospital",
@@ -2274,7 +3264,12 @@
         "city": "Placentia",
         "state": "CA",
         "zip": "92870-3899",
-        "phone": "714-993-2000"
+        "phone": "714-993-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sutter Medical Center",
@@ -2283,7 +3278,12 @@
         "city": "Santa Rosa",
         "state": "CA",
         "zip": "95404-1707",
-        "phone": "707-576-4000"
+        "phone": "707-576-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Colorado River Medical Center",
@@ -2292,7 +3292,12 @@
         "city": "Needles",
         "state": "CA",
         "zip": "92363-3103",
-        "phone": "760-326-4531"
+        "phone": "760-326-4531",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital",
@@ -2301,7 +3306,12 @@
         "city": "Manteca",
         "state": "CA",
         "zip": "95337-5187",
-        "phone": "209-825-3500"
+        "phone": "209-825-3500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Plumas District Hospital",
@@ -2319,7 +3329,12 @@
         "city": "Sacramento",
         "state": "CA",
         "zip": "95819-3295",
-        "phone": "916-454-3333"
+        "phone": "916-454-3333",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Colusa Regional Medical Center",
@@ -2328,7 +3343,12 @@
         "city": "Colusa",
         "state": "CA",
         "zip": "95932-2954",
-        "phone": "530-458-5821"
+        "phone": "530-458-5821",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital - Morse Ave",
@@ -2355,7 +3375,12 @@
         "city": "Roseville",
         "state": "CA",
         "zip": "95661-3037",
-        "phone": "916-781-1000"
+        "phone": "916-781-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Comm Hosp Monterey Peninsula",
@@ -2364,7 +3389,12 @@
         "city": "Monterey",
         "state": "CA",
         "zip": "93940-5902",
-        "phone": "831-624-5311"
+        "phone": "831-624-5311",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaiser Foundation Hospital - Sunset Blvd",
@@ -2382,7 +3412,12 @@
         "city": "Pomona",
         "state": "CA",
         "zip": "91767-2918",
-        "phone": "909-865-9500"
+        "phone": "909-865-9500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Sutter Solano Medical Center",
@@ -2391,7 +3426,12 @@
         "city": "Vallejo",
         "state": "CA",
         "zip": "94589-2517",
-        "phone": "707-554-4444"
+        "phone": "707-554-4444",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Comm Hosp of Huntington Park",
@@ -2400,7 +3440,12 @@
         "city": "Huntington Park",
         "state": "CA",
         "zip": "90255-2900",
-        "phone": "323-583-1931"
+        "phone": "323-583-1931",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kaweah Delta Health Care Dist",
@@ -2427,7 +3472,12 @@
         "city": "Tracy",
         "state": "CA",
         "zip": "95376-3497",
-        "phone": "209-835-1500"
+        "phone": "209-835-1500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Comm Hosp of San Bernardino",
@@ -2436,7 +3486,12 @@
         "city": "San Bernardino",
         "state": "CA",
         "zip": "92411-1214",
-        "phone": "909-887-6333"
+        "phone": "909-887-6333",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kentfield Rehab & Spec Hosp",
@@ -2445,7 +3500,12 @@
         "city": "San Rafael",
         "state": "CA",
         "zip": "94904-1455",
-        "phone": "415-456-9680"
+        "phone": "415-456-9680",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Presbyterian Intercomm Hosp",
@@ -2454,7 +3514,12 @@
         "city": "Whittier",
         "state": "CA",
         "zip": "90602-1099",
-        "phone": "562-698-0811"
+        "phone": "562-698-0811",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tahoe Forest Hospital District",
@@ -2472,7 +3537,12 @@
         "city": "Los Gatos",
         "state": "CA",
         "zip": "95032-1438",
-        "phone": "408-378-6131"
+        "phone": "408-378-6131",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kern Medical Center",
@@ -2490,7 +3560,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90033-4398",
-        "phone": "323-261-1181"
+        "phone": "323-261-1181",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tarzana Treatment Center",
@@ -2499,7 +3574,12 @@
         "city": "Tarzana",
         "state": "CA",
         "zip": "91356",
-        "phone": "818-996-1051"
+        "phone": "818-996-1051",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Community Behavioral Hlth Ctr",
@@ -2508,7 +3588,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93720-3311",
-        "phone": "559-449-8000"
+        "phone": "559-449-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kern Valley Healthcare Dist",
@@ -2526,7 +3611,12 @@
         "city": "Paramount",
         "state": "CA",
         "zip": "90723-5000",
-        "phone": "562-531-3110"
+        "phone": "562-531-3110",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tehachapi Vly Healthcare Dist",
@@ -2544,7 +3634,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90804-2180",
-        "phone": "562-498-1000"
+        "phone": "562-498-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hosp-San Francisco",
@@ -2553,7 +3648,12 @@
         "city": "San Leandro",
         "state": "CA",
         "zip": "94577-6840",
-        "phone": "510-357-8300"
+        "phone": "510-357-8300",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Promise Hospital of San Diego",
@@ -2562,7 +3662,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92105-2307",
-        "phone": "619-582-3516"
+        "phone": "619-582-3516",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Temple Community Hospital",
@@ -2571,7 +3676,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90004-3672",
-        "phone": "213-382-7252"
+        "phone": "213-382-7252",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Community Hospital of Gardena",
@@ -2580,7 +3690,12 @@
         "city": "Gardena",
         "state": "CA",
         "zip": "90247-4011",
-        "phone": "310-323-5330"
+        "phone": "310-323-5330",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital - La Mirada",
@@ -2589,7 +3704,12 @@
         "city": "La Mirada",
         "state": "CA",
         "zip": "90638",
-        "phone": "562-944-1900"
+        "phone": "562-944-1900",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Providence Holy Cross Med Ctr",
@@ -2598,7 +3718,12 @@
         "city": "San Fernando",
         "state": "CA",
         "zip": "91346-9600",
-        "phone": "818-365-8051"
+        "phone": "818-365-8051",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Thousand Oaks Surgical Hosp",
@@ -2607,7 +3732,12 @@
         "city": "Thousand Oaks",
         "state": "CA",
         "zip": "91361",
-        "phone": "805-777-7750"
+        "phone": "805-777-7750",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Community Memorial Health Syst",
@@ -2616,7 +3746,12 @@
         "city": "Ventura",
         "state": "CA",
         "zip": "93003-2854",
-        "phone": "805-652-5011"
+        "phone": "805-652-5011",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital - Modesto",
@@ -2625,7 +3760,12 @@
         "city": "Modesto",
         "state": "CA",
         "zip": "95354",
-        "phone": "209-523-9006"
+        "phone": "209-523-9006",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Providence Saint Joseph Ctr",
@@ -2634,7 +3774,12 @@
         "city": "Burbank",
         "state": "CA",
         "zip": "91505-4866",
-        "phone": "818-843-5111"
+        "phone": "818-843-5111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Torrance Memorial Med Center",
@@ -2643,7 +3788,12 @@
         "city": "Torrance",
         "state": "CA",
         "zip": "90505-5002",
-        "phone": "310-325-9110"
+        "phone": "310-325-9110",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Community Regional Medical Ctr",
@@ -2652,7 +3802,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93721-1324",
-        "phone": "559-459-6000"
+        "phone": "559-459-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital San Gabriel",
@@ -2661,7 +3816,12 @@
         "city": "West Covina",
         "state": "CA",
         "zip": "91791-1069",
-        "phone": "626-339-5451"
+        "phone": "626-339-5451",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Queen of the Valley Med Ctr",
@@ -2670,7 +3830,12 @@
         "city": "Napa",
         "state": "CA",
         "zip": "94558-2906",
-        "phone": "707-252-4411"
+        "phone": "707-252-4411",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tri-City Medical Center",
@@ -2688,7 +3853,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92103",
-        "phone": "619-260-8300"
+        "phone": "619-260-8300",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital Santa Ana",
@@ -2697,7 +3867,12 @@
         "city": "Santa Ana",
         "state": "CA",
         "zip": "92706-2334",
-        "phone": "714-564-7800"
+        "phone": "714-564-7800",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Rady Children Hosp & Hlth Ctr",
@@ -2706,7 +3881,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92123-4282",
-        "phone": "858-576-1700"
+        "phone": "858-576-1700",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tri-City Regional Medical Ctr",
@@ -2715,7 +3895,12 @@
         "city": "Hawaiian Gardens",
         "state": "CA",
         "zip": "90716",
-        "phone": "562-860-0401"
+        "phone": "562-860-0401",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Contra Costa Reg Medical Ctr",
@@ -2733,7 +3918,12 @@
         "city": "Brea",
         "state": "CA",
         "zip": "92821-2606",
-        "phone": "714-529-6842"
+        "phone": "714-529-6842",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Rancho Los Amigos Center",
@@ -2769,7 +3959,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90056-1067",
-        "phone": "310-642-0325"
+        "phone": "310-642-0325",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Rancho Springs Medical Center",
@@ -2778,7 +3973,12 @@
         "city": "Murrieta",
         "state": "CA",
         "zip": "92562-5965",
-        "phone": "951-696-6000"
+        "phone": "951-696-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tuolumne General Hospital (Closed)",
@@ -2796,7 +3996,12 @@
         "city": "Corona",
         "state": "CA",
         "zip": "92882-3420",
-        "phone": "951-737-4343"
+        "phone": "951-737-4343",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital-Ontario",
@@ -2805,7 +4010,12 @@
         "city": "Ontario",
         "state": "CA",
         "zip": "91764-3399",
-        "phone": "909-391-0333"
+        "phone": "909-391-0333",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Redbud Community Hospital",
@@ -2814,7 +4024,12 @@
         "city": "Clearlake",
         "state": "CA",
         "zip": "95422-9339",
-        "phone": "707-994-6486"
+        "phone": "707-994-6486",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Tustin Hospital & Medical Ctr",
@@ -2823,7 +4038,12 @@
         "city": "Tustin",
         "state": "CA",
         "zip": "92680-6064",
-        "phone": "714-838-9600"
+        "phone": "714-838-9600",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Dameron Hospital",
@@ -2832,7 +4052,12 @@
         "city": "Stockton",
         "state": "CA",
         "zip": "95203-2484",
-        "phone": "209-944-5550"
+        "phone": "209-944-5550",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kindred Hospital-Sacramento",
@@ -2841,7 +4066,12 @@
         "city": "Folsom",
         "state": "CA",
         "zip": "95630-2961",
-        "phone": "916-351-9151"
+        "phone": "916-351-9151",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Redgate Memorial Hospital",
@@ -2850,7 +4080,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90813-1674",
-        "phone": "562-599-8444"
+        "phone": "562-599-8444",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Twin Cities Community Hospital",
@@ -2859,7 +4094,12 @@
         "city": "Templeton",
         "state": "CA",
         "zip": "93465-9704",
-        "phone": "805-434-3500"
+        "phone": "805-434-3500",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "David Grant Medical Center",
@@ -2877,7 +4117,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92104-1096",
-        "phone": "619-543-4500"
+        "phone": "619-543-4500",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Redlands Community Hospital",
@@ -2886,7 +4131,12 @@
         "city": "Redlands",
         "state": "CA",
         "zip": "92373-4897",
-        "phone": "909-335-5500"
+        "phone": "909-335-5500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "UCLA Medical Center",
@@ -2913,7 +4163,12 @@
         "city": "Westminster",
         "state": "CA",
         "zip": "92683-3910",
-        "phone": "714-893-4541"
+        "phone": "714-893-4541",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Redwood Memorial Hospital",
@@ -2922,7 +4177,12 @@
         "city": "Fortuna",
         "state": "CA",
         "zip": "95540-3198",
-        "phone": "707-725-3361"
+        "phone": "707-725-3361",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "UCLA Neuropsychiatric Hosp",
@@ -2940,7 +4200,12 @@
         "city": "Torrance",
         "state": "CA",
         "zip": "90505-5000",
-        "phone": "310-530-1151"
+        "phone": "310-530-1151",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Kingsburg Medical Center",
@@ -2958,7 +4223,12 @@
         "city": "San Jose",
         "state": "CA",
         "zip": "95116-1691",
-        "phone": "408-259-5000"
+        "phone": "408-259-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "UCSF Medical Center",
@@ -2967,7 +4237,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94143-0296",
-        "phone": "415-476-1000"
+        "phone": "415-476-1000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Delano Regional Medical Center",
@@ -2976,7 +4251,12 @@
         "city": "Delano",
         "state": "CA",
         "zip": "93215-3690",
-        "phone": "661-725-4800"
+        "phone": "661-725-4800",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "La County Central Jail Hosp",
@@ -2994,7 +4274,12 @@
         "city": "Santa Barbara",
         "state": "CA",
         "zip": "93105-3819",
-        "phone": "805-687-7444"
+        "phone": "805-687-7444",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Ukiah Valley Medical Center",
@@ -3003,7 +4288,12 @@
         "city": "Ukiah",
         "state": "CA",
         "zip": "95482-4531",
-        "phone": "707-462-3111"
+        "phone": "707-462-3111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Desert Regional Medical Center",
@@ -3012,7 +4302,12 @@
         "city": "Palm Springs",
         "state": "CA",
         "zip": "92262-4872",
-        "phone": "760-323-6511"
+        "phone": "760-323-6511",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "La Palma Intercommunity Hosp",
@@ -3021,7 +4316,12 @@
         "city": "La Palma",
         "state": "CA",
         "zip": "90623-1722",
-        "phone": "714-670-7400"
+        "phone": "714-670-7400",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Rideout Memorial Hospital",
@@ -3030,7 +4330,12 @@
         "city": "Marysville",
         "state": "CA",
         "zip": "95901-5600",
-        "phone": "530-749-4300"
+        "phone": "530-749-4300",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Univ of CA",
@@ -3048,7 +4353,12 @@
         "city": "Wildomar",
         "state": "CA",
         "zip": "92395-5794",
-        "phone": "760-241-8000"
+        "phone": "760-241-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "LAC-Harbor-UCLA Med Center",
@@ -3066,7 +4376,12 @@
         "city": "Ridgecrest",
         "state": "CA",
         "zip": "93555-3198",
-        "phone": "760-446-3551"
+        "phone": "760-446-3551",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Univ of CA  Davis Med Ctr",
@@ -3084,7 +4399,12 @@
         "city": "West Covina",
         "state": "CA",
         "zip": "91790-2614",
-        "phone": "626-338-8481"
+        "phone": "626-338-8481",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "LAC-Martin Luther King Hosp",
@@ -3102,7 +4422,12 @@
         "city": "Riverside",
         "state": "CA",
         "zip": "92501-4199",
-        "phone": "951-788-3000"
+        "phone": "951-788-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Univ of CA Irvine Med Ctr",
@@ -3120,7 +4445,12 @@
         "city": "Manteca",
         "state": "CA",
         "zip": "95336-4900",
-        "phone": "209-823-3111"
+        "phone": "209-823-3111",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "LAC-Olive View-UCLA Med Ctr",
@@ -3156,7 +4486,12 @@
         "city": "San Pablo",
         "state": "CA",
         "zip": "94806-3808",
-        "phone": "510-970-5000"
+        "phone": "510-970-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "LAC/USC Medical Center",
@@ -3174,7 +4509,12 @@
         "city": "San Bernardino",
         "state": "CA",
         "zip": "92411",
-        "phone": "909-473-1200"
+        "phone": "909-473-1200",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "University Medical Center",
@@ -3210,7 +4550,12 @@
         "city": "San Clemente",
         "state": "CA",
         "zip": "92673-2827",
-        "phone": "949-496-1122"
+        "phone": "949-496-1122",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "USC University Hospital",
@@ -3219,7 +4564,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90033-4587",
-        "phone": "323-442-8500"
+        "phone": "323-442-8500",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Dominican Hospital",
@@ -3228,7 +4578,12 @@
         "city": "Santa Cruz",
         "state": "CA",
         "zip": "95065-1794",
-        "phone": "831-462-7700"
+        "phone": "831-462-7700",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Lakewood Regional Medical Ctr",
@@ -3237,7 +4592,12 @@
         "city": "Lakewood",
         "state": "CA",
         "zip": "90712-1498",
-        "phone": "562-531-2550"
+        "phone": "562-531-2550",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Saddleback Memorial Med Center",
@@ -3246,7 +4606,12 @@
         "city": "Laguna Hills",
         "state": "CA",
         "zip": "92653-3689",
-        "phone": "949-837-4500"
+        "phone": "949-837-4500",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "USC-Norris Cancer Ctr & Hosp",
@@ -3255,7 +4620,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90033-3804",
-        "phone": "323-865-3000"
+        "phone": "323-865-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Downey Regional Medical Center",
@@ -3264,7 +4634,12 @@
         "city": "Downey",
         "state": "CA",
         "zip": "90241-4917",
-        "phone": "562-904-5000"
+        "phone": "562-904-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Lancaster Community Hospital",
@@ -3273,7 +4648,12 @@
         "city": "Lancaster",
         "state": "CA",
         "zip": "93534-4895",
-        "phone": "661-948-4781"
+        "phone": "661-948-4781",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Saint Agnes Medical Center",
@@ -3282,7 +4662,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93720-3309",
-        "phone": "559-450-3000"
+        "phone": "559-450-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "VA Greater LA Hlthcare System",
@@ -3300,7 +4685,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90023-2526",
-        "phone": "323-268-5514"
+        "phone": "323-268-5514",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Lanterman Developmental Center",
@@ -3318,7 +4708,12 @@
         "city": "San Francisco",
         "state": "CA",
         "zip": "94109-4899",
-        "phone": "415-353-6000"
+        "phone": "415-353-6000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "VA Long Beach Healthcare Syst",
@@ -3336,7 +4731,12 @@
         "city": "Glendora",
         "state": "CA",
         "zip": "91740-6207",
-        "phone": "626-852-5000"
+        "phone": "626-852-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "LAUREL GROVE HOSPITAL (Closed)",
@@ -3354,7 +4754,12 @@
         "city": "Santa Monica",
         "state": "CA",
         "zip": "90404-2091",
-        "phone": "310-829-5511"
+        "phone": "310-829-5511",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "VA Palo Alto Health Care Syst",
@@ -3381,7 +4786,12 @@
         "city": "San Pedro",
         "state": "CA",
         "zip": "90732-3505",
-        "phone": "310-832-3311"
+        "phone": "310-832-3311",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Salinas Vly Mem Hthcare Syst",
@@ -3417,7 +4827,12 @@
         "city": "Torrance",
         "state": "CA",
         "zip": "90503-4698",
-        "phone": "310-540-7676"
+        "phone": "310-540-7676",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Antonio Community Hospital",
@@ -3426,7 +4841,12 @@
         "city": "Upland",
         "state": "CA",
         "zip": "91786-4920",
-        "phone": "909-985-2811"
+        "phone": "909-985-2811",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Valley Presbyterian Hospital",
@@ -3435,7 +4855,12 @@
         "city": "Van Nuys",
         "state": "CA",
         "zip": "91405-4598",
-        "phone": "818-782-6600"
+        "phone": "818-782-6600",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "EDEN MEDICAL CENTER",
@@ -3453,7 +4878,12 @@
         "city": "Lodi",
         "state": "CA",
         "zip": "95240-5179",
-        "phone": "209-334-3411"
+        "phone": "209-334-3411",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Diego Cnty Psych Hospital",
@@ -3471,7 +4901,12 @@
         "city": "Pleasanton",
         "state": "CA",
         "zip": "94588-4000",
-        "phone": "925-847-3000"
+        "phone": "925-847-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Eisenhower Medical Ctr",
@@ -3480,7 +4915,12 @@
         "city": "Rancho Mirage",
         "state": "CA",
         "zip": "92270-3221",
-        "phone": "760-340-3911"
+        "phone": "760-340-3911",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Loma Linda Univ Behavioral Ctr",
@@ -3489,7 +4929,12 @@
         "city": "Redlands",
         "state": "CA",
         "zip": "92373-5304",
-        "phone": "909-558-9200"
+        "phone": "909-558-9200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Diego Hospice",
@@ -3498,7 +4943,12 @@
         "city": "San Diego",
         "state": "CA",
         "zip": "92103-7499",
-        "phone": "619-688-1600"
+        "phone": "619-688-1600",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Ventura County Medical Center",
@@ -3525,7 +4975,12 @@
         "city": "Loma Linda",
         "state": "CA",
         "zip": "92354-2870",
-        "phone": "909-558-4000"
+        "phone": "909-558-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Dimas Community Hospital",
@@ -3534,7 +4989,12 @@
         "city": "San Dimas",
         "state": "CA",
         "zip": "91773-3219",
-        "phone": "909-599-6811"
+        "phone": "909-599-6811",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Verdugo Hills Hospital",
@@ -3543,7 +5003,12 @@
         "city": "Glendale",
         "state": "CA",
         "zip": "91208-1409",
-        "phone": "818-790-7100"
+        "phone": "818-790-7100",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "El Centro Regional Medical Ctr",
@@ -3588,7 +5053,12 @@
         "city": "Turlock",
         "state": "CA",
         "zip": "95382-2016",
-        "phone": "209-667-4200"
+        "phone": "209-667-4200",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Long Beach Memorial Med Ctr",
@@ -3597,7 +5067,12 @@
         "city": "Long Beach",
         "state": "CA",
         "zip": "90806-1737",
-        "phone": "562-933-2000"
+        "phone": "562-933-2000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Gabriel Valley Med Ctr",
@@ -3606,7 +5081,12 @@
         "city": "San Gabriel",
         "state": "CA",
         "zip": "91776-1216",
-        "phone": "626-289-5454"
+        "phone": "626-289-5454",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Veterans Affairs Med Center",
@@ -3624,7 +5104,12 @@
         "city": "Tarzana",
         "state": "CA",
         "zip": "91356-3521",
-        "phone": "818-881-0800"
+        "phone": "818-881-0800",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Los Alamitos Medical Center",
@@ -3633,7 +5118,12 @@
         "city": "Los Alamitos",
         "state": "CA",
         "zip": "90720-3164",
-        "phone": "562-598-1311"
+        "phone": "562-598-1311",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Gorgonio Memorial Hospital",
@@ -3660,7 +5150,12 @@
         "city": "Encino",
         "state": "CA",
         "zip": "91436-2201",
-        "phone": "818-995-5000"
+        "phone": "818-995-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Los Angeles Community Hospital",
@@ -3669,7 +5164,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90023-3330",
-        "phone": "323-267-0477"
+        "phone": "323-267-0477",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Joaquin Community Hospital",
@@ -3678,7 +5178,12 @@
         "city": "Bakersfield",
         "state": "CA",
         "zip": "93301-2006",
-        "phone": "661-395-3000"
+        "phone": "661-395-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Victor Valley Community Hosp",
@@ -3687,7 +5192,12 @@
         "city": "Wildomar",
         "state": "CA",
         "zip": "92395",
-        "phone": "760-245-8691"
+        "phone": "760-245-8691",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Enloe Medical Center",
@@ -3696,7 +5206,12 @@
         "city": "Chico",
         "state": "CA",
         "zip": "95926-3310",
-        "phone": "530-332-7300"
+        "phone": "530-332-7300",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Los Angeles Metro Med Center",
@@ -3705,7 +5220,12 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90018-1302",
-        "phone": "323-730-7300"
+        "phone": "323-730-7300",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Joaquin General Hospital",
@@ -3723,7 +5243,12 @@
         "city": "Baldwin Park",
         "state": "CA",
         "zip": "91706",
-        "phone": "626-388-2700"
+        "phone": "626-388-2700",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Fairchild Medical Center",
@@ -3732,7 +5257,12 @@
         "city": "Yreka",
         "state": "CA",
         "zip": "96097-3450",
-        "phone": "530-842-4121"
+        "phone": "530-842-4121",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Los Robles Hosp & Med Center",
@@ -3741,7 +5271,12 @@
         "city": "Thousand Oaks",
         "state": "CA",
         "zip": "91360-1847",
-        "phone": "805-497-2727"
+        "phone": "805-497-2727",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Joaquin Vly Rehab Hosp",
@@ -3750,7 +5285,12 @@
         "city": "Fresno",
         "state": "CA",
         "zip": "93720-3329",
-        "phone": "559-436-3600"
+        "phone": "559-436-3600",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Washington Health Care Dist",
@@ -3777,7 +5317,12 @@
         "city": "Palo Alto",
         "state": "CA",
         "zip": "94304-1601",
-        "phone": "650-497-8000"
+        "phone": "650-497-8000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "SAN LEANDRO HOSPITAL",
@@ -3795,7 +5340,12 @@
         "city": "Watsonville",
         "state": "CA",
         "zip": "95076-2468",
-        "phone": "831-724-4741"
+        "phone": "831-724-4741",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Fallbrook Hospital",
@@ -3813,7 +5363,12 @@
         "city": "Arcata",
         "state": "CA",
         "zip": "95521-4788",
-        "phone": "707-822-3621"
+        "phone": "707-822-3621",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Mateo Medical Center",
@@ -3840,7 +5395,12 @@
         "city": "Paradise",
         "state": "CA",
         "zip": "95969-5509",
-        "phone": "530-877-9361"
+        "phone": "530-877-9361",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Madera Community Hospital",
@@ -3849,7 +5409,12 @@
         "city": "Madera",
         "state": "CA",
         "zip": "93637-5696",
-        "phone": "559-675-5501"
+        "phone": "559-675-5501",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "San Ramon Regional Med Center",
@@ -3858,7 +5423,12 @@
         "city": "San Ramon",
         "state": "CA",
         "zip": "94583-5400",
-        "phone": "925-275-9200"
+        "phone": "925-275-9200",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "West Anaheim Medical Center",
@@ -3867,7 +5437,12 @@
         "city": "Anaheim",
         "state": "CA",
         "zip": "92804-3184",
-        "phone": "714-827-3000"
+        "phone": "714-827-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Foothill Presbyterian Hospital",
@@ -3876,7 +5451,12 @@
         "city": "Glendora",
         "state": "CA",
         "zip": "91741-4218",
-        "phone": "626-963-8411"
+        "phone": "626-963-8411",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mammoth Hospital",
@@ -3885,7 +5465,12 @@
         "city": "Mammoth Lakes",
         "state": "CA",
         "zip": "93546-0660",
-        "phone": "760-934-3311"
+        "phone": "760-934-3311",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Santa Barbara Cottage Hospital",
@@ -3894,7 +5479,12 @@
         "city": "Santa Barbara",
         "state": "CA",
         "zip": "93105-4390",
-        "phone": "805-682-7111"
+        "phone": "805-682-7111",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "West Hills Hosp & Med Center",
@@ -3903,7 +5493,12 @@
         "city": "Canoga Park",
         "state": "CA",
         "zip": "91307-1902",
-        "phone": "818-676-4000"
+        "phone": "818-676-4000",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Fountain Valley Reg Hosp",
@@ -3921,7 +5516,12 @@
         "city": "Santa Maria",
         "state": "CA",
         "zip": "93454-5906",
-        "phone": "805-739-3000"
+        "phone": "805-739-3000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Santa Clara Valley Med Center",
@@ -3939,7 +5539,12 @@
         "city": "Santa Ana",
         "state": "CA",
         "zip": "92705-3577",
-        "phone": "714-835-3555"
+        "phone": "714-835-3555",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Frank R Howard Mem Hospital",
@@ -3948,7 +5553,12 @@
         "city": "Willits",
         "state": "CA",
         "zip": "95490-4225",
-        "phone": "707-459-6801"
+        "phone": "707-459-6801",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Marin General Hospital",
@@ -3975,7 +5585,12 @@
         "city": "Anaheim",
         "state": "CA",
         "zip": "92805-5806",
-        "phone": "714-533-6220"
+        "phone": "714-533-6220",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Fremont Hospital",
@@ -3984,7 +5599,12 @@
         "city": "Fremont",
         "state": "CA",
         "zip": "94538-2005",
-        "phone": "510-796-1100"
+        "phone": "510-796-1100",
+        "additinoal_information": {
+            "sub_type": [
+                "FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Mark Twain St Joseph's Hosp",
@@ -3993,7 +5613,12 @@
         "city": "San Andreas",
         "state": "CA",
         "zip": "95249-9707",
-        "phone": "209-754-3521"
+        "phone": "209-754-3521",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "Santa Rosa Memorial Hospital",
@@ -4002,7 +5627,12 @@
         "city": "Santa Rosa",
         "state": "CA",
         "zip": "95405-4897",
-        "phone": "707-546-3210"
+        "phone": "707-546-3210",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     },
     {
         "name": "White Memorial Medical Center",
@@ -4011,6 +5641,11 @@
         "city": "Los Angeles",
         "state": "CA",
         "zip": "90033-2481",
-        "phone": "323-268-5000"
+        "phone": "323-268-5000",
+        "additinoal_information": {
+            "sub_type": [
+                "NON-FOR-PROFIT HOSPITAL"
+            ]
+        }
     }
 ]
