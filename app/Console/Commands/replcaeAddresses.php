@@ -47,7 +47,7 @@ class replcaeAddresses extends Command
 
             $street_name = str_replace("DRIVE","DR.,",strtoupper($street_name));
             $street_name = str_replace("STREET","ST.,",strtoupper($street_name));
-            $street_name = str_replace("BOULVARD","BLVD.,",strtoupper($street_name));
+            $street_name = str_replace("BOULEVARD","BLVD.,",strtoupper($street_name));
             $street_name = str_replace("CIRCLE","CIR.,",strtoupper($street_name));
             $street_name = str_replace("COURT","CT.,",strtoupper($street_name));
             $street_name = str_replace("EXPRESSWAY","EXPY.,",strtoupper($street_name));
