@@ -825,6 +825,7 @@ class BanksController extends Controller
     public function med_serv()
     {
         #Delete all existing Med services and insert from the other resource
+        dd("med services");
         BankLogo::where('type', 5)->whereNull('path')->delete();
 
         $file = file_get_contents(storage_path("furnishers/med.json"));
