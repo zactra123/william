@@ -39,7 +39,6 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
-
                   @for ($i=0; $i < 10; $i++)
                     <div class="col-md-6">
                         <div class="blog-box shadow-sm">
