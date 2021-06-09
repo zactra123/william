@@ -415,4 +415,10 @@
         </div>
     </section>
 @endsection
-
+@section('scripts')
+  <style media="screen">
+    header.box-shadow{
+      box-shadow: none !important;
+    }
+  </style>
+@endsection

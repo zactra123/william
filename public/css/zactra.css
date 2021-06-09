@@ -8,13 +8,13 @@
    font-size:12px;
 }
 .theme-color{
-  color:#eff3fc !important;
+  color:#37c6f5 !important;
 }
 .theme-color-dark{
   color:#70a6ce !important
 }
 .theme-background{
-  background:#eff3fc !important;
+  background:#37c6f5 !important;
 }
 
 
@@ -100,10 +100,70 @@
   box-shadow: 0px 0px 10px #e6e4e4;
   background: white;
 }
+.p-r{
+  position: relative;
+}
 
 .login-btn-social svg{
   width: 26px;
 }
 .btn-login-facebook{
   background: #70a6ce;
+}
+.innet-div-about{
+  position: absolute;
+top: 40%;
+width: 100%;
+}
+.about-bottom-section{
+
+background-size: cover;
+min-height: 350px;
+background-repeat: no-repeat;
+}
+.btn-theme{
+  background: -webkit-gradient(linear, left top, right top, from(#f63565), to(#fa6940));
+    background: linear-gradient(
+90deg
+ , #f63565, #fa6940);
+    text-transform: capitalize;
+
+    text-decoration: none;
+    border-radius: 10px;
+    color: #fff;
+}
+.subscribe-box{
+      position: relative;
+}
+.subscribe-btn{
+  position: absolute;
+top: 0px;
+right: 0px;
+border-radius: 0px;
+font-size: 12px;
+height: 100%;
+}
+.latest_post_date{
+  position: absolute;
+    top: 0px;
+    left: 15px;
+    background: #37c6f5;
+    padding-top: 29px;
+    padding-left: 10px;
+    padding-right: 31px !important;
+    color: white;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    border-bottom-right-radius: 100px;
+}
+.blog-search-field {
+    height: 40px;
+    color: gray;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    width: 100%;
+}
+.theme-color-secondary{
+  
 }

@@ -66,7 +66,7 @@ Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
 
 
 Auth::routes();
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 Route::get('/facebook/redirect', 'SocialAuthController@redirect')->name('facebook.login');
 Route::get('/facebook/callback', 'SocialAuthController@callback');
@@ -328,4 +328,10 @@ Route::group(["prefix" => 'chat'], function(){
     Route::post('/identify-user', 'ChatsController@identifyUser');
     Route::get('/get-chat-messages', 'ChatsController@getChatMessages');
     Route::post('/new-message', 'ChatsController@postNewMessage');
+});
+
+
+Route::get('logout', function(){
+  Auth::logout();
+  return redirect('/');
 });

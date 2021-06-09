@@ -157,7 +157,7 @@ class RegisterController extends Controller
                 'city'=>$data ["city"],
                 'state'=>$data ["state"],
                 'zip'=>$data ["zip"],
-                'address'=>strtoupper($data['address']),
+                // 'address'=>strtoupper($data['address']),
                 'phone_number'=>$data['phone_number'],
             ]);
         }else{
