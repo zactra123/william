@@ -2,71 +2,71 @@
 
 @section('content')
 
-    <section class="register">
-        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
-        <div class="register-form" data-id="1">
-            <div class="title">
-                <h3 >Rest Login information</h3>
+    <section class="py-5 container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="px-4 py-4 login-form-border register_form">
+            @if ($message = Session::get('success'))
+                <div class="w-25 alert alert-success alert-block flash">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
+            <h1 class="fs-25 bold theme-color-dark">Rest Login information</h1>
+            <p>Please enter complete information which is asked below to reset your login information!</p>
+
+
+            {!! Form::open(['route' => 'login.infoFirstSend', 'method' => 'POST', 'id' => 'loginInformation1']) !!}
+            @csrf
+            <div class="row">
+              <div class="form-group col-md-6">
+                  <div class="p-0">
+                      {{ Form::text('client[ssn]', old('client[ssn]'), ['class' => 'form-control m-input ssn fs-12', 'id' => 'ssn','placeholder' => 'SOCIAL SECURITY NUMBER']) }}
+                  </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <div class="p-0">
+                     {{ Form::text('client[ssn_confirm]', old('client[ssn_confirmweb]'), ['class' => 'form-control m-input ssn fs-12', 'id' => 'ssn_confirm','placeholder' => 'CONFIRM SOCIAL SECURITY NUMBER']) }}
+                  </div>
+              </div>
             </div>
-            <div class="register_form">
-                @if ($message = Session::get('success'))
 
 
-                    <div class="w-25 alert alert-success alert-block flash">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
+            <div class="form-group col-md-12 text-center"> OR </div>
 
-                @if ($errors->any())
-
-                    <div class="alert alert-danger flash">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        @foreach($errors->all()  as $message)
-                            <strong>{{ $message }}</strong>
-                        @endforeach
-                    </div>
-                @endif
-                <div class="title">
-                    <h4>Step 1: Enter Personal Information</h4>
-                </div>
-                {!! Form::open(['route' => 'login.infoFirstSend', 'method' => 'POST', 'id' => 'loginInformation1',  'class' => 'm-form m-form--label-align-right']) !!}
-                @csrf
-                <div class="form-group mb-0 w-100">
-                    <div class="col-md-12 p-0">
-                        {{ Form::text('client[ssn]', old('client[ssn]'), ['class' => 'form-control m-input ssn', 'id' => 'ssn','placeholder' => 'SOCIAL SECURITY NUMBER']) }}
-                    </div>
-                </div>
-                <div class="form-group mb-0 w-100">
-                    <div class="col-md-12 p-0">
-                       {{ Form::text('client[ssn_confirm]', old('client[ssn_confirmweb]'), ['class' => 'form-control m-input ssn', 'id' => 'ssn_confirm','placeholder' => 'CONFIRM SOCIAL SECURITY NUMBER']) }}
-                    </div>
-                </div>
-                <div class="form-group text-center"> OR </div>
-
-                <div class="form-group mb-0 w-100">
-                    <div class="col-md-12 p-0">
-                        {{ Form::text('client[ein]', old('client[ein]'), ['class' => 'form-control m-input ein', 'id' => 'ein','placeholder' => 'EIN NUMBER']) }}
-                    </div>
-                </div>
-                <div class="form-group mb-0 w-100">
-                    <div class="col-md-12 p-0">
-                        {{ Form::text('client[ein_confirm]', old('client[ein_confirm]'), ['class' => 'form-control m-input ein', 'id' => 'ein_confirm', 'placeholder' => 'CONFIRM EIN']) }}
-                    </div>
-                </div>
-                <div class="form-group mb-0 w-100">
-                    <div class="col-md-12 p-0">
-                        {{ Form::text('client[last_name]', old('client[last_name]'), ['class' => 'form-control m-input',  'placeholder' => 'LAST NAME']) }}
-                    </div>
-                </div>
-                <div class="basic-button"><input type="submit" value="Next Step" class="login"></div>
-                {!! Form::close() !!}
+            <div class="row">
+              <div class="form-group col-md-6">
+                  <div class="p-0">
+                      {{ Form::text('client[ein]', old('client[ein]'), ['class' => 'form-control m-input ein fs-12', 'id' => 'ein','placeholder' => 'EIN NUMBER']) }}
+                  </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <div class="p-0">
+                      {{ Form::text('client[ein_confirm]', old('client[ein_confirm]'), ['class' => 'form-control m-input ein fs-12', 'id' => 'ein_confirm', 'placeholder' => 'CONFIRM EIN']) }}
+                  </div>
+              </div>
+              <div class="form-group col-md-12">
+                  <div class="p-0">
+                      {{ Form::text('client[last_name]', old('client[last_name]'), ['class' => 'form-control m-input fs-12' ,  'placeholder' => 'LAST NAME']) }}
+                  </div>
+              </div>
             </div>
+
+            <div class="basic-button text-center">
+              <input type="submit" value="NEXT STEP" class="login">
+            </div>
+            {!! Form::close() !!}
+
+          </div>
+
+          <p class="pt-4 fs-12 text-center">
+              Want to login to your account? <a class="fs-12 theme-color-dark" href="{{route('login')}}">Sign In</a>
+          </p>
         </div>
-
-        @include('helpers.chat')
+      </div>
+      @include('helpers.chat')
     </section>
-
 
     <script>
         $(document).ready(function(){
@@ -78,7 +78,6 @@
 
                 return $("[name='" +element.name+ "']").length < 2;
             }, "Please choose one of the options");
-
 
             $("#loginInformation1").validate({
                 rules: {
@@ -102,7 +101,7 @@
                     },
                 },
                 errorPlacement: function(error, element) {
-                    error.insertAfter($(element).parents(".form-group"));
+                    error.insertAfter($(element).parents(".p-0"));
                 }
             })
         })

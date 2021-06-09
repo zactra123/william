@@ -329,6 +329,3 @@ Route::group(["prefix" => 'chat'], function(){
     Route::get('/get-chat-messages', 'ChatsController@getChatMessages');
     Route::post('/new-message', 'ChatsController@postNewMessage');
 });
-
-
-

@@ -63,6 +63,7 @@
 
     <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
+    <link rel="stylesheet" href="{{ asset('css/zactra.css?v='.env('ASSET_VERSION') ) }}">
     @yield('scripts')
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9BDPYSVBK"></script>
     <script>
@@ -75,33 +76,70 @@
 </head>
 <body>
 
-<header>
-    <div class="container nav-bar">
-        <div class="header-info">
-            <div class="phone-block contact-info">
-                <a href="tel:1-844-337-8336">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0)">
-                            <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0">
-                                <rect width="16" height="16" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <p>1-844-337-8336</p>
+  <header class="theme-background py-2">
+    <div class="container">
+      <div class="phone-block contact-info">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="tel:1-844-337-8336"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                    <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"/>
+                </g>
+                <defs>
+                    <clipPath id="clip0">
+                        <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                </defs>
+            </svg>
+          <span class="fs-12">1-844-337-8336</span>
+         </a>
+
+          <a href="mailto:info@prudentscores.com" class="ml-4">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
+            </svg>
+            <span class="fs-12">info@prudentscores.com</span>
+            </a>
+          </div>
+          <div class="col-md-6 text-right sm-hidden">
+
+            <a href="{{ route('login') }}" class="ml-4">
+              <span class="fs-12">Login</span>
+              </a>
+
+              <a href="{{ route('register') }}" class="">
+                <span class="fs-12"> / Sign up</span>
                 </a>
-            </div>
-            <div class="mail-block contact-info">
-                <a href="mailto:info@prudentscores.com">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
-                    </svg>
-                    <p>&nbsp;info&nbsp;@prudentscores&nbsp;.com</p>
+
+
+            {{-- <div class="dropdown">
+                <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    My Account
+
                 </a>
-            </div>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item">
+                        Logout
+                    </a>
+
+                </div>
+            </div> --}}
+          </div>
         </div>
+
+
+
+      </div>
+    </div>
+
+  </header>
+
+<header  class="box-shadow py-2">
+
+    <div class="container nav-bar">
+
         <div class="site-navi contact-info row">
             <div class="logo-block col-6 col-lg-3">
                 <a href="/" title="Home">
@@ -138,49 +176,7 @@
                             @endif
                         </ul>
                     </nav>
-                    <div class="account-block col-md-4">
-                        <ul class="nav-block">
-                            @if (Route::has('login'))
-                                @auth
-                                    <div class="dropdown">
-                                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span>
-                                        </a>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item"
-                                               href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                                LOG OUT
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </div>
-{{--                                    <li class="dropdown nav-item sign-hide" ><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('images/user.png')}}" alt="">{{ Auth::user()->email }}<span class="caret"></span></a>--}}
-{{--                                        <ul id="products-menu" class="dropdown-menu registration mr-0 ml-0" role="menu">--}}
-{{--                                            <li class="menu-item sign-hide"><a href="{{ route('logout') }}"--}}
-{{--                                                                               onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();">--}}
-{{--                                                    LOG OUT  <i class="fa fa-power-off"></i></a>--}}
-{{--                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--                                                    @csrf--}}
-{{--                                                </form>--}}
-{{--                                            </li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-
-                                @else
-                                    <ul class="nav-block">
-                                        <li class="nav-item"><a href="{{ route('login') }}">Log In</a></li>
-                                        <li class="nav-item"><a href="{{ route('register') }}">Registration</a></li>
-                                    </ul>
-                                @endauth
-                            @endif
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -221,9 +217,9 @@
         <div class="footer-bck">
             <div class="container">
                 <div class="footer row">
-                    <div class="information-block col-12 col-lg-6">
+                    <div class="information-block col-12 col-lg-8">
                         <div class="row">
-                            <div class="first-block col-12 col-md-4">
+                            <div class="first-block col-12 col-md-4 pl-0">
                                 <h6 class="title">Connect with us</h6>
                                 <ul class="contact-information">
                                     <li><a href="tel:1-844-337-8336">1-844-337-8336</a></li>
@@ -234,7 +230,7 @@
                                     <li><p>Mon-Fri (9:00 a.m. - 5:30 p.m.)</p></li>
                                 </ul>
                             </div>
-                            <div class="second-block col-12 col-md-4">
+                            <div class="second-block col-12 col-md-4 pl-0">
                                 <h6 class="title">Information</h6>
                                 <ul class="contact-information">
                                     <li><a href="/">Home</a></li>
@@ -244,7 +240,7 @@
                                     <li><a href="{{route('blog')}}">Newsroom</a></li>
                                 </ul>
                             </div>
-                            <div class="thirth-block col-12 col-md-4">
+                            <div class="thirth-block col-12 col-md-4 pl-0">
                                 <h6 class="title">Customer Service</h6>
                                 <ul class="contact-information">
                                     <li><a href="{{route('faqs')}}">FAQs</a></li>
@@ -256,9 +252,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="map col-12 col-md-8 col-lg-5" id="map">
+                    <div class="map col-12 col-md-8 col-lg-4" id="map">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3308.251910018481!2d-118.16062677777458!3d33.986062727008566!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ce8ad1141a4b%3A0x21e5480545b2ce21!2s5800%20S%20Eastern%20Ave%20Suit%20500%2C%20Los%20Angeles%2C%20CA%2090040!5e0!3m2!1sru!2sus!4v1611490037688!5m2!1sru!2sus" width="593" height="253" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                        <h6>by appointment only</h6>
+                        <h6 class="fs-15 text-upper uppercase">by appointment only</h6>
                     </div>
                 </div>
                 <div class="social-media">
