@@ -66,8 +66,8 @@ Route::post('/broadcasting/auth', function (Illuminate\Http\Request $req) {
 
 
 
-Auth::routes();
-// Auth::routes(['verify' => true]);
+//Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/facebook/redirect', 'SocialAuthController@redirect')->name('facebook.login');
 Route::get('/facebook/callback', 'SocialAuthController@callback');
