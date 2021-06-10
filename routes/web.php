@@ -40,6 +40,7 @@ Route::get('/home', function () {
 
 
 
+
 Route::get('/', 'PagesController@welcome' );
 Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
