@@ -1,98 +1,86 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 
 @section('content')
     @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Edit details" => "#"]])
     <section class="ms-user-account">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
+        <div class="container mt-5">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+              <div class="row">
+                  <div class="col-md-3 col-sm-12"></div>
+                  <div class="col-md-12 col-sm-12 col-lg-12 col-12 justify-content-center">
+                      <div class="ms-ua-box">
 
-                        <div class="card w-75">
-                            <div class="text-center">
-                                <p class="text-info"><h3>PLEASE REVIEW YOUR PERSONAL DATA AND MAKE CHANGES IF NECESSARY</h3></p>
-                            </div>
-                            <div class="card-body ">
-                                {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
-                                @method('PUT')
-                                @csrf
-                                <div class="form-group row font justify-content-center">
+                          <div class="card">
+                              <div class="text-center">
+                                  <p class="text-info"><h6>PLEASE REVIEW YOUR PERSONAL DATA AND MAKE CHANGES IF NECESSARY</h6></p>
+                              </div>
+                              <div class="card-body ">
+                                  {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
+                                  @method('PUT')
+                                  @csrf
 
-                                    <div class="col-md-12 tab-selector">
+                                  <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                                    <div class="row">
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                                      </div>
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
 
-                                        <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
-                                        </div>
+                                      </div>
                                     </div>
 
-                                </div>
-                                <div class="form-group row font justify-content-center">
+                                    <div class="row mt-3">
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
+                                      </div>
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
 
-                                    <div class="col-md-12 tab-selector">
-
-                                        <div class="col-md-12" class="col-md-12 ">
-                                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
-                                        </div>
+                                      </div>
                                     </div>
 
-                                </div>
+                                    <div class="row mt-3">
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                                      </div>
+                                      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                                        {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-12 form-control']) }}
 
-                                <div class="form-group row font justify-content-center">
-
-                                    <div class="col-md-12 tab-selector">
-
-                                        <div class="col-md-12">
-                                            {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
-                                        </div>
+                                      </div>
                                     </div>
 
-                                </div>
-                                <div class="form-group row font justify-content-center">
-                                    <div class="col-md-12 tab-selector">
+                                    <div class="row mt-3 justify-content-center">
+                                      <div class="col-md-4">
+                                        <input type="submit" class="basic-button btn btn-block  " name="" value="Submit">
 
-                                        <div class="col-md-12">
-                                            {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
-                                        </div>
+                                      </div>
                                     </div>
-                                </div>
-                                <div class="form-group row font justify-content-center">
-                                    <div class="col-md-12 tab-selector">
-                                        <div class="col-md-12">
-                                            {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-                                        </div>
-                                    </div>
-                                </div>
-{{--                                <div class="form-group row font justify-content-center">--}}
-{{--                                    <div class="col-md-12 tab-selector">--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'YOUR ZIP CODE']) }}--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <div class="form-group row font justify-content-center">
-                                    <div class="col-md-12 tab-selector">
-                                        <div class="col-md-12 sex_options">
-                                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
-                                        </div>
-                                    </div>
-                                </div>
+
+                                  </div>
 
 
-                                <div class="form-group row mb-0 font">
-                                    <div class="col-md-offset-5">
-                                        <button type="submit" class="btn btn-primary">
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
-                                {!! Form::close() !!}
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
+
+  {{--                                <div class="form-group row font justify-content-center">--}}
+  {{--                                    <div class="col-md-12 tab-selector">--}}
+  {{--                                        <div class="col-md-12">--}}
+  {{--                                            {{ Form::text('client[zip]', $client->clientDetails->zip, ['class' => 'form-control m-input', 'id'=>'zip_code','placeholder' => 'YOUR ZIP CODE']) }}--}}
+  {{--                                        </div>--}}
+  {{--                                    </div>--}}
+  {{--                                </div>--}}
+
+
+
+
+                                  {!! Form::close() !!}
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
             </div>
         </div>
     </section>
@@ -194,5 +182,3 @@
     </script>
 
 @endsection
-
-

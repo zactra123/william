@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('content')
     @include('helpers.breadcrumbs', ['title'=> "Upload Documents", 'route' => ["Home"=> '#', "Upload Documents" => "#"]])
@@ -15,4 +15,3 @@
         </div>
     </section>
 @endsection
-

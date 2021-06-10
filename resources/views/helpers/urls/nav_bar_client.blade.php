@@ -10,4 +10,3 @@
     <li class="nav-item"><a href="{{route('client.details.create')}}">ADD YOUR DETAILS</a></li>
 
 @endif
-

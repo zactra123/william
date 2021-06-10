@@ -275,11 +275,13 @@ nav {
     width: 36.4rem;
     position: fixed;
     height: 29.5rem;
-    border-radius: 25px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
     transform: scale(0);
     background-color: #EFF3FC;
     transform-origin: bottom;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1); */
     transition: all .3s cubic-bezier(0.55, 0.06, 0.68, 0.19);
 }
 .chat .body.show {
@@ -312,9 +314,8 @@ nav {
     margin: 0;
 }
 #chat_form  input{
-    font-size: 1rem;
     padding: 0.78rem 0.7rem;
-    border-radius: 15px;
+    border-radius: 7px;
     border: 1px solid #94A2B3;
     color: #94A2B3;
     outline: none;
@@ -329,7 +330,7 @@ nav {
     height: 100%;
     font-size: 1rem;
     color: #94A2B3;
-    border-radius: 15px;
+    border-radius: 7px;
     border: 1px solid transparent;
     padding: 0.78rem 0.7rem;
     transition: .3s ease-in-out;
@@ -1393,7 +1394,7 @@ section.register{
     padding-bottom: 100px;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(180deg, rgba(194, 237, 255, 0.76) 0%, rgba(229, 239, 255, 0.58) 100%);background: linear-gradient(180deg, rgba(194, 237, 255, 0.76) 0%, rgba(229, 239, 255, 0.58) 100%);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1460,11 +1461,11 @@ section.register .login-social a.login-google {
     color: #94A2B3;
     width: 44.11rem;
     position: relative;
-    border-radius: 25px;
-    background-color: #EFF3FC;
+    /* border-radius: 10px; */
+    /* background-color: #EFF3FC; */
     padding: 1rem 0 4.55rem;
     transition: all .4s ease-in-out;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
 }
 
 .register-form.large{
@@ -1513,7 +1514,7 @@ section.register .login-social a.login-google {
     padding-left: 16px;
     padding-right: 12px;
     margin-bottom: 15px;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     border: 1px solid #94A2B3;
     background-color: #FFFFFF;
 }
@@ -1591,16 +1592,16 @@ section.register .login-social a.login-google {
     transition-delay: 1s;
 }
 .register-form .registration-stage.prepare .stage-img:before{
-    background-color: #299EF3;
+    background-color: #68baf7;
 }
 .register-form .registration-stage.active .stage-img{
-    border-color: #299EF3;
+    border-color: #68baf7;
 }
 .register-form .registration-stage .stage-img svg path{
     transition: all 1s ease-in-out;
 }
 .register-form .registration-stage.active .stage-img svg path{
-    fill: #299EF3!important;
+    fill: #68baf7!important;
 }
 .register-form .registration-stage .stage-img svg{
     width: 60%;
@@ -1616,7 +1617,7 @@ section.register .login-social a.login-google {
     white-space: nowrap;
 }
 .register-form .registration-stage.active .stage-title{
-    color: #299EF3;
+    color: #68baf7;
 }
 div .basic-button .login{
     width: 18.88rem;
@@ -1791,13 +1792,13 @@ div.basic-button:hover::after{
 }
 .finish-img {
     margin-top: 3.11rem;
-    margin-bottom: 3.66rem;
+    /* margin-bottom: 3.66rem; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .finish-img .img-block {
-    padding: 3rem;
+    padding: 1rem;
     display: flex;
     width: 16.61rem;
     height: 15.61rem;
@@ -2074,20 +2075,20 @@ section.text-page {
     cursor: pointer;
     transform: scale(1);
 }
-.card:hover {
+/* .card:hover {
     transform: scale(1.01);
     -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
     box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
-}
+} */
 .card .img-block img {
     width: 100%;
     height: 150px;
     object-fit: cover;
 }
 .card {
-    border: 2px solid #cfcecd;
-    background-color: #f2f2f2;
+    border: 1px solid #cfcecd;
+    /* background-color: #f2f2f2; */
 }
 .card label {
     margin: 0;

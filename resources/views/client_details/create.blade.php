@@ -3,13 +3,13 @@
 @section('content')
 
     <section class="register">
-        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
+        {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
         <div class="register-form {{auth()->user()->clientDetails->registration_steps =='documents'? "large": 'big'}}" data-id="1">
-            <h3 class="title">Registration</h3>
+            <h3 class="title theme-color-dark">Registration</h3>
             @include('helpers.steps',['user' => auth()->user()])
             @include('client_details.registration_steps.important_information', ['current_page'=> auth()->user()->clientDetails->registration_steps =='important_information' ?'active' : 'none' ])
             @include('client_details.registration_steps.documents', ['current_page'=> auth()->user()->clientDetails->registration_steps =='documents' ?'active' : 'none' ])
-            @include('client_details.registration_steps.credentials', ['current_page'=> auth()->user()->clientDetails->registration_steps =='credentials' ?'active' : 'none' ])
+            @include('client_details.registration_steps.credentials2', ['current_page'=> auth()->user()->clientDetails->registration_steps =='credentials' ?'active' : 'none' ])
             @include('client_details.registration_steps.review', ['current_page'=> auth()->user()->clientDetails->registration_steps =='review' ?'active' : 'none' ])
             @include('client_details.registration_steps.finished', ['current_page'=> auth()->user()->clientDetails->registration_steps =='finished' ?'active' : 'none' ])
         </div>
@@ -51,18 +51,40 @@
                 </div>
                 <form action="" id="chat_form">
                     <p>You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
-                    <input type="text" placeholder="Your full name">
-                    <div class="contact">
-                        <label for="email" class="email-label">
-                            <input type="email" id="email" placeholder="E-mail Address">
-                        </label>
-                        <p>or</p>
-                        <label for="phone" class="phone-label">
-                            <input type="tel" id="phone" disabled placeholder="Phone Number">
-                        </label>
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                      <input type="text" placeholder="Your full name">
                     </div>
-                    <textarea placeholder="write your message" cols="30" rows="10"></textarea>
-                    <div class="form-submit">
+
+                    <div class="contact">
+                      <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                        <div class="row">
+
+                          <div class="col-md-5 col-lg-5 col-sm-11 col-11">
+                            <label for="email" class="email-label">
+                              <input type="email" id="email" placeholder="E-mail Address">
+                            </label>
+
+                          </div>
+
+                          <div class="col-md-2 col-lg-2 col-sm-2 col-2 text-center pt-3">
+                            OR
+                          </div>
+
+                          <div class="col-md-5 col-lg-5 col-sm-11 col-11">
+                            <label for="phone" class="phone-label">
+                              <input type="tel" id="phone" disabled placeholder="Phone Number">
+                            </label>
+
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                      <textarea placeholder="write your message" cols="30" rows="10" class="mb-5"></textarea>
+                    </div>
+                    <div class="form-submit mb-5">
                         <input type="submit" value="Submit">
                     </div>
                 </form>

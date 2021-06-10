@@ -267,7 +267,6 @@ Route::group(['prefix'=> 'affiliate'], function(){
 
     Route::get('client/report/{type}', 'AffiliatesController@clientReport')->name('affiliate.client.report');
 
-
     Route::get('client/{client}/negative-item', 'AffiliatesController@negativeItem')->name('affiliate.negative.item');
     Route::post('client/{client}/negative-item', 'AffiliatesController@negativeItemStore')->name('affiliate.negative.store');
     Route::post('client/{client}/negative-contract', 'AffiliatesController@negativeItemContract')->name('affiliate.negative.contract');
@@ -289,11 +288,8 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::resource('/', 'AffiliatesController')->names('affiliate')->parameters([''=>'affiliate'])->only('index');
 });
 
-
 Route::group(['prefix' =>'client'], function() {
-
     Route::post('important-information', 'ClientDetailsController@importantInformation')->name('client.important');
-
     Route::get('continue', 'ClientDetailsController@continue')->name('client.continue');
     Route::get('credentials/{source?}', 'ClientDetailsController@credentials')->name('client.credentials');
     Route::post('credentials-store', 'ClientDetailsController@credentialsStore')->name('client.credentialsStore');

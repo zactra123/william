@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
 
 @section('content')
@@ -134,7 +134,7 @@
                                 <div class="col-md-12">
                                     <div class="content">
                                         <h2>Welcome to Dashboard</h2>
-                                        @if(!$client->credentials->is_present())
+                                        {{-- @if(!$client->credentials->is_present())
                                             <p>
                                                 Please provide us your credentials, so we can fetch your report.
                                                 You can provide them
@@ -147,7 +147,7 @@
                                                 you can start disputes
                                                 <a href="#">here</a>.
                                             </p>
-                                        @endif
+                                        @endif --}}
 
                                     @if(!empty($requiredInfo))
                                             <h3>Please complete required data information are starting your dispute process!!!</h3>

@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('content')
     @if(!empty($source))
@@ -19,4 +19,3 @@
         </div>
     </section>
 @endsection
-

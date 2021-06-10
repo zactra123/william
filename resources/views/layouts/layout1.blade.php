@@ -79,87 +79,87 @@
   <header class="theme-background py-2">
     <div class="container">
       <div class="phone-block contact-info">
-        <div class="row">
-          <div class="col-md-6">
-            <a href="tel:1-844-337-8336" class="text-white"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0)">
-                    <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"/>
-                </g>
-                <defs>
-                    <clipPath id="clip0">
-                        <rect width="16" height="16" fill="white"/>
-                    </clipPath>
-                </defs>
-            </svg>
-          <span class="fs-12">1-844-337-8336</span>
-         </a>
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+              <a href="tel:1-844-337-8336" class="text-white"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0)">
+                      <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"/>
+                  </g>
+                  <defs>
+                      <clipPath id="clip0">
+                          <rect width="16" height="16" fill="white"/>
+                      </clipPath>
+                  </defs>
+              </svg>
+            <span class="fs-12">1-844-337-8336</span>
+           </a>
 
-          <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
-            </svg>
-            <span class="fs-12">info@prudentscores.com</span>
-            </a>
-          </div>
-          <div class="col-md-6 text-right sm-hidden">
+            <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
+              </svg>
+              <span class="fs-12">info@prudentscores.com</span>
+              </a>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-12 text-right sm-hidden">
 
-            @if (Auth::check())
-              <a href="{{ route('logout') }}" class="ml-4 text-white">
-                <span class="fs-12">Logout</span>
-                </a>
-            @else
-              <a href="{{ route('login') }}" class="ml-4 text-white">
-                <span class="fs-12">Login</span>
-                </a>
-
-                <a href="{{ route('register') }}" class="text-white">
-                  <span class="fs-12"> / Sign up</span>
+              @if (Auth::check())
+                <a href="{{ route('logout') }}" class="ml-4 text-white">
+                  <span class="fs-12">Logout</span>
+                  </a>
+              @else
+                <a href="{{ route('login') }}" class="ml-4 text-white">
+                  <span class="fs-12">Login</span>
                   </a>
 
-            @endif
-
-            {{-- <div class="dropdown">
-                <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                    My Account
-
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item">
-                        Logout
+                  <a href="{{ route('register') }}" class="text-white">
+                    <span class="fs-12"> / Sign up</span>
                     </a>
 
-                </div>
-            </div> --}}
+              @endif
+
+              {{-- <div class="dropdown">
+                  <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                      My Account
+
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item">
+                          Logout
+                      </a>
+
+                  </div>
+              </div> --}}
+            </div>
           </div>
         </div>
-
-
 
       </div>
     </div>
 
   </header>
 
-<header  class="box-shadow py-2">
-
+<section class="py-2">
+  <div class="col-md-12 col-lg-12 col-sm-12 col-12">
     <div class="container nav-bar">
 
-        <div class="site-navi contact-info row">
+        <div class="site-navi contact-info row  pt-4">
             <div class="logo-block col-6 col-lg-3">
                 <a href="/" title="Home">
                     <img src="{{asset('images/new/logo.png')}}" alt="logo">
                 </a>
             </div>
             <div class="navigation-block col-6 col-lg-9 row">
-                <div class="mobile-menu">
+                {{-- <div class="mobile-menu">
                     <button id="toggle_menu">
                         <span></span>
                         <span></span>
                         <span></span>
                     </button>
-                </div>
+                </div> --}}
                 <div class="navigation col-12">
                     <nav class="col-md-8">
                         <ul class="nav-block">
@@ -187,7 +187,8 @@
             </div>
         </div>
     </div>
-</header>
+  </div>
+</section>
 
 
 @yield('content')
