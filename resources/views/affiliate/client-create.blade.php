@@ -5,7 +5,7 @@
 @section('content')
 
     <section class="register">
-        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
+        {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
         <div class="register-form {{($client!= null ? $client->clientDetails->registration_steps:'')  =='documents'? "large": 'big'}}" data-id="1">
             <h3 class="title">Add Client</h3>
             @include('helpers.affilate_steps',['user' => auth()->user()])
@@ -77,9 +77,3 @@
     <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
     <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 @endsection
-
-
-
-
-
-

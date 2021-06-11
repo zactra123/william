@@ -257,7 +257,7 @@
                                                         <hr>
                                                     </div>
                                                     <div class="pb-3">
-                                                        <a class="p-1" href=#">ARCHIVE</a>
+                                                        <a class="p-1" href="#">ARCHIVE</a>
                                                     </div>
 
                                                     @foreach($reportsDateTU as $keyTu => $tuDate)

@@ -156,14 +156,10 @@
 
 
 
-
-    <section >
-
-
-
-
+    <section>
 
         @include('helpers.chat')
+
     </section>
 
 

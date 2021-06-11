@@ -4,7 +4,7 @@
 
 
     <section class="register " >
-        <img class="background-image" src="images/new/login_bck.jpg" alt="background">
+        {{-- <img class="background-image" src="images/new/login_bck.jpg" alt="background"> --}}
         @if(Auth::user()->clientDetails->registration_steps != 'finished')
             <div class="register-form big" >
                 <h3 class="title">Finish</h3>
@@ -22,7 +22,7 @@
                             </div>
                         </a>
                         <a class="registration-stage active prepare" data-id="2">
-                            <div class="stage-img  ">
+                            <div class="stage-img">
                                 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M24 23.5538C28.5364 23.5538 32.2143 19.0869 32.2143 13.5768C32.2143 8.06656 31.0066 3.59961 24 3.59961C16.9931 3.59961 15.7856 8.06656 15.7856 13.5768C15.7858 19.0869 19.4635 23.5538 24 23.5538Z"/>
                                     <path d="M39.497 38.3849C39.345 28.7859 38.0913 26.0508 28.4982 24.3193C28.4982 24.3193 27.1475 26.04 24.0001 26.04C20.8526 26.04 19.5022 24.3193 19.5022 24.3193C10.0137 26.0317 8.68355 28.7264 8.50872 38.0729C8.4945 38.8362 8.48795 38.8762 8.48535 38.7876C8.48585 38.9536 8.48659 39.2606 8.48659 39.7961C8.48659 39.7961 10.7706 44.4003 24.0002 44.4003C37.2298 44.4003 39.514 39.7961 39.514 39.7961C39.514 39.4521 39.5143 39.2128 39.5145 39.0502C39.5119 39.1049 39.5066 38.9987 39.497 38.3849Z"/>
@@ -56,16 +56,16 @@
                 </div>
 
                 <div class="finish active" data-id="finish">
-                    <h3 class="finish-title">
+                    <h5 class="theme-color-dark text-center">
                         Congrats! You just did something really wise
-                    </h3>
+                    </h5>
                     <p>“Debt means enslavement to the past, no matter how much you want to plan well for the future and live according to your own standards today. Unless you’re free from the bondage of paying for your past, you can’t responsibly live in the present and plan for the future.” - Tsh Oxenreider</p>
-                    <div class="finish-img">
+                    <div class="finish-img mt-0">
                         <div class="img-block">
                             <img src="images/new/finish.png" alt="finish">
                         </div>
                     </div>
-                    <a class="finish-reg">Continue</a>
+                    <a class="finish-reg basic-button">Continue</a>
                 </div>
             </div>
         @endif
@@ -128,4 +128,3 @@
 @section('scripts')
     <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 @endsection
-

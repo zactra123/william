@@ -1,8 +1,9 @@
 @extends('layouts.layout1')
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @section('content')
-    <link href="{{asset('css/client/profile.css')}}" rel="stylesheet" type="text/css">
+    {{-- <link href="{{asset('css/client/profile.css')}}" rel="stylesheet" type="text/css"> --}}
 
     <section class="section-padding">
     </section>
@@ -13,35 +14,38 @@
                     <div class="heading">
                         <div class="row" >
                             <div class="info">
-                                <h5>Client No: 01</h5>
+                                <h6>Client No: 01</h6>
                             </div>
                         </div>
 
 
                         <div class="row" >
                             <div class="col-l-12 m-0">
-                                <a href="#" class="link closeUpload" >
+                                <a href="#" class="link closeUpload fs-11" >
                                     UPLOAD NEW ID OR SOCIAL SECURITY
                                 </a>
                             </div>
                         </div>
 
-                        <div class="row  hide form-group updateLogo ">
+                        <div class="row  hide form-group updateLogo mb-5 pb-5">
                             <button type="button" class="close closeUpload">
-                                <span aria-hidden="true">&times;</span>
+                                {{-- <span aria-hidden="true">&times;</span> --}}
                             </button>
-                            {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                            {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => ' m-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
                             @method("PUT")
                             @csrf
-                            <div class="col-sm-12 form-group files">
-                                {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
-                                <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
 
+
+                            <div class="col-sm-12 form-group files mt-3">
+                                {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
+                                <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver"  id="driver_license">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose Driver License</label>
                             </div>
                             <div class="col-sm-12 form-group files">
-                                <input class="social_security file-box" type="file" name="social"  id="social_security" >
+                                <input class="social_security file-box" class="custom-file-input" id="inputGroupFile02" type="file" name="social"  id="social_security" >
+                                <label class="custom-file-label" for="inputGroupFile02">Choose Social Security </label>
                             </div>
-                            <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+                            <div class="col-sm-12 pl-0"><input type="submit" value="Upload" class="btn btn-info ms-ua-submit"></div>
 
                             {!! Form::close() !!}
                         </div>
@@ -59,66 +63,60 @@
                                     <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
                                 @endif
                         @endif
-                            <img  class="responsive full_name" src="/images/full_name.png">
-
-                            <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
+                            <img  class="responsive full_name" width="20px" width="20px" src="{{ asset('/') }}images/full_name.png">
+                            <a href="#"><span class="fs-15">{{$client->full_name()}}</span></a>
                         </li>
                         <li title="PHONE NUMBER">
-                            <img  class="responsive" src="/images/phone_number.png">
-                            <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
+                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/phone_number.png">
+                            <a href="tell:{{$client->clientDetails->phone_number}}"> <span class="fs-15">{{$client->clientDetails->phone_number}}</span> </a>
                         </li>
                         <li title="EMAIL ADDRESS">
-                            <img  class="responsive" src="/images/email.png">
-                            <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
+                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/email.png">
+                            <a href="mailto:{{$client->email}}"> <span class="fs-15">{{ $client->email }}</span> </a>
                         </li>
                         <li title="FULL ADDRESS">
                             <div class="address">
                                 <div class="address1">
-                                    <img  class="addressImage" src="/images/location.png">
+                                    <img  class="addressImage" width="20px" src="{{ asset('/') }}images/location.png">
+                                      <span class="fs-15">{{$client->clientDetails->number}} {{$client->clientDetails->name}}</span>
+                                      <span class="fs-15">{{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</span>
                                 </div>
-                                <div class="address2">
-                                    <div class="address">
-                                        {{$client->clientDetails->number}} {{$client->clientDetails->name}}
-                                    </div>
-                                    <div class="address">
-                                        {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}
-                                    </div>
-                                </div>
+
                             </div>
                         </li>
 
                         <li title="DATE OF BIRTH">
-                            <img  class="responsive" src="/images/birthday.png">
-                            {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
-                            <img src="/images/age.jpg" class="responsive small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/birthday.png">
+                            <span class="fs-15">{{date("m/d/Y", strtotime($client->clientDetails->dob))}}</span>
+                            <img width="20px" src="{{ asset('/') }}images/age.jpg" class="responsive small ml-2"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
                         </li>
                         <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
 
                             @if(!empty($client->clientAttachments()))
                                 <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-                                @if(!empty($ss))
+                                {{-- @if(!empty($ss))
                                     <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
-                                @endif
+                                @endif --}}
                             @endif
-                            <img  class="responsive ss_number" src="/images/ssc.png">
+                            <img  class="responsive ss_number" width="20px" src="{{ asset('/') }}images/ssc.png">
 
-                            {{$client->clientDetails->ssn}}
+                            <span class="fs-15">{{$client->clientDetails->ssn}}</span>
                         </li>
 
                         <li title="GENDER">
                             @if($client->clientDetails->sex == 'M')
-                                <img  class="responsive" src="/images/male.png"> <span>MALE</span>
+                                <img  class="responsive" width="20px" src="{{ asset('/') }}images/male.png"> <span class="fs-15">MALE</span>
                             @elseif($client->clientDetails->sex == 'F')
-                                <img class="responsive"  src="/images/female.png"> <span>FEMALE</span>
+                                <img class="responsive"  width="20px" src="{{ asset('/') }}images/female.png"> <span class="fs-15">FEMALE</span>
                             @else
-                                <img class="responsive" src="/images/non_binary.png"> <span>NON-BINARY</span>
+                                <img class="responsive" width="20px" src="{{ asset('/') }}images/non_binary.png"> <span class="fs-15">NON-BINARY</span>
                             @endif
                         </li>
 
                         @if($client->clientDetails->referred_by != null)
                             <li title="REFERRED BY">
                                 <i class="fa fa-user fa-fw refferred" ></i>
-                                <span>{{strtoupper($client->clientDetails->referred_by)}}</span>
+                                <span class="fs-15">{{strtoupper($client->clientDetails->referred_by)}}</span>
                             </li>
                         @endif
                         <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
@@ -134,13 +132,13 @@
                                 <div class="col-md-12">
                                     <div class="content">
                                         <h2>Welcome to Dashboard</h2>
-                                        {{-- @if(!$client->credentials->is_present())
+                                        {{-- @if(!$client->credentials->is_present()) --}}
                                             <p>
                                                 Please provide us your credentials, so we can fetch your report.
                                                 You can provide them
                                                 <a href="{{route("client.credentials")}}">here</a>.
                                             </p>
-                                        @elseif(!$client->reports->first())
+                                        {{-- @elseif(!$client->reports->first())
                                             <p>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</p>
                                         @else
                                             <p>We've already got your report data,
@@ -166,11 +164,12 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="chart-container scrollDiv">
+                                    <div class="chart-container scrollDiv clientprofile-dispute-height">
                                         <div class="boxheading">
                                             <h3>DISPUTES </h3>
                                         </div>
                                         <div class="mt20 ">
+
                                             @foreach($toDos as $todo)
                                                 @foreach($todo->disputes as $dispute)
                                                     <div class="row">
@@ -207,30 +206,30 @@
                                     <h2>CREDIT REPORTS</h2>
 
                                     <div class="row">
-                                        <div  class="col-md-3 mt20">
+                                        <div  class="col-md-3">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="70%">
                                                 <div class="dropdown-content equifax">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
-                                                    <a href=#">ARCHIVE</a>
+                                                    <a href="#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
                                                         <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
                                                     @endforeach
                                                 </div>
                                             </div>
                                         </div>
-                                        <div  class="col-md-3 mt20">
+                                        <div  class="col-md-3">
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"   width="70%">
                                                 <div class="dropdown-content experina">
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
                                                     <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
-                                                    <a href=#">ARCHIVE</a>
+                                                    <a href="#">ARCHIVE</a>
 
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
                                                         <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
@@ -239,25 +238,25 @@
                                             </div>
 
                                         </div>
-                                        <div  class="col-md-3 mt20">
+                                        <div  class="col-md-3">
                                             <div class="dropdown ">
 {{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="100%">
+                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="70%">
                                                 <div class="dropdown-content transunion">
-                                                    <div class="pb-3">
-                                                        <a class="p-1" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
-                                                        <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
-                                                        <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER  REGISTRATION</a>
-                                                        <hr>
+                                                    <div class="">
+                                                        <a class="p-1 pl-3" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
+                                                        <a class="p-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
+                                                        <a class="p-1 pl-3" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER  REGISTRATION</a>
+                                                        <hr class="my-1">
                                                     </div>
-                                                    <div class="pb-3">
-                                                        <a class="p-1" href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
-                                                        <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
-                                                        <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
-                                                        <hr>
+                                                    <div class="">
+                                                        <a class="p-1 pl-3" href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
+                                                        <a class="p-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
+                                                        <a class="p-1 pl-3" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
+                                                        <hr class="my-1">
                                                     </div>
-                                                    <div class="pb-3">
-                                                        <a class="p-1" href=#">ARCHIVE</a>
+                                                    <div class="">
+                                                        <a class="p-1 pl-3" href="#">ARCHIVE</a>
                                                     </div>
 
                                                     @foreach($reportsDateTU as $keyTu => $tuDate)
@@ -267,10 +266,10 @@
                                             </div>
                                         </div>
 
-                                        <div  class="col-md-3 mt20">
+                                        <div  class="col-md-3">
                                             <div class="dropdown">
-                                                <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="100%">
-                                                <div class="dropdown-content">
+                                                <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="70%">
+                                                <div class="dropdown-content report">
                                                     <div class="dropdown">
                                                         <ul class="dropdown-submenu">
                                                             <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
@@ -342,6 +341,7 @@
                 </section>
             </div>
         </div>
+      </div>
 
 
     <!-- Modal -->
@@ -360,33 +360,38 @@
                     @method('PUT')
                     @csrf
                     <div class="form row">
-                        <div class="form-group col-md-12">
-
+                      <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-sm-12 col-12">
                             {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
-                        </div>
-
-                        <div class="form-group col-md-12">
+                          </div>
+                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                             {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                          </div>
                         </div>
-                        <div class="form-group col-md-12">
+
+                        <div class="row mt-3">
+                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                             {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-
+                          </div>
+                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-12  form-control']) }}
+                          </div>
                         </div>
+                      </div>
 
-                        <div class="form-group col-md-12">
 
-                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
-                        </div>
 
 
 
                     </div>
 
-                    <button type="submit" value="Update" class="btn btn-primary">Update</button>
-                    {!! Form::close() !!}
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                  {!! Form::close() !!}
+                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                 </div>
             </div>
         </div>
