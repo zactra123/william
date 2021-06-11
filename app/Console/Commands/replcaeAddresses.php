@@ -58,7 +58,7 @@ class replcaeAddresses extends Command
             $street_name = str_replace("SQUARE","SQ.,", $street_name);
             $street_name = str_replace("SUITE ","STE. ", $street_name);
             $street_name = str_replace("SUIT ","STE. ", $street_name);
-            $street_name = str_replace("UNIT ","STE.", $street_name);
+            $street_name = str_replace("UNIT ","STE. ", $street_name);
             $street_name = str_replace(",,",",", $street_name);
             $street_name = trim($street_name, ',');
             if (strtoupper($address->street) != $street_name) {
