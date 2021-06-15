@@ -1,406 +1,217 @@
-@extends('layouts.layout1')
-<link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-@section('content')
-    {{-- <link href="{{asset('css/client/profile.css')}}" rel="stylesheet" type="text/css"> --}}
-
-    <section class="section-padding">
-    </section>
-        <div class="row m-0">
-            <div class="col-sm-3">
-                <aside class="side-nav" id="show-side-navigation1">
-                    <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
-                    <div class="heading">
-                        <div class="row" >
-                            <div class="info">
-                                <h6>Client No: 01</h6>
-                            </div>
-                        </div>
-
-
-                        <div class="row" >
-                            <div class="col-l-12 m-0">
-                                <a href="#" class="link closeUpload fs-11" >
-                                    UPLOAD NEW ID OR SOCIAL SECURITY
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row  hide form-group updateLogo mb-5 pb-5">
-                            <button type="button" class="close closeUpload">
-                                {{-- <span aria-hidden="true">&times;</span> --}}
-                            </button>
-                            {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => ' m-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
-                            @method("PUT")
-                            @csrf
-
-
-                            <div class="col-sm-12 form-group files mt-3">
-                                {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
-                                <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver"  id="driver_license">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose Driver License</label>
-                            </div>
-                            <div class="col-sm-12 form-group files">
-                                <input class="social_security file-box" class="custom-file-input" id="inputGroupFile02" type="file" name="social"  id="social_security" >
-                                <label class="custom-file-label" for="inputGroupFile02">Choose Social Security </label>
-                            </div>
-                            <div class="col-sm-12 pl-0"><input type="submit" value="Upload" class="btn btn-info ms-ua-submit"></div>
-
-                            {!! Form::close() !!}
-                        </div>
-
-                        <div class="info zoomIn">
-                        </div>
-
-                    </div>
-                    <ul class="categories">
-                        <li title="FULL NAME" class="dl-field">
-
-                        @if(!empty($client->clientAttachments()))
-                                <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-                                @if(!empty($dl))
-                                    <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
-                                @endif
-                        @endif
-                            <img  class="responsive full_name" width="20px" width="20px" src="{{ asset('/') }}images/full_name.png">
-                            <a href="#"><span class="fs-15">{{$client->full_name()}}</span></a>
-                        </li>
-                        <li title="PHONE NUMBER">
-                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/phone_number.png">
-                            <a href="tell:{{$client->clientDetails->phone_number}}"> <span class="fs-15">{{$client->clientDetails->phone_number}}</span> </a>
-                        </li>
-                        <li title="EMAIL ADDRESS">
-                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/email.png">
-                            <a href="mailto:{{$client->email}}"> <span class="fs-15">{{ $client->email }}</span> </a>
-                        </li>
-                        <li title="FULL ADDRESS">
-                            <div class="address">
-                                <div class="address1">
-                                    <img  class="addressImage" width="20px" src="{{ asset('/') }}images/location.png">
-                                      <span class="fs-15">{{$client->clientDetails->number}} {{$client->clientDetails->name}}</span>
-                                      <span class="fs-15">{{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</span>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li title="DATE OF BIRTH">
-                            <img  class="responsive" width="20px" src="{{ asset('/') }}images/birthday.png">
-                            <span class="fs-15">{{date("m/d/Y", strtotime($client->clientDetails->dob))}}</span>
-                            <img width="20px" src="{{ asset('/') }}images/age.jpg" class="responsive small ml-2"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
-                        </li>
-                        <li title="SOCIAL SECURITY NUMBER" class="ssn-field">
-
-                            @if(!empty($client->clientAttachments()))
-                                <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-                                {{-- @if(!empty($ss))
-                                    <img type="file"  class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
-                                @endif --}}
-                            @endif
-                            <img  class="responsive ss_number" width="20px" src="{{ asset('/') }}images/ssc.png">
-
-                            <span class="fs-15">{{$client->clientDetails->ssn}}</span>
-                        </li>
-
-                        <li title="GENDER">
-                            @if($client->clientDetails->sex == 'M')
-                                <img  class="responsive" width="20px" src="{{ asset('/') }}images/male.png"> <span class="fs-15">MALE</span>
-                            @elseif($client->clientDetails->sex == 'F')
-                                <img class="responsive"  width="20px" src="{{ asset('/') }}images/female.png"> <span class="fs-15">FEMALE</span>
-                            @else
-                                <img class="responsive" width="20px" src="{{ asset('/') }}images/non_binary.png"> <span class="fs-15">NON-BINARY</span>
-                            @endif
-                        </li>
-
-                        @if($client->clientDetails->referred_by != null)
-                            <li title="REFERRED BY">
-                                <i class="fa fa-user fa-fw refferred" ></i>
-                                <span class="fs-15">{{strtoupper($client->clientDetails->referred_by)}}</span>
-                            </li>
-                        @endif
-                        <li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
-                    </ul>
-                </aside>
-            </div>
-
-            <div class="col-sm-9">
-                <section id="contents">
-                    <div class="welcome">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="content">
-                                        <h2>Welcome to Dashboard</h2>
-                                        {{-- @if(!$client->credentials->is_present()) --}}
-                                            <p>
-                                                Please provide us your credentials, so we can fetch your report.
-                                                You can provide them
-                                                <a href="{{route("client.credentials")}}">here</a>.
-                                            </p>
-                                        {{-- @elseif(!$client->reports->first())
-                                            <p>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</p>
-                                        @else
-                                            <p>We've already got your report data,
-                                                you can start disputes
-                                                <a href="#">here</a>.
-                                            </p>
-                                        @endif --}}
-
-                                    @if(!empty($requiredInfo))
-                                            <h3>Please complete required data information are starting your dispute process!!!</h3>
-                                    @endif
-
-                                    @foreach($requiredInfo as $info)
-                                            <a class="btn btn-toolbar" href="{{route('client.complete.requireInfo', $info->id)}}">{{$info->disputable->showDetails()}}</a>
-                                    @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <section class="charts">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="chart-container scrollDiv clientprofile-dispute-height">
-                                        <div class="boxheading">
-                                            <h3>DISPUTES </h3>
-                                        </div>
-                                        <div class="mt20 ">
-
-                                            @foreach($toDos as $todo)
-                                                @foreach($todo->disputes as $dispute)
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <?php $info =  $dispute->disputable->showDetails();?>
-                                                            {{$info}}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            {{$status[$dispute->status]}}
-
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="chart-container">
-                                        <div class="boxheading">
-                                            <h3>DISPUTE PROGRESS</h3>
-                                        </div>
-                                        <div id="piechart_3d" style="width: 400px; height: 240px;"></div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="charts">
-                        <div class="container-fluid">
-                            <div class="chart-container">
-                                <div class="content">
-                                    <h2>CREDIT REPORTS</h2>
-
-                                    <div class="row">
-                                        <div  class="col-md-3">
-                                            <div class="dropdown">
-{{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="70%">
-                                                <div class="dropdown-content equifax">
-                                                    <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
-                                                    <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
-                                                    <a href="#" target="_blank">REGISTER</a>
-                                                    <a href="#">ARCHIVE</a>
-                                                    @foreach($reportsDateEQ as $keyEq=> $eqDate)
-                                                        <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div  class="col-md-3">
-                                            <div class="dropdown">
-{{--                                                <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"   width="70%">
-                                                <div class="dropdown-content experina">
-                                                    <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
-                                                    <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
-                                                    <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
-                                                    <a href="#">ARCHIVE</a>
-
-                                                    @foreach($reportsDateEX as $keyEx => $exDate)
-                                                        <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div  class="col-md-3">
-                                            <div class="dropdown ">
-{{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
-                                                <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="70%">
-                                                <div class="dropdown-content transunion">
-                                                    <div class="">
-                                                        <a class="p-1 pl-3" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
-                                                        <a class="p-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
-                                                        <a class="p-1 pl-3" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER  REGISTRATION</a>
-                                                        <hr class="my-1">
-                                                    </div>
-                                                    <div class="">
-                                                        <a class="p-1 pl-3" href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
-                                                        <a class="p-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
-                                                        <a class="p-1 pl-3" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
-                                                        <hr class="my-1">
-                                                    </div>
-                                                    <div class="">
-                                                        <a class="p-1 pl-3" href="#">ARCHIVE</a>
-                                                    </div>
-
-                                                    @foreach($reportsDateTU as $keyTu => $tuDate)
-                                                        <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div  class="col-md-3">
-                                            <div class="dropdown">
-                                                <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="70%">
-                                                <div class="dropdown-content report">
-                                                    <div class="dropdown">
-                                                        <ul class="dropdown-submenu">
-                                                            <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
-                                                            <ul class="dropdown-menu">
-                                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
-                                                            </ul>
-                                                        </ul>
-                                                        <ul>
-                                                            <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a>
-
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="charts">
-                        <div class="container-fluid">
-                            <div class="row mt50">
-                                <div class="col-md-6">
-                                    <div class="chart-container">
-                                        <div class="boxheading">
-                                            <h3>BILLING </h3>
-                                        </div>
-                                        <div class="mt20">
-                                            <h4>billing statements</h4>
-                                            <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="chart-container">
-                                        <div class="boxheading">
-                                            <h3>ADDITIONAL SERVICES</h3>
-                                        </div>
-                                        <div class="mt20">
-                                            <h4>EXCEED AUTO GROUP</h4>
-                                            <p> consectetur adipisicing elit. Error fuga dicta iusto suscipit quibusdam nam ad, eum deleniti architecto debitis.</p>
-                                        </div>
-                                        <div class="mt20">
-                                            <h4>EXCEED AUTO GROUP</h4>
-                                            <p>EXCEED CAPITAL LENDING</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </section>
-
-
-                    <section class="charts pb50 mt50">
-                        <div class="container-fluid">
-                            <div class="row ">
-
-                            </div>
-                        </div>
-                    </section>
-
-                </section>
-            </div>
-        </div>
+@extends('layouts.layout2')
+@section('body')
+  <div class="main-content-container container-fluid px-4">
+      <!-- Page Header -->
+      <div class="page-header row no-gutters py-4">
+          <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <h3 class="page-title">Dashboard</h3>
+          </div>
       </div>
+      <!-- End Page Header -->
+      <!-- Small Stats Blocks -->
 
-
-    <!-- Modal -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm',  'class' => 'm-form m-form--label-align-right']) !!}
-                    @method('PUT')
-                    @csrf
-                    <div class="form row">
-                      <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                        <div class="row">
-                          <div class="col-md-6 col-sm-6 col-sm-12 col-12">
-                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+      <!-- End Small Stats Blocks -->
+      <div class="row">
+          <!-- Users Stats -->
+          <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+              <div class="card card-small">
+                  <div class="card-header border-bottom">
+                      <h6 class="m-0">Users</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                      <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                          <div class="chartjs-size-monitor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                              <div style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0;"></div>
                           </div>
-                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                          <div class="chartjs-size-monitor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                              <div style="position: absolute; width: 200%; height: 200%; left: 0; top: 0;"></div>
                           </div>
-                        </div>
-
-                        <div class="row mt-3">
-                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-                          </div>
-                          <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                            {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-12  form-control']) }}
-                          </div>
-                        </div>
                       </div>
+                      <div class="row border-bottom py-2 bg-light">
+                          <div class="col-12 col-sm-6">
+                              <div id="blog-overview-date-range" class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0" style="max-width: 350px;">
+                                  <input type="text" class="input-sm form-control" name="start" placeholder="Start Date" id="blog-overview-date-range-1" />
+                                  <input type="text" class="input-sm form-control" name="end" placeholder="End Date" id="blog-overview-date-range-2" />
+                                  <span class="input-group-append">
+                                      <span class="input-group-text">
+                                          <i class="material-icons"></i>
+                                      </span>
+                                  </span>
+                              </div>
+                          </div>
+                          <div class="col-12 col-sm-6 d-flex mb-2 mb-sm-0">
+                              <button type="button" class="btn btn-sm btn-white ml-auto mr-auto ml-sm-auto mr-sm-0 mt-3 mt-sm-0">View Full Report →</button>
+                          </div>
+                      </div>
+                      <canvas height="349" style="max-width: 100% !important; display: block; width: 807px; height: 349px;" class="blog-overview-users chartjs-render-monitor" width="807"></canvas>
+                  </div>
+              </div>
+          </div>
+          <!-- End Users Stats -->
+          <!-- Users By Device Stats -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                      <h6 class="m-0">DISPUTE PROGRESS</h6>
+                  </div>
+                  <div class="card-body d-flex text-center">
+                      <div id="piechart_3d" class="" style="width: 500px; height: 300px;"></div>
+                  </div>
+
+              </div>
+          </div>
+          <!-- End Users By Device Stats -->
+          <!-- New Draft Component -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+              <!-- Quick Post -->
+              <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                      <h6 class="m-0">New Draft</h6>
+                  </div>
+                  <div class="card-body d-flex flex-column">
+                      <form class="quick-post-form">
+                          <div class="form-group">
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Brave New World" />
+                          </div>
+                          <div class="form-group">
+                              <textarea class="form-control" placeholder="Words can be like X-rays if you use them properly..."></textarea>
+                          </div>
+                          <div class="form-group mb-0">
+                              <button type="submit" class="btn btn-accent">Create Draft</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              <!-- End Quick Post -->
+          </div>
+          <!-- End New Draft Component -->
+          <!-- Discussions Component -->
+          <div class="col-lg-5 col-md-12 col-sm-12 mb-4">
+              <div class="card card-small blog-comments">
+                  <div class="card-header border-bottom">
+                      <h6 class="m-0">DISPUTES</h6>
+                  </div>
+                  <div class="card-body p-0" style="min-height:380px;">
+                    @foreach($toDos as $todo)
+                        @foreach($todo->disputes as $dispute)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?php $info =  $dispute->disputable->showDetails();?>
+                                    {{$info}}
+                                </div>
+                                <div class="col-md-6">
+                                    {{$status[$dispute->status]}}
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+                  </div>
+
+              </div>
+          </div>
+          <!-- End Discussions Component -->
+          <!-- Top Referrals Component -->
+          <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+              <div class="card card-small">
+                  <div class="card-header border-bottom">
+                      <h6 class="m-0">CREDIT REPORTS</h6>
+                  </div>
+                  <div class="card-body p-0">
+                      <ul class="list-group list-group-small list-group-flush">
+                          <li class="list-group-item d-flex px-3">
+                            <div class="dropdown">
+                                <span class="report_access bold">EQUIFAX</span>
+                                {{-- <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="70%"> --}}
+                                <div class="dropdown-content equifax">
+                                    <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
+                                    <a href="{{route('client.credentials',['source'=> 'equifax'])}}">CREDENTIALS</a>
+                                    <a href="#" target="_blank">REGISTER</a>
+                                    <a href="#">ARCHIVE</a>
+                                    @foreach($reportsDateEQ as $keyEq=> $eqDate)
+                                        <a href="{{route('client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item d-flex px-3">
+                            <div class="dropdown">
+                              <span class="report_access bold">EXPERIAN</span>
+                                {{-- <img class="report_access"src="{{asset('images/report_access/ex_logo_2.png')}}"   width="70%"> --}}
+                                <div class="dropdown-content experina">
+                                    <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
+                                    <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
+                                    <a href="{{route('client.credentials',['source'=> 'experian'])}}">CREDENTIALS</a>
+                                    <a href="#">ARCHIVE</a>
+
+                                    @foreach($reportsDateEX as $keyEx => $exDate)
+                                        <a href="{{route('client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item d-flex px-3">
+                            <div class="dropdown ">
+                              <span class="report_access bold">TRANSUNION</span>
+                                {{-- <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="70%"> --}}
+                                <div class="dropdown-content transunion">
+                                    <div class="">
+                                        <a class="p-1 mt-1 pl-3" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
+                                        <a class="p-1  mt-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_member'])}}">MEMBER CREDENTIALS</a>
+                                        <a class="p-1 mt-1 pl-3" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER  REGISTRATION</a>
+                                        <hr class="my-1">
+                                    </div>
+                                    <div class="">
+                                        <a class="p-1 mt-1 pl-3" href="https://membership.tui.transunion.com/tucm/login.page" target="_blank">DISPUTE LOGIN</a>
+                                        <a class="p-1 mt-1 pl-3" href="{{route('client.credentials',['source'=> 'transunion_dispute'])}}">DISPUTE CREDENTIALS</a>
+                                        <a class="p-1 mt-1 pl-3" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">DISPUTE REGISTRATION</a>
+                                        <hr class="my-1">
+                                    </div>
+                                    <div class="">
+                                        <a class="p-1 mt-1 pl-3" href="#">ARCHIVE</a>
+                                    </div>
+
+                                    @foreach($reportsDateTU as $keyTu => $tuDate)
+                                        <a href="{{route('client.report', ['type'=>"transunion", 'date'=>$keyTu])}}">{{date("m/d/Y",strtotime($tuDate))}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item d-flex px-3">
+                            <div class="dropdown">
+                              <span class="report_access bold">OTHER REPORTS</span>
+                                {{-- <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="70%"> --}}
+                                <div class="dropdown-content report">
+                                    <div class="dropdown">
+                                        <ul class="dropdown-submenu">
+                                          <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"> <span class="report_access">CREDITKARMA</span></a>
+                                            {{-- <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a> --}}
+                                            <ul class="dropdown-menu">
+                                                <a class="dropdown-item" href="{{route('client.credentials',['source'=> 'credit_karma'])}}"target="_blank">CREDENTIALS</a>
+                                            </ul>
+                                        </ul>
+                                        <ul>
+                                          <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"> <span class="report_access">CHEXSYSTEMS</span></a>
+                                            {{-- <a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/cs_logo_1.png')}}"  width="110px"></a> --}}
 
 
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                          </li>
 
 
+                      </ul>
+                  </div>
 
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                  <button type="submit" value="Update" class="btn btn-primary">Update</button>
-                  {!! Form::close() !!}
-                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    {{--    @include('helpers.breadcrumbs', ['title'=> "Client Profile", 'route' => ["Home"=> '#', "Client Profile" => "#"]])--}}
+              </div>
+          </div>
+          <!-- End Top Referrals Component -->
+      </div>
+  </div>
+@endsection
 
 
 
@@ -727,7 +538,8 @@
 
             var options = {
                 is3D: true,
-                colors: ['#89caf4','#4678b7', '#363676', '#275ca8', '#77c1ce','#0091ca']
+                colors: ['#89caf4','#4678b7', '#363676', '#275ca8', '#77c1ce','#0091ca'],
+                chartArea:{left:0,top:0,width:"100%",height:"100%"}
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -810,8 +622,3 @@
 
     {{--        });--}}
     {{--    </script>--}}
-
-
-
-
-@endsection

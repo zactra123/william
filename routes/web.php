@@ -299,7 +299,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::get('upload-credit-reports', 'ClientDetailsController@uploadCreditReports')->name('client.uploadCreditReports');
     Route::post('upload-pdf', 'ClientDetailsController@uploadPdf')->name('client.uploadPdf');
     Route::get('registration-steps', 'ClientDetailsController@create')->name('registration_steps');
-    Route::get('profile', 'ClientDetailsController@profile')->name('client.profile');
+    // Route::get('profile', 'ClientDetailsController@profile')->name('client.profile');
     Route::get('negative-item', 'ClientDetailsController@negativeItem')->name('client.negative.item');
     Route::post('negative-item', 'ClientDetailsController@negativeItemStore')->name('negative.store');
     Route::post('negative-contract', 'ClientDetailsController@negativeItemContract')->name('negative.contract');
@@ -310,7 +310,7 @@ Route::group(['prefix' =>'client'], function() {
     Route::put('complete/require/information', 'ClientDetailsController@updateDispute')->name('client.dispute.update');
 
     Route::resource('details/', 'ClientDetailsController')->names('client.details')->parameters([''=>'client']);
-
+    Route::get('profile', 'ClientDetailsController@profile')->name('client.profile');
 
 //    Route::get('/details', 'ClientDetailsController@create')->name('createInfo');
 //    Route::post('/save-info', 'ClientDetailsController@store')->name('storeInfo');

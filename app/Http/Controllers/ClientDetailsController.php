@@ -1096,6 +1096,64 @@ class ClientDetailsController extends Controller
 
     }
 
+    /**
+     * Client Profile
+     */
+     public function profile()
+     {
+       $client = Auth::user();
+       $toDos = Todo::where('client_id', $client->id)->get();
+       $status = [null => ''] + \App\Todo::STATUS;
+       $reportsDateEQ = ClientReport::where('user_id', auth()->user()->id)
+           ->where('type', "EQ")->pluck('created_at', 'id')->toArray();
+       $reportsDateEX = ClientReport::where('user_id', auth()->user()->id)
+           ->where('type', "EX_LOG")->pluck('created_at', 'id')->toArray();
+       $reportsDateTU = ClientReport::where('user_id', auth()->user()->id)
+           ->where('type', "TU_DIS")->pluck('created_at', 'id')->toArray();
 
+       $requiredInfoArr = Todo::
+           leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+           ->where('client_id', $client->id)
+           ->whereJsonContains('additional_information', ['security_word' => null])
+           ->pluck('disputables.id')
+           ->toArray();
 
+       if(!empty($requiredInfoArr)){
+           $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
+       }else{
+           $requiredInfo = [];
+       }
+
+       $statusArray = DB::table('todos')
+           ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
+           ->where('todos.client_id', $client->id)
+           ->groupBy('disputables.status')
+           ->select(DB::raw('COUNT(disputables.id) as count'), 'disputables.status as status')
+           ->pluck('count', 'status')
+           ->toArray();
+
+       $statusInactive = Todo::
+           leftJoin('disputables', 'todos.id','=','disputables.todo_id')
+           ->where('client_id', $client->id)
+           ->where('disputables.status', 0)
+           ->whereJsonContains('additional_information', ['security_word' => null])
+           ->count('disputables.status');
+
+       $active = !empty($statusArray)? $statusArray[0]- $statusInactive:0;
+       $pending = !empty($statusArray) && isset($statusArray[1])? $statusArray[1]:0;
+       $complete = !empty($statusArray) && isset($statusArray[2])? $statusArray[2]:0;
+       $added = !empty($statusArray) && !is_null($statusInactive)? $statusInactive:0;
+       $non_data = empty($statusArray) ? 1:0;
+
+       $statusDispute = json_encode([
+           'active' => $active,
+           'pending' => $pending,
+           'complete'=> $complete,
+           'added' => $added,
+           'non_data' => $non_data,
+
+       ]);
+
+       return view('client_details.profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
+     }
 }

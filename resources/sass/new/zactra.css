@@ -169,7 +169,7 @@ height: 100%;
 }
 
 .clientprofile-dispute-height{
-  min-height: 300px;
+  min-height: 240px !important;
 }
 .scrollDiv {
     min-height: 300px;
@@ -280,4 +280,8 @@ height: 100%;
 }
 .card-no-box-shadow{
   box-shadow: none !important;
+}
+
+.text-muted {
+    color: #a1aab2 !important;
 }
