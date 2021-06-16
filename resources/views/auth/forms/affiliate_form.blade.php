@@ -107,9 +107,11 @@
             </div>
 
           </div>
-          <div class="basic-button text-center">
+        <div class="col-md-12 text-center">
+          <div class="basic-button">
               <input class="login" type="submit" value="Register" name="">
           </div>
+        </div>
         </div>
 
 
@@ -143,6 +145,6 @@
           </a>
       </p>
 
-        
+
     </div>
 </div>

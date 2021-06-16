@@ -107,8 +107,10 @@
               </div>
 
             </div>
-            <div class="basic-button text-center">
-                <input class="login" type="submit" value="Register" name="">
+            <div class="col-md-12 text-center">
+              <div class="basic-button">
+                  <input class="login" type="submit" value="Register" name="">
+              </div>
             </div>
           </div>
 

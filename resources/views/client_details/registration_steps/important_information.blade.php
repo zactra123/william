@@ -64,7 +64,9 @@
 
 
 
-<div class="basic-button">
-    <input class="login" type="submit" value="Continue" name="">
+<div class="col-md-12 text-center">
+  <div class="basic-button">
+      <input class="login" type="submit" value="Continue" name="">
+  </div>
 </div>
 {!! Form::close() !!}

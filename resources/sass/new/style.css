@@ -1598,11 +1598,22 @@ section.register .login-social a.login-google {
 .register-form .registration-stage.active .stage-img{
     border-color: #68baf7;
 }
+.register-form .registration-stage.nonacive .stage-img{
+    border-color: #e0e0e0;
+}
+
+.nonacive{
+    border-color: #e0e0e0;
+}
 .register-form .registration-stage .stage-img svg path{
     transition: all 1s ease-in-out;
 }
 .register-form .registration-stage.active .stage-img svg path{
     fill: #68baf7!important;
+}
+
+.register-form .registration-stage.nonactive .stage-img svg path{
+    fill: #e0e0e0!important;
 }
 .register-form .registration-stage .stage-img svg{
     width: 60%;

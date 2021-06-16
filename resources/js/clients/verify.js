@@ -19,6 +19,8 @@ $(document).ready(function(){
     $(`.registration-stage[data-id="${$old_id}"]`).addClass('none').removeClass('active').hide();
     $(`.registration-stage[data-id="${$new_id}"]`).addClass('active').removeClass('none').show();
     $(`.registration-stage[data-id="${$old_id}"]`).addClass('active').removeClass('none').show();
+    $(`.stage-img[data-id="${$new_id}"]`).removeClass('nonactive').show();
+    $(`.stage-img[data-id="${$old_id}"]`).removeClass('nonactive').show();
     $(`.registration-stage[data-id="${$new_id}"]`).addClass('prepare');
 
 })

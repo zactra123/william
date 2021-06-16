@@ -3,10 +3,11 @@
 *             THIS IS OFFICIAL CSS FILE WRITTEN BY ZACTRA TO MANAGE WEBSITE CONTENTS
 * ============================================================================================================================
 */
-*{
+/* *{
    font-family: "Open Sans", sans-serif !important;
    font-size:12px;
-}
+} */
+
 .theme-color{
   color:#37c6f5 !important;
 }

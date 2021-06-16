@@ -102,7 +102,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-12 text-center">
         <div class="basic-button">
             <input class="login" type="submit" value="Submit" name="">
         </div>

@@ -234,6 +234,7 @@ $(document).ready(function(){
         $(`.additional-reg[data-id="${$old_id}"]`).addClass('none').removeClass('active').hide();
         $(`.additional-reg[data-id="${$new_id}"]`).addClass('active').removeClass('none').show();
         $(`.registration-stage[data-id="${$old_id}"]`).addClass('active');
+        $(`.stage-img[data-id="${$old_id}"]`).removeClass('nonactive');
         $(`.registration-stage[data-id="${$new_id}"]`).addClass('prepare');
 
         $('html, body').animate({
