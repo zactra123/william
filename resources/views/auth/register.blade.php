@@ -14,7 +14,6 @@
       <div class="col-md-7">
         <div class="px-4 py-4" >
 
-
           <h1 class="fs-25 bold theme-color-dark">Sign Up</h1>
           <p>New here? Please enter following information to get register!</p>
           <br>
@@ -97,7 +96,6 @@
                   </a>
               </div>
 
-
               <form id="register_type" method="post" data-id="1" class="add-client additional-reg" style="border-color:#ccc0c0">
                   <div class="register-type-box" style="border-color:#ccc0c0">
                       <label class="register-type" style="border-color:#ccc0c0" for="register_type_client">
@@ -133,7 +131,6 @@
 
 
               </div>
-
 
           </div>
 

@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="register">
-        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
+        {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
         <div class="register-form" data-id="1">
             <div class="title">
                 <h3 >Rest Login information</h3>

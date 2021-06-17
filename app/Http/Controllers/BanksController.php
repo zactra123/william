@@ -125,6 +125,7 @@ class BanksController extends Controller
 
     }
 
+
     public function bankMissingFields(Request $request)
     {
         $banksLogos = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
@@ -339,7 +340,8 @@ class BanksController extends Controller
      * @bank_addresses edited furnishers addresses sorted in first executive address
      */
     public function edit(Request $request)
-    {
+    {   $account_types = "";
+        $bank_types = "";
         $id  = $request->id;
         $bank = BankLogo::findOrFail($id);
         $banks = BankLogo::all()->pluck('name', 'id')->toArray();

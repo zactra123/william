@@ -149,7 +149,7 @@
                                         <img class="user-avatar rounded-circle mr-2" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="User Avatar" /> <span class="d-none d-md-inline-block">{{ $client->full_name() }}</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-small">
-                                        <a class="dropdown-item" href="{{ route('client.details.edit',Auth::user()->id) }}"><i class="material-icons"></i> Profile</a>
+                                        <a class="dropdown-item text-danger" href="{{ route('client.details.edit',Auth::user()->id) }}"><i class="material-icons text-danger">account_circle</i>Profile</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item text-danger" href="{{url('logout')}}"> <i class="material-icons text-danger"></i> Logout </a>
                                     </div>

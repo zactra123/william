@@ -65,7 +65,7 @@
                             <img src="images/new/finish.png" alt="finish">
                         </div>
                     </div>
-                    <a class="finish-reg basic-button">Continue</a>
+                    <a class="finish-reg basic-button pointer">Continue</a>
                 </div>
             </div>
         @endif

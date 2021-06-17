@@ -150,11 +150,13 @@
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
                                     <div class="col-sm-3 form-group changeLogo files">
+                                      @if (isset($authority->bucket))
                                         @if($authority->checkUrlAttribute())
                                             <img src="{{$authority->getUrlAttribute()}}" width="100px">
                                         @else
                                             <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
                                         @endif
+                                      @endif
                                     </div>
                                     <div class="col-sm-3 hide form-group updateLogo files">
                                         <input class="bank_logo_class bank_logo file-box" type="file" name="logo" >
@@ -325,6 +327,3 @@
 
 
 @endsection
-
-
-

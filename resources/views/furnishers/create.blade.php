@@ -421,6 +421,3 @@
 
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 @endsection
-
-
-

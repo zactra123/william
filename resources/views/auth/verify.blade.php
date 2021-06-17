@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="register">
-        <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background">
+        {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
         <div class="register-form" data-id="1">
             <h3 class="title">Registration</h3>
             <div class="registration-stages">

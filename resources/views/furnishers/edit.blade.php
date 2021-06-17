@@ -161,28 +161,32 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="col-sm-12 form-group changeLogo files">
-                                        @if($bank->checkUrlAttribute())
-                                            <img src="{{$bank->getUrlAttribute()}}" width="100px">
-                                        @else
-                                            @if($bank->no_logo)
-                                                <img width="100px" src="{{asset('images/no_bank_logos.png')}}"
-                                                     alt="Card image cap">
-                                            @else
-                                                <img width="100px" src="{{asset('images/default_bank_logos.png')}}"
-                                                     alt="Card image cap">
+                                        @if (isset($bank->bucket))
+                                          @if($bank->checkUrlAttribute())
+                                              <img src="{{$bank->getUrlAttribute()}}" width="100px">
+                                          @else
+                                              @if($bank->no_logo)
+                                                  <img width="100px" src="{{asset('images/no_bank_logos.png')}}"
+                                                       alt="Card image cap">
+                                              @else
+                                                  <img width="100px" src="{{asset('images/default_bank_logos.png')}}"
+                                                       alt="Card image cap">
 
-                                            @endif
+                                              @endif
+                                          @endif
                                         @endif
 
                                     </div>
                                     <div class="col-sm-12 hide form-group updateLogo files">
                                         <input class="bank_logo_class bank_logo file-box" type="file" name="logo">
                                     </div>
-                                    @if(!$bank->checkUrlAttribute())
-                                        <div class="col-md-12">
-                                            NO LOGO <input type="checkbox" value="true"
-                                                           name="bank[no_logo]" {{$bank->no_logo == true ? "checked":''}} >
-                                        </div>
+                                    @if (isset($bank->bucket))
+                                      @if(!$bank->checkUrlAttribute())
+                                          <div class="col-md-12">
+                                              NO LOGO <input type="checkbox" value="true"
+                                                             name="bank[no_logo]" {{$bank->no_logo == true ? "checked":''}} >
+                                          </div>
+                                      @endif
                                     @endif
 
 
@@ -576,6 +580,3 @@
 
 
 @endsection
-
-
-

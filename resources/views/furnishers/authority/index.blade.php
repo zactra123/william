@@ -135,10 +135,12 @@
                                 @foreach($authorities  as $authority)
                                     <div class="col-md-3" title="{{strtoupper($authority->name)}}">
                                         <div class="card mb-4 box-shadow" >
-                                            @if($authority->checkUrlAttribute())
-                                                <img class="card-img-top banks-card" src="{{$authority->getUrlAttribute()}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
-                                            @else
-                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
+                                            @if (isset($logos->bucket))
+                                              @if($authority->checkUrlAttribute())
+                                                  <img class="card-img-top banks-card" src="{{$authority->getUrlAttribute()}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
+                                              @else
+                                                  <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
+                                              @endif
                                             @endif
 
                                             <div class="card-body">
@@ -229,6 +231,3 @@
     </script>
 
 @endsection
-
-
-

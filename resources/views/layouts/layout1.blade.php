@@ -77,7 +77,7 @@
 </head>
 <body>
 
-  <header class="theme-background py-2">
+  <header class="theme-background py-2 fixed-top">
     <div class="container">
       <div class="phone-block contact-info">
         <div class="col-md-12 col-lg-12 col-sm-12 col-12">
@@ -143,52 +143,25 @@
 
   </header>
 
-<section class="py-2">
+<section class="py-2 mb-5">
   <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-    <div class="container nav-bar">
+    <header id="header" class="fixed-top" style="top:40px !important;">
+      <div class="container d-flex align-items-center justify-content-between">
 
-        <div class="site-navi contact-info row  pt-4">
-            <div class="logo-block col-6 col-lg-3">
-                <a href="/" title="Home">
-                    <img src="{{asset('images/new/logo.png')}}" alt="logo">
-                </a>
-            </div>
-            <div class="navigation-block col-6 col-lg-9 row">
-                {{-- <div class="mobile-menu">
-                    <button id="toggle_menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div> --}}
-                
-                <div class="navigation col-12">
-                    <nav class="col-md-8">
-                        <ul class="nav-block">
-                            @if(Auth::user())
-                                @if(Auth::user()->role == 'client')
-                                    @include('helpers.urls.nav_bar_client')
-                                @elseif(Auth::user()->role == 'affiliate')
-                                    @include('helpers.urls.nav_bar_affiliate')
-                                @elseif(Auth::user()->role == 'super admin')
-                                    @include('helpers.urls.nav_bar_owner')
-                                @elseif(Auth::user()->role == 'admin')
-                                    @include('helpers.urls.nav_bar_admin')
-                                @elseif(Auth::user()->role == 'receptionist')
-                                    @include('helpers.urls.nav_bar_receptionist')
-                                @elseif(Auth::user()->role == 'seo')
-                                    @include('helpers.urls.nav_bar_seo')
-                                @endif
-                            @else
-                                @include('helpers.urls.nav_bar_guest')
-                            @endif
-                        </ul>
-                    </nav>
+        <h1 class="logo"><a href="#"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-                </div>
-            </div>
-        </div>
-    </div>
+        <nav id="navbar" class="navbar">
+          <ul>
+            @include('helpers.urls.nav_bar_guest')
+
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+    </header>
   </div>
 </section>
 
@@ -264,79 +237,71 @@
         </div>
     </footer>
 @else
-    <footer>
-        <div class="footer-bck">
-            <div class="container">
-                <div class="footer row">
-                    <div class="information-block col-12 col-lg-8">
-                        <div class="row">
-                            <div class="first-block col-12 col-md-4 pl-0">
-                                <h6 class="title">Connect with us</h6>
-                                <ul class="contact-information">
-                                    <li><a href="tel:1-844-337-8336">1-844-337-8336</a></li>
-                                    <li><a href="mailto:info@prudentscores.com"  class="company-email">&nbsp;info&nbsp;@prudentscores&nbsp;.com</a></li>
-                                    <li><p>5800 S. Eastern Ave., Suite 500</p></li>
-                                    <li><p>Commerce, CA 90040</p></li>
-                                    <li><p>Working Hours:</p></li>
-                                    <li><p>Mon-Fri (9:00 a.m. - 5:30 p.m.)</p></li>
-                                </ul>
-                            </div>
-                            <div class="second-block col-12 col-md-4 pl-0">
-                                <h6 class="title">Information</h6>
-                                <ul class="contact-information">
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="#partner_with_us" data-toggle="modal">Partner with Us</a></li>
-                                    <li><a href="{{route('legalityCreditRepair')}}">Is Credit Repair Legal?</a></li>
-                                    <li><a href="{{route('credit.repair')}}">Resources</a></li>
-                                    <li><a href="{{route('blog')}}">Newsroom</a></li>
-                                </ul>
-                            </div>
-                            <div class="thirth-block col-12 col-md-4 pl-0">
-                                <h6 class="title">Customer Service</h6>
-                                <ul class="contact-information">
-                                    <li><a href="{{route('faqs')}}">FAQs</a></li>
-                                    <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
-                                    <li><a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">Score Estimator</a></li>
-                                    <li><a href="https://www.consumer.ftc.gov/features/feature-0014-identity-theft" target="_blank">Identity Theft</a></li>
-                                    <li><a href="{{route('pravicy')}}">Privacy Policy/Terms of Use</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="map col-12 col-md-8 col-lg-4" id="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3308.251910018481!2d-118.16062677777458!3d33.986062727008566!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ce8ad1141a4b%3A0x21e5480545b2ce21!2s5800%20S%20Eastern%20Ave%20Suit%20500%2C%20Los%20Angeles%2C%20CA%2090040!5e0!3m2!1sru!2sus!4v1611490037688!5m2!1sru!2sus" width="593" height="253" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                        <h6 class="fs-15 text-upper uppercase">by appointment only</h6>
-                    </div>
-                </div>
-                <div class="social-media">
-                    <div class="twitter-icon">
-                        <a href="#twitter" rel="nofollow">
-                            <svg viewBox="0 0 25 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M24.6183 1.90681C23.713 2.22025 22.7278 2.44584 21.713 2.5337C22.7666 2.03132 23.5556 1.23765 23.9319 0.301583C22.9433 0.773626 21.8602 1.10463 20.7308 1.27991C20.2587 0.874872 19.6878 0.552197 19.0535 0.331995C18.4193 0.111794 17.7354 -0.00121528 17.0444 9.85551e-06C14.2485 9.85551e-06 12 1.81895 12 4.05106C12 4.36451 12.0473 4.67795 12.1243 4.97953C7.93787 4.80381 4.20414 3.19858 1.72189 0.740882C1.2696 1.36092 1.03258 2.06692 1.0355 2.7854C1.0355 4.19116 1.92603 5.4307 3.28402 6.1597C2.48374 6.1344 1.7022 5.95785 1.00296 5.64441V5.69428C1.00296 7.66282 2.73669 9.29416 5.04734 9.66935C4.61349 9.75979 4.16718 9.80607 3.71893 9.80707C3.39053 9.80707 3.07988 9.78095 2.76627 9.74533C3.40532 11.3506 5.26627 12.5165 7.48224 12.5545C5.74852 13.6444 3.57692 14.2856 1.21893 14.2856C0.795858 14.2856 0.405325 14.2737 0 14.2357C2.23669 15.3874 4.89053 16.0522 7.74852 16.0522C17.0266 16.0522 22.1035 9.88306 22.1035 4.52836C22.1035 4.35264 22.1035 4.17692 22.0887 4.0012C23.071 3.42417 23.9319 2.70942 24.6183 1.90681Z" fill="white"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="facebook-icon">
-                        <a href="#facebook" rel="nofollow">
-                            <svg viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.6172 0C5.09516 0 0.618164 3.59336 0.618164 8.02545C0.618164 12.0306 4.27416 15.3502 9.05516 15.9546V10.3458H6.51516V8.02545H9.05516V6.25727C9.05516 4.24428 10.5482 3.13425 12.8312 3.13425C13.9252 3.13425 15.0712 3.29077 15.0712 3.29077V5.26442H13.8072C12.5672 5.26442 12.1792 5.88405 12.1792 6.51892V8.02385H14.9502L14.5072 10.3442H12.1792V15.953C16.9602 15.3518 20.6161 12.0314 20.6161 8.02545C20.6161 3.59336 16.1392 0 10.6172 0Z" fill="white"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="instagram-icon">
-                        <a href="#instagram" rel="nofollow">
-                            <svg viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.7319 5.34961C8.89563 5.34961 7.39712 6.55233 7.39712 8.02612C7.39712 9.49991 8.89563 10.7026 10.7319 10.7026C12.5681 10.7026 14.0666 9.49991 14.0666 8.02612C14.0666 6.55233 12.5681 5.34961 10.7319 5.34961ZM20.7336 8.02612C20.7336 6.91777 20.7461 5.81945 20.6686 4.71311C20.591 3.42806 20.2258 2.28758 19.055 1.34789C17.8817 0.40619 16.4632 0.115047 14.8622 0.0528023C13.4812 -0.00944223 12.1128 0.000597234 10.7344 0.000597234C9.35344 0.000597234 7.98502 -0.00944223 6.60658 0.0528023C5.0055 0.115047 3.58454 0.408198 2.41375 1.34789C1.24046 2.28959 0.877715 3.42806 0.800163 4.71311C0.722611 5.82146 0.735119 6.91978 0.735119 8.02612C0.735119 9.13247 0.722611 10.2328 0.800163 11.3391C0.877715 12.6242 1.24296 13.7647 2.41375 14.7044C3.58705 15.6461 5.0055 15.9372 6.60658 15.9994C7.98752 16.0617 9.35594 16.0516 10.7344 16.0516C12.1153 16.0516 13.4837 16.0617 14.8622 15.9994C16.4632 15.9372 17.8842 15.644 19.055 14.7044C20.2283 13.7627 20.591 12.6242 20.6686 11.3391C20.7486 10.2328 20.7336 9.13448 20.7336 8.02612ZM10.7319 12.1443C7.89245 12.1443 5.6009 10.3051 5.6009 8.02612C5.6009 5.74717 7.89245 3.90795 10.7319 3.90795C13.5713 3.90795 15.8628 5.74717 15.8628 8.02612C15.8628 10.3051 13.5713 12.1443 10.7319 12.1443ZM16.073 4.70106C15.41 4.70106 14.8747 4.27137 14.8747 3.73928C14.8747 3.20719 15.41 2.77751 16.073 2.77751C16.7359 2.77751 17.2713 3.20719 17.2713 3.73928C17.2715 3.86563 17.2406 3.99077 17.1805 4.10753C17.1203 4.22429 17.0321 4.33038 16.9207 4.41972C16.8094 4.50906 16.6773 4.5799 16.5318 4.62817C16.3863 4.67645 16.2304 4.70122 16.073 4.70106Z" fill="white"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Credit Repair</h3>
+
+                5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
+                <strong>Phone:</strong> 1-844-337-8336<br>
+                <strong>Email:</strong> info@prudentscores.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="fa fa-skype"></i></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Client</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Affiliate</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Subscribe Us</h4>
+            <p>You can any time unsubcribe your email address from your mail if this become annoying.</p>
+            <form action="#" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
         </div>
-        <div class="footer-copyright">
-            <p>COPYRIGHT WOOCOMMERCE 2020 - <a href="{{route('pravicy')}}">PRIVACY POLICY</a></p>
-        </div>
-    </footer>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+      </div>
+
+    </div>
+  </footer>
 @endif
 
 

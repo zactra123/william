@@ -10,8 +10,8 @@
 @section('content')
 
 
-  <div class="container-fluid">
-    <div class="px-3 pt-3">
+  <div class="container-fluid pt-1">
+    <div class="px-3 mt-5  pt-3">
         <div class="row">
           <div class="col-md-12  py-4">
             <div class="alert alert-danger">
@@ -46,14 +46,7 @@
                                 <div class="col-md-12">
                                     <div class="entry-thumb">
                                         <a class="entry-hover" href="#" title="#">
-                                            <img
-                                                width="100%"
-                                                height="300"
-                                                src="{{ asset('images/8rTMxcgWXuB5HvToV4PPdc62YZGgFC4n7tQ16PDN.jpg') }}"
-                                                data-src="{{ asset('images/8rTMxcgWXuB5HvToV4PPdc62YZGgFC4n7tQ16PDN.jpg') }}"
-                                                alt="lorum ipsum dolit norim amit"
-                                                class="img-fluid img-responsive ls-is-cached lazyloaded"
-                                            />
+                                            <img width="100%" height="300" src="{{ asset('images/8rTMxcgWXuB5HvToV4PPdc62YZGgFC4n7tQ16PDN.jpg') }}" data-src="{{ asset('images/8rTMxcgWXuB5HvToV4PPdc62YZGgFC4n7tQ16PDN.jpg') }}" alt="lorum ipsum dolit norim amit" class="img-fluid img-responsive ls-is-cached lazyloaded" />
                                         </a>
                                         <div class="blog-media text-center">
                                             <span class="entry-date latest_post_date">

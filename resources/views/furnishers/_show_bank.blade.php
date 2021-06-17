@@ -195,5 +195,3 @@ asort($types)
         </div>
     </div>
 </section>
-
-

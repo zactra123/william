@@ -6,28 +6,28 @@
             <label class="fs-18 bold theme-color-dark">Personal Info</label>
             <div class="row">
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="text" name="full_name" class="form-control" placeholder="Full name">
+                <input type="text" name="full_name" class="form-control" value="" placeholder="Full name">
               </div>
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="text" name="ssn" class="form-control ssn" id="social_number" placeholder="Social Security Number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="text" id="address" name="address" placeholder="Full Address" value="{{ old('address') }}"  autocomplete="new-full_address">
-              </div>
-              <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="tel" class="phone " name="phone_number" class="form-control fs-12" placeholder="Phone Number">
+                <input type="text" name="ssn" class="form-control ssn" id="social_number" value="" placeholder="Social Security Number">
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="email" name="email" class="form-control fs-12" placeholder="E-Mail Address">
+                <input type="text" id="address" name="address" value="" placeholder="Full Address" value="{{ old('address') }}"  autocomplete="new-full_address">
               </div>
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input type="text" name="referred_by" class="form-control fs-12" placeholder="Referred By (if any)">
+                <input type="tel" class="phone " name="phone_number" value="" class="form-control fs-12" placeholder="Phone Number">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                <input type="email" name="email" class="form-control fs-12" value="" placeholder="E-Mail Address">
+              </div>
+              <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                <input type="text" name="referred_by" class="form-control fs-12" value="" placeholder="Referred By (if any)">
               </div>
             </div>
 
@@ -55,7 +55,7 @@
 
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                 <div class="password">
-                    <input id="register_password" type="password" class="form-control fs-12" name="password" placeholder="Password" readonly
+                    <input id="register_password" type="password" class="form-control fs-12" value="" name="password" placeholder="Password" readonly
                            onfocus="this.removeAttribute('readonly');">
                     <div id="eye_open">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@
               </div>
 
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input id="register_password_confirm" type="password" class="form-control fs-12" name="password_confirmation" placeholder="Confirm Password" readonly
+                <input id="register_password_confirm" type="password" value="" class="form-control fs-12" name="password_confirmation" placeholder="Confirm Password" readonly
                        onfocus="this.removeAttribute('readonly');">
               </div>
 
@@ -93,12 +93,12 @@
                     </option>
                 </select>
                 <div class="none w-100" id="custom-secret-question">
-                    <input name="own_secter_question" type="text" class="form-control fs-12" placeholder="Own question">
+                    <input name="own_secter_question" type="text" value="" class="form-control fs-12" placeholder="Own question">
                 </div>
               </div>
 
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                <input id="secret_answer" type="text" class="form-control " name="secret_answer" value="{{ old('secret_answer') }}" placeholder="Please answer in secret question">
+                <input id="secret_answer" type="text" class="form-control " value="" name="secret_answer" value="{{ old('secret_answer') }}" placeholder="Please answer in secret question">
                 @error('secret_answer')
                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -84,6 +84,8 @@ class RegisterController extends Controller
                 'secret_questions_id'=>['required'],
                 'secret_answer'=>['required'],
             ]);
+            return $this->create();
+
         }else{
             return Validator::make($data, [
                 'full_name' => ['required', 'string', 'max:255'],
@@ -94,6 +96,7 @@ class RegisterController extends Controller
                 'secret_questions_id'=>['required'],
                 'secret_answer'=>['required'],
             ]);
+            return $this->create();
         }
 
     }
