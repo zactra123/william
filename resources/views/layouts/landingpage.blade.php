@@ -20,13 +20,6 @@
 
   {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
 
-
-  <!-- =======================================================
-  * Template Name: Multi - v4.3.0
-  * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -126,7 +119,7 @@
 
         <!-- Slide 1 -->
         <div class="carousel-item active" style="background-image: url({{ asset('/images/slide-1.jpg') }})">
-          <div class="carousel-container">
+          <div class="carousel-container mb-10px">
             <div class="container">
               <h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
               <p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
@@ -176,8 +169,8 @@
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>About</h2>
+        <div class="section-title mt-5">
+          <h2 >About</h2>
           <p>About Us</p>
         </div>
 
@@ -200,7 +193,7 @@
     </section><!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
+    <section id="counts" class="counts py-5">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -252,50 +245,38 @@
 
         <div class="row">
 
-          <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/why-us.jpg') }});" data-aos="zoom-in" data-aos-delay="100">
-            <a href="https://prudentscores.com/images/howItWorks.mp4" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/video-img2.png') }});" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
+            {{-- <a href="https://prudentscores.com/images/howItWorks.mp4" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a> --}}
+            <span class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></span>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="background:transparent;">
+                  {{-- <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div> --}}
+                  <div class="modal-body px-0 py-0 mx-0 my-0">
+                    <video id="home_video" style=" width:600px;" src="https://prudentscores.com/images/howItWorks.mp4" controls=""></video>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
 
             <div class="content">
-              <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto</strong></h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
+              <h3>Prudent Scores - Improving credit ratings and score, fast credit repair</h3>
+              <p class="fs-15">In the 1800s, most credit transactions were conducted by businesses, not by consumers. As business transactions increased, commercial lenders needed to create a way to standardize credit evaluation. In 1841, the Mercantile Agency solicited information from correspondents throughout the United States to systemize a borrower's "character and assets." However, this data considered too subjective by many as the opinions noted racial, class, and gender biases. Subscribers to the Mercantile Agency (renamed R.G.</p>
+
+              <p class="fs-15">We know the stress that bankruptcies, foreclosures, and other financial hardship can create – and we are proud to help our clients escape those stressful situations. We combine timing, technique, services, and practical solutions in helping our clients to improve their credit history and achieve all their reasonable credit-fitness goals and enhance their borrowing power.</p>
+
+              <p class="fs-15">Most of the other credit repair firms are in letter writing business. Writing dispute letters is a “lazy man’s” approach to credit repair – one with minimal results and the constant danger of removed items being re-inserted into credit reports. Those firms usually charge consumers a monthly fee for their services, making any dishonest firm drag dispute process longer because the longer they keep you as a client, the more money they will “earn.”In comparison, we do not charge monthly fees and always strive to complete the process in the shortest time possible. We will bill you only when we correct or remove an incomplete, unverifiable, misleading, frivolous, erroneous, obsolete, inaccurate, unauthorized, or fraudulent credit item from your credit reports.</p>
             </div>
 
-            <div class="accordion-list">
-              <ul>
-                <li>
-                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                    <p>
-                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                    </p>
-                  </div>
-                </li>
 
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                    <p>
-                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                    </p>
-                  </div>
-                </li>
-
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                    <p>
-                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                    </p>
-                  </div>
-                </li>
-
-              </ul>
-            </div>
 
           </div>
 
@@ -308,13 +289,14 @@
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title mt-5">
           <h2>Services</h2>
           <p>Check our Services</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="row  mb-5">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style"
+          padding=10px;" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="fa fa-dribbble"></i></div>
               <h4><a href="">Lorem Ipsum</a></h4>
@@ -368,10 +350,10 @@
     </section><!-- End Services Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container" data-aos="fade-up">
+    <section id="testimonials" class="testimonials section-bg py-5">
+      <div class="container " data-aos="fade-up">
 
-        <div class="section-title">
+        <div class="section-title ">
           <h2>Testimonials</h2>
           <p>Testimonials</p>
         </div>
@@ -461,173 +443,56 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Team</h2>
-          <p>Check our Team</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member" data-aos="zoom-in" data-aos-delay="100">
-              <img src="{{ asset('images/team/team-1.jpg') }}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-instagram"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-            <div class="member" data-aos="zoom-in" data-aos-delay="200">
-              <img src="{{ asset('images/team/team-2.jpg') }}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-instagram"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="member" data-aos="zoom-in" data-aos-delay="300">
-              <img src="{{ asset('images/team/team-3.jpg') }}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-instagram"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-            <div class="member" data-aos="zoom-in" data-aos-delay="400">
-              <img src="{{ asset('images/team/team-4.jpg') }}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                </div>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-instagram"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Pricing</h2>
-          <p>Our Competing Prices</p>
-        </div>
-
-        <div class="row align-items-center">
-
-          <div class="col-lg-4">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4>$0<span>per month</span></h4>
-              <ul>
-                <li><i class="fa fa-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="fa fa-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="fa fa-check"></i> Nulla at volutpat diam uteera</li>
-                <li class="na"><i class="fa fa-times"></i> <span>Pharetra massa massa ultricies</span></li>
-                <li class="na"><i class="fa fa-times"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-              </ul>
-              <a href="#" class="get-started-btn">Get Started</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Business</h3>
-              <h4>$29<span>per month</span></h4>
-              <ul>
-                <li><i class="fa fa-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="fa fa-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="fa fa-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="fa fa-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="fa fa-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="#" class="get-started-btn">Get Started</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-              <h3>Developer</h3>
-              <h4>$49<span>per month</span></h4>
-              <ul>
-                <li><i class="fa fa-check"></i> Quam adipiscing vitae proin</li>
-                <li><i class="fa fa-check"></i> Nec feugiat nisl pretium</li>
-                <li><i class="fa fa-check"></i> Nulla at volutpat diam uteera</li>
-                <li><i class="fa fa-check"></i> Pharetra massa massa ultricies</li>
-                <li><i class="fa fa-check"></i> Massa ultricies mi quis hendrerit</li>
-              </ul>
-              <a href="#" class="get-started-btn">Get Started</a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
 
 
 
   </main><!-- End #main -->
+
+  <!-- Start Subscribe Section -->
+  <section class="parallax-section12">
+    <div class="section-overlay bg-opacity-7 about-bottom-section" style="background-image: url({{ asset('images/parallax-bg13.jpg') }});">
+      <br><br> <br>
+      <div class="py-5 container sec-tpadding-3 sec-bpadding-3">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class=" oswald text-white fs-25 theme-color" style="font-family: Candara">Subscribe to our website</h1>
+            <p class="text-white">You can any time unsubcribe your email address from your mail if this become annoying.</p>
+            <p class="text-white fs-15">
+
+              <div class="row">
+                <div class="col-md-8 col-12 col-sm-12">
+                  <div class="subscribe-box">
+                    <input type="text" class="form-control fs-12 py-4" name="" placeholder="email@example.com" value="">
+                    <button type="button" class="btn btn-theme subscribe-btn" name="button">Subscribe</button>
+                  </div>
+                </div>
+              </div>
+
+
+            </p>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-box15 bmargin px-3 py-2" style="border: 3px solid #37c6f5">
+              <h4 style="color: white; font-family: corbel">how can we help you?</h4>
+              <p class="text-light">Feel free to contact us at any time. We feel happy to serve for our customers.</p>
+              <a href="" class="text-white"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                    <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0">
+                        <rect width="16" height="16" fill="white"></rect>
+                    </clipPath>
+                </defs>
+            </svg> Contact Us</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Subscribe Section -->
 
   <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -690,7 +555,7 @@
 
       <div class="container">
         <div class="copyright">
-          <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+          <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
         </div>
 
       </div>

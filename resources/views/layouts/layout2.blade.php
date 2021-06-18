@@ -166,7 +166,7 @@
                     @yield('body')
                     <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
                         <div class="col-md-12 col-lg-12 col-sm-12 col-12 text-center">
-                          <p>2020 © All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+                          <p>2020 © All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
                         </div>
                     </footer>
                 </main>

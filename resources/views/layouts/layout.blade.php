@@ -325,7 +325,7 @@
     <footer class="footer-section">
         <div class="copy-right text-center">
             <div class="container">
-                <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+                <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
             </div>
         </div>
     </footer>

@@ -167,7 +167,7 @@
 
 
 @yield('content')
-<section class="parallax-section12 pt-5">
+<section class="parallax-section12">
   <div class="section-overlay bg-opacity-7 about-bottom-section" style="background-image: url({{ asset('images/parallax-bg13.jpg') }});">
     <br><br> <br>
     <div class="py-5 container sec-tpadding-3 sec-bpadding-3">
@@ -232,7 +232,7 @@
     <footer class="footer-section">
         <div class="copy-right text-center">
             <div class="container">
-                <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+                <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
             </div>
         </div>
     </footer>
@@ -297,7 +297,7 @@
 
     <div class="container">
       <div class="copyright">
-        <p>2020 &copy; All Rights Reserved by <a href="/">PRUDENT CREDIT SOLUTION</a></p>
+        <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
       </div>
 
     </div>
