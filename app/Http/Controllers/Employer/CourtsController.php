@@ -77,23 +77,23 @@ class CourtsController extends Controller
         }
 
         $pathLogo = '';
-        if (!empty($request['logo']) ) {
-            $imagesBankLogo = $request->file("logo");
-            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-            if(!in_array($bankLogoExtension, $imageExtension)){
-                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
-            }
-
-
-            $ext = $request->file('logo')->getClientOriginalExtension();
-            $time = time();
-            $pathLogo = $request->file('logo')->storeAs(
-                'courts',
-                "court_$time.$ext",
-                ['disk'=>'s3', 'visibility'=>'public']
-            );
-        }
+        // if (!empty($request['logo']) ) {
+        //     $imagesBankLogo = $request->file("logo");
+        //     $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+        //     $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+        //     if(!in_array($bankLogoExtension, $imageExtension)){
+        //         return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+        //     }
+        //
+        //
+        //     $ext = $request->file('logo')->getClientOriginalExtension();
+        //     $time = time();
+        //     $pathLogo = $request->file('logo')->storeAs(
+        //         'courts',
+        //         "court_$time.$ext",
+        //         ['disk'=>'s3', 'visibility'=>'public']
+        //     );
+        // }
         $courtInfo = $request->court;
         $courtInfo['path'] = $pathLogo;
 
@@ -232,5 +232,18 @@ class CourtsController extends Controller
         }
         return redirect()->route('admins.court.index');
     }
+
+
+    /**
+     * Delete Court.
+     * @param $id
+     * @return JsonResponse
+     */
+     public function delete_court($id)
+     {
+       $court = Court::where('id',$id)->delete();
+
+       return back()->with('success','You successfully delete court!');
+     }
 
 }

@@ -177,4 +177,20 @@ class ReceptionistsController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
+    /**
+     *  Delete Receptionist
+     * @param Request
+     * @return JsonResponse
+     */
+     public function delete_receptionist($id)
+     {
+       $user = User::where('id',$id)->delete();
+
+       AllowedIp::where('user_id',$id)->delete();
+
+       return back()->with('success','You successfully delete receptionist!');
+
+
+     }
 }

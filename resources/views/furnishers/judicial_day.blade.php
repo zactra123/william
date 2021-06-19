@@ -98,7 +98,9 @@
                         @foreach($states as $state)
                             <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                                 <div class="card mb-4 box-shadow" >
-                                    <img  class="card-img-top state-card w-100" data-id="{{$state->id}}" src=" {{$state->flag()}} " >
+                                    @if (isset($state->bucket))
+                                      <img  class="card-img-top state-card w-100" data-id="{{$state->id}}" src=" {{$state->flag()}} " >
+                                    @endif
                                     <div class="card-body">
                                         <div class="card-text ">
                                             <div class="row text-center size" ><label class="size-changer">{{strtoupper($state->full_name)}}</label> </div>

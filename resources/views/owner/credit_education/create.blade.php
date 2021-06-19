@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3>Content</h3>
-                                    {!! Form::open(['route' => ['owner.home.content.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
+                                    {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
                                     @csrf
                                     <div class="form-group row font">
 
@@ -62,14 +62,3 @@
 
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-

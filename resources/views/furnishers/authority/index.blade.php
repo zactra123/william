@@ -47,7 +47,7 @@
             height: 100px;
             object-fit: contain;
         }
-        .delete{
+        .delete2{
             z-index: 10;
             display: inline-block;
             width: 15%;
@@ -135,21 +135,23 @@
                                 @foreach($authorities  as $authority)
                                     <div class="col-md-3" title="{{strtoupper($authority->name)}}">
                                         <div class="card mb-4 box-shadow" >
-                                            @if (isset($logos->bucket))
+                                            @if (isset($authority->bucket))
                                               @if($authority->checkUrlAttribute())
                                                   <img class="card-img-top banks-card" src="{{$authority->getUrlAttribute()}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
                                               @else
-                                                  <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
                                               @endif
+                                              @else
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" alt="Card image cap">
                                             @endif
 
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
                                                     <div class="bank-name b"  onclick="location.href='{{route("admins.authority.edit", $authority->id)}}'" > {{strtoupper($authority->name)}}</div>
 
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $authority->id}}" >
+                                                    <a href="{{ route('admin.delete.authority',$authority->id) }}"><div class="delete2 text-right" onclick="return confirm('Are You Sure?')" data-toggle="popover" data-placement="top" data-id="{{ $authority->id}}" >
                                                         <span> <i class="fa fa-trash"></i> </span>
-                                                    </div>
+                                                    </div></a>
                                                 </div>
                                             </div>
                                         </div>

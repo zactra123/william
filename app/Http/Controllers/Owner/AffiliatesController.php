@@ -131,4 +131,16 @@ class AffiliatesController extends Controller
         dd("test");
     }
 
+    /**
+     *  Delete Affiliate.
+     *
+     *
+     */
+    public function delete_affiliate($id)
+    {
+      $user = User::where('id',$id)->delete();
+
+      return back()->with('success','You successfully delete affiliate!');
+    }
+
 }

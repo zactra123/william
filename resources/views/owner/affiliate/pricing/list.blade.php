@@ -26,7 +26,7 @@
 
 
                             <div class="col">
-                                <input type="submit" value="Add" class="ms-ua-submit">
+                                <input type="submit" value="Add" class="ms-ua-submit btnsub" data-url="{{ url('/') }}">
 
                             </div>
                             {!! Form::close() !!}
@@ -40,10 +40,10 @@
         $(document).ready(function(){
             $('#bankInformation').submit(function(e){
                 e.preventDefault();
-
+                var url2 = $('.btnsub').attr('data-url');
                 data = $('#bankInformation').serialize()
                 $.ajax({
-                    url: '/owner/affiliate/pricing',
+                    url: url2+'/owner/affiliate/pricing',
                     type: 'POST',
                     dataType: 'html',
                     data: data,

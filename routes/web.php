@@ -91,13 +91,19 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');
     Route::any('admin/{adminId}/change-password', 'Owner\AdminsController@changePassword')->name('owner.admin.changePassword');
+    Route::get('admin/delete/{id}','Owner\AdminsController@delete_admin')->name('owner.delete.admin');
 
     Route::resource('receptionist', 'Owner\ReceptionistsController')->names('owner.receptionist')->except('show');
     Route::delete('receptionist/{id}/delete/ip-address/{idIp}', 'Owner\ReceptionistsController@deleteIp')->name('owner.receptionist.deleteIp');
+    Route::get('admin/delete/receptionist/{id}','Owner\ReceptionistsController@delete_receptionist')->name('owner.delete.receptionist');
 
     Route::resource('client', 'Owner\ClientsController')->names('owner.client')->only(['index', 'destroy']);
 
+    Route::get('admin/delete/client/{id}','Owner\ClientsController@delete_client')->name('owner.delete.client');
+
     Route::resource('affiliate', 'Owner\AffiliatesController')->names('owner.affiliate')->only(['index', 'destroy']);
+
+    Route::get('affiliate/delete/{id}','Owner\AffiliatesController@delete_affiliate')->name('owner.delete.affiliate');
 
     Route::any('affiliate/pricing', 'Owner\AffiliatesController@pricing')->name('owner.affiliate.pricing');
     Route::get('affiliate/pricing-affiliate', 'Owner\AffiliatesController@pricing_affiliate');
@@ -105,6 +111,7 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::resource('credit-education', 'Owner\CreditEducationsController')->names('owner.credit.education');
 
+    Route::get('delete/credit/education/{id}', 'Owner\CreditEducationsController@delete_credit_education')->name('admin.delete.education');
 
 
     Route::get('client/list', 'Owner\ClientsController@list')->name('owner.client.list');
@@ -120,7 +127,13 @@ Route::group(['prefix'=>'owner'], function(){
     Route::get('faqs/question', 'Owner\FaqsController@question')->name('owner.faqs.question');
     Route::delete('faqs/question/delete/{id}', 'Owner\FaqsController@questiondelete');
 
+    Route::get('/delete/faq/{id}','Owner\FaqsController@delete_faq')->name('admin.delete.faq');
+
+    Route::get('/delete/question/{id}','Owner\FaqsController@delete_question')->name('admin.delete.question');
+
     Route::resource('slogans', 'Owner\SlogansController')->names('owner.slogans')->except(['show','update','edit']);
+
+    Route::get('slogan/delete/{id}','Owner\SlogansController@slogan_delete')->name('admin.slogan.delete');
 
     //Reports actions
     Route::group(["prefix" => "report"], function(){
@@ -196,6 +209,8 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::any('/judicial/days', 'BanksController@mortgageDays')->name("admins.mortgage.days");
         Route::get('/mortgage/state', 'BanksController@state');
 
+        Route::get('/banks/delete/{id}', 'BanksController@bank_delete')->name('furnishers.bank.delete');
+
         Route::post('/executive-copied', 'BanksController@exCopied');
 
         Route::delete('/types/{id}', 'BanksController@delete_types');
@@ -208,6 +223,7 @@ Route::group(['prefix'=> 'admins/'], function(){
         Route::get('/med-serv', 'BanksController@med_serv');
         Route::get('/{id}', 'BanksController@show');
 
+        Route::get('/delete/type/{id}','BanksController@delete_furnisher_type')->name('furnisher.delete.type');
 
         Route::get('/banks/address-change', 'BanksController@changeAddress');
 
@@ -215,7 +231,9 @@ Route::group(['prefix'=> 'admins/'], function(){
 
     Route::resource('authorities', 'AuthoritiesController')->except('show')->names('admins.authority');
     Route::resource('court', 'Employer\CourtsController')->except('show')->names('admins.court');
+    Route::get('delete/court/{id}','Employer\CourtsController@delete_court')->name('admin.delete.court');
 
+    Route::get('delete/authority/{id}','AuthoritiesController@delete_authority')->name('admin.delete.authority');
 
     Route::resource('blogs', 'BlogsController')->names('blog');
     Route::post('/blogs/upload_tinymce_images', 'BlogsController@upload_tinymce_images');

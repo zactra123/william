@@ -47,7 +47,7 @@
             height: 100px;
             object-fit: contain;
         }
-        .delete{
+        .delete2{
             z-index: 10;
             display: inline-block;
             width: 15%;
@@ -123,19 +123,23 @@
                                 @foreach($courts as  $logos)
                                     <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                         <div class="card mb-4 box-shadow" >
-                                            @if($logos->checkUrlAttribute())
-                                               <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                            @if (isset($logos->bucket))
+                                              @if($logos->checkUrlAttribute())
+                                                 <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @else
+                                                  <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @endif
                                             @else
-                                                <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
                                             @endif
 
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
                                                     <div class="bank-name b"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
 
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                                    <a href="{{ route('admin.delete.court',$logos->id) }}"><div class="delete2 text-right" onclick="return confirm('Are You Sure!')" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
                                                         <span> <i class="fa fa-trash"></i> </span>
-                                                    </div>
+                                                    </div></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -222,6 +226,3 @@
     </script>
 
 @endsection
-
-
-

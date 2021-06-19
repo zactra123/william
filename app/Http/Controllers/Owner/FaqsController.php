@@ -50,6 +50,7 @@ class FaqsController extends Controller
         }
 
     }
+      
 
     /**
      * Update FAQs
@@ -127,6 +128,28 @@ class FaqsController extends Controller
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
         }
         return response()->json(['status' => 'success']);
+    }
+
+    /**
+     * Delete Faq
+     * @param $id
+     * @return JsonResponse
+     */
+    public function delete_faq($id)
+    {
+      Faq::where('id', $id)->delete();
+      return back()->with('success','You successfully delete faq!');
+    }
+
+    /**
+     * Delete Question
+     * @param $id
+     * @return JsonResponse
+     */
+    public function delete_question($id)
+    {
+      Question::where('id', $id)->delete();
+      return back()->with('success','You successfully delete question!');
     }
 
 }

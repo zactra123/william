@@ -153,10 +153,14 @@
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
                                     <div class="col-sm-3 form-group changeLogo files">
-                                        @if($court->checkUrlAttribute())
-                                            <img src="{{$court->getUrlAttribute()}}" width="100px">
+                                        @if (isset($court->bucket))
+                                          @if($court->checkUrlAttribute())
+                                              <img src="{{$court->getUrlAttribute()}}" width="100px">
+                                          @else
+                                              <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+                                          @endif
                                         @else
-                                            <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+                                          <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
                                         @endif
                                     </div>
                                     <div class="col-sm-3 hide form-group updateLogo files">
@@ -482,6 +486,3 @@
 
 
 @endsection
-
-
-

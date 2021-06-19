@@ -32,9 +32,9 @@
                                                         <td>{{$slogan->author}}</td>
                                                         <td>{{$slogan->slogan}}</td>
                                                         <td>
-                                                            <button class="btn btn-danger delete" data-id="{{ $slogan->id }}">
+                                                            <a href="{{ route('admin.slogan.delete',$slogan->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $slogan->id }}">
                                                                 <i class="fa fa-trash"></i>
-                                                            </button>
+                                                            </button></a>
 
                                                         </td>
                                                     </tr>
@@ -92,5 +92,3 @@
 
     </script>
 @endsection
-
-

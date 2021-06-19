@@ -41,7 +41,7 @@
 
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                    <button class="btn btn-danger delete" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button>
+                                                    <a href="{{ route('owner.delete.affiliate',$user->id) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button></a>
 
 
 

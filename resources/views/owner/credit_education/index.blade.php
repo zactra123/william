@@ -49,7 +49,7 @@
                                                                role="button"><span class="fa fa-pencil"></span></a>
                                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                            <button class="btn btn-danger delete" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button>
+                                                            <a href="{{ route('admin.delete.education',$content->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button></a>
 
                                                         </td>
                                                     </tr>
@@ -119,5 +119,3 @@
 
     </script>
 @endsection
-
-

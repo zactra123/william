@@ -47,7 +47,7 @@
                                                 <td>
                                                     <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-square-o"></i></a>
                                                     <a href="{{route('owner.admin.changePassword', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-key"></i></a>
-                                                    <button class="btn delete" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button>
+                                                    <a href="{{ route('owner.delete.admin',$admin['id']) }}"><button class="btn" onclick="return confirm('Are You Sure?')" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button></a>
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                                 </td>
 
@@ -117,7 +117,3 @@
 
     </script>
 @endsection
-
-
-
-

@@ -38,27 +38,27 @@ class AuthoritiesController extends Controller
         }
 
         $pathLogo = '';
-        if (!empty($request['logo']) ) {
-
-
-            $imagesBankLogo = $request->file("logo");
-            $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-            if(!in_array($bankLogoExtension, $imageExtension)){
-                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
-            }
-
-
-            $ext = $request->file('logo')->getClientOriginalExtension();
-            $time = time();
-            $pathLogo = $request->file('logo')->storeAs(
-                'authorities',
-                "authorities_$time.$ext",
-                ['disk'=>'s3', 'visibility'=>'public']
-            );
-
-
-        }
+        // if (!empty($request['logo']) ) {
+        //
+        //
+        //     $imagesBankLogo = $request->file("logo");
+        //     $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+        //     $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+        //     if(!in_array($bankLogoExtension, $imageExtension)){
+        //         return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+        //     }
+        //
+        //
+        //     $ext = $request->file('logo')->getClientOriginalExtension();
+        //     $time = time();
+        //     $pathLogo = $request->file('logo')->storeAs(
+        //         'authorities',
+        //         "authorities_$time.$ext",
+        //         ['disk'=>'s3', 'visibility'=>'public']
+        //     );
+        //
+        //
+        // }
         $authority['path'] = $pathLogo;
         Authority::create($authority);
         return redirect()->route('admins.authority.index');
@@ -117,6 +117,14 @@ class AuthoritiesController extends Controller
             return response()->json(['status' => 'success']);
         }
         return redirect()->route('admins.authority.index');
+    }
+
+    public function delete_authority($id)
+    {
+      $delete = Authority::where('id',$id)->delete();
+
+      return back()->with('success','You successfully delete authority!');
+
     }
 
 }

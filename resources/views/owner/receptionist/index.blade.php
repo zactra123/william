@@ -47,8 +47,8 @@
                                                     <a class="btn" href="{{route('owner.receptionist.edit', $receptionist['id'])}}"  data-id="{{ $receptionist['id'] }}" >
                                                         <i class="fa fa-pencil"></i></a>
                                                     <a href="{{route('owner.admin.changePassword', $receptionist['id'])}}"  data-id="{{ $receptionist['id'] }}" ><i class="fa fa-key"></i></a>
-                                                    <button class="btn  delete" data-id="{{ $receptionist['id'] }}" >
-                                                        <i class="fa fa-trash"></i></button>
+                                                    <a href="{{ route('owner.delete.receptionist',$receptionist['id']) }}"><button class="btn" onclick="return confirm('Are You Sure?')" data-id="{{ $receptionist['id'] }}" >
+                                                        <i class="fa fa-trash"></i></button></a>
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
                                                 </td>
 
@@ -109,4 +109,3 @@
 
 
 @endsection
-

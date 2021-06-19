@@ -47,7 +47,7 @@
             height: 100px;
             object-fit: contain;
         }
-        .delete{
+        .delete2{
             z-index: 10;
             display: inline-block;
             width: 15%;
@@ -134,14 +134,21 @@
                                                       <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                   @endif
                                               @endif
+
+                                            @else
+                                                @if($logos->no_logo)
+                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                @else
+                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                @endif
                                             @endif
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
                                                     <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
 
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                                    <a href="{{ route('furnishers.bank.delete',$logos->id) }}"><div class="delete2 text-right" data-toggle="popover" onclick="return confirm('Are You Sure?')" data-placement="top" data-id="{{ $logos->id}}" >
                                                         <span> <i class="fa fa-trash"></i> </span>
-                                                    </div>
+                                                    </div></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,5 +247,3 @@
         })
 
     </script>
-
-@endsection

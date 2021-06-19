@@ -66,4 +66,16 @@ class SlogansController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
+    /**
+     * Delete Slogan.
+     * @param $id
+     * @return JsonResponse
+     */
+     public function slogan_delete($id)
+     {
+       Slogan::where('id', $id)->delete();
+
+       return back()->with('success','You successfully delete slogan!');
+     }
 }

@@ -174,6 +174,15 @@
 
                                               @endif
                                           @endif
+                                        @else
+                                            @if($bank->no_logo)
+                                                <img width="100px" src="{{asset('images/no_bank_logos.png')}}"
+                                                     alt="Card image cap">
+                                            @else
+                                                <img width="100px" src="{{asset('images/default_bank_logos.png')}}"
+                                                     alt="Card image cap">
+
+                                            @endif
                                         @endif
 
                                     </div>

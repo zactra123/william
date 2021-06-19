@@ -81,12 +81,14 @@ class AdminsController extends Controller
             'role'=>'admin',
         ]);
 
+        foreach($admin['ip_address'] as $key => $value){
+        foreach ($value as $key => $ipAddress) {
+          AllowedIp::create([
+              'user_id'=> $user->id,
+              'ip_address' => $ipAddress
+          ]);
+        }
 
-        foreach($admin['ip_address'] as $ipAddress){
-            AllowedIp::create([
-                'user_id'=> $user->id,
-                'ip_address' => $ipAddress
-            ]);
        }
 
         foreach($admin['negative_types'] as $negativeTypes){
@@ -246,4 +248,22 @@ class AdminsController extends Controller
         $admin = User::where('id',$adminId)->whereIn('role', ['admin','receptionist'])->first();
         return view('owner.admin.change-password', compact('admin'));
     }
+
+    /**
+     * @param Request $request
+     * Delete Admin
+     * @param $adminId
+     * @return \Illuminate\View\View
+     */
+     public function delete_admin($id)
+     {
+        $admin = User::where('id',$id)->delete();
+
+        AllowedIp::where('user_id',$id)->delete();
+
+        AdminSpecification::where('user_id',$id)->delete();
+
+        return back()->with('success','You successfully delete admin!');
+     }
+
 }

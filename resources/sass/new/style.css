@@ -2031,7 +2031,7 @@ section.credit-history h5.title:last-of-type {
     font-size: 0.77rem;
     padding-left: 16px;
     padding-right: 12px;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     border: 1px solid #94A2B3;
     background-color: #FFFFFF;
 }
@@ -2048,7 +2048,7 @@ section.credit-history h5.title:last-of-type {
     background-color: #FFFFFF;
     color: #6e757d;
     font-size: 0.77rem;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     border: 1px solid #94A2B3;
 }
 

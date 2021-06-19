@@ -142,4 +142,17 @@ class CreditEducationsController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+
+    /**
+     * Delete Credit Education.
+     * @param $url
+     * @return JsonResponse
+     */
+     public function delete_credit_education($id)
+     {
+       HomePageContent::where('id',$id)->delete();
+
+       return back()->with('success','You successfully delete credit eduction!');
+     }
+
 }

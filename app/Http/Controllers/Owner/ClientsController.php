@@ -45,7 +45,6 @@ class ClientsController extends Controller
         return view('owner.client.index', compact( 'users'));
     }
 
-
     /**
      * Should remove existing Client from database
      * @param $userId
@@ -101,4 +100,16 @@ class ClientsController extends Controller
         dd("test");
     }
 
+    /**
+     * Delete Client.
+     * @param $userId
+     * @return JsonResponse
+     */
+     public function delete_client($id)
+     {
+       $user = User::where('id',$id)->delete();
+
+       return back()->with('success','You successfully delete client!');
+
+     }
 }

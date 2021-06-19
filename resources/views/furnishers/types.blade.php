@@ -103,9 +103,9 @@
 
                                         </td>
                                         <td width="20%">
-                                            <div class="delete text-center" data-toggle="popover" data-placement="top" data-id="{{ $type->id}}" >
+                                            <a href="{{ route('furnisher.delete.type',$type->id) }}"><div class="text-center" onclick="return confirm('Are You Sure?')" data-toggle="popover" data-placement="top" data-id="{{ $type->id}}" >
                                                 <span> <i class="fa fa-trash"></i> </span>
-                                            </div>
+                                            </div></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -154,6 +154,3 @@
     </script>
 
 @endsection
-
-
-

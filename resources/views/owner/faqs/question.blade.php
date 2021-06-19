@@ -31,7 +31,7 @@
                                             <td>{{$question->question}}</td>
                                             <td>
                                                 <meta name="csrf-token" content="{{ csrf_token() }}">
-                                                <button class="btn btn-primary delete" data-id="{{ $question->id }}" >Delete </button>
+                                                <a href="{{ route('admin.delete.question',$question->id) }}"><button class="btn btn-primary delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $question->id }}" >Delete </button></a>
 
                                             </td>
                                         </tr>
@@ -79,6 +79,3 @@
 
     </script>
 @endsection
-
-
-

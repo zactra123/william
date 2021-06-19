@@ -119,14 +119,22 @@
                                 @foreach($banksLogos as  $logos)
                                     <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                         <div class="card mb-4 box-shadow" >
-                                            @if($logos->checkUrlAttribute())
-                                               <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                            @if (isset($logos->bucket))
+                                              @if($logos->checkUrlAttribute())
+                                                 <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @else
+                                                  @if($logos->no_logo)
+                                                      <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                  @else
+                                                      <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                  @endif
+                                              @endif
                                             @else
-                                                @if($logos->no_logo)
-                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                @else
-                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                @endif
+                                              @if($logos->no_logo)
+                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @else
+                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @endif
                                             @endif
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
@@ -235,6 +243,3 @@
     </script>
 
 @endsection
-
-
-

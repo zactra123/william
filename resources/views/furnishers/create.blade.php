@@ -92,6 +92,7 @@
                         $subTypes =  \App\BankLogo::SUB_TYPES;
                         asort($types)
                     @endphp
+
                     {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
                     @csrf
                     <div class="ms-ua-box">
