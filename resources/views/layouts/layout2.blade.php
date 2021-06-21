@@ -1,22 +1,22 @@
 <html class="no-js h-100" lang="en">
     <head>
+
+      <meta charset="utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <title>Prudent Credit Solutions</title>
+      
       <link rel="icon" type="image/png" sizes="192x192"  href="{{URL::asset('/icons/android-icon-192x192.png')}}">
       <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('/icons/favicon-32x32.png')}}">
       <link rel="icon" type="image/png" sizes="96x96" href="{{URL::asset('/icons/favicon-96x96.png')}}">
       <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('/icons/favicon-16x16.png')}}">
-        <!-- Google Tag Manager -->
-
-        <!-- End Google Tag Manager -->
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Prudent Credit Solutions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-        <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="https://designrevision.com/demo/shards-dashboard-lite/styles/shards-dashboards.1.1.0.min.css" />
-        <link rel="stylesheet" href="https://designrevision.com/demo/shards-dashboard-lite/styles/extras.1.1.0.min.css" />
-        <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
+      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+      <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="https://designrevision.com/demo/shards-dashboard-lite/styles/shards-dashboards.1.1.0.min.css" />
+      <link rel="stylesheet" href="https://designrevision.com/demo/shards-dashboard-lite/styles/extras.1.1.0.min.css" />
+      <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
 
     </head>
     <body class="h-100">
@@ -171,7 +171,7 @@
                         </div>
                     </footer>
                 </main>
-              
+
             </div>
         </div>
 

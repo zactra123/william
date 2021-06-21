@@ -9,7 +9,7 @@ use App\Clinet_details;
 
 class Client
 {
-  
+
     /**
      * Handle an incoming request.
      *
@@ -19,7 +19,7 @@ class Client
      */
     public function handle($request, Closure $next)
     {
-          return $next($request);
+      
 
        if (!Auth::check()) {
            return redirect()->route('login');

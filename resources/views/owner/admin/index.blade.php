@@ -1,38 +1,39 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
-
-    @include('helpers.breadcrumbs', ['title'=> "ADMINS", 'route' => ["Home"=> '/owner',"ADMIN LIST" => "#"]])
+    {{-- @include('helpers.breadcrumbs', ['title'=> "ADMINS", 'route' => ["Home"=> '/owner',"ADMIN LIST" => "#"]]) --}}
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="row m-2  pt-4">
-                        <div class="col-md-11 pull-right">
-                            <a class="btn btn-primary pull-right" href="{{ route('owner.admin.create')}}" role="button">
-                                Create Admin
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-md-3 col-sm-12 mt-5 mb-5"></div>
+                <div class="col-md-12 col-sm-12 mt-5 mb-5">
+
                     <div class="ms-ua-box">
                         <div class="col-md-11">
                             <div class="card">
-
                                 <div class="card-header">
-                                    <label class="header m-2">ADMINS</label>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <h4>Admins</h4>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <a class="btn btn-primary pull-right" href="{{ route('owner.admin.create')}}" role="button">
+                                            Create Admin
+                                        </a>
+                                      </div>
+                                    </div>
                                 </div>
 
                                 <div class="card-body mt-5">
                                     <table class="table table-hover">
-                                        <thead class="thead thead-dark">
+                                        <thead class="thead">
                                         <tr>
-                                            <th class="col-md-1">#</th>
-                                            <th class="col-md-2">FIRST NAME</th>
-                                            <th class="col-md-2">LAST NAME</th>
-                                            <th class="col-md-2">EMAIL</th>
-                                            <th class="col-md-3">NEGATIVE TYPE</th>
-                                            <th class="col-md-2">ACTION</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">FIRST NAME</th>
+                                            <th scope="col">LAST NAME</th>
+                                            <th scope="col">EMAIL</th>
+                                            <th scope="col">NEGATIVE TYPE</th>
+                                            <th scope="col">ACTION</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -43,21 +44,38 @@
                                                 <td>{{$admin->first_name}}</td>
                                                 <td>{{$admin->last_name}}</td>
                                                 <td>{{$admin->email}}</td>
-                                                <td>{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
+                                                <td width="300">{{join(", ",  $admin->adminSpecifications->pluck('name')->all())}}</td>
                                                 <td>
-                                                    <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-square-o"></i></a>
+                                                    {{-- <a href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-pencil-square-o"></i></a>
                                                     <a href="{{route('owner.admin.changePassword', $admin['id'])}}"  data-id="{{ $admin['id'] }}" ><i class="fa fa-key"></i></a>
-                                                    <a href="{{ route('owner.delete.admin',$admin['id']) }}"><button class="btn" onclick="return confirm('Are You Sure?')" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button></a>
+                                                    <a href="{{ route('owner.delete.admin',$admin['id']) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{ $admin['id'] }}" ><i class="fa fa-trash-o"></i></button></a> --}}
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
+                                                    <div class="dropdown show">
+                                                      <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Action
+                                                      </a>
+
+                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                        <a class="dropdown-item" href="{{route('owner.admin.edit', $admin['id'])}}"  data-id="{{ $admin['id'] }}" >Edit</a>
+                                                        <a class="dropdown-item" href="{{route('owner.admin.changePassword', $admin['id'])}}"  data-id="{{ $admin['id'] }}">Change Password</a>
+                                                        <a class="dropdown-item" href="{{ route('owner.delete.admin',$admin['id']) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $admin['id'] }}">Delete</a>
+                                                      </div>
+                                                    </div>
                                                 </td>
 
                                             </tr>
                                         @endforeach
-                                        </tbody>
+
+                                      </tbody>
                                     </table>
-                                    {{ $admins->links() }}
+
                                 </div>
 
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="row pull-right">
+                                  {{ $admins->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>

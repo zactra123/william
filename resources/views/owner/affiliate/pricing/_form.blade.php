@@ -6614,8 +6614,6 @@
                                     </div>
                                     <div class="priceCA">
                                         <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
                                     </div>
                                 </div>
                             @endif
@@ -8191,7 +8189,8 @@
 </script>
 
 
-{{-- <div class="ms-ua-box">
+
+   {{-- <div class="ms-ua-box">
 
        <input type="hidden" name="user_id" value="{{$pricing->user_id}}">
    <div>
@@ -8500,4 +8499,4 @@
            @endfor
        </div>
    </div>
-</div> --}}
+</div>  --}}

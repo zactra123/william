@@ -26,7 +26,8 @@ class ReportsController extends Controller
         $clients = User::clients()
                     ->where("created_at", ">", $dates["from"])
                     ->where("created_at", "<", $dates["to"]);
-        return view('owner.report.index', compact(['clients','dates']));
+          $users = User::where('role','client')->where("created_at", ">", $dates["from"])->where("created_at", "<", $dates["to"])->orderby('id','desc')->get();
+        return view('owner.report.index', compact(['clients','dates','users']));
 
     }
 }

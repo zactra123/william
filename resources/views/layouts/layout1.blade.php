@@ -154,7 +154,23 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            @include('helpers.urls.nav_bar_guest')
+            @if(Auth::user())
+                @if(Auth::user()->role == 'client')
+                    @include('helpers.urls.nav_bar_client')
+                @elseif(Auth::user()->role == 'affiliate')
+                    @include('helpers.urls.nav_bar_affiliate')
+                @elseif(Auth::user()->role == 'super admin')
+                    @include('helpers.urls.nav_bar_owner')
+                @elseif(Auth::user()->role == 'admin')
+                    @include('helpers.urls.nav_bar_admin')
+                @elseif(Auth::user()->role == 'receptionist')
+                    @include('helpers.urls.nav_bar_receptionist')
+                @elseif(Auth::user()->role == 'seo')
+                    @include('helpers.urls.nav_bar_seo')
+                @endif
+            @else
+                @include('helpers.urls.nav_bar_guest')
+            @endif
 
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>

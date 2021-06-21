@@ -37,7 +37,7 @@
                       </div>
                       <div class="upload-img">
                           <p class="upload-title">Upload your social security</p>
-                          <div class="upload-img-box">
+                          <div class="upload-img-box getdocumenturl" data-target={{ route('client.storeDriverSocial') }}>
                               <img class="upload-img" id="social_card" src="{{asset("images/new/social_card.jpg")}}" alt="">
                               <div class="upload-btn">
                                   <button>

@@ -50,7 +50,8 @@ class FaqsController extends Controller
         }
 
     }
-      
+    
+
 
     /**
      * Update FAQs

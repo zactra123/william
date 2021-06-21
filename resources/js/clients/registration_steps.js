@@ -30,7 +30,11 @@ var importantValidationOptions = {
                 success: function( data ) {
                     console.log('id:', $(form).attr('data-id'))
                     registrationStepsSwitch(Number($(form).attr('data-id')))
-                }
+                },
+                   error: function (request, status, error) {
+                       console.log(request.responseText);
+
+                },
             });
         }
     }
@@ -64,7 +68,11 @@ var documentValidationOptions = {
             success: function( data ) {
                 setupReviewData(data)
                 registrationStepsSwitch(Number($(form).attr('data-id')))
-            }
+            },
+               error: function (request, status, error) {
+                   console.log(request.responseText);
+
+            },
         });
     }
 }
@@ -103,7 +111,11 @@ var reviewValidationOptions = {
             data: data,
             success: function( data ) {
                 registrationStepsSwitch(Number($(form).attr('data-id')))
-            }
+            },
+               error: function (request, status, error) {
+                   console.log(request.responseText);
+
+            },
         });
     }
 }
@@ -131,7 +143,11 @@ var credentials = function(form){
         data: data,
         success: function( data ) {
             registrationStepsSwitch(Number($(form).attr('data-id')))
-        }
+        },
+           error: function (request, status, error) {
+               console.log(request.responseText);
+
+        },
     });
 }
 

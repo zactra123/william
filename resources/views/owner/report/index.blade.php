@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
     <style>
@@ -6,57 +6,90 @@
             font-size:100% !important;
         }
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "REPORT", 'route' => ["Home"=> '/owner',"REPORT" => "#"]])
-    <section class="ms-user-account">
+
+    <section class="ms-user-account mb-5">
         <div class="container pt-5">
             <div class="page-content pt-5">
-                <div class="row justify-content-center">
-                    @include("owner/report/reports_sidebar")
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <label class="header m-2">Registered Clients</label>
-                            </div>
-                            <div class="card-body">
-                                <form>
+              <div class="row">
+                  @include("owner/report/reports_sidebar")
+                  <div class="col-md-8 col-sm-12 col-12">
+                      <div class="card">
+                          <div class="card-header">
+                              <label class="header m-2">Registered Clients</label>
+                          </div>
+                          <div class="card-body">
+                              <form>
+                                  <div class="col-md-12 col-sm-12 col-12 col-lg-12">
                                     <div class="row">
-                                        <div class="form-group">
+                                          <div class="col-lg-6">
+                                              <input class="form-control" type="date" name="from" value="{{$dates["from"]}}"/>
+                                          </div>
+                                          <div class="col-lg-6">
+                                              <input class="form-control " type="date" name="to" value="{{$dates["to"]}}" max="{{date('Y-m-d    ')}}"/>
+                                          </div>
+                                      </div>
+                                      <div class="row mt-4">
+                                        <dov class=" col-lg-12 text-right">
+                                            <button class="btn btn-info text-white">Get Report</button>
+                                        </dov>
+                                      </div>
+                                  </div>
+                                  </div>
+                              </form>
+                              <div class="col pt-4 mb-5">
+                                  <ul class="list-group">
+                                      <li class="list-group-item">
+                                      <span>
+                                          Clients registered from
+                                          <span class="badge badge-info p-2">{{date( "jS F Y", strtotime($dates["from"]))}}</span>
+                                              to
+                                          <span class="badge badge-info p-2">{{date( "jS F Y", strtotime($dates["to"]))}}</span>
 
-                                                <div class="col-lg-4">
-                                                    <input class="form-control" type="date" name="from" value="{{$dates["from"]}}"/>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <input class="form-control " type="date" name="to" value="{{$dates["to"]}}" max="{{date('Y-m-d    ')}}"/>
-                                                </div>
-                                                <dov class=" col-lg-4">
-                                                    <button class="btn btn-primary">Get Report</button>
-                                                </dov>
+                                      </span>
+                                          <span class="badge badge-info float-right p-2"> {{$clients->count()}}</span>
+                                      </li>
+                                  </ul>
+                              </div>
 
-                                            </div>
+                              <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                                <table class="table table-responsive table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">First Name</th>
+                                      <th scope="col">Last Name</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Verify</th>
+                                      <th scope="col">Register At</th>
+                                    </tr>
+                                  </thead>
 
-                                        </div>
+                                  <tbody>
+                                    @if (count($users)>0)
+                                      @foreach ($users as $key => $value)
+                                        <tr>
+                                          <th scope="row">{{ $key+1 }}</th>
+                                          <td>{{ $value->first_name }}</td>
+                                          <td>{{ $value->last_name }}</td>
+                                          <td>{{ $value->email }}</td>
+                                          <td>@if (empty($value->email_verified_at))
+                                            <span class="badge badge-danger"> Not Verified</span>
+                                          @else
+                                            <span class="badge badge-success"> Verified</span>
+                                          @endif</td>
+                                          <td>{{ zactra::convertDay($value->created_at )}}</td>
+                                        </tr>
+                                      @endforeach
+                                    @else
+                                    @endif
 
-
-                                    </div>
-                                </form>
-                                <div class="col pt-4">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                        <span>
-                                            Clients registered from
-                                            <span class="alert-info">{{date( "jS F Y", strtotime($dates["from"]))}}</span>
-                                                to
-                                            <span class="alert-info">{{date( "jS F Y", strtotime($dates["to"]))}}</span>
-
-                                        </span>
-                                            <span class="badge badge-info float-right "> {{$clients->count()}}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                  </tbody>
+                                </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
         </div>
     </section>

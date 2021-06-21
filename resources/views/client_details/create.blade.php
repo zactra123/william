@@ -8,7 +8,7 @@
             <h3 class="title theme-color-dark">Registration</h3>
             @include('helpers.steps',['user' => auth()->user()])
             @include('client_details.registration_steps.important_information', ['current_page'=> auth()->user()->clientDetails->registration_steps =='important_information' ?'active' : 'none' ])
-            @include('client_details.registration_steps.documents', ['current_page'=> auth()->user()->clientDetails->registration_steps =='documents' ?'active' : 'none' ])
+            @include('client_details.registration_steps.documents2', ['current_page'=> auth()->user()->clientDetails->registration_steps =='documents' ?'active' : 'none' ])
             @include('client_details.registration_steps.credentials2', ['current_page'=> auth()->user()->clientDetails->registration_steps =='credentials' ?'active' : 'none' ])
             @include('client_details.registration_steps.review', ['current_page'=> auth()->user()->clientDetails->registration_steps =='review' ?'active' : 'none' ])
             @include('client_details.registration_steps.finished', ['current_page'=> auth()->user()->clientDetails->registration_steps =='finished' ?'active' : 'none' ])

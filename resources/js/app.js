@@ -11,14 +11,14 @@ require('./owl/owl.carousel.js');
 require('./lib/jquery.mask.min.js');
 require('./lib/jquery.validate.min.js');
 require('./lib/additional-methods.min');
-
+require('./assets/vendor/swiper/swiper-bundle.min.js');
 require('./assets/vendor/aos/aos.js');
 require('./assets/vendor/bootstrap/js/bootstrap.bundle.min.js');
 require('./assets/vendor/glightbox/js/glightbox.min.js');
 require('./assets/vendor/isotope-layout/isotope.pkgd.min.js');
 require('./assets/vendor/php-email-form/validate.js');
 require('./assets/vendor/purecounter/purecounter.js');
-require('./assets/vendor/swiper/swiper-bundle.min.js');
+
 require('./custom.js');
 
 

@@ -279,6 +279,7 @@ class ClientDetailsController extends Controller
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData, ClientDetailsNewData $clientDetailsNewData)
     {
+
         try {
             $client = Auth::user()->id;
             if (empty($request['driver_license']) || empty($request['social_security'])) {
@@ -390,6 +391,7 @@ class ClientDetailsController extends Controller
 
         } catch (\Exception $e) {
             return response()->json(['msg' => $e->getMessage()], 400);
+
         }
     }
 
