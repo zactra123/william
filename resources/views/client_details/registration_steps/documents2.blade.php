@@ -1,5 +1,6 @@
 
     <form id="add_client_3" data-id="3" data-type="only_broker" class="add-client additional-reg {{$current_page}}" enctype="multipart/form-data">
+    {{-- <form id="add_client_3" data-id="3" data-type="only_broker" class="add-client additional-reg" enctype="multipart/form-data"> --}}
         @csrf
         <h3 class="title_r theme-color-dark">Incorect</h3>
         <div class="upload-images">
@@ -14,7 +15,8 @@
             <div class="upload-img" >
                 <p class="upload-title">Upload your identification card or driver license</p>
                 <div class="upload-img-box">
-                    <img class="upload-img" id="id_card" src="{{asset("images/new/id_card.jpg")}}" alt="">
+                    <span href="#" class="thumbnailpreview"> <img class="upload-img " id="id_card" src="{{asset("images/new/id_card.jpg")}}" alt=""> <span><img class="upload-img " id="id_card" src="{{asset("images/new/id_card.jpg")}}" alt=""></span> </span>
+
                     <div class="upload-btn">
                         <button>
                             <svg width="48" height="44" viewBox="0 0 48 44" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +30,7 @@
             <div class="upload-img">
                 <p class="upload-title">Upload your social security</p>
                 <div class="upload-img-box getdocumenturl" data-target={{ route('client.storeDriverSocial') }}>
-                    <img class="upload-img" id="social_card" src="{{asset("images/new/social_card.jpg")}}" alt="">
+                    <span href="#" class="thumbnailpreview"><img class="upload-img" id="social_card" src="{{asset("images/new/social_card.jpg")}}" alt=""> <span><img class="upload-img" id="social_card" src="{{asset("images/new/social_card.jpg")}}" alt=""></span> </span>
                     <div class="upload-btn">
                         <button>
                             <svg width="48" height="44" viewBox="0 0 48 44" fill="none" xmlns="http://www.w3.org/2000/svg">

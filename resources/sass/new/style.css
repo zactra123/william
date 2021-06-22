@@ -1596,9 +1596,13 @@ section.register .login-social a.login-google {
     background-color: #68baf7;
 }
 .register-form .registration-stage.active .stage-img{
-    border-color: #68baf7;
+    border-color: #68baf7 !important;
 }
-.register-form .registration-stage.nonacive .stage-img{
+
+.register-form .registration-stage.none .stage-img{
+    border-color: #94a2b3;
+}
+.register-form .registration-stage.noneacive .stage-img{
     border-color: #e0e0e0;
 }
 

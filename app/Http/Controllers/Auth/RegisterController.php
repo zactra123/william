@@ -148,7 +148,7 @@ class RegisterController extends Controller
             $data['city'] = $splitAddress['city'];
             $data['state'] = $splitAddress['state'];
             $data['zip'] =$splitAddress['zip'];
-            $data['registration_steps'] = "registered";
+            $data['registration_steps'] = "important_information";
 
             ClientDetail::create([
                 'user_id' => $id,
@@ -174,7 +174,6 @@ class RegisterController extends Controller
         }
         return $user;
     }
-
 
     /**
      * split address string
@@ -240,7 +239,6 @@ class RegisterController extends Controller
             ];
         }
     }
-
 
 
 }

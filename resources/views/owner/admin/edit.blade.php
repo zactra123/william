@@ -34,16 +34,16 @@
                                 @csrf
                                 <div class="form-group row font">
                                   <div class="col-md-6">
-                                      {{ Form::text('admin[first_name]', $admin->first_name, ['class' => 'form-control', 'required']) }}
+                                      {{ Form::text('admin[first_name]', $admin->first_name, ['class' => 'form-control', 'placeholder' =>'First Name', 'required']) }}
                                   </div>
                                   <div class="col-md-6">
-                                      {{ Form::text('admin[last_name]', $admin->last_name, ['class' => 'form-control', 'required']) }}
+                                      {{ Form::text('admin[last_name]', $admin->last_name, ['class' => 'form-control', 'placeholder'=>'Last Name', 'required']) }}
                                   </div>
                                 </div>
 
                                 <div class="form-group row font">
                                   <div class="col-md-6">
-                                      {{ Form::email('admin[email]', $admin->email, ['class' => 'form-control',  'required']) }}
+                                      {{ Form::email('admin[email]', $admin->email, ['class' => 'form-control','placeholder'=>'Email',  'required']) }}
                                   </div>
                                   <div class="col-md-6">
                                       {{ Form::select('admin[negative_types][]',$negativeType, $admin->adminSpecifications->pluck('id')->all(), ['class' => 'form-control',  'required', 'multiple' => 'multiple']) }}
@@ -54,7 +54,7 @@
                                 <div class="form-group row font" id="delete-{{$value->id}}">
                                   <div class="col-sm-12 col-12 col-md-11 col-lg-11 form-group">
                                       {{Form::hidden('admin[ip_address]['.$value->id.'][id]', $value->id)}}
-                                      {{ Form::text('admin[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP ADDRESS']) }}
+                                      {{ Form::text('admin[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address']) }}
                                   </div>
                                   <div class="col-sm-12 col-12 col-md-1 col-lg-1 form-group pl-0">
                                       <input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="Delete"/>

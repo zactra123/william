@@ -1,4 +1,5 @@
 <div class="finish {{$current_page}}" data-id="finish">
+{{-- <div class="finish" data-id="finish"> --}}
     <h5 class="theme-color-dark text-center">
         Congrats! You just did something really wise
     </h5>

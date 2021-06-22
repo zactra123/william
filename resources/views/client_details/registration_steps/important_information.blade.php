@@ -1,4 +1,5 @@
 {!! Form::open(['route' => ['client.important'], 'method' => 'POST', 'id' => 'register_form', 'data-id'=>"2", 'class' => "add-client additional-reg $current_page"]) !!}
+{{-- {!! Form::open(['route' => ['client.important'], 'method' => 'POST', 'id' => 'register_form', 'data-id'=>"2", 'class' => "add-client additional-reg"]) !!} --}}
 
     @csrf
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">

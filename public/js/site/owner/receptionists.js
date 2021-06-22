@@ -4,10 +4,10 @@ $(document).ready(function () {
     $(".add-ip-address").on('click', function(){
         i++
         var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
-        var newDiv = newDiv + "<div class='col-md-12 tab-selector'><div class='col-sm-10 form-group'>"
-        var addIp = "<input type='text' name='receptionist[ip_address][][ip_address]' class = 'form-control col-10 ip-address' placeholder = 'IP ADDRESS'> </div>"
-        addIp +=  '<div class="col-sm-2 form-group"> <input class="delete-ip-address btn btn-block" type="button" data-target="'+i+'" value="Delete"/></div>'
-        newDiv += addIp + "</div></div>";
+        var newDiv = newDiv + "<div class='col-sm-12 col-md-11 form-group'>"
+        var addIp = "<input type='text' name='receptionist[ip_address][][ip_address]' class = 'form-control ip-address' placeholder = 'IP Address'> </div>"
+        addIp +=  '<div class="col-sm-12 col-md-1 form-group pl-0"> <input class="delete-ip-address btn btn-danger" type="button" data-target="'+i+'" value="Delete"/></div>'
+        newDiv += addIp + "</div>";
         $("#newIp").append(newDiv);
 
         $('.ip-address').mask('0ZZ.0ZZ.0ZZ.0ZZ', { translation: { 'Z': { pattern: /[0-9]/, optional: true } } });

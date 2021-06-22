@@ -16,6 +16,7 @@ class ReportsController extends Controller
     /*
      * The index action show registered clients report
      */
+    
     public function index(Request $request)
     {
 
@@ -24,9 +25,9 @@ class ReportsController extends Controller
         $dates["to"] = isset($dates["to"]) ? $dates["to"] : date('Y-m-d');
 
         $clients = User::clients()
-                    ->where("created_at", ">", $dates["from"])
-                    ->where("created_at", "<", $dates["to"]);
-          $users = User::where('role','client')->where("created_at", ">", $dates["from"])->where("created_at", "<", $dates["to"])->orderby('id','desc')->get();
+                    ->where("created_at", ">=", $dates["from"])
+                    ->where("created_at", "<=", $dates["to"]);
+          $users = User::where('role','client')->where("created_at", ">=", $dates["from"])->where("created_at", "<=", $dates["to"])->orderby('id','desc')->get();
         return view('owner.report.index', compact(['clients','dates','users']));
 
     }

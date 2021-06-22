@@ -1,4 +1,6 @@
 <form id="add_client_5" action="{{route('client.details.update', $client)}}" data-id="5" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
+{{-- <form id="add_client_5" action="{{route('client.details.update', $client)}}" data-id="5" data-type="only_broker" class="add-client additional-reg"> --}}
+
     @csrf
     <p class="mt-5">Please verify your information and make changes if necessary</p>
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">

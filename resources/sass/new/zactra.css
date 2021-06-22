@@ -288,3 +288,41 @@ height: 100%;
 a{
   text-decoration: none !important;
 }
+
+
+
+.thumbnailpreview {
+position: relative;
+z-index: 0;
+}
+
+.thumbnailpreview:hover {
+background-color: transparent;
+z-index: 50;
+}
+
+.thumbnailpreview span {
+/*CSS for enlarged image*/
+position: absolute;
+background-color: lightyellow;
+padding: 5px;
+left: -1000px;
+border: 1px dashed gray;
+visibility: hidden;
+color: black;
+text-decoration: none;
+}
+
+.thumbnailpreview span img {
+/*CSS for enlarged image*/
+width: 500px;
+border-width: 0;
+padding: 2px;
+}
+
+.thumbnailpreview:hover span {
+/*CSS for enlarged image on hover*/
+visibility: visible;
+top: 0;
+left: 60px; /*position where enlarged image should offset horizontally */
+}

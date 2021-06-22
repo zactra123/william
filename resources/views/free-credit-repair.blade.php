@@ -12,16 +12,16 @@
 @section('content')
 
     <section class="header text-page">
-        <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
+        {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
         <div class="container header-banner">
 
         </div>
         <div class="container free-credit-inner">
             <div class="section-title text-center">
-                <h1>How do you maintain a healthy credit score?</h1>
+                <h3>How do you maintain a healthy credit score?</h3>
                 <div class="mt-5"></div>
                 <div class="wrapper-content">
-                    <h2>3 Tips to Keeping Your Credit Score in Healthy Shape</h2>
+                    <h6>3 Tips to Keeping Your Credit Score in Healthy Shape</h6>
                     <p class="text-justify">
                         The best way to keep your credit in tip-top shape is to avoid it from ever getting nasty in the
                         first place! Sure, this is much easier said than done. Let’s face it; life sometimes happens
@@ -105,5 +105,3 @@
 
 
 @endsection
-
-

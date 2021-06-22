@@ -5,7 +5,7 @@ $(document).ready(function () {
         i++
         var newDiv = "<div class='form-group row font justify-content-center' id='delete-"+i+"'>"
         var newDiv = newDiv + "<div class='col-sm-12 col-md-11 col-12 form-group'>"
-        var addIp = "<input type='text' name='admin[ip_address][][ip_address]' class = 'form-control ip-address' placeholder = 'IP ADDRESS'> </div>"
+        var addIp = "<input type='text' name='admin[ip_address][][ip_address]' class = 'form-control ip-address' placeholder = 'IP Address'> </div>"
         addIp +=  '<div class="col-sm-12 col-md-1 col-2 form-group pl-0"> <input class="delete-ip-address btn btn-danger" type="button" data-target="'+i+'" value="Delete"/></div>'
         newDiv += addIp + "</div>";
         $("#newIp").append(newDiv);

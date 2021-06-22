@@ -15,7 +15,7 @@
                   <div class="col-md-8 col-sm-12 col-12">
                       <div class="card">
                           <div class="card-header">
-                              <label class="header m-2">Registered Clients</label>
+                              <h4>Registered Clients</h4>
                           </div>
                           <div class="card-body">
                               <form>
@@ -30,7 +30,7 @@
                                       </div>
                                       <div class="row mt-4">
                                         <dov class=" col-lg-12 text-right">
-                                            <button class="btn btn-info text-white">Get Report</button>
+                                            <button class="btn btn-primary text-white">Get Report</button>
                                         </dov>
                                       </div>
                                   </div>

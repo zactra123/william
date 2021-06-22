@@ -10,6 +10,7 @@
                     <div class="row">
                         <div class="col">
                             <form id="add_client_4" data-id="4" data-type="only_broker" class="add-client additional-reg {{$current_page}}" novalidate>
+                            {{-- <form id="add_client_4" data-id="4" data-type="only_broker" class="add-client additional-reg" novalidate> --}}
                                 @csrf
                                 <p>I will provide you the requested login credentials in a timely manner <a onclick="($('#add_client_4').submit())">CLICK TO CONTINUE.</a></p>
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
