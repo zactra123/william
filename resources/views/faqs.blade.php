@@ -38,7 +38,7 @@
                                         <div class="card">
                                           <div class="card-body">
                                             <div class="row ml-0 mr-0 faq-block" data-id="{{$faq->id}}">
-                                                <span class="faqs-title col-9" style="font-size: 16px">{{$faq->title}}</span>
+                                                <h4 class="faqs-title col-9">{{$faq->title}}</h4>
                                                 <div class="align-right col-1">
                                                     <label><i class="fa fa-arrow-down"></i>  </label>
                                                 </div>
@@ -50,9 +50,12 @@
                                         </div>
                                         <br>
                                     @endforeach
+                                    <div class="pull-right">
+                                      {{ $faqs->links() }}
+                                    </div>
                                 </div>
-                                <div class="col-md-4 question-form">
-                                    <h2 >Send Your Question</h2>
+                                <div class="col-md-4 question-form text-center">
+                                    <h2 class="send-question-title">Send Your Question</h2>
                                     <form action="{{route('faqs')}}" method="POST">
                                         @csrf
                                         <div class="row">

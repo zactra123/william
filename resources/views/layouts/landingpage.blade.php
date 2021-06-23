@@ -10,7 +10,9 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{URL::asset('/icons/favicon-32x32.png')}}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{URL::asset('/icons/favicon-96x96.png')}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('/icons/favicon-16x16.png')}}">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -123,7 +125,7 @@
             <div class="container">
               <h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
               <p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-              <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+              <a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
             </div>
           </div>
         </div>
@@ -134,7 +136,7 @@
             <div class="container">
               <h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
               <p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-              <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+              <a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
             </div>
           </div>
         </div>
@@ -145,7 +147,7 @@
             <div class="container">
               <h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
               <p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-              <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+              <a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
             </div>
           </div>
         </div>
@@ -198,39 +200,32 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fa fa-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae qui deca rode</p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-purecounter-start="0" data-purecounter-end="2763" data-purecounter-duration="1" class="purecounter"></span>
+              <p>The number of <strong>satisfied clients</strong> served as of today.</p>
+              {{-- <a href="#">Find out more &raquo;</a> --}}
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fa fa-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut numquam delectus</p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-purecounter-start="0" data-purecounter-end="34608" data-purecounter-duration="1" class="purecounter"></span>
+              <p>The number of <strong>inaccuracies</strong> removed or corrected as of today.</p>
+              {{-- <a href="#">Find out more &raquo;</a> --}}
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fa fa-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat. Aliquam ratione</p>
-              <a href="#">Find out more &raquo;</a>
-            </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fa fa-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor molestiae doloribu</p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-purecounter-start="0" data-purecounter-end="17" data-purecounter-duration="1" class="purecounter"></span>
+              <p>The number of <strong>Credit Experts</strong> to Serve you.</p>
+              {{-- <a href="#">Find out more &raquo;</a> --}}
             </div>
           </div>
 
@@ -245,7 +240,8 @@
 
         <div class="row">
 
-          <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/video-img2.png') }});" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
+          <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/video-img2.png') }});background-repeat: no-repeat;
+  background-size: auto;" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
             {{-- <a href="https://prudentscores.com/images/howItWorks.mp4" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a> --}}
             <span class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></span>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -349,150 +345,11 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg py-5">
-      <div class="container " data-aos="fade-up">
-
-        <div class="section-title ">
-          <h2>Testimonials</h2>
-          <p>Testimonials</p>
-        </div>
-
-        <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide swiper-slide-active">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item ">
-                  <img src="{{ asset('images/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide swiper-slide-next">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="{{ asset('images/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="{{ asset('images/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="{{ asset('images/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-wrap">
-                <div class="testimonial-item">
-                  <img src="{{ asset('images/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
 
 
 
   </main><!-- End #main -->
 
-  <!-- Start Subscribe Section -->
-  <section class="parallax-section12">
-    <div class="section-overlay bg-opacity-7 about-bottom-section" style="background-image: url({{ asset('images/parallax-bg13.jpg') }});">
-      <br><br> <br>
-      <div class="py-5 container sec-tpadding-3 sec-bpadding-3">
-        <div class="row">
-          <div class="col-md-8">
-            <h1 class=" oswald text-white fs-25 theme-color" style="font-family: Candara">Subscribe to our website</h1>
-            <p class="text-white">You can any time unsubcribe your email address from your mail if this become annoying.</p>
-            <p class="text-white fs-15">
-
-              <div class="row">
-                <div class="col-md-8 col-12 col-sm-12">
-                  <div class="subscribe-box">
-                    <input type="text" class="form-control fs-12 py-4" name="" placeholder="email@example.com" value="">
-                    <button type="button" class="btn btn-theme subscribe-btn" name="button">Subscribe</button>
-                  </div>
-                </div>
-              </div>
-
-
-            </p>
-          </div>
-          <div class="col-md-4">
-            <div class="feature-box15 bmargin px-3 py-2" style="border: 3px solid #37c6f5">
-              <h4 style="color: white; font-family: corbel">how can we help you?</h4>
-              <p class="text-light">Feel free to contact us at any time. We feel happy to serve for our customers.</p>
-              <a href="" class="text-white"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0)">
-                    <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"></path>
-                </g>
-                <defs>
-                    <clipPath id="clip0">
-                        <rect width="16" height="16" fill="white"></rect>
-                    </clipPath>
-                </defs>
-            </svg> Contact Us</a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Subscribe Section -->
 
   <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -521,11 +378,11 @@
             <div class="col-lg-2 col-md-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('whoWeAre') }}">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.education') }}">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('faqs') }}">Faqs</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('pravicy') }}">Privacy policy</a></li>
               </ul>
             </div>
 
@@ -546,6 +403,22 @@
               <form action="#" method="post">
                 <input type="email" name="email"><input type="submit" value="Subscribe">
               </form>
+
+              <div class="feature-box15 bmargin mt-5 px-3 py-2" style="border: 3px solid #37c6f5">
+                <h4 style="color: white; font-family: corbel">how can we help you?</h4>
+                <p class="text-light">Feel free to contact us at any time. We feel happy to serve for our customers.</p>
+                <a href="" class="text-white"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0)">
+                      <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664"></path>
+                  </g>
+                  <defs>
+                      <clipPath id="clip0">
+                          <rect width="16" height="16" fill="white"></rect>
+                      </clipPath>
+                  </defs>
+              </svg> Contact Us</a>
+
+              </div>
 
             </div>
 

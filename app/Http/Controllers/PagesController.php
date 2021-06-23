@@ -113,7 +113,7 @@ class PagesController extends Controller
     {
         $title = 'FAQs';
         if($request->method() =='GET'){
-            $faqs = Faq::all();
+            $faqs = Faq::paginate(3);
             return view('faqs', compact('faqs', 'title'));
         }
         if($request->post()){

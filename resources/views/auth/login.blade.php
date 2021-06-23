@@ -11,7 +11,7 @@
 @section('content')
     <section class="py-5 container">
       <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-5 mt-5">
           <form class="px-4 py-4 login-form-border" method="POST" action="{{ route('login') }}">
             @csrf
             @if ($errors->any())
@@ -53,10 +53,12 @@
 
             </div> --}}
 
-            <div class="basic-button login-box text-center">
-                <input class="login" type="submit" value="Login">
-            </div>
+            <div class="row text-center justify-content-center">
+              <div class="basic-button login-box">
+                  <input class="login" type="submit" value="Login">
+              </div>
 
+            </div>
             <div class="form-group mt-3">
 
               <p>
@@ -103,7 +105,7 @@
           </form>
 
           <p class="pt-4 fs-12 text-center">
-              Don't have an account? <a class="fs-12 theme-color-dark" href="{{route('register')}}">Sign Up</a>
+              <span class="fs-18">Don't have an account? <a class="fs-20 theme-color-dark" href="{{route('register')}}">Sign Up</a></span>
           </p>
         </div>
       </div>

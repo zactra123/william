@@ -11,7 +11,7 @@
 @section('content')
 
     <section class="header">
-        <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
+        {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
         <div class="container header-banner">
 
         </div>
@@ -21,14 +21,14 @@
                     <h1>Is credit repair legal in all 50 states?</h1>
                     <div class="wrapper-content mt-5">
                         <h2>Is Credit Repair Legal?</h2>
-                        <p class="text-justify">
+                        <p class="text-justify fs-18 mt-4">
                             Credit repair may not have the best reputation as financial services go, but it's a
                             federally protect right. Two primary credit repair laws guarantee consumers the right to
                             correct errors in their credit reports. They are the Fair Credit Reporting Act (FCRA)
                             and the Credit Repair Organizations Act (CROA). There are also laws in every state that
                             regulate the credit repair industry and service providers.
                         </p>
-                        <p class="text-justify">
+                        <p class="text-justify fs-18 mt-3">
                             It's important to note that credit repair is legal in all 50 states. There's a federal
                             law that guarantees consumers the right to dispute information in their credit report to
                             have it corrected. There's also a federal law that outlines how credit repair companies

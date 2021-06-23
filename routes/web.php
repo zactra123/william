@@ -42,7 +42,7 @@ Route::get('/home', function () {
 
 
 Route::get('/', 'PagesController@welcome' );
-Route::get('who-we-are', 'PagesController@whoWeAre')->name('whoWeAre');
+Route::get('abou-us', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
 Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
 Route::get('contact', 'PagesController@contacts')->name('contact');

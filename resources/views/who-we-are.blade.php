@@ -98,7 +98,7 @@
           <div class="col-md-6">
             <img class="mt-5 pt-5" src="{{ asset('images/about-us.png') }}" width="100%" alt="">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-5">
             <h1 class="theme-color-dark fs-25">Prudent Scores - Improving credit ratings and score, fast credit repair</h1>
 
 

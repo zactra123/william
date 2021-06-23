@@ -126,7 +126,11 @@
                       <input class="login" type="submit" value="Next" name="">
                   </div>
               </form>
-
+              <div class="">
+                <p class="pt-4 fs-12 text-center">
+                    <strong class="fs-18 text-black">Already have an account? <a class="fs-20 theme-color-dark" href="{{route('login')}}">Sign In</a></strong>
+                </p>
+              </div>
               <div  data-id="2" class="register_form additional-reg none">
 
 
@@ -135,9 +139,7 @@
           </div>
 
         </div>
-        <p class="pt-4 fs-12 text-center">
-            Already have an account? <a class="fs-12 theme-color-dark" href="{{route('login')}}">Sign In</a>
-        </p>
+
       </div>
     </div>
       @include('helpers.chat')
