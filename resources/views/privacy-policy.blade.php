@@ -120,7 +120,7 @@
               <li class="fs-18">Mobile device access. We may request access or permission to certain features from your mobile device, including your mobile device's contacts, sms messages, social media accounts, reminders, calendar, and other features. If you wish to change our access or permissions, you may do so in your device's settings.</li>
               <li class="fs-18">Mobile device data. We may automatically collect device information (such as your mobile device id, model and manufacturer), operating system, version information and ip address.</li>
               <li class="fs-18">Push notifications. We may request to send you push notifications regarding your account or the mobile application. If you wish to opt-out from receiving these types of communications, you may turn them off in your device's settings.</li>
-              <li class="fs-18">Facebook permissions. We by default access your facebook basic account information, including your name, email, gender, birthday, current city, and profile picture url, as well as other information that you choose to make public. We may also request access to other permissions related to your account, such as friends, checkins, and likes, and you may choose to grant or deny us access to each individual permission. For more information regarding facebook permissions, refer to the facebook permissions reference page.</li>
+              <li class="fs-18">Facebook permissions. We by default access your <a href="https://www.facebook.com/about/privacy/">facebook</a> basic account information, including your name, email, gender, birthday, current city, and profile picture url, as well as other information that you choose to make public. We may also request access to other permissions related to your account, such as friends, checkins, and likes, and you may choose to grant or deny us access to each individual permission. For more information regarding facebook permissions, refer to the <a href="https://developers.facebook.com/docs/permissions/reference">facebook permissions reference</a> page.</li>
             </div>
 
             <div class="row bold mt-4">
@@ -132,7 +132,7 @@
               <p class="fs-18">We may obtain information about your from other sources, such as public databases, joint marketing partners, social media platforms (such as facebook), as well as from other third parties. Examples of the information we receive from other sources include: social media profile information (your name, gender, birthday, email, current city, state and country, user identification numbers for your contacts, profile picture url, and any other information that you choose to make public); marketing leads and search results and links, including paid listings (such as sponsored links). We will inform you about the source of information and the type of information and the type of information we have collected about you within a reasonable period after obtaining the personal data, but at the latest within one month.</p>
             </div>
 
-            <div class="row bold">
+            <div class="row bold" id="infouse">
               2. How Do We Use Your Information?
             </div>
 
@@ -140,8 +140,8 @@
               <p class="fs-18">In short: We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.</p>
               <p class="fs-18">We use personal information collected via our services or apps for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations. We indicate the specific processing grounds we rely on next to each purpose listed below.</p>
               <p class="fs-18">We use the information we collect or receive:</p>
-              <li class="fs-18 mt-2"> <strong>To facilitate account creation and logon process.</strong> If you choose to link your account with us to a third party account (such as your google or facebook account), we use the information you allowed us to collect from those third parties to facilitate account creation and logon process for the performance of the contract. See the section below headed "how do we handle your social logins" for further information.</li>
-              <li class="fs-18 mt-2"> <strong>To send you marketing and promotional communications.</strong> We and/or our third party marketing partners may use the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences. You can opt-out of our marketing emails at any time (see the "what are your privacy rights" below).</li>
+              <li class="fs-18 mt-2"> <strong>To facilitate account creation and logon process.</strong> If you choose to link your account with us to a third party account (such as your google or facebook account), we use the information you allowed us to collect from those third parties to facilitate account creation and logon process for the performance of the contract. See the section below headed " <a href="{{ url('/') }}/pravicy-policy#sociallogins">how do we handle your social logins</a> " for further information.</li>
+              <li class="fs-18 mt-2"> <strong>To send you marketing and promotional communications.</strong> We and/or our third party marketing partners may use the personal information you send to us for our marketing purposes, if this is in accordance with your marketing preferences. You can opt-out of our marketing emails at any time (see the " <a href="{{ url('/') }}/pravicy-policy#privacyrights">what are your privacy rights</a> " below).</li>
               <li class="fs-18 mt-2"> <strong>To send administrative information to you.</strong> We may use your personal information to send you product, service and new feature information and/or information about changes to our terms, conditions, and policies. </li>
               <li class="fs-18 mt-2"> <strong>Fulfill and manage your orders.</strong> We may use your information to fulfill and manage your orders, payments, returns, and exchanges made through the services or apps.</li>
               <li class="fs-18 mt-2"> <strong>To protect our services.</strong> We may use your information as part of our efforts to keep our services or apps safe and secure (for example, for fraud monitoring and prevention).</li>
@@ -153,7 +153,7 @@
               <li class="fs-18 mt-2"> <strong>For other business purposes.</strong> We may use your information for other business purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our services or apps, products, marketing and your experience. We may use and store this information in aggregated and anonymized form so that it is not associated with individual end users and does not include personal information. We will not use identifiable personal information without your consent.</li>
 
             </div>
-            <div class="row bold mt-4">
+            <div class="row bold mt-4" id="infoshare">
               3. Will Your Information Be Shared With Anyone?
             </div>
             <div class="row">
@@ -174,7 +174,7 @@
               <li class="fs-18 mt-3"> <strong>Offer wall.</strong> Our apps may display a third-party hosted “offer wall.” such an offer wall allows third-party advertisers to offer virtual currency, gifts, or other items to users in return for acceptance and completion of an advertisement offer. Such an offer wall may appear in our mobile application and be displayed to you based on certain data, such as your geographic area or demographic information. When you click on an offer wall, you will leave our mobile application. A unique identifier, such as your user id, will be shared with the offer wall provider in order to prevent fraud and properly credit your account.</li>
             </div>
 
-            <div class="row bold mt-4">
+            <div class="row bold mt-4" id="cookies">
               4. Do We Use Cookies And Other Tracking Technologies?
             </div>
 
@@ -183,15 +183,15 @@
               <p class="fs-18">We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our cookie policy.</p>
             </div>
 
-            <div class="row bold">
+            <div class="row bold" id="googlemaps">
               5. Do We Use Google Maps?
             </div>
             <div class="row">
               <p class="fs-18 mt-3">In short:  yes, we use google maps for the purpose of providing better service.</p>
-              <p class="fs-18">This website, mobile application uses google maps apis. You may find the google maps apis terms of service here. To better understand google’s privacy policy, please refer to this link.</p>
+              <p class="fs-18">This website, mobile application uses google maps apis. You may find the google maps apis terms of service <a href="https://cloud.google.com/maps-platform/terms/">here</a>. To better understand google’s privacy policy, please refer to this <a href="https://policies.google.com/privacy">link</a>.</p>
               <p class="fs-18">By using our maps api implementation, you agree to be bound by google’s terms of service. You agree to allow us to obtain or cache your location. You may revoke your consent at anytime.</p>
             </div>
-            <div class="row bold">
+            <div class="row bold" id="sociallogins">
               6. How Do We Handle Your Social Logins?
             </div>
             <div class="row">
@@ -200,7 +200,7 @@
               <p class="fs-18">We will use the information we receive only for the purposes that are described in this privacy policy or that are otherwise made clear to you on the services or apps. Please note that we do not control, and are not responsible for, other uses of your personal information by your third party social media provider. We recommend that you review their privacy policy to understand how they collect, use and share your personal information, and how you can set your privacy preferences on their sites and apps.</p>
             </div>
 
-            <div class="row bold">
+            <div class="row bold" id="3pwebsites">
               7. What Is Our Stance On Third-party Websites?
             </div>
 
@@ -209,7 +209,7 @@
               <p class="fs-18">The Services Or Apps May Contain Advertisements From Third Parties That Are Not Affiliated With Us And Which May Link To Other Websites, Online Services Or Mobile Applications. We Cannot Guarantee The Safety And Privacy Of Data You Provide To Any Third Parties. Any Data Collected By Third Parties Is Not Covered By This Privacy Policy. We Are Not Responsible For The Content Or Privacy And Security Practices And Policies Of Any Third Parties, Including Other Websites, Services Or Applications That May Be Linked To Or From The Services Or Apps. You Should Review The Policies Of Such Third Parties And Contact Them Directly To Respond To Your Questions.</p>
             </div>
 
-            <div class="row bold">
+            <div class="row bold" id="inforetain">
               8. How Long Do We Keep Your Information?
             </div>
             <div class="row">
@@ -226,7 +226,7 @@
               <p class="fs-18">We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our services or apps is at your own risk. You should only access the services within a secure environment.</p>
             </div>
 
-            <div class="row bold">
+            <div class="row bold" id="infosafe">
               10. Do We Collect Information From Minors?
             </div>
             <div class="row">
@@ -234,6 +234,81 @@
               <p class="fs-18">We do not knowingly solicit data from or market to children under 18 years of age. By using the services or apps, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the services or apps. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at info@prudentscores.Com.</p>
             </div>
 
+            <div class="row bold" id="privacyrights">
+              11. What Are Your Privacy Rights?
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">In short:  you may review, change, or terminate your account at any time.</p>
+              <p class="fs-18">If you are resident in the european economic area and you believe we are unlawfully processing your personal information, you also have the right to complain to your local data protection supervisory authority. You can find their contact details here: <a href="https://ec.europa.eu/newsroom/article29/items/612080">http://ec.Europa.Eu/justice/data-protection/bodies/authorities/index_en.htm</a>.</p>
+              <p class="fs-18">If you have questions or comments about your privacy rights, you may email us at info@prudentscores.com.</p>
+            </div>
+
+            <div class="row bold">
+              Account Information
+            </div>
+            <div class="row mt-3">
+              <p class="fs-18">If you would at any time like to review or change the information in your account or terminate your account, you can:</p>
+              <p class="fs-18 ml-3">■  Log into your account settings and update your user account.</p>
+
+            </div>
+            <div class="row">
+              <p class="fs-18 ml-3">■  Contact us using the contact information provided.</p>
+              <p class="fs-18">Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, some information may be retained in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our Terms of Use and/or comply with legal requirements.</p>
+              <p class="fs-18"><u>Cookies and similar technologies:</u> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services or Apps. To opt-out of interest-based advertising by advertisers on our Services or Apps visit <a href="https://optout.aboutads.info/?c=2&lang=EN">http://www.aboutads.info/choices/</a>.</p>
+              <p class="fs-18"><u>Opting out of email marketing:</u> You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. You will then be removed from the marketing email list – however, we will still need to send you service-related emails that are necessary for the administration and use of your account. To otherwise opt-out, you may:</p>
+              <p class="fs-18 ml-3">■  Note your preferences when you register an account with the site.</p>
+            </div>
+            <div class="row">
+              <p class="fs-18 ml-3">■  Access your account settings and update preferences.</p>
+            </div>
+            <div class="row">
+              <p class="fs-18 ml-3">■  Contact us using the contact information provided.</p>
+            </div>
+
+            <div class="row bold" id="DNT">
+              12. Controls For Do-not-track Features
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track (“DNT”) feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. No uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this privacy policy.</p>
+            </div>
+
+            <div class="row bold" id="caresidents">
+              13. Do California Residents Have Specific Privacy Rights?
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">In Short:  Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.</p>
+              <p class="fs-18">California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.</p>
+              <p class="fs-18">If you are under 18 years of age, reside in California, and have a registered account with the Services or Apps, you have the right to request removal of unwanted data that you publicly post on the Services or Apps. To request removal of such data, please contact us using the contact information provided below, and include the email address associated with your account and a statement that you reside in California. We will make sure the data is not publicly displayed on the Services or Apps, but please be aware that the data may not be completely or comprehensively removed from our systems.</p>
+            </div>
+
+            <div class="row bold" id="policyupdates">
+              14. Do We Make Updates To This Policy?
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">In Short:  Yes, we will update this policy as necessary to stay compliant with relevant laws.</p>
+              <p class="fs-18">We may update this privacy policy from time to time. The updated version will be indicated by an updated “Revised” date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy policy, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.</p>
+            </div>
+
+            <div class="row bold" id="contact">
+              15. How Can You Contact Us About This Policy?
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">If you have questions or comments about this policy, you may email us at info@prudentscores.com or by post to:</p>
+              <p class="fs-18">PRUDENT CREDIT SOLUTIONS, Inc</p>
+            </div>
+            <div class="row">
+              <p class="fs-18">5800 S. Eastern Ave.</p>
+            </div>
+            <div class="row">
+              <p class="fs-18">Suite 500 COMMERCE, CA 90040</p>
+            </div>
+
+            <div class="row bold">
+              How Can You Review, Update, Or Delete The Data We Collect From You?
+            </div>
+            <div class="row">
+              <p class="fs-18 mt-3">To request to review, update, or delete your personal information, please email us at info@prudentscores.comand we will respond to your request within 30 day.</p>
+            </div>
           </div>
         </div>
 

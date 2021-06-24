@@ -36,13 +36,16 @@
                                 <div class="col-md-8 pl-4">
                                     @foreach($faqs as $faq)
                                         <div class="card">
-                                          <div class="card-body">
+                                          <div class="card-header">
                                             <div class="row ml-0 mr-0 faq-block" data-id="{{$faq->id}}">
-                                                <h4 class="faqs-title col-9">{{$faq->title}}</h4>
+                                              <h4 class="faqs-title col-9">{{$faq->title}}</h4>
                                                 <div class="align-right col-1">
                                                     <label><i class="fa fa-arrow-down"></i>  </label>
                                                 </div>
                                             </div>
+                                          </div>
+                                          <div class="card-body">
+
                                             <div class="faqs-body pt-0 m-0" data-id="{{$faq->id}}" >
                                                 {{$faq->description}}
                                             </div>

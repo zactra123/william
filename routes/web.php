@@ -42,7 +42,7 @@ Route::get('/home', function () {
 
 
 Route::get('/', 'PagesController@welcome' );
-Route::get('abou-us', 'PagesController@whoWeAre')->name('whoWeAre');
+Route::get('about-us', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
 Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
 Route::get('contact', 'PagesController@contacts')->name('contact');
@@ -55,6 +55,7 @@ Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Route::get('news-room', 'PagesController@blog')->name('blog');
 Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
+Route::get('review','PagesController@review_page')->name('web.review.page');
 
 Route::get('shear/{social}/{url}', 'PagesController@shareSocial')->name('shear');
 

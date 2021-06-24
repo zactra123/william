@@ -363,7 +363,7 @@
 
                   5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
                   <strong>Phone:</strong> 1-844-337-8336<br>
-                  <strong>Email:</strong> info@prudentscores.com<br>
+                  <strong>Email: </strong> info@prudentscores.com<br>
                 </p>
                 <div class="social-links mt-3">
                   <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -389,11 +389,10 @@
             <div class="col-lg-2 col-md-6 footer-links">
               <h4>Our Services</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Credit </a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Client</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Affiliate</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.repair') }}">Credit Repair Resources </a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('legalityCreditRepair') }}">Legality Credit Repair</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('howItWorks') }}">How It Work</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li>
               </ul>
             </div>
 

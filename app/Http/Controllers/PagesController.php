@@ -271,4 +271,13 @@ class PagesController extends Controller
         }
     }
 
+    /**
+     *  Review Page
+     *
+     */
+     public function review_page()
+     {
+       return view('review');
+     }
+
 }

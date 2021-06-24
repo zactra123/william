@@ -148,7 +148,7 @@
     <header id="header" class="fixed-top" style="top:40px !important;">
       <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="#"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
+        <h1 class="logo"><a href="{{ url('/') }}"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -237,22 +237,21 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('whoWeAre') }}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.education') }}">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('faqs') }}">Faqs</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('pravicy') }}">Privacy policy</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Other Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit </a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Client</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Affiliate</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Credit Repair</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.repair') }}">Credit Repair Resources </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('legalityCreditRepair') }}">Legality Credit Repair</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('howItWorks') }}">How It Work</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li>
             </ul>
           </div>
 
