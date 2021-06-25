@@ -326,3 +326,13 @@ visibility: visible;
 top: 0;
 left: 60px; /*position where enlarged image should offset horizontally */
 }
+
+.rating-main-div{
+    background: #f2f2f5 !important;
+    width: 100% !important;
+    height: 20px !important;
+    border: 2px solid #c7c7ce;
+}
+.rating-second-div{
+  
+}

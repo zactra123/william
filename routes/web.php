@@ -39,7 +39,8 @@ Route::get('/home', function () {
 
 
 
-
+Route::resource('reviews','ReviewsController');
+Route::get('reviews/list','ReviewsController@show')->name('review.list');
 
 Route::get('/', 'PagesController@welcome' );
 Route::get('about-us', 'PagesController@whoWeAre')->name('whoWeAre');
@@ -55,7 +56,7 @@ Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
 Route::get('news-room', 'PagesController@blog')->name('blog');
 Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
-Route::get('review','PagesController@review_page')->name('web.review.page');
+Route::get('review/create','PagesController@review_page')->name('web.review.create');
 
 Route::get('shear/{social}/{url}', 'PagesController@shareSocial')->name('shear');
 

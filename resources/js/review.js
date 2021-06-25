@@ -1,35 +1,3 @@
-@extends('layouts.layout1')
-@section('content')
-  <br><br><br><br><br><br><br><br>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <div class="container my-5">
-    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-      {{-- <div class="card p-5">
-        <div class="row">
-          <input type="radio" class="hidden" name="star-selector" value="1"/><i class="fa fa-star"></i>
-          <input type="radio" class="hidden" name="star-selector" value="2"/><i class="fa fa-star"></i>
-          <input type="radio" class="hidden" name="star-selector" value="3"/><i class="fa fa-star"></i>
-          <input type="radio" class="hidden" name="star-selector" value="4"/><i class="fa fa-star"></i>
-          <input type="radio" class="hidden" name="star-selector" value="5"/><i class="fa fa-star"></i>
-        </div>
-      </div> --}}
-      <div class="row">
-	</div>
-    <div class="row lead">
-        <div id="stars" style="" class="starrr"></div>
-        <br>
-
-	</div>
-  <div class="row">
-      <strong>You gave a rating of <span id="count">0</span> star(s)</strong>
-  </div>
-
-    </div>
-  </div>
-
-<script type="text/javascript">
 var __slice = [].slice;
 
 (function($, window) {
@@ -74,7 +42,7 @@ Starrr = (function() {
 
     _results = [];
     for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
-      _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty' style='font-size:50px;color:yellow'></span>"));
+      _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty' style='font-size:50px;color:yellow;margin-left:10px;'></span>"));
     }
     return _results;
   };
@@ -137,13 +105,19 @@ return $(".starrr").starrr();
 $( document ).ready(function() {
 
 $('#stars').on('starrr:change', function(e, value){
-  $('#count').html(value);
+  $('.count').val(value);
 });
 
 $('#stars-existing').on('starrr:change', function(e, value){
-  $('#count-existing').html(value);
+  $('#count-existing').val(value);
 });
 });
-</script>
 
-@endsection
+
+/**
+ * Check Rating Value
+ */
+function checkratevalue() {
+  var rating = $('ratingvalue').val();
+  alert(rating);
+}

@@ -19,6 +19,7 @@ require('./assets/vendor/isotope-layout/isotope.pkgd.min.js');
 require('./assets/vendor/php-email-form/validate.js');
 require('./assets/vendor/purecounter/purecounter.js');
 
+require('./review.js');
 require('./custom.js');
 
 

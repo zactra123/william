@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,14 +60,14 @@
     {{--  Fav Icon  END  --}}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    {{-- <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"> --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 
     <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
     <link rel="stylesheet" href="{{ asset('css/zactra.css?v='.env('ASSET_VERSION') ) }}">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     @yield('scripts')
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9BDPYSVBK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -145,7 +146,7 @@
 
 <section class="py-2 mb-5">
   <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-    <header id="header" class="fixed-top" style="top:40px !important;">
+    <header id="header" class="fixed-top" style="top:20px !important;">
       <div class="container d-flex align-items-center justify-content-between">
 
         <h1 class="logo"><a href="{{ url('/') }}"> <img src="{{ asset('images/new/logo.png') }}" width="200px" alt="logo"> </a></h1>
@@ -181,8 +182,57 @@
   </div>
 </section>
 
+        <br><br><br><br><br>
+          <div class="container my-5">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+              <div class="col-md-2 col-lg-2 col-sm-12 col-12">
 
-@yield('content')
+              </div>
+              <div class="col-md-8 col-lg-8 col-sm-12 col-12">
+                <div class="card p-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                      <h3 class="ml-5">Rate your experience</h3>
+                      <div id="stars" style="" class="starrr"></div>
+                      <div class="row hidden">
+                          <strong>You gave a rating of <input type="text" name="" class="getrating count" value="0" onchange="alert()">  star(s)</strong>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 mt-5">
+                      <form class="" action="{{ route('reviews.store') }}" method="post">
+                        @csrf
+                        <div class="row">
+                          <h3>Tell us about your experience</h3>
+                        </div>
+                        <input type="hidden" class="ratingvalue count" name="rating" value="0">
+                        <div class="row">
+                          <input type="text" class="form-control" placeholder="Full Name" name="name" value="" required>
+                        </div>
+                        <div class="row mt-3">
+                          <input type="email" class="form-control" placeholder="Email" name="email" value="" required>
+                        </div>
+                        <div class="row mt-3">
+                          <textarea name="review" rows="8" class="form-control" placeholder="Write Your Review" required></textarea>
+                        </div>
+                        <div class="row mt-3 pull-right">
+                          <button type="submit" class="btn btn-primary" onclick="checkratevalue()" name="button">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
 
 
 <div class="modal fade" id="partner_with_us" role="dialog">
@@ -237,22 +287,22 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('whoWeAre') }}">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.education') }}">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('faqs') }}">Faqs</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('pravicy') }}">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ url('/') }}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('whoWeAre') }}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('credit.education') }}">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('faqs') }}">Faqs</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('pravicy') }}">Privacy policy</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Other Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.repair') }}">Credit Repair Resources </a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('legalityCreditRepair') }}">Legality Credit Repair</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('howItWorks') }}">How It Work</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('review.list') }}">Reviews</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('credit.repair') }}">Credit Repair Resources </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('legalityCreditRepair') }}">Legality Credit Repair</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('howItWorks') }}">How It Work</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('review.list') }}">Reviews</a></li>
             </ul>
           </div>
 

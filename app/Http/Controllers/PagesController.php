@@ -277,7 +277,7 @@ class PagesController extends Controller
      */
      public function review_page()
      {
-       return view('review');
+       return view('review.create');
      }
 
 }
