@@ -1,21 +1,21 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
 
-    @include('helpers.breadcrumbs', ['title'=> "AFFILIATES", 'route' => ["Home"=> '/owner',"AFFILIATES LIST" => "#"]])
+    {{-- @include('helpers.breadcrumbs', ['title'=> "AFFILIATES", 'route' => ["Home"=> '/owner',"AFFILIATES LIST" => "#"]]) --}}
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-3 col-sm-12 mt-5"></div>
+                <div class="col-md-12 col-sm-12 mt-5">
                     <div class="ms-ua-box">
                         <div class="col-md-11">
                             <div class="card">
 
                                 <div class="card-header">
-                                    <label class="header m-2">AFFILIATE LIST</label>
+                                    <h4>Affiliate List</h4>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body mt-5">
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -36,12 +36,19 @@
                                                 <td>{{$user->email}}</td>
                                                 <td>{{$user->client}}</td>
                                                 <td>
-{{--                                                    <a class="btn btn-secondary" href="{{ route('owner.affiliate.show',$user->id)}}"--}}
-{{--                                                       role="button"><span class="fa fa-file"></span></a>--}}
+                                                  <div class="dropdown show">
+                                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Action
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                      <a class="dropdown-item" href="{{ route('owner.delete.affiliate',$user->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                                    </div>
+                                                  </div>
+                                                   {{-- <a class="btn btn-secondary" href="{{ route('owner.affiliate.show',$user->id)}}" role="button"><span class="fa fa-file"></span></a> --}}
 
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                    <a href="{{ route('owner.delete.affiliate',$user->id) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button></a>
+                                                    {{-- <a href="{{ route('owner.delete.affiliate',$user->id) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button></a> --}}
 
 
 

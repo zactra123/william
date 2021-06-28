@@ -20,6 +20,7 @@ class Reviews extends Migration
           $table->longText('email')->nullable();
           $table->longText('rating')->nullable();
           $table->longText('review')->nullable();
+          $table->longText('show_home')->always('no');
           $table->timestamps();
       });
     }

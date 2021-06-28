@@ -23,7 +23,8 @@ class Reviews extends Model
         'name',
         'email',
         'rating',
-        'review'
+        'review',
+        'show_home'
     ];
 
 

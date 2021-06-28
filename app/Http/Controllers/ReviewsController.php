@@ -41,8 +41,14 @@ class ReviewsController extends Controller
     */
     public function show()
     {
-      $review = reviews::orderby('id')->get();
-      return view('review.index',compact('review'));
+      $review = reviews::orderby('id','desc')->paginate(5);
+      $excellent = reviews::where('rating','5')->count();
+      $great = reviews::where('rating','4')->count();
+      $average = reviews::where('rating','3')->count();
+      $poor = reviews::where('rating','2')->count();
+      $bad = reviews::where('rating','1')->count();
+      $total = reviews::count();
+      return view('review.index',compact('review','excellent','great','average','poor','bad','total'));
 
     }
 }

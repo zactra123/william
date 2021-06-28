@@ -241,7 +241,7 @@
         <div class="row">
 
           <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/video-img2.png') }});background-repeat: no-repeat;
-  background-size: auto;" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
+          background-size: auto;" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
             {{-- <a href="https://prudentscores.com/images/howItWorks.mp4" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a> --}}
             <span class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></span>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -280,6 +280,66 @@
 
       </div>
     </section><!-- End Why Us Section -->
+    @php
+
+    @endphp
+    <!-- ======= Reviews Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title mt-5 pb-3">
+          <h2>Reviews ({{ count($totalreviews) }}) <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span></h2>
+          <p>Trusted for over 15 years</p>
+        </div>
+
+        <div class="row mb-5">
+
+            @if (isset($reviews))
+              @foreach ($reviews as $key => $value)
+              <div class="col-lg-4 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="row">
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                    <div class="px-4 {{ $key != '2' ? 'reviewborder' : '' }}">
+                      <div class="row">
+                        @if ($value->rating=='5')
+                          <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+                        @elseif($value->rating=='4')
+                          <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span><span class="pt-2 ml-1"><i class="fa fa-star"></i></span>
+                        @elseif($value->rating=='3')
+                          <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @elseif($value->rating=='2')
+                          <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i>  </span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @elseif($value->rating=='1')
+                          <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> </span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @endif
+                      </div>
+                      <div class="row mt-2">
+                        <strong>{{ ucfirst($value->name) }}</strong>
+                      </div>
+                      <div class="row mt-2">
+                        {{ zactra::convertDay($value->created_by) }}
+                      </div>
+                      <div class="row mt-2">
+                        " {{ zactra::limit_words($value->review,215)}} "
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+            @endif
+
+          <div class="col-md-12 mt-4">
+            <div class="row pull-right">
+              <a href="{{ route('review.list') }}"><button type="button" class="revirewmorebtn" name="button">More Reviews</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -291,8 +351,7 @@
         </div>
 
         <div class="row  mb-5">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style"
-          padding=10px;" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch p-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="fa fa-dribbble"></i></div>
               <h4><a href="">Lorem Ipsum</a></h4>
@@ -344,9 +403,6 @@
 
       </div>
     </section><!-- End Services Section -->
-
-
-
 
   </main><!-- End #main -->
 

@@ -88,7 +88,14 @@ Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify
 
 Route::group(['prefix'=>'owner'], function(){
 
+
+
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');
+
+    Route::get('reviews','Owner\ReviewController@index')->name('owner.reviews.index');
+    Route::get('review/delete/{id}','Owner\ReviewController@delete')->name('owner.delete.review');
+    Route::get('review/show/{id}','Owner\ReviewController@show')->name('owner.show.review');
+    Route::get('review/hide/{id}','Owner\ReviewController@hide')->name('owner.hide.review');
 
     Route::resource('admin', 'Owner\AdminsController')->names('owner.admin')->except('show');
     Route::delete('admin/{id}/delete/ip-address/{idIp}', 'Owner\AdminsController@deleteIp')->name('owner.admin.deleteIp');

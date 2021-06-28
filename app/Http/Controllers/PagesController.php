@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 use App\Faq;
 use App\ContactMessage;
+use App\reviews;
 use Illuminate\Support\Facades\DB;
 
 
@@ -57,7 +58,10 @@ class PagesController extends Controller
             $slogans[$key]['slogan'] = $textSlogan;
         }
 
-        return view('home-page', compact('pageContentUp', 'slogans'));
+        $reviews = reviews::where('show_home','yes')->take(3)->get();
+        $totalreviews = reviews::all();
+
+        return view('home-page', compact('pageContentUp', 'slogans','reviews','totalreviews'));
     }
 
     /**

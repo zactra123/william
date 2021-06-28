@@ -8,6 +8,7 @@
         <li class="nav-item"><a href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
         <li class="nav-item"><a href="{{ route('owner.client.index')}}" >CLIENTS</a></li>
         <li class="nav-item"><a href="{{ route('owner.affiliate.index')}}" >AFFILIATES</a></li>
+        <li class="nav-item"><a href="{{ route('owner.reviews.index')}}" >REVIEWS</a></li>
     </ul>
 </li>
 

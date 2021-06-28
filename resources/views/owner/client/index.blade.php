@@ -1,22 +1,22 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
 
-    @include('helpers.breadcrumbs', ['title'=> "CLIENTS", 'route' => ["Home"=> '/owner',"CLIENTS LIST" => "#"]])
+    {{-- @include('helpers.breadcrumbs', ['title'=> "CLIENTS", 'route' => ["Home"=> '/owner',"CLIENTS LIST" => "#"]]) --}}
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-3 col-sm-12 mt-5"></div>
+                <div class="col-md-12 col-sm-12 mt-5">
                     <div class="ms-ua-box">
                         <div class="col-md-11">
                             <div class="card">
 
                                 <div class="card-header">
-                                    <label class="header m-2">CLIENT LIST</label>
+                                    <h4>Client List</h4>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table">
+                                    <table class="table mt-5">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -32,21 +32,27 @@
                                         @foreach($users as $key=> $user)
 
                                             <tr>
-                                                <th scope="row">{{ (($users->currentPage() - 1 ) * $users->perPage() ) + $loop->iteration }}</th>
+                                                <th scope="row">{{ $key+1 }}</th>
                                                 <td>{{$user->first_name}}</td>
                                                 <td>{{$user->last_name}}</td>
                                                 <td>{{$user->email}}</td>
 {{--                                                <td>{{$user->full_name?? "-"}}</td>--}}
                                                 <td>
-
-                                                    <a class="btn btn-secondary" href="{{ route('adminRec.client.profile',$user->id)}}"
-                                                       role="button"><i class="fa fa-file-text"></i></a>
+                                                  <div class="dropdown show">
+                                                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Action
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                      <a class="dropdown-item" href="{{ route('adminRec.client.profile',$user->id)}}">View Profile</a>
+                                                      <a class="dropdown-item" href="{{ route('owner.delete.client',$user->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                                    </div>
+                                                  </div>
+                                                    {{-- <a class="btn btn-secondary" href="{{ route('adminRec.client.profile',$user->id)}}"
+                                                       role="button"><i class="fa fa-file-text"></i></a> --}}
 
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                    <a href="{{ route('owner.delete.client',$user->id) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{ $user->id}}" ><i class="fa fa-trash"></i> </button></a>
-
-
+                                                    {{-- <a href="{{ route('owner.delete.client',$user->id) }}"><button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{ $user->id}}" ><i class="fa fa-trash"></i> </button></a> --}}
 
                                                     {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
 
@@ -55,9 +61,13 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    {{ $users->links() }}
-                                </div>
 
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="row pull-right">
+                                  {{ $users->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
