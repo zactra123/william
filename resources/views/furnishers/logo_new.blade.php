@@ -106,7 +106,7 @@
 
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination alphabetical ">
-                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                            <li class=" {{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
                             @foreach($alphas as $alpha)
                                 <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
@@ -122,8 +122,10 @@
                             <div class="row">
                                 @foreach($banksLogos as  $logos)
                                     <div class="col-md-3" title="{{strtoupper($logos->name)}}">
-                                        <div class="card mb-4 box-shadow" >
-
+                                        <div class="card mb-4 box-shadow p-5" >
+                                          {{-- @if (!empty($logos->getUrlAttribute()))
+                                            test
+                                          @endif --}}
                                             @if (isset($logos->bucket))
                                               @if($logos->checkUrlAttribute())
                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>

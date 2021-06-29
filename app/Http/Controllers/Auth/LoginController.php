@@ -8,8 +8,8 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
 use App\User;
+use App\ClientDetail;
 
 class LoginController extends Controller
 {
@@ -120,6 +120,7 @@ class LoginController extends Controller
 
     public function loginInfoFirst(Request $request)
     {
+
         if($request->method()=="GET"){
             if (empty(session("recover_client"))) {
                 return redirect(route("login.infoFirst"));
@@ -133,18 +134,21 @@ class LoginController extends Controller
 
 
             if(is_null($clientInfo['ssn']) && is_null($clientInfo['ein'])){
-                return back()->withErrors(  ['error'=>"Social Security card or EIN Number is required" ]);
+                // return back()->withErrors(  ['error'=>"Social Security card or EIN Number is required" ]);
+                return back()->with('error','Social Security card or EIN Number is required');
             }
 
             if(!is_null($clientInfo['ssn'])){
                 if($clientInfo['ssn']!= $clientInfo['ssn_confirm'])
                 {
-                    return back()->withErrors(  ['error'=>"wrong social security number confirmation!" ]);
+                    // return back()->withErrors(  ['error'=>"wrong social security number confirmation!" ]);
+                    return back()->with('error','wrong social security number confirmation!');
                 }
             }elseif(!is_null($clientInfo['ein'])){
                 if($clientInfo['ein']!= $clientInfo['ein_confirm'])
                 {
-                    return back()->withErrors(  ['error'=>"wrong ein number confirmation!" ]);
+                    // return back()->withErrors(  ['error'=>"wrong ein number confirmation!" ]);
+                    return back()->with('error','wrong ein number confirmation!');
                 }
             }
 
@@ -154,14 +158,20 @@ class LoginController extends Controller
                 ->leftJoin('secret_questions', 'users.secret_questions_id', '=', 'secret_questions.id')
                 ->where('client_details.ssn', $clientInfo['ssn'])
                 ->where('client_details.ein', $clientInfo['ein'])
-                ->where('users.last_name', 'like', '%' . $clientInfo['last_name'] . '%')
+                ->where('users.last_name', $clientInfo['last_name'])
+                // ->where('users.last_name', 'like', '%' .$clientInfo['last_name']. '%')
                 ->select('users.id', 'secret_questions.question')
                 ->first();
+
+                // $client = User::where('last_name',$clientInfo['last_name'])
+                //     ->first();
+                // return $client;
             if(!empty($client)){
                 session(["recover_client"=> $client]);
                 return redirect(route("login.infoFirstSend"));
             }else{
-                return back()->withErrors(  ['error' => "Please connect our team"] );
+                // return back()->withErrors(  ['error' => "Please connect our team"] );
+                return back()->with('error','Please connect our team');
             }
 
         }
@@ -184,7 +194,8 @@ class LoginController extends Controller
 
                 return view('auth.reset_login_info', compact('client'));
             }else{
-                return back()->withErrors( ['error', "ANSWER IS INCORRECT"] );
+                // return back()->withErrors( ['error', "ANSWER IS INCORRECT"] );
+                return back()->with('error','ANSWER IS INCORRECT');
             }
         }
 
@@ -199,7 +210,8 @@ class LoginController extends Controller
 
 
             if($request->password != $request->password_confirmation){
-                return back()->withErrors( ['error', "Password confirmation doesn't match Password"] );
+                // return back()->withErrors( ['error', "Password confirmation doesn't match Password"] );
+                return back()->with('error','Password confirmation does not match Password');
             }else{
 
                $user =  User::where('id', $request->id);
@@ -208,6 +220,7 @@ class LoginController extends Controller
 
                 auth()->login($user->first());
                 return redirect(route('login.infoFirst'))->with('success', "your data saved");
+                
             }
 
 

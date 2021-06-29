@@ -251,7 +251,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.repair') }}">Credit Repair Resources </a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('legalityCreditRepair') }}">Legality Credit Repair</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('howItWorks') }}">How It Work</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li>
+              {{-- <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li> --}}
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('review.list') }}">Reviews</a></li>
             </ul>
           </div>

@@ -401,7 +401,7 @@
                                     <ul class="wrapper-option " style="padding-left: 30px">
                                         <h3>CUSTOMER SERVICE</h3>
                                         <li><a href="{{route('faqs')}}">FAQs</a></li>
-                                        <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li>
+                                        {{-- <li><a href="{{route('credit.free.repair')}}">Good Credit Tips</a></li> --}}
                                         <li>
                                             <a href="https://www.myfico.com/fico-credit-score-estimator/estimator" target="_blank">
                                                 Score Estimator
@@ -505,7 +505,7 @@
 </div>
 <!-- Off-Canvas View Only -->
 
-<div id="toTop" class="hidden-xs">
+<div id="toTop" class="hidden-xs pt-2">
     <i class="fa fa-chevron-up"></i>
 </div> <!-- totop -->
 

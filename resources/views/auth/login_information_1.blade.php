@@ -1,22 +1,28 @@
 @extends('layouts.layout1')
 
 @section('content')
-
+  <br>
     <section class="py-5 container">
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="px-4 py-4 login-form-border register_form">
-            @if ($message = Session::get('success'))
+            {{-- @if ($message = Session::get('success'))
                 <div class="w-25 alert alert-success alert-block flash">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     <strong>{{ $message }}</strong>
                 </div>
             @endif
+            @if ($message = Session::get('error'))
+                <div class="w-25 alert alert-danger alert-block flash">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif --}}
 
             <h1 class="fs-25 bold theme-color-dark">Rest Login information</h1>
             <p>Please enter complete information which is asked below to reset your login information!</p>
 
-
+          
             {!! Form::open(['route' => 'login.infoFirstSend', 'method' => 'POST', 'id' => 'loginInformation1']) !!}
             @csrf
             <div class="row">
@@ -53,15 +59,19 @@
               </div>
             </div>
 
-            <div class="basic-button text-center">
-              <input type="submit" value="NEXT STEP" class="login">
+            <div class="row text-center">
+              <div class="col-md-12">
+                <div class="basic-button">
+                  <input type="submit" value="NEXT STEP" class="login">
+                </div>
+              </div>
             </div>
             {!! Form::close() !!}
 
           </div>
 
           <p class="pt-4 fs-12 text-center">
-              Want to login to your account? <a class="fs-12 theme-color-dark" href="{{route('login')}}">Sign In</a>
+              <span class="fs-18">Want to login to your account? <a class="fs-18 theme-color-dark" href="{{route('login')}}">Sign In</a></span>
           </p>
         </div>
       </div>

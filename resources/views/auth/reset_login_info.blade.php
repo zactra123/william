@@ -12,7 +12,7 @@
                 <div class="title">
                     <h4>Step 3: Reset password</h4>
                 </div>
-                @if ($errors->any())
+                {{-- @if ($errors->any())
 
                     <div class="alert alert-danger flash">
                         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -20,7 +20,7 @@
                             <strong>{{ $message }}</strong>
                         @endforeach
                     </div>
-                @endif
+                @endif --}}
 
                 {!! Form::open(['route' => 'login.infoFinishSend', 'method' => 'POST', 'id' => 'loginInformation3',  'class' => 'm-form m-form--label-align-right']) !!}
                 @csrf

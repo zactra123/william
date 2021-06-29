@@ -1,1 +1,346 @@
-!function(e){var a={};function t(n){if(a[n])return a[n].exports;var r=a[n]={i:n,l:!1,exports:{}};return e[n].call(r.exports,r,r.exports,t),r.l=!0,r.exports}t.m=e,t.c=a,t.d=function(e,a,n){t.o(e,a)||Object.defineProperty(e,a,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,a){if(1&a&&(e=t(e)),8&a)return e;if(4&a&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&a&&"string"!=typeof e)for(var r in e)t.d(n,r,function(a){return e[a]}.bind(null,r));return n},t.n=function(e){var a=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(a,"a",a),a},t.o=function(e,a){return Object.prototype.hasOwnProperty.call(e,a)},t.p="/",t(t.s=67)}({67:function(e,a,t){e.exports=t(68)},68:function(e,a,t){t(69)},69:function(e,a){var t={validClass:"not-error",rules:{full_name:{required:!0,valid_full_name:!0},phone_number:{required:!0},sex:{required:!0},secret_question:{required:!0},secret_answer:{required:!0}},errorPlacement:function(e,a){a.removeClass("not-error")},submitHandler:function(e){var a=$(e).serialize();$.ajax({url:"/client/important-information",type:"POST",data:a,success:function(a){console.log("id:",$(e).attr("data-id")),registrationStepsSwitch(Number($(e).attr("data-id")))},error:function(e,a,t){console.log(e.responseText)}})}},n={validClass:"not-error",rules:{social_security:{required:!0,extension:"jpg|jpeg|png",filesize:1073741824},driver_license:{required:!0,extension:"jpg|jpeg|png",filesize:!0}},errorPlacement:function(e,a){a.removeClass("not-error")},submitHandler:function(e){var a=new FormData(e);$.ajax({url:"/client/add/driver-license-social-security",type:"POST",data:a,cache:!1,contentType:!1,processData:!1,success:function(a){setupReviewData(a),registrationStepsSwitch(Number($(e).attr("data-id")))},error:function(e,a,t){console.log(e.responseText)}})}},r={validClass:"not-error",rules:{"client[full_name]":{required:!0},"client[dob]":{required:!0},"client[ssn]":{required:!0},"client[address]":{required:!0,valid_address:!0},"client[zip]":{required:!0},"client[sex_uploaded]":{required:!0}},errorPlacement:function(e,a){a.removeClass("not-error")},submitHandler:function(e){var a=$(e).serialize();console.log("asd"),$.ajax({url:$(e).attr("action"),type:"PUT",data:a,success:function(a){registrationStepsSwitch(Number($(e).attr("data-id")))},error:function(e,a,t){console.log(e.responseText)}})}};setupReviewData=function(e){$form=$("#add_client_5"),(e.uploadedData.first_name||e.uploadedData.last_name)&&$form.find('[name="client[full_name]"]').val("".concat(e.uploadedData.first_name," ").concat(e.uploadedData.last_name)),e.uploadedData.dob&&$form.find('[name="client[dob]"]').val(e.uploadedData.dob),e.uploadedData.ssn&&$form.find('[name="client[ssn]"]').val(e.uploadedData.ssn),(e.uploadedData.number||e.uploadedData.name||e.uploadedData.city||e.uploadedData.state||e.uploadedData.zip)&&$form.find('[name="client[address]"]').val("".concat(e.uploadedData.number," ").concat(e.uploadedData.name," ").concat(e.uploadedData.city," ").concat(e.uploadedData.state," ").concat(e.uploadedData.zip))};$.validator.addMethod("valid_full_name",(function(e,a){return!!e.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/gi)}),"Please write your full name in this pattern first name middle name last name!!"),$.validator.addMethod("filesize",(function(e,a){return this.optional(a)||a.files[0].size<=10485760}),"File size must be less than 1mb"),$.validator.addMethod("extension",(function(e,a,t){return t="string"==typeof t?t.replace(/,/g,"|"):"png|jpe?g",this.optional(a)||e.match(new RegExp(".("+t+")$","i"))}),"Please enter a value with a valid extension."),$.validator.addMethod("valid_address",(function(e,a){return!!e.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g)}),"Not valid address format."),registrationStepsSwitch=function(e){var a=Number($(".additional-reg:last").attr("data-id")),t=e+1;console.log(t,a,e==a),e==a?($(".finish").removeClass("none"),$(".finish").addClass("active").show(),$('.additional-reg[data-id="'.concat(e,'"]')).addClass("none").removeClass("active").hide(),$('.registration-stage[data-id="'.concat(e,'"]')).addClass("active"),$('.stage-img[data-id="'.concat(e,'"]')).removeClass("nonactive"),$('.registration-stage[data-id="finish"]').addClass("prepare")):t<=a&&($('.additional-reg[data-id="'.concat(e,'"]')).addClass("none").removeClass("active").hide(),$('.additional-reg[data-id="'.concat(t,'"]')).addClass("active").removeClass("none").show(),$('.registration-stage[data-id="'.concat(e,'"]')).addClass("active"),$('.stage-img[data-id="'.concat(e,'"]')).removeClass("nonactive"),$('.registration-stage[data-id="'.concat(t,'"]')).addClass("prepare")),3==t&&$(".register-form").removeClass("big").addClass("large"),t>3&&$(".register-form").removeClass("large").addClass("big"),$("html, body").animate({scrollTop:$(".register-form").offset().top-50},1e3)},$(document).ready((function(){$(document).on("change","#secret_question",(function(){"other"==$(this).val()?$("#custom-secret-question").removeClass("none"):$("#custom-secret-question").addClass("none")})),$(".phone").mask("(000) 000-0000"),$(".ssn").mask("000-00-0000"),$("#register_form").validate(t),$("#add_client_3").validate(n),$("#add_client_4").submit((function(e){var a;e.preventDefault(),a=this,data=$(a).serialize(),$.ajax({url:"/client/credentials-store",type:"POST",data:data,success:function(e){registrationStepsSwitch(Number($(a).attr("data-id")))},error:function(e,a,t){console.log(e.responseText)}})})),$("#add_client_5").validate(r)}))}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/clients/registration_steps.js":
+/*!****************************************************!*\
+  !*** ./resources/js/clients/registration_steps.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var importantValidationOptions = {
+  validClass: "not-error",
+  rules: {
+    "full_name": {
+      required: true,
+      valid_full_name: true
+    },
+    "phone_number": {
+      required: true
+    },
+    "sex": {
+      required: true
+    },
+    "secret_question": {
+      required: true
+    },
+    "secret_answer": {
+      required: true
+    }
+  },
+  errorPlacement: function errorPlacement(error, element) {
+    element.removeClass('not-error');
+  },
+  submitHandler: function submitHandler(form) {
+    var data = $(form).serialize();
+    $.ajax({
+      url: '/client/important-information',
+      type: "POST",
+      data: data,
+      success: function success(data) {
+        console.log('id:', $(form).attr('data-id'));
+        registrationStepsSwitch(Number($(form).attr('data-id')));
+      },
+      error: function error(request, status, _error) {
+        console.log(request.responseText);
+      }
+    });
+  }
+};
+var documentValidationOptions = {
+  validClass: "not-error",
+  rules: {
+    "social_security": {
+      required: true,
+      extension: "jpg|jpeg|png",
+      filesize: 1073741824
+    },
+    "driver_license": {
+      required: true,
+      extension: "jpg|jpeg|png",
+      filesize: true
+    }
+  },
+  errorPlacement: function errorPlacement(error, element) {
+    element.removeClass('not-error');
+  },
+  submitHandler: function submitHandler(form) {
+    var data = new FormData(form);
+    $.ajax({
+      url: '/client/add/driver-license-social-security',
+      type: "POST",
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function success(data) {
+        setupReviewData(data);
+        registrationStepsSwitch(Number($(form).attr('data-id')));
+      },
+      error: function error(request, status, _error2) {
+        console.log(request.responseText);
+      }
+    });
+  }
+};
+var reviewValidationOptions = {
+  validClass: "not-error",
+  rules: {
+    "client[full_name]": {
+      required: true
+    },
+    "client[dob]": {
+      required: true
+    },
+    "client[ssn]": {
+      required: true
+    },
+    "client[address]": {
+      required: true,
+      valid_address: true
+    },
+    "client[zip]": {
+      required: true
+    },
+    "client[sex_uploaded]": {
+      required: true
+    }
+  },
+  errorPlacement: function errorPlacement(error, element) {
+    element.removeClass('not-error');
+  },
+  submitHandler: function submitHandler(form) {
+    var data = $(form).serialize();
+    console.log('asd');
+    $.ajax({
+      url: $(form).attr('action'),
+      type: "PUT",
+      data: data,
+      success: function success(data) {
+        registrationStepsSwitch(Number($(form).attr('data-id')));
+      },
+      error: function error(request, status, _error3) {
+        console.log(request.responseText);
+      }
+    });
+  }
+};
+
+setupReviewData = function setupReviewData(data) {
+  $form = $('#add_client_5');
+
+  if (!!data.uploadedData.first_name || !!data.uploadedData.last_name) {
+    $form.find('[name="client[full_name]"]').val("".concat(data.uploadedData.first_name, " ").concat(data.uploadedData.last_name));
+  }
+
+  if (!!data.uploadedData.dob) {
+    $form.find('[name="client[dob]"]').val(data.uploadedData.dob);
+  }
+
+  if (!!data.uploadedData.ssn) {
+    $form.find('[name="client[ssn]"]').val(data.uploadedData.ssn);
+  }
+
+  if (!!data.uploadedData.number || !!data.uploadedData.name || !!data.uploadedData.city || !!data.uploadedData.state || !!data.uploadedData.zip) {
+    $form.find('[name="client[address]"]').val("".concat(data.uploadedData.number, " ").concat(data.uploadedData.name, " ").concat(data.uploadedData.city, " ").concat(data.uploadedData.state, " ").concat(data.uploadedData.zip));
+  }
+};
+
+var credentials = function credentials(form) {
+  data = $(form).serialize();
+  $.ajax({
+    url: '/client/credentials-store',
+    type: "POST",
+    data: data,
+    success: function success(data) {
+      registrationStepsSwitch(Number($(form).attr('data-id')));
+    },
+    error: function error(request, status, _error4) {
+      console.log(request.responseText);
+    }
+  });
+};
+
+$.validator.addMethod("valid_full_name", function (value, element) {
+  return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
+}, "Please write your full name in this pattern first name middle name last name!!");
+$.validator.addMethod('filesize', function (value, element) {
+  return this.optional(element) || element.files[0].size <= 10485760;
+}, 'File size must be less than 1mb');
+$.validator.addMethod("extension", function (value, element, param) {
+  param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g";
+  return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
+}, "Please enter a value with a valid extension.");
+$.validator.addMethod("valid_address", function (value, element) {
+  // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
+  return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
+}, "Not valid address format.");
+
+registrationStepsSwitch = function registrationStepsSwitch($old_id) {
+  var $forms_count = Number($('.additional-reg:last').attr('data-id'));
+  var $new_id = $old_id + 1;
+  console.log($new_id, $forms_count, $old_id == $forms_count);
+
+  if ($old_id == $forms_count) {
+    $('.finish').removeClass('none');
+    $('.finish').addClass('active').show();
+    $(".additional-reg[data-id=\"".concat($old_id, "\"]")).addClass('none').removeClass('active').hide();
+    $(".registration-stage[data-id=\"".concat($old_id, "\"]")).addClass('active');
+    $(".stage-img[data-id=\"".concat($old_id, "\"]")).removeClass('nonactive');
+    $(".registration-stage[data-id=\"finish\"]").addClass('prepare');
+  } else if ($new_id <= $forms_count) {
+    $(".additional-reg[data-id=\"".concat($old_id, "\"]")).addClass('none').removeClass('active').hide();
+    $(".additional-reg[data-id=\"".concat($new_id, "\"]")).addClass('active').removeClass('none').show();
+    $(".registration-stage[data-id=\"".concat($old_id, "\"]")).addClass('active');
+    $(".stage-img[data-id=\"".concat($old_id, "\"]")).removeClass('nonactive');
+    $(".registration-stage[data-id=\"".concat($new_id, "\"]")).addClass('prepare');
+  }
+
+  if ($new_id == 3) {
+    $('.register-form').removeClass('big').addClass('large');
+  }
+
+  if ($new_id > 3) {
+    $('.register-form').removeClass('large').addClass('big');
+  }
+
+  $('html, body').animate({
+    scrollTop: $('.register-form').offset().top - 50
+  }, 1000);
+};
+
+$(document).ready(function () {
+  $(document).on('change', '#secret_question', function () {
+    if ($(this).val() == "other") {
+      $("#custom-secret-question").removeClass('none');
+    } else {
+      $("#custom-secret-question").addClass('none');
+    }
+  });
+  $('.phone').mask('(000) 000-0000');
+  $('.ssn').mask('000-00-0000');
+  $('#register_form').validate(importantValidationOptions);
+  $('#add_client_3').validate(documentValidationOptions);
+  $('#add_client_4').submit(function (e) {
+    e.preventDefault();
+    credentials(this);
+  });
+  $('#add_client_5').validate(reviewValidationOptions);
+});
+
+/***/ }),
+
+/***/ "./resources/js/registration_steps.js":
+/*!********************************************!*\
+  !*** ./resources/js/registration_steps.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+__webpack_require__(/*! ./clients/registration_steps.js */ "./resources/js/clients/registration_steps.js");
+
+/***/ }),
+
+/***/ 3:
+/*!**************************************************!*\
+  !*** multi ./resources/js/registration_steps.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/credit_repair/resources/js/registration_steps.js */"./resources/js/registration_steps.js");
+
+
+/***/ })
+
+/******/ });

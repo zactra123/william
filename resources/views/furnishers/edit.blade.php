@@ -348,7 +348,7 @@
                                         <div class="row">
                                             <div class="form-group col-sm-4">
                                                 <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="/images/phone.png">
+                                                    <img class="responsive" src="{{ url('/') }}/images/phone.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[{$type}][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -356,7 +356,7 @@
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="/images/fax.png">
+                                                    <img class="responsive" src="{{ url('/') }}/images/fax.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[{$type}][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -364,7 +364,7 @@
                                             </div>
                                             <div class="form-group col-sm-4">
                                                 <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="/images/email.png">
+                                                    <img class="responsive" src="{{ url('/') }}/images/email.png">
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
