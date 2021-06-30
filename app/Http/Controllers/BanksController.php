@@ -264,25 +264,25 @@ class BanksController extends Controller
         }
 
         $pathLogo = '';
-        //if (!empty($request['logo']) ) {
-            //
-            //
-            //$imagesBankLogo = $request->file("logo");
-            //$imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-            //$bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-            //if(!in_array($bankLogoExtension, $imageExtension)){
-                //return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
-            //}
-            //
-            //
-            //$ext = $request->file('logo')->getClientOriginalExtension();
-            //$time = time();
-            //$pathLogo = $request->file('logo')->storeAs(
-                //'bank_logos',
-                //"furnisher_$time.$ext",
-                //['disk'=>'s3', 'visibility'=>'public']
-            //);
-        //}
+        if (!empty($request['logo']) ) {
+
+
+            $imagesBankLogo = $request->file("logo");
+            $imageExtension = ['pdf', 'gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file('logo')->storeAs(
+                'bank_logos',
+                "furnisher_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
+        }
 
         $bank = BankLogo::create([
             'name' => $request->bank['name'],

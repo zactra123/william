@@ -53,6 +53,8 @@
     }
 </style>
 
+  
+
 <div class="col-md-12 pull-right mt-3">
     <form action="{{!empty($url) ? $url : '/admins/furnishers'}}" method="get">
         <div class="row">
@@ -63,12 +65,12 @@
                   </div>
                   <div class="col-md-4">
                       <?php $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' => 'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER']; asort($types)?>
-                      {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['class'=>'form-control selectize-type', 'id' => "bank-type"]); !!}
+                      {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['class'=>'selectize-type', 'id' => "bank-type"]); !!}
 
                   </div>
                   <div class="col-md-4 state-filter hide">
                       <?php $states = \App\BankAddress::STATES;   asort($types)?>
-                      {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>'form-control selectize-single state'] ); !!}
+                      {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>' selectize-single state'] ); !!}
                   </div>
 
                 </div>

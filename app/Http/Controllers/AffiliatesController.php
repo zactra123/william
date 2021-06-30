@@ -136,7 +136,7 @@ class AffiliatesController extends Controller
                 'ssn'=>$affiliate["ssn"],
                 'registration_steps' => $affiliateDetails['registration_steps']
             ]);
-
+            
             return redirect()->to('/affiliate');
         }
     }
