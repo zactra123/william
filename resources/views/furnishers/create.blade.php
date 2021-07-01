@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                {!! Form::select("bank[type]", $types,  null, ['class'=>'selectize-single bank-type']); !!}
+                                                {!! Form::select("bank[type]", $types,  null, ['class'=>'form-control selectize-single bank-type']); !!}
                                             </div>
                                         </div>
                                         <div class="m-5">
@@ -185,7 +185,7 @@
                                         <div class="row expand-address" data-address="#address-{{$type}}">
                                             <div class="col-md-6"><label for="">{{$name}}</label>  </div>
                                             <div class="col-md-6 text-right">
-                                                <button type="button">
+                                                <button type="button" class="btn btn-danger mb-3">
                                                     <i class="fa fa-minus-circle"></i>
                                                 </button>
                                             </div>
@@ -193,7 +193,7 @@
                                         <div class="col-md-12 addresses " id="address-{{$type}}">
                                             @if($type == 'registered_agent')
                                                 <div class="row">
-                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit  form-control">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
+                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit form-control">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
 
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
@@ -285,7 +285,7 @@
                                 <div class="row">
                                     <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4> </div>
                                     <div class="col-md-6 text-right">
-                                        <button type="button" class="remove-equal-bank">
+                                        <button type="button" class="remove-equal-bank btn btn-danger mb-3">
                                             <i class="fa fa-close"></i>
                                         </button>
                                     </div>
@@ -346,7 +346,7 @@
             <div class="row remove-address">
                 <div class="col-md-6"><label for="">ADDITIONAL ADDRESS</label>  </div>
                 <div class="col-md-6 text-right">
-                    <button type="button">
+                    <button type="button" class="btn btn-danger mb-3">
                         <i class="fa fa-remove"></i>
                     </button>
                 </div>
@@ -433,8 +433,8 @@
                     error.insertAfter(element);
                 }
             })
-
-            $(".selectize-type").selectize({plugins: ['remove_button']})
+            // $(".selectize-type").selectize({plugins: ['remove_button']})
+            var $mSelect = $('#multi-select').selectize({ placeholder: "Select a value" });
         })
     </script>
 

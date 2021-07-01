@@ -114,8 +114,6 @@
                           </ul>
                         </nav>
 
-
-
                         {{-- <ul class="pagination alphabetical ">
                             <li class="{{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
@@ -146,14 +144,18 @@
                                               {{-- @if(isset($bankimg)) --}}
                                                  {{-- <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a> --}}
                                                  @if (file_exists($findfile))
-                                                   <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $bankimg }}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                 @else
-                                                   @if($logos->no_logo)
-                                                       <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                   @if (!empty($logos->path))
+                                                     <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $bankimg }}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                    @else
+                                                     <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                   @endif
+                                                 @else
                                                        <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                    @endif
-                                                 @endif
+
+                                                 @else
+                                                         <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              @endif
                                               {{-- @else
                                                   @if($logos->no_logo)
                                                       <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
@@ -162,10 +164,7 @@
                                                   @endif
                                               @endif --}}
 
-                                            @else
 
-                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                            @endif
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
                                                     <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
@@ -191,11 +190,7 @@
         </div>
     </section>
 
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
-    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+
 
     <script type="text/html" id="confirmation">
         <div>
@@ -204,10 +199,12 @@
         </div>
     </script>
 
-
+    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
     <script>
-        $(document).ready(function () {
-
+    $(document).ready(function () {
             $(".go-to").click(function () {
                 var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
                 let url = new URL(window.location.href);
@@ -263,9 +260,10 @@
                     }
                 });
             })
-
-            $(".selectize").selectize({selectOnTab: true,plugins: ['remove_button']})
-            $(".selectize-type").selectize({valuFilde:'type',  selectOnTab: true,plugins: ['remove_button']})
-        })
+            $(".selectize-type").selectize({plugins: ['remove_button']});
+            // var $mSelect = $('#multi-select').selectize({ placeholder: "Select a value" });
+        });
 
     </script>
+    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+@endsection

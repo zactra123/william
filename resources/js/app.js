@@ -19,6 +19,9 @@ require('./assets/vendor/isotope-layout/isotope.pkgd.min.js');
 require('./assets/vendor/php-email-form/validate.js');
 require('./assets/vendor/purecounter/purecounter.js');
 
+// require('./lib/selectize');
+// require('./assets/vendor/purecounter/purecounter.js');
+
 require('./review.js');
 require('./custom.js');
 
@@ -26,3 +29,6 @@ require('./custom.js');
 
 require('./general');
 require('./guest-chat-box.js');
+
+
+// <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">

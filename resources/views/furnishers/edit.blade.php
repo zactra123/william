@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
     <style>
@@ -123,27 +123,26 @@
         }
 
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]])
-    <section class="ms-user-account">
-        <div class="container">
+    {{-- @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]]) --}}
+    <br><br>
+    <section class="ms-user-account mt-5">
+        <div class="container mt-5">
             <div class="col-md-12 col-sm-12">
+              {{-- <div class="row pl-5">
+                <form method="POST" action="{{route('admins.bank.delete', $bank->id)}}">
+                    @csrf
+                    @method("DELETE")
+                        <div class="col-md-4">
+                          <input type="submit" class="btn btn-danger delete-furnisher" value="Delete">
+                        </div>
+                  </form>
+
+                   <div class="col-md-6">
+                      <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">ADD FURNISHER</a>
+                  </div>
+              </div> --}}
                 <div class="row m-2  pt-4">
-                    <div class="col-md-2 pull-left">
-                        <form method="POST" action="{{route('admins.bank.delete', $bank->id)}}">
-                            @csrf
-                            @method("DELETE")
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-danger delete-furnisher" value="Delete">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">ADD
-                            FURNISHER</a>
-                    </div>
                     @include('furnishers.search')
-
                 </div>
                 @php
                     $states = [null=>''] + \App\BankAddress::STATES;
@@ -159,107 +158,104 @@
 
                         <div class="ms-ua-title mb-0">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-4 p-5">
                                     <div class="col-sm-12 form-group changeLogo files">
-                                        @if (isset($bank->bucket))
-                                          @if($bank->checkUrlAttribute())
-                                              <img src="{{$bank->getUrlAttribute()}}" width="100px">
-                                          @else
-                                              @if($bank->no_logo)
-                                                  <img width="100px" src="{{asset('images/no_bank_logos.png')}}"
-                                                       alt="Card image cap">
-                                              @else
-                                                  <img width="100px" src="{{asset('images/default_bank_logos.png')}}"
-                                                       alt="Card image cap">
+                                      @php
+                                        $bankimg = str_replace("bank_logos","banks_logo",$bank->path);
+                                        $findfile = public_path('/images/'.$bankimg);
 
-                                              @endif
-                                          @endif
-                                        @else
-                                            @if($bank->no_logo)
-                                                <img width="100px" src="{{asset('images/no_bank_logos.png')}}"
-                                                     alt="Card image cap">
-                                            @else
-                                                <img width="100px" src="{{asset('images/default_bank_logos.png')}}"
-                                                     alt="Card image cap">
+                                      @endphp
 
-                                            @endif
+                                      @if (isset($bank->path))
+
+                                        {{-- @if(isset($bankimg)) --}}
+                                           {{-- <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a> --}}
+                                           @if (file_exists($findfile))
+                                             @if (!empty($bank->path))
+                                               <img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $bankimg }}" alt="Card image cap">
+                                             @else
+                                               <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  alt="Card image cap">
+                                             @endif
+                                           @else
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+                                             @endif
+
+                                           @else
+                                              <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
                                         @endif
+
+
 
                                     </div>
                                     <div class="col-sm-12 hide form-group updateLogo files">
-                                        <input class="bank_logo_class bank_logo file-box" type="file" name="logo">
+                                        <input class="bank_logo_class bank_logo form-control file-box" type="file" name="logo">
                                     </div>
-                                    @if (isset($bank->bucket))
-                                      @if(!$bank->checkUrlAttribute())
-                                          <div class="col-md-12">
-                                              NO LOGO <input type="checkbox" value="true"
-                                                             name="bank[no_logo]" {{$bank->no_logo == true ? "checked":''}} >
-                                          </div>
-                                      @endif
-                                    @endif
+
 
 
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="col-md-8">
+                                <div class="col-md-8 pt-5">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}"
-                                                   class="form-control bank_name" placeholder="COMPANY NAME">
+                                            <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="COMPANY NAME">
                                             {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
-
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             {!! Form::select("bank[type]", $types,  $bank->type, ['class'=>'selectize-single bank-type']); !!}
                                         </div>
                                     </div>
-                                    <div class="m-5">
+                                    <div class="mx-5">
                                         <div class="row">
                                             <div class="bank_sub_type_append">
-                                                @if(isset($subTypes[$bank->type]))
-                                                    @foreach($subTypes[$bank->type] as $key => $type)
-                                                        <div class="col-md-6">
-                                                            {{$type}}
-                                                            <input name="bank[additional_information][sub_type][]"
-                                                                   type="checkbox"
-                                                                   value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
-                                                        </div>
-                                                    @endforeach
-                                                @endif
+                                                <div class="row">
+                                                  @if(isset($subTypes[$bank->type]))
+                                                      @foreach($subTypes[$bank->type] as $key => $type)
+                                                          <div class="col-md-4 mb-3">
+                                                              {{$type}}
+                                                              <input name="bank[additional_information][sub_type][]"
+                                                                     type="checkbox"
+                                                                     value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                          </div>
+                                                      @endforeach
+                                                  @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div
-                                class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
-                                <div class="col-md-3">
-                                    <a class="btn show-parent-field form-control">ADD
-                                        PARENT</a>
-                                    <a class="btn hide hide-parent-field form-control">HIDE
-                                        PARENT</a>
-                                </div>
-                                <div class="col-md-9 parent-show">
-                                    <div class="col-md-9">
-                                        <div class="form-group banks ">
-                                            {!! Form::text("bank[parent_name]", $bank->parent ? $bank->parent->name : null, ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
-                                            {!! Form::hidden("bank[parent_id]", $bank->parent_id, ["class"=>"form-control parent_id"]) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="btn show-parent-bank form-control">SHOW BANK INFO</a>
-                                    </div>
-                                </div>
 
+                                    <div class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
+                                        <div class="col-md-3 pl-3">
+                                            <a class="btn btn-primary show-parent-field form-control">ADD PARENT</a>
+                                            <a class="btn btn-primary hide hide-parent-field form-control mt-3">HIDE PARENT</a>
+                                        </div>
+                                        <div class="col-md-9 parent-show">
+                                            <div class="col-md-12">
+                                                <div class="form-group banks ">
+                                                    {!! Form::text("bank[parent_name]", $bank->parent ? $bank->parent->name : null, ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
+                                                    {!! Form::hidden("bank[parent_id]", $bank->parent_id, ["class"=>"form-control parent_id"]) !!}
+                                                </div>
+                                            </div>
+                                            <div class="row pull-right pr-3">
+                                              <div class="col-md-12">
+                                                  <a href="#" class="btn btn-primary show-parent-bank">SHOW BANK INFO</a>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
+
 
                         </div>
                     </div>
 
                 </div>
 
-                <div class="ms-ua-box mt-2" id="account">
+                <div class="ms-ua-box mt-2 pt-5" id="account">
                     <div class="ms-ua-form pl-4 pr-4 ">
                         <div id="addresses_container">
                             @foreach(\App\BankAddress::TYPES as $type=>$name)
@@ -281,15 +277,15 @@
                                     <?php } ?>
 
                                    <div class="row additional-addresses">
-                                       <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit  form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                       <div class="col-sm-12 add-additional p-1 pb-5"><a class="btn btn-primary ms-ua-submit">ADD ADDITIONAL ADDRESS</a></div>
                                    </div>
                                     @continue
                                 @endif
                                 <formset class="{{$hidden? 'hidden': ''}} {{$type}}">
                                     <div class="row expand-address" data-address="#address-{{$type}}">
                                         <div class="col-md-6"><label for="">{{$name}}</label></div>
-                                        <div class="col-md-6 text-right">
-                                            <button type="button">
+                                        <div class="col-md-6 text-right mb-3">
+                                            <button type="button" class="btn btn-danger">
                                                 <i class="fa fa-minus-circle"></i>
                                             </button>
                                         </div>
@@ -297,11 +293,10 @@
                                     <div class="col-md-12 addresses " id="address-{{$type}}">
                                         @if($type == 'registered_agent')
                                             <div class="row">
-                                                <div class="col-sm-6 paste-register p-1"><a
-                                                        class="btn btn ms-ua-submit  form-control">COPY EXECUTIVE AS
-                                                        REGISTERED AGENT</a></div>
+                                                <div class="col-sm-5 paste-register"><a
+                                                        class="btn btn-primary ms-ua-submit">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
 
-                                                <div class="form-group col-sm-12">
+                                                <div class="form-group col-sm-7 p-0 pr-3">
                                                     {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                                 </div>
                                             </div>
@@ -309,8 +304,14 @@
                                         @if($type == 'executive_address')
                                             <div class="row">
                                                 <div class="col-md-12 executive_copied">
-                                                    COPY PARENT EXECUTIVE CONTACT <input type="checkbox" value="true"
-                                                                   name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}} >
+                                                    <div class="row">
+                                                      <div class="col-md-6">
+                                                        COPY PARENT EXECUTIVE CONTACT
+                                                      </div>
+                                                      <div class="col-md-6">
+                                                        <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}} >
+                                                      </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-12">
                                                     {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
@@ -347,27 +348,33 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-sm-4">
-                                                <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="{{ url('/') }}/images/phone.png">
-                                                </div>
-                                                <div class="form-group col-sm-10">
-                                                    {!! Form::text("bank_address[{$type}][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-sm-4">
-                                                <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="{{ url('/') }}/images/fax.png">
-                                                </div>
-                                                <div class="form-group col-sm-10">
-                                                    {!! Form::text("bank_address[{$type}][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                <div class="row">
+                                                  <div class="form-group col-sm-2 px-2">
+                                                      <img class="responsive" src="{{ url('/') }}/images/phone.png">
+                                                  </div>
+                                                  <div class="form-group col-sm-10">
+                                                      {!! Form::text("bank_address[{$type}][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                                                  </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-4">
-                                                <div class="form-group col-sm-2 p-0">
-                                                    <img class="responsive" src="{{ url('/') }}/images/email.png">
+                                                <div class="row">
+                                                  <div class="form-group col-sm-2 px-2">
+                                                      <img class="responsive" src="{{ url('/') }}/images/fax.png">
+                                                  </div>
+                                                  <div class="form-group col-sm-10">
+                                                      {!! Form::text("bank_address[{$type}][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                                                  </div>
                                                 </div>
-                                                <div class="form-group col-sm-10">
-                                                    {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <div class="row">
+                                                  <div class="form-group col-sm-2 px-2">
+                                                      <img class="responsive" src="{{ url('/') }}/images/email.png">
+                                                  </div>
+                                                  <div class="form-group col-sm-10">
+                                                      {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                                                  </div>
                                                 </div>
                                             </div>
 
@@ -385,8 +392,8 @@
                     <div class="ms-ua-title mb-0">
                         <div class="row">
                             <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4></div>
-                            <div class="col-md-6 text-right">
-                                <button type="button" class="remove-equal-bank">
+                            <div class="col-md-6 text-right mb-3">
+                                <button type="button" class="btn btn-danger remove-equal-bank">
                                     <i class="fa fa-close"></i>
                                 </button>
                             </div>
@@ -398,8 +405,10 @@
                     </div>
                 </div>
 
-                <div class="col mt-5">
-                    <input type="submit" value="Save" class="ms-ua-submit">
+                <div class="row mt-5 pull-right">
+                    <div class="col-md-12">
+                      <input type="submit" value="Save" class="btn btn-primary ms-ua-submit">
+                    </div>
                 </div>
                 {!! Form::hidden('referrer', request()->headers->get('referer')) !!}
                 {!! Form::close() !!}
@@ -462,8 +471,8 @@
             <formset class="additional_address">
                 <div class="row remove-address">
                     <div class="col-md-6"><label for="">ADDITIONAL ADDRESS</label></div>
-                    <div class="col-md-6 text-right">
-                        <button type="button">
+                    <div class="col-md-6 text-right mb-3">
+                        <button type="button" class="btn btn-danger">
                             <i class="fa fa-remove"></i>
                         </button>
                     </div>

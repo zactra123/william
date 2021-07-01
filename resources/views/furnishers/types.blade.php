@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.admin')
 
 @section('content')
     <style>
@@ -47,40 +47,53 @@
 
 
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "BANK EQUAL NAMES", 'route' => ["Home"=> '/admins',"BANK NAMES" => "#"]])
-    <section class="ms-user-account">
-        <div class="container">
-            <div class="col-md-3 col-sm-12"></div>
+    {{-- @include('helpers.breadcrumbs', ['title'=> "BANK EQUAL NAMES", 'route' => ["Home"=> '/admins',"BANK NAMES" => "#"]]) --}}
+    <section class="ms-user-account mt-5">
+        <div class="container mt-5">
+            <div class="col-md-3 col-sm-12 mt-5"></div>
+            <br><br><br><br>
             <div class="col-md-12 col-sm-12">
-                <div class="ms-ua-box">
-                    <div class="ms-ua-title">
-                        <div class="col-md-12">
-                            {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
-                                @csrf
-                                <div class="row m-2">
-                                    <div class="col-md-3">
-                                        <div>
-                                            {!! Form::text('account_type[name]','' ,['class'=>'form-account-name', 'id' => 'select-account']); !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-check">
-                                            {!! Form::hidden('account_type[type]',0) !!}
-                                            {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-check-label']); !!}
-                                            {!! Form::checkbox('account_type[type]',1, false, ['class'=> "form-check-input" ]); !!}
-                                        </div>
+              <div class="card">
+                {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
+                  @csrf
+                  <div class="row px-5 pt-5 pb-3">
+                          <div class="col-md-4">
+                              <div>
+                                  {!! Form::text('account_type[name]','' ,['class'=>'form-control form-account-name', 'id' => 'select-account']); !!}
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-check">
+                                  <div class="row">
+                                    <div class="col-md-8">
+                                      {!! Form::hidden('account_type[type]',0) !!}
+                                      {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label']); !!}
+
                                     </div>
                                     <div class="col-md-4">
-                                            {!! Form::text('account_type_keys[key_word]', '', ['multiple'=>'multiple','class'=>'selectize-multiple form-group']); !!}
+                                      {!! Form::checkbox('account_type[type]',1, false, ['class'=> " form-check-input" ]); !!}
                                     </div>
-                                    <div class="col-md-3">
-                                        <input type="submit" value="Save" class="ms-ua-submit">
-                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-5">
+                              <div class="row">
+                                <div class="col-sm-8">
+                                  {!! Form::text('account_type_keys[key_word]', '', ['multiple'=>'multiple','class'=>' selectize-multiple form-group']); !!}
                                 </div>
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
+                                <div class="col-sm-4">
+                                  <input type="submit" value="Save" class="btn btn-primary ms-ua-submit">
+                                </div>
+                              </div>
+                          </div>
+
+
+                  </div>
+                  {!! Form::close() !!}
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 my-5">
+
                 <div class="card">
                     <div class="card-body">
                         <table width="100%" class="table  table-striped">
@@ -102,8 +115,8 @@
                                             {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
 
                                         </td>
-                                        <td width="20%">
-                                            <a href="{{ route('furnisher.delete.type',$type->id) }}"><div class="text-center" onclick="return confirm('Are You Sure?')" data-toggle="popover" data-placement="top" data-id="{{ $type->id}}" >
+                                        <td width="20%" style="text-align:center">
+                                            <a class="btn btn-danger" href="{{ route('furnisher.delete.type',$type->id) }}"><div class="" onclick="return confirm('Are You Sure?')" data-toggle="popover" data-placement="top" data-id="{{ $type->id}}" >
                                                 <span> <i class="fa fa-trash"></i> </span>
                                             </div></a>
                                         </td>
