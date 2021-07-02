@@ -126,7 +126,7 @@ class PagesController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255'],
                 'question' => ['required', 'string', 'max:255'],
             ]);
-            if ($validation->fails()) {
+            if ($validation->fails()){
                 return redirect()->back()
                     ->withInput()
                     ->withErrors($validation);
@@ -164,7 +164,7 @@ class PagesController extends Controller
             'text' => ['required', 'string', 'max:255'],
 
         ]);
-        if ($validation->fails()) {
+        if ($validation->fails()){
 
             return redirect()->back()
                 ->withInput()

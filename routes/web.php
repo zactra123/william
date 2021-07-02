@@ -89,7 +89,6 @@ Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify
 Route::group(['prefix'=>'owner'], function(){
 
 
-
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');
 
     Route::get('reviews','Owner\ReviewController@index')->name('owner.reviews.index');

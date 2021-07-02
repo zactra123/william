@@ -24,7 +24,7 @@ class AdminsController extends Controller
     {
         $this->middleware(['auth', 'superadmin']);
     }
-
+    
     /**
      * @return \Illuminate\View\View "owner.admin.index" with @admins
      * @admins Users with role "admin" paginated 10

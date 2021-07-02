@@ -1,55 +1,85 @@
-@extends('layouts.layout')
 
-@section('content')
+@extends('owner.layouts.app')
 
-    @include('helpers.breadcrumbs', ['title'=> "FAQ", 'route' => ["Home"=> '/owner',"FAQs LIST" => "#"]])
-    <section class="ms-user-account">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
-                        <div class="col-md-11">
-                            <div class="card">
-                                <div class="row mr-0 ml-0">
-                                    <label class="dasd">FAQs</label>
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th class="col-lg-2">Title</th>
-                                            <th class="col-lg-8">Question</th>
-                                            <th class="col-lg-2">Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($faqs as $key=> $faq)
-                                            <tr>
-                                                <th scope="row">{{ (($faqs->currentPage() - 1 ) * $faqs->perPage() ) + $loop->iteration }}</th>
-                                                <td>{{$faq->title}}</td>
-                                                <td>{{$faq->description}}</td>
-                                                <td>
+@section('body')
+    <div class="breadcrumb-header justify-content-between">
+      <div>
+          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Faqs</li>
+              </ol>
+            </nav>
+      </div>
 
-                                                    <a class="btn btn-secondary" href="{{ route('owner.faqs.edit',$faq->id)}}"
-                                                       role="button"><span class="fa fa-pencil"></span></a>
-                                                    <meta name="csrf-token" content="{{ csrf_token() }}">
-                                                    <a href="{{ route('admin.delete.faq',$faq->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $faq->id }}"><span class="fa fa-trash-o"></span> </button></a>
+    </div>
 
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    {{$faqs->links()}}
-                                </div>
+    <div class="container">
+      <div class="row row-sm">
+        <div class="col-md-12">
+          <div class="card">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-header pb-0">
+              <div class="d-flex justify-content-between">
+                <h4 class="card-title mg-b-0 mt-2">Faqs</h4>
+                <i class="mdi mdi-dots-horizontal text-gray"></i>
+              </div>
+              <p class="tx-12 text-muted mb-2">List of all faqs for your system
+                <a href="{{ route('owner.faqs.create') }}" class="btn btn-primary float-right btn-sm">Add New</a>
+              </p>
             </div>
+
+             <div class="card-body">
+               <div class="table-responsive">
+
+                   <table class="table text-md-nowrap" id="example1">
+                       <thead>
+                       <tr>
+                           <th>#</th>
+                           <th>Question</th>
+                           <th width="60%">Answer</th>
+                           <th>Action</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       @foreach($faqs as $key=> $faq)
+                           <tr>
+                               <th scope="row">{{ (($faqs->currentPage() - 1 ) * $faqs->perPage() ) + $loop->iteration }}</th>
+                               <td>{{$faq->title}}</td>
+                               <td>{{$faq->description}}</td>
+                               <td>
+
+
+                                 <div class="dropdown show">
+                                   <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     Action
+                                   </a>
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                     <a class="dropdown-item" href="{{ route('owner.faqs.edit',$faq->id)}}">Edit</a>
+                                     <a class="dropdown-item" href="{{ route('admin.delete.faq',$faq->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                   </div>
+                                 </div>
+
+                                 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+                               </td>
+                           </tr>
+                       @endforeach
+                       </tbody>
+                   </table>
+               </div>
+               <div class="float-right">
+                 {{$faqs->links()}}
+               </div>
+             </div>
+
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+
+
 
 
 

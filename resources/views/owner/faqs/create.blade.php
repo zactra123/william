@@ -1,64 +1,69 @@
-@extends('layouts.layout')
+@extends('owner.layouts.app')
 
+@section('body')
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('owner.faqs.index') }}">Faqs</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Create</li>
+            </ol>
+          </nav>
+    </div>
+  </div>
 
-@section('content')
-
-    @include('helpers.breadcrumbs', ['title'=> "FAQ", 'route' => ["Home"=> '/owner',"ADD FAQ" => "#"]])
-    <section class="ms-user-account">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="ms-ua-box">
-                        <div class="col-md-11">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2>Add FAQs</h2>
-                                    {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
-                                    @csrf
-                                    <div class="form-group row font">
-
-                                        {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'ANSWER']) }}
-
-                                    </div>
-
-                                    <div class="form-group row font">
-
-                                        {{ Form::textarea('faqs[description]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'QUESTION']) }}
-
-                                    </div>
-                                    <div class="form-group row mb-0 font">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                Add FAQs
-                                            </button>
-
-
-                                        </div>
-                                    </div>
-                                    {!! Form::close() !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+      <div class="row row-sm">
+        <div class="col-xl-12">
+          <div class="text-center">
+              @foreach ($errors->all() as $error)
+                  <div class="alert alert-danger">{{ $error }}</div>
+              @endforeach
+          </div>
         </div>
-    </section>
+
+
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+
+              <div class="card-body mx-3">
+                <a href="{{ route('owner.faqs.index') }}"> <h5 class="text-dark"><i class="ti-angle-left"></i> Create New Faq</h5> </a>
+                  {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST',   'class' => 'mt-4 m-form m-form--label-align-right']) !!}
+                  @csrf
+                  <div class="form-group font">
+
+                      {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'ANSWER']) }}
+
+                  </div>
+
+                  <div class="form-group font">
+
+                      {{ Form::textarea('faqs[description]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'QUESTION']) }}
+
+                  </div>
+                  <div class="form-group row mb-0 font">
+                      <div class="col-md-12 text-right">
+                          <button type="submit" class="btn btn-primary">
+                              Add FAQs
+                          </button>
+
+
+                      </div>
+                  </div>
+                  {!! Form::close() !!}
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
 
 
 
 
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-
