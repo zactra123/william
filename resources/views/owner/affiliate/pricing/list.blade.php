@@ -1,5 +1,5 @@
-@extends('layouts.layout')
-@section('content')
+@extends('owner.layouts.app')
+@section('body')
 
     <style>
         .ms-ua-box {
@@ -11,8 +11,18 @@
         }
 
     </style>
-    @include('helpers.breadcrumbs', ['title'=> "PRICING LIST", 'route' => ["Home"=> '/owner',"PRICING LIST" => "#"]])
-
+    {{-- @include('helpers.breadcrumbs', ['title'=> "PRICING LIST", 'route' => ["Home"=> '/owner',"PRICING LIST" => "#"]]) --}}
+    <div class="breadcrumb-header justify-content-between">
+      <div>
+          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pricing List</li>
+              </ol>
+            </nav>
+      </div>
+    </div>
     <section class="ms-user-account">
         <div class="container">
             <div class="row">

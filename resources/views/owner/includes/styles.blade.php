@@ -47,9 +47,25 @@
 
 		<!--- Select2 css -->
 		<link href="{{asset('/')}}/assets/plugins/select2/css/select2.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="{{ asset('/') }}/assets/plugins/fullcalendar/fullcalendar.min.css">
 		<style media="screen">
 			#example1{
 				min-height:200px;
 			}
 		</style>
+
+		<style>
+        .app_details{
+            padding-left: 15px;
+            padding-bottom: 15px;
+        }
+        .left{
+            padding-left: 15px;
+        }
+        .appointment-desc{
+            max-height: 150px;
+        }
+    </style>
+
     @yield('css')

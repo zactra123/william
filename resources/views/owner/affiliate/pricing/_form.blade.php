@@ -1,6 +1,6 @@
 <style>
 
-    .priceName{
+    /* .priceName{
         width: 100%;
         height: auto;
         padding: 0;
@@ -31,49 +31,50 @@
         height: auto;
         padding: 0;
         float: left;
-    }
+    } */
 
 </style>
 
 
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
-        <h3>PERSONAL INFORMATION AND STATEMENT</h3>
+        <h3>Personal InformAtion and Statement</h3>
     </div>
     <div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right"> INQUIRIES $</label>
+                <div class="col-md-4">
+                        <div class="row">
+                          <div class="col-md-12">
+                                <label for="inquiries"> <strong>Inquiries $</strong> </label>
+                          </div>
+                          <div class="col-md-12">
+                                <input  type="text" id="inquiries" class="form-control" name="inquiries" value="{{ $pricing->inquiries ?? $default->inquiries}}"  title="Inquiries">
+                          </div>
                         </div>
-                        <div class="price">
-                            <input  type="text" name="inquiries" value="{{ $pricing->inquiries ?? $default->inquiries}}"  title="INQUIRIES">
-                        </div>
-                    </div>
                     {!! $errors->first('inquiries', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">PERSONAL INFO $</label>
+                <div class="col-md-4">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <label for="personalinfo"> <strong>Personal Info $</strong> </label>
+                          </div>
+                          <div class="col-md-12">
+                            <input type="text" id="personalinfo" name="personal_info" class="form-control" value="{{ $pricing->personal_info ?? $default->personal_info}}"  title="Personal Info">
+                          </div>
                         </div>
-                        <div class="price">
-                            <input type="text" name="personal_info" value="{{ $pricing->personal_info ?? $default->personal_info}}"  title="PERSONAL INFO">
-                        </div>
-                    </div>
+
                     {!! $errors->first('personal_info', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">FRAUD ALERTS $</label>
+                <div class="col-md-4">
+                     <div class="row">
+                        <div class="col-md-12">
+                          <label for="fraudalerts"> <strong>Fraud Alerts $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="fraud_alerts" value="{{ $pricing->fraud_alerts ?? $default->fraud_alerts}}"  title="FRAUD ALERTS">
+                        <div class="col-md-12">
+                          <input type="text" id="fraudalerts" class="form-control" name="fraud_alerts" value="{{ $pricing->fraud_alerts ?? $default->fraud_alerts}}"  title="Fraud Alerts">
                         </div>
-                    </div>
+                      </div>
                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -83,189 +84,521 @@
 
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
-        <h3>LATE PRICING</h3>
+        <h3>Late Pricing</h3>
     </div>
     <div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CREDIT CARD LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="credit_card_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="creditcardlate"> <strong>Credit Card Late $</strong> </label>
                     </div>
-                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CHARGE CARD LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="charge_card_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
+                    <div class="col-md-12">
+                      <input id="creditcardlate" type="text" class="form-control" name="credit_card_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Credit Card Late">
                     </div>
-                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
+                  </div>
 
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED CREDIT CARD $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="secured_credit_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
+
+                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="chargecardlate"> <strong>Charge Card Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="chargecardlate" type="text" class="form-control" name="charge_card_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Charge Card Late">
+                      </div>
                     </div>
+
+                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="securedcreditcard"> <strong>Secured Credit Card $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input  type="text" id="securedcreditcard" class="form-control" name="secured_credit_late" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Secured Credit Card">
+                    </div>
+                  </div>
+
                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">AUTO LOAN LATE  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="auto_loan_late" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}"  title="MORTGAGE LATE ">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="autoloanlate"> <strong>Auto Loan Late  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="autoloanlate" type="text" class="form-control" name="auto_loan_late" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}"  title="Auto Loan Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('mortgage_late', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">AUTO LEASE LATE  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="auto_lease_late" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}"  title="MORTGAGE LATE ">
-                        </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="autoleaselate"> <strong>Auto Lease Late  $</strong> </label>
                     </div>
+                    <div class="col-md-12">
+                      <input id="autoleaselate" type="text" class="form-control" name="auto_lease_late" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}"  title="Auto Lease Late ">
+                    </div>
+                  </div>
+
                     {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">RECREATIONAL MERCHANDISE LATE$</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="r_m_late" value="{{ $pricing->cc_blocking ?? $default->cc_blocking}}"  title="CREDIT CARD BLOCKING">
-                        </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="recreationalmerchandise"> <strong>Recreational Merchandise Late  $</strong> </label>
                     </div>
+                    <div class="col-md-12">
+                      <input type="text" id="recreationalmerchandise" class="form-control" name="r_m_late" value="{{ $pricing->cc_blocking ?? $default->cc_blocking}}"  title="Recreational Merchandise Late">
+                    </div>
+                  </div>
+
                     {!! $errors->first('cc_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UNSECURED LOAN LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="unscured_loan_late" value="{{ $pricing->utility_blocking ?? $default->utility_blocking}}"  title="CELL PHONE BLOCKING ">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="unsecuredloanlate"> <strong>Unsecured Loan Late  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="unsecuredloanlate" type="text" class="form-control" name="unscured_loan_late" value="{{ $pricing->utility_blocking ?? $default->utility_blocking}}"  title="Unsecured Loan Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('utility_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">LINE OF CREDIT LATE  $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="line_credit_late" value="{{ $pricing->auto_blocking ?? $default->auto_blocking}}"  title="AUTO LOAN/LEASE BLOCKING">
-                        </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="lineofcredit"> <strong>Line of Credit Late  $</strong> </label>
                     </div>
+                    <div class="col-md-12">
+                      <input type="text" id="lineofcredit" class="form-control" name="line_credit_late" value="{{ $pricing->auto_blocking ?? $default->auto_blocking}}"  title="Line of Credit Late">
+                    </div>
+                  </div>
+
                     {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOAN LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="scured_loan_late" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="PERSONAL LOAN BLOCKING">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="securedloanlate"> <strong>Secured Loan Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" id="securedloanlate" class="form-control" name="scured_loan_late" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="Secured Loan Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">MORTGAGE LATE  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="mortgage_late" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="MORTGAGE BLOCKING ">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="mortagagelate"> <strong>Mortgage Late  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="mortagagelate" type="text" class="form-control" name="mortgage_late" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="Mortgage Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">FHA MORTGAGE LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="fha_mort_late" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="STUDENT LOAN BLOCKING">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="fhamortgage"> <strong>Fha Mortgage Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" id="fhamortgage" class="form-control" name="fha_mort_late" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="Fha Mortgage Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">HOME EQUITY LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="home_equity_late" value="{{ $pricing->public_record ?? $default->public_record}}"  title="PUBLIC RECORD">
-                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label form="homeequity"> <strong>Home Equity Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="homeequity" class="form-control" type="text" name="home_equity_late" value="{{ $pricing->public_record ?? $default->public_record}}"  title="Home Equity Late">
+                      </div>
                     </div>
+
                     {!! $errors->first('public_records', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SALES CONTRACT LATE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="salescontract"> <strong>Sales Contract Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" id="salescontract" name="sale_contract_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Sales Contract Late">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="rentallate"> <strong>Rental Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" id="rentallate" name="rental_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Rental Late">
+                      </div>
+                    </div>
+
+
+
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="convrealestate"> <strong>Conv. Real Estate Mtg Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="convrealestate" type="text" class="form-control" name="conv_real_mtg_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Conv. Real Estate Mtg Late">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="educationlate"> <strong>Education Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="educationlate" type="text" class="form-control" name="education_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Education Late">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="securedloclate"> <strong>Secured Loc Late $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="securedloclate" type="text" class="form-control" name="secured_loc_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Secured Loc Late">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label id="utilitycompany"> <strong>Utility Company Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" name="utlity_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Utility Company Late">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="childsupportlate"> <strong>Child Support Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" id="childsupportlate" name="child_support_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Child Support Late">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label> <strong>Unknown Late $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" name="unknown_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ms-ua-box mb-4">
+    <div class="row text-center m-5">
+        <h3>Blocking Pricing</h3>
+    </div>
+    <div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="creditcard"> <strong>Credit Card $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="creditcard" type="text" class="form-control" name="credit_card_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Credit Card">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="chargecard"> <strong>Charge Card $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="chargecard" type="text" class="form-control" name="charge_card_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Charge Card">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="securedcredit">Secured Credit $</label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="securedcredit" type="text" class="form-control" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Secured Credit">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="autoloan"> <strong>Auto Loan  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="autoloan" type="text" class="form-control" name="auto_loan_block" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}"  title="Auto Loan">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('mortgage_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label> <strong>Auto Lease  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input  type="text" class="form-control" name="auto_lease_block" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}"  title="Auto Lease">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="recreationalmerchandise"> <strong>Recreational Merchandise $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="recreationalmerchandise" type="text" class="form-control" name="r_m_block" value="{{ $pricing->cc_blocking ?? $default->cc_blocking}}"  title="Recreational Merchandise">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('cc_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="unsercuredloan"> <strong>Unsecured Loan $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="unsercuredloan" class="form-control" type="text" class="from-control" name="unsecured_loan_block" value="{{ $pricing->utility_blocking ?? $default->utility_blocking}}"  title="Unsecured Loan">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('utility_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="lineofcredit"> <strong>Line of Credit  $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="lineofcredit" type="text" class="form-control" name="line_credit_block" value="{{ $pricing->auto_blocking ?? $default->auto_blocking}}"  title="Line of Credit">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="securedloan"> <strong>Secured Loan $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="securedloan" type="text" class="form-control" name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="Secured Loan">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="mortgage"> <strong>Mortgage  $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="mortgage" type="text" class="form-control" name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="Mortgage">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label for="fhamortgage"> <strong>Fha Mortgage $</strong> </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input id="fhamortgage" type="text" class="form-control" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="Fha Mortgage">
+                      </div>
+                    </div>
+
+                    {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="homeequity"> <strong>Home Equity $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="homeequity" type="text" class="form-control" name="home_equity_block" value="{{ $pricing->public_record ?? $default->public_record}}"  title="Home Equity">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('public_records', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="salescontract"> <strong>Sales Contract $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="salescontract" type="text" class="form-control" name="sale_contract_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Sales Contract">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="rental1"> <strong>Rental $</strong> </label>
+                    </div>
+                    <div class="col-md-12">
+                      <input id="rental1" type="text" class="form-control" name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Rental">
+                    </div>
+                  </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="realestate1"> <strong>CONV. REAL ESTATE MTG $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="sale_contract_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
+                        <div class="col-md-12">
+                            <input id="realestate1" type="text" class="form-control" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="CONV. REAL ESTATE MTG">
+                        </div>
+                    </div>
+
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="education"> <strong>Education $</strong> </label>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="education" type="text" class="form-control" name="education_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Education">
                         </div>
                     </div>
                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">RENTAL LATE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="securedloc1"> <strong>Secured Loc $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="rental_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                        <div class="col-md-12">
+                            <input id="securedloc1" type="text" class="form-control" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Secured Loc">
                         </div>
                     </div>
                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CONV. REAL ESTATE MTG LATE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="utilitycompany1"> <strong>Utility Company $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="conv_real_mtg_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                        <div class="col-md-12">
+                            <input id="utilitycompany1" type="text" class="form-control" name="utility_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Utility Company">
                         </div>
                     </div>
                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -274,62 +607,25 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">EDUCATION LATE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="childsupport"> <strong>CHILD SUPPORT $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="education_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOC LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="secured_loc_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UTILITY COMPANY LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="utlity_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CHILD SUPPORT LATE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="child_support_late" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
+                        <div class="col-md-12">
+                            <input id="childsupport" type="text" class="form-control" name="child_support_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CHILD SUPPORT">
                         </div>
                     </div>
                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
 
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UNKNOWN LATE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="unknownblocking"> <strong>Unknown Blocking $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="unknown_late" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                        <div class="col-md-12">
+                            <input type="text" id="unknownblocking" class="form-control" name="unknown_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Unknown Blocking">
                         </div>
                     </div>
                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -341,337 +637,80 @@
 
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
-        <h3>BLOCKING PRICING</h3>
+        <h3>Charge off Pricing no Range</h3>
     </div>
     <div>
+        <h3>Regular Charged off Removal – No Settlement </h3>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CREDIT CARD $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="securedcredit"> <strong>Secured Credit $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input  type="text"  name="credit_card_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
+                        <div class="col-md-12">
+                            <input id="securedcredit" type="text" class="form-control" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
                         </div>
                     </div>
                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CHARGE CARD $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="securedloan"> <strong>Secured Loan $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input  type="text"  name="charge_card_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED CREDIT $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">AUTO LOAN  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="auto_loan_block" value="{{ $pricing->mortgage_late ?? $default->mortgage_late}}"  title="MORTGAGE LATE ">
-                        </div>
-                    </div>
-                    {!! $errors->first('mortgage_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">AUTO LEASE  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="auto_lease_block" value="{{ $pricing->student_loan_late ?? $default->student_loan_late}}"  title="MORTGAGE LATE ">
-                        </div>
-                    </div>
-                    {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">RECREATIONAL MERCHANDISE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="r_m_block" value="{{ $pricing->cc_blocking ?? $default->cc_blocking}}"  title="CREDIT CARD BLOCKING">
-                        </div>
-                    </div>
-                    {!! $errors->first('cc_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UNSECURED LOAN $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="unsecured_loan_block" value="{{ $pricing->utility_blocking ?? $default->utility_blocking}}"  title="CELL PHONE BLOCKING ">
-                        </div>
-                    </div>
-                    {!! $errors->first('utility_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">LINE OF CREDIT  $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="line_credit_block" value="{{ $pricing->auto_blocking ?? $default->auto_blocking}}"  title="AUTO LOAN/LEASE BLOCKING">
-                        </div>
-                    </div>
-                    {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOAN $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="PERSONAL LOAN BLOCKING">
+                        <div class="col-md-12">
+                            <input id="securedloan" type="text" class="form-control" name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="Secured Loan">
                         </div>
                     </div>
                     {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="realestatemtg1"> <strong>Conv. Real Estate Mtg $</strong> </label>
+                        </div>
+                        <div class="col-md-12">
+                            <input id="realestatemtg1" type="text" class="form-control" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Conv. Real Estate Mtg">
+                        </div>
+                    </div>
+                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
+                </div>
             </div>
         </div>
+
+
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">MORTGAGE  $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="mortgage1"> <strong>Mortgage  $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input  type="text"  name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="MORTGAGE BLOCKING ">
+                        <div class="col-md-12">
+                            <input id="mortgage1" type="text" class="form-control" name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="Mortgage">
                         </div>
                     </div>
                     {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">FHA MORTGAGE $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="fhamortgage1"> <strong>Fha Mortgage $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="STUDENT LOAN BLOCKING">
-                        </div>
-                    </div>
-                    {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">HOME EQUITY $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="home_equity_block" value="{{ $pricing->public_record ?? $default->public_record}}"  title="PUBLIC RECORD">
-                        </div>
-                    </div>
-                    {!! $errors->first('public_records', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SALES CONTRACT $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="sale_contract_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">RENTAL $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CONV. REAL ESTATE MTG $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">EDUCATION $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="education_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOC $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UTILITY COMPANY $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="utility_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CHILD SUPPORT $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="child_support_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CELL PHONE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">UNKNOWN BLOCKING$</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="unknown_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
-        <h3>CHARGE OFF PRICING NO RANGE</h3>
-    </div>
-    <div>
-        <h3>REGULAR CHARGED OFF REMOVAL – NO SETTLEMENT </h3>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED CREDIT $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
-                        </div>
-                    </div>
-                    {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOAN $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="PERSONAL LOAN BLOCKING">
-                        </div>
-                    </div>
-                    {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">CONV. REAL ESTATE MTG $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text"  name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
-                        </div>
-                    </div>
-                    {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">MORTGAGE  $</label>
-                        </div>
-                        <div class="price">
-                            <input  type="text"  name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="MORTGAGE BLOCKING ">
-                        </div>
-                    </div>
-                    {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
-                </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">FHA MORTGAGE $</label>
-                        </div>
-                        <div class="price">
-                            <input type="text" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="STUDENT LOAN BLOCKING">
+                        <div class="col-md-12">
+                            <input id="fhamortgage1" type="text" class="form-control" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="Fha Mortgage">
                         </div>
                     </div>
                     {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">RENTAL $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="rental2"> <strong>Rental $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                        <div class="col-md-12">
+                            <input type="text" id="rental2" class="form-control" name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Rental">
                         </div>
                     </div>
                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -681,13 +720,13 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOC $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="securedloc2"> <strong>Secured Loc $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                        <div class="col-md-12">
+                            <input type="text" id="securedloc2" class="form-control" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
                         </div>
                     </div>
                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -697,27 +736,27 @@
         </div>
     </div>
     <div>
-        <h3>REGULAR CHARGED OFF - REMOVAL AFTER SETTLEMENT  </h3>
+        <h3>Regular Charged Off - Removal After Settlement  </h3>
         <div class="form-group">
             <div class="row">
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED CREDIT $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="securedcredit"> <strong>Secured Credit $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input  type="text"  name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
+                        <div class="col-md-12">
+                            <input id="securedcredit" type="text" class="form-control" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Secured Credit">
                         </div>
                     </div>
                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                 </div>
-                <div class="col-md-4" style="margin: 0">
-                    <div class="priceName">
-                        <div class="name">
-                            <label style="float: right">SECURED LOAN $</label>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for=""> <strong>Secured Loan $</strong> </label>
                         </div>
-                        <div class="price">
-                            <input type="text"  name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="PERSONAL LOAN BLOCKING">
+                        <div class="col-md-12">
+                            <input id="" type="text" class="form-control" name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="PERSONAL LOAN BLOCKING">
                         </div>
                     </div>
                     {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
