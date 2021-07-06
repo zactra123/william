@@ -2,9 +2,9 @@
 
 @if ($paginator->hasPages())
 
-  <nav aria-label="Page navigation example">
+  <nav aria-label="Page navigation example" style="float:right">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}">Pre</a></li>
     @if($paginator->currentPage() > 10)
     <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
     @endif
@@ -56,8 +56,3 @@
 </nav>
 
 @endif
-
-
-
-
-  

@@ -334,9 +334,10 @@
 
     <script type="text/html" id="sub_types_append">
 
-        <div class="col-md-6 remove_sub_type">
-            {value}
+        <div class="col-md-4 remove_sub_type">
+
             <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{value}">
+            {value}
         </div>
 
     </script>
@@ -344,7 +345,7 @@
     <script type="text/html" id="addtional_address_template">
         <formset class="additional_address">
             <div class="row remove-address">
-                <div class="col-md-6"><label for="">ADDITIONAL ADDRESS</label>  </div>
+                <div class="col-md-6"><label for="">Additional Address</label>  </div>
                 <div class="col-md-6 text-right">
                     <button type="button" class="btn btn-danger mb-3">
                         <i class="fa fa-remove"></i>

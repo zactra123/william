@@ -12,13 +12,13 @@
         <a href="{{ url('/owner') }}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-2"></a>
         <a href="{{ url('/owner') }}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-12"></a>
       </div>
-      <ul class="header-megamenu-dropdown  nav">
+      {{-- <ul class="header-megamenu-dropdown  nav">
         <li class="nav-item">
           <div class="btn-group mt-2">
             <a href="{{ route('owner.reports.index')}}"><button  class="btn btn-link"  type="button"><span><i class="las la-poll"></i> </span> Reports</button></a>
           </div>
         </li>
-      </ul>
+      </ul> --}}
     </div>
     <div class="main-header-right">
       <div class="nav nav-item nav-link" id="bs-example-navbar-collapse-1">
