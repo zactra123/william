@@ -14,9 +14,31 @@
             </nav>
       </div>
     </div>
-    <br><br>
-    <section class="ms-user-account mt-5">
-        <div class="container mt-5">
+    <div class="container">
+      <div class="row row-sm">
+        <div class="col-md-12">
+          <div class="card mg-b-20" id="tabs-style2">
+            <div class="card-body">
+              <div class="main-content-label mg-b-5">
+                Edit Furnisher
+              </div>
+              <p class="mg-b-20">Edit furnisher here ...</p>
+              <div class="text-wrap mb-5">
+                <div class="example">
+                  <div class="panel panel-primary">
+                  @include('furnishers.search2')
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="ms-user-account">
+        <div class="container">
             <div class="col-md-12 col-sm-12">
               {{-- <div class="row pl-5">
                 <form method="POST" action="{{route('admins.bank.delete', $bank->id)}}">
@@ -31,9 +53,7 @@
                       <a  data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">ADD FURNISHER</a>
                   </div>
               </div> --}}
-                <div class="row m-2  pt-4">
-                    @include('furnishers.search2')
-                </div>
+
                 @php
                     $states = [null=>''] + \App\BankAddress::STATES;
                     $types =  \App\BankLogo::TYPES;
@@ -171,7 +191,7 @@
                                     <?php } ?>
 
                                    <div class="row additional-addresses">
-                                       <div class="col-sm-12 add-additional p-1 pb-5 pointer"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
+                                       <div class="col-sm-12 add-additional p-1 pb-5"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
                                    </div>
                                     @continue
                                 @endif
@@ -187,7 +207,7 @@
                                     <div class="col-md-12 addresses " id="address-{{$type}}">
                                         @if($type == 'registered_agent')
                                             <div class="row">
-                                                <div class="col-sm-5 paste-register pointer"><a class="btn btn-primary ms-ua-submit text-white">Copy Executive as Registered Agent</a></div>
+                                                <div class="col-sm-5 paste-register"><a class="btn btn-primary ms-ua-submit text-white">Copy Executive as Registered Agent</a></div>
 
                                                 <div class="form-group col-sm-7 p-0 pr-3">
                                                     {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}

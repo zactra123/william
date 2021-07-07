@@ -81,7 +81,9 @@
 						    <script type="text/javascript">
 
 						        $(document).ready(function () {
-
+											$('.selectize-multiple').selectize({
+    										placeholder: 'Filter By Type ...',
+  										});
 						            var url = $(location).attr('search');
 						            if(url.search("pending")== 6){
 						                $('.tab-selector').removeClass("active");
@@ -479,7 +481,7 @@
 								                });
 								            })
 								            $(".selectize-type").selectize({plugins: ['remove_button']});
-														$('.selectize-multiple').selectize({ placeholder: "FILTER BY TYPE" });
+														// $('.selectize-multiple').selectize({ placeholder: "FILTER BY TYPE" });
 
 								            // var $mSelect = $('#multi-select').selectize({ placeholder: "Select a value" });
 								        });
