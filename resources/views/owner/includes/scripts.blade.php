@@ -721,8 +721,5 @@
 				    </script>
 			@endif
 
-			@if (Route::currentRouteName()=="owner.message.index")
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js" defer></script>
-			@endif
+			
     @yield('js')

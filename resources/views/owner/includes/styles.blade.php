@@ -451,8 +451,6 @@
 			</style>
 
 		@endif
-		@if (Route::currentRouteName()=="owner.message.index")
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
-		@endif
+	
 
     @yield('css')
