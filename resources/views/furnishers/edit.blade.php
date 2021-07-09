@@ -9,7 +9,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Furnisher</li>
+                <li class="breadcrumb-item active" aria-current="page">Furnishers > Edit Furnisher</li>
               </ol>
             </nav>
       </div>

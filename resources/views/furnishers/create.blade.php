@@ -1,92 +1,46 @@
-@extends('layouts.admin')
+@extends('owner.layouts.app')
 
-<style>
+@section('body')
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Furnishers > Create Furnisher </li>
+            </ol>
+          </nav>
+    </div>
+  </div>
 
-    #bankInformation .selectize-input,.selectize-select{
-        border: 1px solid #000 !important;
-        border-radius: 8px !important;
-    }
+  <div class="container">
+    <div class="row row-sm">
+      <div class="col-md-12">
+        <div class="card mg-b-20" id="tabs-style2">
+          <div class="card-body">
+            <div class="main-content-label mg-b-5">
+              Create Furnisher
+            </div>
+            <p class="mg-b-20">create furnisher here ...</p>
+            <div class="text-wrap mb-5">
+              <div class="example">
+                <div class="panel panel-primary">
+                  @include('furnishers.search2')
+                </div>
+              </div>
+            </div>
 
-    .ui-autocomplete {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-        display: none;
-        float: left;
-        min-width: 160px;
-        padding: 5px 0;
-        margin: 2px 0 0;
-        list-style: none;
-        font-size: 14px;
-        text-align: left;
-        background-color: #ffffff;
-        border: 1px solid #cccccc;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        border-radius: 4px;
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-        background-clip: padding-box;
-    }
 
-    .ui-autocomplete > li > div {
-        display: block;
-        padding: 3px 20px;
-        clear: both;
-        font-weight: normal;
-        line-height: 1.42857143;
-        color: #333333;
-        white-space: nowrap;
-    }
-
-    .ui-menu-item:hover {
-        text-decoration: none;
-        color: #262626;
-        background-color: #f5f5f5;
-        cursor: pointer;
-    }
-
-    .ui-helper-hidden-accessible {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
-    .ms-ua-box {
-        background-color: #ffffff !important;
-        border-radius: 4px !important;
-        padding: 15px;
-        box-shadow: 0 0 5px 1px #0000005c;
-        opacity: 1;
-    }
-
-    .expand-address {
-        cursor: pointer;
-    }
-
-    .responsive{
-        width: 100%;
-        height: auto;
-    }
-</style>
-@section('content')
-    {{-- @include('helpers.breadcrumbs', ['title'=> "ADD BANK", 'route' => ["Home"=> '/admins/furnishers',"Bank" => "#"]]) --}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <section class="ms-user-account">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-12 col-sm-12 mt-5"></div>
 
-                <div class="col-md-9 col-sm-12 mt-5">
-                    <div class="row m-2">
-                        <div class="col-md-3 pull-left">
-
-                        </div>
-                        @include('furnishers.search2')
-                    </div>
+                <div class="col-md-12 col-sm-12">
                     @php
                         $states = [null=>''] + \App\BankAddress::STATES;
                         $types =  \App\BankLogo::TYPES;
@@ -99,7 +53,7 @@
                     <div class="ms-ua-box">
                         <div class="ms-ua-form">
                             <div class="ms-ua-title mb-0">
-                              <div class="row">
+                              <div class="row p-3">
                                 <div class="col-md-1">
 
                                 </div>
@@ -128,27 +82,33 @@
                                                 {!! Form::select("bank[type]", $types,  null, ['class'=>'form-control selectize-single bank-type']); !!}
                                             </div>
                                         </div>
-                                        <div class="m-5">
-                                            <div class="row">
+                                        <div class="col-md-12">
+
                                                 <div  class="bank_sub_type_append">
                                                     <div class="row">
                                                       @foreach($subTypes[51] as $key => $type)
-                                                          <div class="col-md-6 mt-2">
-                                                              <span class="">{{$type}}</span>
-                                                              <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                          <div class="col-md-4 mt-2">
+                                                            <div class="row">
+                                                              <div class="col-md-1">
+                                                                <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                              </div>
+                                                              <div class="col-md-11">
+                                                                <span class="">{{$type}}</span>
+                                                              </div>
+                                                            </div>
                                                           </div>
                                                       @endforeach
                                                     </div>
                                                 </div>
-                                            </div>
+
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="row parent hidden">
                                     <div class="col-md-3">
-                                        <a  class="btn btn-primary show-parent-field form-control hide">ADD PARENT</a>
-                                        <a  class="btn btn-primary hide hide-parent-field form-control hide mt-3">HIDE PARENT</a>
+                                        <a  class="btn btn-primary show-parent-field form-control hide text-white">Add Parent</a>
+                                        <a  class="btn btn-primary hide hide-parent-field form-control hide mt-3 text-white">Hide Parent</a>
                                     </div>
                                     <div class="col-md-9 parent-show">
                                         <div class="col-md-12 ">
@@ -160,7 +120,7 @@
                                         </div>
                                         <div class="row pull-right pr-3">
                                           <div class="col-md-12">
-                                              <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary form-control">ADD BANK</a>
+                                              <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary form-control text-white">Add Bank</a>
                                           </div>
                                         </div>
 
@@ -177,7 +137,7 @@
                                 @foreach(\App\BankAddress::TYPES as $type=>$name)
                                     @if($type == 'additional_address')
                                         <div class="row additional-addresses">
-                                            <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit  form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                            <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit text-white form-control">Add Addittonal Address</a></div>
                                         </div>
                                         @continue
                                     @endif
@@ -193,7 +153,7 @@
                                         <div class="col-md-12 addresses " id="address-{{$type}}">
                                             @if($type == 'registered_agent')
                                                 <div class="row">
-                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit form-control">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
+                                                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit form-control text-white">Copy Executive as Registered Agent</a></div>
 
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
@@ -203,8 +163,7 @@
                                             @if($type == 'executive_address')
                                                 <div class="row">
                                                     <div class="col-md-12 executive_copied">
-                                                        COPY PARENT EXECUTIVE CONTACT <input type="checkbox" value="true"
-                                                                                             name="bank_address[{{$type}}][copied]" >
+                                                        Copy Parent Executive Contact <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" >
                                                     </div>
                                                     <div class="form-group col-sm-12">
                                                         {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
@@ -238,11 +197,11 @@
                                                     {!! Form::text("bank_address[{$type}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                                 </div>
                                             </div>
-                                            <div class="row mt-3">
+                                            <div class="row">
                                                 <div class="form-group col-sm-4">
                                                     <div class="row">
-                                                      <div class="form-group col-sm-2 p-0">
-                                                          <img  class="responsive" src="{{ asset('/') }}/images/phone.png">
+                                                      <div class="form-group col-sm-2">
+                                                          <img  class="responsive" width="50%" src="{{ asset('/') }}/images/phone.png">
                                                       </div>
                                                       <div class="form-group col-sm-10">
                                                           {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -251,8 +210,8 @@
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <div class="row">
-                                                      <div class="form-group col-sm-2 p-0">
-                                                          <img  class="responsive" src="{{ asset('/') }}/images/fax.png">
+                                                      <div class="form-group col-sm-2">
+                                                          <img  class="responsive" width="50%" src="{{ asset('/') }}/images/fax.png">
                                                       </div>
                                                       <div class="form-group col-sm-10">
                                                       {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -261,8 +220,8 @@
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <div class="row">
-                                                      <div class="form-group col-sm-2 p-0">
-                                                          <img  class="responsive" src="{{ asset('/') }}/images/email.png">
+                                                      <div class="form-group col-sm-2">
+                                                          <img  class="responsive" width="50%" src="{{ asset('/') }}/images/email.png">
                                                       </div>
                                                       <div class="form-group col-sm-10">
                                                           {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
@@ -283,10 +242,10 @@
 
                             <div class="ms-ua-title mb-0">
                                 <div class="row">
-                                    <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4> </div>
+                                    <div class="col-md-6 text-left"><h4>Other Names Used</h4> </div>
                                     <div class="col-md-6 text-right">
                                         <button type="button" class="remove-equal-bank btn btn-danger mb-3">
-                                            <i class="fa fa-close"></i>
+                                            <i class="fa fa-times"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -299,7 +258,7 @@
 
                         <div class="row pull-right">
                           <div class="col-md-12 mt-3">
-                              <input type="submit" value="Save" class="ms-ua-submit btn btn-primary">
+                              <input type="submit" value="Save" class="ms-ua-submit btn btn-primary text-white">
                           </div>
                         </div>
                 </div>
@@ -326,118 +285,4 @@
     </div>
 
 
-    <script>
-        var types = {!!  json_encode($subTypes) !!};
-
-    </script>
-
-
-    <script type="text/html" id="sub_types_append">
-
-        <div class="col-md-4 remove_sub_type">
-
-            <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{value}">
-            {value}
-        </div>
-
-    </script>
-
-    <script type="text/html" id="addtional_address_template">
-        <formset class="additional_address">
-            <div class="row remove-address">
-                <div class="col-md-6"><label for="">Additional Address</label>  </div>
-                <div class="col-md-6 text-right">
-                    <button type="button" class="btn btn-danger mb-3">
-                        <i class="fa fa-remove"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-12 addresses " id="address-additional_address-{i}">
-                <div class="row">
-                    <div class="form-group col-sm-12">
-                        {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
-                    </div>
-                </div>
-                <div class="row">
-                    {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
-
-                    <div class="form-group col-sm-5">
-                        {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
-                    </div>
-                    <div class="form-group col-sm-3">
-                        {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
-                    </div>
-                    <div class="form-group col-sm-2">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                        {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
-                    </div>
-                    <div class="form-group col-sm-2">
-                        {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                        {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2 p-0">
-                            <img  class="responsive" src="{{asset('/')}}/images/phone.png">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2 p-0">
-                            <img  class="responsive" src="{{asset('/')}}/images/fax.png">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-4">
-                        <div class="form-group col-sm-2 p-0">
-                            <img  class="responsive" src="{{asset('/')}}/images/email.png">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </formset>
-    </script>
-
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
-
-    <script>
-        $(document).ready(function($) {
-            $.validator.addMethod("extension", function(value, element, param) {
-                param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
-                return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
-            },"Please enter a value with a valid extension.");
-            $('#bankInformation').validate({
-                rules: {
-                    "logo": {
-                        extension: "jpg,jpeg,png"
-                    },
-                },
-                messages: {
-                    "logo": {
-                        extension: "You're only allowed to upload jpg or png images."
-                    },
-
-                },
-                errorPlacement: function(error, element) {
-                    error.insertAfter(element);
-                }
-            })
-            // $(".selectize-type").selectize({plugins: ['remove_button']})
-            var $mSelect = $('#multi-select').selectize({ placeholder: "Select a value" });
-        })
-    </script>
-
-    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 @endsection

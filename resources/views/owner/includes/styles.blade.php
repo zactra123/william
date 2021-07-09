@@ -365,4 +365,94 @@
 			</style>
 		@endif
 
+		@if (Route::currentRouteName()=="admins.bank.create")
+			<link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+			<style>
+
+			    #bankInformation .selectize-input,.selectize-select{
+			        border: 1px solid #000 !important;
+			        border-radius: 8px !important;
+			    }
+
+			    .ui-autocomplete {
+			        position: absolute;
+			        top: 100%;
+			        left: 0;
+			        z-index: 1000;
+			        display: none;
+			        float: left;
+			        min-width: 160px;
+			        padding: 5px 0;
+			        margin: 2px 0 0;
+			        list-style: none;
+			        font-size: 14px;
+			        text-align: left;
+			        background-color: #ffffff;
+			        border: 1px solid #cccccc;
+			        border: 1px solid rgba(0, 0, 0, 0.15);
+			        border-radius: 4px;
+			        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			        background-clip: padding-box;
+			    }
+
+			    .ui-autocomplete > li > div {
+			        display: block;
+			        padding: 3px 20px;
+			        clear: both;
+			        font-weight: normal;
+			        line-height: 1.42857143;
+			        color: #333333;
+			        white-space: nowrap;
+			    }
+
+			    .ui-menu-item:hover {
+			        text-decoration: none;
+			        color: #262626;
+			        background-color: #f5f5f5;
+			        cursor: pointer;
+			    }
+
+			    .ui-helper-hidden-accessible {
+			        border: 0;
+			        clip: rect(0 0 0 0);
+			        height: 1px;
+			        margin: -1px;
+			        overflow: hidden;
+			        padding: 0;
+			        position: absolute;
+			        width: 1px;
+			    }
+			    .ms-ua-box {
+			        background-color: #ffffff !important;
+			        border-radius: 4px !important;
+			        padding: 15px;
+			        box-shadow: 0 0 5px 1px #0000005c;
+			        opacity: 1;
+			    }
+
+			    .expand-address {
+			        cursor: pointer;
+			    }
+
+			    .responsive{
+			        width: 100%;
+			        height: auto;
+			    }
+					.hide{
+						display: none !important;
+					}
+					.hidden{
+						display: none !important;
+					}
+					.pointer{
+						cursor: pointer !important;
+					}
+			</style>
+
+		@endif
+		@if (Route::currentRouteName()=="owner.message.index")
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+		@endif
+
     @yield('css')

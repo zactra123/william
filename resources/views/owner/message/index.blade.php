@@ -2,7 +2,6 @@
 
 @section('body')
 
-    {{-- @include('helpers.breadcrumbs', ['title'=> "APPOINTMENT", 'route' => ["Home"=> '/owner',"APPOINTMENT" => "#"]]) --}}
     <div class="breadcrumb-header justify-content-between">
       <div>
           <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -414,9 +413,8 @@
 
 {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />--}}
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js" defer></script>
+
+
 
 
 
