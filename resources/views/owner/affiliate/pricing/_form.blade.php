@@ -5408,80 +5408,82 @@
 
         <div class="form-group">
             <h4>Recreational Merchandise</h4>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>MIN $</label>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="min107"> <strong>Min $</strong> </label>
                             </div>
-                            <div class="priceCA">
-                                <input type="text" name="r_m_r[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" class="collection" data-id="0"  id="min-0" title="MINIMUM">
+                            <div class="col-md-12">
+                                <input id="min107" type="text" name="r_m_r[0][minimum]" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" class="collection" data-id="0"  id="min-0" title="Min">
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="max107"> <strong>Max $</strong> </label>
+                            </div>
+                            <div class="col-md-12">
+                                <input id="max107" type="text"  name="r_m_r[0][maximum]" class="form-control" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" class="collection" data-id="0"  id="max-0" title="Max">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
                     <div class="col-md-3">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>MAX $</label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="price107"> <strong>Price  $</strong> </label>
                             </div>
-                            <div class="priceCA">
-                                <input type="text"  name="r_m_r[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" class="collection" data-id="0"  id="max-0"title="MAXIMUM">
-                            </div>
-                        </div>
-                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                    </div>
-                    <div class="col-md-3">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>PRICE  $</label>
-                            </div>
-                            <div class="priceCA">
-                                <input type="text"  name="r_m_r[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" class="collection" data-id="0"  id="percent-0" title="PERCENTAGE">
+                            <div class="col-md-12">
+                                <input id="price107" type="text"  name="r_m_r[0][price]" class="form-control" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" class="collection" data-id="0"  id="percent-0" title="Price">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
-                    <div class="col-md-3">
-                        <strong class="add_range h3" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                    <div class="col-md-1">
+                        <div class="row mt-4 pt-2">
+                          <strong class="add_range h3" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="r_m_r_range">
 
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>MIN $</label>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="min108"> <strong>Min $</strong> </label>
                             </div>
-                            <div class="priceCA">
-                                <input type="text"  value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_r_min_val_last" class="collection" data-id="0"  id="min-0" title="MINIMUM">
-                            </div>
-                        </div>
-                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                    </div>
-                    <div class="col-md-3 ">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>MAX $</label>
-                            </div>
-                            <div class="priceCA">
-                                <strong> INFINITE</strong>
+                            <div class="col-md-12">
+                                <input id="min108" type="text" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_r_min_val_last" class="collection" data-id="0"  id="min-0" title="Min">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                     </div>
-                    <div class="col-md-3">
-                        <div class="priceName">
-                            <div class="nameCA">
-                                <label>PRICE  $</label>
+                    <div class="col-md-4 ">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for=""> <strong>Max $</strong> </label>
                             </div>
-                            <div class="priceCA">
-                                <input type="text"   id="r_m_r_price_last"class="collection" title="PRICE">
+                            <div class="col-md-12">
+                                <strong> Infinite</strong>
+                            </div>
+                        </div>
+                        {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="price108"> <strong>Price  $</strong> </label>
+                            </div>
+                            <div class="col-md-12">
+                                <input id="price108" type="text" class="form-control"  id="r_m_r_price_last"class="collection" title="Price">
                             </div>
                         </div>
                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5495,37 +5497,38 @@
 
 <div class="ms-ua-box mb-4">
     <div class="row text-center m-5">
-        <h3>COLLECTION PRICING</h3>
+        <h3>CollecTion Pricing</h3>
     </div>
-    <div class="pt-5">
+    <div class="pt-2">
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4">
-                    <label>UNKNOWN COLLECTION</label>
+                    <label> <strong>Unknown Collection</strong> </label>
                 </div>
             </div>
             @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min109{{$i}}"> <strong>Min $</strong> </label>
                                 </div>
-                                <div class="priceCA">
+                                <div class="col-md-12">
                                     {{-- <input type="text" name="collection[{{$i}}][minimum]" value="{{ $pricing->collection[$i]['minimum'] ?? $default->collection[$i]['minimum']}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM"> --}}
+                                    <input id="min109{{$i}}" type="text" class="form-control" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2 " style="margin: 0">
+                        <div class="col-md-2 ">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max109{{$i}}"> <strong>Max $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
+                                    <div class="col-md-12">
+                                        <input id="max109{{$i}}" type="text" class="form-control"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
 
 
                                     </div>
@@ -5533,51 +5536,51 @@
                             @endif
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id109{{$i}}"> <strong>%</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                <div class="col-md-12">
+                                    <input id="id109{{$i}}" type="text" class="form-control"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="%">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee109{{$i}}"> <strong>Add Fee $</strong> </label>
                                 </div>
-                                <div class="priceCA">
+                                <div class="col-md-12">
+                                    <input id="addfee109{{$i}}" type="text" class="form-control" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice109{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
                                     {{-- <input type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text"   value="" id="min-price-{{isset($i) ? $i : ''}}" title="MIN PRICE" readonly>
+                                        <input id="minprice109{{$i}}" type="text"  class="form-control" value="" id="min-price-{{isset($i) ? $i : ''}}" title="Min Priceminprice109{{$i}}" readonly>
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice109{{$i}}"> <strong>Max/Price $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
+                                    <div class="col-md-12">
                                         {{-- <input type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text"   value="" id="max-price-{{isset($i) ? $i : ''}}" title="MAX PRICE" readonly>
+                                        <input id="maxprice109{{$i}}" type="text"  class="form-control" value="" id="max-price-{{isset($i) ? $i : ''}}" title="Max Price" readonly>
                                     </div>
                                 </div>
                             @endif
@@ -5588,85 +5591,83 @@
             @endfor
         </div>
         <div class="form-group">
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-md-4">
-                    <label>CREDIT CARD  COLLECTION</label>
+                    <label> <strong>Credit Card Collection</strong> </label>
                 </div>
             </div>
             @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min110{{$i}}"> <strong>Min $</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
+                                <div class="col-md-12">
+                                    <input id="min110{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2 " style="margin: 0">
+                        <div class="col-md-2 ">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max110{{$i}}"> <strong>Max $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
+                                    <div class="col-md-12">
+                                        <input id="max110{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
                                     </div>
                                 </div>
                             @endif
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id110{{$i}}"> <strong>%</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                <div class="col-md-12">
+                                    <input id="id110{{$i}}" type="text" class="form-control" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee110{{$i}}"> <strong>Add Fee $</strong> </label>
                                 </div>
-                                <div class="priceCA">
+                                <div class="col-md-12">
+                                    <input id="addfee110{{$i}}" type="text" class="form-control" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice110{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
                                     {{-- <input type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text"   value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
+                                        <input id="minprice110{{$i}}" type="text" class="form-control"  value="" id="min-price-{{$i}}" title="Min Price" readonly>
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice110{{$i}}"> <strong>Max/Price $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
+                                    <div class="col-md-12">
                                         {{-- <input type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                        <input id="maxprice110{{$i}}" type="text" class="form-control" value="" id="max-price-{{$i}}" title="Max Price" readonly>
 
                                     </div>
                                 </div>
@@ -5678,33 +5679,33 @@
             @endfor
         </div>
         <div class="form-group">
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-md-4">
-                    <label>CHARGE CARD COLLECTION</label>
+                    <label> <strong>Charge Card Collection</strong> </label>
                 </div>
             </div>
             @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min111{{$i}}"> <strong>Min $</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
+                                <div class="col-md-12">
+                                    <input id="min111{{$i}}" type="text" class="form-control" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2 " style="margin: 0">
+                        <div class="col-md-2 ">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max111{{$i}}"> <strong>Max $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
+                                    <div class="col-md-12">
+                                        <input id="max111{{$i}}" type="text" class="form-control" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
 
 
                                     </div>
@@ -5712,53 +5713,1467 @@
                             @endif
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id111{{$i}}"> <strong>%</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                <div class="col-md-12">
+                                    <input id="id111{{$i}}" type="text" class="form-control" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee111{{$i}}"> <strong>Add Fee $</strong> </label>
                                 </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                <div class="col-md-12">
+                                    <input id="addfee111{{$i}}" type="text" class="form-control" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice111{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
+                                        <input id="minprice111{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice111{{$i}}"> <strong>Max/Price $</strong> </label>
                                     </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                    <div class="col-md-12">
+                                        {{-- <input id="" type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
                                         $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                        <input id="maxprice111{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Med Finance Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min112{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min112{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max112{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max112{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
 
 
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id112{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id112{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee112{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee112{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice112{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice112{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice112{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice112{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Jewelery Card Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min113{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min113{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max113{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max113{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id113{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id113{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee113{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee113{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice113{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice113{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice113{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice113{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Business Card Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min114{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min114{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max114{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max114{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id114{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id114{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee114{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee114{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice114{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice114{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice114"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice114" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Business Loan Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min115{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min115{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max115{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max115{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id115{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id115{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee115{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee115{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice115{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice115{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice115{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice115{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Personal Loan Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min116{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min116{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max116{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max116{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id116{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id116{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee116{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee116{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice116{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice116{{$i}}" class="form-control" type="text" value="" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice116{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice116{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Utility  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min117{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min117{{$i}}" class="form-control" name="" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max117{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max117{{$i}}" class="form-control" name="" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id117{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id117{{$i}}" class="form-control" name="" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee117{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee117{{$i}}" class="form-control" name="" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice117{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" name="" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice117{{$i}}" class="form-control" name="" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice117{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" name="" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice117{{$i}}" class="form-control" name="" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Cellphone  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min118{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min118{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum'] ) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max118{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max118{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id118{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id118{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee118{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee118{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice118{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice118{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice118{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice118{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Check Cashing  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min119{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min119{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max119{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max119{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id119{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id119{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee119{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee119{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice119{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice119{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice119{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice119{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Payday  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-5">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min120{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min120{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max120{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max120{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id120{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id120{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee120{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee120{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice120{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice120{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice120{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice120{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Check Gurantee Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min121{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min121{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max121{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max121{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id121{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id121{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee121{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee121{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice121{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice121{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice121{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice121{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Cable/Internet/Tv Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min122{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min122{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max122{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max122{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id122{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id122{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee122{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee122{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice122{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice122{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice122{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice122{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Home Security  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min123{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min123{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max123{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max123{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id123{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id123{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee123{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee123{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min123{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="min123{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max123{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="max123{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Rent/Lease Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min124{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min124{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max124{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max124{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id124{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id124{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee124{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee124{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice124{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice124{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice124{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice124{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Hoa  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min125{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min125{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max125{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max125{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id125{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id125{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee125{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee125{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice125{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice125{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Auto Loan  Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min126{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min126{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max126{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max126{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id126{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id126{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee126{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee126{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice126{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice126{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice126{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice126{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <div class="form-group">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <label> <strong>Auto Lease Collection</strong> </label>
+                </div>
+            </div>
+            @for($i = 0; $i < 4; $i++)
+                <div class="col-md-12">
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="min127{{$i}}"> <strong>Min $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="min127{{$i}}" class="form-control" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2 ">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="max127{{$i}}"> <strong>Max $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="max127{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+
+                                    </div>
+                                </div>
+                            @endif
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="id127{{$i}}"> <strong>%</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="id127{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="addfee{{$i}}"> <strong>Add Fee $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="addfee{{$i}}" class="form-control" type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="minprice127{{$i}}"> <strong>Min/Price $</strong> </label>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
+                                        <input id="minprice127{{$i}}" class="form-control" type="text" value="" id="min-price-{{$i}}" title="Min Price" readonly>
+                                </div>
+                            </div>
+                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="col-md-2">
+                            @if($i < 3)
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="maxprice{{$i}}"> <strong>Max/Price $</strong> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{-- <input id="" class="form-control" type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
+                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
+                                        <input id="maxprice{{$i}}" class="form-control" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
                                     </div>
                                 </div>
                             @endif
@@ -5771,13 +7186,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4">
-                    <label>MED FINANCE COLLECTION</label>
+                    <label>Motorcycle Collection</label>
                 </div>
             </div>
             @for($i = 0; $i < 4; $i++)
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             <div class="priceName">
                                 <div class="nameCA">
                                     <label>MIN $</label>
@@ -5788,7 +7203,7 @@
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2 " style="margin: 0">
+                        <div class="col-md-2 ">
                             @if($i < 3)
                                 <div class="priceName">
                                     <div class="nameCA">
@@ -5803,7 +7218,7 @@
                             @endif
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             <div class="priceName">
                                 <div class="nameCA">
                                     <label>% </label>
@@ -5814,10 +7229,10 @@
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             <div class="priceName">
                                 <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
+                                    <label>ADD FEE $</label>
                                 </div>
                                 <div class="priceCA">
                                     <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
@@ -5825,7 +7240,7 @@
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             <div class="priceName">
                                 <div class="nameCA">
                                     <label>MIN/PRICE$</label>
@@ -5838,1429 +7253,7 @@
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>JEWELERY CARD COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>BUSINESS CARD COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>BUSINESS LOAN COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>PERSONAL LOAN COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>UTILITY  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>CELLPHONE  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum'] ) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>CHECK CASHING  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>PAYDAY  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>CHECK GURANTEE COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>CABLE/INTERNET/TV COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>HOME SECURITY  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text"   value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>RENT/LEASE COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text"   value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>HOA  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>AUTO LOAN  COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>AUTO LEASE COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX/PRICE$</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        {{-- <input type="text" value="{{$pricing->collection[$i]['maximum']?$pricing->collection[$i]['maximum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['maximum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="max-price-{{$i}}" title="MAX PRICE" readonly> --}}
-                                        <input type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                    </div>
-                </div>
-            @endfor
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-4">
-                    <label>MOTORCYCLE COLLECTION</label>
-                </div>
-            </div>
-            @for($i = 0; $i < 4; $i++)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" class="collection" data-id="{{$i}}"  id="min-{{$i}}" title="MINIMUM">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2 " style="margin: 0">
-                            @if($i < 3)
-                                <div class="priceName">
-                                    <div class="nameCA">
-                                        <label>MAX $</label>
-                                    </div>
-                                    <div class="priceCA">
-                                        <input type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" class="collection" data-id="{{$i}}"  id="max-{{$i}}" title="MAXIMUM">
-
-
-                                    </div>
-                                </div>
-                            @endif
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>% </label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" class="collection" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="namCA">
-                                    <label style="float: left">ADD FEE $</label>
-                                </div>
-                                <div class="priceCA">
-                                    <input type="text"  name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}"  class="collection" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
-                            <div class="priceName">
-                                <div class="nameCA">
-                                    <label>MIN/PRICE$</label>
-                                </div>
-                                <div class="priceCA">
-                                    {{-- <input type="text" value="{{$pricing->collection[$i]['minimum']?$pricing->collection[$i]['minimum']*($pricing->collection[$i]['percentage']/100) +$pricing->collection[$i]['additional_fee']:null??
-                                        $default->collection[$i]['minimum']*($default->collection[$i]['percentage']/100) +$default->collection[$i]['additional_fee']}}" id="min-price-{{$i}}" title="MIN PRICE" readonly> --}}
-                                        <input type="text" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
-                                </div>
-                            </div>
-                            {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="col-md-2" style="margin: 0">
+                        <div class="col-md-2">
                             @if($i < 3)
                                 <div class="priceName">
                                     <div class="nameCA">
