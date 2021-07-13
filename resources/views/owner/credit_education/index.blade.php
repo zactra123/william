@@ -1,37 +1,48 @@
-@extends('layouts.layout')
+@extends('owner.layouts.app')
+@section('body')
 
-@section('content')
-
-    @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"CREDIT EDUCATION LIST" => "#"]])
+    {{-- @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"CREDIT EDUCATION LIST" => "#"]]) --}}
+    <div class="breadcrumb-header justify-content-between">
+      <div>
+          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Educations</li>
+              </ol>
+            </nav>
+      </div>
+    </div>
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="ms-ua-box">
-                        <div class="col-md-11">
-                            <div class="container mt-5 pt-5">
+                        <div class="col-md-12">
+                            <div class="container">
                                 <div class="row justify-content-center pt-2">
                                     <div class="col-11">
-                                        <div class="card ">
+                                        <div class="card p-3">
+                                          <div class="card-header mb-3">
+                            								<div class="d-flex justify-content-between">
+                            									<h4 class="card-title mg-b-0 mt-2">EDUCATIONS</h4>
+                            									<i class="mdi mdi-dots-horizontal text-gray"></i>
+                            								</div>
+                            								<p class="tx-12 text-muted mb-2">List of all education
+                                              <a href="{{route('owner.credit.education.create')}}"
+                                               class="btn btn-primary btn-sm float-right">Add Education</a> </p>
+                            							</div>
 
-                                            <div class="row m-2  pt-4">
-                                                <div class="col-md-11 pull-right">
-                                                    <a class="btn btn-primary pull-right" href="{{route('owner.credit.education.create')}}" role="button">
-                                                        Add Education
-                                                    </a>
-                                                </div>
 
-                                            </div>
-
-                                            <table class="table">
+                                            <table class="table table-hover">
                                                 <thead>
                                                 <tr>
                                                     <th >#</th>
-                                                    <th class="col-lg-2">url</th>
-                                                    <th class="col-lg-2">Title</th>
-                                                    <th class="col-lg-7">Sub Content</th>
-                                                    <th class="col-lg-1">Action</th>
+                                                    <th scope="col">url</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Sub Content</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -40,23 +51,36 @@
                                                         <th scope="row">{{$content->id}}</th>
                                                         <td>{{$content->url}}</td>
                                                         <td>{{$content->title}}</td>
-                                                        <td><?php echo htmlspecialchars_decode(htmlspecialchars($content->sub_content, ENT_QUOTES));  ?></td>
+                                                        <td>{{ zactra::limit_words($content->sub_content,150) }}</td>
                                                         <td>
 
-                                                            <a style="margin: 1px" href="{{route('owner.credit.education.show', $content->url)}}"
-                                                               role="button"><i class="fa fa-file-text"></i></a>
-                                                            <a  href="{{route('owner.credit.education.edit', $content->url)}}"
-                                                               role="button"><span class="fa fa-pencil"></span></a>
+                                                            {{-- <a style="margin: 1px" href="{{route('owner.credit.education.show', $content->url)}}" class="btn btn-primary" role="button"><i class="fa fa-eye"></i></a>
+                                                            <a  href="{{route('owner.credit.education.edit', $content->url)}}" class="btn btn-primary" role="button"><span class="fa fa-edit"></span></a>
+                                                            <a href="{{ route('admin.delete.education',$content->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button></a> --}}
+
                                                             <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                                                            <a href="{{ route('admin.delete.education',$content->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button></a>
+                                                            <div class="dropdown show">
+                                                              <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                              </a>
 
+                                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                <a class="dropdown-item" href="{{route('owner.credit.education.show', $content->url)}}">View</a>
+                                                                <a class="dropdown-item" href="{{route('owner.credit.education.edit', $content->url)}}">Edit</a>
+                                                                <a class="dropdown-item" href="{{ route('admin.delete.education',$content->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                                              </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>
-                                            {{ $contents->links() }}
+                                            <div class="col-md-12 mt-3">
+                                                <div class="row float-right">
+                                                  {{ $contents->links() }}
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>

@@ -451,6 +451,6 @@
 			</style>
 
 		@endif
-	
+
 
     @yield('css')

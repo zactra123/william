@@ -13,11 +13,11 @@
         </div>
       </div>
     </div>
-
+    @if (count($review)>0)
     <div class="row mb-4">
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="card p-3 mt-4">
-          <span class="fs-18">Total Reviews (<span class="bold">{{ $total }}</span>)</span>
+          <span class="fs-18">Total Reviews (<span class="bold">{{ isset($total) ? $total : '' }}</span>)</span>
           <hr>
 
           <div class="row">
@@ -105,7 +105,7 @@
       </div>
     </div>
 
-      @if (count($review)>0)
+
         @foreach ($review as $key => $value)
           <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-12">
@@ -138,12 +138,13 @@
             </div>
           </div>
         @endforeach
-      @endif
+
       <div class="row pull-right mt-3 mb-3">
         <div class="col-md-12">
           {{ $review->links() }}
         </div>
       </div>
+      @endif
   </div>
 
 </div>

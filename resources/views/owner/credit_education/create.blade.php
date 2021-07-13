@@ -1,18 +1,25 @@
-@extends('layouts.layout')
-
-
-@section('content')
-    @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"ADD EDUCATION" => "#"]])
+@extends('owner.layouts.app')
+@section('body')
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Add Education</li>
+            </ol>
+          </nav>
+    </div>
+  </div>
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-2 col-sm-12"></div>
+                <div class="col-md-8 col-sm-12">
                     <div class="ms-ua-box">
-                        <div class="col-md-11">
+                        <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body">
-                                    <h3>Content</h3>
+                                <div class="card-body pl-4 pr-4">
                                     {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
                                     @csrf
                                     <div class="form-group row font">
@@ -31,17 +38,17 @@
                                     </div>
                                     <div class="form-group row font">
 
-                                        {{ Form::textarea('content[sub_content]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'Sub Content']) }}
+                                        {{ Form::textarea('content[sub_content]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'Sub Content', 'rows' => '5']) }}
 
                                     </div>
                                     <div class="form-group row font">
 
-                                        {{ Form::textarea('content[content]', old('content.content'), ['class' => 'form-control m-input', 'placeholder' => 'Full Content']) }}
+                                        {{ Form::textarea('content[content]', old('content.content'), ['class' => 'form-control m-input', 'placeholder' => 'Full Content', 'rows' => '5']) }}
                                     </div>
 
                                     <div class="form-group row mb-0 font">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
+                                        <div class="col-md-12 text-right px-0">
+                                            <button type="submit" class="btn btn-primary pull-right">
                                                 Add Content
                                             </button>
 

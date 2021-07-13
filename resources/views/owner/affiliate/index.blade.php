@@ -13,10 +13,10 @@
                             <div class="card">
 
                                 <div class="card-header">
-                                    <label class="header m-2">AFFILIATE LIST</label>
+                                    <label class="header m-2">Affiliate List</label>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -42,8 +42,6 @@
                                                     <meta name="csrf-token" content="{{ csrf_token() }}">
 
                                                     <button class="btn btn-danger delete" data-id="{{$user->id}}" ><span class="fa fa-trash-o"></span> </button>
-
-
 
                                                     {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
 
