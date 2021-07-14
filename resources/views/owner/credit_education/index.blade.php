@@ -1,4 +1,7 @@
 @extends('owner.layouts.app')
+@section('title')
+<title> Eductions </title>
+@endsection
 @section('body')
 
     {{-- @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"CREDIT EDUCATION LIST" => "#"]]) --}}

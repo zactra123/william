@@ -1,4 +1,7 @@
 @extends('owner.layouts.app')
+@section('title')
+<title> Dashboard </title>
+@endsection
 @section('body')
   <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">

@@ -1,57 +1,23 @@
-@extends('layouts.admin')
+@extends('owner.layouts.app')
+@section('title')
+<title> Furnisher Type </title>
+@endsection
+@section('body')
 
-@section('content')
-    <style>
-
-        @media (min-width: 400px) {
-            li {
-                display: flex;
-            }
-        }
-
-        /*div {*/
-        /*    padding: 10px;*/
-        /*}*/
-
-        tr {
-            display: flex;
-            flex-direction: column;
-
-        }
-
-        @media (min-width: 400px) {
-            tr {
-                flex-direction: row;
-            }
-        }
-
-        td {
-            padding: 10px;
-        }
-
-        thead {
-            display: none;
-        }
-        .selected {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin: -7px;
-        }
-        .form-account-name {
-            border: 1px solid #d0d0d0;
-            border-radius: 3px;
-        }
-
-
-    </style>
-    {{-- @include('helpers.breadcrumbs', ['title'=> "BANK EQUAL NAMES", 'route' => ["Home"=> '/admins',"BANK NAMES" => "#"]]) --}}
-    <section class="ms-user-account mt-5">
-        <div class="container mt-5">
-            <div class="col-md-3 col-sm-12 mt-5"></div>
-            <br><br><br><br>
+    <div class="breadcrumb-header justify-content-between">
+      <div>
+          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Bank Equal Names</li>
+              </ol>
+            </nav>
+      </div>
+    </div>
+    <section class="ms-user-account">
+        <div class="container">
+            <div class="col-md-3 col-sm-12"></div>
             <div class="col-md-12 col-sm-12">
               <div class="card">
                 {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
@@ -70,7 +36,7 @@
                                       {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label']); !!}
 
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 text-center pt-2">
                                       {!! Form::checkbox('account_type[type]',1, false, ['class'=> " form-check-input" ]); !!}
                                     </div>
                                   </div>
@@ -92,16 +58,15 @@
                   {!! Form::close() !!}
               </div>
             </div>
-            <div class="col-md-12 col-sm-12 my-5">
-
+            <div class="col-md-12 col-sm-12 my-3">
                 <div class="card">
                     <div class="card-body">
                         <table width="100%" class="table  table-striped">
                             <thead>
                             <tr>
-                                <th width="20%">FURNISHERs TYPE</th>
-                                <th width="80%">IS DEFAULT</th>
-                                <th width="80%">KEYWORDS</th>
+                                <th>FURNISHERs TYPE</th>
+                                <th>IS DEFAULT</th>
+                                <th>KEYWORDS</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -115,10 +80,17 @@
                                             {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
 
                                         </td>
-                                        <td width="20%" style="text-align:center">
-                                            <a class="btn btn-danger" href="{{ route('furnisher.delete.type',$type->id) }}"><div class="" onclick="return confirm('Are You Sure?')" data-toggle="popover" data-placement="top" data-id="{{ $type->id}}" >
-                                                <span> <i class="fa fa-trash"></i> </span>
-                                            </div></a>
+                                        <td width="20%" class="text-center">
+                                          <div class="dropdown show">
+                                            <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              Action
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                              <a class="dropdown-item" href="{{ route('furnisher.delete.type',$type->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                            </div>
+                                          </div>
+
                                         </td>
                                     </tr>
                                 @endforeach
@@ -131,39 +103,44 @@
         </div>
     </section>
 
-    <script type="text/html" id="confirmation">
-        <div>
-            <button class="cancel btn btn-secondary ">cancel</button>
-            <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
-        </div>
-    </script>
+@endsection
+@section('css')
+  <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-    <script src="{{ asset('js/site/admin/types.js?v=2') }}" ></script>
+@endsection
+@section('js')
 
-    <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
+      <script type="text/html" id="confirmation">
+          <div>
+              <button class="cancel btn btn-secondary ">cancel</button>
+              <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
+          </div>
+      </script>
 
-    <script>
-        $(document).ready(function($) {
-            $('#equalBanks').validate({
-                rules: {
+      <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+      <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+      <script src="{{ asset('js/site/admin/types.js?v=2') }}" ></script>
 
-                    "account_type[name]": {
-                        required: true
-                    },
+      <script>
+          $(document).ready(function($) {
+              $('#equalBanks').validate({
+                  rules: {
 
-
-                },
-                errorPlacement: function(error, element) {
-                        error.insertAfter(element);
-
-                }
-            })
-
-        })
+                      "account_type[name]": {
+                          required: true
+                      },
 
 
-    </script>
+                  },
+                  errorPlacement: function(error, element) {
+                          error.insertAfter(element);
+
+                  }
+              })
+
+          })
+
+
+      </script>
 
 @endsection

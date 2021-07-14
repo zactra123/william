@@ -452,6 +452,19 @@ class zactra
     }
 
     /**
+     * active a DropDown
+     */
+    static function areActiveDropdown(Array $routes, $output = "is-expanded")
+    {
+
+        foreach ($routes as $route)
+        {
+            if (Route::currentRouteName() == $route) return $output;
+        }
+
+    }
+
+    /**
      * fetch colors from products
      */
 

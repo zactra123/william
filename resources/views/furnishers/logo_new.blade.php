@@ -1,4 +1,7 @@
 @extends('owner.layouts.app')
+@section('title')
+<title> Furnishers </title>
+@endsection
 @section('body')
 
   <div class="breadcrumb-header justify-content-between">
@@ -13,7 +16,7 @@
     </div>
     <div class="">
       <a class="btn btn-primary pull-left" href="{{ route('admins.bank.create')}}" role="button">
-          ADD FURNISHERs/CRAs
+          ADD FURNISHERs / CRAs
       </a>
     </div>
   </div>
@@ -30,7 +33,7 @@
 
                   @include('furnishers.search')
 
-            
+
                   <section class="ms-user-account">
                       <div class="container">
                           <div class="row">
@@ -95,7 +98,8 @@
 
                                                                @else
                                                                        <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                            @endif
+                                                              @endif
+
                                                             {{-- @else
                                                                 @if($logos->no_logo)
                                                                     <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>

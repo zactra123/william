@@ -1,7 +1,7 @@
 
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Personal InformAtion and Statement</h3>
     </div>
     <div>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Late Pricing</h3>
     </div>
     <div>
@@ -328,7 +328,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Blocking Pricing</h3>
     </div>
     <div>
@@ -600,7 +600,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Charge off Pricing no Range</h3>
     </div>
     <div>
@@ -990,7 +990,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Regular Charged Off Removal – No Settlement Pricing</h3>
     </div>
     <div>
@@ -2037,7 +2037,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Regular Charged Off - Removal After Settlement  Pricing</h3>
     </div>
     <div>
@@ -3086,7 +3086,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Doubled Charged Off Removal – No Settlement  Pricing</h3>
     </div>
     <div>
@@ -3241,7 +3241,7 @@
                     <div class="col-md-4 ">
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="">Max $</label>
+                                <label for=""> <strong>Max $</strong> </label>
                             </div>
                             <div class="col-md-12">
                                 <strong> Infinite</strong>
@@ -4140,7 +4140,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Doubled Charged Off - Removal After Settlement Pricing</h3>
     </div>
     <div>
@@ -5194,7 +5194,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>Repossession</h3>
     </div>
     <div>
@@ -5460,7 +5460,7 @@
 </div>
 
 <div class="ms-ua-box mb-4">
-    <div class="row text-center m-5">
+    <div class="row text-center m-3">
         <h3>CollecTion Pricing</h3>
     </div>
     <div class="pt-2">

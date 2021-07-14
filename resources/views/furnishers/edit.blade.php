@@ -1,6 +1,8 @@
 @extends('owner.layouts.app')
+@section('title')
+<title> Furnisher </title>
+@endsection
 @section('body')
-
 
     {{-- @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]]) --}}
     <div class="breadcrumb-header justify-content-between">

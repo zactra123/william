@@ -73,7 +73,6 @@
 
           </div>
         </div>
-        <li class="icons-list-item"><i class="ti-angle-left"></i></li>
       </div>
     </div>
   </div>

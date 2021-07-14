@@ -1,17 +1,8 @@
 @extends('owner.layouts.app')
+@section('title')
+<title> Pricing </title>
+@endsection
 @section('body')
-
-    <style>
-        .ms-ua-box {
-            background-color: #ffffff !important;
-            border-radius: 4px !important;
-            padding: 15px;
-            box-shadow: 0 0 5px 1px #0000005c;
-            opacity: 1;
-        }
-
-    </style>
-    {{-- @include('helpers.breadcrumbs', ['title'=> "PRICING LIST", 'route' => ["Home"=> '/owner',"PRICING LIST" => "#"]]) --}}
     <div class="breadcrumb-header justify-content-between">
       <div>
           <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -120,4 +111,16 @@
     </script>
 
 
+@endsection
+@section('css')
+  <style>
+      .ms-ua-box {
+          background-color: #ffffff !important;
+          border-radius: 4px !important;
+          padding: 15px;
+          box-shadow: 0 0 5px 1px #0000005c;
+          opacity: 1;
+      }
+
+  </style>
 @endsection

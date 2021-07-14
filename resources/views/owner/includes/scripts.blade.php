@@ -1,10 +1,10 @@
 		<!--- Clender js -->
-		<script src="{{asset('/')}}assets/js/app-calendar.js"></script>
+		{{-- <script src="{{asset('/')}}assets/js/app-calendar.js"></script> --}}
 		<!--- JQuery min js -->
 		<script src="{{asset('/')}}assets/plugins/jquery/jquery.min.js"></script>
 
 		<!--- Datepicker js -->
-		<script src="{{asset('/')}}assets/plugins/jquery-ui/ui/widgets/datepicker.js"></script>
+		{{-- <script src="{{asset('/')}}assets/plugins/jquery-ui/ui/widgets/datepicker.js"></script> --}}
 
 		<!--- Bootstrap Bundle js -->
 		<script src="{{asset('/')}}assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -77,7 +77,10 @@
 		<script src="{{asset('/')}}assets/plugins/pickerjs/picker.min.js"></script>
 
 			@if (Route::currentRouteName()=="admins.bank.show")
-
+								<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+								<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+								<script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+								<script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
 						    <script type="text/javascript">
 
 						        $(document).ready(function () {
@@ -374,9 +377,6 @@
 
 						        });
 
-
-
-
 						        $('#oldPhoneNumberId').keyup(function() {
 
 						            var val = this.value.replace(/\D/g, '');
@@ -417,10 +417,6 @@
 								        </div>
 								    </script>
 
-								    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-								    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-								    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-								    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
 								    <script>
 								    $(document).ready(function () {
 								            $(".go-to").click(function () {
@@ -607,6 +603,11 @@
 
 			@if (Route::currentRouteName()=="admins.bank.create")
 
+				<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+				<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+				<script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+				<script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
+
 				    <script>
 				        var types = {!!  json_encode($subTypes) !!};
 
@@ -688,11 +689,6 @@
 				        </formset>
 				    </script>
 
-				    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-				    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-				    <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-				    <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
-
 				    <script>
 				        $(document).ready(function($) {
 				            $.validator.addMethod("extension", function(value, element, param) {
@@ -721,5 +717,5 @@
 				    </script>
 			@endif
 
-			
+
     @yield('js')
