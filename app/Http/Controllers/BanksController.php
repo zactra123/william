@@ -808,7 +808,7 @@ class BanksController extends Controller
 
                     $exChange = ['name' => $disChange->name];
                     $name = BankLogo::whereId($disChange->bank_logo_id)->first();
-                    if($type = '55'){
+                    if($type == '55'){
                         $exChange['name'] = str_replace(['FEDERAL CREDIT UNION'],'FCU', $name);
                     }else{
                         $exChange['name'] = str_replace(['CREDIT UNION'],'CU',  $name);

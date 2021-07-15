@@ -193,23 +193,23 @@ $.validator.addMethod("valid_address", function(value, element) {
 }, "Not valid address format.");
 
 $(document).ready(function(){
-    $('.ssn').mask('000-00-0000')
-    $('.ein').mask('00-0000000')
-    $('.phone').mask('(000) 000-0000')
+    $('.ssn').mask('000-00-0000');
+    $('.ein').mask('00-0000000');
+    $('.phone').mask('(000) 000-0000');
 
 
     let $type = 'client';
     $('form.additional-reg').on('submit', function(e){
         e.preventDefault();
-        $type = $("input[type='radio']:checked").val()
-        $form = $(`[id="${$type}-registration-form"]`).html()
-        $(`.register_form`).html($form)
-        $('.ssn').mask('000-00-0000')
-        $('.ein').mask('00-0000000')
-        $('.phone').mask('(000) 000-0000')
+        $type = $("input[type='radio']:checked").val();
+        $form = $(`[id="${$type}-registration-form"]`).html();
+        $(`.register_form`).html($form);
+        $('.ssn').mask('000-00-0000');
+        $('.ein').mask('00-0000000');
+        $('.phone').mask('(000) 000-0000');
 
         //Validation Start
-        $('#register_form').validate(validationOptions)
+        $('#register_form').validate(validationOptions);
         //Validation End
 
         // autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});

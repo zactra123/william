@@ -77,8 +77,10 @@
     </div>
   </div>
 
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/site/owner/admins.js') }}"></script>
+@endsection
 
+@section('js')
+  <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+  <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+  <script src="{{ asset('js/site/owner/admins.js') }}"></script>
 @endsection

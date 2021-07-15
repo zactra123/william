@@ -1,6 +1,4 @@
-$(document).ready(function($) {
-
-
+$(document).ready(function() {
 
     $.validator.addMethod("password_requirements", function (value, element) {
         var valid_length = !!value.match(/^(.{8,20})$/gm)
@@ -53,7 +51,7 @@ $(document).ready(function($) {
             },
             title: 'Password Requirements',
             placement: (window.innerWidth <1000 ? 'bottom' : 'right')
-        })
+        });
 
         $($this).popover('show')
         $($this).popover('update')
@@ -61,7 +59,7 @@ $(document).ready(function($) {
 
     $('#password,#password-confirm').on('focusout', function(){
         $(this).popover('hide')
-    })
+    });
 
     $('#change-password').validate({
         rules: {
@@ -88,14 +86,14 @@ $(document).ready(function($) {
                 error.insertAfter(element);
             }
         }
-    })
+    });
 
 
     $('#client-registration-form').submit(function () {
         if (!$(this).valid()){
             $('#client-registration-form .form-control.error')[0].focus()
         }
-    })
+    });
 
     $('#secret_question').on('change', function(){
         if ($(this).val() == "other") {
@@ -103,5 +101,5 @@ $(document).ready(function($) {
         } else {
             $("#custom-secret-question").addClass('hidden')
         }
-    })
+    });
 });

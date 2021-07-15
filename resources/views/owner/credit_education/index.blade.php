@@ -100,49 +100,52 @@
     </section>
 
 
-    <script>
-        $(document).ready(function () {
-            $(".delete").on('click', function (e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                var token = $("meta[name='csrf-token']").attr("content");
-                bootbox.confirm({
-                    title: "Destroy  this Credit Education?",
-                    message: "Do you really want to delete this record?",
-                    buttons: {
-                        cancel: {
-                            label: '<i class="fa fa-times"></i> Cancel',
-                            className: 'btn-success'
+@endsection
+@section('js')
+  <script>
+      $(document).ready(function () {
+          $(".delete").on('click', function (e) {
+              e.preventDefault();
+              var id = $(this).data('id');
+              var token = $("meta[name='csrf-token']").attr("content");
+              bootbox.confirm({
+                  title: "Destroy  this Credit Education?",
+                  message: "Do you really want to delete this record?",
+                  buttons: {
+                      cancel: {
+                          label: '<i class="fa fa-times"></i> Cancel',
+                          className: 'btn-success'
 
-                        },
-                        confirm: {
-                            label: '<i class="fa fa-check"></i> Confirm',
-                            className: 'btn-danger'
+                      },
+                      confirm: {
+                          label: '<i class="fa fa-check"></i> Confirm',
+                          className: 'btn-danger'
 
-                        }
-                    },
-                    callback: function (result) {
-                        console.log('This was logged in the callback: ' + result);
-                        if (result) {
+                      }
+                  },
+                  callback: function (result) {
+                      console.log('This was logged in the callback: ' + result);
+                      if (result) {
 
-                            $.ajax(
-                                {
-                                    url: "credit-education/" + id,
-                                    type: 'DELETE',
-                                    data: {
-                                        "id": id,
-                                        "_token": token,
-                                    },
-                                    success: function () {
-                                        console.log("it Works");
-                                    }
-                                });
-                        }
-                    }
-                });
+                          $.ajax(
+                              {
+                                  url: "credit-education/" + id,
+                                  type: 'DELETE',
+                                  data: {
+                                      "id": id,
+                                      "_token": token,
+                                  },
+                                  success: function () {
+                                      console.log("it Works");
+                                  }
+                              });
+                      }
+                  }
+              });
 
-            })
-        })
+          })
+      })
 
-    </script>
+  </script>
+
 @endsection

@@ -91,7 +91,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+
       <div class="modal-body">
         <p class="showreview"></p>
       </div>
@@ -99,11 +99,13 @@
     </div>
   </div>
 </div>
+@endsection
+@section('js')
+  <script type="text/javascript">
+  function getreview(ob) {
+    var review = $(ob).attr('data-review');
+    $('.showreview').html(review);
+  }
+  </script>
 
-<script type="text/javascript">
-function getreview(ob) {
-  var review = $(ob).attr('data-review');
-  $('.showreview').html(review);
-}
-</script>
 @endsection

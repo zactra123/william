@@ -30,7 +30,7 @@ function upload_images(blobInfo, success, failure) {
 }
 
 
-$(document).ready(function($) {
+$(document).ready(function() {
     $('#date').focus(function () {
 
         this.type='date';
@@ -58,4 +58,4 @@ $(document).ready(function($) {
             upload_images(blobInfo, success, failure)
         }
     });
-})
+});

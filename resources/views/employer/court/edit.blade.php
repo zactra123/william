@@ -428,7 +428,7 @@
 
 
         <script>
-        $(document).ready(function($) {
+        $(document).ready(function() {
 
             $.validator.addMethod("extension", function(value, element, param) {
                 param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
@@ -450,10 +450,10 @@
                 errorPlacement: function(error, element) {
                     error.insertAfter(element);
                 }
-            })
-            $(".selectize-type").selectize({plugins: ['remove_button']})
+            });
+            $(".selectize-type").selectize({plugins: ['remove_button']});
 
-        })
+        });
     </script>
 
     <script>

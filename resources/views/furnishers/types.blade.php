@@ -122,7 +122,7 @@
       <script src="{{ asset('js/site/admin/types.js?v=2') }}" ></script>
 
       <script>
-          $(document).ready(function($) {
+          $(document).ready(function() {
               $('#equalBanks').validate({
                   rules: {
 
@@ -138,7 +138,7 @@
                   }
               })
 
-          })
+          });
 
 
       </script>

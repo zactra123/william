@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+$(document).ready(function() {
     autocomplete = new google.maps.places.Autocomplete($("#address")[0], { types: ['address'], componentRestrictions: {country: "us"}});
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var place = autocomplete.getPlace();

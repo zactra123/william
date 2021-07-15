@@ -40,7 +40,9 @@
             margin-bottom: .25rem;
         }
 
-        .box-shadow { box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1); }
+        .box-shadow {
+          box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1);
+        }
 
         .card-img-top {
             width: 100%;
@@ -125,12 +127,12 @@
                                         <div class="card mb-4 box-shadow" >
                                             @if (isset($logos->bucket))
                                               @if($logos->checkUrlAttribute())
-                                                 <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                 <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
                                               @else
-                                                  <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                  <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
                                               @endif
                                             @else
-                                              <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                              <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
                                             @endif
 
                                             <div class="card-body">

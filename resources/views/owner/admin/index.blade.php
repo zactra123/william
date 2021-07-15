@@ -82,53 +82,54 @@
 					</div>
     </div>
 
+@endsection
+@section('js')
+  <script>
+      $(document).ready(function () {
+          $(".delete").on('click', function (e) {
+              e.preventDefault();
+              var id = $(this).data('id');
+              var token = $("meta[name='csrf-token']").attr("content");
+              console.log("test");
+              bootbox.confirm({
+                  title: "Destroy  this admin?",
+                  message: "Do you really want to delete record?",
+                  buttons: {
+                      cancel: {
+                          label: '<i class="fa fa-times"></i> Cancel',
+                          className: 'btn-success'
 
-    <script>
-        $(document).ready(function () {
-            $(".delete").on('click', function (e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                var token = $("meta[name='csrf-token']").attr("content");
-                console.log("test");
-                bootbox.confirm({
-                    title: "Destroy  this admin?",
-                    message: "Do you really want to delete record?",
-                    buttons: {
-                        cancel: {
-                            label: '<i class="fa fa-times"></i> Cancel',
-                            className: 'btn-success'
+                      },
+                      confirm: {
+                          label: '<i class="fa fa-check"></i> Confirm',
+                          className: 'btn-danger'
 
-                        },
-                        confirm: {
-                            label: '<i class="fa fa-check"></i> Confirm',
-                            className: 'btn-danger'
+                      }
+                  },
+                  callback: function (result) {
+                      console.log('This was logged in the callback: ' + result);
+                      if (result) {
 
-                        }
-                    },
-                    callback: function (result) {
-                        console.log('This was logged in the callback: ' + result);
-                        if (result) {
-
-                            $.ajax({
-                                url: "/owner/admin/" + id,
-                                type: 'DELETE',
-                                data: {
-                                    "id": id,
-                                    "_token": token,
-                                },
-                                success: function () {
-                                    console.log("it Works");
-                                    location.reload()
-                                }
-                            });
-                        }
-                    }
-                });
-
-
-            })
-        })
+                          $.ajax({
+                              url: "/owner/admin/" + id,
+                              type: 'DELETE',
+                              data: {
+                                  "id": id,
+                                  "_token": token,
+                              },
+                              success: function () {
+                                  console.log("it Works");
+                                  location.reload()
+                              }
+                          });
+                      }
+                  }
+              });
 
 
-    </script>
+          })
+      })
+
+
+  </script>
 @endsection

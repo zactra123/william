@@ -297,11 +297,11 @@ $(document).ready(function(){
             placement: (window.innerWidth <1000 ? 'bottom' : 'right')
         })
 
-        $($this).popover('show')
-        $($this).popover('update')
+        $($this).popover('show');
+        $($this).popover('update');
     })
 
     $(document).on('focusout','#register_password', function(){
-        $(this).popover('hide')
+        $(this).popover('hide');
     })
 });

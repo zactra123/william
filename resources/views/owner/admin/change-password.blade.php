@@ -61,42 +61,42 @@
  </div>
 
 
+@endsection
 
+@section('css')
+  <style>
+      .popover {
+          width: fit-content;
+      }
+  </style>
+@endsection
 
-    <script type="text/javascript">
+@section('js')
+  <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
+  <script src="{{ asset('js/site/clients/changePassword.js?v=2') }}" defer></script>
 
-        $(document).ready(function(){
-            $('.pass_show').append('<span class="ptxt"><i class="fa fa-eye"></span>');
-        });
+  <script type="text/javascript">
 
-        $(document).on('click','.pass_show .ptxt', function(){
+      $(document).ready(function(){
+          $('.pass_show').append('<span class="ptxt"><i class="fa fa-eye"></span>');
+      });
 
-            $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
+      $(document).on('click','.pass_show .ptxt', function(){
 
-        });
+          $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; });
 
-    </script>
+      });
 
-    <script id="password-requirements" type="text/html">
-        <div>
-            <ul>
-                <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
-                <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
-                <li><i class="fa {digit-class}"></i> Must contain at least one number digit</li>
-                <li><i class="fa {special-class}"></i> Must contain at least one special characters</li>
-            </ul>
-        </div>
-    </script>
+  </script>
 
-    <style>
-        .popover {
-            width: fit-content;
-        }
-    </style>
-
-    <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
-    <script src="{{ asset('js/site/clients/changePassword.js?v=2') }}" defer></script>
-
-
-
+  <script id="password-requirements" type="text/html">
+      <div>
+          <ul>
+              <li><i class="fa {length-class}"></i> Must be between 8 and 20</li>
+              <li><i class="fa {letters-class}"></i> Must contain both upper and lower case letters</li>
+              <li><i class="fa {digit-class}"></i> Must contain at least one number digit</li>
+              <li><i class="fa {special-class}"></i> Must contain at least one special characters</li>
+          </ul>
+      </div>
+  </script>
 @endsection

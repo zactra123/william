@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+$(document).ready(function() {
 
 
 
@@ -53,15 +53,15 @@ $(document).ready(function($) {
             },
             title: 'Password Requirements',
             placement: (window.innerWidth <1000 ? 'bottom' : 'right')
-        })
+        });
 
         $($this).popover('show')
         $($this).popover('update')
-    })
+    });
 
     $('#password,#password-confirm').on('focusout', function(){
         $(this).popover('hide')
-    })
+    });
 
     $('#change-password').validate({
         rules: {
@@ -88,14 +88,14 @@ $(document).ready(function($) {
                 error.insertAfter(element);
             }
         }
-    })
+    });
 
 
     $('#client-registration-form').submit(function () {
         if (!$(this).valid()){
             $('#client-registration-form .form-control.error')[0].focus()
         }
-    })
+    });
 
     $('#secret_question').on('change', function(){
         if ($(this).val() == "other") {
@@ -103,5 +103,5 @@ $(document).ready(function($) {
         } else {
             $("#custom-secret-question").addClass('hidden')
         }
-    })
+    });
 });

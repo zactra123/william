@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+$(document).ready(function() {
 
     $('[data-toggle="popover"]').popover({
         html:true,
@@ -128,4 +128,4 @@ $('.is_default_account_type').on('change', function() {
             location.reload()
         }
     })
-})
+});

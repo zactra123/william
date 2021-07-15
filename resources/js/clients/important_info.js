@@ -1,4 +1,4 @@
-$(document).ready(function($){
+$(document).ready(function(){
     $('#ein_number').mask('00-0000000')
     $('#social_number').mask('000-00-0000')
     $('#phone_number').mask('(000) 000-0000');
@@ -43,5 +43,5 @@ $(document).ready(function($){
                 error.insertAfter(element);
             }
         }
-    })
+    });
 });

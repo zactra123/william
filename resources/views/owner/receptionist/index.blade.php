@@ -82,39 +82,39 @@
     </div>
 
 
-    <script>
-        $(document).ready(function () {
-            $(".delete").on('click', function (e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                var token = $("meta[name='csrf-token']").attr("content");
-                console.log("test");
-                bootbox.confirm("Do you really want to delete record?", function (result) {
-                    console.log(result);
-                    if (result) {
+@endsection
+@section('js')
+  <script>
+      $(document).ready(function () {
+          $(".delete").on('click', function (e) {
+              e.preventDefault();
+              var id = $(this).data('id');
+              var token = $("meta[name='csrf-token']").attr("content");
+              console.log("test");
+              bootbox.confirm("Do you really want to delete record?", function (result) {
+                  console.log(result);
+                  if (result) {
 
-                        $.ajax(
-                            {
-                                url: "/owner/admin/" + id,
-                                type: 'DELETE',
-                                data: {
-                                    "id": id,
-                                    "_token": token,
-                                },
-                                success: function () {
-                                    console.log("it Works");
-                                    location.reload()
-                                }
-                            });
-                    }
-                })
+                      $.ajax(
+                          {
+                              url: "/owner/admin/" + id,
+                              type: 'DELETE',
+                              data: {
+                                  "id": id,
+                                  "_token": token,
+                              },
+                              success: function () {
+                                  console.log("it Works");
+                                  location.reload()
+                              }
+                          });
+                  }
+              })
 
-            })
-        })
-
-
-    </script>
+          })
+      })
 
 
+  </script>
 
 @endsection
