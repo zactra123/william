@@ -96,7 +96,7 @@
                                             <div class="col-sm-4">
                                                 <div class="row">
                                                   <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{asset('/')}}/images/phone.png">
+                                                      <img  class="responsive" src="{{url('/')}}/images/phone.png">
                                                   </div>
                                                   <div class="col-sm-10">
                                                       {!! Form::text("authority[phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -106,7 +106,7 @@
                                             <div class="col-sm-4">
                                                 <div class="row">
                                                   <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{asset('/')}}/images/fax.png">
+                                                      <img  class="responsive" src="{{url('/')}}/images/fax.png">
                                                   </div>
                                                   <div class="col-sm-10">
                                                   {!! Form::text("authority[fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -116,7 +116,7 @@
                                             <div class="col-sm-4">
                                                 <div class="row">
                                                   <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{asset('/')}}/images/email.png">
+                                                      <img  class="responsive" src="{{url('/')}}/images/email.png">
                                                   </div>
                                                   <div class="col-sm-10">
                                                       {!! Form::email("authority[email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}

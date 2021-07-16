@@ -93,14 +93,14 @@
                                                            @if (!empty($authority->path))
                                                              <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $authorityimg }}" alt="Card image cap"></a>
                                                            @else
-                                                             <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap"></a>
+                                                             <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" alt="Card image cap"></a>
                                                            @endif
                                                          @else
-                                                               <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap"></a>
+                                                               <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" alt="Card image cap"></a>
                                                            @endif
 
                                                          @else
-                                                                 <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap"></a>
+                                                                 <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" alt="Card image cap"></a>
                                                       @endif
                                                     <div class="card-body">
                                                         <div class="card-text mt-5">

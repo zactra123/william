@@ -179,7 +179,7 @@
                                         <div class="form-group col-sm-4">
                                             <div class="row">
                                                 <div class="form-group col-sm-2">
-                                                    <img class="responsive" width="50%" src="{{ asset('/') }}/images/phone.png" />
+                                                    <img class="responsive" width="50%" src="{{ url('/') }}/images/phone.png" />
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -189,7 +189,7 @@
                                         <div class="form-group col-sm-4">
                                             <div class="row">
                                                 <div class="form-group col-sm-2">
-                                                    <img class="responsive" width="50%" src="{{ asset('/') }}/images/fax.png" />
+                                                    <img class="responsive" width="50%" src="{{ url('/') }}/images/fax.png" />
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -199,7 +199,7 @@
                                         <div class="form-group col-sm-4">
                                             <div class="row">
                                                 <div class="form-group col-sm-2">
-                                                    <img class="responsive" width="50%" src="{{ asset('/') }}/images/email.png" />
+                                                    <img class="responsive" width="50%" src="{{ url('/') }}/images/email.png" />
                                                 </div>
                                                 <div class="form-group col-sm-10">
                                                     {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
@@ -261,158 +261,157 @@
 
 @endsection
 @section('js')
-  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
 <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
 <script src="{{ asset('js/site/admin/banks.js?v=2') }}" ></script>
-
+{{-- <script src="{{ asset('owner/includes/js/banks.js') }}" ></script> --}}
 <script>
-$( document ).ready(function() {
-  $('.add-additional').on('click', function(){
-      var n = Number(Date.now());
-      additional = $('#addtional_address_template').html()
-          .replaceAll('{i}', n)
-          .replace('{class}', 'selectize-single')
-      $(additional).insertBefore('.additional-addresses')
-      $('.additional-addresses').prev().find('.selectize-single').selectize({
-          selectOnTab: true,
-      })
-      $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
-  });
-});
-
-$(document).on('click', '.remove-address button', function(){
-    $(this).parents('formset').remove();
-});
-
-$(document).on('change', '.bank-type' ,function(){
-    $form = $(this).parents('form');
-    var bankType = $form.find('.bank-type').val(),
-        token = $("meta[name='csrf-token']").attr("content");
-
-    $form.find(".bank_sub_type_append").html('');
-    $.each( types[bankType], function(index, item) {
-        var sub_types =  $("#sub_types_append").html();
-        sub_types = sub_types.replace(/{value}/g, item);
-
-        $form.find(".bank_sub_type_append").append(sub_types);
-    });
-
-    $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
-
-
-    if(bankType == 3) {
-        $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS");
-    } else {
-        $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS");
-    }
-    console.log(bankType);
-    if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
-
-        if($form.find('.parent_id').val() !== ""){
-            $form.find('.hide-parent-field').removeClass('hide');
-            $form.find('.show-parent-field').addClass('hide');
-            $form.find('.parent').removeClass("hidden" );
-            $form.find('.parent-show').removeClass('hide');
-        }else{
-            $form.find('.show-parent-field').removeClass('hide');
-            $form.find('.hide-parent-field').addClass('hide');
-            $form.find('.parent-show').addClass('hide');
-            $form.find('.parent').removeClass("hidden" );
-        }
-
-
-    }else {
-        $form.find('.parent').addClass("hidden");
-        $(".autocomplete-bank").val("");
-        $(".autocomplete-bank").trigger('keydown');
-    }
-});
-
-$(document).on('click', '.show-parent-field', function(){
-    $('.parent-show').removeClass('hide');
-    $('.show-parent-field').addClass('hide');
-    $('.hide-parent-field').removeClass('hide');
-});
-
-$(document).on('click', '.hide-parent-field', function(){
-    console.log('dasdasd');
-    $('.parent-show').addClass('hide');
-    $('.show-parent-field').removeClass('hide');
-    $('.hide-parent-field').addClass('hide');
-    $('.autocomplete-bank').val('');
-    $('.parent_id').val('');
-});
-
-$(document).on('click','.bank_sub_type_append', function(){
-    $form = $(this).parents('form');
-    var bankType = $form.find('.bank-type').val();
-
-    if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
-
-        $form.find('.parent').removeClass("hidden");
-    } else if(parseInt(bankType) == 40) {
-        $form.find('.parent').addClass("hidden");
-        $(".autocomplete-bank").val("");
-        $(".autocomplete-bank").trigger('keydown');
-    }
-});
-
-if($('.parent_id').val()==""){
-    $(".executive_copied").hide();
-}
-$(document).on('change click keydown', function(){
-    if($('.parent_id').val()!=""){
-        $(".executive_copied").show();
-    }
-});
-
-
-$(document).on('click','.executive_copied', function(){
-    if($("input[name='bank_address[executive_address][copied]']:checked").val()){
-        $form = $(this).parents('form');
-        var parent_id = $form.find('.parent_id').val();
-
-
-        $.ajax({
-            url: '/admins/furnishers/executive-copied',
-            type: "POST",
-            data: {
-                "_token": $("meta[name='csrf-token']").attr("content"),
-                'parent_id': parent_id
-            },
-            success: function( data ) {
-                $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
-                $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
-                $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
-                if(data.state != null){
-                    var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
-                    var selectize = $select[0].selectize;
-                    selectize.setValue(selectize.search(data.state).items[0].id);
-                }
-                $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
-                $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
-                $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
-                $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
-            }
-        });
-
-    }else{
-        $form.find("input[name='bank_address[executive_address][name]']").val('');
-        $form.find("input[name='bank_address[executive_address][street]']").val('');
-        $form.find("input[name='bank_address[executive_address][city]']").val('');
-        $form.find("select[name='bank_address[executive_address][state]']").val('');
-        $form.find("input[name='bank_address[executive_address][zip]']").val('');
-        $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
-        $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
-        $form.find("input[name='bank_address[executive_address][email]']").val('');
-    }
-
-
-});
-
+// $( document ).ready(function() {
+//   $('.add-additional').on('click', function(){
+//       var n = Number(Date.now());
+//       additional = $('#addtional_address_template').html()
+//           .replaceAll('{i}', n)
+//           .replace('{class}', 'selectize-single')
+//       $(additional).insertBefore('.additional-addresses')
+//       $('.additional-addresses').prev().find('.selectize-single').selectize({
+//           selectOnTab: true,
+//       })
+//       $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
+//   });
+// });
+//
+// $(document).on('click', '.remove-address button', function(){
+//     $(this).parents('formset').remove();
+// });
+//
+// $(document).on('change', '.bank-type' ,function(){
+//     $form = $(this).parents('form');
+//     var bankType = $form.find('.bank-type').val(),
+//         token = $("meta[name='csrf-token']").attr("content");
+//
+//     $form.find(".bank_sub_type_append").html('');
+//     $.each( types[bankType], function(index, item) {
+//         var sub_types =  $("#sub_types_append").html();
+//         sub_types = sub_types.replace(/{value}/g, item);
+//
+//         $form.find(".bank_sub_type_append").append(sub_types);
+//     });
+//
+//     $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
+//
+//
+//     if(bankType == 3) {
+//         $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS");
+//     } else {
+//         $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS");
+//     }
+//     console.log(bankType);
+//     if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
+//
+//         if($form.find('.parent_id').val() !== ""){
+//             $form.find('.hide-parent-field').removeClass('hide');
+//             $form.find('.show-parent-field').addClass('hide');
+//             $form.find('.parent').removeClass("hidden" );
+//             $form.find('.parent-show').removeClass('hide');
+//         }else{
+//             $form.find('.show-parent-field').removeClass('hide');
+//             $form.find('.hide-parent-field').addClass('hide');
+//             $form.find('.parent-show').addClass('hide');
+//             $form.find('.parent').removeClass("hidden" );
+//         }
+//
+//
+//     }else {
+//         $form.find('.parent').addClass("hidden");
+//         $(".autocomplete-bank").val("");
+//         $(".autocomplete-bank").trigger('keydown');
+//     }
+// });
+//
+// $(document).on('click', '.show-parent-field', function(){
+//     $('.parent-show').removeClass('hide');
+//     $('.show-parent-field').addClass('hide');
+//     $('.hide-parent-field').removeClass('hide');
+// });
+//
+// $(document).on('click', '.hide-parent-field', function(){
+//     console.log('dasdasd');
+//     $('.parent-show').addClass('hide');
+//     $('.show-parent-field').removeClass('hide');
+//     $('.hide-parent-field').addClass('hide');
+//     $('.autocomplete-bank').val('');
+//     $('.parent_id').val('');
+// });
+//
+// $(document).on('click','.bank_sub_type_append', function(){
+//     $form = $(this).parents('form');
+//     var bankType = $form.find('.bank-type').val();
+//
+//     if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
+//
+//         $form.find('.parent').removeClass("hidden");
+//     } else if(parseInt(bankType) == 40) {
+//         $form.find('.parent').addClass("hidden");
+//         $(".autocomplete-bank").val("");
+//         $(".autocomplete-bank").trigger('keydown');
+//     }
+// });
+//
+// if($('.parent_id').val()==""){
+//     $(".executive_copied").hide();
+// }
+// $(document).on('change click keydown', function(){
+//     if($('.parent_id').val()!=""){
+//         $(".executive_copied").show();
+//     }
+// });
+//
+//
+// $(document).on('click','.executive_copied', function(){
+//     if($("input[name='bank_address[executive_address][copied]']:checked").val()){
+//         $form = $(this).parents('form');
+//         var parent_id = $form.find('.parent_id').val();
+//
+//
+//         $.ajax({
+//             url: '/admins/furnishers/executive-copied',
+//             type: "POST",
+//             data: {
+//                 "_token": $("meta[name='csrf-token']").attr("content"),
+//                 'parent_id': parent_id
+//             },
+//             success: function( data ) {
+//                 $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
+//                 $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
+//                 $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
+//                 if(data.state != null){
+//                     var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
+//                     var selectize = $select[0].selectize;
+//                     selectize.setValue(selectize.search(data.state).items[0].id);
+//                 }
+//                 $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
+//                 $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
+//                 $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
+//                 $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
+//             }
+//         });
+//
+//     }else{
+//         $form.find("input[name='bank_address[executive_address][name]']").val('');
+//         $form.find("input[name='bank_address[executive_address][street]']").val('');
+//         $form.find("input[name='bank_address[executive_address][city]']").val('');
+//         $form.find("select[name='bank_address[executive_address][state]']").val('');
+//         $form.find("input[name='bank_address[executive_address][zip]']").val('');
+//         $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
+//         $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
+//         $form.find("input[name='bank_address[executive_address][email]']").val('');
+//     }
+//
+//
+// });
+//
 var types = {!!  json_encode($subTypes) !!};
 
 </script>
@@ -466,7 +465,7 @@ var types = {!!  json_encode($subTypes) !!};
                 <div class="form-group col-sm-4">
                     <div class="row">
                       <div class="form-group col-sm-2">
-                          <img  class="responsive" width="50%" src="{{asset('/')}}/images/phone.png">
+                          <img  class="responsive" width="50%" src="{{url('/')}}/images/phone.png">
                       </div>
                       <div class="form-group col-sm-10">
                           {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -476,7 +475,7 @@ var types = {!!  json_encode($subTypes) !!};
                 <div class="form-group col-sm-4">
                   <div class="row">
                     <div class="form-group col-sm-2">
-                        <img  class="responsive" width="50%" src="{{asset('/')}}/images/fax.png">
+                        <img  class="responsive" width="50%" src="{{url('/')}}/images/fax.png">
                     </div>
                     <div class="form-group col-sm-10">
                         {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -487,7 +486,7 @@ var types = {!!  json_encode($subTypes) !!};
                 <div class="form-group col-sm-4">
                     <div class="row">
                       <div class="form-group col-sm-2">
-                          <img  class="responsive" width="50%" src="{{asset('/')}}/images/email.png">
+                          <img  class="responsive" width="50%" src="{{url('/')}}/images/email.png">
                       </div>
                       <div class="form-group col-sm-10">
                           {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}

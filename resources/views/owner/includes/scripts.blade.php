@@ -3,10 +3,14 @@
 		<!--- JQuery min js -->
 
 		<script src="{{asset('/')}}assets/plugins/jquery/jquery.min.js"></script>
+		{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 		<!--- Datepicker js -->
 		{{-- <script src="{{asset('/')}}assets/plugins/jquery-ui/ui/widgets/datepicker.js"></script> --}}
-		{{-- <script src="{{ asset('js/site/admin/banks.js') }}"></script> --}}
+
 		<!--- Bootstrap Bundle js -->
 		<script src="{{asset('/')}}assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -80,4 +84,4 @@
 
 
 
-    @yield('js')
+  @yield('js')

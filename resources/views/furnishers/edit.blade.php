@@ -240,6 +240,7 @@
                                                 </div>
                                             </div>
                                         @endif
+                                    
                                         <div class="row">
                                             {!! Form::hidden("bank_address[$type][type]", $type, ["class"=>"form-control"]) !!}
                                             {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
@@ -331,8 +332,7 @@
         </div>
     </section>
 
-    <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+    <div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog w-100" role="document">
             <div class="modal-content ">
                 <div class="modal-header">
@@ -394,7 +394,7 @@
                     <div class="col-md-6"><label for="">Additional Address</label></div>
                     <div class="col-md-6 text-right mb-3">
                         <button type="button" class="btn btn-danger">
-                            <i class="fa fa-remove"></i>
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                 </div>
@@ -422,6 +422,7 @@
                             {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="form-group col-sm-4">
                             <div class="form-group col-sm-2 p-0">
@@ -466,277 +467,277 @@
 
   <script type="text/javascript">
 
-
-  $( document ).ready(function() {
-    $('.add-additional').on('click', function(){
-        var n = Number(Date.now());
-        additional = $('#addtional_address_template').html()
-            .replaceAll('{i}', n)
-            .replace('{class}', 'selectize-single')
-        $(additional).insertBefore('.additional-addresses')
-        $('.additional-addresses').prev().find('.selectize-single').selectize({
-            selectOnTab: true,
-        })
-        $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
-    });
-
-    $('.show-parent-bank').on('click', function(){
-        id = $(this).parents('form').find('.parent_id').val();
-
-        if (!id) {
-            alert("PARENT BANK NOT DEFINED");
-            return false;
-        }
-
-        $.ajax({
-            url: '/admins/furnishers/'+id,
-            type: "GET",
-            success: function( data ) {
-                $('#parentModal').find('.modal-body').html(data);
-                $('#parentModal .selectize-single').selectize({
-                    selectOnTab: true,
-                });
-                $('#parentModal .selectize-multiple').selectize({
-                    plugins: ['remove_button'],
-                    selectOnTab: true,
-                    delimiter: ',',
-                    persist: true,
-                    preload: true,
-                    labelField: 'name',
-                    valueField: 'name',
-                    create: function(input) {
-                        return {
-                            value: input,
-                            name: input
-                        };
-                    }
-                });
-                $('#parentModal').modal('toggle');
-                $('.paste-register').on('click', function(){
-                    var name =   $("#parentModal input[name='bank_address[executive_address][name]']").val();
-                    var street =   $("#parentModal input[name='bank_address[executive_address][street]']").val();
-                    var city =   $("#parentModal input[name='bank_address[executive_address][city]']").val();
-                    var state =   $("#parentModal select[name='bank_address[executive_address][state]']").val();
-                    var zip =   $("#parentModal input[name='bank_address[executive_address][zip]']").val();
-                    var phone =   $("#parentModal input[name='bank_address[executive_address][phone_number]']").val();
-                    var fax =   $("#parentModal input[name='bank_address[executive_address][fax_number]']").val();
-                    var email =   $("#parentModal input[name='bank_address[executive_address][email]']").val();
-
-                    $("#parentModal input[name='bank_address[registered_agent][name]']").val(name);
-                    $("#parentModal input[name='bank_address[registered_agent][street]']").val(street);
-                    $("#parentModal input[name='bank_address[registered_agent][city]']").val(city);
-
-                    var $select = $("#parentModal select[name='bank_address[registered_agent][state]']").selectize();
-                    var selectize = $select[0].selectize;
-                    selectize.setValue(selectize.search(state).items[0].id);
-
-                    $("#parentModal input[name='bank_address[registered_agent][zip]']").val(zip);
-                    $("#parentModal input[name='bank_address[registered_agent][phone_number]']").val(phone);
-                    $("#parentModal input[name='bank_address[registered_agent][fax_number]']").val(fax);
-                    $("#parentModal input[name='bank_address[registered_agent][email]']").val(email);
-                } );
-                $('.add-additional').on('click', function(){
-                    var n = Number(Date.now());
-                    additional = $('#addtional_address_template').html()
-                        .replaceAll('{i}', n)
-                        .replace('{class}', 'selectize-single');
-                    $(additional).insertBefore('.additional-addresses');
-                    $('.additional-addresses').prev().find('.selectize-single').selectize({
-                        selectOnTab: true,
-                    });
-                    $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
-                });
-
-
-                $('#parentBankInformationEdit').validate({
-
-                    ignore: [],
-                    rules: {
-                        "bank[name]": {
-                            required: true,
-                            // remote: {
-                            //     url: "/admins/furnishers/check/name",
-                            //     type: "POST",
-                            //     cache: false,
-                            //     dataType: "json",
-                            //     data: {
-                            //         name: function() { return $("#parentBankInformationEdit .bank_name").val();},
-                            //         _token: function (){return  $("meta[name='csrf-token']").attr("content");}
-                            //     },
-                            //     dataFilter: function(response) {
-                            //         return  false;
-                            //         if(jQuery.parseJSON(response).status == true) {
-                            //             return true;
-                            //         }else{
-                            //             return false;
-                            //         }
-                            //     }
-                            // }
-                        },
-                    },
-                    // messages:{
-                    //     "bank[name]": {
-                    //         remote: "This name already exist"
-                    //     }
-                    //
-                    // },
-
-                    submitHandler: function(form) {
-                        var data = $(form).serialize();
-                        var action = $(form).attr("action");
-                        console.log(action);
-                        $.ajax({
-                            url: action,
-                            type: "PUT",
-                            data: data,
-                            success: function( data ) {
-
-
-                                $('#parentModal').modal('toggle'); //or  $('#IDModal').modal('hide');
-                                $(".autocomplete-bank").val(data['parent_name']);
-                            }
-                        });
-                    }
-
-                });
-
-
-            }
-        });
-    });
-
-
-  });
-
-  $(document).on('click', '.remove-address button', function(){
-      $(this).parents('formset').remove();
-  });
-
-  $(document).on('change', '.bank-type' ,function(){
-      $form = $(this).parents('form');
-      var bankType = $form.find('.bank-type').val(),
-          token = $("meta[name='csrf-token']").attr("content");
-
-      $form.find(".bank_sub_type_append").html('');
-      $.each( types[bankType], function(index, item) {
-          var sub_types =  $("#sub_types_append").html();
-          sub_types = sub_types.replace(/{value}/g, item);
-
-          $form.find(".bank_sub_type_append").append(sub_types);
-      });
-
-      $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
-
-
-      if(bankType == 3) {
-          $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS");
-      } else {
-          $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS");
-      }
-      console.log(bankType);
-      if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
-
-          if($form.find('.parent_id').val() !== ""){
-              $form.find('.hide-parent-field').removeClass('hide');
-              $form.find('.show-parent-field').addClass('hide');
-              $form.find('.parent').removeClass("hidden" );
-              $form.find('.parent-show').removeClass('hide');
-          }else{
-              $form.find('.show-parent-field').removeClass('hide');
-              $form.find('.hide-parent-field').addClass('hide');
-              $form.find('.parent-show').addClass('hide');
-              $form.find('.parent').removeClass("hidden" );
-          }
-
-
-      }else {
-          $form.find('.parent').addClass("hidden");
-          $(".autocomplete-bank").val("");
-          $(".autocomplete-bank").trigger('keydown');
-      }
-  });
-
-  $(document).on('click', '.show-parent-field', function(){
-      $('.parent-show').removeClass('hide');
-      $('.show-parent-field').addClass('hide');
-      $('.hide-parent-field').removeClass('hide');
-  });
-
-  $(document).on('click', '.hide-parent-field', function(){
-      console.log('dasdasd');
-      $('.parent-show').addClass('hide');
-      $('.show-parent-field').removeClass('hide');
-      $('.hide-parent-field').addClass('hide');
-      $('.autocomplete-bank').val('');
-      $('.parent_id').val('');
-  });
-
-  $(document).on('click','.bank_sub_type_append', function(){
-      $form = $(this).parents('form');
-      var bankType = $form.find('.bank-type').val();
-
-      if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
-
-          $form.find('.parent').removeClass("hidden");
-      } else if(parseInt(bankType) == 40) {
-          $form.find('.parent').addClass("hidden");
-          $(".autocomplete-bank").val("");
-          $(".autocomplete-bank").trigger('keydown');
-      }
-  });
-
-  if($('.parent_id').val()==""){
-      $(".executive_copied").hide();
-  }
-  $(document).on('change click keydown', function(){
-      if($('.parent_id').val()!=""){
-          $(".executive_copied").show();
-      }
-  });
-
-
-  $(document).on('click','.executive_copied', function(){
-      if($("input[name='bank_address[executive_address][copied]']:checked").val()){
-          $form = $(this).parents('form');
-          var parent_id = $form.find('.parent_id').val();
-
-
-          $.ajax({
-              url: '/admins/furnishers/executive-copied',
-              type: "POST",
-              data: {
-                  "_token": $("meta[name='csrf-token']").attr("content"),
-                  'parent_id': parent_id
-              },
-              success: function( data ) {
-                  $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
-                  $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
-                  $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
-                  if(data.state != null){
-                      var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
-                      var selectize = $select[0].selectize;
-                      selectize.setValue(selectize.search(data.state).items[0].id);
-                  }
-                  $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
-                  $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
-                  $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
-                  $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
-              }
-          });
-
-      }else{
-          $form.find("input[name='bank_address[executive_address][name]']").val('');
-          $form.find("input[name='bank_address[executive_address][street]']").val('');
-          $form.find("input[name='bank_address[executive_address][city]']").val('');
-          $form.find("select[name='bank_address[executive_address][state]']").val('');
-          $form.find("input[name='bank_address[executive_address][zip]']").val('');
-          $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
-          $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
-          $form.find("input[name='bank_address[executive_address][email]']").val('');
-      }
-
-
-  });
+  //
+  // $( document ).ready(function() {
+  //   $('.add-additional').on('click', function(){
+  //       var n = Number(Date.now());
+  //       additional = $('#addtional_address_template').html()
+  //           .replaceAll('{i}', n)
+  //           .replace('{class}', 'selectize-single')
+  //       $(additional).insertBefore('.additional-addresses')
+  //       $('.additional-addresses').prev().find('.selectize-single').selectize({
+  //           selectOnTab: true,
+  //       })
+  //       $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
+  //   });
+  //
+  //   $('.show-parent-bank').on('click', function(){
+  //       id = $(this).parents('form').find('.parent_id').val();
+  //
+  //       if (!id) {
+  //           alert("PARENT BANK NOT DEFINED");
+  //           return false;
+  //       }
+  //
+  //       $.ajax({
+  //           url: '/admins/furnishers/'+id,
+  //           type: "GET",
+  //           success: function( data ) {
+  //               $('#parentModal').find('.modal-body').html(data);
+  //               $('#parentModal .selectize-single').selectize({
+  //                   selectOnTab: true,
+  //               });
+  //               $('#parentModal .selectize-multiple').selectize({
+  //                   plugins: ['remove_button'],
+  //                   selectOnTab: true,
+  //                   delimiter: ',',
+  //                   persist: true,
+  //                   preload: true,
+  //                   labelField: 'name',
+  //                   valueField: 'name',
+  //                   create: function(input) {
+  //                       return {
+  //                           value: input,
+  //                           name: input
+  //                       };
+  //                   }
+  //               });
+  //               $('#parentModal').modal('toggle');
+  //               $('.paste-register').on('click', function(){
+  //                   var name =   $("#parentModal input[name='bank_address[executive_address][name]']").val();
+  //                   var street =   $("#parentModal input[name='bank_address[executive_address][street]']").val();
+  //                   var city =   $("#parentModal input[name='bank_address[executive_address][city]']").val();
+  //                   var state =   $("#parentModal select[name='bank_address[executive_address][state]']").val();
+  //                   var zip =   $("#parentModal input[name='bank_address[executive_address][zip]']").val();
+  //                   var phone =   $("#parentModal input[name='bank_address[executive_address][phone_number]']").val();
+  //                   var fax =   $("#parentModal input[name='bank_address[executive_address][fax_number]']").val();
+  //                   var email =   $("#parentModal input[name='bank_address[executive_address][email]']").val();
+  //
+  //                   $("#parentModal input[name='bank_address[registered_agent][name]']").val(name);
+  //                   $("#parentModal input[name='bank_address[registered_agent][street]']").val(street);
+  //                   $("#parentModal input[name='bank_address[registered_agent][city]']").val(city);
+  //
+  //                   var $select = $("#parentModal select[name='bank_address[registered_agent][state]']").selectize();
+  //                   var selectize = $select[0].selectize;
+  //                   selectize.setValue(selectize.search(state).items[0].id);
+  //
+  //                   $("#parentModal input[name='bank_address[registered_agent][zip]']").val(zip);
+  //                   $("#parentModal input[name='bank_address[registered_agent][phone_number]']").val(phone);
+  //                   $("#parentModal input[name='bank_address[registered_agent][fax_number]']").val(fax);
+  //                   $("#parentModal input[name='bank_address[registered_agent][email]']").val(email);
+  //               } );
+  //               $('.add-additional').on('click', function(){
+  //                   var n = Number(Date.now());
+  //                   additional = $('#addtional_address_template').html()
+  //                       .replaceAll('{i}', n)
+  //                       .replace('{class}', 'selectize-single');
+  //                   $(additional).insertBefore('.additional-addresses');
+  //                   $('.additional-addresses').prev().find('.selectize-single').selectize({
+  //                       selectOnTab: true,
+  //                   });
+  //                   $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
+  //               });
+  //
+  //
+  //               $('#parentBankInformationEdit').validate({
+  //
+  //                   ignore: [],
+  //                   rules: {
+  //                       "bank[name]": {
+  //                           required: true,
+  //                           // remote: {
+  //                           //     url: "/admins/furnishers/check/name",
+  //                           //     type: "POST",
+  //                           //     cache: false,
+  //                           //     dataType: "json",
+  //                           //     data: {
+  //                           //         name: function() { return $("#parentBankInformationEdit .bank_name").val();},
+  //                           //         _token: function (){return  $("meta[name='csrf-token']").attr("content");}
+  //                           //     },
+  //                           //     dataFilter: function(response) {
+  //                           //         return  false;
+  //                           //         if(jQuery.parseJSON(response).status == true) {
+  //                           //             return true;
+  //                           //         }else{
+  //                           //             return false;
+  //                           //         }
+  //                           //     }
+  //                           // }
+  //                       },
+  //                   },
+  //                   // messages:{
+  //                   //     "bank[name]": {
+  //                   //         remote: "This name already exist"
+  //                   //     }
+  //                   //
+  //                   // },
+  //
+  //                   submitHandler: function(form) {
+  //                       var data = $(form).serialize();
+  //                       var action = $(form).attr("action");
+  //                       console.log(action);
+  //                       $.ajax({
+  //                           url: action,
+  //                           type: "PUT",
+  //                           data: data,
+  //                           success: function( data ) {
+  //
+  //
+  //                               $('#parentModal').modal('toggle'); //or  $('#IDModal').modal('hide');
+  //                               $(".autocomplete-bank").val(data['parent_name']);
+  //                           }
+  //                       });
+  //                   }
+  //
+  //               });
+  //
+  //
+  //           }
+  //       });
+  //   });
+  //
+  //
+  // });
+  //
+  // $(document).on('click', '.remove-address button', function(){
+  //     $(this).parents('formset').remove();
+  // });
+  //
+  // $(document).on('change', '.bank-type' ,function(){
+  //     $form = $(this).parents('form');
+  //     var bankType = $form.find('.bank-type').val(),
+  //         token = $("meta[name='csrf-token']").attr("content");
+  //
+  //     $form.find(".bank_sub_type_append").html('');
+  //     $.each( types[bankType], function(index, item) {
+  //         var sub_types =  $("#sub_types_append").html();
+  //         sub_types = sub_types.replace(/{value}/g, item);
+  //
+  //         $form.find(".bank_sub_type_append").append(sub_types);
+  //     });
+  //
+  //     $form.find( ".fraud_address" ).toggleClass( 'hidden', bankType != 3 );
+  //
+  //
+  //     if(bankType == 3) {
+  //         $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS");
+  //     } else {
+  //         $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS");
+  //     }
+  //     console.log(bankType);
+  //     if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
+  //
+  //         if($form.find('.parent_id').val() !== ""){
+  //             $form.find('.hide-parent-field').removeClass('hide');
+  //             $form.find('.show-parent-field').addClass('hide');
+  //             $form.find('.parent').removeClass("hidden" );
+  //             $form.find('.parent-show').removeClass('hide');
+  //         }else{
+  //             $form.find('.show-parent-field').removeClass('hide');
+  //             $form.find('.hide-parent-field').addClass('hide');
+  //             $form.find('.parent-show').addClass('hide');
+  //             $form.find('.parent').removeClass("hidden" );
+  //         }
+  //
+  //
+  //     }else {
+  //         $form.find('.parent').addClass("hidden");
+  //         $(".autocomplete-bank").val("");
+  //         $(".autocomplete-bank").trigger('keydown');
+  //     }
+  // });
+  //
+  // $(document).on('click', '.show-parent-field', function(){
+  //     $('.parent-show').removeClass('hide');
+  //     $('.show-parent-field').addClass('hide');
+  //     $('.hide-parent-field').removeClass('hide');
+  // });
+  //
+  // $(document).on('click', '.hide-parent-field', function(){
+  //     console.log('dasdasd');
+  //     $('.parent-show').addClass('hide');
+  //     $('.show-parent-field').removeClass('hide');
+  //     $('.hide-parent-field').addClass('hide');
+  //     $('.autocomplete-bank').val('');
+  //     $('.parent_id').val('');
+  // });
+  //
+  // $(document).on('click','.bank_sub_type_append', function(){
+  //     $form = $(this).parents('form');
+  //     var bankType = $form.find('.bank-type').val();
+  //
+  //     if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
+  //
+  //         $form.find('.parent').removeClass("hidden");
+  //     } else if(parseInt(bankType) == 40) {
+  //         $form.find('.parent').addClass("hidden");
+  //         $(".autocomplete-bank").val("");
+  //         $(".autocomplete-bank").trigger('keydown');
+  //     }
+  // });
+  //
+  // if($('.parent_id').val()==""){
+  //     $(".executive_copied").hide();
+  // }
+  // $(document).on('change click keydown', function(){
+  //     if($('.parent_id').val()!=""){
+  //         $(".executive_copied").show();
+  //     }
+  // });
+  //
+  //
+  // $(document).on('click','.executive_copied', function(){
+  //     if($("input[name='bank_address[executive_address][copied]']:checked").val()){
+  //         $form = $(this).parents('form');
+  //         var parent_id = $form.find('.parent_id').val();
+  //
+  //
+  //         $.ajax({
+  //             url: '/admins/furnishers/executive-copied',
+  //             type: "POST",
+  //             data: {
+  //                 "_token": $("meta[name='csrf-token']").attr("content"),
+  //                 'parent_id': parent_id
+  //             },
+  //             success: function( data ) {
+  //                 $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
+  //                 $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
+  //                 $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
+  //                 if(data.state != null){
+  //                     var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
+  //                     var selectize = $select[0].selectize;
+  //                     selectize.setValue(selectize.search(data.state).items[0].id);
+  //                 }
+  //                 $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
+  //                 $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
+  //                 $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
+  //                 $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
+  //             }
+  //         });
+  //
+  //     }else{
+  //         $form.find("input[name='bank_address[executive_address][name]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][street]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][city]']").val('');
+  //         $form.find("select[name='bank_address[executive_address][state]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][zip]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
+  //         $form.find("input[name='bank_address[executive_address][email]']").val('');
+  //     }
+  //
+  //
+  // });
 
   </script>
 

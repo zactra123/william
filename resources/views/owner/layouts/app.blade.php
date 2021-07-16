@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+		<meta name="csrf-token" content="{{ csrf_token() }}" />
 		@yield('title')
     @include('owner.includes.styles')
 </head>
@@ -14,7 +14,7 @@
 
 		<!-- Loader -->
 		<div id="global-loader">
-			<img src="{{asset('/')}}/assets/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
+			<img src="{{url('/')}}/assets/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
 		</div>
 		<!-- /Loader -->
 
@@ -28,6 +28,7 @@
 			</div>
 			<!-- /container -->
 		</div>
+		<input type="hidden" name="" class="appurl" value="{{ url('/') }}">
 		<!-- /main-content -->
 					<!--Sidebar-right-->
 

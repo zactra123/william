@@ -17,7 +17,8 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#37c6f5">
 
-
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		
 		<!--- Icons css -->
 		<link href="{{asset('/')}}assets/css/icons.css" rel="stylesheet">
 
