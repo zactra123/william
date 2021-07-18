@@ -73,41 +73,20 @@
                                       <div class="container">
                                           <div class="row">
                                               @foreach($banksLogos as  $logos)
-                                                @php
-                                                  $bankimg = str_replace("bank_logos","banks_logo",$logos->path);
-                                                  $findfile = public_path('/images/'.$bankimg);
-
-                                                @endphp
-
                                                   <div class="col-md-3" title="{{strtoupper($logos->name)}}">
                                                       <div class="card mb-4 pt-5" >
-
-                                                          @if (isset($logos->path))
-
-                                                            {{-- @if(isset($bankimg)) --}}
-                                                               {{-- <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a> --}}
-                                                               @if (file_exists($findfile))
-                                                                 @if (!empty($logos->path))
-                                                                   <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $bankimg }}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                                 @else
-                                                                   <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                                 @endif
-                                                               @else
-                                                                     <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                                 @endif
-
-                                                               @else
-                                                                       <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                          <?php /** Checking logo in Aws S3 storage */?>
+                                                          @if($logos->checkUrlAttribute())
+                                                              <?php /** Get AWS S3 file link with  getUrlAttribute function */?>
+                                                              <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                          @else
+                                                              <?php /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/?>
+                                                              @if($logos->no_logo)
+                                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+                                                              @else
+                                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                               @endif
-
-                                                            {{-- @else
-                                                                @if($logos->no_logo)
-                                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                                @else
-                                                                    <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                                @endif
-                                                            @endif --}}
-
+                                                          @endif
 
                                                           <div class="card-body">
                                                               <div class="card-text mt-5">

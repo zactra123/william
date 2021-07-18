@@ -72,30 +72,19 @@
                             <div class="row">
                                 <div class="col-sm-4 p-5">
                                     <div class="col-sm-12 form-group changeLogo files">
-                                      @php
-                                        $bankimg = str_replace("bank_logos","banks_logo",$bank->path);
-                                        $findfile = public_path('/images/'.$bankimg);
 
-                                      @endphp
-
-                                      @if (isset($bank->path))
-
-                                        {{-- @if(isset($bankimg)) --}}
-                                           {{-- <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a> --}}
-                                           @if (file_exists($findfile))
-                                             @if (!empty($bank->path))
-                                               <img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $bankimg }}" alt="Card image cap">
-                                             @else
-                                               <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  alt="Card image cap">
-                                             @endif
-                                           @else
+                                        <?php /** Checking logo in Aws S3 storage */?>
+                                        @if($bank->checkUrlAttribute())
+                                            <?php /** Get AWS S3 file link with  getUrlAttribute function */?>
+                                            <img class="card-img-top banks-card" src="{{$bank->getUrlAttribute()}}" alt="Card image cap">
+                                        @else
+                                            <?php /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/?>
+                                            @if($bank->no_logo)
+                                                <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  alt="Card image cap">
+                                            @else
                                                 <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
-                                             @endif
-
-                                           @else
-                                              <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+                                            @endif
                                         @endif
-
 
 
                                     </div>
@@ -240,7 +229,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                    
+
                                         <div class="row">
                                             {!! Form::hidden("bank_address[$type][type]", $type, ["class"=>"form-control"]) !!}
                                             {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
