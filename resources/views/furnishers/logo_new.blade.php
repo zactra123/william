@@ -44,8 +44,6 @@
 
                                   </div>
                                   <div class="container">
-
-
                                       <?php $alphas = range('A', 'Z');?>
                                       <nav aria-label="Page navigation example">
                                         <ul class="pagination">

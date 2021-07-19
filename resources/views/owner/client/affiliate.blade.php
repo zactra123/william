@@ -56,7 +56,6 @@
                                     Action
                                   </a>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('adminRec.client.profile',$user->id)}}">View Profile</a>
                                     <a class="dropdown-item" href="{{ route('owner.delete.client',$user->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
                                   </div>
                                 </div>
@@ -75,7 +74,7 @@
 										</tbody>
 									</table>
 								</div>
-                 
+
 
 							</div>
 						</div>
@@ -87,36 +86,39 @@
 
 @endsection
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@section('js')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(".delete").on('click', function (e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var token = $("meta[name='csrf-token']").attr("content");
-            console.log("test");
-            bootbox.confirm("Do you really want to delete record?", function (result) {
-                console.log(result);
-                if (result) {
+  <script>
+      $(document).ready(function () {
+          $(".delete").on('click', function (e) {
+              e.preventDefault();
+              var id = $(this).data('id');
+              var token = $("meta[name='csrf-token']").attr("content");
+              console.log("test");
+              bootbox.confirm("Do you really want to delete record?", function (result) {
+                  console.log(result);
+                  if (result) {
 
-                    $.ajax(
-                        {
-                            url: "/owner/client/" + id,
-                            type: 'DELETE',
-                            data: {
-                                "id": id,
-                                "_token": token,
-                            },
-                            success: function () {
-                                console.log("it Works");
-                            }
-                        });
-                }
-            })
+                      $.ajax(
+                          {
+                              url: "/owner/client/" + id,
+                              type: 'DELETE',
+                              data: {
+                                  "id": id,
+                                  "_token": token,
+                              },
+                              success: function () {
+                                  console.log("it Works");
+                              }
+                          });
+                  }
+              })
 
-        })
-    })
+          })
+      })
 
 
-</script>
+  </script>
+
+@endsection

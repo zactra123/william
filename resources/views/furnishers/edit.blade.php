@@ -4,17 +4,20 @@
 @endsection
 @section('body')
 
+
     {{-- @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]]) --}}
+
     <div class="breadcrumb-header justify-content-between">
-      <div>
-          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+        <div>
+            <h4 class="content-title mb-2">Hi, welcome back!</h4>
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Furnishers > Edit Furnisher</li>
-              </ol>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Furnishers</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Furnisher</li>
+                </ol>
             </nav>
-      </div>
+        </div>
     </div>
     <div class="container">
       <div class="row row-sm">
@@ -32,7 +35,6 @@
                   </div>
                 </div>
               </div>
-
 
             </div>
           </div>
@@ -413,29 +415,36 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-sm-4">
-                            <div class="form-group col-sm-2 p-0">
-                                <img class="responsive" src="/images/phone.png">
-                            </div>
-                            <div class="form-group col-sm-10">
-                                {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                        <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-sm-2">
+                                  <img class="responsive" src="{{ url('/') }}/images/phone.png">
+                              </div>
+                              <div class="col-sm-10">
+                                  {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                              </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group col-sm-2 p-0">
-                                <img class="responsive" src="/images/fax.png">
+                        <div class="col-sm-4">
+                          <div class="row">
+                            <div class="col-sm-2">
+                                <img class="responsive" src="{{url('/')}}/images/fax.png">
                             </div>
-                            <div class="form-group col-sm-10">
+                            <div class="col-sm-10">
                                 {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                             </div>
+                          </div>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <div class="form-group col-sm-2 p-0">
-                                <img class="responsive" src="/images/email.png">
+                        <div class="col-sm-4">
+                          <div class="row">
+                            <div class="col-sm-2">
+                                <img class="responsive" src="{{url('/')}}/images/email.png">
                             </div>
-                            <div class="form-group col-sm-10">
+                            <div class="col-sm-10">
                                 {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                             </div>
+                          </div>
+
                         </div>
 
                     </div>

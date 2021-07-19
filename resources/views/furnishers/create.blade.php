@@ -24,7 +24,7 @@
                     <div class="main-content-label mg-b-5">
                         Create Furnisher
                     </div>
-                    <p class="mg-b-20">create furnisher here ...</p>
+                    <p class="mg-b-20">Create furnisher here ...</p>
                     <div class="text-wrap mb-5">
                         <div class="example">
                             <div class="panel panel-primary">

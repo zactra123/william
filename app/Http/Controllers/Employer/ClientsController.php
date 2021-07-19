@@ -46,6 +46,8 @@ class ClientsController extends Controller
         $user = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
 
         $zodiac = $this->getZodiac($client->clientDetails->dob);
+        // $getdob = ClientDetail::where('user_id',$clientId)->first();
+        // $zodiac = $this->getZodiac($getdob->dob);
         return view('employer.client.profile', compact('client', 'user','toDos', 'zodiac'));
     }
 

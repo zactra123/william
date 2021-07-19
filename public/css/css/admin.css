@@ -125,6 +125,28 @@
     color: #FFF;
     padding: 0px 5px
 }
+
+.card .categories > li {
+    padding: 17px 40px 0px 0px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    color: #101010;
+}
+.card .categories > li > a {
+    color: #101010;
+    text-decoration: none;
+}
+/* Start num: there are three options primary, danger and success like Bootstrap */
+.card .categories > li > a > .num {
+    line-height: 0;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #FFF;
+    padding: 0px 5px
+}
+
+
 .dang {background-color: #f35959}
 .prim {background-color: #0275d8}
 .succ {background-color: #5cb85c}
@@ -137,6 +159,16 @@
     margin-right: 5px;
     color: #092a48;
 }
+
+.card .categories > li > a:hover {
+    color: #000;
+}
+.card .categories > li > i {
+    font-size: 18px;
+    margin-right: 5px;
+    color: #092a48;
+}
+
 
 .side-nav .categories .opend > a:after {
     -webkit-transform: rotate(-90deg);

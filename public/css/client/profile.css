@@ -200,7 +200,7 @@ svg {
 .driver_license {
     background-image: url(/images/correct-dl.png);
     display: block;
-    background-size: 80%;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
 }

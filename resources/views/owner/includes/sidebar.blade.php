@@ -64,26 +64,26 @@
         <a class="side-menu__item" href="{{route('owner.credit.education.index')}}"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span></a>
       </li>
 
-      <li class="slide  {{ zactra::areActiveDropdown(['admins.authority','admins.authority.create','admins.authority.edit','admins.bank','admins.bank.edit','admins.bank.create'])}}">
+      <li class="slide {{ zactra::areActiveDropdown(['admins.authority','admins.authority.create','admins.authority.edit','admins.bank','admins.bank.edit','admins.bank.create','admins.court.create','admins.court.edit'])}}">
 						<a class="side-menu__item" data-toggle="slide" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
 							<li><a class="slide-item {{ zactra::areActiveRoute(['admins.bank.show','admins.bank.edit','admins.bank.create'])}}" href="{{ route('admins.bank.show')}}">FURNISHERs/CRAs</a></li>
 							<li><a class="slide-item" href="{{ route('admins.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
 
               <li><a class="slide-item {{ zactra::areActiveRoute(['admins.authority','admins.authority.create','admins.authority.edit'])}}" href="{{ route('admins.authority.index')}}">AUTHORITIES</a></li>
-              <li><a class="slide-item" href="{{ route('admins.court.index')}}">COURT</a></li>
+              <li><a class="slide-item {{ zactra::areActiveRoute(['admins.court','admins.court.create','admins.court.edit'])}}" href="{{ route('admins.court.index')}}">COURT</a></li>
               <li><a class="slide-item" href="{{ route('admins.mortgage.days')}}">MORTGAGE JUDICIAL DAYS</a></li>
           	</ul>
 			</li>
 
-      <li class="slide">
+      <li class="slide {{ zactra::areActiveDropdown(['owner.admin.create','owner.admin.edit','owner.receptionist.create','owner.receptionist.edit','owner.client.create','owner.client.edit'])}}">
 						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
-							<li><a class="slide-item" href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
+							<li><a class="slide-item {{ zactra::areActiveRoute(['owner.admin','owner.admin.create','owner.admin.edit'])}}" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
+							<li><a class="slide-item {{ zactra::areActiveRoute(['owner.receptionist','owner.receptionist.create','owner.receptionist.edit'])}}" href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
 
-              <li><a class="slide-item" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
-              <li><a class="slide-item" href="{{ route('owner.affiliate.index')}}">AFFILIATES</a></li>
+              <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit'])}}" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
+              <li><a class="slide-item {{ zactra::areActiveRoute(['owner.affiliate','owner.affiliate.create','owner.affiliate.edit'])}}" href="{{ route('owner.affiliate.index')}}">AFFILIATES</a></li>
               <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">REVIEWS</a></li>
           	</ul>
 			</li>

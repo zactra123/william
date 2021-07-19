@@ -39,12 +39,14 @@ asort($types)
                                     <div class="row">
                                         <div  class="bank_sub_type_append">
                                             <div class="row">
-                                              @foreach($subTypes[51] as $key => $type)
-                                                  <div class="col-md-12 mb-2">
-                                                      {{$type}}
-                                                      <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
-                                                  </div>
-                                              @endforeach
+                                              @if (isset($subTypes))
+                                                @foreach($subTypes[51] as $key => $type)
+                                                    <div class="col-md-12 mb-2">
+                                                        {{$type}}
+                                                        <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                    </div>
+                                                @endforeach
+                                              @endif
                                             </div>
                                         </div>
                                     </div>
