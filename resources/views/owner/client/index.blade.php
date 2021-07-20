@@ -1,6 +1,6 @@
 @extends('owner.layouts.app')
 @section('title')
-Client
+<title>Client</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">

@@ -28,7 +28,7 @@
                         <label for="checkbox" class="mt-1"> WITHOUT LOGO</label></span>
                         <input type="submit" value="Search" class=" btn btn-primary" style="float:right">
                   </div>
-                  
+
                 </div>
 
 

@@ -10,9 +10,13 @@ use Response;
 
 class BlogsController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth', 'seo']);
+    // }
     public function __construct()
     {
-        $this->middleware(['auth', 'seo']);
+        $this->middleware(['auth', 'admins']);
     }
 
     public function index()
@@ -25,6 +29,7 @@ class BlogsController extends Controller
     {
         return view('blog.create');
     }
+    
     public function store(Request $request)
     {
 

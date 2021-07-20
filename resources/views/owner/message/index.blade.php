@@ -112,21 +112,46 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div><span class="text-primary app_details">FULL NAME</span><span class="left" id="appointment-full_name"></span></div>
-                                                <div><span class="text-primary app_details"><i class="fa fa-mobile-phone" style="padding-right: 15px"></i>PHONE NUMBER:</span><span class="left" id="appointment-phone"></span></div>
-                                                <div><span class="text-primary app_details"><i class="fa fa-mail-reply" style="padding-right: 15px"></i>EMAIL:</span><span class="left" id="appointment-email"></span></div>
-                                                <div><span class="text-primary app_details"><i class="fa fa-calendar" style="padding-right: 15px"></i>DATE:</span><span class="left" id="appointment-date"></span></div>
-                                                <div class="overflow-auto h-25  app_details appointment-title" id="appointment-title">
-                                                </div>
-                                                <div class="overflow-auto h-25 app_details border rounded pb-3 appointment-desc" id="appointment-description">
-                                                </div>
+                                              <table class="table table-striped">
+                                                <tr>
+                                                  <th>FULL NAME</th>
+                                                  <td><span class="left" id="appointment-full_name"></span></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                  <th>PHONE NUMBER</th>
+                                                  <td><span class="left" id="appointment-phone"></span></td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                  <th>EMAIL</th>
+                                                  <td><span class="left" id="appointment-email"></span></td>
+                                                </tr>
+
+                                                <tr>
+                                                  <th>DATE</th>
+                                                  <td><span class="left" id="appointment-date"></span></td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="2">
+                                                    <p id="appointment-description"></p>
+                                                  </td>
+                                                </tr>
+
+                                              </table>
+
                                                 <div class="note .overflow-vertical app_details" id="noteId">
                                                 </div>
 
 
+                                                <hr>
                                                 <div class="addNote">
 
                                                     <div class="ms-ua-form">
+                                                      <h5>Add A Note</h5>
                                                         <form method="POST" action="{{ route('admin.message.note') }}">
                                                             @csrf
                                                             <div class=" form-group message_id">
@@ -761,7 +786,6 @@
       newVal += val;
       this.value = newVal.substring(0, 12);
   });
-
 
   function displayMessage(message) {
       $(".response").html("<div class='success'>"+message+"</div>");

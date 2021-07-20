@@ -18,11 +18,16 @@
 <section class="ms-user-account">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-12"></div>
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-1 col-sm-12"></div>
+            <div class="col-md-10 col-sm-10">
                 <div class="ms-ua-box">
                     <div class="col-md-11">
                         <div class="card">
+                          <div class="card-header">
+                            <h4>Edit Education</h4>
+                            <p>Please enter followiing information to edit education</p>
+                          </div>
+
                             <div class="card-body">
                                 {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
                                 <div class="form-group row font">

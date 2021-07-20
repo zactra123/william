@@ -1,10 +1,9 @@
-@extends('layouts.layout')
+@extends('owner.layouts.app')
+@section('title')
+  <title>Message</title>
+@endsection
+@section('body')
 
-
-
-@section('content')
-
-    @include('helpers.breadcrumbs', ['title'=> "APPOINTMENT", 'route' => ["Home"=> '/owner',"APPOINTMENT" => "#"]])
 
     <section class="ms-working working-section section-padding">
         <div class="container">
@@ -34,7 +33,7 @@
                                         <div class="modal-header">
                                             <h4 class="modal-title" id="favoritesModalLabel">Message details</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">Close</span> </button>
+                                                <span aria-hidden="true">x</span> </button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="d-none text-danger text-center font-italic" > All fields are required</div>
@@ -44,42 +43,50 @@
                                                     <input type="hidden" name="start_date" id="start_date">
 
 
-                                                    <div class="form-group full_name_id">
-                                                        <input class="form-control"  type="text" name="full_name" id="fullNameId" placeholder="FULL NAME">
+                                                    <div class="row">
+                                                      <div class="col-md-6 full_name_id">
+                                                          <input class="form-control"  type="text" name="full_name" id="fullNameId" placeholder="Full Name">
 
+                                                      </div>
+
+                                                      <div class="col-md-6 phone_number_id">
+                                                          <input class="form-control"  type="text" name="phone_number" id="phoneNumberId" placeholder="Phone Number">
+                                                      </div>
                                                     </div>
 
-                                                    <div class="form-group phone_number_id">
-                                                        <input class="form-control"  type="text" name="phone_number" id="phoneNumberId" placeholder="PHONE NUMBER">
+                                                    <div class="row mt-3">
+                                                      <div class="col-md-6 email_id">
+                                                          <input  class="form-control" type="email" name="email" id="emailId" placeholder="Email">
+                                                      </div>
+
+                                                      <div class="col-md-6 time_id ">
+                                                          <input class="form-control" type="time" name="time" id="timeId" placeholder="Time">
+
+                                                      </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                      <div class="col-md-12 ptitle_id">
+                                                          <input class="form-control" type="text" name="title" id="titleId" placeholder="Title">
+
+                                                      </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col-md-12">
+                                                          <textarea class="form-control" name="description" rows="5" id="descriptionId" placeholder="Description"> </textarea>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="form-group email_id">
-                                                        <input  class="form-control" type="email" name="email" id="emailId" placeholder="EMAIL">
-                                                    </div>
-
-                                                    <div class="form-group time_id ">
-                                                        <input class="form-control" type="time" name="time" id="timeId" placeholder="TIME">
-
-                                                    </div>
-                                                    <div class="form-group ptitle_id m-1">
-                                                        <input class="form-control" type="text" name="title" id="titleId" placeholder="TITLE">
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" name="description" id="descriptionId" placeholder="DESCRIPTION"> </textarea>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <input type="submit" value="Add message" class="ms-ua-submit">
+                                                    <div class="row mt-3 text-right">
+                                                        <div class="col-md-12">
+                                                          <input type="submit" value="Add message" class="ms-ua-submit btn btn-primary">
+                                                        </div>
                                                     </div>
                                                 </form>
                                             </div>
 
 
                                         </div>
-                                        <div class="modal-footer">
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -95,15 +102,61 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div><span class="text-primary app_details">FULL NAME</span><span class="left" id="appointment-full_name"></span></div>
-                                            <div><span class="text-primary app_details"><i class="fa fa-mobile-phone" style="padding-right: 15px"></i>PHONE NUMBER:</span><span class="left" id="appointment-phone"></span></div>
-                                            <div><span class="text-primary app_details"><i class="fa fa-mail-reply" style="padding-right: 15px"></i>EMAIL:</span><span class="left" id="appointment-email"></span></div>
-                                            <div><span class="text-primary app_details"><i class="fa fa-calendar" style="padding-right: 15px"></i>DATE:</span><span class="left" id="appointment-date"></span></div>
-                                            <div class="overflow-auto h-25  app_details appointment-title" id="appointment-title">
+                                            <div class="row">
+                                              <div class="col-md-6 app_details">
+                                                 Full Name:
+                                              </div>
+                                              <div class="col-md-6" id="appointment-full_name">
+                                              </div>
                                             </div>
-                                            <div class="overflow-auto h-25 border rounded pb-3 appointment-desc app_details" id="appointment-description">
+                                            <div class="row">
+                                              <div class="col-md-6 app_details">
+                                                Phone Number:
+                                              </div>
+                                              <div class="col-md-6" id="appointment-phone">
+                                              </div>
                                             </div>
-                                            <div class="note .overflow-vertical app_details" id="noteId">
+                                            <div class="row">
+                                              <div class="col-md-6 app_details">
+                                                Email:
+                                              </div>
+                                              <div class="col-md-6" id="appointment-email">
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-6 app_details">
+                                                Date:
+                                              </div>
+                                              <div class="col-md-6" id="appointment-date">
+                                              </div>
+                                            </div>
+
+                                            <div class="row app_details">
+                                              <div class="col-md-12">
+                                                <div class="row">
+                                                  <h3>Title:</h3>
+                                                  <span id="appointment-title" class="ml-3 mt-2"></span>
+                                                </div>
+                                              </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <h3>Description:</h3>
+                                              </div>
+                                              <div class="col-md-12">
+                                                <span id="appointment-description" class="ml-3"></span>
+                                              </div>
+                                            </div>
+
+                                            <div class="row mt-3">
+                                              <div class="col-md-12">
+                                                <h3>Notes:</h3>
+                                              </div>
+                                              <div class="col-md-12">
+                                                <span id="noteId" class="ml-3"></span>
+                                              </div>
                                             </div>
 
                                             <div class="addNote">
@@ -114,26 +167,21 @@
                                                             <input class="form-control" type="hidden" name="message_id" id="messageId" >
                                                         </div>
                                                         <div class="form-group ">
-                                                            <textarea class="form-control" name="notes" id=""></textarea>
+                                                            <textarea class="form-control" rows="5" name="notes" id=""></textarea>
                                                         </div>
-                                                        <div class="form-group ">
-                                                            <input type="submit" value="Add" class="ms-ua-submit">
+                                                        <div class="form-group text-right">
+                                                            <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
                                                         </div>
                                                     </form>
                                                 </div>
-
-
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-
-                                            <div id="buttonCompleted"></div>
-
+                                        <div class="row">
+                                          <div id="buttonCompleted"></div>
                                         </div>
-
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary edit-appointment" ><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-danger remove-appointment"><i class="fa fa-trash-o"></i></button>
+                                            <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -143,9 +191,9 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="favoritesModalLabel">Edit message</h4>
+                                            <h4 class="modal-title" id="favoritesModalLabel">Edit Message</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">Close</span> </button>
+                                                <span aria-hidden="true">x</span> </button>
                                         </div>
                                         <div class="modal-body ">
                                             <div class="ms-ua-form">
@@ -153,34 +201,37 @@
 
                                                 <form method="PUT" action="" id="updateMessageId">
                                                     @csrf
+                                                    <div class="row">
+                                                      <div class="col-md-6 full_name_id">
+                                                          <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
+                                                      </div>
+                                                      <input type="hidden" name="id" id="editMessageId" >
+                                                      <div class="col-md-6 phone_number_id">
+                                                          <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
+                                                      </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                      <div class="col-md-6 email_id">
+                                                          <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="EMAIL">
+                                                      </div>
 
-                                                    <div class="form-group full_name_id">
-                                                        <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
-
+                                                      <div class="col-md-6 time_id">
+                                                          <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
+                                                      </div>
                                                     </div>
-                                                    <input type="hidden" name="id" id="editMessageId" >
-                                                    <div class=" form-group phone_number_id">
-                                                        <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
+                                                    <div class="row mt-3">
+                                                      <div class="col-md-6 time_id">
+                                                          <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="TIME">
+                                                      </div>
+                                                      <div class="col-md-6 title_id">
+                                                          <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="TITLE">
+                                                      </div>
                                                     </div>
-
-                                                    <div class="form-group email_id">
-                                                        <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="EMAIL">
+                                                    <div class="col-md-12 mt-3 p-0">
+                                                        <textarea class="form-control" rows="5" name="description" id="oldDescriptionId" placeholder="DESCRIPTION"> </textarea>
                                                     </div>
-
-                                                    <div class="form-group time_id">
-                                                        <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
-                                                    </div>
-                                                    <div class="form-group time_id">
-                                                        <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="TIME">
-                                                    </div>
-                                                    <div class="form-group title_id">
-                                                        <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="TITLE">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" name="description" id="oldDescriptionId" placeholder="DESCRIPTION"> </textarea>
-                                                    </div>
-                                                    <div class="form-group ">
-                                                        <input type="submit" value="Add" class="ms-ua-submit">
+                                                    <div class="col-md-12 text-right mt-3 p-0">
+                                                        <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
                                                     </div>
                                                 </form>
                                             </div>
@@ -731,10 +782,3 @@
     </script>
 
 @endsection
-
-
-
-
-
-
-

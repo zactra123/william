@@ -242,7 +242,6 @@ Route::group(['prefix'=> 'admins/'], function(){
     Route::get('delete/court/{id}','Employer\CourtsController@delete_court')->name('admin.delete.court');
 
     Route::get('delete/authority/{id}','AuthoritiesController@delete_authority')->name('admin.delete.authority');
-
     Route::resource('blogs', 'BlogsController')->names('blog');
     Route::post('/blogs/upload_tinymce_images', 'BlogsController@upload_tinymce_images');
 
@@ -343,7 +342,6 @@ Route::group(['prefix' =>'client'], function() {
 //    Route::get('/show-info', 'ClientDetailsController@show')->name('showInfo');
 
 });
-
 
 
 

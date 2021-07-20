@@ -22,6 +22,10 @@
                     <div class="ms-ua-box">
                         <div class="col-md-12">
                             <div class="card">
+                              <div class="card-header">
+                                <h4>Add New Education</h4>
+                                <p>Please enter followiing information to add new education</p>
+                              </div>
                                 <div class="card-body pl-4 pr-4">
                                     {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
                                     @csrf

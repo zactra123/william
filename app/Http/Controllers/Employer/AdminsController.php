@@ -36,7 +36,7 @@ class AdminsController extends Controller
 
             return Response::json($messages);
         }
-        return view('admin.message.index');
+        return view('admin.index');
     }
 
     public function changePassword(Request $request)

@@ -46,78 +46,132 @@
     </ul>
   </div>
   <div class="main-sidebar-body">
-    <ul class="side-menu">
+    @if(Auth::user())
+        @if(Auth::user()->role == 'client')
+            @include('helpers.urls.nav_bar_client')
+        @elseif(Auth::user()->role == 'affiliate')
+            @include('helpers.urls.nav_bar_affiliate')
+        @elseif(Auth::user()->role == 'super admin')
+          <ul class="side-menu">
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{ url('/owner') }}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/owner') }}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{ url('owner/message')}}"><i class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Messages</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('owner/message')}}"><i class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Messages</span></a>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{ route('owner.affiliate.pricing')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Pricing</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('owner.affiliate.pricing')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Pricing</span></a>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{route('owner.credit.education.index')}}"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{route('owner.credit.education.index')}}"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span></a>
+            </li>
 
-      <li class="slide {{ zactra::areActiveDropdown(['admins.authority','admins.authority.create','admins.authority.edit','admins.bank','admins.bank.edit','admins.bank.create','admins.court.create','admins.court.edit'])}}">
-						<a class="side-menu__item" data-toggle="slide" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span><i class="angle fe fe-chevron-down"></i></a>
-						<ul class="slide-menu">
-							<li><a class="slide-item {{ zactra::areActiveRoute(['admins.bank.show','admins.bank.edit','admins.bank.create'])}}" href="{{ route('admins.bank.show')}}">FURNISHERs/CRAs</a></li>
-							<li><a class="slide-item" href="{{ route('admins.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
+            <li class="slide {{ zactra::areActiveDropdown(['admins.authority','admins.authority.create','admins.authority.edit','admins.bank','admins.bank.edit','admins.bank.create','admins.court.create','admins.court.edit'])}}">
+                  <a class="side-menu__item" data-toggle="slide" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span><i class="angle fe fe-chevron-down"></i></a>
+                  <ul class="slide-menu">
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['admins.bank.show','admins.bank.edit','admins.bank.create'])}}" href="{{ route('admins.bank.show')}}">FURNISHERs/CRAs</a></li>
+                    <li><a class="slide-item" href="{{ route('admins.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
 
-              <li><a class="slide-item {{ zactra::areActiveRoute(['admins.authority','admins.authority.create','admins.authority.edit'])}}" href="{{ route('admins.authority.index')}}">AUTHORITIES</a></li>
-              <li><a class="slide-item {{ zactra::areActiveRoute(['admins.court','admins.court.create','admins.court.edit'])}}" href="{{ route('admins.court.index')}}">COURT</a></li>
-              <li><a class="slide-item" href="{{ route('admins.mortgage.days')}}">MORTGAGE JUDICIAL DAYS</a></li>
-          	</ul>
-			</li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['admins.authority','admins.authority.create','admins.authority.edit'])}}" href="{{ route('admins.authority.index')}}">AUTHORITIES</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['admins.court','admins.court.create','admins.court.edit'])}}" href="{{ route('admins.court.index')}}">COURT</a></li>
+                    <li><a class="slide-item" href="{{ route('admins.mortgage.days')}}">MORTGAGE JUDICIAL DAYS</a></li>
+                  </ul>
+            </li>
 
-      <li class="slide {{ zactra::areActiveDropdown(['owner.admin.create','owner.admin.edit','owner.receptionist.create','owner.receptionist.edit','owner.client.create','owner.client.edit'])}}">
-						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
-						<ul class="slide-menu">
-							<li><a class="slide-item {{ zactra::areActiveRoute(['owner.admin','owner.admin.create','owner.admin.edit'])}}" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
-							<li><a class="slide-item {{ zactra::areActiveRoute(['owner.receptionist','owner.receptionist.create','owner.receptionist.edit'])}}" href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
+            <li class="slide {{ zactra::areActiveDropdown(['owner.admin.create','owner.admin.edit','owner.receptionist.create','owner.receptionist.edit','owner.client.create','owner.client.edit'])}}">
+                  <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
+                  <ul class="slide-menu">
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.admin','owner.admin.create','owner.admin.edit'])}}" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.receptionist','owner.receptionist.create','owner.receptionist.edit'])}}" href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
 
-              <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit'])}}" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
-              <li><a class="slide-item {{ zactra::areActiveRoute(['owner.affiliate','owner.affiliate.create','owner.affiliate.edit'])}}" href="{{ route('owner.affiliate.index')}}">AFFILIATES</a></li>
-              <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">REVIEWS</a></li>
-          	</ul>
-			</li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit'])}}" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.affiliate','owner.affiliate.create','owner.affiliate.edit'])}}" href="{{ route('owner.affiliate.index')}}">AFFILIATES</a></li>
+                    <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">REVIEWS</a></li>
+                  </ul>
+            </li>
 
-      <li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-check"></i><span class="side-menu__label">Slogans</span><i class="angle fe fe-chevron-down"></i></a>
-						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ route('owner.slogans.index')}}">VIEW SLOGANS</a></li>
-							<li><a class="slide-item" href="{{ route('owner.slogans.create')}}">ADD SLOGANS</a></li>
-          	</ul>
-			</li>
+            <li class="slide">
+                  <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-check"></i><span class="side-menu__label">Slogans</span><i class="angle fe fe-chevron-down"></i></a>
+                  <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{ route('owner.slogans.index')}}">VIEW SLOGANS</a></li>
+                    <li><a class="slide-item" href="{{ route('owner.slogans.create')}}">ADD SLOGANS</a></li>
+                  </ul>
+            </li>
 
 
-      <li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-lightbulb"></i><span class="side-menu__label">Faqs</span><i class="angle fe fe-chevron-down"></i></a>
-						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ route('owner.faqs.index')}}">VIEW FAQs</a></li>
-							<li><a class="slide-item" href="{{ route('owner.faqs.create')}}">ADD FAQs</a></li>
-          	</ul>
-			</li>
+            <li class="slide">
+                  <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-lightbulb"></i><span class="side-menu__label">Faqs</span><i class="angle fe fe-chevron-down"></i></a>
+                  <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{ route('owner.faqs.index')}}">VIEW FAQs</a></li>
+                    <li><a class="slide-item" href="{{ route('owner.faqs.create')}}">ADD FAQs</a></li>
+                  </ul>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{ route('owner.reports.index')}}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Report</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('owner.reports.index')}}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Report</span></a>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="#"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="#"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
+            </li>
 
-      <li class="slide">
-        <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
-      </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
+            </li>
 
-    </ul>
+          </ul>
+        @elseif(Auth::user()->role == 'admin')
+          <ul class="side-menu">
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/admins') }}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('admin.message.index')}}"><i class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Messages</span></a>
+            </li>
+
+            <li class="slide">
+                  <a class="side-menu__item" data-toggle="slide" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span><i class="angle fe fe-chevron-down"></i></a>
+                  <ul class="slide-menu">
+                    <li><a class="slide-item" href="{{ route('admins.bank.show')}}">Furnishers/CRAs</a></li>
+                  </ul>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.client.list')}}"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Client List</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.toDo.list')}}"><i class="side-menu__icon fe fe-check"></i><span class="side-menu__label">To Do List</span></a>
+            </li>
+
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('blog.index') }}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Blog</span></a>
+            </li>
+
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
+            </li>
+
+          </ul>
+
+        @elseif(Auth::user()->role == 'receptionist')
+            @include('helpers.urls.nav_bar_receptionist')
+        @elseif(Auth::user()->role == 'seo')
+            @include('helpers.urls.nav_bar_seo')
+        @endif
+    @else
+        @include('helpers.urls.nav_bar_guest')
+    @endif
+
   </div>
 </aside>
 <!-- /main-sidebar -->

@@ -176,7 +176,8 @@ class MessagesController extends Controller
         }else{
 
             QuestionNote::create($note);
-            return redirect()->route('admin.message.index');
+            return redirect()->back()->with('success','Note successfully added');
+          
         }
 
 

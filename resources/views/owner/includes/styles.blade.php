@@ -1,3 +1,4 @@
+		<script src="{{asset('/')}}assets/plugins/jquery/jquery.min.js"></script>
 		<!--- Favicon -->
 		<link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('/icons/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('/icons/apple-icon-60x60.png')}}">
@@ -18,7 +19,7 @@
     <meta name="theme-color" content="#37c6f5">
 
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-		
+
 		<!--- Icons css -->
 		<link href="{{asset('/')}}assets/css/icons.css" rel="stylesheet">
 
@@ -56,7 +57,7 @@
 		<!--- Internal Spectrum-colorpicker css -->
 	<link href="{{asset('/')}}assets/plugins/spectrum-colorpicker/spectrum.css" rel="stylesheet">
 
-		<link rel="stylesheet" href="{{ asset('/') }}/assets/plugins/fullcalendar/fullcalendar.min.css">
+		<link rel="stylesheet" href="{{ asset('/') }}assets/plugins/fullcalendar/fullcalendar.min.css">
 
 		<link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
 
@@ -452,6 +453,23 @@
 			</style>
 
 		@endif
+		<style media="screen">
+		.pass_show{position: relative}
 
+		.pass_show .ptxt {
+
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				z-index: 1;
+				color: black;
+				font-weight: bold;
+				margin-top: -10px;
+				cursor: pointer;
+				transition: .3s ease all;
+		}
+
+		.pass_show .ptxt:hover{color: #333333;}
+		</style>
 
     @yield('css')

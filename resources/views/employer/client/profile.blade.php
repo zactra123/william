@@ -1,6 +1,6 @@
 @extends('owner.layouts.app')
 @section('title')
-Client Profile
+<title>Client Profile</title>
 @endsection
 @section('body')
 
