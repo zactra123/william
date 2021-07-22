@@ -58,9 +58,9 @@
 
                                                   @foreach($states as $state)
                                                       <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
-                                                          <div class="card mb-4" >
+                                                          <div class="card mb-4 state-card" data-id="{{$state->id}}">
                                                               @if (isset($state->bucket))
-                                                                <img  class="card-img-top state-card w-100" data-id="{{$state->id}}" src="{{$state->flag()}} " >
+                                                                <img  class="card-img-top w-100"  src="{{$state->flag()}} " >
                                                               @endif
                                                               <div class="card-body">
                                                                   <div class="text-center">

@@ -1,9 +1,11 @@
 
 <div class="ms-ua-form ms-ua-box">
     <div class="row" >
-        <div class="col-md-12 p-5" >
-            <img src=" {{$state->flag()}} " class="w-100">
-        </div>
+        @if (isset($state->bucket))
+            <div class="col-md-12 p-5" >
+                <img src=" {{$state->flag()}} " class="w-100">
+            </div>
+        @endif
         <div class="col-md-12">
             <h3>{{$state->full_name}} ({{$state->name}})</h3>
 
