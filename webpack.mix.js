@@ -20,5 +20,6 @@ mix.autoload({
     .js('resources/js/affiliate.js', 'public/js/')
     .js('resources/js/registration.js', 'public/js/')
     .js('resources/js/registration_steps.js', 'public/js/')
+    .js('resources/js/admins/*', 'public/js/admins/')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/new_style.scss', 'public/css/new_style.min.css');
