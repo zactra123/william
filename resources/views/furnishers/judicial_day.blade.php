@@ -59,9 +59,8 @@
                                                   @foreach($states as $state)
                                                       <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                                                           <div class="card mb-4 state-card" data-id="{{$state->id}}">
-                                                              @if (isset($state->bucket))
-                                                                <img  class="card-img-top w-100"  src="{{$state->flag()}} " >
-                                                              @endif
+                                                            <img  class="card-img-top w-100"  src="{{$state->flag()}} " >
+
                                                               <div class="card-body">
                                                                   <div class="text-center">
                                                                       <label class="size-changer">{{strtoupper($state->full_name)}}  ({{strtoupper($state->name)}})</label>
@@ -99,9 +98,6 @@
                     <div id="state-input">
                     </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
