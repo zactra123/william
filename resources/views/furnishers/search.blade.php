@@ -11,12 +11,12 @@
                   </div>
                   <div class="col-md-3">
                       <?php $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' => 'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER']; asort($types)?>
-                      {{-- {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>'form-control selectize-multiple', 'id' => "bank-type"]); !!} --}}
-                      <select class="form-control selectize-multiple" multiple id="bank-type">
-                        @foreach ($types as $key => $value)
-                          <option value="{{ $value }}">{{ $value }}</option>
-                        @endforeach
-                      </select>
+                       {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple', 'class'=>'form-control selectize-multiple', 'id' => "bank-type"]); !!}
+    {{--                      <select class="form-control selectize-multiple" name="types[]" multiple id="bank-type">--}}
+    {{--                        @foreach ($types as $key => $value)--}}
+    {{--                          <option value="{{ $value }}">{{ $value }}</option>--}}
+    {{--                        @endforeach--}}
+    {{--                      </select>--}}
                   </div>
                   <div class="col-md-3 state-filter hide">
                       <?php $states = \App\BankAddress::STATES;   asort($types)?>
