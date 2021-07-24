@@ -30,31 +30,31 @@
               Furnishers
             </div>
             <p class="mg-b-20">See list of furnishers here ...</p>
-
-                  @include('furnishers.search')
-
-
+                @include('furnishers.search')
                   <section class="ms-user-account">
                       <div class="container">
                           <div class="row">
                               <div class="col-md-3 col-sm-12"></div>
                               <div class="col-md-12 col-sm-12">
-
                                   <div class="row m-2">
-
                                   </div>
                                   <div class="container">
                                       <?php $alphas = range('A', 'Z');?>
                                       <nav aria-label="Page navigation example">
                                         <ul class="pagination">
-                                          <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
-                                          <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                                          <li class="page-item {{empty(request()->character) ? "active":""}}" >
+                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> ALL </a>
+                                          </li>
+                                          <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}">
+                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}"> # </a>
+                                          </li>
                                           @foreach($alphas as $alpha)
-                                          <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                                          <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}">
+                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a>
+                                          </li>
                                           @endforeach
                                         </ul>
                                       </nav>
-
                                       {{-- <ul class="pagination alphabetical ">
                                           <li class="{{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
                                           <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
@@ -63,10 +63,7 @@
                                           @endforeach
                                       </ul> --}}
                                       {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination2')}}
-
                                   </div>
-
-
                                   <div class="album py-5">
                                       <div class="container">
                                           <div class="row">
@@ -88,11 +85,14 @@
 
                                                           <div class="card-body">
                                                               <div class="card-text mt-5">
-                                                                  <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
-
-                                                                  <a href="{{ route('furnishers.bank.delete',$logos->id) }}"><div class="delete2 text-right" data-toggle="popover" onclick="return confirm('Are You Sure?')" data-placement="top" data-id="{{ $logos->id}}" >
+                                                                  <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" >
+                                                                    {{strtoupper($logos->name)}}
+                                                                  </div>
+                                                                  <a href="{{ route('furnishers.bank.delete',$logos->id) }}">
+                                                                    <div class="delete2 text-right" data-toggle="popover" onclick="return confirm('Are You Sure?')" data-placement="top" data-id="{{ $logos->id}}" >
                                                                       <span> <i class="fa fa-trash"></i> </span>
-                                                                  </div></a>
+                                                                   </div>
+                                                                 </a>
                                                               </div>
                                                           </div>
                                                       </div>

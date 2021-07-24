@@ -160,8 +160,8 @@
                                                             <div class="form-group ">
                                                                 <textarea class="form-control" name="notes" id=""></textarea>
                                                             </div>
-                                                            <div class="form-group ">
-                                                                <input type="submit" value="Add" class="ms-ua-submit">
+                                                            <div class="form-group text-right">
+                                                                <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -169,15 +169,11 @@
 
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-
-                                                <div id="buttonCompleted"></div>
-
-                                            </div>
+                                            <div id="buttonCompleted"></div>
 
                                             <div class="modal-footer">
-                                                <button class="btn btn-secondary edit-appointment" ><i class="fa fa-pencil"></i></button>
-                                                <button class="btn btn-danger remove-appointment"><i class="fa fa-trash-o"></i></button>
+                                                <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -187,46 +183,36 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="favoritesModalLabel">Edit message</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">Close</span> </button>
+                                              <h4 class="modal-title" id="favoritesModalLabel">Edit message</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">Close</span>
+                                              </button>
                                             </div>
                                             <div class="modal-body ">
                                                 <div class="ms-ua-form">
                                                     <form method="PUT" action="" id="updateMessageId">
                                                         @csrf
-
                                                         <div class="form-group phone_number_id">
-                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="PHONE NUMBER">
+                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="Phone Number">
                                                         </div>
                                                         <div class="form-group full_name_id">
-                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="FULL NAME">
-
+                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="Full Name">
                                                         </div>
                                                         <input class="form-control" type="hidden" name="id" id="editMessageId" >
-
                                                         <div class="form-group email_id">
-                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="EMAIL">
+                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="Email">
                                                         </div>
-
                                                         <div class="form-group time_id">
                                                             <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
-
                                                         </div>
                                                         <div class=" form-group time_id m-1">
-                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="TIME">
-
+                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="Time">
                                                         </div>
                                                         <div class="form-group title_id">
-                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="TITLE">
-
+                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="Title">
                                                         </div>
-
-
                                                         <div class="form-group ">
-
-                                                            <textarea class="form-control" name="description" id="oldDescriptionId" placeholder="DESCRIPTION"> </textarea>
-
+                                                          <textarea class="form-control" name="description" id="oldDescriptionId" placeholder="Description"> </textarea>
                                                         </div>
                                                         <div class="form-group row mb-0">
                                                             <input type="submit" value="Add message" class="ms-ua-submit">
@@ -367,8 +353,8 @@
 {{--                            </div>--}}
 
 {{--                            <div class="modal-footer">--}}
-{{--                                <button class="btn btn-secondary edit-appointment" ><i class="fa fa-pencil"></i></button>--}}
-{{--                                <button class="btn btn-danger remove-appointment"><i class="fa fa-trash-o"></i></button>--}}
+{{--                                <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>--}}
+{{--                                <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>--}}
 {{--                            </div>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}

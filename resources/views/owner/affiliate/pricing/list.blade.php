@@ -128,7 +128,7 @@
   <script type="text/html" id="charge_off_range">
       <div class="col-md-12" id="charge_{type}_{id}">
           <div class="row mb-3">
-              <div class="col-md-3">
+              <div class="col-md-4">
                   <div class="row">
                       <div class="col-md-12">
                           <label for="mina1"> <strong>Min $</strong> </label>
@@ -139,7 +139,7 @@
                   </div>
                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
               </div>
-              <div class="col-md-3 ">
+              <div class="col-md-4 ">
                   <div class="row">
                       <div class="col-md-12">
                           <label for="maxa1"> <strong>Max $</strong> </label>
@@ -163,10 +163,10 @@
                   </div>
                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
               </div>
-              <div class="col-md-3">
-                  <strong class="add_range pr-5 h3" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
+              <div class="col-md-1 pt-4">
+                  <strong class="add_range pr-5" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
 
-                  <strong class="remove_range h3" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
+                  <strong class="remove_range" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
               </div>
 
           </div>

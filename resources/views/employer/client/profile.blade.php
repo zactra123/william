@@ -139,7 +139,7 @@
                           </li>
                       @endif
                       <li class="text-right p-0">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-edit  fa-fw"></i> Edit Profile</a>
+                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary text-white"><i class="fa fa-edit  fa-fw"></i> Edit Profile</a>
                       </li>
                   </ul>
               </aside>
@@ -514,23 +514,23 @@
               </div>
             </div>
 
-                <section class="charts pb50 mt50">
-                    <div class="container-fluid">
-                        <div class="row ">
+          <section class="charts pb50 mt50">
+              <div class="container-fluid">
+                  <div class="row ">
 
-                        </div>
-                    </div>
-                </section>
+                  </div>
+              </div>
+          </section>
         </div>
     </div>
 
     <!-- Modal -->
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
+                    <span class="modal-title" id="exampleModalLabel">Update Your Profile</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -539,30 +539,35 @@
                     {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'update_info',  'class' => 'm-form m-form--label-align-right']) !!}
                         @method('PUT')
                         @csrf
-                        <div class="form row">
-                            <div class="form-group col-md-12">
+                        <div class="row">
+                            <div class="form-group col-md-6">
                                 {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
-                            </div>
-                            <div class="form-group col-md-12">
-                                {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
                             </div>
 
                         </div>
 
-                        <button type="submit" value="Update" class="btn btn-primary">Update</button>
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                              {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                          </div>
+
+                          <div class="form-group col-md-6">
+                              {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'form-control']) }}
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12 text-right">
+                            <button type="submit" value="Update" class="btn btn-primary pull-right">Update</button>
+                          </div>
+                        </div>
                     {!! Form::close() !!}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+
             </div>
         </div>
     </div>

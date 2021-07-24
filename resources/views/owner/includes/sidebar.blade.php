@@ -116,7 +116,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item" href="#"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
             </li>
 
             <li class="slide">

@@ -215,7 +215,7 @@
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('affiliate.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
-                                                    <a href=#">ARCHIVE</a>
+                                                    <a href="#">ARCHIVE</a>
                                                     @foreach($reportsDateEQ as $keyEq=> $eqDate)
                                                         <a href="{{route('affiliate.client.report', ['type'=>"equifax", 'date'=>$keyEq])}}">{{date("m/d/Y",strtotime($eqDate))}}</a>
                                                     @endforeach
