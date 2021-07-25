@@ -27,7 +27,7 @@ asort($types)
                             <div class="col-md-12">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="COMPANY NAME" >
+                                        <input type="text" name="bank[name]"  class="form-control bank_name" placeholder="Company Name" >
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -37,17 +37,21 @@ asort($types)
                                 </div>
                                 <div class="mt-3 ml-5 mr-5 mb-3">
                                     <div class="row">
-                                        <div  class="bank_sub_type_append">
-                                            <div class="row">
+                                        <div  class="row bank_sub_type_append">
+
                                               @if (isset($subTypes))
                                                 @foreach($subTypes[51] as $key => $type)
-                                                    <div class="col-md-12 mb-2">
-                                                        {{$type}}
+                                                    <div class="col-md-6 col-sm-6 mb-2">
+                                                      <div class="col-md-2 col-sm-2 float-left">
                                                         <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{{$type}}"  {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                                                      </div>
+                                                      <div class="col-md-10 col-sm-10 float-left">
+                                                        <span class="pl-1">{{$type}}</span>
+                                                      </div>
                                                     </div>
                                                 @endforeach
                                               @endif
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +63,7 @@ asort($types)
 
                             <div class="col-md-12">
                                 <div class="form-group banks ">
-                                    {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
+                                    {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!}
                                     {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
                                 </div>
                             </div>
@@ -77,7 +81,7 @@ asort($types)
                         @foreach(\App\BankAddress::TYPES as $type=>$name)
                             @if($type == 'additional_address')
                                 <div class="row additional-addresses">
-                                    <div class="col-sm-12 add-additional p-1 pb-5"><a class="btn btn-primary ms-ua-submit form-control">ADD ADDITIONAL ADDRESS</a></div>
+                                    <div class="col-sm-12 add-additional p-1 pb-5 text-right"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
                                 </div>
                                 @continue
                             @endif
@@ -85,7 +89,7 @@ asort($types)
                                 <div class="row expand-address" data-address="#address-{{$type}}">
                                     <div class="col-md-6"><label for="">{{$name}}</label>  </div>
                                     <div class="col-md-6 text-right">
-                                        <button type="button">
+                                        <button type="button" class="btn btn-danger mb-4">
                                             <i class="fa fa-minus-circle"></i>
                                         </button>
                                     </div>
@@ -105,6 +109,7 @@ asort($types)
                                             </div>
                                         </div>
                                     @endif
+                                    
                                     @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
                                         <div class="row">
                                             <div class="form-group col-sm-12">
@@ -136,7 +141,7 @@ asort($types)
                                         <div class="form-group col-sm-6">
                                             <div class="row">
                                               <div class="form-group col-sm-2 p-0">
-                                                  <img  class="responsive" src="{{asset('/')}}/images/phone.png">
+                                                  <img  class="responsive" src="{{url('/')}}/images/phone.png">
                                               </div>
                                               <div class="form-group col-sm-10">
                                                   {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
@@ -146,7 +151,7 @@ asort($types)
                                         <div class="form-group col-sm-6">
                                           <div class="row">
                                             <div class="form-group col-sm-2 p-0">
-                                                <img  class="responsive" src="{{asset('/')}}/images/fax.png">
+                                                <img  class="responsive" src="{{url('/')}}/images/fax.png">
                                             </div>
                                             <div class="form-group col-sm-10">
                                                 {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -156,7 +161,7 @@ asort($types)
                                         <div class="form-group col-sm-6">
                                             <div class="row">
                                               <div class="form-group col-sm-2 p-0">
-                                                  <img  class="responsive" src="{{asset('/')}}/images/email.png">
+                                                  <img  class="responsive" src="{{url('/')}}/images/email.png">
                                               </div>
                                               <div class="form-group col-sm-10">
                                                   {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
@@ -175,10 +180,10 @@ asort($types)
             <div class="ms-ua-box mt-2" id="account-equal-bank">
                 <div class="ms-ua-title mb-0">
                     <div class="row">
-                        <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4> </div>
+                        <div class="col-md-6 text-left"><span>OTHER NAMES USED</span> </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="remove-equal-bank">
-                                <i class="fa fa-close"></i>
+                            <button type="button" class="remove-equal-bank btn btn-danger mb-3">
+                                <i class="fa fa-times"></i>
                             </button>
                         </div>
                     </div>

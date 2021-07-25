@@ -94,12 +94,9 @@
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
                     <div class="row m-2  pt-4">
-
                         @include('furnishers.search', ['url' => '/admins/furnishers/missing-field'])
                     </div>
                     <div class="container">
-
-
                         <?php $alphas = range('A', 'Z');?>
                         <ul class="pagination alphabetical ">
                             <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
@@ -109,10 +106,7 @@
                             @endforeach
                         </ul>
                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
-
                     </div>
-
-
                     <div class="album py-5 bg-light">
                         <div class="container">
                             <div class="row">
@@ -161,8 +155,6 @@
                             @endforeach
                         </ul>
                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
-
-
                     </div>
                 </div>
             </div>
@@ -171,74 +163,73 @@
 
     <script type="text/html" id="confirmation">
         <div>
-            <button class="cancel btn btn-secondary ">cancel</button>
-            <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
+          <button class="cancel btn btn-secondary ">cancel</button>
+          <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
         </div>
     </script>
     <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
     <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css">
     <script>
-        $(document).ready(function () {
+      $(document).ready(function () {
 
-            $(".go-to").click(function () {
-                var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
-                let url = new URL(window.location.href);
-                let params = new URLSearchParams(url.search.slice(1));
+          $(".go-to").click(function () {
+              var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
+              let url = new URL(window.location.href);
+              let params = new URLSearchParams(url.search.slice(1));
 
-                params.append('page', page);
-                url.search = params
-                location.href = url.toString()
-            })
+              params.append('page', page);
+              url.search = params
+              location.href = url.toString()
+          })
 
-            $('.go-to-page').keypress(function (e) {
-                var key = e.which;
-                if(key == 13){
-                    var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
-                    let url = new URL(window.location.href);
-                    let params = new URLSearchParams(url.search.slice(1));
-                    params.append('page', page);
-                    url.search = params
-                    location.href = url.toString()
-                }
-            });
+          $('.go-to-page').keypress(function (e) {
+              var key = e.which;
+              if(key == 13){
+                  var page =  $(this).parents('.page-navigation-container').find(".go-to-page").val();
+                  let url = new URL(window.location.href);
+                  let params = new URLSearchParams(url.search.slice(1));
+                  params.append('page', page);
+                  url.search = params
+                  location.href = url.toString()
+              }
+          });
 
+          $('[data-toggle="popover"]').popover({
+              html:true,
+              title: "ARE YOU SURE?",
+              content: function() {
+                  var $this = $(this);
+                  return $("#confirmation").html().replace('{bank_id}', $($this).attr('data-id'))
+              }
+          }).click(function (e) {
+              $('[data-toggle=popover]').not(this).popover('hide');
+          });
 
-            $('[data-toggle="popover"]').popover({
-                html:true,
-                title: "ARE YOU SURE?",
-                content: function() {
-                    var $this = $(this);
-                    return $("#confirmation").html().replace('{bank_id}', $($this).attr('data-id'))
-                }
-            }).click(function (e) {
-                $('[data-toggle=popover]').not(this).popover('hide');
-            });
+          $(document).click(function (e) {
+              if ($('[data-toggle=popover]').has(e.target).length == 0 && (($('.popover').has(e.target).length == 0) || $(e.target).is('.cancel'))) {
+                  $('[data-toggle=popover]').popover('hide');
+              }
+          });
 
-            $(document).click(function (e) {
-                if ($('[data-toggle=popover]').has(e.target).length == 0 && (($('.popover').has(e.target).length == 0) || $(e.target).is('.cancel'))) {
-                    $('[data-toggle=popover]').popover('hide');
-                }
-            });
+          $(document).on('click',".delete-bank", function (e) {
+              var id = $(this).attr('data-id'),
+              token = $("meta[name='csrf-token']").attr("content");
+              $.ajax({
+                  url: "/admins/furnishers/logo/" + id,
+                  type: 'DELETE',
+                  data: {
+                      "id": id,
+                      "_token": token,
+                  },
+                  success: function () {
+                      location.reload();
+                  }
+              });
+          })
 
-            $(document).on('click',".delete-bank", function (e) {
-                var id = $(this).attr('data-id'),
-                token = $("meta[name='csrf-token']").attr("content");
-                $.ajax({
-                    url: "/admins/furnishers/logo/" + id,
-                    type: 'DELETE',
-                    data: {
-                        "id": id,
-                        "_token": token,
-                    },
-                    success: function () {
-                        location.reload();
-                    }
-                });
-            })
-
-            $(".selectize").selectize({selectOnTab: true,plugins: ['remove_button']})
-            $(".selectize-type").selectize({valuFilde:'type',  selectOnTab: true,plugins: ['remove_button']})
-        })
+          $(".selectize").selectize({selectOnTab: true,plugins: ['remove_button']})
+          $(".selectize-type").selectize({valuFilde:'type',  selectOnTab: true,plugins: ['remove_button']})
+      })
 
     </script>
 

@@ -156,7 +156,9 @@
               <a class="side-menu__item" href="{{ route('blog.index') }}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Blog</span></a>
             </li>
 
-
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
+            </li>
             <li class="slide">
               <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
             </li>

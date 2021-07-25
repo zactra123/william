@@ -34,24 +34,18 @@
                                   <th scope="col">FIRST NAME</th>
                                   <th scope="col">LAST NAME</th>
                                   <th scope="col">EMAIL</th>
-                                  {{--
-                                  <th scope="col">AFFILIATE FULL NAME</th>
-                                  --}}
-
+                                  {{-- <th scope="col">AFFILIATE FULL NAME</th> --}}
                                   <th scope="col">Action</th>
                               </tr>
                           </thead>
                           <tbody>
                               @foreach($users as $key=> $user)
-
                               <tr>
                                   <th scope="row">{{ $key+1 }}</th>
                                   <td>{{$user->first_name}}</td>
                                   <td>{{$user->last_name}}</td>
                                   <td>{{$user->email}}</td>
-                                  {{--
-                                  <td>{{$user->full_name?? "-"}}</td>
-                                  --}}
+                                  {{-- <td>{{$user->full_name?? "-"}}</td>  --}}
                                   <td>
                                       <div class="dropdown show">
                                           <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

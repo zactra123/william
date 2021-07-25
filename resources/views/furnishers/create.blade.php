@@ -72,40 +72,38 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="bank_sub_type_append">
-                                            <div class="row">
-                                                @foreach($subTypes[51] as $key => $type)
-                                                <div class="col-md-4 mt-2">
-                                                    <div class="row">
-                                                        <div class="col-md-1">
-                                                            <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type,$bank->additional_information["sub_type"])) ? "checked":''}}>
-                                                        </div>
-                                                        <div class="col-md-11">
-                                                            <span class="">{{$type}}</span>
-                                                        </div>
+                                        <div class="">
+                                          <div class="row bank_sub_type_append">
+                                                  @foreach($subTypes[51] as $key => $type)
+                                                  <div class="col-md-4 mt-2">
+                                                    <div class="col-md-2 float-left">
+                                                        <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type,$bank->additional_information["sub_type"])) ? "checked":''}}>
                                                     </div>
-                                                </div>
-                                                @endforeach
-                                            </div>
+                                                    <div class="col-md-9">
+                                                        <span class="">{{$type}}</span>
+                                                    </div>
+                                                  </div>
+                                                  @endforeach
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row parent hidden">
-                                <div class="col-md-3">
-                                    <a class="btn btn-primary show-parent-field form-control hide text-white">Add Parent</a>
-                                    <a class="btn btn-primary hide hide-parent-field form-control hide mt-3 text-white">Hide Parent</a>
+                                <div class="col-md-3 ml-4 pl-5">
+                                    <a class="btn btn-primary show-parent-field ml-5 mt-3 hide text-white pull-right">Add Parent</a>
+                                    <a class="btn btn-primary hide hide-parent-field hide ml-5 mt-3 text-white pull-right">Hide Parent</a>
                                 </div>
-                                <div class="col-md-9 parent-show">
+                                <div class="col-md-8 mt-3 parent-show">
                                     <div class="col-md-12">
                                         <div class="form-group banks">
                                             {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!} {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control
                                             parent_id"]) !!}
                                         </div>
                                     </div>
-                                    <div class="row pull-right pr-3">
+                                    <div class="row text-right">
                                         <div class="col-md-12">
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary form-control text-white">Add Bank</a>
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white mr-3">Add Bank</a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +142,8 @@
                                             {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                         </div>
                                     </div>
-                                    @endif @if($type == 'executive_address')
+                                    @endif
+                                    @if($type == 'executive_address')
                                     <div class="row">
                                         <div class="col-md-12 executive_copied btn btn-primary">Copy Parent Executive Contact <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /></div>
                                         <div class="form-group col-sm-12">
@@ -446,36 +445,36 @@ var types = {!!  json_encode($subTypes) !!};
             <div class="row">
                 {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
 
-                <div class="form-group col-sm-5">
+                <div class="form-group col-sm-6">
                     {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                 </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-6">
                     {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                 </div>
-                <div class="form-group col-sm-2">
+                <div class="form-group col-sm-6">
                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                     {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
                 </div>
-                <div class="form-group col-sm-2">
+                <div class="form-group col-sm-6">
                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                     {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-6">
                     <div class="row">
-                      <div class="form-group col-sm-2">
-                          <img  class="responsive" width="50%" src="{{url('/')}}/images/phone.png">
+                      <div class="form-group col-sm-2 p-0">
+                          <img  class="responsive" src="{{url('/')}}/images/phone.png">
                       </div>
                       <div class="form-group col-sm-10">
                           {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                       </div>
                     </div>
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-6">
                   <div class="row">
-                    <div class="form-group col-sm-2">
-                        <img  class="responsive" width="50%" src="{{url('/')}}/images/fax.png">
+                    <div class="form-group col-sm-2 p-0">
+                        <img  class="responsive" src="{{url('/')}}/images/fax.png">
                     </div>
                     <div class="form-group col-sm-10">
                         {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
@@ -483,10 +482,10 @@ var types = {!!  json_encode($subTypes) !!};
                   </div>
 
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-6">
                     <div class="row">
-                      <div class="form-group col-sm-2">
-                          <img  class="responsive" width="50%" src="{{url('/')}}/images/email.png">
+                      <div class="form-group col-sm-2 p-0">
+                          <img  class="responsive" src="{{url('/')}}/images/email.png">
                       </div>
                       <div class="form-group col-sm-10">
                           {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}

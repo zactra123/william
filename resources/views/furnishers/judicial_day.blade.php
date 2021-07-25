@@ -10,9 +10,7 @@
             </ol>
           </nav>
     </div>
-
   </div>
-    {{-- @include('helpers.breadcrumbs', ['title'=> "STATES INFORMATION", 'route' => ["Home"=> '/owner',"STATES INFORMATION" => "#"]]) --}}
     <div class="container">
         <div class="row row-sm">
             <div class="col-md-12">
@@ -55,7 +53,6 @@
                                         <div class="album">
                                             <div class="container">
                                               <div class="row">
-
                                                   @foreach($states as $state)
                                                       <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                                                           <div class="card mb-4 state-card" data-id="{{$state->id}}">
@@ -83,8 +80,6 @@
         </div>
     </div>
 
-
-
     <div class="modal fade" id="judicialModal" tabindex="-1" role="dialog" aria-labelledby="judicialModalModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -97,7 +92,6 @@
                 <div class="modal-body  ms-user-account">
                     <div id="state-input">
                     </div>
-
                 </div>
             </div>
         </div>
@@ -157,7 +151,9 @@
           margin-bottom: .25rem;
       }
 
-      .box-shadow { box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1); }
+      .box-shadow {
+        box-shadow: 0 .35rem .95rem rgba(0, 0, 0, 1);
+      }
 
       .card-img-top {
           width: 100%;
@@ -181,38 +177,36 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+<script>
+    $(document).ready(function(){
+        $('.state-card').click(function(){
+            var value = $(this).attr('data-id')
+            $.ajax({
+                url: '/admins/furnishers/mortgage/state',
+                type: 'GET',
+                dataType: 'html',
+                data:{id: value} ,
+                success: function(res) {
+                    $("#state-input").html(res)
+                    $('#judicialModal').modal('show');
+                }
+            });
+        });
 
-      <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+        $('.selectize').selectize({
+            delimiter: ',',
+            searchField: 'name',
+            labelField: 'name',
+            valueField: 'id',
+            onChange: function(value) {
+                console.log(value)
+                location.href = '/admins/furnishers/judicial/days?type='+ value
+            }
+        });
 
-      <script>
-          $(document).ready(function(){
-              $('.state-card').click(function(){
-                  var value = $(this).attr('data-id')
-                  $.ajax({
-                      url: '/admins/furnishers/mortgage/state',
-                      type: 'GET',
-                      dataType: 'html',
-                      data:{id: value} ,
-                      success: function(res) {
-                          $("#state-input").html(res)
-                          $('#judicialModal').modal('show');
-                      }
-                  });
-              });
+    });
 
-              $('.selectize').selectize({
-                  delimiter: ',',
-                  searchField: 'name',
-                  labelField: 'name',
-                  valueField: 'id',
-                  onChange: function(value) {
-                      console.log(value)
-                      location.href = '/admins/furnishers/judicial/days?type='+ value
-                  }
-              });
-
-          });
-
-      </script>
+</script>
 
 @endsection

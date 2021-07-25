@@ -56,7 +56,6 @@
                                             </div>
                                           </div>
                                         </div>
-
                                         <div class="col-md-12">
                                           <div class="row my-4">
                                             <div class="col-md-12">
@@ -67,7 +66,6 @@
                                             </div>
                                           </div>
                                         </div>
-
                                         <div class="col-md-12">
                                           <div class="row my-4">
                                             <div class="col-md-12">
@@ -81,7 +79,6 @@
                                     @endforeach
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

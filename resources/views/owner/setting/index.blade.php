@@ -138,7 +138,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="mb-4 main-content-label">Personal Information</div>
-								<form action="{{ route('update.owner.setting') }}">
+								<form action="{{ route('update.owner.setting') }}" method="post">
                   @csrf
 									<div class="mb-4 main-content-label">Name</div>
 
@@ -264,10 +264,10 @@
               </form>
 						</div>
 
-            <div class="card" data-select2-id="10">
-              <div class="card-body" data-select2-id="9">
+            <div class="card">
+              <div class="card-body">
                 <div class="mb-4 main-content-label">Change Password</div>
-                <form class="form-horizontal" data-select2-id="8">
+                <form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
 
                   <div class="form-group ">
                     <div class="row">
@@ -302,13 +302,13 @@
                   </div>
               </div>
               <div class="card-footer text-right">
-                {{-- <button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button> --}}
+                <button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button>
               </div>
+            </form>
             </div>
 					</div>
           <div class="col-md-4">
           </div>
-
 					<!-- /Col -->
 				</div>
 

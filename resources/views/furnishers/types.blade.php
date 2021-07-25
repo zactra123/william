@@ -34,7 +34,6 @@
                                     <div class="col-md-8">
                                       {!! Form::hidden('account_type[type]',0) !!}
                                       {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label']); !!}
-
                                     </div>
                                     <div class="col-md-4 text-center pt-2">
                                       {!! Form::checkbox('account_type[type]',1, false, ['class'=> " form-check-input" ]); !!}
@@ -52,8 +51,6 @@
                                 </div>
                               </div>
                           </div>
-
-
                   </div>
                   {!! Form::close() !!}
               </div>
@@ -78,25 +75,21 @@
                                         </td>
                                         <td width="50%">
                                             {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
-
                                         </td>
                                         <td width="20%" class="text-center">
                                           <div class="dropdown show">
                                             <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Action
                                             </a>
-
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                               <a class="dropdown-item" href="{{ route('furnisher.delete.type',$type->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
                                             </div>
                                           </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

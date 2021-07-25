@@ -1,18 +1,16 @@
 <?php
-$states = [null=>''] + \App\BankAddress::STATES;
-$types = [null=>''] + \App\BankLogo::TYPES;
-asort($types)
+    $states = [null=>''] + \App\BankAddress::STATES;
+    $types = [null=>''] + \App\BankLogo::TYPES;
+    asort($types)
 ?>
 <section class="ms-user-account">
     <div class="container">
         <div class="col-md-12 col-sm-12">
-
             {!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'parentBankInformationEdit','enctype'=>'multipart/form-data' ]) !!}
             @method('PUT')
             @csrf
             <div class="ms-ua-box">
                 <div class="ms-ua-form">
-
                     <div class="ms-ua-title mb-0">
                         <div class="row">
                             <div class="col-sm-3 form-group  files">
@@ -48,14 +46,11 @@ asort($types)
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <div class="ms-ua-box mt-2" id="account">
                 <div class="ms-ua-form pl-4 pr-4 ">
                     <div id="addresses_container">
@@ -119,19 +114,19 @@ asort($types)
                                         {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
 
                                         <div class="form-group col-sm-5">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                            {{-- {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][street]",  !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                         </div>
                                         <div class="form-group col-sm-3">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                            {{-- {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][city]",   !empty($address) ? $address['city'] : null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                         </div>
                                         <div class="form-group col-sm-2">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                            {{-- {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                             {!! Form::select("bank_address[{$type}][state]", $states,  !empty($address) ? $address['state'] : null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                         </div>
                                         <div class="form-group col-sm-2">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                            {{-- {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][zip]",  !empty($address) ? $address['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                         </div>
                                     </div>
@@ -160,24 +155,21 @@ asort($types)
                                                 {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </formset>
                         @endforeach
-
                     </div>
                     <div class="row"></div>
                 </div>
             </div>
-
             <div class="ms-ua-box mt-2" id="account-equal-bank">
                 <div class="ms-ua-title mb-0">
                     <div class="row">
-                        <div class="col-md-6 text-left"><h4>OTHER NAMES USED</h4> </div>
+                        <div class="col-md-6 text-left"><h4>Other Names Used</h4> </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="remove-equal-bank">
-                                <i class="fa fa-close"></i>
+                            <button type="button" class="remove-equal-bank btn btn-danger mb-3">
+                                <i class="fa fa-times"></i>
                             </button>
                         </div>
                     </div>
@@ -190,7 +182,6 @@ asort($types)
             <div class="col mt-5">
                 <input type="submit" value="Save" class="ms-ua-submit">
             </div>
-
             {!! Form::close() !!}
         </div>
     </div>

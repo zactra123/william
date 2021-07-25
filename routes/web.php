@@ -89,8 +89,8 @@ Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify
 Route::group(['prefix'=>'owner'], function(){
 
     Route::get('setting','Owner\SettingControl@index')->name('owner.setting.index');
-
-
+    Route::post('update/profile','Owner\SettingControl@update_profile')->name('update.owner.setting');
+    Route::post('update/password','Owner\SettingControl@change_userpasword')->name('update.owner.password');
 
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');
 
@@ -164,7 +164,7 @@ Route::group(['prefix'=>'owner'], function(){
 //    testing url for scraper
     Route::get('scraper-test/{client_id}', 'Owner\ClientsController@scrape');
 
-    Route::get('update/profile','Owner\SettingControl@update_profile')->name('update.owner.setting');
+
 });
 
 Route::group(['prefix'=> 'admin'], function(){

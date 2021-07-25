@@ -27,13 +27,11 @@
                             <h4>Edit Education</h4>
                             <p>Please enter followiing information to edit education</p>
                           </div>
-
                             <div class="card-body">
                                 {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
                                 <div class="form-group row font">
                                     {{ Form::text('content[title]', $content->title, ['class' => 'form-control m-input', 'placeholder' => 'Title']) }}
                                 </div>
-
                                 <div class="form-group row font">
                                     {{ Form::text('content[url]', $content->url, ['class' => 'form-control m-input', 'placeholder' => 'url example: some-url-example']) }}
                                 </div>
@@ -47,7 +45,6 @@
                                     {{-- <textarea name="content[content]" class="form-control m-input" placeholder="Full Content" rows="10">{!! $content->content !!}</textarea> --}} {!! Form::textarea('content[content]', $content->content,
                                     ['class' => 'form-control m-input', 'placeholder' => 'Full Content']) !!}
                                 </div>
-
                                 <div class="form-group row mb-0 font">
                                     <div class="col-md-12 text-right px-0">
                                         <button type="submit" class="btn btn-primary pull-right">

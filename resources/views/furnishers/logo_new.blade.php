@@ -111,9 +111,7 @@
                               </div>
                           </div>
                       </div>
-                  </section>
-
-
+                </section>
           </div>
         </div>
       </div>
@@ -123,12 +121,10 @@
 
 @endsection
 @section('js')
-  <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-  <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
-  <script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
-  <script src="{{ asset('js/admins/furnishers.js?v='.env('ASSET_VERSION')) }}" ></script>
-
-
+<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" ></script>
+<script src="{{ asset('js/lib/selectize.min.js?v=2') }}" ></script>
+<script src="{{ asset('js/admins/furnishers.js?v='.env('ASSET_VERSION')) }}" ></script>
 
 <script type="text/html" id="confirmation">
   <div>

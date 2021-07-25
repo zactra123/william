@@ -58,8 +58,6 @@
     }
 </style>
 
-
-
 <div class="col-md-12 pull-right mt-3">
     <form action="{{!empty($url) ? $url : '/admins/furnishers'}}" method="get">
         <div class="row mb-5">
@@ -84,19 +82,12 @@
 
                   <div class="col-md-3">
                       <span class="ml-3">  <input class="form-check-input mt-2" type="checkbox" name="no_logo"  {{ request()->no_logo ? 'checked' : '' }}>
-                        <label for="checkbox" class="mt-1"> WITHOUT LOGO</label></span>
+                        <label for="checkbox" class="mt-1"> Without Logo</label></span>
                         <input type="submit" value="Search" class=" btn btn-primary" style="float:right">
                   </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
-
-
     </form>
 </div>
 

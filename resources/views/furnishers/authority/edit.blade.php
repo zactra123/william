@@ -186,7 +186,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-right">
+        <div class="col-md-12 text-right mb-5">
           <input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 pull-right">
           {!! Form::close() !!}
         </div>

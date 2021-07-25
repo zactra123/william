@@ -2,7 +2,7 @@
 		{{-- <script src="{{asset('/')}}assets/js/app-calendar.js"></script> --}}
 		<!--- JQuery min js -->
 
-		
+
 		{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -81,7 +81,37 @@
 		<!--- Internal Pickerjs js -->
 		<script src="{{asset('/')}}assets/plugins/pickerjs/picker.min.js"></script>
 
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
 
+<script type="text/javascript">
+
+ $(document).ready(function(){
+      @if (session('success'))
+      Swal.fire({
+        title: 'Success',
+        text: '{!! session("success") !!}',
+        icon: 'success',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('error'))
+      Swal.fire({
+        title: 'Error',
+        text: '{!! session("error") !!}',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('info'))
+      Swal.fire({
+        title: 'Info',
+        text: '{!! session("info") !!}',
+        icon: 'info',
+        confirmButtonText: 'Close'
+      })
+      @endif
+
+    });
+
+</script>
 
 
   @yield('js')

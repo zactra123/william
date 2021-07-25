@@ -11,25 +11,19 @@
               </ol>
             </nav>
       </div>
-
     </div>
-
 
     <div class="container">
       <div class="row row-sm">
         <div class="col-md-12">
           <div class="card">
-
             <div class="card-header pb-0">
              <div class="d-flex justify-content-between">
                <h4 class="card-title mg-b-0 mt-2">Reviews</h4>
                <i class="mdi mdi-dots-horizontal text-gray"></i>
              </div>
-             <p class="tx-12 text-muted mb-2">List of all reviews for your system
-
-              </p>
+             <p class="tx-12 text-muted mb-2">List of all reviews for your system</p>
            </div>
-
               <div class="card-body mt-5">
                   <table class="table table-hover">
                       <thead class="thead">
@@ -70,16 +64,11 @@
                         @endforeach
                       </tbody>
                   </table>
-
               </div>
-
           </div>
         </div>
       </div>
     </div>
-
-
-
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -91,21 +80,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <div class="modal-body">
         <p class="showreview"></p>
       </div>
-
     </div>
   </div>
 </div>
 @endsection
 @section('js')
-  <script type="text/javascript">
+<script type="text/javascript">
   function getreview(ob) {
     var review = $(ob).attr('data-review');
     $('.showreview').html(review);
   }
-  </script>
+</script>
 
 @endsection

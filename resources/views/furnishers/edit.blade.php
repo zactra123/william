@@ -4,9 +4,6 @@
 @endsection
 @section('body')
 
-
-    {{-- @include('helpers.breadcrumbs', ['title'=> "BANK DETAILS", 'route' => ["Home"=> '/admins',"{$bank->name}" => "#"]]) --}}
-
     <div class="breadcrumb-header justify-content-between">
         <div>
             <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -69,7 +66,6 @@
                 @csrf
                 <div class="ms-ua-box">
                     <div class="ms-ua-form">
-
                         <div class="ms-ua-title mb-0">
                             <div class="row">
                                 <div class="col-sm-4 p-5">
@@ -87,15 +83,10 @@
                                                 <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
                                             @endif
                                         @endif
-
-
                                     </div>
                                     <div class="col-sm-12 hide form-group updateLogo files">
                                         <input class="bank_logo_class bank_logo form-control file-box" type="file" name="logo">
                                     </div>
-
-
-
                                 </div>
                                 <div class="col-md-8 pt-5">
                                     <div class="col-md-12">
@@ -131,7 +122,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
                                         <div class="col-md-3 pl-3">
                                             <a class="btn btn-primary show-parent-field form-control text-white">Add Parent</a>
@@ -150,18 +140,12 @@
                                               </div>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
                 </div>
-
                 <div class="ms-ua-box mt-2 pt-5" id="account">
                     <div class="ms-ua-form pl-4 pr-4 ">
                         <div id="addresses_container">
@@ -182,7 +166,6 @@
                                             @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ])
                                         @endforeach
                                     <?php } ?>
-
                                    <div class="row additional-addresses">
                                        <div class="col-sm-12 add-additional p-1 pb-5"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
                                    </div>
@@ -231,7 +214,6 @@
                                                 </div>
                                             </div>
                                         @endif
-
                                         <div class="row">
                                             {!! Form::hidden("bank_address[$type][type]", $type, ["class"=>"form-control"]) !!}
                                             {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
@@ -284,7 +266,6 @@
                                                   </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </formset>
@@ -294,7 +275,6 @@
                         <div class="row"></div>
                     </div>
                 </div>
-
                 <div class="ms-ua-box mt-2" id="account-equal-bank">
                     <div class="ms-ua-title mb-0">
                         <div class="row">
@@ -339,121 +319,22 @@
         </div>
     </div>
 
-        <div class="modal fade" id="parentModal" tabindex="-1" role="dialog" aria-labelledby="parentModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog w-100" role="document">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="parentModalLabel">Parent Bank Information</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body ms-user-account">
+    <div class="modal fade" id="parentModal" tabindex="-1" role="dialog" aria-labelledby="parentModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog w-100" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="parentModalLabel">Parent Bank Information</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ms-user-account">
 
-                    </div>
                 </div>
             </div>
         </div>
-
-
-        <script>
-            var types = {!!  json_encode(\App\BankLogo::SUB_TYPES) !!};
-
-        </script>
-
-
-        <script type="text/html" id="sub_types_append">
-
-            <div class="col-md-4 mb-3 remove_sub_type">
-                <div class="row">
-                  <div class="col-md-2">
-                    <input name="bank[additional_information][sub_type][]" type="checkbox" value="{value}">
-                  </div>
-                  <div class="col-md-10">
-                    {value}
-                  </div>
-                </div>
-            </div>
-
-        </script>
-
-
-        <script type="text/html" id="addtional_address_template">
-            <formset class="additional_address">
-                <div class="row remove-address">
-                    <div class="col-md-6"><label for="">Additional Address</label></div>
-                    <div class="col-md-6 text-right mb-3">
-                        <button type="button" class="btn btn-danger">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-md-12 addresses " id="address-additional_address-{i}">
-                    <div class="row">
-                        <div class="form-group col-sm-12">
-                            {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
-                        </div>
-                    </div>
-                    <div class="row">
-                        {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
-
-                        <div class="form-group col-sm-5">
-                            {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
-                        </div>
-                        <div class="form-group col-sm-3">
-                            {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
-                        </div>
-                        <div class="form-group col-sm-2">
-                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
-                            {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
-                        </div>
-                        <div class="form-group col-sm-2">
-                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
-                            {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="row">
-                              <div class="col-sm-2">
-                                  <img class="responsive" src="{{ url('/') }}/images/phone.png">
-                              </div>
-                              <div class="col-sm-10">
-                                  {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="row">
-                            <div class="col-sm-2">
-                                <img class="responsive" src="{{url('/')}}/images/fax.png">
-                            </div>
-                            <div class="col-sm-10">
-                                {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-4">
-                          <div class="row">
-                            <div class="col-sm-2">
-                                <img class="responsive" src="{{url('/')}}/images/email.png">
-                            </div>
-                            <div class="col-sm-10">
-                                {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
-                            </div>
-                          </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </formset>
-        </script>
-
-
-
+    </div>
 
 @endsection
 @section('js')
@@ -740,61 +621,155 @@
   </script>
 
   <script>
-      $(document).ready(function () {
+  $(document).ready(function () {
 
-          $.validator.addMethod("extension", function (value, element, param) {
-              param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
-              return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
-          }, "Please enter a value with a valid extension.");
+    $.validator.addMethod("extension", function (value, element, param) {
+        param = typeof param === "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
+        return this.optional(element) || value.match(new RegExp(".(" + param + ")$", "i"));
+    }, "Please enter a value with a valid extension.");
 
-          $('#bankInformation').validate({
-              rules: {
-                  "logo": {
-                      extension: "jpg,jpeg,png"
-                  },
-              },
-              messages: {
-                  "logo": {
-                      extension: "You're only allowed to upload jpg or png images."
-                  },
+    $('#bankInformation').validate({
+        rules: {
+            "logo": {
+                extension: "jpg,jpeg,png"
+            },
+        },
+        messages: {
+            "logo": {
+                extension: "You're only allowed to upload jpg or png images."
+            },
 
-              },
-              errorPlacement: function (error, element) {
-                  error.insertAfter(element);
-              }
-          })
-          $(".selectize-type").selectize({plugins: ['remove_button']})
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        }
+    })
+    $(".selectize-type").selectize({plugins: ['remove_button']})
 
-      });
+  });
   </script>
 
   <script>
-      $('.delete-furnisher').click(function (e) {
-          e.preventDefault() // Don't post the form, unless confirmed
+  $('.delete-furnisher').click(function (e) {
+    e.preventDefault() // Don't post the form, unless confirmed
 
-          bootbox.confirm({
-              title: "Destroy  this FURNISHER/CRAs?",
-              message: "Do you really want to delete this record?",
-              buttons: {
-                  cancel: {
-                      label: '<i class="fa fa-times"></i> Cancel',
-                      className: 'btn-success'
+    bootbox.confirm({
+        title: "Destroy  this FURNISHER/CRAs?",
+        message: "Do you really want to delete this record?",
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-success'
 
-                  },
-                  confirm: {
-                      label: '<i class="fa fa-check"></i> Confirm',
-                      className: 'btn-danger'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Confirm',
+                className: 'btn-danger'
 
-                  }
-              },
-              callback: function (result) {
-                  if (result) {
-                      $(e.target).closest('form').submit() // Post the surrounding form
-                  }
-              }
-          });
-      });
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                $(e.target).closest('form').submit() // Post the surrounding form
+            }
+        }
+    });
+  });
+  </script>
+  <script>
+      var types = {!!  json_encode(\App\BankLogo::SUB_TYPES) !!};
+
+  </script>
+
+  <script type="text/html" id="sub_types_append">
+
+      <div class="col-md-4 mb-3 remove_sub_type">
+          <div class="row">
+            <div class="col-md-2">
+              <input name="bank[additional_information][sub_type][]" type="checkbox" value="{value}">
+            </div>
+            <div class="col-md-10">
+              {value}
+            </div>
+          </div>
+      </div>
+
+  </script>
+
+  <script type="text/html" id="addtional_address_template">
+      <formset class="additional_address">
+          <div class="row remove-address">
+              <div class="col-md-6"><label for="">Additional Address</label></div>
+              <div class="col-md-6 text-right mb-3">
+                  <button type="button" class="btn btn-danger">
+                      <i class="fa fa-times"></i>
+                  </button>
+              </div>
+          </div>
+          <div class="col-md-12 addresses " id="address-additional_address-{i}">
+              <div class="row">
+                  <div class="form-group col-sm-12">
+                      {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                  </div>
+              </div>
+              <div class="row">
+                  {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
+
+                  <div class="form-group col-sm-5">
+                      {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
+                  </div>
+                  <div class="form-group col-sm-3">
+                      {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
+                  </div>
+                  <div class="form-group col-sm-2">
+                      {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                      {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
+                  </div>
+                  <div class="form-group col-sm-2">
+                      {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                      {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-4">
+                      <div class="row">
+                        <div class="col-sm-2">
+                            <img class="responsive" src="{{ url('/') }}/images/phone.png">
+                        </div>
+                        <div class="col-sm-10">
+                            {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div class="col-sm-2">
+                          <img class="responsive" src="{{url('/')}}/images/fax.png">
+                      </div>
+                      <div class="col-sm-10">
+                          {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div class="col-sm-2">
+                          <img class="responsive" src="{{url('/')}}/images/email.png">
+                      </div>
+                      <div class="col-sm-10">
+                          {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
+                      </div>
+                    </div>
+
+                  </div>
+
+              </div>
+          </div>
+      </formset>
   </script>
 
 
-@endsection
+
+
+  @endsection
