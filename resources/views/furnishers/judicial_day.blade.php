@@ -56,7 +56,12 @@
                                                   @foreach($states as $state)
                                                       <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                                                           <div class="card mb-4 state-card" data-id="{{$state->id}}">
-                                                            <img  class="card-img-top w-100"  src="{{$state->flag()}} " >
+                                                            @if ($state->flag())
+                                                              <img  class="card-img-top w-100"  src="{{$state->flag()}}" >
+                                                            @else
+                                                              <img  class="card-img-top w-100"  src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" >
+                                                            @endif
+
 
                                                               <div class="card-body">
                                                                   <div class="text-center">
@@ -84,7 +89,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="judicialModalModalLabel">STATE DATES</h5>
+                    <h5 class="modal-title" id="judicialModalModalLabel">State Dates</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

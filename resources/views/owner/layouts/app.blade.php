@@ -10,8 +10,6 @@
     @include('owner.includes.styles')
 </head>
 	<body class="main-body  app sidebar-mini">
-
-
 		<!-- Loader -->
 		<div id="global-loader">
 			<img src="{{url('/')}}/assets/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
@@ -30,10 +28,8 @@
 		</div>
 		<input type="hidden" name="" class="appurl" value="{{ url('/') }}">
 		<!-- /main-content -->
-					<!--Sidebar-right-->
 
-		<!--/Sidebar-right-->
-            		<!-- Footer opened -->
+    <!-- Footer opened -->
 		<div class="main-footer ht-40">
 			<div class="container-fluid pd-t-0-f ht-100p">
 				<span>Copyright © {{ date('Y') }} <a href="#">Credit Repair</a>. Designed by <a href="#">Numan</a></span>

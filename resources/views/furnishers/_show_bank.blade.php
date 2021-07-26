@@ -23,7 +23,7 @@
                             <div class="col-md-9">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="COMPANY NAME">
+                                        <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="Company Name">
                                         {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
                                     </div>
                                 </div>

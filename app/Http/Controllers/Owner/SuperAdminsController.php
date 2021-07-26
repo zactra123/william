@@ -25,7 +25,9 @@ class SuperAdminsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('owner.index');
+      $client = User::where('role','client')->orderby('id','desc')->take(10)->get();
+
+        return view('owner.index',compact('client'));
     }
 
 

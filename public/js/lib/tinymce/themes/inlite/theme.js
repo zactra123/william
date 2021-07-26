@@ -8426,6 +8426,7 @@ var inlite = (function (domGlobals) {
           }
         }
         if (forId) {
+
           return '<label id="' + self._id + '" class="' + self.classes + '"' + (forId ? ' for="' + forId + '"' : '') + '>' + text + '</label>';
         }
         return '<span id="' + self._id + '" class="' + self.classes + '">' + text + '</span>';

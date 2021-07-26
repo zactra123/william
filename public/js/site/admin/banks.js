@@ -367,6 +367,7 @@ $(document).ready(function($) {
     })
 
     $('#bankInformation').validate({
+
         ignore: [],
         rules: {
              "bank[name]": {
@@ -383,6 +384,7 @@ $(document).ready(function($) {
                          name: function() { return $("#bankInformation .bank_name").val();
                          },
                          _token: function (){return  $("meta[name='csrf-token']").attr("content");}
+
                      },
                      dataFilter: function(response) {
                          if(jQuery.parseJSON(response).status == true) {

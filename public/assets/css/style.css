@@ -9146,8 +9146,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  position: relative; }
-
+  position: relative;
+}
+.error{
+margin-top: 10px !important;
+border-width: 0 !important;
+padding: 12px 15px !important;
+border-radius: 0 !important;
+color: #721c24 !important;
+background-color: #f8d7da !important;
+border-color: #f5c6cb !important;
+}
 .main-body::before {
   content: 'main';
   position: fixed;

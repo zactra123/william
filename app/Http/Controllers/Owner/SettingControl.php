@@ -40,7 +40,13 @@ class SettingControl extends Controller
      {
        User::where('id',Auth::user()->id)->update([
          'first_name' => $request->fisrt_name,
-         'last_name' => $request->last_name
+         'last_name' => $request->last_name,
+         'phone' => $request->phone,
+         'address' => $request->address,
+         'twitter' => $request->twitter,
+         'facebook' => $request->facebook,
+         'googleplus' => $request->googleplus,
+         'linkedin' => $request->linkedin
        ]);
        return back()->with('success','You successfully Updated Profile!');
      }

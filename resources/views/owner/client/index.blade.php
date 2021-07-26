@@ -45,7 +45,7 @@
                                   <td>{{$user->first_name}}</td>
                                   <td>{{$user->last_name}}</td>
                                   <td>{{$user->email}}</td>
-                                  {{-- <td>{{$user->full_name?? "-"}}</td>  --}}
+                                  {{-- <td>{{$user->full_name?? "-"}}</td> --}}
                                   <td>
                                       <div class="dropdown show">
                                           <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,14 +57,13 @@
                                           </div>
                                       </div>
                                       {{-- <a class="btn btn-secondary" href="{{ route('adminRec.client.profile',$user->id)}}" role="button"><i class="fa fa-file-text"></i></a> --}}
-
                                       <meta name="csrf-token" content="{{ csrf_token() }}" />
-
                                       {{--
                                       <a href="{{ route('owner.delete.client',$user->id) }}">
                                           <button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{ $user->id}}"><i class="fa fa-trash"></i></button>
                                       </a>
-                                      --}} {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
+                                      --}}
+                                      {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
                                   </td>
                               </tr>
                               @endforeach

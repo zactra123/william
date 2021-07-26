@@ -235,8 +235,8 @@
 			<style>
 
 					#bankInformation .selectize-input, .selectize-select {
-							border: 1px solid #000 !important;
-							border-radius: 8px !important;
+							/* border: 1px solid #000 !important;
+							border-radius: 8px !important; */
 					}
 
 					.ui-autocomplete {
@@ -372,8 +372,8 @@
 			<style>
 
 			    #bankInformation .selectize-input,.selectize-select{
-			        border: 1px solid #000 !important;
-			        border-radius: 8px !important;
+			        /* border: 1px solid #000 !important;
+			        border-radius: 8px !important; */
 			    }
 
 			    .ui-autocomplete {

@@ -25,6 +25,12 @@ class   User extends Authenticatable implements MustVerifyEmail
         'secret_questions_id',
         'secret_answer',
         'active',
+        'phone',
+        'address',
+        'twitter',
+        'facebook',
+        'linkedin',
+        'googleplus',
         'note_count'
     ];
 

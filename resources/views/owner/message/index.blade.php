@@ -14,7 +14,6 @@
               </ol>
             </nav>
       </div>
-
     </div>
     <section class="ms-working working-section section-padding">
         <div class="container">
@@ -77,17 +76,12 @@
                                                             </div>
                                                           </div>
                                                         </div>
-
                                                         <div class="form-group title_id">
                                                             <input class="form-control" type="text" name="title" id="titleId" placeholder="Title">
-
                                                         </div>
                                                         <div class="form-group">
-
                                                             <textarea class="form-control" name="description" id="descriptionId" rows="6" placeholder="Description"> </textarea>
-
                                                         </div>
-
                                                         <div class="row" style="float:right">
                                                           <div class="col-md-12">
                                                             <input type="submit" value="Add Message" class="ms-ua-submit btn btn-primary">
@@ -95,13 +89,10 @@
                                                         </div>
                                                     </form>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="modal fade" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -117,20 +108,14 @@
                                                   <th>FULL NAME</th>
                                                   <td><span class="left" id="appointment-full_name"></span></td>
                                                 </tr>
-
-
                                                 <tr>
                                                   <th>PHONE NUMBER</th>
                                                   <td><span class="left" id="appointment-phone"></span></td>
                                                 </tr>
-
-
-
                                                 <tr>
                                                   <th>EMAIL</th>
                                                   <td><span class="left" id="appointment-email"></span></td>
                                                 </tr>
-
                                                 <tr>
                                                   <th>DATE</th>
                                                   <td><span class="left" id="appointment-date"></span></td>
@@ -140,16 +125,11 @@
                                                     <p id="appointment-description"></p>
                                                   </td>
                                                 </tr>
-
                                               </table>
-
                                                 <div class="note .overflow-vertical app_details" id="noteId">
                                                 </div>
-
-
                                                 <hr>
                                                 <div class="addNote">
-
                                                     <div class="ms-ua-form">
                                                       <h5>Add A Note</h5>
                                                         <form method="POST" action="{{ route('admin.message.note') }}">
@@ -165,12 +145,9 @@
                                                             </div>
                                                         </form>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                             <div id="buttonCompleted"></div>
-
                                             <div class="modal-footer">
                                                 <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
@@ -219,14 +196,11 @@
                                                         </div>
                                                     </form>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -426,13 +400,6 @@
 
 {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />--}}
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
-
-
-
-
-
-
-
 
 
 @endsection

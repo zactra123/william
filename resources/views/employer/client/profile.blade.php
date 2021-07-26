@@ -78,11 +78,11 @@
 
                       <li title="Phone Number">
                           <img  class="" width="25px"  src="{{url('/')}}/images/phone_number.png">
-                          &nbsp; <a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
+                          &nbsp; <a href="tell:{{$client->clientDetails->phone_number}}" class="fs-12"> {{$client->clientDetails->phone_number}}</a>
                       </li>
                       <li title="Email Address">
                           <a href="#" data-toggle="modal" data-target="#sendEmail"> <img  class="" width="25px" src="{{url('/')}}/images/email.png"> </a>
-                          &nbsp; <a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
+                          &nbsp; <a href="mailto:{{$client->email}}"> {{ $client->email }}</a>
                       </li>
                       <li title="Full Address" >
                           <div class="address">

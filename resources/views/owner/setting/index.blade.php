@@ -64,7 +64,7 @@
 													<i class="icon ion-logo-twitter"></i>
 												</div>
 												<div class="media-body">
-													<span>Twitter</span> <a href="#">twitter.com/spruko.me</a>
+													<span>Twitter</span> <a href="{{ Auth::user()->twitter }}">{{ Auth::user()->twitter }}</a>
 												</div>
 											</div>
 											<div class="media">
@@ -72,15 +72,15 @@
 													<i class="icon ion-logo-linkedin"></i>
 												</div>
 												<div class="media-body">
-													<span>Linkedin</span> <a href="#">linkedin.com/in/spruko</a>
+													<span>Linkedin</span> <a href="{{ Auth::user()->linkedin }}">{{ Auth::user()->linkedin }}</a>
 												</div>
 											</div>
 											<div class="media">
 												<div class="media-icon bg-danger-transparent text-danger">
-													<i class="icon ion-md-link"></i>
+													<i class="icon ion-logo-googleplus"></i>
 												</div>
 												<div class="media-body">
-													<span>My Portfolio</span> <a href="#">spruko.com/</a>
+													<span>Google+</span> <a href="{{ Auth::user()->googleplus }}">{{ Auth::user()->googleplus }}</a>
 												</div>
 											</div>
 										</div><!-- main-profile-social-list -->
@@ -101,21 +101,11 @@
 										<div class="media-body">
 											<span>Mobile</span>
 											<div>
-												+245 354 654
+												{{ Auth::user()->phone }}
 											</div>
 										</div>
 									</div>
-									<div class="media">
-										<div class="media-icon bg-success-transparent text-success">
-											<i class="icon ion-logo-slack"></i>
-										</div>
-										<div class="media-body">
-											<span>Slack</span>
-											<div>
-												@spruko.w
-											</div>
-										</div>
-									</div>
+
 									<div class="media">
 										<div class="media-icon bg-info-transparent text-info">
 											<i class="icon ion-md-locate"></i>
@@ -123,7 +113,7 @@
 										<div class="media-body">
 											<span>Current Address</span>
 											<div>
-												San Francisco, CA
+												{{ Auth::user()->address }}
 											</div>
 										</div>
 									</div>
@@ -185,23 +175,14 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group ">
-										<div class="row">
-											<div class="col-md-3">
-												<label class="form-label">Website</label>
-											</div>
-											<div class="col-md-9">
-												<input type="text" class="form-control" name="website" placeholder="Website" value="@spruko.w">
-											</div>
-										</div>
-									</div>
+
 									<div class="form-group ">
 										<div class="row">
 											<div class="col-md-3">
 												<label class="form-label">Phone</label>
 											</div>
 											<div class="col-md-9">
-												<input type="text" class="form-control" name="phone" placeholder="phone number" value="+245 354 654">
+												<input type="text" class="form-control" name="phone" placeholder="Phone number" value="{{ Auth::user()->phone }}">
 											</div>
 										</div>
 									</div>
@@ -211,7 +192,7 @@
 												<label class="form-label">Address</label>
 											</div>
 											<div class="col-md-9">
-												<textarea class="form-control" name="address" rows="2" placeholder="Address"></textarea>
+												<textarea class="form-control" name="address" rows="2" placeholder="Address">{{ Auth::user()->address }}</textarea>
 											</div>
 										</div>
 									</div>
@@ -222,7 +203,7 @@
 												<label class="form-label">Twitter</label>
 											</div>
 											<div class="col-md-9">
-												<input type="text" name="twitter" class="form-control" placeholder="twitter" value="twitter.com/spruko.html">
+												<input type="text" name="twitter" class="form-control" placeholder="Twitter" value="{{ Auth::user()->twitter }}">
 											</div>
 										</div>
 									</div>
@@ -232,7 +213,7 @@
 												<label class="form-label">Facebook</label>
 											</div>
 											<div class="col-md-9">
-												<input type="text" name="facebook" class="form-control" placeholder="facebook" value="https://www.facebook.com/Redash">
+												<input type="text" name="facebook" class="form-control" placeholder="Facebook" value="{{ Auth::user()->facebook }}">
 											</div>
 										</div>
 									</div>
@@ -242,7 +223,7 @@
 												<label class="form-label">Google+</label>
 											</div>
 											<div class="col-md-9">
-												<input type="text" name="googleplus" class="form-control" placeholder="google" value="spruko.com">
+												<input type="text" name="googleplus" class="form-control" placeholder="Google Plus" value="{{ Auth::user()->googleplus }}">
 											</div>
 										</div>
 									</div>
@@ -252,7 +233,7 @@
 												<label class="form-label">Linked in</label>
 											</div>
 											<div class="col-md-9">
-												<input type="text" class="form-control" name="linkedin" placeholder="linkedin" value="linkedin.com/in/spruko">
+												<input type="text" class="form-control" name="linkedin" placeholder="Linkedin" value="{{ Auth::user()->linkedin }}">
 											</div>
 										</div>
 									</div>
