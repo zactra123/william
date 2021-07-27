@@ -71,16 +71,6 @@
                                     <div class="col-md-12">
                                         <div class="">
                                           <div class="row bank_sub_type_append">
-                                                  @foreach($subTypes[51] as $key => $type)
-                                                  <div class="col-md-4 mt-2">
-                                                    <div class="col-md-2 float-left">
-                                                        <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type,$bank->additional_information["sub_type"])) ? "checked":''}}>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <span class="">{{$type}}</span>
-                                                    </div>
-                                                  </div>
-                                                  @endforeach
                                           </div>
                                         </div>
                                     </div>
