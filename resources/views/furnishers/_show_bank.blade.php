@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="ms-ua-box mt-2" id="account">
                 <div class="ms-ua-form pl-4 pr-4 ">
                     <div id="addresses_container">
@@ -163,6 +164,7 @@
                     <div class="row"></div>
                 </div>
             </div>
+
             <div class="ms-ua-box mt-2" id="account-equal-bank">
                 <div class="ms-ua-title mb-0">
                     <div class="row">

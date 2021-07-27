@@ -899,6 +899,9 @@ body .ui-tooltip {
 }
 .ui-widget.ui-widget-content {
 	border: 1px solid #c5c5c5;
+	max-height: 150px !important;
+  overflow: scroll !important;
+	padding-left: 10px !important;
 }
 .ui-widget-content {
 	border: 1px solid #dddddd;

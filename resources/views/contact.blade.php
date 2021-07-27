@@ -13,11 +13,7 @@
         <p class="text-center text-light fs-15">  Home / <span class="theme-color-dark bold">Contact Us</span>   </p>
     </div>
   </div>
-
-    <br><br>
-
-
-
+  <br><br>
     <!-- Working Area -->
     <section class="ms-working working-section section-padding mt-5">
         <div class="container">
@@ -32,7 +28,6 @@
 
           <div class="clearfix"></div>
           <br>
-
           <!-- end .smart-forms section -->
         </div>
         <div class="col-md-4">
@@ -58,7 +53,6 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-12 mt-2">
               <div class="row">
                 <div class="col-md-1">
@@ -69,14 +63,8 @@
                 </div>
               </div>
             </div>
-
             <!--<i class="fa fa-phone"></i> +923407712693 <br>-->
-
           </div>
-
-
-
-
           <div class="clearfix"></div>
         </div>
       </div>

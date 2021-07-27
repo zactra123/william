@@ -65,6 +65,11 @@
 			#example1{
 				min-height:200px;
 			}
+			.ui-widget.ui-widget-content {
+				max-height: 150px !important;
+			  overflow: scroll !important;
+				padding-left: 10px !important;
+			}
 		</style>
 
 		<style>

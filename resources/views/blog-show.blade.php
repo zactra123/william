@@ -100,13 +100,10 @@
             }
         }
     </style>
-    <section class="header">
-        <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background">
-        <div class="container header-banner">
+    <section class="mt-5 pt-5">
+        {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
 
-        </div>
-
-        <div class="container header-banner">
+        <div class="container header-banner mt-5">
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
@@ -116,9 +113,9 @@
                         <span ><i>Published at:</i> {{date("F j, Y", strtotime($blog->published_date))}}</span>
                         <div>
                             <span class="text-secondary"><i>Share via:</i> </span>
-                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank">FB <i class="fa fa-facebook-square" ></i></a>
-                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank">TV <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank">LI<i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"><i class="fa fa-facebook-square" ></i></a>
+                            <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="album py-5">
@@ -127,13 +124,11 @@
 
                         </div>
                     </div>
-                    <div class=ms-ua-social">
-
+                    {{-- <div class="ms-ua-social">
                         <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"> <i class="fa fa-facebook-square" ></i></a>
                         <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
                         <a class="m-2" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -144,7 +139,3 @@
 
 
 @endsection
-
-
-
-

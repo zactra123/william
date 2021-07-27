@@ -13,11 +13,9 @@
             </ol>
           </nav>
     </div>
-
   </div>
   <div class="row">
     <div class="col-md-1">
-
     </div>
     <div class="col-md-10">
       <div class="card">
@@ -26,40 +24,35 @@
         </div>
         <div class="card-body">
           <table class="table">
-              <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">FULL NAME</th>
-                  <th scope="col">AFFILIATE NAME</th>
-                  <th scope="col">EMAIL</th>
-
-              </tr>
-              </thead>
-              <tbody>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">FULL NAME</th>
+              <th scope="col">AFFILIATE NAME</th>
+              <th scope="col">EMAIL</th>
+            </tr>
+            </thead>
+            <tbody>
               @foreach($users as $key=> $user)
                   <tr>
                       <th scope="row">{{$key+1}}</th>
                       <td>
-                          <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
+                        <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
                           {{$user->full_name}}
-                          </a>
+                        </a>
                       </td>
-                      <td>
-                          {{$user->affiliate_name??'-'}}
-                      </td>
+                      <td>{{$user->affiliate_name??'-'}}</td>
                       <td>{{$user->email}}</td>
-{{--                                                <td>{{$user->full_name?? "-"}}</td>--}}
-
+                      {{-- <td>{{$user->full_name?? "-"}}</td> --}}
                   </tr>
               @endforeach
-              </tbody>
+            </tbody>
           </table>
-        </div>
-
-      </div>
-      <div class="col-md-12">
-        <div class="row" style="float:right;">
-          {{ $users->links() }}
+          <div class="row float-right pull-right">
+            <div class="col-md-12 float-right pull-right">
+              {{ $users->links() }}
+            </div>
+          </div>
         </div>
       </div>
     </div>

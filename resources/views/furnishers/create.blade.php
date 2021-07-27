@@ -48,19 +48,16 @@
                 <div class="ms-ua-box">
                     <div class="ms-ua-form">
                         <div class="ms-ua-title mb-0">
-                            <div class="row p-3">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10 form-group files">
-                                    <div class="col-md-12">
-                                        <input class="form-control bank_logo_class file-box" type="file" name="logo" id="bank_logo" tabindex="3" />
-                                    </div>
 
-                                    <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">NO LOGO</span></div>
-                                </div>
-                            </div>
                             <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10 pt-3">
+                              <div class="col-md-4 form-group files">
+                                  <div class="col-md-12">
+                                      <input class="form-control bank_logo_class file-box" type="file" name="logo" id="bank_logo" tabindex="3" />
+                                  </div>
+
+                                  <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">NO LOGO</span></div>
+                              </div>
+                                <div class="col-md-8 pt-3">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <input type="text" name="bank[name]" class="form-control bank_name" placeholder="Company Name" />
@@ -90,12 +87,15 @@
                                 </div>
                             </div>
                             <div class="row parent hidden">
+                              <div class="col-md-3">
+
+                              </div>
                                 <div class="col-md-3 ml-4 pl-5">
                                     <a class="btn btn-primary show-parent-field ml-5 mt-3 hide text-white pull-right">Add Parent</a>
                                     <a class="btn btn-primary hide hide-parent-field hide ml-5 mt-3 text-white pull-right">Hide Parent</a>
                                 </div>
-                                <div class="col-md-8 mt-3 parent-show">
-                                    <div class="col-md-12">
+                                <div class="col-md-5 mt-3 parent-show">
+                                    <div class="col-md-12 text-left">
                                         <div class="form-group banks">
                                             {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!} {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control
                                             parent_id"]) !!}

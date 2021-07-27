@@ -234,7 +234,7 @@ class PagesController extends Controller
     {
         $today = date('Y-m-d');
         // Show blog based on published date
-        $blogs = Blog::where('published_date', '<',$today)->orderBy('published_date', 'desc')->paginate(15);
+        $blogs = Blog::where('published_date', '<=',$today)->orderBy('published_date', 'desc')->paginate(10);
         return view('blog', compact("blogs"));
     }
     /**

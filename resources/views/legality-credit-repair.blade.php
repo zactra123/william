@@ -10,9 +10,9 @@
 
 @section('content')
 
-    <section class="header">
+    <section class="mt-5 pt-5">
         {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
-        <div class="container header-banner">
+        <div class="container header-banner mt-5">
 
         </div>
 

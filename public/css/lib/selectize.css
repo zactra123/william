@@ -146,6 +146,8 @@
 }
 .selectize-control.multi .selectize-input.has-items {
   padding: 6px 8px 3px;
+  max-height: 100px !important;
+  overflow: scroll;
 }
 .selectize-input.full {
   background-color: #ffffff;
