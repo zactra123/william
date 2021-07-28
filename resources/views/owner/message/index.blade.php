@@ -31,10 +31,8 @@
                                         </div>
                                     </div>
                                     <div class="response">
-
                                     </div>
                                     <div id='calendar' class="card" style="overflow: auto;">
-
                                     </div>
                                 </div>
 

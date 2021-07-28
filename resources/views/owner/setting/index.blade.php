@@ -1,5 +1,7 @@
 @extends('owner.layouts.app')
-
+@section('title')
+<title>Settings</title>
+@endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>

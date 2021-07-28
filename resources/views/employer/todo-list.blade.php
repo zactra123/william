@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-2">
                             Assigned
-                            <input type="checkbox" name="assign" placeholder="TO DO TITLE" />
+                            <input type="checkbox" name="assign" placeholder="To Do Title" />
                         </div>
                         @else
                         <div class="col-md-6"></div>
@@ -75,21 +75,20 @@
                     </thead>
                     <tbody>
                         @foreach($toDos as $todo)
-
+                          @php
+                            $key = 0;
+                          @endphp
                         <tr data-id="{{$todo->id}}">
-                            <th scope="row"></th>
+                            <th scope="row">{{ $key+1 }}</th>
                             <td><a href="{{route('adminRec.client.profile', $todo->client_id)}}" role="button">{{$todo->client->full_name()}}</a></td>
                             <td>{{$todo->title}}</td>
                             @if(auth()->user()->role=='receptionist')
-
                             <td>
                                 {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
                             </td>
-
                             <td>
-                                <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-                                <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash"></i></button>
+                              <meta name="csrf-token" content="{{ csrf_token() }}" />
+                              <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash"></i></button>
                             </td>
                             @endif
                         </tr>

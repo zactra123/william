@@ -56,10 +56,8 @@ class ClientsController extends Controller
         $clientReportsEQ = null;
         $clientReportsTU = null;
         $clientReportsEX = null;
-
         if($request->date !=null){
             $clientReports = ClientReport::where('id',$request->date);
-
         }else{
             $clientReports = ClientReport::where('user_id',$request->client);
         }

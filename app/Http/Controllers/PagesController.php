@@ -234,8 +234,15 @@ class PagesController extends Controller
     {
         $today = date('Y-m-d');
         // Show blog based on published date
-        $blogs = Blog::where('published_date', '<=',$today)->orderBy('published_date', 'desc')->paginate(10);
-        return view('blog', compact("blogs"));
+        $query = Blog::where('published_date', '<=',$today);
+
+        if (!empty($_GET['query'])) {
+          $query->where('title','LIKE', '%' . $_GET['query'] . '%');
+        }
+
+        $blogs = $query->orderBy('published_date', 'desc')->paginate(10);
+        $mostviewes = Blog::orderBy('visited','desc')->take(5)->get();
+        return view('blog', compact("blogs","mostviewes"));
     }
     /**
      * Direct News room PAGE ACTION
@@ -248,6 +255,19 @@ class PagesController extends Controller
         if(!$blog) {
             return abort(404);
         }
+
+        if ($blog->visited=="") {
+            Blog::where('url', $url)->update([
+              'visited' => '1'
+            ]);
+        } else {
+          $getvisit = $blog->visited;
+
+          Blog::where('url', $url)->update([
+            'visited' => $getvisit+1
+          ]);
+        }
+
 
         return view('blog-show', compact("blog"));
     }

@@ -166,7 +166,47 @@
           </ul>
 
         @elseif(Auth::user()->role == 'receptionist')
-            @include('helpers.urls.nav_bar_receptionist')
+          <ul class="side-menu">
+
+            <li class="slide">
+              <a class="side-menu__item" href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('receptionist/message') }}"><i class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Appointment</span></a>
+            </li>
+
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.client.list')}}"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Client List</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.affiliate.list')}}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Affiliate List</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.toDo.list')}}"><i class="side-menu__icon fe fe-check"></i><span class="side-menu__label">To Do List</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('receptionist.liveChat.index')}}"><i class="side-menu__icon fa fa-envelope"></i><span class="side-menu__label">Chat</span></a>
+              @if(!empty($all_unreads))
+                  <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
+              @endif
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
+            </li>
+
+            <li class="slide">
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
+            </li>
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
+            </li>
+
+          </ul>
         @elseif(Auth::user()->role == 'seo')
             @include('helpers.urls.nav_bar_seo')
         @endif

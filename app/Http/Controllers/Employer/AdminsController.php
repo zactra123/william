@@ -36,7 +36,8 @@ class AdminsController extends Controller
 
             return Response::json($messages);
         }
-        return view('admin.index');
+        $client = User::where('role','client')->orderby('id','desc')->take(10)->get();
+        return view('admin.index',compact('client'));
     }
 
     public function changePassword(Request $request)

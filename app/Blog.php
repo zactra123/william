@@ -21,6 +21,7 @@ class Blog extends Model
         "url",
         "path",
         "article",
+        "visited",
         "published_date"
     ];
 

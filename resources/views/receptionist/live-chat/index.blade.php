@@ -2,53 +2,53 @@
 @section('content')
     <style>
         .list-group {
-            margin-bottom: 10px !important;
+          margin-bottom: 10px !important;
         }
 
         .list-group-horizontal .list-group-item
         {
-            display: inline-block;
+          display: inline-block;
         }
         .list-group-horizontal .list-group-item
         {
-            margin-bottom: 0;
-            margin-left:-4px;
-            margin-right: 0;
-            border-right-width: 0;
+          margin-bottom: 0;
+          margin-left:-4px;
+          margin-right: 0;
+          border-right-width: 0;
         }
         .list-group-horizontal .list-group-item:first-child
         {
-            border-top-right-radius:0;
-            border-bottom-left-radius:4px;
+          border-top-right-radius:0;
+          border-bottom-left-radius:4px;
         }
         .list-group-horizontal .list-group-item:last-child
         {
-            border-top-right-radius:4px;
-            border-bottom-left-radius:0;
-            border-right-width: 1px;
+          border-top-right-radius:4px;
+          border-bottom-left-radius:0;
+          border-right-width: 1px;
         }
         .list-group-item>.badge-notify{
-            background-color: red ;
+          background-color: red ;
         }
         .badge.badge-warning {
-            background-color: red ;
+          background-color: red ;
         }
         .float-right {
-            float: right;
+          float: right;
         }
         .sssss{
-            min-height: 30vh !important;
-            max-height: 40vh !important;
+          min-height: 30vh !important;
+          max-height: 40vh !important;
         }
         .ms-edu {
-            padding: 10px 0 50px !important;
+          padding: 10px 0 50px !important;
         }
 
         .ms-working {
-            padding: 10px 0 50px !important;
+          padding: 10px 0 50px !important;
         }
         .d-inline-flex{
-            display: inline-flex !important;
+          display: inline-flex !important;
         }
     </style>
 
@@ -133,7 +133,6 @@
                                                                 <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
                                                                     show details
                                                                 </a>
-
                                                             </div>
                                                         </div>
                                                     </div>
@@ -151,7 +150,6 @@
                                         <div class="card-body " id="showChatMessage"  >
 
                                         </div>
-
                                     </div>
 
                                     <div class="dropdown-divider"></div>
@@ -159,7 +157,7 @@
                                     <div id="chatAnswer" style="display: none">
                                         <div class="ms-ua-form">
                                             {!! Form::open(['route' =>['receptionist.liveChat.create'], 'method' => 'POST', 'class' => 'v-100 p-2 m-1']) !!}
-{{--                                            @csrf--}}
+                                            {{-- @csrf --}}
                                             <div class="form-group" style="height: 10%">
                                                 <div class="form-group  v-100 m-0">
                                                     <input type="hidden" name="recipient_id" id="recipientId" >

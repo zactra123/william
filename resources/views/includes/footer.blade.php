@@ -26,6 +26,7 @@
           <ul>
             <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Home</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('whoWeAre') }}">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('contacts') }}">Contact us</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.education') }}">Services</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('faqs') }}">Faqs</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('pravicy') }}">Privacy policy</a></li>
@@ -40,6 +41,7 @@
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('howItWorks') }}">How It Work</a></li>
             {{-- <li><i class="bx bx-chevron-right"></i> <a href="{{ route('credit.free.repair') }}">Free Credit Repair</a></li> --}}
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('review.list') }}">Reviews</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('blog') }}">News Room</a></li>
           </ul>
         </div>
 
@@ -49,7 +51,6 @@
           <form action="#" method="post">
             <input placeholder="example@site.com" type="email" name="email"><input  type="submit" value="Subscribe">
           </form>
-
           <div class="feature-box15 mt-5 bmargin px-3 py-2" style="border: 3px solid #37c6f5">
             <h4 style="color: white; font-family: corbel">how can we help you?</h4>
             <p class="text-light">Feel free to contact us at any time. We feel happy to serve for our customers.</p>

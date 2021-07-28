@@ -50,11 +50,10 @@
               <div class="main-img-user"><img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg"></div>
               <h6>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6><span>Administrator</span>
             </div>
-            <a class="dropdown-item" href="#"><i class="far fa-user"></i> My Profile</a>
-            <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit Profile</a>
-            <a class="dropdown-item" href="#"><i class="far fa-clock"></i> Activity Logs</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Account Settings</a>
-            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-user"></i> My Profile</a>
+            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-edit"></i> Edit Profile</a>
+            <a class="dropdown-item" href="{{ Auth::user()->role=='admin' ? url('/admins') : route('owner.index') }}"><i class="far fa-clock"></i> Activity Logs</a>
+            <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
           </div>
         </div>
 
