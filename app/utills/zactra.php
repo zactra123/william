@@ -12,6 +12,7 @@ use App\AdminSetting;
  */
 class zactra
 {
+  
 
     static function is_url($string)
     {
