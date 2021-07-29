@@ -194,7 +194,7 @@
               @if(!empty($all_unreads))
                   <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
               @endif
-            </li>
+            </li> 
             {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
             </li> --}}
