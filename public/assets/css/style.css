@@ -13270,7 +13270,8 @@ pre {
     background: #37c6f5;
     border-width: 3px;
     color: #fff;
-    border: 1px solid #fff; }
+    border: 1px solid #37c6f5;
+  }
 
 @media (min-width: 992px) {
   .main-contact-info-body {

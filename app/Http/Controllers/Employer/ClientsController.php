@@ -253,7 +253,7 @@ class ClientsController extends Controller
                 'users.email as email', DB::raw('COUNT(affiliates.affiliate_id) as client'))
             ->where('role', 'affiliate')
             ->groupBy('users.id')
-            ->get();
+            ->paginate(10);
         return view('employer.client.affiliate', compact('users'));
     }
 

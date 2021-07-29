@@ -20,32 +20,32 @@
         <div class="card">
             <div class="card-body">
                 <form>
-                    <div class="row">
-                        @if(auth()->user()->role=='receptionist')
-                        <div class="col-md-4">
-                            <div class="">
-                                <select class="form-control" name="admin" id="gender">
-                                    <option disabled="disabled" selected="selected">Admin</option>
-                                    @foreach($admins as $id => $value)
-                                    <option value="{{$id}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            Assigned
-                            <input type="checkbox" name="assign" placeholder="To Do Title" />
-                        </div>
-                        @else
-                        <div class="col-md-6"></div>
-                        @endif
-                        <div class="col-md-5">
-                            <input type="text" name="title" class="form-control" placeholder="To Do Title" />
-                        </div>
-                        <div class="col-md-1 pr-1 pl-0">
-                            <input type="submit" value="Search" class="btn btn-primary" />
-                        </div>
-                    </div>
+                  <div class="row">
+                      @if(auth()->user()->role=='receptionist')
+                      <div class="col-md-4 col-sm-6 col-6">
+                          <div class="">
+                              <select class="form-control" name="admin" id="gender">
+                                  <option disabled="disabled" selected="selected" class="p-5 m-5">Admin</option>
+                                  @foreach($admins as $id => $value)
+                                  <option value="{{$id}}" class="p-5 m-5">{{$value}}</option>
+                                  @endforeach
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-2 col-sm-6 col-6 pt-2">
+                          <input type="checkbox" class="" name="assign" placeholder="To Do Title" />
+                          Assigned
+                      </div>
+                      @else
+                      <div class="col-md-6 col-sm-6 col-6"></div>
+                      @endif
+                      <div class="col-md-5 col-sm-6 col-6">
+                          <input type="text" name="title" class="form-control" placeholder="To Do Title" />
+                      </div>
+                      <div class="col-md-1 pr-1 pl-0 col-sm-6 col-6">
+                          <input type="submit" value="Search" class="btn btn-primary" />
+                      </div>
+                  </div>
                 </form>
             </div>
         </div>

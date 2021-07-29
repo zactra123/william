@@ -3,7 +3,6 @@
 <title> Message </title>
 @endsection
 @section('body')
-
     <div class="breadcrumb-header justify-content-between">
       <div>
           <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -119,9 +118,12 @@
                                                   <td><span class="left" id="appointment-date"></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <td colspan="2">
-                                                    <p id="appointment-description"></p>
-                                                  </td>
+                                                  <th>TITLE</th>
+                                                  <td> <p id="appointment-title"></p> </td>
+                                                </tr>
+                                                <tr>
+                                                  <th>DESCRIPTION</th>
+                                                  <td><p id="appointment-description"></p></td>
                                                 </tr>
                                               </table>
                                                 <div class="note .overflow-vertical app_details" id="noteId">
@@ -136,7 +138,7 @@
                                                                 <input class="form-control" type="hidden" name="message_id" id="messageId" >
                                                             </div>
                                                             <div class="form-group ">
-                                                                <textarea class="form-control" name="notes" id=""></textarea>
+                                                                <textarea class="form-control" rows="5" name="notes" id=""></textarea>
                                                             </div>
                                                             <div class="form-group text-right">
                                                                 <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">

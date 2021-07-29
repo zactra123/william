@@ -1,8 +1,19 @@
-@extends('layouts.layout')
-
-@section('content')
-
-    @include('helpers.breadcrumbs', ['title'=> "AFFILIATES", 'route' => ["Home"=> '/owner',"AFFILIATES LIST" => "#"]])
+@extends('owner.layouts.app')
+@section('title')
+<title> Affiliates </title>
+@endsection
+@section('body')
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Affiliates List</li>
+            </ol>
+          </nav>
+    </div>
+  </div>
     <section class="ms-user-account">
         <div class="container">
             <div class="row">
@@ -37,10 +48,8 @@
                                                 <td>{{$user->email}}</td>
                                                 <td class="text-center">{{$user->client}}</td>
                                                 <td>
-{{--                                                    <a class="btn btn-secondary" href="{{ route('owner.affiliate.show',$user->id)}}"--}}
-{{--                                                       role="button"><span class="fa fa-file"></span></a>--}}
-
-                                                    {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
+                                                   {{-- <a class="btn btn-secondary" href="{{ route('owner.affiliate.show',$user->id)}}" role="button"><span class="fa fa-file"></span></a> --}}
+                                                  {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
 
                                                 </td>
                                             </tr>
@@ -50,7 +59,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <div class="col-md-12 mt-3">
+                                    <div class="row float-right">
+                                        {{ $users->links() }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,36 +75,39 @@
 
 @endsection
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@section('js')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(".delete").on('click', function (e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var token = $("meta[name='csrf-token']").attr("content");
-            console.log("test");
-            bootbox.confirm("Do you really want to delete record?", function (result) {
-                console.log(result);
-                if (result) {
+  <script>
+      $(document).ready(function () {
+          $(".delete").on('click', function (e) {
+              e.preventDefault();
+              var id = $(this).data('id');
+              var token = $("meta[name='csrf-token']").attr("content");
+              console.log("test");
+              bootbox.confirm("Do you really want to delete record?", function (result) {
+                  console.log(result);
+                  if (result) {
 
-                    $.ajax(
-                        {
-                            url: "/owner/client/" + id,
-                            type: 'DELETE',
-                            data: {
-                                "id": id,
-                                "_token": token,
-                            },
-                            success: function () {
-                                console.log("it Works");
-                            }
-                        });
-                }
-            })
+                      $.ajax(
+                          {
+                              url: "/owner/client/" + id,
+                              type: 'DELETE',
+                              data: {
+                                  "id": id,
+                                  "_token": token,
+                              },
+                              success: function () {
+                                  console.log("it Works");
+                              }
+                          });
+                  }
+              })
 
-        })
-    })
+          })
+      })
 
 
-</script>
+  </script>
+
+@endsection

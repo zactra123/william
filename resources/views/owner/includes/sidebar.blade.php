@@ -16,7 +16,7 @@
         </div>
         <div class="user-info">
           <h6 class=" mb-0 text-dark">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6>
-          <span class="text-muted app-sidebar__user-name text-sm">Administrator</span>
+          <span class="text-muted app-sidebar__user-name text-sm">{{ ucfirst(Auth::user()->role) }}</span>
         </div>
       </div>
     </div>
@@ -149,9 +149,9 @@
             </li>
 
 
-            <li class="slide">
+            {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
-            </li>
+            </li> --}}
             <li class="slide">
               <a class="side-menu__item" href="{{ route('blog.index') }}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Blog</span></a>
             </li>
@@ -195,10 +195,9 @@
                   <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
               @endif
             </li>
-            <li class="slide">
+            {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
-            </li>
-
+            </li> --}}
             <li class="slide">
               <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Settings</span></a>
             </li>
