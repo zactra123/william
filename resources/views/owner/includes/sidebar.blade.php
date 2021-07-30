@@ -67,7 +67,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item" href="{{route('owner.credit.education.index')}}"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span></a>
+              <a class="side-menu__item  {{ zactra::areActiveRoute(['owner.credit.education.index','owner.credit.education.edit','owner.credit.education.create','owner.credit.education.show'])}}" href="{{route('owner.credit.education.index')}}"><i class="side-menu__icon fa fa-graduation-cap"></i><span class="side-menu__label">Educations</span></a>
             </li>
 
             <li class="slide {{ zactra::areActiveDropdown(['admins.authority','admins.authority.create','admins.authority.edit','admins.bank','admins.bank.edit','admins.bank.create','admins.court.create','admins.court.edit'])}}">
@@ -194,7 +194,7 @@
               @if(!empty($all_unreads))
                   <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
               @endif
-            </li> 
+            </li>
             {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
             </li> --}}

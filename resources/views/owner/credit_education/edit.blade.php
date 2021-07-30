@@ -30,20 +30,20 @@
                             <div class="card-body">
                                 {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
                                 <div class="form-group row font">
-                                    {{ Form::text('content[title]', $content->title, ['class' => 'form-control m-input', 'placeholder' => 'Title']) }}
+                                    {{ Form::text('content[title]', $content->title, ['class' => 'form-control m-input', 'placeholder' => 'Title', 'required']) }}
                                 </div>
                                 <div class="form-group row font">
-                                    {{ Form::text('content[url]', $content->url, ['class' => 'form-control m-input', 'placeholder' => 'url example: some-url-example']) }}
+                                    {{ Form::text('content[url]', $content->url, ['class' => 'form-control m-input', 'placeholder' => 'url example: some-url-example', 'required']) }}
                                 </div>
                                 <div class="form-group row font">
-                                    {{ Form::number('content[category]', $content->category, ['class' => 'form-control m-input', 'placeholder' => 'Please enter 1 or 2']) }}
+                                    {{ Form::number('content[category]', $content->category, ['class' => 'form-control m-input', 'placeholder' => 'Please enter 1 or 2', 'required']) }}
                                 </div>
                                 <div class="form-group row font">
-                                    {!! Form::textarea('content[sub_content]', $content->sub_content, ['class' => 'form-control m-input', 'placeholder' => 'Sub Content']) !!}
+                                    {!! Form::textarea('content[sub_content]', $content->sub_content, ['class' => 'form-control m-input', 'placeholder' => 'Sub Content', 'required']) !!}
                                 </div>
                                 <div class="form-group row font">
-                                    {{-- <textarea name="content[content]" class="form-control m-input" placeholder="Full Content" rows="10">{!! $content->content !!}</textarea> --}} {!! Form::textarea('content[content]', $content->content,
-                                    ['class' => 'form-control m-input', 'placeholder' => 'Full Content']) !!}
+                                    {{-- <textarea name="content[content]" class="form-control m-input" placeholder="Full Content" rows="10">{!! $content->content !!}</textarea> --}}
+                                    {!! Form::textarea('content[content]', $content->content, ['class' => 'form-control m-input', 'placeholder' => 'Full Content', 'required']) !!}
                                 </div>
                                 <div class="form-group row mb-0 font">
                                     <div class="col-md-12 text-right px-0">

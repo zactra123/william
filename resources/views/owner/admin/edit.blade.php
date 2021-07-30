@@ -57,7 +57,7 @@
                   <div class="form-group row font" id="delete-{{$value->id}}">
                     <div class="col-sm-12 col-12 col-md-11 col-lg-11 form-group">
                         {{Form::hidden('admin[ip_address]['.$value->id.'][id]', $value->id)}}
-                        {{ Form::text('admin[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address']) }}
+                        {{ Form::text('admin[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
                     </div>
                     <div class="col-sm-12 col-12 col-md-1 col-lg-1 form-group pl-0">
                         <input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="Delete"/>

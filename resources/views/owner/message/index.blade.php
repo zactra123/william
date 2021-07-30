@@ -552,7 +552,6 @@
               }
           });
 
-
       });
 
       $('.edit-appointment').click(function(){
@@ -623,7 +622,6 @@
               }
           });
 
-
       })
 
       $("#appointments form").submit(function(e){
@@ -658,8 +656,6 @@
                   $("#appointments .text-danger").removeClass("d-none")
               }
           });
-
-
 
       })
 
