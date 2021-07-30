@@ -1,60 +1,19 @@
-@extends('layouts.layout')
-@section('content')
-    <style>
-        .list-group {
-          margin-bottom: 10px !important;
-        }
-
-        .list-group-horizontal .list-group-item
-        {
-          display: inline-block;
-        }
-        .list-group-horizontal .list-group-item
-        {
-          margin-bottom: 0;
-          margin-left:-4px;
-          margin-right: 0;
-          border-right-width: 0;
-        }
-        .list-group-horizontal .list-group-item:first-child
-        {
-          border-top-right-radius:0;
-          border-bottom-left-radius:4px;
-        }
-        .list-group-horizontal .list-group-item:last-child
-        {
-          border-top-right-radius:4px;
-          border-bottom-left-radius:0;
-          border-right-width: 1px;
-        }
-        .list-group-item>.badge-notify{
-          background-color: red ;
-        }
-        .badge.badge-warning {
-          background-color: red ;
-        }
-        .float-right {
-          float: right;
-        }
-        .sssss{
-          min-height: 30vh !important;
-          max-height: 40vh !important;
-        }
-        .ms-edu {
-          padding: 10px 0 50px !important;
-        }
-
-        .ms-working {
-          padding: 10px 0 50px !important;
-        }
-        .d-inline-flex{
-          display: inline-flex !important;
-        }
-    </style>
-
-    <link href="{{ asset('css/receptionist/receptionist.css') }}" rel="stylesheet">
-
-    @include('helpers.breadcrumbs', ['title'=> "RECEPTIONIST", 'route' => ["Home"=> '/owner',"CHAT" => "#"]])
+@extends('owner.layouts.app')
+@section('title')
+<title>Chat</title>
+@endsection
+@section('body')
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+      <h4 class="content-title mb-2">Hi, welcome back!</h4>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Chat</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
 
     <section class="ms-working working-section section-padding">
         <div class="container">
@@ -63,12 +22,12 @@
                     <div class="list-group center-block list-group-horizontal">
                         <a class="list-group-item   {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
                             @if(array_sum($unreads))
-                                <span class="badge badge-notify" id="userUnreds">{{array_sum($unreads)}}</span>
+                                <span class="badge badge-notify text-white" id="userUnreds">{{array_sum($unreads)}}</span>
                             @endif
                         </a>
                         <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >All Messages
                             @if(array_sum($all_unreads))
-                                <span class="badge badge-notify" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
+                                <span class="badge badge-notify text-white" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
                             @endif
                         </a>
                     </div>
@@ -79,24 +38,24 @@
             <div class="container-fluid">
 
                 <div class="page-content">
-                        <div class="row justify-content-center m-0">
-                            <aside class="sidebar col-md-3">
+                        <div class="row m-0">
+                            <aside class="sidebar col-md-3 pt-3">
                                 <div id="chat_type">
                                     <ul class="list-group">
                                         <li class="list-group-item  active" data-type="User">
                                             <span>Clients</span>
                                             @if(Request()->all)
-                                                <span class="badge badge-notify" id="allClientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify text-white" id="allClientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
                                             @else
-                                                <span class="badge badge-notify" id="clientMessageCount">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
+                                                <span class="badge badge-notify text-white" id="clientMessageCount">{{!empty($unreads["App\User"]) ? $unreads["App\User"] :""}}</span>
                                             @endif
                                         </li>
                                         <li class="list-group-item" data-type="Guest">
                                             <span>Guests</span>
                                             @if(Request()->all)
-                                                <span class="badge badge-notify" id="allGuestMessageCount">{{!empty($all_unreads["App\Guest"]) ? $all_unreads["App\Guest"] :""}}</span>
+                                                <span class="badge badge-notify text-white" id="allGuestMessageCount">{{!empty($all_unreads["App\Guest"]) ? $all_unreads["App\Guest"] :""}}</span>
                                             @else
-                                                <span class="badge badge-notify" id="guestMessageCount">{{!empty($unreads["App\Guest"]) ? $unreads["App\Guest"] :""}}</span>
+                                                <span class="badge badge-notify text-white" id="guestMessageCount">{{!empty($unreads["App\Guest"]) ? $unreads["App\Guest"] :""}}</span>
                                             @endif
                                         </li>
                                     </ul>
@@ -117,13 +76,12 @@
                                         <div class="sssss ">
                                             <div class="chatList scrollDiv" id="chatListId">
                                                 @foreach($chats as $chat)
-                                                    <div class="list-group-item chatMessage" id='{{$chat->recipient_type}}{{$chat->recipient_id}}'
-                                                         data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
+                                                    <div class="list-group-item chatMessage" id='{{$chat->recipient_type}}{{$chat->recipient_id}}' data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
                                                         <div class="form-group">
                                                             <span><h3>{{$chat->full_name??"Unnamed Guest"}}</h3></span>
                                                             @if($chat->message != 0)
                                                                 <h3 class="badge badge-warning float-right">
-                                                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-comment-o text-white" aria-hidden="true"></i>
                                                                     {{$chat->message}}
                                                                 </h3>
                                                             @endif
@@ -131,7 +89,7 @@
                                                         <div class="form-group">
                                                             <div class="text-link">
                                                                 <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{{$chat->recipient_id}}' data-type='{{$chat->recipient_type}}'>
-                                                                    show details
+                                                                    Show Details
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -145,9 +103,9 @@
                             </aside>
 
                             <div class="col-md-9">
-                                <div class="card ">
+                                <div class="card">
                                     <div  id="scrollingDiv" class="card-body  scrollDiv">
-                                        <div class="card-body " id="showChatMessage"  >
+                                        <div class="card-body " id="showChatMessage">
 
                                         </div>
                                     </div>
@@ -163,13 +121,13 @@
                                                     <input type="hidden" name="recipient_id" id="recipientId" >
                                                     <input type="hidden" name="recipient_type" id="recipientType" >
                                                     <div class="comment-text-area">
-                                                        <textarea class="textinput tiny"  name="answer" placeholder="Comment"></textarea>
+                                                        <textarea class="textinput tiny p-3"  name="answer" placeholder="Comment"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-6 form-group">
                                                         <input type="hidden" name="direct" value="1" id="direct-to-user" disabled>
-                                                        <input type="submit" value="Reply Directly To The Client" id="direct-answer" class="ms-ua-submit hidden">
+                                                        <input type="submit" value="Reply Directly To The Client" id="direct-answer" class="ms-ua-submit hidden btn btn-primary mt-4">
                                                     </div>
                                                     <div class="col-sm-6 form-group">
                                                         <input type="submit" value="Send message" class="ms-ua-submit">
@@ -217,70 +175,125 @@
         </section>
     </section>
 
+@endsection
+@section('css')
+  <link href="{{ asset('css/receptionist/receptionist.css') }}" rel="stylesheet">
+  <style>
+      .list-group {
+        margin-bottom: 10px !important;
+      }
+
+      .list-group-horizontal .list-group-item
+      {
+        display: inline-block;
+      }
+      .list-group-horizontal .list-group-item
+      {
+        margin-bottom: 0;
+        margin-left:-4px;
+        margin-right: 0;
+        border-right-width: 0;
+      }
+      .list-group-horizontal .list-group-item:first-child
+      {
+        border-top-right-radius:0;
+        border-bottom-left-radius:4px;
+      }
+      .list-group-horizontal .list-group-item:last-child
+      {
+        border-top-right-radius:4px;
+        border-bottom-left-radius:0;
+        border-right-width: 1px;
+      }
+      .list-group-item>.badge-notify{
+        background-color: red ;
+      }
+      .badge.badge-warning {
+        background-color: red ;
+      }
+      .float-right {
+        float: right;
+      }
+      .sssss{
+        min-height: 30vh !important;
+        max-height: 40vh !important;
+      }
+      .ms-edu {
+        padding: 10px 0 50px !important;
+      }
+
+      .ms-working {
+        padding: 10px 0 50px !important;
+      }
+      .d-inline-flex{
+        display: inline-flex !important;
+      }
+  </style>
+
+@endsection
+@section('js')
+  <script src="{{ asset('js/receptionist/live-chat.js') }}"></script>
 
 
-    <script src="{{ asset('js/receptionist/live-chat.js') }}"></script>
+  <script id="receptionist-question-template" type="text/html">
+      <div class="form-group  pt-2" data-message-id="{message-id}">
+          <div class="col-6  align-left message">
+              <div class="form-group">{message}</div>
+              <div class="form-group">{time}</div>
+          </div>
+      </div>
+  </script>
 
 
-    <script id="receptionist-question-template" type="text/html">
-        <div class="form-group  pt-2" data-message-id="{message-id}">
-            <div class="col-6  align-left message">
-                <div class="form-group">{message}</div>
-                <div class="form-group">{time}</div>
-            </div>
-        </div>
-    </script>
+  <script id="receptionist-answer-template" type="text/html">
+      <div class="form-group  pt-2" data-message-id="{message-id}">
+          <div class="col-6 offset-6 align-left message darker">
+              <div class="form-group">{admin_full_name}</div>
+              <div class="form-group">{message}</div>
+              <div class="form-group">{time}</div>
+          </div>
+      </div>
+  </script>
 
+  <script id="receptionist-recipient-template" type="text/html">
+      <div class="form-group  pt-2" data-message-id="{message-id}">
+          <div class="col-6 offset-6 align-left message darker">
+              <div class="form-group">{message}</div>
+              <div class="form-group">{time}</div>
+          </div>
+      </div>
+  </script>
 
-    <script id="receptionist-answer-template" type="text/html">
-        <div class="form-group  pt-2" data-message-id="{message-id}">
-            <div class="col-6 offset-6 align-left message darker">
-                <div class="form-group">{admin_full_name}</div>
-                <div class="form-group">{message}</div>
-                <div class="form-group">{time}</div>
-            </div>
-        </div>
-    </script>
+  <script id="recipient-list-user" type="text/html">
+      <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
+          <div class="form-group">
+              <span><h3>{full_name}</h3></span>
+              {unreads}
+          </div>
+          <div class="form-group">
+              <div class="text-link">
+                  <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
+                      Show Details
+                  </a>
+              </div>
+          </div>
+      </div>
+  </script>
 
-    <script id="receptionist-recipient-template" type="text/html">
-        <div class="form-group  pt-2" data-message-id="{message-id}">
-            <div class="col-6 offset-6 align-left message darker">
-                <div class="form-group">{message}</div>
-                <div class="form-group">{time}</div>
-            </div>
-        </div>
-    </script>
-
-    <script id="recipient-list-user" type="text/html">
-        <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
-            <div class="form-group">
-                <span><h3>{full_name}</h3></span>
-                {unreads}
-            </div>
-            <div class="form-group">
-                <div class="text-link">
-                    <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
-                        show details
-                    </a>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="recipient-list-guest" type="text/html">
-        <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
-            <div class="form-group">
-                <span class="h3 text-uppercase">{full_name}</span>
-                {unreads}
-            </div>
-            <div class="form-group">
-                {connected_user_details}
-                <div class="text-link">
-                    <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
-                        show details
-                    </a>
-                </div>
-            </div>
-        </div>
-    </script>
+  <script id="recipient-list-guest" type="text/html">
+      <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
+          <div class="form-group">
+              <span class="h5 text-uppercase">{full_name}</span>
+              <span class="text-white">{unreads}</sapn>
+          </div>
+          <div class="form-group">
+              {connected_user_details}
+              <div class="text-link text-right">
+                  <a class="show_details" href="#showDetails" data-toggle="modal" data-id='{recipient-id}' data-type='{recipient-type}'>
+                      Show Details
+                  </a>
+              </div>
+          </div>
+      </div>
+  </script>
 @endsection

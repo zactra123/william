@@ -101,7 +101,7 @@ addChatUserList = function(chatUserList) {
     }
     unreads = ''
     if (chatUserList.message != 0) {
-        unreads += '<span class="badge badge-warning float-right"><i class="fa fa-comment-o" aria-hidden="true"></i>'
+        unreads += '<span class="badge badge-warning float-right text-white"><i class="fa fa-comment-o text-white" aria-hidden="true"></i>'
         unreads += chatUserList.message+'</span>'
     }
 

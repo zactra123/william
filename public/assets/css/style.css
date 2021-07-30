@@ -3377,6 +3377,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   margin-bottom: 1.3rem;
   box-shadow: 6px 11px 41px -28px #796eb1;
   -webkit-box-shadow: 6px 11px 41px -28px #796eb1; }
+
+
+
   .card > hr {
     margin-right: 0;
     margin-left: 0; }
@@ -13223,16 +13226,18 @@ pre {
   line-height: 1.462; }
 
 .sidebar {
-  position: fixed;
-  display: block;
-  top: 0px;
-  width: 300px;
-  bottom: 0;
-  z-index: 79;
-  height: 100%;
+  /* position: fixed; */
+  /* display: block; */
+  /* top: 0px; */
+  /* width: 300px; */
+  /* bottom: 0; */
+  /* z-index: 79; */
+  /* height: 100%; */
   background: #fff;
-  box-shadow: 0 0 10px rgba(28, 39, 60, 0.1);
-  overflow: hidden; }
+  /* box-shadow: 0 0 10px rgba(28, 39, 60, 0.1); */
+  overflow: hidden;
+  border-radius: 6px !important;
+}
   .sidebar .card {
     box-shadow: none;
     border: 0 !important; }
