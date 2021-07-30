@@ -29,8 +29,7 @@
             <div class="card-header">
               <div class="row">
                 <div class="col-md-6">
-                  <a href="{{ route('owner.receptionist.index') }}"> <h5 class="text-dark"><i class="ti-angle-left"></i> Create New Receptionist</h5> </a>
-
+                   <h5 class="text-dark"><i class="ti-angle-left"></i> Create New Receptionist</h5>
                 </div>
 
               </div>
@@ -57,7 +56,7 @@
 
                 <div class="form-group row font">
                   <div class="col-sm-12 col-md-11 form-group">
-                      {{ Form::text('receptionist[ip_address][]', old('receptionist.ip_address'), ['class' => 'form-control', 'placeholder'=>'IP Address']) }}
+                      {{ Form::text('receptionist[ip_address][]', old('receptionist.ip_address'), ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
                   </div>
                   <div class="col-sm-12 col-md-1 form-group pl-0">
                       <input class="btn btn-primary add-ip-address" type="button" value="Add IP"/>

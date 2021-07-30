@@ -33,7 +33,7 @@
               <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                      <a href="{{ route('owner.receptionist.index') }}"> <h5 class="text-dark"><i class="ti-angle-left"></i> Edit Receptionist</h5> </a>
+                       <h5 class="text-dark"><i class="ti-angle-left"></i> Edit Receptionist</h5>
                     </div>
 
                 </div>
@@ -61,7 +61,7 @@
                         <div class="form-group row font justify-content-center" id="delete-{{$value->id}}">
                           <div class="col-sm-12 col-md-11 form-group">
                               {{Form::hidden('receptionist[ip_address]['.$value->id.'][id]', $value->id)}}
-                              {{ Form::text('receptionist[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address']) }}
+                              {{ Form::text('receptionist[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
                           </div>
                           <div class="col-sm-12 col-md-1 form-group pl-0">
                               <input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="Delete"/>
