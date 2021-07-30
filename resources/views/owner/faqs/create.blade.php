@@ -33,9 +33,13 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body mx-3">
-                    <a href="{{ route('owner.faqs.index') }}">
-                        <h5 class="text-dark"><i class="ti-angle-left"></i> Create New Faq</h5>
-                    </a>
+                  <div class="row">
+                      <a href="{{ route('owner.faqs.index') }}" style="color:black;">
+                              <h5><i class="ti-angle-left"></i></h5>
+                      </a>
+                      <h5 class="text-dark"> Create New Faq</h5>
+                  </div>
+
                     {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!}
                     @csrf
                     <div class="form-group font">

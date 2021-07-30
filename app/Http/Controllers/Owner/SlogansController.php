@@ -47,7 +47,8 @@ class SlogansController extends Controller
             return view('owner.slogan.create')->withErrors($validation);
         } else {
             Slogan::create($request->slogan);
-            return redirect(route('owner.slogan.index'))->with('success', "your data saved");
+            return back()->with('success', "your data saved");
+            // return redirect(route('owner.slogan.index'))->with('success', "your data saved");
         }
     }
 

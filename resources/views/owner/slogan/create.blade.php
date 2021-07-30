@@ -27,10 +27,10 @@
             {!! Form::open(['route' => ['owner.slogans.store'], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right']) !!}
             @csrf
             <div class="form-group row font">
-                {{ Form::text('slogan[author]', old('slogan.author'), ['class' => 'form-control m-input', 'placeholder' => 'Author Name']) }}
+                {{ Form::text('slogan[author]', old('slogan.author'), ['class' => 'form-control m-input', 'placeholder' => 'Author Name','required']) }}
             </div>
             <div class="form-group row font">
-                {{ Form::textarea('slogan[slogan]', old('slogan.slogan'), ['class' => 'form-control m-input', 'placeholder' => 'Slogan']) }}
+                {{ Form::textarea('slogan[slogan]', old('slogan.slogan'), ['class' => 'form-control m-input', 'placeholder' => 'Slogan','required']) }}
             </div>
             <div class="form-group row mb-0 font">
                 <div class="col-md-12 text-right p-0">
