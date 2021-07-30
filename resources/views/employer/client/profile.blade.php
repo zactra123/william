@@ -402,7 +402,7 @@
                                 {{-- <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
                                 {{-- <img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%"> --}}
                                 <h3 class="report_access"> <b>Equifax</b> </h3>
-                                <div class="dropdown-content equifax">
+                                <div class="dropdown-content equifax" style="height:150px !important;overflow:scroll;">
                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> Login</a>
                                     <a href="{{route('adminRec.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">Credentials</a>
                                     <a href="#">Registration</a>
@@ -419,7 +419,7 @@
                                 {{-- <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access"src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"></a>--}}
                                 {{-- <img class="report_access" src="{{asset('images/report_access/ex_logo_2.png')}}"  width="100%"> --}}
                                 <h3 class="report_access"> <b>Experian</b> </h3>
-                                <div class="dropdown-content experina">
+                                <div class="dropdown-content experina" style="height:150px !important;overflow:scroll;">
                                     <a class="queue" data-report="EXLOGIN"  data-client="{{$client->id}}">Login</a>
                                     <a href="{{route('adminRec.credentials',['source'=> 'experian','id'=>$client->id])}}">Credentials</a>
                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">Registeration</a>
@@ -437,7 +437,7 @@
                             <div class="dropdown">
                                 {{-- <img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}"  width="100%"> --}}
                                 <h3 class="report_access"> <b>TransUnion</b> </h3>
-                                <div class="dropdown-content transunion">
+                                <div class="dropdown-content transunion" style="height:150px !important;overflow:scroll;">
                                     <div class="">
                                         <a class="queue p-1" data-report="TUMEMBER"  data-client="{{$client->id}}">Member Login </a>
                                         <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">Member Credentials</a>
@@ -471,7 +471,7 @@
                             <div class="dropdown">
                                 {{-- <img class="report_access mb-3 pb-5" src="{{asset('images/report_access/misc_4.png')}}"  width="90%"> --}}
                                 <h3 class="report_access"> <b>Other Reports</b> </h3>
-                                <div class="dropdown-content">
+                                <div class="dropdown-content" style="height:150px !important;overflow:scroll;">
                                     <div class="">
                                         <ul class="dropdown-submenu mb-0">
                                             <a  class="queue" data-report="EQ"  data-client="{{$client->id}}">

@@ -211,7 +211,7 @@
                                             <div class="dropdown">
 {{--                                                <a href="{{route('client.report', ['type'=>"equifax"])}}">  <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/eq_logo_2.png')}}"  width="100%">
-                                                <div class="dropdown-content equifax">
+                                                <div class="dropdown-content equifax" style="height:150px !important;overflow:scroll;">
                                                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank">LOGIN</a>
                                                     <a href="{{route('affiliate.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">CREDENTIALS</a>
                                                     <a href="#" target="_blank">REGISTER</a>
@@ -230,7 +230,7 @@
                                                     <a href="https://usa.experian.com/login/index" target="_blank">LOGIN</a>
                                                     <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">REGISTER</a>
                                                     <a href="{{route('affiliate.credentials',['source'=> 'experian','id'=>$client->id])}}">CREDENTIALS</a>
-                                                    <a href=#">ARCHIVE</a>
+                                                    <a href="#">ARCHIVE</a>
 
                                                     @foreach($reportsDateEX as $keyEx => $exDate)
                                                         <a href="{{route('affiliate.client.report', ['type'=>"experian", 'date'=>$keyEx])}}">{{date("m/d/Y",strtotime($exDate))}}</a>
@@ -243,7 +243,7 @@
                                             <div class="dropdown ">
 {{--                                                <a  href="{{route('client.report', ['type'=>"transunion"])}}">  <img class="report_access"src="{{asset('images/report_access/tu_logo_1.png')}}"  width="120"></a>--}}
                                                 <img class="report_access"src="{{asset('images/report_access/tu_logo_2.png')}}"   width="100%">
-                                                <div class="dropdown-content transunion">
+                                                <div class="dropdown-content transunion" style="height:150px !important;overflow:scroll;">
                                                     <div class="pb-3">
                                                         <a class="p-1" href="https://service.transunion.com/dss/login.page" target="_blank">MEMBER LOGIN</a>
                                                         <a class="p-1" href="{{route('affiliate.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">MEMBER CREDENTIALS</a>
@@ -270,7 +270,7 @@
                                         <div  class="col-md-3 mt20">
                                             <div class="dropdown">
                                                 <img class="report_access"src="{{asset('images/report_access/misc_4.png')}}"   width="100%">
-                                                <div class="dropdown-content">
+                                                <div class="dropdown-content" style="height:150px !important;overflow:scroll;">
                                                     <div class="dropdown">
                                                         <ul class="dropdown-submenu">
                                                             <a href="https://www.creditkarma.com/auth/logon?redirectUrl=https%3A%2F%2Fwww.creditkarma.com%2Fdashboard"class="dropdown-toggle" data-toggle="dropdown" target="_blank"><img class="report_access"src="{{asset('images/report_access/ck_logo_1.png')}}"  width="110px"></a>
