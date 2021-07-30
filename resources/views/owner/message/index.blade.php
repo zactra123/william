@@ -162,37 +162,48 @@
                                             <div class="modal-header">
                                               <h4 class="modal-title" id="favoritesModalLabel">Edit message</h4>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                  <span aria-hidden="true">Close</span>
+                                                  <span aria-hidden="true">x</span>
                                               </button>
                                             </div>
                                             <div class="modal-body ">
                                                 <div class="ms-ua-form">
                                                     <form method="PUT" action="" id="updateMessageId">
                                                         @csrf
-                                                        <div class="form-group phone_number_id">
-                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="Phone Number">
-                                                        </div>
-                                                        <div class="form-group full_name_id">
-                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="Full Name">
+                                                        <div class="row">
+                                                          <div class="col-md-6 phone_number_id">
+                                                              <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="Phone Number">
+                                                          </div>
+                                                          <div class="col-md-6 full_name_id">
+                                                              <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="Full Name">
+                                                          </div>
                                                         </div>
                                                         <input class="form-control" type="hidden" name="id" id="editMessageId" >
-                                                        <div class="form-group email_id">
-                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="Email">
+                                                        <div class="row mt-3">
+                                                          <div class="col-md-6 email_id">
+                                                              <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="Email">
+                                                          </div>
+                                                          <div class="col-md-6 time_id">
+                                                              <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
+                                                          </div>
                                                         </div>
-                                                        <div class="form-group time_id">
-                                                            <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
+                                                        <div class="row mt-3">
+                                                          <div class="col-md-6 title_id">
+                                                              <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="Title">
+                                                          </div>
+                                                          <div class="col-md-6 time_id">
+                                                              <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="Time">
+                                                          </div>
                                                         </div>
-                                                        <div class=" form-group time_id m-1">
-                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="Time">
+
+                                                        <div class="row mt-3">
+                                                          <div class="col-md-12">
+                                                            <textarea class="form-control" name="description" rows="5" id="oldDescriptionId" placeholder="Description"> </textarea>
+                                                          </div>
                                                         </div>
-                                                        <div class="form-group title_id">
-                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="Title">
-                                                        </div>
-                                                        <div class="form-group ">
-                                                          <textarea class="form-control" name="description" id="oldDescriptionId" placeholder="Description"> </textarea>
-                                                        </div>
-                                                        <div class="form-group row mb-0">
-                                                            <input type="submit" value="Add message" class="ms-ua-submit">
+                                                        <div class="row mt-3">
+                                                            <div class="col-md-12 text-right">
+                                                              <input type="submit" value="Add message" class="ms-ua-submit btn btn-primary">
+                                                            </div>
                                                         </div>
                                                     </form>
                                                 </div>
