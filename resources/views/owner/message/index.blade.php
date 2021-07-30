@@ -147,8 +147,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="buttonCompleted"></div>
+
                                             <div class="modal-footer">
+                                                <div id="buttonCompleted"></div>
                                                 <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
                                             </div>
@@ -202,7 +203,7 @@
                                                         </div>
                                                         <div class="row mt-3">
                                                             <div class="col-md-12 text-right">
-                                                              <input type="submit" value="Add message" class="ms-ua-submit btn btn-primary">
+                                                              <input type="submit" value="Update Message" class="ms-ua-submit btn btn-primary">
                                                             </div>
                                                         </div>
                                                     </form>
@@ -599,18 +600,19 @@
               data: data,
               success: function (results) {
 
-                  var date = results.call_date.split(" ");
-                  calendar.fullCalendar('renderEvent',
-                      {
-
-                          id: results['id'],
-                          title: results['title'],
-                          start: date[0],
-                          end: date[0],
-                          allDay: true
-                      },
-                      'stick'
-                  );
+                  // var date = results.call_date.split(" ");
+                  //
+                  // calendar.fullCalendar('renderEvent',
+                  //     {
+                  //
+                  //         id: results['id'],
+                  //         title: results['title'],
+                  //         start: date[0],
+                  //         end: date[0],
+                  //         allDay: true
+                  //     },
+                  //     'stick'
+                  // );
                   $("#updateMessage form")[0].reset()
                   $('#updateMessage').modal('hide');
               },
@@ -664,8 +666,8 @@
       $('.remove-appointment').click(function(){
           var id = $(this).attr("data-id");
           $("#appointmentDetails").modal("hide");
-          bootbox.confirm("Do you really want to delete record?", function (result) {
-              if (result) {
+          // bootbox.confirm("Do you really want to delete record?", function (result) {
+              // if (result) {
                   $.ajax(
                       {
                           url: "/admin/message/" + id,
@@ -678,8 +680,8 @@
                               displayMessage("Deleted Successfully");
                           }
                       });
-              }
-          })
+              // }
+          // })
       })
 
       $('#phoneNumberId').keyup(function() {
