@@ -199,8 +199,9 @@ class ClientsController extends Controller
                 $client_details = ClientDetail::where('user_id', $id)->first();
 
                 preg_match("/([0-9]{1,})/im", $splitAddress['street'], $number);
-                $clientDetails ["number"] = $number[0];
-                $clientDetails['name'] = trim(str_replace($number[0], '', $splitAddress['street']));
+
+                $clientDetails ["number"] = isset($number[0]) ? $number[0] : '';
+                $clientDetails['name'] = isset($number[0]) ? trim(str_replace($number[0], '', $splitAddress['street'])) : '';
                 $clientDetails['city'] = $splitAddress['city'];
                 $clientDetails['state'] = $splitAddress['state'];
                 $clientDetails['zip'] =$splitAddress['zip'];
