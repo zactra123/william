@@ -88,7 +88,7 @@
                             </td>
                             <td>
                               <meta name="csrf-token" content="{{ csrf_token() }}" />
-                              <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash"></i></button>
+                              <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash text-danger"></i></button>
                             </td>
                             @endif
                         </tr>
