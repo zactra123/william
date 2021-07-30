@@ -46,7 +46,7 @@
             </div>
             <div class="form-group row font">
               <div class="col-md-11 col-sm-12 col-12 col-lg-11">
-                {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address', 'placeholder'=>'IP Address']) }}
+                {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address', 'placeholder'=>'IP Address','required']) }}
               </div>
               <div class="col-md-1 col-sm-12 col-12 col-lg-1 pl-0">
                   <input class="btn btn-primary add-ip-address pull-left" type="button" value="Add IP"/>
