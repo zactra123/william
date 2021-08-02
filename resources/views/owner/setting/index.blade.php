@@ -283,6 +283,7 @@
                     </div>
                   </div>
               </div>
+              
               <div class="card-footer text-right">
                 <button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button>
               </div>
