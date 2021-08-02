@@ -15,6 +15,7 @@ class zactra
 
     static function is_url($string)
     {
+      
         if (filter_var($string, FILTER_VALIDATE_URL))
         {
             return true;
