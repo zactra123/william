@@ -43,11 +43,23 @@
 
         <div class="dropdown main-profile-menu nav nav-item nav-link">
 
-          <a class="profile-user d-flex" href="#"><img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+          <a class="profile-user d-flex" href="#">
+            @if (isset(Auth::user()->photo))
+              <img src="{{ Auth::user()->photo }}" alt="Profile Image">
+            @else
+              <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+            @endif
+          </a>
 
           <div class="dropdown-menu">
             <div class="main-header-profile header-img">
-              <div class="main-img-user"><img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg"></div>
+              <div class="main-img-user">
+                @if (isset(Auth::user()->photo))
+                  <img src="{{ Auth::user()->photo }}" alt="Profile Image">
+                @else
+                  <img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
+                @endif
+              </div>
               <h6>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6><span>Administrator</span>
             </div>
             <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-user"></i> My Profile</a>

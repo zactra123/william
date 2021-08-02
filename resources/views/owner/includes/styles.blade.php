@@ -296,9 +296,9 @@
 
 					.ms-ua-box {
 							background-color: #ffffff !important;
-							border-radius: 4px !important;
+							border-radius: 6px !important;
 							padding: 15px;
-							box-shadow: 0 0 5px 1px #0000005c;
+							/* box-shadow: 0 0 5px 1px #0000005c; */
 							opacity: 1;
 					}
 
@@ -432,9 +432,9 @@
 			    }
 			    .ms-ua-box {
 			        background-color: #ffffff !important;
-			        border-radius: 4px !important;
+			        border-radius: 6px !important;
 			        padding: 15px;
-			        box-shadow: 0 0 5px 1px #0000005c;
+			        /* box-shadow: 0 0 5px 1px #0000005c; */
 			        opacity: 1;
 			    }
 

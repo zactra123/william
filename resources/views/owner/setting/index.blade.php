@@ -21,7 +21,12 @@
 							<div class="card-body">
 								<div class="pl-0">
 									<div class="main-profile-overview">
-										<div class="main-img-user profile-user"><img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
+										<div class="main-img-user profile-user">
+                      @if (isset(Auth::user()->photo))
+                        <img src="{{ Auth::user()->photo }}" alt="Profile Image">
+                      @else
+                        <img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
+                      @endif
                       <a href="JavaScript:void(0);" onclick="getClickToFile('.profileimg')" class="fas fa-camera profile-edit"></a></div>
 										<div class="d-flex justify-content-between mg-b-20">
 											<div>
@@ -31,11 +36,11 @@
 										</div>
 										<h6>Bio</h6>
 										<div class="main-profile-bio">
-											pleasure rationally encounter but because pursue consequences that are extremely painful.occur in which toil and pain can procure him some great pleasure.. <a href="#">More</a>
+											{{ zactra::limit_words(Auth::user()->bio,150) }} <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">More</a>
 										</div>
 
 										<!-- main-profile-bio -->
-										<div class="main-profile-work-list">
+										{{-- <div class="main-profile-work-list">
 											<div class="media">
 												<div class="media-logo bg-success-transparent text-success">
 													<i class="icon ion-logo-whatsapp"></i>
@@ -54,7 +59,7 @@
 													<p>Graduation: Bachelor of Science in Computer Science</p>
 												</div>
 											</div>
-										</div>
+										</div> --}}
 										<!-- main-profile-work-list -->
 
 										<hr class="mg-y-30">
@@ -130,7 +135,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="mb-4 main-content-label">Personal Information</div>
-								<form action="{{ route('update.owner.setting') }}" method="post">
+								<form action="{{ route('update.owner.setting') }}" method="post" enctype="multipart/form-data">
                   @csrf
 									<div class="mb-4 main-content-label">Name</div>
 
@@ -140,15 +145,15 @@
 												<label class="form-label">First Name</label>
 											</div>
 											<div class="col-md-9">
-                        <input type="file" class="profileimg" name="image" value="" style="display:none !important;">
+                        <input type="file" class="profileimg" name="photo" value="" style="display:none !important;">
 												<input type="text" class="form-control" name="fisrt_name" placeholder="First Name" value="{{ Auth::user()->first_name }}">
 											</div>
 										</div>
 									</div>
-									<div class="form-group ">
+									<div class="form-group">
 										<div class="row">
 											<div class="col-md-3">
-												<label class="form-label">last Name</label>
+												<label class="form-label">Last Name</label>
 											</div>
 											<div class="col-md-9">
 												<input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Auth::user()->last_name }}">
@@ -163,6 +168,16 @@
 											</div>
 											<div class="col-md-9">
 												<input type="text" class="form-control" name="designation" placeholder="Designation" value="{{ ucfirst(Auth::user()->role) }}" readonly>
+											</div>
+										</div>
+									</div>
+                  <div class="form-group ">
+										<div class="row">
+											<div class="col-md-3">
+												<label class="form-label">Bio</label>
+											</div>
+											<div class="col-md-9">
+												<textarea class="form-control" name="bio" rows="4" placeholder="Bio">{{ Auth::user()->bio }}</textarea>
 											</div>
 										</div>
 									</div>
@@ -283,7 +298,7 @@
                     </div>
                   </div>
               </div>
-              
+
               <div class="card-footer text-right">
                 <button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button>
               </div>
@@ -295,6 +310,26 @@
 					<!-- /Col -->
 				</div>
 
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ Auth::user()->bio }}
+      </div>
+
+    </div>
+  </div>
+</div>
 @endsection
 @section('js')
 <script type="text/javascript">

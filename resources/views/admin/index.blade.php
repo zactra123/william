@@ -198,7 +198,7 @@
             <div class="card overflow-hidden">
                 <div class="card-body pb-3">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-10">project &amp; task</h4>
+                        <h4 class="card-title mg-b-10">ToDo List</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 text-muted mb-3">In project, a task is an activity that needs to be accomplished within a defined period of time or by a deadline. <a href="#">Learn more</a></p>

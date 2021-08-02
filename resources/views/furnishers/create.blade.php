@@ -118,9 +118,9 @@
                                 <div class="row expand-address" data-address="#address-{{$type}}">
                                     <div class="col-md-6"><label for="">{{$name}}</label></div>
                                     <div class="col-md-6 text-right">
-                                        <button type="button" class="btn btn-danger mb-3">
+                                        <span class="text-danger mb-3 fs-18">
                                             <i class="fa fa-minus-circle"></i>
-                                        </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-12 addresses" id="address-{{$type}}">
@@ -212,9 +212,9 @@
                         <div class="row">
                             <div class="col-md-6 text-left"><h4>Other Names Used</h4></div>
                             <div class="col-md-6 text-right">
-                                <button type="button" class="remove-equal-bank btn btn-danger mb-3">
+                                <span class="remove-equal-bank fs-18 pointer text-danger mb-3">
                                     <i class="fa fa-times"></i>
-                                </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -425,7 +425,7 @@ var types = {!!  json_encode($subTypes) !!};
         <div class="row remove-address">
             <div class="col-md-6"><label for="">Additional Address</label>  </div>
             <div class="col-md-6 text-right">
-                <button type="button" class="btn btn-danger mb-3">
+                <button class="text-danger fs-18 mb-3" style="border:none !important;background:none !important;">
                     <i class="fa fa-times"></i>
                 </button>
             </div>
