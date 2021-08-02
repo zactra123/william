@@ -87,7 +87,7 @@ Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 
 Route::group(['prefix'=>'owner'], function(){
-
+  
     Route::get('setting','Owner\SettingControl@index')->name('owner.setting.index');
     Route::post('update/profile','Owner\SettingControl@update_profile')->name('update.owner.setting');
     Route::post('update/password/byuser','Owner\SettingControl@change_userpasword')->name('update.owner.password');

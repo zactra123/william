@@ -11,6 +11,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 
+
 class SettingControl extends Controller
 {
     /**
