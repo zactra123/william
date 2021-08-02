@@ -12,7 +12,11 @@
     <div class="app-sidebar__user">
       <div class="dropdown user-pro-body text-center">
         <div class="user-pic">
-          <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+          @if (isset(Auth::user()->photo))
+            <img src="{{ Auth::user()->photo }}" alt="Profile Image" class="rounded-circle mCS_img_loaded">
+          @else
+            <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+          @endif
         </div>
         <div class="user-info">
           <h6 class=" mb-0 text-dark">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6>
