@@ -251,14 +251,14 @@
               <div class="card-body">
                 <div class="mb-4 main-content-label">Change Password</div>
                 <form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
-
+                  @csrf
                   <div class="form-group ">
                     <div class="row">
                       <div class="col-md-3">
                         <label class="form-label">Old Password</label>
                       </div>
                       <div class="col-md-9">
-                        <input type="password" class="form-control" name="oldpassword" placeholder="Old Password" value="">
+                        <input type="password" class="form-control" name="oldpassword" placeholder="Old Password" value="" required>
                       </div>
                     </div>
                   </div>
@@ -268,7 +268,7 @@
                         <label class="form-label">New Password</label>
                       </div>
                       <div class="col-md-9">
-                        <input type="password" class="form-control" name="newpassword" placeholder="New Password" value="">
+                        <input type="password" class="form-control" name="newpassword" placeholder="New Password" value="" required>
                       </div>
                     </div>
                   </div>
@@ -279,7 +279,7 @@
                         <label class="form-label">Confrim Password</label>
                       </div>
                       <div class="col-md-9">
-                        <input type="password" class="form-control" name="confirmpassword" placeholder="Confrim Password" value="">
+                        <input type="password" class="form-control" name="confirmpassword" placeholder="Confrim Password" value="" required>
                       </div>
                     </div>
                   </div>

@@ -8,6 +8,7 @@ use App\User;
 use App\AllowedIp;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use Hash;
 use Illuminate\Http\Request;
 
 class SettingControl extends Controller

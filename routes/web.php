@@ -90,7 +90,7 @@ Route::group(['prefix'=>'owner'], function(){
 
     Route::get('setting','Owner\SettingControl@index')->name('owner.setting.index');
     Route::post('update/profile','Owner\SettingControl@update_profile')->name('update.owner.setting');
-    Route::post('update/password','Owner\SettingControl@change_userpasword')->name('update.owner.password');
+    Route::post('update/password/byuser','Owner\SettingControl@change_userpasword')->name('update.owner.password');
 
     Route::resource('/', 'Owner\SuperAdminsController')->names('owner')->parameters([''=>'owner'])->except('show');
 
