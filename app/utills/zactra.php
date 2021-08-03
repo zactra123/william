@@ -14,7 +14,7 @@ class zactra
 {
 
   /**
-   * This is a coment
+   * This is a commit
    */
     static function is_url($string)
     {
