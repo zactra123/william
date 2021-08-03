@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Employer;
 use App\Http\Controllers\Controller;
-use App\ClientReport;
-use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use App\HomePageContent;
+use App\ClientReport;
+use App\Message;
+use App\User;
+use App\Todo;
 use Response;
 use PDF;
 
@@ -37,7 +39,11 @@ class AdminsController extends Controller
             return Response::json($messages);
         }
         $client = User::where('role','client')->orderby('id','desc')->take(10)->get();
-        return view('admin.index',compact('client'));
+        $receptionist = User::where('role','receptionist')->get();
+        $crediteducation = HomePageContent::all();
+        $pendingtodo = Todo::where('status','0')->get();
+        $compeletetodo = Todo::where('status','1')->get();
+        return view('admin.index',compact('client','receptionist','crediteducation','pendingtodo','compeletetodo'));
     }
 
     public function changePassword(Request $request)

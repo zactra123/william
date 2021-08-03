@@ -173,7 +173,7 @@
           <ul class="side-menu">
 
             <li class="slide">
-              <a class="side-menu__item" href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
+              <a class="side-menu__item" href="{{ url('/receptionist') }}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
             </li>
 
             <li class="slide">

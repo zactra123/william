@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use Response;
-use Auth;
-use App\User;
-use App\Message;
+use App\HomePageContent;
 use App\MessageHistory;
 use App\QuestionNote;
+use App\Message;
+use App\User;
+use App\Todo;
+use Response;
+use Auth;
 
 class MessagesController extends Controller
 {
@@ -189,5 +191,19 @@ class MessagesController extends Controller
         $data = $data!= null?$data:'';
         return Response::json($data);
     }
+
+/**
+ * Receptionist Dashboard
+ */
+
+ public function receptionist_dashbord()
+ {
+   $client = User::where('role','client')->orderby('id','desc')->take(10)->get();
+   $receptionist = User::where('role','receptionist')->get();
+   $crediteducation = HomePageContent::all();
+   $pendingtodo = Todo::where('status','0')->get();
+   $compeletetodo = Todo::where('status','1')->get();
+   return view('receptionist.index',compact('client','receptionist','crediteducation','pendingtodo','compeletetodo'));
+ }
 
 }

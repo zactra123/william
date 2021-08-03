@@ -87,7 +87,7 @@ Route::get('register-as-affiliate', 'Auth\RegisterController@registerAffiliate')
 Route::post('email/verify/{id}/{signuture}', 'Auth\VerificationController@verify')->name('verification.verify_post');
 
 Route::group(['prefix'=>'owner'], function(){
-  
+
     Route::get('setting','Owner\SettingControl@index')->name('owner.setting.index');
     Route::post('update/profile','Owner\SettingControl@update_profile')->name('update.owner.setting');
     Route::post('update/password/byuser','Owner\SettingControl@change_userpasword')->name('update.owner.password');
@@ -182,7 +182,7 @@ Route::group(['prefix'=> 'admin'], function(){
     });
 
 Route::group(['prefix'=> 'receptionist'], function(){
-
+    Route::get('/','Receptionist\MessagesController@receptionist_dashbord')->name('dashboard');
     Route::post('message/completed', 'Receptionist\MessagesController@messageCompleted')->name('receptionist.message.ajax');
     Route::post('message/note', 'Receptionist\MessagesController@addNote')->name('receptionist.message.note');
     Route::put('message/update','Receptionist\MessagesController@update')->name('receptionist.message.update');
