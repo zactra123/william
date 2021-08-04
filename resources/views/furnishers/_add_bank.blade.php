@@ -89,9 +89,9 @@ asort($types)
                                 <div class="row expand-address" data-address="#address-{{$type}}">
                                     <div class="col-md-6"><label for="">{{$name}}</label>  </div>
                                     <div class="col-md-6 text-right">
-                                        <button type="button" class="btn btn-danger mb-4">
+                                        <span class="text-danger mb-4 fs-18">
                                             <i class="fa fa-minus-circle"></i>
-                                        </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-12 addresses " id="address-{{$type}}">
@@ -109,7 +109,7 @@ asort($types)
                                             </div>
                                         </div>
                                     @endif
-                                    
+
                                     @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
                                         <div class="row">
                                             <div class="form-group col-sm-12">
@@ -182,9 +182,9 @@ asort($types)
                     <div class="row">
                         <div class="col-md-6 text-left"><span>OTHER NAMES USED</span> </div>
                         <div class="col-md-6 text-right">
-                            <button type="button" class="remove-equal-bank btn btn-danger mb-3">
+                            <span class="remove-equal-bank text-danger fs-18 pointer mb-3">
                                 <i class="fa fa-times"></i>
-                            </button>
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Blog;
-use Share;
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\HomePageContent;
-use App\Question;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Validator;
-use App\Faq;
 use App\ContactMessage;
+use App\Question;
 use App\reviews;
-use Illuminate\Support\Facades\DB;
+use App\Blog;
+use App\Faq;
+use Share;
 
 
 class PagesController extends Controller
