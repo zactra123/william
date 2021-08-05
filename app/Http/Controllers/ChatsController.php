@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Broadcast;
+use App\Events\ReceptionistLiveChat;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Guest;
 use App\Chat;
-use Illuminate\Http\Request;
-use App\Events\ReceptionistLiveChat;
-use Illuminate\Support\Facades\Broadcast;
-use Response;
 use App\User;
-use Illuminate\Support\Facades\DB;
-use Auth;
+use Response;
 use Active;
+use Auth;
+
 
 
 
@@ -28,8 +29,6 @@ class ChatsController extends Controller
      */
     public function identifyUser(Request $request)
     {
-
-
 
         $actives = Active::usersWithinMinutes(60)->get();
         $receptionistId = [];

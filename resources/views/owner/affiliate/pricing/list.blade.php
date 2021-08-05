@@ -131,10 +131,10 @@
               <div class="col-md-4">
                   <div class="row">
                       <div class="col-md-12">
-                          <label for="mina1"> <strong>Min $</strong> </label>
+                          <!-- <label for="mina1"> <strong>Min $</strong> </label> -->
                       </div>
                       <div class="col-md-12">
-                          <input id="mina1" class="form-control" type="text" name="{type}[{id}][minimum]"  class="collection" data-id="{id}"   title="Min">
+                          <input id="mina1" class="form-control" type="text" placeholder="Min $" name="{type}[{id}][minimum]"  class="collection" data-id="{id}"   title="Min">
                       </div>
                   </div>
                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -142,10 +142,10 @@
               <div class="col-md-4 ">
                   <div class="row">
                       <div class="col-md-12">
-                          <label for="maxa1"> <strong>Max $</strong> </label>
+                          <!-- <label for="maxa1"> <strong>Max $</strong> </label> -->
                       </div>
                       <div class="col-md-12">
-                          <input id="maxa1" class="form-control" type="text"  name="{type}[{id}][maximum]"  class="collection" data-id="0"  id="max-0"title="Max">
+                          <input id="maxa1" class="form-control" type="text" placeholder="Max $" name="{type}[{id}][maximum]"  class="collection" data-id="0"  id="max-0"title="Max">
 
 
                       </div>
@@ -155,15 +155,15 @@
               <div class="col-md-3">
                   <div class="row">
                       <div class="col-md-12">
-                          <label for="pricea1"> <strong>Price $</strong> </label>
+                          <!-- <label for="pricea1"> <strong>Price $</strong> </label> -->
                       </div>
                       <div class="col-md-12">
-                          <input id="pricea1" class="form-control" type="text"  name="{type}[{id}][price]" class="collection" data-id="0"  title="Price">
+                          <input id="pricea1" class="form-control" type="text" placeholder="Price $" name="{type}[{id}][price]" class="collection" data-id="0"  title="Price">
                       </div>
                   </div>
                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
               </div>
-              <div class="col-md-1 pt-4">
+              <div class="col-md-1">
                   <strong class="add_range pr-5" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
 
                   <strong class="remove_range" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
