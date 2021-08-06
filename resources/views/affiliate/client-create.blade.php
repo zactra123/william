@@ -36,13 +36,13 @@
                         <path d="M24.5 7C24.017 7 23.625 7.392 23.625 7.875C23.625 8.358 24.017 8.75 24.5 8.75C25.466 8.75 26.25 9.53575 26.25 10.5V25.3032L23.296 22.9408C23.142 22.8183 22.9478 22.75 22.75 22.75H10.5C9.534 22.75 8.75 21.9642 8.75 21V20.125C8.75 19.642 8.358 19.25 7.875 19.25C7.392 19.25 7 19.642 7 20.125V21C7 22.9303 8.56975 24.5 10.5 24.5H22.442L26.5773 27.8092C26.7365 27.9352 26.9307 28 27.125 28C27.2528 28 27.3822 27.972 27.5047 27.9142C27.8075 27.7673 28 27.461 28 27.125V10.5C28 8.56975 26.4303 7 24.5 7Z" fill="white"/>
                     </svg>
                     <span id="chat_header_hide_text" >
-						Talk to us, we are online!
-					</span>
+						            Talk to us, we are online!
+					          </span>
                 </p>
             </div>
             <div class="body" id="chat_body">
                 <div class="chat-title">
-                    <h3>Chat</h3>
+                    <h3 class="text-white">Chat</h3>
                     <div id="chat_close">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.1988 12.0197L23.5439 2.6743C24.1521 2.06642 24.1521 1.08357 23.5439 0.475685C22.936 -0.132195 21.9532 -0.132195 21.3453 0.475685L11.9999 9.82109L2.65474 0.475685C2.04658 -0.132195 1.064 -0.132195 0.456124 0.475685C-0.152041 1.08357 -0.152041 2.06642 0.456124 2.6743L9.80125 12.0197L0.456124 21.3651C-0.152041 21.973 -0.152041 22.9559 0.456124 23.5637C0.759068 23.867 1.15739 24.0193 1.55543 24.0193C1.95347 24.0193 2.35152 23.867 2.65474 23.5637L11.9999 14.2183L21.3453 23.5637C21.6485 23.867 22.0466 24.0193 22.4446 24.0193C22.8426 24.0193 23.2407 23.867 23.5439 23.5637C24.1521 22.9559 24.1521 21.973 23.5439 21.3651L14.1988 12.0197Z"/>
@@ -51,13 +51,13 @@
 
                 </div>
                 <form action="" id="chat_form">
-                    <p>You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
+                    <p class="text-white">You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
                     <input type="text" placeholder="Your full name">
                     <div class="contact">
                         <label for="email" class="email-label">
                             <input type="email" id="email" placeholder="E-mail Address">
                         </label>
-                        <p>or</p>
+                        <p class="text-white">or</p>
                         <label for="phone" class="phone-label">
                             <input type="tel" id="phone" disabled placeholder="Phone Number">
                         </label>

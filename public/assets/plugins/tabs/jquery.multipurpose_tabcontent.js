@@ -108,8 +108,8 @@
                 $(this).find(" > div > div.tab_content").removeClass("active");
 
                 if (active_tab == "") {
-                    $(this).find(" >ul li:eq(0)").addClass("active").show(); //set active tab on load   
-                    $(this).find(" > div > div.tab_content:eq(0)").addClass("active").show(); //set active tab on load   
+                    $(this).find(" >ul li:eq(0)").addClass("active").show(); //set active tab on load
+                    $(this).find(" > div > div.tab_content:eq(0)").addClass("active").show(); //set active tab on load
                     hide_controls(parent);
 
                 } else {
@@ -219,10 +219,10 @@
                         }
                     }
                 });
-				
-				
-				
-				
+
+
+
+
 
             });
         }

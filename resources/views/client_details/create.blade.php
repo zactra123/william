@@ -41,7 +41,7 @@
             </div>
             <div class="body" id="chat_body">
                 <div class="chat-title">
-                    <h3>Chat</h3>
+                    <h3 class="text-white">Chat</h3>
                     <div id="chat_close">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.1988 12.0197L23.5439 2.6743C24.1521 2.06642 24.1521 1.08357 23.5439 0.475685C22.936 -0.132195 21.9532 -0.132195 21.3453 0.475685L11.9999 9.82109L2.65474 0.475685C2.04658 -0.132195 1.064 -0.132195 0.456124 0.475685C-0.152041 1.08357 -0.152041 2.06642 0.456124 2.6743L9.80125 12.0197L0.456124 21.3651C-0.152041 21.973 -0.152041 22.9559 0.456124 23.5637C0.759068 23.867 1.15739 24.0193 1.55543 24.0193C1.95347 24.0193 2.35152 23.867 2.65474 23.5637L11.9999 14.2183L21.3453 23.5637C21.6485 23.867 22.0466 24.0193 22.4446 24.0193C22.8426 24.0193 23.2407 23.867 23.5439 23.5637C24.1521 22.9559 24.1521 21.973 23.5439 21.3651L14.1988 12.0197Z"/>
@@ -50,7 +50,7 @@
 
                 </div>
                 <form action="" id="chat_form">
-                    <p>You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
+                    <p class="text-white">You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
                     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                       <input type="text" placeholder="Your full name">
                     </div>
@@ -66,7 +66,7 @@
 
                           </div>
 
-                          <div class="col-md-2 col-lg-2 col-sm-2 col-2 text-center pt-3">
+                          <div class="col-md-2 col-lg-2 col-sm-2 col-2 text-center pt-3 text-white">
                             OR
                           </div>
 

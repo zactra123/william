@@ -11,7 +11,7 @@
 
 @section('content')
     <section class="text-page pt-5 mt-5">
-        {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
+        {{-- <img class="background-image" src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
         <div class="container header-banner mt-5">
 
         </div>

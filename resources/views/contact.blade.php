@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <textarea class="form-control" name="contact[text]" id="" rows=7 required placeholder="Write Message...."></textarea>
-                                        <input type="submit" class="button pull-right btn btn-info mt-4" value="Send Messages">
+                                        <input type="submit" class="button pull-right btn btn-info mt-4 mb-5" value="Send Messages">
                                     </div>
                                 </div>
                             </form>

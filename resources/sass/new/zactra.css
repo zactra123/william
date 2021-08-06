@@ -7,7 +7,6 @@
    font-family: "Open Sans", sans-serif !important;
    font-size:12px;
 } */
-
 .theme-color{
   color:#37c6f5 !important;
 }
@@ -17,7 +16,6 @@
 .theme-background{
   background:#37c6f5 !important;
 }
-
 .bg-white,.bg-light{ background:white; }
 .bg-dark,.bg-black{ background:black; }
 .bg-transparent{ background:transparent !important; }

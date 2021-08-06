@@ -26,7 +26,7 @@
                             </div>
 
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-12 text-right">
                                   <input type="submit" value="Add" class="ms-ua-submit btnsub btn btn-primary mb-5 pull-right" data-url="{{ url('/') }}">
                                 </div>
@@ -120,6 +120,10 @@
           padding: 15px;
           /* box-shadow: 0 0 5px 1px #0000005c; */
           opacity: 1;
+      }
+      .steps{
+        position: sticky;
+        top: 60px;
       }
 
   </style>

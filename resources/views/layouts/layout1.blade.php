@@ -247,6 +247,121 @@
     });
 
 </script>
+<script type="text/javascript">
+$(document).ready(function () {
+  var $chat_height = $('#chat_body').height();
+  var $chat = $('#chat_body');
+  var $chat_header = $('#chat_header');
+  var $mail = $chat.find('input[type="email"]');
+  var $phone = $chat.find('input[type="tel"]');
+  var $mail_label = $chat.find('.email-label');
+  var $phone_label = $chat.find('.phone-label');
+  var $contact_description = $('#contact_description');
+  $('#chat_close').on('click', function () {
+    $chat.removeClass('show');
+    $chat_header.removeClass('hide');
+    $contact_description.animate({
+      'opacity': 0
+    });
+  });
+  $('#chat_header').on('click', function () {
+    if ($chat.hasClass('show')) {
+      $contact_description.removeClass('active');
+    } else {
+      $chat.css({
+        'bottom': '0'
+      });
+      $contact_description.addClass('active');
+      setTimeout(function () {
+        $contact_description.animate({
+          'top': $phone.offset().top - ($contact_description.height() * 4 + 30),
+          'left': $phone.offset().left - $contact_description.width()
+        }, 300);
+        setTimeout(function () {
+          $contact_description.animate({
+            'top': $phone.offset().top - $contact_description.height() * 4,
+            'opacity': 0.6
+          });
+          setTimeout(function () {
+            $contact_description.animate({
+              'top': $phone.offset().top - ($contact_description.height() * 4 + 30),
+              'opacity': 0
+            }, 300);
+          }, 3200);
+        }, 250);
+      }, 500);
+    }
+
+    $chat.toggleClass('show');
+    $chat_header.toggleClass('hide');
+  });
+  $($phone_label).on('click', function () {
+    $phone.attr('disabled', false);
+    $mail.attr('disabled', true);
+  });
+  $($mail_label).on('click', function () {
+    $mail.attr('disabled', false);
+    $phone.attr('disabled', true);
+  });
+  var $slider_next = $('#slider_next');
+  var $slider_prev = $('#slider_prev');
+  var $slider = $('.header-slider');
+  var $sliderCount = $slider.find('.information').length;
+  var $sliderStart = 1;
+  $slider_next.on('click', function () {
+    nextSlide();
+  });
+  $slider_prev.on('click', function () {
+    prevSlide();
+  });
+  var imgSlideNow = 1;
+  var imgSlideCount = $('#slidewrapper').children().length;
+  var translateWidth = 0;
+  var slideInterval = 5000;
+
+  function nextSlide() {
+    if (imgSlideNow == imgSlideCount || imgSlideNow <= 0 || imgSlideNow > imgSlideCount) {
+      $('#slidewrapper').css('transform', 'translate(0, 0)');
+      imgSlideNow = 1;
+    } else {
+      translateWidth = -$('#viewport').width() * imgSlideNow;
+      $('#slidewrapper').css({
+        'transform': 'translate(' + translateWidth + 'px, 0)',
+        '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+        '-ms-transform': 'translate(' + translateWidth + 'px, 0)'
+      });
+      imgSlideNow++;
+    }
+  }
+
+  function prevSlide() {
+    if (imgSlideNow == 1 || imgSlideNow <= 0 || imgSlideNow > imgSlideCount) {
+      translateWidth = -$('#viewport').width() * (imgSlideCount - 1);
+      $('#slidewrapper').css({
+        'transform': 'translate(' + translateWidth + 'px, 0)',
+        '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+        '-ms-transform': 'translate(' + translateWidth + 'px, 0)'
+      });
+      imgSlideNow = imgSlideCount;
+    } else {
+      translateWidth = -$('#viewport').width() * (imgSlideNow - 2);
+      $('#slidewrapper').css({
+        'transform': 'translate(' + translateWidth + 'px, 0)',
+        '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+        '-ms-transform': 'translate(' + translateWidth + 'px, 0)'
+      });
+      imgSlideNow--;
+    }
+  }
+
+  var switchInterval = setInterval(nextSlide, slideInterval);
+  $('#viewport').hover(function () {
+    clearInterval(switchInterval);
+  }, function () {
+    switchInterval = setInterval(nextSlide, slideInterval);
+  });
+});
+</script>
 
 
 <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.">

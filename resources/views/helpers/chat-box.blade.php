@@ -8,7 +8,7 @@
 
 <div class="chat-popup ms-chat-tab">
     <div class="not-defined-user ">
-        <div class="chat-header">
+        <div class="chat-header text-white">
             Chat
             <button type="button" class="close close-chat">
                 <span aria-hidden="true">&times;</span>
@@ -16,7 +16,7 @@
         </div>
         <div class="chat-content initial">
             <div class="message darker">
-                <p>You can write your questions on our online portal.
+                <p class="text-white">You can write your questions on our online portal.
                     Our experts will help you find answers to your questions.</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                                     <div class="col-md-6" style="margin: 0">
                                         <input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Mail Address">
                                     </div>
-                                    <div class="col-md-1" style="margin: 0; padding: 0">
+                                    <div class="col-md-1 text-white" style="margin: 0; padding: 0">
                                         OR
                                     </div>
                                     <div class="col-md-5">
