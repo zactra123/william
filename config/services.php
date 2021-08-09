@@ -32,9 +32,9 @@ return [
 
 
     'facebook' => [
-        'client_id' => env('FACEBOOK_APP_ID'),
-        'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => env('FACEBOOK_REDIRECT'),
+        'client_id' => '186293959361262',
+        'client_secret' => '683ee8c2b178ac7ac2b306ccc5eaac75',
+        'redirect' => 'https://prudentscores.com/facebook/callback',
     ],
     'google' => [
         'client_id' => '42806352568-drauh6hjmu664fmqj0q23qone3ajg7rj.apps.googleusercontent.com',
