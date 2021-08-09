@@ -92,7 +92,7 @@
 <script id="chat-message-to-admin-template" type="text/html">
     <div class="message" data-message-id="{message-id}">
         <p>{message}</p>
-        <span class="time-right">{time}</span>
+        <span class="time">{time}</span>
     </div>
 </script>
 <script id="chat-message-from-admin-template" type="text/html">

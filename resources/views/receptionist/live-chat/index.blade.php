@@ -129,8 +129,8 @@
                                                         <input type="hidden" name="direct" value="1" id="direct-to-user" disabled>
                                                         <input type="submit" value="Reply Directly To The Client" id="direct-answer" class="ms-ua-submit hidden btn btn-primary mt-4">
                                                     </div>
-                                                    <div class="col-sm-6 form-group">
-                                                        <input type="submit" value="Send message" class="ms-ua-submit">
+                                                    <div class="col-sm-6 form-group text-right">
+                                                        <input type="submit" value="Send message" class="ms-ua-submit btn btn-primary mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,7 +164,6 @@
                             <div  class="form-group">
                                 <p> Address:  <span id="showAddress" class="text-uppercase"></span></p>
                             </div>
-
 
                         </div>
                     </div>

@@ -313,7 +313,7 @@
                                         {{-- <label> <strong>Unknown Late $</strong> </label> --}}
                                       </div>
                                       <div class="col-md-12">
-                                        <input type="text" class="form-control" name="unknown_late" placeholder="Unknown Late $" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                                        <input type="text" class="form-control" name="unknown_late" placeholder="Unknown Late $" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Unknown">
                                       </div>
                                     </div>
 
@@ -519,7 +519,7 @@
                                             {{-- <label for="realestate1"> <strong>Conv. Real Estate Mtg $</strong> </label> --}}
                                         </div>
                                         <div class="col-md-12">
-                                            <input id="realestate1" type="text" class="form-control" placeholder="Conv. Real Estate Mtg $" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="CONV. REAL ESTATE MTG">
+                                            <input id="realestate1" type="text" class="form-control" placeholder="Conv. Real Estate Mtg $" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Conv. Real Estate Mtg">
                                         </div>
                                     </div>
 
@@ -572,7 +572,7 @@
                                             {{-- <label for="childsupport"> <strong>Child Support $</strong> </label> --}}
                                         </div>
                                         <div class="col-md-12">
-                                            <input id="childsupport" type="text" class="form-control" placeholder="Child Support $" name="child_support_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="CHILD SUPPORT">
+                                            <input id="childsupport" type="text" class="form-control" placeholder="Child Support $" name="child_support_block" value="{{ $pricing->cell_blocking ?? $default->cell_blocking}}"  title="Child Support">
                                         </div>
                                     </div>
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
@@ -606,7 +606,7 @@
                                             {{-- <label for="securedcredit"> <strong>Secured Credit $</strong> </label> --}}
                                         </div>
                                         <div class="col-md-12">
-                                            <input id="securedcredit" type="text" class="form-control" placeholder="Secured Credit $" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="CREDIT CARD LATE">
+                                            <input id="securedcredit" type="text" class="form-control" placeholder="Secured Credit $" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Credit Card Late">
                                         </div>
                                     </div>
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
@@ -683,7 +683,7 @@
                                             {{-- <label for="securedloc2"> <strong>Secured Loc $</strong> </label> --}}
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="text" id="securedloc2" placeholder="Secured Loc $" class="form-control" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="UNKNOWN">
+                                            <input type="text" id="securedloc2" placeholder="Secured Loc $" class="form-control" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Unknown">
                                         </div>
                                     </div>
                                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -2069,7 +2069,7 @@
                                                 {{-- <label for="price29"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" name="credit_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="PERCENTAGE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" name="credit_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2593,7 +2593,7 @@
                                                 {{-- <label for="price41"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Price $" class="form-control collection" name="education_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="PERCENTAGE">
+                                                <input type="text" placeholder="Price $" class="form-control collection" name="education_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2726,7 +2726,7 @@
                                                 {{-- <label for="price44"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Price $" class="form-control collection" id="utility_s_co_price_val_last" title="PRICE">
+                                                <input type="text" placeholder="Price $" class="form-control collection" id="utility_s_co_price_val_last" title="Price">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3583,7 +3583,7 @@
                                                 {{-- <label for="min65"> <strong>Min $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Min $" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_d_co_min_val_last" data-id="0"  id="min-0" title="MINIMUM">
+                                                <input type="text" class="form-control collection" placeholder="Min $" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_d_co_min_val_last" data-id="0"  id="min-0" title="Minimum">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3606,7 +3606,7 @@
                                                 {{-- <label for="ptice65"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" id="home_equity_d_co_price_last" title="PRICE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" id="home_equity_d_co_price_last" title="Price">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3737,7 +3737,7 @@
                                                 {{-- <label for="min68"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" name="utility_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="PERCENTAGE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" name="utility_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3783,7 +3783,7 @@
                                                 {{-- <label for="price69"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" id="utility_d_co_price_val_last" title="PRICE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" id="utility_d_co_price_val_last" title="Price">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4406,7 +4406,7 @@
                                                 {{-- <label for="price84"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" id="sales_contract_sd_co_price_last" title="PRICE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" id="sales_contract_sd_co_price_last" title="Price">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4996,7 +4996,7 @@
                                                 {{-- <label for="min98"> <strong>Min $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Min $" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_sd_co_min_val_last" data-id="0"  id="min-0" title="MINIMUM">
+                                                <input type="text" class="form-control collection" placeholder="Min $" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_sd_co_min_val_last" data-id="0"  id="min-0" title="Minimum">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5019,7 +5019,7 @@
                                                 {{-- <label for="price98"> <strong>Price $</strong> </label> --}}
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="Price $" id="auto_lease_sd_co_price_last" title="PRICE">
+                                                <input type="text" class="form-control collection" placeholder="Price $" id="auto_lease_sd_co_price_last" title="Price">
                                             </div>
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5696,7 +5696,7 @@
                                                     {{-- <label for="addfee111{{$i}}"> <strong>Add Fee $</strong> </label> --}}
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Add Fee $" class="form-control collection" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                                    <input type="text" placeholder="Add Fee $" class="form-control collection" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
                                                 </div>
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6219,7 +6219,7 @@
                                                         {{-- <label for="maxprice117{{$i}}"> <strong>Max/Price $</strong> </label> --}}
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <input class="form-control" placeholder="Max/Price $" name="" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                                        <input class="form-control" placeholder="Max/Price $" name="" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
                                                     </div>
                                                 </div>
                                             @endif
@@ -6302,7 +6302,7 @@
                                                         {{-- <label for="maxprice118{{$i}}"> <strong>Max/Price $</strong> </label> --}}
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
                                                     </div>
                                                 </div>
                                             @endif
@@ -6935,7 +6935,7 @@
                                                     {{-- <label for="id126{{$i}}"> <strong>%</strong> </label> --}}
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <input class="form-control collection" type="text" placeholder="%" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
+                                                    <input class="form-control collection" type="text" placeholder="%" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
                                                 </div>
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6946,7 +6946,7 @@
                                                     {{-- <label for="addfee126{{$i}}"> <strong>Add Fee $</strong> </label> --}}
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <input class="form-control collection" type="text" placeholder="Add Fee $" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}" data-id="{{$i}}"  id="fee-{{$i}}" title="ADDITIONAL FEE">
+                                                    <input class="form-control collection" type="text" placeholder="Add Fee $" name="collection[{{$i}}][additional_fee]" value="{{ isset($pricing->collection[$i]['additional_fee']) ? $default->collection[$i]['additional_fee'] : ''}}" data-id="{{$i}}"  id="fee-{{$i}}" title="Additional Fee">
                                                 </div>
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6957,7 +6957,7 @@
                                                     {{-- <label for="minprice126{{$i}}"> <strong>Min/Price $</strong> </label> --}}
                                                 </div>
                                                 <div class="col-md-12">
-                                                      <input class="form-control" type="text" placeholder="Min/Price $" value="" id="min-price-{{$i}}" title="MIN PRICE" readonly>
+                                                      <input class="form-control" type="text" placeholder="Min/Price $" value="" id="min-price-{{$i}}" title="Min Price" readonly>
                                                 </div>
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6969,7 +6969,7 @@
                                                         {{-- <label for="maxprice126{{$i}}"> <strong>Max/Price $</strong> </label> --}}
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
                                                     </div>
                                                 </div>
                                             @endif
@@ -7269,7 +7269,7 @@
                                                     {{-- <label for="id130{{$i}}"> <strong>%</strong> </label> --}}
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <input class="form-control collection" type="text" placeholder="%" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="PERCENTAGE">
+                                                    <input class="form-control collection" type="text" placeholder="%" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
                                                 </div>
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -7553,7 +7553,7 @@
                                                         {{-- <label for="maxprice133{{$i}}"> <strong>Max/Price $</strong> </label> --}}
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="MAX PRICE" readonly>
+                                                        <input class="form-control" placeholder="Max/Price $" type="text" value="" id="max-price-{{$i}}" title="Max Price" readonly>
                                                     </div>
                                                 </div>
                                             @endif
@@ -7981,7 +7981,7 @@
                                 </div>
                             @endfor
                         </div>
-												
+
                     </div>
                   </section>
 								</div>

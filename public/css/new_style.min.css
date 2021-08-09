@@ -320,7 +320,8 @@ nav {
     border-bottom-left-radius: 0px;
     -webkit-transform: scale(0);
             transform: scale(0);
-    background-color: #EFF3FC;
+    /* background-color: #EFF3FC; */
+    background-color: #37c6f5;
     -webkit-transform-origin: bottom;
             transform-origin: bottom;
     /* box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1); */
@@ -421,16 +422,16 @@ nav {
     -webkit-box-flex: 1;
             flex-grow: 1;
     overflow: hidden;
-    border-radius: 17px;
+    border-radius: 8px;
     margin-bottom: 17px;
-    border: 1px solid #94A2B3;
+    /* border: 1px solid #94A2B3; */
 }
 #chat .chat-box-inner {
     background-color: #FFFFFF;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
             flex-direction: column;
-    border-radius: 17px;
+    border-radius: 8px;
     overflow-y: scroll;
     display: -webkit-box;
     display: flex;
@@ -463,10 +464,10 @@ nav {
     width: 50%;
 }
 #chat .textarea {
-    height: 6.42rem;
+    /* height: 6.42rem; */
     overflow: hidden;
-    border-radius: 15px;
-    border: 1px solid #94A2B3;
+    /* border-radius: 15px; */
+    /* border: 1px solid #94A2B3; */
 }
 #chat textarea {
     resize: none;
@@ -489,7 +490,7 @@ nav {
 #chat .message {
     margin: 0;
     color: #000000;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 0.4rem 0.9rem;
 }
 #chat .other-message .message {
@@ -508,7 +509,9 @@ nav {
     margin: 0;
     margin-top: 2px;
     color: #94A2B3;
-    font-size: 0.66rem;
+    font-size: 0.85rem;
+    float: right;
+    text-align: right;
 }
 #chat .other-message .time {
     text-align: end;
@@ -5619,10 +5622,10 @@ h1, h2, h3, h4, h5, h6 {
 @font-face {
   font-family: "remixicon";
   src: url(/fonts/remixicon.eot?31d28485e1cf7369272270fd730327c0); /* IE9*/
-  src: url(/fonts/remixicon.eot?31d28485e1cf7369272270fd730327c0#iefix) format('embedded-opentype'), 
+  src: url(/fonts/remixicon.eot?31d28485e1cf7369272270fd730327c0#iefix) format('embedded-opentype'),
   url(/fonts/remixicon.woff2?9915fef980fa539085da55b84dfde760) format("woff2"),
   url(/fonts/remixicon.woff?881fbc46361e0c0e5f003c159b2f3005) format("woff"),
-  url(/fonts/remixicon.ttf?888e61f04316f10bddfff7bee10c6dd0) format('truetype'), 
+  url(/fonts/remixicon.ttf?888e61f04316f10bddfff7bee10c6dd0) format('truetype'),
   url(/images/remixicon.svg?95138f36e015ad912c37db92164f5844#remixicon) format('svg'); /* iOS 4.1- */
   font-display: swap;
 }
@@ -9094,5 +9097,3 @@ body[data-aos-easing="ease-in-out-quart"] [data-aos] {
       border-radius: 30px; }
     .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
       background: #869791; }
-
-

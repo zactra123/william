@@ -196,82 +196,46 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
-            <div class="card overflow-hidden">
-                <div class="card-body pb-3">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-10">project &amp; task</h4>
-                        <i class="mdi mdi-dots-horizontal text-gray"></i>
-                    </div>
-                    <p class="tx-12 text-muted mb-3">In project, a task is an activity that needs to be accomplished within a defined period of time or by a deadline. <a href="#">Learn more</a></p>
-                    <div class="table-responsive mb-0 projects-stat tx-14">
-                        <table class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap  ">
-                            <thead>
-                                <tr>
-                                    <th>Project &amp; Task</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="project-names">
-                                            <h6 class="bg-primary-transparent text-primary d-inline-block mr-2 text-center">U</h6>
-                                            <p class="d-inline-block font-weight-semibold mb-0">UI Design</p>
-                                        </div>
-                                    </td>
-                                    <td>
+          <div class="card overflow-hidden">
+              <div class="card-body pb-3">
+                  <div class="d-flex justify-content-between">
+                      <h4 class="card-title mg-b-10">to do list</h4>
+                      <i class="mdi mdi-dots-horizontal text-gray"></i>
+                  </div>
+                  <p class="tx-12 text-muted mb-3">See the List of To Do's </p>
+                  <div class="table-responsive mb-0 projects-stat tx-14">
+                      <table class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap  ">
+                          <thead>
+                              <tr>
+                                  <th>List</th>
+                                  <th>Status</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+
+                            @foreach ($todolist as $key => $value)
+                              <tr>
+                                  <td>
+                                      <div class="project-names">
+                                          {{-- <h6 class="bg-primary-transparent text-primary d-inline-block mr-2 text-center">U</h6> --}}
+                                          <p class="d-inline-block font-weight-semibold mb-0">{{ $value->title }}</p>
+                                      </div>
+                                  </td>
+                                  <td>
+                                      @if ($value->status=="1")
                                         <div class="badge badge-success">Completed</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="project-names">
-                                            <h6 class="bg-pink-transparent text-pink d-inline-block text-center mr-2">R</h6>
-                                            <p class="d-inline-block font-weight-semibold mb-0">Landing Page</p>
-                                        </div>
-                                    </td>
-                                    <td>
+                                      @else
                                         <div class="badge badge-warning">Pending</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="project-names">
-                                            <h6 class="bg-success-transparent text-success d-inline-block mr-2 text-center">W</h6>
-                                            <p class="d-inline-block font-weight-semibold mb-0">Website &amp; Blog</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-danger">Canceled</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="project-names">
-                                            <h6 class="bg-purple-transparent text-purple d-inline-block mr-2 text-center">P</h6>
-                                            <p class="d-inline-block font-weight-semibold mb-0">Product Development</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-teal">on-going</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="project-names">
-                                            <h6 class="bg-danger-transparent text-danger d-inline-block mr-2 text-center">L</h6>
-                                            <p class="d-inline-block font-weight-semibold mb-0">Logo Design</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-success">Completed</div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                                      @endif
+                                  </td>
+                              </tr>
+                            @endforeach
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
         </div>
     </div>
     <!-- /row -->

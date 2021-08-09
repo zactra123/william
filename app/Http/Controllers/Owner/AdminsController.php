@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Todo;
 use App\AllowedIp;
 use App\NegativeType;
 use App\AdminSpecification;
@@ -33,8 +34,8 @@ class AdminsController extends Controller
     {
         $admins = User::where('role', 'admin')
             ->paginate(10);
-
-        return view('owner.admin.index', compact( 'admins'));
+        $todolist = Todo::orderby('id','desc')->take(10)->get();
+        return view('owner.admin.index', compact('admins','todolist'));
     }
 
     /**

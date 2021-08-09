@@ -20,9 +20,9 @@
 }
 /*body {background-color: #2a2b3d}*/
 #contents {
-    position: relative;
+    /* position: relative;
     transition: .3s;
-    background-color: #f3f3f3;
+    background-color: #f3f3f3; */
 }
 .margin {
     margin-left: 0 !important;
@@ -276,11 +276,9 @@
 .charts .chart-container {
     background-color: #ffffff;
     padding: 15px;
-    box-shadow: 0 0 5px 1px #0000005c;
+    border-radius: 6px;
+    /* box-shadow: 0 0 5px 1px #0000005c; */
 }
-
-
-
 .charts .chart-container h3 {
     margin: 0 0 10px;
     font-size: 17px;
@@ -450,8 +448,6 @@
 .navbar-default .navbar-nav>li>a>i {
     font-size: 18px !important;
 }
-
-
 
 
 /* Start media query */

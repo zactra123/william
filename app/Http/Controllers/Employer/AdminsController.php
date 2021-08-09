@@ -43,7 +43,8 @@ class AdminsController extends Controller
         $crediteducation = HomePageContent::all();
         $pendingtodo = Todo::where('status','0')->get();
         $compeletetodo = Todo::where('status','1')->get();
-        return view('admin.index',compact('client','receptionist','crediteducation','pendingtodo','compeletetodo'));
+        $todolist = Todo::orderby('id','desc')->take(10)->get();
+        return view('admin.index',compact('client','receptionist','crediteducation','pendingtodo','compeletetodo','todolist'));
     }
 
     public function changePassword(Request $request)
