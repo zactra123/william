@@ -37,9 +37,9 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
     ],
     'google' => [
-        'client_id' => env('GOOGLE_ID'),
-        'client_secret' => env('GOOGLE_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT'),
+        'client_id' => '42806352568-drauh6hjmu664fmqj0q23qone3ajg7rj.apps.googleusercontent.com',
+        'client_secret' => 'Tos8GTWlyfkcpkZjGaYsPg4l',
+        'redirect' => 'https://prudentscores.com/google/callback',
     ],
 
 ];
