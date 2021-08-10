@@ -18594,6 +18594,7 @@ object, embed, video {
   display: none !important; }
 
 .main-profile-menu .profile-user img {
+  object-fit: cover;
   width: 37px;
   height: 37px;
   border-radius: 50%; }
