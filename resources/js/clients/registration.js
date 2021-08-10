@@ -90,7 +90,6 @@
 //         }
 //     })
 // });
-
 var validationOptions = {
         validClass: "not-error",
         rules: {

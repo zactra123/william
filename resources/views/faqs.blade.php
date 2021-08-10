@@ -25,7 +25,7 @@
     </style>
 
 
-    <section class="header">
+    <section class="">
         {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
         <div class="container faq-page">
             <div class="container">
@@ -58,7 +58,28 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 question-form text-center">
-                                    <h2 class="send-question-title">Send Your Question</h2>
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <b class="send-question-title mt-3">Send Your Question</b>
+                                    </div>
+                                    <div class="card-body">
+
+                                      <form action="{{route('faqs')}}" method="POST">
+                                          @csrf
+                                          <div class="row">
+                                              <div class="col-md-12 form-inner">
+                                                  <input class="form-control mb-2" name="name" type="text" placeholder="Your name...">
+                                                  <input class="form-control mb-2" name="email" type="email" placeholder="Email...">
+                                                  <textarea class="form-control mb-2" name="question" id="" style="height: 200px;"></textarea>
+                                                  <div class="basic-button">
+                                                      <input type="submit" class="form-control" value="Send Messages">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                    {{-- <h2 class="send-question-title">Send Your Question</h2>
                                     <form action="{{route('faqs')}}" method="POST">
                                         @csrf
                                         <div class="row">
@@ -71,7 +92,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                         </div> <!-- section-wrapper -->

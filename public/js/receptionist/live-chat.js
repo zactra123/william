@@ -96,7 +96,7 @@ addChatUserList = function(chatUserList) {
     if (chatUserList.recipient_type == "Guest") {
         chatListHtml = $("#recipient-list-guest").html()
         if (chatUserList.user_full_name) {
-            connected = '<span class="text-info"> CONNECTED TO CLIENT: ' + chatUserList.user_full_name + '</span>'
+            connected = '<span class="text-info"> Connected to Client: ' + chatUserList.user_full_name + '</span>'
         }
     }
     unreads = ''

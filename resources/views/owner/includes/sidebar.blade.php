@@ -86,13 +86,13 @@
                   </ul>
             </li>
 
-            <li class="slide {{ zactra::areActiveDropdown(['owner.admin.create','owner.admin.edit','owner.receptionist.create','owner.receptionist.edit','owner.client.create','owner.client.edit'])}}">
+            <li class="slide {{ zactra::areActiveDropdown(['owner.admin.create','owner.admin.edit','owner.receptionist.create','owner.receptionist.edit','owner.client.create','owner.client.edit','owner.admin.changePassword','adminRec.client.profile'])}}">
                   <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-down"></i></a>
                   <ul class="slide-menu">
-                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.admin','owner.admin.create','owner.admin.edit'])}}" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.admin','owner.admin.create','owner.admin.edit','owner.admin.changePassword'])}}" href="{{ route('owner.admin.index')}}">ADMINS</a></li>
                     <li><a class="slide-item {{ zactra::areActiveRoute(['owner.receptionist','owner.receptionist.create','owner.receptionist.edit'])}}" href="{{ route('owner.receptionist.index')}}">RECEPTIONIST</a></li>
 
-                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit'])}}" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit','adminRec.client.profile'])}}" href="{{ route('owner.client.index')}}">CLIENTS</a></li>
                     <li><a class="slide-item {{ zactra::areActiveRoute(['owner.affiliate','owner.affiliate.create','owner.affiliate.edit'])}}" href="{{ route('owner.affiliate.index')}}">AFFILIATES</a></li>
                     <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">REVIEWS</a></li>
                   </ul>
@@ -107,11 +107,11 @@
             </li>
 
 
-            <li class="slide">
+            <li class="slide {{ zactra::areActiveDropdown(['owner.faqs.question','owner.faqs.edit']) }}">
                   <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-lightbulb"></i><span class="side-menu__label">Faqs</span><i class="angle fe fe-chevron-down"></i></a>
                   <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('owner.faqs.index')}}">VIEW FAQs</a></li>
-                    <li><a class="slide-item" href="{{ route('owner.faqs.create')}}">ADD FAQs</a></li>
+                    <li><a class="slide-item {{ zactra::areActiveRoute(['owner.faqs.question','owner.faqs.edit']) }}" href="{{ route('owner.faqs.index')}}">VIEW FAQs</a></li>
+                    <li><a class="slide-item" href="{{ route('owner.faqs.create')}}">ADD FAQs</a> </li>
                   </ul>
             </li>
 
@@ -194,10 +194,10 @@
               <a class="side-menu__item" href="{{ route('adminRec.toDo.list')}}"><i class="side-menu__icon fe fe-check"></i><span class="side-menu__label">To Do List</span></a>
             </li>
             <li class="slide">
-              <a class="side-menu__item" href="{{ route('receptionist.liveChat.index')}}"><i class="side-menu__icon fa fa-envelope"></i><span class="side-menu__label">Chat</span></a>
-              @if(!empty($all_unreads))
-                  <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
-              @endif
+              <a class="side-menu__item" href="{{ route('receptionist.liveChat.index')}}"><i class="side-menu__icon fa fa-envelope"></i><span class="side-menu__label">Chat</span>   @if(!empty($all_unreads))
+                    <span id="allMessageCount" class="badge badge-danger text-white"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
+                @endif</a>
+
             </li>
             {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>

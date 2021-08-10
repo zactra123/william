@@ -22,6 +22,9 @@ require('./assets/vendor/purecounter/purecounter.js');
 // require('./lib/selectize');
 // require('./assets/vendor/purecounter/purecounter.js');
 
+require('./assets/vendor/purecounter/purecounter.js');
+
+
 require('./review.js');
 require('./custom.js');
 

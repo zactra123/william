@@ -324,20 +324,21 @@
                   </div>
                   <div class="card-body">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-md-1 font-weight-normal"><b>#</b></div>
-                            <div class="col-md-1 font-weight-normal"></div>
+                            <div class="col-md-1"><b>View</b></div>
                             <div class="col-md-4"><b>Title</b></div>
                             <div class="col-md-2"> <b>Status</b> </div>
                         </div>
+
                         @foreach($toDos->where('status', 2) as $todo)
 
                             <div class="row">
                                 <div class="col-md-1 font-weight-normal">
                                     {{$loop->iteration}}
                                 </div>
-                                <div class="col-md-1 updateview" data-id="{{$todo->id}}">
-                                    <i class="fa fa-eye"></i>
+                                <div class="col-md-1 updateview pl-4" data-id="{{$todo->id}}">
+                                    <i class="fa fa-eye text-info" style="cursor:pointer"></i>
                                 </div>
 
                                 <div class="col-md-4"> {{$todo->title}}</div>
@@ -360,20 +361,21 @@
                   </div>
                   <div class="card-body">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-md-1 font-weight-normal"> <b>#</b> </div>
                             <div class="col-md-1 font-weight-normal" > <b>View</b> </div>
                             <div class="col-md-4"><span> <b>Title</b> </span></div>
                             <div class="col-md-2"> <b>Status</b> </div>
                         </div>
+                        
                         @foreach($toDos->where('status', '!=',2) as $todo)
 
                             <div class="row">
                                 <div class="col-md-1 font-weight-normal showDetails" data-id ="{{$todo->id}}">
                                     {{$loop->iteration}}
                                 </div>
-                                <div class="col-md-1 updateview" data-id="{{$todo->id}}">
-                                    <i class="fa fa-eye"></i>
+                                <div class="col-md-1 updateview pl-4" data-id="{{$todo->id}}">
+                                    <i class="fa fa-eye text-info" style="cursor:pointer"></i>
                                 </div>
                                 <div class="col-md-4  showDetails" data-id ="{{$todo->id}}"> {{$todo->title}}</div>
                                 <div class="col-md-2  showDetails" data-id ="{{$todo->id}}">{{$status[$todo->status]}}</div>

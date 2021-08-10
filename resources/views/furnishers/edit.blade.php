@@ -132,7 +132,7 @@
                                 <div class="col-md-9 parent-show">
                                     <div class="col-md-12">
                                         <div class="form-group banks ">
-                                            {!! Form::text("bank[parent_name]", $bank->parent ? $bank->parent->name : null, ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'PARENT BANK NAME']); !!}
+                                            {!! Form::text("bank[parent_name]", $bank->parent ? $bank->parent->name : null, ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!}
                                             {!! Form::hidden("bank[parent_id]", $bank->parent_id, ["class"=>"form-control parent_id"]) !!}
                                         </div>
                                     </div>

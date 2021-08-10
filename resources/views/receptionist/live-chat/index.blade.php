@@ -150,19 +150,19 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                             <div  class="form-group">
-                                <p> Full Name: <span id="showFullName" class="text-uppercase"></span></p>
+                                <p> Full Name : <span id="showFullName" class=""></span></p>
                             </div>
                             <div  class="form-group">
-                                <p> EMAIL: <span id="showEmailAddress" class="text-uppercase"></span></p>
+                                <p> Email : <span id="showEmailAddress" class=""></span></p>
                             </div>
                             <div  class="form-group">
-                                <p> Phone #  <span id="showPhoneNumber"></span></p>
+                                <p> Phone # : <span id="showPhoneNumber"></span></p>
                             </div>
                             <div  class="form-group">
-                                <p> Social Security #  <span id="showSSN"></span></p>
+                                <p> Social Security # : <span id="showSSN"></span></p>
                             </div>
                             <div  class="form-group">
-                                <p> Address:  <span id="showAddress" class="text-uppercase"></span></p>
+                                <p> Address :  <span id="showAddress" class=""></span></p>
                             </div>
 
                         </div>

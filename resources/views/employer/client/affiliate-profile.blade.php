@@ -19,30 +19,30 @@
     <div class="col-sm-3">
         <aside class="side-nav" id="show-side-navigation1">
           <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
-          <div class="row">
-            <div class="info"></div>
+          <div class="row mt-2">
+            <div class="info p-2"></div>
           </div>
-          <ul class="categories">
+          <ul class="categories mt-3">
             <li title="Full Name" class="dl-field">
-              <img class="full_name" width="25px" src="{{url('/')}}/images/full_name.png" width="25px" />
+              <img class="full_name" width="25px" src="{{url('/')}}/images/full_name.png" width="25px" /> &nbsp;&nbsp;
               <a href="#"><span>{{$affiliate->full_name()}}</span></a>
             </li>
             <li title="Phone Number">
-              <img class="" width="25px" src="{{ url('/') }}/images/phone_number.png" />
+              <img class="" width="25px" src="{{ url('/') }}/images/phone_number.png" />&nbsp;&nbsp;
               <a href="tell:{{$affiliate->clientDetails->phone_number}}"> {{$affiliate->clientDetails->phone_number}}</a>
             </li>
             <li title="Email Address">
               <a href="#" data-toggle="modal" data-target="#sendEmail">
-                <img class="responsive" src="{{url('/')}}/images/email.png" />
-              </a>
-              <a href="mailto:{{$affiliate->email}}"> {{strtoupper($affiliate->email)}}</a>
+                <img width="25px" src="{{url('/')}}/images/email.png" />
+              </a>&nbsp;&nbsp;
+              <a href="mailto:{{$affiliate->email}}">{{ $affiliate->email }}</a>
             </li>
             <li title="Full Address">
               <div class="address">
                   <div class="address1">
                     <a href="#" data-toggle="modal" data-target="#mapModal">
-                        <img class="addressImage" src="{{url('/')}}/images/location.png" />
-                    </a>
+                        <img width="25px" src="{{url('/')}}/images/location.png" />
+                    </a>&nbsp;&nbsp;
                   </div>
                   <div class="address2">
                     <div class="address">
@@ -55,18 +55,18 @@
               </div>
             </li>
             <li title="Date of Birth" class="date_of_birth">
-              <img class="responsive" src="{{url('/')}}/images/birthday.png" />
-              {{date("m/d/Y", strtotime($affiliate->clientDetails->dob))}}
-              <img src="{{url('/')}}/images/age.jpg" class="responsive small" /> {{date("Y")- date("Y",strtotime($affiliate->clientDetails->dob))}}
+              <img width="25px" src="{{url('/')}}/images/birthday.png" />&nbsp;&nbsp;
+              {{date("m/d/Y", strtotime($affiliate->clientDetails->dob))}}&nbsp;&nbsp;
+              <img src="{{url('/')}}/images/age.jpg" width="25px" />&nbsp;&nbsp; {{date("Y")- date("Y",strtotime($affiliate->clientDetails->dob))}}
             </li>
             @if($affiliate->clientDetails->ssn)
             <li title="Social Security Number">
-              <img class="responsive ss_number" src="{{url('/')}}/images/ssc.png" />
+              <img class="responsive ss_number" width="25px" src="{{url('/')}}/images/ssc.png" />
               <span class="ssn">{{$affiliate->clientDetails->ssn}}</span>
             </li>
             @endif @if($affiliate->clientDetails->ein)
             <li title="Social Security Number">
-              <img class="responsive ss_number" src="{{url('/')}}/images/ssc.png" />
+              <img class="responsive ss_number" width="25px" src="{{url('/')}}/images/ssc.png" />
               <span class="ssn">{{$affiliate->clientDetails->ein}}</span>
             </li>
             @endif

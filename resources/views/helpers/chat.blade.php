@@ -128,6 +128,6 @@
 <script id="chat-message-from-admin-template" type="text/html">
     <div class="other-message message darker p-2" data-message-id="{message-id}">
         <p>{message}</p>
-        <span class="time-left">{time}</span>
+        <span class="time">{time}</span>
     </div>
 </script>

@@ -50287,6 +50287,8 @@ __webpack_require__(/*! ./assets/vendor/purecounter/purecounter.js */ "./resourc
 // require('./assets/vendor/purecounter/purecounter.js');
 
 
+__webpack_require__(/*! ./assets/vendor/purecounter/purecounter.js */ "./resources/js/assets/vendor/purecounter/purecounter.js");
+
 __webpack_require__(/*! ./review.js */ "./resources/js/review.js");
 
 __webpack_require__(/*! ./custom.js */ "./resources/js/custom.js");

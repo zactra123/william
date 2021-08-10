@@ -32,8 +32,8 @@ return [
 
 
     'facebook' => [
-        'client_id' => '186293959361262',
-        'client_secret' => '683ee8c2b178ac7ac2b306ccc5eaac75',
+        'client_id' => '227630419238749',
+        'client_secret' => '2ecfee77ab222f2641af7e3103bb70cb',
         'redirect' => 'https://prudentscores.com/facebook/callback',
     ],
     'google' => [
