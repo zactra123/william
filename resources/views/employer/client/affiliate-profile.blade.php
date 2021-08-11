@@ -35,7 +35,7 @@
               <a href="#" data-toggle="modal" data-target="#sendEmail">
                 <img width="25px" src="{{url('/')}}/images/email.png" />
               </a>&nbsp;&nbsp;
-              <a href="mailto:{{$affiliate->email}}">{{ $affiliate->email }}</a>
+              <a href="mailto:{{$affiliate->email}}">{{ zactra::limit_words($affiliate->email,25) }}</a>
             </li>
             <li title="Full Address">
               <div class="address">

@@ -82,7 +82,7 @@
                       </li>
                       <li title="Email Address">
                           <a href="#" data-toggle="modal" data-target="#sendEmail"> <img  class="" width="25px" src="{{url('/')}}/images/email.png"> </a>
-                          &nbsp; <a href="mailto:{{$client->email}}"> {{ $client->email }}</a>
+                          &nbsp; <a href="mailto:{{$client->email}}"> {{ zactra::limit_words($client->email,25) }}</a>
                       </li>
                       <li title="Full Address" >
                           <div class="address">
@@ -367,7 +367,7 @@
                             <div class="col-md-4"><span> <b>Title</b> </span></div>
                             <div class="col-md-2"> <b>Status</b> </div>
                         </div>
-                        
+
                         @foreach($toDos->where('status', '!=',2) as $todo)
 
                             <div class="row">

@@ -7,12 +7,12 @@
 								</div>
 								<p class="mg-b-20">Here You see Pricing.</p>
 								<div id="wizard3">
-									<h3>Personal Information and Statement</h3>
+									<h3 class="screenhide">Personal Information and Statement</h3>
 									<section class="mt-5">
                     <div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-12 col-12 mb-2 mmb-5">
                                         <div class="row">
                                           <div class="col-md-12">
                                                 {{-- <label for="inquiries"> <strong>Inquiries $</strong> </label> --}}
@@ -23,7 +23,7 @@
                                         </div>
                                     {!! $errors->first('inquiries', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-12 col-12 mb-2 mmb-5">
                                         <div class="row">
                                           <div class="col-md-12">
                                             {{-- <label for="personalinfo"> <strong>Personal Info $</strong> </label> --}}
@@ -35,7 +35,7 @@
 
                                     {!! $errors->first('personal_info', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-12 col-12 mb-2 mmb-5">
                                      <div class="row">
                                         <div class="col-md-12">
                                           {{-- <label for="fraudalerts"> <strong>Fraud Alerts $</strong> </label> --}}
@@ -56,7 +56,7 @@
                     <div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="creditcardlate"> <strong>Credit Card Late $</strong> </label> --}}
@@ -67,7 +67,7 @@
                                   </div>
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="chargecardlate"> <strong>Charge Card Late $</strong> </label> --}}
@@ -79,7 +79,7 @@
 
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="securedcreditcard"> <strong>Secured Credit Card $</strong> </label> --}}
@@ -94,7 +94,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="autoloanlate"> <strong>Auto Loan Late  $</strong> </label> --}}
@@ -106,7 +106,7 @@
 
                                     {!! $errors->first('mortgage_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="autoleaselate"> <strong>Auto Lease Late  $</strong> </label> --}}
@@ -118,7 +118,7 @@
 
                                     {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="recreationalmerchandise"> <strong>Recreational Merchandise Late  $</strong> </label> --}}
@@ -134,7 +134,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="unsecuredloanlate"> <strong>Unsecured Loan Late  $</strong> </label> --}}
@@ -146,7 +146,7 @@
 
                                     {!! $errors->first('utility_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="lineofcredit"> <strong>Line of Credit Late  $</strong> </label> --}}
@@ -158,7 +158,7 @@
 
                                     {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="securedloanlate"> <strong>Secured Loan Late $</strong> </label> --}}
@@ -174,7 +174,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="mortagagelate"> <strong>Mortgage Late  $</strong> </label> --}}
@@ -186,7 +186,7 @@
 
                                     {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="fhamortgage"> <strong>Fha Mortgage Late $</strong> </label> --}}
@@ -198,7 +198,7 @@
 
                                     {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label form="homeequity"> <strong>Home Equity Late $</strong> </label> --}}
@@ -214,7 +214,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="salescontract"> <strong>Sales Contract Late $</strong> </label> --}}
@@ -226,7 +226,7 @@
 
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="rentallate"> <strong>Rental Late $</strong> </label> --}}
@@ -238,7 +238,7 @@
 
                                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="convrealestate"> <strong>Conv. Real Estate Mtg Late $</strong> </label> --}}
@@ -254,7 +254,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="educationlate"> <strong>Education Late $</strong> </label> --}}
@@ -266,7 +266,7 @@
 
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="securedloclate"> <strong>Secured Loc Late $</strong> </label> --}}
@@ -278,7 +278,7 @@
 
                                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label id="utilitycompany"> <strong>Utility Company Late $</strong> </label> --}}
@@ -294,7 +294,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="childsupportlate"> <strong>Child Support Late $</strong> </label> --}}
@@ -307,7 +307,7 @@
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label> <strong>Unknown Late $</strong> </label> --}}
@@ -329,7 +329,7 @@
                     <div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="creditcard"> <strong>Credit Card $</strong> </label> --}}
@@ -341,7 +341,7 @@
 
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="chargecard"> <strong>Charge Card $</strong> </label> --}}
@@ -353,7 +353,7 @@
 
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="securedcredit"> <strong>Secured Credit $</strong> </label> --}}
@@ -369,7 +369,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="autoloan"> <strong>Auto Loan  $</strong> </label> --}}
@@ -381,7 +381,7 @@
 
                                     {!! $errors->first('mortgage_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label> <strong>Auto Lease  $</strong> </label> --}}
@@ -393,7 +393,7 @@
 
                                     {!! $errors->first('student_loan_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="recreationalmerchandise"> <strong>Recreational Merchandise $</strong> </label> --}}
@@ -409,7 +409,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="unsercuredloan"> <strong>Unsecured Loan $</strong> </label> --}}
@@ -421,7 +421,7 @@
 
                                     {!! $errors->first('utility_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="lineofcredit"> <strong>Line of Credit  $</strong> </label> --}}
@@ -433,7 +433,7 @@
 
                                     {!! $errors->first('auto_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="securedloan"> <strong>Secured Loan $</strong> </label> --}}
@@ -449,7 +449,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="mortgage"> <strong>Mortgage  $</strong> </label> --}}
@@ -461,7 +461,7 @@
 
                                     {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                       <div class="col-md-12">
                                         {{-- <label for="fhamortgage"> <strong>Fha Mortgage $</strong> </label> --}}
@@ -473,7 +473,7 @@
 
                                     {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="homeequity"> <strong>Home Equity $</strong> </label> --}}
@@ -489,7 +489,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="salescontract"> <strong>Sales Contract $</strong> </label> --}}
@@ -501,7 +501,7 @@
 
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                   <div class="row">
                                     <div class="col-md-12">
                                       {{-- <label for="rental1"> <strong>Rental $</strong> </label> --}}
@@ -513,7 +513,7 @@
 
                                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="realestate1"> <strong>Conv. Real Estate Mtg $</strong> </label> --}}
@@ -529,7 +529,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="education"> <strong>Education $</strong> </label> --}}
@@ -540,7 +540,7 @@
                                     </div>
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="securedloc1"> <strong>Secured Loc $</strong> </label> --}}
@@ -551,7 +551,7 @@
                                     </div>
                                     {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="utilitycompany1"> <strong>Utility Company $</strong> </label> --}}
@@ -566,7 +566,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="childsupport"> <strong>Child Support $</strong> </label> --}}
@@ -578,7 +578,7 @@
                                     {!! $errors->first('cell_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="unknownblocking"> <strong>Unknown Blocking $</strong> </label> --}}
@@ -600,7 +600,7 @@
                         <h5>Regular Charged off Removal – No Settlement </h5>
                         <div class="form-group mt-4">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="securedcredit"> <strong>Secured Credit $</strong> </label> --}}
@@ -611,7 +611,7 @@
                                     </div>
                                     {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="securedloan"> <strong>Secured Loan $</strong> </label> --}}
@@ -622,7 +622,7 @@
                                     </div>
                                     {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="realestatemtg1"> <strong>Conv. Real Estate Mtg $</strong> </label> --}}
@@ -639,7 +639,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="mortgage1"> <strong>Mortgage  $</strong> </label> --}}
@@ -650,7 +650,7 @@
                                     </div>
                                     {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="fhamortgage1"> <strong>Fha Mortgage $</strong> </label> --}}
@@ -661,7 +661,7 @@
                                     </div>
                                     {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="rental2"> <strong>Rental $</strong> </label> --}}
@@ -677,7 +677,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="securedloc2"> <strong>Secured Loc $</strong> </label> --}}
@@ -696,7 +696,7 @@
                       <h5>Regular Charged Off - Removal After Settlement  </h5>
                       <div class="form-group mt-4">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedcredit"> <strong>Secured Credit $</strong> </label> --}}
@@ -707,7 +707,7 @@
                                   </div>
                                   {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for=""> <strong>Secured Loan $</strong> </label> --}}
@@ -718,7 +718,7 @@
                                   </div>
                                   {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="realestatemtg2"> <strong>Conv. Real Estate Mtg $</strong> </label> --}}
@@ -734,7 +734,7 @@
 
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="mortgage2"> <strong>Mortgage  $</strong> </label> --}}
@@ -745,7 +745,7 @@
                                   </div>
                                   {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="fhamortgage2"> <strong>Fha Mortgage $</strong> </label> --}}
@@ -756,7 +756,7 @@
                                   </div>
                                   {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="rental3"> <strong>Rental $</strong> </label> --}}
@@ -772,7 +772,7 @@
 
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedloc3"> <strong>Secured Loc $</strong> </label> --}}
@@ -791,7 +791,7 @@
                       <h5>Doubled Charged Off Removal – No Settlement </h5>
                       <div class="form-group mt-4">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedcredit3"> <strong>Secured Credit $</strong> </label> --}}
@@ -802,7 +802,7 @@
                                   </div>
                                   {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedloan3"> <strong>Secured Loan $</strong> </label> --}}
@@ -813,7 +813,7 @@
                                   </div>
                                   {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="realestate3"> <strong>Conv. Real estate Mtg $</strong> </label> --}}
@@ -830,7 +830,7 @@
 
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="mortgage3"> <strong>Mortgage  $</strong> </label> --}}
@@ -841,7 +841,7 @@
                                   </div>
                                   {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="fhamortgage3"> <strong>Fha Mortgage $</strong> </label> --}}
@@ -852,7 +852,7 @@
                                   </div>
                                   {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="rental4"> <strong>Rental $</strong> </label> --}}
@@ -868,7 +868,7 @@
 
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedloc4"> <strong>Secured Loc $</strong> </label> --}}
@@ -887,7 +887,7 @@
                       <h5>Doubled Charged Off - Removal After Settlement </h5>
                       <div class="form-group mt-4">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedcredit4"> <strong>Secured Credit $</strong> </label> --}}
@@ -898,7 +898,7 @@
                                   </div>
                                   {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="priceName">
                                       <div class="name">
                                           {{-- <label for="securedloan4"> <strong>Secured Loan $</strong> </label> --}}
@@ -909,7 +909,7 @@
                                   </div>
                                   {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="realestate4"> <strong>Conv. Real Estate Mtg $</strong> </label> --}}
@@ -924,7 +924,7 @@
                       </div>
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="mortgage4"> <strong>Mortgage  $</strong> </label> --}}
@@ -935,7 +935,7 @@
                                   </div>
                                   {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="fhamortgage4"> <strong>Fha Mortgage $</strong> </label> --}}
@@ -946,7 +946,7 @@
                                   </div>
                                   {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="rental5"> <strong>Rental $</strong> </label> --}}
@@ -962,7 +962,7 @@
 
                       <div class="form-group">
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="securedloc5"> <strong>Secured Loc $</strong> </label> --}}
@@ -985,7 +985,7 @@
                             <h5>Credit Card  </h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min1"> <strong>Min $</strong> </label> --}}
@@ -996,7 +996,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="max1"> <strong>Max $</strong> </label> --}}
@@ -1007,7 +1007,7 @@
                                             </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price1"> <strong>Price $</strong> </label> --}}
@@ -1018,7 +1018,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -1030,7 +1030,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                <div class="col-md-4">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label> <strong>Min $</strong> </label> --}}
@@ -1041,7 +1041,7 @@
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-4 ">
+                                <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1053,7 +1053,7 @@
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {{-- <label for="price5"> <strong>Price $</strong> </label> --}}
@@ -1072,7 +1072,7 @@
                             <h5>Charge Card</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min6"> <strong>Min $</strong> </label> --}}
@@ -1083,7 +1083,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max6"> <strong>Max $</strong> </label> --}}
@@ -1094,7 +1094,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="priceName">
                                             <div class="nameCA">
                                                 {{-- <label for="price6"> <strong>Price $</strong> </label> --}}
@@ -1105,7 +1105,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1116,7 +1116,7 @@
 
                             </div>
                             <div class="row p-3">
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for="min7"> <strong>Min $</strong> </label> --}}
@@ -1127,7 +1127,7 @@
                                   </div>
                                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-4 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -1139,7 +1139,7 @@
                                   </div>
                                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-3 mmb-5">
                                   <div class="row">
                                       <div class="col-md-12">
                                           {{-- <label> <strong>Price $</strong> </label> --}}
@@ -1157,7 +1157,7 @@
                             <h5> Sales Contract</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min8"> <strong>Min $</strong> </label> --}}
@@ -1168,7 +1168,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max8"> <strong>Max $</strong> </label> --}}
@@ -1179,7 +1179,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price8"> <strong>Price  $</strong> </label> --}}
@@ -1193,7 +1193,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1205,7 +1205,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min9"> <strong>Min $</strong> </label> --}}
@@ -1216,7 +1216,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label>Max $</label> --}}
@@ -1228,7 +1228,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price9"> <strong>Price $</strong> </label> --}}
@@ -1247,7 +1247,7 @@
                             <h5>Unsecured</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min10"> <strong>Min $</strong> </label> --}}
@@ -1258,7 +1258,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max10"> <strong>Max $</strong> </label> --}}
@@ -1269,7 +1269,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price"> <strong>Price $</strong> </label> --}}
@@ -1280,7 +1280,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1292,7 +1292,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min11"> <strong>Min $</strong> </label> --}}
@@ -1303,7 +1303,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1315,7 +1315,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price11"> <strong>Price $</strong> </label> --}}
@@ -1334,7 +1334,7 @@
                             <h5>Line Of Credit</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min12"> <strong>Min $</strong> </label> --}}
@@ -1345,7 +1345,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max12"> <strong>Max $</strong> </label> --}}
@@ -1356,7 +1356,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price12"> <strong>Price $</strong> </label> --}}
@@ -1367,7 +1367,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1380,7 +1380,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min13"> <strong>Min $</strong> </label> --}}
@@ -1391,7 +1391,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1403,7 +1403,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price13"> <strong>Price $</strong> </label> --}}
@@ -1422,7 +1422,7 @@
                             <h5>Home Equity</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min14"> <strong>Min $</strong> </label> --}}
@@ -1433,7 +1433,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max14"> <strong>Max $</strong> </label> --}}
@@ -1444,7 +1444,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price14"> <strong>Price $</strong> </label> --}}
@@ -1455,7 +1455,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1468,7 +1468,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min15"> <strong>Min $</strong> </label> --}}
@@ -1479,7 +1479,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1491,7 +1491,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price15"> <strong>Price $</strong> </label> --}}
@@ -1510,7 +1510,7 @@
                             <h5>Education</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min16"> <strong>Min $</strong> </label> --}}
@@ -1521,7 +1521,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max16"> <strong>Max $</strong> </label> --}}
@@ -1532,7 +1532,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price16"> <strong>Price $</strong> </label> --}}
@@ -1543,7 +1543,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -1555,7 +1555,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min17"> <strong>Min $</strong> </label> --}}
@@ -1566,7 +1566,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1578,7 +1578,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price17"> <strong>Price $</strong> </label> --}}
@@ -1597,7 +1597,7 @@
                             <h5>Utility Company</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min18"> <strong>Min $</strong> </label> --}}
@@ -1608,7 +1608,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max18"> <strong>Max $</strong> </label> --}}
@@ -1619,7 +1619,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price18"> <strong>Price $</strong> </label> --}}
@@ -1630,7 +1630,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                             <strong class="add_range h3" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -1642,7 +1642,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min19"> <strong>Min $</strong> </label> --}}
@@ -1653,7 +1653,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1665,7 +1665,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price19"> <strong>Price $</strong> </label> --}}
@@ -1684,7 +1684,7 @@
                             <h5>Child Support</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min20"> <strong>Min $</strong> </label> --}}
@@ -1695,7 +1695,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max20"> <strong>Max $</strong> </label> --}}
@@ -1708,7 +1708,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price20"> <strong>Price $</strong> </label> --}}
@@ -1719,7 +1719,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1731,7 +1731,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min21"> <strong>Min $</strong> </label> --}}
@@ -1742,7 +1742,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -1754,7 +1754,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price21"> <strong>Price $</strong> </label> --}}
@@ -1775,7 +1775,7 @@
                             <h5>Auto Lease</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min22"> <strong>Min $</strong> </label> --}}
@@ -1786,7 +1786,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max22"> <strong>Max $</strong> </label> --}}
@@ -1797,7 +1797,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price22"> <strong>Price $</strong> </label> --}}
@@ -1808,7 +1808,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -1820,7 +1820,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min23"> <strong>Min $</strong> </label> --}}
@@ -1831,7 +1831,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -1843,7 +1843,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price24"> <strong>Price $</strong> </label> --}}
@@ -1862,7 +1862,7 @@
                             <h5>Auto Loan</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min24"> <strong>Min $</strong> </label> --}}
@@ -1873,7 +1873,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max24"> <strong>Max $</strong> </label> --}}
@@ -1884,7 +1884,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price25"> <strong>Price $</strong> </label> --}}
@@ -1895,7 +1895,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control collection" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -1907,7 +1907,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min26"> <strong>Min $</strong> </label> --}}
@@ -1918,7 +1918,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="">Max $</label> --}}
@@ -1930,7 +1930,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price26"> <strong>Price $</strong> </label> --}}
@@ -1949,7 +1949,7 @@
                             <h5>Recreational Merchandise</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min27"> <strong>Min $</strong> </label> --}}
@@ -1960,7 +1960,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max27"> <strong>Max $</strong> </label> --}}
@@ -1971,7 +1971,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price27"> <strong>Price $</strong> </label> --}}
@@ -1982,7 +1982,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -1994,7 +1994,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min28"> <strong>Min $</strong> </label> --}}
@@ -2005,7 +2005,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2017,7 +2017,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price28"> <strong>Price $</strong> </label> --}}
@@ -2041,7 +2041,7 @@
                             <h5>Credit Card  </h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min29"> <strong>Min $</strong> </label> --}}
@@ -2052,7 +2052,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max29"> <strong>Max $</strong> </label> --}}
@@ -2063,7 +2063,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price29"> <strong>Price $</strong> </label> --}}
@@ -2074,7 +2074,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2086,7 +2086,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min30"> <strong>Min $</strong> </label> --}}
@@ -2097,7 +2097,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2109,7 +2109,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="priceName">
                                             <div class="nameCA">
                                                 {{-- <label for="price31"> <strong>Price $</strong> </label> --}}
@@ -2128,7 +2128,7 @@
                             <h5>Charge Card</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min32"> <strong>Min $</strong> </label> --}}
@@ -2139,7 +2139,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max32"> <strong>Max $</strong> </label> --}}
@@ -2150,7 +2150,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="priceName">
                                             <div class="nameCA">
                                                 {{-- <label for="price32"> <strong>Price $</strong> </label> --}}
@@ -2161,7 +2161,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -2174,7 +2174,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min33"> <strong>Min $</strong> </label> --}}
@@ -2185,7 +2185,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max34"> <strong>Max $</strong> </label> --}}
@@ -2197,7 +2197,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price33"> <strong>Price $</strong> </label> --}}
@@ -2216,7 +2216,7 @@
                             <h5> Sales Contract</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min34"> <strong>Min $</strong> </label> --}}
@@ -2227,7 +2227,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max34"> <strong>Max $</strong> </label> --}}
@@ -2238,7 +2238,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price34"> <strong>Price $</strong> </label> --}}
@@ -2249,7 +2249,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2261,7 +2261,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min35"> <strong>Min $</strong> </label> --}}
@@ -2272,7 +2272,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2284,7 +2284,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price35"> <strong>Price $</strong> </label> --}}
@@ -2303,7 +2303,7 @@
                             <h5>Unsecured</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min36"> <strong>Min $</strong> </label> --}}
@@ -2314,7 +2314,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max"> <strong>Max $</strong> </label> --}}
@@ -2325,7 +2325,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price"> <strong>Price $</strong> </label> --}}
@@ -2336,7 +2336,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2348,7 +2348,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min"> <strong>Min $</strong> </label> --}}
@@ -2359,7 +2359,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2371,7 +2371,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price36"> <strong>Price $</strong> </label> --}}
@@ -2390,7 +2390,7 @@
                             <h5>Line of Credit</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min37"> <strong>Min $</strong> </label> --}}
@@ -2401,7 +2401,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max37"> <strong>Max $</strong> </label> --}}
@@ -2412,7 +2412,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price37"> <strong>Price $</strong> </label> --}}
@@ -2423,7 +2423,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -2436,7 +2436,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min38"> <strong>Min $</strong> </label> --}}
@@ -2447,7 +2447,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2459,7 +2459,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price38"> <strong>Price $</strong> </label> --}}
@@ -2478,7 +2478,7 @@
                             <h5>Home Equity</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min39"> <strong>Min $</strong> </label> --}}
@@ -2489,7 +2489,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max39"> <strong>Max $</strong> </label> --}}
@@ -2500,7 +2500,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price39"> <strong>Price $</strong> </label> --}}
@@ -2511,7 +2511,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="home_equity_s_co" id="add_home_equity_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2523,7 +2523,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min40"> <strong>Min $</strong> </label> --}}
@@ -2534,7 +2534,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2546,7 +2546,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price40"> <strong>Price $</strong> </label> --}}
@@ -2565,7 +2565,7 @@
                             <h5>Education</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min41"> <strong>Min $</strong> </label> --}}
@@ -2576,7 +2576,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max41"> <strong>Max $</strong> </label> --}}
@@ -2587,7 +2587,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price41"> <strong>Price $</strong> </label> --}}
@@ -2598,7 +2598,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2610,7 +2610,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min42"> <strong>Min $</strong> </label> --}}
@@ -2621,7 +2621,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2633,7 +2633,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price42"> <strong>Price $</strong> </label> --}}
@@ -2652,7 +2652,7 @@
                             <h5>Utility Company</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min43"> <strong>Min $</strong> </label> --}}
@@ -2663,7 +2663,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max43"> <strong>Max $</strong> </label> --}}
@@ -2674,7 +2674,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price43"> <strong>Price $</strong> </label> --}}
@@ -2685,7 +2685,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2697,7 +2697,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min44"> <strong>Min $</strong> </label> --}}
@@ -2708,7 +2708,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2720,7 +2720,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price44"> <strong>Price $</strong> </label> --}}
@@ -2739,7 +2739,7 @@
                             <h5>Child Support</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min45"> <strong>Min $</strong> </label> --}}
@@ -2750,7 +2750,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max45"> <strong>Max $</strong> </label> --}}
@@ -2761,7 +2761,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price45"> <strong>Price $</strong> </label> --}}
@@ -2772,7 +2772,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2784,7 +2784,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min46"> <strong>Min $</strong> </label> --}}
@@ -2795,7 +2795,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -2807,7 +2807,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price46"> <strong>Price $</strong> </label> --}}
@@ -2828,7 +2828,7 @@
                             <h5>Auto Lease</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min47"> <strong>Min $</strong> </label> --}}
@@ -2839,7 +2839,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max47"> <strong>Max $</strong> </label> --}}
@@ -2850,7 +2850,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price47"> <strong>Price $</strong> </label> --}}
@@ -2861,7 +2861,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -2873,7 +2873,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min48"> <strong>Min $</strong> </label> --}}
@@ -2884,7 +2884,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -2896,7 +2896,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price48"> <strong>Price $</strong> </label> --}}
@@ -2915,7 +2915,7 @@
                             <h5>Auto Loan</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min49"> <strong>Min $</strong> </label> --}}
@@ -2926,7 +2926,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max49"> <strong>Max $</strong> </label> --}}
@@ -2937,7 +2937,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price49"> <strong>Price $</strong> </label> --}}
@@ -2948,7 +2948,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -2960,7 +2960,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min50"> <strong>Min $</strong> </label> --}}
@@ -2971,7 +2971,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -2983,7 +2983,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price50"> <strong>Price $</strong> </label> --}}
@@ -3002,7 +3002,7 @@
                             <h5>Recreational Merchandise</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min51"> <strong>Min $</strong> </label> --}}
@@ -3013,7 +3013,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max51"> <strong>Max $</strong> </label> --}}
@@ -3024,7 +3024,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price51"> <strong>Price $</strong> </label> --}}
@@ -3035,7 +3035,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3047,7 +3047,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min52"> <strong>Min $</strong> </label> --}}
@@ -3058,7 +3058,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3070,7 +3070,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price52"> <strong>Price $</strong> </label> --}}
@@ -3094,7 +3094,7 @@
                             <h5>Credit Card  </h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min53"> <strong>Min $</strong> </label> --}}
@@ -3105,7 +3105,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max53"> <strong>Max $</strong> </label> --}}
@@ -3116,7 +3116,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price53"> <strong>Price $</strong> </label> --}}
@@ -3127,7 +3127,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-1">
                                           <strong class="add_range h3" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3139,7 +3139,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min54"> <strong>Min $</strong> </label> --}}
@@ -3150,7 +3150,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3162,7 +3162,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price54"> <strong>Price $</strong> </label> --}}
@@ -3181,7 +3181,7 @@
                             <h5>Charge Card</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min55"> <strong>Min $</strong> </label> --}}
@@ -3192,7 +3192,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max56"> <strong>Max $</strong> </label> --}}
@@ -3203,7 +3203,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price56"> <strong>Price $</strong> </label> --}}
@@ -3214,7 +3214,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3226,7 +3226,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min57"> <strong>Min $</strong> </label> --}}
@@ -3237,7 +3237,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3249,7 +3249,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price57"> <strong>Price $</strong> </label> --}}
@@ -3268,7 +3268,7 @@
                             <h5> Sales Contract</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min58"> <strong>Min $</strong> </label> --}}
@@ -3279,7 +3279,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max58"> <strong>Max $</strong> </label> --}}
@@ -3290,7 +3290,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price58"> <strong>Price $</strong> </label> --}}
@@ -3301,7 +3301,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3313,7 +3313,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min59"> <strong>Min $</strong> </label> --}}
@@ -3324,7 +3324,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3337,7 +3337,7 @@
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price59"> <strong>Price $</strong> </label> --}}
@@ -3356,7 +3356,7 @@
                             <h5>Unsecured</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min60"> <strong>Min $</strong> </label> --}}
@@ -3367,7 +3367,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max60"> <strong>Max $</strong> </label> --}}
@@ -3380,7 +3380,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price60"> <strong>Price $</strong> </label> --}}
@@ -3391,7 +3391,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3403,7 +3403,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min61"> <strong>Min $</strong> </label> --}}
@@ -3414,7 +3414,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3426,7 +3426,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price61"> <strong>Price $</strong> </label> --}}
@@ -3445,7 +3445,7 @@
                             <h5>Line of Credit</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min62"> <strong>Min $</strong> </label> --}}
@@ -3456,7 +3456,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min62"> <strong>Max $</strong> </label> --}}
@@ -3467,7 +3467,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price62"> <strong>Price $</strong> </label> --}}
@@ -3478,7 +3478,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3490,7 +3490,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min63"> <strong>Min $</strong> </label> --}}
@@ -3501,7 +3501,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3513,7 +3513,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price63"> <strong>Price $</strong> </label> --}}
@@ -3532,7 +3532,7 @@
                             <h5>Home Equity</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min64"> <strong>Min $</strong> </label> --}}
@@ -3543,7 +3543,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max64"> <strong>Max $</strong> </label> --}}
@@ -3554,7 +3554,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price64"> <strong>Price $</strong> </label> --}}
@@ -3565,7 +3565,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3577,7 +3577,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min65"> <strong>Min $</strong> </label> --}}
@@ -3588,7 +3588,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label> <strong>Max $</strong> </label> --}}
@@ -3600,7 +3600,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="ptice65"> <strong>Price $</strong> </label> --}}
@@ -3619,7 +3619,7 @@
                             <h5>Education</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min66"> <strong>Min $</strong> </label> --}}
@@ -3630,7 +3630,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max66"> <strong>Max $</strong> </label> --}}
@@ -3643,7 +3643,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price66"> <strong>Price $</strong> </label> --}}
@@ -3654,7 +3654,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -3667,7 +3667,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min67"> <strong>Min $</strong> </label> --}}
@@ -3678,7 +3678,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3690,7 +3690,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price67"> <strong>Price $</strong> </label> --}}
@@ -3709,7 +3709,7 @@
                             <h5>Utility Company</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min68"> <strong>Min $</strong> </label> --}}
@@ -3720,7 +3720,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min68"> <strong>Max $</strong> </label> --}}
@@ -3731,7 +3731,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min68"> <strong>Price $</strong> </label> --}}
@@ -3742,7 +3742,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3754,7 +3754,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min69"> <strong>Min $</strong> </label> --}}
@@ -3765,7 +3765,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3777,7 +3777,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price69"> <strong>Price $</strong> </label> --}}
@@ -3796,7 +3796,7 @@
                             <h5>Child Support</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min70"> <strong>Min $</strong> </label> --}}
@@ -3807,7 +3807,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max70"> <strong>Max $</strong> </label> --}}
@@ -3818,7 +3818,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price70"> <strong>Price $</strong> </label> --}}
@@ -3829,7 +3829,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3841,7 +3841,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min71"> <strong>Min $</strong> </label> --}}
@@ -3852,7 +3852,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3864,7 +3864,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price71"> <strong>Price $</strong> </label> --}}
@@ -3884,7 +3884,7 @@
                             <h5>Auto Lease</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min72"> <strong>Min $</strong> </label> --}}
@@ -3895,7 +3895,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max72"> <strong>Max $</strong> </label> --}}
@@ -3906,7 +3906,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max72"> <strong>Price $</strong> </label> --}}
@@ -3917,7 +3917,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -3929,7 +3929,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min73"> <strong>Min $</strong> </label> --}}
@@ -3940,7 +3940,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -3952,7 +3952,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price73"> <strong>Price $</strong> </label> --}}
@@ -3970,7 +3970,7 @@
                             <h5>Auto Loan</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min74"> <strong>Min $</strong> </label> --}}
@@ -3982,7 +3982,7 @@
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max74"> <strong>Max $</strong> </label> --}}
@@ -3993,7 +3993,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price74"> <strong>Price $</strong> </label> --}}
@@ -4004,7 +4004,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4016,7 +4016,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min75"> <strong>Min $</strong> </label> --}}
@@ -4027,7 +4027,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4039,7 +4039,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price76"> <strong>Price $</strong> </label> --}}
@@ -4058,7 +4058,7 @@
                             <h5>Recreational Merchandise</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min77"> <strong>Min $</strong> </label> --}}
@@ -4069,7 +4069,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max77"> <strong>Max $</strong> </label> --}}
@@ -4082,7 +4082,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price77"> <strong>Price $</strong> </label> --}}
@@ -4093,7 +4093,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4105,7 +4105,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min78"> <strong>Min $</strong> </label> --}}
@@ -4116,7 +4116,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4128,7 +4128,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price78"> <strong>Price $</strong> </label> --}}
@@ -4153,7 +4153,7 @@
                             <h5>Credit Card  </h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min79"> <strong>Min $</strong> </label> --}}
@@ -4164,7 +4164,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max79"> <strong>Max $</strong> </label> --}}
@@ -4177,7 +4177,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price79"> <strong>Price $</strong> </label> --}}
@@ -4188,7 +4188,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
                                         <strong class="add_range h3" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
@@ -4201,7 +4201,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min80"> <strong>Min $</strong> </label> --}}
@@ -4212,7 +4212,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4224,7 +4224,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price80"> <strong>Price $</strong> </label> --}}
@@ -4243,7 +4243,7 @@
                             <h5>Charge Card</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min81"> <strong>Min $</strong> </label> --}}
@@ -4254,7 +4254,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max81"> <strong>Max $</strong> </label> --}}
@@ -4267,7 +4267,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price81"> <strong>Price $</strong> </label> --}}
@@ -4278,7 +4278,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4290,7 +4290,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min82"> <strong>Min $</strong> </label> --}}
@@ -4301,7 +4301,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4313,7 +4313,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price82"> <strong>Price $</strong> </label> --}}
@@ -4332,7 +4332,7 @@
                             <h5> Sales Contract</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min83"> <strong>Min $</strong> </label> --}}
@@ -4343,7 +4343,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max83"> <strong>Max $</strong> </label> --}}
@@ -4354,7 +4354,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price83"> <strong>Price $</strong> </label> --}}
@@ -4365,7 +4365,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4377,7 +4377,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min84"> <strong>Min $</strong> </label> --}}
@@ -4388,7 +4388,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4400,7 +4400,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price84"> <strong>Price $</strong> </label> --}}
@@ -4419,7 +4419,7 @@
                             <h5>Unsecured</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min85"> <strong>Min $</strong> </label> --}}
@@ -4430,7 +4430,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max85"> <strong>Max $</strong> </label> --}}
@@ -4443,7 +4443,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price85"> <strong>Price $</strong> </label> --}}
@@ -4454,7 +4454,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4466,7 +4466,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min86"> <strong>Min $</strong> </label> --}}
@@ -4477,7 +4477,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4489,7 +4489,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price86"> <strong>Price $</strong> </label> --}}
@@ -4508,7 +4508,7 @@
                             <h5>Line of Credit</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min87"> <strong>Min $</strong> </label> --}}
@@ -4519,7 +4519,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max87"> <strong>Max $</strong> </label> --}}
@@ -4530,7 +4530,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price87"> <strong>Price $</strong> </label> --}}
@@ -4541,7 +4541,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4553,7 +4553,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min88"> <strong>Min $</strong> </label> --}}
@@ -4564,7 +4564,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4576,7 +4576,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price88"> <strong>Price $</strong> </label> --}}
@@ -4595,7 +4595,7 @@
                             <h5>Home Equity</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min89"> <strong>Min $</strong> </label> --}}
@@ -4606,7 +4606,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max89"> <strong>Max $</strong> </label> --}}
@@ -4617,7 +4617,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price89"> <strong>Price $</strong> </label> --}}
@@ -4628,7 +4628,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4640,7 +4640,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min90"> <strong>Min $</strong> </label> --}}
@@ -4651,7 +4651,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4663,7 +4663,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price90"> <strong>Price $</strong> </label> --}}
@@ -4682,7 +4682,7 @@
                             <h5>Education</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min91"> <strong>Min $</strong> </label> --}}
@@ -4693,7 +4693,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max91"> <strong>Max $</strong> </label> --}}
@@ -4704,7 +4704,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price91"> <strong>Price $</strong> </label> --}}
@@ -4715,7 +4715,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4727,7 +4727,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min92"> <strong>Min $</strong> </label> --}}
@@ -4738,7 +4738,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4750,7 +4750,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price92"> <strong>Price $</strong> </label> --}}
@@ -4769,7 +4769,7 @@
                             <h5>Utility Company</h5>
                             <div class="col-md-12 pt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min93"> <strong>Min $</strong> </label> --}}
@@ -4780,7 +4780,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max93"> <strong>Max $</strong> </label> --}}
@@ -4791,7 +4791,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price93"> <strong>Price $</strong> </label> --}}
@@ -4802,7 +4802,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4814,7 +4814,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min94"> <strong>Min $</strong> </label> --}}
@@ -4825,7 +4825,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="">Max $</label> --}}
@@ -4837,7 +4837,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price94"> <strong>Price $</strong> </label> --}}
@@ -4856,7 +4856,7 @@
                             <h5>Child Support</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min95"> <strong>Min $</strong> </label> --}}
@@ -4867,7 +4867,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max95"> <strong>Max $</strong> </label> --}}
@@ -4878,7 +4878,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price95"> <strong>Price $</strong> </label> --}}
@@ -4889,7 +4889,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4901,7 +4901,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min96"> <strong>Min $</strong> </label> --}}
@@ -4912,7 +4912,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -4924,7 +4924,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price96"> <strong>Price $</strong> </label> --}}
@@ -4945,7 +4945,7 @@
                             <h5>Auto Lease</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min97"> <strong>Min $</strong> </label> --}}
@@ -4956,7 +4956,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max97"> <strong>Max $</strong> </label> --}}
@@ -4967,7 +4967,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price97"> <strong>Price $</strong> </label> --}}
@@ -4978,7 +4978,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -4990,7 +4990,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min98"> <strong>Min $</strong> </label> --}}
@@ -5001,7 +5001,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -5013,7 +5013,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price98"> <strong>Price $</strong> </label> --}}
@@ -5032,7 +5032,7 @@
                             <h5>Auto Loan</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min99"> <strong>Min $</strong> </label> --}}
@@ -5043,7 +5043,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max99"> <strong>Max $</strong> </label> --}}
@@ -5056,7 +5056,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price99"> <strong>Price $</strong> </label> --}}
@@ -5067,7 +5067,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -5079,7 +5079,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min100"> <strong>Min $</strong> </label> --}}
@@ -5090,7 +5090,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -5102,7 +5102,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price100"> <strong>Price $</strong> </label> --}}
@@ -5121,7 +5121,7 @@
                             <h5>Recreational Merchandise</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min101"> <strong>Min $</strong> </label> --}}
@@ -5132,7 +5132,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max101"> <strong>Max $</strong> </label> --}}
@@ -5145,7 +5145,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price101"> <strong>Price $</strong> </label> --}}
@@ -5156,7 +5156,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -5168,7 +5168,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min102"> <strong>Min $</strong> </label> --}}
@@ -5179,7 +5179,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="">Max $</label> --}}
@@ -5191,7 +5191,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price102"> <strong>Price $</strong> </label> --}}
@@ -5215,7 +5215,7 @@
                             <h5>Auto Lease</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min103"> <strong>Min $</strong> </label> --}}
@@ -5226,7 +5226,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max103"> <strong>Max $</strong> </label> --}}
@@ -5237,7 +5237,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price103"> <strong>Price $</strong> </label> --}}
@@ -5248,7 +5248,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -5260,7 +5260,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min104"> <strong>Min $</strong> </label> --}}
@@ -5271,7 +5271,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -5283,7 +5283,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price104"> <strong>Price $</strong> </label> --}}
@@ -5302,7 +5302,7 @@
                             <h5>Auto Loan</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min105"> <strong>Min $</strong> </label> --}}
@@ -5313,7 +5313,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min105"> <strong>Max $</strong> </label> --}}
@@ -5324,7 +5324,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price105"> <strong>Price $</strong> </label> --}}
@@ -5335,7 +5335,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -5347,7 +5347,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row mt-3">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min106"> <strong>Min $</strong> </label> --}}
@@ -5358,7 +5358,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -5370,7 +5370,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price106"> <strong>Price $</strong> </label> --}}
@@ -5389,7 +5389,7 @@
                             <h5>Recreational Merchandise</h5>
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min107"> <strong>Min $</strong> </label> --}}
@@ -5400,7 +5400,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="max107"> <strong>Max $</strong> </label> --}}
@@ -5411,7 +5411,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price107"> <strong>Price $</strong> </label> --}}
@@ -5422,7 +5422,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
                                           <strong class="add_range h3" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
@@ -5434,7 +5434,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="min108"> <strong>Min $</strong> </label> --}}
@@ -5445,7 +5445,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-4 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for=""> <strong>Max $</strong> </label> --}}
@@ -5457,7 +5457,7 @@
                                         </div>
                                         {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mmb-5">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 {{-- <label for="price108"> <strong>Price $</strong> </label> --}}
@@ -5486,7 +5486,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min109{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5497,7 +5497,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5512,7 +5512,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id109{{$i}}"> <strong>%</strong> </label> --}}
@@ -5523,7 +5523,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee109{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5534,7 +5534,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice109{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5545,7 +5545,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5571,7 +5571,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min110{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5582,7 +5582,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5595,7 +5595,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id110{{$i}}"> <strong>%</strong> </label> --}}
@@ -5606,7 +5606,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee110{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5617,7 +5617,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice110{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5628,7 +5628,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5655,7 +5655,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min111{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5666,7 +5666,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5679,7 +5679,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id111{{$i}}"> <strong>%</strong> </label> --}}
@@ -5690,7 +5690,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee111{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5701,7 +5701,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice111{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5712,7 +5712,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5738,7 +5738,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min112{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5749,7 +5749,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5762,7 +5762,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id112{{$i}}"> <strong>%</strong> </label> --}}
@@ -5773,7 +5773,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee112{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5784,7 +5784,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice112{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5795,7 +5795,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5821,7 +5821,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min113{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5832,7 +5832,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5845,7 +5845,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id113{{$i}}"> <strong>%</strong> </label> --}}
@@ -5856,7 +5856,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee113{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5867,7 +5867,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice113{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5878,7 +5878,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5904,7 +5904,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min114{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5915,7 +5915,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5929,7 +5929,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id114{{$i}}"> <strong>%</strong> </label> --}}
@@ -5940,7 +5940,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee114{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -5951,7 +5951,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice114{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -5962,7 +5962,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -5988,7 +5988,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min115{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -5999,7 +5999,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6013,7 +6013,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id115{{$i}}"> <strong>%</strong> </label> --}}
@@ -6024,7 +6024,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee115{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6035,7 +6035,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice115{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6046,7 +6046,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6072,7 +6072,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min116{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6083,7 +6083,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6096,7 +6096,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id116{{$i}}"> <strong>%</strong> </label> --}}
@@ -6107,7 +6107,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee116{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6118,7 +6118,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice116{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6129,7 +6129,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6155,7 +6155,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min117{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6166,7 +6166,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6179,7 +6179,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id117{{$i}}"> <strong>%</strong> </label> --}}
@@ -6190,7 +6190,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee117{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6201,7 +6201,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice117{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6212,7 +6212,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6238,7 +6238,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min118{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6249,7 +6249,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6262,7 +6262,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id118{{$i}}"> <strong>%</strong> </label> --}}
@@ -6273,7 +6273,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee118{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6284,7 +6284,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice118{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6295,7 +6295,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6321,7 +6321,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min119{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6332,7 +6332,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6346,7 +6346,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id119{{$i}}"> <strong>%</strong> </label> --}}
@@ -6357,7 +6357,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee119{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6368,7 +6368,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice119{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6379,7 +6379,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6405,7 +6405,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min120{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6416,7 +6416,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6429,7 +6429,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id120{{$i}}"> <strong>%</strong> </label> --}}
@@ -6440,7 +6440,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee120{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6451,7 +6451,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice120{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6462,7 +6462,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6488,7 +6488,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min121{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6499,7 +6499,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6512,7 +6512,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id121{{$i}}"> <strong>%</strong> </label> --}}
@@ -6523,7 +6523,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee121{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6534,7 +6534,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice121{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6545,7 +6545,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6571,7 +6571,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min122{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6582,7 +6582,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6595,7 +6595,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id122{{$i}}"> <strong>%</strong> </label> --}}
@@ -6606,7 +6606,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee122{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6617,7 +6617,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice122{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6628,7 +6628,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6654,7 +6654,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min123{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6665,7 +6665,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6678,7 +6678,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id123{{$i}}"> <strong>%</strong> </label> --}}
@@ -6689,7 +6689,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee123{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6700,7 +6700,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min123{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6711,7 +6711,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6737,7 +6737,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min124{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6748,7 +6748,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6761,7 +6761,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id124{{$i}}"> <strong>%</strong> </label> --}}
@@ -6772,7 +6772,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee124{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6783,7 +6783,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice124{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6794,7 +6794,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6820,7 +6820,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min125{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6831,7 +6831,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6845,7 +6845,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id125{{$i}}"> <strong>%</strong> </label> --}}
@@ -6856,7 +6856,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee125{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6867,7 +6867,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6878,7 +6878,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6904,7 +6904,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min126{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6915,7 +6915,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6929,7 +6929,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id126{{$i}}"> <strong>%</strong> </label> --}}
@@ -6940,7 +6940,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee126{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -6951,7 +6951,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice126{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -6962,7 +6962,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -6988,7 +6988,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min127{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -6999,7 +6999,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7013,7 +7013,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id127{{$i}}"> <strong>%</strong> </label> --}}
@@ -7024,7 +7024,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee127{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7035,7 +7035,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice127{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7046,7 +7046,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7072,7 +7072,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min128{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7083,7 +7083,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7096,7 +7096,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id128{{$i}}"> <strong>%</strong> </label> --}}
@@ -7107,7 +7107,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee128{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7118,7 +7118,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice128{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7129,7 +7129,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7155,7 +7155,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min129{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7166,7 +7166,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7179,7 +7179,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id129{{$i}}"> <strong>%</strong> </label> --}}
@@ -7190,7 +7190,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee129{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7201,7 +7201,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice129{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7212,7 +7212,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7238,7 +7238,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min130{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7249,7 +7249,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7263,7 +7263,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id130{{$i}}"> <strong>%</strong> </label> --}}
@@ -7274,7 +7274,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee130{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7285,7 +7285,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice130{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7296,7 +7296,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7322,7 +7322,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min131{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7333,7 +7333,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7346,7 +7346,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id131{{$i}}"> <strong>%</strong> </label> --}}
@@ -7357,7 +7357,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee131{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7368,7 +7368,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice131{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7379,7 +7379,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7405,7 +7405,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min132{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7416,7 +7416,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7430,7 +7430,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id132{{$i}}"> <strong>%</strong> </label> --}}
@@ -7441,7 +7441,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee132{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7452,7 +7452,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice132{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7463,7 +7463,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7489,7 +7489,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min133{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7500,7 +7500,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7513,7 +7513,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id133{{$i}}"><strong>%</strong> </label> --}}
@@ -7524,7 +7524,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee133{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7535,7 +7535,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice133{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7546,7 +7546,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7572,7 +7572,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min134{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7583,7 +7583,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7596,7 +7596,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id134{{$i}}"> <strong>%</strong> </label> --}}
@@ -7607,7 +7607,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee134{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7618,7 +7618,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice134{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7629,7 +7629,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7655,7 +7655,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min135{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7666,7 +7666,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7679,7 +7679,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id135{{$i}}"> <strong>%</strong> </label> --}}
@@ -7690,7 +7690,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee135{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7701,7 +7701,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice135{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7712,7 +7712,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7738,7 +7738,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min136{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7749,7 +7749,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7763,7 +7763,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id136{{$i}}"> <strong>%</strong> </label> --}}
@@ -7774,7 +7774,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee136{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7785,7 +7785,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice136{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7796,7 +7796,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7822,7 +7822,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min137{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7833,7 +7833,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7847,7 +7847,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id137{{$i}}"> <strong>%</strong> </label> --}}
@@ -7858,7 +7858,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee137{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7869,7 +7869,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice137{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7880,7 +7880,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7906,7 +7906,7 @@
                             @for($i = 0; $i < 4; $i++)
                                 <div class="col-md-12 mt-4">
                                     <div class="row mb-3">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="min138{{$i}}"> <strong>Min $</strong> </label> --}}
@@ -7917,7 +7917,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2 ">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -7931,7 +7931,7 @@
                                             @endif
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="id138{{$i}}"> <strong>%</strong> </label> --}}
@@ -7942,7 +7942,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="addfee138{{$i}}"> <strong>Add Fee $</strong> </label> --}}
@@ -7953,7 +7953,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     {{-- <label for="minprice138{{$i}}"> <strong>Min/Price $</strong> </label> --}}
@@ -7964,7 +7964,7 @@
                                             </div>
                                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mmb-5">
                                             @if($i < 3)
                                                 <div class="row">
                                                     <div class="col-md-12">

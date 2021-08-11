@@ -155,7 +155,7 @@
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
             </li> --}}
             <li class="slide">
-              <a class="side-menu__item {{ zactra::areActiveRoute(['adminRec.client.profile','blog.create','blog.edit']) }}" href="{{ route('blog.index') }}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Blog</span></a>
+              <a class="side-menu__item {{ zactra::areActiveRoute(['blog.create','blog.edit']) }}" href="{{ route('blog.index') }}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Blog</span></a>
             </li>
 
             <li class="slide">

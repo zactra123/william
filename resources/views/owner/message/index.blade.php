@@ -20,7 +20,7 @@
                 <div class="row align-items-center">
                     <div class="container mt-5 pt-5">
                         <div class="row justify-content-center">
-                            <div class="col-10">
+                            <div class="col-12 col-md-10 col-sm-12">
                                 <div class="container">
                                     <div class="row justify-content-center mb-5">
                                         <div class="list-group list-group-horizontal col-md-6">

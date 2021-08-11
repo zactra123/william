@@ -101,10 +101,10 @@ class TodosController extends Controller
 
     public function clientToDoUpdate(Request $request)
     {
+
         $todo = $request->todo;
         $client= Todo::where('id', $request->todoId)->first()->client_id;
-        Todo::where('id', $request->todoId)->update($todo);
-
+       $dist = Todo::where('id', $request->todoId)->update($todo);
         foreach($request->dispute as $dispute){
             Disputable::where('id',$dispute['id'])
                 ->update(['status'=>$dispute['status']]);

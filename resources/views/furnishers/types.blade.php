@@ -58,7 +58,7 @@
             <div class="col-md-12 col-sm-12 my-3">
                 <div class="card">
                     <div class="card-body">
-                        <table width="100%" class="table  table-striped">
+                        <table width="100%" class="table table-striped table-responsive">
                             <thead>
                             <tr>
                                 <th>FURNISHERs TYPE</th>

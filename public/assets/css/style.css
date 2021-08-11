@@ -15338,7 +15338,8 @@ a.tag-addon {
         .wizard > .steps .disabled a:hover, .wizard > .steps .disabled a:active {
           color: #9c96c1; }
     .wizard > .steps .current a {
-      color: #3858f9; }
+      color: #3858f9;
+    }
       .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
         color: #3858f9; }
       .wizard > .steps .current a .title, .wizard > .steps .current a:hover .title, .wizard > .steps .current a:active .title {
@@ -15432,6 +15433,7 @@ a.tag-addon {
     transition: none; } }
 
 @media (min-width: 576px) {
+
   .wizard > .steps > ul li .title {
     display: none;
     margin-left: 10px; } }
@@ -15443,6 +15445,36 @@ a.tag-addon {
 @media (min-width: 576px) {
   .wizard > .steps > ul li + li {
     margin-left: 20px; } }
+    @media (max-width: 576px) {
+      .wizard > .steps .current .title{
+        color: #3858f9;
+        display: none !important;
+      }
+      .steps{
+        position: inherit !important;
+      }
+
+      .wizard > .steps a .number, .wizard > .steps a:hover .number, .wizard > .steps a:active .number{
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .wizard > .steps a:hover, .wizard > .steps a:active{
+        font-size: 10px !important;
+      }
+      .wizard > .steps a{
+        font-size: 10px !important;
+      }
+      .wizard.vertical > .steps{
+        padding-left: 10px !important;
+        padding-right: 5px !important;
+      }
+      .wizard.vertical > .steps ul li + li {
+        margin-left: 2px !important;
+      }
+      .mmb-5{
+        margin-bottom: 0.5rem !important;
+      }
+      }
 
 @media (min-width: 992px) {
   .wizard > .steps > ul li + li {

@@ -476,5 +476,5 @@
 
 		.pass_show .ptxt:hover{color: #333333;}
 		</style>
-
+	
     @yield('css')
