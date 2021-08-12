@@ -45,10 +45,10 @@
                     @csrf
                     <div class="form-group row font justify-content-center">
                       <div class="col-md-4">
-                          {{ Form::text('receptionist[first_name]', $receptionist->first_name, ['class' => 'form-control', 'placeholder' =>'First Name', 'required'])}}
+                          {{ Form::text('receptionist[first_name]', $receptionist->first_name, ['class' => 'form-control mmb-5', 'placeholder' =>'First Name', 'required'])}}
                       </div>
                       <div class="col-md-4">
-                          {{ Form::text('receptionist[last_name]', $receptionist->last_name, ['class' => 'form-control', 'placeholder'=>'Last Name', 'required'])}}
+                          {{ Form::text('receptionist[last_name]', $receptionist->last_name, ['class' => 'form-control mmb-5', 'placeholder'=>'Last Name', 'required'])}}
                       </div>
                       <div class="col-md-4">
                           {{ Form::email('receptionist[email]', $receptionist->email, ['class' => 'form-control','placeholder'=>'Email', 'required']) }}
@@ -63,7 +63,7 @@
                               {{Form::hidden('receptionist[ip_address]['.$value->id.'][id]', $value->id)}}
                               {{ Form::text('receptionist[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
                           </div>
-                          <div class="col-sm-12 col-md-1 form-group pl-0">
+                          <div class="col-sm-12 col-md-1 form-group pl-0 mml-12">
                               <input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="Delete"/>
                           </div>
                         </div>

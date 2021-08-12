@@ -39,10 +39,10 @@
 
                 <div class="form-group row font">
                   <div class="col-md-4">
-                      {{ Form::text('receptionist[first_name]', old('receptionist.first_name'), ['class' => 'form-control', 'placeholder' =>'First Name', 'required']) }}
+                      {{ Form::text('receptionist[first_name]', old('receptionist.first_name'), ['class' => 'form-control mmb-5', 'placeholder' =>'First Name', 'required']) }}
                   </div>
                   <div class="col-md-4">
-                      {{ Form::text('receptionist[last_name]', old('receptionist.last_name'), ['class' => 'form-control', 'placeholder'=>'Last Name', 'required']) }}
+                      {{ Form::text('receptionist[last_name]', old('receptionist.last_name'), ['class' => 'form-control mmb-5', 'placeholder'=>'Last Name', 'required']) }}
                   </div>
                   <div class="col-md-4">
                       {{ Form::email('receptionist[email]', old('receptionist.email'), ['class' => 'form-control','placeholder'=>'Email', 'required']) }}
@@ -59,7 +59,7 @@
                       {{ Form::text('receptionist[ip_address][]', old('receptionist.ip_address'), ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
                   </div>
                   <div class="col-sm-12 col-md-1 form-group pl-0">
-                      <input class="btn btn-primary add-ip-address" type="button" value="Add IP"/>
+                      <input class="btn btn-primary add-ip-address mml-12" type="button" value="Add IP"/>
                   </div>
                 </div>
 

@@ -60,34 +60,34 @@
                     <div class="card-body">
                         <table width="100%" class="table table-striped table-responsive">
                             <thead>
-                            <tr>
+                              <tr>
                                 <th>FURNISHERs TYPE</th>
                                 <th>IS DEFAULT</th>
                                 <th>KEYWORDS</th>
-                            </tr>
+                              </tr>
                             </thead>
                             <tbody>
-                                @foreach($accountTypes as $type)
-                                    <tr data-id="{{$type->id}}">
-                                        <td width="20%">{{$type["name"]}}</td>
-                                        <td width="10%">
-                                            <input type="checkbox" class="is_default_account_type" data-account-tyep="{{$type["id"]}}" {{$type["type"] ? "checked":''}}>
-                                        </td>
-                                        <td width="50%">
-                                            {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
-                                        </td>
-                                        <td width="20%" class="text-center">
-                                          <div class="dropdown show">
-                                            <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              Action
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                              <a class="dropdown-item" href="{{ route('furnisher.delete.type',$type->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
-                                            </div>
-                                          </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                              @foreach($accountTypes as $type)
+                                <tr data-id="{{$type->id}}">
+                                  <td width="20%">{{$type["name"]}}</td>
+                                  <td width="10%">
+                                      <input type="checkbox" class="is_default_account_type" data-account-tyep="{{$type["id"]}}" {{$type["type"] ? "checked":''}}>
+                                  </td>
+                                  <td width="50%">
+                                      {!! Form::text('equal_banks[name]', implode(',',$type->accountKeys->pluck('key_word')->toArray()), ['multiple'=>'multiple','class'=>'selectize-multiple form-group ']); !!}
+                                  </td>
+                                  <td width="20%" class="text-center">
+                                    <div class="dropdown show">
+                                      <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="{{ route('furnisher.delete.type',$type->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              @endforeach
                             </tbody>
                         </table>
                     </div>

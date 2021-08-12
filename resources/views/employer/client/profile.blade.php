@@ -18,7 +18,7 @@
   </div>
 
     <div class="row">
-        <div class="col-sm-3" style="position: -webkit-sticky;position: sticky;top: 0;">
+        <div class="col-sm-3 mp-ns" style="position: -webkit-sticky;position: sticky;top: 0;">
             <div class="card">
               <aside class="card-body" id="show-side-navigation1">
                 <div class="row text-right">
@@ -158,7 +158,7 @@
 
                   <div class="row">
                     <div class="col-md-3">
-                      <div class="dropdown-submenu text-left">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Equifax</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/eq_logo_1.png')}}"  width="120"> --}}
@@ -177,7 +177,7 @@
                       </div>
                     </div>
                     <div class="col-md-3">
-                      <div class="dropdown-submenu text-left">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Experion</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/ex_logo_1.png')}}"  width="120"> --}}
@@ -199,7 +199,7 @@
 
 
                     <div class="col-md-3">
-                      <div class="dropdown-submenu text-left">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">TransUnion</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}"  width="140"> --}}
@@ -219,7 +219,7 @@
                     </div>
 
                     <div class="col-md-3">
-                      <div class="dropdown-submenu text-left">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Innovis</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/in_logo_2.png')}}"  width="140"> --}}
@@ -231,8 +231,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">ChexSystems</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/cs_logo_1.png')}}"  width="140"> --}}
@@ -242,8 +242,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Credit Karma</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/ck_logo_1.png')}}"  width="140"> --}}
@@ -255,8 +255,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Early Warning</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/ew_logo_1.png')}}"  width="140"> --}}
@@ -266,8 +266,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">LexisNexis</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/lxn_logo_1.png')}}"  width="140"> --}}
@@ -282,8 +282,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">SageStream</span>
                             {{-- <img class="report_access" src="{{asset('images/report_access/ss_logo_1.png')}}"  width="140"> --}}
@@ -295,8 +295,8 @@
                           </ul>
                       </div>
                     </div>
-                    <div class="col-md-3 mt-4">
-                      <div class="dropdown-submenu text-left">
+                    <div class="col-md-3 mt-4 mmt-0">
+                      <div class="dropdown-submenu text-left mmb-5">
                           <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
                             <span class="report_access">Ca State Courts Access</span>
                           </a>
@@ -323,32 +323,34 @@
                     Work History
                   </div>
                   <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="row mb-3">
-                            <div class="col-md-1 font-weight-normal"><b>#</b></div>
-                            <div class="col-md-1"><b>View</b></div>
-                            <div class="col-md-4"><b>Title</b></div>
-                            <div class="col-md-2"> <b>Status</b> </div>
-                        </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">View</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Status</th>
+                          </tr>
+    										</thead>
+                        <tbody>
 
-                        @foreach($toDos->where('status', 2) as $todo)
+                          @foreach ($toDos->where('status', 2) as $todo)
+                            <tr>
+                              <td scope="row">{{$loop->iteration}}</td>
+                              <td class="pdateview" data-id="{{$todo->id}}">
+                                  <i class="fa fa-eye text-info" style="cursor:pointer"></i>
+                              </td>
+                              <td class=""> {{$todo->title}}</td>
+                              <td class="">{{$status[$todo->status]}}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
 
-                            <div class="row">
-                                <div class="col-md-1 font-weight-normal">
-                                    {{$loop->iteration}}
-                                </div>
-                                <div class="col-md-1 updateview pl-4" data-id="{{$todo->id}}">
-                                    <i class="fa fa-eye text-info" style="cursor:pointer"></i>
-                                </div>
-
-                                <div class="col-md-4"> {{$todo->title}}</div>
-                                <div class="col-md-2">{{$status[$todo->status]}}</div>
-                                <div class="col-md-3">
-
-                                </div>
-                            </div>
-                        @endforeach
+                      </table>
                     </div>
+
+
                   </div>
                 </div>
               </div>
@@ -360,28 +362,34 @@
                     To Do
                   </div>
                   <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="row mb-3">
-                            <div class="col-md-1 font-weight-normal"> <b>#</b> </div>
-                            <div class="col-md-1 font-weight-normal" > <b>View</b> </div>
-                            <div class="col-md-4"><span> <b>Title</b> </span></div>
-                            <div class="col-md-2"> <b>Status</b> </div>
-                        </div>
-
-                        @foreach($toDos->where('status', '!=',2) as $todo)
-
-                            <div class="row">
-                                <div class="col-md-1 font-weight-normal showDetails" data-id ="{{$todo->id}}">
-                                    {{$loop->iteration}}
-                                </div>
-                                <div class="col-md-1 updateview pl-4" data-id="{{$todo->id}}">
-                                    <i class="fa fa-eye text-info" style="cursor:pointer"></i>
-                                </div>
-                                <div class="col-md-4  showDetails" data-id ="{{$todo->id}}"> {{$todo->title}}</div>
-                                <div class="col-md-2  showDetails" data-id ="{{$todo->id}}">{{$status[$todo->status]}}</div>
-                            </div>
-                        @endforeach
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">View</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Status</th>
+                          </tr>
+    										</thead>
+                        <tbody>
+                        
+                          @foreach ($toDos->where('status', '!=',2) as $todo)
+                            <tr>
+                              <td class="font-weight-normal showDetails" data-id ="{{$todo->id}}">
+                                  {{$loop->iteration}}
+                              </td>
+                              <td class="updateview" data-id="{{$todo->id}}">
+                                  <i class="fa fa-eye text-info" style="cursor:pointer"></i>
+                              </td>
+                              <td class="showDetails" data-id ="{{$todo->id}}"> {{$todo->title}}</td>
+                              <td class="showDetails" data-id ="{{$todo->id}}">{{$status[$todo->status]}}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
+
                   </div>
                 </div>
               </div>

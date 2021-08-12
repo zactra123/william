@@ -4,25 +4,35 @@
 @endsection
 @section('body')
 
-
+  <div class="breadcrumb-header justify-content-between">
+    <div>
+        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Messages</li>
+            </ol>
+          </nav>
+    </div>
+  </div>
     <section class="ms-working working-section section-padding">
-        <div class="container">
+        <div class="container mp-0">
             <div class="section-wrapper">
-                <div class="container mt-5 ">
+                <div class="container mt-5 pt-5 mp0-t10 ">
                     <div class="row justify-content-center">
-                        <div class="col-11 pt-4">
+                        <div class="col-12 col-md-10 col-sm-12 mp-0">
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="list-group list-group-horizontal col-md-6">
-                                        <a class="list-group-item list-group-item-action p-1 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
-                                        <a class="list-group-item list-group-item-action p-1 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
-                                        <a class="list-group-item list-group-item-action p-1 tab-selector completed" href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
+                                        <a class="list-group-item list-group-item-action p-2 tab-selector active" href="{{route("admin.message.index")}}" >All Messages</a>
+                                        <a class="list-group-item list-group-item-action p-2 tab-selector pending" href="{{route("admin.message.index", ["type" => "pending"])}}">Pending</a>
+                                        <a class="list-group-item list-group-item-action p-2 tab-selector completed" href="{{route("admin.message.index", ["type" => "completed"])}}">Completed</a>
                                     </div>
                                 </div>
                                 <div class="response">
                                 </div>
                             </div>
-                            <div class="container pt-2">
+                            <div class="mt-2">
                                 <div id='calendar' class="card"  style="overflow: auto;">
                                 </div>
                             </div>

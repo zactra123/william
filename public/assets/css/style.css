@@ -15274,7 +15274,9 @@ a.tag-addon {
       padding-left: 0 !important; }
       .vtimeline .timeline-wrapper.timeline-inverted .timeline-panel {
         margin-right: 0 !important;
-        width: auto !important; } }
+        width: auto !important; }
+
+      }
 
 /*Color variables*/
 /*gradient variables*/
@@ -15473,6 +15475,29 @@ a.tag-addon {
       }
       .mmb-5{
         margin-bottom: 0.5rem !important;
+      }
+      .mp-0{
+        padding: 0px !important;
+      }
+      .main-nav-line li{
+        margin-bottom: 10px !important;
+      }
+      .mml-12{
+        margin-left: 12px !important;
+      }
+      .mmt-0{
+        margin-top: 0px !important;
+      }
+      .mp-ns{
+        position: inherit !important;
+      }
+      .mp0-t10{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+      }
+      .m-hidden{
+        display: none !important;
       }
       }
 

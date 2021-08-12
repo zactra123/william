@@ -64,12 +64,12 @@
             <div class="col-md-12">
                 <div class="row">
                   <div class=" col-md-3">
-                      <input type="text" name="term" value="{{request()->term}}" class="form-control autocomplete-search" placeholder="SEARCH...">
+                      <input type="text" name="term" value="{{request()->term}}" class="form-control autocomplete-search mmb-5" placeholder="SEARCH...">
                   </div>
                   <div class="col-md-3">
                       <?php $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' => 'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER']; asort($types)?>
                       {{-- {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple','class'=>'form-control selectize-multiple', 'id' => 'bank-type']); !!} --}}
-                      <select class="form-control selectize-multiple" multiple id="bank-type">
+                      <select class="form-control selectize-multiple mmb-5" multiple id="bank-type">
                         @foreach ($types as $key => $value)
                           <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach
@@ -77,7 +77,7 @@
                   </div>
                   <div class="col-md-3 state-filter">
                       <?php $states = \App\BankAddress::STATES;   asort($types)?>
-                      {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>' form-control selectize-single state'] ); !!}
+                      {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>'mmb-5 form-control selectize-single state'] ); !!}
                   </div>
 
                   <div class="col-md-3">

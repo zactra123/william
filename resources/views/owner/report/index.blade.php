@@ -25,10 +25,10 @@
             </div>
             <p class="mg-b-20">Generate Your website Report here...</p>
             <div class="text-wrap">
-              <div class="example">
+              <div class="example mp-0">
                 <div class="panel panel-primary tabs-style-2">
                   <div class=" tab-menu-heading">
-                    <div class="tabs-menu1 ">
+                    <div class="tabs-menu1">
                       <!-- Tabs -->
 
                       {{-- @include("owner/report/reports_sidebar") --}}
@@ -42,17 +42,16 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="panel-body tabs-menu-body main-content-body-right">
+                  <div class="panel-body tabs-menu-body main-content-body-right mp-0">
                     <div class="tab-content">
                       <div class="tab-pane active">
 
-
                             <div class="card-body">
                                 <form>
-                                    <div class="col-md-12 col-sm-12 col-12 col-lg-12">
+                                    <div class="col-md-12 col-sm-12 col-12 col-lg-12 mp-0">
                                       <div class="row">
                                             <div class="col-lg-6">
-                                                <input class="form-control" type="date" name="from" value="{{$dates["from"]}}"/>
+                                                <input class="form-control mmb-5" type="date" name="from" value="{{$dates["from"]}}"/>
                                             </div>
                                             <div class="col-lg-6">
                                                 <input class="form-control " type="date" name="to" value="{{$dates["to"]}}" max="{{date('Y-m-d    ')}}"/>
@@ -71,7 +70,7 @@
                                         <li class="list-group-item">
                                         <span>
                                             Clients registered from
-                                            <span class="badge badge-info p-2">{{date( "jS F Y", strtotime($dates["from"]))}}</span>
+                                            <span class="badge badge-info p-2 mmb-5">{{date( "jS F Y", strtotime($dates["from"]))}}</span>
                                                 to
                                             <span class="badge badge-info p-2">{{date( "jS F Y", strtotime($dates["to"]))}}</span>
 
@@ -80,7 +79,7 @@
                                         </li>
                                     </ul>
                                 </div>
-
+.
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                                   <div class="table-responsive">
 

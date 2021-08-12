@@ -36,7 +36,7 @@
                   @method('PUT')
                   @csrf
                   <div class="form-group row font">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mmb-5">
                         {{ Form::text('admin[first_name]', $admin->first_name, ['class' => 'form-control', 'placeholder' =>'First Name', 'required']) }}
                     </div>
                     <div class="col-md-6">

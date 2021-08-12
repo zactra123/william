@@ -32,7 +32,7 @@
             {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'mt-5 m-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!}
             <div class="form-group row font">
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                {{ Form::text('admin[first_name]', old('admin.first_name'), ['class' => 'form-control', 'placeholder' =>'First Name','required']) }}
+                {{ Form::text('admin[first_name]', old('admin.first_name'), ['class' => 'form-control mmb-5', 'placeholder' =>'First Name','required']) }}
               </div>
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                 {{ Form::text('admin[last_name]', old('admin.last_name'), ['class' => 'form-control', 'placeholder'=>'Last Name', 'required']) }}
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group row font">
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                {{ Form::email('admin[email]', old('admin.email'), ['class' => 'form-control','placeholder'=>'Email',  'required'=>"email"]) }}
+                {{ Form::email('admin[email]', old('admin.email'), ['class' => 'form-control mmb-5','placeholder'=>'Email',  'required'=>"email"]) }}
               </div>
               <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                 {{ Form::select('admin[negative_types][]',$negativeType, old('admin.negative_types'), ['class' => 'form-control select2',  'required autocomplete'=>"negative_types", 'multiple' => 'multiple']) }}
@@ -48,9 +48,9 @@
             </div>
             <div class="form-group row font">
               <div class="col-md-11 col-sm-12 col-12 col-lg-11">
-                {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address', 'placeholder'=>'IP Address','required']) }}
+                {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address mmb-5', 'placeholder'=>'IP Address','required']) }}
               </div>
-              <div class="col-md-1 col-sm-12 col-12 col-lg-1 pl-0">
+              <div class="col-md-1 col-sm-12 col-12 col-lg-1 pl-0 mml-12">
                   <input class="btn btn-primary add-ip-address pull-left" type="button" value="Add IP"/>
               </div>
             </div>

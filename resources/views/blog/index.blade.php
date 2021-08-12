@@ -24,11 +24,11 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
-          <div class="album py-5">
+          <div class="album py-5 mp-0">
             <div class="container">
                 <div class="row">
                     @foreach($blogs as  $blog)
-                        <div class="col-md-4 pt-5" title="{{strtoupper($blog->title)}}">
+                        <div class="col-md-4 pt-5 mp0-t10" title="{{strtoupper($blog->title)}}">
                             <div class="card mb-8" >
                                 <img class="card-img-top banks-card" src="{{$blog->path}}" onclick="location.href='{{route("blog.edit", $blog->id)}}'" alt="Card image cap">
                                 <div class="card-body">
@@ -48,7 +48,7 @@
                                 <div class="card-footer">
                                   <div class="row">
                                     <div class="col-md-6 text-left">
-                                      <div class="delete " data-toggle="popover" data-placement="top" data-id="{{ $blog->id}}" >
+                                      <div class="delete" data-toggle="popover" data-placement="top" data-id="{{ $blog->id}}" >
                                           <span> <i class="fa fa-trash"></i> </span>
                                       </div>
                                     </div>

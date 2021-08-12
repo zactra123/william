@@ -39,10 +39,10 @@
                       @else
                       <div class="col-md-6 col-sm-6 col-6"></div>
                       @endif
-                      <div class="col-md-5 col-sm-6 col-6">
+                      <div class="col-md-5 col-sm-12 col-12 mmb-5">
                           <input type="text" name="title" class="form-control" placeholder="To Do Title" />
                       </div>
-                      <div class="col-md-1 pr-1 pl-0 col-sm-6 col-6">
+                      <div class="col-md-1 pr-1 pl-0 col-sm-6 col-6 col-sm-12 col-12 mml-12">
                           <input type="submit" value="Search" class="btn btn-primary" />
                       </div>
                   </div>
@@ -61,40 +61,42 @@
             </div>
 
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Dispute Title</th>
-                            @if(auth()->user()->role=='receptionist')
-                            <th scope="col">Assignment</th>
-                            <th scope="col">Action</th>
-                            @endif
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($toDos as $todo)
-                          @php
-                            $key = 0;
-                          @endphp
-                        <tr data-id="{{$todo->id}}">
-                            <th scope="row">{{ $key+1 }}</th>
-                            <td><a href="{{route('adminRec.client.profile', $todo->client_id)}}" role="button">{{$todo->client->full_name()}}</a></td>
-                            <td>{{$todo->title}}</td>
-                            @if(auth()->user()->role=='receptionist')
-                            <td>
-                                {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
-                            </td>
-                            <td>
-                              <meta name="csrf-token" content="{{ csrf_token() }}" />
-                              <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash text-danger"></i></button>
-                            </td>
-                            @endif
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Full Name</th>
+                              <th scope="col">Dispute Title</th>
+                              @if(auth()->user()->role=='receptionist')
+                              <th scope="col">Assignment</th>
+                              <th scope="col">Action</th>
+                              @endif
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach($toDos as $todo)
+                            @php
+                              $key = 0;
+                            @endphp
+                          <tr data-id="{{$todo->id}}">
+                              <th scope="row">{{ $key+1 }}</th>
+                              <td><a href="{{route('adminRec.client.profile', $todo->client_id)}}" role="button">{{$todo->client->full_name()}}</a></td>
+                              <td>{{$todo->title}}</td>
+                              @if(auth()->user()->role=='receptionist')
+                              <td>
+                                  {!! Form::select('todo[user_id]',[""=>""]+$admins,$todo->user_id ,['class'=>'selectize-owner', 'id' => 'select-account']); !!}
+                              </td>
+                              <td>
+                                <meta name="csrf-token" content="{{ csrf_token() }}" />
+                                <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash text-danger"></i></button>
+                              </td>
+                              @endif
+                          </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+                </div>
                 {{ $toDos->links() }}
             </div>
         </div>

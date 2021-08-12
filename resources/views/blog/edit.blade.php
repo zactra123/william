@@ -29,7 +29,7 @@
               @csrf
               @method("PUT")
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mmb-5">
                     <input type="text" name="title" value="{{$blog->title}}" class="form-control" placeholder="Title" />
                 </div>
                 <div class="col-md-6">
@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-6">
+                <div class="col-md-6 mmb-5">
                     <input type="file" name="attach" value="{{$blog->path}}" class="form-control"  placeholder="Title Image"/>
                 </div>
                 <div class="col-md-6">

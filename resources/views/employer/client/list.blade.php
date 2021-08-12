@@ -17,13 +17,13 @@
   <div class="row">
     <div class="col-md-1">
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-12 col-12">
       <div class="card">
         <div class="card-header">
           User List
         </div>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-responsive">
             <thead>
             <tr>
               <th scope="col">#</th>

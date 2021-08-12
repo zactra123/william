@@ -74,21 +74,19 @@
             <div class="container">
                 <div class="page-content">
                     <div class="row justify-content-center">
-                        <div class="col-md-10 pt-4">
+                        <div class="col-md-10 col-sm-12 col-12 pt-4">
                             <div class="card">
 
                                 <div class="card-header">
                                     <label class="header m-2">Clients List</label>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table">
+                                    <table class="table table-responsive">
                                         <thead>
                                         <tr>
-
-                                            <th scope="col">FULL NAME</th>
-                                            <th scope="col">Email</th>
-
-                                            <th scope="col">Action</th>
+                                          <th scope="col">FULL NAME</th>
+                                          <th scope="col">Email</th>
+                                          <th scope="col">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>

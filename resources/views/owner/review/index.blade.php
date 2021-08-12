@@ -26,7 +26,7 @@
              </div>
              <p class="tx-12 text-muted mb-2">List of all reviews for your system</p>
            </div>
-              <div class="card-body mt-5">
+              <div class="card-body mt-5 table-responsive">
                   <table class="table table-hover">
                       <thead class="thead">
                       <tr>

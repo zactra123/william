@@ -38,23 +38,27 @@
                               <div class="col-md-12 col-sm-12">
                                   <div class="row m-2">
                                   </div>
-                                  <div class="container">
+                                  <div class="container m-hidden">
                                       <?php $alphas = range('A', 'Z');?>
-                                      <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                          <li class="page-item {{empty(request()->character) ? "active":""}}" >
-                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> ALL </a>
-                                          </li>
-                                          <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}">
-                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}"> # </a>
-                                          </li>
-                                          @foreach($alphas as $alpha)
-                                          <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}">
-                                            <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a>
-                                          </li>
-                                          @endforeach
-                                        </ul>
-                                      </nav>
+                                      <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-12">
+                                          <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                              <li class="page-item {{empty(request()->character) ? "active":""}}" >
+                                                <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> ALL </a>
+                                              </li>
+                                              <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}">
+                                                <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}"> # </a>
+                                              </li>
+                                              @foreach($alphas as $alpha)
+                                              <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}">
+                                                <a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a>
+                                              </li>
+                                              @endforeach
+                                            </ul>
+                                          </nav>
+                                        </div>
+                                      </div>
                                       {{-- <ul class="pagination alphabetical ">
                                           <li class="{{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
                                           <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
@@ -65,10 +69,10 @@
                                       {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination2')}}
                                   </div>
                                   <div class="album py-5">
-                                      <div class="container">
+                                      <div class="container mp-0">
                                           <div class="row">
                                               @foreach($banksLogos as  $logos)
-                                                  <div class="col-md-3" title="{{strtoupper($logos->name)}}">
+                                                  <div class="col-md-3 col-sm-12 col-12 mp-0" title="{{strtoupper($logos->name)}}">
                                                       <div class="card mb-4 pt-5" >
                                                           <?php /** Checking logo in Aws S3 storage */?>
                                                           @if($logos->checkUrlAttribute())
@@ -101,7 +105,7 @@
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="container">
+                                  <div class="container m-hidden">
                                     <div class="row mr-2 mb-5">
                                       <div class="col-md-12 pull-right p-0">
                                         {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}

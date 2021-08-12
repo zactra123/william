@@ -25,7 +25,7 @@
             </div>
             <p class="mg-b-20">See list of slogans here...</p>
             <div class="card-body">
-              <table class="table">
+              <table class="table table-responsive">
                   <thead>
                   <tr>
                       <th scope="col">#</th>

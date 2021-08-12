@@ -25,7 +25,7 @@
             {!! Form::open(['route'=>['blog.store'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "send_email"]) !!}
 
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mmb-5">
                   <input type="text" name="title" class="form-control" placeholder="Title" />
                   {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
               </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="row mt-3">
-              <div class="col-md-6">
+              <div class="col-md-6 mmb-5">
                   <input type="file" name="attach" class="form-control"  placeholder="Title Image"/>
                   {!! $errors->first('attach', '<p class="help-block">:message</p>') !!}
               </div>
