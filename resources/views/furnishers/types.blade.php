@@ -58,7 +58,8 @@
             <div class="col-md-12 col-sm-12 my-3">
                 <div class="card">
                     <div class="card-body">
-                        <table width="100%" class="table table-striped table-responsive">
+                      <div class="table-responsive">
+                        <table width="100%" class="table table-striped">
                             <thead>
                               <tr>
                                 <th>FURNISHERs TYPE</th>
@@ -90,6 +91,8 @@
                               @endforeach
                             </tbody>
                         </table>
+                      </div>
+
                     </div>
                 </div>
             </div>

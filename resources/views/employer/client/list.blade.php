@@ -23,31 +23,34 @@
           User List
         </div>
         <div class="card-body">
-          <table class="table table-responsive">
-            <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">FULL NAME</th>
-              <th scope="col">AFFILIATE NAME</th>
-              <th scope="col">EMAIL</th>
-            </tr>
-            </thead>
-            <tbody>
-              @foreach($users as $key=> $user)
-                  <tr>
-                      <th scope="row">{{$key+1}}</th>
-                      <td>
-                        <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
-                          {{$user->full_name}}
-                        </a>
-                      </td>
-                      <td>{{$user->affiliate_name??'-'}}</td>
-                      <td>{{$user->email}}</td>
-                      {{-- <td>{{$user->full_name?? "-"}}</td> --}}
-                  </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">FULL NAME</th>
+                <th scope="col">AFFILIATE NAME</th>
+                <th scope="col">EMAIL</th>
+              </tr>
+              </thead>
+              <tbody>
+                @foreach($users as $key=> $user)
+                    <tr>
+                        <th scope="row">{{$key+1}}</th>
+                        <td>
+                          <a href="{{route('adminRec.client.profile', $user->id)}}" role="button">
+                            {{$user->full_name}}
+                          </a>
+                        </td>
+                        <td>{{$user->affiliate_name??'-'}}</td>
+                        <td>{{$user->email}}</td>
+                        {{-- <td>{{$user->full_name?? "-"}}</td> --}}
+                    </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+
           <div class="row float-right pull-right">
             <div class="col-md-12 float-right pull-right">
               {{ $users->links() }}

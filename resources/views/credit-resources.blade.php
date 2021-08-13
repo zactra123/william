@@ -63,6 +63,5 @@
         </div>
 
 
-        @include('helpers.chat')
     </section>
 @endsection

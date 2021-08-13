@@ -35,10 +35,28 @@
         {{--
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         --}}
-
+        <style media="screen">
+        .ls-hidden{
+          display: none;
+        }
+        @media (max-width: 576px) {
+              .ls-hidden{
+                display: block !important;
+              }
+              .msw-100{
+                width: 100% !important;
+              }
+              .navbar-mobile{
+                background-color: white !important;
+              }
+              .mmt-90{
+                margin-top: 60px !important;
+              }
+              }
+        </style>
         <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
 
-        <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+
         @yield('scripts')
     </head>
     <body>
@@ -120,12 +138,25 @@
                         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
                         <nav id="navbar" class="navbar">
-                            <ul>
-                                @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.nav_bar_client') @elseif(Auth::user()->role == 'affiliate') @include('helpers.urls.nav_bar_affiliate') @elseif(Auth::user()->role
-                                == 'super admin') @include('helpers.urls.nav_bar_owner') @elseif(Auth::user()->role == 'admin') @include('helpers.urls.nav_bar_admin') @elseif(Auth::user()->role == 'receptionist')
-                                @include('helpers.urls.nav_bar_receptionist') @elseif(Auth::user()->role == 'seo') @include('helpers.urls.nav_bar_seo') @endif @else @include('helpers.urls.nav_bar_guest') @endif
-                            </ul>
-                            <i class="bi bi-list mobile-nav-toggle"></i>
+                          <ul class="msw-100">
+                            @if(Auth::user())
+                              @if(Auth::user()->role == 'client')
+                                @include('helpers.urls.nav_bar_client')
+                              @elseif(Auth::user()->role == 'affiliate')
+                                @include('helpers.urls.nav_bar_affiliate')
+                              @elseif(Auth::user()->role == 'super admin') @include('helpers.urls.nav_bar_owner')
+                              @elseif(Auth::user()->role == 'admin')
+                                @include('helpers.urls.nav_bar_admin')
+                              @elseif(Auth::user()->role == 'receptionist')
+                                @include('helpers.urls.nav_bar_receptionist')
+                              @elseif(Auth::user()->role == 'seo')
+                                @include('helpers.urls.nav_bar_seo')
+                              @endif
+                              @else
+                                @include('helpers.urls.nav_bar_guest')
+                            @endif
+                          </ul>
+                          <i class="fa fa-bars mobile-nav-toggle ls-hidden mmt-90" style="color:black;"></i>
                         </nav>
                         <!-- .navbar -->
                     </div>
@@ -148,7 +179,7 @@
                 </div>
             </div>
         </div>
-
+        @include('helpers.chat')
         @if(Auth::user() && Auth::user()->role == 'client')
         <footer class="footer-section">
             <div class="copy-right text-center">
@@ -158,6 +189,7 @@
             </div>
         </footer>
         @else @include('includes.footer') @endif
+
           {{-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script> --}}
 
 
@@ -202,6 +234,6 @@
 
             gtag("config", "G-R9BDPYSVBK");
         </script>
-
+          <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
     </body>
 </html>

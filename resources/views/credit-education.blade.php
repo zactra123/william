@@ -28,7 +28,6 @@
             </div>
         </div>
 
-        @include('helpers.chat')
     </section>
 
     <section class="fico">

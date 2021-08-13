@@ -21,7 +21,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
-
+  <style media="screen">
+  .ls-hidden{
+    display: none;
+  }
+  @media (max-width: 576px) {
+        .ls-hidden{
+          display: block !important;
+        }
+        .msw-100{
+          width: 100% !important;
+        }
+        .navbar-mobile{
+          background-color: white !important;
+        }
+        }
+  </style>
 </head>
 
 <body>
@@ -96,17 +111,37 @@
   <header id="header" class="fixed-top" style="top:40px !important;">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="#"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1 class="logo"><a href="#"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
+      </div>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          @include('helpers.urls.nav_bar_guest')
-
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      <div class="col-md-6 col-sm-12 col-12">
+        <nav id="navbar" class="navbar">
+          <ul class="msw-100">
+            @if(Auth::user())
+              @if(Auth::user()->role == 'client')
+                @include('helpers.urls.nav_bar_client')
+              @elseif(Auth::user()->role == 'affiliate')
+                @include('helpers.urls.nav_bar_affiliate')
+              @elseif(Auth::user()->role == 'super admin') @include('helpers.urls.nav_bar_owner')
+              @elseif(Auth::user()->role == 'admin')
+                @include('helpers.urls.nav_bar_admin')
+              @elseif(Auth::user()->role == 'receptionist')
+                @include('helpers.urls.nav_bar_receptionist')
+              @elseif(Auth::user()->role == 'seo')
+                @include('helpers.urls.nav_bar_seo')
+              @endif
+              @else
+                @include('helpers.urls.nav_bar_guest')
+            @endif
+          </ul>
+          <i class="fa fa-bars mobile-nav-toggle ls-hidden" style="color:black;"></i>
+        </nav><!-- .navbar -->
+      </div>
+    </div>
 
     </div>
   </header><!-- End Header -->
@@ -218,8 +253,6 @@
             </div>
           </div>
 
-
-
           <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fa fa-people"></i>
@@ -271,8 +304,6 @@
 
               <p class="fs-15">Most of the other credit repair firms are in letter writing business. Writing dispute letters is a “lazy man’s” approach to credit repair – one with minimal results and the constant danger of removed items being re-inserted into credit reports. Those firms usually charge consumers a monthly fee for their services, making any dishonest firm drag dispute process longer because the longer they keep you as a client, the more money they will “earn.”In comparison, we do not charge monthly fees and always strive to complete the process in the shortest time possible. We will bill you only when we correct or remove an incomplete, unverifiable, misleading, frivolous, erroneous, obsolete, inaccurate, unauthorized, or fraudulent credit item from your credit reports.</p>
             </div>
-
-
 
           </div>
 
@@ -454,7 +485,7 @@
 
   </main><!-- End #main -->
 
-
+  @include('helpers.chat')
   <!-- ======= Footer ======= -->
   @include('includes.footer')
 

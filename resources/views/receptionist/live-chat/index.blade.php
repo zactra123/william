@@ -39,7 +39,7 @@
 
                 <div class="page-content">
                         <div class="row m-0">
-                            <aside class="sidebar col-md-3 pt-3">
+                            <div class="sidebar col-md-3 col-sm-12 col-12 pt-3 mzi-0">
                                 <div id="chat_type">
                                     <ul class="list-group">
                                         <li class="list-group-item  active" data-type="User">
@@ -100,9 +100,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </aside>
+                            </div>
 
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-sm-12 col-12 mmt-35">
                                 <div class="card">
                                     <div  id="scrollingDiv" class="card-body  scrollDiv">
                                         <div class="card-body " id="showChatMessage">

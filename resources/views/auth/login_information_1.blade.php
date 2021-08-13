@@ -22,7 +22,7 @@
             <h1 class="fs-25 bold theme-color-dark">Rest Login information</h1>
             <p>Please enter complete information which is asked below to reset your login information!</p>
 
-          
+
             {!! Form::open(['route' => 'login.infoFirstSend', 'method' => 'POST', 'id' => 'loginInformation1']) !!}
             @csrf
             <div class="row">
@@ -75,7 +75,6 @@
           </p>
         </div>
       </div>
-      @include('helpers.chat')
     </section>
 
     <script>

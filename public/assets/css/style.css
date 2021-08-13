@@ -15499,8 +15499,22 @@ a.tag-addon {
       .m-hidden{
         display: none !important;
       }
+      .mmt-35{
+        margin-top: 35px !important;
       }
-
+      .mzi-0{
+        z-index: 0 !important;
+      }
+      .ls-hidden{
+        display: block !important;
+      }
+      .msw-100{
+        width: 100% !important;
+      }
+      }
+      .ls-hidden{
+        display: none !important;
+      }
 @media (min-width: 992px) {
   .wizard > .steps > ul li + li {
     margin-left: 30px; } }

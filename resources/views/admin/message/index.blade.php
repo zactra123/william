@@ -18,7 +18,7 @@
     <section class="ms-working working-section section-padding">
         <div class="container mp-0">
             <div class="section-wrapper">
-                <div class="container mt-5 pt-5 mp0-t10 ">
+                <div class="container mt-5 pt-5 mp0-t10">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-sm-12 mp-0">
                             <div class="container">

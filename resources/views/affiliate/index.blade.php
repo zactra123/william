@@ -81,7 +81,8 @@
                                     <label class="header m-2">Clients List</label>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-responsive">
+                                  <div class="table-responsive">
+                                    <table class="table">
                                         <thead>
                                         <tr>
                                           <th scope="col">FULL NAME</th>
@@ -96,11 +97,7 @@
                                                 <td>{{$client->user->full_name() != null ? $client->user->full_name() : "-"}}</td>
                                                 <td>{{$client->user->email}}</td>
                                                 <td>
-
-                                                    <a class="btn" href="{{route('affiliate.client.profile', $client->user->id)}}"
-                                                       role="button">CLIENT PROFILE</a>
-
-
+                                                    <a class="btn" href="{{route('affiliate.client.profile', $client->user->id)}}" role="button">CLIENT PROFILE</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -108,6 +105,8 @@
 
                                         </tbody>
                                     </table>
+                                  </div>
+
                                 </div>
 
                             </div>

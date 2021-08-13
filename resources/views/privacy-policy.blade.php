@@ -402,7 +402,6 @@
         </div>
 
 
-        @include('helpers.chat')
     </section>
 
 

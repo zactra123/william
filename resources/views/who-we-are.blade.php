@@ -158,7 +158,6 @@
 
     <section>
 
-        @include('helpers.chat')
 
     </section>
 
