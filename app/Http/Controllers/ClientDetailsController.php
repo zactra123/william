@@ -2,49 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\ClientReport;
+use PhpOffice\PhpWord\SimpleType\TblWidth;
+use PhpOffice\PhpWord\Element\Image;
+use PhpOffice\PhpWord\Element\Table;
+use PhpOffice\PhpWord\Settings;
+use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+
+use App\ClientReportEqPublicRecord;
+use App\ClientReportExPublicRecord;
+use App\ClientReportTuPublicRecord;
+use App\ClientReportExStatement;
+use App\ClientReportTuStatement;
+use App\ClientReportTuAccount;
+use App\ClientReportTuInquiry;
 use App\ClientReportAddress;
 use App\ClientReportEmployer;
 use App\ClientReportEqAccount;
 use App\ClientReportEqInquiry;
-use App\ClientReportEqPublicRecord;
 use App\ClientReportExAccount;
 use App\ClientReportExInquiry;
-use App\ClientReportExPublicRecord;
-use App\ClientReportExStatement;
 use App\ClientReportName;
 use App\ClientReportPhone;
-use App\ClientReportTuAccount;
-use App\ClientReportTuInquiry;
-use App\ClientReportTuPublicRecord;
-use App\ClientReportTuStatement;
-use App\Disputable;
 use App\Jobs\FetchReports;
 use App\Mail\CredentialNotifications;
 use App\Services\ClientDetailsNewData;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
 use App\Todo;
-use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Auth;
 use App\User;
 use App\ClientDetail;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
 use App\ClientAttachment;
 use App\Credential;
 use App\UploadClientDetail;
 use App\Services\Screaper;
-use PhpOffice\PhpWord\Element\Image;
-use PhpOffice\PhpWord\Element\Table;
-use PhpOffice\PhpWord\Settings;
-use PhpOffice\PhpWord\SimpleType\TblWidth;
+use App\ClientReport;
+use App\Disputable;
+
 
 class ClientDetailsController extends Controller
 {

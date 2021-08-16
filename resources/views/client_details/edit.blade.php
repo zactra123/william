@@ -516,7 +516,6 @@
         var per2 = $(".progress.p1").attr("data-2");
         $(".p1 .number h2").text(per1);
         var val1 = 440 - (440 * per1) / 100;
-
         var val2 = (440 * per2) / 100;
         var val3 = val1-val2
         console.log(val1, val2, per2)
@@ -524,6 +523,7 @@
         $(".p1 svg circle:nth-child(2)").animate({"stroke-dashoffset": val3}, 1000);
         $(".p1 svg circle:nth-child(3)").animate({"stroke-dashoffset": val1}, 1000);
     </script>
+
     <script>
         $(document).ready(function(){
 
@@ -540,8 +540,6 @@
                     }
                 }
             });
-
-
 
             $(".ssn").mask("999-99-9999");
             $('#phone_number').mask('(000) 000-0000');

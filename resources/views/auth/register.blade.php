@@ -9,9 +9,9 @@
 
 @section('content')
 
-  <section class="py-5 container">
+  <section class="py-5 container mmt-80">
     <div class="row justify-content-center">
-      <div class="col-md-7">
+      <div class="col-md-7 col-sm-12 col-12">
         <div class="px-4 py-4" >
 
           <h1 class="fs-25 bold theme-color-dark">Sign Up</h1>

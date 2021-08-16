@@ -64,7 +64,7 @@ class CreditEducationsController extends Controller
             'content'=>$content['content'],
         ]);
 
-        return redirect('owner/credit-education');
+        return redirect('owner/credit-education')->with('success','You successfully store educations!');
     }
 
     /**
@@ -122,7 +122,7 @@ class CreditEducationsController extends Controller
             'content'=>$update['content'],
         ]);
 
-        return redirect('owner/credit-education');
+        return redirect('owner/credit-education')->with('success','You successfully update educations!');
 
     }
 

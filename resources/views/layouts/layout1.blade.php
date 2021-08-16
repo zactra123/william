@@ -35,6 +35,8 @@
         {{--
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         --}}
+        {{-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script> --}}
+        <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
         <style media="screen">
         .ls-hidden{
           display: none;
@@ -54,6 +56,7 @@
               }
               }
         </style>
+
         <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
 
 
@@ -234,6 +237,6 @@
 
             gtag("config", "G-R9BDPYSVBK");
         </script>
-          <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+
     </body>
 </html>

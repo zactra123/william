@@ -22,10 +22,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="email" class="form-control" name="client[ck_login]" placeholder="Login E-mail">
+                                            <input type="email" class="form-control mmb-5" name="client[ck_login]" placeholder="Login E-mail">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="password" class="form-control" name="client[ck_password]" placeholder="Password">
+                                            <input type="password" class="form-control mmb-5" name="client[ck_password]" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="text" class="form-control" name="client[ex_login]" placeholder="Username">
+                                            <input type="text" class="form-control mmb-5" name="client[ex_login]" placeholder="Username">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                                             <input type="password" class="form-control" name="client[ex_password]" placeholder="Password">
@@ -48,7 +48,7 @@
                                             <input type="text" class="form-control" name="client[ex_question]" placeholder="Answer to sequrity question">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12 mt-4">
-                                            <input type="number" class="form-control" name="client[ex_pin]" placeholder="4-Digit pin number">
+                                            <input type="number" class="form-control mmb-5" name="client[ex_pin]" placeholder="4-Digit pin number">
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="text" class="form-control" name="client[tu_login]" placeholder="Username">
+                                            <input type="text" class="form-control mmb-5" name="client[tu_login]" placeholder="Username">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                                             <input type="password" class="form-control" name="client[tu_password]" placeholder="Password">
@@ -70,7 +70,7 @@
                                             <input type="text" class="form-control" name="client[tu_question]" placeholder="Sequrity Question">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12 mt-4">
-                                            <input type="text" class="form-control" name="client[tu_answer]" placeholder="Sequrity Answer">
+                                            <input type="text" class="form-control mmb-5" name="client[tu_answer]" placeholder="Sequrity Answer">
                                         </div>
                                     </div>
                                 </div>
@@ -84,10 +84,10 @@
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="text" class="form-control" name="client[tu_dis_login]" placeholder="Username">
+                                            <input type="text" class="form-control mmb-5" name="client[tu_dis_login]" placeholder="Username">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="password" class="form-control" name="client[tu_dis_password]" placeholder="Password">
+                                            <input type="password" class="form-control mmb-5" name="client[tu_dis_password]" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
@@ -101,10 +101,10 @@
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="text" class="form-control" name="client[eq_login]" placeholder="Username">
+                                            <input type="text" class="form-control mmb-5" name="client[eq_login]" placeholder="Username">
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                                            <input type="password" class="form-control" name="client[eq_password]" placeholder="Password">
+                                            <input type="password" class="form-control mmb-5" name="client[eq_password]" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>

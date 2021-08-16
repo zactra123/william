@@ -34,44 +34,46 @@
                                               <a href="{{route('owner.credit.education.create')}}"
                                                class="btn btn-primary btn-sm float-right">Add Education</a> </p>
                             							</div>
-                                            <table class="table table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th >#</th>
-                                                    <th scope="col">url</th>
-                                                    <th scope="col">Title</th>
-                                                    <th scope="col">Sub Content</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($contents as $key=> $content)
-                                                    <tr>
-                                                        <th scope="row">{{$content->id}}</th>
-                                                        <td>{{$content->url}}</td>
-                                                        <td>{{$content->title}}</td>
-                                                        <td>{{ zactra::limit_words($content->sub_content,150) }}</td>
-                                                        <td>
-                                                            {{-- <a style="margin: 1px" href="{{route('owner.credit.education.show', $content->url)}}" class="btn btn-primary" role="button"><i class="fa fa-eye"></i></a>
-                                                            <a  href="{{route('owner.credit.education.edit', $content->url)}}" class="btn btn-primary" role="button"><span class="fa fa-edit"></span></a>
-                                                            <a href="{{ route('admin.delete.education',$content->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button></a> --}}
+                                            <div class="table-responsive">
+                                              <table class="table table-hover">
+                                                  <thead>
+                                                  <tr>
+                                                      <th >#</th>
+                                                      <th scope="col">url</th>
+                                                      <th scope="col">Title</th>
+                                                      <th scope="col">Sub Content</th>
+                                                      <th scope="col">Action</th>
+                                                  </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                  @foreach($contents as $key=> $content)
+                                                      <tr>
+                                                          <th scope="row">{{$content->id}}</th>
+                                                          <td>{{$content->url}}</td>
+                                                          <td>{{$content->title}}</td>
+                                                          <td>{{ zactra::limit_words($content->sub_content,150) }}</td>
+                                                          <td>
+                                                              {{-- <a style="margin: 1px" href="{{route('owner.credit.education.show', $content->url)}}" class="btn btn-primary" role="button"><i class="fa fa-eye"></i></a>
+                                                              <a  href="{{route('owner.credit.education.edit', $content->url)}}" class="btn btn-primary" role="button"><span class="fa fa-edit"></span></a>
+                                                              <a href="{{ route('admin.delete.education',$content->id) }}"><button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}" ><span class="fa fa-trash"></span> </button></a> --}}
 
-                                                            <meta name="csrf-token" content="{{ csrf_token() }}">
-                                                            <div class="dropdown show">
-                                                              <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Action
-                                                              </a>
-                                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item" href="{{route('owner.credit.education.show', $content->url)}}">View</a>
-                                                                <a class="dropdown-item" href="{{route('owner.credit.education.edit', $content->url)}}">Edit</a>
-                                                                <a class="dropdown-item" href="{{ route('admin.delete.education',$content->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                                              <meta name="csrf-token" content="{{ csrf_token() }}">
+                                                              <div class="dropdown show">
+                                                                <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                  Action
+                                                                </a>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                  <a class="dropdown-item" href="{{route('owner.credit.education.show', $content->url)}}">View</a>
+                                                                  <a class="dropdown-item" href="{{route('owner.credit.education.edit', $content->url)}}">Edit</a>
+                                                                  <a class="dropdown-item" href="{{ route('admin.delete.education',$content->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                                                </div>
                                                               </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                                          </td>
+                                                      </tr>
+                                                  @endforeach
+                                                  </tbody>
+                                              </table>
+                                            </div>
                                             <div class="col-md-12 mt-3">
                                                 <div class="row float-right">
                                                   {{ $contents->links() }}

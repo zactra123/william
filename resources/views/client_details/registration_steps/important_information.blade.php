@@ -12,7 +12,6 @@
           <input id="phone_number" type="text" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}" required autocomplete="phone_number" placeholder="Phone Number">
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-12">
           <label for="" class="theme-color-dark fs-14">Gender</label>
@@ -59,11 +58,6 @@
       </div>
 
     </div>
-
-
-
-
-
 
 <div class="col-md-12 text-center">
   <div class="basic-button">
