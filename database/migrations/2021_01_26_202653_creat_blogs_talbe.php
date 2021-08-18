@@ -19,7 +19,7 @@ class CreatBlogsTalbe extends Migration
             $table->string('url')->nullable();
             $table->string('path')->nullable();
             $table->text('article')->nullable();
-            $table->longText('visited')->nullable();
+            // $table->longText('visited')->nullable();
             $table->date('published_date')->nullable();
             $table->timestamps();
         });

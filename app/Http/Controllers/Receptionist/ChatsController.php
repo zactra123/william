@@ -77,7 +77,7 @@ class ChatsController extends Controller
             "type" => "from"
         ]);
 
-        broadcast(new LiveChat($new_message));
+        $test = broadcast(new LiveChat($new_message));
 
         $chatMessage =  Auth::user()
             ->chatMessages(["type" =>$request->recipient_type, "id" => $request->recipient_id])

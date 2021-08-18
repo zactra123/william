@@ -492,8 +492,36 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
 
-<script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+
 
 </body>
 
+
+
+<script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+<script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
+
+<script>
+
+  /**
+   ** Get Response from Pusher of Message
+  **/
+  pusher.trigger("ReceptionistLiveChat.37", "ReceptionistLiveChat", { message: "hello world" });
+
+      // var channel = pusher.subscribe('ReceptionistLiveChat.37');
+      // console.log(channel);
+      //
+      // channel.bind('ReceptionistLiveChat', function(data) {
+      //
+      //   alert(JSON.stringify(message));
+        // if (loginuser==data["userid"]){
+        //   return false;
+        // }else{
+        //   $("#group-"+data["groupid"]).append(data['message']);
+        // }
+
+      // });
+
+
+  </script>
 </html>

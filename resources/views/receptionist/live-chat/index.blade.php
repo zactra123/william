@@ -295,4 +295,18 @@
           </div>
       </div>
   </script>
+  <script>
+
+      // Enable pusher logging - don't include this in production
+
+      var pusher = new Pusher('8ac5f99d033445cbcf73', {
+        cluster: 'ap2'
+      });
+
+      var channel = pusher.subscribe('LiveChat.guest_8');
+      channel.bind('LiveChat', function(data) {
+        // alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
+      });
+    </script>
 @endsection

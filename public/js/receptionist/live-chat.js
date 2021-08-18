@@ -215,7 +215,6 @@ $(document).ready(function(){
                 $("#recipientType").val(result.recipient.type);
                 $("#chatAnswer").show()
                 $("#"+type+id).addClass('active-user');
-
                 $("#allMessageCount").html(messageAllCount);
                 $("#userUnreds").html(messageCount);
                 $("#allUserUnreds").html(messageAllCount);
@@ -223,6 +222,7 @@ $(document).ready(function(){
                 $("#guestMessageCount").html(guestMessageCount)
                 $("#allClientMessageCount").html(allClientMessageCount)
                 $("#allGuestMessageCount").html(allGuestMessageCount)
+
             },
 
             error:function (err,state) {
@@ -241,7 +241,6 @@ $(document).ready(function(){
             data[el.name] = el.value
         });
         $("#direct-to-user").attr("disabled", true)
-
         $.ajax({
             url: '/receptionist/live-chat/answer',
             type:"POST",
@@ -277,6 +276,8 @@ $(document).ready(function(){
             },
 
             error:function (err, state) {
+              console.log(err);
+              console.log(state);
 
             }
         });
@@ -384,6 +385,7 @@ $(document).ready(function(){
 
             error:function (err,state) {
                 console.log(err)
+                console.log(state);
             }
         });
 
