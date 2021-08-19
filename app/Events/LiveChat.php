@@ -30,6 +30,13 @@ class LiveChat implements ShouldBroadcast
     }
 
     /**
+     * broadcasting name
+     */
+     public function broadcastAs(){
+       return "client_send_message";
+     }
+
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array
@@ -59,4 +66,5 @@ class LiveChat implements ShouldBroadcast
 
         return $channels;
     }
+
 }

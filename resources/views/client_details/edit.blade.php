@@ -2,26 +2,23 @@
 
 @section('body')
 
-
   <div class="main-content-container container-fluid px-4">
-
-              <!-- Page Header -->
-              <div class="page-header row no-gutters py-4">
-                <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                  <h3 class="page-title">Client Profile</h3>
-
-                </div>
-              </div>
+          <!-- Page Header -->
+          <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <h3 class="page-title">Client Profile</h3>
+            </div>
+          </div>
           <div class="alert alert-success alert-dismissible fade show mb-0 mb-3 text-center text-white" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
             {{-- @if(!$client->credentials->is_present()) --}}
-                <span>
-                    Please provide us your credentials, so we can fetch your report.
-                    You can provide them
-                    <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">here</a>
-                </span>
+              <span>
+                  Please provide us your credentials, so we can fetch your report.
+                  You can provide them
+                  <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">here</a>
+              </span>
             {{-- @elseif(!$client->reports->first())
                 <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
             @else

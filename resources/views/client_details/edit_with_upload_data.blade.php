@@ -1,5 +1,4 @@
-@extends('layouts.client')
-@section('content')
+@extends('layouts.client') @section('content')
 <style>
   .warning-message {
     color: #a94442;
@@ -200,5 +199,4 @@
   });
 </script>
 
-@section('scripts')
-@endsection
+@section('scripts') @endsection

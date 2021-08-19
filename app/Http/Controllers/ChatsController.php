@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Broadcast;
 use App\Events\ReceptionistLiveChat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Events\LiveChat;
 use App\Guest;
 use App\Chat;
 use App\User;

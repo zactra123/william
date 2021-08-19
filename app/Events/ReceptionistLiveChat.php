@@ -36,6 +36,13 @@ class ReceptionistLiveChat implements ShouldBroadcast
     }
 
     /**
+     * broadcasting name
+     */
+     public function broadcastAs(){
+       return "guest_message";
+     }
+
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array

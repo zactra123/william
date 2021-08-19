@@ -1,7 +1,6 @@
 @extends('owner.layouts.app') @section('title')
 <title>To Do</title>
-@endsection
-@section('body')
+@endsection @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -98,11 +97,9 @@
   </div>
 </div>
 
-@endsection
-@section('js')
+@endsection @section('js')
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
 <script src="{{ asset('js/todo-list.js?v=2') }}"></script>
-@endsection
-@section('css')
+@endsection @section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
 @endsection

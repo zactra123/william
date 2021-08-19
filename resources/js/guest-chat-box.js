@@ -35,6 +35,7 @@ postNewMessage = function(recipient, message) {
                 resolve(response)
             },
             error: function(error){
+              console.log(error);
                 reject(error)
             }
 
@@ -186,4 +187,3 @@ $(document).ready(function(){
         $(".open-button").show();
     })
 });
-

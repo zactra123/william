@@ -23,6 +23,18 @@
       background-color: #37c6f5;
     }
 </style>
+@if (!null==(session()->get('guest')))
+  @php
+  $guestid =  session()->get("guest");
+  @endphp
+  <input type="hidden" class="isguest" name="" value="yes">
+@else
+  @php
+    $guestid = '';
+  @endphp
+  <input type="hidden" class="isguest" name="" value="no">
+@endif
+<input type="hidden" class="sessionid" name="" value="{{ $guestid }}">
 <div class="chat" id="chat">
     <div class="header open-chatbox" id="chat_header" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}">
     <svg width="368" viewBox="0 0 368 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +134,40 @@
     </div>
 </div>
 </div>
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+var getguestid = $(".isguest").val();
+if (getguestid=='yes') {
+  var guestid = $(".sessionid").val();
+
+      // Enable pusher logging - don't include this in production
+      // Pusher.logToConsole = true;
+      var pusher = new Pusher('8ac5f99d033445cbcf73', {
+        cluster: 'ap2'
+      });
+
+      var channel = pusher.subscribe('LiveChat.guest_'+guestid);
+      channel.bind('client_send_message', function(data) {
+        // alert(JSON.stringify(data));
+        if (data["message"]["recipient_id"] == guestid){
+
+          var message_template = $("#chat-message-to-admin-template").html();
+
+              message_template = $("#chat-message-from-admin-template").html();
+
+          message_template = message_template.replace(/{message}/g, data["message"]["message"])
+                                              .replace(/{message-id}/g, data["message"]["id"]);
+          $(".chat-content").append(message_template);
+          // $('#scrollingDiv').scrollTop($('#scrollingDiv')[0].scrollHeight);
+          $('.chat-box').scrollTop($('.chat-box')[0].scrollHeight);
+          // $('.chat-box-inner').scrollTop($('.chat-box-inner')[0].scrollHeight);
+          // $('.chat-content').scrollTop($('.chat-content')[0].scrollHeight);
+        }
+
+      });
+}
+  </script>
 <script id="chat-message-to-admin-template" type="text/html">
     <div class="my-message message p-2" data-message-id="{message-id}">
         <p>{message}</p>

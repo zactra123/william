@@ -295,18 +295,26 @@
           </div>
       </div>
   </script>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   <script>
-
+  var receptionistid = '{{ Auth::user()->id }}';
       // Enable pusher logging - don't include this in production
-
+      // Pusher.logToConsole = true;
       var pusher = new Pusher('8ac5f99d033445cbcf73', {
         cluster: 'ap2'
       });
 
-      var channel = pusher.subscribe('LiveChat.guest_8');
-      channel.bind('LiveChat', function(data) {
-        // alert(JSON.stringify(data));
-        console.log(JSON.stringify(data));
+      var channel = pusher.subscribe('ReceptionistLiveChat.'+receptionistid);
+      channel.bind('guest_message', function(data) {
+        if (receptionistid==data["message"]["user_id"]) {
+
+          var message_template = $("#receptionist-question-template").html();
+          message_template = message_template.replace(/{message}/g, data["message"]["message"])
+                                              .replace(/{message-id}/g, data["message"]["id"])
+          $("#showChatMessage").append(message_template);
+          $('#scrollingDiv').scrollTop($('#scrollingDiv')[0].scrollHeight);
+        }
       });
+
     </script>
 @endsection
