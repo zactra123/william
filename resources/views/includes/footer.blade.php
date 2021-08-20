@@ -71,11 +71,9 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     <div class="copyright">
       <p>{{ date('Y') }} &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
     </div>
-
   </div>
 </footer>

@@ -1,4 +1,4 @@
-@extends('layouts.layout1')
+@extends('layouts.auth')
 
 @section('meta')
     <title>Login to achieve all your reasonable credit-fitness goals</title>

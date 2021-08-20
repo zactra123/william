@@ -162,11 +162,12 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <div id="buttonCompleted"></div>
+
 
                                          {{-- <button class="ms-ua-submit add-note">ADD NOTE</button> --}}
 
                                           <div class="modal-footer">
+                                            <div id="buttonCompleted"></div>
                                               <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
                                               <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
                                           </div>
@@ -529,8 +530,8 @@
           $(".remove-appointment").click(function () {
               var id = $(this).attr("data-id");
               $("#appointmentDetails").modal("hide");
-              bootbox.confirm("Do you really want to delete record?", function (result) {
-                  if (result) {
+              // bootbox.confirm("Do you really want to delete record?", function (result) {
+              //     if (result) {
                       $.ajax({
                           url: "/receptionist/message/" + id,
                           type: "DELETE",
@@ -542,8 +543,8 @@
                               displayMessage("Deleted Successfully");
                           },
                       });
-                  }
-              });
+              //     }
+              // });
           });
       });
 

@@ -32,8 +32,6 @@
 </style>
 
 @section('content')
-
-
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title"> Check Chosen Dispute </h2>
@@ -192,7 +190,7 @@
 
                                                         </div>
                                                     </div>
-                                                @endif
+                                               @endif
                                             @if($key = 'type' && $value == "student")
                                                     <div class="col-md-12">
                                                         <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>

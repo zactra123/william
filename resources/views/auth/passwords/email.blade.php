@@ -1,4 +1,4 @@
-@extends('layouts.layout1')
+@extends('layouts.auth')
 @section('content')
   <section class="py-5 container">
     <div class="row justify-content-center">

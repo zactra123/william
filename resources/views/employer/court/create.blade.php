@@ -58,9 +58,9 @@
             <div class="row expand-address" data-address="#address">
               <div class="col-md-6"><label for=""></label></div>
               <div class="col-md-6 text-right mb-3">
-                <button type="button" class="btn btn-danger">
-                  <i class="fa fa-minus-circle"></i>
-                </button>
+                <span class="text-danger mb-3 fs-18">
+                    <i class="fa fa-minus-circle"></i>
+                </span>
               </div>
             </div>
             <div class="col-md-12 addresses" id="address">
@@ -132,9 +132,12 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Judges Info</h4></div>
             <div class="col-md-6 text-right mb-3">
-              <button type="button" class="btn btn-danger remove-equal-bank">
-                <span class="fa fa-times"></span>
+              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
+                  <span class="fa fa-times"></span>
               </button>
+              {{-- <button type="button" class="btn btn-danger remove-equal-bank">
+                <span class="fa fa-times"></span>
+              </button> --}}
             </div>
           </div>
         </div>
@@ -171,9 +174,12 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Equal Names</h4></div>
             <div class="col-md-6 text-right mb-3">
-              <button type="button" class="btn btn-danger remove-equal-bank">
-                <sapn class="fa fa-times"></sapn>
+              <button class="text-danger fs-18 mb-3 remove-equal-bank" style="border:none !important;background:none !important;">
+                <span class="fa fa-times"></span>
               </button>
+              {{-- <button type="button" class="btn btn-danger remove-equal-bank">
+                <sapn class="fa fa-times"></sapn>
+              </button> --}}
             </div>
           </div>
         </div>

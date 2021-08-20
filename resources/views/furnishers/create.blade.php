@@ -426,10 +426,11 @@ var types = {!!  json_encode($subTypes) !!};
             <div class="col-md-6"><label for="">Additional Address</label>  </div>
             <div class="col-md-6 text-right">
                 <button class="text-danger fs-18 mb-3" style="border:none !important;background:none !important;">
-                    <i class="fa fa-times"></i>
+                    <span class="fa fa-times"></span>
                 </button>
             </div>
         </div>
+
         <div class="col-md-12 addresses " id="address-additional_address-{i}">
             <div class="row">
                 <div class="form-group col-sm-12">

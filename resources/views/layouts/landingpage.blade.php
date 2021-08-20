@@ -32,10 +32,13 @@
         .msw-100{
           width: 100% !important;
         }
-        .navbar-mobile{
-          background-color: white !important;
+      
+        .navbar-mobile {
+            background-color: #ffffff !important;
+            height: 1000px;
         }
         }
+
   </style>
 </head>
 
@@ -496,32 +499,9 @@
 
 </body>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
-<script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
-
-<script>
-
-  /**
-   ** Get Response from Pusher of Message
-  **/
-  pusher.trigger("ReceptionistLiveChat.37", "ReceptionistLiveChat", { message: "hello world" });
-
-      // var channel = pusher.subscribe('ReceptionistLiveChat.37');
-      // console.log(channel);
-      //
-      // channel.bind('ReceptionistLiveChat', function(data) {
-      //
-      //   alert(JSON.stringify(message));
-        // if (loginuser==data["userid"]){
-        //   return false;
-        // }else{
-        //   $("#group-"+data["groupid"]).append(data['message']);
-        // }
-
-      // });
 
 
-  </script>
 </html>

@@ -139,9 +139,10 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Judges Info</h4></div>
             <div class="col-md-6 text-right">
-              <button type="button" class="btn btn-danger remove-equal-bank">
-                <span class="fa fa-times"></span>
+              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
+                  <span class="fa fa-times"></span>
               </button>
+
             </div>
           </div>
         </div>
@@ -202,9 +203,10 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Equal Names</h4></div>
             <div class="col-md-6 text-right">
-              <button type="button" class="remove-equal-bank btn btn-danger">
-                <span class="fa fa-times"></span>
+              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
+                  <span class="fa fa-times"></span>
               </button>
+              
             </div>
           </div>
         </div>

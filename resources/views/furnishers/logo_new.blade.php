@@ -74,12 +74,12 @@
                                               @foreach($banksLogos as  $logos)
                                                   <div class="col-md-3 col-sm-12 col-12 mp-0" title="{{strtoupper($logos->name)}}">
                                                       <div class="card mb-4 pt-5" >
-                                                          <?php /** Checking logo in Aws S3 storage */?>
+                                                           {{-- Checking logo in Aws S3 storage  --}}
                                                           @if($logos->checkUrlAttribute())
-                                                              <?php /** Get AWS S3 file link with  getUrlAttribute function */?>
+                                                                {{-- Get AWS S3 file link with  getUrlAttribute function  --}}
                                                               <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                           @else
-                                                              <?php /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/?>
+                                                               {{-- if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon --}}
                                                               @if($logos->no_logo)
                                                                   <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{url('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
                                                               @else
@@ -105,6 +105,7 @@
                                           </div>
                                       </div>
                                   </div>
+
                                   <div class="container m-hidden">
                                     <div class="row mr-2 mb-5">
                                       <div class="col-md-12 pull-right p-0">

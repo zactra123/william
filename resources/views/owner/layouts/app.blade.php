@@ -32,7 +32,7 @@
     <!-- Footer opened -->
 		<div class="main-footer ht-40">
 			<div class="container-fluid pd-t-0-f ht-100p">
-				<span>Copyright © {{ date('Y') }} <a href="#">Credit Repair</a>. Designed by <a href="#">Numan</a></span>
+				<span>Copyright © {{ date('Y') }} All Rights Reserved by <a href="/" class="fs-14">Prudent Credit Solution</a></span>
 			</div>
 		</div>
 		<!-- Footer closed -->

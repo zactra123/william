@@ -1,4 +1,4 @@
-@extends('layouts.layout1')
+@extends('layouts.auth')
 
 @section('meta')
     <title>Register on Prudent Credit Solutions</title>

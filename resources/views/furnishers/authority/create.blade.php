@@ -60,9 +60,9 @@
                                     <div class="row expand-address" data-address="#address-">
                                         <div class="col-md-6"><label for="">Executive Address</label>  </div>
                                         <div class="col-md-6 text-right">
-                                            <button type="button" class="btn btn-danger mb-5">
-                                                <i class="fa fa-minus-circle"></i>
-                                            </button>
+                                          <span class="text-danger mb-3 fs-18">
+                                              <i class="fa fa-minus-circle"></i>
+                                          </span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 addresses " id="address">

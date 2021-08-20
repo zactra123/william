@@ -302,7 +302,7 @@ Route::group(['prefix'=> 'affiliate'], function(){
     Route::post('client/{client}/negative-contract', 'AffiliatesController@negativeItemContract')->name('affiliate.negative.contract');
 
     Route::get('client/complete/information/{info}', 'AffiliatesController@showRequireInfo')->name('affiliate.complete.requireInfo');
-    Route::put('client/complete/require/information', 'AffiliatesController@updateDispute')->name('affiliate..dispute.update');
+    Route::put('client/complete/require/information', 'AffiliatesController@updateDispute')->name('affiliate.dispute.update');
 
 
 

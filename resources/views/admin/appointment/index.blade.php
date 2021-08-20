@@ -510,8 +510,8 @@
         $('.remove-appointment').click(function(){
             var id = $(this).attr("data-id");
             $("#appointmentDetails").modal("hide");
-            bootbox.confirm("Do you really want to delete record?", function (result) {
-                if (result) {
+            // bootbox.confirm("Do you really want to delete record?", function (result) {
+            //     if (result) {
                     $.ajax(
                         {
                             url: "/admin/appointment/" + id,
@@ -524,8 +524,8 @@
                                 displayMessage("Deleted Successfully");
                             }
                         });
-                }
-            })
+            //     }
+            // })
         })
 
 
@@ -559,17 +559,4 @@
 
     </script>
 
-
-
-
-
-
-
 @endsection
-
-
-
-
-
-
-

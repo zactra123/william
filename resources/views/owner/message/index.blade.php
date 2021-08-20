@@ -102,27 +102,27 @@
                                             <div class="modal-body">
                                               <table class="table table-striped">
                                                 <tr>
-                                                  <th>FULL NAME</th>
+                                                  <th>Full Name</th>
                                                   <td><span class="left" id="appointment-full_name"></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <th>PHONE NUMBER</th>
+                                                  <th>Phone Number</th>
                                                   <td><span class="left" id="appointment-phone"></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <th>EMAIL</th>
+                                                  <th>Email</th>
                                                   <td><span class="left" id="appointment-email"></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <th>DATE</th>
+                                                  <th>Date</th>
                                                   <td><span class="left" id="appointment-date"></span></td>
                                                 </tr>
                                                 <tr>
-                                                  <th>TITLE</th>
+                                                  <th>Title</th>
                                                   <td> <p id="appointment-title"></p> </td>
                                                 </tr>
                                                 <tr>
-                                                  <th>DESCRIPTION</th>
+                                                  <th>Description</th>
                                                   <td><p id="appointment-description"></p></td>
                                                 </tr>
                                               </table>

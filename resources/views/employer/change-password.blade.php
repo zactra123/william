@@ -27,7 +27,9 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-    {!! Form::open(['route'=>['adminRec.changePassword'],'method' => 'POST']) !!} @method('PUT') @csrf
+    {!! Form::open(['route'=>['adminRec.changePassword'],'method' => 'POST']) !!}
+    @method('PUT')
+    @csrf
     <div class="card">
       <div class="card-header text-center">
         {{ ucfirst($admin->full_name) }} - {{ $admin->email }}
@@ -49,7 +51,8 @@
   </div>
 </div>
 
-@endsection @section('js')
+@endsection
+@section('js')
 <script type="text/javascript">
   $(document).ready(function () {
     $(".pass_show").append('<span class="ptxt"><i class="fa fa-eye"></span>');

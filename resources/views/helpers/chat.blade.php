@@ -32,8 +32,8 @@
   @php
     $guestid = '';
   @endphp
-  <input type="hidden" class="isguest" name="" value="no">
 @endif
+<input type="hidden" class="isguest" name="" value="no">
 <input type="hidden" class="sessionid" name="" value="{{ $guestid }}">
 <div class="chat" id="chat">
     <div class="header open-chatbox" id="chat_header" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}">
@@ -137,6 +137,7 @@
 
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script>
+
 var getguestid = $(".isguest").val();
 if (getguestid=='yes') {
   var guestid = $(".sessionid").val();

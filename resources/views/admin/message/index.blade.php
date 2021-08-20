@@ -51,33 +51,25 @@
                                                 <form method="post" action="{{route('admin.message.create')}}">
                                                     @csrf
                                                     <input type="hidden" name="start_date" id="start_date">
-
-
                                                     <div class="row">
                                                       <div class="col-md-6 full_name_id">
                                                           <input class="form-control"  type="text" name="full_name" id="fullNameId" placeholder="Full Name">
-
                                                       </div>
-
                                                       <div class="col-md-6 phone_number_id">
                                                           <input class="form-control"  type="text" name="phone_number" id="phoneNumberId" placeholder="Phone Number">
                                                       </div>
                                                     </div>
-
                                                     <div class="row mt-3">
                                                       <div class="col-md-6 email_id">
                                                           <input  class="form-control" type="email" name="email" id="emailId" placeholder="Email">
                                                       </div>
-
                                                       <div class="col-md-6 time_id ">
                                                           <input class="form-control" type="time" name="time" id="timeId" placeholder="Time">
-
                                                       </div>
                                                     </div>
                                                     <div class="row mt-3">
                                                       <div class="col-md-12 ptitle_id">
                                                           <input class="form-control" type="text" name="title" id="titleId" placeholder="Title">
-
                                                       </div>
                                                     </div>
                                                     <div class="row mt-3">
@@ -85,7 +77,6 @@
                                                           <textarea class="form-control" name="description" rows="5" id="descriptionId" placeholder="Description"> </textarea>
                                                         </div>
                                                     </div>
-
                                                     <div class="row mt-3 text-right">
                                                         <div class="col-md-12">
                                                           <input type="submit" value="Add message" class="ms-ua-submit btn btn-primary">
@@ -94,13 +85,11 @@
                                                 </form>
                                             </div>
 
-
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="modal fade" id="appointmentDetails" tabindex="-1" role="dialog" aria-labelledby="appointmentDetailsModalLabel">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -112,62 +101,34 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="row">
-                                              <div class="col-md-6 app_details">
-                                                 Full Name:
-                                              </div>
-                                              <div class="col-md-6" id="appointment-full_name">
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-md-6 app_details">
-                                                Phone Number:
-                                              </div>
-                                              <div class="col-md-6" id="appointment-phone">
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-md-6 app_details">
-                                                Email:
-                                              </div>
-                                              <div class="col-md-6" id="appointment-email">
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-md-6 app_details">
-                                                Date:
-                                              </div>
-                                              <div class="col-md-6" id="appointment-date">
-                                              </div>
-                                            </div>
+                                          <table class="table table-striped">
+                                            <tr>
+                                              <th>Full Name</th>
+                                              <td><span class="left" id="appointment-full_name"></span></td>
+                                            </tr>
+                                            <tr>
+                                              <th>Phone Number</th>
+                                              <td> <span class="left" id="appointment-phone"></span> </td>
+                                            </tr>
+                                            <tr>
+                                              <th>Email</th>
+                                              <td> <span class="left" id="appointment-email"></span> </td>
+                                            </tr>
+                                            <tr>
+                                              <th>Date</th>
+                                              <td> <span class="left" id="appointment-date"></span> </td>
+                                            </tr>
+                                            <tr>
+                                              <th>Title</th>
+                                              <td> <p id="appointment-title"></p> </td>
+                                            </tr>
+                                            <tr>
+                                              <th>Description</th>
+                                              <td><p id="appointment-description"></p></td>
+                                            </tr>
+                                          </table>
+                                          <div class="note .overflow-vertical app_details" id="noteId"></div>
 
-                                            <div class="row app_details">
-                                              <div class="col-md-12">
-                                                <div class="row">
-                                                  <h3>Title:</h3>
-                                                  <span id="appointment-title" class="ml-3 mt-2"></span>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-md-12">
-                                                <h3>Description:</h3>
-                                              </div>
-                                              <div class="col-md-12">
-                                                <span id="appointment-description" class="ml-3"></span>
-                                              </div>
-                                            </div>
-
-                                            <div class="row mt-3">
-                                              <div class="col-md-12">
-                                                <h3>Notes:</h3>
-                                              </div>
-                                              <div class="col-md-12">
-                                                <span id="noteId" class="ml-3"></span>
-                                              </div>
-                                            </div>
 
                                             <div class="addNote">
                                                 <div class="ms-ua-form">
@@ -186,17 +147,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                          <div id="buttonCompleted"></div>
-                                        </div>
+
                                         <div class="modal-footer">
+                                            <div id="buttonCompleted"></div>
                                             <button class="btn btn-secondary edit-appointment" ><i class="fa fa-edit"></i></button>
                                             <button class="btn btn-danger remove-appointment"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                          
                             <div class="modal fade" id="updateMessage" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -723,8 +683,8 @@
             $('.remove-appointment').click(function(){
                 var id = $(this).attr("data-id");
                 $("#appointmentDetails").modal("hide");
-                bootbox.confirm("Do you really want to delete record?", function (result) {
-                    if (result) {
+                // bootbox.confirm("Do you really want to delete record?", function (result) {
+                //     if (result) {
                         $.ajax(
                             {
                                 url: "/admin/message/" + id,
@@ -737,8 +697,8 @@
                                     displayMessage("Deleted Successfully");
                                 }
                             });
-                    }
-                })
+                //     }
+                // })
             })
 
             $('#phoneNumberId').keyup(function() {
