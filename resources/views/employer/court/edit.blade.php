@@ -90,32 +90,32 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-4">
-                    <div class="row">
-                      <div class="col-sm-2">
+                    <div class="row mb-2">
+                      {{-- <div class="col-sm-2">
                         <img class="responsive" src="/images/phone.png" />
-                      </div>
-                      <div class="col-sm-10">
+                      </div> --}}
+                      <div class="col-sm-12">
                         {!! Form::text("court[phone_number]",$court->phone_number, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="row">
-                      <div class="col-sm-2">
+                    <div class="row mb-2">
+                      {{-- <div class="col-sm-2">
                         <img class="responsive" src="/images/fax.png" />
-                      </div>
-                      <div class="col-sm-10">
+                      </div> --}}
+                      <div class="col-sm-12">
                         {!! Form::text("court[fax_number]", $court->fax_number, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                       </div>
                     </div>
                   </div>
 
                   <div class="col-sm-4">
-                    <div class="row">
-                      <div class="col-sm-2">
+                    <div class="row mb-2">
+                      {{-- <div class="col-sm-2">
                         <img class="responsive" src="/images/email.png" />
-                      </div>
-                      <div class="col-sm-10">
+                      </div> --}}
+                      <div class="col-sm-12">
                         {!! Form::email("court[email]", $court->email, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                       </div>
                     </div>
@@ -206,7 +206,7 @@
               <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
                   <span class="fa fa-times"></span>
               </button>
-              
+
             </div>
           </div>
         </div>

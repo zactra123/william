@@ -184,91 +184,82 @@
                         </div>
                         <div class="col-md-12 addresses " id="address-{{$type}}">
                             @if($type == 'registered_agent')
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-sm-5 paste-register"><a class="btn btn-primary ms-ua-submit text-white">Copy Entity Address as Registered Agent fix functionality</a></div>
 
-                                <div class="form-group col-sm-7 p-0 pr-3">
-                                    {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
-                                </div>
+
                             </div>
                             @endif
-                            @if($type == 'executive_address')
+
+
                             <div class="row">
-                                <div class="col-md-12 executive_copied">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            Copy ParenT Executive Contact
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}}>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-12">
-                                    {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
-                                </div>
-                            </div>
-                            @endif
-                            @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
-                                </div>
-                            </div>
-                            @endif
-                            <div class="row">
+                              @if($type == 'registered_agent')
+
+                                  <div class="form-group col-sm-3">
+                                      {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
+                                  </div>
+                              @endif
+                              @if($type == 'executive_address')
+                                  <div class="col-md-12 executive_copied">
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              Copy ParenT Executive Contact
+                                          </div>
+                                          <div class="col-md-6">
+                                              <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}}>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group col-sm-3">
+                                      {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                  </div>
+                              @endif
+                              @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
+                                  <div class="form-group col-sm-3">
+                                      {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                                  </div>
+                              @endif
                                 {!! Form::hidden("bank_address[$type][type]", $type, ["class"=>"form-control"]) !!}
                                 {!! Form::hidden("bank_address[$type][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
 
                                 <div class="form-group col-sm-3">
-                                    {{-- {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                     {!! Form::text("bank_address[{$type}][street]", !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    {{-- {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                     {!! Form::text("bank_address[{$type}][city]", !empty($address) ? $address['city'] : null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    {{-- {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                     {!! Form::select("bank_address[{$type}][state]", $states, !empty($address) ? $address['state'] : null, ['class'=>'form-control selectize-single state','placeholder' => 'State']); !!}
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    {{-- {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                     {!! Form::text("bank_address[{$type}][zip]", !empty($address) ? $address['zip'] : null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                     <div class="row">
-                                        {{-- <div class="form-group col-sm-2 px-2">
-                                                      <img class="responsive" src="{{ url('/') }}/images/phone.png">
-                                    </div> --}}
+
                                     <div class="form-group col-sm-12">
                                         {!! Form::text("bank_address[{$type}][phone_number]",!empty($address) ? $address['phone_number'] : null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-4">
+                            <div class="form-group col-sm-3">
                                 <div class="row">
-                                    {{-- <div class="form-group col-sm-2 px-2">
-                                                      <img class="responsive" src="{{ url('/') }}/images/fax.png">
-                                </div> --}}
+
                                 <div class="form-group col-sm-12">
                                     {!! Form::text("bank_address[{$type}][fax_number]", !empty($address) ? $address['fax_number'] : null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-3">
                             <div class="row">
-                                {{-- <div class="form-group col-sm-2 px-2">
-                                                      <img class="responsive" src="{{ url('/') }}/images/email.png">
-                            </div> --}}
+
                             <div class="form-group col-sm-12">
                                 {!! Form::email("bank_address[$type][email]", !empty($address) ? $address['email'] : null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                             </div>
                         </div>
-                </div>
-            </div>
+                      </div>
+                            </div>
+
         </div>
         </formset>
         @endforeach
@@ -346,281 +337,6 @@
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script src="{{ asset('js/site/admin/banks.js') }}"></script>
-
-<script type="text/javascript">
-    //
-    // $( document ).ready(function() {
-    //   $('.add-additional').on('click', function(){
-    //       var n = Number(Date.now());
-    //       additional = $('#addtional_address_template').html()
-    //           .replaceAll('{i}', n)
-    //           .replace('{class}', 'selectize-single')
-    //       $(additional).insertBefore('.additional-addresses')
-    //       $('.additional-addresses').prev().find('.selectize-single').selectize({
-    //           selectOnTab: true,
-    //       })
-    //       $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
-    //   });
-    //
-    //   $('.show-parent-bank').on('click', function(){
-    //       id = $(this).parents('form').find('.parent_id').val();
-    //
-    //       if (!id) {
-    //           alert("PARENT BANK NOT DEFINED");
-    //           return false;
-    //       }
-    //
-    //       $.ajax({
-    //           url: '/admins/furnishers/'+id,
-    //           type: "GET",
-    //           success: function( data ) {
-    //               $('#parentModal').find('.modal-body').html(data);
-    //               $('#parentModal .selectize-single').selectize({
-    //                   selectOnTab: true,
-    //               });
-    //               $('#parentModal .selectize-multiple').selectize({
-    //                   plugins: ['remove_button'],
-    //                   selectOnTab: true,
-    //                   delimiter: ',',
-    //                   persist: true,
-    //                   preload: true,
-    //                   labelField: 'name',
-    //                   valueField: 'name',
-    //                   create: function(input) {
-    //                       return {
-    //                           value: input,
-    //                           name: input
-    //                       };
-    //                   }
-    //               });
-    //               $('#parentModal').modal('toggle');
-    //               $('.paste-register').on('click', function(){
-    //                   var name =   $("#parentModal input[name='bank_address[executive_address][name]']").val();
-    //                   var street =   $("#parentModal input[name='bank_address[executive_address][street]']").val();
-    //                   var city =   $("#parentModal input[name='bank_address[executive_address][city]']").val();
-    //                   var state =   $("#parentModal select[name='bank_address[executive_address][state]']").val();
-    //                   var zip =   $("#parentModal input[name='bank_address[executive_address][zip]']").val();
-    //                   var phone =   $("#parentModal input[name='bank_address[executive_address][phone_number]']").val();
-    //                   var fax =   $("#parentModal input[name='bank_address[executive_address][fax_number]']").val();
-    //                   var email =   $("#parentModal input[name='bank_address[executive_address][email]']").val();
-    //
-    //                   $("#parentModal input[name='bank_address[registered_agent][name]']").val(name);
-    //                   $("#parentModal input[name='bank_address[registered_agent][street]']").val(street);
-    //                   $("#parentModal input[name='bank_address[registered_agent][city]']").val(city);
-    //
-    //                   var $select = $("#parentModal select[name='bank_address[registered_agent][state]']").selectize();
-    //                   var selectize = $select[0].selectize;
-    //                   selectize.setValue(selectize.search(state).items[0].id);
-    //
-    //                   $("#parentModal input[name='bank_address[registered_agent][zip]']").val(zip);
-    //                   $("#parentModal input[name='bank_address[registered_agent][phone_number]']").val(phone);
-    //                   $("#parentModal input[name='bank_address[registered_agent][fax_number]']").val(fax);
-    //                   $("#parentModal input[name='bank_address[registered_agent][email]']").val(email);
-    //               } );
-    //               $('.add-additional').on('click', function(){
-    //                   var n = Number(Date.now());
-    //                   additional = $('#addtional_address_template').html()
-    //                       .replaceAll('{i}', n)
-    //                       .replace('{class}', 'selectize-single');
-    //                   $(additional).insertBefore('.additional-addresses');
-    //                   $('.additional-addresses').prev().find('.selectize-single').selectize({
-    //                       selectOnTab: true,
-    //                   });
-    //                   $('.us-phone').mask('(000) 000-0000 | (000) 000-0000');
-    //               });
-    //
-    //
-    //               $('#parentBankInformationEdit').validate({
-    //
-    //                   ignore: [],
-    //                   rules: {
-    //                       "bank[name]": {
-    //                           required: true,
-    //                           // remote: {
-    //                           //     url: "/admins/furnishers/check/name",
-    //                           //     type: "POST",
-    //                           //     cache: false,
-    //                           //     dataType: "json",
-    //                           //     data: {
-    //                           //         name: function() { return $("#parentBankInformationEdit .bank_name").val();},
-    //                           //         _token: function (){return  $("meta[name='csrf-token']").attr("content");}
-    //                           //     },
-    //                           //     dataFilter: function(response) {
-    //                           //         return  false;
-    //                           //         if(jQuery.parseJSON(response).status == true) {
-    //                           //             return true;
-    //                           //         }else{
-    //                           //             return false;
-    //                           //         }
-    //                           //     }
-    //                           // }
-    //                       },
-    //                   },
-    //                   // messages:{
-    //                   //     "bank[name]": {
-    //                   //         remote: "This name already exist"
-    //                   //     }
-    //                   //
-    //                   // },
-    //
-    //                   submitHandler: function(form) {
-    //                       var data = $(form).serialize();
-    //                       var action = $(form).attr("action");
-    //                       console.log(action);
-    //                       $.ajax({
-    //                           url: action,
-    //                           type: "PUT",
-    //                           data: data,
-    //                           success: function( data ) {
-    //
-    //
-    //                               $('#parentModal').modal('toggle'); //or  $('#IDModal').modal('hide');
-    //                               $(".autocomplete-bank").val(data['parent_name']);
-    //                           }
-    //                       });
-    //                   }
-    //
-    //               });
-    //
-    //
-    //           }
-    //       });
-    //   });
-    //
-    //
-    // });
-    //
-    // $(document).on('click', '.remove-address button', function(){
-    //     $(this).parents('formset').remove();
-    // });
-    //
-    // $(document).on('change', '.bank-type' ,function(){
-    //     $form = $(this).parents('form');
-    //     var bankType = $form.find('.bank-type').val(),
-    //         token = $("meta[name='csrf-token']").attr("content");
-    //
-    //     $form.find(".bank_sub_type_append").html('');
-    //     $.each( types[bankType], function(index, item) {
-    //         var sub_types =  $("#sub_types_append").html();
-    //         sub_types = sub_types.replace(/{value}/g, item);
-    //
-    //         $form.find(".bank_sub_type_append").append(sub_types);
-    //     });
-    //
-    //     $form.find( ".fraud_address" ).toggleClass('hidden', bankType != 3 );
-    //
-    //
-    //     if(bankType == 3) {
-    //         $form.find('.dispute_address').find('.expand-address label').text("REGULAR DISPUTE ADDRESS");
-    //     } else {
-    //         $form.find('.dispute_address').find('.expand-address label').text("DISPUTE ADDRESS");
-    //     }
-    //     console.log(bankType);
-    //     if([14, 17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61].includes(parseInt(bankType)) || bankType == ""){
-    //
-    //         if($form.find('.parent_id').val() !== ""){
-    //             $form.find('.hide-parent-field').removeClass('hide');
-    //             $form.find('.show-parent-field').addClass('hide');
-    //             $form.find('.parent').removeClass("hidden" );
-    //             $form.find('.parent-show').removeClass('hide');
-    //         }else{
-    //             $form.find('.show-parent-field').removeClass('hide');
-    //             $form.find('.hide-parent-field').addClass('hide');
-    //             $form.find('.parent-show').addClass('hide');
-    //             $form.find('.parent').removeClass("hidden" );
-    //         }
-    //
-    //
-    //     }else {
-    //         $form.find('.parent').addClass("hidden");
-    //         $(".autocomplete-bank").val("");
-    //         $(".autocomplete-bank").trigger('keydown');
-    //     }
-    // });
-    //
-    // $(document).on('click', '.show-parent-field', function(){
-    //     $('.parent-show').removeClass('hide');
-    //     $('.show-parent-field').addClass('hide');
-    //     $('.hide-parent-field').removeClass('hide');
-    // });
-    //
-    // $(document).on('click', '.hide-parent-field', function(){
-    //     console.log('dasdasd');
-    //     $('.parent-show').addClass('hide');
-    //     $('.show-parent-field').removeClass('hide');
-    //     $('.hide-parent-field').addClass('hide');
-    //     $('.autocomplete-bank').val('');
-    //     $('.parent_id').val('');
-    // });
-    //
-    // $(document).on('click','.bank_sub_type_append', function(){
-    //     $form = $(this).parents('form');
-    //     var bankType = $form.find('.bank-type').val();
-    //
-    //     if(parseInt(bankType) == 40 && $("input[type='checkbox']:checked").val() == "BANK-SBA LENDER"){
-    //
-    //         $form.find('.parent').removeClass("hidden");
-    //     } else if(parseInt(bankType) == 40) {
-    //         $form.find('.parent').addClass("hidden");
-    //         $(".autocomplete-bank").val("");
-    //         $(".autocomplete-bank").trigger('keydown');
-    //     }
-    // });
-    //
-    // if($('.parent_id').val()==""){
-    //     $(".executive_copied").hide();
-    // }
-    // $(document).on('change click keydown', function(){
-    //     if($('.parent_id').val()!=""){
-    //         $(".executive_copied").show();
-    //     }
-    // });
-    //
-    //
-    // $(document).on('click','.executive_copied', function(){
-    //     if($("input[name='bank_address[executive_address][copied]']:checked").val()){
-    //         $form = $(this).parents('form');
-    //         var parent_id = $form.find('.parent_id').val();
-    //
-    //
-    //         $.ajax({
-    //             url: '/admins/furnishers/executive-copied',
-    //             type: "POST",
-    //             data: {
-    //                 "_token": $("meta[name='csrf-token']").attr("content"),
-    //                 'parent_id': parent_id
-    //             },
-    //             success: function( data ) {
-    //                 $form.find("input[name='bank_address[executive_address][name]']").val(data.name);
-    //                 $form.find("input[name='bank_address[executive_address][street]']").val(data.street);
-    //                 $form.find("input[name='bank_address[executive_address][city]']").val(data.city);
-    //                 if(data.state != null){
-    //                     var $select = $form.find("select[name='bank_address[executive_address][state]']").selectize();
-    //                     var selectize = $select[0].selectize;
-    //                     selectize.setValue(selectize.search(data.state).items[0].id);
-    //                 }
-    //                 $form.find("input[name='bank_address[executive_address][zip]']").val(data.zip);
-    //                 $form.find("input[name='bank_address[executive_address][phone_number]']").val(data.phone);
-    //                 $form.find("input[name='bank_address[executive_address][fax_number]']").val(data.fax);
-    //                 $form.find("input[name='bank_address[executive_address][email]']").val(data.email);
-    //             }
-    //         });
-    //
-    //     }else{
-    //         $form.find("input[name='bank_address[executive_address][name]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][street]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][city]']").val('');
-    //         $form.find("select[name='bank_address[executive_address][state]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][zip]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][phone_number]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][fax_number]']").val('');
-    //         $form.find("input[name='bank_address[executive_address][email]']").val('');
-    //     }
-    //
-    //
-    // });
-</script>
-
 <script>
     $(document).ready(function() {
 

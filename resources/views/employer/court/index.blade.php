@@ -30,7 +30,7 @@
             </div>
             <p class="mg-b-20">See list of court here ...</p>
 
-              <div class="container">
+              <div class="container m-hidden">
                   <?php $alphas = range('A', 'Z');?>
                   <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -42,7 +42,6 @@
                     </ul>
                   </nav>
               </div>
-
               <div class="album py-5">
                   <div class="container">
                       <div class="row">

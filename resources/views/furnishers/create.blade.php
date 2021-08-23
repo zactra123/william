@@ -108,7 +108,7 @@
                             @foreach(\App\BankAddress::TYPES as $type=>$name)
                               @if($type == 'additional_address')
                             <div class="row additional-addresses">
-                                <div class="col-sm-6 add-additional p-1 pb-5" ><a class="btn btn-primary ms-ua-submit text-white">Add Addittonal Address</a></div>
+                                <div class="col-sm-6 add-additional p-1 pb-5 ml-3F" ><a class="btn btn-primary ms-ua-submit text-white">Add Additonal Address</a></div>
                             </div>
                             @continue
 
@@ -128,26 +128,26 @@
                                     <div class="row">
                                         <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit btn btn-primary text-white ml-2 mb-3">Copy Entity Address as Registered Agent fix functionality</a></div>
 
-                                        <div class="form-group col-sm-12">
-                                            {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
-                                        </div>
                                     </div>
                                     @endif
-                                    @if($type == 'executive_address')
+
                                     <div class="row">
-                                        <div class="col-md-12 executive_copied mb-3"> <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> Copy Parent Executive Contact </div>
-                                        <div class="form-group col-sm-12">
-                                            {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
-                                        </div>
-                                    </div>
-                                    @endif @if(in_array($type, ['dispute_address', 'qwr_address', 'fraud_address']))
-                                    <div class="row">
-                                        <div class="form-group col-sm-12">
-                                            {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
-                                        </div>
-                                    </div>
-                                    @endif
-                                    <div class="row">
+                                      @if($type == 'registered_agent')
+                                          <div class="form-group col-sm-3">
+                                              {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
+                                          </div>
+                                      @endif
+                                      @if($type == 'executive_address')
+                                          <div class="col-md-3 executive_copied mb-3"> <input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> Copy Parent Executive Contact </div>
+                                          <div class="form-group col-sm-3">
+                                              {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                          </div>
+                                      @endif
+                                      @if(in_array($type, ['dispute_address', 'qwr_address', 'fraud_address']))
+                                          <div class="form-group col-sm-3">
+                                              {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+                                          </div>
+                                      @endif
                                         {!! Form::hidden("bank_address[{$type}][type]", $type, ["class"=>"form-control"]) !!}
 
                                         <div class="form-group col-sm-3">
@@ -167,39 +167,38 @@
                                             {{-- {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][zip]", null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-sm-4">
+                                        <div class="form-group col-sm-3">
                                             <div class="row">
                                                 {{-- <div class="form-group col-sm-2">
                                                     <img class="responsive" width="50%" src="{{ url('/') }}/images/phone.png" />
                                                 </div> --}}
-                                                <div class="form-group col-sm-12">
+                                                <div class="col-sm-12">
                                                     {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-sm-4">
+                                        <div class="form-group col-sm-3">
                                             <div class="row">
                                                 {{-- <div class="form-group col-sm-2">
                                                     <img class="responsive" width="50%" src="{{ url('/') }}/images/fax.png" />
                                                 </div> --}}
-                                                <div class="form-group col-sm-12">
+                                                <div class="col-sm-12">
                                                     {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-sm-4">
+                                        <div class="form-group col-sm-3">
                                             <div class="row">
                                                 {{-- <div class="form-group col-sm-2">
                                                     <img class="responsive" width="50%" src="{{ url('/') }}/images/email.png" />
                                                 </div> --}}
-                                                <div class="form-group col-sm-12">
+                                                <div class="col-sm-12">
                                                     {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </formset>
                             @endforeach
@@ -432,12 +431,12 @@ var types = {!!  json_encode($subTypes) !!};
         </div>
 
         <div class="col-md-12 addresses " id="address-additional_address-{i}">
+
             <div class="row">
-                <div class="form-group col-sm-12">
-                    {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
-                </div>
-            </div>
-            <div class="row">
+              <div class="form-group col-sm-3">
+                  {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
+              </div>
+
                 {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
 
                 <div class="form-group col-sm-3">
@@ -454,9 +453,7 @@ var types = {!!  json_encode($subTypes) !!};
                     {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                     {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-3">
                     <div class="row">
                       <!-- <div class="form-group col-sm-2 p-0">
                           <img  class="responsive" src="{{url('/')}}/images/phone.png">
@@ -466,7 +463,7 @@ var types = {!!  json_encode($subTypes) !!};
                       </div>
                     </div>
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-3">
                   <div class="row">
                     <!-- <div class="form-group col-sm-2 p-0">
                         <img  class="responsive" src="{{url('/')}}/images/fax.png">
@@ -477,7 +474,7 @@ var types = {!!  json_encode($subTypes) !!};
                   </div>
 
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-3">
                     <div class="row">
                       <!-- <div class="form-group col-sm-2 p-0">
                           <img  class="responsive" src="{{url('/')}}/images/email.png">
@@ -487,8 +484,8 @@ var types = {!!  json_encode($subTypes) !!};
                       </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </formset>
 </script>

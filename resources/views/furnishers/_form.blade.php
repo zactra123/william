@@ -43,7 +43,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-12 text-right">
       <input type="submit" value="Add" class="btn btn-primary pull-right" />

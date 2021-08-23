@@ -140,30 +140,30 @@ asort($types)
                                     <div class="row">
                                         <div class="form-group col-sm-6">
                                             <div class="row">
-                                              <div class="form-group col-sm-2 p-0">
+                                              {{-- <div class="form-group col-sm-2 p-0">
                                                   <img  class="responsive" src="{{url('/')}}/images/phone.png">
-                                              </div>
-                                              <div class="form-group col-sm-10">
+                                              </div> --}}
+                                              <div class="col-sm-12">
                                                   {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                               </div>
                                             </div>
                                         </div>
                                         <div class="form-group col-sm-6">
                                           <div class="row">
-                                            <div class="form-group col-sm-2 p-0">
+                                            {{-- <div class="form-group col-sm-2 p-0">
                                                 <img  class="responsive" src="{{url('/')}}/images/fax.png">
-                                            </div>
-                                            <div class="form-group col-sm-10">
+                                            </div> --}}
+                                            <div class="col-sm-12">
                                                 {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                             </div>
                                           </div>
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <div class="row">
-                                              <div class="form-group col-sm-2 p-0">
+                                              {{-- <div class="form-group col-sm-2 p-0">
                                                   <img  class="responsive" src="{{url('/')}}/images/email.png">
-                                              </div>
-                                              <div class="form-group col-sm-10">
+                                              </div> --}}
+                                              <div class="col-sm-12">
                                                   {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                               </div>
                                             </div>

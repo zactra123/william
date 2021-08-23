@@ -15,7 +15,6 @@
     </div>
     <div class="row">
       {!! Form::hidden("bank_address[$type][{$address->id}][type]", $type, ["class"=>"form-control"]) !!} {!! Form::hidden("bank_address[$type][{$address->id}][id]", !empty($address) ? $address['id'] : null, ["class"=>"form-control"]) !!}
-
       <div class="form-group col-sm-5">
         {!! Form::text("bank_address[{$type}][{$address->id}][street]", !empty($address) ? $address['street'] : null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
       </div>

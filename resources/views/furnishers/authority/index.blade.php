@@ -36,7 +36,7 @@
                           <div class="col-md-3 col-sm-12"></div>
                           <div class="col-md-12 col-sm-12">
 
-                              <div class="container">
+                              <div class="container m-hidden">
                                 <div class="row">
                                     <div class="col-md-12">
 

@@ -96,7 +96,6 @@ class TodosController extends Controller
 
         return response()->json(['status' => 'success']);
 
-
     }
 
     public function clientToDoUpdate(Request $request)

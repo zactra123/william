@@ -68,62 +68,46 @@
                                     <div class="col-md-12 addresses " id="address">
 
                                         <div class="row mb-3">
-                                            <div class="col-sm-12">
-                                                {!! Form::text("authority[ex_name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-
-                                            <div class="col-sm-5">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
+                                          <div class="col-sm-3 form-group">
+                                              {!! Form::text("authority[ex_name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
+                                          </div>
+                                            <div class="col-sm-3 form-group">
                                                 {!! Form::text("authority[street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                             </div>
-                                            <div class="col-sm-3">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
+                                            <div class="col-sm-3 form-group">
                                                 {!! Form::text("authority[city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                             </div>
-                                            <div class="col-sm-2">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
+                                            <div class="col-sm-3 form-group">
                                                 {!! Form::select("authority[state]", $states,  null, ['class'=>'selectize-single state form-control','placeholder' => 'State']); !!}
                                             </div>
-                                            <div class="col-sm-2">
-                                                {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
+                                            <div class="col-sm-3 form-group">
                                                 {!! Form::text("authority[zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                             </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3 form-group">
                                                 <div class="row">
-                                                  <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{url('/')}}/images/phone.png">
-                                                  </div>
-                                                  <div class="col-sm-10">
+                                                  <div class="col-sm-12">
                                                       {!! Form::text("authority[phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                                   </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3 form-group">
                                                 <div class="row">
-                                                  <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{url('/')}}/images/fax.png">
-                                                  </div>
-                                                  <div class="col-sm-10">
+
+                                                  <div class="col-sm-12">
                                                   {!! Form::text("authority[fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                                   </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3 form-group">
                                                 <div class="row">
-                                                  <div class="col-sm-2">
-                                                      <img  class="responsive" src="{{url('/')}}/images/email.png">
-                                                  </div>
-                                                  <div class="col-sm-10">
+
+                                                  <div class="col-sm-12">
                                                       {!! Form::email("authority[email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                                   </div>
                                                 </div>
                                             </div>
-
+                                        </div>
+                                        <div class="row mb-3">
                                         </div>
                                     </div>
                                 </div>
@@ -217,6 +201,17 @@
       .responsive{
           width: 100%;
           height: auto;
+      }
+      @media (max-width: 576px) {
+        .mficons{
+          width: 25% !important;
+        }
+        .mmb-5{
+          margin-bottom: 5px !important;
+        }
+        .mmt-5{
+          margin-top: 5px !important;
+        }
       }
   </style>
 @endsection

@@ -31,13 +31,13 @@
                 <?php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types) ?> {!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data',
                 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!} @csrf
                 <div class="row">
-                  <div class="col-sm-4 files">
+                  <div class="col-sm-4 files mb-2">
                     <input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 mb-2">
                     <input type="text" name="court[name]" class="form-control bank_name" placeholder="COURT NAME" />
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 mb-2">
                     {!! Form::select("court[type]", $types, 1, ['class'=>'form-control bank-type']); !!}
                   </div>
                 </div>
@@ -72,46 +72,46 @@
               </div>
               --}}
               <div class="row">
-                <div class="form-group col-sm-5">
+                <div class="form-group col-sm-3">
                   {!! Form::text("court[street]", null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                 </div>
                 <div class="form-group col-sm-3">
                   {!! Form::text("court[city]", null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                 </div>
-                <div class="form-group col-sm-2">
+                <div class="form-group col-sm-3">
                   {!! Form::select("court[state]", $states, null, ['class'=>'selectize-single state form-control','placeholder' => 'State']); !!}
                 </div>
-                <div class="form-group col-sm-2">
+                <div class="form-group col-sm-3">
                   {!! Form::text("court[zip]", null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    <div class="col-sm-2">
+                    {{-- <div class="col-sm-2">
                       <img class="responsive" src="{{url('/')}}/images/phone.png" />
-                    </div>
-                    <div class="col-sm-10">
+                    </div> --}}
+                    <div class="col-sm-12">
                       {!! Form::text("court[phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                     </div>
                   </div>
                 </div>
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    <div class="col-sm-2">
+                    {{-- <div class="col-sm-2">
                       <img class="responsive" src="{{url('/')}}/images/fax.png" />
-                    </div>
-                    <div class="col-sm-10">
+                    </div> --}}
+                    <div class="col-sm-12">
                       {!! Form::text("court[fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                     </div>
                   </div>
                 </div>
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    <div class="col-sm-2">
+                    {{-- <div class="col-sm-2">
                       <img class="responsive" src="{{url('/')}}/images/email.png" />
-                    </div>
-                    <div class="col-sm-10">
+                    </div> --}}
+                    <div class="col-sm-12">
                       {!! Form::email("court[email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                     </div>
                   </div>
