@@ -5,8 +5,6 @@
     <section class="ms-user-account">
         <div class="container">
             <div class="card w-75">
-
-
                 <div class="card-body w-100">
                     {!! Form::open(['route' => ["affiliate.credentialsUpdate", $client->id], 'method' => 'POST',   'class' => 'm-form m-form--label-align-right', 'id'=>'client-credentials']) !!}
                     @method("put")
@@ -44,7 +42,6 @@
                             <label> <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}"  width="200"> If You are Not Register  <a href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">Click here to register</a></label>
                             <div class="form-group  m-1 font">
                                 {{ Form::text('client[tu_login]', !empty($client->credentials->tu_login) ? $client->credentials->tu_login : old('client.tu_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
-
                             </div>
                             <div class="form-group m-1  font">
                                 {{ Form::text('client[tu_password]', !empty($client->credentials->tu_password) ? $client->credentials->tu_password : old('client.tu_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}
@@ -53,7 +50,6 @@
                             <div class="form-group m-1  font">
                                 {{ Form::text('client[tu_question]', !empty($client->credentials->tu_question) ? $client->credentials->tu_question : old('client.tu_question'), ['class' => 'form-control m-input', 'placeholder' => 'SECRET QUESTION']) }}
                             </div>
-
                             <div class="form-group m-1  font">
                                 {{ Form::text('client[tu_answer]', !empty($client->credentials->tu_answer) ? $client->credentials->tu_answer : old('client.tu_answer'), ['class' => 'form-control m-input', 'placeholder' => 'SECRET ANSWER']) }}
                             </div>
@@ -76,7 +72,6 @@
                             <label> <img class="report_access"src="{{asset('images/report_access/eq_logo_1.png')}}"  width="200">  If You are Not Register  <a href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">Click here to register</a></label>
                             <div class="form-group  m-1 font">
                                 {{ Form::text('client[eq_login]', !empty($client->credentials->eq_login) ? $client->credentials->eq_login : old('client.eq_login'), ['class' => 'form-control m-input', 'placeholder' => 'USERNAME']) }}
-
                             </div>
                             <div class="form-group m-1  font">
                                 {{ Form::text('client[eq_password]', !empty($client->credentials->eq_password) ? $client->credentials->eq_password : old('client.eq_password'), ['class' => 'form-control m-input', 'placeholder' => 'PASSWORD']) }}

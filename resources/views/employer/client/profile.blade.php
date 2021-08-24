@@ -373,7 +373,7 @@
                           </tr>
     										</thead>
                         <tbody>
-                        
+
                           @foreach ($toDos->where('status', '!=',2) as $todo)
                             <tr>
                               <td class="font-weight-normal showDetails" data-id ="{{$todo->id}}">

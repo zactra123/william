@@ -17,7 +17,7 @@
                     <div class="stage-name">
                         <h3 class="stage-title">Registration Type</h3>
                     </div>
-                </a>
+                </a>                
                 <a class="registration-stage" data-id="2">
                     <div class="stage-img">
                         <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">

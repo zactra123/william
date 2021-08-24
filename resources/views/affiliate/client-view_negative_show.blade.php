@@ -32,8 +32,6 @@
 </style>
 
 @section('content')
-
-
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title"> Check Chosen Dispute </h2>
@@ -67,18 +65,14 @@
 
                                 </div>
                                 @foreach($data['ex_name'] as $names)
-
                                     <div class="row mt20 border title-name-{{$names->id}}">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-3">
                                             <span style="font-weight: bold"> {{$names->full_name}} </span>
                                         </div>
-
                                         <div class="col-md-3">
-
                                         </div>
-
                                         <div class="col-md-4 delete-name ex_personal" data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
@@ -98,7 +92,6 @@
                                             <label for="delete">Delete </label>
                                             <input type="radio"  class="ex_name_fix" data-name="{{$names->id}}" name="ex_name[{{$names->id}}][type]" value="delete">
                                         </div>
-
                                     </div>
                                     <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold" >
                                         <div class="col-md-1">
@@ -110,11 +103,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 @endforeach
                             </div>
-
                         @endif
 
                         @if(!empty($data['tu_name']))
@@ -128,25 +118,19 @@
                                     </div>
                                     <div class="col-md-3">
                                     </div>
-
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px"></span>
                                     </div>
-
                                 </div>
                                 @foreach($data['tu_name'] as $names)
-
                                     <div class="row mt20 border title-name-{{$names->id}}">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-3">
                                             <span style="font-weight: bold"> {{$names->full_name}} </span>
                                         </div>
-
                                         <div class="col-md-3">
-
                                         </div>
-
                                         <div class="col-md-4 delete-name tu_personal"   data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
@@ -166,7 +150,6 @@
                                             <label for="delete">Delete </label>
                                             <input type="radio"  class="tu_name_fix" data-name="{{$names->id}}" name="tu_name[{{$names->id}}][type]" value="delete">
                                         </div>
-
                                     </div>
                                     <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold" >
                                         <div class="col-md-1">
@@ -178,11 +161,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 @endforeach
                             </div>
-
                         @endif
 
                         @if(!empty($data['eq_name']))
@@ -196,25 +176,19 @@
                                     </div>
                                     <div class="col-md-3">
                                     </div>
-
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px"></span>
                                     </div>
-
                                 </div>
                                 @foreach($data['eq_name'] as $names)
-
                                     <div class="row mt20 border title-name-{{$names->id}}">
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-3">
                                             <span style="font-weight: bold"> {{$names->full_name}} </span>
                                         </div>
-
                                         <div class="col-md-3">
-
                                         </div>
-
                                         <div class="col-md-4 delete-name eq_personal" data-attribute="title-name-{{$names->id}}">
                                             <span style="font-weight: bold; font-size: 16px">DESELECT</span>
                                             <i class="fa fa-check-square-o" aria-hidden="true" ></i>
@@ -234,7 +208,6 @@
                                             <label for="delete">Delete </label>
                                             <input type="radio"  class="eq_name_fix" data-name="{{$names->id}}" name="eq_name[{{$names->id}}][type]" value="delete">
                                         </div>
-
                                     </div>
                                     <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold" >
                                         <div class="col-md-1">
@@ -246,11 +219,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 @endforeach
                             </div>
-
                         @endif
 
                         @if(!empty($data['ex_employ']))

@@ -1,7 +1,4 @@
 @extends('layouts.layout1')
-
-
-
 @section('content')
 
     <section class="register">
@@ -15,9 +12,7 @@
             @include('affiliate.add_client.review', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='review' ?'active' : 'none' ])
         </div>
 
-
-
-        <div class="chat" id="chat">
+        {{-- <div class="chat" id="chat">
             <div class="header" id="chat_header">
                 <svg width="368" viewBox="0 0 368 52" xmlns="http://www.w3.org/2000/svg">
                     <path d="M26 22.5049C19.6 42.9049 6 50.0049 0 51.0049H368C352 49.5049 342 21.0049 341.5 21.5049C333.1 3.90485 315 -0.161814 307 0.00485253C223 0.171519 55 0.404853 55 0.00485253C37.4 0.404853 28.3333 15.1715 26 22.5049Z" fill="url(#paint0_linear)"/>
@@ -68,7 +63,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
     </section>
 
 @endsection

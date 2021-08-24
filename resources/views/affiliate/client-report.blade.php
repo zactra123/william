@@ -32,8 +32,6 @@
 </style>
 
 @section('content')
-
-
     <section class="header-title section-padding">
         <div class="container text-center">
             <h2 class="title"> View Negative Item </h2>
@@ -43,8 +41,6 @@
 
     <section class="charts working-section">
         <div class="container-fluid">
-
-
             @if($clientReportsEX != null)
                 <div class="container">
                     <div class="row">
@@ -62,9 +58,7 @@
                                                             <option value="{{$key}}">{{date("m/d/Y",strtotime($value))}}</option>
                                                         @endforeach
                                                     </select>
-
                                                 </div>
-                                                {{--                                                    <input type="text" name="term" value="{{request()->term}}" class="form-control" >--}}
                                             </div>
                                             <div class="col-md-4  form-group">
                                                 <input type="submit" value="Search" class="form-control">
@@ -74,14 +68,11 @@
                                 </div>
                                 <div class="col-md-4 pull-right">
                                     <a target="_blank" href="{{ url(Storage::url('123.pdf') )}}" title="MyPdf">Download</a>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="Experian">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
@@ -99,9 +90,7 @@
                                     </div>
                                     <div class="col-md-3">
                                     </div>
-
                                 </div>
-
                                 @foreach($clientReportsEX->clientNames as $names)
                                     <div class="row mt20 border">
                                         <div class="col-md-1">
@@ -114,13 +103,10 @@
                                         </div>
                                         <div class="col-md-3">
                                         </div>
-
                                     </div>
-
                                 @endforeach
                             </div>
                             <div class="mt20"></div>
-
                             <div class="chart-report">
                                 <div class="row mt20">
                                     <div class="col-md-1">
@@ -128,13 +114,11 @@
                                     <div class="col-md-6">
                                         <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
                                     </div>
-
                                     <div class="col-md-3">
                                     </div>
                                     <div class="col-md-2">
                                     </div>
                                 </div>
-
                                 @foreach($clientReportsEX->clientEmployers as $employ)
                                     <div class="row mt20 border">
                                         <div class="col-md-1">
@@ -142,20 +126,13 @@
                                         <div class="col-md-6">
                                             <span style="font-weight: bold"> {{$employ->name}}</span>
                                         </div>
-
                                         <div class="col-md-3">
                                         </div>
                                         <div class="col-md-2">
-
                                         </div>
-
                                     </div>
-
                                 @endforeach
                             </div>
-
-
-
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <div class="row">
@@ -170,8 +147,6 @@
                                     <div class="col-md-2" style="font-weight: bold">
                                         RESIDENCE TYPE
                                     </div>
-
-
                                 </div>
 
                                 @foreach($clientReportsEX->clientAddresses as $address)
@@ -193,10 +168,8 @@
                                     </div>
                                 @endforeach
                             </div>
-
                             <div class="mt20"></div>
                             <div class="chart-report">
-
                                 <div class="row" >
                                     <div class="col-md-1">
                                     </div>
@@ -212,8 +185,6 @@
                                     </div>
                                     <div class="col-md-2" >
                                     </div>
-
-
                                     <div class="col-md-1">
                                     </div>
                                 </div>
@@ -223,7 +194,6 @@
                                         </div>
                                         <div class="col-md-5">
                                             <span style="font-weight: bold">{{$phone->number}} </span>
-
                                         </div>
                                         <div class="col-md-2">
                                             <span style="font-weight: bold">{{strtoupper($phone->type)}}</span>
@@ -243,7 +213,6 @@
                                         <div class="col-md-9">
                                             <span class="form-text">{{$publicRecords->source_name}}</span>
                                             <span class="form-text" style="padding-left: 15px">{{$publicRecords->source_id}}</span>
-
                                         </div>
                                     </div>
                                     <div class="row mt20 border" style="font-weight: bold">
@@ -258,7 +227,6 @@
                                                     <span class=""> {{$publicRecords->status}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
 
                                         @if($publicRecords->date_filed !=null )
@@ -270,7 +238,6 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_filed))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
 
                                         @if($publicRecords->on_record_until !=null )
@@ -294,7 +261,6 @@
                                             </div>
                                         @endif
                                         @if($publicRecords->date_resolved != null )
-
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE RESOLVED</label>
@@ -303,20 +269,15 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_resolved))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
-
                                     </div>
                                 </div>
                             @endforeach
-
                             <div class="mt20"></div>
-
                             <div class="chart-report">
                                 <span style="font-weight: bold">NEGATIVE ACCOUNT</span>
                                 @foreach($clientReportsEX->clientExAccounts->where('negative_item', true) as $accounts)
                                     <div class="mt20"></div>
-
                                     <div class="row border" style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
@@ -1860,4 +1821,3 @@
     </script>
 
 @endsection
-

@@ -38,11 +38,8 @@
                                 </div>
                                 <label for="password" class="col-md-1" >   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                         </div>
-
                         <div class="form-group row font justify-content-center">
-
                             <div class="col-md-4 tab-selector">
                                 <label for="last_name" class="row col-form-label text-md-right">Last Name : </label>
                                 <div class="col-md-10">
@@ -50,7 +47,6 @@
                                 </div>
                                 <label for="password" class="col-md-1" data-target="client-last_name">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                             <div class="col-md-4 tab-selector">
                                 <label for="uploaded_last_name" class="row col-form-label text-md-right">Last Name(From Documents): </label>
                                 <div class="col-md-10">
@@ -58,8 +54,6 @@
                                 </div>
                                 <label for="password" class="col-md-1" data-target="upload-last_name">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
-
                         </div>
 
                         <div class="form-group row font justify-content-center">
@@ -77,7 +71,6 @@
                                 </div>
                                 <label for="password" class="col-md-1" data-target="upload-dob">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                         </div>
                         <div class="form-group row font justify-content-center">
                             <div class="col-md-4 tab-selector">
@@ -111,7 +104,6 @@
                                 </div>
                                 <label for="password" class="col-md-1" data-target="client-dob">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                         </div>
 
                         <div class="form-group row font justify-content-center">
@@ -130,12 +122,8 @@
                                 </div>
                                 <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                         </div>
-
-
                         <div class="form-group row font justify-content-center">
-
                             <div class="col-md-4 tab-selector">
                                 <label for="password" class="row col-form-label text-md-right">   Address:  </label>
                                 <div class="col-md-10">
@@ -154,7 +142,6 @@
                         </div>
 
                         <div class="form-group row font justify-content-center">
-
                             <div class="col-md-4 tab-selector">
                                 <label for="password" class="row col-form-label text-md-right">   Zip code:  </label>
                                 <div class="col-md-10">
@@ -169,7 +156,6 @@
                                 </div>
                                 <label for="password" class="col-md-1 ">   <i class="fa fa-minus-circle"></i>  </label>
                             </div>
-
                         </div>
 
                         <div class="form-group row mb-0 font">
@@ -233,15 +219,3 @@
 @section('scripts')
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-

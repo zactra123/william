@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="mt20"></div>
-
+    
     @foreach($toDo->disputes as $dispute)
 
     <div class="form-group row m-1">

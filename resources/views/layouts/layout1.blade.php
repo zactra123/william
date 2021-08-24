@@ -57,8 +57,6 @@
 
         <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
 
-
-        @yield('scripts')
     </head>
     <body>
         <header class="theme-background py-2 fixed-top">
@@ -237,5 +235,6 @@
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
+        @yield('scripts')
     </body>
 </html>

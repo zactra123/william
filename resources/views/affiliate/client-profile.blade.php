@@ -16,8 +16,6 @@
                                 <h5>Client No: 01</h5>
                             </div>
                         </div>
-
-
                         <div class="row" >
                             <div class="col-l-12 m-0">
                                 <a href="#" class="link closeUpload" >
@@ -25,7 +23,6 @@
                                 </a>
                             </div>
                         </div>
-
                         <div class="row  hide form-group updateLogo ">
                             <button type="button" class="close closeUpload">
                                 <span aria-hidden="true">&times;</span>
@@ -34,33 +31,26 @@
                             @method("PUT")
                             @csrf
                             <div class="col-sm-12 form-group files">
-                                {{--                            <input class="bank_logo file-box" type="file" name="driver"  id="bank_logo" >--}}
                                 <input class="driver_license file-box" type="file" name="driver"  id="driver_license">
-
                             </div>
                             <div class="col-sm-12 form-group files">
                                 <input class="social_security file-box" type="file" name="social"  id="social_security" >
                             </div>
                             <div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
-
                             {!! Form::close() !!}
                         </div>
-
                         <div class="info zoomIn">
                         </div>
-
                     </div>
                     <ul class="categories">
                         <li title="FULL NAME" class="dl-field">
-
                         @if(!empty($client->clientAttachments()))
-                                <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-                                @if(!empty($dl))
-                                    <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
-                                @endif
+                            <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                            @if(!empty($dl))
+                                <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}"   name="img-drvl" id="img-drvl"/>
+                            @endif
                         @endif
                             <img  class="responsive full_name" src="/images/full_name.png">
-
                             <a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
                         </li>
                         <li title="PHONE NUMBER">
@@ -86,7 +76,6 @@
                                 </div>
                             </div>
                         </li>
-
                         <li title="DATE OF BIRTH">
                             <img  class="responsive" src="/images/birthday.png">
                             {{date("m/d/Y", strtotime($client->clientDetails->dob))}}

@@ -8,6 +8,7 @@
         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
           {{ Form::text('full_name',  $client->full_name(), ['class' => 'm-input',  'placeholder' => 'Full name']) }}
         </div>
+        
         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
           <input id="phone_number" type="text" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}" required autocomplete="phone_number" placeholder="Phone Number">
         </div>

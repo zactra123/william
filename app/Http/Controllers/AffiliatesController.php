@@ -2,6 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Arr;
+
+use App\Jobs\FetchReports;
+use App\Services\ClientDetailsData;
+use App\Services\ClientDetailsNewData;
+use App\Services\PricingDetails;
+use App\Services\Screaper;
 use App\BankLogo;
 use App\ClientReport;
 use App\ClientReportAddress;
@@ -22,26 +34,15 @@ use App\ClientReportTuStatement;
 use App\Credential;
 use App\Disputable;
 use App\EqualBank;
-use App\Jobs\FetchReports;
 use App\SecretQuestion;
-use App\Services\ClientDetailsNewData;
-use App\Services\PricingDetails;
-use App\Services\Screaper;
 use App\Todo;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-
 use App\User;
 use App\Affiliate;
-use Auth;
 use App\ClientAttachment;
-use App\Services\ClientDetailsData;
-use Illuminate\Support\Arr;
 use App\ClientDetail;
 use App\UploadClientDetail;
-use Illuminate\Validation\ValidationException;
+use Auth;
+
 
 class AffiliatesController extends Controller
 {
@@ -136,7 +137,7 @@ class AffiliatesController extends Controller
                 'ssn'=>$affiliate["ssn"],
                 'registration_steps' => $affiliateDetails['registration_steps']
             ]);
-            
+
             return redirect()->to('/affiliate');
         }
     }

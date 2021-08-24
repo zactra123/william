@@ -49,9 +49,6 @@
 
             {!! Form::open(['route' => ['affiliate.negative.store', $client->id], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!}
             @if($clientReportsEX)
-
-
-
                 <div class="Experian" style="display: block">
                     <div class="row mt20">
                         <div class="col-md-1 mt20">
@@ -102,9 +99,7 @@
                                                 </div>
                                             </div>
                                         @endif
-
                                     </div>
-
                                 @endforeach
                             </div>
                             <div class="mt20"></div>
@@ -116,14 +111,12 @@
                                     <div class="col-md-6">
                                         <span style="font-weight: bold; font-size: 16px"> EMPLOYERS</span>
                                     </div>
-
                                     <div class="col-md-3">
                                     </div>
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px">DISPUTE</span>
                                     </div>
                                 </div>
-
                                 @foreach($clientReportsEX->clientEmployers as $employ)
                                     <div class="row mt20 border">
                                         <div class="col-md-1">
@@ -131,10 +124,8 @@
                                         <div class="col-md-6">
                                             <span style="font-weight: bold"> {{$employ->name}}</span>
                                         </div>
-
                                         <div class="col-md-3">
                                         </div>
-
                                         @if(!empty($employ->dispute->id))
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
@@ -171,9 +162,7 @@
                                     <div class="col-md-1" style="font-weight: bold">
                                         DISPUTE
                                     </div>
-
                                 </div>
-
                                 @foreach($clientReportsEX->clientAddresses as $address)
                                     <div class="row mt20 border" style="font-weight: bold">
                                         <div class="col-md-1">
@@ -190,7 +179,6 @@
                                         <div class="col-md-2">
                                             <span class="">{{strtoupper($address->type)}}</span>
                                         </div>
-
                                         @if(!empty($address->dispute->id))
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
@@ -204,7 +192,6 @@
                                                 </div>
                                                 <div class="col-md-4 ">
                                                     <input name="ex_address[]" type="checkbox" id="ex-address-{{$address->id}}" value ="{{$address->id}}" class="customcheck ex_name">
-
                                                 </div>
                                             </div>
                                         @endif
@@ -230,7 +217,6 @@
                                     </div>
                                     <div class="col-md-2" >
                                     </div>
-
                                     <div class="col-md-2">
                                         <span style="font-weight: bold; font-size: 16px">
                                         DISPUTE
@@ -245,7 +231,6 @@
                                         </div>
                                         <div class="col-md-5">
                                              <span style="font-weight: bold">{{$phone->number}} </span>
-
                                         </div>
                                         <div class="col-md-2">
                                             <span style="font-weight: bold">{{strtoupper($phone->type)}}</span>
@@ -265,7 +250,6 @@
                                                 </div>
                                                 <div class="col-md-4 ">
                                                     <input name="ex_phone[]" type="checkbox" id="ex-phone-{{$phone->id}}" value ="{{$phone->id}}"  class="customcheck ex_phone">
-
                                                 </div>
                                             </div>
                                         @endif
@@ -313,7 +297,6 @@
                                                     <span class=""> {{$publicRecords->status}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
 
                                         @if($publicRecords->date_filed !=null )
@@ -325,7 +308,6 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_filed))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
 
                                         @if($publicRecords->on_record_until !=null )
@@ -349,7 +331,6 @@
                                             </div>
                                         @endif
                                         @if($publicRecords->date_resolved != null )
-
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
                                                     <label class="form-text">DATE RESOLVED</label>
@@ -358,33 +339,26 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_resolved))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
-
                                     </div>
                                 </div>
                             @endforeach
 
                             <div class="mt20"></div>
-
                             <div class="chart-report">
                                 <span style="font-weight: bold">NEGATIVE ACCOUNT</span>
                             @foreach($clientReportsEX->clientExAccounts->where('negative_item', true) as $accounts)
                                 <div class="mt20"></div>
-
                                     <div class="row border" style="font-weight: bold">
                                         <div class="col-md-1">
                                         </div>
-
                                         <div class="col-md-2">
                                             <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                         </div>
                                         <div class="col-md-7">
                                             <span class="">{{$accounts->source_name}} </span>
-
                                             <span style="padding-left: 15px">    # {{$accounts->source_id}}</span>
                                         </div>
-
                                         @if(!empty($accounts->dispute->id))
                                             <div class="col-md-2">
                                                 <div class="col-md-12">
@@ -414,9 +388,7 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($accounts->opened_date))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
-
                                         @if($accounts->type !=null )
                                             <div class="col-md-3">
                                                 <div class="col-md-12">
@@ -424,7 +396,6 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> {{$accounts->type}} </span>
-
                                                 </div>
                                             </div>
                                         @endif
@@ -435,11 +406,9 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> {{$accounts->status}} </span>
-
                                                 </div>
                                             </div>
                                         @endif
-
                                         @if($accounts->recent_balance_date !=null )
                                             <div class="col-md-3">
                                                 <div class="col-md-12">
@@ -447,42 +416,33 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> ${{$accounts->recent_balance_amount}}  as of {{date("d/m/Y",strtotime($accounts->recent_balance_date))}} </span>
-
                                                 </div>
                                             </div>
                                         @else
                                             <div class="col-md-2">
                                             </div>
                                         @endif
-
                                     </div>
                                 @if($accounts->paymentHistories->whereIn('status',["30","30",'90'] )->first() )
                                         <div class="row mt20 border">
                                             <div class="col-md-12">ACCOUNT HISTORY</div>
-
                                             @foreach($accounts->paymentHistories->whereIn('status',["30","60",'90'] ) as $payment)
                                                 <div class="col-md-4 border">
                                                     LATE {{$payment->status}} AS OF {{$payment->month}}/{{$payment->year}}
-
                                                 </div>
                                             @endforeach
-
                                         </div>
                                     @endif
                             @endforeach
                             </div>
-
                             <div class="mt20"></div>
-
                             <div class="chart-report">
                                 <span style="font-weight: bold">GOOD STANDING ACCOUNT</span>
                                 @foreach($clientReportsEX->clientExAccounts->where('negative_item', false) as $accounts)
                                     <div class="mt20"></div>
-
                                     <div class="row border" style="font-weight: bold; padding-top: 20px">
                                         <div class="col-md-1">
                                         </div>
-
                                         <div class="col-md-2">
                                             <img src="{{asset('images/default_bank_logos.png')}}" width="50px">
                                         </div>
@@ -520,9 +480,7 @@
                                                     <span class=""> {{date("m/d/Y",strtotime($accounts->opened_date))}} </span>
                                                 </div>
                                             </div>
-
                                         @endif
-
                                         @if($accounts->type !=null )
                                             <div class="col-md-3">
                                                 <div class="col-md-12">
@@ -530,7 +488,6 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> {{$accounts->type}} </span>
-
                                                 </div>
                                             </div>
                                         @endif
@@ -541,7 +498,6 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> {{$accounts->status}} </span>
-
                                                 </div>
                                             </div>
                                         @endif
@@ -553,14 +509,12 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <span class=""> ${{$accounts->recent_balance_amount}}  as of {{date("d/m/Y",strtotime($accounts->recent_balance_date))}} </span>
-
                                                 </div>
                                             </div>
                                         @else
                                             <div class="col-md-2">
                                             </div>
                                         @endif
-
                                     </div>
                                 @if($accounts->paymentHistories->whereIn('status',["30","30",'90'] )->first() )
                                         <div class="row mt20 border">
@@ -569,10 +523,8 @@
                                             @foreach($accounts->paymentHistories->whereIn('status',["30","60",'90'] ) as $payment)
                                                 <div class="col-md-4 border">
                                                     LATE {{$payment->status}} AS OF {{$payment->month}}/{{$payment->year}}
-
                                                 </div>
                                             @endforeach
-
                                         </div>
                                     @endif
                             @endforeach
@@ -581,35 +533,27 @@
                             <div class="mt20"></div>
                             <div class="chart-report">
                                 <span style="font-weight: bold"> HARD INQUIRIES</span>
-
                                 @foreach($clientReportsEX->clientExInquiry->where('negative_item', true)->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiries)
-
                                     <div class="row mt20 border">
                                         <div class="col-md-1">
                                         </div>
-
                                         <div class="col-md-2">
                                             <div class="col-md-12">
                                                 <label class="form-text">INQUIRY NAME</label>
                                             </div>
                                             <div class="col-md-12">
                                                 <span class=""> {{$inquiries->source_name}} </span>
-
                                             </div>
                                         </div>
-
                                         <div class="col-md-6">
                                             <div class="col-md-12">
                                                 <label class="form-text">DATE OF REQUEST</label>
                                             </div>
                                             <div class="col-md-12">
                                                 @if(is_array(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry))))
-
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             @foreach(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry)) as $date)
-
-
                                                                 {{$date.' '}}
                                                             @endforeach
                                                         </div>
@@ -2269,4 +2213,3 @@
         </script>
 
 @endsection
-
