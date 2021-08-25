@@ -1,5 +1,4 @@
 <form id="register_form" data-id="2" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
-
 @csrf
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
       <div class="row">
@@ -14,7 +13,6 @@
       <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-12">
           {{ Form::select('sex', [''=>'Gender','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], null , ['class'=>'form-control', 'id'=>'gender']) }}
-
         </div>
       </div>
 

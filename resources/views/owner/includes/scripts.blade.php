@@ -76,7 +76,6 @@
 <!--- Internal Pickerjs js -->
 <script src="{{asset('/')}}assets/plugins/pickerjs/picker.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
 
 <!--- Internal Jquery.steps js -->
 <script src="{{asset('/')}}assets/plugins/jquery-steps/jquery.steps.min.js"></script>
@@ -84,6 +83,7 @@
 <!--- Internal Form-wizard js -->
 <script src="{{asset('/')}}assets/js/form-wizard.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){

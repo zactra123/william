@@ -54,6 +54,7 @@ Route::get('pravicy-policy', 'PagesController@pravicyPolicy')->name('pravicy');
 Route::get('credit-education', 'PagesController@creditEducation')->name('credit.education');
 Route::match(['get', 'post'], 'faqs', 'PagesController@faqs')->name('faqs');
 Route::get('contacts', 'PagesController@contacts')->name('contacts');
+Route::post('contactemail','PagesController@sendcontactmail')->name('send.contact.mail');
 Route::get('news-room', 'PagesController@blog')->name('blog');
 Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
 Route::get('review/create','PagesController@review_page')->name('web.review.create');

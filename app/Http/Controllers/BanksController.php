@@ -32,9 +32,11 @@ class BanksController extends Controller
      * Created furnisher (bank, credit union etc..)
      *
      */
+
     public function __construct()
     {
-        $this->middleware(['auth', 'admins']);
+        // $this->middleware(['auth', 'admins', 'owner']);
+        $this->middleware('auth');
     }
 
     /**

@@ -16,7 +16,45 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'sendmail'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'mailers' => [
+        'smtp' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => 'umarfarooq6313@gmail.com',
+            'password' => '12juttboy12480',
+            'timeout' => null,
+            'auth_mode' => null,
+        ],
+
+        'ses' => [
+            'transport' => 'ses',
+        ],
+
+        'mailgun' => [
+            'transport' => 'mailgun',
+        ],
+
+        'postmark' => [
+            'transport' => 'postmark',
+        ],
+
+        'sendmail' => [
+            'transport' => 'sendmail',
+            'path' => '/usr/sbin/sendmail -bs',
+        ],
+
+        'log' => [
+            'transport' => 'log',
+            'channel' => env('MAIL_LOG_CHANNEL'),
+        ],
+
+        'array' => [
+            'transport' => 'array',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +94,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => 'umarfarooq6313@gmail.com',
         'name' => env('MAIL_FROM_NAME', env('PROJECT')),
     ],
 
@@ -84,9 +122,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => 'umarfarooq6313@gmail.com',
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => '12juttboy12480',
 
     'stream' => [
         'ssl' => [

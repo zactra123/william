@@ -11,7 +11,8 @@ class AuthoritiesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admins']);
+        // $this->middleware(['auth', 'admins', 'owner']);
+        $this->middleware('auth');
     }
 
     public function index()

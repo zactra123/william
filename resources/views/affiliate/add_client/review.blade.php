@@ -19,7 +19,6 @@
         <div class="col-md-12 col-lg-12 col-sm-12 col-12">
           {{ Form::select('client[sex_uploaded]', [''=>'Gender','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], !empty($uploadUserDetail) ? $uploadUserDetail->sex : (!empty($client) ? $client->clientDetails->sex :'') , ['class'=>'form-control']) }}
         </div>
-
       </div>
     </div>
 

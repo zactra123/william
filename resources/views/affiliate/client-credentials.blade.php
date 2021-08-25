@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 
 @section('content')
     @include('helpers.breadcrumbs', ['title'=> "CLIENT", 'route' => ["Home"=> '/owner',"CLIENT CREDENTIALS" => "#"]])

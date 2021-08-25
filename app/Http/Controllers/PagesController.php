@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\HomePageContent;
 use App\ContactMessage;
@@ -151,6 +152,31 @@ class PagesController extends Controller
         $title = 'Contacts us';
         return view('contact', compact('title'));
     }
+
+    /**
+     * Send Contact Mail
+     *
+     *
+     */
+     public function sendcontactmail(Request $request)
+     {
+       session()->put('useremail',$request->email);
+       session()->put('username',$request->name);
+
+       $message = $request->messages;
+
+       $data = array(
+        'usermessage'=>$message,
+      );
+
+       \Mail::send(['html'=>'includes.contactmail'], $data, function($message){
+           $message->to('info@prudentscores.com', session()->get('username'))->subject
+              ('Contact email from Prudent Scores');
+           $message->from(session()->get('useremail'),'Prudent Scores');
+        });
+
+       return back()->with('success','Email successfully Send!');
+     }
 
     /**
      *Save contact messages PAGE ACTION

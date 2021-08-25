@@ -1,4 +1,3 @@
-
 @extends('layouts.layout1')
 
 @section('content')
@@ -89,22 +88,21 @@
                     <div class="col-md-8">
                         <div class="video-wrapper" id="contactForm">
                             <h5>Contact Form</h5>
-                            <form action="#" >
+                            <form action="{{ route('send.contact.mail') }}" method="post">
                                 <div class="row">
                                     @csrf
                                     <div class="col-md-12">
                                         <div class="row">
                                           <div class="col-md-6">
-                                            <input class="form-control" name="contact[name]" type="text" placeholder="Your name..." required>
+                                            <input class="form-control" name="name" type="text" placeholder="Your name..." required>
                                           </div>
                                           <div class="col-md-6">
-                                            <input class="form-control" name="contact[email]" type="email" placeholder="Email..." required>
-
+                                            <input class="form-control" name="email" type="email" placeholder="Email..." required>
                                           </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-4">
-                                        <textarea class="form-control" name="contact[text]" id="" rows=7 required placeholder="Write Message...."></textarea>
+                                        <textarea class="form-control" name="messages" id="" rows=7 required placeholder="Write Message...."></textarea>
                                         <input type="submit" class="button pull-right btn btn-info mt-4 mb-5" value="Send Messages">
                                     </div>
                                 </div>
