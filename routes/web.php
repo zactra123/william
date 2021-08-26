@@ -43,6 +43,7 @@ Route::resource('reviews','ReviewsController');
 Route::get('reviews/list','ReviewsController@show')->name('review.list');
 
 Route::get('/', 'PagesController@welcome' );
+Route::post('subscribe','SubscribeController@subscribe_prudent')->name('web.subscribe.prudent');
 Route::get('about-us', 'PagesController@whoWeAre')->name('whoWeAre');
 Route::get('how-it-works', 'PagesController@howItWorks')->name('howItWorks');
 Route::get('legality-credit-repair', 'PagesController@legalityCreditRepair')->name('legalityCreditRepair');
@@ -58,6 +59,7 @@ Route::post('contactemail','PagesController@sendcontactmail')->name('send.contac
 Route::get('news-room', 'PagesController@blog')->name('blog');
 Route::get('news-room/{url}', 'PagesController@blogShow')->name('home.blog.show');
 Route::get('review/create','PagesController@review_page')->name('web.review.create');
+
 
 Route::get('shear/{social}/{url}', 'PagesController@shareSocial')->name('shear');
 
@@ -146,6 +148,8 @@ Route::group(['prefix'=>'owner'], function(){
     Route::resource('slogans', 'Owner\SlogansController')->names('owner.slogans')->except(['show','update','edit']);
 
     Route::get('slogan/delete/{id}','Owner\SlogansController@slogan_delete')->name('admin.slogan.delete');
+
+    Route::get('/subscribe','Owner\ReportsController@subscribe_list')->name("owner.subscribe.list");
 
     //Reports actions
     Route::group(["prefix" => "report"], function(){

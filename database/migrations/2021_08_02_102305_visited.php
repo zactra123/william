@@ -13,9 +13,9 @@ class Visited extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->string('visited')->after('article');
-        });
+        // Schema::table('blogs', function (Blueprint $table) {
+        //     $table->string('visited')->after('article');
+        // });
     }
 
     /**

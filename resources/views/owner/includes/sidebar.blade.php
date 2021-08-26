@@ -116,6 +116,10 @@
             </li>
 
             <li class="slide">
+              <a class="side-menu__item" href="{{ route('owner.subscribe.list')}}"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Subscribers</span></a>
+            </li>
+
+            <li class="slide">
               <a class="side-menu__item" href="{{ route('owner.reports.index')}}"><i class="side-menu__icon las la-poll"></i><span class="side-menu__label">Report</span></a>
             </li>
 

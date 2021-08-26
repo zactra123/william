@@ -155,4 +155,37 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+<!--Alerts Script-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript">
+
+ $(document).ready(function(){
+      @if (session('success'))
+      Swal.fire({
+        title: 'Success',
+        text: '{!! session("success") !!}',
+        icon: 'success',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('error'))
+      Swal.fire({
+        title: 'Error',
+        text: '{!! session("error") !!}',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('info'))
+      Swal.fire({
+        title: 'Info',
+        text: '{!! session("info") !!}',
+        icon: 'info',
+        confirmButtonText: 'Close'
+      })
+      @endif
+
+    });
+
+</script>
+
 @endsection

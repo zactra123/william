@@ -36,13 +36,11 @@
                         <th scope="col">LAST NAME</th>
                         <th scope="col">EMAIL</th>
                         {{-- <th scope="col">AFFILIATE FULL NAME </th>--}}
-
                         <th scope="col">Action</th>
                     </tr>
 									</thead>
 									<tbody>
                     @foreach($users as $key=> $user)
-
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
                             <td>{{$user->first_name}}</td>

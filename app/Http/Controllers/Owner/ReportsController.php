@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\User;
+use App\Subcriber;
 
 class ReportsController extends Controller
 {
@@ -16,7 +17,7 @@ class ReportsController extends Controller
     /*
      * The index action show registered clients report
      */
-    
+
     public function index(Request $request)
     {
 
@@ -29,6 +30,14 @@ class ReportsController extends Controller
                     ->where("created_at", "<=", $dates["to"]);
           $users = User::where('role','client')->where("created_at", ">=", $dates["from"])->where("created_at", "<=", $dates["to"])->orderby('id','desc')->get();
         return view('owner.report.index', compact(['clients','dates','users']));
-
     }
+
+    /**
+     * Subscribers List
+     */
+     public function subscribe_list(Request $request)
+     {
+       $subscribers = Subcriber::orderby('id')->paginate(10);
+       return view('owner.subscriber.index',compact('subscribers'));
+     }
 }

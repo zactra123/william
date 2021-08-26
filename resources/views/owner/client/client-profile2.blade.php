@@ -1,6 +1,4 @@
-
 @extends('layouts.layout')
-
 <style>
     .dropdown-submenu {
         position: relative;
@@ -49,15 +47,10 @@
         -moz-border-radius: 6px 0 6px 6px;
         border-radius: 6px 0 6px 6px;
     }
-
-
-
 </style>
 
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css">
-
 @section('content')
-
     <style>
         .disput-progress {
             width: 100%;

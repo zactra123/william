@@ -18,7 +18,8 @@ class TodosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'admins']);
+        // $this->middleware(['auth', 'admins']);
+        $this->middleware('auth');
     }
 
     public function clientToDo(Request $request)
@@ -27,12 +28,12 @@ class TodosController extends Controller
         $toDo = Todo::find($request->id);
         $admins = User::admins()->get()->pluck('full_name', 'id')->toArray();
         $view = view('helpers.to-do-form', compact('toDo', 'admins'))->render();
-
         return response()->json(['status' => 200, 'view' => $view]);
     }
 
     public function toDoList(Request $request)
     {
+
         if(auth()->user()->role=='receptionist'){
             $admins = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
             if($request->title != null && $request->admin != null && $request->assign == "on"){

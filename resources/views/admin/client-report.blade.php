@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout1')
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css" />
 <style>
   .charts {

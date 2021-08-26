@@ -18,7 +18,8 @@ class MessagesController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        // $this->middleware(['auth', 'admin']);
+        $this->middleware('auth');
     }
 
     public function index(Request $request)
@@ -177,7 +178,7 @@ class MessagesController extends Controller
 
             QuestionNote::create($note);
             return redirect()->back()->with('success','Note successfully added');
-          
+
         }
 
 

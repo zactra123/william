@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Phone extends Migration
+class CreateSubcriber extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class Phone extends Migration
      */
     public function up()
     {
-        // Schema::table('users', function (Blueprint $table) {
-        //     $table->longText('phone')->nullable()->after('secret_answer');
-        // });
+        Schema::create('subcriber', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->text('email')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -25,8 +27,6 @@ class Phone extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('subcriber');
     }
 }

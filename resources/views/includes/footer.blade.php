@@ -6,7 +6,6 @@
         <div class="col-lg-4 col-md-6">
           <div class="footer-info">
             <h3>Credit Repair</h3>
-
               5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
               <strong>Phone:</strong> 1-844-337-8336<br>
               <strong>Email:</strong> info@prudentscores.com<br>
@@ -48,7 +47,8 @@
         <div class="col-lg-4 col-md-6 footer-newsletter">
           <h4>Subscribe Us</h4>
           <p>You can any time unsubcribe your email address from your mail if this become annoying.</p>
-          <form action="#" method="post">
+          <form action="{{ route('web.subscribe.prudent') }}" method="post">
+            @csrf
             <input placeholder="example@site.com" type="email" name="email"><input  type="submit" value="Subscribe">
           </form>
           <div class="feature-box15 mt-5 bmargin px-3 py-2" style="border: 3px solid #37c6f5">
@@ -77,3 +77,36 @@
     </div>
   </div>
 </footer>
+
+<!--Alerts Script-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript">
+
+ $(document).ready(function(){
+      @if (session('success'))
+      Swal.fire({
+        title: 'Success',
+        text: '{!! session("success") !!}',
+        icon: 'success',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('error'))
+      Swal.fire({
+        title: 'Error',
+        text: '{!! session("error") !!}',
+        icon: 'error',
+        confirmButtonText: 'Close'
+      })
+      @elseif (session('info'))
+      Swal.fire({
+        title: 'Info',
+        text: '{!! session("info") !!}',
+        icon: 'info',
+        confirmButtonText: 'Close'
+      })
+      @endif
+
+    });
+
+</script>

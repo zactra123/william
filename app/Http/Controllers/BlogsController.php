@@ -16,7 +16,8 @@ class BlogsController extends Controller
     // }
     public function __construct()
     {
-        $this->middleware(['auth', 'admins']);
+        // $this->middleware(['auth', 'admins']);
+        $this->middleware('auth');
     }
 
     public function index()
@@ -29,7 +30,7 @@ class BlogsController extends Controller
     {
         return view('blog.create');
     }
-    
+
     public function store(Request $request)
     {
 

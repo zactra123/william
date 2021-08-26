@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Bio extends Migration
 {
-  
+
     /**
      * Run the migrations.
      *
@@ -14,9 +14,9 @@ class Bio extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->longText('bio')->nullable()->after('secret_answer');
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->longText('bio')->nullable()->after('secret_answer');
+        // });
     }
 
     /**

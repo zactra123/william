@@ -13,6 +13,7 @@ use App\Question;
 use App\reviews;
 use App\Blog;
 use App\Faq;
+use App\Subcribe;
 use Share;
 
 
@@ -330,5 +331,17 @@ class PagesController extends Controller
      {
        return view('review.create');
      }
+
+     /**
+      * Subscribe Prudent
+      *
+      */
+      public function subscribe_prudent(Request $request)
+      {
+          $subscribe = new Subcribe();
+          $subscribe->email = $request->email;
+          $subcribe->save();
+          return back()->with('success','You successfully subcribe!');
+      }
 
 }

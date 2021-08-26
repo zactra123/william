@@ -13,16 +13,16 @@ class Reviews extends Migration
      */
     public function up()
     {
-      Schema::create('reviews', function (Blueprint $table) {
-          $table->increments('id');
-          $table->longText('user_id')->nullable();
-          $table->longText('name')->nullable();
-          $table->longText('email')->nullable();
-          $table->longText('rating')->nullable();
-          $table->longText('review')->nullable();
-          $table->longText('show_home')->always('no');
-          $table->timestamps();
-      });
+      // Schema::create('reviews', function (Blueprint $table) {
+      //     $table->increments('id');
+      //     $table->longText('user_id')->nullable();
+      //     $table->longText('name')->nullable();
+      //     $table->longText('email')->nullable();
+      //     $table->longText('rating')->nullable();
+      //     $table->longText('review')->nullable();
+      //     $table->longText('show_home')->always('no');
+      //     $table->timestamps();
+      // });
     }
 
     /**

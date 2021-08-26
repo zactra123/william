@@ -13,9 +13,9 @@ class Address extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->longText('address')->nullable()->after('secret_answer');
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->longText('address')->nullable()->after('secret_answer');
+        // });
     }
 
     /**

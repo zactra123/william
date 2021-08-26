@@ -116,7 +116,6 @@
                   <strong>PENDING</strong>
                   <span>{{ count($pendingtodo) }}</span>
                 </li>
-
                 <li>
                   <strong>COMPLETED</strong>
                   <span>{{ count($compeletetodo) }}</span>
@@ -182,12 +181,12 @@
                   <th scope="col">FIRST NAME</th>
                   <th scope="col">LAST NAME</th>
                   <th scope="col">EMAIL</th>
-
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @if (count($client)>0) @foreach ($client as $key => $value)
+                @if (count($client)>0)
+                  @foreach ($client as $key => $value)
                 <tr>
                   <th scope="row">{{ $key+1 }}</th>
                   <td>{{ $value->first_name }}</td>
@@ -205,7 +204,8 @@
                     </div>
                   </td>
                 </tr>
-                @endforeach @endif
+                @endforeach
+              @endif
               </tbody>
             </table>
           </div>
@@ -233,9 +233,7 @@
                 <tr>
                   <td>
                     <div class="project-names">
-                      {{--
-                      <h6 class="bg-primary-transparent text-primary d-inline-block mr-2 text-center">U</h6>
-                      --}}
+                      {{-- <h6 class="bg-primary-transparent text-primary d-inline-block mr-2 text-center">U</h6> --}}
                       <p class="d-inline-block font-weight-semibold mb-0">{{ $value->title }}</p>
                     </div>
                   </td>
