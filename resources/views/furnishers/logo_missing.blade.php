@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('content')
     <style>
         :root {
@@ -97,7 +96,7 @@
                         @include('furnishers.search', ['url' => '/admins/furnishers/missing-field'])
                     </div>
                     <div class="container">
-                        <?php $alphas = range('A', 'Z');?>
+                        <?php $alphas = range('A', 'Z'); ?>
                         <ul class="pagination alphabetical ">
                             <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
@@ -133,7 +132,6 @@
                                             <div class="card-body">
                                                 <div class="card-text mt-5">
                                                     <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
-
                                                     <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
                                                         <span> <i class="fa fa-trash"></i> </span>
                                                     </div>
@@ -146,7 +144,7 @@
                         </div>
                     </div>
                     <div class="container">
-                        <?php $alphas = range('A', 'Z');?>
+                        <?php $alphas = range('A', 'Z'); ?>
                         <ul class="pagination alphabetical">
                             <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
                             <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>

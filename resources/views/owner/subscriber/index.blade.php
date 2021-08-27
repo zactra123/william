@@ -18,7 +18,6 @@
   <div class="container">
     <div class="row row-sm">
       <div class="col-md-2">
-
       </div>
       <div class="col-md-8">
         <div class="card mg-b-20" id="tabs-style2">
@@ -37,18 +36,18 @@
                 </thead>
                 <tbody>
                 @foreach($subscribers as $key=> $view)
-                    <tr>
-                        <th scope="row">{{ $key+1 }}</th>
-                        <td>{{$view->email}}</td>
-                    </tr>
+                  <tr>
+                    <th scope="row">{{ $key+1 }}</th>
+                    <td>{{$view->email}}</td>
+                  </tr>
                 @endforeach
                 </tbody>
               </table>
             </div>
             <div class="col-md-12 mt-3">
-                <div class="row float-right">
-                    {{$subscribers->links()}}
-                </div>
+              <div class="row float-right">
+                {{$subscribers->links()}}
+              </div>
             </div>
         </div>
 

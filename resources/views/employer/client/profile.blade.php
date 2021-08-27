@@ -77,17 +77,24 @@
                       </li>
 
                       <li title="Phone Number">
-                          <img  class="" width="25px"  src="{{url('/')}}/images/phone_number.png">
+                          {{-- <img  class="" width="25px"  src="{{url('/')}}/images/phone_number.png"> --}}
+                          <span class="side-menu__icon fe fe-phone fs-20"></span>
                           &nbsp; <a href="tell:{{$client->clientDetails->phone_number}}" class="fs-12"> {{$client->clientDetails->phone_number}}</a>
                       </li>
                       <li title="Email Address">
-                          <a href="#" data-toggle="modal" data-target="#sendEmail"> <img  class="" width="25px" src="{{url('/')}}/images/email.png"> </a>
+                          <a href="#" data-toggle="modal" data-target="#sendEmail">
+                            {{-- <img  class="" width="25px" src="{{url('/')}}/images/email.png"> --}}
+                            <span class="side-menu__icon fas fa-envelope fs-20"></span>
+                          </a>
                           &nbsp; <a href="mailto:{{$client->email}}"> {{ zactra::limit_words($client->email,25) }}</a>
                       </li>
                       <li title="Full Address" >
                           <div class="address">
                               <div class="address1">
-                                  <a href="#" data-toggle="modal" data-target="#mapModal"> <img width="25px" class="addressImage" src="{{url('/')}}/images/location.png"> </a>
+                                  <a href="#" data-toggle="modal" data-target="#mapModal" style="color:black">
+                                    {{-- <img width="25px" class="addressImage" src="{{url('/')}}/images/location.png"> --}}
+                                    <span class="side-menu__icon fa fa-map-marker fs-20"></span>
+                                  </a>
                               </div>
                               <div class="address2">
                                   <div class="address">
@@ -99,7 +106,8 @@
                       </li>
 
                       <li title="Date of Birth" class="date_of_birth">
-                              <img  class="" width="25px" src="{{url('/')}}/images/birthday.png">
+                              {{-- <img  class="" width="25px" src="{{url('/')}}/images/birthday.png"> --}}
+                              <span class="side-menu__icon fa fa-calendar fs-20"></span>
                               {{date("m/d/Y", strtotime($client->clientDetails->dob))}}
                               <img src="{{url('/')}}/images/age.jpg" width="20px" class="small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
                           <p class="zodiac pt-4">
@@ -124,17 +132,20 @@
 
                       <li title="Gender">
                           @if($client->clientDetails->sex == 'M')
-                              <img  class="" width="25px" src="{{url('/')}}/images/male.png">&nbsp; <span>Male</span>
+                              {{-- <img  class="" width="25px" src="{{url('/')}}/images/male.png">&nbsp; <span>Male</span> --}}
+                              <span class="side-menu__icon fa fa-mars fs-20"></span> <span>Male</span>
                           @elseif($client->clientDetails->sex == 'F')
-                              <img class="" width="25px"  src="{{url('/')}}/images/female.png">&nbsp; <span>Female</span>
+                              {{-- <img class="" width="25px"  src="{{url('/')}}/images/female.png">&nbsp; <span>Female</span> --}}
+                              <span class="side-menu__icon fa fa-mars fs-20"></span> <span>Female</span>
                           @else
-                              <img class="" width="25px" src="{{url('/')}}/images/non_binary.png">&nbsp; <span>Non-Binary</span>
+                              {{-- <img class="" width="25px" src="{{url('/')}}/images/non_binary.png">&nbsp; <span>Non-Binary</span> --}}
+                              <span class="side-menu__icon fa fa-mars fs-20"></span> <span>Non-Binary</span>
                           @endif
                       </li>
 
                       @if($client->clientDetails->referred_by != null)
                           <li title="Referred by">
-                              <i class="fa fa-user refferred" ></i>
+                              <i class="fa fa-user fs-20" ></i>
                               <span>{{ ucfirst($client->clientDetails->referred_by) }}</span>
                           </li>
                       @endif

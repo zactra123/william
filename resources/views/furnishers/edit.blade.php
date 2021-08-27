@@ -70,12 +70,18 @@
                         <div class="col-sm-4 p-5">
                             <div class="col-sm-12 form-group changeLogo files">
 
-                            <?php /** Checking logo in Aws S3 storage */?>
+                            <?php
+                            /** Checking logo in Aws S3 storage */
+                            ?>
                             @if($bank->checkUrlAttribute())
-                                <?php /** Get AWS S3 file link with  getUrlAttribute function */?>
+                                <?php
+                                /** Get AWS S3 file link with  getUrlAttribute function */
+                                ?>
                                 <img class="card-img-top banks-card" src="{{$bank->getUrlAttribute()}}" alt="Card image cap">
                                 @else
-                                <?php /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/?>
+                                <?php
+                                /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/
+                                ?>
                                 @if($bank->no_logo)
                                     <img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
                                     @else
@@ -123,8 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div
-                              class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
+                            <div class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
                                 <div class="col-md-3 pl-3">
                                     <a class="btn btn-primary show-parent-field form-control text-white">Add Parent</a>
                                     <a class="btn btn-primary hide hide-parent-field form-control mt-3 text-white">Hide Parent</a>
@@ -155,17 +160,18 @@
                     @php
                     $address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null;
                     $hidden = false;
+
                     if ($type == 'fraud_address') {
-                    $hidden = $bank->type != 3;
+                      $hidden = $bank->type != 3;
                     }
                     if ($type == 'qwr_address'){
-                    $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
+                      $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
                     }
                     @endphp
                     @if($type == 'additional_address')
                     <?php if (!empty($bank_addresses[$type])) { ?>
                     @foreach($bank_addresses[$type] as $addresses)
-                    @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ])
+                      @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ])
                     @endforeach
                     <?php } ?>
                     <div class="row additional-addresses pl-1">
@@ -186,15 +192,10 @@
                             @if($type == 'registered_agent')
                             <div class="row mb-3">
                                 <div class="col-sm-5 paste-register"><a class="btn btn-primary ms-ua-submit text-white">Copy Entity Address as Registered Agent fix functionality</a></div>
-
-
                             </div>
                             @endif
-
-
                             <div class="row">
                               @if($type == 'registered_agent')
-
                                   <div class="form-group col-sm-3">
                                       {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                                   </div>
@@ -440,11 +441,9 @@
                     {!! Form::text("bank_address[additional_address][{i}][city]", null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                 </div>
                 <div class="form-group col-sm-2">
-                    {{-- {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!} --}}
                     {!! Form::select("bank_address[additional_address][{i}][state]", $states, null, ['class'=>'{class} state','placeholder' => 'State']); !!}
                 </div>
                 <div class="form-group col-sm-2">
-                    {{-- {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!} --}}
                     {!! Form::text("bank_address[additional_address][{i}][zip]", null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                 </div>
             </div>
@@ -452,9 +451,6 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <!-- <div class="col-sm-2">
-                            <img class="responsive" src="{{ url('/') }}/images/phone.png">
-                        </div> -->
                         <div class="col-sm-12">
                             {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                         </div>
@@ -462,9 +458,6 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
-                        <!-- <div class="col-sm-2">
-                          <img class="responsive" src="{{url('/')}}/images/fax.png">
-                      </div> -->
                         <div class="col-sm-12">
                             {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                         </div>
@@ -472,22 +465,13 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="row">
-                        <!-- <div class="col-sm-2">
-                          <img class="responsive" src="{{url('/')}}/images/email.png">
-                      </div> -->
                         <div class="col-sm-12">
                             {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </formset>
 </script>
-
-
-
-
 @endsection

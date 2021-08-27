@@ -1,5 +1,5 @@
 <?php
-    $states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\BankLogo::TYPES; asort($types) ?>
+$states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\BankLogo::TYPES; asort($types) ?>
 <section class="ms-user-account">
   <div class="container">
     <div class="col-md-12 col-sm-12">

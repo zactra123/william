@@ -1,9 +1,8 @@
 <?php
-$states = [null=>''] + \App\BankAddress::STATES;
-$types = [null=>''] + \App\BankLogo::TYPES;
-asort($types)
+  $states = [null=>''] + \App\BankAddress::STATES;
+  $types = [null=>''] + \App\BankLogo::TYPES;
+  asort($types)
 ?>
-
 <section class="ms-user-account">
     <div class="container">
         <div class="col-md-12 col-sm-12">
@@ -16,7 +15,6 @@ asort($types)
                         <div class="col-md-12">
                             <div class="col-sm-12 form-group files">
                                 <input class="bank_logo_class file-box form-control" type="file" name="logo"  id="bank_logo" >
-
                             </div>
                             <div class="col-md-12 mb-3">
                                 NO LOGO <input type="checkbox" value="true" name="bank[no_logo]"   >
@@ -38,7 +36,6 @@ asort($types)
                                 <div class="mt-3 ml-5 mr-5 mb-3">
                                     <div class="row">
                                         <div  class="row bank_sub_type_append">
-
                                               @if (isset($subTypes))
                                                 @foreach($subTypes[51] as $key => $type)
                                                     <div class="col-md-6 col-sm-6 mb-2">
@@ -51,16 +48,12 @@ asort($types)
                                                     </div>
                                                 @endforeach
                                               @endif
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="row parent hidden">
-
                             <div class="col-md-12">
                                 <div class="form-group banks ">
                                     {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!}
@@ -74,7 +67,6 @@ asort($types)
                     </div>
                 </div>
             </div>
-
             <div class="ms-ua-box mt-2" id="account">
                 <div class="ms-ua-form ">
                     <div id="addresses_container">
@@ -109,7 +101,6 @@ asort($types)
                                             </div>
                                         </div>
                                     @endif
-
                                     @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
                                         <div class="row">
                                             <div class="form-group col-sm-12">
@@ -119,30 +110,22 @@ asort($types)
                                     @endif
                                     <div class="row">
                                         {!! Form::hidden("bank_address[{$type}][type]", $type, ["class"=>"form-control"]) !!}
-
                                         <div class="form-group col-sm-6">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][street]", 'Street'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][city]", 'City'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                                             {!! Form::select("bank_address[{$type}][state]", $states,  null, ['class'=>'selectize-single state','placeholder' => 'State']); !!}
                                         </div>
                                         <div class="form-group col-sm-6">
-                                            {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                                             {!! Form::text("bank_address[{$type}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-sm-6">
                                             <div class="row">
-                                              {{-- <div class="form-group col-sm-2 p-0">
-                                                  <img  class="responsive" src="{{url('/')}}/images/phone.png">
-                                              </div> --}}
                                               <div class="col-sm-12">
                                                   {!! Form::text("bank_address[{$type}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                                               </div>
@@ -150,9 +133,6 @@ asort($types)
                                         </div>
                                         <div class="form-group col-sm-6">
                                           <div class="row">
-                                            {{-- <div class="form-group col-sm-2 p-0">
-                                                <img  class="responsive" src="{{url('/')}}/images/fax.png">
-                                            </div> --}}
                                             <div class="col-sm-12">
                                                 {!! Form::text("bank_address[{$type}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                                             </div>
@@ -160,15 +140,11 @@ asort($types)
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <div class="row">
-                                              {{-- <div class="form-group col-sm-2 p-0">
-                                                  <img  class="responsive" src="{{url('/')}}/images/email.png">
-                                              </div> --}}
                                               <div class="col-sm-12">
                                                   {!! Form::email("bank_address[$type][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                                               </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </formset>
@@ -193,7 +169,6 @@ asort($types)
                     <div class="row"></div>
                 </div>
             </div>
-
             <div class="row pull-right">
               <div class="col-md-12 mt-3">
                   <input type="submit" value="Save" class="btn btn-primary ms-ua-submit">

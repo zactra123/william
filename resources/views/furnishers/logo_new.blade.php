@@ -39,7 +39,7 @@
                                   <div class="row m-2">
                                   </div>
                                   <div class="container m-hidden">
-                                      <?php $alphas = range('A', 'Z');?>
+                                      <?php $alphas = range('A', 'Z'); ?>
                                       <div class="row">
                                         <div class="col-md-12 col-sm-12 col-12">
                                           <nav aria-label="Page navigation example">
