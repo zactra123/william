@@ -15,9 +15,9 @@
     </nav>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
@@ -37,11 +37,11 @@
   </div>
 </div>
 <section class="ms-user-account">
-  <div class="container">
+  <div class="container mmap-0">
     <div class="row justify-content-center">
-      <div class="col-md-12 col-sm-12">
-        @php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\BankLogo::TYPES; $subTypes = \App\BankLogo::SUB_TYPES; asort($types) @endphp {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' =>
-        'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!} @csrf
+      <div class="col-md-12 col-sm-12 mmap-0">
+        @php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\BankLogo::TYPES; $subTypes = \App\BankLogo::SUB_TYPES; asort($types) @endphp
+        {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!} @csrf
         <div class="ms-ua-box">
           <div class="ms-ua-form">
             <div class="ms-ua-title mb-0">
@@ -50,7 +50,6 @@
                   <div class="col-md-12">
                     <input class="form-control bank_logo_class file-box" type="file" name="logo" id="bank_logo" tabindex="3" />
                   </div>
-
                   <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">NO LOGO</span></div>
                 </div>
                 <div class="col-md-8 pt-3">
@@ -118,23 +117,24 @@
                     <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit btn btn-primary text-white ml-2 mb-3">Copy Entity Address as Registered Agent fix functionality</a></div>
                   </div>
                   @endif
-
                   <div class="row">
                     @if($type == 'registered_agent')
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                     </div>
-                    @endif @if($type == 'executive_address')
+                    @endif
+                    @if($type == 'executive_address')
                     <div class="col-md-3 executive_copied mb-3"><input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> Copy Parent Executive Contact</div>
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                     </div>
-                    @endif @if(in_array($type, ['dispute_address', 'qwr_address', 'fraud_address']))
+                    @endif
+                    @if(in_array($type, ['dispute_address', 'qwr_address', 'fraud_address']))
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
                     </div>
-                    @endif {!! Form::hidden("bank_address[{$type}][type]", $type, ["class"=>"form-control"]) !!}
-
+                    @endif
+                    {!! Form::hidden("bank_address[{$type}][type]", $type, ["class"=>"form-control"]) !!}
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][street]", null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
                     </div>

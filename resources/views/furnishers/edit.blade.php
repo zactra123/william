@@ -16,9 +16,9 @@
         </nav>
     </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
     <div class="row row-sm">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-12 mmap-0">
             <div class="card mg-b-20" id="tabs-style2">
                 <div class="card-body">
                     <div class="main-content-label mg-b-5">
@@ -38,21 +38,8 @@
     </div>
 </div>
 <section class="ms-user-account">
-    <div class="container">
-        <div class="col-md-12 col-sm-12">
-            {{-- <div class="row pl-5">
-                <form method="POST" action="{{route('admins.bank.delete', $bank->id)}}">
-            @csrf
-            @method("DELETE")
-            <div class="col-md-4">
-                <input type="submit" class="btn btn-danger delete-furnisher" value="Delete">
-            </div>
-            </form>
-
-            <div class="col-md-6">
-                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">ADD FURNISHER</a>
-            </div>
-        </div> --}}
+    <div class="container mmap-0">
+        <div class="col-md-12 col-sm-12 col-12 mmap-0">
 
         @php
         $states = [null=>''] + \App\BankAddress::STATES;

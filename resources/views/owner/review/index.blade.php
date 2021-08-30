@@ -15,9 +15,9 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container mmap-0">
       <div class="row row-sm">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-12">
           <div class="card">
             <div class="card-header pb-0">
              <div class="d-flex justify-content-between">

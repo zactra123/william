@@ -16,9 +16,9 @@
     </nav>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
@@ -49,9 +49,9 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div id="addresses_container">
@@ -64,13 +64,6 @@
               </div>
             </div>
             <div class="col-md-12 addresses" id="address">
-              {{--
-              <div class="row">
-                --}} {{--
-                <div class="form-group col-sm-12">--}} {{-- {!! Form::text("court[address_name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}--}} {{--</div>
-                --}} {{--
-              </div>
-              --}}
               <div class="row">
                 <div class="form-group col-sm-3">
                   {!! Form::text("court[street]", null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
@@ -108,9 +101,6 @@
                 </div>
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    {{-- <div class="col-sm-2">
-                      <img class="responsive" src="{{url('/')}}/images/email.png" />
-                    </div> --}}
                     <div class="col-sm-12">
                       {!! Form::email("court[email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                     </div>
@@ -124,9 +114,9 @@
     </div>
   </div>
 </div>
-<div class="container" id="account-judges-court">
+<div class="container mmap-0" id="account-judges-court">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-header">
           <div class="row">
@@ -135,9 +125,6 @@
               <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
                   <span class="fa fa-times"></span>
               </button>
-              {{-- <button type="button" class="btn btn-danger remove-equal-bank">
-                <span class="fa fa-times"></span>
-              </button> --}}
             </div>
           </div>
         </div>
@@ -166,9 +153,9 @@
   </div>
 </div>
 
-<div class="container" id="account-equal-bank">
+<div class="container mmap-0" id="account-equal-bank">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-header">
           <div class="row">
@@ -177,9 +164,6 @@
               <button class="text-danger fs-18 mb-3 remove-equal-bank" style="border:none !important;background:none !important;">
                 <span class="fa fa-times"></span>
               </button>
-              {{-- <button type="button" class="btn btn-danger remove-equal-bank">
-                <sapn class="fa fa-times"></sapn>
-              </button> --}}
             </div>
           </div>
         </div>
@@ -190,9 +174,9 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row pull-right">
-    <div class="col-md-12 text-right">
+    <div class="col-md-12 text-right mmap-0">
       <input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 pull-right" />
     </div>
   </div>

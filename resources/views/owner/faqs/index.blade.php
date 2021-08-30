@@ -13,14 +13,14 @@
       </ol>
     </nav>
   </div>
-  <div class="">
-    <a class="btn btn-primary pull-left" href="{{ route('owner.faqs.question')}}" role="button">
+  <div class="mmt-7">
+    <a class="btn btn-primary pull-left mmt-7" href="{{ route('owner.faqs.question')}}" role="button">
       Faqs Questions
     </a>
   </div>
 </div>
 
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
     <div class="col-md-12">
       <div class="card">

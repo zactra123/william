@@ -15,10 +15,10 @@
   </div>
 </div>
 <section class="ms-user-account">
-  <div class="container">
+  <div class="container mmap-0">
     <div class="row">
       <div class="col-md-3 col-sm-12"></div>
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-12 col-sm-12 col-12 mmap-0">
         <div class="ms-ua-box">
           <div class="col-md-11">
             <div class="card">
@@ -32,7 +32,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">FULL NAME</th>
-                        <th scope="col">EMAI</th>
+                        <th scope="col">EMAIL</th>
                         <th scope="col">CLIENTS</th>
                       </tr>
                     </thead>

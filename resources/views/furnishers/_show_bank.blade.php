@@ -49,10 +49,15 @@ $states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\Bank
       <div class="ms-ua-box mt-2" id="account">
         <div class="ms-ua-form pl-4 pr-4">
           <div id="addresses_container">
-            @foreach(\App\BankAddress::TYPES as $type=>$name) @php $address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null; $hidden = false; if ($type == 'fraud_address') { $hidden = $bank->type != 3; } if ($type ==
-            'qwr_address'){ $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])); } @endphp @if($type == 'additional_address')
+            @foreach(\App\BankAddress::TYPES as $type=>$name)
+              @php
+                $address = !empty($bank_addresses[$type]) ? $bank_addresses[$type] : null; $hidden = false;
+                if ($type == 'fraud_address') { $hidden = $bank->type != 3; }
+                if ($type == 'qwr_address'){ $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type'])); }
+              @endphp
+            @if($type == 'additional_address')
             <?php if (!empty($bank_addresses[$type])) { ?>
-            @foreach($bank_addresses[$type] as $addresses) @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ]) @endforeach
+              @foreach($bank_addresses[$type] as $addresses) @include('furnishers._address', ['type'=>$type,'states' => $states, 'address'=>$addresses ]) @endforeach
             <?php } ?>
 
             <div class="row additional-addresses">

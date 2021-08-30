@@ -14,9 +14,9 @@
   </div>
 </div>
 <section class="ms-user-account">
-  <div class="container">
+  <div class="container mmap-0">
     <div class="col-md-3 col-sm-12"></div>
-    <div class="col-md-12 col-sm-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card">
         {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!} @csrf
         <div class="row px-5 pt-5 pb-3">
@@ -26,10 +26,10 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="form-check">
+            <div class="form-check mmap-0">
               <div class="row">
-                <div class="col-md-8">
-                  {!! Form::hidden('account_type[type]',0) !!} {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label']); !!}
+                <div class="col-md-8 col-sm-12 col-12">
+                  {!! Form::hidden('account_type[type]',0) !!} {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label mmt-7']); !!}
                 </div>
                 <div class="col-md-4 text-center pt-2">
                   {!! Form::checkbox('account_type[type]',1, false, ['class'=> " form-check-input" ]); !!}
@@ -51,7 +51,7 @@
         {!! Form::close() !!}
       </div>
     </div>
-    <div class="col-md-12 col-sm-12 my-3">
+    <div class="col-md-12 col-sm-12 my-3 mmap-0">
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">

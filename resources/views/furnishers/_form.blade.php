@@ -11,7 +11,9 @@
       <h3>{{$state->full_name}} ({{$state->name}})</h3>
     </div>
   </div>
-  @if($state->type == 1) {!! Form::open(['route' => "admins.mortgage.days", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!} @csrf
+  @if($state->type == 1)
+    {!! Form::open(['route' => "admins.mortgage.days", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+    @csrf
   <div class="form-group">
     <div class="row">
       <div class="col-md-12 form-group">
@@ -46,5 +48,6 @@
       <input type="submit" value="Add" class="btn btn-primary pull-right" />
     </div>
   </div>
-  {!! Form::close() !!} @endif
+  {!! Form::close() !!}
+@endif
 </div>

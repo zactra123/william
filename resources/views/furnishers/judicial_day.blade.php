@@ -11,9 +11,9 @@
     </nav>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
@@ -40,18 +40,18 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <section class="ms-user-account">
             <div class="container">
               <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
+                <div class="col-md-12 col-sm-12 mmap-0">
                   <div class="album">
-                    <div class="container">
+                    <div class="container mmap-0">
                       <div class="row">
                         @foreach($states as $state)
                         <div class="col-md-3" title="{{strtoupper($state->full_name)}}">

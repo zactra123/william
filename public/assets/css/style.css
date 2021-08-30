@@ -15511,6 +15511,16 @@ a.tag-addon {
       .msw-100{
         width: 100% !important;
       }
+      .mmlh-0{
+        line-height: 1.2 !important;
+      }
+      .mmt-7{
+        margin-top: 7px !important;
+      }
+      .mmap-0{
+        margin: 0px !important;
+        padding: 0px !important;
+      }
       }
       .ls-hidden{
         display: none !important;

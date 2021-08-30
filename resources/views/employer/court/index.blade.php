@@ -13,16 +13,16 @@
             </ol>
           </nav>
     </div>
-    <div class="">
-      <a class="btn btn-primary pull-left" href="{{ route('admins.court.create')}}" role="button">
+    <div class="mmt-7">
+      <a class="btn btn-primary pull-left mmt-7" href="{{ route('admins.court.create')}}" role="button">
           ADD COURT
       </a>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container mmap-0">
     <div class="row row-sm">
-      <div class="col-md-12">
+      <div class="col-md-12 col-sm-12 col-12 mmap-0">
         <div class="card mg-b-20" id="tabs-style2">
           <div class="card-body">
             <div class="main-content-label mg-b-5">
@@ -43,7 +43,7 @@
                   </nav>
               </div>
               <div class="album py-5">
-                  <div class="container">
+                  <div class="container mmap-0">
                       <div class="row">
                           @foreach($courts as  $logos)
                               <div class="col-md-3" title="{{strtoupper($logos->name)}}">

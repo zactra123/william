@@ -1,6 +1,8 @@
-@extends('owner.layouts.app') @section('title')
+@extends('owner.layouts.app')
+@section('title')
 <title>Court</title>
-@endsection @section('body')
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -13,9 +15,9 @@
     </nav>
   </div>
 </div>
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-md-12 col-sm-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
@@ -56,17 +58,17 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mmap-0">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-header">
           <div class="row expand-address" data-address="#address">
             <div class="col-md-6"><label for="">Address</label></div>
             <div class="col-md-6 text-right">
-              <button type="button" class="btn btn-danger">
+              <span class="text-danger mb-3 fs-18">
                 <sapn class="fa fa-minus-circle"></sapn>
-              </button>
+              </span>
             </div>
           </div>
         </div>
@@ -131,9 +133,9 @@
   </div>
 </div>
 
-<div class="container" id="account-judges-court">
+<div class="container mmap-0" id="account-judges-court">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-header">
           <div class="row">
@@ -195,9 +197,9 @@
   </div>
 </div>
 
-<div class="container" id="account-equal-bank">
+<div class="container mmap-0" id="account-equal-bank">
   <div class="row row-sm">
-    <div class="col-md-12">
+    <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-header">
           <div class="row">
@@ -219,10 +221,10 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mmap-0">
   <div class="row pull-right">
-    <div class="col mb-5 text-right">
-      <input type="submit" value="Save" class="ms-ua-submit btn btn-primary pull-right" />
+    <div class="col text-right mmap-0">
+      <input type="submit" value="Save" class="ms-ua-submit mb-5 btn btn-primary pull-right" />
     </div>
     {!! Form::close() !!}
   </div>

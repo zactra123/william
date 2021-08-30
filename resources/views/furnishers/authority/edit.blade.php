@@ -24,9 +24,9 @@
             </nav>
       </div>
     </div>
-    <div class="container">
+    <div class="container mmap-0">
         <div class="row row-sm">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12 col-12 mmap-0">
                 <div class="card mg-b-20" id="tabs-style2">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
@@ -99,9 +99,9 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mmap-0">
         <div class="row row-sm">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12 col-12 mmap-0">
                 <div class="card mg-b-20" id="tabs-style2">
                     <div class="card-body">
                       <div class=" mt-2" id="account">
@@ -166,9 +166,9 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mmap-0">
       <div class="row">
-        <div class="col-md-12 text-right mb-5">
+        <div class="col-md-12 col-sm-12 col-12 text-right mb-5 mmap-0">
           <input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 pull-right">
           {!! Form::close() !!}
         </div>
