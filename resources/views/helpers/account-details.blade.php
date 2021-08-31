@@ -1,15 +1,12 @@
-
 <section class="charts working-section">
     <div class="container-fluid">
         <div class="chart-container">
             <div class="content">
-                <h2>ACCOUNT DETAILS</h2>
+                <h2>Account Details</h2>
                 @if($exAccount->account_type()=="AUTO")
-
                 <div class="row" >
                     <div class="col-md-12">
-                        <a href="#" data-toggle="modal" data-target="#question" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> ACCOUNT QUESTIONS</a>
-
+                        <a href="#" data-toggle="modal" data-target="#question" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Account Questions</a>
                     </div>
                 </div>
                 @endif
@@ -17,47 +14,45 @@
                 <div class="row" >
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> ACCOUNT NAME </div>
+                            <div class="col-md-6" style="font-weight: bold"> Account Name </div>
                             <div class=" col-md-6"> {{$exAccount->source_name}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> ACCOUNT # </div>
+                            <div class="col-md-6" style="font-weight: bold"> Account # </div>
                             <div class=" col-md-6"> {{$exAccount->source_id}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> ACCOUNT TYPE </div>
+                            <div class="col-md-6" style="font-weight: bold"> Account Type </div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->type)}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> RESPONSIBILITY</div>
+                            <div class="col-md-6" style="font-weight: bold"> Responsibility</div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->responsibility)}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> DATE OPENED</div>
+                            <div class="col-md-6" style="font-weight: bold"> Date Opened</div>
                             <div class=" col-md-6"> {{strtoupper(date("m/d/Y",strtotime($exAccount->opened_date)))}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> STATUS DATE</div>
+                            <div class="col-md-6" style="font-weight: bold"> Status Date</div>
                             <div class=" col-md-6">{{strtoupper(date("m/d/Y",strtotime($exAccount->status_date)))}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> STATUS </div>
+                            <div class="col-md-6" style="font-weight: bold"> Status </div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->status)}} </div>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> BALANCE </div>
+                            <div class="col-md-6" style="font-weight: bold"> Balance </div>
                             <div class=" col-md-6">  {{!empty($exAccount->recent_balance_amount)? "$ ". $exAccount->recent_balance_amount: "N/A"}} </div>
                         </div>
-
                        <div class="row">
-                           <div class="col-md-6" style="font-weight: bold"> RECENT BALANCE DATE</div>
+                           <div class="col-md-6" style="font-weight: bold"> Recent Balance Date</div>
                            <div class=" col-md-6"> {{!empty($exAccount->recent_balance_date)? strtoupper($exAccount->recent_balance_date) : "N/A"}} </div>
                        </div>
                        <div class="row">
-                           <div class="col-md-6" style="font-weight: bold"> RECENT PAYMENT</div>
+                           <div class="col-md-6" style="font-weight: bold"> Recent Payment</div>
                            <div class=" col-md-6">
                                {{!empty($exAccount->recent_balance_pay_amount)? "$ ". $exAccount->recent_balance_pay_amount: "N/A"}}
                            </div>
@@ -67,16 +62,15 @@
                             <div class=" col-md-6"> $ {{$exAccount->credit_limit}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> TERMS</div>
+                            <div class="col-md-6" style="font-weight: bold"> Terms</div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->term)}} </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> MONTHLY PAYMENT</div>
+                            <div class="col-md-6" style="font-weight: bold"> Monthly Payment</div>
                             <div class=" col-md-6"> {{!empty($exAccount->monthly_payment)? "$ {$exAccount->monthly_payment}": "N/A"}} </div>
                         </div>
-
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold"> ON RECORD UNTIL</div>
+                            <div class="col-md-6" style="font-weight: bold"> On Record Until</div>
                             <div class=" col-md-6"> {{strtoupper($exAccount->on_record_until)}} </div>
                         </div>
                     </div>
@@ -89,25 +83,25 @@
                         </div>
                         @endif
 
-                        <div class="col-md-6" style="font-weight: bold">ADDRESS</div>
+                        <div class="col-md-6" style="font-weight: bold">Address</div>
                         <div class="col-md-6">
                             {{$exAccount->source_address_street}} ,{{$exAccount->source_address_city}},
                             {{$exAccount->source_address_state}},  {{$exAccount->source_address_zip}}
                         </div>
-                        <div class="col-md-6" style="font-weight: bold">PHONE #</div>
+                        <div class="col-md-6" style="font-weight: bold">Phone #</div>
                         <div class="col-md-6 phone">
                             {{$exAccount->source_address_phone}}
                         </div>
                     </div>
                     @if($exAccount->original_creditor != "")
                         <div class="row">
-                            <div class="col-md-6" style="font-weight: bold">ORIGINAL CREDITOR</div>
+                            <div class="col-md-6" style="font-weight: bold">Original Creditor</div>
                             <div class="col-md-6">
                                 {{$exAccount->original_creditor}}
                             </div>
 
                             @if($exAccount->sold_to != "")
-                                <div class="col-md-6" style="font-weight: bold">SOLD TO</div>
+                                <div class="col-md-6" style="font-weight: bold">Sold To</div>
                                 <div class="col-md-6">
                                     {{$exAccount->sold_to}}
                                 </div>
@@ -117,7 +111,7 @@
 
                 @if(!empty($exAccount->paymentHistories))
 
-                    <h3 class="mt-5">PAYMENT HISTORY</h3>
+                    <h3 class="mt-5">Payment History</h3>
                     @if(!empty($dispute["additional_information"]["attention"]))
                         <h3 class="mt-5 text-danger">Attentions</h3>
                         @foreach($dispute["additional_information"]["attention"] as $attention)
@@ -129,8 +123,6 @@
 
                             </div>
                         @endforeach
-
-
                     @endif
                     <div class="row mt-5" >
                         @foreach($exAccount->paymentHistories()->orderBy("id", "DESC")->get() as $payment)
@@ -138,7 +130,6 @@
                                 <div class="col-md-12" style="font-weight: bold">{{$payment->month}}/{{$payment->year}}</div>
                                 <div class="col-md-12">{{$payment->status}}</div>
                             </div>
-
                         @endforeach
                     </div>
                 @endif
@@ -151,12 +142,12 @@
                 @endif
 
                 @if(!empty($exAccount->balanceHistories->toArray()))
-                    <h3 class="mt-5" >BALANCE HISTORY</h3>
+                    <h3 class="mt-5" >Balance History</h3>
                     <div class="row" style="font-weight: bold">
-                        <div class="col-md-3">DATE</div>
-                        <div class="col-md-3">BALANCE</div>
-                        <div class="col-md-3">SCHEDULED PAYMENTS</div>
-                        <div class="col-md-3">PAID</div>
+                        <div class="col-md-3">Date</div>
+                        <div class="col-md-3">Balance</div>
+                        <div class="col-md-3">Scheduled Payments</div>
+                        <div class="col-md-3">Paid</div>
                     </div>
                     @foreach($exAccount->balanceHistories as $balance)
                         <div class="row">
@@ -181,12 +172,11 @@
     </div>
 </section>
 
-
 <div class="modal fade" id="question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ACCOUNT QUSETION</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Account Question</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -197,18 +187,18 @@
                 @csrf
                 <div class="form row">
                     <div class="form-group col-md-12">
-                        <input  type="text" class="date form-control" placeholder="PAYMENT DUE DATE">
+                        <input  type="text" class="date form-control" placeholder="Payment Due Date">
                     </div>
                     <div class="form-group col-md-12">
-                        <input type="text" class="date form-control" placeholder="PAYMENT DUE DATE CHANGED">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <input type="text" class="date form-control" placeholder="PAYMENT DATE">
+                        <input type="text" class="date form-control" placeholder="Payment Due Date Changed">
                     </div>
 
                     <div class="form-group col-md-12">
-                        {{ Form::text('client[full_name]', null, ['class' => 'form-control m-input', 'placeholder' => 'BALANCE ON REPO']) }}
+                        <input type="text" class="date form-control" placeholder="Payment Date">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        {{ Form::text('client[full_name]', null, ['class' => 'form-control m-input', 'placeholder' => 'Balance On Repo']) }}
                     </div>
                     <div class="form-group col-md-12">
 
@@ -216,41 +206,38 @@
                     </div>
                     <div class="form-group col-md-12">
 
-                        {{ Form::text('test', null, ['class' => 'form-control m-input hidden', 'id'=>'count_past_due', 'placeholder' => 'COUNT PAST DUE PAYMENT']) }}
+                        {{ Form::text('test', null, ['class' => 'form-control m-input hidden', 'id'=>'count_past_due', 'placeholder' => 'Count Past Due Payment']) }}
                     </div>
                     <div class="form-group col-md-12">
-                        <input  type="text" class="date form-control" placeholder="REPO DATE">
+                        <input  type="text" class="date form-control" placeholder="Repo Date">
                     </div>
                     <div class="form-group col-md-12">
-                        <input  type="text" class="date form-control" placeholder="NOTICE DATE">
+                        <input  type="text" class="date form-control" placeholder="Notice Date">
                     </div>
                     <div class="form-group col-md-12">
-                        <input  type="text" class="date form-control" placeholder="CLIENT DELIVERY DATE">
+                        <input  type="text" class="date form-control" placeholder="Client Delivery Date">
                     </div>
                     <div class="form-group col-md-12">
                         {{ Form::select('client[sex]', [''=>'AVTON TANELUC HETO INCH EN AREL','0'=>'???????', '1'=>'???????', '2'=>'???????'],  null, ['class'=>'col-md-10  form-control']) }}
                     </div>
                     <div class="form-group col-md-12">
-                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'INCH GNOVA CAXVEL']) }}
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Inch Gnova Caxvel']) }}
                     </div>
 
                     <div class="form-group col-md-12">
-                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'DISPUTED']) }}
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Disputed']) }}
                     </div>
 
 
                     <div class="form-group col-md-12">
-                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'service_count', 'placeholder' => 'qani angama service travel']) }}
+                        {{ Form::text('client[address]', null, ['class' => 'form-control m-input', 'id'=>'service_count', 'placeholder' => 'Qani Angama Service Travel']) }}
                     </div>
                     <div id="services_date">
 
                     </div>
-
-
-
                 </div>
 
-                <button type="submit" value="Update" class="btn btn-primary">SUBMIT</button>
+                <button type="submit" value="Update" class="btn btn-primary">Submit</button>
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer">
@@ -267,12 +254,9 @@
 
 
 <script type="text/html" id="date_of_service">
-
     <div class="form-group col-md-12 sevice">
-        <input  type="text" class="date form-control" placeholder="CLIENT DELIVERY DATE">
+        <input  type="text" class="date form-control" placeholder="Client Delivery Date">
     </div>
-
-
 </script>
 
 
@@ -311,6 +295,4 @@
         }
 
     })
-
-
 </script>

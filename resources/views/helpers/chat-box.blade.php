@@ -1,11 +1,7 @@
 <link rel="stylesheet" href="/css/chat_box.css">
-
 <div class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{Session::get("guest")}}" >
     <img src="/images/chat_logo_new.png" >
 </div>
-{{--<button class="open-button open-chatbox-btn" data-user-id="{{Auth::id()}}" data-guest-id="{{7}}" >Chat</button>--}}
-
-
 <div class="chat-popup ms-chat-tab">
     <div class="not-defined-user ">
         <div class="chat-header text-white">
@@ -29,9 +25,6 @@
                             <div class="form-group">
                                     <input id="full_name" type="text" class="form-control" name="full_name" value="" placeholder="You full name" autofocus>
                             </div>
-{{--                            <div class="form-group ">--}}
-{{--                                --}}
-{{--                            </div>--}}
                             <div class="form-group ">
                                 <div class="row">
                                     <div class="col-md-6" style="margin: 0">
@@ -80,7 +73,6 @@
 
                      </form>
                 </div>
-
             </div>
         </section>
     </div>

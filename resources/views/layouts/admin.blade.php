@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     {{--  Meta data   --}}
     @yield('meta')
     @if (!trim($__env->yieldContent('meta')))
@@ -108,30 +106,24 @@
               @if (Auth::check())
                 <a href="{{ route('logout') }}" class="ml-4 text-white">
                   <span class="fs-12">Logout</span>
-                  </a>
+                </a>
               @else
                 <a href="{{ route('login') }}" class="ml-4 text-white">
                   <span class="fs-12">Login</span>
-                  </a>
-
+                </a>
                   <a href="{{ route('register') }}" class="text-white">
                     <span class="fs-12"> / Sign up</span>
-                    </a>
-
+                  </a>
               @endif
 
               {{-- <div class="dropdown">
                   <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                       My Account
-
                   </a>
-
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                       <a class="dropdown-item">
                           Logout
                       </a>
-
                   </div>
               </div> --}}
             </div>
@@ -194,16 +186,11 @@
                     We are always looking to partner with independent sales representatives.
                     To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
                         partners@prudentscores.com</a> and one of our representatives will contact you promptly.
-
-
                 </p>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.">
 <input type="hidden" id="contact_error_mail_text" value="The email field is not filled or contains an error">
