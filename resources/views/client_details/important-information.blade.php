@@ -1,5 +1,5 @@
-@extends('layouts.layout')
-@section('content')
+@extends('layouts.layout2')
+@section('body')
 <section class="header-title section-padding">
   <div class="container text-center">
     <h2 class="title">Important Information</h2>
@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="form-group">
-            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}"
-            required autocomplete="phone_number" placeholder="Phone Number"> @error('phone_number')
+            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}" required autocomplete="phone_number" placeholder="Phone Number">
+            @error('phone_number')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>
@@ -34,10 +34,8 @@
           <div class="form-group">
             <select class="form-control" name="secret_questions_id" id="secret_question">
               <option disabled="disabled" selected="selected">Choose Secret Question</option>
-
               @foreach($secrets as $value)
-
-              <option value="{{$value->id}}" {{$client->secret_questions_id == $value-> id ? "selected" : ""}}>{{$value->question}}</option>
+                <option value="{{$value->id}}" {{$client->secret_questions_id == $value-> id ? "selected" : ""}}>{{$value->question}}</option>
               @endforeach
             </select>
             @error('sex')
@@ -47,11 +45,7 @@
             @enderror
           </div>
           <div class="form-group">
-            <input
-              id="secret_answer"
-              type="text"
-              class="form-control phone"
-              name="secret_answer"
+            <input id="secret_answer" type="text" class="form-control phone" name="secret_answer"
               value="{{ !empty(old('secret_answer')) ? old('secret_answer') : $client->secret_answer  }}"
               required
               autocomplete="secret_answer"

@@ -64,7 +64,6 @@
 
 <!--- Switcher js -->
 <script src="{{asset('/')}}assets/switcher/js/switcher.js"></script>
-
 <script src="{{asset('/')}}assets/plugins/select2/js/select2.min.js"></script>
 
 <!--- Internal ion.rangeSlider.min js -->
@@ -76,7 +75,6 @@
 <!--- Internal Pickerjs js -->
 <script src="{{asset('/')}}assets/plugins/pickerjs/picker.min.js"></script>
 
-
 <!--- Internal Jquery.steps js -->
 <script src="{{asset('/')}}assets/plugins/jquery-steps/jquery.steps.min.js"></script>
 <script src="{{asset('/')}}assets/plugins/parsleyjs/parsley.min.js"></script>
@@ -85,32 +83,30 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
 <script type="text/javascript">
-
-    $(document).ready(function(){
-         @if (session('success'))
-         Swal.fire({
-           title: 'Success',
-           text: '{!! session("success") !!}',
-           icon: 'success',
-           confirmButtonText: 'Close'
-         })
-         @elseif (session('error'))
-         Swal.fire({
-           title: 'Error',
-           text: '{!! session("error") !!}',
-           icon: 'error',
-           confirmButtonText: 'Close'
-         })
-         @elseif (session('info'))
-         Swal.fire({
-           title: 'Info',
-           text: '{!! session("info") !!}',
-           icon: 'info',
-           confirmButtonText: 'Close'
-         })
-         @endif
-
-       });
+  $(document).ready(function(){
+     @if (session('success'))
+     Swal.fire({
+       title: 'Success',
+       text: '{!! session("success") !!}',
+       icon: 'success',
+       confirmButtonText: 'Close'
+     })
+     @elseif (session('error'))
+     Swal.fire({
+       title: 'Error',
+       text: '{!! session("error") !!}',
+       icon: 'error',
+       confirmButtonText: 'Close'
+     })
+     @elseif (session('info'))
+     Swal.fire({
+       title: 'Info',
+       text: '{!! session("info") !!}',
+       icon: 'info',
+       confirmButtonText: 'Close'
+     })
+     @endif
+      });
 </script>
 
 @yield('js')

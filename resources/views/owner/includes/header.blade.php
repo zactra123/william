@@ -60,7 +60,7 @@
                   <img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
                 @endif
               </div>
-              <h6>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6><span>Administrator</span>
+              <h6>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6><span>{{ ucfirst(Auth::user()->role) }}</span>
             </div>
             <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-user"></i> My Profile</a>
             <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-edit"></i> Edit Profile</a>

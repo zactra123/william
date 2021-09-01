@@ -9,7 +9,6 @@
               5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
               <strong>Phone:</strong> 1-844-337-8336<br>
               <strong>Email:</strong> info@prudentscores.com<br>
-            </p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
               <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>

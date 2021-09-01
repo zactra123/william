@@ -74,7 +74,6 @@
     </script>
 </head>
 <body>
-
   <header class="theme-background py-2 fixed-top">
     <div class="container">
       <div class="phone-block contact-info">
@@ -93,7 +92,6 @@
               </svg>
             <span class="fs-12">1-844-337-8336</span>
            </a>
-
             <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664"/>
@@ -102,7 +100,6 @@
               </a>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12 col-12 text-right sm-hidden">
-
               @if (Auth::check())
                 <a href="{{ route('logout') }}" class="ml-4 text-white">
                   <span class="fs-12">Logout</span>
@@ -115,7 +112,6 @@
                     <span class="fs-12"> / Sign up</span>
                   </a>
               @endif
-
               {{-- <div class="dropdown">
                   <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       My Account
@@ -129,21 +125,17 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </header>
 
 <section class="py-2 mb-5">
   <div class="col-md-12 col-lg-12 col-sm-12 col-12">
     <header id="header" class="fixed-top" style="top:40px !important;">
       <div class="container d-flex align-items-center justify-content-between">
-
         <h1 class="logo"><a href="{{ url('/') }}"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
         <nav id="navbar" class="navbar">
           <ul>
             @if(Auth::user())
@@ -163,7 +155,6 @@
             @else
                 @include('helpers.urls.nav_bar_guest')
             @endif
-
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -173,23 +164,20 @@
   </div>
 </section>
 
-
 @yield('content')
 
-
 <div class="modal fade" id="partner_with_us" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <p style="text-align: justify">
-                    We are always looking to partner with independent sales representatives.
-                    To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com">
-                        partners@prudentscores.com</a> and one of our representatives will contact you promptly.
-                </p>
-            </div>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p style="text-align: justify">
+            We are always looking to partner with independent sales representatives.
+            To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com"> partners@prudentscores.com</a> and one of our representatives will contact you promptly.
+        </p>
+      </div>
     </div>
+  </div>
 </div>
 
 <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.">

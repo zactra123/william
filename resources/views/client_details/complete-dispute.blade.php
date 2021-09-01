@@ -50,7 +50,6 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-6">
                                 <span class="">{{$complete->disputable->source_name}} </span>
-
                                 <span style="padding-left: 15px;"> # {{$complete->disputable->source_id}}</span>
                             </div>
                             <div class="col-md-2 delete-name" data-attribute="title-ex_account-{{$complete->disputable->id}}">
@@ -103,7 +102,8 @@
                         </div>
 
                         <div class="row mt20 border" style="font-weight: bold;">
-                            @foreach($complete->additional_information as $key => $value) @if( $key = 'type' && $value == 'credit')
+                          @foreach($complete->additional_information as $key => $value)
+                            @if( $key = 'type' && $value == 'credit')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -127,7 +127,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "auto")
+                            @endif
+                            @if($key = 'type' && $value == "auto")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -139,7 +140,6 @@
                                     <div class="col-md-4">
                                         <input class="form-control" type="text" name="ex_account[year]" placeholder="YEAR" />
                                     </div>
-
                                     <div class="col-md-4">
                                         <input class="form-control" type="text" name="ex_account[make]" placeholder="MAKE" />
                                     </div>
@@ -155,7 +155,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "personal")
+                            @endif
+                            @if($key = 'type' && $value == "personal")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -170,7 +171,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "student")
+                            @endif
+                            @if($key = 'type' && $value == "student")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -179,7 +181,6 @@
                                     <input type="text" name="ex_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
                                 </div>
                             </div>
-
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <input type="text" name="ex_account[school_attened]" placeholder="SCHOOL ATTENDED" />
@@ -191,7 +192,8 @@
                                 </div>
                             </div>
 
-                            @endif @if($key = 'type' && $value == 'mortgage')
+                            @endif
+                            @if($key = 'type' && $value == 'mortgage')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -212,10 +214,13 @@
                                     <input type="text" name="ex_account[security_word]" placeholder="SECURITY WORD" />
                                 </div>
                             </div>
-                            @endif @endforeach
+                            @endif
+                          @endforeach
                         </div>
                     </div>
-                    @endif @if($complete->disputable->getTable() == "client_report_tu_accounts") @if(!empty($complete->disputable))
+                    @endif
+                    @if($complete->disputable->getTable() == "client_report_tu_accounts")
+                      @if(!empty($complete->disputable))
                     <div class="mt20 title-tu_account-{{$complete->disputable->id}}"></div>
                     <div class="chart-report title-tu_account-{{$complete->disputable->id}}">
                         <div class="row mt20" style="font-weight: bold;">
@@ -243,7 +248,8 @@
                                     <span class=""> {{date("m/d/Y",strtotime($complete->disputable->date_opened))}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->account_type_description !=null )
+                            @endif
+                            @if($complete->disputable->account_type_description !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">ACCOUNT TYPE</label>
@@ -252,7 +258,8 @@
                                     <span class=""> {{$complete->disputable->account_type_description}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->loan_type !=null )
+                            @endif
+                            @if($complete->disputable->loan_type !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">LOAN TYPE</label>
@@ -261,7 +268,8 @@
                                     <span class=""> {{$complete->disputable->loan_type}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->pay_status !=null )
+                            @endif
+                            @if($complete->disputable->pay_status !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">PAY STATUS</label>
@@ -276,7 +284,8 @@
                         </div>
 
                         <div class="row mt20 border" style="font-weight: bold;">
-                            @foreach($complete->additional_information as $key => $value) @if( $key = 'type' && $value == 'credit')
+                          @foreach($complete->additional_information as $key => $value)
+                            @if( $key = 'type' && $value == 'credit')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -301,7 +310,8 @@
                                 </div>
                             </div>
 
-                            @endif @if($key = 'type' && $value == "auto")
+                            @endif
+                            @if($key = 'type' && $value == "auto")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -329,7 +339,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "personal")
+                            @endif
+                            @if($key = 'type' && $value == "personal")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -344,7 +355,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "student")
+                            @endif
+                            @if($key = 'type' && $value == "student")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -366,7 +378,8 @@
                                 </div>
                             </div>
 
-                            @endif @if($key = 'type' && $value == 'mortgage')
+                            @endif
+                            @if($key = 'type' && $value == 'mortgage')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -387,10 +400,14 @@
                                     <input type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
                                 </div>
                             </div>
-                            @endif @endforeach
+                            @endif
+                          @endforeach
                         </div>
                     </div>
-                    @endif @endif @if($complete->disputable->getTable() == "client_report_eq_accounts") @if(!empty($complete->disputable))
+                    @endif
+                  @endif
+                  @if($complete->disputable->getTable() == "client_report_eq_accounts")
+                    @if(!empty($complete->disputable))
                     <div class="mt20 title-eq_account-{{$complete->disputable->id}}"></div>
                     <div class="chart-report title-eq_account-{{$complete->disputable->id}}">
                         <div class="row mt20" style="font-weight: bold;">
@@ -416,7 +433,8 @@
                                     <span class=""> {{date("m/d/Y",strtotime($complete->disputable->date_opened))}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->account_type !=null )
+                            @endif
+                            @if($complete->disputable->account_type !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">ACCOUNT TYPE</label>
@@ -425,7 +443,8 @@
                                     <span class=""> {{$complete->disputable->account_type}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->loan_type !=null )
+                            @endif
+                            @if($complete->disputable->loan_type !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">ACCOUNT TITLE</label>
@@ -434,7 +453,8 @@
                                     <span class=""> {{$complete->disputable->account_title}} </span>
                                 </div>
                             </div>
-                            @endif @if($complete->disputable->current_payment_status !=null )
+                            @endif
+                            @if($complete->disputable->current_payment_status !=null )
                             <div class="col-md-3">
                                 <div class="col-md-12">
                                     <label class="form-text">PAYMENT STATUS</label>
@@ -448,7 +468,8 @@
                             @endif
                         </div>
                         <div class="row mt20 border" style="font-weight: bold;">
-                            @foreach($complete->additional_information as $key => $value) @if( $key = 'type' && $value == 'credit')
+                          @foreach($complete->additional_information as $key => $value)
+                            @if( $key = 'type' && $value == 'credit')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -473,7 +494,8 @@
                                 </div>
                             </div>
 
-                            @endif @if($key = 'type' && $value == "auto")
+                            @endif
+                            @if($key = 'type' && $value == "auto")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -501,7 +523,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "personal")
+                            @endif
+                            @if($key = 'type' && $value == "personal")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -516,7 +539,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif @if($key = 'type' && $value == "student")
+                            @endif
+                            @if($key = 'type' && $value == "student")
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -537,8 +561,8 @@
                                     <input type="text" name="eq_account[security_word]" placeholder="SECURITY WORD" />
                                 </div>
                             </div>
-
-                            @endif @if($key = 'type' && $value == 'mortgage')
+                            @endif
+                            @if($key = 'type' && $value == 'mortgage')
                             <div class="col-md-12">
                                 <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
                             </div>
@@ -559,12 +583,13 @@
                                     <input type="text" name="eq_account[security_word]" placeholder="SECURITY WORD" />
                                 </div>
                             </div>
-                            @endif @endforeach
+                            @endif
+                          @endforeach
                         </div>
                     </div>
-
-                    @endif @endif @endforeach
-
+                    @endif
+                  @endif
+                @endforeach
                     <div class="row mt20">
                         <div class="col-md-5"></div>
                         <div class="col-md-2" style="margin-bottom: 20px;">
@@ -582,11 +607,11 @@
 </section>
 
 <script>
-    $(document).ready(function () {
-        $(".delete-name").click(function () {
-            var name = $(this).attr("data-attribute");
-            $("." + name).remove();
-        });
+  $(document).ready(function () {
+    $(".delete-name").click(function () {
+        var name = $(this).attr("data-attribute");
+        $("." + name).remove();
     });
+  });
 </script>
-@endsection {{----}}
+@endsection

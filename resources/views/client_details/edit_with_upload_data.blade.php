@@ -1,4 +1,5 @@
-@extends('layouts.client') @section('content')
+@extends('layouts.client')
+@section('content')
 <style>
   .warning-message {
     color: #a94442;
@@ -158,45 +159,39 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+  <script>
+    $(document).ready(function () {
+      $(".tab-selector i").click(function () {
+        $parent = $(this).parents(".form-group");
+        $parent.removeClass("has-error");
+        $parent.next(".warning-message").remove();
+        $(this).parents(".tab-selector").remove();
+        $parent.children(".tab-selector").find(".col-md-1").remove();
+      });
 
-{{--
-<div class="container fon">
-  --}} {{--
-  <div class="row justify-content-center">--}} {{--</div>
-  --}} {{--
-</div>
---}} @endsection
-<script>
-  $(document).ready(function () {
-    $(".tab-selector i").click(function () {
-      $parent = $(this).parents(".form-group");
-      $parent.removeClass("has-error");
-      $parent.next(".warning-message").remove();
-      $(this).parents(".tab-selector").remove();
-      $parent.children(".tab-selector").find(".col-md-1").remove();
-    });
-
-    $("#clientDetailsForm").submit(function (e) {
-      e.preventDefault();
-      $(".form-group").each(function (index, element) {
-        if ($(element).find(".tab-selector").length > 1) {
-          if (!$(element).find(".warning-message").length) {
-            $(element).addClass("has-error");
-            $(element).after("<span class='warning-message offset-4'>Please choose one of options</span>");
+      $("#clientDetailsForm").submit(function (e) {
+        e.preventDefault();
+        $(".form-group").each(function (index, element) {
+          if ($(element).find(".tab-selector").length > 1) {
+            if (!$(element).find(".warning-message").length) {
+              $(element).addClass("has-error");
+              $(element).after("<span class='warning-message offset-4'>Please choose one of options</span>");
+            }
+          } else {
+            $(element).removeClass("has-error");
           }
-        } else {
-          $(element).removeClass("has-error");
+        });
+        if (!$(this).find(".warning-message").length) {
+          $(this).unbind().submit();
         }
       });
-      if (!$(this).find(".warning-message").length) {
-        $(this).unbind().submit();
-      }
-    });
 
-    $(".cancel-changes").click(function () {
-      location.reload();
+      $(".cancel-changes").click(function () {
+        location.reload();
+      });
     });
-  });
-</script>
+  </script>
 
-@section('scripts') @endsection
+@endsection

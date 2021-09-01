@@ -52,7 +52,28 @@
   <div class="main-sidebar-body">
     @if(Auth::user())
         @if(Auth::user()->role == 'client')
-            @include('helpers.urls.nav_bar_client')
+          <ul class="side-menu">
+            <li class="slide">
+              <a class="side-menu__item" href="{{url('/client/details')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Home</span></a>
+            </li>
+            @if(!empty(Auth::user()->clientDetails))
+              @if(Auth::user()->clientDetails->registration_steps != 'registered')
+                <li class="slide">
+                  <a class="side-menu__item" href="{{route('client.details.edit', Auth::user()->id)}}"><i class="side-menu__icon fe fe-edit"></i><span class="side-menu__label">Edit Details</span></a>
+                </li>
+                <li class="slide">
+                  <a class="side-menu__item" href="{{route('client.addDriverSocial')}}"><i class="side-menu__icon fe fe-upload"></i><span class="side-menu__label">Upload dl & ss</span></a>
+                </li>
+                <li class="slide">
+                  <a class="side-menu__item" href="{{route('client.credentials')}}"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Credentials</span></a>
+                </li>
+              @endif
+            @else
+              <li class="slide">
+                <a class="side-menu__item" href="{{route('client.details.create')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Add Your Details</span></a>
+              </li>
+            @endif
+          </ul>
         @elseif(Auth::user()->role == 'affiliate')
             @include('helpers.urls.nav_bar_affiliate')
         @elseif(Auth::user()->role == 'super admin')

@@ -32,7 +32,7 @@
         .msw-100{
           width: 100% !important;
         }
-      
+
         .navbar-mobile {
             background-color: #ffffff !important;
             height: 1000px;
@@ -84,21 +84,15 @@
                     <a href="{{ route('register') }}" class="text-white">
                       <span class="fs-12"> / Sign up</span>
                       </a>
-
                 @endif
-
                 {{-- <div class="dropdown">
                     <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                         My Account
-
                     </a>
-
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item">
                             Logout
                         </a>
-
                     </div>
                 </div> --}}
               </div>
@@ -115,13 +109,13 @@
     <div class="container d-flex align-items-center justify-content-between">
 
     <div class="row">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-4 col-sm-12">
         <h1 class="logo"><a href="#"> <img src="https://prudentscores.com/images/new/logo.png" width="200px" alt="logo"> </a></h1>
       </div>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <div class="col-md-6 col-sm-12 col-12">
+      <div class="col-md-8 col-sm-12 col-12">
         <nav id="navbar" class="navbar">
           <ul class="msw-100">
             @if(Auth::user())
@@ -129,7 +123,8 @@
                 @include('helpers.urls.nav_bar_client')
               @elseif(Auth::user()->role == 'affiliate')
                 @include('helpers.urls.nav_bar_affiliate')
-              @elseif(Auth::user()->role == 'super admin') @include('helpers.urls.nav_bar_owner')
+              @elseif(Auth::user()->role == 'super admin')
+                @include('helpers.urls.nav_bar_owner')
               @elseif(Auth::user()->role == 'admin')
                 @include('helpers.urls.nav_bar_admin')
               @elseif(Auth::user()->role == 'receptionist')
@@ -137,7 +132,7 @@
               @elseif(Auth::user()->role == 'seo')
                 @include('helpers.urls.nav_bar_seo')
               @endif
-              @else
+            @else
                 @include('helpers.urls.nav_bar_guest')
             @endif
           </ul>

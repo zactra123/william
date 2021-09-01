@@ -1,17 +1,24 @@
-@extends('layouts.layout2')
-
+@extends('owner.layouts.app')
+@section('title')
+<title>Client Details</title>
+@endsection
 @section('body')
-
-  <div class="main-content-container container-fluid px-4">
-          <!-- Page Header -->
-          <div class="page-header row no-gutters py-4">
-            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-              <h3 class="page-title">Client Profile</h3>
-            </div>
-          </div>
-          <div class="alert alert-success alert-dismissible fade show mb-0 mb-3 text-center text-white" role="alert">
+  <div class="breadcrumb-header justify-content-between">
+      <div>
+          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Client Profile</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+  <br><br>
+  <div class="main-content-container container-fluid px-4 mt-5">
+          <div class="alert alert-success alert-dismissible fade show mb-0 mb-3 text-center text-white" role="alert" style="background-color:#17c671 !important;">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true" style="color:red">×</span>
             </button>
             {{-- @if(!$client->credentials->is_present()) --}}
               <span>
@@ -63,9 +70,9 @@
                         <span>@if($client->clientDetails->sex == 'M')
                           Male
                         @elseif($client->clientDetails->sex == 'F')
-                            Female
+                          Female
                         @else
-                            Non-binary
+                          Non-binary
                         @endif</span>
 
                         <strong class="text-muted d-block mt-2">Referred By</strong>
