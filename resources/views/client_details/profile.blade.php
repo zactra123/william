@@ -56,7 +56,15 @@
             <span>{{$client->clientDetails->ssn}}</span>
 
             <strong class="text-muted d-block mt-2">Gender</strong>
-            <span>@if($client->clientDetails->sex == 'M') Male @elseif($client->clientDetails->sex == 'F') Female @else Non-binary @endif</span>
+            <span>
+              @if($client->clientDetails->sex == 'M')
+                Male
+              @elseif($client->clientDetails->sex == 'F')
+                Female
+              @else
+                Non-binary
+              @endif
+           </span>
 
             <strong class="text-muted d-block mt-2">Referred By</strong>
             <span>{{strtoupper($client->clientDetails->referred_by)}}</span>

@@ -1,5 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
 <div class="row justify-content-center">
-
   <div class="col-md-10">
     <div class="card card-small mb-4">
       <div class="card-header border-bottom">
@@ -11,7 +11,6 @@
             <div class="col">
               <form id="add_client_3" data-id="3" data-type="only_broker" class="add-client additional-reg {{$current_page}}" enctype="multipart/form-data">
               {{-- <form id="add_client_3" data-id="3" data-type="only_broker" class="add-client additional-reg" enctype="multipart/form-data"> --}}
-
                   @csrf
                   <h3 class="title_r theme-color-dark">Incorect</h3>
                   <div class="upload-images">

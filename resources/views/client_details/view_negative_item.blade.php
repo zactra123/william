@@ -1,4 +1,5 @@
-@extends('layouts.layout') @section('content')
+@extends('layouts.layout')
+@section('content')
 <link href="{{asset('css/css/admin.css')}}" rel="stylesheet" type="text/css" />
 <style>
   .charts {
@@ -91,7 +92,6 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
           <div class="mt20"></div>
@@ -117,7 +117,6 @@
               </div>
 
               <div class="col-md-3"></div>
-
               @if(!empty($employ->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -206,7 +205,6 @@
                 </span>
               </div>
               <div class="col-md-2"></div>
-
               <div class="col-md-2">
                 <span style="font-weight: bold; font-size: 16px;">
                   DISPUTE
@@ -253,7 +251,6 @@
                 <span class="form-text">{{$publicRecords->source_name}}</span>
                 <span class="form-text" style="padding-left: 15px;">{{$publicRecords->source_id}}</span>
               </div>
-
               @if(!empty($publicRecords->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -282,8 +279,8 @@
                   <span class=""> {{$publicRecords->status}} </span>
                 </div>
               </div>
-
-              @endif @if($publicRecords->date_filed !=null )
+              @endif
+              @if($publicRecords->date_filed !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">DATE OPENED</label>
@@ -292,8 +289,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_filed))}} </span>
                 </div>
               </div>
-
-              @endif @if($publicRecords->on_record_until !=null )
+              @endif
+              @if($publicRecords->on_record_until !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ON RECORD UNTIL</label>
@@ -302,7 +299,8 @@
                   <span class=""> {{$publicRecords->on_record_until}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->claim_amount !=null )
+              @endif
+              @if($publicRecords->claim_amount !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">CLAIM AMOUNT</label>
@@ -311,8 +309,8 @@
                   <span class=""> ${{$publicRecords->claim_amount}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_resolved != null )
-
+              @endif
+              @if($publicRecords->date_resolved != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">DATE RESOLVED</label>
@@ -321,31 +319,24 @@
                   <span class=""> {{date("m/d/Y",strtotime($publicRecords->date_resolved))}} </span>
                 </div>
               </div>
-
               @endif
             </div>
           </div>
           @endforeach
-
           <div class="mt20"></div>
-
           <div class="chart-report">
             <span style="font-weight: bold;">NEGATIVE ACCOUNT</span>
             @foreach($clientReportsEX->clientExAccounts->where('negative_item', true) as $accounts)
             <div class="mt20"></div>
-
             <div class="row border" style="font-weight: bold;">
               <div class="col-md-1"></div>
-
               <div class="col-md-2">
                 <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px" />
               </div>
               <div class="col-md-7">
                 <span class="">{{$accounts->source_name}} </span>
-
                 <span style="padding-left: 15px;"> # {{$accounts->source_id}}</span>
               </div>
-
               @if(!empty($accounts->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -374,8 +365,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->opened_date))}} </span>
                 </div>
               </div>
-
-              @endif @if($accounts->type !=null )
+              @endif
+              @if($accounts->type !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">TYPE</label>
@@ -384,7 +375,8 @@
                   <span class=""> {{$accounts->type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->status !=null )
+              @endif
+              @if($accounts->status !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">STATUS</label>
@@ -393,7 +385,8 @@
                   <span class=""> {{$accounts->status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->recent_balance_date !=null )
+              @endif
+              @if($accounts->recent_balance_date !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">RECENT BALANCE</label>
@@ -416,25 +409,21 @@
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
-
           <div class="mt20"></div>
-
           <div class="chart-report">
             <span style="font-weight: bold;">GOOD STANDING ACCOUNT</span>
             @foreach($clientReportsEX->clientExAccounts->where('negative_item', false) as $accounts)
             <div class="mt20"></div>
-
             <div class="row border" style="font-weight: bold; padding-top: 20px;">
               <div class="col-md-1"></div>
-
               <div class="col-md-2">
                 <img src="{{asset('images/banks_logo/hfs_200x200.jpg')}}" width="50px" />
               </div>
               <div class="col-md-7">
                 <span class="">{{$accounts->source_name}} </span>
-
                 <span style="padding-left: 15px;"> # {{$accounts->source_id}}</span>
               </div>
               @if(!empty($accounts->dispute->id))
@@ -465,8 +454,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->opened_date))}} </span>
                 </div>
               </div>
-
-              @endif @if($accounts->type !=null )
+              @endif
+              @if($accounts->type !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">TYPE</label>
@@ -475,7 +464,8 @@
                   <span class=""> {{$accounts->type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->status !=null )
+              @endif
+              @if($accounts->status !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">STATUS</label>
@@ -484,7 +474,8 @@
                   <span class=""> {{$accounts->status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->recent_balance_date !=null )
+              @endif
+              @if($accounts->recent_balance_date !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">RECENT BALANCE</label>
@@ -500,25 +491,21 @@
             @if($accounts->paymentHistories->whereIn('status',["30","30",'90'] )->first() )
             <div class="row mt20 border">
               <div class="col-md-12">ACCOUNT HISTORY</div>
-
               @foreach($accounts->paymentHistories->whereIn('status',["30","60",'90'] ) as $payment)
               <div class="col-md-4 border">
                 LATE {{$payment->status}} AS OF {{$payment->month}}/{{$payment->year}}
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
-
           <div class="mt20"></div>
           <div class="chart-report">
             <span style="font-weight: bold;"> HARD INQUIRIES</span>
-
             @foreach($clientReportsEX->clientExInquiry->where('negative_item', true)->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiries)
-
             <div class="row mt20 border">
               <div class="col-md-1"></div>
-
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">INQUIRY NAME</label>
@@ -527,14 +514,12 @@
                   <span class=""> {{$inquiries->source_name}} </span>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <div class="col-md-12">
                   <label class="form-text">DATE OF REQUEST</label>
                 </div>
                 <div class="col-md-12">
                   @if(is_array(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry))))
-
                   <div class="row">
                     <div class="col-md-8">
                       @foreach(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry)) as $date) {{$date.' '}} @endforeach
@@ -568,12 +553,9 @@
           <div class="mt20"></div>
           <div class="chart-report">
             <span style="font-weight: bold;"> SOFT INQUIRIES</span>
-
             @foreach($clientReportsEX->clientExInquiry->where('negative_item', false)->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiries)
-
             <div class="row mt20 border">
               <div class="col-md-1"></div>
-
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">INQUIRY NAME</label>
@@ -582,14 +564,12 @@
                   <span class=""> {{$inquiries->source_name}} </span>
                 </div>
               </div>
-
               <div class="col-md-6">
                 <div class="col-md-12">
                   <label class="form-text">DATE OF REQUEST</label>
                 </div>
                 <div class="col-md-12">
                   @if(is_array(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry))))
-
                   <div class="row">
                     <div class="col-md-8">
                       @foreach(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry)) as $date) {{$date.' '}} @endforeach
@@ -618,19 +598,14 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
-          <div class="mt20"></div>
-
+          <div class="mt20"></div
           <div class="chart-report">
             <span style="font-weight: bold;">STATEMENTS</span>
-
             @foreach($clientReportsEX->clientExStatements as $statements)
-
             <div class="row mt20 border">
               <div class="col-md-1"></div>
-
               <div class="col-md-9">
                 <span style="font-weight: bold;"> {{$statements->statement}} </span>
               </div>
@@ -651,13 +626,13 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
         </div>
       </div>
     </div>
-    @endif @if($clientReportsTU)
+    @endif
+    @if($clientReportsTU)
     <div class="TransUnion" style="display: none;">
       <div class="row mt20">
         <div class="col-md-1 mt20"></div>
@@ -674,12 +649,10 @@
               <div class="col-md-3">
                 <span style="font-weight: bold;"> {{$clientReportsTU->full_name}}</span>
               </div>
-
               <div class="col-md-3"></div>
             </div>
 
             @foreach($clientReportsTU->clientNames as $names)
-
             <div class="row mt20 border">
               <div class="col-md-1"></div>
               <div class="col-md-3">
@@ -703,11 +676,9 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
           <div class="mt20"></div>
-
           <div class="chart-report">
             <div class="row mt20">
               <div class="col-md-1"></div>
@@ -727,9 +698,7 @@
               <div class="col-md-6">
                 <span style="font-weight: bold;"> {{$employ->name}}</span>
               </div>
-
               <div class="col-md-3"></div>
-
               @if(!empty($employ->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -747,7 +716,6 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
 
@@ -759,11 +727,9 @@
                 ADDRESS
               </div>
               <div class="col-md-4" style="font-weight: bold;"></div>
-
               <div class="col-md-1" style="font-weight: bold;">
                 DISPUTE
               </div>
-
               <div class="col-md-1"></div>
             </div>
             @foreach($clientReportsTU->clientAddresses as $address)
@@ -803,13 +769,11 @@
               <div class="col-md-5" style="font-weight: bold;">
                 PHONE #
               </div>
-
               <div class="col-md-4"></div>
               <div class="col-md-2" style="font-weight: bold;">
                 DISPUTE
               </div>
             </div>
-
             @foreach($clientReportsTU->clientPhones as $phone)
             <div class="row mt20 border">
               <div class="col-md-1"></div>
@@ -840,9 +804,7 @@
           <div class="chart-report">
             <span style="font-weight: bold;"> NEGATIVE ACCOUNTS</span>
             @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 'true') as $accounts)
-
             <div class="mt20"></div>
-
             <div class="row border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -871,7 +833,6 @@
             </div>
             <div class="row mt20" style="font-weight: bold;">
               <div class="col-md-1"></div>
-
               @if($accounts->date_opened !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -881,7 +842,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type_description !=null )
+              @endif
+              @if($accounts->account_type_description !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TYPE</label>
@@ -890,7 +852,8 @@
                   <span class=""> {{$accounts->account_type_description}} </span>
                 </div>
               </div>
-              @endif @if($accounts->loan_type !=null )
+              @endif
+              @if($accounts->loan_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">LOAN TYPE</label>
@@ -899,7 +862,8 @@
                   <span class=""> {{$accounts->loan_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->pay_status !=null )
+              @endif
+              @if($accounts->pay_status !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">PAY STATUS</label>
@@ -908,7 +872,8 @@
                   <span class=""> {{$accounts->pay_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remark != null )
+              @endif
+              @if($accounts->remark != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">REMARK</label>
@@ -933,15 +898,14 @@
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
           <div class="mt20"></div>
           <div class="chart-report">
             <span style="font-weight: bold;"> GOOD STANDING ACCOUNTS</span>
             @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 'false') as $accounts)
-
             <div class="mt20"></div>
-
             <div class="row border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -980,7 +944,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type_description !=null )
+              @endif
+              @if($accounts->account_type_description !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TYPE</label>
@@ -989,7 +954,8 @@
                   <span class=""> {{$accounts->account_type_description}} </span>
                 </div>
               </div>
-              @endif @if($accounts->loan_type !=null )
+              @endif
+              @if($accounts->loan_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">LOAN TYPE</label>
@@ -998,7 +964,8 @@
                   <span class=""> {{$accounts->loan_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->pay_status !=null )
+              @endif
+              @if($accounts->pay_status !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">PAY STATUS</label>
@@ -1007,7 +974,8 @@
                   <span class=""> {{$accounts->pay_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remark != null )
+              @endif
+              @if($accounts->remark != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">REMARK</label>
@@ -1024,22 +992,20 @@
               <div class="col-md-12">
                 ACCOUNT HISTORY
               </div>
-
               @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
               <div class="col-md-3">
                 LATE {{$payment->value}} AS OF {{$payment->month}}/{{$payment->year}}
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
           <div class="mt20"></div>
           <div class="chart-report">
             <span style="font-weight: bold;"> COLLECTION ACCOUNTS</span>
             @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', null) as $accounts)
-
             <div class="mt20"></div>
-
             <div class="row border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -1068,7 +1034,6 @@
             </div>
             <div class="row mt20" style="font-weight: bold;">
               <div class="col-md-1"></div>
-
               @if($accounts->date_opened !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
@@ -1078,7 +1043,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type_description !=null )
+              @endif
+              @if($accounts->account_type_description !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TYPE</label>
@@ -1087,7 +1053,8 @@
                   <span class=""> {{$accounts->account_type_description}} </span>
                 </div>
               </div>
-              @endif @if($accounts->loan_type !=null )
+              @endif
+              @if($accounts->loan_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">LOAN TYPE</label>
@@ -1096,7 +1063,8 @@
                   <span class=""> {{$accounts->loan_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->pay_status !=null )
+              @endif
+              @if($accounts->pay_status !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">PAY STATUS</label>
@@ -1105,7 +1073,8 @@
                   <span class=""> {{$accounts->pay_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remark != null )
+              @endif
+              @if($accounts->remark != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">REMARK</label>
@@ -1116,20 +1085,19 @@
               </div>
               @endif
             </div>
-
             @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
             <div class="row mt20">
               <div class="col-md-12">
                 ACCOUNT HISTORY
               </div>
-
               @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
               <div class="col-md-3">
                 LATE {{$payment->value}} AS OF {{$payment->month}}/{{$payment->year}}
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
 
           @foreach($clientReportsTU->clientTuPublicRecords as $publicRecords)
@@ -1155,7 +1123,6 @@
               </div>
 
               @if($publicRecords->type !=null )
-
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">TYPE</label>
@@ -1165,7 +1132,8 @@
                 </div>
               </div>
 
-              @endif @if($publicRecords->phone !=null )
+              @endif
+              @if($publicRecords->phone !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">PHONE #</label>
@@ -1174,7 +1142,8 @@
                   <span class=""> {{$publicRecords->phone}}</span>
                 </div>
               </div>
-              @endif @if(!empty($publicRecords->dispute->id))
+              @endif
+              @if(!empty($publicRecords->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ON DISPUTE</label>
@@ -1220,7 +1189,8 @@
                   <span class=""> {{$publicRecords->court_type_description}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_effective_label !=null )
+              @endif
+              @if($publicRecords->date_effective_label !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{strtoupper($publicRecords->date_effective_label)}}</label>
@@ -1229,7 +1199,8 @@
                   <span class=""> {{date("m/d/Y", strtotime($publicRecords->date_effective))}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_paid != null )
+              @endif
+              @if($publicRecords->date_paid != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">DATE PAID</label>
@@ -1255,7 +1226,8 @@
                 </div>
               </div>
 
-              @endif @if($publicRecords->estimated_deletion_date !=null )
+              @endif
+              @if($publicRecords->estimated_deletion_date !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ESTIMATED DELETION DATE</label>
@@ -1265,7 +1237,8 @@
                 </div>
               </div>
 
-              @endif @if($publicRecords->plaintiff_attorney != null )
+              @endif
+              @if($publicRecords->plaintiff_attorney != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">PLAINTIFF ATTORNEY</label>
@@ -1284,7 +1257,6 @@
           <div class="chart-report">
             <span style="font-weight: bold;">REGULAR INQUIRIES</span>
             @foreach($clientReportsTU->clientTuInquiries->where('inquiry_type','regularInquiry')->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiry)
-
             <div class="row mt20 border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -1292,7 +1264,6 @@
                 <div class="col-md-12">{{$inquiry->subscriber_name}}</div>
               </div>
               <div class="col-md-1"></div>
-
               <div class="col-md-6">
                 <div class="col-md-12">DATE OF REQUEST</div>
                 @if(is_array(json_decode(str_replace('\"',"'",$inquiry->inquiry_dates))))
@@ -1303,12 +1274,10 @@
                     </div>
                   </div>
                 </div>
-
                 @else
                 <div class="col-md-12">
                   <span class="">{{json_decode(str_replace(['[',']'],'',$inquiry->date_of_inquiry))}}</span>
                 </div>
-
                 @endif
               </div>
 
@@ -1335,7 +1304,6 @@
             <div class="mt20"></div>
             <span style="font-weight: bold;">PROMOTIONAL INQUIRIES</span>
             @foreach($clientReportsTU->clientTuInquiries->where('inquiry_type','promotionalInquiry')->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiry)
-
             <div class="row mt20 border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -1343,7 +1311,6 @@
                 <div class="col-md-12">{{$inquiry->subscriber_name}}</div>
               </div>
               <div class="col-md-1"></div>
-
               <div class="col-md-6">
                 <div class="col-md-12">DATE OF REQUEST</div>
                 @if(is_array(json_decode(str_replace('\"',"'",$inquiry->inquiry_dates))))
@@ -1354,12 +1321,10 @@
                     </div>
                   </div>
                 </div>
-
                 @else
                 <div class="col-md-12">
                   <span class="">{{json_decode(str_replace(['[',']'],'',$inquiry->date_of_inquiry))}}</span>
                 </div>
-
                 @endif
               </div>
 
@@ -1380,13 +1345,11 @@
               </div>
               @endif
             </div>
-
             @endforeach
 
             <div class="mt20"></div>
             <span style="font-weight: bold;">ACCOUNT REVIEW INQUIRIES</span>
             @foreach($clientReportsTU->clientTuInquiries->where('inquiry_type','accountReviewInquiry')->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiry)
-
             <div class="row mt20 border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-2">
@@ -1405,12 +1368,10 @@
                     </div>
                   </div>
                 </div>
-
                 @else
                 <div class="col-md-12">
                   <span class="">{{json_decode(str_replace(['[',']'],'',$inquiry->date_of_inquiry))}}</span>
                 </div>
-
                 @endif
               </div>
 
@@ -1431,7 +1392,6 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
 
@@ -1439,7 +1399,6 @@
           <div class="chart-report">
             <span style="font-weight: bold;">STATEMENTS</span>
             @foreach($clientReportsTU->clientTuStatements as $statements)
-
             <div class="row mt20 border" style="font-weight: bold;">
               <div class="col-md-1"></div>
               <div class="col-md-9">
@@ -1462,13 +1421,13 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
         </div>
       </div>
     </div>
-    @endif @if($clientReportsEQ)
+    @endif
+    @if($clientReportsEQ)
     <div class="Equifax" style="display: none;">
       <div class="row mt20">
         <div class="col-md-1 mt20"></div>
@@ -1485,11 +1444,9 @@
               <div class="col-md-3">
                 <span style="font-weight: bold;"> {{$clientReportsEQ->full_name}}</span>
               </div>
-
               <div class="col-md-3"></div>
             </div>
             @foreach($clientReportsEQ->clientNames as $names)
-
             <div class="row mt20 border">
               <div class="col-md-1"></div>
               <div class="col-md-3">
@@ -1516,27 +1473,23 @@
             @endforeach
           </div>
           <div class="mt20"></div>
-
           <div class="chart-report">
             <div class="row mt20">
               <div class="col-md-1"></div>
               <div class="col-md-6">
                 <span style="font-weight: bold; font-size: 16px;"> EMPLOYERS</span>
               </div>
-
               <div class="col-md-3"></div>
               <div class="col-md-2">
                 <span style="font-weight: bold; font-size: 16px;">DISPUTE</span>
               </div>
             </div>
-
             @foreach($clientReportsEQ->clientEmployers as $employ)
             <div class="row mt20 border">
               <div class="col-md-1"></div>
               <div class="col-md-6">
                 <span style="font-weight: bold;"> {{$employ->name}}</span>
               </div>
-
               <div class="col-md-3"></div>
               @if(!empty($employ->dispute->id))
               <div class="col-md-2">
@@ -1555,7 +1508,6 @@
               </div>
               @endif
             </div>
-
             @endforeach
           </div>
 
@@ -1571,7 +1523,6 @@
               <div class="col-md-1" style="font-weight: bold;">
                 DISPUTE
               </div>
-
               <div class="col-md-1"></div>
             </div>
             @foreach($clientReportsEQ->clientAddresses as $address)
@@ -1662,7 +1613,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type !=null )
+              @endif
+              @if($accounts->account_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TYPE</label>
@@ -1671,7 +1623,8 @@
                   <span class=""> {{$accounts->account_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_title !=null )
+              @endif
+              @if($accounts->account_title !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TITLE</label>
@@ -1680,7 +1633,8 @@
                   <span class=""> {{$accounts->account_title}} </span>
                 </div>
               </div>
-              @endif @if($accounts->current_payment_status !=null )
+              @endif
+              @if($accounts->current_payment_status !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">PAYMENT STATUS</label>
@@ -1689,7 +1643,8 @@
                   <span class=""> {{$accounts->current_payment_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remarks != null )
+              @endif
+              @if($accounts->remarks != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">REMARK</label>
@@ -1716,7 +1671,8 @@
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+          @endforeach
           </div>
           <div class="mt20"></div>
 
@@ -1765,7 +1721,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type !=null )
+              @endif
+              @if($accounts->account_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TYPE</label>
@@ -1774,7 +1731,8 @@
                   <span class=""> {{$accounts->account_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_title !=null )
+              @endif
+              @if($accounts->account_title !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ACCOUNT TITLE</label>
@@ -1783,7 +1741,8 @@
                   <span class=""> {{$accounts->account_title}} </span>
                 </div>
               </div>
-              @endif @if($accounts->current_payment_status !=null )
+              @endif
+              @if($accounts->current_payment_status !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">PAYMENT STATUS</label>
@@ -1792,7 +1751,8 @@
                   <span class=""> {{$accounts->current_payment_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remarks != null )
+              @endif
+              @if($accounts->remarks != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">REMARK</label>
@@ -1841,7 +1801,8 @@
                   <span class="">{{$publicRecords->status}}</span>
                 </div>
               </div>
-              @endif @if($publicRecords->classification !=null )
+              @endif
+              @if($publicRecords->classification !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">CLASSIFICATION</label>
@@ -1850,7 +1811,8 @@
                   <span class=""> {{$publicRecords->classification}}</span>
                 </div>
               </div>
-              @endif @if(!empty($publicRecords->dispute->id))
+              @endif
+              @if(!empty($publicRecords->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">ON DISPUTE</label>
@@ -1896,7 +1858,8 @@
                   <span class=""> {{$publicRecords->category_type}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_verified !=null )
+              @endif
+              @if($publicRecords->date_verified !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">DATE VERIFIED</label>

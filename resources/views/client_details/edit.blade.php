@@ -1,6 +1,6 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Client Details</title>
+<title>Client Profile</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
@@ -48,35 +48,44 @@
                       <h4 class="mb-0">{{ $client->full_name() }}</h4>
                       <span class="text-muted d-block mb-2">Client</span>
                     </div>
+
                     <ul class="list-group list-group-flush">
 
                       <li class="list-group-item p-4">
-                        <strong class="text-muted d-block mb-2">Email</strong>
-                        <span>{{ $client->email }}</span>
-
-                        <strong class="text-muted d-block mt-2">Address</strong>
-                        <span>{{$client->clientDetails->number}} {{$client->clientDetails->name}} {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</span>
-
-                        <strong class="text-muted d-block mt-2">Date of Birth</strong>
-                        <span>{{date("m/d/Y", strtotime($client->clientDetails->dob))}}</span>
-
-                        <strong class="text-muted d-block mt-2">Age</strong>
-                        <span>{{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</span>
-
-                        <strong class="text-muted d-block mt-2">Social Security Number</strong>
-                        <span>{{$client->clientDetails->ssn}}</span>
-
-                        <strong class="text-muted d-block mt-2">Gender</strong>
-                        <span>@if($client->clientDetails->sex == 'M')
-                          Male
-                        @elseif($client->clientDetails->sex == 'F')
-                          Female
-                        @else
-                          Non-binary
-                        @endif</span>
-
-                        <strong class="text-muted d-block mt-2">Referred By</strong>
-                        <span>{{strtoupper($client->clientDetails->referred_by)}}</span>
+                        <div class="">
+                          <strong class="text-muted mb-2">Email:</strong>
+                          <span>&nbsp; {{ $client->email }}</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mb-2">Address:</strong>
+                          <span>&nbsp; {{$client->clientDetails->number}} {{$client->clientDetails->name}} {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mt-2">Date of Birth:</strong>
+                          <span>&nbsp; {{date("m/d/Y", strtotime($client->clientDetails->dob))}}</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mt-2">Age:</strong>
+                          <span>&nbsp; {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mt-2">Social Security Number:</strong>
+                          <span>{{$client->clientDetails->ssn}}</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mt-2">Gender:</strong>
+                          <span>&nbsp; @if($client->clientDetails->sex == 'M')
+                            Male
+                          @elseif($client->clientDetails->sex == 'F')
+                            Female
+                          @else
+                            Non-binary
+                          @endif</span>
+                        </div>
+                        <div class="mt-3">
+                          <strong class="text-muted mt-2">Referred By</strong>
+                          <span>&nbsp; {{strtoupper($client->clientDetails->referred_by)}}</span>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -197,11 +206,11 @@
                                 <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver"  id="driver_license">
                                 <label class="custom-file-label" for="inputGroupFile01">Choose Driver License</label>
                             </div>
-                            <div class="col-sm-12 form-group files">
+                            <div class="col-sm-12 form-group files mt-4">
                                 <input class="social_security file-box" class="custom-file-input" id="inputGroupFile02" type="file" name="social"  id="social_security" >
                                 <label class="custom-file-label" for="inputGroupFile02">Choose Social Security </label>
                             </div>
-                            <div class="col-sm-12 pr-0">
+                            <div class="col-sm-12 pr-0 mt-3 mt-4">
                               <input type="submit" value="Upload" class="btn btn-primary ms-ua-submit pull-right" style="float:right;">
                             </div>
 

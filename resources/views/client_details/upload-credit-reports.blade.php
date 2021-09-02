@@ -1,4 +1,5 @@
-=@extends('layouts.client') @section('content')
+=@extends('layouts.client')
+@section('content')
 <style>
   .tab-selector {
     background-color: #0c71c3;
@@ -49,11 +50,8 @@
         <div class="card-header">
           <div class="w-100 btn-group btn-group-toggle" data-toggle="buttons">
             <button type="button" class="btn tab-selector active" data-target="karma-tab" id="karma">Credit Karma</button>
-
             <button type="button" class="btn tab-selector" data-target="experian-tab" id="experian">Experian</button>
-
             <button type="button" class="btn tab-selector" data-target="tu-tab" id="tuMembership">TransUnion CREDIT MONITORING</button>
-
             <button type="button" class="btn tab-selector" data-target="tu-online-tab" id="tuOnline">TransUnion Online Dispute</button>
           </div>
         </div>
@@ -102,8 +100,6 @@
   </div>
 </div>
 
-@endsection
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   $(document).ready(function () {
@@ -133,3 +129,5 @@
     });
   });
 </script>
+
+@endsection

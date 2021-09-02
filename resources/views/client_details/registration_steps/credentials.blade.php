@@ -1,6 +1,6 @@
+<link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}">
 <div class="row justify-content-center">
-
-  <div class="col-md-8">
+  <div class="col-md-8 col-sm-12 col-12">
         <div class="card card-small mb-4">
             <div class="card-header border-bottom">
                 <h6 class="m-0">Credentials</h6>

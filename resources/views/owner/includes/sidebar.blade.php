@@ -8,7 +8,7 @@
       <a class="logo-icon mobile-logo icon-dark active" href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon dark-theme" alt="logo"></a>
   </div><!-- /logo -->
 
-  <div class="main-sidebar-loggedin">
+  <div class="main-sidebar-loggedin text-center">
     <div class="app-sidebar__user">
       <div class="dropdown user-pro-body text-center">
         <div class="user-pic">
@@ -73,6 +73,9 @@
                 <a class="side-menu__item" href="{{route('client.details.create')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Add Your Details</span></a>
               </li>
             @endif
+            <li class="slide">
+              <a class="side-menu__item" href="{{ url('/logout') }}"><i class="side-menu__icon icon-lock icons"></i><span class="side-menu__label">Logout</span></a>
+            </li>
           </ul>
         @elseif(Auth::user()->role == 'affiliate')
             @include('helpers.urls.nav_bar_affiliate')
@@ -194,16 +197,12 @@
 
         @elseif(Auth::user()->role == 'receptionist')
           <ul class="side-menu">
-
             <li class="slide">
               <a class="side-menu__item" href="{{ url('/receptionist') }}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Dashboard</span></a>
             </li>
-
             <li class="slide">
               <a class="side-menu__item" href="{{ url('receptionist/message') }}"><i class="side-menu__icon fe fe-clipboard"></i><span class="side-menu__label">Appointment</span></a>
             </li>
-
-
             <li class="slide">
               <a class="side-menu__item" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">Furnishers/CRAs</span></a>
             </li>
@@ -220,7 +219,6 @@
               <a class="side-menu__item" href="{{ route('receptionist.liveChat.index')}}"><i class="side-menu__icon fa fa-envelope"></i><span class="side-menu__label">Chat</span>   @if(!empty($all_unreads))
                     <span id="allMessageCount" class="badge badge-danger text-white"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
                 @endif</a>
-
             </li>
             {{-- <li class="slide">
               <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
