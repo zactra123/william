@@ -16,7 +16,6 @@
   </div>
 </div>
 @if ($errors->any())
-
 <div class="alert alert-danger flash">
   <button type="button" class="close" data-dismiss="alert">×</button>
   @foreach($errors->all() as $message)
@@ -42,7 +41,6 @@
           <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" />
         </div>
       </div>
-
       <div class="card-footer text-right">
         <input type="submit" value="Change Password" class="ms-ua-submit btn btn-primary" />
       </div>
@@ -50,7 +48,6 @@
     {!! Form::close() !!}
   </div>
 </div>
-
 @endsection
 @section('js')
 <script type="text/javascript">

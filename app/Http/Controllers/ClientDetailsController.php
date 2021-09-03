@@ -223,8 +223,9 @@ class ClientDetailsController extends Controller
 
             if ($request->method('ajax')) {
                 return response()->json(['status' => 'success']);
+                return redirect(route('client.details.index'))->with('success', "your data is update");
             }
-            return redirect(route('client.details.index'))->with('success', "your data saved");
+            return redirect(route('client.details.index'))->with('success', "your data is update");
 
         } catch (\Exception $e) {
             if ($request->method('ajax')) {

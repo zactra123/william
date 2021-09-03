@@ -8,7 +8,7 @@
           <h4 class="content-title mb-2">Hi, welcome back!</h4>
           <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Upload Documents</li>
               </ol>
           </nav>

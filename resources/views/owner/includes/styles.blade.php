@@ -478,6 +478,12 @@
     .pass_show .ptxt:hover {
         color: #333333;
     }
+		.pborder-none{
+			border: none !important;
+		}
+		.h-95{
+			height: 95% !important;
+		}
 </style>
 
 @yield('css')

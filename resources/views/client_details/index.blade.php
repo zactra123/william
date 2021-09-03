@@ -7,10 +7,9 @@
     <div>
         <h4 class="content-title mb-2">Hi, welcome back!</h4>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Client Details</li>
-            </ol>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
+          </ol>
         </nav>
     </div>
 </div>
@@ -19,14 +18,14 @@
     <!-- End Small Stats Blocks -->
     <div class="row">
         <!-- Users Stats -->
-        <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+        <div class="col-lg-8 col-md-12 col-sm-12">
           <!-- row -->
           <div class="row row-sm ">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="card overflow-hidden">
               <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                 <div class="d-flex justify-content-between">
-                  <h4 class="card-title mg-b-10">Project Budget</h4>
+                  <h6 class=" mg-b-10">Project Budget</h6>
                   <i class="mdi mdi-dots-horizontal text-gray"></i>
                 </div>
                 <p class="tx-12 text-muted mb-2">The Project Budget is a tool used by project managers to estimate the total cost of a project. A project budget template includes a detailed estimate of all costs. <a href="#">Learn more</a></p>
@@ -50,22 +49,21 @@
         </div>
         <!-- End Users Stats -->
         <!-- Users By Device Stats -->
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card card-small h-100">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card card-small h-95">
                 <div class="card-header border-bottom">
-                    <h6 class="m-0">DISPUTE PROGRESS</h6>
+                    <h6 class="m-0">Dispute Progress</h6>
                 </div>
                 <div class="card-body d-flex text-center">
-                    <div id="piechart_3d" class="" style="width: 500px; height: 300px;"></div>
+                    <div id="piechart_3d" class="" style="width: 500px; height: 280px;"></div>
                 </div>
-
             </div>
         </div>
         <!-- End Users By Device Stats -->
         <!-- New Draft Component -->
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div class="col-lg-4 col-md-6 col-sm-12">
             <!-- Quick Post -->
-            <div class="card card-small h-100">
+            <div class="card card-small pb-2">
                 <div class="card-header border-bottom">
                     <h6 class="m-0">New Draft</h6>
                 </div>
@@ -75,7 +73,7 @@
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Brave New World" />
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Words can be like X-rays if you use them properly..."></textarea>
+                            <textarea class="form-control" rows="10" placeholder="Words can be like X-rays if you use them properly..."></textarea>
                         </div>
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-accent btn-primary">Create Draft</button>
@@ -87,36 +85,34 @@
         </div>
         <!-- End New Draft Component -->
         <!-- Discussions Component -->
-        <div class="col-lg-5 col-md-12 col-sm-12 mb-4">
+        <div class="col-lg-5 col-md-12 col-sm-12">
             <div class="card card-small blog-comments">
                 <div class="card-header border-bottom">
-                    <h6 class="m-0">DISPUTES</h6>
+                    <h6 class="m-0">Disputes</h6>
                 </div>
                 <div class="card-body p-0" style="min-height:380px;">
                   @foreach($toDos as $todo)
                       @foreach($todo->disputes as $dispute)
-                          <div class="row">
-                              <div class="col-md-6">
-                                  <?php $info =  $dispute->disputable->showDetails();?>
-                                  {{$info}}
-                              </div>
-                              <div class="col-md-6">
-                                  {{$status[$dispute->status]}}
-
-                              </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <?php $info =  $dispute->disputable->showDetails();?>
+                            {{$info}}
                           </div>
+                          <div class="col-md-6">
+                            {{$status[$dispute->status]}}
+                          </div>
+                        </div>
                       @endforeach
                   @endforeach
                 </div>
-
             </div>
         </div>
         <!-- End Discussions Component -->
         <!-- Top Referrals Component -->
-        <div class="col-lg-3 col-md-12 col-sm-12 mb-4">
+        <div class="col-lg-3 col-md-12 col-sm-12">
             <div class="card card-small">
                 <div class="card-header border-bottom">
-                    <h6 class="m-0">CREDIT REPORTS</h6>
+                    <h6 class="m-0">Credit Reports</h6>
                 </div>
                 <div class="card-body pb-5">
                   <div class="dropdown-submenu text-left mmb-5 mb-3">
@@ -177,7 +173,6 @@
                       </ul>
                   </div>
                 </div>
-
             </div>
         </div>
         <!-- End Top Referrals Component -->
@@ -230,7 +225,6 @@
     });
 </script>
 <script>
-
     $(document).ready(function() {
         $(".ssn").mask("999-99-9999");
         $('#phone_number').mask('(000) 000-0000');
@@ -251,7 +245,6 @@
             // return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+(\.)?/g);
             return !!value.match(/^\d+\s[A-z0-9\s.\,\/]+\s[0-9]+(\.)?/g);
         }, "Not valid address format.");
-
 
         $("#clientDetailsForm").validate({
             rules: {
@@ -340,7 +333,6 @@
                 // $(".driver_dropp").css('background-image', 'url("/images/pdf_icon.png")');
             }else{
                 var reader = new FileReader();
-
                 reader.onload = function(event) {
                     $(".driver_dropp").css('background-image','url('+ event.target.result +')');
                 }
@@ -382,8 +374,6 @@
         $('.social_security').bind('dragleave', function(){
             $(this).removeClass('drag-over');
         });
-
-
 
         $("#bank_logo").val(null)
 
