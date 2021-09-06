@@ -4,15 +4,15 @@
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
-    <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Credentials</li>
-            </ol>
-        </nav>
-    </div>
+  <div>
+    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Credentials</li>
+      </ol>
+    </nav>
+  </div>
 </div>
 <div class="main-content-container container-fluid px-4">
   <!-- Page Header -->

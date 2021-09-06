@@ -484,6 +484,9 @@
 		.h-95{
 			height: 95% !important;
 		}
+		.pointer{
+			cursor: pointer;
+		}
 </style>
 
 @yield('css')

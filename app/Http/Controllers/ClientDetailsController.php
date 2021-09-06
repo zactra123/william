@@ -320,8 +320,6 @@ class ClientDetailsController extends Controller
             $pathDriverLicense = '/' . $path . $nameDriverLicense;
             $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
 
-
-
             $resultDriverLicense = $clientDetailsNewData->getImageDriverLicense($pathDriverLicense, $nameDriverLicense, $driverLicenseExtension);
             $resultSocialSecurity = $clientDetailsNewData->getImageSocialSecurity($pathSocialSecurity, $nameSocialSecurity, $socialSecurityExtension);
 

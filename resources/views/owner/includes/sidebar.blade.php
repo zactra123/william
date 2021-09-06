@@ -67,10 +67,11 @@
                 <li class="slide">
                   <a class="side-menu__item" href="{{route('client.credentials')}}"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Credentials</span></a>
                 </li>
+
               @endif
             @else
               <li class="slide">
-                <a class="side-menu__item" href="{{route('client.details.create')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">Add Your Details</span></a>
+                <a class="side-menu__item" href="{{route('client.details.create')}}"><i class="side-menu__icon fe fe-file-text"></i><span class="side-menu__label">Add Your Details</span></a>
               </li>
             @endif
             <li class="slide">

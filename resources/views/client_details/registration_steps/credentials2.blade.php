@@ -18,10 +18,10 @@
         </div>
       </div>
     </div>
-    
+
     <div class="login-type-title">
         <div class="logo-block">
-            <img src="{{asset('images/report_access/ex_logo_1.png')}}" alt="experian_logo">
+          <img src="{{asset('images/report_access/ex_logo_1.png')}}" alt="experian_logo">
         </div>
         <p class="">If You are Not Register <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">Click here to register</a></p>
     </div>
@@ -43,10 +43,10 @@
       </div>
     </div>
     <div class="login-type-title">
-        <div class="logo-block">
-            <img src="{{asset('images/report_access/tu_logo_1.png')}}" alt="transunion_logo">
-        </div>
-        <p class="">If You are Not Register <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Click here to register</a></p>
+      <div class="logo-block">
+        <img src="{{asset('images/report_access/tu_logo_1.png')}}" alt="transunion_logo">
+      </div>
+      <p class="">If You are Not Register <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Click here to register</a></p>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
       <div class="row">
@@ -66,10 +66,10 @@
     </div>
 
     <div class="login-type-title">
-        <div class="logo-block">
-            <img src="{{asset('images/report_access/tu_logo_1.png')}}" alt="transunion_2_logo">
-        </div>
-        <p class="">If You are Not Register <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Click here to register</a></p>
+      <div class="logo-block">
+        <img src="{{asset('images/report_access/tu_logo_1.png')}}" alt="transunion_2_logo">
+      </div>
+      <p class="">If You are Not Register <a href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Click here to register</a></p>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
       <div class="row">
@@ -83,10 +83,10 @@
     </div>
 
     <div class="login-type-title">
-        <div class="logo-block">
-            <img src="{{asset('images/report_access/eq_logo_1.png')}}" alt="equifax_logo">
-        </div>
-        <p class="">If You are Not Register <a href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">Click here to register</a></p>
+      <div class="logo-block">
+        <img src="{{asset('images/report_access/eq_logo_1.png')}}" alt="equifax_logo">
+      </div>
+      <p class="">If You are Not Register <a href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">Click here to register</a></p>
     </div>
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
       <div class="row">

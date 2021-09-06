@@ -17,9 +17,9 @@
 
 <div class="main-content-container container-fluid px-4 mt-5">
   <div class="alert alert-success alert-dismissible fade show mb-0 mb-3 text-center text-white" role="alert" style="background-color: #17c671 !important;">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span class="close pointer" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true" style="color: red;">×</span>
-    </button>
+    </span>
     {{-- @if(!$client->credentials->is_present()) --}}
     <span>
       Please provide us your credentials, so we can fetch your report. You can provide them

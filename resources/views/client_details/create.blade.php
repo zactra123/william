@@ -81,4 +81,5 @@
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
     <script src="{{ asset('js/registration_steps.js?v=2') }}" ></script>
+    <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 @endsection
