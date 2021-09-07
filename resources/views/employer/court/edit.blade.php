@@ -34,7 +34,8 @@
               <img src="{{$court->getUrlAttribute()}}" width="150px" />
               @else
               <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
-              @endif @else
+              @endif
+            @else
               <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
               @endif
             </div>
@@ -163,7 +164,7 @@
             <div class="form-group col-sm-2">
               {!! Form::text("judge[{$id}][room_number]", $judge->room_number, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
             </div>
-            <div class="form-group col-sm-1">
+            <div class="form-group col-sm-1 mt-2 pt-1">
               <strong class="add_range {{$loop->last?'':'hidden'}}" class="btn form-control" data-id="{{$id}}" id="add_{{$id}}"><i class="fa fa-plus text-success"></i></strong>
               @if($loop->first != $loop->last)
               <strong class="remove_range {{($loop->last) ?'':'hidden'}}" class="btn form-control" data-id="{{$id}}" id="remove_{{$id}}"><i class="fa fa-trash text-danger"></i></strong>
@@ -185,7 +186,7 @@
             <div class="form-group col-sm-2">
               {!! Form::text("judge[0][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
             </div>
-            <div class="form-group col-sm-1">
+            <div class="form-group col-sm-1 mt-2 pt-1">
               <strong class="add_range" class="btn form-control" data-id="0" id="add_0"><i class="fa fa-plus text-success"></i></strong>
             </div>
           </div>
@@ -389,7 +390,7 @@
             {!! Form::text("judge[{id}][room_number]",  null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-1 mt-2 pt-1">
             <strong class="add_range" class="btn form-control" data-id="{id}" id="add_{id}" ><i class="fa fa-plus text-success"></i></strong>
 
             <strong class="remove_range" class="btn form-control" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>

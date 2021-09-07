@@ -49,7 +49,7 @@ class CollectionRemoveAllDuplicates extends Command
         foreach ($bank as $item){
             if(in_array($item->bankId, $deleteCollection)){
                 continue;
-//                dd($item->bankId, $deleteCollection);
+               // dd($item->bankId, $deleteCollection);
             }
 
             $delete = BankLogo::

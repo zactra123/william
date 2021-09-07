@@ -30,7 +30,6 @@
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('pravicy') }}">Privacy policy</a></li>
           </ul>
         </div>
-
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>Other Links</h4>
           <ul>

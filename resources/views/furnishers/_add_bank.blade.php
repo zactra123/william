@@ -33,7 +33,7 @@
                       @if (isset($subTypes)) @foreach($subTypes[51] as $key => $type)
                       <div class="col-md-6 col-sm-6 mb-2">
                         <div class="col-md-2 col-sm-2 float-left">
-                          <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank- />additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ?
+                          <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ?
                           "checked":''}}>
                         </div>
                         <div class="col-md-10 col-sm-10 float-left">

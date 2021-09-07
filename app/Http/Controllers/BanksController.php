@@ -600,6 +600,7 @@ class BanksController extends Controller
      */
     public function types(Request $request)
     {
+      
         if($request->isMethod("post")){
 
             $accountType =$request->account_type;
