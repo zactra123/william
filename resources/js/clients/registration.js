@@ -196,7 +196,6 @@ $(document).ready(function(){
     $('.ein').mask('00-0000000');
     $('.phone').mask('(000) 000-0000');
 
-
     let $type = 'client';
     $('form.additional-reg').on('submit', function(e){
         e.preventDefault();

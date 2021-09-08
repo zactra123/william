@@ -8,8 +8,6 @@ $(document).ready(function() {
         var digit = !!value.match(/\d/gm)
         var special = !!value.match(/\W|_/g)
 
-
-
         return valid_length && upper_lower && digit && special
             // && other_special && repeating && consecutive && spaces && !include_email
     }, "Please pay attention on password requirements");
@@ -38,7 +36,6 @@ $(document).ready(function() {
                     upper_lower = !!password.match(/(?=.*[A-Z]{1,})(?=.*[a-z]{1})/gm)
                     digit = !!password.match(/\d/gm)
                     special = !!password.match(/\W|_/g)
-
 
                     password_requirements = password_requirements_template
                         .replace('{length-class}', valid_length ? success_class : failed_class)

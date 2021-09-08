@@ -134,7 +134,6 @@
         </div>
       </div>
     </div>
-
     <div class="modal fade" id="showDetails" role="dialog">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -160,7 +159,6 @@
       </div>
     </div>
   </section>
-
 </section>
 @endsection
 @section('css')
@@ -224,7 +222,6 @@
     </div>
   </div>
 </script>
-
 <script id="receptionist-answer-template" type="text/html">
   <div class="form-group  pt-2" data-message-id="{message-id}">
     <div class="col-6 offset-6 align-left message darker">
@@ -234,7 +231,6 @@
     </div>
   </div>
 </script>
-
 <script id="receptionist-recipient-template" type="text/html">
   <div class="form-group  pt-2" data-message-id="{message-id}">
     <div class="col-6 offset-6 align-left message darker">
@@ -243,7 +239,6 @@
     </div>
   </div>
 </script>
-
 <script id="recipient-list-user" type="text/html">
   <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
     <div class="form-group">
@@ -259,7 +254,6 @@
     </div>
   </div>
 </script>
-
 <script id="recipient-list-guest" type="text/html">
   <div class="list-group-item chatMessage" id='{recipient-identifier}' data-id='{recipient-id}' data-type='{recipient-type}'>
     <div class="form-group">

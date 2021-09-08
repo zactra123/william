@@ -6,7 +6,6 @@ $(document).ready(function(){
         return !!value.match(/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/ig);
     }, "Please write your full name in this pattern first name middle name last name!!");
 
-
     $('#clientDetailsForm').validate({
         validClass: "not-error",
         rules: {

@@ -28,8 +28,8 @@
           <div class="text-wrap">
             <div class="">
               <div class="panel panel-primary">
-                <?php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types) ?> {!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data',
-                'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!} @csrf
+                <?php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types) ?>
+                {!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!} @csrf
                 <div class="row">
                   <div class="col-sm-4 files mb-2">
                     <input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />

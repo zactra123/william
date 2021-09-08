@@ -197,8 +197,6 @@ $('form#login_form').on('submit', function(e){
 });
 
 
-
-
 var $correct_tel = /^([+_0-9()])+/;
 // var $correct_name = /^(([a-zA-Zа-яА-Я]+[" "]?))+$/;
 //es poxeci
@@ -620,4 +618,3 @@ $(document).ready( function(){
     });
 
 })
-

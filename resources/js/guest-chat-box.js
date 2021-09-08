@@ -80,7 +80,6 @@ addAllMessages = function (data){
 
 addMessageToChat = function(message) {
 
-
     if ($(".chat-content").find(`[data-message-id='${message.id}']`).length > 0){
         return false;
     }
@@ -177,7 +176,6 @@ $(document).ready(function(){
                     $(".defined-user form")[0].reset();
                 })
         }
-
 
 
     });

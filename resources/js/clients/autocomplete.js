@@ -7,7 +7,6 @@ $(document).ready(function() {
             for (var j = 0; j < place.address_components[i].types.length; j++) {
                 if (place.address_components[i].types[j] == "postal_code") {
                     $("#zip").val(place.address_components[i].long_name);
-
                 }
             }
         }

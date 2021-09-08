@@ -25,8 +25,9 @@
           </div>
           <p class="mg-b-20">Edit court here ...</p>
           <?php
-                $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types) ?> {!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right',
-          'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!} @method('PUT') @csrf
+            $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types)
+          ?>
+          {!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!} @method('PUT') @csrf
 
           <div class="row">
             <div class="col-sm-12 form-group changeLogo files content-justify-center text-center">
