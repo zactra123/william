@@ -178,10 +178,7 @@ class MessagesController extends Controller
 
             QuestionNote::create($note);
             return redirect()->back()->with('success','Note successfully added');
-
         }
-
-
 
     }
 

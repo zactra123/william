@@ -28,18 +28,17 @@
               Court
             </div>
             <p class="mg-b-20">See list of court here ...</p>
-
               <div class="container m-hidden">
-                  <?php $alphas = range('A', 'Z');?>
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type])}}">ALL</a></li>
-                      <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
-                      @foreach($alphas as $alpha)
-                          <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
-                      @endforeach
-                    </ul>
-                  </nav>
+                <?php $alphas = range('A', 'Z');?>
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type])}}">ALL</a></li>
+                    <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+                    @foreach($alphas as $alpha)
+                        <li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+                    @endforeach
+                  </ul>
+                </nav>
               </div>
               <div class="album py-5">
                   <div class="container mmap-0">
@@ -56,14 +55,12 @@
                                       @else
                                         <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
                                       @endif
-
                                       <div class="card-body">
                                           <div class="card-text mt-5">
-                                              <div class="bank-name b"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
-
-                                              <a href="{{ route('admin.delete.court',$logos->id) }}"><div class="delete2 text-right" onclick="return confirm('Are You Sure!')" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
-                                                  <span> <i class="fa fa-trash"></i> </span>
-                                              </div></a>
+                                            <div class="bank-name b"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
+                                            <a href="{{ route('admin.delete.court',$logos->id) }}"><div class="delete2 text-right" onclick="return confirm('Are You Sure!')" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                              <span> <i class="fa fa-trash"></i> </span>
+                                            </div></a>
                                           </div>
                                       </div>
                                   </div>
@@ -182,8 +179,8 @@
 @section('js')
 <script type="text/html" id="confirmation">
   <div>
-      <button class="cancel btn btn-secondary ">cancel</button>
-      <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
+    <button class="cancel btn btn-secondary ">cancel</button>
+    <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
   </div>
 </script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>

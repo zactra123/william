@@ -57,7 +57,8 @@ class BlogsController extends Controller
         $validate = new Blog();
         $validator = Validator::make($data, $validate->rules);
         if ($validator->fails()) {
-            return view('blog.create')->withErrors($validator);
+            // return view('blog.create')->withErrors($validator);
+            return redirect()->back()->with('error','Your fields are empty please add data in it!');
         }
         $data['path'] = $pathTitleImage;
         Blog::create($data);

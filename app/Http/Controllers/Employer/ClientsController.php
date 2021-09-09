@@ -190,7 +190,8 @@ class ClientsController extends Controller
             ]);
 
             if ($validation->fails()) {
-                return view('todo.profile.create')->withErrors($validation);
+                // return view('todo.profile.create')->withErrors($validation);
+                return view('todo.profile.create')->with('error','Your fields are is empty please add data in it!');
             } else {
 
                 $user = Arr::only($data, ['first_name', 'last_name']);

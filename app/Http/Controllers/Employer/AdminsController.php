@@ -62,9 +62,10 @@ class AdminsController extends Controller
             ]);
 
             if ($validation->fails()){
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+                // return redirect()->back()
+                //     ->withInput()
+                //     ->withErrors($validation);
+                    return redirect()->back()->with('error','Your fields are empty please add data in it!');
             }
             User::whereId($admin->id)->update([ 'password' => Hash::make($changePassword['password'])]);
             if($admin->role == 'admin'){
@@ -167,7 +168,8 @@ class AdminsController extends Controller
             return back()->with( 'success', $count . " messages sent!" );
 
         } else {
-            return back()->withErrors( $validator );
+            // return back()->withErrors( $validator );
+            return redirect()->back()->with('error','Your fields are empty please add data in it!');
         }
     }
 

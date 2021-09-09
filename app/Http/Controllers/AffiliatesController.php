@@ -179,7 +179,8 @@ class AffiliatesController extends Controller
                 if ( $request->ajax()) {
                     throw ValidationException::withMessages($validation->messages()->toArray());
                 }
-                return redirect()->back()->withInput()->withErrors($validation);
+                // return redirect()->back()->withInput()->withErrors($validation);
+                return redirect()->back()->with('error','Your fields are empty please add data in it!');
             }
 
             if(isset($clientData['own_secter_question']) && $clientData['secret_questions_id'] == 'other'){
@@ -279,7 +280,6 @@ class AffiliatesController extends Controller
             $nameDriverLicense = 'driver_license.' . $driverLicenseExtension;
             $nameSocialSecurity = 'social_security.' . $socialSecurityExtension;
 
-
             $imagesDriverLicense->move(public_path() . '/' . $path, $nameDriverLicense);
             $imagesSocialSecurity->move(public_path() . '/' . $path, $nameSocialSecurity);
 
@@ -315,18 +315,18 @@ class AffiliatesController extends Controller
 
             $clientAttachmentData = [
                 [
-                    'user_id' => $client->id,
-                    'path' => $pathDriverLicense,
-                    'file_name' => $nameDriverLicense,
-                    'category' => 'DL',
-                    'type' => $driverLicenseExtension
+                  'user_id' => $client->id,
+                  'path' => $pathDriverLicense,
+                  'file_name' => $nameDriverLicense,
+                  'category' => 'DL',
+                  'type' => $driverLicenseExtension
                 ],
                 [
-                    'user_id' => $client->id,
-                    'path' => $pathSocialSecurity,
-                    'file_name' => $nameSocialSecurity,
-                    'category' => 'SS',
-                    'type' => $socialSecurityExtension
+                  'user_id' => $client->id,
+                  'path' => $pathSocialSecurity,
+                  'file_name' => $nameSocialSecurity,
+                  'category' => 'SS',
+                  'type' => $socialSecurityExtension
                 ]
             ];
 
@@ -482,7 +482,7 @@ class AffiliatesController extends Controller
      */
     public function clientProfile(Request $request, $id)
     {
-//
+
         $affiliateId = Auth::user()->id;
         $a = Affiliate::where('affiliate_id', $affiliateId)
             ->where('user_id', $id)->first();
@@ -519,8 +519,8 @@ class AffiliatesController extends Controller
             $requiredInfo = Disputable::whereIn('id',$requiredInfoArr )->get();
         }else{
             $requiredInfo = [];
-
         }
+
         $statusArray = DB::table('todos')
             ->join('disputables', 'disputables.todo_id', '=', 'todos.id')
             ->where('todos.client_id', $client->id)
@@ -529,14 +529,12 @@ class AffiliatesController extends Controller
             ->pluck('count', 'status')
             ->toArray();
 
-
         $statusInactive = Todo::
         leftJoin('disputables', 'todos.id','=','disputables.todo_id')
             ->where('client_id', $client->id)
             ->where('disputables.status', 0)
             ->whereJsonContains('additional_information', ['security_word' => null])
             ->count('disputables.status');
-
 
         $active = !empty($statusArray)? $statusArray[0]- $statusInactive:0;
         $pending = !empty($statusArray) && isset($statusArray[1])? $statusArray[1]:0;
@@ -550,7 +548,6 @@ class AffiliatesController extends Controller
             'complete'=> $complete,
             'added' => $added,
             'non_data' => $non_data,
-
         ]);
 
         return view('affiliate.client-profile', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
@@ -684,7 +681,8 @@ class AffiliatesController extends Controller
             ]);
 
             if ($validation->fails()) {
-                return view('todo.profile.create')->withErrors($validation);
+                // return view('todo.profile.create')->withErrors($validation);
+                return view('todo.profile.create')->with('error','Your fields are empty please add data in it!');
             } else {
 
                 $user = Arr::only($data, ['first_name', 'last_name']);

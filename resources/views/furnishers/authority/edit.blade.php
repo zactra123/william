@@ -47,44 +47,39 @@
                                                     <div class="col-md-12">
                                                       <div class="row">
                                                         <div class="col-md-5">
-
                                                         </div>
                                                         <div class="col-md-6 mb-4 changeLogo files">
-
-                                                            @php
-                                                              $authorityimg = $authority->path;
-                                                              $findfile = public_path('/images/'.$authorityimg);
-                                                            @endphp
-                                                            @if (isset($authority->path))
-
-                                                                 @if (file_exists($findfile))
-                                                                   @if (!empty($authority->path))
-                                                                     <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $authorityimg }}"  style="width:150px;"alt="Card image cap"></a>
-                                                                   @else
-                                                                     <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
-                                                                   @endif
-                                                                 @else
-                                                                       <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
-                                                                   @endif
-
-                                                                 @else
-                                                                         <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
+                                                          @php
+                                                            $authorityimg = $authority->path;
+                                                            $findfile = public_path('/images/'.$authorityimg);
+                                                          @endphp
+                                                          @if (isset($authority->path))
+                                                            @if (file_exists($findfile))
+                                                              @if (!empty($authority->path))
+                                                                <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{ url('/') }}/images/{{ $authorityimg }}"  style="width:150px;"alt="Card image cap"></a>
+                                                              @else
+                                                                <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
                                                               @endif
+                                                            @else
+                                                              <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
+                                                            @endif
+                                                          @else
+                                                              <a href="{{route("admins.authority.edit", $authority->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" style="width:150px;" alt="Card image cap"></a>
+                                                          @endif
                                                         </div>
                                                       </div>
                                                     </div>
                                                     <div class="col-md-12 mb-4 hide updateLogo files">
-                                                        <input class="bank_logo_class bank_logo file-box form-control" type="file" name="logo" />
+                                                      <input class="bank_logo_class bank_logo file-box form-control" type="file" name="logo" />
                                                     </div>
                                                     <div class="col-md-12 mb-4">
-                                                        <input type="text" name="authority[name]" value="{{strtoupper($authority->name)}}" class="form-control" id="bank_name" />
+                                                      <input type="text" name="authority[name]" value="{{strtoupper($authority->name)}}" class="form-control" id="bank_name" />
                                                     </div>
                                                     <div class="col-md-12 mb-4">
                                                       @if (isset($authority->furnisher_types['types']))
                                                         {!! Form::select("authority[furnisher_types][types][]", [""=>"Assign Furnisher Type"] + \App\BankLogo::TYPES, $authority->furnisher_types['types'], ['multiple'=>'multiple', 'class'=>'selectize-type', 'id' => "bank-type"]); !!}
                                                       @else
                                                       @endif
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +102,7 @@
                       <div class=" mt-2" id="account">
                           <div id="addresses_container">
                               <div id="dispute-address-">
-                                  <div class="row expand-address" data-address="#address-">
+                                  <div class="row expand-address" data-address="#address">
                                       <div class="col-md-6"><label for="">Executive Address</label>  </div>
                                       <div class="col-md-6 text-right">
                                         <span class="text-danger mb-3 fs-18">

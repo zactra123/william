@@ -3,7 +3,6 @@
 <title>Court</title>
 @endsection
 @section('body')
-
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -29,7 +28,8 @@
             <div class="">
               <div class="panel panel-primary">
                 <?php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types) ?>
-                {!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!} @csrf
+                {!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!}
+                @csrf
                 <div class="row">
                   <div class="col-sm-4 files mb-2">
                     <input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />
@@ -81,9 +81,6 @@
               <div class="row">
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    {{-- <div class="col-sm-2">
-                      <img class="responsive" src="{{url('/')}}/images/phone.png" />
-                    </div> --}}
                     <div class="col-sm-12">
                       {!! Form::text("court[phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                     </div>
@@ -91,9 +88,6 @@
                 </div>
                 <div class="form-group col-sm-4">
                   <div class="row">
-                    {{-- <div class="col-sm-2">
-                      <img class="responsive" src="{{url('/')}}/images/fax.png" />
-                    </div> --}}
                     <div class="col-sm-12">
                       {!! Form::text("court[fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                     </div>
@@ -121,8 +115,8 @@
         <div class="card-header">
           <div class="row">
             <div class="col-md-6 text-left"><h4>Judges Info</h4></div>
-            <div class="col-md-6 text-right mb-3">
-              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
+            <div class="col-md-6 text-right">
+              <button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
                   <span class="fa fa-times"></span>
               </button>
             </div>
@@ -160,8 +154,8 @@
         <div class="card-header">
           <div class="row">
             <div class="col-md-6 text-left"><h4>Equal Names</h4></div>
-            <div class="col-md-6 text-right mb-3">
-              <button class="text-danger fs-18 mb-3 remove-equal-bank" style="border:none !important;background:none !important;">
+            <div class="col-md-6 text-right">
+              <button class="text-danger fs-18 remove-equal-bank" style="border:none !important;background:none !important;">
                 <span class="fa fa-times"></span>
               </button>
             </div>
@@ -271,25 +265,22 @@
 
 <script type="text/html" id="judge_info">
   <div class="row" id="judge_info_{id}">
-
-      <div class="form-group col-sm-4">
-          {!! Form::text("judge[{id}][full_name]",  null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
-      </div>
-      <div class="form-group col-sm-3">
-          {!! Form::text("judge[{id}][email]",   null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
-      </div>
-      <div class="form-group col-sm-2">
-          {!! Form::text("judge[{id}][phone_number]",   null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
-      </div>
-      <div class="form-group col-sm-2">
-          {!! Form::text("judge[{id}][room_number]",  null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
-      </div>
-
-      <div class="col-md-1 mt-2 pt-1">
-          <strong class="add_range" class="btn btn-primary" data-id="{id}" id="add_{id}" ><i class="fa fa-plus text-success"></i></strong>
-
-          <strong class="remove_range" class="btn btn-primary" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
-      </div>
+    <div class="form-group col-sm-4">
+      {!! Form::text("judge[{id}][full_name]", null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
+    </div>
+    <div class="form-group col-sm-3">
+      {!! Form::text("judge[{id}][email]", null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+    </div>
+    <div class="form-group col-sm-2">
+      {!! Form::text("judge[{id}][phone_number]", null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
+    </div>
+    <div class="form-group col-sm-2">
+      {!! Form::text("judge[{id}][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
+    </div>
+    <div class="col-md-1 mt-2 pt-1">
+      <strong class="add_range" class="btn btn-primary" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>
+      <strong class="remove_range" class="btn btn-primary" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
+    </div>
   </div>
 </script>
 

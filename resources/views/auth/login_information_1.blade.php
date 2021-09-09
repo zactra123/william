@@ -22,7 +22,6 @@
             <h1 class="fs-25 bold theme-color-dark">Rest Login information</h1>
             <p>Please enter complete information which is asked below to reset your login information!</p>
 
-
             {!! Form::open(['route' => 'login.infoFirstSend', 'method' => 'POST', 'id' => 'loginInformation1']) !!}
             @csrf
             <div class="row">
@@ -37,7 +36,6 @@
                   </div>
               </div>
             </div>
-
 
             <div class="form-group col-md-12 text-center"> OR </div>
 
@@ -67,9 +65,7 @@
               </div>
             </div>
             {!! Form::close() !!}
-
           </div>
-
           <p class="pt-4 fs-12 text-center">
               <span class="fs-18">Want to login to your account? <a class="fs-18 theme-color-dark" href="{{route('login')}}">Sign In</a></span>
           </p>

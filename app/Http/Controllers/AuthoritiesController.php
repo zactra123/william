@@ -27,39 +27,41 @@ class AuthoritiesController extends Controller
     }
     public function store(Request $request)
     {
+
         $authority= $request->authority;
         $validation =  Validator::make($authority, [
             'name'=>['required', 'string', 'max:255'],
 
         ]);
         if ($validation->fails()){
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($validation);
+            // return redirect()->back()
+            //     ->withInput()
+            //     ->withErrors($validation);
+            return redirect()->back()->with('error','Your fields are empty please add data in it!');
         }
 
         $pathLogo = '';
-        // if (!empty($request['logo']) ) {
-        //
-        //
-        //     $imagesBankLogo = $request->file("logo");
-        //     $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
-        //     $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-        //     if(!in_array($bankLogoExtension, $imageExtension)){
-        //         return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
-        //     }
-        //
-        //
-        //     $ext = $request->file('logo')->getClientOriginalExtension();
-        //     $time = time();
-        //     $pathLogo = $request->file('logo')->storeAs(
-        //         'authorities',
-        //         "authorities_$time.$ext",
-        //         ['disk'=>'s3', 'visibility'=>'public']
-        //     );
-        //
-        //
-        // }
+        if (!empty($request['logo']) ) {
+
+
+            $imagesBankLogo = $request->file("logo");
+            $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
+            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+            if(!in_array($bankLogoExtension, $imageExtension)){
+                return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
+            }
+
+
+            $ext = $request->file('logo')->getClientOriginalExtension();
+            $time = time();
+            $pathLogo = $request->file('logo')->storeAs(
+                'authorities',
+                "authorities_$time.$ext",
+                ['disk'=>'s3', 'visibility'=>'public']
+            );
+
+
+        }
         $authority['path'] = $pathLogo;
         Authority::create($authority);
         return redirect()->route('admins.authority.index');

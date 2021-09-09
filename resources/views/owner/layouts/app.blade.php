@@ -37,7 +37,6 @@
     <!-- Footer closed -->
     <!-- Back-to-top -->
     <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
-
     @include('owner.includes.scripts')
   </body>
 </html>

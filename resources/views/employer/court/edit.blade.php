@@ -143,10 +143,9 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Judges Info</h4></div>
             <div class="col-md-6 text-right">
-              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
-                  <span class="fa fa-times"></span>
+              <button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
+                <span class="fa fa-times"></span>
               </button>
-
             </div>
           </div>
         </div>
@@ -207,10 +206,9 @@
           <div class="row">
             <div class="col-md-6 text-left"><h4>Equal Names</h4></div>
             <div class="col-md-6 text-right">
-              <button class="text-danger remove-equal-bank fs-18 mb-3" style="border:none !important;background:none !important;">
-                  <span class="fa fa-times"></span>
+              <button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
+                <span class="fa fa-times"></span>
               </button>
-
             </div>
           </div>
         </div>
@@ -247,7 +245,8 @@
     </div>
   </div>
 
-  @endsection @section('css')
+  @endsection
+  @section('css')
   <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
   <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
   <style>
@@ -368,7 +367,8 @@
       height: auto;
     }
   </style>
-  @endsection @section('js')
+  @endsection
+  @section('js')
   <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
   <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
   <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
@@ -377,24 +377,21 @@
 
   <script type="text/html" id="judge_info">
     <div class="row" id="judge_info_{id}">
-
         <div class="form-group col-sm-4">
-            {!! Form::text("judge[{id}][full_name]",  null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
+          {!! Form::text("judge[{id}][full_name]",  null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
         </div>
         <div class="form-group col-sm-3">
-            {!! Form::text("judge[{id}][email]",   null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+          {!! Form::text("judge[{id}][email]",   null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
         </div>
         <div class="form-group col-sm-2">
-            {!! Form::text("judge[{id}][phone_number]",   null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
+          {!! Form::text("judge[{id}][phone_number]",   null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
         </div>
         <div class="form-group col-sm-2">
-            {!! Form::text("judge[{id}][room_number]",  null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
+          {!! Form::text("judge[{id}][room_number]",  null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
         </div>
-
         <div class="col-md-1 mt-2 pt-1">
-            <strong class="add_range" class="btn form-control" data-id="{id}" id="add_{id}" ><i class="fa fa-plus text-success"></i></strong>
-
-            <strong class="remove_range" class="btn form-control" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
+          <strong class="add_range" class="btn form-control" data-id="{id}" id="add_{id}" ><i class="fa fa-plus text-success"></i></strong>
+          <strong class="remove_range" class="btn form-control" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
         </div>
     </div>
   </script>

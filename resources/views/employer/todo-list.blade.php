@@ -72,7 +72,10 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($toDos as $todo) @php $key = 0; @endphp
+              @foreach($toDos as $todo)
+                @php
+                  $key = 0;
+                @endphp
               <tr data-id="{{$todo->id}}">
                 <th scope="row">{{ $key+1 }}</th>
                 <td><a href="{{route('adminRec.client.profile', $todo->client_id)}}" role="button">{{$todo->client->full_name()}}</a></td>
@@ -97,9 +100,11 @@
   </div>
 </div>
 
-@endsection @section('js')
+@endsection
+@section('js')
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
 <script src="{{ asset('js/todo-list.js?v=2') }}"></script>
-@endsection @section('css')
+@endsection
+@section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
 @endsection

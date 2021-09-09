@@ -260,9 +260,10 @@ class BanksController extends Controller
 
         ]);
         if ($validation->fails()){
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($validation);
+            // return redirect()->back()
+            //     ->withInput()
+            //     ->withErrors($validation);
+                return redirect()->back()->with('error','Your name field is empty please add data in it!');
         }
 
         $pathLogo = '';
@@ -600,7 +601,7 @@ class BanksController extends Controller
      */
     public function types(Request $request)
     {
-      
+
         if($request->isMethod("post")){
 
             $accountType =$request->account_type;
@@ -609,14 +610,16 @@ class BanksController extends Controller
             ]);
 
             if ($validation->fails()){
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+                // return redirect()->back()
+                //     ->withInput()
+                //     ->withErrors($validation);
+                    return redirect()->back()->with('error','Your name field is empty please add data in it!');
             }
             $check_type = AccountType::firstWhere("name", $request->account_type["name"]);
             if ($check_type) {
-                return redirect()->route('admins.bank.types')
-                    ->withErrors("FURNISHER TYPE ALREADY EXIST");
+                // return redirect()->route('admins.bank.types')
+                //     ->withErrors("FURNISHER TYPE ALREADY EXIST");
+                    return redirect()->route('admins.bank.types')->with('error','Furnisher Typr Already Exist!');
             }
             $accountType = AccountType::create($request->account_type);
             $key_words = explode(',', $request->account_type_keys["key_word"]);

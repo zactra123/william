@@ -144,8 +144,8 @@ class ClientDetailsController extends Controller
         ]);
 
         if ($validation->fails()) {
-
-            return view('client_details.create')->withErrors($validation);
+            // return view('client_details.create')->withErrors($validation);
+            return redirect()->back()->with('error','Your fields are empty please add data in it!');
         } else {
 
             $id = Auth::user()->id;

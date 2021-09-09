@@ -23,7 +23,8 @@
         <?php
           $states =  \App\Authority::STATES;
         ?>
-        {!! Form::open(['route' => ['admins.authority.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'authorityInformation']) !!} @csrf
+        {!! Form::open(['route' => ['admins.authority.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'authorityInformation']) !!}
+        @csrf
         <div class="card">
           <div class="card-body">
             <div class="ms-ua-title">
@@ -47,7 +48,7 @@
         <div class="card mt-2" id="account">
           <div class="card-body">
             <div id="addresses_container">
-              <div class="row expand-address" data-address="#address-">
+              <div class="row expand-address" data-address="#address">
                 <div class="col-md-6"><label for="">Executive Address</label></div>
                 <div class="col-md-6 text-right">
                   <span class="text-danger mb-3 fs-18">
@@ -55,6 +56,7 @@
                   </span>
                 </div>
               </div>
+
               <div class="col-md-12 addresses" id="address">
                 <div class="row mb-3">
                   <div class="col-sm-3 form-group">
@@ -116,7 +118,6 @@
 @endsection
 @section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
-{{-- <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" /> --}}
 <style>
   #bankInformation .selectize-input,
   .selectize-select {
