@@ -43,14 +43,15 @@ class FaqsController extends Controller
         ]);
 
         if ($validation->fails()) {
-            return view('owner.faqs.create')->withErrors($validation);
+            // return view('owner.faqs.create')->withErrors($validation);
+            return view('owner.faqs.create')->with('error','Your fields are empty please add data in it!');
         } else {
             Faq::create($request->faqs);
             return redirect(route('owner.faqs.index'))->with('success', "your data saved");
         }
 
     }
-    
+
 
 
     /**
@@ -72,7 +73,6 @@ class FaqsController extends Controller
      */
     public function update(Request $request)
     {
-
         $id = $request->faq;
 
         $validation = Validator::make($request->faqs, [
@@ -81,7 +81,8 @@ class FaqsController extends Controller
         ]);
 
         if ($validation->fails()) {
-            return redirect()->back()->withErrors($validation);
+            // return redirect()->back()->withErrors($validation);
+            return redirect()->back()->with('error','Your fields are empty please add data in it!');
         } else {
             Faq::where('id',$id)->update($request->faqs);
             return redirect(route('owner.faqs.index'))->with('success', "your data update");

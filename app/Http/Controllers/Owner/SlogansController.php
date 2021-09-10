@@ -37,14 +37,14 @@ class SlogansController extends Controller
      */
     public function store(Request $request)
     {
-
         $validation = Validator::make($request->slogan, [
             'author' => ['required', 'string'],
             'slogan' => ['required', 'string'],
         ]);
 
         if ($validation->fails()) {
-            return view('owner.slogan.create')->withErrors($validation);
+            // return view('owner.slogan.create')->withErrors($validation);
+            return view('owner.slogan.create')->with('error','Your fields are empty please add data in it!');
         } else {
             Slogan::create($request->slogan);
             return back()->with('success', "your data saved");

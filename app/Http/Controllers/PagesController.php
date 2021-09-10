@@ -130,9 +130,10 @@ class PagesController extends Controller
                 'question' => ['required', 'string', 'max:255'],
             ]);
             if ($validation->fails()){
-                return redirect()->back()
-                    ->withInput()
-                    ->withErrors($validation);
+                // return redirect()->back()
+                //     ->withInput()
+                //     ->withErrors($validation);
+                return redirect()->back()->with('error','Your fields are empty please add data in it!');
             }else{
                 Question::create($request->except('_token'));
                 return redirect()->back()
@@ -194,9 +195,10 @@ class PagesController extends Controller
         ]);
         if ($validation->fails()){
 
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($validation);
+            // return redirect()->back()
+            //     ->withInput()
+            //     ->withErrors($validation);
+                return redirect()->back()->with('error','Your fields are empty please add data in it!');
         }else{
 
             ContactMessage::create($request->contact);

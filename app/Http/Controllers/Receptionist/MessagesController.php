@@ -167,10 +167,10 @@ class MessagesController extends Controller
         ]);
 
         if ($validation->fails()) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($validation);
-
+            // return redirect()->back()
+            //     ->withInput()
+            //     ->withErrors($validation);
+                return redirect()->back()->with('error','Your fields are empty please add data in it!');
         }else{
 
             QuestionNote::create($note);

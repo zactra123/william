@@ -53,7 +53,8 @@ class CreditEducationsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return view('owner.credit_education.create')->withErrors($validation);
+            // return view('owner.credit_education.create')->withErrors($validation);
+            return view('owner.credit_education.create')->with('error','Your fields are empty please add data in it!');
         }
 
         HomePageContent::create([
@@ -111,7 +112,8 @@ class CreditEducationsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return view('owner.credit_education.edit', compact('content'))->withErrors($validation);
+            // return view('owner.credit_education.edit', compact('content'))->withErrors($validation);
+            return view('owner.credit_education.edit', compact('content'))->with('error','Your fields are empty please add data in it!');
         }
 
         HomePageContent::where('url', $url)->update([

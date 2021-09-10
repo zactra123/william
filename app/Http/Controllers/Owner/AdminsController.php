@@ -72,7 +72,8 @@ class AdminsController extends Controller
         ]);
 
         if($validation->fails()){
-            return redirect(route('owner.admin.create'))->withErrors($validation);
+            // return redirect(route('owner.admin.create'))->withErrors($validation);
+            return redirect(route('owner.admin.create'))->with('error','Your fields are empty please add data in it!');
         }
 
         $user = User::create([
@@ -142,9 +143,10 @@ class AdminsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return redirect(route('owner.admin.edit', ["admin"=>$id]))
-                ->withInput()
-                ->withErrors($validation);
+            // return redirect(route('owner.admin.edit', ["admin"=>$id]))
+            //     ->withInput()
+            //     ->withErrors($validation);
+                return redirect(route('owner.admin.edit', ["admin"=>$id]))->with('error','Your fields are empty please add data in it!');
         }
 
         User::where('id', $id)

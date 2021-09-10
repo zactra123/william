@@ -77,9 +77,9 @@ class AffiliatesController extends Controller
                 if (!$pricing) {
                     $pricing = new DisputesPricing(["user_id" => $request->user_id]);
                 }
-                return view('owner.affiliate.pricing._form', compact('pricing', 'default'))->withErrors($validator);
+                // return view('owner.affiliate.pricing._form', compact('pricing', 'default'))->withErrors($validator);
+                return view('owner.affiliate.pricing._form', compact('pricing', 'default'))->with('error','Your fields are empty please add data in it!');
             }
-
 
             if(isset($pricing['user_id'])){
                 $disputePricing = DisputesPricing::where('user_id', $pricing['user_id']);

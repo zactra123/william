@@ -63,7 +63,8 @@ class ReceptionistsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return view('owner.receptionist.create')->withErrors($validation);
+            // return view('owner.receptionist.create')->withErrors($validation);
+            return view('owner.receptionist.create')->with('error','Your fields are empty please add data in it!');
         }
         $user = User::create([
             'first_name' => $receptionist['first_name'],
@@ -114,9 +115,10 @@ class ReceptionistsController extends Controller
         ]);
 
         if ($validation->fails()){
-            return redirect(route('owner.receptionist.edit', ["receptionist" => $id]))
-                ->withInput()
-                ->withErrors($validation);
+            // return redirect(route('owner.receptionist.edit', ["receptionist" => $id]))
+            //     ->withInput()
+            //     ->withErrors($validation);
+                return redirect(route('owner.receptionist.edit', ["receptionist" => $id]))->with('error','Your fields are empty please add data in it!');
         }
 
         User::where('id', $id)

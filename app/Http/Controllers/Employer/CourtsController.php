@@ -137,7 +137,6 @@ class CourtsController extends Controller
         $id  = $request->court;
         $court = Court::findOrFail($id);
 
-
         return view('employer.court.edit', compact('court'));
     }
 
