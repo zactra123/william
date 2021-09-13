@@ -35,12 +35,12 @@ use App\Credential;
 use App\Disputable;
 use App\EqualBank;
 use App\SecretQuestion;
-use App\Todo;
-use App\User;
 use App\Affiliate;
 use App\ClientAttachment;
 use App\ClientDetail;
 use App\UploadClientDetail;
+use App\Todo;
+use App\User;
 use Auth;
 
 
@@ -126,15 +126,15 @@ class AffiliatesController extends Controller
 
             ClientDetail::where('user_id', $userId)->update([
                 'phone_number' => $affiliate["phone_number"],
-                'number'=>$affiliateDetails ["number"],
-                'name'=>$affiliateDetails ["name"],
-                'city'=>$affiliateDetails ["city"],
-                'state'=>$affiliateDetails ["state"],
-                'zip'=>$affiliateDetails ["zip"],
-                'address'=>$affiliateDetails ["address"],
-                'business_name'=>$affiliate["business_name"],
-                'ein'=>$affiliate["ein"],
-                'ssn'=>$affiliate["ssn"],
+                'number'=> $affiliateDetails ["number"],
+                'name'=> $affiliateDetails ["name"],
+                'city'=> $affiliateDetails ["city"],
+                'state'=> $affiliateDetails ["state"],
+                'zip'=> $affiliateDetails ["zip"],
+                'address'=> $affiliateDetails ["address"],
+                'business_name'=> $affiliate["business_name"],
+                'ein'=> $affiliate["ein"],
+                'ssn'=> $affiliate["ssn"],
                 'registration_steps' => $affiliateDetails['registration_steps']
             ]);
 
@@ -194,7 +194,7 @@ class AffiliatesController extends Controller
             $user = User::create([
                 'email'=>$clientData['email'],
                 'secret_questions_id' => $clientData['secret_questions_id'],
-                'secret_answer' =>$clientData['secret_answer'],
+                'secret_answer' => $clientData['secret_answer'],
                 'role'=>'client'
             ]);
             $userId = $user->id;

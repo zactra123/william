@@ -43,9 +43,7 @@
                 </td>
                 <td>{{$user->affiliate_name??'-'}}</td>
                 <td>{{$user->email}}</td>
-                {{--
-                <td>{{$user->full_name?? "-"}}</td>
-                --}}
+                {{-- <td>{{$user->full_name?? "-"}}</td> --}}
               </tr>
               @endforeach
             </tbody>

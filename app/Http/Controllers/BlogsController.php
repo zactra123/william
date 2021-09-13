@@ -33,11 +33,10 @@ class BlogsController extends Controller
 
     public function store(Request $request)
     {
-
         if(empty($request['attach'])){
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Please upload both files');
+          return redirect()->back()
+              ->withInput()
+              ->with('error', 'Please upload both files');
         }
         $titleImage  = $request->file("attach");
         $imageExtension = [ 'png', 'jpg', 'jpeg'];
@@ -124,23 +123,22 @@ class BlogsController extends Controller
 
     public function upload_tinymce_images(Request $request)
     {
-            $imagesBankLogo = $request->file("file");
-            $imageExtension = ['png', 'jpg', 'jpeg'];
-            $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
-            if(!in_array($bankLogoExtension, $imageExtension)){
-                return Response::json(["error"=>"Please upload the correct file format ( PNG, JPG)"], 400);
-            }
+        $imagesBankLogo = $request->file("file");
+        $imageExtension = ['png', 'jpg', 'jpeg'];
+        $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
+        if(!in_array($bankLogoExtension, $imageExtension)){
+            return Response::json(["error"=>"Please upload the correct file format ( PNG, JPG)"], 400);
+        }
 
-            $ext = $request->file('file')->getClientOriginalExtension();
-            $time = time();
-            $pathLogo = $request->file("file")->storeAs(
-                'blogs/tinymce',
-                "furnisher_$time.$ext",
-                ['disk'=>'s3', 'visibility'=>'public']
-            );
+        $ext = $request->file('file')->getClientOriginalExtension();
+        $time = time();
+        $pathLogo = $request->file("file")->storeAs(
+            'blogs/tinymce',
+            "furnisher_$time.$ext",
+            ['disk'=>'s3', 'visibility'=>'public']
+        );
 
-
-        return Response::json(["location"=> Storage::disk('s3')->url($pathLogo)], 200);
+      return Response::json(["location"=> Storage::disk('s3')->url($pathLogo)], 200);
     }
 
 }

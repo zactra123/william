@@ -24,8 +24,6 @@
                             <div id="price-list">
                                 @include('owner.affiliate.pricing._form', ["pricing" =>$default_price_list, "default" => $default_price_list])
                             </div>
-
-
                             <div class="row mt-3">
                                 <div class="col-md-12 text-right">
                                   <input type="submit" value="Add" class="ms-ua-submit btnsub btn btn-primary mb-5 pull-right" data-url="{{ url('/') }}">
@@ -167,10 +165,9 @@
                   </div>
                   {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
               </div>
-              <div class="col-md-1">
-                  <strong class="add_range pr-5" class="btn form-control" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
-
-                  <strong class="remove_range" class="btn form-control" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
+              <div class="col-md-1 pt-2 pl-0">
+                  <strong class="add_range pointer pr-2" data-type="{type}" data-id="{id}" id="add_{type}_{id}" ><i class="fa fa-plus text-success"></i></strong>
+                  <strong class="remove_range pointer" data-type="{type}" data-id="{id}" id="remove_{type}_{id}"><i class="fa fa-trash text-danger"></i></strong>
               </div>
 
           </div>

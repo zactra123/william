@@ -137,7 +137,7 @@
               {!! Form::text("judge[0][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
             </div>
             <div class="form-group col-sm-1 mt-2 pt-1">
-              <strong class="add_range" class="btn btn-primary" data-id="0" id="add_0"><i class="fa fa-plus text-success"></i></strong>
+              <strong class="add_range pointer" data-id="0" id="add_0"><i class="fa fa-plus text-success"></i></strong>
             </div>
           </div>
           <div id="add_judge_info"></div>
@@ -278,8 +278,8 @@
       {!! Form::text("judge[{id}][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
     </div>
     <div class="col-md-1 mt-2 pt-1">
-      <strong class="add_range" class="btn btn-primary" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>
-      <strong class="remove_range" class="btn btn-primary" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
+      <strong class="add_range pointer" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>
+      <strong class="remove_range pointer" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
     </div>
   </div>
 </script>

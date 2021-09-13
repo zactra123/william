@@ -23,10 +23,8 @@ class AppointmentsController extends Controller
            ->select('id', DB::raw('CONCAT(last_name, " ",first_name) AS full_name'))
            ->pluck('full_name', 'id');
 
-
         if(request()->ajax())
         {
-
             $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
 
             $appointments = Message::whereDate('call_date', '>=', $start)->get();
@@ -46,7 +44,6 @@ class AppointmentsController extends Controller
             }
             return Response::json($data);
         }
-
 
         return view('admin.appointment.index',compact('admins'));
     }
@@ -98,7 +95,6 @@ class AppointmentsController extends Controller
 
             $appointment = Message::create($insertArr);
             return Response::json($appointment);
-
         }
 
     }
@@ -117,8 +113,6 @@ class AppointmentsController extends Controller
             'title' => ['required'],
             'description'=> ['required'],
             'phone_number'=> ['required'],
-
-
         ]);
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
@@ -127,7 +121,6 @@ class AppointmentsController extends Controller
             $insertArr['user_id']= $request->admin_id?$request->admin_id: Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
-
 
             $messageHistory = Message::where('id', $request->id)->first()->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
@@ -142,7 +135,6 @@ class AppointmentsController extends Controller
 
     public function destroy($id)
     {
-
         if ($messageHistory = Message::where('id', $id)->first()) {
 
             $messageHistory = $messageHistory->toArray();

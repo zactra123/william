@@ -47,17 +47,17 @@ class PagesController extends Controller
             $texts = explode(' ', $slogan->slogan);
             $textSlogan = [];
             $k = 0;
-                foreach($texts as $w => $text){
-                    if($w == 0){
-                        $textSlogan[$k] = $text;
-                    }elseif(strlen($textSlogan[$k])<60){
+            foreach($texts as $w => $text){
+                if($w == 0){
+                    $textSlogan[$k] = $text;
+                }elseif(strlen($textSlogan[$k])<60){
 
-                        $textSlogan[$k] = $textSlogan[$k]." ". $text;
-                    }else{
-                        $k = $k+1;
-                        $textSlogan[$k] = $text;
-                    }
+                    $textSlogan[$k] = $textSlogan[$k]." ". $text;
+                }else{
+                    $k = $k+1;
+                    $textSlogan[$k] = $text;
                 }
+            }
             $slogans[$key]['slogan'] = $textSlogan;
         }
 

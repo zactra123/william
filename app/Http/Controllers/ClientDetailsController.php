@@ -34,9 +34,6 @@ use App\Mail\CredentialNotifications;
 use App\Services\ClientDetailsNewData;
 use App\Services\Escrow;
 use App\Services\ReadPdfData;
-use App\Todo;
-use Auth;
-use App\User;
 use App\ClientDetail;
 use App\Services\ClientDetailsData;
 use App\Services\CreditReportUpload;
@@ -46,13 +43,14 @@ use App\UploadClientDetail;
 use App\Services\Screaper;
 use App\ClientReport;
 use App\Disputable;
-
+use App\Todo;
+use App\User;
+use Auth;
 
 class ClientDetailsController extends Controller
 {
     public function __construct()
     {
-
         $this->middleware(['auth', 'verified']);
         $this->middleware('client', ['except' => 'store']);
     }
@@ -109,7 +107,6 @@ class ClientDetailsController extends Controller
             'complete'=> $complete,
             'added' => $added,
             'non_data' => $non_data,
-
         ]);
 
         return view('client_details.index', compact('client', 'toDos', 'status', 'reportsDateEX','reportsDateEQ','reportsDateTU','requiredInfo', 'statusDispute'));
@@ -278,7 +275,9 @@ class ClientDetailsController extends Controller
         return view('client_details.upload-dl-ss', compact("client"));
     }
 
-    //create or update for client details
+    /**
+     * create or update for client details
+     */
 
     public function storeDlSs(Request $request, ClientDetailsData $clientDetailsData, ClientDetailsNewData $clientDetailsNewData)
     {

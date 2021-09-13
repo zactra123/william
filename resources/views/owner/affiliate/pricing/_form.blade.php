@@ -1020,7 +1020,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="credit_card_co" id="add_credit_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1107,7 +1107,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="charge_card_co" id="add_charge_card_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -1195,7 +1195,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="sales_contract_co" id="add_sales_contract_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -1282,7 +1282,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="unsecured_co" id="add_unsecured_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -1369,7 +1369,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="line_credit_co" id="add_line_credit_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -1457,7 +1457,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="home_equity_co" id="add_home_equity_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -1545,7 +1545,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="education_co" id="add_education_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1632,7 +1632,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                            <strong class="add_range h3" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                            <strong class="add_range h3 pointer" class="btn form-control" data-type="utility_co" id="add_utility_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1721,7 +1721,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="child_support_co" id="add_child_support_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -1810,7 +1810,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_lease_co" id="add_auto_lease_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1897,7 +1897,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control collection" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control collection" data-type="auto_loan_co" id="add_auto_loan_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1984,7 +1984,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="r_m_co" id="add_r_m_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -2076,7 +2076,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="credit_card_s_co" id="add_credit_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2163,7 +2163,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="charge_card_s_co" id="add_charge_card_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -2251,7 +2251,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="sales_contract_s_co" id="add_sales_contract_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2338,7 +2338,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="unsecured_s_co" id="add_unsecured_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2425,7 +2425,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="line_credit_s_co" id="add_line_credit_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -2513,7 +2513,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="home_equity_s_co" id="add_home_equity_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="home_equity_s_co" id="add_home_equity_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2600,7 +2600,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="education_s_co" id="add_education_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2774,7 +2774,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="child_support_s_co" id="add_child_support_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2863,7 +2863,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_lease_s_co" id="add_auto_lease_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -2950,7 +2950,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_loan_s_co" id="add_auto_loan_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
                                     </div>
                                 </div>
@@ -3037,7 +3037,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="r_m_s_co" id="add_r_m_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3129,7 +3129,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-1">
-                                          <strong class="add_range h3" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="credit_card_d_co" id="add_credit_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3216,7 +3216,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="charge_card_d_co" id="add_charge_card_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3303,7 +3303,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="sales_contract_d_co" id="add_sales_contract_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3393,7 +3393,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="unsecured_d_co" id="add_unsecured_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3480,7 +3480,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="line_credit_d_co" id="add_line_credit_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3567,7 +3567,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="home_equity_d_co" id="add_home_equity_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3656,7 +3656,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="education_d_co" id="add_education_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -3744,7 +3744,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="utility_d_co" id="add_utility_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3831,7 +3831,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="child_support_d_co" id="add_child_support_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -3919,7 +3919,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_lease_d_co" id="add_auto_lease_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4006,7 +4006,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_loan_d_co" id="add_auto_loan_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4095,7 +4095,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="r_m_d_co" id="add_r_m_d_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4190,7 +4190,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                       <div class="row pt-2">
-                                        <strong class="add_range h3" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                        <strong class="add_range h3 pointer" class="btn form-control" data-type="credit_card_sd_co" id="add_credit_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                       </div>
 
                                     </div>
@@ -4280,7 +4280,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="charge_card_sd_co" id="add_charge_card_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4367,7 +4367,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="sales_contract_sd_co" id="add_sales_contract_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4456,7 +4456,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="unsecured_sd_co" id="add_unsecured_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4543,7 +4543,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="line_credit_sd_co" id="add_line_credit_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4630,7 +4630,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="home_equity_sd_co" id="add_home_equity_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4717,7 +4717,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="education_sd_co" id="add_education_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4804,7 +4804,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="utility_sd_co" id="add_utility_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4891,7 +4891,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="child_support_sd_co" id="add_child_support_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -4980,7 +4980,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_lease_sd_co" id="add_auto_lease_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -5069,7 +5069,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_loan_sd_co" id="add_auto_loan_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -5158,7 +5158,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="r_m_sd_co" id="add_r_m_sd_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -5250,7 +5250,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_lease_r" id="add_auto_lease_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -5337,7 +5337,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="auto_loan_r" id="add_auto_loan_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>
@@ -5424,7 +5424,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="r_m_r" id="add_r_m_r_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>

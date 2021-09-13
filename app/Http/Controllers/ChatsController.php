@@ -117,14 +117,11 @@ class ChatsController extends Controller
                 ->select('chat.*')
                 ->get()->toArray();
 
-
         }else{
             $messages = Chat::where("recipient_type", "App\\{$request->type}")
                 ->where("recipient_id", $request->id)
                 ->get()->toArray();
         }
-
-
         return Response::json(["messages" => $messages]);
     }
 
@@ -143,7 +140,6 @@ class ChatsController extends Controller
         $last_message = Chat::where("recipient_type", $type)
             ->where("recipient_id", $requests->recipient_id)
             ->first();
-
 
         if(empty($last_message)){
             $actives = Active::usersWithinMinutes(60)->get();
@@ -191,10 +187,6 @@ class ChatsController extends Controller
 
         broadcast(new ReceptionistLiveChat($new_message));
         return Response::json(["messages" => $new_message]);
-
-
-
-
 
 //        if ($requests->recipient_type == "guest") {
 //           $last_message = Chat::where("recipient_type", $requests->recipient_type)

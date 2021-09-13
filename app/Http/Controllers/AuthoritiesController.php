@@ -27,11 +27,9 @@ class AuthoritiesController extends Controller
     }
     public function store(Request $request)
     {
-
         $authority= $request->authority;
         $validation =  Validator::make($authority, [
             'name'=>['required', 'string', 'max:255'],
-
         ]);
         if ($validation->fails()){
             // return redirect()->back()
@@ -42,15 +40,12 @@ class AuthoritiesController extends Controller
 
         $pathLogo = '';
         if (!empty($request['logo']) ) {
-
-
             $imagesBankLogo = $request->file("logo");
             $imageExtension = ['gif', 'png', 'jpg', 'jpeg', 'tif', 'bmp'];
             $bankLogoExtension = strtolower($imagesBankLogo->getClientOriginalExtension());
             if(!in_array($bankLogoExtension, $imageExtension)){
                 return redirect()->back()->with('error','Please upload the correct file format (PDF, PNG, JPG)');
             }
-
 
             $ext = $request->file('logo')->getClientOriginalExtension();
             $time = time();
@@ -59,7 +54,6 @@ class AuthoritiesController extends Controller
                 "authorities_$time.$ext",
                 ['disk'=>'s3', 'visibility'=>'public']
             );
-
 
         }
         $authority['path'] = $pathLogo;
@@ -75,7 +69,6 @@ class AuthoritiesController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $authority = Authority::find($id);
         $update = $request->authority;
 
@@ -105,7 +98,6 @@ class AuthoritiesController extends Controller
         }
         return redirect()->route('admins.authority.index');
     }
-
 
 
     public function destroy(Request $request)
