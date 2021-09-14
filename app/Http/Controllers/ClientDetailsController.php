@@ -225,12 +225,12 @@ class ClientDetailsController extends Controller
             return redirect(route('client.details.index'))->with('success', "your data is update");
 
         } catch (\Exception $e) {
-            if ($request->method('ajax')) {
-                return response()->json(['msg' => $e->getMessage()], 400);
-            }
-            return redirect()->back()
-                ->withInput()
-                ->withErrors($e->getMessage());
+          if ($request->method('ajax')) {
+              return response()->json(['msg' => $e->getMessage()], 400);
+          }
+          return redirect()->back()
+              ->withInput()
+              ->withErrors($e->getMessage());
         }
     }
 

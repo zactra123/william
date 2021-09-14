@@ -5,17 +5,17 @@
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Courts</li>
-            </ol>
-          </nav>
+      <h4 class="content-title mb-2">Hi, welcome back!</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Courts</li>
+          </ol>
+        </nav>
     </div>
     <div class="mmt-7">
       <a class="btn btn-primary pull-left mmt-7" href="{{ route('admins.court.create')}}" role="button">
-          ADD COURT
+        ADD COURT
       </a>
     </div>
   </div>
@@ -41,33 +41,35 @@
                 </nav>
               </div>
               <div class="album py-5">
-                  <div class="container mmap-0">
-                      <div class="row">
-                          @foreach($courts as  $logos)
-                              <div class="col-md-3" title="{{strtoupper($logos->name)}}">
-                                  <div class="card mb-4 pt-5" >
-                                      @if (isset($logos->bucket))
-                                        @if($logos->checkUrlAttribute())
-                                           <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                        @else
-                                            <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                        @endif
-                                      @else
-                                        <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                      @endif
-                                      <div class="card-body">
-                                          <div class="card-text mt-5">
-                                            <div class="bank-name b"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
-                                            <a href="{{ route('admin.delete.court',$logos->id) }}"><div class="delete2 text-right" onclick="return confirm('Are You Sure!')" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
-                                              <span> <i class="fa fa-trash"></i> </span>
-                                            </div></a>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          @endforeach
+                <div class="container mmap-0">
+                  <div class="row">
+                    @foreach($courts as  $logos)
+                      <div class="col-md-3" title="{{strtoupper($logos->name)}}">
+                        <div class="card mb-4 pt-5" >
+                          @if (isset($logos->bucket))
+                            @if($logos->checkUrlAttribute())
+                               <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                            @else
+                                <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                            @endif
+                          @else
+                            <a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+                          @endif
+                          <div class="card-body">
+                            <div class="card-text mt-5">
+                              <div class="bank-name b"  onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
+                              <a href="{{ route('admin.delete.court',$logos->id) }}">
+                                <div class="delete2 text-right" onclick="return confirm('Are You Sure!')" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
+                                  <span> <i class="fa fa-trash"></i> </span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    @endforeach
                   </div>
+                </div>
               </div>
               <div class="container">
                 <div class="row mr-2 mb-5">
@@ -81,7 +83,6 @@
       </div>
     </div>
   </div>
-
 @endsection
 @section('css')
   <style>

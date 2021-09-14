@@ -27,17 +27,20 @@
           <?php
             $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types)
           ?>
-          {!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!} @method('PUT') @csrf
+          {!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
+          @method('PUT')
+          @csrf
 
           <div class="row">
             <div class="col-sm-12 form-group changeLogo files content-justify-center text-center">
-              @if (isset($court->bucket)) @if($court->checkUrlAttribute())
-              <img src="{{$court->getUrlAttribute()}}" width="150px" />
+              @if (isset($court->bucket))
+                @if($court->checkUrlAttribute())
+                <img src="{{$court->getUrlAttribute()}}" width="150px" />
+                @else
+                <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
+                @endif
               @else
-              <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
-              @endif
-            @else
-              <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
+                <img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
               @endif
             </div>
             <div class="col-sm-4 hide form-group updateLogo files">
