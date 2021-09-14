@@ -26,13 +26,13 @@
       <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">here</a>
     </span>
     @elseif(!$client->reports->first()) --}}
-    {{-- <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
-    @else --}}
+    <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
+    {{-- @else
     <span>
       We've already got your report data, you can start disputes
       <a href="#" class="" style="font-size: 16px;"> here</a>
     </span>
-    {{-- @endif --}}
+    @endif --}}
   </div>
 
   <!-- End Page Header -->
@@ -79,7 +79,6 @@
             </tr>
           </table>
         </div>
-
       </div>
     </div>
     <div class="col-lg-8">
@@ -161,13 +160,13 @@
 </div>
 @endsection
 @section('js')
-  <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
-  <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
-  <script src="{{ asset('js/lib/additional-methods.min.js') }}"></script>
-  <script type="text/javascript" src="{{asset('js/lib/gstatic.js')}}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
+<script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
+<script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
+<script src="{{ asset('js/lib/additional-methods.min.js') }}"></script>
+<script type="text/javascript" src="{{asset('js/lib/gstatic.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function () {
     $("#doc_sunb").validate({
       rules: {
@@ -184,8 +183,8 @@
       },
     });
   });
-  </script>
-  <script>
+</script>
+<script>
   $(document).ready(function () {
     autocomplete = new google.maps.places.Autocomplete($("#address")[0], {
       types: ["address"],
@@ -203,8 +202,8 @@
       }
     });
   });
-  </script>
-  <script>
+</script>
+<script>
   $(document).ready(function () {
     $(".ssn").mask("999-99-9999");
     $("#phone_number").mask("(000) 000-0000");
@@ -450,9 +449,9 @@
       }
     });
   });
-  </script>
+</script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
   var per1 = $(".progress.p1").attr("data-1");
   var per2 = $(".progress.p1").attr("data-2");
   $(".p1 .number h2").text(per1);
@@ -551,6 +550,6 @@
       },
     });
   });
-  </script>
+</script>
 
 @endsection

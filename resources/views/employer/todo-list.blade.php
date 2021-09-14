@@ -49,7 +49,6 @@
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10 col-sm-12 col-12">
@@ -99,7 +98,6 @@
     </div>
   </div>
 </div>
-
 @endsection
 @section('js')
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>

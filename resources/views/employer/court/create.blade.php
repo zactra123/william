@@ -146,7 +146,6 @@
     </div>
   </div>
 </div>
-
 <div class="container mmap-0" id="account-equal-bank">
   <div class="row row-sm">
     <div class="col-md-12 col-sm-12 col-12 mmap-0">
@@ -175,7 +174,9 @@
     </div>
   </div>
 </div>
-{!! Form::close() !!} @endsection @section('css')
+{!! Form::close() !!}
+@endsection
+@section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
 <style>
   #bankInformation .selectize-input,
@@ -256,7 +257,8 @@
     display: none !important;
   }
 </style>
-@endsection @section('js')
+@endsection
+@section('js')
 <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>

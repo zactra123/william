@@ -506,27 +506,25 @@
         </button>
       </div>
       <div class="modal-body">
-        {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'update_info', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
+        {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'update_info', 'class' => 'm-form m-form--label-align-right']) !!}
+        @method('PUT')
+        @csrf
         <div class="row">
           <div class="form-group col-md-6">
-            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Full Name']) }}
           </div>
-
           <div class="form-group col-md-6">
-            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Phone Number']) }}
           </div>
         </div>
-
         <div class="row">
           <div class="form-group col-md-6">
-            {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+            {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Current Street Address']) }}
           </div>
-
           <div class="form-group col-md-6">
             {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], $client->clientDetails->sex, ['class'=>'form-control']) }}
           </div>
         </div>
-
         <div class="row">
           <div class="col-md-12 text-right">
             <button type="submit" value="Update" class="btn btn-primary pull-right">Update</button>

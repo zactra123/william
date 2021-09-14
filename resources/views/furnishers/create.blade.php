@@ -191,7 +191,6 @@
             <div class="row"></div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-md-12 mt-3 text-right">
             <input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 text-white pull-right" />
@@ -227,42 +226,32 @@
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
 <script src="{{ asset('js/site/admin/banks.js?v=2') }}"></script>
-{{--
-<script src="{{ asset('owner/includes/js/banks.js') }}"></script>
---}}
+{{-- <script src="{{ asset('owner/includes/js/banks.js') }}"></script> --}}
 <script>
   var types = {!!  json_encode($subTypes) !!};
 </script>
-
 <script type="text/html" id="sub_types_append">
-
   <div class="col-md-4 remove_sub_type">
-
-      <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{value}">
-      {value}
+    <input name="bank[additional_information][sub_type][]"  type="checkbox" value ="{value}">
+    {value}
   </div>
 </script>
-
 <script type="text/html" id="addtional_address_template">
   <formset class="additional_address">
-      <div class="row remove-address">
+    <div class="row remove-address">
           <div class="col-md-6"><label for="">Additional Address</label>  </div>
           <div class="col-md-6 text-right">
               <button class="text-danger fs-18 mb-3" style="border:none !important;background:none !important;">
                   <span class="fa fa-times"></span>
               </button>
           </div>
-      </div>
-
+        </div>
       <div class="col-md-12 addresses " id="address-additional_address-{i}">
-
           <div class="row">
             <div class="form-group col-sm-3">
                 {!! Form::text("bank_address[additional_address][{i}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}
             </div>
-
               {!! Form::hidden("bank_address[additional_address][{i}][type]", 'additional_address', ["class"=>"form-control"]) !!}
-
               <div class="form-group col-sm-3">
                   {!! Form::text("bank_address[additional_address][{i}][street]",  null, ["class"=>"form-control street", "placeholder"=>"Street"]) !!}
               </div>
@@ -296,7 +285,6 @@
                       {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                   </div>
                 </div>
-
               </div>
               <div class="form-group col-sm-3">
                   <div class="row">
@@ -309,8 +297,7 @@
                   </div>
               </div>
           </div>
-
-      </div>
+        </div>
   </formset>
 </script>
 

@@ -1,5 +1,6 @@
 <?php
-  $states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\BankLogo::TYPES; asort($types) ?>
+  $states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\BankLogo::TYPES; asort($types)
+?>
 <section class="ms-user-account">
   <div class="container">
     <div class="col-md-12 col-sm-12">
@@ -30,7 +31,8 @@
                 <div class="mt-3 ml-5 mr-5 mb-3">
                   <div class="row">
                     <div class="row bank_sub_type_append">
-                      @if (isset($subTypes)) @foreach($subTypes[51] as $key => $type)
+                      @if (isset($subTypes))
+                        @foreach($subTypes[51] as $key => $type)
                       <div class="col-md-6 col-sm-6 mb-2">
                         <div class="col-md-2 col-sm-2 float-left">
                           <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ?
@@ -40,7 +42,8 @@
                           <span class="pl-1">{{$type}}</span>
                         </div>
                       </div>
-                      @endforeach @endif
+                        @endforeach
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -83,13 +86,15 @@
                     {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                   </div>
                 </div>
-                @endif @if($type == 'executive_address')
+                @endif
+                @if($type == 'executive_address')
                 <div class="row">
                   <div class="form-group col-sm-12">
                     {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                   </div>
                 </div>
-                @endif @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
+                @endif
+                @if($type == 'dispute_address' || $type == 'qwr_address' || $type == 'fraud_address')
                 <div class="row">
                   <div class="form-group col-sm-12">
                     {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Name"]) !!}

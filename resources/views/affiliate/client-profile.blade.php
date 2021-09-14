@@ -351,25 +351,17 @@
                     @csrf
                     <div class="form row">
                         <div class="form-group col-md-12">
-
-                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
+                            {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Full Name']) }}
                         </div>
                         <div class="form-group col-md-12">
-                            {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
-
+                            {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Phone Number']) }}
                         </div>
-
                         <div class="form-group col-md-12">
-
+                            {{ Form::text('client[address]',  strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'Current Street Address']) }}
+                        </div>
+                        <div class="form-group col-md-12">
                             {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'],  $client->clientDetails->sex, ['class'=>'col-md-10  form-control']) }}
                         </div>
-
-
-
                     </div>
 
                     <button type="submit" value="Update" class="btn btn-primary">Update</button>
