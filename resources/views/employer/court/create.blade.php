@@ -280,7 +280,7 @@
       {!! Form::text("judge[{id}][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
     </div>
     <div class="col-md-1 mt-2 pt-1">
-      <strong class="add_range pointer" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>
+      <strong class="add_range pointer mr-2" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>
       <strong class="remove_range pointer" data-id="{id}" id="remove_{id}"><i class="fa fa-trash text-danger"></i></strong>
     </div>
   </div>

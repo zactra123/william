@@ -39,7 +39,6 @@
     </div>
   </div>
 </div>
-
 <div class="container mmap-0">
   <div class="row row-sm">
     <div class="col-md-12 col-sm-12 col-12 mmap-0">
@@ -97,7 +96,6 @@
     </div>
   </div>
 </div>
-
 @endsection
 @section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />

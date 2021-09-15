@@ -1,169 +1,168 @@
 @extends('layouts.layout')
 @section('content')
-  <style>
-    :root {
-      --jumbotron-padding-y: 3rem;
-    }
+<style>
+:root {
+  --jumbotron-padding-y: 3rem;
+}
 
-    .jumbotron {
-      padding-top: var(--jumbotron-padding-y);
-      padding-bottom: var(--jumbotron-padding-y);
-      margin-bottom: 0;
-      background-color: #fff;
-    }
-    @media (min-width: 768px) {
-      .jumbotron {
-        padding-top: calc(var(--jumbotron-padding-y) * 2);
-        padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-      }
-    }
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
 
-    .jumbotron p:last-child {
-      margin-bottom: 0;
-    }
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
 
-    .jumbotron-heading {
-      font-weight: 300;
-    }
+.jumbotron-heading {
+  font-weight: 300;
+}
 
-    .jumbotron .container {
-      max-width: 40rem;
-    }
+.jumbotron .container {
+  max-width: 40rem;
+}
 
-    footer {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-    footer p {
-      margin-bottom: 0.25rem;
-    }
+footer p {
+  margin-bottom: 0.25rem;
+}
 
-    .box-shadow {
-      box-shadow: 0 0.35rem 0.95rem rgba(0, 0, 0, 1);
-    }
+.box-shadow {
+  box-shadow: 0 0.35rem 0.95rem rgba(0, 0, 0, 1);
+}
 
-    .card-img-top {
-      width: 100%;
-      height: 100px;
-      object-fit: contain;
-    }
-    .delete {
-      z-index: 10;
-      display: inline-block;
-      width: 15%;
-      cursor: pointer;
-      color: red;
-      font-size: 16px;
-    }
+.card-img-top {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+.delete {
+  z-index: 10;
+  display: inline-block;
+  width: 15%;
+  cursor: pointer;
+  color: red;
+  font-size: 16px;
+}
 
-    .banks-card {
-      cursor: pointer;
-    }
-    .bank-name {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: inline-block;
-      width: 80%;
-      height: 1.2em;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .popover.top {
-      width: fit-content;
-    }
-    .pagination.custom li > a,
-    span {
-      width: fit-content;
-      margin: 0;
-    }
-    @media (min-width: 767px) {
-      .pagination.alphabetical li > a,
-      span {
-        float: unset;
-        margin: 0;
-      }
-      .pagination.custom li > a,
-      span {
-        width: 4%;
-        margin: 0;
-      }
-    }
-  </style>
+.banks-card {
+  cursor: pointer;
+}
+.bank-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  width: 80%;
+  height: 1.2em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.popover.top {
+  width: fit-content;
+}
+.pagination.custom li > a,
+span {
+  width: fit-content;
+  margin: 0;
+}
+@media (min-width: 767px) {
+  .pagination.alphabetical li > a,
+  span {
+    float: unset;
+    margin: 0;
+  }
+  .pagination.custom li > a,
+  span {
+    width: 4%;
+    margin: 0;
+  }
+}
+</style>
 
-    @include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"CLIENTS LIST" => "#"]])
-    <section class="ms-user-account">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-12"></div>
-                <div class="col-md-12 col-sm-12">
-                    <div class="row m-2  pt-4">
-                        @include('furnishers.search', ['url' => '/admins/furnishers/missing-field'])
-                    </div>
-                    <div class="container">
-                        <?php $alphas = range('A', 'Z'); ?>
-                        <ul class="pagination alphabetical ">
-                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
-                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
-                            @foreach($alphas as $alpha)
-                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
-                            @endforeach
-                        </ul>
-                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
-                    </div>
-                    <div class="album py-5 bg-light">
-                        <div class="container">
-                            <div class="row">
-                                @foreach($banksLogos as  $logos)
-                                    <div class="col-md-3" title="{{strtoupper($logos->name)}}">
-                                        <div class="card mb-4 box-shadow" >
-                                            @if (isset($logos->bucket))
-                                              @if($logos->checkUrlAttribute())
-                                                 <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                              @else
-                                                  @if($logos->no_logo)
-                                                      <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                  @else
-                                                      <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                                  @endif
-                                              @endif
-                                            @else
-                                              @if($logos->no_logo)
-                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                              @else
-                                                  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-                                              @endif
-                                            @endif
-                                            <div class="card-body">
-                                                <div class="card-text mt-5">
-                                                    <div class="bank-name b"  onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" > {{strtoupper($logos->name)}}</div>
-                                                    <div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}" >
-                                                        <span> <i class="fa fa-trash"></i> </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <?php $alphas = range('A', 'Z'); ?>
-                        <ul class="pagination alphabetical">
-                            <li class=" {{empty(request()->character) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
-                            <li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
-                            @foreach($alphas as $alpha)
-                                <li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a  href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
-                            @endforeach
-                        </ul>
-                        {{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+@include('helpers.breadcrumbs', ['title'=> "FURNISHERS", 'route' => ["Home"=> '/admins/furnishers',"CLIENTS LIST" => "#"]])
+<section class="ms-user-account">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-12"></div>
+			<div class="col-md-12 col-sm-12">
+				<div class="row m-2  pt-4">
+					@include('furnishers.search', ['url' => '/admins/furnishers/missing-field'])
+				</div>
+				<div class="container">
+					<?php $alphas = range("A", "Z"); ?>
+					<ul class="pagination alphabetical ">
+						<li class=" {{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
+						<li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+						@foreach($alphas as $alpha)
+						<li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+						@endforeach
+					</ul>
+					{{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+				</div>
+				<div class="album py-5 bg-light">
+					<div class="container">
+						<div class="row">
+							@foreach($banksLogos as $logos)
+							<div class="col-md-3" title="{{strtoupper($logos->name)}}">
+								<div class="card mb-4 box-shadow">
+									@if (isset($logos->bucket))
+									@if($logos->checkUrlAttribute())
+									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+									@else
+									@if($logos->no_logo)
+									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+									@else
+									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+									@endif
+									@endif
+									@else
+									@if($logos->no_logo)
+									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+									@else
+									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+									@endif
+									@endif
+									<div class="card-body">
+										<div class="card-text mt-5">
+											<div class="bank-name b" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'"> {{strtoupper($logos->name)}}</div>
+											<div class="delete text-right" data-toggle="popover" data-placement="top" data-id="{{ $logos->id}}">
+												<span> <i class="fa fa-trash"></i> </span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							@endforeach
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<?php $alphas = range("A", "Z"); ?>
+					<ul class="pagination alphabetical">
+						<li class=" {{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
+						<li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+						@foreach($alphas as $alpha)
+						<li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
+						@endforeach
+					</ul>
+					{{ $banksLogos->appends(request()->except('page'))->links('helpers.pagination')}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <script type="text/html" id="confirmation">
   <div>
     <button class="cancel btn btn-secondary ">cancel</button>

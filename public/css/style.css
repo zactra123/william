@@ -379,19 +379,19 @@ table {
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1);
-  opacity: 1;
+          opacity: 1;
 }
 .slider .flex-active-slide .slide-summary {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
           transform: translateX(0);
-  opacity: 1;
+          opacity: 1;
 }
 .slider .flex-active-slide .button {
   -webkit-transform: scale(1);
       -ms-transform: scale(1);
           transform: scale(1);
-  opacity: 1;
+          opacity: 1;
 }
 .slider .flex-control-nav {
   list-style: none;
@@ -609,7 +609,7 @@ form input:not([type="submit"]), form textarea {
   width: 100%;
   outline: none;
   -webkit-transition: .3s ease;
-          transition: .3s ease;
+   transition: .3s ease;
 }
 form input:not([type="submit"]):hover, form input:not([type="submit"]):active, form input:not([type="submit"]):focus, form textarea:hover, form textarea:active, form textarea:focus {
   border-color: #01a6d4;
@@ -2092,8 +2092,6 @@ body {
 }
 
 
-
-
 @media screen and (max-width: 480px) {
   body {
     font-size: 14px;
@@ -2127,7 +2125,7 @@ body {
 .bottom-header {
   background: white;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   *zoom: 1;
 }
 .bottom-header:after {
@@ -2259,7 +2257,7 @@ body {
   position: relative;
   border-bottom: 1px solid transparent;
   -webkit-transition: .2s ease;
-          transition: .2s ease;
+  transition: .2s ease;
 }
 .main-navigation .menu .menu-item a:after {
   position: absolute;
@@ -2546,7 +2544,7 @@ hr.spacer {
   line-height: 35px;
   margin-left: 10px;
   -webkit-transition: .3s ease;
-          transition: .3s ease;
+  transition: .3s ease;
 }
 .social-links a:hover {
   background-color: #5c606d;

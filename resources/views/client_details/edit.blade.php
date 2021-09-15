@@ -20,14 +20,14 @@
     <span class="close pointer" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true" style="color: red;">×</span>
     </span>
-    {{-- @if(!$client->credentials->is_present())
+    {{-- @if(!$client->credentials->is_present()) --}}
     <span>
       Please provide us your credentials, so we can fetch your report. You can provide them
       <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">here</a>
     </span>
-    @elseif(!$client->reports->first()) --}}
+    {{-- @elseif(!$client->reports->first())
     <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
-    {{-- @else
+    @else
     <span>
       We've already got your report data, you can start disputes
       <a href="#" class="" style="font-size: 16px;"> here</a>
@@ -94,23 +94,23 @@
                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                   <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                      {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'FULL NAME']) }}
+                      {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control form-group m-input', 'placeholder' => 'Full Name']) }}
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                      {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'PHONE NUMBER']) }}
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                      {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control m-input', 'placeholder'=>'DATE OF BIRTH']) }}
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                      {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'SOCIAL SECURITY NUMBER']) }}
+                      {{ Form::text('client[phone_number]', $client->clientDetails->phone_number, ['class' => 'form-control m-input', 'placeholder' => 'Phone Number']) }}
                     </div>
                   </div>
                   <div class="row mt-3">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
-                      {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control m-input', 'id'=>'address', 'placeholder' => 'CURRENT STREET ADDRESS']) }}
+                      {{ Form::date('client[dob]', $client->clientDetails->dob, ['class' => 'form-control form-group m-input', 'placeholder'=>'Date of Birth']) }}
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                      {{ Form::text('client[ssn]', $client->clientDetails->ssn, ['class' => 'form-control m-input ssn', 'placeholder' => 'Social Security Number']) }}
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-12">
+                      {{ Form::text('client[address]', strtoupper($client->clientDetails->address), ['class' => 'form-control form-group m-input', 'id'=>'address', 'placeholder' => 'Current Street Address']) }}
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                       {{ Form::select('client[sex]', [''=>'GENDER','M'=>'Male', 'F'=>'Female', 'O'=>'Non Binary'], $client->clientDetails->sex, ['class'=>'col-md-12 form-control']) }}
@@ -177,7 +177,6 @@
           required: "#social_security:blank",
         },
       },
-
       errorPlacement: function (error, element) {
         error.insertAfter($(element));
       },
@@ -393,6 +392,25 @@
     //         $(".updateLogo").addClass("hide")
     //     }
     // });
+    $(document).ready(function(){
+    // $(document).on("click", function () {
+      var scaleSS = $(".zoomSS").attr("class");
+      var scaleDL = $(".zoomDL").attr("class");
+      var full_name = $(".full_name").attr("class");
+      var ssn = $(".ss_number").attr("class");
+
+      if (scaleSS.search("scaleSS") != -1 && ssn.search("hide") != -1) {
+        $(".zoomSS").removeClass("scaleSS");
+        $(".zoomSS").addClass("hide");
+        $(".ss_number").removeClass("hide");
+      }
+      if (scaleDL.search("scaleDL") != -1 && full_name.search("hide") != -1) {
+        $(".zoomDL").removeClass("scaleDL");
+        $(".zoomDL").addClass("hide");
+        $(".full_name").removeClass("hide");
+      }
+    });
+
 
     $(document).on("click", function () {
       var scaleSS = $(".zoomSS").attr("class");
@@ -411,6 +429,24 @@
         $(".full_name").removeClass("hide");
       }
     });
+
+    // $(document).on("click", function () {
+    //   var scaleSS = $(".zoomSS").attr("class");
+    //   var scaleDL = $(".zoomDL").attr("class");
+    //   var full_name = $(".full_name").attr("class");
+    //   var ssn = $(".ss_number").attr("class");
+    //
+    //   if (scaleSS.search("scaleSS") != -1 && ssn.search("hide") != -1) {
+    //     $(".zoomSS").removeClass("scaleSS");
+    //     $(".zoomSS").addClass("hide");
+    //     $(".ss_number").removeClass("hide");
+    //   }
+    //   if (scaleDL.search("scaleDL") != -1 && full_name.search("hide") != -1) {
+    //     $(".zoomDL").removeClass("scaleDL");
+    //     $(".zoomDL").addClass("hide");
+    //     $(".full_name").removeClass("hide");
+    //   }
+    // });
 
     $(".dl-field").mouseover(function () {
       $(".zoomDL").removeClass("hide");

@@ -96,12 +96,13 @@
         <div class="ms-ua-box mt-2" id="account">
           <div class="ms-ua-form pl-4 pr-4">
             <div id="addresses_container">
-              @foreach(\App\BankAddress::TYPES as $type=>$name) @if($type == 'additional_address')
+              @foreach(\App\BankAddress::TYPES as $type=>$name)
+              @if($type == 'additional_address')
               <div class="row additional-addresses">
                 <div class="col-sm-6 add-additional p-1 pb-5 ml-3F"><a class="btn btn-primary ms-ua-submit text-white">Add Additonal Address</a></div>
               </div>
-              @continue @endif
-
+              @continue
+              @endif
               <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
                 <div class="row expand-address" data-address="#address-{{$type}}">
                   <div class="col-md-6"><label for="">{{$name}}</label></div>
@@ -197,7 +198,6 @@
           </div>
         </div>
       </div>
-
       {!! Form::close() !!}
     </div>
   </div>
@@ -218,10 +218,8 @@
     </div>
   </div>
 </div>
-
 @endsection
 @section('js')
-
 <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}"></script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>
@@ -259,18 +257,13 @@
                   {!! Form::text("bank_address[additional_address][{i}][city]",   null, ["class"=>"form-control city","placeholder"=>"City"]) !!}
               </div>
               <div class="form-group col-sm-3">
-                  {{--                                            {!! Form::label("bank_address[{$k}][{$type}][state]", 'State'); !!}--}}
                   {!! Form::select("bank_address[additional_address][{i}][state]", $states,  null, ['class'=>'{class} state','placeholder' => 'State']); !!}
               </div>
               <div class="form-group col-sm-3">
-                  {{--                                            {!! Form::label("bank_address[{$k}][{$type}][zip]", 'Zip'); !!}--}}
                   {!! Form::text("bank_address[additional_address][{i}][zip]",  null, ["class"=>"us-zip form-control", "placeholder"=>"Zip code"]) !!}
               </div>
               <div class="form-group col-sm-3">
                   <div class="row">
-                    <!-- <div class="form-group col-sm-2 p-0">
-                        <img  class="responsive" src="{{url('/')}}/images/phone.png">
-                    </div> -->
                     <div class="form-group col-sm-12">
                         {!! Form::text("bank_address[additional_address][{i}][phone_number]",null, ["class"=>"us-phone form-control phone", "placeholder"=>"Phone number"]) !!}
                     </div>
@@ -278,9 +271,6 @@
               </div>
               <div class="form-group col-sm-3">
                 <div class="row">
-                  <!-- <div class="form-group col-sm-2 p-0">
-                      <img  class="responsive" src="{{url('/')}}/images/fax.png">
-                  </div> -->
                   <div class="form-group col-sm-12">
                       {!! Form::text("bank_address[additional_address][{i}][fax_number]", null, ["class"=>"us-phone form-control fax", "placeholder"=>"Fax number"]) !!}
                   </div>
@@ -288,9 +278,6 @@
               </div>
               <div class="form-group col-sm-3">
                   <div class="row">
-                    <!-- <div class="form-group col-sm-2 p-0">
-                        <img  class="responsive" src="{{url('/')}}/images/email.png">
-                    </div> -->
                     <div class="form-group col-sm-12">
                         {!! Form::email("bank_address[additional_address][{i}][email]", null, ["class"=>"form-control email", "placeholder"=>"Email"]) !!}
                     </div>

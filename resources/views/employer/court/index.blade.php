@@ -85,97 +85,96 @@
   </div>
 @endsection
 @section('css')
-  <style>
-    :root {
-      --jumbotron-padding-y: 3rem;
-    }
+<style>
+:root {
+  --jumbotron-padding-y: 3rem;
+}
 
-    .jumbotron {
-      padding-top: var(--jumbotron-padding-y);
-      padding-bottom: var(--jumbotron-padding-y);
-      margin-bottom: 0;
-      background-color: #fff;
-    }
-    @media (min-width: 768px) {
-      .jumbotron {
-        padding-top: calc(var(--jumbotron-padding-y) * 2);
-        padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-      }
-    }
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
 
-    .jumbotron p:last-child {
-      margin-bottom: 0;
-    }
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
 
-    .jumbotron-heading {
-      font-weight: 300;
-    }
+.jumbotron-heading {
+  font-weight: 300;
+}
 
-    .jumbotron .container {
-      max-width: 40rem;
-    }
+.jumbotron .container {
+  max-width: 40rem;
+}
 
-    footer {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-    footer p {
-      margin-bottom: 0.25rem;
-    }
+footer p {
+  margin-bottom: 0.25rem;
+}
 
-    .box-shadow {
-      box-shadow: 0 0.35rem 0.95rem rgba(0, 0, 0, 1);
-    }
+.box-shadow {
+  box-shadow: 0 0.35rem 0.95rem rgba(0, 0, 0, 1);
+}
 
-    .card-img-top {
-      width: 100%;
-      height: 100px;
-      object-fit: contain;
-    }
-    .delete2 {
-      z-index: 10;
-      display: inline-block;
-      width: 15%;
-      cursor: pointer;
-      color: red;
-      font-size: 16px;
-    }
+.card-img-top {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+.delete2 {
+  z-index: 10;
+  display: inline-block;
+  width: 15%;
+  cursor: pointer;
+  color: red;
+  font-size: 16px;
+}
 
-    .banks-card {
-      cursor: pointer;
-    }
-    .bank-name {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: inline-block;
-      width: 80%;
-      height: 1.2em;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-    .popover.top {
-      width: fit-content;
-    }
-    .pagination.custom li > a,
-    span {
-      width: fit-content;
-      margin: 0;
-    }
-    @media (min-width: 767px) {
-      .pagination.alphabetical li > a,
-      span {
-        float: unset;
-        margin: 0;
-      }
-      .pagination.custom li > a,
-      span {
-        width: 4%;
-        margin: 0;
-      }
-    }
-  </style>
-
+.banks-card {
+  cursor: pointer;
+}
+.bank-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  width: 80%;
+  height: 1.2em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.popover.top {
+  width: fit-content;
+}
+.pagination.custom li > a,
+span {
+  width: fit-content;
+  margin: 0;
+}
+@media (min-width: 767px) {
+  .pagination.alphabetical li > a,
+  span {
+    float: unset;
+    margin: 0;
+  }
+  .pagination.custom li > a,
+  span {
+    width: 4%;
+    margin: 0;
+  }
+}
+</style>
 @endsection
 @section('js')
 <script type="text/html" id="confirmation">
