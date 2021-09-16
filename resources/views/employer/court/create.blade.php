@@ -268,16 +268,16 @@
 <script type="text/html" id="judge_info">
   <div class="row" id="judge_info_{id}">
     <div class="form-group col-sm-4">
-      {!! Form::text("judge[{id}][full_name]", null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
+      {!! Form::text("judge[{id}][full_name]", null, ["class"=>"form-control street", "placeholder"=>"Full Name"]) !!}
     </div>
     <div class="form-group col-sm-3">
-      {!! Form::text("judge[{id}][email]", null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+      {!! Form::text("judge[{id}][email]", null, ["class"=>"form-control city","placeholder"=>"Email"]) !!}
     </div>
     <div class="form-group col-sm-2">
-      {!! Form::text("judge[{id}][phone_number]", null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
+      {!! Form::text("judge[{id}][phone_number]", null, ["class"=>"form-control phone","placeholder"=>"Phone #"]) !!}
     </div>
     <div class="form-group col-sm-2">
-      {!! Form::text("judge[{id}][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
+      {!! Form::text("judge[{id}][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"Room #"]) !!}
     </div>
     <div class="col-md-1 mt-2 pt-1">
       <strong class="add_range pointer mr-2" data-id="{id}" id="add_{id}"><i class="fa fa-plus text-success"></i></strong>

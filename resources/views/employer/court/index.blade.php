@@ -28,9 +28,18 @@
               Court
             </div>
             <p class="mg-b-20">See list of court here ...</p>
-              <div class="container m-hidden">
+              <div class="container">
                 <?php $alphas = range('A', 'Z');?>
-                <nav aria-label="Page navigation example">
+                {{-- <div class="row">
+                  <div class="col-md-12">
+                    <span class="{{empty(request()->character) ? "active":""}}"><a class="btn btn-primary btn-sm mb-2" href="{{ route('admins.court.index', ['type'=> request()->type])}}">All</a></span>
+                    <span class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="btn btn-primary btn-sm mb-2" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' => "#"])}}">#</a></span>
+                    @foreach ($alphas as $alpha)
+                      <span class="{{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a class="btn btn-primary btn-sm mb-2" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' => strtolower($alpha)])}}">{{$alpha}}</a></span>
+                    @endforeach
+                  </div>
+                </div><br> --}}
+                <nav aria-label="Page navigation example" style="overflow:scroll;">
                   <ul class="pagination">
                     <li class="page-item {{empty(request()->character) ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type])}}">ALL</a></li>
                     <li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a class="page-link" href="{{ route('admins.court.index', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>

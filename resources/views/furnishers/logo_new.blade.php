@@ -36,11 +36,11 @@
 								<div class="col-md-12 col-sm-12">
 									<div class="row m-2">
 									</div>
-									<div class="container m-hidden">
+									<div class="container">
 										<?php $alphas = range("A", "Z"); ?>
 										<div class="row">
 											<div class="col-md-12 col-sm-12 col-12">
-												<nav aria-label="Page navigation example">
+												<nav aria-label="Page navigation example" style="overflow:scroll;">
 													<ul class="pagination">
 														<li class="page-item {{empty(request()->character) ? "active":""}}">
 															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> ALL </a>

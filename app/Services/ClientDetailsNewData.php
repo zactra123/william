@@ -41,7 +41,7 @@ class ClientDetailsNewData
         $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
 
 
-//        $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
+       // $resultDriverLicense = $this->dirverLicenseProcessing($textDriverLicense);
 
         return $resultDriverLicense;
     }
@@ -135,7 +135,6 @@ class ClientDetailsNewData
             preg_match("/([0-9]{1,})/im", $result["address"], $number);
             $result ["number"] = $number[0];
             $result['name'] = trim(strtoupper(str_replace($number[0],'', $result["address"])));
-
 
             $result['first_name'] = $text['result']['firstName'];
             $result['last_name'] = $text['result']['lastName'];

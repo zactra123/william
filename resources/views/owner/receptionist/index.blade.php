@@ -44,7 +44,6 @@
             </thead>
             <tbody>
               @foreach($receptionists as $key => $receptionist)
-
               <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{$receptionist->first_name}}</td>

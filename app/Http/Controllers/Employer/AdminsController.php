@@ -77,7 +77,9 @@ class AdminsController extends Controller
 
     }
 
-    //es el piti tarvi urish tex
+    /**
+     * es el piti tarvi urish tex
+     */
     public function getNotifications()
     {
         $appointments = Message::where("call_date", ">", date("Y-m-d H:i:s"))
@@ -87,7 +89,9 @@ class AdminsController extends Controller
     }
 
 
-    //es peteq chi piti jnjvi
+    /**
+     * es peteq chi piti jnjvi
+     */
     public function clientReport(Request $request)
     {
         $clientReportsEQ = null;
@@ -120,7 +124,9 @@ class AdminsController extends Controller
             'equifaxDate','experianDate','transunionDate'));
     }
 
-    //Twilio
+    /**
+     * Twilio
+     */
     public function sendSms( Request $request )
     {
 
@@ -130,16 +136,16 @@ class AdminsController extends Controller
 
         //test
 
-//        $ok = $client->messages->create(
-//            '+374 93 050093',
-//            [
-////                'from' => '+15005550006',
-//                'from' => env( 'TWILIO_NUMBER' ),
-//                'body' => "Hello world",
-//            ]
-//        );
-//
-//        dd($ok );
+       // $ok = $client->messages->create(
+       //     '+374 93 050093',
+       //     [
+       //         'from' => '+15005550006',
+       //         'from' => env( 'TWILIO_NUMBER' ),
+       //         'body' => "Hello world",
+       //     ]
+       // );
+       //
+       // dd($ok );
         $validator = Validator::make($request->all(), [
             'numbers' => 'required',
             'message' => 'required'
