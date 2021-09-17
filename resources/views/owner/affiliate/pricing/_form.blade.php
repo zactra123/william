@@ -2687,7 +2687,7 @@
                                     </div>
                                     <div class="col-md-1 mmb-5">
                                         <div class="row pt-2">
-                                          <strong class="add_range h3" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
+                                          <strong class="add_range h3 pointer" class="btn form-control" data-type="utility_s_co" id="add_utility_s_co_0" data-id="0"><i class="fa fa-plus text-success"></i></strong>
                                         </div>
                                     </div>
                                 </div>

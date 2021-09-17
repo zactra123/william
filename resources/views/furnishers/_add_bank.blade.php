@@ -1,5 +1,7 @@
 <?php
-  $states = [null=>''] + \App\BankAddress::STATES; $types = [null=>''] + \App\BankLogo::TYPES; asort($types)
+  $states = [null=>''] + \App\BankAddress::STATES;
+  $types = [null=>''] + \App\BankLogo::TYPES;
+  asort($types)
 ?>
 <section class="ms-user-account">
   <div class="container">
@@ -33,15 +35,14 @@
                     <div class="row bank_sub_type_append">
                       @if (isset($subTypes))
                         @foreach($subTypes[51] as $key => $type)
-                      <div class="col-md-6 col-sm-6 mb-2">
-                        <div class="col-md-2 col-sm-2 float-left">
-                          <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ?
-                          "checked":''}}>
-                        </div>
-                        <div class="col-md-10 col-sm-10 float-left">
-                          <span class="pl-1">{{$type}}</span>
-                        </div>
-                      </div>
+                          <div class="col-md-6 col-sm-6 mb-2">
+                            <div class="col-md-2 col-sm-2 float-left">
+                              <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                            </div>
+                            <div class="col-md-10 col-sm-10 float-left">
+                              <span class="pl-1">{{$type}}</span>
+                            </div>
+                          </div>
                         @endforeach
                       @endif
                     </div>
@@ -52,7 +53,8 @@
             <div class="row parent hidden">
               <div class="col-md-12">
                 <div class="form-group banks">
-                  {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!} {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
+                  {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!}
+                  {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
                 </div>
               </div>
               <div class="col-md-12">
@@ -65,11 +67,13 @@
       <div class="ms-ua-box mt-2" id="account">
         <div class="ms-ua-form">
           <div id="addresses_container">
-            @foreach(\App\BankAddress::TYPES as $type=>$name) @if($type == 'additional_address')
+            @foreach(\App\BankAddress::TYPES as $type=>$name)
+            @if($type == 'additional_address')
             <div class="row additional-addresses">
               <div class="col-sm-12 add-additional p-1 pb-5 text-right"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
             </div>
-            @continue @endif
+            @continue
+            @endif
             <formset class="{{in_array($type, ['fraud_address', 'qwr_address']) ? 'hidden': ''}} {{$type}}">
               <div class="row expand-address" data-address="#address-{{$type}}">
                 <div class="col-md-6"><label for="">{{$name}}</label></div>

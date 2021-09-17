@@ -25,7 +25,9 @@
           </div>
           <p class="mg-b-20">Edit court here ...</p>
           <?php
-            $states = [null=>''] + \App\BankAddress::STATES; $types = \App\Court::TYPES; asort($types)
+            $states = [null=>''] + \App\BankAddress::STATES;
+            $types = \App\Court::TYPES;
+            asort($types)
           ?>
           {!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
           @method('PUT')
@@ -141,47 +143,49 @@
           </div>
         </div>
         <div class="card-body">
-          @if(!empty($court->courtJudges()->first())) @foreach($court->courtJudges()->get() as $id => $judge)
-          <div class="row" id="judge_info_{{$id}}">
-            <div class="form-group col-sm-4">
-              {!! Form::text("judge[{$id}][full_name]", $judge->full_name, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!} {!! Form::hidden("judge[{$id}][id]", $judge->id, ["class"=>"form-control"]) !!}
+          @if(!empty($court->courtJudges()->first()))
+            @foreach($court->courtJudges()->get() as $id => $judge)
+            <div class="row" id="judge_info_{{$id}}">
+              <div class="form-group col-sm-4">
+                {!! Form::text("judge[{$id}][full_name]", $judge->full_name, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!} {!! Form::hidden("judge[{$id}][id]", $judge->id, ["class"=>"form-control"]) !!}
+              </div>
+              <div class="form-group col-sm-3">
+                {!! Form::text("judge[{$id}][email]", $judge->email, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+              </div>
+              <div class="form-group col-sm-2">
+                {!! Form::text("judge[{$id}][phone_number]", $judge->phone_number, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
+              </div>
+              <div class="form-group col-sm-2">
+                {!! Form::text("judge[{$id}][room_number]", $judge->room_number, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
+              </div>
+              <div class="form-group col-sm-1 mt-2 pt-1">
+                <strong class="add_range {{$loop->last?'':'hidden'}} pointer" class="btn form-control" data-id="{{$id}}" id="add_{{$id}}"><i class="fa fa-plus text-success"></i></strong>
+                @if($loop->first != $loop->last)
+                <strong class="remove_range {{($loop->last) ?'':'hidden'}} pointer" class="btn form-control" data-id="{{$id}}" id="remove_{{$id}}"><i class="fa fa-trash text-danger"></i></strong>
+                @endif
+              </div>
             </div>
-            <div class="form-group col-sm-3">
-              {!! Form::text("judge[{$id}][email]", $judge->email, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+            <div id="add_judge_info"></div>
+            @endforeach
+          @else
+            <div class="row">
+              <div class="form-group col-sm-4">
+                {!! Form::text("judge[0][full_name]", null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
+              </div>
+              <div class="form-group col-sm-3">
+                {!! Form::text("judge[0][email]", null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
+              </div>
+              <div class="form-group col-sm-2">
+                {!! Form::text("judge[0][phone_number]", null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
+              </div>
+              <div class="form-group col-sm-2">
+                {!! Form::text("judge[0][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
+              </div>
+              <div class="form-group col-sm-1 mt-2 pt-1">
+                <strong class="add_range pointer" class="btn form-control" data-id="0" id="add_0"><i class="fa fa-plus text-success"></i></strong>
+              </div>
             </div>
-            <div class="form-group col-sm-2">
-              {!! Form::text("judge[{$id}][phone_number]", $judge->phone_number, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
-            </div>
-            <div class="form-group col-sm-2">
-              {!! Form::text("judge[{$id}][room_number]", $judge->room_number, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
-            </div>
-            <div class="form-group col-sm-1 mt-2 pt-1">
-              <strong class="add_range {{$loop->last?'':'hidden'}} pointer" class="btn form-control" data-id="{{$id}}" id="add_{{$id}}"><i class="fa fa-plus text-success"></i></strong>
-              @if($loop->first != $loop->last)
-              <strong class="remove_range {{($loop->last) ?'':'hidden'}} pointer" class="btn form-control" data-id="{{$id}}" id="remove_{{$id}}"><i class="fa fa-trash text-danger"></i></strong>
-              @endif
-            </div>
-          </div>
-          <div id="add_judge_info"></div>
-          @endforeach @else
-          <div class="row">
-            <div class="form-group col-sm-4">
-              {!! Form::text("judge[0][full_name]", null, ["class"=>"form-control street", "placeholder"=>"FULL NAME"]) !!}
-            </div>
-            <div class="form-group col-sm-3">
-              {!! Form::text("judge[0][email]", null, ["class"=>"form-control city","placeholder"=>"E-MAIL"]) !!}
-            </div>
-            <div class="form-group col-sm-2">
-              {!! Form::text("judge[0][phone_number]", null, ["class"=>"form-control phone","placeholder"=>"PHONE #"]) !!}
-            </div>
-            <div class="form-group col-sm-2">
-              {!! Form::text("judge[0][room_number]", null, ["class"=>"us-zip form-control", "placeholder"=>"ROOM #"]) !!}
-            </div>
-            <div class="form-group col-sm-1 mt-2 pt-1">
-              <strong class="add_range pointer" class="btn form-control" data-id="0" id="add_0"><i class="fa fa-plus text-success"></i></strong>
-            </div>
-          </div>
-          <div id="add_judge_info"></div>
+            <div id="add_judge_info"></div>
           @endif
         </div>
       </div>
