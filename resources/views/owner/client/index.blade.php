@@ -60,13 +60,7 @@
                       <a class="dropdown-item" href="{{ route('owner.delete.client',$user->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
                     </div>
                   </div>
-                  {{-- <a class="btn btn-secondary" href="{{ route('adminRec.client.profile',$user->id)}}" role="button"><i class="fa fa-file-text"></i></a> --}}
                   <meta name="csrf-token" content="{{ csrf_token() }}" />
-                  {{--
-                  <a href="{{ route('owner.delete.client',$user->id) }}">
-                    <button class="btn btn-danger" onclick="return confirm('Are You Sure?')" data-id="{{ $user->id}}"><i class="fa fa-trash"></i></button>
-                  </a>
-                  --}} {{--<a class="btn btn-primary" href="{{route('owner.destroy',$admin['id'])}}" data-method="delete" rel="nofollow" role="button">Delete</a>--}}
                 </td>
               </tr>
               @endforeach

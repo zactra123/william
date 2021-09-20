@@ -308,9 +308,6 @@ Route::group(['prefix'=> 'affiliate'], function(){
   Route::put('client/complete/require/information', 'AffiliatesController@updateDispute')->name('affiliate.dispute.update');
 
 
-
-
-
  // Route::post('client-details/create/{client}', 'AffiliatesController@storeClientDetails')->name('affiliate.storeClientDetails');
  // Route::get('client-details/edit/{affiliate}', 'AffiliatesController@editClientDetails')->name('affiliate.editClientDetails');
  // Route::put('client-create/update/{id}', 'AffiliatesController@updateClientDetails')->name('affiliate.updateClientDetails');

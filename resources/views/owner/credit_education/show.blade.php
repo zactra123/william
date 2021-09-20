@@ -44,7 +44,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="col-md-12">
                   <div class="row my-2">
                     <div class="col-md-12">
@@ -84,5 +83,4 @@
     </div>
   </div>
 </section>
-
 @endsection

@@ -69,8 +69,8 @@
     </div>
   </div>
 </div>
-
-@endsection @section('js')
+@endsection
+@section('js')
 <script>
   $(document).ready(function () {
     $(".delete").on("click", function (e) {
@@ -80,7 +80,6 @@
       console.log("test");
       bootbox.confirm("Do you really want to delete record?", function (result) {
         console.log(result);
-
         if (result) {
           $.ajax({
             url: "/owner/faqs/question/delete/" + id,

@@ -19,7 +19,6 @@
     </a>
   </div>
 </div>
-
 <div class="container mmap-0">
   <div class="row row-sm">
     <div class="col-md-12">
@@ -34,7 +33,6 @@
             <a href="{{ route('owner.faqs.create') }}" class="btn btn-primary float-right btn-sm">Add New</a>
           </p>
         </div>
-
         <div class="card-body">
           <div class="table-responsive">
             <table class="table text-md-nowrap" id="example1">
@@ -62,7 +60,6 @@
                         <a class="dropdown-item" href="{{ route('admin.delete.faq',$faq->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
                       </div>
                     </div>
-
                     <meta name="csrf-token" content="{{ csrf_token() }}" />
                   </td>
                 </tr>
@@ -106,5 +103,4 @@
     });
   });
 </script>
-
 @endsection

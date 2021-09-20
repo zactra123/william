@@ -15,7 +15,6 @@
     </nav>
   </div>
 </div>
-
 <div class="container">
   <div class="row row-sm">
     <div class="col-xl-12">
@@ -25,7 +24,6 @@
         @endforeach
       </div>
     </div>
-
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="card">
@@ -36,12 +34,10 @@
             </a>
             <h5 class="text-dark">Create New Faq</h5>
           </div>
-
           {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!} @csrf
           <div class="form-group font">
             {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'Answer']) }}
           </div>
-
           <div class="form-group font">
             {{ Form::textarea('faqs[description]', old('content.sub_content'), ['class' => 'form-control m-input', 'placeholder' => 'Question']) }}
           </div>
@@ -58,5 +54,4 @@
     </div>
   </div>
 </div>
-
 @endsection

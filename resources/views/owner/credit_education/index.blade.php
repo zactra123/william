@@ -50,13 +50,6 @@
                             <td>{{$content->title}}</td>
                             <td>{{ zactra::limit_words($content->sub_content,150) }}</td>
                             <td>
-                              {{-- <a style="margin: 1px;" href="{{route('owner.credit.education.show', $content->url)}}" class="btn btn-primary" role="button"><i class="fa fa-eye"></i></a>
-                              <a href="{{route('owner.credit.education.edit', $content->url)}}" class="btn btn-primary" role="button"><span class="fa fa-edit"></span></a>
-                              <a href="{{ route('admin.delete.education',$content->id) }}">
-                                <button class="btn btn-danger delete2" onclick="return confirm('Are You Sure!')" data-id="{{ $content->url}}"><span class="fa fa-trash"></span></button>
-                              </a>
-                              --}}
-
                               <meta name="csrf-token" content="{{ csrf_token() }}" />
                               <div class="dropdown show">
                                 <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,8 +82,8 @@
     </div>
   </div>
 </section>
-
-@endsection @section('js')
+@endsection
+@section('js')
 <script>
   $(document).ready(function () {
     $(".delete").on("click", function (e) {
@@ -130,5 +123,4 @@
     });
   });
 </script>
-
 @endsection
