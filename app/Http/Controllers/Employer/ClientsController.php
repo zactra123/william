@@ -152,13 +152,11 @@ class ClientsController extends Controller
                 $pathSocialSecurity = '/' . $path . $nameSocialSecurity;
 
                 $clientAttachmentDataSS = [
-
                     'user_id' => $id,
                     'path' => $pathSocialSecurity,
                     'file_name' => $nameSocialSecurity,
                     'category' => 'SS',
                     'type' => $socialSecurityExtension
-
                 ];
                 $clientAttachmentSS = ClientAttachment::where('user_id', $id)->where('category', 'SS');
                 if(empty($clientAttachmentSS->first())){

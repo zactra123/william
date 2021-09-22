@@ -10,13 +10,9 @@ use Response;
 
 class BlogsController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth', 'seo']);
-    // }
     public function __construct()
     {
-        // $this->middleware(['auth', 'admins']);
+        // $this->middleware(['auth', 'seo']);
         $this->middleware('auth');
     }
 
