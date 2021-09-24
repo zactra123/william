@@ -169,6 +169,9 @@ Route::group(["prefix" => "report"], function(){
 //  testing url for scraper
   Route::get('scraper-test/{client_id}', 'Owner\ClientsController@scrape');
 
+// Site Settings
+  Route::get('/site/settings','Owner\SiteSettingsController@index')->name('owner.site.setting');
+
 
 });
 

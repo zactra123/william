@@ -143,7 +143,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Site Settings</span></a>
+              <a class="side-menu__item" href="{{ route('owner.site.setting') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">Site Settings</span></a>
             </li>
 
             <li class="slide">
