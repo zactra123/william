@@ -37,7 +37,7 @@
 								<label class="form-label">Title</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Title">
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 								<label class="form-label">Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Text">
 							</div>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 								<label class="form-label">Button Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Text">
 							</div>
 						</div>
 					</div>
@@ -70,13 +70,13 @@
 								<label class="form-label">Button Link</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Link">
 							</div>
 						</div>
 					</div>
 
           <div class="mb-4 main-content-label">Second Slider</div>
-					<div class="form-group ">
+          <div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
 								<label class="form-label">Image</label>
@@ -92,7 +92,7 @@
 								<label class="form-label">Title</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Title">
 							</div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 								<label class="form-label">Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Text">
 							</div>
 						</div>
 					</div>
@@ -114,7 +114,7 @@
 								<label class="form-label">Button Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Text">
 							</div>
 						</div>
 					</div>
@@ -125,13 +125,13 @@
 								<label class="form-label">Button Link</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Link">
 							</div>
 						</div>
 					</div>
 
           <div class="mb-4 main-content-label">Third Slider</div>
-					<div class="form-group ">
+          <div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
 								<label class="form-label">Image</label>
@@ -147,7 +147,7 @@
 								<label class="form-label">Title</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Title">
 							</div>
 						</div>
 					</div>
@@ -158,7 +158,7 @@
 								<label class="form-label">Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Text">
 							</div>
 						</div>
 					</div>
@@ -169,7 +169,7 @@
 								<label class="form-label">Button Text</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Text">
 							</div>
 						</div>
 					</div>
@@ -180,56 +180,106 @@
 								<label class="form-label">Button Link</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="title" class="form-control" value="">
+								<input type="text" name="title" class="form-control" value="" placeholder="Button Link">
 							</div>
 						</div>
 					</div>
 
 			</div>
 			<div class="card-footer text-right">
-				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Profile</button>
+				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Slider</button>
 			</div>
 			</form>
 		</div>
 
 		<div class="card">
 			<div class="card-body">
-				<div class="mb-4 main-content-label">Change Password</div>
+				<div class="mb-4 main-content-label">Footer</div>
 				<form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
 					@csrf
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Old Password</label>
+								<label class="form-label">Address</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="oldpassword" placeholder="Old Password" value="" required>
+								<input type="text" class="form-control" name="" placeholder="Address" value="">
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">New Password</label>
+								<label class="form-label">Phone</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="newpassword" placeholder="New Password" value="" required>
+								<input type="text" class="form-control" name="" placeholder="Phone" value="">
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Confrim Password</label>
+								<label class="form-label">Email</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="confirmpassword" placeholder="Confrim Password" value="" required>
+								<input type="email" class="form-control" name="" placeholder="Email" value="">
+							</div>
+						</div>
+					</div>
+          <div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Twitter Link</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="confirmpassword" placeholder="Twitter Link" value="">
+							</div>
+						</div>
+					</div>
+          <div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Facebook Link</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="confirmpassword" placeholder="Facebook Link" value="">
+							</div>
+						</div>
+					</div>
+          <div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Instagram Link</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="confirmpassword" placeholder="Instagram Link" value="">
+							</div>
+						</div>
+					</div>
+          <div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Skype Link</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="confirmpassword" placeholder="Skype Link" value="">
+							</div>
+						</div>
+					</div>
+          <div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">Linkedin Link</label>
+							</div>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="confirmpassword" placeholder="Linkedin Link" value="">
 							</div>
 						</div>
 					</div>
 			</div>
 			<div class="card-footer text-right">
-				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button>
+				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Footer</button>
 			</div>
 			</form>
 		</div>

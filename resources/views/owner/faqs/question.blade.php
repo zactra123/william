@@ -32,7 +32,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">NAME</th>
-                  <th scope="col">EMAI</th>
+                  <th scope="col">EMAIL</th>
                   <th scope="col">QUESTION</th>
                   <th scope="col">ACTION</th>
                 </tr>
