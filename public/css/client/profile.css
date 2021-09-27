@@ -1,0 +1,354 @@
+div.pac-container {
+    z-index: 1050 !important;
+}
+.scrollDiv {
+    height: 310px;
+    background-color: white;
+    overflow-y: auto;
+
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content.experina {
+    background-color: #294991;
+}
+.dropdown-content.experina  a {
+    color:  #f1f1f1;
+    font-weight: bolder;
+}
+.dropdown-content.equifax  {
+    background-color: #b32541;
+}
+.dropdown-content.equifax  a {
+    color:  #f1f1f1;
+    font-weight: bolder;
+}
+
+.dropdown-content.transunion {
+    background-color: #02a5ca;
+}
+.dropdown-content.transunion  a {
+    color:  #f1f1f1;
+    font-weight: bolder;
+}
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: -100%;
+    margin-right:  5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #f1f1f1;
+    min-width: 150px;
+
+    /*-webkit-border-radius: 0 6px 6px 6px;*/
+    /*-moz-border-radius: 0 6px 6px;*/
+    /*border-radius: 0 6px 6px 6px;*/
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-right>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+.disput-progress {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.progress {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.p1 svg circle {
+    position: relative;
+    transform: translate(50%, 50%);
+    /*margin-left: -50%;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    fill: none;
+    stroke-width: 30;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 0;
+    stroke: rgb(255, 173, 22);
+    stroke-linecap: butt;
+}
+.p1 svg circle:nth-child(2) {
+    stroke-width: 30;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 300;
+    stroke: rgb(255, 14, 52);
+
+}
+.p1 svg circle:nth-child(3) {
+    stroke-width: 30;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 400;
+    stroke: #01bb01;
+}
+
+.p1 svg circle:nth-child(4) {
+    stroke-width: 30;
+    stroke-dasharray: 5, 20;
+    stroke-dashoffset: 200;
+    stroke: rgb(255, 255, 255);
+}
+
+.p1 svg circle:nth-child(5) {
+    transform: translate(50%, 50%);
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: rgba(102, 102, 102, 0.295);
+    stroke-width: 15;
+    stroke-dasharray: 440;
+    stroke-linecap: butt;
+    stroke-dashoffset: 2;
+}
+.number {
+    width: 100%;
+    height: 100%;
+    top: 10px;
+    left: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.number h2 {
+    text-align: center;
+}
+
+.number span {
+    width: 20px;
+    height: 30px;
+    font-size: 20px;
+    position: relative;
+    line-height: 10px;
+}
+.driver_license {
+    background-image: url(/images/correct-dl.png);
+    display: block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.social_security {
+    background-image: url(/images/correct-ss.png);
+    display: block;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.driver_license:after, .social_security:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 70px;
+    right: 0;
+    height: 76px;
+    content: "";
+    background-image: url(/images/upload.png);
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.driver_license:before, .social_security:before {
+    position: absolute;
+    bottom: 0px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: "choose or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #341d31;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.driver_dropp, .social_dropp {
+    display: block;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.driver_dropp:before {
+    position: absolute;
+    bottom: 0px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: "ID IS ATTACHED ";
+    display: block;
+    margin: 0 auto;
+    color: #341d31;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+.social_dropp: before {
+    position: absolute;
+    bottom: 0px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: "SSC IS ATTACHED";
+    display: block;
+    margin: 0 auto;
+    color: #341d31;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.zoomDL:hover {
+    transform:translate(225%,150%) scale(6.5);
+    transition: transform .5s ease-in-out;
+    position: fixed;
+}
+.zoomSS:hover {
+    transform:translate(225%,-50%) scale(6.5);
+    transition: transform .5s ease-in-out;
+    position: fixed;
+}
+.scaleDL{
+    transform:translate(225%,150%) scale(6.5);
+    transition: transform .5s ease-in-out;
+    position: fixed;
+}
+.scaleSS{
+    transform:translate(225%,-50%) scale(6.5);
+    transition: transform .5s ease-in-out;
+    position: fixed;
+}
+
+.categories {
+    font-size:1.05vw
+}
+.side-nav .categories > li {
+    padding: 10px 10px 5px 30px !important;
+}
+.responsive {
+    width: 16.6%;
+    height: auto;
+    padding-right: 5px;
+}
+.responsive.small{
+    width: 10%;
+}
+.addressImage{
+    width: 100%;
+    height: auto;
+    padding-right: 5px;
+}
+.address{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    float: left;
+}
+.address1{
+    width: 16.6%;
+    height: auto;
+    padding: 0;
+    float: left;
+}
+.address2{
+    width: 83%;
+    height: auto;
+    padding: 0;
+    float: left;
+}
+.refferred {
+    font-size: 2vw !important
+}
+@media only screen and (max-width: 479px) {
+    .disput-progress {
+        flex-direction: column;
+    }
+    .categories {
+        font-size: 4vw !important
+    }
+    .refferred{
+        font-size: 40px !important
+    }
+}
+#piechart_3d {
+    width: 100%;
+}

@@ -1,0 +1,170 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  position: fixed;
+  bottom: 50%;
+  right: 20px;
+  color: #3D68B2;
+  cursor: pointer;
+  height: 35px;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  z-index: 999;
+}
+.open-button img {
+    max-width: 75px;
+}
+.open-button i {
+  font-size: xx-large;;
+}
+
+.defined-user{
+  display: none;
+}
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  width: 100%;
+  max-width: 360px;
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  right: 15px;
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 9999;
+  border-radius: 8px;
+}
+
+.chat-content {
+  height: 250px;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.chat-content.initial {
+  height: 100px;
+}
+
+/* Add styles to the form container */
+.chat-popup .ms-user-account {
+  padding: 0px;
+}
+.chat-popup .ms-user-account .ms-ua-box{
+  border-radius: 0px;
+}
+.chat-popup .chat-header{
+  background-color: #f2f0f0;
+  padding: 15px;
+  border-radius: 8px 8px 0px 0px;
+}
+.defined-user .form-container {
+  /*max-width: 300px;*/
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  background: #f1f1f1;
+  resize: none;
+  border: none;
+  border: 2px solid #0c71c3;
+  min-height: auto !important;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.message {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 10px 1px 10px 10px;
+  width: fit-content;
+  float: right;
+  min-width: 51%;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+  margin: 10px 10px 10px 1px;
+  float: left;
+}
+
+/* Clear floats */
+.message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+.comment-text-area {
+  position: relative;
+  float: left;
+  width: calc(100%);
+  height: 75%;
+}
+.textinput {
+  position: relative;
+  float:left;
+  width: 100%;
+  outline: none;
+  resize: none;
+  border: 1px solid #f0f0f0;
+}
+
+.sendChatMessage {
+  background-color: #bbb;
+  display: block;
+  margin: 5px 0 22px 0 ;
+  padding: 10px;
+  height: 75%;
+}
+
+/* width */
+.ms-chat-tab ::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.ms-chat-tab ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.ms-chat-tab ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.ms-chat-tab ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
