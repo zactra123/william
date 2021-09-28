@@ -3,7 +3,6 @@
 <title>Slogans</title>
 @endsection
 @section('body')
-
   <div class="breadcrumb-header justify-content-between">
     <div>
         <h4 class="content-title mb-2">Hi, welcome back!</h4>
@@ -18,7 +17,6 @@
   <div class="container">
     <div class="row row-sm">
       <div class="col-md-1">
-
       </div>
       <div class="col-md-10">
         <div class="card mg-b-20" id="tabs-style2">
@@ -40,13 +38,9 @@
                 </div>
             </div>
             {!! Form::close() !!}
-
         </div>
-
       </div>
     </div>
   </div>
 </div>
-
-
 @endsection

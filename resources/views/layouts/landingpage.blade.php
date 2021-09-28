@@ -165,9 +165,9 @@
 					<div class="carousel-item active" style="background-image: url({{ asset('/images/slide-1.jpg') }})">
 						<div class="carousel-container mb-10px">
 							<div class="container">
-								<h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
-								<p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-								<a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+								<h3 class="animate__animated animate__fadeInDown text-white" style="color:white"> {{ zactra::site('first_slider_title') }} </h3>
+								<p class="animate__animated animate__fadeInUp"> {{ zactra::site('first_slider_text') }} </p>
+								<a href="{{ zactra::site('first_slider_button_link') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{{ zactra::site('first_slider_button_text') }}</a>
 							</div>
 						</div>
 					</div>
@@ -176,9 +176,9 @@
 					<div class="carousel-item" style="background-image: url({{ asset('/images/slide-2.jpg') }})">
 						<div class="carousel-container">
 							<div class="container">
-								<h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
-								<p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-								<a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+								<h3 class="animate__animated animate__fadeInDown text-white">{{ zactra::site('second_slider_title') }}</h3>
+								<p class="animate__animated animate__fadeInUp">{{ zactra::site('second_slider_text') }}</p>
+								<a href="{{ zactra::site('second_slider_button_link') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{{ zactra::site('second_slider_button_text') }}</a>
 							</div>
 						</div>
 					</div>
@@ -187,9 +187,9 @@
 					<div class="carousel-item" style="background-image: url({{ asset('/images/slide-3.jpg') }})">
 						<div class="carousel-container">
 							<div class="container">
-								<h3 class="animate__animated animate__fadeInDown text-white">WE NOT ONLY <span class="bold">HELP CLIENTS</span> TO FIX THEIR CREDIT</h3>
-								<p class="animate__animated animate__fadeInUp">BUT WE ALSO EDUCATE THEM TO KEEP THEIR <span class="bold">GOOD CREDIT</span> IN HEALTHY SHAPE.</p>
-								<a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Start</a>
+								<h3 class="animate__animated animate__fadeInDown text-white">{{ zactra::site('third_slider_title') }}</h3>
+								<p class="animate__animated animate__fadeInUp">{{ zactra::site('third_slider_text') }}</p>
+								<a href="{{ zactra::site('third_slider_button_link') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{{ zactra::site('third_slider_button_text') }}</a>
 							</div>
 						</div>
 					</div>

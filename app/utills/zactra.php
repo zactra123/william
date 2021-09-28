@@ -322,7 +322,7 @@ class zactra
 
     static function site($var)
     {
-        $site = \App\AdminSetting::select($var)->first();
+        $site = \App\SiteSettings::select($var)->first();
         return $site->$var;
     }
 

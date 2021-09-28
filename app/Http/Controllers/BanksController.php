@@ -125,9 +125,11 @@ class BanksController extends Controller
       $banksLogos = $banksLogos->groupBy('bank_logos.id')->select('bank_logos.*')->orderBy('bank_logos.name')->paginate(20);
       return view('furnishers.logo_new',compact('banksLogos'));
 
-
     }
 
+    /**
+     *
+     */
     public function bankMissingFields(Request $request)
     {
         $banksLogos = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
@@ -211,6 +213,9 @@ class BanksController extends Controller
         return view('furnishers.logo_missing',compact('banksLogos'));
     }
 
+    /**
+     *
+     */
     public function show($id)
     {
         $bank = BankLogo::findOrFail($id);
@@ -567,7 +572,6 @@ class BanksController extends Controller
      */
     public function parent_bank(Request $request)
     {
-
         $phoneFaxZip =preg_replace('/[^0-9a-zA-Z]/', '', $request->search_key);
         $name =str_replace([' ', ',','.','\'', '"'],'',$request->search_key);
         $banks = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
@@ -730,12 +734,18 @@ class BanksController extends Controller
         return view('furnishers.judicial_day', compact('stateArr', 'states'));
     }
 
+    /**
+     *
+     */
     public function state(Request $request)
     {
         $state =  State::whereId($request->id)->first();
         return view('furnishers._form', compact('state'));
     }
 
+    /**
+     *
+     */
     public function checkName(Request $request)
     {
         $name = $request->name;
@@ -753,6 +763,9 @@ class BanksController extends Controller
         }
     }
 
+    /**
+     *
+     */
     public function exCopied(Request $request)
     {
         $bank = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
@@ -774,6 +787,9 @@ class BanksController extends Controller
         return response()->json($exAddress);
     }
 
+    /**
+     *
+     */
     public function changeAddress()
     {
         $creditUnion = BankLogo::leftJoin('bank_addresses', 'bank_logos.id', '=', 'bank_addresses.bank_logo_id')
@@ -797,6 +813,9 @@ class BanksController extends Controller
         dd('ok');
     }
 
+    /**
+     *
+     */
     public function changeDisputeAddress($union, $type)
     {
 
@@ -830,6 +849,9 @@ class BanksController extends Controller
         }
     }
 
+    /**
+     * 
+     */
     public function med_serv()
     {
         #Delete all existing Med services and insert from the other resource

@@ -6,15 +6,15 @@
         <div class="col-lg-4 col-md-6">
           <div class="footer-info">
             <h3>Credit Repair</h3>
-              5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
-              <strong>Phone:</strong> 1-844-337-8336<br>
-              <strong>Email:</strong> info@prudentscores.com<br>
+              {{ zactra::site('address') }} <br><br>
+              <strong>Phone:</strong> {{ zactra::site('phone') }}<br>
+              <strong>Email:</strong> {{ zactra::site('email') }}<br>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-skype"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="{{ zactra::site('twitter_link') }}" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="{{ zactra::site('facebook_link') }}" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="{{ zactra::site('instagram_link') }}" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="{{ zactra::site('skype_link') }}" class="google-plus"><i class="fa fa-skype"></i></a>
+              <a href="{{ zactra::site('linkedin_link') }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
           </div>
         </div>

@@ -171,7 +171,8 @@ Route::group(["prefix" => "report"], function(){
 
 // Site Settings
   Route::get('/site/settings','Owner\SiteSettingsController@index')->name('owner.site.setting');
-
+  Route::post('/update/slider','Owner\SiteSettingsController@update_slider')->name('owner.slider.update');
+  Route::post('/update/footer','Owner\SiteSettingsController@update_footer')->name('owner.footer.update');
 
 });
 

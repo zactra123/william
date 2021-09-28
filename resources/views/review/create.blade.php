@@ -270,9 +270,9 @@
             <div class="footer-info">
               <h3>Credit Repair</h3>
 
-                5800 S. Eastern Ave., Suite 500 Commerce, CA 90040<br><br>
-                <strong>Phone:</strong> 1-844-337-8336<br>
-                <strong>Email:</strong> info@prudentscores.com<br>
+                {{ zactra::site('address') }}<br><br>
+                <strong>Phone:</strong> {{ zactra::site('phone') }}<br>
+                <strong>Email:</strong> {{ zactra::site('email') }}<br>
               </p>
               <div class="social-links mt-3">
                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
