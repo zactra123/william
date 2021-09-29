@@ -46,59 +46,60 @@
       <div class="page-content p-0 mr-0 ml-0">
         <div class="row mr-0 ml-0">
           <div class="col-xs-12 pl-2">
-                <div class="pl-3 row border-bottom">
-                  <div class="external">
-                    {{$client->full_name()==" "?"FULL NAME":$client->full_name()}}
-                  </div>
-                </div>
-                <div class="pl-3 row border-bottom">
-                  <div class="external">{{$client->clientDetails->address??"ADDRESS"}}</div>
-                </div>
-                <div class="pb-1 row border-bottom">
-                  <div class="col-xs-4 internal">{{$client->clientDetails->phone_number??"PHONE NUMBER"}}</div>
-                  <div class="col-xs-6 external">{{$client->email}}</div>
-                </div>
-
-                <div class="pb-1 row border-bottom">
-                  <div class="col-xs-4 internal">{{$client->clientDetails->ssn??"SNN"}}</div>
-                  <div class="col-xs-6 external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}}</div>
-                </div>
-
-                @if($client->clientDetails != null)
-                <div class="pb-1 row border-bottom">
-                  <div class="col-xs-6 external">
-                    @if($client->clientDetails->sex == "M") MALE @elseif($client->clientDetails->sex == "F") FEMALE @else NON BINARY @endif
-                  </div>
-                </div>
-
+            <div class="pl-3 row border-bottom">
+              <div class="external">
+                {{$client->full_name()==" "?"FULL NAME":$client->full_name()}}
+              </div>
+            </div>
+            <div class="pl-3 row border-bottom">
+              <div class="external">{{$client->clientDetails->address??"ADDRESS"}}</div>
+            </div>
+            <div class="pb-1 row border-bottom">
+              <div class="col-xs-4 internal">{{$client->clientDetails->phone_number??"PHONE NUMBER"}}</div>
+              <div class="col-xs-6 external">{{$client->email}}</div>
+            </div>
+            <div class="pb-1 row border-bottom">
+              <div class="col-xs-4 internal">{{$client->clientDetails->ssn??"SNN"}}</div>
+              <div class="col-xs-6 external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}}</div>
+            </div>
+            @if($client->clientDetails != null)
+            <div class="pb-1 row border-bottom">
+              <div class="col-xs-6 external">
+                @if($client->clientDetails->sex == "M")
+                  MALE
+                @elseif($client->clientDetails->sex == "F")
+                  FEMALE
                 @else
-                <div class="pb-1 row border-bottom">
-                  <div class="col-xs-6 external">
-                    NOT SPECIFIED
-                  </div>
-                </div>
+                  NON BINARY
                 @endif
-
-                <div class="pt-2 pb-2 pl-3 row external">
-                  REFFERED BY {{$client->referredBy()}}
-                </div>
-
-                <div>
-                  @if(!empty($client->clientAttachments()))
-                  <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?> @if(!empty($dl))
-                  <img type="file" width="70%" src="{{public_path($dl->path)}}" width="125px" name="img-drvl" id="img-drvl" />
-                  @endif
-                  <br />
-                  <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?> @if(!empty($ss))
-                  <img type="file" width="70%" src="{{public_path($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
-                  @endif @endif
-                </div>
-
+              </div>
+            </div>
+            @else
+            <div class="pb-1 row border-bottom">
+              <div class="col-xs-6 external">
+                NOT SPECIFIED
+              </div>
+            </div>
+            @endif
+            <div class="pt-2 pb-2 pl-3 row external">
+              REFFERED BY {{$client->referredBy()}}
+            </div>
+            <div>
+              @if(!empty($client->clientAttachments()))
+              <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+              @if(!empty($dl))
+              <img type="file" width="70%" src="{{public_path($dl->path)}}" width="125px" name="img-drvl" id="img-drvl" />
+              @endif
+              <br />
+              <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+              @if(!empty($ss))
+              <img type="file" width="70%" src="{{public_path($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
+              @endif
+              @endif
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </body>
 </html>

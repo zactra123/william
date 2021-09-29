@@ -47,7 +47,7 @@ class Escrow
         $output = curl_exec($curl);
         curl_close($curl);
 
-        //run only before create transaction
+        // run only before create transaction
 
         dd($output);
     }

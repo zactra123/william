@@ -123,7 +123,7 @@
 </div>
 
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script> --}}
 <script>
 
 
@@ -158,7 +158,7 @@ if (getguestid=='yes') {
 
       });
 }
-  </script>
+</script>
 <script id="chat-message-to-admin-template" type="text/html">
     <div class="my-message message p-2" data-message-id="{message-id}">
         <p>{message}</p>
