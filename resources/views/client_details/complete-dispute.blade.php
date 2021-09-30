@@ -42,8 +42,11 @@
       <div class="row mt20">
         <div class="col-md-1 mt20"></div>
         <div class="col-md-10 mt20">
-          {!! Form::open(['route' => ['client.dispute.update'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @csrf @method("put") @foreach($completeDispute as $complete) @if($complete->disputable->getTable() ==
-          "client_report_ex_accounts")
+          {!! Form::open(['route' => ['client.dispute.update'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+          @csrf
+          @method("put")
+          @foreach($completeDispute as $complete)
+          @if($complete->disputable->getTable() == "client_report_ex_accounts")
           <div class="mt20 title-ex_account-{{$complete->disputable->id}}"></div>
           <div class="chart-report title-ex_account-{{$complete->disputable->id}}">
             <div class="row mt20" style="font-weight: bold;">
@@ -193,7 +196,6 @@
                   <input type="text" name="ex_account[security_word]" placeholder="SECURITY WORD" />
                 </div>
               </div>
-
               @endif
               @if($key = 'type' && $value == 'mortgage')
               <div class="col-md-12">
@@ -205,7 +207,6 @@
                   <input type="text" name="ex_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
                 </div>
               </div>
-
               <div class="col-md-3">
                 <div class="col-md-12">
                   <input type="text" name="ex_account[property_address]" placeholder="PROPERTY ADDRESS" />
@@ -221,191 +222,191 @@
             </div>
           </div>
           @endif
-          @if($complete->disputable->getTable() == "client_report_tu_accounts")
-            @if(!empty($complete->disputable))
-          <div class="mt20 title-tu_account-{{$complete->disputable->id}}"></div>
-          <div class="chart-report title-tu_account-{{$complete->disputable->id}}">
-            <div class="row mt20" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              <div class="col-md-6">
-                <span class="">{{$complete->disputable->account_name}} </span>
+        @if($complete->disputable->getTable() == "client_report_tu_accounts")
+          @if(!empty($complete->disputable))
+            <div class="mt20 title-tu_account-{{$complete->disputable->id}}"></div>
+            <div class="chart-report title-tu_account-{{$complete->disputable->id}}">
+              <div class="row mt20" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                  <span class="">{{$complete->disputable->account_name}} </span>
 
-                <span style="padding-left: 15px;"> # {{$complete->disputable->account_number}}</span>
+                  <span style="padding-left: 15px;"> # {{$complete->disputable->account_number}}</span>
+                </div>
+                <div class="col-md-2 delete-name" data-attribute="title-tu_account-{{$complete->disputable->id}}">
+                  <span style="font-weight: bold; font-size: 16px;">DESELECT</span>
+
+                  <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
+                  <input type="hidden" name="tu_account[id]" value="{{$complete->id}}" />
+                </div>
               </div>
-              <div class="col-md-2 delete-name" data-attribute="title-tu_account-{{$complete->disputable->id}}">
-                <span style="font-weight: bold; font-size: 16px;">DESELECT</span>
+              <div class="row mt20 border" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                @if($complete->disputable->date_opened !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">DATE OPENED</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{date("m/d/Y",strtotime($complete->disputable->date_opened))}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($complete->disputable->account_type_description !=null )
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <label class="form-text">ACCOUNT TYPE</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$complete->disputable->account_type_description}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($complete->disputable->loan_type !=null )
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <label class="form-text">LOAN TYPE</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$complete->disputable->loan_type}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($complete->disputable->pay_status !=null )
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <label class="form-text">PAY STATUS</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class="">{{$complete->disputable->pay_status}} </span>
+                  </div>
+                </div>
+                @else
+                <div class="col-md-2"></div>
+                @endif
+              </div>
 
-                <i class="fa fa-check-square-o" aria-hidden="true" style="margin-left: 30%;"></i>
-                <input type="hidden" name="tu_account[id]" value="{{$complete->id}}" />
+              <div class="row mt20 border" style="font-weight: bold;">
+                @foreach($complete->additional_information as $key => $value)
+                  @if( $key = 'type' && $value == 'credit')
+                <div class="col-md-12">
+                  <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                </div>
+                <div class="row mt20">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
+                    </div>
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[expiration_date]" placeholder="EXPIRATION DATE" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt20">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[cvc]" placeholder="CVC (CARD VERIFICATION CODE)" />
+                    </div>
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
+                    </div>
+                  </div>
+                </div>
+
+                @endif
+                @if($key = 'type' && $value == "auto")
+                <div class="col-md-12">
+                  <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                </div>
+                <div class="row mt-20">
+                  <div class="col-md-12">
+                    <div class="col-md-4">
+                      <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" type="text" name="tu_account[year]" placeholder="YEAR" />
+                    </div>
+
+                    <div class="col-md-4">
+                      <input class="form-control" type="text" name="tu_account[make]" placeholder="MAKE" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt20">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[model]" placeholder="MODEL" />
+                    </div>
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
+                    </div>
+                  </div>
+                </div>
+                @endif
+                @if($key = 'type' && $value == "personal")
+                <div class="col-md-12">
+                  <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                </div>
+
+                <div class="row mt20">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
+                    </div>
+                    <div class="col-md-6">
+                      <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
+                    </div>
+                  </div>
+                </div>
+                @endif
+                @if($key = 'type' && $value == "student")
+                <div class="col-md-12">
+                  <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[school_attened]" placeholder="SCHOOL ATTENDED" />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
+                  </div>
+                </div>
+
+                @endif
+                @if($key = 'type' && $value == 'mortgage')
+                <div class="col-md-12">
+                  <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[property_address]" placeholder="PROPERTY ADDRESS" />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <input type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
+                  </div>
+                </div>
+                @endif
+              @endforeach
               </div>
             </div>
-            <div class="row mt20 border" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              @if($complete->disputable->date_opened !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">DATE OPENED</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{date("m/d/Y",strtotime($complete->disputable->date_opened))}} </span>
-                </div>
-              </div>
-              @endif
-              @if($complete->disputable->account_type_description !=null )
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <label class="form-text">ACCOUNT TYPE</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$complete->disputable->account_type_description}} </span>
-                </div>
-              </div>
-              @endif
-              @if($complete->disputable->loan_type !=null )
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <label class="form-text">LOAN TYPE</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$complete->disputable->loan_type}} </span>
-                </div>
-              </div>
-              @endif
-              @if($complete->disputable->pay_status !=null )
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <label class="form-text">PAY STATUS</label>
-                </div>
-                <div class="col-md-12">
-                  <span class="">{{$complete->disputable->pay_status}} </span>
-                </div>
-              </div>
-              @else
-              <div class="col-md-2"></div>
-              @endif
-            </div>
-
-            <div class="row mt20 border" style="font-weight: bold;">
-              @foreach($complete->additional_information as $key => $value)
-                @if( $key = 'type' && $value == 'credit')
-              <div class="col-md-12">
-                <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
-              </div>
-              <div class="row mt20">
-                <div class="col-md-12">
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
-                  </div>
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[expiration_date]" placeholder="EXPIRATION DATE" />
-                  </div>
-                </div>
-              </div>
-              <div class="row mt20">
-                <div class="col-md-12">
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[cvc]" placeholder="CVC (CARD VERIFICATION CODE)" />
-                  </div>
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
-                  </div>
-                </div>
-              </div>
-
-              @endif
-              @if($key = 'type' && $value == "auto")
-              <div class="col-md-12">
-                <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
-              </div>
-              <div class="row mt-20">
-                <div class="col-md-12">
-                  <div class="col-md-4">
-                    <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
-                  </div>
-                  <div class="col-md-4">
-                    <input class="form-control" type="text" name="tu_account[year]" placeholder="YEAR" />
-                  </div>
-
-                  <div class="col-md-4">
-                    <input class="form-control" type="text" name="tu_account[make]" placeholder="MAKE" />
-                  </div>
-                </div>
-              </div>
-              <div class="row mt20">
-                <div class="col-md-12">
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[model]" placeholder="MODEL" />
-                  </div>
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
-                  </div>
-                </div>
-              </div>
-              @endif
-              @if($key = 'type' && $value == "personal")
-              <div class="col-md-12">
-                <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
-              </div>
-
-              <div class="row mt20">
-                <div class="col-md-12">
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
-                  </div>
-                  <div class="col-md-6">
-                    <input class="form-control" type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
-                  </div>
-                </div>
-              </div>
-              @endif
-              @if($key = 'type' && $value == "student")
-              <div class="col-md-12">
-                <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
-              </div>
-
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[school_attened]" placeholder="SCHOOL ATTENDED" />
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
-                </div>
-              </div>
-
-              @endif
-              @if($key = 'type' && $value == 'mortgage')
-              <div class="col-md-12">
-                <label class="form-text">REQUIRE INFORMATION FOR DISPUTE</label>
-              </div>
-
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[account_number]" placeholder="FULL ACCOUNT NUMBER" />
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[property_address]" placeholder="PROPERTY ADDRESS" />
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <input type="text" name="tu_account[security_word]" placeholder="SECURITY WORD" />
-                </div>
-              </div>
-              @endif
-            @endforeach
-            </div>
-          </div>
           @endif
         @endif
         @if($complete->disputable->getTable() == "client_report_eq_accounts")
@@ -590,7 +591,7 @@
             </div>
           </div>
           @endif
-        @endif 
+        @endif
       @endforeach
           <div class="row mt20">
             <div class="col-md-5"></div>

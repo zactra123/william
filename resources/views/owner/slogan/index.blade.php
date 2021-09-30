@@ -49,7 +49,6 @@
                                     <a class="dropdown-item" href="{{ route('admin.slogan.delete',$slogan->id) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $slogan->id }}">Delete</a>
                                 </div>
                             </div>
-
                           </td>
                       </tr>
                   @endforeach

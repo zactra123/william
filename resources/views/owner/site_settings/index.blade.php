@@ -41,7 +41,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -52,7 +51,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -63,7 +61,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -74,7 +71,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="mb-4 main-content-label">Second Slider</div>
           <div class="form-group ">
 						<div class="row">
@@ -96,7 +92,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -107,7 +102,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -118,7 +112,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -129,7 +122,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="mb-4 main-content-label">Third Slider</div>
           <div class="form-group ">
 						<div class="row">
@@ -151,7 +143,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -162,7 +153,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -173,7 +163,6 @@
 							</div>
 						</div>
 					</div>
-
           <div class="form-group">
 						<div class="row">
 							<div class="col-md-3">
@@ -184,7 +173,6 @@
 							</div>
 						</div>
 					</div>
-
 			</div>
 			<div class="card-footer text-right">
 				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Slider</button>
@@ -284,6 +272,4 @@
 			</form>
 		</div>
 	</div>
-
-
 @endsection

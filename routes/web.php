@@ -174,6 +174,10 @@ Route::group(["prefix" => "report"], function(){
   Route::post('/update/slider','Owner\SiteSettingsController@update_slider')->name('owner.slider.update');
   Route::post('/update/footer','Owner\SiteSettingsController@update_footer')->name('owner.footer.update');
 
+// Translation
+  Route::get('/translation','Owner\TranslationController@index')->name('owner.translation.index');
+  Route::get('/create/translation','Owner\TranslationController@create')->name('owner.translation.create');
+
 });
 
 Route::group(['prefix'=> 'admin'], function(){
