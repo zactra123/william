@@ -40,27 +40,34 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th>1</th>
-                    <th>Hi</th>
-                    <th>Hi</th>
-                    <th>Hola</th>
-                    <th>
-                      <div class="dropdown show">
-                        <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Action
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="#" onclick="return confirm('Are You Sure?')" data-id="">Delete</a>
-                        </div>
-                      </div>
-                    </th>
-                  </tr>
+                  @if (count($translation)>0)
+                    @foreach ($translation as $key => $value)
+                      <tr>
+                        <th>{{ $key+1 }}</th>
+                        <th>{{ $value->key }}</th>
+                        <th>{{ $value->english }}</th>
+                        <th>{{ $value->spanish }}</th>
+                        <th>
+                          <div class="dropdown show">
+                            <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Action
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <a class="dropdown-item" href="{{ route('owner.translation.edit',$value->id) }}" data-id="">Edit</a>
+                              <a class="dropdown-item" href="{{ route('owner.translation.delete',$value->id) }}" onclick="return confirm('Are You Sure?')" data-id="">Delete</a>
+                            </div>
+                          </div>
+                        </th>
+                      </tr>
+                    @endforeach
+                  @endif
                 </tbody>
               </table>
             </div>
             <div class="col-md-12 mt-3">
-              <div class="row float-right"></div>
+              <div class="float-right">
+                  {{$translation->links()}}
+              </div>
             </div>
           </div>
         </div>

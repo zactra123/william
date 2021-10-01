@@ -177,7 +177,10 @@ Route::group(["prefix" => "report"], function(){
 // Translation
   Route::get('/translation','Owner\TranslationController@index')->name('owner.translation.index');
   Route::get('/create/translation','Owner\TranslationController@create')->name('owner.translation.create');
-
+  Route::post('/store/translation','Owner\TranslationController@store')->name('owner.translation.store');
+  Route::get('/edit/translation/{id}','Owner\TranslationController@edit')->name('owner.translation.edit');
+  Route::post('/update/translation','Owner\TranslationController@update')->name('owner.translation.update');
+  Route::get('/delete/translation/{id}','Owner\TranslationController@delete')->name('owner.translation.delete');
 });
 
 Route::group(['prefix'=> 'admin'], function(){

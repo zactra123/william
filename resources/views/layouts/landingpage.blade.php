@@ -257,7 +257,8 @@
 						</div>
 					</div>
 				</div>
-			</section><!-- End Why Us Section -->
+			</section>
+			<!-- End Why Us Section -->
 			<!-- ======= Reviews Section ======= -->
 			<section id="services" class="services">
 				<div class="container" data-aos="fade-up">

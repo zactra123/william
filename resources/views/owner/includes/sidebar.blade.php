@@ -143,7 +143,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item {{ zactra::areActiveRoute(['owner.translation.index','owner.translation.create']) }}" href="{{ route('owner.translation.index') }}"><i class="side-menu__icon fa fa-language"></i><span class="side-menu__label">Translation</span></a>
+              <a class="side-menu__item {{ zactra::areActiveRoute(['owner.translation.index','owner.translation.create','owner.translation.edit']) }}" href="{{ route('owner.translation.index') }}"><i class="side-menu__icon fa fa-language"></i><span class="side-menu__label">Translation</span></a>
             </li>
 
             <li class="slide">
