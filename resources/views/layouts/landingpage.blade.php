@@ -123,12 +123,13 @@
 								@endif
 								{{-- <i class="fa fa-bars mobile-nav-toggle ls-hidden text-right" style="color:black;"></i> --}}
 							</ul>
-						</nav><!-- .navbar -->
+						</nav>
+						<!-- .navbar -->
 					</div>
 				</div>
 			</div>
-		</header><!-- End Header -->
-
+		</header>
+		<!-- End Header -->
 		<!-- ======= Hero Section ======= -->
 		<section id="hero">
 			<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">

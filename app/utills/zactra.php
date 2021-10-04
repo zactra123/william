@@ -6,6 +6,7 @@ use Route;
 use Auth;
 use App\AbendentCart;
 use App\AdminSetting;
+use App\Translation;
 
 /**
  * manage functions added by zactra
@@ -75,8 +76,10 @@ class zactra
 
     }
 
+
+
     /**
-     * get translation of label
+     * get translation of label  OLD FUNCTION
      */
     public static function translate($key, $givenLang = null)
     {
@@ -1098,4 +1101,50 @@ class zactra
         $faqs = str_replace('?', '?</b><br/>', $faqs);
         return $faqs;
     }
+
+    /**
+     * Translation Funtion
+     */
+     public static function translate_lang($data)
+     {
+       $translate = Translation::where('key',$data)->first();
+       if (isset($translate)) {
+
+         if (isset($_COOKIE['language_cookie'])) {
+
+           $lang = $_COOKIE['language_cookie'];
+
+           if ($lang=="english") {
+             return $translate->english;
+           }
+
+           if ($lang=="french") {
+             return $translate->french;
+           }
+
+           if ($lang=="spanish") {
+             return $translate->spanish;
+           }
+
+           if ($lang=="german") {
+             return $translate->german;
+           }
+         }
+
+       }else {
+
+         $translate = new Translation();
+         $translate->key = $data;
+         $translate->english = $data;
+         $translate->spanish = $data;
+         $translate->french = $data;
+         $translate->german = $data;
+         $translate->save();
+
+         return $translate->key;
+       }
+
+
+     }
+
 }

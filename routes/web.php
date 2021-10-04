@@ -181,6 +181,7 @@ Route::group(["prefix" => "report"], function(){
   Route::get('/edit/translation/{id}','Owner\TranslationController@edit')->name('owner.translation.edit');
   Route::post('/update/translation','Owner\TranslationController@update')->name('owner.translation.update');
   Route::get('/delete/translation/{id}','Owner\TranslationController@delete')->name('owner.translation.delete');
+  Route::get('/change/translate/{lang}','Owner\TranslationController@change_language')->name('owner.translation.change');
 });
 
 Route::group(['prefix'=> 'admin'], function(){

@@ -17,6 +17,17 @@
               <a href="{{ zactra::site('linkedin_link') }}" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
           </div>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              language
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="{{ route('owner.translation.change','english') }}">English</a>
+              <a class="dropdown-item" href="{{ route('owner.translation.change','french') }}">French</a>
+              <a class="dropdown-item" href="{{ route('owner.translation.change','spanish') }}">Spanish</a>
+              <a class="dropdown-item" href="{{ route('owner.translation.change','german') }}">German</a>
+            </div>
+          </div>
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">

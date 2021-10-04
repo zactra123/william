@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Slogans</title>
+<title>{{ zactra::translate_lang('Slogans') }}</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+        <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Slogans</li>
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Slogans') }}</li>
             </ol>
           </nav>
     </div>
@@ -21,17 +21,17 @@
         <div class="card mg-b-20" id="tabs-style2">
           <div class="card-body">
             <div class="main-content-label mg-b-5">
-              Slogans
+              {{ zactra::translate_lang('Slogans') }}
             </div>
-            <p class="mg-b-20">See list of slogans here...</p>
+            <p class="mg-b-20">{{ zactra::translate_lang('See list of slogans here...') }}</p>
             <div class="card-body">
               <table class="table table-responsive">
                   <thead>
                   <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Slogan</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">{{ zactra::translate_lang('Author') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('Slogan') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('Action') }}</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,10 +43,10 @@
                           <td>
                             <div class="dropdown show">
                                 <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
+                                    {{ zactra::translate_lang('Action') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('admin.slogan.delete',$slogan->id) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $slogan->id }}">Delete</a>
+                                    <a class="dropdown-item" href="{{ route('admin.slogan.delete',$slogan->id) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $slogan->id }}">{{ zactra::translate_lang('Delete') }}</a>
                                 </div>
                             </div>
                           </td>
@@ -54,7 +54,6 @@
                   @endforeach
                   </tbody>
               </table>
-
             </div>
             <div class="col-md-12 mt-3">
                 <div class="row float-right">
@@ -62,7 +61,6 @@
                 </div>
             </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -98,7 +96,6 @@
 
           })
       })
-
 
   </script>
 @endsection

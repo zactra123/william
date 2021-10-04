@@ -93,4 +93,18 @@ class TranslationController extends Controller
            $delete = Translation::where('id',$id)->delete();
            return back()->with('success','You successfully delete translation!');
          }
+
+       /**
+        * Change Language
+        */
+        public function change_language($lang)
+        {
+              setcookie("language_cookie", $lang, time() + (86400 * 30) , "/"); // 86400 = 1 day
+
+              // if (isset($_COOKIE['language_cookie'])) {
+              //   $lang = $_COOKIE['language_cookie'];
+              //   return $lang;
+              // }
+              return back();
+        }
 }

@@ -248,7 +248,7 @@ return [
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Active' => Rainwater\Active\ActiveFacade::class,
-        'zactra' => \App\utills\zactra::class,
+        'zactra'=>App\utills\zactra::class,
         /*
          * for social-share
          */

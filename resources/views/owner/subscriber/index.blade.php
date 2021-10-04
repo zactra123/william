@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Subscribers</title>
+<title>{{ zactra::translate_lang('Subscribers') }}</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+        <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Subscribers</li>
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Subscribers') }}</li>
             </ol>
           </nav>
     </div>
@@ -23,15 +23,15 @@
         <div class="card mg-b-20" id="tabs-style2">
           <div class="card-body">
             <div class="main-content-label mg-b-5">
-              Subscribers
+              {{ zactra::translate_lang('Subscribers') }}
             </div>
-            <p class="mg-b-20">See list of subscribers here...</p>
+            <p class="mg-b-20">{{ zactra::translate_lang('See list of subscribers here...') }}</p>
             <div class="card-body">
               <table class="table">
                 <thead>
                 <tr>
                   <th  scope="col">#</th>
-                  <th  scope="col">Email</th>
+                  <th  scope="col">{{ zactra::translate_lang('Email') }}</th>
                 </tr>
                 </thead>
                 <tbody>

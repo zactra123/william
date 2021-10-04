@@ -1,21 +1,21 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Translation</title>
+<title>{{ zactra::translate_lang('Translation') }}</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>
-      <h4 class="content-title mb-2">Hi, welcome back!</h4>
+      <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Translation</li>
+          <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Translation') }}</li>
         </ol>
       </nav>
     </div>
     <div class="mmt-7">
       <a class="btn btn-primary pull-left mmt-7" href="{{ route('owner.translation.create') }}" role="button">
-        Create Translation
+        {{ zactra::translate_lang('Create Translation') }}
       </a>
     </div>
   </div>
@@ -25,18 +25,18 @@
         <div class="card mg-b-20" id="tabs-style2">
           <div class="card-body">
             <div class="main-content-label mg-b-5">
-              Translation
+              {{ zactra::translate_lang('Translation') }}
             </div>
-            <p class="mg-b-20">See list of translation here...</p>
+            <p class="mg-b-20">{{ zactra::translate_lang('See list of translation here...') }}</p>
             <div class="card-body">
               <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Key</th>
-                    <th scope="col">In English</th>
-                    <th scope="col">In Spanish</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">{{ zactra::translate_lang('Key') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('In English') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('In Spanish') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('Action') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -50,11 +50,11 @@
                         <th>
                           <div class="dropdown show">
                             <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Action
+                              {{ zactra::translate_lang('Action') }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a class="dropdown-item" href="{{ route('owner.translation.edit',$value->id) }}" data-id="">Edit</a>
-                              <a class="dropdown-item" href="{{ route('owner.translation.delete',$value->id) }}" onclick="return confirm('Are You Sure?')" data-id="">Delete</a>
+                              <a class="dropdown-item" href="{{ route('owner.translation.edit',$value->id) }}" data-id="">{{ zactra::translate_lang('Edit') }}</a>
+                              <a class="dropdown-item" href="{{ route('owner.translation.delete',$value->id) }}" onclick="return confirm('Are You Sure?')" data-id="">{{ zactra::translate_lang('Delete') }}</a>
                             </div>
                           </div>
                         </th>
@@ -74,5 +74,4 @@
       </div>
     </div>
   </div>
-
 @endsection

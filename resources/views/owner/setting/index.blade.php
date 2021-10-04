@@ -5,11 +5,11 @@
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Settings</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Settings') }}</li>
 			</ol>
 		</nav>
 	</div>
@@ -34,9 +34,9 @@
 								<p class="main-profile-name-text">{{ ucfirst(Auth::user()->role) }}</p>
 							</div>
 						</div>
-						<h6>Bio</h6>
+						<h6>{{ zactra::translate_lang('Bio') }}</h6>
 						<div class="main-profile-bio">
-							{{ zactra::limit_words(Auth::user()->bio,150) }} <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">More</a>
+							{{ zactra::limit_words(Auth::user()->bio,150) }} <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter">{{ zactra::translate_lang('More') }}</a>
 						</div>
 
 						<!-- main-profile-bio -->
@@ -63,7 +63,7 @@
 						<!-- main-profile-work-list -->
 
 						<hr class="mg-y-30">
-						<label class="main-content-label tx-13 mg-b-20">Social</label>
+						<label class="main-content-label tx-13 mg-b-20">{{ zactra::translate_lang('Social') }}</label>
 						<div class="main-profile-social-list">
 
 							<div class="media">
@@ -71,7 +71,7 @@
 									<i class="icon ion-logo-twitter"></i>
 								</div>
 								<div class="media-body">
-									<span>Twitter</span> <a href="{{ Auth::user()->twitter }}">{{ Auth::user()->twitter }}</a>
+									<span>{{ zactra::translate_lang('Twitter') }}</span> <a href="{{ Auth::user()->twitter }}">{{ Auth::user()->twitter }}</a>
 								</div>
 							</div>
 							<div class="media">
@@ -79,7 +79,7 @@
 									<i class="icon ion-logo-linkedin"></i>
 								</div>
 								<div class="media-body">
-									<span>Linkedin</span> <a href="{{ Auth::user()->linkedin }}">{{ Auth::user()->linkedin }}</a>
+									<span>{{ zactra::translate_lang('Linkedin') }}</span> <a href="{{ Auth::user()->linkedin }}">{{ Auth::user()->linkedin }}</a>
 								</div>
 							</div>
 							<div class="media">
@@ -87,7 +87,7 @@
 									<i class="icon ion-logo-googleplus"></i>
 								</div>
 								<div class="media-body">
-									<span>Google+</span> <a href="{{ Auth::user()->googleplus }}">{{ Auth::user()->googleplus }}</a>
+									<span>{{ zactra::translate_lang('Google+') }}</span> <a href="{{ Auth::user()->googleplus }}">{{ Auth::user()->googleplus }}</a>
 								</div>
 							</div>
 						</div><!-- main-profile-social-list -->
@@ -98,7 +98,7 @@
 		<div class="card mg-b-20">
 			<div class="card-body">
 				<div class="main-content-label tx-13 mg-b-25">
-					Conatct
+					{{ zactra::translate_lang('Conatct') }}
 				</div>
 				<div class="main-profile-contact-list">
 					<div class="media">
@@ -106,19 +106,18 @@
 							<i class="icon ion-md-phone-portrait"></i>
 						</div>
 						<div class="media-body">
-							<span>Mobile</span>
+							<span>{{ zactra::translate_lang('Mobile') }}</span>
 							<div>
 								{{ Auth::user()->phone }}
 							</div>
 						</div>
 					</div>
-
 					<div class="media">
 						<div class="media-icon bg-info-transparent text-info">
 							<i class="icon ion-md-locate"></i>
 						</div>
 						<div class="media-body">
-							<span>Current Address</span>
+							<span>{{ zactra::translate_lang('Current Address') }}</span>
 							<div>
 								{{ Auth::user()->address }}
 							</div>
@@ -133,18 +132,18 @@
 	<div class="col-lg-8">
 		<div class="card">
 			<div class="card-body">
-				<div class="mb-4 main-content-label">Personal Information</div>
+				<div class="mb-4 main-content-label">{{ zactra::translate_lang('Personal Information') }}</div>
 				<form action="{{ route('update.owner.setting') }}" method="post" enctype="multipart/form-data">
 					@csrf
-					<div class="mb-4 main-content-label">Name</div>
+					<div class="mb-4 main-content-label">{{ zactra::translate_lang('Name') }}</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">First Name</label>
+								<label class="form-label">{{ zactra::translate_lang('First Name') }}</label>
 							</div>
 							<div class="col-md-9">
 								<input type="file" class="profileimg" name="photo" value="" style="display:none !important;">
-								<input type="text" class="form-control" name="fisrt_name" placeholder="First Name" value="{{ Auth::user()->first_name }}">
+								<input type="text" class="form-control" name="fisrt_name" placeholder="{{ zactra::translate_lang('First Name') }}" value="{{ Auth::user()->first_name }}">
 							</div>
 						</div>
 					</div>
@@ -154,150 +153,146 @@
 								<label class="form-label">Last Name</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Auth::user()->last_name }}">
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Designation</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control" name="designation" placeholder="Designation" value="{{ ucfirst(Auth::user()->role) }}" readonly>
+								<input type="text" class="form-control" name="last_name" placeholder="{{ zactra::translate_lang('Last Name') }}" value="{{ Auth::user()->last_name }}">
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Bio</label>
+								<label class="form-label">{{ zactra::translate_lang('Designation') }}</label>
 							</div>
 							<div class="col-md-9">
-								<textarea class="form-control" name="bio" rows="4" placeholder="Bio">{{ Auth::user()->bio }}</textarea>
-							</div>
-						</div>
-					</div>
-					<div class="mb-4 main-content-label">Contact Info</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Email<i>(required)</i></label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control" name="email" placeholder="Email" value="{{ Auth::user()->email }}" readonly>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Phone</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" class="form-control" name="phone" placeholder="Phone number" value="{{ Auth::user()->phone }}">
+								<input type="text" class="form-control" name="designation" placeholder="{{ zactra::translate_lang('Designation') }}" value="{{ ucfirst(Auth::user()->role) }}" readonly>
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Address</label>
+								<label class="form-label">{{ zactra::translate_lang('Bio') }}</label>
 							</div>
 							<div class="col-md-9">
-								<textarea class="form-control" name="address" rows="2" placeholder="Address">{{ Auth::user()->address }}</textarea>
+								<textarea class="form-control" name="bio" rows="4" placeholder="{{ zactra::translate_lang('Bio') }}">{{ Auth::user()->bio }}</textarea>
 							</div>
 						</div>
 					</div>
-					<div class="mb-4 main-content-label">Social Info</div>
+					<div class="mb-4 main-content-label">{{ zactra::translate_lang('Contact Info') }}</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Twitter</label>
+								<label class="form-label">{{ zactra::translate_lang('Email') }}<i>({{ zactra::translate_lang('required') }})</i></label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="twitter" class="form-control" placeholder="Twitter" value="{{ Auth::user()->twitter }}">
-							</div>
-						</div>
-					</div>
-					<div class="form-group ">
-						<div class="row">
-							<div class="col-md-3">
-								<label class="form-label">Facebook</label>
-							</div>
-							<div class="col-md-9">
-								<input type="text" name="facebook" class="form-control" placeholder="Facebook" value="{{ Auth::user()->facebook }}">
+								<input type="text" class="form-control" name="email" placeholder="{{ zactra::translate_lang('Email') }}" value="{{ Auth::user()->email }}" readonly>
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Google+</label>
+								<label class="form-label">{{ zactra::translate_lang('Phone') }}</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" name="googleplus" class="form-control" placeholder="Google Plus" value="{{ Auth::user()->googleplus }}">
+								<input type="text" class="form-control" name="phone" placeholder="{{ zactra::translate_lang('Phone number') }}" value="{{ Auth::user()->phone }}">
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Linked in</label>
+								<label class="form-label">{{ zactra::translate_lang('Address') }}</label>
 							</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="linkedin" placeholder="Linkedin" value="{{ Auth::user()->linkedin }}">
+								<textarea class="form-control" name="address" rows="2" placeholder="{{ zactra::translate_lang('Address') }}">{{ Auth::user()->address }}</textarea>
 							</div>
 						</div>
 					</div>
-
+					<div class="mb-4 main-content-label">{{ zactra::translate_lang('Social Info') }}</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">{{ zactra::translate_lang('Twitter') }}</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="twitter" class="form-control" placeholder="{{ zactra::translate_lang('Twitter') }}" value="{{ Auth::user()->twitter }}">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">{{ zactra::translate_lang('Facebook') }}</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="facebook" class="form-control" placeholder="{{ zactra::translate_lang('Facebook') }}" value="{{ Auth::user()->facebook }}">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">{{ zactra::translate_lang('Google+') }}</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" name="googleplus" class="form-control" placeholder="{{ zactra::translate_lang('Google Plus') }}" value="{{ Auth::user()->googleplus }}">
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<div class="row">
+							<div class="col-md-3">
+								<label class="form-label">{{ zactra::translate_lang('Linked in') }}</label>
+							</div>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="linkedin" placeholder="{{ zactra::translate_lang('Linkedin') }}" value="{{ Auth::user()->linkedin }}">
+							</div>
+						</div>
+					</div>
 			</div>
 			<div class="card-footer text-right">
-				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Profile</button>
+				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">{{ zactra::translate_lang('Update Profile') }}</button>
 			</div>
 			</form>
 		</div>
-
 		<div class="card">
 			<div class="card-body">
-				<div class="mb-4 main-content-label">Change Password</div>
+				<div class="mb-4 main-content-label">{{ zactra::translate_lang('Change Password') }}</div>
 				<form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
 					@csrf
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Old Password</label>
+								<label class="form-label">{{ zactra::translate_lang('Old Password') }}</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="oldpassword" placeholder="Old Password" value="" required>
+								<input type="password" class="form-control" name="oldpassword" placeholder="{{ zactra::translate_lang('Old Password') }}" value="" required>
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">New Password</label>
+								<label class="form-label">{{ zactra::translate_lang('New Password') }}</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="newpassword" placeholder="New Password" value="" required>
+								<input type="password" class="form-control" name="newpassword" placeholder="{{ zactra::translate_lang('New Password') }}" value="" required>
 							</div>
 						</div>
 					</div>
 					<div class="form-group ">
 						<div class="row">
 							<div class="col-md-3">
-								<label class="form-label">Confrim Password</label>
+								<label class="form-label">{{ zactra::translate_lang('Confrim Password') }}</label>
 							</div>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="confirmpassword" placeholder="Confrim Password" value="" required>
+								<input type="password" class="form-control" name="confirmpassword" placeholder="{{ zactra::translate_lang('Confrim Password') }}" value="" required>
 							</div>
 						</div>
 					</div>
 			</div>
 			<div class="card-footer text-right">
-				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">Update Password</button>
+				<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">{{ zactra::translate_lang('Update Password') }}</button>
 			</div>
 			</form>
 		</div>
@@ -323,7 +318,6 @@
 			<div class="modal-body">
 				{{ Auth::user()->bio }}
 			</div>
-
 		</div>
 	</div>
 </div>
