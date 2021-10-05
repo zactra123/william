@@ -25,7 +25,7 @@ class TranslationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth']);
+        // $this->middleware(['auth']);
     }
 
     /**
@@ -33,7 +33,7 @@ class TranslationController extends Controller
      */
     public function index()
     {
-       $translation = Translation::orderby('id','desc')->paginate(10);
+       $translation = Translation::orderby('id','desc')->get();
       return view('owner.translation.index',compact('translation'));
     }
 

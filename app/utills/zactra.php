@@ -1129,6 +1129,8 @@ class zactra
            if ($lang=="german") {
              return $translate->german;
            }
+         }else {
+           return $translate->key;
          }
 
        }else {

@@ -29,7 +29,7 @@
             </div>
             <p class="mg-b-20">{{ zactra::translate_lang('See list of translation here...') }}</p>
             <div class="card-body">
-              <table class="table">
+              <table class="table text-md-nowrap" id="example1">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -44,9 +44,9 @@
                     @foreach ($translation as $key => $value)
                       <tr>
                         <th>{{ $key+1 }}</th>
-                        <th>{{ $value->key }}</th>
-                        <th>{{ $value->english }}</th>
-                        <th>{{ $value->spanish }}</th>
+                        <th>{{ zactra::limit_words($value->key,110) }}</th>
+                        <th>{{ zactra::limit_words($value->english,110) }}</th>
+                        <th>{{ zactra::limit_words($value->spanish,110) }}</th>
                         <th>
                           <div class="dropdown show">
                             <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,14 +64,30 @@
                 </tbody>
               </table>
             </div>
-            <div class="col-md-12 mt-3">
-              <div class="float-right">
-                  {{$translation->links()}}
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+@endsection
+@section('js')
+  <!-- Internal Data tables -->
+  <script src="{{asset('/')}}assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/dataTables.dataTables.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/dataTables.responsive.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/responsive.dataTables.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/jquery.dataTables.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/dataTables.bootstrap4.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/buttons.bootstrap4.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/jszip.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/pdfmake.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/vfs_fonts.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/buttons.html5.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/buttons.print.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/dataTables.responsive.min.js"></script>
+  <script src="{{asset('/')}}assets/plugins/datatable/js/responsive.bootstrap4.min.js"></script>
+  <!-- datatable js -->
+  <script src="{{asset('/')}}assets/js/table-data.js"></script>
 @endsection

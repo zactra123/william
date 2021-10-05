@@ -4,32 +4,32 @@
             <li class="list-group-item">
                 <a href="{{ route('owner.reports.index')}}">
                     <i class="fa fa-user-md"></i>
-                    <span class="ml-1">REGISTERED CLIENTS</span>
+                    <span class="ml-1">{{ zactra::translate_lang('REGISTERED CLIENTS') }}</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
                   <i class="fa fa-credit-card" aria-hidden="true"></i>
 
-                    <span class="ml-1">TOTAL PAYMENTS COLLECTED</span>
+                    <span class="ml-1">{{ zactra::translate_lang('TOTAL PAYMENTS COLLECTED') }}</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
                   <i class="fa fa-money" aria-hidden="true"></i>
-                    <span class="ml-1">CURRENT PAYMENTS DUE</span>
+                    <span class="ml-1">{{ zactra::translate_lang('CURRENT PAYMENTS DUE') }}</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
                   <i class="fa fa-calendar" aria-hidden="true"></i>
-                    <span class="ml-1">OVER DUE PAYMENTS</span>
+                    <span class="ml-1">{{ zactra::translate_lang('OVER DUE PAYMENTS') }}</span>
                 </a>
             </li>
             <li class="list-group-item">
                 <a href="#">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    <span class="ml-1">TOTAL ITEMS REMOVED</span>
+                    <span class="ml-1">{{ zactra::translate_lang('TOTAL ITEMS REMOVED') }}</span>
                 </a>
             </li>
         </ul>

@@ -82,6 +82,8 @@
 <script src="{{asset('/')}}assets/js/form-wizard.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
+
+
 <script type="text/javascript">
   $(document).ready(function(){
      @if (session('success'))

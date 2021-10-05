@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Receptionist</title>
+<title>{{ zactra::translate_lang('Receptionist') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Admins</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Admins') }}</li>
       </ol>
     </nav>
   </div>
@@ -20,13 +20,13 @@
     <div class="card">
       <div class="card-header pb-0">
         <div class="d-flex justify-content-between">
-          <h4 class="card-title mg-b-0 mt-2">Receptionists</h4>
+          <h4 class="card-title mg-b-0 mt-2">{{ zactra::translate_lang('Receptionists') }}</h4>
           <i class="mdi mdi-dots-horizontal text-gray"></i>
         </div>
         <p class="tx-12 text-muted mb-2">
-          List of all receptionists for your system
+          {{ zactra::translate_lang('List of all receptionists for your system') }}
           <a class="btn btn-primary btn-sm float-right" href="{{ route('owner.receptionist.create')}}" role="button">
-            Create Receptionist
+            {{ zactra::translate_lang('Create Receptionist') }}
           </a>
         </p>
       </div>
@@ -36,10 +36,10 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">FIRST NAME</th>
-                <th scope="col">LAST NAME</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">ACTION</th>
+                <th scope="col">{{ zactra::translate_lang('FIRST NAME') }}</th>
+                <th scope="col">{{ zactra::translate_lang('LAST NAME') }}</th>
+                <th scope="col">{{ zactra::translate_lang('EMAIL') }}</th>
+                <th scope="col">{{ zactra::translate_lang('ACTION') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -53,12 +53,12 @@
                   <meta name="csrf-token" content="{{ csrf_token() }}" />
                   <div class="dropdown show">
                     <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Action
+                      {{ zactra::translate_lang('Action') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" href="{{route('owner.receptionist.edit', $receptionist['id'])}}" data-id="{{ $receptionist['id'] }}">Edit</a>
-                      <a class="dropdown-item" href="{{route('owner.admin.changePassword', $receptionist['id'])}}" data-id="{{ $receptionist['id'] }}">Change Password</a>
-                      <a class="dropdown-item" href="{{ route('owner.delete.receptionist',$receptionist['id']) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $receptionist['id'] }}">Delete</a>
+                      <a class="dropdown-item" href="{{route('owner.receptionist.edit', $receptionist['id'])}}" data-id="{{ $receptionist['id'] }}">{{ zactra::translate_lang('Edit') }}</a>
+                      <a class="dropdown-item" href="{{route('owner.admin.changePassword', $receptionist['id'])}}" data-id="{{ $receptionist['id'] }}">{{ zactra::translate_lang('Change Password') }}</a>
+                      <a class="dropdown-item" href="{{ route('owner.delete.receptionist',$receptionist['id']) }}" onclick="return confirm('Are You Sure?')" data-id="{{ $receptionist['id'] }}">{{ zactra::translate_lang('Delete') }}</a>
                     </div>
                   </div>
                 </td>
