@@ -1,8 +1,6 @@
 @extends('layouts.layout1')
-
-
 @section('meta')
-<title>Free credit education information: stages, rules - Prudent Credit Solutions</title>
+<title>{{ zactra::translate_lang('Free credit education information: stages, rules - Prudent Credit Solutions') }}</title>
 <meta name="description" content="Prudent Credit Solutions' free credit education info about how FICO scores work,
          FICO credit score ranges, how rebuild, create and maintain good credit.">
 @endsection

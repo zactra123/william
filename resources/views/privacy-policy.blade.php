@@ -1,6 +1,6 @@
 @extends('layouts.layout1')
 @section('meta')
-<title>Privacy Policy - What Information do we collect? </title>
+<title>{{ zactra::translate_lang('Privacy Policy - What Information do we collect?') }} </title>
 <meta name="description" content="In this privacy policy, we make it as clear as possible to you what information we collect, how we use it and what rights you have in relation to it. ">
 <meta name="keywords" content="privacy policy prudent scores, terms of use prudent scores">
 @endsection
@@ -9,73 +9,73 @@
 	<div class="container">
 		<div class="col-md-12 col-lg-12 col-sm-12 col-12">
 			<div class="row justify-content-center">
-				<h3>Privacy Policy</h3>
+				<h3>{{ zactra::translate_lang('Privacy Policy') }}</h3>
 			</div>
 			<div class="row justify-content-center">
-				<p>Last updated January 01, 2020</p>
+				<p>{{ zactra::translate_lang('Last updated January 01, 2020') }}</p>
 			</div>
 			<div class="row">
-				<p class="fs-18">Thank you for choosing to be part of our community at <strong>PRUDENT CREDIT SOLUTIONS (“Company</strong> ”, “<strong>we</strong>”, “<strong>us</strong>”, or “<strong>our</strong>”). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at <strong>INFO@PRUDENTSCORES.COM</strong>. </p>
-				<p class="fs-18">When you visit our website <a href="{{ url('/') }}">http://www.Prudentscores.com</a>, mobile application, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy policy, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our sites or apps and our services.
-					This privacy policy applies to all information collected through our website (such as <a href="{{ url('/') }}">http://www.Prudentscores.com</a>), mobile application, and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "services").
-					Please read this privacy policy carefully as it will help you make informed decisions about sharing your personal information with us.</p>
+				<p class="fs-18">{{ zactra::translate_lang('Thank you for choosing to be part of our community at') }} <strong>PRUDENT CREDIT SOLUTIONS (“Company</strong> ”, “<strong>we</strong>”, “<strong>us</strong>”, or “<strong>our</strong>”). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at <strong>INFO@PRUDENTSCORES.COM</strong>. </p>
+				<p class="fs-18">{{ zactra::translate_lang('When you visit our website') }} <a href="{{ url('/') }}">http://www.Prudentscores.com</a>,{{ zactra::translate_lang(' mobile application, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy policy, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our sites or apps and our services.
+					This privacy policy applies to all information collected through our website (such as') }} <a href="{{ url('/') }}">http://www.Prudentscores.com</a>{{ zactra::translate_lang('), mobile application, and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "services").
+					Please read this privacy policy carefully as it will help you make informed decisions about sharing your personal information with us.') }}</p>
 			</div>
 			<div class="row">
 				<p class="fs-18">
-					<h4>Table of contents</h4>
+					<h4>{{ zactra::translate_lang('Table of contents') }}</h4>
 				</p>
 			</div>
 			<div class="">
 				<p class="fs-18">
-					<a href="#infocollect" data-custom-class="link">1. What information do we collect?</a>
+					<a href="#infocollect" data-custom-class="link">{{ zactra::translate_lang('1. What information do we collect?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#infouse" data-custom-class="link">2. How do we use your information?</a>
+					<a href="#infouse" data-custom-class="link">{{ zactra::translate_lang('2. How do we use your information?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#infoshare" data-custom-class="link">3. Will your information be shared with anyone?</a>
+					<a href="#infoshare" data-custom-class="link">{{ zactra::translate_lang('3. Will your information be shared with anyone?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#cookies" data-custom-class="link">4. Do we use cookies and other tracking technologies?</a>
+					<a href="#cookies" data-custom-class="link">{{ zactra::translate_lang('4. Do we use cookies and other tracking technologies?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#googlemaps" data-custom-class="link">5. Do we use google maps?</a>
+					<a href="#googlemaps" data-custom-class="link">{{ zactra::translate_lang('5. Do we use google maps?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#sociallogins" data-custom-class="link">6. How do we handle your social logins?</a>
+					<a href="#sociallogins" data-custom-class="link">{{ zactra::translate_lang('6. How do we handle your social logins?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#3pwebsites" data-custom-class="link">7. What is our stance on third-party websites?</a>
+					<a href="#3pwebsites" data-custom-class="link">{{ zactra::translate_lang('7. What is our stance on third-party websites?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#inforetain" data-custom-class="link">8. How long do we keep your information?</a>
+					<a href="#inforetain" data-custom-class="link">{{ zactra::translate_lang('8. How long do we keep your information?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#infosafe" data-custom-class="link">9. How do we keep your information safe?</a>
+					<a href="#infosafe" data-custom-class="link">{{ zactra::translate_lang('9. How do we keep your information safe?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#infominors" data-custom-class="link">10. Do we collect information from minors?</a>
+					<a href="#infominors" data-custom-class="link">{{ zactra::translate_lang('10. Do we collect information from minors?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#privacyrights" data-custom-class="link">11. What are your privacy rights?</a>
+					<a href="#privacyrights" data-custom-class="link">{{ zactra::translate_lang('11. What are your privacy rights?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#DNT" data-custom-class="link">12. Controls for do-not-track features</a>
+					<a href="#DNT" data-custom-class="link">{{ zactra::translate_lang('12. Controls for do-not-track features') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#caresidents" data-custom-class="link">13. Do california residents have specific privacy rights?</a>
+					<a href="#caresidents" data-custom-class="link">{{ zactra::translate_lang('13. Do california residents have specific privacy rights?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#policyupdates" data-custom-class="link">14. Do we make updates to this policy?</a>
+					<a href="#policyupdates" data-custom-class="link">{{ zactra::translate_lang('14. Do we make updates to this policy?') }}</a>
 				</p>
 				<p class="fs-18">
-					<a href="#contact" data-custom-class="link">15. How can you contact us about this policy?</a>
+					<a href="#contact" data-custom-class="link">{{ zactra::translate_lang('15. How can you contact us about this policy?') }}</a>
 				</p>
 			</div>
 			<div class="card">
 				<div class="card-header">
 					<div class="row pl-4 pt-2">
-						<p id="infocollect" class="fs-18 bold">1. What Information Do We Collect?</p>
+						<p id="infocollect" class="fs-18 bold">{{ zactra::translate_lang('1. What Information Do We Collect?') }}</p>
 					</div>
 				</div>
 				<div class="card-body">

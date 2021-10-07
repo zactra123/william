@@ -3,9 +3,9 @@
 @section('meta')
     <?php
         $description = strip_tags($blog->article);
-        $description = substr(str_replace('&nbsp;', ' ', $description), 0, 157)
+        $description = substr(str_replace('&nbsp;', ' ', $description), 0, 157);
     ?>
-    <title> Prudent Credit Solutions: {{$blog->title}} </title>
+    <title>{{ zactra::translate_lang('Prudent Credit Solutions:') }} {{$blog->title}} </title>
     <meta property="description" content="{{$description}} {{(strlen(strip_tags($blog->article)) > 157) ? '...': ''}}" />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="{{url()->current()}}" />
@@ -105,10 +105,9 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12"></div>
                 <div class="col-md-12 col-sm-12">
-
                     <div class=" ms-ua-box pb-1">
                         <h2>{{$blog->title}}</h2>
-                        <span ><i>Published at:</i> {{date("F j, Y", strtotime($blog->published_date))}}</span>
+                        <span ><i>{{ zactra::translate_lang('Published at:') }}</i> {{date("F j, Y", strtotime($blog->published_date))}}</span>
                         <div>
                             <span class="text-secondary"><i>Share via:</i> </span>
                             <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"><i class="fa fa-facebook-square" ></i></a>
@@ -119,7 +118,6 @@
                     <div class="album py-5">
                         <div class="container">
                             <?php  echo htmlspecialchars_decode(htmlspecialchars($blog->article, ENT_QUOTES))?>
-
                         </div>
                     </div>
                     {{-- <div class="ms-ua-social">
@@ -130,9 +128,5 @@
                 </div>
             </div>
         </div>
-
     </section>
-
-
-
 @endsection

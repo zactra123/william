@@ -18,7 +18,7 @@ use Hash;
 class TranslationController extends Controller
 {
     /**
-     * ReceptionistsController constructor.
+     * TranslationController constructor.
      * Should access only logged in user with Super Admin("superadmin") Role
      * Super Admin can view receptionists list, create, update or delete an receptionist
      * Created receptionist should have Ip address(es), which require to access Admin pages
