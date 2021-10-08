@@ -14,24 +14,23 @@
               </div>
           @endif
 
-          <h1 class="fs-25 bold theme-color-dark">Forgot Your Password?</h1>
-          <p>Nothing to worry, Recover your password using your email address!</p>
+          <h1 class="fs-25 bold theme-color-dark">{{ zactra::translate_lang('Forgot Your Password?') }}</h1>
+          <p>{{ zactra::translate_lang('Nothing to worry, Recover your password using your email address!') }}</p>
           <br>
           <div class="form-group">
-            <input type="email" name="email"  class="@error('email')  is-invalid @enderror form-control fs-12" autofocus value="{{ old('email') }}" id="email" placeholder="E-Mail-adress">
+            <input type="email" name="email"  class="@error('email')  is-invalid @enderror form-control fs-12" autofocus value="{{ old('email') }}" id="email" placeholder="{{ zactra::translate_lang('E-Mail-adress') }}">
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
           </div>
-
           <div class="basic-button login-box text-center">
-              <input class="login" type="submit" value="Reset Password">
+              <input class="login" type="submit" value="{{ zactra::translate_lang('Reset Password') }}">
           </div>
         </form>
         <p class="pt-4 fs-12 text-center">
-            Remember Your Password? <a class="fs-12 theme-color-dark" href="{{route('login')}}">Sign In</a>
+            {{ zactra::translate_lang('Remember Your Password?') }} <a class="fs-12 theme-color-dark" href="{{route('login')}}">{{ zactra::translate_lang('Sign In') }}</a>
         </p>
       </div>
     </div>

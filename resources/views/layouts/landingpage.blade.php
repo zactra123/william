@@ -244,8 +244,8 @@
 						</div>
 					</div>
 				</div>
-			</section><!-- End Counts Section -->
-
+			</section>
+			<!-- End Counts Section -->
 			<!-- ======= Why Us Section ======= -->
 			<section id="why-us" class="why-us section-bg">
 				<div class="container-fluid" data-aos="fade-up">
@@ -312,9 +312,8 @@
 													{{ zactra::convertDay($value->created_by) }}
 												</div>
 												<div class="row mt-2">
-													" {{ zactra::limit_words($value->review,215)}} "
+													" {{ zactra::limit_words($value->review,200)}} "
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -434,7 +433,6 @@
 		<div id="preloader"></div>
 		<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-arrow-up"></i></a>
 	</body>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
 </html>

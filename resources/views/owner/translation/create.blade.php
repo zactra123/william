@@ -34,19 +34,24 @@
                   <input type="hidden" name="id" value="{{ $translation->id }}">
                 @endif
                 <div class="form-group row font">
-                  <input type="text" name="key" class="form-control" placeholder="{{ zactra::translate_lang('Key') }}" value="{{ isset($translation) ? $translation->key : ''}}" required>
+                  <textarea name="key" rows="5" class="form-control" placeholder="{{ zactra::translate_lang('Key') }}" required>{{ isset($translation) ? $translation->key : ''}}</textarea>
+                  {{-- <input type="text" name="key" class="form-control" placeholder="{{ zactra::translate_lang('Key') }}" value="{{ isset($translation) ? $translation->key : ''}}" required> --}}
                 </div>
                 <div class="form-group row font">
-                  <input type="text" name="english" class="form-control" placeholder="{{ zactra::translate_lang('In English') }}" value="{{ isset($translation) ? $translation->english : ''}}">
+                  <textarea name="english" rows="5" class="form-control" placeholder="{{ zactra::translate_lang('In English') }}" required>{{ isset($translation) ? $translation->english : ''}}</textarea>
+                  {{-- <input type="text" name="english" class="form-control" placeholder="{{ zactra::translate_lang('In English') }}" value="{{ isset($translation) ? $translation->english : ''}}"> --}}
                 </div>
                 <div class="form-group row font">
-                  <input type="text" name="spanish" class="form-control" placeholder="{{ zactra::translate_lang('In Spanish') }}" value="{{ isset($translation) ? $translation->spanish : ''}}">
+                  <textarea name="spanish" rows="5" class="form-control" placeholder="{{ zactra::translate_lang('In Spanish') }}" required>{{ isset($translation) ? $translation->spanish : ''}}</textarea>
+                  {{-- <input type="text" name="spanish" class="form-control" placeholder="{{ zactra::translate_lang('In Spanish') }}" value="{{ isset($translation) ? $translation->spanish : ''}}"> --}}
                 </div>
                 <div class="form-group row font">
-                  <input type="text" name="french" class="form-control" placeholder="{{ zactra::translate_lang('In French') }}" value="{{ isset($translation) ? $translation->french : ''}}">
+                  <textarea name="french" rows="5" class="form-control" placeholder="{{ zactra::translate_lang('In French') }}" required>{{ isset($translation) ? $translation->french : ''}}</textarea>
+                  {{-- <input type="text" name="french" class="form-control" placeholder="{{ zactra::translate_lang('In French') }}" value="{{ isset($translation) ? $translation->french : ''}}"> --}}
                 </div>
                 <div class="form-group row font">
-                  <input type="text" name="german" class="form-control" placeholder="{{ zactra::translate_lang('In German') }}" value="{{ isset($translation) ? $translation->german : ''}}">
+                  <textarea name="german" rows="5" class="form-control" placeholder="{{ zactra::translate_lang('In German') }}" required>{{ isset($translation) ? $translation->german : ''}}</textarea>
+                  {{-- <input type="text" name="german" class="form-control" placeholder="{{ zactra::translate_lang('In German') }}" value="{{ isset($translation) ? $translation->german : ''}}"> --}}
                 </div>
                 <div class="form-group row mb-0 font">
                   <div class="col-md-12 text-right px-0">

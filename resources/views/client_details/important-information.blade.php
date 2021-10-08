@@ -2,8 +2,8 @@
 @section('body')
 <section class="header-title section-padding">
   <div class="container text-center">
-    <h2 class="title">Important Information</h2>
-    <span class="sub-title"><a href="#">Home</a> &gt; Impotant Information</span>
+    <h2 class="title">{{ zactra::translate_lang('Important Information') }}</h2>
+    <span class="sub-title"><a href="#">{{ zactra::translate_lang('Home') }}</a> &gt;{{ zactra::translate_lang('Impotant Information') }} </span>
   </div>
 </section>
 <section class="ms-user-account">
@@ -12,7 +12,8 @@
       <div class="col-md-3 col-sm-12"></div>
       <div class="col-md-6 col-sm-12">
         <div class="ms-ua-box">
-          {!! Form::open(['route' => ['client.important'], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!} @csrf
+          {!! Form::open(['route' => ['client.important'], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!}
+          @csrf
           <div class="form-group row font justify-content-center">
             <div class="form-group">
               <div class="col-md-12" class="col-md-12">
@@ -33,7 +34,7 @@
           </div>
           <div class="form-group">
             <select class="form-control" name="secret_questions_id" id="secret_question">
-              <option disabled="disabled" selected="selected">Choose Secret Question</option>
+              <option disabled="disabled" selected="selected">{{ zactra::translate_lang('Choose Secret Question') }}</option>
               @foreach($secrets as $value)
               <option value="{{$value->id}}" {{$client->secret_questions_id == $value-> id ? "selected" : ""}}>{{$value->question}}</option>
               @endforeach
@@ -45,16 +46,7 @@
             @enderror
           </div>
           <div class="form-group">
-            <input
-              id="secret_answer"
-              type="text"
-              class="form-control phone"
-              name="secret_answer"
-              value="{{ !empty(old('secret_answer')) ? old('secret_answer') : $client->secret_answer  }}"
-              required
-              autocomplete="secret_answer"
-              placeholder="PLEASE ANSWER IN SECRET QUESTION"
-            />
+            <input id="secret_answer" type="text" class="form-control phone" name="secret_answer" value="{{ !empty(old('secret_answer')) ? old('secret_answer') : $client->secret_answer  }}" required autocomplete="secret_answer" placeholder="{{ zactra::translate_lang('PLEASE ANSWER IN SECRET QUESTION') }}"/>
             @error('secret_answer')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

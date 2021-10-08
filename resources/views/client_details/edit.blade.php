@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Client Profile</title>
+<title>{{ zactra::translate_lang('Client Profile') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Client Profile</li>
+        <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Client Profile') }}</li>
       </ol>
     </nav>
   </div>
@@ -22,8 +22,8 @@
     </span>
     {{-- @if(!$client->credentials->is_present()) --}}
     <span>
-      Please provide us your credentials, so we can fetch your report. You can provide them
-      <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">here</a>
+      {{ zactra::translate_lang('Please provide us your credentials, so we can fetch your report. You can provide them') }}
+      <a href="{{route("client.credentials")}}" class="" style="font-size:16px;">{{ zactra::translate_lang('here') }}</a>
     </span>
     {{-- @elseif(!$client->reports->first())
     <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
@@ -45,36 +45,44 @@
             <div class="main-img-user profile-user"><img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg"><a href="JavaScript:void(0);" class="fas fa-camera profile-edit"></a></div>
           </div>
           <h4 class="mb-0">{{ $client->full_name() }}</h4>
-          <span class="text-muted d-block mb-2">Client</span>
+          <span class="text-muted d-block mb-2">{{ zactra::translate_lang('Client') }}</span>
         </div>
         <div class="">
           <table class="table">
             <tr>
-              <td class="pborder-none"><strong class="text-muted mb-2">Email :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mb-2">{{ zactra::translate_lang('Email :') }}</strong></td>
               <td class="pborder-none">{{ $client->email }}</td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mb-2">Address :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mb-2">{{ zactra::translate_lang('Address :') }}</strong></td>
               <td class="pborder-none">{{$client->clientDetails->number}} {{$client->clientDetails->name}} {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mt-2">Date of Birth :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mt-2">{{ zactra::translate_lang('Date of Birth :') }}</strong></td>
               <td class="pborder-none">{{date("m/d/Y", strtotime($client->clientDetails->dob))}}</td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mt-2">Age :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mt-2">{{ zactra::translate_lang('Age :') }}</strong></td>
               <td class="pborder-none">{{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mt-2">Social Security Number :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mt-2">{{ zactra::translate_lang('Social Security Number :') }}</strong></td>
               <td class="pborder-none">{{$client->clientDetails->ssn}}</td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mt-2">Gender :</strong></td>
-              <td class="pborder-none"> @if($client->clientDetails->sex == 'M') Male @elseif($client->clientDetails->sex == 'F') Female @else Non-binary @endif</td>
+              <td class="pborder-none"><strong class="text-muted mt-2">{{ zactra::translate_lang('Gender :') }}</strong></td>
+              <td class="pborder-none">
+                @if($client->clientDetails->sex == 'M')
+                  {{ zactra::translate_lang('Male') }}
+                @elseif($client->clientDetails->sex == 'F')
+                  {{ zactra::translate_lang('Female') }}
+                @else
+                  {{ zactra::translate_lang('Non-binary') }}
+                @endif
+              </td>
             </tr>
             <tr>
-              <td class="pborder-none"><strong class="text-muted mt-2">Referred By :</strong></td>
+              <td class="pborder-none"><strong class="text-muted mt-2">{{ zactra::translate_lang('Referred By :') }}</strong></td>
               <td class="pborder-none"> {{strtoupper($client->clientDetails->referred_by)}}</td>
             </tr>
           </table>
@@ -84,13 +92,15 @@
     <div class="col-lg-8">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">
-          <h6 class="m-0">Please Review Your Personal Data And Make Changes If Necessary</h6>
+          <h6 class="m-0">{{ zactra::translate_lang('Please Review Your Personal Data And Make Changes If Necessary') }}</h6>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item p-3">
             <div class="row">
               <div class="col">
-                {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
+                {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!}
+                @method('PUT')
+                @csrf
                 <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                   <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-12">
@@ -118,7 +128,7 @@
                   </div>
                   <div class="row mt-3">
                     <div class="col-md-12">
-                      <input type="submit" class="btn btn-primary pull-right" style="float: right;" name="" value="Update" />
+                      <input type="submit" class="btn btn-primary pull-right" style="float: right;" name="" value="{{ zactra::translate_lang('Update') }}" />
                     </div>
                   </div>
                 </div>
@@ -129,7 +139,7 @@
       </div>
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">
-          <h6 class="m-0">Upload Documents</h6>
+          <h6 class="m-0">{{ zactra::translate_lang('Upload Documents') }}</h6>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item p-3">
@@ -139,11 +149,11 @@
                 <div class="col-sm-12 form-group files mt-3">
                   {{-- <input class="bank_logo file-box" type="file" name="driver" id="bank_logo" />--}}
                   <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver" id="driver_license" />
-                  <label class="custom-file-label" for="inputGroupFile01">Choose Driver License</label>
+                  <label class="custom-file-label" for="inputGroupFile01">{{ zactra::translate_lang('Choose Driver License') }}</label>
                 </div>
                 <div class="col-sm-12 form-group files mt-4">
                   <input class="social_security file-box" class="custom-file-input" id="inputGroupFile02" type="file" name="social" id="social_security" />
-                  <label class="custom-file-label" for="inputGroupFile02">Choose Social Security </label>
+                  <label class="custom-file-label" for="inputGroupFile02">{{ zactra::translate_lang('Choose Social Security') }} </label>
                 </div>
                 <div class="col-sm-12 pr-0 mt-3 mt-4">
                   <input type="submit" value="Upload" class="btn btn-primary ms-ua-submit pull-right" style="float: right;" />

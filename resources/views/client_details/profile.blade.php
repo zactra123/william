@@ -4,7 +4,7 @@
   <!-- Page Header -->
   <div class="page-header row no-gutters py-4">
     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-      <h3 class="page-title">Client Profile</h3>
+      <h3 class="page-title">{{ zactra::translate_lang('Client Profile') }}</h3>
     </div>
   </div>
   <div class="alert alert-success alert-dismissible fade show mb-0 mb-3 text-center text-white" role="alert">
@@ -13,8 +13,8 @@
     </button>
     {{-- @if(!$client->credentials->is_present()) --}}
     <span>
-      Please provide us your credentials, so we can fetch your report. You can provide them
-      <a href="{{route("client.credentials")}}" class="bold" style="font-size:16px;">here</a>
+      {{ zactra::translate_lang('Please provide us your credentials, so we can fetch your report. You can provide them') }}
+      <a href="{{route("client.credentials")}}" class="bold" style="font-size:16px;">{{ zactra::translate_lang('here') }}</a>
     </span>
     {{-- @elseif(!$client->reports->first())
     <span>We are trying to fetch your report data. As it can take some time, we'll notify you once it is done.</span>
@@ -36,37 +36,37 @@
             <img class="rounded-circle" src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" alt="User Avatar" width="110" />
           </div>
           <h4 class="mb-0">{{ $client->full_name() }}</h4>
-          <span class="text-muted d-block mb-2">Client</span>
+          <span class="text-muted d-block mb-2">{{ zactra::translate_lang('Client') }}</span>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item p-4">
-            <strong class="text-muted d-block mb-2">Email</strong>
+            <strong class="text-muted d-block mb-2">{{ zactra::translate_lang('Email') }}</strong>
             <span>{{ $client->email }}</span>
 
-            <strong class="text-muted d-block mt-2">Address</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Address') }}</strong>
             <span>{{$client->clientDetails->number}} {{$client->clientDetails->name}} {{$client->clientDetails->city}}, {{$client->clientDetails->state}} {{$client->clientDetails->zip}}</span>
 
-            <strong class="text-muted d-block mt-2">Date of Birth</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Date of Birth') }}</strong>
             <span>{{date("m/d/Y", strtotime($client->clientDetails->dob))}}</span>
 
-            <strong class="text-muted d-block mt-2">Age</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Age') }}</strong>
             <span>{{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</span>
 
-            <strong class="text-muted d-block mt-2">Social Security Number</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Social Security Number') }}</strong>
             <span>{{$client->clientDetails->ssn}}</span>
 
-            <strong class="text-muted d-block mt-2">Gender</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Gender') }}</strong>
             <span>
               @if($client->clientDetails->sex == 'M')
-                Male
+                {{ zactra::translate_lang('Male') }}
               @elseif($client->clientDetails->sex == 'F')
-                Female
+                {{ zactra::translate_lang('Female') }}
               @else
-                Non-binary
+                {{ zactra::translate_lang('Non-binary') }}
               @endif
            </span>
 
-            <strong class="text-muted d-block mt-2">Referred By</strong>
+            <strong class="text-muted d-block mt-2">{{ zactra::translate_lang('Referred By') }}</strong>
             <span>{{strtoupper($client->clientDetails->referred_by)}}</span>
           </li>
         </ul>
@@ -75,13 +75,15 @@
     <div class="col-lg-8">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">
-          <h6 class="m-0">Edit Profile</h6>
+          <h6 class="m-0">{{ zactra::translate_lang('Edit Profile') }}</h6>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item p-3">
             <div class="row">
               <div class="col">
-                {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
+                {!! Form::open(['route' => ['client.details.update', $client->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!}
+                @method('PUT')
+                @csrf
                 <div class="form row">
                   <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                     <div class="row">
@@ -103,7 +105,7 @@
                     </div>
                     <div class="row mt-3">
                       <div class="col-md-12 col-sm-12 col-lg-12 col-12">
-                        <button type="submit" value="Update" class="btn btn-primary pull-right" style="float: right;">Update</button>
+                        <button type="submit" value="Update" class="btn btn-primary pull-right" style="float: right;">{{ zactra::translate_lang('Update') }}</button>
                         {!! Form::close() !!}
                       </div>
                     </div>
@@ -116,7 +118,7 @@
       </div>
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">
-          <h6 class="m-0">Upload Documents</h6>
+          <h6 class="m-0">{{ zactra::translate_lang('Upload Documents') }}</h6>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item p-3">
@@ -128,11 +130,11 @@
                 <div class="col-sm-12 form-group files mt-3">
                   {{-- <input class="bank_logo file-box" type="file" name="driver" id="bank_logo" />--}}
                   <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver" id="driver_license" />
-                  <label class="custom-file-label" for="inputGroupFile01">Choose Driver License</label>
+                  <label class="custom-file-label" for="inputGroupFile01">{{ zactra::translate_lang('Choose Driver License') }}</label>
                 </div>
                 <div class="col-sm-12 form-group files">
                   <input class="social_security file-box" class="custom-file-input" id="inputGroupFile02" type="file" name="social" id="social_security" />
-                  <label class="custom-file-label" for="inputGroupFile02">Choose Social Security </label>
+                  <label class="custom-file-label" for="inputGroupFile02">{{ zactra::translate_lang('Choose Social Security') }} </label>
                 </div>
                 <div class="col-sm-12 pr-0">
                   <input type="submit" value="Upload" class="btn btn-primary ms-ua-submit pull-right" style="float: right;" />

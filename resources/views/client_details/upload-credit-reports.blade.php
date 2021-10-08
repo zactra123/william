@@ -49,15 +49,16 @@
       <div class="card">
         <div class="card-header">
           <div class="w-100 btn-group btn-group-toggle" data-toggle="buttons">
-            <button type="button" class="btn tab-selector active" data-target="karma-tab" id="karma">Credit Karma</button>
-            <button type="button" class="btn tab-selector" data-target="experian-tab" id="experian">Experian</button>
-            <button type="button" class="btn tab-selector" data-target="tu-tab" id="tuMembership">TransUnion CREDIT MONITORING</button>
-            <button type="button" class="btn tab-selector" data-target="tu-online-tab" id="tuOnline">TransUnion Online Dispute</button>
+            <button type="button" class="btn tab-selector active" data-target="karma-tab" id="karma">{{ zactra::translate_lang('Credit Karma') }}</button>
+            <button type="button" class="btn tab-selector" data-target="experian-tab" id="experian">{{ zactra::translate_lang('ServiExperiances') }}</button>
+            <button type="button" class="btn tab-selector" data-target="tu-tab" id="tuMembership">{{ zactra::translate_lang('TransUnion CREDIT MONITORING') }}</button>
+            <button type="button" class="btn tab-selector" data-target="tu-online-tab" id="tuOnline">{{ zactra::translate_lang('TransUnion Online Dispute') }}</button>
           </div>
         </div>
 
         <div class="card-body">
-          {!! Form::open(['route'=>['client.uploadPdf'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!} @csrf
+          {!! Form::open(['route'=>['client.uploadPdf'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right']) !!}
+          @csrf
           <div class="pdf-upload karma-tab active">
             <div class="form-group files">
               <input type="file" name="credit_report[credit_karma]" class="form-control" multiple="" />
@@ -66,30 +67,30 @@
 
           <div class="pdf-upload experian-tab">
             <div class="form-group files">
-              <label>Upload Your File </label>
+              <label>{{ zactra::translate_lang('Upload Your File') }} </label>
               <input type="file" name="credit_report[experian]" class="form-control" multiple="" />
             </div>
           </div>
           <div class="pdf-upload tu-tab">
             <div class="form-group files">
-              <label>Upload Your File </label>
+              <label>{{ zactra::translate_lang('Upload Your File') }} </label>
               <input type="file" name="credit_report[tu][client_details]" class="form-control" multiple="" />
             </div>
             <div class="form-group files">
-              <label>Upload Your File </label>
+              <label>{{ zactra::translate_lang('Upload Your File') }} </label>
               <input type="file" name="credit_report[tu][payment_history]" class="form-control" multiple="" />
             </div>
           </div>
           <div class="pdf-upload tu-online-tab">
             <div class="form-group files">
-              <label>Upload Your File </label>
+              <label>{{ zactra::translate_lang('Upload Your File') }} </label>
               <input type="file" name="credit_report[tu_online]" class="form-control" multiple="" />
             </div>
           </div>
           <div class="form-group row mb-0 font">
             <div class="col-md-8 offset-md-5">
               <button type="submit" class="btn btn-uploadBtn">
-                Upload
+                {{ zactra::translate_lang('Upload') }}
               </button>
             </div>
           </div>

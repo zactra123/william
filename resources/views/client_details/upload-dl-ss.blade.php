@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Upload Documents</title>
+<title>{{ zactra::translate_lang('Upload Documents') }}</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
       <div>
-          <h4 class="content-title mb-2">Hi, welcome back!</h4>
+          <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
           <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Upload Documents</li>
+                  <li class="breadcrumb-item"><a href="{{ url('/client/details') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Upload Documents') }}</li>
               </ol>
           </nav>
       </div>

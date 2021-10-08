@@ -4,7 +4,7 @@
 <section class="register">
   {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
   <div class="register-form {{auth()->user()->clientDetails->registration_steps =='documents'? "large": 'big'}}" data-id="1">
-      <h3 class="title theme-color-dark">Registration</h3>
+      <h3 class="title theme-color-dark">{{ zactra::translate_lang('Registration') }}</h3>
       @include('helpers.steps',['user' => auth()->user()])
       @include('client_details.registration_steps.important_information', ['current_page'=> auth()->user()->clientDetails->registration_steps =='important_information' ?'active' : 'none' ])
       @include('client_details.registration_steps.documents2', ['current_page'=> auth()->user()->clientDetails->registration_steps =='documents' ?'active' : 'none' ])
@@ -30,7 +30,7 @@
           <path d="M19.25 0H3.5C1.56975 0 0 1.56975 0 3.5V21C0 21.3395 0.196 21.6493 0.504 21.7927C0.62125 21.847 0.749 21.875 0.875 21.875C1.07625 21.875 1.27575 21.805 1.435 21.672L6.44175 17.5H19.25C21.1803 17.5 22.75 15.9303 22.75 14V3.5C22.75 1.56975 21.1803 0 19.25 0ZM21 14C21 14.9642 20.216 15.75 19.25 15.75H6.125C5.92025 15.75 5.7225 15.8218 5.565 15.953L1.75 19.1327V3.5C1.75 2.53575 2.534 1.75 3.5 1.75H19.25C20.216 1.75 21 2.53575 21 3.5V14Z" fill="white"/>
           <path d="M24.5 7C24.017 7 23.625 7.392 23.625 7.875C23.625 8.358 24.017 8.75 24.5 8.75C25.466 8.75 26.25 9.53575 26.25 10.5V25.3032L23.296 22.9408C23.142 22.8183 22.9478 22.75 22.75 22.75H10.5C9.534 22.75 8.75 21.9642 8.75 21V20.125C8.75 19.642 8.358 19.25 7.875 19.25C7.392 19.25 7 19.642 7 20.125V21C7 22.9303 8.56975 24.5 10.5 24.5H22.442L26.5773 27.8092C26.7365 27.9352 26.9307 28 27.125 28C27.2528 28 27.3822 27.972 27.5047 27.9142C27.8075 27.7673 28 27.461 28 27.125V10.5C28 8.56975 26.4303 7 24.5 7Z" fill="white"/>
         </svg>
-        <span id="chat_header_hide_text" >Talk to us, we are online!</span>
+        <span id="chat_header_hide_text" >{{ zactra::translate_lang('Talk to us, we are online!') }}</span>
       </p>
     </div>
     <div class="body" id="chat_body">
@@ -43,16 +43,16 @@
         </div>
       </div>
       <form action="" id="chat_form">
-          <p class="text-white">You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
+          <p class="text-white">{{ zactra::translate_lang('You can write your questions on our online portal. Our experts will help you find answers to your questions.') }}</p>
           <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-            <input type="text" placeholder="Your full name">
+            <input type="text" placeholder="{{ zactra::translate_lang('Your full name') }}">
           </div>
           <div class="contact">
             <div class="col-md-12 col-lg-12 col-sm-12 col-12">
               <div class="row">
                 <div class="col-md-5 col-lg-5 col-sm-11 col-11">
                   <label for="email" class="email-label">
-                    <input type="email" id="email" placeholder="E-mail Address">
+                    <input type="email" id="email" placeholder="{{ zactra::translate_lang('E-mail Address') }}">
                   </label>
                 </div>
                 <div class="col-md-2 col-lg-2 col-sm-2 col-2 text-center pt-3 text-white">
@@ -60,17 +60,17 @@
                 </div>
                 <div class="col-md-5 col-lg-5 col-sm-11 col-11">
                   <label for="phone" class="phone-label">
-                    <input type="tel" id="phone" disabled placeholder="Phone Number">
+                    <input type="tel" id="phone" disabled placeholder="{{ zactra::translate_lang('Phone Number') }}">
                   </label>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-            <textarea placeholder="write your message" cols="30" rows="10" class="mb-5"></textarea>
+            <textarea placeholder="{{ zactra::translate_lang('write your message') }}" cols="30" rows="10" class="mb-5"></textarea>
           </div>
           <div class="form-submit mb-5">
-            <input type="submit" value="Submit">
+            <input type="submit" value="{{ zactra::translate_lang('Submit') }}">
           </div>
       </form>
     </div>
