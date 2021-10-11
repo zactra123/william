@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Client Profile</title>
+<title>{{ zactra::translate_lang('Client Profile') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Client</li>
-        <li class="breadcrumb-item active" aria-current="page">Client Profile</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Client') }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Client Profile') }}</li>
       </ol>
     </nav>
   </div>
@@ -27,13 +27,13 @@
         <div class="heading px-3">
           <div class="row">
             <div class="info">
-              <h5>Client No: 01</h5>
+              <h5>{{ zactra::translate_lang('Client No: 01') }}</h5>
             </div>
           </div>
           <div class="row">
             <div class="col-l-12 m-0">
               <a href="#" class="link closeUpload">
-                Upload New Id or Social Security
+                {{ zactra::translate_lang('Upload New Id or Social Security') }}
               </a>
             </div>
           </div>
@@ -41,7 +41,9 @@
             <button type="button" class="close closeUpload btn btn-primary">
               <span aria-hidden="true">&times;</span>
             </button>
-            {!! Form::open(['route'=>['adminRec.client.update', $client->id],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!} @method("PUT") @csrf
+            {!! Form::open(['route'=>['adminRec.client.update', $client->id],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+            @method("PUT")
+            @csrf
             <div class="col-sm-12 files">
               {{--<input class="bank_logo file-box" type="file" name="driver" id="bank_logo" />--}}
               <input class="driver_license file-box" type="file" name="driver" id="driver_license" />
@@ -49,7 +51,7 @@
             <div class="col-sm-12 files">
               <input class="social_security file-box" type="file" name="social" id="social_security" />
             </div>
-            <div class="col"><input type="submit" value="Upload" class="ms-ua-submit btn btn-primary" /></div>
+            <div class="col"><input type="submit" value="{{ zactra::translate_lang('Upload') }}" class="ms-ua-submit btn btn-primary" /></div>
 
             {!! Form::close() !!}
           </div>
@@ -57,12 +59,13 @@
         <ul class="categories">
           <li title="Full Name" class="dl-field">
             @if(!empty($client->clientAttachments()))
-            <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?> @if(!empty($dl) && $dl->type != "pdf")
-            <img type="file" class="zoomDL hide" src="{{asset($dl->path)}}" width="25px" name="img-drvl" id="img-drvl" />
+            <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+            @if(!empty($dl) && $dl->type != "pdf")
+              <img type="file" class="zoomDL hide" src="{{asset($dl->path)}}" width="25px" name="img-drvl" id="img-drvl" />
             @else
-            <img type="file" class="zoomDL hide" src="{{url('/')}}/images/full_name.png" width="25px" name="img-drvl" id="img-drvl" />
+              <img type="file" class="zoomDL hide" src="{{url('/')}}/images/full_name.png" width="25px" name="img-drvl" id="img-drvl" />
             @endif @endif
-            <img class="full_name" src="{{url('/')}}/images/full_name.png" width="25px" />
+              <img class="full_name" src="{{url('/')}}/images/full_name.png" width="25px" />
             &nbsp; <a href="#"><span>{{$client->full_name()}}</span></a>
           </li>
 
@@ -102,17 +105,17 @@
             <p class="zodiac pt-4">
               {{strtoupper($zodiac['month'])}}/{{strtoupper($zodiac['year'])}}
               <br />
-              <b>Birthstones -</b> {{strtoupper($zodiac['stone'])}}
+              <b>{{ zactra::translate_lang('Birthstones') }} -</b> {{strtoupper($zodiac['stone'])}}
             </p>
           </li>
           <li title="Social Security Number" class="ssn-field">
             @if(!empty($client->clientAttachments()))
-            <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?> @if(!empty($ss) && $ss->type != "pdf")
-            <img type="file" class="zoomSS hide" width="25px" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+              <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?> @if(!empty($ss) && $ss->type != "pdf")
+              <img type="file" class="zoomSS hide" width="25px" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
             @else
-            <img type="file" class="zoomSS hide" width="25px" src="{{url('/')}}/images/ssc.png" name="img-sos" id="img-sose" />
-
-            @endif @endif
+              <img type="file" class="zoomSS hide" width="25px" src="{{url('/')}}/images/ssc.png" name="img-sos" id="img-sose" />
+            @endif
+            @endif
             <img class="ss_number" width="25px" src="{{url('/')}}/images/ssc.png" />
 
             &nbsp; <span class="ssn">{{$client->clientDetails->ssn}}</span>
@@ -148,61 +151,42 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Report Access
+            {{ zactra::translate_lang('Report Access') }}
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-md-3">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Equifax</span>
+                    <span class="report_access">{{ zactra::translate_lang('Equifax') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">Annual Credit Report</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">Dispute</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/membercenter/#/login" target="_blank">Dispute Status</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://aa.econsumer.equifax.com/aad/landing.ehtml" target="_blank">Fcra</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/membercenter/#/login" target="_blank">Member Login</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.econsumer.equifax.com/otc/landing.ehtml?^start=&companyName=W18uft01_uplanr" target="_blank">Membership Signup </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('Annual Credit Report') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">{{ zactra::translate_lang('Dispute') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/membercenter/#/login" target="_blank">{{ zactra::translate_lang('Dispute Status') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://aa.econsumer.equifax.com/aad/landing.ehtml" target="_blank">{{ zactra::translate_lang('Fcra') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://my.equifax.com/membercenter/#/login" target="_blank">{{ zactra::translate_lang('Member Login') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.econsumer.equifax.com/otc/landing.ehtml?^start=&companyName=W18uft01_uplanr" target="_blank">{{ zactra::translate_lang('Membership Signup') }} </a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item px-3 py-3" href="#equifax" data-toggle="modal">Login Credentials </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="#equifax" data-toggle="modal">{{ zactra::translate_lang('Login Credentials') }} </a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Experion</span>
+                    <span class="report_access">{{ zactra::translate_lang('Experion') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">Annual Credit Report</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/creditreport?type=declined">Denied</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/registration/?offer=at_fcras102,at_ltdreg100&op=FRCD-DIS-PRI-102-WGT-EXDPTAG-B1-EXP-VWIN-SEO-XXXXXX-XXXXXX-XXXXX">Dispute</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/disputeresults?intcmp=dispute_email_resultsready02">Dispute Status </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/dispute">View Report</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/login/index?br=exp">Member Login </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">Membership Signup</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('Annual Credit Report') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/creditreport?type=declined">{{ zactra::translate_lang('Denied') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/registration/?offer=at_fcras102,at_ltdreg100&op=FRCD-DIS-PRI-102-WGT-EXDPTAG-B1-EXP-VWIN-SEO-XXXXXX-XXXXXX-XXXXX">{{ zactra::translate_lang('Dispute') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/disputeresults?intcmp=dispute_email_resultsready02">{{ zactra::translate_lang('Dispute Status') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.experian.com/ncaconline/dispute">{{ zactra::translate_lang('View Report') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/login/index?br=exp">{{ zactra::translate_lang('Member Login') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">{{ zactra::translate_lang('Membership Signup') }}</a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item px-3 py-3" href="#experian" data-toggle="modal">Login Credentials </a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="dropdown-submenu text-left mmb-5">
-                  <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">TransUnion</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">Annual Credit Report</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://dispute.transunion.com/dp/dispute/landingPage.jsp?PLACE_CTA=dispute:cta">Dispute Login </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://disclosure.transunion.com/dc/disclosure/landingPage.jsp">Disclosure Login</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://fraud.transunion.com/fa/fraudAlert/landingPage.jsp?incorrect=true">Fraud Login </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://dispute.transunion.com/fa/fraudAlert/indexProcess">New Account Registration</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://membership.tui.transunion.com/tucm/login.page?PLACE_CTA=TransUnion:PHP:Login">Member Login </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?">Membership Signup</a></li>
-                    <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item px-3 py-3" href="#transunion" data-toggle="modal">Login Credentials </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="#experian" data-toggle="modal">{{ zactra::translate_lang('Login Credentials') }} </a></li>
                   </ul>
                 </div>
               </div>
@@ -210,24 +194,43 @@
               <div class="col-md-3">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Innovis</span>
+                    <span class="report_access">{{ zactra::translate_lang('TransUnion') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/creditReport/index" target="_blank">Request Credit Report </a>
-                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/personal/creditReport/orderYourInnovisCreditReport#dropdownMenu">Login</a>
-                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/securityFreeze/index">Security Freeze </a>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('Annual Credit Report') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://dispute.transunion.com/dp/dispute/landingPage.jsp?PLACE_CTA=dispute:cta">{{ zactra::translate_lang('Dispute Login') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://disclosure.transunion.com/dc/disclosure/landingPage.jsp">{{ zactra::translate_lang('Disclosure Login') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://fraud.transunion.com/fa/fraudAlert/landingPage.jsp?incorrect=true">{{ zactra::translate_lang('Fraud Login') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://dispute.transunion.com/fa/fraudAlert/indexProcess">{{ zactra::translate_lang('New Account Registration') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://membership.tui.transunion.com/tucm/login.page?PLACE_CTA=TransUnion:PHP:Login">{{ zactra::translate_lang('Member Login') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?">{{ zactra::translate_lang('Membership Signup') }}</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="dropdown-item px-3 py-3" href="#transunion" data-toggle="modal">{{ zactra::translate_lang('Login Credentials') }} </a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="dropdown-submenu text-left mmb-5">
+                  <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
+                    <span class="report_access">{{ zactra::translate_lang('Innovis') }}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/creditReport/index" target="_blank">{{ zactra::translate_lang('Request Credit Report') }} </a>
+                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/personal/creditReport/orderYourInnovisCreditReport#dropdownMenu">{{ zactra::translate_lang('Login') }}</a>
+                    <a class="dropdown-item px-3 py-3" href="https://www.innovis.com/securityFreeze/index">{{ zactra::translate_lang('Security Freeze') }} </a>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">ChexSystems</span>
+                    <span class="report_access">{{ zactra::translate_lang('ChexSystems') }}</span>
                   </a>
                   <ul class="dropdown-menu">
                     <li>
                       <a class="dropdown-item px-3 py-3" href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank">
-                        Order Consumer Report
+                        {{ zactra::translate_lang('Order Consumer Report') }}
                       </a>
                     </li>
                   </ul>
@@ -236,61 +239,61 @@
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Credit Karma</span>
+                    <span class="report_access">{{ zactra::translate_lang('Credit Karma') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.creditkarma.com/auth/logon" target="_blank">Member Login</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.creditkarma.com/signup/">Signup</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="#creditkarma" data-toggle="modal">Login Credentials </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.creditkarma.com/auth/logon" target="_blank">{{ zactra::translate_lang('Member Login') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.creditkarma.com/signup/">{{ zactra::translate_lang('Signup') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="#creditkarma" data-toggle="modal">{{ zactra::translate_lang('Login Credentials') }} </a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Early Warning</span>
+                    <span class="report_access">{{ zactra::translate_lang('Early Warning') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" target="_blank">Order Consumer Report </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" target="_blank">{{ zactra::translate_lang('Order Consumer Report') }} </a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">LexisNexis</span>
+                    <span class="report_access">{{ zactra::translate_lang('LexisNexis') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://consumer.risk.lexisnexis.com/request" target="_blank">Order Consumer Report </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://optout.lexisnexis.com/" target="_blank">Opt Out</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://consumer.risk.lexisnexis.com/request" target="_blank">{{ zactra::translate_lang('Order Consumer Report') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://optout.lexisnexis.com/" target="_blank">{{ zactra::translate_lang('Opt Out') }}</a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item px-3 py-3" href="#">Login Credentials </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="#">{{ zactra::translate_lang('Login Credentials') }} </a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">SageStream</span>
+                    <span class="report_access">{{ zactra::translate_lang('SageStream') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/consumer-report-self" target="_blank">Order Consumer Report </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/freeze-self" target="_blank">Add Security Freeze</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/unfreeze-self" target="_blank">Lift Security Freeze</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/consumer-report-self" target="_blank">{{ zactra::translate_lang('Order Consumer Report') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/freeze-self" target="_blank">{{ zactra::translate_lang('Add Security Freeze') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://forms.sagestreamllc.com/#/unfreeze-self" target="_blank">{{ zactra::translate_lang('Lift Security Freeze') }}</a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 mt-4 mmt-0">
                 <div class="dropdown-submenu text-left mmb-5">
                   <a href="#" class="dropdown-toggle btn btn-primary form-control" data-toggle="dropdown">
-                    <span class="report_access">Ca State Courts Access</span>
+                    <span class="report_access">{{ zactra::translate_lang('Ca State Courts Access') }}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item px-3 py-3" href="http://www.lacourt.org/casesummary/ui/index.aspx?casetype=civil" target="_blank">Los Angeles County </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="https://ocapps.occourts.org/civilwebShoppingNS/Search.do#searchAnchor" target="_blank">Orange County</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="http://public-access.riverside.courts.ca.gov/OpenAccess/CivilMainMenu.asp" target="_blank">Riversides</a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="http://openaccess.sb-court.org/CIVIL/" target="_blank">San Bernandino County </a></li>
-                    <li><a class="dropdown-item px-3 py-3" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">Ventura County </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="http://www.lacourt.org/casesummary/ui/index.aspx?casetype=civil" target="_blank">{{ zactra::translate_lang('Los Angeles County') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="https://ocapps.occourts.org/civilwebShoppingNS/Search.do#searchAnchor" target="_blank">{{ zactra::translate_lang('Orange County') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="http://public-access.riverside.courts.ca.gov/OpenAccess/CivilMainMenu.asp" target="_blank">{{ zactra::translate_lang('Riversides') }}</a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="http://openaccess.sb-court.org/CIVIL/" target="_blank">{{ zactra::translate_lang('San Bernandino County') }} </a></li>
+                    <li><a class="dropdown-item px-3 py-3" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">{{ zactra::translate_lang('Ventura County') }} </a></li>
                   </ul>
                 </div>
               </div>
@@ -304,17 +307,17 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Work History
+            {{ zactra::translate_lang('Work History') }}
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">{{ zactra::translate_lang('#') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('View') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('Title') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('Status') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -339,17 +342,17 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            To Do
+            {{ zactra::translate_lang('To Do') }}
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">{{ zactra::translate_lang('#') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('View') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('Title') }}</th>
+                    <th scope="col">{{ zactra::translate_lang('Status') }}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -379,68 +382,68 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Credit Reports
+            {{ zactra::translate_lang('Credit Reports') }}
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-md-3 mt20">
                 <div class="dropdown">
-                  <h3 class="report_access"><b>Equifax</b></h3>
+                  <h3 class="report_access"><b>{{ zactra::translate_lang('Equifax') }}</b></h3>
                   <div class="dropdown-content equifax" style="height: 150px !important; overflow: scroll;">
                     <a href="https://my.equifax.com/membercenter/#/login" target="_blank"> Login</a>
                     <a href="{{route('adminRec.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">Credentials</a>
-                    <a href="#">Registration</a>
-                    <a href="#">Fcra Access</a>
-                    <a href="#">Dispute Access</a>
-                    <a href="#">Annual Report</a>
-                    <a href="#">Archive</a>
+                    <a href="#">{{ zactra::translate_lang('Registration') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Fcra Access') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Dispute Access') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Annual Report') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Archive') }}</a>
                   </div>
                 </div>
               </div>
               <div class="col-md-3 mt20">
                 <div class="dropdown">
-                  <h3 class="report_access"><b>Experian</b></h3>
+                  <h3 class="report_access"><b>{{ zactra::translate_lang('Experian') }}</b></h3>
                   <div class="dropdown-content experina" style="height: 150px !important; overflow: scroll;">
-                    <a class="queue" data-report="EXLOGIN" data-client="{{$client->id}}">Login</a>
-                    <a href="{{route('adminRec.credentials',['source'=> 'experian','id'=>$client->id])}}">Credentials</a>
-                    <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">Registeration</a>
-                    <a href="#">Denied</a>
-                    <a class="queue" data-report="EXVIEW" data-client="{{$client->id}}">View Report</a>
-                    <a href="#">Report Numbers</a>
-                    <a href="#">Annual Report</a>
-                    <a href="#">Archive</a>
+                    <a class="queue" data-report="EXLOGIN" data-client="{{$client->id}}">{{ zactra::translate_lang('Login') }}</a>
+                    <a href="{{route('adminRec.credentials',['source'=> 'experian','id'=>$client->id])}}">{{ zactra::translate_lang('Credentials') }}</a>
+                    <a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">{{ zactra::translate_lang('Registeration') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Denied') }}</a>
+                    <a class="queue" data-report="EXVIEW" data-client="{{$client->id}}">{{ zactra::translate_lang('View Report') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Report Numbers') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Annual Report') }}</a>
+                    <a href="#">{{ zactra::translate_lang('Archive') }}</a>
                   </div>
                 </div>
               </div>
 
               <div class="col-md-3 mt20">
                 <div class="dropdown">
-                  <h3 class="report_access"><b>TransUnion</b></h3>
+                  <h3 class="report_access"><b>{{ zactra::translate_lang('TransUnion') }}</b></h3>
                   <div class="dropdown-content transunion" style="height: 150px !important; overflow: scroll;">
                     <div class="">
-                      <a class="queue p-1" data-report="TUMEMBER" data-client="{{$client->id}}">Member Login </a>
-                      <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">Member Credentials</a>
-                      <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">Member Registration</a>
+                      <a class="queue p-1" data-report="TUMEMBER" data-client="{{$client->id}}">{{ zactra::translate_lang('Member Login') }} </a>
+                      <a class="p-1" href="{{route('client.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">{{ zactra::translate_lang('Member Credentials') }}</a>
+                      <a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">{{ zactra::translate_lang('Member Registration') }}</a>
                       <hr />
                     </div>
                     <div class="">
-                      <a class="p-1" class="queue" data-report="TUDISPUTE" data-client="{{$client->id}}">Dispute Login</a>
-                      <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'transunion_dispute', 'id'=>$client->id])}}" target="_blank">Dispute Credentials</a>
-                      <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">Dispute Registration</a>
+                      <a class="p-1" class="queue" data-report="TUDISPUTE" data-client="{{$client->id}}">{{ zactra::translate_lang('Dispute Login') }}</a>
+                      <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'transunion_dispute', 'id'=>$client->id])}}" target="_blank">{{ zactra::translate_lang('Dispute Credentials') }}</a>
+                      <a class="p-1" href="https://service.transunion.com/dss/orderStep1_form.page?" target="_blank">{{ zactra::translate_lang('Dispute Registration') }}</a>
                       <hr />
                     </div>
                     <div class="">
-                      <a class="p-1" href="#" target="_blank">Fraud Login</a>
-                      <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'null', 'id'=>$client->id])}}">Fraud Credentials</a>
-                      <a class="p-1" href="#">Fraud Registration</a>
+                      <a class="p-1" href="#" target="_blank">{{ zactra::translate_lang('Fraud Login') }}</a>
+                      <a class="p-1" href="{{route('adminRec.credentials',['source'=> 'null', 'id'=>$client->id])}}">{{ zactra::translate_lang('Fraud Credentials') }}</a>
+                      <a class="p-1" href="#">{{ zactra::translate_lang('Fraud Registration') }}</a>
                       <hr />
                     </div>
                     <div class="">
-                      <a class="p-1" href="#" target="_blank">Annual Report</a>
+                      <a class="p-1" href="#" target="_blank">{{ zactra::translate_lang('Annual Report') }}</a>
                       <hr />
                     </div>
                     <div class="">
-                      <a class="p-1" href="#">Archive</a>
+                      <a class="p-1" href="#">{{ zactra::translate_lang('Archive') }}</a>
                     </div>
                   </div>
                 </div>
@@ -448,32 +451,29 @@
 
               <div class="col-md-3 mt20">
                 <div class="dropdown">
-                  <h3 class="report_access"><b>Other Reports</b></h3>
+                  <h3 class="report_access"><b>{{ zactra::translate_lang('Other Reports') }}</b></h3>
                   <div class="dropdown-content" style="height: 150px !important; overflow: scroll;">
                     <div class="">
                       <ul class="dropdown-submenu mb-0">
                         <a class="queue" data-report="EQ" data-client="{{$client->id}}">
-                          <span class="report_access">Credit Karma</span>
+                          <span class="report_access">{{ zactra::translate_lang('Credit Karma') }}</span>
                         </a>
                       </ul>
                       <ul class="dropdown-submenu mb-0">
                         <a
                           href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"
-                          class=""
-                          data-toggle="dropdown"
-                          target="_blank"
-                        >
-                          <span class="report_access">Chex Systems</span>
+                          class="" data-toggle="dropdown" target="_blank">
+                          <span class="report_access">{{ zactra::translate_lang('Chex Systems') }}</span>
                         </a>
                       </ul>
                       <ul class="dropdown-submenu mb-0">
                         <a href="https://consumer.risk.lexisnexis.com/request" class="" data-toggle="dropdown" target="_blank">
-                          <span class="report_access">Lexis Nexis</span>
+                          <span class="report_access">{{ zactra::translate_lang('Lexis Nexis') }}</span>
                         </a>
                       </ul>
                       <ul class="dropdown-submenu mb-0">
                         <a href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" class="" data-toggle="dropdown" target="_blank">
-                          <span class="report_access">Early Warning</span>
+                          <span class="report_access">{{ zactra::translate_lang('Early Warning') }}</span>
                         </a>
                       </ul>
                     </div>
@@ -500,7 +500,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="modal-title" id="exampleModalLabel">Update Your Profile</span>
+        <span class="modal-title" id="exampleModalLabel">{{ zactra::translate_lang('Update Your Profile') }}</span>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -527,7 +527,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 text-right">
-            <button type="submit" value="Update" class="btn btn-primary pull-right">Update</button>
+            <button type="submit" value="Update" class="btn btn-primary pull-right">{{ zactra::translate_lang('Update') }}</button>
           </div>
         </div>
         {!! Form::close() !!}
@@ -543,9 +543,9 @@
         <div class="modal-content">
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3>Equifax Credentials</h3>
-            <li>Login: {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
-            <li>Password: {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
+            <h3>{{ zactra::translate_lang('Equifax Credentials') }}</h3>
+            <li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
+            <li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
           </div>
         </div>
       </div>
@@ -559,11 +559,11 @@
         <div class="modal-content">
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3>Experian Credentials</h3>
-            <li>Login: {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
-            <li>Password: {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
-            <li>Answer: {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
-            <li>Pin Number: {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
+            <h3>{{ zactra::translate_lang('Experian Credentials') }}</h3>
+            <li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
+            <li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
+            <li>{{ zactra::translate_lang('Answer:') }} {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
+            <li>{{ zactra::translate_lang('Pin Number:') }} {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
           </div>
         </div>
       </div>
@@ -577,11 +577,11 @@
         <div class="modal-content">
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3>TransUnion Credentials</h3>
-            <li>Login: {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
-            <li>Password: {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N\A"}}</li>
-            <li>Question: {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N\A"}}</li>
-            <li>Answer: {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N\A"}}</li>
+            <h3>{{ zactra::translate_lang('TransUnion Credentials') }}</h3>
+            <li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
+            <li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N\A"}}</li>
+            <li>{{ zactra::translate_lang('Question:') }} {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N\A"}}</li>
+            <li>{{ zactra::translate_lang('Answer:') }} {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N\A"}}</li>
           </div>
         </div>
       </div>
@@ -596,9 +596,9 @@
         <div class="modal-content">
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3>Credit Karma Credentials</h3>
-            <li>Login: {{isset($client->credentials->ck_login)?$client->credentials->ck_login: "N/A"}}</li>
-            <li>Password: {{isset($client->credentials->ck_password)?$client->credentials->ck_password:"N\A"}}</li>
+            <h3>{{ zactra::translate_lang('Credit Karma Credentials') }}</h3>
+            <li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->ck_login)?$client->credentials->ck_login: "N/A"}}</li>
+            <li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->ck_password)?$client->credentials->ck_password:"N\A"}}</li>
           </div>
         </div>
       </div>
@@ -667,8 +667,8 @@
     </div>
   </div>
 </div>
-
-@endsection @section('css')
+@endsection
+@section('css')
 <link rel="stylesheet" href="{{asset('css/lib/leaflet.css')}}" />
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
 

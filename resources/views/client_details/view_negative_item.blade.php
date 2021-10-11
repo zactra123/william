@@ -31,14 +31,12 @@
 		}
 	}
 </style>
-
 <section class="header-title section-padding">
 	<div class="container text-center">
 		<h2 class="title">{{ zactra::translate_lang('View Negative Item') }}</h2>
 		<span class="sub-title"><a href="#">{{ zactra::translate_lang('Home') }}</a> &gt; {{ zactra::translate_lang('Negative Item') }}</span>
 	</div>
 </section>
-
 <section class="charts working-section">
 	<div class="container-fluid">
 		<div class="btn-group" role="group" aria-label="Basic example">
@@ -46,7 +44,6 @@
 			<a href="#" class="btn btn-secondary creditReport" data-target="TransUnion"><img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}" width="140" /></a>
 			<a href="#" class="btn btn-secondary creditReport" data-target="Equifax"><img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}" width="140" /></a>
 		</div>
-
 		{!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!} @if($clientReportsEX)
 		<div class="Experian" style="display: block;">
 			<div class="row mt20">
@@ -66,7 +63,6 @@
 								<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('DISPUTE') }}</span>
 							</div>
 						</div>
-
 						@foreach($clientReportsEX->clientNames as $names)
 						<div class="row mt20 border">
 							<div class="col-md-1"></div>
@@ -97,27 +93,23 @@
 						@endforeach
 					</div>
 					<div class="mt20"></div>
-
 					<div class="chart-report">
 						<div class="row mt20">
 							<div class="col-md-1"></div>
 							<div class="col-md-6">
 								<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('EMPLOYERS') }}</span>
 							</div>
-
 							<div class="col-md-3"></div>
 							<div class="col-md-2">
 								<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('DISPUTE') }}</span>
 							</div>
 						</div>
-
 						@foreach($clientReportsEX->clientEmployers as $employ)
 						<div class="row mt20 border">
 							<div class="col-md-1"></div>
 							<div class="col-md-6">
 								<span style="font-weight: bold;"> {{$employ->name}}</span>
 							</div>
-
 							<div class="col-md-3"></div>
 							@if(!empty($employ->dispute->id))
 							<div class="col-md-2">
@@ -155,7 +147,6 @@
 								{{ zactra::translate_lang('DISPUTE') }}
 							</div>
 						</div>
-
 						@foreach($clientReportsEX->clientAddresses as $address)
 						<div class="row mt20 border" style="font-weight: bold;">
 							<div class="col-md-1"></div>
@@ -171,7 +162,6 @@
 							<div class="col-md-2">
 								<span class="">{{strtoupper($address->type)}}</span>
 							</div>
-
 							@if(!empty($address->dispute->id))
 							<div class="col-md-2">
 								<div class="col-md-12">
@@ -191,7 +181,6 @@
 						</div>
 						@endforeach
 					</div>
-
 					<div class="mt20"></div>
 					<div class="chart-report">
 						<div class="row">
@@ -404,7 +393,6 @@
 						@if($accounts->paymentHistories->whereIn('status',["30","30",'90'] )->first() )
 						<div class="row mt20 border">
 							<div class="col-md-12">{{ zactra::translate_lang('ACCOUNT HISTORY') }}</div>
-
 							@foreach($accounts->paymentHistories->whereIn('status',["30","60",'90'] ) as $payment)
 							<div class="col-md-4 border">
 								{{ zactra::translate_lang('LATE') }} {{$payment->status}} {{ zactra::translate_lang('AS OF') }} {{$payment->month}}{{ zactra::translate_lang('/') }}{{$payment->year}}
@@ -575,8 +563,8 @@
 									<div class="row">
 										<div class="col-md-8">
 											@foreach(json_decode(str_replace('\"',"'",$inquiries->date_of_inquiry)) as $date)
-                        {{$date.' '}}
-                      @endforeach
+											{{$date.' '}}
+											@endforeach
 										</div>
 									</div>
 									@else
@@ -654,14 +642,12 @@
 						</div>
 						<div class="col-md-3"></div>
 					</div>
-
 					@foreach($clientReportsTU->clientNames as $names)
 					<div class="row mt20 border">
 						<div class="col-md-1"></div>
 						<div class="col-md-3">
 							<span style="font-weight: bold;"> {{$names->full_name}}</span>
 						</div>
-
 						@if(!empty($names->dispute->id))
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -688,13 +674,11 @@
 						<div class="col-md-6">
 							<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('EMPLOYERS') }}</span>
 						</div>
-
 						<div class="col-md-3"></div>
 						<div class="col-md-2">
 							<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('DISPUTE') }}</span>
 						</div>
 					</div>
-
 					@foreach($clientReportsTU->clientEmployers as $employ)
 					<div class="row mt20 border">
 						<div class="col-md-1"></div>
@@ -721,7 +705,6 @@
 					</div>
 					@endforeach
 				</div>
-
 				<div class="mt20"></div>
 				<div class="chart-container">
 					<div class="row">
@@ -764,7 +747,6 @@
 					</div>
 					@endforeach
 				</div>
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<div class="row">
@@ -887,7 +869,6 @@
 						</div>
 						@endif
 					</div>
-
 					@if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
 					<div class="row mt20">
 						<div class="col-md-1"></div>
@@ -937,7 +918,6 @@
 					</div>
 					<div class="row mt20" style="font-weight: bold;">
 						<div class="col-md-1"></div>
-
 						@if($accounts->date_opened !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -989,7 +969,6 @@
 						</div>
 						@endif
 					</div>
-
 					@if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
 					<div class="row mt20">
 						<div class="col-md-12">
@@ -1102,7 +1081,6 @@
 					@endif
 					@endforeach
 				</div>
-
 				@foreach($clientReportsTU->clientTuPublicRecords as $publicRecords)
 				<div class="mt20"></div>
 				<div class="chart-report">
@@ -1124,7 +1102,6 @@
 								<span class="">{{$publicRecords->docket_number}}</span>
 							</div>
 						</div>
-
 						@if($publicRecords->type !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1134,7 +1111,6 @@
 								<span class="">{{$publicRecords->type}}</span>
 							</div>
 						</div>
-
 						@endif
 						@if($publicRecords->phone !=null )
 						<div class="col-md-2">
@@ -1163,7 +1139,6 @@
 						</div>
 						@endif
 					</div>
-
 					<div class="row mt20 border" style="font-weight: bold;">
 						<div class="col-md-1"></div>
 						<div class="col-md-3">
@@ -1182,7 +1157,6 @@
 								<span class="">{{date("m/d/Y", strtotime($publicRecords->date_filed))}}</span>
 							</div>
 						</div>
-
 						@if($publicRecords->court_type_description !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1212,13 +1186,10 @@
 								<span class=""> {{date("m/d/Y", strtotime($publicRecords->date_paid))}} </span>
 							</div>
 						</div>
-
 						@endif
 					</div>
-
 					<div class="row mt20 border" style="font-weight: bold;">
 						<div class="col-md-1"></div>
-
 						@if($publicRecords->responsibility !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1228,7 +1199,6 @@
 								<span class=""> {{$publicRecords->responsibility}} </span>
 							</div>
 						</div>
-
 						@endif
 						@if($publicRecords->estimated_deletion_date !=null )
 						<div class="col-md-2">
@@ -1239,7 +1209,6 @@
 								<span class=""> {{date("m/d/Y", strtotime($publicRecords->estimated_deletion_date))}} </span>
 							</div>
 						</div>
-
 						@endif
 						@if($publicRecords->plaintiff_attorney != null )
 						<div class="col-md-2">
@@ -1250,12 +1219,10 @@
 								<span class=""> {{$publicRecords->plaintiff_attorney}} </span>
 							</div>
 						</div>
-
 						@endif
 					</div>
 				</div>
 				@endforeach
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<span style="font-weight: bold;">{{ zactra::translate_lang('REGULAR INQUIRIES') }}</span>
@@ -1274,8 +1241,8 @@
 								<div class="row">
 									<div class="col-md-8">
 										@foreach(json_decode(str_replace('\"',"'",$inquiry->inquiry_dates)) as $date)
-                      {{$date.' '}}
-                    @endforeach
+										{{$date.' '}}
+										@endforeach
 									</div>
 								</div>
 							</div>
@@ -1285,7 +1252,6 @@
 							</div>
 							@endif
 						</div>
-
 						@if(!empty($inquiry->dispute->id))
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1303,9 +1269,7 @@
 						</div>
 						@endif
 					</div>
-
 					@endforeach
-
 					<div class="mt20"></div>
 					<span style="font-weight: bold;">{{ zactra::translate_lang('PROMOTIONAL INQUIRIES') }}</span>
 					@foreach($clientReportsTU->clientTuInquiries->where('inquiry_type','promotionalInquiry')->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiry)
@@ -1323,8 +1287,8 @@
 								<div class="row">
 									<div class="col-md-8">
 										@foreach(json_decode(str_replace('\"',"'",$inquiry->inquiry_dates)) as $date)
-                      {{$date.' '}}
-                    @endforeach
+										{{$date.' '}}
+										@endforeach
 									</div>
 								</div>
 							</div>
@@ -1334,7 +1298,6 @@
 							</div>
 							@endif
 						</div>
-
 						@if(!empty($inquiry->dispute->id))
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1353,7 +1316,6 @@
 						@endif
 					</div>
 					@endforeach
-
 					<div class="mt20"></div>
 					<span style="font-weight: bold;">{{ zactra::translate_lang('ACCOUNT REVIEW INQUIRIES') }}</span>
 					@foreach($clientReportsTU->clientTuInquiries->where('inquiry_type','accountReviewInquiry')->whereNotIn('source_name',['EXPERIAN', 'EXPERIAN CREDITMATCH','EXPERIAN CREDIT WORKS','CREDIT KARMA' ]) as $inquiry)
@@ -1364,7 +1326,6 @@
 							<div class="col-md-12">{{$inquiry->subscriber_name}}</div>
 						</div>
 						<div class="col-md-1"></div>
-
 						<div class="col-md-6">
 							<div class="col-md-12">{{ zactra::translate_lang('DATE OF REQUEST') }}</div>
 							@if(is_array(json_decode(str_replace('\"',"'",$inquiry->inquiry_dates))))
@@ -1381,7 +1342,6 @@
 							</div>
 							@endif
 						</div>
-
 						@if(!empty($inquiry->dispute->id))
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1401,7 +1361,6 @@
 					</div>
 					@endforeach
 				</div>
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<span style="font-weight: bold;">{{ zactra::translate_lang('STATEMENTS') }}</span>
@@ -1476,7 +1435,6 @@
 						</div>
 						@endif
 					</div>
-
 					@endforeach
 				</div>
 				<div class="mt20"></div>
@@ -1484,11 +1442,11 @@
 					<div class="row mt20">
 						<div class="col-md-1"></div>
 						<div class="col-md-6">
-							<span style="font-weight: bold; font-size: 16px;"> EMPLOYERS</span>
+							<span style="font-weight: bold; font-size: 16px;"> {{ zactra::translate_lang('EMPLOYERS') }}</span>
 						</div>
 						<div class="col-md-3"></div>
 						<div class="col-md-2">
-							<span style="font-weight: bold; font-size: 16px;">DISPUTE</span>
+							<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('DISPUTE') }}</span>
 						</div>
 					</div>
 					@foreach($clientReportsEQ->clientEmployers as $employ)
@@ -1517,7 +1475,6 @@
 					</div>
 					@endforeach
 				</div>
-
 				<div class="mt20"></div>
 				<div class="chart-container">
 					<div class="row">
@@ -1561,7 +1518,6 @@
 					</div>
 					@endforeach
 				</div>
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<div class="row">
@@ -1580,9 +1536,7 @@
 				<div class="chart-report">
 					<span style="font-weight: bold;"> {{ zactra::translate_lang('NEGATIVE ACCOUNTS') }}</span>
 					@foreach($clientReportsEQ->clientEqAccounts->where('type', "!=",'collection') as $accounts)
-
 					<div class="mt20"></div>
-
 					<div class="row border" style="font-weight: bold;">
 						<div class="col-md-1"></div>
 						<div class="col-md-2">
@@ -1610,7 +1564,6 @@
 					</div>
 					<div class="row mt20" style="font-weight: bold;">
 						<div class="col-md-1"></div>
-
 						@if($accounts->date_opened !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1664,7 +1617,6 @@
 						</div>
 						@endif
 					</div>
-
 					@if($accounts->paymentHistories->where('value','Like',"%0%" )->first() )
 					<div class="row mt20">
 						<div class="col-md-1"></div>
@@ -1682,14 +1634,11 @@
 					@endforeach
 				</div>
 				<div class="mt20"></div>
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<span style="font-weight: bold;"> {{ zactra::translate_lang('COLLECTION ACCOUNTS') }}</span>
 					@foreach($clientReportsEQ->clientEqAccounts->where('type', 'collection') as $accounts)
-
 					<div class="mt20"></div>
-
 					<div class="row border" style="font-weight: bold;">
 						<div class="col-md-1"></div>
 						<div class="col-md-2">
@@ -1698,7 +1647,6 @@
 						<div class="col-md-7">
 							<span class="">{{$accounts->name}}</span>
 						</div>
-
 						@if(!empty($accounts->dispute->id))
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1718,7 +1666,6 @@
 					</div>
 					<div class="row mt20" style="font-weight: bold;">
 						<div class="col-md-1"></div>
-
 						@if($accounts->date_opened !=null )
 						<div class="col-md-2">
 							<div class="col-md-12">
@@ -1772,11 +1719,9 @@
 						</div>
 						@endif
 					</div>
-
 					@endforeach
 				</div>
 				@foreach($clientReportsEQ->clientEqPublicRecords as $publicRecords)
-
 				<div class="mt20"></div>
 				<div class="chart-report">
 					<div class="row mt20" style="font-weight: bold;">
@@ -1797,9 +1742,7 @@
 								<span class="">{{$publicRecords->reference_number}}</span>
 							</div>
 						</div>
-
 						@if($publicRecords->status !=null )
-
 						<div class="col-md-2">
 							<div class="col-md-12">
 								<label class="form-text">{{ zactra::translate_lang('STATUS') }}</label>
@@ -1955,5 +1898,4 @@
 		});
 	});
 </script>
-
 @endsection

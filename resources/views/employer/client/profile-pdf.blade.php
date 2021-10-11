@@ -72,27 +72,27 @@
                 @if($client->clientDetails != null)
                 <div class="pb-2 pt-2 row mr-0 ml-0 external border-bottom">
                   <div class="col-2 m-0 p-0">
-                    <label>GENDER:</label>
+                    <label>{{ zactra::translate_lang('GENDER') }}:</label>
                   </div>
                   <div class="col-10">
                     @if($client->clientDetails->sex == "M")
                     <div class="row">
                       <label class="col-4 m-0 p-0">
-                        MALE
+                        {{ zactra::translate_lang('MALE') }}
                         <input type="radio" name="sex" class="sex" value="M" checked />
                       </label>
                     </div>
                     @elseif($client->clientDetails->sex == "F")
                     <div class="row">
                       <label class="col-4 m-0 p-0">
-                        FEMALE
+                        {{ zactra::translate_lang('FEMALE') }}
                         <input type="radio" name="sex" class="sex" value="F" checked />
                       </label>
                     </div>
                     @else
                     <div class="row">
                       <label class="col-4 m-0 p-0">
-                        NON BINARY
+                        {{ zactra::translate_lang('NON BINARY') }}
                         <input type="radio" name="sex" class="sex" value="O" checked />
                       </label>
                     </div>
@@ -102,24 +102,24 @@
                 @else
                 <div class="pb-2 pt-2 row mr-0 ml-0 external border-bottom">
                   <div class="col-12 m-0 p-0">
-                    <label>Gender:</label>
+                    <label>{{ zactra::translate_lang('Gender') }}:</label>
                     <label class="col-2 m-0 p-0">
-                      MALE
+                      {{ zactra::translate_lang('MALE') }}
                       <input type="radio" name="sex" class="sex" value="M" />
                     </label>
                     <label class="col-2 m-0 p-0">
-                      FEMALE
+                      {{ zactra::translate_lang('FEMALE') }}
                       <input type="radio" name="sex" class="sex" value="F" />
                     </label>
                     <label class="col-2 m-0 p-0">
-                      NON BINARI
+                      {{ zactra::translate_lang('NON BINARI') }}
                       <input type="radio" name="sex" class="sex" value="F" />
                     </label>
                   </div>
                 </div>
                 @endif
                 <div class="pt-2 pb-2 pl-3 row external">
-                  REFFERED BY {{$client->referredBy()}}
+                  {{ zactra::translate_lang('REFFERED BY ') }}{{$client->referredBy()}}
                 </div>
                 {{-- </div> --}}
                 {{-- </div> --}}
