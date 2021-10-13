@@ -2,11 +2,11 @@
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">States Information</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('States Information') }}</li>
       </ol>
     </nav>
   </div>
@@ -17,9 +17,9 @@
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
-            States Information
+            {{ zactra::translate_lang('States Information') }}
           </div>
-          <p class="mg-b-20">See list of states information here ...</p>
+          <p class="mg-b-20">{{ zactra::translate_lang('See list of states information here ...') }}</p>
           <section class="ms-user-account">
             <div class="container">
               <div class="row">
@@ -56,9 +56,9 @@
                         <div class="col-md-3" title="{{strtoupper($state->full_name)}}">
                           <div class="card mb-4 state-card" data-id="{{$state->id}}">
                             @if ($state->flag())
-                            <img class="card-img-top w-100" src="{{$state->flag()}}" />
+                              <img class="card-img-top w-100" src="{{$state->flag()}}" />
                             @else
-                            <img class="card-img-top w-100" src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" />
+                              <img class="card-img-top w-100" src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" />
                             @endif
                             <div class="card-body">
                               <div class="text-center">
@@ -85,7 +85,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="judicialModalModalLabel">State Dates</h5>
+        <h5 class="modal-title" id="judicialModalModalLabel">{{ zactra::translate_lang('State Dates') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

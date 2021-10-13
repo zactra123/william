@@ -1,13 +1,15 @@
-@extends('owner.layouts.app') @section('title')
-<title>To Do</title>
-@endsection @section('body')
+@extends('owner.layouts.app')
+@section('title')
+<title>{{ zactra::translate_lang('To Do') }}</title>
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">To Do List</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('To Do List') }}</li>
       </ol>
     </nav>
   </div>
@@ -23,7 +25,7 @@
             <div class="col-md-4 col-sm-12 col-12 mmb-5">
               <div class="">
                 <select class="form-control" name="admin" id="gender">
-                  <option disabled="disabled" selected="selected" class="p-5 m-5">Admin</option>
+                  <option disabled="disabled" selected="selected" class="p-5 m-5">{{ zactra::translate_lang('Admin') }}</option>
                   @foreach($admins as $id => $value)
                   <option value="{{$id}}" class="p-5 m-5">{{$value}}</option>
                   @endforeach
@@ -31,17 +33,17 @@
               </div>
             </div>
             <div class="col-md-2 col-sm-12 col-12 pt-2 mmb-5">
-              <input type="checkbox" class="" name="assign" placeholder="To Do Title" />
-              Assigned
+              <input type="checkbox" class="" name="assign" placeholder="{{ zactra::translate_lang('To Do Title') }}" />
+              {{ zactra::translate_lang('Assigned') }}
             </div>
             @else
             <div class="col-md-6 col-sm-6 col-6"></div>
             @endif
             <div class="col-md-5 col-sm-12 col-12 mmb-5">
-              <input type="text" name="title" class="form-control" placeholder="To Do Title" />
+              <input type="text" name="title" class="form-control" placeholder="{{ zactra::translate_lang('To Do Title') }}" />
             </div>
             <div class="col-md-1 pr-1 pl-0 col-sm-6 col-6 col-sm-12 col-12 mml-12">
-              <input type="submit" value="Search" class="btn btn-primary" />
+              <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="btn btn-primary" />
             </div>
           </div>
         </form>
@@ -54,19 +56,19 @@
   <div class="col-md-10 col-sm-12 col-12">
     <div class="card">
       <div class="card-header">
-        <label class="header m-2">To Do List</label>
+        <label class="header m-2">{{ zactra::translate_lang('To Do List') }}</label>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Dispute Title</th>
+                <th scope="col">{{ zactra::translate_lang('#') }}</th>
+                <th scope="col">{{ zactra::translate_lang('Full Name') }}</th>
+                <th scope="col">{{ zactra::translate_lang('Dispute Title') }}</th>
                 @if(auth()->user()->role=='receptionist')
-                <th scope="col">Assignment</th>
-                <th scope="col">Action</th>
+                <th scope="col">{{ zactra::translate_lang('Assignment') }}</th>
+                <th scope="col">{{ zactra::translate_lang('Action') }}</th>
                 @endif
               </tr>
             </thead>

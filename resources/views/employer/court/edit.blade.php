@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Court</title>
+<title>{{ zactra::translate_lang('Court') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Court</li>
-				<li class="breadcrumb-item active" aria-current="page">Edit Court</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Court') }}</li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Edit Court') }}</li>
 			</ol>
 		</nav>
 	</div>
@@ -21,14 +21,14 @@
 			<div class="card mg-b-20" id="tabs-style2">
 				<div class="card-body">
 					<div class="main-content-label mg-b-5">
-						Edit Court
+						{{ zactra::translate_lang('Edit Court') }}
 					</div>
-					<p class="mg-b-20">Edit court here ...</p>
+					<p class="mg-b-20">{{ zactra::translate_lang('Edit court here ...') }}</p>
 					<?php
-     $states = [null => ""] + \App\BankAddress::STATES;
-     $types = \App\Court::TYPES;
-     asort($types);
-     ?>
+				     $states = [null => ""] + \App\BankAddress::STATES;
+				     $types = \App\Court::TYPES;
+				     asort($types);
+		      ?>
 					{!! Form::open(['route' => ['admins.court.update', $court->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
 					@method('PUT')
 					@csrf
@@ -38,10 +38,10 @@
 							@if($court->checkUrlAttribute())
 							<img src="{{$court->getUrlAttribute()}}" width="150px" />
 							@else
-							<img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
+							<img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="{{ zactra::translate_lang('Card image cap') }}" />
 							@endif
 							@else
-							<img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
+							<img width="150px" src="{{asset('images/default_bank_logos.png')}}" alt="{{ zactra::translate_lang('Card image cap') }}" />
 							@endif
 						</div>
 						<div class="col-sm-4 hide form-group updateLogo files">
@@ -69,7 +69,7 @@
 			<div class="card mg-b-20" id="tabs-style2">
 				<div class="card-header">
 					<div class="row expand-address" data-address="#address">
-						<div class="col-md-6"><label for="">Address</label></div>
+						<div class="col-md-6"><label for="">{{ zactra::translate_lang('Address') }}</label></div>
 						<div class="col-md-6 text-right">
 							<span class="text-danger mb-3 fs-18">
 								<sapn class="fa fa-minus-circle"></sapn>
@@ -135,7 +135,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6 text-left">
-							<h4>Judges Info</h4>
+							<h4>{{ zactra::translate_lang('Judges Info') }}</h4>
 						</div>
 						<div class="col-md-6 text-right">
 							<button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
@@ -201,7 +201,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6 text-left">
-							<h4>Equal Names</h4>
+							<h4>{{ zactra::translate_lang('Equal Names') }}</h4>
 						</div>
 						<div class="col-md-6 text-right">
 							<button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
@@ -231,7 +231,7 @@
 	<div class="modal-dialog w-100" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title" id="exampleModalLabel">Create Parent Bank</h3>
+				<h3 class="modal-title" id="exampleModalLabel">{{ zactra::translate_lang('Create Parent Bank') }}</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

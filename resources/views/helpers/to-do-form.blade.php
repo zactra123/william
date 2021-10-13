@@ -19,21 +19,21 @@
     <div class="mt20"></div>
 
     <div class="form-group row m-1">
-        <label for="status" class="col-md-2 col-form-label text-md-center"> Status: </label>
+        <label for="status" class="col-md-2 col-form-label text-md-center"> {{ zactra::translate_lang('Status:') }} </label>
         <div class="col-md-10">
             @if($toDo->status == 0)
-            <label for="male" class="col-md-2 col-form-label"> Active: </label>
+            <label for="male" class="col-md-2 col-form-label"> {{ zactra::translate_lang('Active:') }} </label>
             <label for="Sex" class="col-md-1 col-form-label">
                 {{Form::radio('todo[status]', 0, $toDo->status == 0)}}
             </label>
             @elseif($toDo->status == 1)
 
-            <label for="female" class="col-md-3 col-form-label text-md-right"> Pending: </label>
+            <label for="female" class="col-md-3 col-form-label text-md-right"> {{ zactra::translate_lang('Pending:') }} </label>
             <label for="Sex" class="col-md-1 col-form-label m-1">
                 {{Form::radio('todo[status]', 1, $toDo->status == 1)}}
             </label>
             @elseif($toDo->status == 2)
-            <label for="other" class="col-md-3 col-form-label text-md-center"> Completed: </label>
+            <label for="other" class="col-md-3 col-form-label text-md-center"> {{ zactra::translate_lang('Completed:') }} </label>
             <label for="Sex" class="col-md-1 col-form-label m-1">
                 {{Form::radio('todo[status]', 2, $toDo->status == 2)}}
             </label>
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="mt20"></div>
-    
+
     @foreach($toDo->disputes as $dispute)
 
     <div class="form-group row m-1">
@@ -59,27 +59,24 @@
         </div>
         <div class="form-group row m-1">
             <div class="col-md-12">
-                <label for="male" class="col-md-2 col-form-label"> Active: </label>
+                <label for="male" class="col-md-2 col-form-label"> {{ zactra::translate_lang('Active:') }} </label>
                 <label for="Sex" class="col-md-1 m-1 col-form-label">
                     {{Form::radio('dispute['.$dispute->id.'][status]', 0, $dispute->status == 0)}}
                 </label>
 
-                <label for="female" class="col-md-3 col-form-label text-md-right"> Pending: </label>
+                <label for="female" class="col-md-3 col-form-label text-md-right"> {{ zactra::translate_lang('Pending:') }} </label>
                 <label for="Sex" class="col-md-1 col-form-label m-1">
                     {{Form::radio('dispute['.$dispute->id.'][status]', 1, $dispute->status == 1)}}
                 </label>
-                <label for="other" class="col-md-3 col-form-label text-md-center"> Completed: </label>
+                <label for="other" class="col-md-3 col-form-label text-md-center"> {{ zactra::translate_lang('Completed:') }} </label>
                 <label for="Sex" class="col-md-1 col-form-label m-1">
                     {{Form::radio('dispute['.$dispute->id.'][status]', 2, $dispute->status == 2)}}
                 </label>
             </div>
         </div>
     </div>
-
     <div class="mt20"></div>
-
     @endforeach
-
     <div class="form-group row mb-0 font">
         <div class="col-md-12 text-right">
             <input type="submit" value="Update" class="ms-ua-submit btn btn-primary" />

@@ -64,15 +64,17 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-3">
-            <input type="text" name="term" value="{{request()->term}}" class="form-control autocomplete-search mmb-5" placeholder="SEARCH..." />
+            <input type="text" name="term" value="{{request()->term}}" class="form-control autocomplete-search mmb-5" placeholder="{{ zactra::translate_lang('SEARCH...') }}" />
           </div>
           <div class="col-md-3">
-            <?php $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' =>
-            'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER']; asort($types)?> {{-- {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple','class'=>'form-control
-            selectize-multiple', 'id' => 'bank-type']); !!} --}}
+            <?php
+              $types = \App\BankLogo::TYPES;  unset($types[40]); $types = $types + ['NON-BANK SBA LENDER' => 'NON-BANK SBA LENDER', 'BANK-SBA LENDER' => 'BANK-SBA LENDER'];
+              asort($types)
+            ?>
+            {{-- {!! Form::select("types[]", [""=>"FILTER BY TYPE"] + $types, request()->types, ['multiple'=>'multiple','class'=>'form-control selectize-multiple', 'id' => 'bank-type']); !!} --}}
             <select class="form-control selectize-multiple mmb-5" multiple id="bank-type">
               @foreach ($types as $key => $value)
-              <option value="{{ $value }}">{{ $value }}</option>
+                <option value="{{ $value }}">{{ $value }}</option>
               @endforeach
             </select>
           </div>
@@ -80,10 +82,9 @@
             <?php $states = \App\BankAddress::STATES;   asort($types)?>
             {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>'mmb-5 form-control selectize-single state'] ); !!}
           </div>
-
           <div class="col-md-3">
-            <span class="ml-3"> <input class="form-check-input mt-2" type="checkbox" name="no_logo" {{ request()->no_logo ? 'checked' : '' }}> <label for="checkbox" class="mt-1"> Without Logo</label></span>
-            <input type="submit" value="Search" class="btn btn-primary" style="float: right;" />
+            <span class="ml-3"> <input class="form-check-input mt-2" type="checkbox" name="no_logo" {{ request()->no_logo ? 'checked' : '' }}> <label for="checkbox" class="mt-1">{{ zactra::translate_lang('Without Logo') }}</label></span>
+            <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="btn btn-primary" style="float: right;" />
           </div>
         </div>
       </div>

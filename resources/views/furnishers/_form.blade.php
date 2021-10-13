@@ -18,34 +18,34 @@
       <div class="row">
         <div class="col-md-12 form-group">
           <div class="col-md-12">
-            <label>Notice of Default Date</label>
+            <label>{{ zactra::translate_lang('Notice of Default Date') }}</label>
           </div>
           <div class="col-md-12">
-            <input class="form-control" type="text" name="n_default_date" value="{{ $state->n_default_date}}" title="NOTICE OFF DAYS" />
+            <input class="form-control" type="text" name="n_default_date" value="{{ $state->n_default_date}}" title="{{ zactra::translate_lang('NOTICE OFF DAYS') }}" />
             <input type="hidden" name="id" value="{{ $state->id}}" />
           </div>
         </div>
         <div class="col-md-12 form-group">
           <div class="col-md-12">
-            <label>Notice of Sale Month</label>
+            <label>{{ zactra::translate_lang('Notice of Sale Month') }}</label>
           </div>
           <div class="col-md-12">
-            <input class="form-control" type="text" name="n_sale_date" value="{{ $state->n_sale_date}}" title="NOTICE OF SALE MONTH" />
+            <input class="form-control" type="text" name="n_sale_date" value="{{ $state->n_sale_date}}" title="{{ zactra::translate_lang('NOTICE OF SALE MONTH') }}" />
           </div>
         </div>
         <div class="col-md-12 form-group">
           <div class="col-md-12">
-            <label>Auction Date</label>
+            <label>{{ zactra::translate_lang('Auction Date') }}</label>
           </div>
           <div class="col-md-12">
-            <input class="form-control" type="text" name="auction_date" value="{{ $state->auction_date}}" title="AUCTION DAYS" />
+            <input class="form-control" type="text" name="auction_date" value="{{ $state->auction_date}}" title="{{ zactra::translate_lang('AUCTION DAYS') }}" />
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 text-right">
-        <input type="submit" value="Add" class="btn btn-primary pull-right" />
+        <input type="submit" value="{{ zactra::translate_lang('Add') }}" class="btn btn-primary pull-right" />
       </div>
     </div>
   {!! Form::close() !!}

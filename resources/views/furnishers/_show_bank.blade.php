@@ -13,13 +13,13 @@
                 @if($bank->checkUrlAttribute())
                   <img src="{{$bank->getUrlAttribute()}}" width="100px" />
                 @else
-                  <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap" />
+                  <img width="100px" src="{{asset('images/default_bank_logos.png')}}" alt="{{ zactra::translate_lang('Card image cap') }}" />
                 @endif
               </div>
               <div class="col-md-9">
                 <div class="col-md-8">
                   <div class="form-group">
-                    <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="Company Name" />
+                    <input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="{{ zactra::translate_lang('Company Name') }}" />
                     {!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
                   </div>
                 </div>
@@ -34,7 +34,7 @@
                       @if(isset($subTypes[$bank->type])) @foreach($subTypes[$bank->type] as $key => $type)
                       <div class="col-md-6">
                         {{$type}}
-                        <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank- />additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+                        <input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
                       </div>
                       @endforeach
                     @endif
@@ -67,7 +67,7 @@
             <?php } ?>
 
             <div class="row additional-addresses">
-              <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit form-control">ADD ADDITIONAL ADDRESS</a></div>
+              <div class="col-sm-6 add-additional p-1 pb-5"><a class="btn btn ms-ua-submit form-control">{{ zactra::translate_lang('ADD ADDITIONAL ADDRESS') }}</a></div>
             </div>
             @continue
           @endif
@@ -83,7 +83,7 @@
               <div class="col-md-12 addresses" id="address-{{$type}}">
                 @if($type == 'registered_agent')
                 <div class="row">
-                  <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit form-control">COPY EXECUTIVE AS REGISTERED AGENT</a></div>
+                  <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit form-control">{{ zactra::translate_lang('COPY EXECUTIVE AS REGISTERED AGENT') }}</a></div>
                   <div class="form-group col-sm-12">
                     {!! Form::text("bank_address[{$type}][name]", !empty($address) ? $address['name'] : null, ["class"=>"autocomplete-name form-control w-100", "placeholder"=>"Agent Name", "data-type"=> 'registered_agent']) !!}
                   </div>
@@ -156,7 +156,7 @@
       <div class="ms-ua-box mt-2" id="account-equal-bank">
         <div class="ms-ua-title mb-0">
           <div class="row">
-            <div class="col-md-6 text-left"><h4>Other Names Used</h4></div>
+            <div class="col-md-6 text-left"><h4>{{ zactra::translate_lang('Other Names Used') }}</h4></div>
             <div class="col-md-6 text-right">
               <button type="button" class="remove-equal-bank btn btn-danger mb-3">
                 <i class="fa fa-times"></i>

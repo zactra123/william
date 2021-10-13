@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Furnisher</title>
+<title>{{ zactra::translate_lang('Furnisher') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Furnishers</li>
-        <li class="breadcrumb-item active" aria-current="page">Create Furnisher</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Furnishers') }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Create Furnisher') }}</li>
       </ol>
     </nav>
   </div>
@@ -21,9 +21,9 @@
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body">
           <div class="main-content-label mg-b-5">
-            Create Furnisher
+            {{ zactra::translate_lang('Create Furnisher') }}
           </div>
-          <p class="mg-b-20">Create furnisher here ...</p>
+          <p class="mg-b-20">{{ zactra::translate_lang('Create furnisher here ...') }}</p>
           <div class="text-wrap mb-5">
             <div class="example">
               <div class="panel panel-primary">
@@ -41,7 +41,8 @@
     <div class="row justify-content-center">
       <div class="col-md-12 col-sm-12 mmap-0">
         @php $states = [null=>''] + \App\BankAddress::STATES; $types = \App\BankLogo::TYPES; $subTypes = \App\BankLogo::SUB_TYPES; asort($types) @endphp
-        {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!} @csrf
+        {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+        @csrf
         <div class="ms-ua-box">
           <div class="ms-ua-form">
             <div class="ms-ua-title mb-0">
@@ -50,12 +51,12 @@
                   <div class="col-md-12">
                     <input class="form-control bank_logo_class file-box" type="file" name="logo" id="bank_logo" tabindex="3" />
                   </div>
-                  <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">NO LOGO</span></div>
+                  <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">{{ zactra::translate_lang('NO LOGO') }}</span></div>
                 </div>
                 <div class="col-md-8 pt-3">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="text" name="bank[name]" class="form-control bank_name" placeholder="Company Name" />
+                      <input type="text" name="bank[name]" class="form-control bank_name" placeholder="{{ zactra::translate_lang('Company Name') }}" />
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -73,18 +74,19 @@
               <div class="row parent hidden">
                 <div class="col-md-3"></div>
                 <div class="col-md-3 ml-4 pl-5">
-                  <a class="btn btn-primary show-parent-field ml-5 mt-3 hide text-white pull-right">Add Parent</a>
-                  <a class="btn btn-primary hide hide-parent-field hide ml-5 mt-3 text-white pull-right">Hide Parent</a>
+                  <a class="btn btn-primary show-parent-field ml-5 mt-3 hide text-white pull-right">{{ zactra::translate_lang('Add Parent') }}</a>
+                  <a class="btn btn-primary hide hide-parent-field hide ml-5 mt-3 text-white pull-right">{{ zactra::translate_lang('Hide Parent') }}</a>
                 </div>
                 <div class="col-md-5 mt-3 parent-show">
                   <div class="col-md-12 text-left">
                     <div class="form-group banks">
-                      {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!} {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
+                      {!! Form::text("bank[parent_name]", '', ['class'=>'autocomplete-bank w-100 form-control', 'placeholder' => 'Parent Bank Name']); !!}
+                      {!! Form::hidden("bank[parent_id]", '', ["class"=>"form-control parent_id"]) !!}
                     </div>
                   </div>
                   <div class="row text-right">
                     <div class="col-md-12">
-                      <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white mr-3">Add Bank</a>
+                      <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white mr-3">{{ zactra::translate_lang('Add Bank') }}</a>
                     </div>
                   </div>
                 </div>
@@ -99,7 +101,7 @@
               @foreach(\App\BankAddress::TYPES as $type=>$name)
               @if($type == 'additional_address')
               <div class="row additional-addresses">
-                <div class="col-sm-6 add-additional p-1 pb-5 ml-3F"><a class="btn btn-primary ms-ua-submit text-white">Add Additonal Address</a></div>
+                <div class="col-sm-6 add-additional p-1 pb-5 ml-3F"><a class="btn btn-primary ms-ua-submit text-white">{{ zactra::translate_lang('Add Additonal Address') }}</a></div>
               </div>
               @continue
               @endif
@@ -115,7 +117,7 @@
                 <div class="col-md-12 addresses" id="address-{{$type}}">
                   @if($type == 'registered_agent')
                   <div class="row">
-                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit btn btn-primary text-white ml-2 mb-3">Copy Entity Address as Registered Agent fix functionality</a></div>
+                    <div class="col-sm-6 paste-register p-1"><a class="btn btn ms-ua-submit btn btn-primary text-white ml-2 mb-3">{{ zactra::translate_lang('Copy Entity Address as Registered Agent fix functionality') }}</a></div>
                   </div>
                   @endif
                   <div class="row">
@@ -125,7 +127,7 @@
                     </div>
                     @endif
                     @if($type == 'executive_address')
-                    <div class="col-md-3 executive_copied mb-3"><input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> Copy Parent Executive Contact</div>
+                    <div class="col-md-3 executive_copied mb-3"><input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> {{ zactra::translate_lang('Copy Parent Executive Contact') }}</div>
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                     </div>
@@ -179,7 +181,7 @@
         <div class="ms-ua-box mt-2" id="account-equal-bank">
           <div class="ms-ua-title mb-0">
             <div class="row">
-              <div class="col-md-6 text-left"><h4>Other Names Used</h4></div>
+              <div class="col-md-6 text-left"><h4>{{ zactra::translate_lang('Other Names Used') }}</h4></div>
               <div class="col-md-6 text-right">
                 <span class="remove-equal-bank fs-18 pointer text-danger mb-3">
                   <i class="fa fa-times"></i>
@@ -194,7 +196,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 mt-3 text-right">
-            <input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 text-white pull-right" />
+            <input type="submit" value="{{ zactra::translate_lang('Save') }}" class="ms-ua-submit btn btn-primary mb-5 text-white pull-right" />
           </div>
         </div>
       </div>
@@ -207,7 +209,7 @@
   <div class="modal-dialog w-100" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Create Parent Bank</h3>
+        <h3 class="modal-title" id="exampleModalLabel">{{ zactra::translate_lang('Create Parent Bank') }}</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

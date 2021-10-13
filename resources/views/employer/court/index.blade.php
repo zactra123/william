@@ -1,21 +1,21 @@
 @extends('owner.layouts.app')
 @section('title')
-<title> Court </title>
+<title>{{ zactra::translate_lang('Court') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Courts</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Courts') }}</li>
 			</ol>
 		</nav>
 	</div>
 	<div class="mmt-7">
 		<a class="btn btn-primary pull-left mmt-7" href="{{ route('admins.court.create')}}" role="button">
-			ADD COURT
+			{{ zactra::translate_lang('ADD COURT') }}
 		</a>
 	</div>
 </div>
@@ -25,9 +25,9 @@
 			<div class="card mg-b-20" id="tabs-style2">
 				<div class="card-body">
 					<div class="main-content-label mg-b-5">
-						Court
+						{{ zactra::translate_lang('Court') }}
 					</div>
-					<p class="mg-b-20">See list of court here ...</p>
+					<p class="mg-b-20">{{ zactra::translate_lang('See list of court here ...') }}</p>
 					<div class="container">
 						<?php $alphas = range("A", "Z"); ?>
 						{{-- <div class="row">
@@ -57,12 +57,12 @@
 							<div class="card mb-4 pt-5">
 								@if (isset($logos->bucket))
 								@if($logos->checkUrlAttribute())
-								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 								@else
-								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 								@endif
 								@else
-								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="Card image cap"></a>
+								<a href="{{route("admins.court.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.court.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 								@endif
 								<div class="card-body">
 									<div class="card-text mt-5">

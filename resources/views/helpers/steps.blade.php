@@ -61,7 +61,7 @@
 
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Registration Type</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Registration Type') }}</h3>
         </div>
     </a>
     <a class="registration-stage {{$registered}}" data-id="2">
@@ -76,7 +76,7 @@
             </svg>
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Registration</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Registration') }}</h3>
         </div>
     </a>
     <a class="registration-stage {{$documents}}" data-id="3" data-type="only_broker">
@@ -86,7 +86,7 @@
             </svg>
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Documents</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Documents') }}</h3>
         </div>
     </a>
     <a class="registration-stage {{$credentials}}" data-id="4" data-type="only_broker">
@@ -96,7 +96,7 @@
             </svg>
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Credentails</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Credentails') }}</h3>
         </div>
     </a>
     <a class="registration-stage {{$reviewed}}" data-id="5" data-type="only_broker">
@@ -108,7 +108,7 @@
             </svg>
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Reviews</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Reviews') }}</h3>
         </div>
     </a>
     <a class="registration-stage {{$finished}}" data-id="finish">
@@ -123,7 +123,7 @@
             </svg>
         </div>
         <div class="stage-name">
-            <h3 class="stage-title">Finish</h3>
+            <h3 class="stage-title">{{ zactra::translate_lang('Finish') }}</h3>
         </div>
     </a>
 </div>

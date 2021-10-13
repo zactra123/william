@@ -118,21 +118,21 @@ span {
 							<div class="col-md-3" title="{{strtoupper($logos->name)}}">
 								<div class="card mb-4 box-shadow">
 									@if (isset($logos->bucket))
-									@if($logos->checkUrlAttribute())
-									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@if($logos->checkUrlAttribute())
+  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@else
+  									@if($logos->no_logo)
+  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@else
+  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@endif
+  									@endif
 									@else
-									@if($logos->no_logo)
-									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-									@else
-									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-									@endif
-									@endif
-									@else
-									@if($logos->no_logo)
-									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-									@else
-									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-									@endif
+  									@if($logos->no_logo)
+  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@else
+  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  									@endif
 									@endif
 									<div class="card-body">
 										<div class="card-text mt-5">
@@ -165,8 +165,8 @@ span {
 </section>
 <script type="text/html" id="confirmation">
   <div>
-    <button class="cancel btn btn-secondary ">cancel</button>
-    <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
+    <button class="cancel btn btn-secondary ">{{ zactra::translate_lang('cancel') }}</button>
+    <button class="delete-bank btn btn-danger" data-id="{bank_id}">{{ zactra::translate_lang('yes') }}</button>
   </div>
 </script>
 <script src="{{ asset('js/lib/selectize.min.js?v=2') }}"></script>

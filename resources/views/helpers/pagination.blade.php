@@ -1,12 +1,12 @@
 @if ($paginator->hasPages())
 <nav aria-label="Page navigation example" style="float:right">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}">Pre</a></li>
+    <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}">{{ zactra::translate_lang('Pre') }}</a></li>
     @if($paginator->currentPage() > 10)
-      <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">1</a></li>
+      <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}">{{ zactra::translate_lang('1') }}</a></li>
     @endif
     @if($paginator->currentPage() > 11)
-      <li class="page-item"><a class="page-link" href="#">...</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{ zactra::translate_lang('...') }}</a></li>
     @endif
     @foreach(range(1, $paginator->lastPage()) as $i)
       @if($paginator->currentPage() < 12 )
@@ -36,14 +36,14 @@
       @endif
     @endforeach
     @if($paginator->currentPage() < $paginator->lastPage() - 10)
-      <li class="page-item"><a class="page-link" href="#">...</a></li>
+      <li class="page-item"><a class="page-link" href="#">{{ zactra::translate_lang('...') }}</a></li>
       <li class="page-item"><a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}">{{ $paginator->lastPage() }}</a></li>
     @endif
     {{-- Next Page Link --}}
     @if ($paginator->hasMorePages())
-      <li class="page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}">Next</a></li>
+      <li class="page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}">{{ zactra::translate_lang('Next') }}</a></li>
     @else
-      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item disabled"><a class="page-link" href="#">{{ zactra::translate_lang('Next') }}</a></li>
     @endif
   </ul>
 </nav>

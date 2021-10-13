@@ -1,21 +1,21 @@
 @extends('owner.layouts.app')
 @section('title')
-<title> Furnishers </title>
+<title>{{ zactra::translate_lang('Furnishers') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Furnishers</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Furnishers') }}</li>
 			</ol>
 		</nav>
 	</div>
 	<div class="mmt-7">
 		<a class="btn btn-primary pull-left mmt-7" href="{{ route('admins.bank.create')}}" role="button">
-			ADD FURNISHERs / CRAs
+			{{ zactra::translate_lang('ADD FURNISHERs / CRAs') }}
 		</a>
 	</div>
 </div>
@@ -25,9 +25,9 @@
 			<div class="card mg-b-20" id="tabs-style2">
 				<div class="card-body">
 					<div class="main-content-label mg-b-5">
-						Furnishers
+						{{ zactra::translate_lang('Furnishers') }}
 					</div>
-					<p class="mg-b-20">See list of furnishers here ...</p>
+					<p class="mg-b-20">{{ zactra::translate_lang('See list of furnishers here ...') }}</p>
 					@include('furnishers.search')
 					<section class="ms-user-account">
 						<div class="container">
@@ -43,15 +43,15 @@
 												<nav aria-label="Page navigation example" style="overflow:scroll;">
 													<ul class="pagination">
 														<li class="page-item {{empty(request()->character) ? "active":""}}">
-															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> ALL </a>
+															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type])}}"> {{ zactra::translate_lang('ALL') }} </a>
 														</li>
 														<li class="page-item {{!empty(request()->character) && request()->character == '#' ? "active":""}}">
-															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}"> # </a>
+															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}"> {{ zactra::translate_lang('#') }} </a>
 														</li>
 														@foreach($alphas as $alpha)
-														<li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}">
-															<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a>
-														</li>
+															<li class="page-item {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}">
+																<a class="page-link" href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a>
+															</li>
 														@endforeach
 													</ul>
 												</nav>
@@ -75,13 +75,13 @@
 														{{-- Checking logo in Aws S3 storage  --}}
 														@if($logos->checkUrlAttribute())
   														{{-- Get AWS S3 file link with  getUrlAttribute function  --}}
-  														<a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+  														<a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 														@else
 							                {{-- if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon --}}
 														@if($logos->no_logo)
-							                <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{url('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+							                <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{url('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 														@else
-							                 <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+							                 <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{url('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="{{ zactra::translate_lang('Card image cap') }}"></a>
 														@endif
 														@endif
 														<div class="card-body">

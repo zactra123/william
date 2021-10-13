@@ -136,7 +136,7 @@ class SiteSettingsController extends Controller
      $slider->linkedin_link = $request->linkedin_link;
      $slider->save();
 
-     return back()->with('success','You successfully update slider!');
+     return back()->with('success','You successfully update footer!');
 
    }else {
      $slider = SiteSettings::where('id','1')->update([
@@ -150,7 +150,7 @@ class SiteSettingsController extends Controller
       'linkedin_link' => $request->linkedin_link
      ]);
 
-     return back()->with('success','You successfully update slider!');
+     return back()->with('success','You successfully update footer!');
 
    }
  }

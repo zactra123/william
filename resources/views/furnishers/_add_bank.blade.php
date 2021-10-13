@@ -15,7 +15,7 @@
                 <div class="col-sm-12 form-group files">
                   <input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />
                 </div>
-                <div class="col-md-12 mb-3">NO LOGO <input type="checkbox" value="true" name="bank[no_logo]" /></div>
+                <div class="col-md-12 mb-3">{{ zactra::translate_lang('NO LOGO') }} <input type="checkbox" value="true" name="bank[no_logo]" /></div>
               </div>
             </div>
             <div class="row">
@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary form-control">ADD BANK</a>
+                <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary form-control">{{ zactra::translate_lang('ADD BANK') }}</a>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
             @foreach(\App\BankAddress::TYPES as $type=>$name)
             @if($type == 'additional_address')
             <div class="row additional-addresses">
-              <div class="col-sm-12 add-additional p-1 pb-5 text-right"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
+              <div class="col-sm-12 add-additional p-1 pb-5 text-right"><a class="btn btn-primary ms-ua-submit text-white">{{ zactra::translate_lang('Add Additional Address') }}</a></div>
             </div>
             @continue
             @endif
@@ -153,7 +153,7 @@
       <div class="ms-ua-box mt-2" id="account-equal-bank">
         <div class="ms-ua-title mb-0">
           <div class="row">
-            <div class="col-md-6 text-left"><span>OTHER NAMES USED</span></div>
+            <div class="col-md-6 text-left"><span>{{ zactra::translate_lang('OTHER NAMES USED') }}</span></div>
             <div class="col-md-6 text-right">
               <span class="remove-equal-bank text-danger fs-18 pointer mb-3">
                 <i class="fa fa-times"></i>
@@ -168,7 +168,7 @@
       </div>
       <div class="row pull-right">
         <div class="col-md-12 mt-3">
-          <input type="submit" value="Save" class="btn btn-primary ms-ua-submit" />
+          <input type="submit" value="{{ zactra::translate_lang('Save') }}" class="btn btn-primary ms-ua-submit" />
         </div>
       </div>
     </div>

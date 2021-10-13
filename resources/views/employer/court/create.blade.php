@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Court</title>
+<title>{{ zactra::translate_lang('Court') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Court</li>
-				<li class="breadcrumb-item active" aria-current="page">Create Court</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Court') }}</li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Create Court') }}</li>
 			</ol>
 		</nav>
 	</div>
@@ -21,17 +21,17 @@
 			<div class="card mg-b-20" id="tabs-style2">
 				<div class="card-body">
 					<div class="main-content-label mg-b-5">
-						Create Court
+						{{ zactra::translate_lang('Create Court') }}
 					</div>
-					<p class="mg-b-20">Create court here ...</p>
+					<p class="mg-b-20">{{ zactra::translate_lang('Create court here ...') }}</p>
 					<div class="text-wrap">
 						<div class="">
 							<div class="panel panel-primary">
 								<?php
-        $states = [null => ""] + \App\BankAddress::STATES;
-        $types = \App\Court::TYPES;
-        asort($types);
-        ?>
+					        $states = [null => ""] + \App\BankAddress::STATES;
+					        $types = \App\Court::TYPES;
+					        asort($types);
+        				?>
 								{!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!}
 								@csrf
 								<div class="row">
@@ -39,7 +39,7 @@
 										<input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />
 									</div>
 									<div class="col-md-4 mb-2">
-										<input type="text" name="court[name]" class="form-control bank_name" placeholder="COURT NAME" />
+										<input type="text" name="court[name]" class="form-control bank_name" placeholder="{{ zactra::translate_lang('COURT NAME') }}" />
 									</div>
 									<div class="col-md-4 mb-2">
 										{!! Form::select("court[type]", $types, 1, ['class'=>'form-control bank-type']); !!}
@@ -119,7 +119,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6 text-left">
-							<h4>Judges Info</h4>
+							<h4>{{ zactra::translate_lang('Judges Info') }}</h4>
 						</div>
 						<div class="col-md-6 text-right">
 							<button class="text-danger remove-equal-bank fs-18" style="border:none !important;background:none !important;">
@@ -159,7 +159,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6 text-left">
-							<h4>Equal Names</h4>
+							<h4>{{ zactra::translate_lang('Equal Names') }}</h4>
 						</div>
 						<div class="col-md-6 text-right">
 							<button class="text-danger fs-18 remove-equal-bank" style="border:none !important;background:none !important;">
@@ -178,7 +178,7 @@
 <div class="container mmap-0">
 	<div class="row pull-right">
 		<div class="col-md-12 text-right mmap-0">
-			<input type="submit" value="Save" class="ms-ua-submit btn btn-primary mb-5 pull-right" />
+			<input type="submit" value="{{ zactra::translate_lang('Save') }}" class="ms-ua-submit btn btn-primary mb-5 pull-right" />
 		</div>
 	</div>
 </div>

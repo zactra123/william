@@ -1,14 +1,15 @@
-@extends('owner.layouts.app') @section('title')
-<title>Furnisher Type</title>
-@endsection @section('body')
-
+@extends('owner.layouts.app')
+@section('title')
+<title>{{ zactra::translate_lang('Furnisher Type') }}</title>
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bank Equal Names</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Bank Equal Names') }}</li>
       </ol>
     </nav>
   </div>
@@ -29,7 +30,8 @@
             <div class="form-check mmap-0">
               <div class="row">
                 <div class="col-md-8 col-sm-12 col-12">
-                  {!! Form::hidden('account_type[type]',0) !!} {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label mmt-7']); !!}
+                  {!! Form::hidden('account_type[type]',0) !!}
+                  {!! Form::label("account_type[type]", 'DEFAULT',["class" => 'form-control form-check-label mmt-7']); !!}
                 </div>
                 <div class="col-md-4 text-center pt-2">
                   {!! Form::checkbox('account_type[type]',1, false, ['class'=> " form-check-input" ]); !!}
@@ -43,7 +45,7 @@
                 {!! Form::text('account_type_keys[key_word]', '', ['multiple'=>'multiple','class'=>' selectize-multiple form-group']); !!}
               </div>
               <div class="col-sm-4">
-                <input type="submit" value="Save" class="btn btn-primary ms-ua-submit" />
+                <input type="submit" value="{{ zactra::translate_lang('Save') }}" class="btn btn-primary ms-ua-submit" />
               </div>
             </div>
           </div>
@@ -58,9 +60,9 @@
             <table width="100%" class="table table-striped">
               <thead>
                 <tr>
-                  <th>FURNISHERs TYPE</th>
-                  <th>IS DEFAULT</th>
-                  <th>KEYWORDS</th>
+                  <th>{{ zactra::translate_lang('FURNISHERs TYPE') }}</th>
+                  <th>{{ zactra::translate_lang('IS DEFAULT') }}</th>
+                  <th>{{ zactra::translate_lang('KEYWORDS') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,7 +78,7 @@
                   <td width="20%" class="text-center">
                     <div class="dropdown show">
                       <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Action
+                        {{ zactra::translate_lang('Action') }}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('furnisher.delete.type',$type->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
@@ -94,15 +96,16 @@
   </div>
 </section>
 
-@endsection @section('css')
+@endsection
+@section('css')
 <link href="{{asset('css/lib/selectize.css')}}" rel="stylesheet" type="text/css" />
-
-@endsection @section('js')
+@endsection
+@section('js')
 
 <script type="text/html" id="confirmation">
   <div>
-      <button class="cancel btn btn-secondary ">cancel</button>
-      <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
+    <button class="cancel btn btn-secondary ">cancel</button>
+    <button class="delete-bank btn btn-danger" data-id="{bank_id}">yes</button>
   </div>
 </script>
 
@@ -124,5 +127,4 @@
     });
   });
 </script>
-
 @endsection

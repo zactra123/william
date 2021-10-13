@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Authority</title>
+<title>{{ zactra::translate_lang('Authority') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="#">Authority</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Add Authority</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item"><a href="#">{{ zactra::translate_lang('Authority') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Add Authority') }}</li>
       </ol>
     </nav>
   </div>
@@ -33,7 +33,7 @@
                   <input class="bank_logo_class form-control file-box" type="file" name="logo" id="bank_logo" />
                 </div>
                 <div class="col-md-12 mb-3">
-                  <input type="text" name="authority[name]" class="form-control bank_name" placeholder="Authority Name" />
+                  <input type="text" name="authority[name]" class="form-control bank_name" placeholder="{{ zactra::translate_lang('Authority Name') }}" />
                 </div>
                 <div class="col-md-12 mb-3">
                   <div class="">
@@ -49,7 +49,7 @@
           <div class="card-body">
             <div id="addresses_container">
               <div class="row expand-address" data-address="#address">
-                <div class="col-md-6"><label for="">Executive Address</label></div>
+                <div class="col-md-6"><label for="">{{ zactra::translate_lang('Executive Address') }}</label></div>
                 <div class="col-md-6 text-right">
                   <span class="text-danger mb-3 fs-18">
                     <i class="fa fa-minus-circle"></i>
@@ -107,11 +107,10 @@
   <div class="container mmap-0">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-12 text-right mmap-0">
-        <input type="submit" value="Save" class="ms-ua-submit mb-5 btn btn-primary pull-right" />
+        <input type="submit" value="{{ zactra::translate_lang('Save') }}" class="ms-ua-submit mb-5 btn btn-primary pull-right" />
       </div>
     </div>
   </div>
-
   {!! Form::close() !!}
 </section>
 

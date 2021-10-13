@@ -48,31 +48,31 @@
             <li role="presentation" class="{{$registered}}">
               <a href="#register"  aria-controls="register" role="tab" data-toggle="tab">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                <p>REGISTRATION</p>
+                <p>{{ zactra::translate_lang('REGISTRATION') }}</p>
               </a>
             </li>
             <li role="presentation" class="{{$documents}}">
               <a href="#document" aria-controls="document" role="tab" data-toggle="tab">
                 <i class="fa fa-id-card" aria-hidden="true"></i>
-                <p>DOCUMENTS</p>
+                <p>{{ zactra::translate_lang('DOCUMENTS') }}</p>
               </a>
             </li>
             <li role="presentation " class="{{$credentials}}">
               <a href="#credentials" aria-controls="optimization" role="tab" data-toggle="tab">
                 <i class="fa fa-key" aria-hidden="true"></i>
-                <p>CREDENTIALS</p>
+                <p>{{ zactra::translate_lang('CREDENTIALS') }}</p>
               </a>
             </li>
             <li role="presentation" class="{{$reviewed}}">
               <a href="#content" aria-controls="content" role="tab" data-toggle="tab">
                 <i class="fa fa-edit" aria-hidden="true"></i>
-                <p>REVIEW</p>
+                <p>{{ zactra::translate_lang('REVIEW') }}</p>
               </a>
             </li>
             <li role="presentation" class="{{$finished}}">
               <a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab">
                 <i class="fa fa-flag" aria-hidden="true"></i>
-                <p>FINISH</p>
+                <p>{{ zactra::translate_lang('FINISH') }}</p>
               </a>
             </li>
         </ul>

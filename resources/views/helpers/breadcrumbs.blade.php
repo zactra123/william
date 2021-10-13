@@ -4,10 +4,10 @@
     <span class="sub-title">
       @foreach($route as $name => $url)
         @if ($name != array_key_last($route))
-        <a href="{{$url}}">{{$name}}</a>
+          <a href="{{$url}}">{{$name}}</a>
             &gt;
         @else
-            {{$name}}
+          {{$name}}
         @endif
       @endforeach
     </span>

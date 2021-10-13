@@ -5,16 +5,16 @@
 @section('body')
 
 <div class="breadcrumb-header justify-content-between">
-    <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Furnishers</li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Furnisher</li>
-            </ol>
-        </nav>
-    </div>
+  <div>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Furnishers') }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Edit Furnisher') }}</li>
+        </ol>
+    </nav>
+  </div>
 </div>
 <div class="container mmap-0">
     <div class="row row-sm">
@@ -22,9 +22,9 @@
             <div class="card mg-b-20" id="tabs-style2">
                 <div class="card-body">
                     <div class="main-content-label mg-b-5">
-                        Edit Furnisher
+                        {{ zactra::translate_lang('Edit Furnisher') }}
                     </div>
-                    <p class="mg-b-20">Edit furnisher here ...</p>
+                    <p class="mg-b-20">{{ zactra::translate_lang('Edit furnisher here ...') }}</p>
                     <div class="text-wrap mb-5">
                         <div class="example">
                             <div class="panel panel-primary">
@@ -62,27 +62,27 @@
 									<?php
                     /** Get AWS S3 file link with  getUrlAttribute function */
                   ?>
-									<img class="card-img-top banks-card" src="{{$bank->getUrlAttribute()}}" alt="Card image cap">
+									<img class="card-img-top banks-card" src="{{$bank->getUrlAttribute()}}" alt="{{ zactra::translate_lang('Card image cap') }}">
 									@else
 									<?php
                     /** if Furnisher doesn't have logo in AWS S3 storage use default or in case of Furnisher should not has a logo use default no logo icon*/
                     ?>
 									@if($bank->no_logo)
-									<img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+									<img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="{{ zactra::translate_lang('Card image cap') }}">
 									@else
-									<img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="Card image cap">
+									<img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" alt="{{ zactra::translate_lang('Card image cap') }}">
 									@endif
 									@endif
 								</div>
 								<div class="col-sm-12 hide form-group updateLogo files">
 									<input class="bank_logo_class bank_logo form-control file-box" type="file" name="logo">
 								</div>
-								<div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">NO LOGO</span></div>
+								<div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">{{ zactra::translate_lang('NO LOGO') }}</span></div>
 							</div>
 							<div class="col-md-8 pt-5">
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="Company Name">
+										<input type="text" name="bank[name]" value="{{strtoupper($bank->name)}}" class="form-control bank_name" placeholder="{{ zactra::translate_lang('Company Name') }}">
 										{!! Form::hidden("bank[id]", $bank->id, ["class"=>"form-control bank_id"]) !!}
 									</div>
 								</div>
@@ -96,18 +96,18 @@
 										<div class="">
 											<div class="row bank_sub_type_append mb-3">
 												@if(isset($subTypes[$bank->type]))
-												@foreach($subTypes[$bank->type] as $key => $type)
-												<div class="col-md-4 mb-3">
-													<div class="row">
-														<div class="col-md-2">
-															<input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
-														</div>
-														<div class="col-md-10">
-															{{$type}}
-														</div>
-													</div>
-												</div>
-												@endforeach
+  												@foreach($subTypes[$bank->type] as $key => $type)
+    												<div class="col-md-4 mb-3">
+    													<div class="row">
+    														<div class="col-md-2">
+    															<input name="bank[additional_information][sub_type][]" type="checkbox" value="{{$type}}" {{( !empty( $bank->additional_information["sub_type"]) && in_array($type, $bank->additional_information["sub_type"])) ? "checked":''}}>
+    														</div>
+    														<div class="col-md-10">
+    															{{$type}}
+    														</div>
+    													</div>
+    												</div>
+  												@endforeach
 												@endif
 											</div>
 										</div>
@@ -115,8 +115,8 @@
 								</div>
 								<div class="row parent {{in_array($bank->type, [14,17, 18, 19,20, 21, 23, 24, 26, 27, 28, 29, 31,32, 43, 33, 30, 60, 61]) ||(!empty( $bank->additional_information["sub_type"]) && in_array("BANK-SBA LENDER", $bank->additional_information["sub_type"]))? "": 'hidden'}}">
 									<div class="col-md-3 pl-3">
-										<a class="btn btn-primary show-parent-field form-control text-white">Add Parent</a>
-										<a class="btn btn-primary hide hide-parent-field form-control mt-3 text-white">Hide Parent</a>
+										<a class="btn btn-primary show-parent-field form-control text-white">{{ zactra::translate_lang('Add Parent') }}</a>
+										<a class="btn btn-primary hide hide-parent-field form-control mt-3 text-white">{{ zactra::translate_lang('Hide Parent') }}</a>
 									</div>
 									<div class="col-md-9 parent-show">
 										<div class="col-md-12">
@@ -127,7 +127,7 @@
 										</div>
 										<div class="row pull-right pr-3">
 											<div class="col-md-12">
-												<a href="javascript:void(0)" class="btn btn-primary show-parent-bank text-white">Show Bank Info</a>
+												<a href="javascript:void(0)" class="btn btn-primary show-parent-bank text-white">{{ zactra::translate_lang('Show Bank Info') }}</a>
 											</div>
 										</div>
 									</div>
@@ -146,10 +146,10 @@
 						$hidden = false;
 
 						if ($type == 'fraud_address') {
-						$hidden = $bank->type != 3;
+			        $hidden = $bank->type != 3;
 						}
 						if ($type == 'qwr_address'){
-						$hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
+			        $hidden = !in_array($bank->type, [2, 55]) || (empty($bank->additional_information['sub_type']) || !in_array('MORTGAGE', $bank->additional_information['sub_type']));
 						}
 						@endphp
 						@if($type == 'additional_address')
@@ -159,7 +159,7 @@
 						@endforeach
 						<?php } ?>
 						<div class="row additional-addresses pl-1">
-							<div class="col-sm-12 add-additional mt-3 p-1 pb-5 ml-3"><a class="btn btn-primary ms-ua-submit text-white">Add Additional Address</a></div>
+							<div class="col-sm-12 add-additional mt-3 p-1 pb-5 ml-3"><a class="btn btn-primary ms-ua-submit text-white">{{ zactra::translate_lang('Add Additional Address') }}</a></div>
 						</div>
 						@continue
 						@endif
@@ -175,7 +175,7 @@
 							<div class="col-md-12 addresses " id="address-{{$type}}">
 								@if($type == 'registered_agent')
 								<div class="row mb-3">
-									<div class="col-sm-5 paste-register"><a class="btn btn-primary ms-ua-submit text-white">Copy Entity Address as Registered Agent fix functionality</a></div>
+									<div class="col-sm-5 paste-register"><a class="btn btn-primary ms-ua-submit text-white">{{ zactra::translate_lang('Copy Entity Address as Registered Agent fix functionality') }}</a></div>
 								</div>
 								@endif
 								<div class="row">
@@ -188,7 +188,7 @@
 									<div class="col-md-12 executive_copied">
 										<div class="row">
 											<div class="col-md-6">
-												Copy ParenT Executive Contact
+												{{ zactra::translate_lang('Copy Parent Executive Contact') }}
 											</div>
 											<div class="col-md-6">
 												<input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}}>
@@ -251,7 +251,7 @@
 				<div class="ms-ua-title mb-0">
 					<div class="row">
 						<div class="col-md-6 text-left">
-							<h4>Other Names Used</h4>
+							<h4>{{ zactra::translate_lang('Other Names Used') }}</h4>
 						</div>
 						<div class="col-md-6 text-right mb-3">
 							<span type="button" class="text-danger fs-18 remove-equal-bank pointer">
@@ -267,7 +267,7 @@
 			</div>
 			<div class="row mt-5 mb-5 text-right">
 				<div class="col-md-12">
-					<input type="submit" value="Save" class="btn btn-primary ms-ua-submit pull-right">
+					<input type="submit" value="{{ zactra::translate_lang('Save') }}" class="btn btn-primary ms-ua-submit pull-right">
 				</div>
 			</div>
 			{!! Form::hidden('referrer', request()->headers->get('referer')) !!}
@@ -279,7 +279,7 @@
     <div class="modal-dialog w-100" role="document">
         <div class="modal-content ">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Create Furinsher</h3>
+                <h3 class="modal-title" id="exampleModalLabel">{{ zactra::translate_lang('Create Furinsher') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -295,7 +295,7 @@
     <div class="modal-dialog w-100" role="document">
         <div class="modal-content ">
             <div class="modal-header">
-                <h3 class="modal-title" id="parentModalLabel">Parent Bank Information</h3>
+                <h3 class="modal-title" id="parentModalLabel">{{ zactra::translate_lang('Parent Bank Information') }}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
