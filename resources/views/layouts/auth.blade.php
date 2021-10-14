@@ -5,8 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        {{-- Meta data --}} @yield('meta') @if (!trim($__env->yieldContent('meta')))
-        <title>Prudent Credit Solutions</title>
+        {{-- Meta data --}}
+        @yield('meta')
+        @if (!trim($__env->yieldContent('meta')))
+        <title>{{ zactra::translate_lang('Prudent Credit Solutions') }}</title>
         @endif {{-- Meta data END --}} {{-- Canonical url --}}
         <link rel="canonical" href="{{ url()->current() }}" />
 
@@ -55,10 +57,7 @@
               }
               }
         </style>
-
         <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
-
-
         @yield('scripts')
     </head>
     <body>
@@ -82,7 +81,7 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="fs-12">1-844-337-8336</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('1-844-337-8336') }}</span>
                                 </a>
 
                                 <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
@@ -92,21 +91,21 @@
                                             fill="#F63664"
                                         />
                                     </svg>
-                                    <span class="fs-12">info@prudentscores.com</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('info@prudentscores.com') }}</span>
                                 </a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-12 col-12 text-right sm-hidden">
                                 @if (Auth::check())
                                 <a href="{{ route('logout') }}" class="ml-4 text-white">
-                                    <span class="fs-12">Logout</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('Logout') }}</span>
                                 </a>
                                 @else
                                 <a href="{{ route('login') }}" class="ml-4 text-white">
-                                    <span class="fs-12">Login</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('Login') }}</span>
                                 </a>
 
                                 <a href="{{ route('register') }}" class="text-white">
-                                    <span class="fs-12"> / Sign up</span>
+                                    <span class="fs-12">{{ zactra::translate_lang(' / Sign up') }}</span>
                                 </a>
 
                                 @endif {{--
@@ -174,8 +173,8 @@
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <p style="text-align: justify;">
-                            We are always looking to partner with independent sales representatives. To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com"> partners@prudentscores.com</a> and one of our
-                            representatives will contact you promptly.
+                            {{ zactra::translate_lang('We are always looking to partner with independent sales representatives. To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com"> partners@prudentscores.com</a> and one of our
+                            representatives will contact you promptly.') }}
                         </p>
                     </div>
                 </div>
@@ -186,11 +185,13 @@
         <footer class="footer-section">
             <div class="copy-right text-center">
                 <div class="container">
-                    <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
+                    <p>2020 &copy; {{ zactra::translate_lang('All Rights Reserved by ') }}<a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
                 </div>
             </div>
         </footer>
-        @else @include('includes.footer') @endif
+        @else
+          @include('includes.footer')
+        @endif
 
           {{-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script> --}}
 

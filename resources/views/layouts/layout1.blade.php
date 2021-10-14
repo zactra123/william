@@ -4,12 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-        {{-- Meta data --}} @yield('meta') @if (!trim($__env->yieldContent('meta')))
-        <title>Prudent Credit Solutions</title>
-        @endif {{-- Meta data END --}} {{-- Canonical url --}}
+        {{-- Meta data --}}
+        @yield('meta')
+        @if (!trim($__env->yieldContent('meta')))
+          <title>{{ zactra::translate_lang('Prudent Credit Solutions') }}</title>
+        @endif
+        {{-- Meta data END --}}
+        {{-- Canonical url --}}
         <link rel="canonical" href="{{ url()->current() }}" />
-
         {{-- Fav Icon --}}
         <link rel="apple-touch-icon" sizes="57x57" href="{{URL::asset('/icons/apple-icon-57x57.png')}}" />
         <link rel="apple-touch-icon" sizes="60x60" href="{{URL::asset('/icons/apple-icon-60x60.png')}}" />
@@ -29,12 +31,9 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
         {{-- Fav Icon END --}}
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
         <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
         {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> --}}
-
-
         <style media="screen">
         .ls-hidden{
           display: none;
@@ -54,9 +53,7 @@
               }
               }
         </style>
-
         <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
-
     </head>
     <body>
         <header class="theme-background py-2 fixed-top">
@@ -79,9 +76,8 @@
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="fs-12">1-844-337-8336</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('1-844-337-8336') }}</span>
                                 </a>
-
                                 <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -89,32 +85,30 @@
                                             fill="#F63664"
                                         />
                                     </svg>
-                                    <span class="fs-12">info@prudentscores.com</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('info@prudentscores.com') }}</span>
                                 </a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-12 col-12 text-right sm-hidden">
                                 @if (Auth::check())
                                 <a href="{{ route('logout') }}" class="ml-4 text-white">
-                                    <span class="fs-12">Logout</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('Logout') }}</span>
                                 </a>
                                 @else
                                 <a href="{{ route('login') }}" class="ml-4 text-white">
-                                    <span class="fs-12">Login</span>
+                                    <span class="fs-12">{{ zactra::translate_lang('Login') }}</span>
                                 </a>
-
                                 <a href="{{ route('register') }}" class="text-white">
-                                    <span class="fs-12"> / Sign up</span>
+                                    <span class="fs-12">{{ zactra::translate_lang(' / Sign up') }}</span>
                                 </a>
-
-                                @endif {{--
+                                @endif
+                                {{--
                                 <div class="dropdown">
                                     <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        My Account
+                                        {{ zactra::translate_lang('My Account') }}
                                     </a>
-
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item">
-                                            Logout
+                                            {{ zactra::translate_lang('Logout') }}
                                         </a>
                                     </div>
                                 </div>
@@ -125,7 +119,6 @@
                 </div>
             </div>
         </header>
-
         <section class="py-2 mb-5">
             <div class="col-md-12 col-lg-12 col-sm-12 col-12">
                 <header id="header" class="fixed-top" style="top: 40px !important;">
@@ -162,17 +155,15 @@
                 </header>
             </div>
         </section>
-
         @yield('content')
-
         <div class="modal fade" id="partner_with_us" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <p style="text-align: justify;">
-                            We are always looking to partner with independent sales representatives. To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com"> partners@prudentscores.com</a> and one of our
-                            representatives will contact you promptly.
+                            {{ zactra::translate_lang('We are always looking to partner with independent sales representatives. To inquire, please email your CV/resume to<a href="mailto:partners@prudentscores.com"> partners@prudentscores.com</a> and one of our
+                            representatives will contact you promptly.') }}
                         </p>
                     </div>
                 </div>
@@ -183,15 +174,14 @@
         <footer class="footer-section">
             <div class="copy-right text-center">
                 <div class="container">
-                    <p>2020 &copy; All Rights Reserved by <a href="/" class="fs-14">PRUDENT CREDIT SOLUTION</a></p>
+                  <p>{{ date('Y') }} &copy;{{ zactra::translate_lang(' All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
                 </div>
             </div>
         </footer>
-        @else @include('includes.footer') @endif
-
+        @else
+          @include('includes.footer')
+        @endif
           {{-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script> --}}
-
-
         <!--Alerts Script-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
 

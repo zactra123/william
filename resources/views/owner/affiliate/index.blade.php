@@ -10,18 +10,18 @@
           <div class="col-md-11">
             <div class="card">
               <div class="card-header">
-                <label class="header m-2">Affiliate List</label>
+                <label class="header m-2">{{ zactra::translate_lang('Affiliate List') }}</label>
               </div>
               <div class="card-body">
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">FIRST NAME</th>
-                      <th scope="col">LAST NAME</th>
-                      <th scope="col">EMAI</th>
-                      <th scope="col">CLIENT NUMBER</th>
-                      <th scope="col">ACTIONS</th>
+                      <th scope="col">{{ zactra::translate_lang('#') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('FIRST NAME') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('LAST NAME') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('EMAIL') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('CLIENT NUMBER') }}</th>
+                      <th scope="col">{{ zactra::translate_lang('ACTIONS') }}</th>
                     </tr>
                   </thead>
                   <tbody>
