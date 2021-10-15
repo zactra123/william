@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Affiliate</title>
+<title>{{ zactra::translate_lang('Affiliate') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Affiliates</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Affiliates') }}</li>
 			</ol>
 		</nav>
 	</div>
@@ -19,22 +19,22 @@
 		<div class="card">
 			<div class="card-header pb-0">
 				<div class="d-flex justify-content-between">
-					<h4 class="card-title mg-b-0 mt-2">Affiliate List</h4>
+					<h4 class="card-title mg-b-0 mt-2">{{ zactra::translate_lang('Affiliate List') }}</h4>
 					<i class="mdi mdi-dots-horizontal text-gray"></i>
 				</div>
-				<p class="tx-12 text-muted mb-2">List of all affiliate for your system</p>
+				<p class="tx-12 text-muted mb-2">{{ zactra::translate_lang('List of all affiliate for your system') }}</p>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
 					<table class="table text-md-nowrap" id="example1">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">FIRST NAME</th>
-								<th scope="col">LAST NAME</th>
-								<th scope="col">EMAIL</th>
-								<th scope="col">AFFILIATE FULL NAME</th>
-								<th scope="col">Action</th>
+								<th scope="col">{{ zactra::translate_lang('#') }}</th>
+								<th scope="col">{{ zactra::translate_lang('FIRST NAME') }}</th>
+								<th scope="col">{{ zactra::translate_lang('LAST NAME') }}</th>
+								<th scope="col">{{ zactra::translate_lang('EMAIL') }}</th>
+								<th scope="col">{{ zactra::translate_lang('AFFILIATE FULL NAME') }}</th>
+								<th scope="col">{{ zactra::translate_lang('Action') }}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,10 +48,10 @@
 								<td>
 									<div class="dropdown show">
 										<a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Action
+											{{ zactra::translate_lang('Action') }}
 										</a>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-											<a class="dropdown-item" href="{{ route('owner.delete.client',$user->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+											<a class="dropdown-item" href="{{ route('owner.delete.client',$user->id) }}" onclick="return confirm('Are You Sure?')">{{ zactra::translate_lang('Delete') }}</a>
 										</div>
 									</div>
 									<meta name="csrf-token" content="{{ csrf_token() }}" />

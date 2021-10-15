@@ -165,7 +165,7 @@
           @yield('body')
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
             <div class="col-md-12 col-lg-12 col-sm-12 col-12 text-center">
-              <p>{{ date('Y') }} ©{{ zactra::translate_lang(' All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
+              <p>{{ date('Y') }} © {{ zactra::translate_lang('All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
             </div>
           </footer>
         </main>
