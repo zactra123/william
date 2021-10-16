@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Eductions</title>
+<title>{{ zactra::translate_lang('Eductions') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Educations</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Educations') }}</li>
       </ol>
     </nav>
   </div>
@@ -26,20 +26,20 @@
                   <div class="card p-3">
                     <div class="card-header mb-3">
                       <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0 mt-2">EDUCATIONS</h4>
+                        <h4 class="card-title mg-b-0 mt-2">{{ zactra::translate_lang('EDUCATIONS') }}</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                       </div>
-                      <p class="tx-12 text-muted mb-2">List of all education <a href="{{route('owner.credit.education.create')}}" class="btn btn-primary btn-sm float-right">Add Education</a></p>
+                      <p class="tx-12 text-muted mb-2">{{ zactra::translate_lang('List of all education') }} <a href="{{route('owner.credit.education.create')}}" class="btn btn-primary btn-sm float-right">{{ zactra::translate_lang('Add Education') }}</a></p>
                     </div>
                     <div class="table-responsive">
                       <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th>#</th>
-                            <th scope="col">url</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Sub Content</th>
-                            <th scope="col">Action</th>
+                            <th>{{ zactra::translate_lang('#') }}</th>
+                            <th scope="col">{{ zactra::translate_lang('url') }}</th>
+                            <th scope="col">{{ zactra::translate_lang('Title') }}</th>
+                            <th scope="col">{{ zactra::translate_lang('Sub Content') }}</th>
+                            <th scope="col">{{ zactra::translate_lang('Action') }}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -53,12 +53,12 @@
                               <meta name="csrf-token" content="{{ csrf_token() }}" />
                               <div class="dropdown show">
                                 <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Action
+                                  {{ zactra::translate_lang('Action') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                  <a class="dropdown-item" href="{{route('owner.credit.education.show', $content->url)}}">View</a>
-                                  <a class="dropdown-item" href="{{route('owner.credit.education.edit', $content->url)}}">Edit</a>
-                                  <a class="dropdown-item" href="{{ route('admin.delete.education',$content->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                                  <a class="dropdown-item" href="{{route('owner.credit.education.show', $content->url)}}">{{ zactra::translate_lang('View') }}</a>
+                                  <a class="dropdown-item" href="{{route('owner.credit.education.edit', $content->url)}}">{{ zactra::translate_lang('Edit') }}</a>
+                                  <a class="dropdown-item" href="{{ route('admin.delete.education',$content->id) }}" onclick="return confirm('Are You Sure?')">{{ zactra::translate_lang('Delete') }}</a>
                                 </div>
                               </div>
                             </td>

@@ -428,7 +428,7 @@
 			<div class="heading">
 				<div class="setting">
 					<div class="setting image_picker">
-						<h2>SSC</h2>
+						<h2>{{ zactra::translate_lang('SSC') }}</h2>
 						<div class="settings_wrap">
 							<label class="drop_target">
 								<div class="image_preview"></div>
@@ -436,10 +436,10 @@
 							</label>
 							<div class="settings_actions vertical">
 								<a data-action="choose_from_uploaded">
-									<i class="fa fa-picture-o"></i> Choose from Uploads
+									<i class="fa fa-picture-o"></i> {{ zactra::translate_lang('Choose from Uploads') }}
 								</a>
 								<a class="disabled" data-action="remove_current_image">
-									<i class="fa fa-ban"></i> Remove Current Image
+									<i class="fa fa-ban"></i> {{ zactra::translate_lang('Remove Current Image') }}
 								</a>
 							</div>
 							<div class="image_details">
@@ -464,21 +464,21 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 upload_file">
 						<input type="file" name="inp-drvl[]" id="inp-drvl" multiple accept="image/*" />
-						<label for="inp-drvl" class="btn-3"><span>select File</span></label>
+						<label for="inp-drvl" class="btn-3"><span>{{ zactra::translate_lang('select File') }}</span></label>
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12">
 
 						@if(!empty($client->clientAttachments()))
-						@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
-						@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-						<img type="file" src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="100" name="img-drvl" id="img-drvl" />
-						@endif
-						@endif
-						@if(!empty($client->clientAttachments()->where('category', "SS")->first()))
-						@if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-						<img type="file" src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="100" name="img-sose" id="img-sose" />
-						@endif
-						@endif
+  						@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
+    						@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
+    						  <img type="file" src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="100" name="img-drvl" id="img-drvl" />
+    						@endif
+  						@endif
+  						@if(!empty($client->clientAttachments()->where('category', "SS")->first()))
+    						@if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
+    						<img type="file" src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="100" name="img-sose" id="img-sose" />
+    						@endif
+  						@endif
 						@endif
 
 						{{-- <img type="file" src="a.png" width="100" name="img-drvl" id="img-drvl"/>--}}
@@ -512,32 +512,32 @@
 				@endif
 				<li title="GENDER">
 					@if($client->clientDetails->sex == 'M')
-					<img src="/images/male.png" width="20px"> Male
+		        <img src="/images/male.png" width="20px"> {{ zactra::translate_lang('Male') }}
 					@elseif($client->clientDetails->sex == 'F')
-					<img src="/images/female.png" width="20px"> Female
+		        <img src="/images/female.png" width="20px"> {{ zactra::translate_lang('Female') }}
 					@else
-					<img src="/images/non_binary.png" width="25px"> Non-Binary
+		        <img src="/images/non_binary.png" width="25px"> {{ zactra::translate_lang('Non-Binary') }}
 					@endif
 				</li>
 				<li>
 					<a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white">
-						<i class="fa fa-pencil-square-o fa-fw"></i> Edit Profile
+						<i class="fa fa-pencil-square-o fa-fw"></i> {{ zactra::translate_lang('Edit Profile') }}
 					</a>
 				</li>
 
 				@if(!empty($client->clientAttachments()))
 				@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
 				@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> Download</a></li>
+				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
 				@else
-				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>Download</a></li>
+				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
 				@endif
 				@endif
 				@if(!empty($client->clientAttachments()->where('category', "SS")->first()))
 				@if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>Download</a></li>
+				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
 				@else
-				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> Download</a></li>
+				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
 				@endif
 				@endif
 				@endif
@@ -556,21 +556,21 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="content">
-								<h2>Welcome to Dashboard</h2>
+								<h2>{{ zactra::translate_lang('Welcome to Dashboard') }}</h2>
 								<div>
-									<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"> REPORT ACCESS<b class="caret"></b></a>
+									<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"> {{ zactra::translate_lang('REPORT ACCESS') }}<b class="caret"></b></a>
 									<ul class="dropdown-menu multi-level">
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/eq_logo_1.png')}}" width="120"></a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
-												<li> <a class="dropdown-item" href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">DISPUTE</a></li>
-												<li> <a class="dropdown-item" href="https://my.equifax.com/membercenter/#/login" target="_blank">DISUTE STATUS</a></li>
-												<li> <a class="dropdown-item" href="https://aa.econsumer.equifax.com/aad/landing.ehtml" target="_blank">FCRA</a></li>
-												<li> <a class="dropdown-item" href="ttps://my.equifax.com/membercenter/#/login" target="_blank">MEMBER LOGIN</a></li>
-												<li> <a class="dropdown-item" href="https://www.econsumer.equifax.com/otc/landing.ehtml?^start=&companyName=W18uft01_uplanr" target="_blank">MEMBERSHIP SIGNUP </a></li>
+												<li><a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('ANNUAL CREDIT REPORT') }}</a></li>
+												<li> <a class="dropdown-item" href="https://my.equifax.com/consumer-registration/UCSC/#/personal-info" target="_blank">{{ zactra::translate_lang('DISPUTE') }}</a></li>
+												<li> <a class="dropdown-item" href="https://my.equifax.com/membercenter/#/login" target="_blank">{{ zactra::translate_lang('DISUTE STATUS') }}</a></li>
+												<li> <a class="dropdown-item" href="https://aa.econsumer.equifax.com/aad/landing.ehtml" target="_blank">{{ zactra::translate_lang('FCRA') }}</a></li>
+												<li> <a class="dropdown-item" href="ttps://my.equifax.com/membercenter/#/login" target="_blank">{{ zactra::translate_lang('MEMBER LOGIN') }}</a></li>
+												<li> <a class="dropdown-item" href="https://www.econsumer.equifax.com/otc/landing.ehtml?^start=&companyName=W18uft01_uplanr" target="_blank">{{ zactra::translate_lang('MEMBERSHIP SIGNUP') }} </a></li>
 												<div class="dropdown-divider"></div>
-												<li> <a class="dropdown-item" href="#equifax" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+												<li> <a class="dropdown-item" href="#equifax" data-toggle="modal">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
@@ -578,15 +578,15 @@
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ex_logo_1.png')}}" width="120"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
-												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/creditreport?type=declined">DENIED</a></li>
-												<li> <a class="dropdown-item" href="https://usa.experian.com/registration/?offer=at_fcras102,at_ltdreg100&op=FRCD-DIS-PRI-102-WGT-EXDPTAG-B1-EXP-VWIN-SEO-XXXXXX-XXXXXX-XXXXX">DISPUTE</a></li>
-												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/disputeresults?intcmp=dispute_email_resultsready02">DISPUTE STATUS </a></li>
-												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/dispute">VIEW REPORT</a></li>
-												<li> <a class="dropdown-item" href="https://usa.experian.com/login/index?br=exp">MEMBER LOGIN </a></li>
-												<li> <a class="dropdown-item" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">MEMBERSHIP SIGNUP</a></li>
+												<li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('ANNUAL CREDIT REPORT') }}</a></li>
+												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/creditreport?type=declined">{{ zactra::translate_lang('DENIED') }}</a></li>
+												<li> <a class="dropdown-item" href="https://usa.experian.com/registration/?offer=at_fcras102,at_ltdreg100&op=FRCD-DIS-PRI-102-WGT-EXDPTAG-B1-EXP-VWIN-SEO-XXXXXX-XXXXXX-XXXXX">{{ zactra::translate_lang('DISPUTE') }}</a></li>
+												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/disputeresults?intcmp=dispute_email_resultsready02">{{ zactra::translate_lang('DISPUTE STATUS') }} </a></li>
+												<li> <a class="dropdown-item" href="https://www.experian.com/ncaconline/dispute">{{ zactra::translate_lang('VIEW REPORT') }}</a></li>
+												<li> <a class="dropdown-item" href="https://usa.experian.com/login/index?br=exp">{{ zactra::translate_lang('MEMBER LOGIN') }} </a></li>
+												<li> <a class="dropdown-item" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">{{ zactra::translate_lang('MEMBERSHIP SIGNUP') }}</a></li>
 												<div class="dropdown-divider"></div>
-												<li> <a class="dropdown-item" href="#experian" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+												<li> <a class="dropdown-item" href="#experian" data-toggle="modal">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
 
 											</ul>
 										</li>
@@ -595,15 +595,15 @@
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">ANNUAL CREDIT REPORT</a></li>
-												<li> <a class="dropdown-item" href="https://dispute.transunion.com/dp/dispute/landingPage.jsp?PLACE_CTA=dispute:cta">DISPUTE LOGIN </a></li>
-												<li> <a class="dropdown-item" href="https://disclosure.transunion.com/dc/disclosure/landingPage.jsp">DISCLOSURE LOGIN</a></li>
-												<li> <a class="dropdown-item" href="https://fraud.transunion.com/fa/fraudAlert/landingPage.jsp?incorrect=true">FRAUD LOGIN </a></li>
-												<li> <a class="dropdown-item" href="https://dispute.transunion.com/fa/fraudAlert/indexProcess">NEW ACCOUNT REGISTRATION</a></li>
-												<li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/login.page?PLACE_CTA=TransUnion:PHP:Login">MEMBER LOGIN </a></li>
-												<li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?">MEMBERSHIP SIGNUP</a></li>
+												<li> <a class="dropdown-item" href="https://www.annualcreditreport.com/requestReport/requestForm.action" target="_blank">{{ zactra::translate_lang('ANNUAL CREDIT REPORT') }}</a></li>
+												<li> <a class="dropdown-item" href="https://dispute.transunion.com/dp/dispute/landingPage.jsp?PLACE_CTA=dispute:cta">{{ zactra::translate_lang('DISPUTE LOGIN') }} </a></li>
+												<li> <a class="dropdown-item" href="https://disclosure.transunion.com/dc/disclosure/landingPage.jsp">{{ zactra::translate_lang('DISCLOSURE LOGIN') }}</a></li>
+												<li> <a class="dropdown-item" href="https://fraud.transunion.com/fa/fraudAlert/landingPage.jsp?incorrect=true">{{ zactra::translate_lang('FRAUD LOGIN') }} </a></li>
+												<li> <a class="dropdown-item" href="https://dispute.transunion.com/fa/fraudAlert/indexProcess">{{ zactra::translate_lang('NEW ACCOUNT REGISTRATION') }}</a></li>
+												<li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/login.page?PLACE_CTA=TransUnion:PHP:Login">{{ zactra::translate_lang('MEMBER LOGIN') }} </a></li>
+												<li> <a class="dropdown-item" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?">{{ zactra::translate_lang('MEMBERSHIP SIGNUP') }}</a></li>
 												<div class="dropdown-divider"></div>
-												<li> <a class="dropdown-item" href="#transunion" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+												<li> <a class="dropdown-item" href="#transunion" data-toggle="modal">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
@@ -611,9 +611,9 @@
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/in_logo_2.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<a class="dropdown-item" href="https://www.innovis.com/creditReport/index" target="_blank">REQUEST CREDIT REPORT </a>
-												<a class="dropdown-item" href="https://www.innovis.com/personal/creditReport/orderYourInnovisCreditReport#dropdownMenu">LOGIN</a>
-												<a class="dropdown-item" href="https://www.innovis.com/securityFreeze/index">SECURITY FREEZE </a>
+												<a class="dropdown-item" href="https://www.innovis.com/creditReport/index" target="_blank">{{ zactra::translate_lang('REQUEST CREDIT REPORT') }} </a>
+												<a class="dropdown-item" href="https://www.innovis.com/personal/creditReport/orderYourInnovisCreditReport#dropdownMenu">{{ zactra::translate_lang('LOGIN') }}</a>
+												<a class="dropdown-item" href="https://www.innovis.com/securityFreeze/index">{{ zactra::translate_lang('SECURITY FREEZE') }} </a>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
@@ -621,34 +621,34 @@
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/cs_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank">ORDER CONSUMER REPORT</a></li>
+												<li> <a class="dropdown-item" href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" target="_blank">{{ zactra::translate_lang('ORDER CONSUMER REPORT') }}</a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ck_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://www.creditkarma.com/auth/logon" target="_blank">MEMBER LOGIN</a></li>
-												<li> <a class="dropdown-item" href="https://www.creditkarma.com/signup/">SIGNUP</a></li>
-												<li> <a class="dropdown-item" href="#creditkarma" data-toggle="modal">LOGIN CREDENTIALS </a></li>
+												<li> <a class="dropdown-item" href="https://www.creditkarma.com/auth/logon" target="_blank">{{ zactra::translate_lang('MEMBER LOGIN') }}</a></li>
+												<li> <a class="dropdown-item" href="https://www.creditkarma.com/signup/">{{ zactra::translate_lang('SIGNUP') }}</a></li>
+												<li> <a class="dropdown-item" href="#creditkarma" data-toggle="modal">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ew_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" target="_blank">ORDER CONSUMER REPORT </a></li>
+												<li><a class="dropdown-item" href="https://www.earlywarning.com/sites/default/files/2019-01/CIC%20Form-170215-0811-SAMPLE.pdf" target="_blank">{{ zactra::translate_lang('ORDER CONSUMER REPORT') }} </a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/lxn_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://consumer.risk.lexisnexis.com/request" target="_blank">ORDER CONSUMER REPORT </a></li>
-												<li> <a class="dropdown-item" href="https://optout.lexisnexis.com/" target="_blank">OPT OUT</a></li>
+												<li> <a class="dropdown-item" href="https://consumer.risk.lexisnexis.com/request" target="_blank">{{ zactra::translate_lang('ORDER CONSUMER REPORT') }} </a></li>
+												<li> <a class="dropdown-item" href="https://optout.lexisnexis.com/" target="_blank">{{ zactra::translate_lang('OPT OUT') }}</a></li>
 
 												<div class="dropdown-divider"></div>
-												<li> <a class="dropdown-item" href="#">LOGIN CREDENTIALS </a></li>
+												<li> <a class="dropdown-item" href="#">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
 
 											</ul>
 										</li>
@@ -657,20 +657,20 @@
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ss_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
-												<li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/consumer-report-self" target="_blank">ORDER CONSUMER REPORT </a></li>
-												<li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/freeze-self" target="_blank">ADD SECURITY FREEZE</a></li>
-												<li><a class="dropdown-item" href="https://forms.sagestreamllc.com/#/unfreeze-self" target="_blank">LIFT SECURITY FREEZE</a></li>
+												<li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/consumer-report-self" target="_blank">{{ zactra::translate_lang('ORDER CONSUMER REPORT') }} </a></li>
+												<li> <a class="dropdown-item" href="https://forms.sagestreamllc.com/#/freeze-self" target="_blank">{{ zactra::translate_lang('ADD SECURITY FREEZE') }}</a></li>
+												<li><a class="dropdown-item" href="https://forms.sagestreamllc.com/#/unfreeze-self" target="_blank">{{ zactra::translate_lang('LIFT SECURITY FREEZE') }}</a></li>
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
 										<li class="dropdown-submenu">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown">CA STATE COURTS ACCESS</a>
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ zactra::translate_lang('CA STATE COURTS ACCESS') }}</a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="http://www.lacourt.org/casesummary/ui/index.aspx?casetype=civil" target="_blank">LOS ANGELES COUNTY </a></li>
-												<li><a class="dropdown-item" href="https://ocapps.occourts.org/civilwebShoppingNS/Search.do#searchAnchor" target="_blank">ORANGE COUNTY</a></li>
-												<li><a class="dropdown-item" href="http://public-access.riverside.courts.ca.gov/OpenAccess/CivilMainMenu.asp" target="_blank">RIVERSIDE</a></li>
-												<li><a class="dropdown-item" href="http://openaccess.sb-court.org/CIVIL/" target="_blank">SAN BERNANDINO COUNTY </a></li>
-												<li><a class="dropdown-item" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">VENTURA COUNTY </a></li>
+												<li><a class="dropdown-item" href="http://www.lacourt.org/casesummary/ui/index.aspx?casetype=civil" target="_blank">{{ zactra::translate_lang('LOS ANGELES COUNTY') }} </a></li>
+												<li><a class="dropdown-item" href="https://ocapps.occourts.org/civilwebShoppingNS/Search.do#searchAnchor" target="_blank">{{ zactra::translate_lang('ORANGE COUNTY') }}</a></li>
+												<li><a class="dropdown-item" href="http://public-access.riverside.courts.ca.gov/OpenAccess/CivilMainMenu.asp" target="_blank">{{ zactra::translate_lang('RIVERSIDE') }}</a></li>
+												<li><a class="dropdown-item" href="http://openaccess.sb-court.org/CIVIL/" target="_blank">{{ zactra::translate_lang('SAN BERNANDINO COUNTY') }} </a></li>
+												<li><a class="dropdown-item" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">{{ zactra::translate_lang('VENTURA COUNTY') }} </a></li>
 											</ul>
 										</li>
 
@@ -679,8 +679,8 @@
 
 								</div>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-									sed do eiusmod tempor.
+									{{ zactra::translate_lang('Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+									sed do eiusmod tempor.') }}
 								</p>
 							</div>
 						</div>
@@ -702,19 +702,19 @@
 								</div>
 
 								<div class="col-6 mt20">
-									<h4>Lorem ipsum dolor sit.pdf</h4>
-									<p>12-04-2020</p>
+									<h4>{{ zactra::translate_lang('Lorem ipsum dolor sit.pdf') }}</h4>
+									<p>{{ zactra::translate_lang('12-04-2020') }}</p>
 								</div>
 								<div class="col-6">
-									<h4>Lorem ipsum dolor sit.pdf</h4>
-									<p>12-04-2020</p>
+									<h4>{{ zactra::translate_lang('Lorem ipsum dolor sit.pdf') }}</h4>
+									<p>{{ zactra::translate_lang('12-04-2020') }}</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="chart-container">
 								<div class="boxheading">
-									<h3>DISPUTE PROGRESS</h3>
+									<h3>{{ zactra::translate_lang('DISPUTE PROGRESS') }}</h3>
 								</div>
 
 								<div class="disput-progress d-flex flex-sm-row flex-column">
@@ -727,7 +727,7 @@
 										</svg>
 										<div class="number">
 											<h2></h2>
-											<span>%</span>
+											<span>{{ zactra::translate_lang('%') }}</span>
 										</div>
 									</div>
 								</div>
@@ -756,7 +756,7 @@
                                                     </div>
 
                                                 </div> -->
-								<h4 class="text-center">Uploaded Documents VS Processed</h4>
+								<h4 class="text-center">{{ zactra::translate_lang('Uploaded Documents VS Processed') }}</h4>
 							</div>
 						</div>
 					</div>
@@ -765,20 +765,20 @@
 						<div class="col-md-6">
 							<div class="chart-container">
 								<div class="boxheading">
-									<h3>ARCHIVE</h3>
+									<h3>{{ zactra::translate_lang('ARCHIVE') }}</h3>
 								</div>
 								<div class="col-6 mt20">
-									<h4>DOCUMENTS</h4>
+									<h4>{{ zactra::translate_lang('DOCUMENTS') }}</h4>
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Nesciunt, tenetur.
+										{{ zactra::translate_lang('Lorem ipsum dolor sit amet, consectetur adipisicing
+										elit. Nesciunt, tenetur.') }}
 									</p>
 								</div>
 								<div class="col-6">
-									<h4>MISCELLANEOUS</h4>
+									<h4>{{ zactra::translate_lang('MISCELLANEOUS') }}</h4>
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Nesciunt, tenetur.
+										{{ zactra::translate_lang('Lorem ipsum dolor sit amet, consectetur adipisicing
+										elit. Nesciunt, tenetur.') }}
 									</p>
 								</div>
 							</div>
@@ -786,17 +786,17 @@
 						<div class="col-md-6">
 							<div class="chart-container">
 								<div class="boxheading">
-									<h3>BILLING</h3>
+									<h3>{{ zactra::translate_lang('BILLING') }}</h3>
 								</div>
 								<div class="mt20">
-									<h4>billing statements</h4>
+									<h4>{{ zactra::translate_lang('billing statements') }}</h4>
 									<p>
-										consectetur adipisicing elit. Error fuga dicta iusto
+										{{ zactra::translate_lang('consectetur adipisicing elit. Error fuga dicta iusto
 										suscipit quibusdam nam ad, eum deleniti architecto
 										debitis.consectetur adipisicing elit. Error fuga dicta
 										iusto suscipit quibusdam nam ad, eum deleniti architecto
 										debitis.Error fuga dicta iusto suscipit quibusdam nam
-										ad, eum deleniti architecto debitis.
+										ad, eum deleniti architecto debitis.') }}
 									</p>
 								</div>
 							</div>
@@ -811,19 +811,19 @@
 						<div class="col-md-8 col-sm-offset-2">
 							<div class="chart-container">
 								<div class="boxheading">
-									<h3>EXCEED COMPANIES</h3>
+									<h3>{{ zactra::translate_lang('EXCEED COMPANIES') }}</h3>
 								</div>
 								<div class="mt20">
-									<h4>EXCEED AUTO GROUP</h4>
+									<h4>{{ zactra::translate_lang('EXCEED AUTO GROUP') }}</h4>
 									<p>
-										consectetur adipisicing elit. Error fuga dicta iusto
+										{{ zactra::translate_lang('consectetur adipisicing elit. Error fuga dicta iusto
 										suscipit quibusdam nam ad, eum deleniti architecto
-										debitis.
+										debitis.') }}
 									</p>
 								</div>
 								<div class="mt20">
-									<h4>EXCEED AUTO GROUP</h4>
-									<p>EXCEED CAPITAL LENDING</p>
+									<h4>{{ zactra::translate_lang('EXCEED AUTO GROUP') }}</h4>
+									<p>{{ zactra::translate_lang('EXCEED CAPITAL LENDING') }}</p>
 								</div>
 							</div>
 						</div>
@@ -841,7 +841,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">
-					Update Your Profile
+					{{ zactra::translate_lang('Update Your Profile') }}
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -851,60 +851,60 @@
 				<form method="post" action="#">
 					<div class="form row">
 						<div class="form-group col-md-6">
-							<label for="fname">First Name</label>
+							<label for="fname">{{ zactra::translate_lang('First Name') }}</label>
 							<input type="text" class="form-control" value="donal" id="fname" placeholder="First Name" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="lname">Last Name</label>
+							<label for="lname">{{ zactra::translate_lang('Last Name') }}</label>
 							<input type="text" class="form-control" value="trump" id="lname" placeholder="Last Name" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="email">Email Address</label>
+							<label for="email">{{ zactra::translate_lang('Email Address') }}</label>
 							<input type="email" class="form-control" value="demomail@gmail.com" id="email" placeholder="Email" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="phonenum">Phone Number</label>
+							<label for="phonenum">{{ zactra::translate_lang('Phone Number') }}</label>
 							<input type="text" class="form-control" value="+91-434-3433" id="phonenum" placeholder="Phone Number" />
 						</div>
 						<div class="form-group col-md-12">
-							<label for="address">Full Address</label>
+							<label for="address">{{ zactra::translate_lang('Full Address') }}</label>
 							<input type="text" class="form-control" value="555 Main St,
                     Salt Lake City" id="address" placeholder="1234 Main St" />
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="ssn">Social Security Number</label>
+							<label for="ssn">{{ zactra::translate_lang('Social Security Number') }}</label>
 							<input type="text" value="078-07-1123" class="form-control" id="ssn" placeholder="Social Security Number" />
 						</div>
 						<div class="form-group col-md-6">
-							<label for="referred">Referred By</label>
+							<label for="referred">{{ zactra::translate_lang('Referred By') }}</label>
 							<input type="text" class="form-control" value="James Bond" id="referred" />
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="dob">Date Of Birth</label>
+							<label for="dob">{{ zactra::translate_lang('Date Of Birth') }}</label>
 							<input type="date" class="form-control" value="1999-04-13" id="dob" />
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="gender">Gender</label>
+							<label for="gender">{{ zactra::translate_lang('Gender') }}</label>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="gender" id="male" value="male" checked="checked" />
-								<label class="form-check-label" for="male">Male</label>
+								<label class="form-check-label" for="male">{{ zactra::translate_lang('Male') }}</label>
 								<input class="form-check-input" type="radio" name="gender" id="female" value="female" />
-								<label class="form-check-label" for="female">Female</label>
+								<label class="form-check-label" for="female">{{ zactra::translate_lang('Female') }}</label>
 							</div>
 						</div>
 					</div>
 
 					<button type="submit" value="Update" class="btn btn-primary">
-						Update
+						{{ zactra::translate_lang('Update') }}
 					</button>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
-					Close
+					{{ zactra::translate_lang('Close') }}
 				</button>
 			</div>
 		</div>
@@ -923,7 +923,7 @@
 			<div class="modal-body"></div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">
-					Close
+					{{ zactra::translate_lang('Close') }}
 				</button>
 			</div>
 		</div>
@@ -938,9 +938,9 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3>Equifax Credentials</h3>
-						<li>Login: {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
-						<li>Password: {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
+						<h3>{{ zactra::translate_lang('Equifax Credentials') }}</h3>
+						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
+						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
 
 					</div>
 				</div>
@@ -956,11 +956,11 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3>Experian Credentials</h3>
-						<li>Login: {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
-						<li>Password: {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
-						<li>Answer: {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
-						<li>Pin Number: {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
+						<h3>{{ zactra::translate_lang('Experian Credentials') }}</h3>
+						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->ex_login)?$client->credentials->ex_login: "N/A"}}</li>
+						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
+						<li>{{ zactra::translate_lang('Answer:') }} {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
+						<li>{{ zactra::translate_lang('Pin Number:') }} {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
 
 					</div>
 				</div>
@@ -976,14 +976,14 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3>TransUnion Membership Credentials</h3>
-						<li>Login: {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
-						<li>Password: {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N/A"}}</li>
-						<li>Question: {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N/A"}}</li>
-						<li>Answer: {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N/A"}}</li>
-						<h3>TransUnion Dispute Credentials</h3>
-						<li>Login: {{isset($client->credentials->tu_dis_login)?$client->credentials->tu_dis_login: "N/A"}}</li>
-						<li>Password: {{isset($client->credentials->tu_dis_password)?$client->credentials->tu_dis_password:"N/A"}}</li>
+						<h3>{{ zactra::translate_lang('TransUnion Membership Credentials') }}</h3>
+						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->tu_login)?$client->credentials->tu_login: "N/A"}}</li>
+						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->tu_password)?$client->credentials->tu_password:"N/A"}}</li>
+						<li>{{ zactra::translate_lang('Question:') }} {{isset($client->credentials->tu_question)?$client->credentials->tu_question:"N/A"}}</li>
+						<li>{{ zactra::translate_lang('Answer:') }} {{isset($client->credentials->tu_answer)?$client->credentials->tu_answer:"N/A"}}</li>
+						<h3>{{ zactra::translate_lang('TransUnion Dispute Credentials') }}</h3>
+						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->tu_dis_login)?$client->credentials->tu_dis_login: "N/A"}}</li>
+						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->tu_dis_password)?$client->credentials->tu_dis_password:"N/A"}}</li>
 					</div>
 				</div>
 			</div>
@@ -999,9 +999,9 @@
 				<div class="modal-content">
 					<div class="modal-body">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3>Credit Karma Credentials</h3>
-						<li>Login: {{isset($client->credentials->ck_login)?$client->credentials->ck_login: "N/A"}}</li>
-						<li>Password: {{isset($client->credentials->ck_password)?$client->credentials->ck_password:"N\A"}}</li>
+						<h3>{{ zactra::translate_lang('Credit Karma Credentials') }}</h3>
+						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->ck_login)?$client->credentials->ck_login: "N/A"}}</li>
+						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->ck_password)?$client->credentials->ck_password:"N\A"}}</li>
 					</div>
 				</div>
 			</div>

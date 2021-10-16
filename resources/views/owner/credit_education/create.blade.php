@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Eductions</title>
+<title>{{ zactra::translate_lang('Eductions') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Add Education</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Add Education') }}</li>
       </ol>
     </nav>
   </div>
@@ -23,8 +23,8 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4>Add New Education</h4>
-                <p>Please enter followiing information to add new education</p>
+                <h4>{{ zactra::translate_lang('Add New Education') }}</h4>
+                <p>{{ zactra::translate_lang('Please enter following information to add new education') }}</p>
               </div>
               <div class="card-body pl-4 pr-4">
                 {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @csrf
@@ -46,7 +46,7 @@
                 <div class="form-group row mb-0 font">
                   <div class="col-md-12 text-right px-0">
                     <button type="submit" class="btn btn-primary pull-right">
-                      Add Content
+                      {{ zactra::translate_lang('Add Content') }}
                     </button>
                   </div>
                 </div>

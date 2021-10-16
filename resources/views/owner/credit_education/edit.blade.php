@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Eductions</title>
+<title>{{ zactra::translate_lang('Eductions') }}</title>
 @endsection
 @section('body')
 {{-- @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"UPDATE EDUCATION" => "#"]]) --}}
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Update Education</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Update Education') }}</li>
       </ol>
     </nav>
   </div>
@@ -24,8 +24,8 @@
           <div class="col-md-11">
             <div class="card">
               <div class="card-header">
-                <h4>Edit Education</h4>
-                <p>Please enter followiing information to edit education</p>
+                <h4>{{ zactra::translate_lang('Edit Education') }}</h4>
+                <p>{{ zactra::translate_lang('Please enter followiing information to edit education') }}</p>
               </div>
               <div class="card-body">
                 {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
@@ -42,13 +42,13 @@
                   {!! Form::textarea('content[sub_content]', $content->sub_content, ['class' => 'form-control m-input', 'placeholder' => 'Sub Content', 'required']) !!}
                 </div>
                 <div class="form-group row font">
-                  {{-- <textarea name="content[content]" class="form-control m-input" placeholder="Full Content" rows="10">{!! $content->content !!}</textarea> --}} {!! Form::textarea('content[content]', $content->content, ['class' =>
-                  'form-control m-input', 'placeholder' => 'Full Content', 'required']) !!}
+                  {{-- <textarea name="content[content]" class="form-control m-input" placeholder="Full Content" rows="10">{!! $content->content !!}</textarea> --}}
+                  {!! Form::textarea('content[content]', $content->content, ['class' =>'form-control m-input', 'placeholder' => 'Full Content', 'required']) !!}
                 </div>
                 <div class="form-group row mb-0 font">
                   <div class="col-md-12 text-right px-0">
                     <button type="submit" class="btn btn-primary pull-right">
-                      Update Content
+                      {{ zactra::translate_lang('Update Content') }}
                     </button>
                   </div>
                 </div>

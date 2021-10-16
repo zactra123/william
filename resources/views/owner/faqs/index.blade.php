@@ -1,21 +1,21 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Faqs</title>
+<title>{{ zactra::translate_lang('Faqs') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Faqs</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Faqs') }}</li>
       </ol>
     </nav>
   </div>
   <div class="mmt-7">
     <a class="btn btn-primary pull-left mmt-7" href="{{ route('owner.faqs.question')}}" role="button">
-      Faqs Questions
+      {{ zactra::translate_lang('Faqs Questions') }}
     </a>
   </div>
 </div>
@@ -25,12 +25,12 @@
       <div class="card">
         <div class="card-header pb-0">
           <div class="d-flex justify-content-between">
-            <h4 class="card-title mg-b-0 mt-2">Faqs</h4>
+            <h4 class="card-title mg-b-0 mt-2">{{ zactra::translate_lang('Faqs') }}</h4>
             <i class="mdi mdi-dots-horizontal text-gray"></i>
           </div>
           <p class="tx-12 text-muted mb-2">
-            List of all faqs for your system
-            <a href="{{ route('owner.faqs.create') }}" class="btn btn-primary float-right btn-sm">Add New</a>
+            {{ zactra::translate_lang('List of all faqs for your system...') }}
+            <a href="{{ route('owner.faqs.create') }}" class="btn btn-primary float-right btn-sm">{{ zactra::translate_lang('Add New') }}</a>
           </p>
         </div>
         <div class="card-body">
@@ -38,10 +38,10 @@
             <table class="table text-md-nowrap" id="example1">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Question</th>
-                  <th width="60%">Answer</th>
-                  <th>Action</th>
+                  <th>{{ zactra::translate_lang('#') }}</th>
+                  <th>{{ zactra::translate_lang('Question') }}</th>
+                  <th width="60%">{{ zactra::translate_lang('Answer') }}</th>
+                  <th>{{ zactra::translate_lang('Action') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,11 +53,11 @@
                   <td>
                     <div class="dropdown show">
                       <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Action
+                        {{ zactra::translate_lang('Action') }}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('owner.faqs.edit',$faq->id)}}">Edit</a>
-                        <a class="dropdown-item" href="{{ route('admin.delete.faq',$faq->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                        <a class="dropdown-item" href="{{ route('owner.faqs.edit',$faq->id)}}">{{ zactra::translate_lang('Edit') }}</a>
+                        <a class="dropdown-item" href="{{ route('admin.delete.faq',$faq->id) }}" onclick="return confirm('Are You Sure?')">{{ zactra::translate_lang('Delete') }}</a>
                       </div>
                     </div>
                     <meta name="csrf-token" content="{{ csrf_token() }}" />

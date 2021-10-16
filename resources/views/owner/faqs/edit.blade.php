@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Faqs</title>
+<title>{{ zactra::translate_lang('Faqs') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('owner.faqs.index') }}">Faqs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Create</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('owner.faqs.index') }}">{{ zactra::translate_lang('Faqs') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Create') }}</li>
       </ol>
     </nav>
   </div>
@@ -29,7 +29,7 @@
       <div class="card">
         <div class="card-body">
           <a href="{{ route('owner.faqs.index') }}">
-            <h5 class="text-dark"><i class="ti-angle-left"></i> Edit Faq</h5>
+            <h5 class="text-dark"><i class="ti-angle-left"></i>{{ zactra::translate_lang('Edit Faq') }}</h5>
           </a>
           {!! Form::open(['route' => ['owner.faqs.update', $faq->id], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!} @method('PUT') @csrf
           <div class="form-group font">
@@ -41,7 +41,7 @@
           <div class="form-group row mb-0 font">
             <div class="col-md-12 text-right">
               <button type="submit" class="btn btn-primary">
-                Save Changes
+                {{ zactra::translate_lang('Save Changes') }}
               </button>
             </div>
           </div>
