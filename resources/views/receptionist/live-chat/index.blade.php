@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Chat</title>
+<title>{{ zactra::translate_lang('Chat') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Chat</li>
+        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Chat') }}</li>
       </ol>
     </nav>
   </div>
@@ -19,12 +19,12 @@
     <div class="row">
       <div class="col-md-12 d-inline-flex">
         <div class="list-group center-block list-group-horizontal">
-          <a class="list-group-item   {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >My Messages
+          <a class="list-group-item   {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >{{ zactra::translate_lang('My Messages') }}
             @if(array_sum($unreads))
               <span class="badge badge-notify text-white" id="userUnreds">{{array_sum($unreads)}}</span>
             @endif
           </a>
-          <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >All Messages
+          <a class="list-group-item {{Request()->all ? "active" : ""}}" href="{{route("receptionist.liveChat.index", ["all"=>true])}}" >{{ zactra::translate_lang('All Messages') }}
             @if(array_sum($all_unreads))
               <span class="badge badge-notify text-white" id="allUserUnreds">{{array_sum($all_unreads)}}</span>
             @endif
@@ -41,7 +41,7 @@
             <div id="chat_type">
               <ul class="list-group">
                 <li class="list-group-item active" data-type="User">
-                  <span>Clients</span>
+                  <span>{{ zactra::translate_lang('Clients') }}</span>
                   @if(Request()->all)
                   <span class="badge badge-notify text-white" id="allClientMessageCount">{{!empty($all_unreads["App\User"]) ? $all_unreads["App\User"] :""}}</span>
                   @else
@@ -49,7 +49,7 @@
                   @endif
                 </li>
                 <li class="list-group-item" data-type="Guest">
-                  <span>Guests</span>
+                  <span>{{ zactra::translate_lang('Guests') }}</span>
                   @if(Request()->all)
                   <span class="badge badge-notify text-white" id="allGuestMessageCount">{{!empty($all_unreads["App\Guest"]) ? $all_unreads["App\Guest"] :""}}</span>
                   @else
@@ -61,12 +61,12 @@
             <div id="chat-filters">
               <div class="form-group">
                 <select class="form-control" name="order">
-                  <option value="newest">newest</option>
-                  <option value="unreads">unreads</option>
+                  <option value="newest">{{ zactra::translate_lang('newest') }}</option>
+                  <option value="unreads">{{ zactra::translate_lang('unreads') }}</option>
                 </select>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name or Email" />
+                <input type="text" class="form-control" placeholder="{{ zactra::translate_lang('Name or Email') }}" />
               </div>
             </div>
             <div class="sidebar__content">
@@ -87,7 +87,7 @@
                       <div class="form-group">
                         <div class="text-link">
                           <a class="show_details" href="#showDetails" data-toggle="modal" data-id="{{$chat->recipient_id}}" data-type="{{$chat->recipient_type}}">
-                            Show Details
+                            {{ zactra::translate_lang('Show Details') }}
                           </a>
                         </div>
                       </div>
@@ -113,7 +113,7 @@
                       <input type="hidden" name="recipient_id" id="recipientId" />
                       <input type="hidden" name="recipient_type" id="recipientType" />
                       <div class="comment-text-area">
-                        <textarea class="textinput tiny p-3" name="answer" placeholder="Comment"></textarea>
+                        <textarea class="textinput tiny p-3" name="answer" placeholder="{{ zactra::translate_lang('Comment') }}"></textarea>
                       </div>
                     </div>
                     <div class="row">
@@ -140,19 +140,19 @@
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="form-group">
-              <p>Full Name : <span id="showFullName" class=""></span></p>
+              <p>{{ zactra::translate_lang('Full Name :') }} <span id="showFullName" class=""></span></p>
             </div>
             <div class="form-group">
-              <p>Email : <span id="showEmailAddress" class=""></span></p>
+              <p>{{ zactra::translate_lang('Email :') }} <span id="showEmailAddress" class=""></span></p>
             </div>
             <div class="form-group">
-              <p>Phone # : <span id="showPhoneNumber"></span></p>
+              <p>{{ zactra::translate_lang('Phone # :') }} <span id="showPhoneNumber"></span></p>
             </div>
             <div class="form-group">
-              <p>Social Security # : <span id="showSSN"></span></p>
+              <p>{{ zactra::translate_lang('Social Security # :') }} <span id="showSSN"></span></p>
             </div>
             <div class="form-group">
-              <p>Address : <span id="showAddress" class=""></span></p>
+              <p>{{ zactra::translate_lang('Address :') }} <span id="showAddress" class=""></span></p>
             </div>
           </div>
         </div>

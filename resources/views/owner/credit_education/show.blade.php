@@ -9,6 +9,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{{ url('owner/credit-education') }}">{{ zactra::translate_lang('Education') }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('View Education') }}</li>
       </ol>
     </nav>

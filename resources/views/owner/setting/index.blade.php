@@ -23,9 +23,9 @@
 					<div class="main-profile-overview">
 						<div class="main-img-user profile-user">
 							@if (isset(Auth::user()->photo))
-							<img src="{{ Auth::user()->photo }}" alt="Profile Image">
+								<img src="{{ Auth::user()->photo }}" alt="Profile Image">
 							@else
-							<img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
+								<img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
 							@endif
 							<a href="JavaScript:void(0);" onclick="getClickToFile('.profileimg')" class="fas fa-camera profile-edit"></a></div>
 						<div class="d-flex justify-content-between mg-b-20">

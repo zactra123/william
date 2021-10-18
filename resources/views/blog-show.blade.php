@@ -109,7 +109,7 @@
                         <h2>{{$blog->title}}</h2>
                         <span ><i>{{ zactra::translate_lang('Published at:') }}</i> {{date("F j, Y", strtotime($blog->published_date))}}</span>
                         <div>
-                            <span class="text-secondary"><i>Share via:</i> </span>
+                            <span class="text-secondary"><i>{{ zactra::translate_lang('Share via:') }}</i> </span>
                             <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'facebook'])}}" target="_blank"><i class="fa fa-facebook-square" ></i></a>
                             <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'twitter'])}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a class="my-2 mx-1" href="{{route('shear', [ 'url'=> $blog->url, 'social'=>'linkedin'])}}" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>

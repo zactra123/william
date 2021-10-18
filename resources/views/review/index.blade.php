@@ -7,7 +7,7 @@
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="card p-3">
           <div class="row pl-5 justify-content-center">
-            <img src="https://user-images.trustpilot.com/default/v1/73x73.png" width="30" alt=""> <span class="ml-3 pt-1"><a class="fs-20" href="{{ route('web.review.create') }}">Write a review</a> </span>
+            <img src="https://user-images.trustpilot.com/default/v1/73x73.png" width="30" alt=""> <span class="ml-3 pt-1"><a class="fs-20" href="{{ route('web.review.create') }}">{{ zactra::translate_lang('Write a review') }}</a> </span>
             <span class="ml-4 pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
           </div>
         </div>
@@ -17,12 +17,12 @@
     <div class="row mb-4">
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="card p-3 mt-4">
-          <span class="fs-18">Total Reviews (<span class="bold">{{ isset($total) ? $total : '' }}</span>)</span>
+          <span class="fs-18">{{ zactra::translate_lang('Total Reviews') }} (<span class="bold">{{ isset($total) ? $total : '' }}</span>)</span>
           <hr>
 
           <div class="row">
             <div class="col-md-2 text-center">
-              <span>Excellent</span>
+              <span>{{ zactra::translate_lang('Excellent') }}</span>
             </div>
             @php
               $excellentper = ($excellent/$total)*100;
@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="col-md-2 text-center">
-              <span>{{ zactra::decimal($excellentper,2) }} %</span>
+              <span>{{ zactra::decimal($excellentper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
           @php
@@ -41,7 +41,7 @@
           @endphp
           <div class="row">
             <div class="col-md-2 text-center">
-              <span>Great</span>
+              <span>{{ zactra::translate_lang('Great') }}</span>
             </div>
             <div class="col-md-8">
               <div class="progress">
@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="col-md-2 text-center">
-              <span>{{ zactra::decimal($greatper,2) }} %</span>
+              <span>{{ zactra::decimal($greatper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
           @php
@@ -57,7 +57,7 @@
           @endphp
           <div class="row">
             <div class="col-md-2 text-center">
-              <span>Average</span>
+              <span>{{ zactra::translate_lang('Average') }}</span>
             </div>
             <div class="col-md-8">
               <div class="progress">
@@ -65,7 +65,7 @@
               </div>
             </div>
             <div class="col-md-2 text-center">
-              <span>{{ zactra::decimal($averageper,2) }} %</span>
+              <span>{{ zactra::decimal($averageper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
           @php
@@ -73,7 +73,7 @@
           @endphp
           <div class="row">
             <div class="col-md-2 text-center">
-              <span>Poor</span>
+              <span>{{ zactra::translate_lang('Poor') }}</span>
             </div>
             <div class="col-md-8">
               <div class="progress">
@@ -81,7 +81,7 @@
               </div>
             </div>
             <div class="col-md-2 text-center">
-              <span>{{ zactra::decimal($poorper,2) }} %</span>
+              <span>{{ zactra::decimal($poorper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
           @php
@@ -89,7 +89,7 @@
           @endphp
           <div class="row">
             <div class="col-md-2 text-center">
-              <span>Bad</span>
+              <span>{{ zactra::translate_lang('Bad') }}</span>
             </div>
             <div class="col-md-8">
               <div class="progress">
@@ -97,7 +97,7 @@
               </div>
             </div>
             <div class="col-md-2 text-center">
-              <span>{{ zactra::decimal($badper,2) }} %</span>
+              <span>{{ zactra::decimal($badper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
 

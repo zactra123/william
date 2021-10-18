@@ -1,16 +1,16 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Receptionist</title>
+<title>{{ zactra::translate_lang('Receptionist') }}</title>
 @endsection
 @section('body')
 <div class="breadcrumb-header justify-content-between">
 	<div>
-		<h4 class="content-title mb-2">Hi, welcome back!</h4>
+		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-				<li class="breadcrumb-item"><a href="{{ route('owner.receptionist.index') }}">Receptionist</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Create</li>
+				<li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('owner.receptionist.index') }}">{{ zactra::translate_lang('Receptionist') }}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Create') }}</li>
 			</ol>
 		</nav>
 	</div>
@@ -29,7 +29,7 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6">
-							<h5 class="text-dark"><i class="ti-angle-left"></i> Edit Receptionist</h5>
+							<h5 class="text-dark"><i class="ti-angle-left"></i> {{ zactra::translate_lang('Edit Receptionist') }}</h5>
 						</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
   							{{ Form::text('receptionist[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
   						</div>
   						<div class="col-sm-12 col-md-1 form-group pl-0 mml-12">
-  							<input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="Delete" />
+  							<input class="remove-ip-address btn btn-danger " type="button" data-target={{$value->id}} value="{{ zactra::translate_lang('Delete') }}" />
   						</div>
   					</div>
 					@endforeach
@@ -63,12 +63,12 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-md-2">
-							<input class="btn btn-primary add-ip-address" type="button" value="Add IP" />
+							<input class="btn btn-primary add-ip-address" type="button" value="{{ zactra::translate_lang('Add IP') }}" />
 						</div>
 					</div>
 					<div class="form-group row mb-0 font">
 						<div class="col-md-12">
-							<input type="submit" value="Update" class="ms-ua-submit btn btn-primary pull-right">
+							<input type="submit" value="{{ zactra::translate_lang('Update') }}" class="ms-ua-submit btn btn-primary pull-right">
 						</div>
 					</div>
 					{!! Form::close() !!}

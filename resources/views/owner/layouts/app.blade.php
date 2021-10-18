@@ -31,7 +31,7 @@
     <!-- Footer opened -->
     <div class="main-footer ht-40">
       <div class="container-fluid pd-t-0-f ht-100p mmlh-0 mmt-7">
-        <span>Copyright © {{ date('Y') }} All Rights Reserved by <a href="/" class="fs-14">Prudent Credit Solution</a></span>
+        <span>{{ zactra::translate_lang('Copyright') }} © {{ date('Y') }} {{ zactra::translate_lang('All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('Prudent Credit Solution') }}</a></span>
       </div>
     </div>
     <!-- Footer closed -->

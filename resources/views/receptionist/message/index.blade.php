@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Appointment</title>
+<title>{{ zactra::translate_lang('Appointment') }}</title>
 @endsection
 @section('body')
   <div class="breadcrumb-header justify-content-between">
     <div>
-        <h4 class="content-title mb-2">Hi, welcome back!</h4>
+        <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+              <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Appointment') }}</li>
             </ol>
           </nav>
     </div>
@@ -24,9 +24,9 @@
                               <div class="container">
                                   <div class="row justify-content-center mb-5">
                                       <div class="list-group list-group-horizontal col-md-6">
-                                          <a class="list-group-item list-group-item-action p-2 tab-selector active" href="{{route("receptionist.message.index")}}" >All Messages</a>
-                                          <a class="list-group-item list-group-item-action p-2 tab-selector pending" href="{{route("receptionist.message.index", ["type" => "pending"])}}">Pending</a>
-                                          <a class="list-group-item list-group-item-action p-2 tab-selector completed" href="{{route("receptionist.message.index", ["type" => "completed"])}}">Completed</a>
+                                          <a class="list-group-item list-group-item-action p-2 tab-selector active" href="{{route("receptionist.message.index")}}" >{{ zactra::translate_lang('All Messages') }}</a>
+                                          <a class="list-group-item list-group-item-action p-2 tab-selector pending" href="{{route("receptionist.message.index", ["type" => "pending"])}}">{{ zactra::translate_lang('Pending') }}</a>
+                                          <a class="list-group-item list-group-item-action p-2 tab-selector completed" href="{{route("receptionist.message.index", ["type" => "completed"])}}">{{ zactra::translate_lang('Completed') }}</a>
                                       </div>
                                   </div>
                                   <div class="response">
@@ -40,55 +40,51 @@
                                   <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h4 class="modal-title" id="favoritesModalLabel">Message details</h4>
+                                              <h4 class="modal-title" id="favoritesModalLabel">{{ zactra::translate_lang('Message details') }}</h4>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                   <span aria-hidden="true">x</span> </button>
                                           </div>
                                           <div class="modal-body">
-                                              <div class="d-none text-danger text-center font-italic" > All fields are required</div>
+                                              <div class="d-none text-danger text-center font-italic"> {{ zactra::translate_lang('All fields are required') }}</div>
 
                                               <div class="ms-ua-form">
                                                   <form method="post" action="{{route('receptionist.message.create')}}">
                                                       @csrf
                                                       <input type="hidden" name="start_date" id="start_date">
-
                                                       <div class="row">
                                                         <div class="col-md-6 admin_id">
-
                                                             <select class="form-control" name="admin_id">
-                                                                <option value=''>Select Admin</option>
+                                                                <option value=''>{{ zactra::translate_lang('Select Admin') }}</option>
                                                                 @foreach($admins as $id => $admin)
                                                                     <option value={{$id}}>{{$admin}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
-
                                                         <div class="col-md-6 phone_number_id">
-                                                            <input class="form-control" type="text" name="phone_number" id="phoneNumberId" placeholder="Phone Number">
+                                                            <input class="form-control" type="text" name="phone_number" id="phoneNumberId" placeholder="{{ zactra::translate_lang('Phone Number') }}">
                                                         </div>
                                                       </div>
-
                                                       <div class="row mt-2">
                                                         <div class="col-md-6 full_name_id ">
-                                                            <input class="form-control" type="text" name="full_name" id="fullNameId" placeholder="Full Name">
+                                                            <input class="form-control" type="text" name="full_name" id="fullNameId" placeholder="{{ zactra::translate_lang('Full Name') }}">
                                                         </div>
 
                                                         <div class="col-md-6 email_id">
-                                                            <input class="form-control" type="email" name="email" id="emailId" placeholder="Email">
+                                                            <input class="form-control" type="email" name="email" id="emailId" placeholder="{{ zactra::translate_lang('Email') }}">
                                                         </div>
                                                       </div>
 
                                                       <div class="row mt-2">
                                                         <div class="col-md-6 title_id">
-                                                            <input class="form-control" type="text" name="title" id="titleId" placeholder="Title">
+                                                            <input class="form-control" type="text" name="title" id="titleId" placeholder="{{ zactra::translate_lang('Title') }}">
                                                         </div>
                                                         <div class="col-md-6 time_id">
-                                                            <input class="form-control" type="time" name="time" id="timeId" placeholder="Time">
+                                                            <input class="form-control" type="time" name="time" id="timeId" placeholder="{{ zactra::translate_lang('Time') }}">
                                                         </div>
                                                       </div>
 
                                                       <div class="form-group mt-2">
-                                                          <textarea class="form-control" name="description" rows="5" id="descriptionId" placeholder="Description"> </textarea>
+                                                          <textarea class="form-control" name="description" rows="5" id="descriptionId" placeholder="{{ zactra::translate_lang('Description') }}"> </textarea>
                                                       </div>
 
                                                       <div class="form-group text-right">
@@ -106,7 +102,7 @@
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h3 class="modal-title" id="appointmentDetailsModalLabel">Appointment details</h3>
+                                              <h3 class="modal-title" id="appointmentDetailsModalLabel">{{ zactra::translate_lang('Appointment details:') }}</h3>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                   <span aria-hidden="true">&times;</span>
                                               </button>
@@ -114,38 +110,35 @@
                                           <div class="modal-body">
                                             <table class="table table-striped">
                                               <tr>
-                                                <th>FULL NAME</th>
+                                                <th>{{ zactra::translate_lang('FULL NAME:') }}</th>
                                                 <td><span class="left" id="appointment-full_name"></span></td>
                                               </tr>
                                               <tr>
-                                                <th>PHONE NUMBER:</th>
+                                                <th>{{ zactra::translate_lang('PHONE NUMBER:') }}</th>
                                                 <td><span class="left" id="appointment-phone"></span></td>
                                               </tr>
                                               <tr>
-                                                <th>EMAIL:</th>
+                                                <th>{{ zactra::translate_lang('EMAIL:') }}</th>
                                                 <td><span class="left" id="appointment-email"></span></td>
                                               </tr>
                                               <tr>
-                                                <th>DATE:</th>
+                                                <th>{{ zactra::translate_lang('DATE:') }}</th>
                                                 <td><span class="left" id="appointment-date"></span></td>
                                               </tr>
                                               <tr>
-                                                <th>TITLE:</th>
+                                                <th>{{ zactra::translate_lang('TITLE:') }}</th>
                                                 <td> <p id="appointment-title" class="appointment-title"></p> </td>
                                               </tr>
                                               <tr>
-                                                <th>DESCRIPTION:</th>
+                                                <th>{{ zactra::translate_lang('DESCRIPTION:') }}</th>
                                                 <td> <p class="appointment-desc" id="appointment-description"></p> </td>
                                               </tr>
                                             </table>
-
-
                                               <div class="note .overflow-vertical" id="noteId">
                                               </div>
-
                                               <div class="addNote" >
                                                   <div class="ms-ua-form">
-                                                      <h5>Add A Note</h5>
+                                                      <h5>{{ zactra::translate_lang('Add A Note') }}</h5>
                                                       <form method="POST" action="{{ route('receptionist.message.note') }}">
                                                           @csrf
                                                           <div class="form-group message_id">
@@ -155,14 +148,12 @@
                                                               <textarea class="form-control" rows="5" name="notes" id=""></textarea>
                                                           </div>
                                                           <div class="form-group text-right">
-                                                              <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
+                                                              <input type="submit" value="{{ zactra::translate_lang('Add') }}" class="ms-ua-submit btn btn-primary">
                                                           </div>
                                                       </form>
-
                                                   </div>
                                               </div>
                                           </div>
-
 
                                          {{-- <button class="ms-ua-submit add-note">ADD NOTE</button> --}}
 
@@ -180,7 +171,7 @@
                                   <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h4 class="modal-title" id="favoritesModalLabel">Edit message</h4>
+                                              <h4 class="modal-title" id="favoritesModalLabel">{{ zactra::translate_lang('Edit message') }}</h4>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                   <span aria-hidden="true">x</span> </button>
                                           </div>
@@ -198,42 +189,42 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6 full_name_id">
-                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="Full Name">
+                                                            <input class="form-control" type="text" name="full_name" id="oldFullNameId" placeholder="{{ zactra::translate_lang('Full Name') }}">
 
                                                         </div>
                                                       </div>
                                                       <input type="hidden" name="id" id="editMessageId" >
                                                       <div class="row mt-3">
                                                         <div class="col-md-6 phone_number_id">
-                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="Phone Number">
+                                                            <input class="form-control" type="text" name="phone_number" id="oldPhoneNumberId" placeholder="{{ zactra::translate_lang('Phone Number') }}">
                                                         </div>
 
                                                         <div class="col-md-6 email_id">
-                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="Email">
+                                                            <input class="form-control" type="email" name="email" id="oldEmailId" placeholder="{{ zactra::translate_lang('Email') }}">
                                                         </div>
                                                       </div>
 
                                                       <div class="row mt-3">
                                                         <div class="col-md-6 time_id">
-                                                            <input class="form-control" type="date" name="date" id="oldDateId" placeholder="Date">
+                                                            <input class="form-control" type="date" name="date" id="oldDateId" placeholder="{{ zactra::translate_lang('Date') }}">
                                                         </div>
                                                         <div class="col-md-6 time_id">
-                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="Time">
+                                                            <input class="form-control" type="time" name="time" id="oldTimeId" placeholder="{{ zactra::translate_lang('Time') }}">
                                                         </div>
                                                       </div>
                                                       <div class="row mt-3">
                                                         <div class="col-md-12 title_id">
-                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="Title">
+                                                            <input class="form-control" type="text" name="title" id="oldTitleId" placeholder="{{ zactra::translate_lang('Title') }}">
                                                         </div>
                                                       </div>
                                                       <div class="row mt-3">
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" rows="5" name="description" id="oldDescriptionId" placeholder="Description"> </textarea>
+                                                            <textarea class="form-control" rows="5" name="description" id="oldDescriptionId" placeholder="{{ zactra::translate_lang('Description') }}"> </textarea>
                                                         </div>
                                                       </div>
                                                       <div class="row mt-3">
                                                         <div class="col-md-12 text-right">
-                                                            <input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
+                                                            <input type="submit" value="{{ zactra::translate_lang('Add') }}" class="ms-ua-submit btn btn-primary">
                                                         </div>
                                                       </div>
                                                   </form>

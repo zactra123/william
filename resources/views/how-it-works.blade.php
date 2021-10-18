@@ -22,8 +22,7 @@
 							incomplete, unverifiable, misleading, frivolous, erroneous, obsolete, inaccurate,
 							unauthorized, or fraudulent information. Next, you review our findings, sign the credit
 							restoration contract, and apply for a personal loan account with Exceed Capital Lending
-							(optional). Now, we go to work, and you sit back, relax, and expect to hear some good') }}
-							news.
+							(optional). Now, we go to work, and you sit back, relax, and expect to hear some good news.') }}
 							<br><br>
 							{{ zactra::translate_lang('Lastly, once credit reporting agencies update or remove a disputed item or items
 							from your credit report, we will notify you and Exceed Capital Lending (given that you

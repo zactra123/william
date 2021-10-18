@@ -24,7 +24,7 @@
       <div class="nav nav-item nav-link" id="bs-example-navbar-collapse-1">
         <form class="navbar-form" role="search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="{{ zactra::translate_lang('Search') }}">
             <span class="input-group-btn">
               <button type="reset" class="btn btn-default">
                 <i class="fas fa-times"></i>
@@ -45,7 +45,7 @@
 
           <a class="profile-user d-flex" href="#">
             @if (isset(Auth::user()->photo))
-              <img src="{{ Auth::user()->photo }}" alt="Profile Image">
+              <img src="{{ Auth::user()->photo }}" alt="{{ zactra::translate_lang('Profile Image') }}">
             @else
               <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
             @endif
@@ -55,7 +55,7 @@
             <div class="main-header-profile header-img">
               <div class="main-img-user">
                 @if (isset(Auth::user()->photo))
-                  <img src="{{ Auth::user()->photo }}" alt="Profile Image">
+                  <img src="{{ Auth::user()->photo }}" alt="{{ zactra::translate_lang('Profile Image') }}">
                 @else
                   <img alt="" src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg">
                 @endif
