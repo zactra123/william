@@ -1,10 +1,8 @@
-@extends('layouts.layout1')
-@section('meta')
+@extends('layouts.layout1') @section('meta')
 <title>{{ zactra::translate_lang('Frequently asked questions about credit repair and scores') }}</title>
-<meta name="description" content="Get answers about frequently asked questions about credit repair and scores. What is a late payment? What is a 'charge-off'? Can credit repair benefit me?">
-<meta name="keywords" content="What do credit repair companies do, what are the three main credit bureaus, building better credit">
-@endsection
-@section('content')
+<meta name="description" content="Get answers about frequently asked questions about credit repair and scores. What is a late payment? What is a 'charge-off'? Can credit repair benefit me?" />
+<meta name="keywords" content="What do credit repair companies do, what are the three main credit bureaus, building better credit" />
+@endsection @section('content')
 <style>
   .hideShow {
     display: none;
@@ -18,13 +16,13 @@
   }
 </style>
 <section class="">
-  {{-- <img class="background-image"  src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
+  {{-- <img class="background-image" src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
   <div class="container faq-page">
     <div class="container">
       <h1 class="text-center mb-5">{{ zactra::translate_lang('Frequently Asked Questions - Prudent Scores') }}</h1>
       <div class="section-title">
         <div class="wrapper-content">
-          <div class="row  mr-0 ml-0">
+          <div class="row mr-0 ml-0">
             <div class="col-md-8 pl-4">
               @foreach($faqs as $faq)
               <div class="card">
@@ -42,7 +40,7 @@
                   </div>
                 </div>
               </div>
-              <br>
+              <br />
               @endforeach
               <div class="pull-right">
                 {{ $faqs->links() }}
@@ -58,11 +56,11 @@
                     @csrf
                     <div class="row">
                       <div class="col-md-12 form-inner">
-                        <input class="form-control mb-2" name="name" type="text" placeholder="Your name...">
-                        <input class="form-control mb-2" name="email" type="email" placeholder="Email...">
+                        <input class="form-control mb-2" name="name" type="text" placeholder="Your name..." />
+                        <input class="form-control mb-2" name="email" type="email" placeholder="Email..." />
                         <textarea class="form-control mb-2" name="question" id="" style="height: 200px;"></textarea>
                         <div class="basic-button">
-                          <input type="submit" class="form-control" value="Send Messages">
+                          <input type="submit" class="form-control" value="Send Messages" />
                         </div>
                       </div>
                     </div>
@@ -77,6 +75,5 @@
     </div>
   </div>
 </section>
-
 
 @endsection

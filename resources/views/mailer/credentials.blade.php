@@ -17,13 +17,13 @@
                             <tr>
                               <td esdev-links-color="#000000" class="esd-block-text" align="left">
                                 <p style="font-size: 16px; line-height: 150%;">
-                                  Dear {{$clientName}}, We won't be able to fix your client reports, without your credentials.
+                                  {{ zactra::translate_lang('Dear') }} {{$clientName}}, {{ zactra::translate_lang("We won't be able to fix your client reports, without your credentials.") }}
                                 </p>
                                 <p style="font-size: 16px; line-height: 150%;">
-                                  Please provide all the credentials for continuing the cooperation.
+                                  {{ zactra::translate_lang('Please provide all the credentials for continuing the cooperation.') }}
                                 </p>
                                 <p style="font-size: 16px; line-height: 150%;">
-                                  We need them for getting your reports and for enabling you to resolve your disputes
+                                  {{ zactra::translate_lang('We need them for getting your reports and for enabling you to resolve your disputes') }}
                                 </p>
                               </td>
                             </tr>

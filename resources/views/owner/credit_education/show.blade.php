@@ -16,10 +16,10 @@
   </div>
 </div>
 <section class="ms-user-account">
-  <div class="container">
+  <div class="container mmap-0">
     <div class="row">
-      <div class="col-md-3 col-sm-12"></div>
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-3 col-sm-12 mmap-0"></div>
+      <div class="col-md-12 col-sm-12 mmap-0">
         <div class="ms-ua-box">
           <div class="col-md-12">
             <div class="card p-5">
