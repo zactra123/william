@@ -1,5 +1,5 @@
 <!-- main-header -->
-<div class="main-header  side-header">
+<div class="main-header side-header">
   <div class="container-fluid">
     <div class="main-header-left ">
       <div class="app-sidebar__toggle mobile-toggle" data-toggle="sidebar">
@@ -15,7 +15,7 @@
       {{-- <ul class="header-megamenu-dropdown  nav">
         <li class="nav-item">
           <div class="btn-group mt-2">
-            <a href="{{ route('owner.reports.index')}}"><button  class="btn btn-link"  type="button"><span><i class="las la-poll"></i> </span> Reports</button></a>
+            <a href="{{ route('owner.reports.index')}}"><button  class="btn btn-link"  type="button"><span><i class="las la-poll"></i> </span>{{ zactra::translate_lang('Reports') }}</button></a>
           </div>
         </li>
       </ul> --}}
@@ -40,17 +40,14 @@
         <div class="nav-item full-screen fullscreen-button">
           <a class="new nav-link full-screen-link" href="#"><i class="fe fe-maximize"></i></span></a>
         </div>
-
         <div class="dropdown main-profile-menu nav nav-item nav-link">
-
           <a class="profile-user d-flex" href="#">
             @if (isset(Auth::user()->photo))
               <img src="{{ Auth::user()->photo }}" alt="{{ zactra::translate_lang('Profile Image') }}">
             @else
-              <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+              <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="{{ zactra::translate_lang('user-img') }}" class="rounded-circle mCS_img_loaded">
             @endif
           </a>
-
           <div class="dropdown-menu">
             <div class="main-header-profile header-img">
               <div class="main-img-user">
@@ -62,13 +59,12 @@
               </div>
               <h6>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h6><span>{{ ucfirst(Auth::user()->role) }}</span>
             </div>
-            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-user"></i> My Profile</a>
-            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-edit"></i> Edit Profile</a>
-            <a class="dropdown-item" href="{{ Auth::user()->role=='admin' ? url('/admins') : route('owner.index') }}"><i class="far fa-clock"></i> Activity Logs</a>
-            <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-user"></i> {{ zactra::translate_lang('My Profile') }}</a>
+            <a class="dropdown-item" href="{{ route('owner.setting.index') }}"><i class="far fa-edit"></i> {{ zactra::translate_lang('Edit Profile') }}</a>
+            <a class="dropdown-item" href="{{ Auth::user()->role=='admin' ? url('/admins') : route('owner.index') }}"><i class="far fa-clock"></i> {{ zactra::translate_lang('Activity Logs') }}</a>
+            <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ zactra::translate_lang('Sign Out') }}</a>
           </div>
         </div>
-
       </div>
     </div>
   </div>

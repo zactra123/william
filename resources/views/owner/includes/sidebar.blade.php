@@ -4,8 +4,8 @@
   <div class="main-sidebar-header">
     <a class="desktop-logo logo-light active" href="{{url('/owner')}}" class="text-center mx-auto"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo"></a>
     <a class="desktop-logo icon-logo active"href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon"></a>
-    <a class="desktop-logo logo-dark active" href="{{url('/owner')}}"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo dark-theme" alt="logo"></a>
-    <a class="logo-icon mobile-logo icon-dark active" href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon dark-theme" alt="logo"></a>
+    <a class="desktop-logo logo-dark active" href="{{url('/owner')}}"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
+    <a class="logo-icon mobile-logo icon-dark active" href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
   </div><!-- /logo -->
 
   <div class="main-sidebar-loggedin text-center">
@@ -15,7 +15,7 @@
           @if (isset(Auth::user()->photo))
             <img src="{{ Auth::user()->photo }}" alt="Profile Image" class="rounded-circle mCS_img_loaded">
           @else
-            <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="user-img" class="rounded-circle mCS_img_loaded">
+            <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="{{ zactra::translate_lang('user-img') }}" class="rounded-circle mCS_img_loaded">
           @endif
         </div>
         <div class="user-info">
@@ -100,10 +100,10 @@
               <a class="side-menu__item" data-toggle="slide" href="{{ route('admins.bank.show')}}"><i class="side-menu__icon ti-wallet"></i><span class="side-menu__label">{{ zactra::translate_lang('Furnishers/CRAs') }}</span><i class="angle fe fe-chevron-down"></i></a>
               <ul class="slide-menu">
                 <li><a class="slide-item {{ zactra::areActiveRoute(['admins.bank.show','admins.bank.edit','admins.bank.create'])}}" href="{{ route('admins.bank.show')}}">{{ zactra::translate_lang('FURNISHERs/CRAs') }}</a></li>
-                <li><a class="slide-item" href="{{ route('admins.bank.types')}}">FURNISHERs/CRAs TYPES</a></li>
+                <li><a class="slide-item" href="{{ route('admins.bank.types')}}">{{ zactra::translate_lang('FURNISHERs/CRAs TYPES') }}</a></li>
                 <li><a class="slide-item {{ zactra::areActiveRoute(['admins.authority','admins.authority.create','admins.authority.edit'])}}" href="{{ route('admins.authority.index')}}">{{ zactra::translate_lang('AUTHORITIES') }}</a></li>
                 <li><a class="slide-item {{ zactra::areActiveRoute(['admins.court','admins.court.create','admins.court.edit'])}}" href="{{ route('admins.court.index')}}">{{ zactra::translate_lang('COURT') }}</a></li>
-                <li><a class="slide-item" href="{{ route('admins.mortgage.days')}}">MORTGAGE JUDICIAL DAYS</a></li>
+                <li><a class="slide-item" href="{{ route('admins.mortgage.days')}}">{{ zactra::translate_lang('MORTGAGE JUDICIAL DAYS') }}</a></li>
               </ul>
             </li>
 
@@ -114,7 +114,7 @@
                 <li><a class="slide-item {{ zactra::areActiveRoute(['owner.receptionist','owner.receptionist.create','owner.receptionist.edit'])}}" href="{{ route('owner.receptionist.index')}}">{{ zactra::translate_lang('RECEPTIONIST') }}</a></li>
                 <li><a class="slide-item {{ zactra::areActiveRoute(['owner.client','owner.client.create','owner.client.edit','adminRec.client.profile'])}}" href="{{ route('owner.client.index')}}">{{ zactra::translate_lang('CLIENTS') }}</a></li>
                 <li><a class="slide-item {{ zactra::areActiveRoute(['owner.affiliate','owner.affiliate.create','owner.affiliate.edit'])}}" href="{{ route('owner.affiliate.index')}}">{{ zactra::translate_lang('AFFILIATES') }}</a></li>
-                <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">REVIEWS</a></li>
+                <li><a class="slide-item" href="{{ route('owner.reviews.index')}}">{{ zactra::translate_lang('REVIEWS') }}</a></li>
               </ul>
             </li>
 
@@ -151,7 +151,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Settings') }}</span></a>
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Profile Settings') }}</span></a>
             </li>
 
             <li class="slide">
@@ -184,7 +184,7 @@
             </li>
 
             {{-- <li class="slide">
-              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
+              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Change Password') }}</span></a>
             </li> --}}
 
             <li class="slide">
@@ -192,7 +192,7 @@
             </li>
 
             <li class="slide">
-              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Settings') }}</span></a>
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Profile Settings') }}</span></a>
             </li>
 
             <li class="slide">
@@ -234,11 +234,11 @@
             </li>
 
             {{-- <li class="slide">
-              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">Change Password</span></a>
+              <a class="side-menu__item" href="{{ route('adminRec.changePassword')}}"><i class="side-menu__icon icon-refresh icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Change Password') }}</span></a>
             </li> --}}
 
             <li class="slide">
-              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Settings') }}</span></a>
+              <a class="side-menu__item" href="{{ route('owner.setting.index') }}"><i class="side-menu__icon icon-settings icons"></i><span class="side-menu__label">{{ zactra::translate_lang('Profile Settings') }}</span></a>
             </li>
 
             <li class="slide">

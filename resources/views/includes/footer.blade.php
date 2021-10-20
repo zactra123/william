@@ -58,7 +58,7 @@
           <p>{{ zactra::translate_lang('You can any time unsubcribe your email address from your mail if this become annoying.') }}</p>
           <form action="{{ route('web.subscribe.prudent') }}" method="post">
             @csrf
-            <input placeholder="example@site.com" type="email" name="email"><input  type="submit" value="Subscribe">
+            <input placeholder="{{ zactra::translate_lang('example@site.com') }}" type="email" name="email"><input  type="submit" value="{{ zactra::translate_lang('Subscribe') }}">
           </form>
           <div class="feature-box15 mt-5 bmargin px-3 py-2" style="border: 3px solid #37c6f5">
             <h4 style="color: white; font-family: corbel">{{ zactra::translate_lang('how can we help you?') }}</h4>
@@ -80,7 +80,7 @@
   </div>
   <div class="container">
     <div class="copyright">
-      <p>{{ date('Y') }} &copy;{{ zactra::translate_lang(' All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
+      <p>{{ date('Y') }} &copy; {{ zactra::translate_lang('All Rights Reserved by') }} <a href="/" class="fs-14">{{ zactra::translate_lang('PRUDENT CREDIT SOLUTION') }}</a></p>
     </div>
   </div>
 </footer>

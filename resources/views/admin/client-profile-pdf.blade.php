@@ -40,7 +40,6 @@
       }
     </style>
   </head>
-
   <body>
     <div class="page-content pt-4">
       <div class="page-content p-0 mr-0 ml-0">
@@ -63,38 +62,38 @@
               <div class="col-xs-6 external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}}</div>
             </div>
             @if($client->clientDetails != null)
-            <div class="pb-1 row border-bottom">
-              <div class="col-xs-6 external">
-                @if($client->clientDetails->sex == "M")
-                  MALE
-                @elseif($client->clientDetails->sex == "F")
-                  FEMALE
-                @else
-                  NON BINARY
-                @endif
+              <div class="pb-1 row border-bottom">
+                <div class="col-xs-6 external">
+                  @if($client->clientDetails->sex == "M")
+                    {{ zactra::translate_lang('MALE') }}
+                  @elseif($client->clientDetails->sex == "F")
+                    {{ zactra::translate_lang('FEMALE') }}
+                  @else
+                    {{ zactra::translate_lang('NON BINARY') }}
+                  @endif
+                </div>
               </div>
-            </div>
             @else
-            <div class="pb-1 row border-bottom">
-              <div class="col-xs-6 external">
-                NOT SPECIFIED
+              <div class="pb-1 row border-bottom">
+                <div class="col-xs-6 external">
+                  {{ zactra::translate_lang('NOT SPECIFIED') }}
+                </div>
               </div>
-            </div>
             @endif
             <div class="pt-2 pb-2 pl-3 row external">
-              REFFERED BY {{$client->referredBy()}}
+              {{ zactra::translate_lang('REFFERED BY') }} {{$client->referredBy()}}
             </div>
             <div>
               @if(!empty($client->clientAttachments()))
-              <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
-              @if(!empty($dl))
-              <img type="file" width="70%" src="{{public_path($dl->path)}}" width="125px" name="img-drvl" id="img-drvl" />
-              @endif
-              <br />
-              <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
-              @if(!empty($ss))
-              <img type="file" width="70%" src="{{public_path($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
-              @endif
+                <?php $dl = $client->clientAttachments()->where('category', "DL")->first(); ?>
+                @if(!empty($dl))
+                  <img type="file" width="70%" src="{{public_path($dl->path)}}" width="125px" name="img-drvl" id="img-drvl" />
+                @endif
+                <br />
+                <?php $ss = $client->clientAttachments()->where('category', "SS")->first(); ?>
+                @if(!empty($ss))
+                  <img type="file" width="70%" src="{{public_path($ss->path)}}" width="125px" name="img-sos" id="img-sose" />
+                @endif
               @endif
             </div>
           </div>

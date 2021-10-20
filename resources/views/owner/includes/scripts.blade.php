@@ -1,7 +1,7 @@
 <!--- Clender js -->
 {{-- <script src="{{asset('/')}}assets/js/app-calendar.js"></script> --}}
-<!--- JQuery min js -->
 
+<!--- JQuery min js -->
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,8 +23,10 @@
 
 <!--- Chart bundle min js -->
 <script src="{{asset('/')}}assets/plugins/chart.js/Chart.bundle.min.js"></script>
+
 <!--- Internal Sampledata js -->
 <script src="{{asset('/')}}assets/js/chart.flot.sampledata.js"></script>
+
 <!--- Index js -->
 <script src="{{asset('/')}}assets/js/index.js"></script>
 
@@ -54,8 +56,10 @@
 
 <!--- Eva-icons js -->
 <script src="{{asset('/')}}assets/js/eva-icons.min.js"></script>
+
 <!-- form-elements js -->
 <script src="{{asset('/')}}assets/js/form-elements.js"></script>
+
 <!--- Scripts js -->
 <script src="{{asset('/')}}assets/js/script.js"></script>
 
@@ -68,16 +72,20 @@
 
 <!--- Internal ion.rangeSlider.min js -->
 <script src="{{asset('/')}}assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+
 <!--- Internal jquery-simple-datetimepicker js -->
 <script src="{{asset('/')}}assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js"></script>
+
 <!--- Ionicons js -->
 <script src="{{asset('/')}}assets/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+
 <!--- Internal Pickerjs js -->
 <script src="{{asset('/')}}assets/plugins/pickerjs/picker.min.js"></script>
 
 <!--- Internal Jquery.steps js -->
 <script src="{{asset('/')}}assets/plugins/jquery-steps/jquery.steps.min.js"></script>
 <script src="{{asset('/')}}assets/plugins/parsleyjs/parsley.min.js"></script>
+
 <!--- Internal Form-wizard js -->
 <script src="{{asset('/')}}assets/js/form-wizard.js"></script>
 
