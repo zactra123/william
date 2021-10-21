@@ -1,15 +1,15 @@
 @extends('owner.layouts.app')
 @section('title')
-<title>Dashboard</title>
+<title>{{ zactra::translate_lang('Dashboard') }}</title>
 @endsection
 @section('body')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
   <div>
-    <h4 class="content-title mb-2">Hi, welcome back!</h4>
+    <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('Dashboard') }}</li>
       </ol>
     </nav>
   </div>
@@ -32,14 +32,14 @@
               </svg>
             </div>
             <div class="project-content">
-              <h6>ROLES</h6>
+              <h6>{{ zactra::translate_lang('ROLES') }}</h6>
               <ul>
                 <li>
-                  <strong>CLIENTS</strong>
+                  <strong>{{ zactra::translate_lang('CLIENTS') }}</strong>
                   <span>{{ count($client) }}</span>
                 </li>
                 <li>
-                  <strong>RECEPTIONISTS</strong>
+                  <strong>{{ zactra::translate_lang('RECEPTIONISTS') }}</strong>
                   <span>{{ count($receptionist) }}</span>
                 </li>
               </ul>
@@ -64,10 +64,10 @@
               </svg>
             </div>
             <div class="project-content">
-              <h6>CREDIT EDUCATION</h6>
+              <h6>{{ zactra::translate_lang('CREDIT EDUCATION') }}</h6>
               <ul>
                 <li>
-                  <strong>Listings</strong>
+                  <strong>{{ zactra::translate_lang('Listings') }}</strong>
                   <span>{{ count($crediteducation) }}</span>
                 </li>
                 <li>
@@ -92,14 +92,14 @@
               </svg>
             </div>
             <div class="project-content">
-              <h6>ToDo's</h6>
+              <h6>{{ zactra::translate_lang("ToDo's") }}</h6>
               <ul>
                 <li>
-                  <strong>PENDING</strong>
+                  <strong>{{ zactra::translate_lang('PENDING') }}</strong>
                   <span>{{ count($pendingtodo) }}</span>
                 </li>
                 <li>
-                  <strong>COMPLETED</strong>
+                  <strong>{{ zactra::translate_lang('COMPLETED') }}</strong>
                   <span>{{ count($compeletetodo) }}</span>
                 </li>
               </ul>
@@ -120,15 +120,15 @@
               </svg>
             </div>
             <div class="project-content">
-              <h6>PRICING</h6>
+              <h6>{{ zactra::translate_lang('PRICING') }}</h6>
               <ul>
                 <li>
                   <strong>LATE PRICING</strong>
-                  <span>$15,425</span>
+                  <span>{{ zactra::translate_lang('$15,425') }}</span>
                 </li>
                 <li>
                   <strong>BLOCKING PRICING</strong>
-                  <span>$8,147</span>
+                  <span>{{ zactra::translate_lang('$8,147') }}</span>
                 </li>
               </ul>
             </div>
@@ -144,21 +144,21 @@
       <div class="card">
         <div class="card-header pb-0">
           <div class="d-flex justify-content-between">
-            <h4 class="card-title mg-b-0 mt-2">Clients</h4>
+            <h4 class="card-title mg-b-0 mt-2">{{ zactra::translate_lang('Clients') }}</h4>
             <i class="mdi mdi-dots-horizontal text-gray"></i>
           </div>
-          <p class="tx-12 text-muted mb-2">List of all clients for your system</p>
+          <p class="tx-12 text-muted mb-2">{{ zactra::translate_lang('List of all clients for your system') }}</p>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table text-md-nowrap" id="example1">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">FIRST NAME</th>
-                  <th scope="col">LAST NAME</th>
-                  <th scope="col">EMAIL</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">{{ zactra::translate_lang('#') }}</th>
+                  <th scope="col">{{ zactra::translate_lang('FIRST NAME') }}</th>
+                  <th scope="col">{{ zactra::translate_lang('LAST NAME') }}</th>
+                  <th scope="col">{{ zactra::translate_lang('EMAIL') }}</th>
+                  <th scope="col">{{ zactra::translate_lang('Action') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -172,11 +172,11 @@
                     <td>
                       <div class="dropdown show">
                         <a class="btn btn-primary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Action
+                          {{ zactra::translate_lang('Action') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="{{ route('adminRec.client.profile',$value->id)}}">View Profile</a>
-                          <a class="dropdown-item" href="{{ route('owner.delete.client',$value->id) }}" onclick="return confirm('Are You Sure?')">Delete</a>
+                          <a class="dropdown-item" href="{{ route('adminRec.client.profile',$value->id)}}">{{ zactra::translate_lang('View Profile') }}</a>
+                          <a class="dropdown-item" href="{{ route('owner.delete.client',$value->id) }}" onclick="return confirm('Are You Sure?')">{{ zactra::translate_lang('Delete') }}</a>
                         </div>
                       </div>
                     </td>
@@ -193,16 +193,16 @@
       <div class="card overflow-hidden">
         <div class="card-body pb-3">
           <div class="d-flex justify-content-between">
-            <h4 class="card-title mg-b-10">to do list</h4>
+            <h4 class="card-title mg-b-10">{{ zactra::translate_lang('to do list') }}</h4>
             <i class="mdi mdi-dots-horizontal text-gray"></i>
           </div>
-          <p class="tx-12 text-muted mb-3">See the List of To Do's</p>
+          <p class="tx-12 text-muted mb-3">{{ zactra::translate_lang("See the List of To Do's") }}</p>
           <div class="table-responsive mb-0 projects-stat tx-14">
             <table class="table table-hover table-bordered mb-0 text-md-nowrap text-lg-nowrap text-xl-nowrap">
               <thead>
                 <tr>
-                  <th>List</th>
-                  <th>Status</th>
+                  <th>{{ zactra::translate_lang('List') }}</th>
+                  <th>{{ zactra::translate_lang('Status') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -216,9 +216,9 @@
                   </td>
                   <td>
                     @if ($value->status=="1")
-                    <div class="badge badge-success">Completed</div>
+                      <div class="badge badge-success">{{ zactra::translate_lang('Completed') }}</div>
                     @else
-                    <div class="badge badge-warning">Pending</div>
+                      <div class="badge badge-warning">{{ zactra::translate_lang('Pending') }}</div>
                     @endif
                   </td>
                 </tr>
