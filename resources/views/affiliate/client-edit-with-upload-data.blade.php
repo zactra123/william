@@ -50,7 +50,6 @@
               <label for="password" class="col-md-1" data-target="upload-last_name"> <i class="fa fa-minus-circle"></i> </label>
             </div>
           </div>
-
           <div class="form-group row font justify-content-center">
             <div class="col-md-4 tab-selector">
               <label for="dob" class="row col-form-label row text-md-right">{{ zactra::translate_lang('DOB:') }}</label>
@@ -77,7 +76,6 @@
               </div>
               <label for="password" class="col-md-1" data-target="client-dob"> <i class="fa fa-minus-circle"></i> </label>
             </div>
-
             <div class="col-md-4 tab-selector">
               <label for="password" class="row col-form-label text-md-right">{{ zactra::translate_lang('Gender(From Documents):') }} </label>
               <div class="col-md-10">
@@ -112,7 +110,6 @@
               </div>
               <label for="password" class="col-md-1"> <i class="fa fa-minus-circle"></i> </label>
             </div>
-
             <div class="col-md-4 tab-selector">
               <label for="password" class="row col-form-label text-md-right">{{ zactra::translate_lang('Address(From Documents):') }}</label>
               <div class="col-md-10">
@@ -156,9 +153,7 @@
 @endsection
 
 @section('scripts')
-  {{--
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
-  --}}
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script> --}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script>
     $(document).ready(function () {

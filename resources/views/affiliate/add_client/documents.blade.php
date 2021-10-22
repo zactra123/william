@@ -2,7 +2,7 @@
 <form id="add_client_3" data-client="{{$client!=null?$client->id:""}}" data-id="3" data-type="only_broker" class="add-client additional-reg {{$current_page}}" enctype="multipart/form-data">
     @csrf
 
-    <h3 class="title_r theme-color-dark">Incorect</h3>
+    <h3 class="title_r theme-color-dark">{{ zactra::translate_lang('Incorect') }}</h3>
     <div class="upload-images">
         <div class="upload-img">
             <img src="{{asset("images/new/corect_1.jpg")}}">
@@ -13,7 +13,7 @@
     </div>
     <div class="upload-images upload-active">
         <div class="upload-img" >
-            <p class="upload-title">Upload your identification card or driver license</p>
+            <p class="upload-title">{{ zactra::translate_lang('Upload your identification card or driver license') }}</p>
             <div class="upload-img-box">
                 <img class="upload-img" id="id_card" src="{{asset("images/new/id_card.jpg")}}" alt="">
                 <div class="upload-btn">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="upload-img">
-            <p class="upload-title">Upload your social security</p>
+            <p class="upload-title">{{ zactra::translate_lang('Upload your social security') }}</p>
             <div class="upload-img-box">
                 <img class="upload-img" id="social_card" src="{{asset("images/new/social_card.jpg")}}" alt="">
                 <div class="upload-btn">
@@ -42,6 +42,6 @@
         </div>
     </div>
     <div class="basic-button upload">
-        <input class="login" type="submit" value="Upload" name="">
+        <input class="login" type="submit" value="{{ zactra::translate_lang('Upload') }}" name="">
     </div>
 </form>

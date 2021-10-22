@@ -1,7 +1,7 @@
 @php($uploadUserDetail = !empty($client) ? $client->uploadClientDetails : null)
 <form id="add_client_5" data-client="{{$client!=null?$client->id:""}}" data-id="5" data-type="only_broker" class="add-client additional-reg {{$current_page}}">
     @csrf
-    <p class="mt-5">Please verify your information and make changes if necessary</p>
+    <p class="mt-5">{{ zactra::translate_lang('Please verify your information and make changes if necessary') }}</p>
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
       <div class="row">
         <div class="col-md-6 col-lg-6 col-sm-12 col-12">
@@ -21,8 +21,7 @@
         </div>
       </div>
     </div>
-
     <div class="basic-button">
-        <input class="login" type="submit" value="Submit" name="">
+        <input class="login" type="submit" value="{{ zactra::translate_lang('Submit') }}" name="">
     </div>
 </form>

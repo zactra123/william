@@ -82,7 +82,7 @@
 						<div class="row mt20">
 							<div class="col-md-1"></div>
 							<div class="col-md-3">
-								<span style="font-weight: bold; font-size: 16px;"> {{ zactra::translate_lang('Employer') }}</span>
+								<span style="font-weight: bold; font-size: 16px;">{{ zactra::translate_lang('Employer') }}</span>
 							</div>
 							<div class="col-md-3"></div>
 							<div class="col-md-3">

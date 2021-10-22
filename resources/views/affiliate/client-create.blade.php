@@ -3,12 +3,12 @@
     <section class="register">
         {{-- <img class="background-image" src="{{asset("images/new/login_bck.jpg")}}" alt="background"> --}}
         <div class="register-form {{($client!= null ? $client->clientDetails->registration_steps:'')  =='documents'? "large": 'big'}}" data-id="1">
-            <h3 class="title">{{ zactra::translate_lang('Add Client') }}</h3>
-            @include('helpers.affilate_steps',['user' => auth()->user()])
-            @include('affiliate.add_client.registered', ['current_page'=>  $client == null ?'active' : 'none' ])
-            @include('affiliate.add_client.documents', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='documents' ?'active' : 'none' ])
-            @include('affiliate.add_client.credentials', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='credentials' ?'active' : 'none' ])
-            @include('affiliate.add_client.review', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='review' ?'active' : 'none' ])
+          <h3 class="title">{{ zactra::translate_lang('Add Client') }}</h3>
+          @include('helpers.affilate_steps',['user' => auth()->user()])
+          @include('affiliate.add_client.registered', ['current_page'=>  $client == null ?'active' : 'none' ])
+          @include('affiliate.add_client.documents', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='documents' ?'active' : 'none' ])
+          @include('affiliate.add_client.credentials', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='credentials' ?'active' : 'none' ])
+          @include('affiliate.add_client.review', ['current_page'=> ($client!= null ? $client->clientDetails->registration_steps:'') =='review' ?'active' : 'none' ])
         </div>
 
         {{-- <div class="chat" id="chat">
@@ -64,10 +64,8 @@
             </div>
         </div> --}}
     </section>
-
 @endsection
-
 @section('scripts')
-    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
-    <script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
+<script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSYolQg54i3oiTNu7T3pA2plmtS6Pshwg&libraries=places"></script>
+<script src="{{ asset('js/affiliate.js?v=2') }}" ></script>
 @endsection
