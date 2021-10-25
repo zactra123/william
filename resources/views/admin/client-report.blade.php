@@ -59,7 +59,7 @@
                     {{-- <input type="text" name="term" value="{{request()->term}}" class="form-control" />--}}
                   </div>
                   <div class="col-md-4 form-group">
-                    <input type="submit" value="Search" class="form-control" />
+                    <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="form-control" />
                   </div>
                 </div>
               </form>
@@ -348,7 +348,7 @@
               @if($accounts->type !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
-                  <label class="form-text">TYPE</label>
+                  <label class="form-text">{{ zactra::translate_lang('TYPE') }}</label>
                 </div>
                 <div class="col-md-12">
                   <span class=""> {{$accounts->type}} </span>
@@ -495,7 +495,7 @@
                     {{-- <input type="text" name="term" value="{{request()->term}}" class="form-control" />--}}
                   </div>
                   <div class="col-md-4 form-group">
-                    <input type="submit" value="Search" class="form-control" />
+                    <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="form-control" />
                   </div>
                 </div>
               </form>
@@ -615,7 +615,7 @@
               @if($accounts->date_opened !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
-                  <label class="form-text">DATE OPENED</label>
+                  <label class="form-text">{{ zactra::translate_lang('DATE OPENED') }}</label>
                 </div>
                 <div class="col-md-12">
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
@@ -1091,7 +1091,7 @@
                     {{-- <input type="text" name="term" value="{{request()->term}}" class="form-control" />--}}
                   </div>
                   <div class="col-md-4 form-group">
-                    <input type="submit" value="Search" class="form-control" />
+                    <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="form-control" />
                   </div>
                 </div>
               </form>

@@ -68,7 +68,7 @@
           </div>
           <div class="form-group row font justify-content-center">
             <div class="col-md-4 tab-selector">
-              <label for="password" class="row col-form-label text-md-right">Gender: </label>
+              <label for="password" class="row col-form-label text-md-right">{{ zactra::translate_lang('Gender:') }} </label>
               <div class="col-md-10">
                 <label for="a" class="col-form-label text-md-center">{{ zactra::translate_lang('Male:') }} {{Form::radio('client[sex]','M', $user->clientDetails->sex=='M')}} </label>
                 <label for="s" class="col-form-label text-md-center">{{ zactra::translate_lang('Female:') }} {{Form::radio('client[sex]','F', $user->clientDetails->sex=='F')}} </label>

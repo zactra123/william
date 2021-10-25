@@ -34,7 +34,8 @@
             </a>
             <h5 class="text-dark">{{ zactra::translate_lang('Create New Faq') }}</h5>
           </div>
-          {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!} @csrf
+          {!! Form::open(['route' => ['owner.faqs.store'], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!}
+          @csrf
           <div class="form-group font">
             {{ Form::text('faqs[title]', old('faqs.title'), ['class' => 'form-control m-input', 'placeholder' => 'Answer']) }}
           </div>

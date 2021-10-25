@@ -660,13 +660,13 @@
               </div>
           </div>
           <div>
-              <h5>Doubled Charged Off - Removal After Settlement </h5>
+              <h5>{{ zactra::translate_lang('Doubled Charged Off - Removal After Settlement') }} </h5>
               <div class="form-group mt-4">
                   <div class="row">
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="securedcredit4" type="text" placeholder="{{ zactra::translate_lang('Secured Credit $') }}" class="form-control" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="Secured Credit">
+                                  <input id="securedcredit4" type="text" placeholder="{{ zactra::translate_lang('Secured Credit $') }}" class="form-control" name="secured_credit_block" value="{{ $pricing->cc_late ?? $default->cc_late}}"  title="{{ zactra::translate_lang('Secured Credit') }}">
                               </div>
                           </div>
                           {!! $errors->first('cc_late', '<p class="help-block">:message</p>') !!}
@@ -674,7 +674,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="priceName">
                               <div class="price">
-                                  <input id="securedloan4" type="text" placeholder="{{ zactra::translate_lang('Secured Loan $') }}" class="form-control" name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="Secured Loan">
+                                  <input id="securedloan4" type="text" placeholder="{{ zactra::translate_lang('Secured Loan $') }}" class="form-control" name="secured_loan_block" value="{{ $pricing->p_loan_blocking ?? $default->p_loan_blocking}}"  title="{{ zactra::translate_lang('Secured Loan') }}">
                               </div>
                           </div>
                           {!! $errors->first('p_loan_blocking', '<p class="help-block">:message</p>') !!}
@@ -682,7 +682,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="realestate4" type="text" placeholder="{{ zactra::translate_lang('Conv. Real Estate Mtg $') }}" class="form-control" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Conv. Real Estate Mtg">
+                                  <input id="realestate4" type="text" placeholder="{{ zactra::translate_lang('Conv. Real Estate Mtg $') }}" class="form-control" name="conv_real_mtg_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="{{ zactra::translate_lang('Conv. Real Estate Mtg') }}">
                               </div>
                           </div>
                           {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -694,7 +694,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="mortgage4" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Mortgage $') }}" name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="Mortgage">
+                                  <input id="mortgage4" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Mortgage $') }}" name="mortgage_block" value="{{ $pricing->mortgage_blocking ?? $default->mortgage_blocking}}"  title="{{ zactra::translate_lang('Mortgage') }}">
                               </div>
                           </div>
                           {!! $errors->first('mortgage_blocking', '<p class="help-block">:message</p>') !!}
@@ -702,7 +702,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="fhamortgage4" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Fha Mortgage $') }}" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="Fha Mortgage">
+                                  <input id="fhamortgage4" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Fha Mortgage $') }}" name="fha_mortgage_block" value="{{ $pricing->student_loan_blocking ?? $default->student_loan_blocking}}"  title="{{ zactra::translate_lang('Fha Mortgage') }}">
                               </div>
                           </div>
                           {!! $errors->first('student_loan_blocking', '<p class="help-block">:message</p>') !!}
@@ -710,7 +710,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="rental5" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Rental $') }}" name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Rental">
+                                  <input id="rental5" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Rental $') }}" name="rental_block" value="{{ $pricing->unknown ?? $default->unknown}}"  title="{{ zactra::translate_lang('Rental') }}">
                               </div>
                           </div>
                           {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -723,7 +723,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input id="securedloc5" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Secured Loc $') }}" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="Secured Loc">
+                                  <input id="securedloc5" type="text" class="form-control" placeholder="{{ zactra::translate_lang('Secured Loc $') }}" name="unknown" value="{{ $pricing->unknown ?? $default->unknown}}"  title="{{ zactra::translate_lang('Secured Loc') }}">
                               </div>
                           </div>
                           {!! $errors->first('unknown', '<p class="help-block">:message</p>') !!}
@@ -743,7 +743,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="credit_card_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : '' }}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="credit_card_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : '' }}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -751,7 +751,7 @@
                             <div class="col-md-4 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="credit_card_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                            <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="credit_card_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                         </div>
                                     </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -759,7 +759,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="credit_card_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="credit_card_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -778,7 +778,7 @@
                         <div class="col-md-4 mmb-5">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                    <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -794,7 +794,7 @@
                         <div class="col-md-3 mmb-5">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_co_price_last" title="Price">
+                                    <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                 </div>
                             </div>
                             {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -804,13 +804,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Charge Card</h5>
+                    <h5>{{ zactra::translate_lang('Charge Card') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -818,7 +818,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="charge_card_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="charge_card_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -826,7 +826,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="priceName">
                                     <div class="priceCA">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -845,7 +845,7 @@
                       <div class="col-md-4 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                  <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                               </div>
                           </div>
                           {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -861,7 +861,7 @@
                       <div class="col-md-3 mmb-5">
                           <div class="row">
                               <div class="col-md-12">
-                                  <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}"  id="charge_card_co_price_last" title="Price">
+                                  <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}"  id="charge_card_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                               </div>
                           </div>
                           {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -870,13 +870,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5> Sales Contract</h5>
+                    <h5> {{ zactra::translate_lang('Sales Contract') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -884,7 +884,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -894,7 +894,7 @@
                                     <div class="col-md-12">
                                       <div class="">
                                       </div>
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contract_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contract_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -913,7 +913,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -929,7 +929,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="sales_contract_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="sales_contract_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -939,13 +939,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Unsecured</h5>
+                    <h5>{{ zactra::translate_lang('Unsecured') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -953,7 +953,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -961,7 +961,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -980,7 +980,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -996,7 +996,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection"  id="unsecured_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection"  id="unsecured_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1006,13 +1006,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Line Of Credit</h5>
+                    <h5>{{ zactra::translate_lang('Line Of Credit') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1020,7 +1020,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1028,7 +1028,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1047,7 +1047,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                          <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                          <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1063,7 +1063,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1073,13 +1073,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Home Equity</h5>
+                    <h5>{{ zactra::translate_lang('Home Equity') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1087,7 +1087,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1095,7 +1095,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1114,7 +1114,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1130,7 +1130,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1140,13 +1140,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Education</h5>
+                    <h5>{{ zactra::translate_lang('Education') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1154,7 +1154,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1162,7 +1162,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1181,7 +1181,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1197,7 +1197,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" id="education_co_price_last" placeholder="{{ zactra::translate_lang('Price $') }}" title="Price">
+                                        <input type="text" class="form-control collection" id="education_co_price_last" placeholder="{{ zactra::translate_lang('Price $') }}" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1213,7 +1213,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1221,7 +1221,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1229,7 +1229,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}"  data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}"  data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1248,7 +1248,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1264,7 +1264,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1274,13 +1274,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Child Support</h5>
+                    <h5>{{ zactra::translate_lang('Child Support') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1288,7 +1288,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1296,7 +1296,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1315,7 +1315,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1331,7 +1331,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1343,13 +1343,13 @@
             </div>
             <div>
                 <div class="form-group mb-5">
-                    <h5>Auto Lease</h5>
+                    <h5>{{ zactra::translate_lang('Auto Lease') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_lease_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_lease_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1357,7 +1357,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1365,7 +1365,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_lease_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_lease_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1384,7 +1384,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_co_min_val_last"  data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_co_min_val_last"  data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1410,13 +1410,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Auto Loan</h5>
+                    <h5>{{ zactra::translate_lang('Auto Loan') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" name="auto_loan_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}"  data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" name="auto_loan_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}"  data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1424,7 +1424,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_loan_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_loan_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1432,7 +1432,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_loan_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_loan_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1451,7 +1451,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1467,7 +1467,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_loan_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_loan_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1477,13 +1477,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Recreational Merchandise</h5>
+                    <h5>{{ zactra::translate_lang('Recreational Merchandise') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="r_m_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="r_m_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1491,7 +1491,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="r_m_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="r_m_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1499,7 +1499,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1518,7 +1518,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1534,7 +1534,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="r_m_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="r_m_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1555,7 +1555,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="credit_card_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="credit_card_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1563,7 +1563,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="credit_card_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="credit_card_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1571,7 +1571,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="credit_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="credit_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Percentage') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1590,7 +1590,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1606,7 +1606,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="priceName">
                                     <div class="priceCA">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="credit_card_s_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="credit_card_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1616,13 +1616,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Charge Card</h5>
+                    <h5>{{ zactra::translate_lang('Charge Card') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="charge_card_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="charge_card_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1630,7 +1630,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="charge_card_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="charge_card_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1638,7 +1638,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="priceName">
                                     <div class="priceCA">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="charge_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="charge_card_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1658,7 +1658,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1674,7 +1674,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="charge_card_s_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="charge_card_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1690,7 +1690,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1698,7 +1698,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1706,7 +1706,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contracts_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contracts_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1726,7 +1726,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1742,7 +1742,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_s_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1752,13 +1752,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Unsecured</h5>
+                    <h5>{{ zactra::translate_lang('Unsecured') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1766,7 +1766,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1774,7 +1774,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1793,7 +1793,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1809,7 +1809,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_s_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1819,13 +1819,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Line of Credit</h5>
+                    <h5>{{ zactra::translate_lang('Line of Credit') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1833,7 +1833,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1841,7 +1841,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1861,7 +1861,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1877,7 +1877,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="line_credit_s_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="line_credit_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1893,7 +1893,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1901,7 +1901,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="home_equity_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="home_equity_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1909,7 +1909,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="home_equity_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="home_equity_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1928,7 +1928,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1944,7 +1944,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_s_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1954,13 +1954,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Education</h5>
+                    <h5>{{ zactra::translate_lang('Education') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="education_s_co[0][minimum]" value="{{  isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="education_s_co[0][minimum]" value="{{  isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1968,7 +1968,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="education_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="education_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1976,7 +1976,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="education_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="education_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Percentage') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -1996,7 +1996,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2012,7 +2012,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="education_s_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="education_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2028,7 +2028,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2036,7 +2036,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="utility_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="utility_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2044,7 +2044,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="utility_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="utility_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2063,7 +2063,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2079,7 +2079,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="Price $" class="form-control collection" id="utility_s_co_price_val_last" title="Price">
+                                        <input type="text" placeholder="Price $" class="form-control collection" id="utility_s_co_price_val_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2095,7 +2095,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="child_support_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="child_support_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2103,7 +2103,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="child_support_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="child_support_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2111,7 +2111,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="child_support_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="child_support_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2130,7 +2130,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_s_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_s_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2146,7 +2146,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_s_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_s_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2164,7 +2164,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2172,7 +2172,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_lease_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_lease_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2183,7 +2183,7 @@
                                         {{-- <label for="price47"> <strong>Price $</strong> </label> --}}
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_lease_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_lease_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2203,7 +2203,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2219,7 +2219,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_lease_s_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_lease_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2229,13 +2229,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Auto Loan</h5>
+                    <h5>{{ zactra::translate_lang('Auto Loan') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_loan_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_loan_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2243,7 +2243,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_loan_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="auto_loan_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2251,7 +2251,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_loan_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="auto_loan_s_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2271,7 +2271,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2287,7 +2287,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_loan_s_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="auto_loan_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2303,7 +2303,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="r_m_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="r_m_s_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2311,7 +2311,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="r_m_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="r_m_s_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2319,7 +2319,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2338,7 +2338,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_s_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_s_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2354,7 +2354,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_s_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_s_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2375,7 +2375,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="credit_card_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="credit_card_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2383,7 +2383,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="credit_card_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="credit_card_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2391,7 +2391,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="credit_card_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="credit_card_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2410,7 +2410,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2426,7 +2426,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2436,13 +2436,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5>Charge Card</h5>
+                    <h5>{{ zactra::translate_lang('Charge Card') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row mt-3">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2450,7 +2450,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="charge_card_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="charge_card_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2458,7 +2458,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2477,7 +2477,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="charge_card_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2493,7 +2493,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="charge_card_d_co_price_last" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="charge_card_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2503,13 +2503,13 @@
                 </div>
 
                 <div class="form-group mb-5">
-                    <h5> Sales Contract</h5>
+                    <h5> {{ zactra::translate_lang('Sales Contract') }}</h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2517,7 +2517,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2525,7 +2525,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contract_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contract_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2544,7 +2544,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2561,7 +2561,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2577,7 +2577,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2585,7 +2585,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2593,7 +2593,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="unsecured_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" name="unsecured_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2612,7 +2612,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2628,7 +2628,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2644,7 +2644,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2652,7 +2652,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2660,7 +2660,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2680,7 +2680,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2696,7 +2696,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2712,7 +2712,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2720,7 +2720,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2728,7 +2728,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2763,7 +2763,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2779,7 +2779,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2787,7 +2787,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2795,7 +2795,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="education_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="education_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2815,7 +2815,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2831,7 +2831,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="education_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="education_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2847,7 +2847,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2855,7 +2855,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2863,7 +2863,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Percentage">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Percentage') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2882,7 +2882,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2898,7 +2898,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_d_co_price_val_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_d_co_price_val_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2914,7 +2914,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2922,7 +2922,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2930,7 +2930,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2949,7 +2949,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_d_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_d_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2965,7 +2965,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_d_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_d_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2982,7 +2982,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2990,7 +2990,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -2998,7 +2998,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3018,7 +3018,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3034,7 +3034,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3049,7 +3049,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="auto_loan_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="auto_loan_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3058,7 +3058,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3066,7 +3066,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_d_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3086,7 +3086,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3104,7 +3104,7 @@
                                     <div class="col-md-12">
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3120,7 +3120,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="r_m_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="r_m_d_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3130,7 +3130,7 @@
                                     <div class="col-md-12">
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_d_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3138,7 +3138,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3157,7 +3157,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_d_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_d_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3173,7 +3173,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}"  id="r_m_d_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}"  id="r_m_d_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3188,13 +3188,13 @@
           <section class="mt-5">
             <div>
                 <div class="form-group mb-5">
-                    <h5>Credit Card  </h5>
+                    <h5>{{ zactra::translate_lang('Credit Card') }}  </h5>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="credit_card_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="credit_card_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3202,7 +3202,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="credit_card_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="credit_card_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3210,7 +3210,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="credit_card_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="credit_card_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3230,7 +3230,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="credit_card_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3246,7 +3246,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="credit_card_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3262,7 +3262,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="charge_card_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3272,7 +3272,7 @@
                                     <div class="col-md-12">
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="charge_card_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="charge_card_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3280,7 +3280,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="charge_card_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3315,7 +3315,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="charge_card_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="charge_card_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3331,7 +3331,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="sales_contract_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3339,7 +3339,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="sales_contract_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3347,7 +3347,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contracts_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="sales_contracts_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3366,7 +3366,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="sales_contract_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3382,7 +3382,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="sales_contract_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3398,7 +3398,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="unsecured_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3406,7 +3406,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="unsecured_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3414,7 +3414,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="unsecured_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3433,7 +3433,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="unsecured_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3449,7 +3449,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="unsecured_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3465,7 +3465,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="line_credit_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3473,7 +3473,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="line_credit_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3481,7 +3481,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="line_credit_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3500,7 +3500,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="line_credit_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3516,7 +3516,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="line_credit_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3532,7 +3532,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="home_equity_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3540,7 +3540,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="home_equity_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3548,7 +3548,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="home_equity_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3568,7 +3568,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="home_equity_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3584,7 +3584,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="home_equity_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3600,7 +3600,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="education_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3608,7 +3608,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="education_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3616,7 +3616,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="education_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="education_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3635,7 +3635,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="education_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3651,7 +3651,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="education_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="education_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3667,7 +3667,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="utility_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3675,7 +3675,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="utility_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3683,7 +3683,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="utility_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3702,7 +3702,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="utility_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3718,7 +3718,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_sd_co_price_val_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="utility_sd_co_price_val_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3734,7 +3734,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="child_support_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3742,7 +3742,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="child_support_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3750,7 +3750,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="child_support_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3769,7 +3769,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_sd_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="child_support_sd_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3785,7 +3785,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_sd_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="child_support_sd_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3802,7 +3802,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_lease_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_lease_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3810,7 +3810,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3818,7 +3818,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3853,7 +3853,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3869,7 +3869,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="auto_loan_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="auto_loan_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3877,7 +3877,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3885,7 +3885,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_sd_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3904,7 +3904,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3920,7 +3920,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3936,7 +3936,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="r_m_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="r_m_sd_co[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3944,7 +3944,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_sd_co[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3952,7 +3952,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_co[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3971,7 +3971,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_sd_co_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_sd_co_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -3987,7 +3987,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_sd_co_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_sd_co_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4007,7 +4007,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_r[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="auto_lease_r[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4015,7 +4015,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_r[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_lease_r[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0"title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4023,7 +4023,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_r[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_lease_r[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4042,7 +4042,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_r_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_lease_r_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4058,7 +4058,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_r_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_lease_r_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4074,7 +4074,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_loan_r[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="auto_loan_r[0][minimum]" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4082,7 +4082,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_r[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="auto_loan_r[0][maximum]" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4090,7 +4090,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_r[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" name="auto_loan_r[0][price]" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4110,7 +4110,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_r_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="auto_loan_r_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4126,7 +4126,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_r_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="auto_loan_r_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4142,7 +4142,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" name="r_m_r[0][minimum]" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" name="r_m_r[0][minimum]" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4150,7 +4150,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_r[0][maximum]" class="form-control collection" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="Max">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="r_m_r[0][maximum]" class="form-control collection" value="{{ isset($pricing->collection[0]['maximum']) ? $default->collection[0]['maximum'] : ''}}" data-id="0"  id="max-0" title="{{ zactra::translate_lang('Max') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4158,7 +4158,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_r[0][price]" class="form-control collection" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="Price">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" name="r_m_r[0][price]" class="form-control collection" value="{{ isset($pricing->collection[0]['percentage']) ? $default->collection[0]['percentage'] : ''}}" data-id="0"  id="percent-0" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4177,7 +4177,7 @@
                             <div class="col-md-4 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_r_min_val_last" data-id="0"  id="min-0" title="Min">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" value="{{ isset($pricing->collection[0]['minimum']) ? $default->collection[0]['minimum'] : ''}}" id="r_m_r_min_val_last" data-id="0"  id="min-0" title="{{ zactra::translate_lang('Min') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4193,7 +4193,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_r_price_last" title="Price">
+                                        <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Price $') }}" id="r_m_r_price_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4219,7 +4219,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4228,7 +4228,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4284,7 +4284,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4293,7 +4293,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4302,7 +4302,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input type="text" class="form-control collection" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4349,7 +4349,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input type="text" placeholder="{{ zactra::translate_lang('Min $') }}" class="form-control collection" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4358,7 +4358,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input type="text" placeholder="{{ zactra::translate_lang('Max $') }}" class="form-control collection" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4367,7 +4367,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="{{ zactra::translate_lang('%') }}" class="form-control collection" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input type="text" placeholder="{{ zactra::translate_lang('%') }}" class="form-control collection" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4414,7 +4414,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4423,7 +4423,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4432,7 +4432,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4479,7 +4479,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4488,7 +4488,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4497,7 +4497,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4544,7 +4544,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4553,7 +4553,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4562,7 +4562,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4609,7 +4609,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4618,7 +4618,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4627,7 +4627,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4674,7 +4674,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4683,7 +4683,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4692,7 +4692,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4739,7 +4739,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" name="" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" name="" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4748,7 +4748,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" name="" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4757,7 +4757,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" name="" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" name="" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4804,7 +4804,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum'] ) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum'] ) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4813,7 +4813,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text"  name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4822,7 +4822,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4869,7 +4869,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4878,7 +4878,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4887,7 +4887,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4934,7 +4934,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4943,7 +4943,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -4952,7 +4952,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -4999,7 +4999,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5008,7 +5008,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5017,7 +5017,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5064,7 +5064,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5073,7 +5073,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5082,7 +5082,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5129,7 +5129,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5138,7 +5138,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5147,7 +5147,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5194,7 +5194,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5203,7 +5203,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5212,7 +5212,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5259,7 +5259,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5268,7 +5268,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5277,7 +5277,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5324,7 +5324,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5333,7 +5333,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5342,7 +5342,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5389,7 +5389,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5398,7 +5398,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5407,7 +5407,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5454,7 +5454,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5463,7 +5463,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text" class="Max $" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" placeholder="{{ zactra::translate_lang('Max $') }}" type="text" class="Max $" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5472,7 +5472,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5519,7 +5519,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5528,7 +5528,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5537,7 +5537,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5584,7 +5584,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5593,7 +5593,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5602,7 +5602,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5649,7 +5649,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5658,7 +5658,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5667,7 +5667,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5714,7 +5714,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5723,7 +5723,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5732,7 +5732,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5779,7 +5779,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5788,7 +5788,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5797,7 +5797,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5844,7 +5844,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5853,7 +5853,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5862,7 +5862,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5909,7 +5909,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" placeholder="{{ zactra::translate_lang('Min $') }}" type="text" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5918,7 +5918,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5927,7 +5927,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5974,7 +5974,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -5983,7 +5983,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -5992,7 +5992,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6039,7 +6039,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6048,7 +6048,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -6057,7 +6057,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <inputclass="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <inputclass="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6104,7 +6104,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="Min">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Min $') }}" name="collection[{{$i}}][minimum]" value="{{ isset($pricing->collection[$i]['minimum']) ? $default->collection[$i]['minimum'] : ''}}" data-id="{{$i}}"  id="min-{{$i}}" title="{{ zactra::translate_lang('Min') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}
@@ -6113,7 +6113,7 @@
                                     @if($i < 3)
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="Max">
+                                                <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('Max $') }}" name="collection[{{$i}}][maximum]" value="{{ isset($pricing->collection[$i]['maximum']) ? $default->collection[$i]['maximum'] : ''}}" data-id="{{$i}}"  id="max-{{$i}}" title="{{ zactra::translate_lang('Max') }}">
                                             </div>
                                         </div>
                                     @endif
@@ -6122,7 +6122,7 @@
                                 <div class="col-md-2 mmb-5">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="Percentage">
+                                            <input class="form-control collection" type="text" placeholder="{{ zactra::translate_lang('%') }}" name="collection[{{$i}}][percentage]" value="{{ isset($pricing->collection[$i]['percentage']) ? $default->collection[$i]['percentage'] : ''}}" data-id="{{$i}}"  id="percent-{{$i}}" title="{{ zactra::translate_lang('Percentage') }}">
                                         </div>
                                     </div>
                                     {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}

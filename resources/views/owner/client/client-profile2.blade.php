@@ -444,12 +444,11 @@
 							</div>
 							<div class="image_details">
 								<label class="input_line image_title">
-									<input type="text" placeholder="ID" />
+									<input type="text" placeholder="{{ zactra::translate_lang('ID') }}" />
 								</label>
 								<a class="confirm" data-action="confirm_image_details">
 									<i class="fa fa-check-circle"></i>
 								</a>
-
 							</div>
 						</div>
 					</div>

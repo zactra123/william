@@ -52,13 +52,13 @@
               {{ Form::text('admin[ip_address][][ip_address]', old('admin.ip_address'), ['class' => 'form-control ip-address mmb-5', 'placeholder'=>'IP Address','required']) }}
             </div>
             <div class="col-md-1 col-sm-12 col-12 col-lg-1 pl-0 mml-12">
-              <input class="btn btn-primary add-ip-address pull-left" type="button" value="Add IP" />
+              <input class="btn btn-primary add-ip-address pull-left" type="button" value="{{ zactra::translate_lang('Add IP') }}" />
             </div>
           </div>
           <div id="newIp"></div>
           <div class="form-group row font pull-right">
             <div class="col-md-12 tab-selector">
-              <input type="submit" value="Create Admin" class="btn btn-primary ms-ua-submit" />
+              <input type="submit" value="{{ zactra::translate_lang('Create Admin') }}" class="btn btn-primary ms-ua-submit" />
             </div>
           </div>
           {!! Form::close() !!}

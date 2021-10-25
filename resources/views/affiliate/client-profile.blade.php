@@ -104,7 +104,7 @@
   					<span>{{strtoupper($client->clientDetails->referred_by)}}</span>
   				</li>
 				@endif
-				<li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> Edit Profile</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary text-white"><i class="fa fa-pencil-square-o  fa-fw"></i> {{ zactra::translate_lang('Edit Profile') }}</a></li>
 			</ul>
 		</aside>
 	</div>
@@ -336,7 +336,7 @@
 				{!! Form::close() !!}
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">{{ zactra::translate_lang('Close') }}</button>
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,6 @@
   <div class="footer-top">
     <div class="container">
       <div class="row">
-
         <div class="col-lg-4 col-md-6">
           <div class="footer-info">
             <h3>{{ zactra::translate_lang('Credit Repair') }}</h3>
@@ -29,7 +28,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>{{ zactra::translate_lang('Useful Links') }}</h4>
           <ul>
@@ -52,7 +50,6 @@
             <li><i class="bx bx-chevron-right"></i> <a href="{{ route('blog') }}">{{ zactra::translate_lang('News Room') }}</a></li>
           </ul>
         </div>
-
         <div class="col-lg-4 col-md-6 footer-newsletter">
           <h4>{{ zactra::translate_lang('Subscribe Us') }}</h4>
           <p>{{ zactra::translate_lang('You can any time unsubcribe your email address from your mail if this become annoying.') }}</p>

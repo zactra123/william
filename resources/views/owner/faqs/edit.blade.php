@@ -31,7 +31,9 @@
           <a href="{{ route('owner.faqs.index') }}">
             <h5 class="text-dark"><i class="ti-angle-left"></i>{{ zactra::translate_lang('Edit Faq') }}</h5>
           </a>
-          {!! Form::open(['route' => ['owner.faqs.update', $faq->id], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!} @method('PUT') @csrf
+          {!! Form::open(['route' => ['owner.faqs.update', $faq->id], 'method' => 'POST', 'class' => 'mt-4 m-form m-form--label-align-right']) !!}
+          @method('PUT')
+          @csrf
           <div class="form-group font">
             {{ Form::text('faqs[title]',$faq->title , ['class' => 'form-control m-input', 'placeholder' => 'Title']) }}
           </div>

@@ -71,7 +71,6 @@
 						<div class="form-group">
 							<input clas type="submit" value="Send" class="ms-ua-submit">
 						</div>
-
 					</form>
 				</div>
 			</div>

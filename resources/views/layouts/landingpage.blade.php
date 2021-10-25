@@ -79,7 +79,7 @@
 										<span class="fs-12">{{ zactra::translate_lang('Login') }}</span>
 									</a>
 									<a href="{{ route('register') }}" class="text-white">
-										<span class="fs-12">{{ zactra::translate_lang(' / Sign up') }}</span>
+										<span class="fs-12"> {{ zactra::translate_lang('/ Sign up') }}</span>
 									</a>
 									@endif
 								</div>

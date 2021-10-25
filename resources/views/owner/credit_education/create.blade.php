@@ -27,7 +27,8 @@
                 <p>{{ zactra::translate_lang('Please enter following information to add new education') }}</p>
               </div>
               <div class="card-body pl-4 pr-4">
-                {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @csrf
+                {!! Form::open(['route' => ['owner.credit.education.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+                @csrf
                 <div class="form-group row font">
                   {{ Form::text('content[title]', old('content.title'), ['class' => 'form-control m-input', 'placeholder' => 'Title', 'required']) }}
                 </div>

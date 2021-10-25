@@ -469,7 +469,7 @@
                   <label class="form-text">{{ zactra::translate_lang('RECENT BALANCE') }}</label>
                 </div>
                 <div class="col-md-12">
-                  <span class=""> ${{$accounts->recent_balance_amount}} as of {{date("d/m/Y",strtotime($accounts->recent_balance_date))}} </span>
+                  <span class=""> {{ zactra::translate_lang('$') }}{{$accounts->recent_balance_amount}} {{ zactra::translate_lang('as of') }} {{date("d/m/Y",strtotime($accounts->recent_balance_date))}} </span>
                 </div>
               </div>
               @else
@@ -883,96 +883,101 @@
           <div class="chart-report">
             <span style="font-weight: bold;"> {{ zactra::translate_lang('GOOD STANDING ACCOUNTS') }}</span>
             @foreach($clientReportsTU->clientTuAccounts->where('adverse_flag', 0) as $accounts)
-            <div class="mt20"></div>
-            <div class="row border" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              <div class="col-md-2">
-                <img src="{{asset('images/default_bank_logos.png')}}" width="50px" />
+              <div class="mt20"></div>
+              <div class="row border" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                  <img src="{{asset('images/default_bank_logos.png')}}" width="50px" />
+                </div>
+                <div class="col-md-7">
+                  <span class="">{{$accounts->account_name}}</span>
+                  <span style="padding-left: 15px;"># {{$accounts->account_number}}</span>
+                </div>
+                @if(!empty($accounts->dispute->id))
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
+                  </div>
+                </div>
+                @else
+                <div class="col-md-2">
+                  <div class="col-md-6">
+                    <label class="form-text">{{ zactra::translate_lang('DISPUTE') }}</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input name="tu_account[]" type="checkbox" id="tu-account-{{$accounts->id}}" value="{{$accounts->id}}" class="customcheck" />
+                  </div>
+                </div>
+                @endif
               </div>
-              <div class="col-md-7">
-                <span class="">{{$accounts->account_name}}</span>
-                <span style="padding-left: 15px;"># {{$accounts->account_number}}</span>
+              <div class="row mt20" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                @if($accounts->date_opened !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('DATE OPENED') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->account_type_description !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$accounts->account_type_description}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->loan_type !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('LOAN TYPE') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$accounts->loan_type}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->pay_status !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('PAY STATUS') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{htmlspecialchars_decode($accounts->pay_status)}} </span>
+                  </div>
+                </div>
+                @endif
+                @if(!empty($accounts->remark) )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
+                  </div>
+                  @foreach(json_decode($accounts->remark) as $remark)
+                  <div class="col-md-12">
+                    <span class=""> {{$remark->description}} </span>
+                  </div>
+                  @endforeach
+                </div>
+                @endif
               </div>
-              @if(!empty($accounts->dispute->id))
-              <div class="col-md-2">
+              @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
+              <div class="row mt20">
                 <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
+                  {{ zactra::translate_lang('ACCOUNT HISTORY') }}
                 </div>
-              </div>
-              @else
-              <div class="col-md-2">
-                <div class="col-md-6">
-                  <label class="form-text">{{ zactra::translate_lang('DISPUTE') }}</label>
-                </div>
-                <div class="col-md-4">
-                  <input name="tu_account[]" type="checkbox" id="tu-account-{{$accounts->id}}" value="{{$accounts->id}}" class="customcheck" />
-                </div>
-              </div>
-              @endif
-            </div>
-            <div class="row mt20" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              @if($accounts->date_opened !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('DATE OPENED') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->account_type_description !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$accounts->account_type_description}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->loan_type !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('LOAN TYPE') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$accounts->loan_type}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->pay_status !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('PAY STATUS') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{htmlspecialchars_decode($accounts->pay_status)}} </span>
-                </div>
-              </div>
-              @endif @if(!empty($accounts->remark) )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
-                </div>
-                @foreach(json_decode($accounts->remark) as $remark)
-                <div class="col-md-12">
-                  <span class=""> {{$remark->description}} </span>
+                @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
+                <div class="col-md-3">
+                  {{ zactra::translate_lang('LATE') }} {{$payment->value}} {{ zactra::translate_lang('AS OF') }} {{$payment->month}}/{{$payment->year}}
                 </div>
                 @endforeach
               </div>
               @endif
-            </div>
-            @if($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] )->first() )
-            <div class="row mt20">
-              <div class="col-md-12">
-                {{ zactra::translate_lang('ACCOUNT HISTORY') }}
-              </div>
-              @foreach($accounts->accountPaymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
-              <div class="col-md-3">
-                {{ zactra::translate_lang('LATE') }} {{$payment->value}} {{ zactra::translate_lang('AS OF') }} {{$payment->month}}/{{$payment->year}}
-              </div>
-              @endforeach
-            </div>
-            @endif @endforeach
+            @endforeach
           </div>
           <div class="mt20"></div>
           <div class="chart-report">
@@ -1370,7 +1375,8 @@
         </div>
       </div>
     </div>
-    @endif @if($clientReportsEQ)
+    @endif
+    @if($clientReportsEQ)
     <div class="Equifax" style="display: none;">
       <div class="row mt20">
         <div class="col-md-1 mt20"></div>
@@ -1511,97 +1517,102 @@
           <div class="chart-report">
             <span style="font-weight: bold;"> {{ zactra::translate_lang('NEGATIVE ACCOUNTS') }}</span>
             @foreach($clientReportsEQ->clientEqAccounts->where('type', "!=",'collection') as $accounts)
-            <div class="mt20"></div>
-            <div class="row border" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              <div class="col-md-2">
-                <img src="{{asset('images/default_bank_logos.png')}}" width="50px" />
+              <div class="mt20"></div>
+              <div class="row border" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
+                  <img src="{{asset('images/default_bank_logos.png')}}" width="50px" />
+                </div>
+                <div class="col-md-7">
+                  <span class="">{{$accounts->name}}</span>
+                </div>
+                @if(!empty($accounts->dispute->id))
+                <div class="col-md-2">
+                  <div class="col-md-6">
+                    <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
+                  </div>
+                </div>
+                @else
+                <div class="col-md-2">
+                  <div class="col-md-6">
+                    <label class="form-text">{{ zactra::translate_lang('DISPUTE') }}</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value="{{$accounts->id}}" class="customcheck" />
+                  </div>
+                </div>
+                @endif
               </div>
-              <div class="col-md-7">
-                <span class="">{{$accounts->name}}</span>
+              <div class="row mt20" style="font-weight: bold;">
+                <div class="col-md-1"></div>
+                @if($accounts->date_opened !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('DATE OPENED') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->account_type !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$accounts->account_type}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->account_title !=null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('ACCOUNT TITLE') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$accounts->account_title}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->current_payment_status !=null )
+                <div class="col-md-3">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('PAYMENT STATUS') }}</label>
+                  </div>
+                  <div class="col-md-12">
+                    <span class=""> {{$accounts->current_payment_status}} </span>
+                  </div>
+                </div>
+                @endif
+                @if($accounts->remarks != null )
+                <div class="col-md-2">
+                  <div class="col-md-12">
+                    <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
+                  </div>
+                  @foreach(json_decode($accounts->remarks) as $remark)
+                  <div class="col-md-12">
+                    <span class=""> {{$remark}} </span>
+                  </div>
+                  @endforeach
+                </div>
+                @endif
               </div>
-              @if(!empty($accounts->dispute->id))
-              <div class="col-md-2">
-                <div class="col-md-6">
-                  <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
+              @if($accounts->paymentHistories->where('value','Like',"%0%" )->first() )
+              <div class="row mt20">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                  {{ zactra::translate_lang('ACCOUNT HISTORY') }}
                 </div>
-              </div>
-              @else
-              <div class="col-md-2">
-                <div class="col-md-6">
-                  <label class="form-text">{{ zactra::translate_lang('DISPUTE') }}</label>
-                </div>
-                <div class="col-md-4">
-                  <input name="eq_account[]" type="checkbox" id="eq-account-{{$accounts->id}}" value="{{$accounts->id}}" class="customcheck" />
-                </div>
-              </div>
-              @endif
-            </div>
-            <div class="row mt20" style="font-weight: bold;">
-              <div class="col-md-1"></div>
-              @if($accounts->date_opened !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('DATE OPENED') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->account_type !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$accounts->account_type}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->account_title !=null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('ACCOUNT TITLE') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$accounts->account_title}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->current_payment_status !=null )
-              <div class="col-md-3">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('PAYMENT STATUS') }}</label>
-                </div>
-                <div class="col-md-12">
-                  <span class=""> {{$accounts->current_payment_status}} </span>
-                </div>
-              </div>
-              @endif @if($accounts->remarks != null )
-              <div class="col-md-2">
-                <div class="col-md-12">
-                  <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
-                </div>
-                @foreach(json_decode($accounts->remarks) as $remark)
-                <div class="col-md-12">
-                  <span class=""> {{$remark}} </span>
+                <div class="col-md-1"></div>
+                @foreach($accounts->paymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
+                <div class="col-md-3">
+                  {{ zactra::translate_lang('LATE') }} {{$payment->value}} {{ zactra::translate_lang('AS OF') }} {{$payment->month}}/{{$payment->year}}
                 </div>
                 @endforeach
               </div>
               @endif
-            </div>
-            @if($accounts->paymentHistories->where('value','Like',"%0%" )->first() )
-            <div class="row mt20">
-              <div class="col-md-1"></div>
-              <div class="col-md-11">
-                {{ zactra::translate_lang('ACCOUNT HISTORY') }}
-              </div>
-              <div class="col-md-1"></div>
-              @foreach($accounts->paymentHistories->whereIn('value',["30","60",'90'] ) as $payment)
-              <div class="col-md-3">
-                {{ zactra::translate_lang('LATE') }} {{$payment->value}} {{ zactra::translate_lang('AS OF') }} {{$payment->month}}/{{$payment->year}}
-              </div>
-              @endforeach
-            </div>
-            @endif @endforeach
+            @endforeach
           </div>
           <div class="mt20"></div>
           <div class="mt20"></div>
@@ -1645,7 +1656,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type !=null )
+              @endif
+              @if($accounts->account_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
@@ -1654,7 +1666,8 @@
                   <span class=""> {{$accounts->account_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_title !=null )
+              @endif
+              @if($accounts->account_title !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ACCOUNT TITLE') }}</label>
@@ -1663,7 +1676,8 @@
                   <span class=""> {{$accounts->account_title}} </span>
                 </div>
               </div>
-              @endif @if($accounts->current_payment_status !=null )
+              @endif
+              @if($accounts->current_payment_status !=null )
               <div class="col-md-3">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('PAYMENT STATUS') }}</label>
@@ -1672,7 +1686,8 @@
                   <span class=""> {{$accounts->current_payment_status}} </span>
                 </div>
               </div>
-              @endif @if($accounts->remarks != null )
+              @endif
+              @if($accounts->remarks != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
@@ -1717,7 +1732,8 @@
                   <span class="">{{$publicRecords->status}}</span>
                 </div>
               </div>
-              @endif @if($publicRecords->classification !=null )
+              @endif
+              @if($publicRecords->classification !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('CLASSIFICATION') }}</label>
@@ -1726,7 +1742,8 @@
                   <span class=""> {{$publicRecords->classification}}</span>
                 </div>
               </div>
-              @endif @if(!empty($publicRecords->dispute->id))
+              @endif
+              @if(!empty($publicRecords->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
@@ -1770,7 +1787,8 @@
                   <span class=""> {{$publicRecords->category_type}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_verified !=null )
+              @endif
+              @if($publicRecords->date_verified !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('DATE VERIFIED') }}</label>

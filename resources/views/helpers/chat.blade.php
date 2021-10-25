@@ -32,7 +32,6 @@
   @endphp
   <input type="hidden" class="isguest" name="" value="{{ zactra::translate_lang('yes') }}">
 @else
-
   <input type="hidden" class="isguest" name="" value="{{ zactra::translate_lang('no') }}">
 @endif
 
@@ -75,7 +74,6 @@
                 <p class="text-white">{{ zactra::translate_lang('You can write your questions on our online portal. Our experts will help you find answers to your questions.') }}</p>
             </div>
         </div>
-
         <form action="" id="chat_form">
             @csrf
             <input type="text" name="full_name" value="" class="form-control" placeholder="{{ zactra::translate_lang('Your full name') }}" autofocus />
@@ -112,7 +110,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <form action="" id="chat_form">
             <div class="textarea">
-                <textarea class="form-control textinput" placeholder="Type message..." class="form-control" name="message" cols="30" rows="1"></textarea>
+                <textarea class="form-control textinput" placeholder="{{ zactra::translate_lang('Type message...') }}" class="form-control" name="message" cols="30" rows="1"></textarea>
             </div>
             <div class="form-submit mb-5 text-right">
                 <input type="submit" class="float-right" value="{{ zactra::translate_lang('Send') }}" />
@@ -125,7 +123,6 @@
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script> --}}
 <script>
-
 
 var getguestid = $(".isguest").val();
 

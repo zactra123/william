@@ -251,7 +251,6 @@
     @else
         @include('helpers.urls.nav_bar_guest')
     @endif
-
   </div>
 </aside>
 <!-- /main-sidebar -->

@@ -1,41 +1,41 @@
 <link rel="stylesheet" href="{{asset('/css/registration_steps.css')}}">
 <?php
-    switch (isset($step)?$step:null){
-        case "documents":
-            $registered = "visited";
-            $documents = "active";
-            $credentials = "";
-            $reviewed = "";
-            $finished = "";
-            break;
-        case "credentials":
-            $registered = "visited";
-            $documents = "visited";
-            $credentials = "active";
-            $reviewed = "";
-            $finished = "";
-            break;
-        case "review":
-            $registered = "visited";
-            $documents = "visited";
-            $credentials = "visited";
-            $reviewed = "active";
-            $finished = "";
-            break;
-        case "finished":
-            $registered = "visited";
-            $documents = "visited";
-            $credentials = "visited";
-            $reviewed = "visited";
-            $finished = "active";
-            break;
-        default:
-            $registered = "active";
-            $documents = "";
-            $credentials = "";
-            $reviewed = "";
-            $finished = "";
-    }
+  switch (isset($step)?$step:null){
+    case "documents":
+      $registered = "visited";
+      $documents = "active";
+      $credentials = "";
+      $reviewed = "";
+      $finished = "";
+      break;
+    case "credentials":
+      $registered = "visited";
+      $documents = "visited";
+      $credentials = "active";
+      $reviewed = "";
+      $finished = "";
+      break;
+    case "review":
+      $registered = "visited";
+      $documents = "visited";
+      $credentials = "visited";
+      $reviewed = "active";
+      $finished = "";
+      break;
+    case "finished":
+      $registered = "visited";
+      $documents = "visited";
+      $credentials = "visited";
+      $reviewed = "visited";
+      $finished = "active";
+      break;
+    default:
+      $registered = "active";
+      $documents = "";
+      $credentials = "";
+      $reviewed = "";
+      $finished = "";
+  }
 
 ?>
 <section class="design-process-section" id="process-tab">

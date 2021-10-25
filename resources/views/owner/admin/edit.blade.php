@@ -54,13 +54,13 @@
               <div class="col-sm-12 col-12 col-md-11 col-lg-11 form-group">
                 {{Form::hidden('admin[ip_address]['.$value->id.'][id]', $value->id)}} {{ Form::text('admin[ip_address]['.$value->id.'][ip_address]', $value->ip_address, ['class' => 'form-control', 'placeholder'=>'IP Address', 'required']) }}
               </div>
-              <div class="col-sm-12 col-12 col-md-1 col-lg-1 form-group pl-0"><input class="remove-ip-address btn btn-danger" type="button" data-target="{{$value->id}}" value="Delete"/></div>
+              <div class="col-sm-12 col-12 col-md-1 col-lg-1 form-group pl-0"><input class="remove-ip-address btn btn-danger" type="button" data-target="{{$value->id}}" value="{{ zactra::translate_lang('Delete') }}"/></div>
             </div>
           @endforeach
           <div id="newIp"></div>
           <div class="form-group row">
             <div class="col-md-2">
-              <input class="btn btn-primary add-ip-address" type="button" value="Add IP" />
+              <input class="btn btn-primary add-ip-address" type="button" value="{{ zactra::translate_lang('Add IP') }}" />
             </div>
           </div>
           <div class="form-group row mb-0 font pull-right">

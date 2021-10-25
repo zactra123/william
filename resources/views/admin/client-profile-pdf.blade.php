@@ -47,7 +47,7 @@
           <div class="col-xs-12 pl-2">
             <div class="pl-3 row border-bottom">
               <div class="external">
-                {{$client->full_name()==" "?"FULL NAME":$client->full_name()}}
+                {{ $client->full_name()==" " ? "FULL NAME" : $client->full_name() }}
               </div>
             </div>
             <div class="pl-3 row border-bottom">
