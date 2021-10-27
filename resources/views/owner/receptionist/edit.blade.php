@@ -34,7 +34,9 @@
           </div>
         </div>
         <div class="card-body">
-          {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!} @method('PUT') @csrf
+          {!! Form::open(['route' => ['owner.receptionist.update', $receptionist->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!}
+           @method('PUT')
+           @csrf
           <div class="form-group row font justify-content-center">
             <div class="col-md-4">
               {{ Form::text('receptionist[first_name]', $receptionist->first_name, ['class' => 'form-control mmb-5', 'placeholder' =>'First Name', 'required'])}}

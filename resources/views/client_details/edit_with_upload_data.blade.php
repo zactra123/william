@@ -16,7 +16,9 @@
           <span><h2>{{ zactra::translate_lang('Please check and leave one of the options.') }}</h2></span>
         </div>
         <div class="card-body">
-          {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
+          {!! Form::open(['route' => ['client.details.update', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!}
+          @method('PUT')
+          @csrf
           <div class="form-group row font justify-content-center">
             <div class="col-md-4 client-first_name tab-selector">
               <label for="first_name" class="row col-form-label text-md-right"> {{ zactra::translate_lang('First Name:') }} </label>

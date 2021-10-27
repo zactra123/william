@@ -10,6 +10,7 @@
 <section class="charts">
 	<div class="container-fluid">
 		{!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+		@csrf
 		<div class="row mt50">
 			@foreach($clientReports->clientTuAccounts->where('adverse_flag', 'true') as $accounts)
 			<div class="col-md-6 mt20">

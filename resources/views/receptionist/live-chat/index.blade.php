@@ -107,7 +107,8 @@
               <div class="dropdown-divider"></div>
               <div id="chatAnswer" style="display: none;">
                 <div class="ms-ua-form">
-                  {!! Form::open(['route' =>['receptionist.liveChat.create'], 'method' => 'POST', 'class' => 'v-100 p-2 m-1']) !!} {{-- @csrf --}}
+                  {!! Form::open(['route' =>['receptionist.liveChat.create'], 'method' => 'POST', 'class' => 'v-100 p-2 m-1']) !!}
+                  @csrf
                   <div class="form-group" style="height: 10%;">
                     <div class="form-group v-100 m-0">
                       <input type="hidden" name="recipient_id" id="recipientId" />

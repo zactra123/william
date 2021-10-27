@@ -33,7 +33,7 @@
 					        asort($types);
         				?>
 								{!! Form::open(['route' => ['admins.court.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'courtInformation']) !!}
-								@csrf
+									@csrf
 								<div class="row">
 									<div class="col-sm-4 files mb-2">
 										<input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />

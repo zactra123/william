@@ -45,6 +45,7 @@
 				<div class="col-md-1 mt20"></div>
 				<div class="col-md-10 mt20">
 					{!! Form::open(['route' => ['negative.contract'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+					@csrf
 					@if(!empty($data['name']))
 					<div class="mt20"></div>
 					<div class="chart-report">

@@ -51,15 +51,15 @@
               </div>
             </div>
             <div class="pl-3 row border-bottom">
-              <div class="external">{{$client->clientDetails->address??"ADDRESS"}}</div>
+              <div class="external">{{ $client->clientDetails->address??"ADDRESS" }}</div>
             </div>
             <div class="pb-1 row border-bottom">
-              <div class="col-xs-4 internal">{{$client->clientDetails->phone_number??"PHONE NUMBER"}}</div>
-              <div class="col-xs-6 external">{{$client->email}}</div>
+              <div class="col-xs-4 internal">{{ $client->clientDetails->phone_number??"PHONE NUMBER" }}</div>
+              <div class="col-xs-6 external">{{ $client->email }}</div>
             </div>
             <div class="pb-1 row border-bottom">
-              <div class="col-xs-4 internal">{{$client->clientDetails->ssn??"SNN"}}</div>
-              <div class="col-xs-6 external">{{$client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH"}}</div>
+              <div class="col-xs-4 internal">{{ $client->clientDetails->ssn??"SNN" }}</div>
+              <div class="col-xs-6 external">{{ $client->clientDetails?date_format(date_create($client->clientDetails->dob), 'm/d/Y'):"DATE OF BIRTH" }}</div>
             </div>
             @if($client->clientDetails != null)
               <div class="pb-1 row border-bottom">

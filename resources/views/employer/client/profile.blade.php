@@ -42,8 +42,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
             {!! Form::open(['route'=>['adminRec.client.update', $client->id],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
-            @method("PUT")
-            @csrf
+              @method("PUT")
+              @csrf
             <div class="col-sm-12 files">
               {{--<input class="bank_logo file-box" type="file" name="driver" id="bank_logo" />--}}
               <input class="driver_license file-box" type="file" name="driver" id="driver_license" />
@@ -507,8 +507,8 @@
       </div>
       <div class="modal-body">
         {!! Form::open(['route' => ['adminRec.client.update', $client->id], 'method' => 'POST', 'id' => 'update_info', 'class' => 'm-form m-form--label-align-right']) !!}
-        @method('PUT')
-        @csrf
+          @method('PUT')
+          @csrf
         <div class="row">
           <div class="form-group col-md-6">
             {{ Form::text('client[full_name]', $client->full_name(), ['class' => 'form-control m-input', 'placeholder' => 'Full Name']) }}
@@ -646,7 +646,7 @@
       </div>
       <div class="modal-body">
         {!! Form::open(['route'=>['adminRec.sendEmail'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "send_email"]) !!}
-
+          @csrf
         <div class="form-group">
           <input type="text" name="subject" class="form-control" placeholder="SUBJECT" />
           <input type="hidden" name="client" class="form-control" value="{{$client->id}}" />

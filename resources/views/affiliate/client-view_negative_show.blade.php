@@ -42,6 +42,7 @@
         <div class="col-md-1 mt20"></div>
         <div class="col-md-10 mt20">
           {!! Form::open(['route' => ['affiliate.negative.contract', $userId], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+          @csrf
           @if(!empty($data['ex_name']))
           <div class="mt20"></div>
           <div class="chart-report">
@@ -74,10 +75,10 @@
               <div class="col-md-4">
                 <div class="col-md-12 p-0">{{ zactra::translate_lang('DISPUTE TYPE') }}</div>
                 <label for="fix">{{ zactra::translate_lang('Fix') }}</label>
-                <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="ex_name_fix" name="ex_name[{{$names->id}}][type]" value="fix" />
+                <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="ex_name_fix" name="ex_name[{{$names->id}}][type]" value="{{ zactra::translate_lang('fix') }}" />
                 <label class="p-2" for="fraudulent">{{ zactra::translate_lang('or') }}</label>
                 <label for="delete">{{ zactra::translate_lang('Delete') }} </label>
-                <input type="radio" class="ex_name_fix" data-name="{{$names->id}}" name="ex_name[{{$names->id}}][type]" value="delete" />
+                <input type="radio" class="ex_name_fix" data-name="{{$names->id}}" name="ex_name[{{$names->id}}][type]" value="{{ zactra::translate_lang('delete') }}" />
               </div>
             </div>
             <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold;">
@@ -125,7 +126,7 @@
                 <input type="radio" id="name-{{$names->id}}" data-name="{{$names->id}}" class="tu_name_fix" name="tu_name[{{$names->id}}][type]" value="{{ zactra::translate_lang('fix') }}" />
                 <label class="p-2" for="fraudulent">{{ zactra::translate_lang('or') }}</label>
                 <label for="delete">{{ zactra::translate_lang('Delete') }} </label>
-                <input type="radio" class="tu_name_fix" data-name="{{$names->id}}" name="tu_name[{{$names->id}}][type]" value="delete" />
+                <input type="radio" class="tu_name_fix" data-name="{{$names->id}}" name="tu_name[{{$names->id}}][type]" value="{{ zactra::translate_lang('delete') }}" />
               </div>
             </div>
             <div class="row m-2 title-name-{{$names->id}}" style="font-weight: bold;">

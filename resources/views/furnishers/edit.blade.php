@@ -47,8 +47,8 @@
 			asort($types)
 			@endphp
 			{!! Form::open(['route' => ['admins.bank.update', $bank->id], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation','enctype'=>'multipart/form-data' ]) !!}
-			@method('PUT')
-			@csrf
+  			@method('PUT')
+  			@csrf
 			<div class="ms-ua-box">
 				<div class="ms-ua-form">
 					<div class="ms-ua-title mb-0">

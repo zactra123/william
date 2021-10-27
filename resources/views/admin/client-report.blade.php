@@ -621,7 +621,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type_description !=null )
+              @endif
+              @if($accounts->account_type_description !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>

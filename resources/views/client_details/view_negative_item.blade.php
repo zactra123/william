@@ -44,7 +44,9 @@
 			<a href="#" class="btn btn-secondary creditReport" data-target="TransUnion"><img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}" width="140" /></a>
 			<a href="#" class="btn btn-secondary creditReport" data-target="Equifax"><img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}" width="140" /></a>
 		</div>
-		{!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!} @if($clientReportsEX)
+		{!! Form::open(['route' => ['negative.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!}
+		@csrf
+		@if($clientReportsEX)
 		<div class="Experian" style="display: block;">
 			<div class="row mt20">
 				<div class="col-md-1 mt20"></div>

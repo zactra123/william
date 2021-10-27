@@ -13,7 +13,7 @@
   </div>
   @if($state->type == 1)
     {!! Form::open(['route' => "admins.mortgage.days", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
-    @csrf
+      @csrf
     <div class="form-group">
       <div class="row">
         <div class="col-md-12 form-group">

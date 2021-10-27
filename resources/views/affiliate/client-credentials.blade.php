@@ -6,8 +6,8 @@
 		<div class="card w-75">
 			<div class="card-body w-100">
 				{!! Form::open(['route' => ["affiliate.credentialsUpdate", $client->id], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', 'id'=>'client-credentials']) !!}
-				@method("put")
-				@csrf
+					@method("put")
+					@csrf
 				@if(empty($source) || $source == 'credit_karma')
   				<div class="col-sm-12">
   					<label><img class="report_access" src="{{asset('images/report_access/ck_logo_1.png')}}" width="200"> {{ zactra::translate_lang('If You are Not Register') }} <a href="https://www.creditkarma.com/signup/" target="_blank">{{ zactra::translate_lang('Click here to register') }}</a></label>

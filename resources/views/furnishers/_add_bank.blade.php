@@ -6,7 +6,8 @@
 <section class="ms-user-account">
   <div class="container">
     <div class="col-md-12 col-sm-12">
-      {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'parentBankInformation']) !!} @csrf
+      {!! Form::open(['route' => ['admins.bank.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'parentBankInformation']) !!}
+       @csrf
       <div class="ms-ua-box">
         <div class="ms-ua-form">
           <div class="ms-ua-title mb-0">

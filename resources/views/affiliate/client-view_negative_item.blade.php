@@ -42,7 +42,9 @@
       <a href="#" class="btn btn-secondary creditReport" data-target="TransUnion"><img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}" width="140" /></a>
       <a href="#" class="btn btn-secondary creditReport" data-target="Equifax"><img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}" width="140" /></a>
     </div>
-    {!! Form::open(['route' => ['affiliate.negative.store', $client->id], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!} @if($clientReportsEX)
+    {!! Form::open(['route' => ['affiliate.negative.store', $client->id], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right', "novalidate"]) !!}
+    @csrf
+    @if($clientReportsEX)
     <div class="Experian" style="display: block;">
       <div class="row mt20">
         <div class="col-md-1 mt20"></div>
@@ -824,7 +826,8 @@
                   <span class=""> {{date("m/d/Y",strtotime($accounts->date_opened))}} </span>
                 </div>
               </div>
-              @endif @if($accounts->account_type_description !=null )
+              @endif
+              @if($accounts->account_type_description !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ACCOUNT TYPE') }}</label>
@@ -833,7 +836,8 @@
                   <span class=""> {{$accounts->account_type_description}} </span>
                 </div>
               </div>
-              @endif @if($accounts->loan_type !=null )
+              @endif
+              @if($accounts->loan_type !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('LOAN TYPE') }}</label>
@@ -842,7 +846,8 @@
                   <span class=""> {{$accounts->loan_type}} </span>
                 </div>
               </div>
-              @endif @if($accounts->pay_status !=null )
+              @endif
+              @if($accounts->pay_status !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('PAY STATUS') }}</label>
@@ -851,7 +856,8 @@
                   <span class=""> {{htmlspecialchars_decode($accounts->pay_status)}} </span>
                 </div>
               </div>
-              @endif @if(!empty($accounts->remark))
+              @endif
+              @if(!empty($accounts->remark))
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
@@ -877,7 +883,8 @@
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+            @endforeach
           </div>
           <div class="mt20"></div>
           <div class="chart-report">
@@ -1048,7 +1055,8 @@
                   <span class=""> {{$accounts->pay_status}} </span>
                 </div>
               </div>
-              @endif @if(!empty($accounts->remark) )
+              @endif
+              @if(!empty($accounts->remark) )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('REMARK') }}</label>
@@ -1072,7 +1080,8 @@
               </div>
               @endforeach
             </div>
-            @endif @endforeach
+            @endif
+            @endforeach
           </div>
           @foreach($clientReportsTU->clientTuPublicRecords as $publicRecords)
           <div class="mt20"></div>
@@ -1104,7 +1113,8 @@
                   <span class="">{{$publicRecords->type}}</span>
                 </div>
               </div>
-              @endif @if($publicRecords->phone !=null )
+              @endif
+              @if($publicRecords->phone !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('PHONE #') }}</label>
@@ -1113,7 +1123,8 @@
                   <span class=""> {{$publicRecords->phone}}</span>
                 </div>
               </div>
-              @endif @if(!empty($publicRecords->dispute->id))
+              @endif
+              @if(!empty($publicRecords->dispute->id))
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ON DISPUTE') }}</label>
@@ -1157,7 +1168,8 @@
                   <span class=""> {{$publicRecords->court_type_description}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_effective_label !=null )
+              @endif
+              @if($publicRecords->date_effective_label !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{strtoupper($publicRecords->date_effective_label)}}</label>
@@ -1166,7 +1178,8 @@
                   <span class=""> {{date("m/d/Y", strtotime($publicRecords->date_effective))}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->date_paid != null )
+              @endif
+              @if($publicRecords->date_paid != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('DATE PAID') }}</label>
@@ -1188,7 +1201,8 @@
                   <span class=""> {{$publicRecords->responsibility}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->estimated_deletion_date !=null )
+              @endif
+              @if($publicRecords->estimated_deletion_date !=null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('ESTIMATED DELETION DATE') }}</label>
@@ -1197,7 +1211,8 @@
                   <span class=""> {{date("m/d/Y", strtotime($publicRecords->estimated_deletion_date))}} </span>
                 </div>
               </div>
-              @endif @if($publicRecords->plaintiff_attorney != null )
+              @endif
+              @if($publicRecords->plaintiff_attorney != null )
               <div class="col-md-2">
                 <div class="col-md-12">
                   <label class="form-text">{{ zactra::translate_lang('PLAINTIFF ATTORNEY') }}</label>

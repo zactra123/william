@@ -145,7 +145,9 @@
           <li class="list-group-item p-3">
             <div class="row">
               <div class="col">
-                {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => ' m-form m-form--label-align-right', "id" => "doc_sunb"]) !!} @method("PUT") @csrf
+                {!! Form::open(['route'=>['client.updateDriver'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => ' m-form m-form--label-align-right', "id" => "doc_sunb"]) !!}
+                 @method("PUT")
+                 @csrf
                 <div class="col-sm-12 form-group files mt-3">
                   {{-- <input class="bank_logo file-box" type="file" name="driver" id="bank_logo" />--}}
                   <input class="driver_license file-box" class="custom-file-input" id="inputGroupFile01" type="file" name="driver" id="driver_license" />

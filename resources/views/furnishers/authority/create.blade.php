@@ -24,7 +24,7 @@
           $states =  \App\Authority::STATES;
         ?>
         {!! Form::open(['route' => ['admins.authority.store'], 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'authorityInformation']) !!}
-        @csrf
+          @csrf
         <div class="card">
           <div class="card-body">
             <div class="ms-ua-title">

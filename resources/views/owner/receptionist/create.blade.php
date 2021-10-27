@@ -30,6 +30,7 @@
         </div>
         <div class="card-body">
           {!! Form::open(['route' => ['owner.receptionist.store'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!}
+          @csrf
           <div class="form-group row font">
             <div class="col-md-4">
               {{ Form::text('receptionist[first_name]', old('receptionist.first_name'), ['class' => 'form-control mmb-5', 'placeholder' =>'First Name', 'required']) }}

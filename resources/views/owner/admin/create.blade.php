@@ -31,6 +31,7 @@
             <h5 class="text-dark"><i class="ti-angle-left"></i> {{ zactra::translate_lang('Create New Admin') }}</h5>
           </a>
           {!! Form::open(['route' => ['owner.admin.store'], 'method' => 'POST', 'class' => 'mt-5 m-form m-form label-align-right admin-form', 'novalidate'=> 'novalidate']) !!}
+          @csrf
           <div class="form-group row font">
             <div class="col-md-6 col-lg-6 col-sm-12 col-12">
               {{ Form::text('admin[first_name]', old('admin.first_name'), ['class' => 'form-control mmb-5', 'placeholder' =>'First Name','required']) }}

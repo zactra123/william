@@ -34,35 +34,35 @@
 					<div class="col-sm-12 form-group files">
 						<input class="social_security file-box" type="file" name="social" id="social_security">
 					</div>
-					<div class="col"><input type="submit" value="Upload" class="ms-ua-submit"></div>
+					<div class="col"><input type="submit" value="{{ zactra::translate_lang('Upload') }}" class="ms-ua-submit"></div>
 					{!! Form::close() !!}
 				</div>
 				<div class="info zoomIn">
 				</div>
 			</div>
 			<ul class="categories">
-				<li title="FULL NAME" class="dl-field">
+				<li title="{{ zactra::translate_lang('FULL NAME') }}" class="dl-field">
 					@if(!empty($client->clientAttachments()))
 		        <?php $dl = $client->clientAttachments()->where("category", "DL")->first(); ?>
   					@if(!empty($dl))
-  		       <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}" name="img-drvl" id="img-drvl" />
+  		       <img type="file" class="zoomDL responsive hide" src="{{asset($dl->path)}}" name="img-drvl" id="img-drvl" alt="{{ zactra::translate_lang('image') }}"/>
   					@endif
 					@endif
 					<img class="responsive full_name" src="/images/full_name.png">
 					<a href="#"><span style="font-weight: bold">{{$client->full_name()}}</span></a>
 				</li>
-				<li title="PHONE NUMBER">
+				<li title="{{ zactra::translate_lang('PHONE NUMBER') }}">
 					<img class="responsive" src="/images/phone_number.png">
 					<a href="tell:{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}</a>
 				</li>
-				<li title="EMAIL ADDRESS">
+				<li title="{{ zactra::translate_lang('EMAIL ADDRESS') }}">
 					<img class="responsive" src="/images/email.png">
 					<a href="mailto:{{$client->email}}"> {{strtoupper($client->email)}}</a>
 				</li>
-				<li title="FULL ADDRESS">
+				<li title="{{ zactra::translate_lang('FULL ADDRESS') }}">
 					<div class="address">
 						<div class="address1">
-							<img class="addressImage" src="/images/location.png">
+							<img class="addressImage" src="/images/location.png" alt="{{ zactra::translate_lang('image') }}">
 						</div>
 						<div class="address2">
 							<div class="address">
@@ -74,32 +74,32 @@
 						</div>
 					</div>
 				</li>
-				<li title="DATE OF BIRTH">
-					<img class="responsive" src="/images/birthday.png">
+				<li title="{{ zactra::translate_lang('DATE OF BIRTH') }}">
+					<img class="responsive" src="/images/birthday.png" alt="{{ zactra::translate_lang('image') }}">
 					{{date("m/d/Y", strtotime($client->clientDetails->dob))}}
-					<img src="/images/age.jpg" class="responsive small"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
+					<img src="/images/age.jpg" class="responsive small" alt="{{ zactra::translate_lang('image') }}"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}
 				</li>
-				<li title="SOCIAL SECURITY NUMBER" class="ssn-field">
+				<li title="{{ zactra::translate_lang('SOCIAL SECURITY NUMBER') }}" class="ssn-field">
 					@if(!empty($client->clientAttachments()))
   					<?php $ss = $client->clientAttachments()->where("category", "SS")->first(); ?>
   					@if(!empty($ss))
-		         <img type="file" class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose" />
+		         <img type="file" class="zoomSS responsive hide" src="{{asset($ss->path)}}" name="img-sos" id="img-sose"  alt="{{ zactra::translate_lang('image') }}"/>
   					@endif
 					@endif
-					<img class="responsive ss_number" src="/images/ssc.png">
+					<img class="responsive ss_number" src="/images/ssc.png" alt="{{ zactra::translate_lang('image') }}">
 					{{$client->clientDetails->ssn}}
 				</li>
-				<li title="GENDER">
+				<li title="{{ zactra::translate_lang('GENDER') }}">
 					@if($client->clientDetails->sex == 'M')
-		       <img class="responsive" src="/images/male.png"> <span>{{ zactra::translate_lang('MALE') }}</span>
+		       <img class="responsive" src="/images/male.png" alt="{{ zactra::translate_lang('Male') }}"> <span>{{ zactra::translate_lang('MALE') }}</span>
 					@elseif($client->clientDetails->sex == 'F')
-		       <img class="responsive" src="/images/female.png"> <span>{{ zactra::translate_lang('FEMALE') }}</span>
+		       <img class="responsive" src="/images/female.png" alt="{{ zactra::translate_lang('Female') }}"> <span>{{ zactra::translate_lang('FEMALE') }}</span>
 					@else
-		       <img class="responsive" src="/images/non_binary.png"> <span>{{ zactra::translate_lang('NON-BINARY') }}</span>
+		       <img class="responsive" src="/images/non_binary.png" alt="{{ zactra::translate_lang('non binary') }}"> <span>{{ zactra::translate_lang('NON-BINARY') }}</span>
 					@endif
 				</li>
 				@if($client->clientDetails->referred_by != null)
-  				<li title="REFERRED BY">
+  				<li title="{{ zactra::translate_lang('REFERRED BY') }}">
   					<i class="fa fa-user fa-fw refferred"></i>
   					<span>{{strtoupper($client->clientDetails->referred_by)}}</span>
   				</li>
@@ -186,7 +186,7 @@
 								<div class="col-md-3 mt20">
 									<div class="dropdown">
 										{{-- <a href="{{route('client.report', ['type'=>"equifax"])}}"> <img class="report_access" src="{{asset('images/report_access/eq_logo_1.png')}}" width="120"></a>--}}
-										<img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}" width="100%">
+										<img class="report_access" src="{{asset('images/report_access/eq_logo_2.png')}}" width="100%" alt="{{ zactra::translate_lang('logo') }}">
 										<div class="dropdown-content equifax" style="height:150px !important;overflow:scroll;">
 											<a href="https://my.equifax.com/membercenter/#/login" target="_blank">{{ zactra::translate_lang('LOGIN') }}</a>
 											<a href="{{route('affiliate.credentials',['source'=> 'equifax', 'id'=>$client->id])}}">{{ zactra::translate_lang('CREDENTIALS') }}</a>
@@ -201,7 +201,7 @@
 								<div class="col-md-3 mt20">
 									<div class="dropdown">
 										{{-- <a href="{{route('client.report', ['type'=>"experian"])}}"> <img class="report_access" src="{{asset('images/report_access/ex_logo_1.png')}}" width="120"></a>--}}
-										<img class="report_access" src="{{asset('images/report_access/ex_logo_2.png')}}" width="100%">
+										<img class="report_access" src="{{asset('images/report_access/ex_logo_2.png')}}" width="100%" alt="{{ zactra::translate_lang('logo') }}">
 										<div class="dropdown-content experina">
 											<a href="https://usa.experian.com/login/index" target="_blank">{{ zactra::translate_lang('LOGIN') }}</a>
 											<a href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true" target="_blank">{{ zactra::translate_lang('REGISTER') }}</a>
@@ -216,12 +216,12 @@
 								<div class="col-md-3 mt20">
 									<div class="dropdown ">
 										{{-- <a  href="{{route('client.report', ['type'=>"transunion"])}}"> <img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}" width="120"></a>--}}
-										<img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}" width="100%">
+										<img class="report_access" src="{{asset('images/report_access/tu_logo_2.png')}}" width="100%" alt="{{ zactra::translate_lang('logo') }}">
 										<div class="dropdown-content transunion" style="height:150px !important;overflow:scroll;">
 											<div class="pb-3">
 												<a class="p-1" href="https://service.transunion.com/dss/login.page" target="_blank">{{ zactra::translate_lang('MEMBER LOGIN') }}</a>
 												<a class="p-1" href="{{route('affiliate.credentials',['source'=> 'transunion_member', 'id'=>$client->id])}}">{{ zactra::translate_lang('MEMBER CREDENTIALS') }}</a>
-												<a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">MEMBER REGISTRATION</a>
+												<a class="p-1" href="https://membership.tui.transunion.com/tucm/orderStep1_form.page?offer=3BM10246&PLACE_CTA=top_right_search" target="_blank">{{ zactra::translate_lang('MEMBER REGISTRATION') }}</a>
 												<hr>
 											</div>
 											<div class="pb-3">
@@ -241,7 +241,7 @@
 								</div>
 								<div class="col-md-3 mt20">
 									<div class="dropdown">
-										<img class="report_access" src="{{asset('images/report_access/misc_4.png')}}" width="100%">
+										<img class="report_access" src="{{asset('images/report_access/misc_4.png')}}" width="100%" alt="{{ zactra::translate_lang('logo') }}">
 										<div class="dropdown-content" style="height:150px !important;overflow:scroll;">
 											<div class="dropdown">
 												<ul class="dropdown-submenu">
@@ -252,7 +252,7 @@
 												</ul>
 												<ul>
 													<a href="https://www.chexsystems.com/web/chexsystems/consumerdebit/page/requestreports/consumerdisclosure/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziDRxdHA1Ngg183AP83QwcXX39LIJDfYwM_M30w1EV-HuEGAEVuPq4Gxt5G7oHmuhHkaQfTYGBOZH6cQBHA8rsByqIwm98uH4UqhVoIeBrTkABKIjwOtIAbgJuVxTkhoaGRhhkeqYrKgIArc3mYw!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" class="dropdown-toggle" data-toggle="dropdown" target="_blank">
-                            <img class="report_access" src="{{asset('images/report_access/cs_logo_1.png')}}" width="110px"></a>
+                            <img class="report_access" src="{{asset('images/report_access/cs_logo_1.png')}}" width="110px" alt="{{ zactra::translate_lang('logo') }}"></a>
 												</ul>
 											</div>
 										</div>

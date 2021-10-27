@@ -19,7 +19,8 @@
       <div class="card mg-b-20" id="tabs-style2">
         <div class="card-body px-5">
           <h2>{{ zactra::translate_lang('Add Slogan') }}</h2>
-          {!! Form::open(['route' => ['owner.slogans.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @csrf
+          {!! Form::open(['route' => ['owner.slogans.store'], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
+           @csrf
           <div class="form-group row font">
             {{ Form::text('slogan[author]', old('slogan.author'), ['class' => 'form-control m-input', 'placeholder' => 'Author Name','required']) }}
           </div>

@@ -19,7 +19,8 @@
     <div class="col-md-3 col-sm-12"></div>
     <div class="col-md-12 col-sm-12 col-12 mmap-0">
       <div class="card">
-        {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!} @csrf
+        {!! Form::open(['route' => ['admins.bank.types'], 'method' => 'POST', 'class' => 'm-form m-form label-align-right', 'id'=>'equalBanks']) !!}
+          @csrf
         <div class="row px-5 pt-5 pb-3">
           <div class="col-md-4">
             <div>

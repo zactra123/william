@@ -6,7 +6,9 @@
 			<div class="card">
 				<div class="card-body">
 					<h1>{{ zactra::translate_lang('Edit Client Details') }}</h1>
-					{!! Form::open(['route' => ['affiliate.updateClientDetails', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
+					{!! Form::open(['route' => ['affiliate.updateClientDetails', $user->id], 'method' => 'POST', 'id' => 'clientDetailsForm', 'class' => 'm-form m-form--label-align-right']) !!}
+					 @method('PUT')
+					 @csrf
 					<div class="form-group row m-1">
 						<label for="email" class="col-md-4 col-form-label text-md-right">{{ zactra::translate_lang('First Name:') }} </label>
 
