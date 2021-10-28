@@ -191,7 +191,7 @@
 												{{ zactra::translate_lang('Copy Parent Executive Contact') }}
 											</div>
 											<div class="col-md-6">
-												<input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}}>
+												<input type="checkbox" value="{{ zactra::translate_lang('true') }}" name="bank_address[{{$type}}][copied]" {{$bank->copied == true ? "checked":''}}>
 											</div>
 										</div>
 									</div>

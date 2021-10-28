@@ -298,7 +298,6 @@ class PagesController extends Controller
           ]);
         }
 
-
         return view('blog-show', compact("blog"));
     }
 
@@ -319,7 +318,7 @@ class PagesController extends Controller
         if ($social == 'linkedin') {
             return redirect(Share::load($route, $blog->title)->linkedin());
         } elseif ($social == 'facebook') {
-            return redirect(Share::load($route, $blog->title)->facebook()) ;
+            return redirect(Share::load($route, $blog->title)->facebook());
         } elseif ($social == 'twitter') {
             return redirect(Share::load($route, $blog->title)->twitter());
         }

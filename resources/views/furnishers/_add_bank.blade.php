@@ -16,14 +16,14 @@
                 <div class="col-sm-12 form-group files">
                   <input class="bank_logo_class file-box form-control" type="file" name="logo" id="bank_logo" />
                 </div>
-                <div class="col-md-12 mb-3">{{ zactra::translate_lang('NO LOGO') }} <input type="checkbox" value="true" name="bank[no_logo]" /></div>
+                <div class="col-md-12 mb-3">{{ zactra::translate_lang('NO LOGO') }} <input type="checkbox" value="{{ zactra::translate_lang('true') }}" name="bank[no_logo]" /></div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <input type="text" name="bank[name]" class="form-control bank_name" placeholder="Company Name" />
+                    <input type="text" name="bank[name]" class="form-control bank_name" placeholder="{{ zactra::translate_lang('Company Name') }}" />
                   </div>
                 </div>
                 <div class="col-md-12">

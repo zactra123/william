@@ -173,11 +173,11 @@
         </div>
       </div>
     </div>
-    <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова." />
-    <input type="hidden" id="contact_error_mail_text" value="The email field is not filled or contains an error" />
-    <input type="hidden" id="contact_error_phone_text" value="Поле номер телефона содержит ошибку" />
-    <input type="hidden" id="contact_error_basic_text" value="Name field is empty or contains an error" />
-    <input type="hidden" id="contact_success_send_text" value="Форма успешна отправлена" />
+    <input type="hidden" id="contact_form_error_text" value="{{ zactra::translate_lang('Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.') }}" />
+    <input type="hidden" id="contact_error_mail_text" value="{{ zactra::translate_lang('The email field is not filled or contains an error') }}" />
+    <input type="hidden" id="contact_error_phone_text" value="{{ zactra::translate_lang('Поле номер телефона содержит ошибку') }}" />
+    <input type="hidden" id="contact_error_basic_text" value="{{ zactra::translate_lang('Name field is empty or contains an error') }}" />
+    <input type="hidden" id="contact_success_send_text" value="{{ zactra::translate_lang('Форма успешна отправлена') }}" />
     <p class="description" id="contact_description">
       {{ zactra::translate_lang('Click on input to change the contact method') }}
     </p>

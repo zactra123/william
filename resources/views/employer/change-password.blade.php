@@ -35,14 +35,14 @@
       </div>
       <div class="card-body">
         <div class="col-md-12">
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password" data-toggle="password" />
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="{{ zactra::translate_lang('Password') }}" autocomplete="current-password" data-toggle="password" />
         </div>
         <div class="col-md-12 mt-3">
-          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" />
+          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ zactra::translate_lang('Confirm Password') }}" />
         </div>
       </div>
       <div class="card-footer text-right">
-        <input type="submit" value="Change Password" class="ms-ua-submit btn btn-primary" />
+        <input type="submit" value="{{ zactra::translate_lang('Change Password') }}" class="ms-ua-submit btn btn-primary" />
       </div>
     </div>
     {!! Form::close() !!}

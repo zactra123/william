@@ -19,14 +19,10 @@ class zactra
    */
     static function is_url($string)
     {
-
-        if (filter_var($string, FILTER_VALIDATE_URL))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+      if (filter_var($string, FILTER_VALIDATE_URL)) {
+          return true;
+        } else {
+          return false;
         }
     }
 
@@ -44,23 +40,23 @@ class zactra
 
         if (session('zactra_cart'))
         {
-            foreach (session('zactra_cart') as $key => $value)
-            {
-                $subtotal += $value['quantity'] * $value['price'];
-            }
+          foreach (session('zactra_cart') as $key => $value)
+          {
+            $subtotal += $value['quantity'] * $value['price'];
+          }
         }
 
         if (session('coupon'))
         {
-            $array = session()->get('coupon');
-            $amount = $array['amount'];
-            $type = $array['type'];
-            $discount = $amount;
-            if ($type == "percentage")
-            {
-                $amount = $amount / 100;
-                $discount = $amount * $subtotal;
-            }
+          $array = session()->get('coupon');
+          $amount = $array['amount'];
+          $type = $array['type'];
+          $discount = $amount;
+          if ($type == "percentage")
+          {
+            $amount = $amount / 100;
+            $discount = $amount * $subtotal;
+          }
         }
 
         $delivery = $subtotal * 0.15;
@@ -72,66 +68,46 @@ class zactra
             'discount' => zactra::decimal($discount, 2) ,
             'total' => zactra::decimal($total, 2) ,
             'counter' => $counter
-        );
+          );
 
     }
 
-
-
     /**
-     * get translation of label  OLD FUNCTION
+     * get translation of label       (OLD FUNCTION)
      */
     public static function translate($key, $givenLang = null)
     {
         if (!empty($givenLang))
         {
-
-            if ($givenLang == "ar")
-            {
-                $trans = \App\Translation::where('translate_key', $key)->select("arabic AS val")
-                    ->first();
-            }
-            else
-            {
-                $trans = \App\Translation::where('translate_key', $key)->select("english AS val")
-                    ->first();
-            }
+          if ($givenLang == "ar") {
+            $trans = \App\Translation::where('translate_key', $key)->select("arabic AS val")->first();
+          } else {
+            $trans = \App\Translation::where('translate_key', $key)->select("english AS val")->first();
+          }
 
         }
         else
         {
-            $defaultlan = AdminSetting::where('id', '1')->first();
+          $defaultlan = AdminSetting::where('id', '1')->first();
 
-            if (!isset($_COOKIE['zactra_lang_cookie']))
-            {
-                setcookie("zactra_lang_cookie", $defaultlan->language, time() + (86400 * 30) , "/"); // 86400 = 1 day
-
+          if (!isset($_COOKIE['zactra_lang_cookie'])) {
+              setcookie("zactra_lang_cookie", $defaultlan->language, time() + (86400 * 30) , "/"); // 86400 = 1 day
+          }
+          if (@isset($_COOKIE['zactra_lang_cookie'])) {
+            $lang = $_COOKIE['zactra_lang_cookie'];
+            if ($lang == "ar") {
+              $trans = \App\Translation::where('translate_key', $key)->select("arabic AS val")->first();
+            } else {
+              $trans = \App\Translation::where('translate_key', $key)->select("english AS val")->first();
             }
-            if (@isset($_COOKIE['zactra_lang_cookie']))
-            {
-                $lang = $_COOKIE['zactra_lang_cookie'];
-                if ($lang == "ar")
-                {
-                    $trans = \App\Translation::where('translate_key', $key)->select("arabic AS val")
-                        ->first();
-                }
-                else
-                {
-                    $trans = \App\Translation::where('translate_key', $key)->select("english AS val")
-                        ->first();
-                }
-
-            }
+          }
 
         }
 
-        if (isset($trans->val))
-        {
-            return $trans->val;
-        }
-        else
-        {
-            return $key;
+        if (isset($trans->val)) {
+          return $trans->val;
+        } else {
+          return $key;
         }
 
     }
@@ -143,15 +119,15 @@ class zactra
 
     static function getIP()
     {
-        $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP')) $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if (getenv('HTTP_X_FORWARDED_FOR')) $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if (getenv('HTTP_X_FORWARDED')) $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if (getenv('HTTP_FORWARDED_FOR')) $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if (getenv('HTTP_FORWARDED')) $ipaddress = getenv('HTTP_FORWARDED');
-        else if (getenv('REMOTE_ADDR')) $ipaddress = getenv('REMOTE_ADDR');
-        else $ipaddress = 'UNKNOWN';
-        return $ipaddress;
+      $ipaddress = '';
+      if (getenv('HTTP_CLIENT_IP')) $ipaddress = getenv('HTTP_CLIENT_IP');
+      else if (getenv('HTTP_X_FORWARDED_FOR')) $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+      else if (getenv('HTTP_X_FORWARDED')) $ipaddress = getenv('HTTP_X_FORWARDED');
+      else if (getenv('HTTP_FORWARDED_FOR')) $ipaddress = getenv('HTTP_FORWARDED_FOR');
+      else if (getenv('HTTP_FORWARDED')) $ipaddress = getenv('HTTP_FORWARDED');
+      else if (getenv('REMOTE_ADDR')) $ipaddress = getenv('REMOTE_ADDR');
+      else $ipaddress = 'UNKNOWN';
+      return $ipaddress;
     }
 
     /**
@@ -159,16 +135,9 @@ class zactra
      */
     static function formatBytes($size, $precision = 2)
     {
-        $base = log($size, 1024);
-        $suffixes = array(
-            '',
-            'K',
-            'M',
-            'G',
-            'T'
-        );
-
-        return round(pow(1024, $base - floor($base)) , $precision) . ' ' . $suffixes[floor($base) ];
+      $base = log($size, 1024);
+      $suffixes = array('', 'K', 'M', 'G', 'T');
+      return round(pow(1024, $base - floor($base)) , $precision) . ' ' . $suffixes[floor($base) ];
     }
 
     /*
@@ -177,15 +146,12 @@ class zactra
     */
     static function limit_words($x, $length)
     {
-        if (strlen($x) <= $length)
-        {
-            return $x;
-        }
-        else
-        {
-            $y = substr($x, 0, $length) . '...';
-            return $y;
-        }
+      if (strlen($x) <= $length) {
+        return $x;
+      } else {
+        $y = substr($x, 0, $length) . '...';
+        return $y;
+      }
     }
 
     /*
@@ -194,38 +160,28 @@ class zactra
     */
     static function limit_word($x, $length)
     {
-        if (strlen($x) <= $length)
-        {
-            return $x;
-        }
-        else
-        {
-            $y = substr($x, 0, $length);
-            return $y;
-        }
+      if (strlen($x) <= $length) {
+        return $x;
+      } else {
+        $y = substr($x, 0, $length);
+        return $y;
+      }
     }
 
     /*
-
 
     ** get Status Tag
     */
 
     function getStatusTags($status)
     {
-        if ($status == "Active")
-        {
-            return "<span style='color:green'>Active</span>";
-        }
-        else if ($status == "Published")
-        {
-            return "<span style='color:green'>Active</span>";
-        }
-        else if ($status == "Finished")
-        {
-            return "<span style='color:red'>Finished</span>";
-        }
-        else return "<span style='color:grey'>" . $status . "</span>";
+      if ($status == "Active") {
+        return "<span style='color:green'>Active</span>";
+      } else if ($status == "Published") {
+        return "<span style='color:green'>Active</span>";
+      } else if ($status == "Finished") {
+        return "<span style='color:red'>Finished</span>";
+      } else return "<span style='color:grey'>" . $status . "</span>";
 
     }
 
@@ -236,39 +192,36 @@ class zactra
 
     static function convertDay($day)
     {
-        $old_date_timestamp = strtotime($day);
-        return $new_date = date('M d, Y', $old_date_timestamp);
-
+      $old_date_timestamp = strtotime($day);
+      return $new_date = date('M d, Y', $old_date_timestamp);
     }
 
     static function convertMonth($day)
     {
-        $old_date_timestamp = strtotime($day);
-        return $new_date = date('M', $old_date_timestamp);
-
+      $old_date_timestamp = strtotime($day);
+      return $new_date = date('M', $old_date_timestamp);
     }
+
     static function convertTime($day)
     {
-        $old_date_timestamp = strtotime($day);
-        return $new_date = date('h : i : A', $old_date_timestamp);
-
+      $old_date_timestamp = strtotime($day);
+      return $new_date = date('h : i : A', $old_date_timestamp);
     }
 
     static function BlogDay($day)
     {
-        $old_date_timestamp = strtotime($day);
-        return $new_date = date('Y-m-d', $old_date_timestamp);
-
+      $old_date_timestamp = strtotime($day);
+      return $new_date = date('Y-m-d', $old_date_timestamp);
     }
 
     static function getDeliveryTimerTime($time)
     {
-        return $time_in_24_hour_format = date("M d, Y h:i:s", strtotime($time));
+      return $time_in_24_hour_format = date("M d, Y h:i:s", strtotime($time));
     }
 
     static function convertfullDay($mydate)
     {
-        return date('l', strtotime($mydate));
+      return date('l', strtotime($mydate));
     }
 
     /**
@@ -276,16 +229,15 @@ class zactra
      */
     static function getToken($length)
     {
-        $token = "";
-        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $codeAlphabet .= "0123456789";
-        $max = strlen($codeAlphabet); // edited
-        for ($i = 0;$i < $length;$i++)
-        {
-            $token .= $codeAlphabet[rand(0, $max - 1) ];
-        }
-
-        return $token;
+      $token = "";
+      $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      $codeAlphabet .= "0123456789";
+      $max = strlen($codeAlphabet); // edited
+      for ($i = 0;$i < $length;$i++)
+      {
+        $token .= $codeAlphabet[rand(0, $max - 1) ];
+      }
+      return $token;
     }
 
     /*
@@ -295,28 +247,19 @@ class zactra
 
     static function ConverttoText($text)
     {
-        // to strip all tags and wrap italics with underscore
-        strip_tags(str_replace(array(
-            "<i>",
-            "</i>"
-        ) , array(
-            "_",
-            "_"
-        ) , $text));
+      // to strip all tags and wrap italics with underscore
+      strip_tags(str_replace(array("<i>", "</i>"), array("_", "_"), $text));
 
-        // to preserve anchors...
-        return str_replace("|a", "<a", strip_tags(str_replace("<a", "|a", $text)));
+      // to preserve anchors...
+      return str_replace("|a", "<a", strip_tags(str_replace("<a", "|a", $text)));
     }
 
     static function host_url($url)
     {
-
-        $parse = parse_url($url);
-        return $parse['host'];
-
-        // $result = parse_url($url);
-        // return $result['PHP_URL_HOST'];
-
+      $parse = parse_url($url);
+      return $parse['host'];
+      // $result = parse_url($url);
+      // return $result['PHP_URL_HOST'];
     }
 
     /**
@@ -325,8 +268,8 @@ class zactra
 
     static function site($var)
     {
-        $site = \App\SiteSettings::select($var)->first();
-        return $site->$var;
+      $site = \App\SiteSettings::select($var)->first();
+      return $site->$var;
     }
 
     /**
@@ -334,77 +277,65 @@ class zactra
      */
     static function getIpInfo()
     {
-        $ipaddress = zactra::getIP();
-
-        // for local host
-        if ($ipaddress == "::1")
-        {
-            $ipaddress = "72.229.28.185";
-        }
-
-        $ch = curl_init("http://api.ipstack.com/" . $ipaddress . "?access_key=15597d705d0a5069e11819519e1bf278"); // such as http://example.com/example.xml
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $json = curl_exec($ch);
-        curl_close($ch);
-        return $response = json_decode($json);
+      $ipaddress = zactra::getIP();
+      // for local host
+      if ($ipaddress == "::1")
+      {
+        $ipaddress = "72.229.28.185";
+      }
+      $ch = curl_init("http://api.ipstack.com/" . $ipaddress . "?access_key=15597d705d0a5069e11819519e1bf278"); // such as http://example.com/example.xml
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      $json = curl_exec($ch);
+      curl_close($ch);
+      return $response = json_decode($json);
     }
 
     static function resize_image($file, $w, $h, $crop = false)
     {
-        list($width, $height) = getimagesize($file);
-        $r = $width / $height;
-        if ($crop)
-        {
-            if ($width > $height)
-            {
-                $width = ceil($width - ($width * abs($r - $w / $h)));
-            }
-            else
-            {
-                $height = ceil($height - ($height * abs($r - $w / $h)));
-            }
+      list($width, $height) = getimagesize($file);
+      $r = $width / $height;
+      if ($crop) {
+        if ($width > $height) {
+          $width = ceil($width - ($width * abs($r - $w / $h)));
+        } else {
+          $height = ceil($height - ($height * abs($r - $w / $h)));
+        }
+        $newwidth = $w;
+        $newheight = $h;
+      } else {
+        if ($w / $h > $r) {
+          $newwidth = $h * $r;
+          $newheight = $h;
+        } else {
+            $newheight = $w / $r;
             $newwidth = $w;
-            $newheight = $h;
         }
-        else
-        {
-            if ($w / $h > $r)
-            {
-                $newwidth = $h * $r;
-                $newheight = $h;
-            }
-            else
-            {
-                $newheight = $w / $r;
-                $newwidth = $w;
-            }
-        }
+      }
 
-        //Get file extension
-        $exploding = explode(".", $file);
-        $ext = end($exploding);
+      //Get file extension
+      $exploding = explode(".", $file);
+      $ext = end($exploding);
 
-        switch ($ext)
-        {
-            case "png":
-                $src = imagecreatefrompng($file);
-            break;
-            case "jpeg":
-            case "jpg":
-                $src = imagecreatefromjpeg($file);
-            break;
-            case "gif":
-                $src = imagecreatefromgif($file);
-            break;
-            default:
-                $src = imagecreatefromjpeg($file);
-            break;
-        }
-
-        $dst = imagecreatetruecolor($newwidth, $newheight);
-        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-        return $dst;
+      switch ($ext)
+      {
+        case "png":
+            $src = imagecreatefrompng($file);
+        break;
+        case "jpeg":
+        case "jpg":
+            $src = imagecreatefromjpeg($file);
+        break;
+        case "gif":
+            $src = imagecreatefromgif($file);
+        break;
+        default:
+            $src = imagecreatefromjpeg($file);
+        break;
+      }
+      $dst = imagecreatetruecolor($newwidth, $newheight);
+      imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+      return $dst;
     }
 
     /**
@@ -413,18 +344,18 @@ class zactra
 
     static function getRecucedSize($image, $w = 193.33, $h = 220)
     {
-        return asset($image);
-        // getimagesize
-        if ($image != "")
+      return asset($image);
+      // getimagesize
+      if ($image != "")
+      {
+        if (!file_exists(base_path('public/zactra/' . $image . ".png")))
         {
-            if (!file_exists(base_path('public/zactra/' . $image . ".png")))
-            {
-                $imgData = zactra::resize_image(asset($image) , $w, $h);
-                $resizedFilename = base_path('public/zactra/' . $image . ".png");
-                imagepng($imgData, $resizedFilename);
-            }
-            return asset('zactra/' . $image . ".png");
+          $imgData = zactra::resize_image(asset($image) , $w, $h);
+          $resizedFilename = base_path('public/zactra/' . $image . ".png");
+          imagepng($imgData, $resizedFilename);
         }
+        return asset('zactra/' . $image . ".png");
+      }
     }
 
     /**
@@ -432,7 +363,7 @@ class zactra
      */
     static function decimal($number, $places = 2)
     {
-        return number_format((float)$number, $places, '.', '');
+      return number_format((float)$number, $places, '.', '');
     }
 
     /**
@@ -440,8 +371,8 @@ class zactra
      */
     static function getRatingPercentage($rate)
     {
-        $rating = ($rate / 5) * 100;
-        return number_format((float)$rating, 2, '.', '');
+      $rating = ($rate / 5) * 100;
+      return number_format((float)$rating, 2, '.', '');
     }
 
     /**
@@ -449,12 +380,10 @@ class zactra
      */
     static function areActiveRoute(Array $routes, $output = "active")
     {
-
-        foreach ($routes as $route)
-        {
-            if (Route::currentRouteName() == $route) return $output;
-        }
-
+      foreach ($routes as $route)
+      {
+        if (Route::currentRouteName() == $route) return $output;
+      }
     }
 
     /**
@@ -462,12 +391,10 @@ class zactra
      */
     static function areActiveDropdown(Array $routes, $output = "is-expanded")
     {
-
-        foreach ($routes as $route)
-        {
-            if (Route::currentRouteName() == $route) return $output;
-        }
-
+      foreach ($routes as $route)
+      {
+        if (Route::currentRouteName() == $route) return $output;
+      }
     }
 
     /**
@@ -476,111 +403,97 @@ class zactra
 
     static function getFilters($products, $max = 0, $sizes = array() , $colors = array() , $categories = array())
     {
-
-        $filters = array();
-        $max = 0;
-        $subcategories = array();
-        $imprintingMethods = array();
-        $production_time = array();
-        $themes = array();
-        $line_names = array();
-        $materials = array();
-        $TradeNames = array();
+      $filters = array();
+      $max = 0;
+      $subcategories = array();
+      $imprintingMethods = array();
+      $production_time = array();
+      $themes = array();
+      $line_names = array();
+      $materials = array();
+      $TradeNames = array();
 
         /**
          * store category
          */
         foreach ($products as $key => $value)
         {
+          /**
+           * fetch categories
+           */
 
-            /**
-             * fetch categories
-             */
+          if (!(in_array($value->category_id, $categories))) {
+              $categories[] = $value->category_id;
+          }
 
-            if (!(in_array($value->category_id, $categories)))
-            {
-                $categories[] = $value->category_id;
-            }
+          /**
+           * fetch sub categories
+           */
+          if (!(in_array($value->subcategory_id, $subcategories))) {
+              $subcategories[] = $value->subcategory_id;
+          }
 
-            /**
-             * fetch sub categories
-             */
-            if (!(in_array($value->subcategory_id, $subcategories)))
-            {
-                $subcategories[] = $value->subcategory_id;
-            }
+          /**
+           * fetch Imprinting Methods
+           */
 
-            /**
-             * fetch Imprinting Methods
-             */
+          // foreach (explode(',',$value->Imprinting) as $imp) {
+          //   if (!(in_array($imp,$imprintingMethods))){
+          //     $imprintingMethods[] = $imp;
+          //   }
+          // }
 
-            // foreach (explode(',',$value->Imprinting) as $imp) {
-            //   if (!(in_array($imp,$imprintingMethods))){
-            //     $imprintingMethods[] = $imp;
-            //   }
-            // }
+          /**
+           * fetch Production Times
+           */
 
+          // foreach (explode(',',$value->ProductionTime) as $imp){
+          //   if (!(in_array($imp,$production_time))){
+          //     $production_time[] = $imp;
+          //   }
+          // }
 
+          /**
+           * fetch Themes
+           */
 
-            /**
-             * fetch Production Times
-             */
+          // foreach(explode(',',$value->product_themes) as $imp){
+          //   if (!(in_array($imp,$themes))){
+          //     $themes[] = $imp;
+          //   }
+          // }
 
-            // foreach (explode(',',$value->ProductionTime) as $imp){
-            //   if (!(in_array($imp,$production_time))){
-            //     $production_time[] = $imp;
-            //   }
-            // }
+          /**
+           * fetch Materials
+           */
 
+          // foreach(explode(',',$value->line_names) as $imp){
+          //   if (!(in_array($imp,$line_names))){
+          //     $line_names[] = $imp;
+          //   }
+          // }
 
+          /**
+           * fetch trade names
+           */
 
-            /**
-             * fetch Themes
-             */
+          foreach (explode(',', $value->TradeNames) as $imp)
+          {
+              if (!(in_array($imp, $TradeNames)))
+              {
+                  $TradeNames[] = $imp;
+              }
+          }
 
-            // foreach(explode(',',$value->product_themes) as $imp){
-            //   if (!(in_array($imp,$themes))){
-            //     $themes[] = $imp;
-            //   }
-            // }
+          /**
+           * fetch Materials
+           */
 
-
-
-            /**
-             * fetch Materials
-             */
-
-            // foreach(explode(',',$value->line_names) as $imp){
-            //   if (!(in_array($imp,$line_names))){
-            //     $line_names[] = $imp;
-            //   }
-            // }
-
-
-
-            /**
-             * fetch trade names
-             */
-
-            foreach (explode(',', $value->TradeNames) as $imp)
-            {
-                if (!(in_array($imp, $TradeNames)))
-                {
-                    $TradeNames[] = $imp;
-                }
-            }
-
-            /**
-             * fetch Materials
-             */
-
-            // foreach(explode(',',$value->materials) as $imp){
-            //   if (!(in_array($imp,$materials))){
-            //     $materials[] = $imp;
-            //   }
-            // }
-
-
+          // foreach(explode(',',$value->materials) as $imp){
+          //   if (!(in_array($imp,$materials))){
+          //     $materials[] = $imp;
+          //   }
+          // }
 
         }
 
@@ -589,8 +502,7 @@ class zactra
          */
         foreach ($products as $key => $value)
         {
-            if ($value->current_price > $max)
-            {
+            if ($value->current_price > $max){
                 $max = $value->current_price;
             }
 
@@ -606,13 +518,10 @@ class zactra
             /**
              * manage colors
              */
-            foreach (explode(',', $value->product_colors) as $color)
-            {
-
-                if (!(in_array($color, $colors)))
-                {
-                    $colors[] = $color;
-                }
+            foreach (explode(',', $value->product_colors) as $color) {
+              if (!(in_array($color, $colors))) {
+                $colors[] = $color;
+              }
             }
 
         }
@@ -637,7 +546,7 @@ class zactra
      */
     static function getAverageRatings($rating)
     {
-        return ($rating / 5 * 100);
+      return ($rating / 5 * 100);
     }
 
     /**
@@ -645,26 +554,18 @@ class zactra
      */
     static function shipping_cost($amount = 0)
     {
-
-        if (Auth::check())
-        {
-            return zactra::getShipping(Auth::user()->country, Auth::user()->state, $amount);
+      if (Auth::check()) {
+          return zactra::getShipping(Auth::user()->country, Auth::user()->state, $amount);
+      } else {
+        if (session('cart_shipping_amount')) {
+          return session()->get('cart_shipping_amount');
+        } else {
+          $info = zactra::getIpInfo();
+          $country = $info->country_code;
+          $state = $info->region_code;
+          return zactra::getShipping($country, $state, $amount);
         }
-        else
-        {
-            if (session('cart_shipping_amount'))
-            {
-                return session()->get('cart_shipping_amount');
-            }
-            else
-            {
-                $info = zactra::getIpInfo();
-                $country = $info->country_code;
-                $state = $info->region_code;
-                return zactra::getShipping($country, $state, $amount);
-            }
-        }
-
+      }
     }
 
     /**
@@ -673,24 +574,20 @@ class zactra
 
     static function getShipping($country, $state, $amount)
     {
-
         $amount = intval($amount);
-        $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->where('state', 'LIKE', '%' . $state . '%')->get()
-            ->first();
+        $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->where('state', 'LIKE', '%' . $state . '%')->get()->first();
         if ($country != "US")
         {
-            $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->get()
-                ->first();
+          $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->get()->first();
         }
         if (!isset($shipping->shipping_cost))
         {
-            $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->where('state', 'LIKE', '%' . $state . '%')->get();
-            $shipping = $shipping->first();
+          $shipping = \App\ShippingCost::where('country_id', $country)->where('order_to', '>=', $amount)->where('state', 'LIKE', '%' . $state . '%')->get();
+          $shipping = $shipping->first();
         }
 
         $shippingCost = isset($shipping->shipping_cost) ? $shipping->shipping_cost : 0.00;
-        session()
-            ->put('cart_shipping_amount', $shippingCost);
+        session()->put('cart_shipping_amount', $shippingCost);
 
         return $shippingCost;
     }
@@ -700,28 +597,19 @@ class zactra
      */
     static function tax_cost($totalAmount)
     {
-
-        if (Auth::check())
-        {
-            return zactra::getTax($totalAmount, Auth::user()->country, Auth::user()
-                ->state);
-        }
-        else
-        {
-            if (session('cart_tax_amount'))
-            {
-                return session()
-                    ->get('cart_tax_amount');
-            }
-            else
-            {
-                $info = zactra::getIpInfo();
-                $country = $info->country_code;
-                $state = $info->region_code;
-                return zactra::getTax($totalAmount, $country, $state);
-            }
-
-        }
+      if (Auth::check()) {
+        return zactra::getTax($totalAmount, Auth::user()->country, Auth::user()->state);
+      } else {
+          if (session('cart_tax_amount'))
+          {
+            return session()->get('cart_tax_amount');
+          } else {
+            $info = zactra::getIpInfo();
+            $country = $info->country_code;
+            $state = $info->region_code;
+            return zactra::getTax($totalAmount, $country, $state);
+          }
+      }
     }
 
     /**
@@ -730,13 +618,10 @@ class zactra
 
     static function getTax($totalAmount, $country, $state)
     {
-        $tax = \App\Tax::where('country_id', $country)->where("order_to", ">=", intval($totalAmount))->where('state', 'LIKE', '%' . $state . '%')->get()
-            ->first();
-        $taxCost = isset($tax->tax_cost) ? (($totalAmount * ($tax->tax_cost / 100))) : 0.00;
-        session()
-            ->put('cart_tax_amount', $taxCost);
-
-        return $taxCost;
+      $tax = \App\Tax::where('country_id', $country)->where("order_to", ">=", intval($totalAmount))->where('state', 'LIKE', '%' . $state . '%')->get()->first();
+      $taxCost = isset($tax->tax_cost) ? (($totalAmount * ($tax->tax_cost / 100))) : 0.00;
+      session()->put('cart_tax_amount', $taxCost);
+      return $taxCost;
     }
 
     /**
@@ -744,18 +629,17 @@ class zactra
      */
     static function getMetaImage($image)
     {
-        $image = str_replace('?size=large', '?size=small', $image);
-        $image = str_replace('?http://', '?https://', $image);
-        return $image;
+      $image = str_replace('?size=large', '?size=small', $image);
+      $image = str_replace('?http://', '?https://', $image);
+      return $image;
     }
 
     static function clearautoCompleteString($str)
     {
-        $str = str_replace('"', '', $str);
-        $str = str_replace('/', '', $str);
-        $str = str_replace("'", '', $str);
-
-        return $str;
+      $str = str_replace('"', '', $str);
+      $str = str_replace('/', '', $str);
+      $str = str_replace("'", '', $str);
+      return $str;
     }
 
     /**
@@ -763,7 +647,6 @@ class zactra
      */
     static function get_product_quantities($quantity_costs)
     {
-
         $min_qty = 0;
         $max_qty = 1;
         $qty_array = array();
@@ -775,37 +658,30 @@ class zactra
 
             try
             {
-                foreach ($qty_price as $key => $value)
-                {
+              foreach ($qty_price as $key => $value) {
+                /**
+                 * store all quantities
+                 */
+                $qty_array[] = $key;
+                $prices_array[$key] = $value;
 
-                    /**
-                     * store all quantities
-                     */
-                    $qty_array[] = $key;
-                    $prices_array[$key] = $value;
-
-                    // get minimum qty
-                    if ($key < $min_qty or $min_qty == 0)
-                    {
-                        $min_qty = $key;
-                    }
-
-                    // get maximum qty
-                    if ($key > $max_qty)
-                    {
-                        $max_qty = $key;
-                    }
+                // get minimum qty
+                if ($key < $min_qty or $min_qty == 0) {
+                    $min_qty = $key;
                 }
+
+                // get maximum qty
+                if ($key > $max_qty) {
+                    $max_qty = $key;
+                }
+              }
             }
             catch(\Exception $e)
             {
                 // echo $e->getMessage();
-
             }
 
-        }
-        else
-        {
+        } else {
             $min_qty = 1;
         }
 
@@ -823,8 +699,7 @@ class zactra
 
     static function getcategoryProductCount($store, $cat)
     {
-        return count(\App\Product::Where('store_id', $store)->where('category_id', $cat)->where('status', "1")
-            ->get());
+      return count(\App\Product::Where('store_id', $store)->where('category_id', $cat)->where('status', "1")->get());
     }
 
     /**
@@ -833,33 +708,30 @@ class zactra
 
     static function sendmail($to, $subject, $message)
     {
+      // Always set content-type when sending HTML email
+      $headers = "MIME-Version: 1.0" . "\r\n";
+      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        // Always set content-type when sending HTML email
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+      // More headers
+      $headers .= 'From: <support@digitizedlogos.com>' . "\r\n";
+      $headers .= 'Cc: admin2@digitizedlogos.com' . "\r\n";
 
-        // More headers
-        $headers .= 'From: <support@digitizedlogos.com>' . "\r\n";
-        $headers .= 'Cc: admin2@digitizedlogos.com' . "\r\n";
-
-        $mail = mail($to, $subject, $message, $headers);
-        if (!$mail)
-        {
-            return false;
-        }
-        else return true;
+      $mail = mail($to, $subject, $message, $headers);
+      if (!$mail) {
+          return false;
+      } else return true;
     }
 
     static function removeSupplierInfos($text)
     {
-        $response = str_replace('(', '', $text);
-        $response = str_replace(')', '', $response);
-        $response = str_replace('[', '', $response);
-        $response = str_replace(']', '', $response);
-        $response = str_replace('=>', ':', $response);
-        $response = str_replace('Array', '', $response);
+      $response = str_replace('(', '', $text);
+      $response = str_replace(')', '', $response);
+      $response = str_replace('[', '', $response);
+      $response = str_replace(']', '', $response);
+      $response = str_replace('=>', ':', $response);
+      $response = str_replace('Array', '', $response);
 
-        return $response;
+      return $response;
     }
 
     /**
@@ -868,51 +740,30 @@ class zactra
 
     public static function cart()
     {
-
-        // check if user is logged in
-        if (Auth::check())
-        {
-
-            // check if session of cart exists
-            if (session('cart'))
-            {
-
-                $saveAbendentCart = array();
-                $saveAbendentCart['user_id'] = Auth::user()->id;
-                $saveAbendentCart['cart'] = json_encode(session()->get('cart'));
-                if (isset(Auth::user()
-                    ->cart
-                    ->cart))
-                {
-                    AbendentCart::where('user_id', Auth::user()
-                        ->id)
-                        ->update(['cart' => json_encode(session()
-                        ->get('cart')) ]);
-                }
-                else
-                {
-                    AbendentCart::insert($saveAbendentCart);
-                }
+      // check if user is logged in
+      if (Auth::check())
+      {
+          // check if session of cart exists
+          if (session('cart'))
+          {
+            $saveAbendentCart = array();
+            $saveAbendentCart['user_id'] = Auth::user()->id;
+            $saveAbendentCart['cart'] = json_encode(session()->get('cart'));
+            if (isset(Auth::user()->cart->cart)) {
+              AbendentCart::where('user_id', Auth::user()->id)->update(['cart' => json_encode(session()->get('cart')) ]);
+            } else {
+              AbendentCart::insert($saveAbendentCart);
             }
-
-            if (isset(Auth::user()
-                ->cart
-                ->cart))
-            {
-                if (!empty(Auth::user()
-                    ->cart
-                    ->cart))
-                {
-                    $mycart = json_decode(Auth::user()
-                        ->cart
-                        ->cart);
-                    $mycart = zactra::CartobjToArray($mycart);
-                    session()->put('cart', $mycart);
-                }
-
+          }
+          if (isset(Auth::user()->cart->cart))
+          {
+            if (!empty(Auth::user()->cart->cart)) {
+              $mycart = json_decode(Auth::user()->cart->cart);
+              $mycart = zactra::CartobjToArray($mycart);
+              session()->put('cart', $mycart);
             }
-
-        }
+          }
+      }
     }
 
     /**
@@ -920,44 +771,33 @@ class zactra
      */
     static function update_cart($arr)
     {
-        if (Auth::check())
+      if (Auth::check())
+      {
+        if (isset(Auth::user()->cart->cart))
         {
-            if (isset(Auth::user()
-                ->cart
-                ->cart))
-            {
-                AbendentCart::where('user_id', Auth::user()
-                    ->id)
-                    ->update(['cart' => json_encode($arr) , 'counter' => 0, 'updated_at' => date("Y-m-d H:i:s") ]);
-            }
-            else
-            {
-                AbendentCart::create(['user_id' => Auth::user()->id, 'cart' => json_encode($arr) , 'updated_at' => date("Y-m-d H:i:s") ]);
-            }
+          AbendentCart::where('user_id', Auth::user()->id)->update(['cart' => json_encode($arr) , 'counter' => 0, 'updated_at' => date("Y-m-d H:i:s") ]);
+        } else {
+          AbendentCart::create(['user_id' => Auth::user()->id, 'cart' => json_encode($arr) , 'updated_at' => date("Y-m-d H:i:s") ]);
         }
+      }
     }
 
     // convert cart object to array
     static function CartobjToArray($obj)
     {
-        $arr = array();
-
-        foreach ($obj as $key => $value)
-        {
-            $subArray = array();
-
-            foreach ((array)$value as $key1)
-            {
-
-                //
-                // $arr =
-                $final = (array)$key1;
-                $subArray[] = $final;
-            }
-
-            $arr[$key] = $subArray;
+      $arr = array();
+      foreach ($obj as $key => $value) {
+        $subArray = array();
+        foreach ((array)$value as $key1) {
+            //
+            // $arr =
+            $final = (array)$key1;
+            $subArray[] = $final;
         }
-        return $arr;
+
+        $arr[$key] = $subArray;
+      }
+      return $arr;
     }
 
     /**
@@ -966,21 +806,18 @@ class zactra
 
     static function productPriceSave($value, $cost)
     {
-        $value = zactra::decimal($value, 2);
-        $cost = zactra::decimal($cost, 2);
+      $value = zactra::decimal($value, 2);
+      $cost = zactra::decimal($cost, 2);
 
-        $difference = $cost - $value;
+      $difference = $cost - $value;
 
-        $amount = ($difference / $cost) * 100;
-        $amount = zactra::decimal($amount, 2);
-        if ($amount > 0)
-        {
-            return $amount . "%";
-        }
-        else
-        {
-            return "---";
-        }
+      $amount = ($difference / $cost) * 100;
+      $amount = zactra::decimal($amount, 2);
+      if ($amount > 0) {
+          return $amount . "%";
+      } else {
+          return "---";
+      }
     }
 
     /**
@@ -995,53 +832,40 @@ class zactra
         $max_qty = 1;
 
         // check for quantities
-        foreach (json_decode($range) [0] as $key => $value)
-        {
-
-            // get minimum quantity
-            if ($min_qty > $value)
-            {
-                $min_qty = $value;
-            }
-
-            // get maximum quantity
-            if ($value > $min_qty)
-            {
-                $max_qty = $value;
-            }
-
+        foreach (json_decode($range) [0] as $key => $value) {
+          // get minimum quantity
+          if ($min_qty > $value) {
+              $min_qty = $value;
+          }
+          // get maximum quantity
+          if ($value > $min_qty) {
+              $max_qty = $value;
+          }
         }
 
         // check for Prices
-        foreach (json_decode($range) [1] as $key => $value)
-        {
-
+        foreach (json_decode($range) [1] as $key => $value) {
             $myMin = 1000000000000000000000000;
             $myMax = 0;
             foreach ($value as $prc)
             {
+              if ($myMin > $prc) {
+                  $myMin = $prc;
+              }
 
-                if ($myMin > $prc)
-                {
-                    $myMin = $prc;
-                }
-
-                if ($prc > $myMax)
-                {
-                    $myMax = $prc;
-                }
+              if ($prc > $myMax) {
+                  $myMax = $prc;
+              }
 
             }
 
             // get minimum quantity
-            if ($min_price > $myMin)
-            {
+            if ($min_price > $myMin) {
                 $min_price = $myMin;
             }
 
             // get maximum quantity
-            if ($myMax > $max_price)
-            {
+            if ($myMax > $max_price) {
                 $max_price = $myMax;
             }
         }
@@ -1060,18 +884,17 @@ class zactra
 
     static function geAverageIndexforMenu($menu)
     {
-        $i = 0;
-        foreach ($menu as $key => $value)
+      $i = 0;
+      foreach ($menu as $key => $value)
+      {
+        $i++;
+        foreach ($value->child($value->menu_id) as $key1 => $value1)
         {
-            $i++;
-
-            foreach ($value->child($value->menu_id) as $key1 => $value1)
-            {
-                $i++;
-            }
+          $i++;
         }
+      }
 
-        return intval($i / 4);
+      return intval($i / 4);
 
     }
 
@@ -1081,15 +904,11 @@ class zactra
 
     static function checkforProductCustomizeOptions($product)
     {
-
-        if (!empty($product->imprint_color) or !empty($product->imprint_location))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+      if (!empty($product->imprint_color) or !empty($product->imprint_location)) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
     /**
@@ -1097,9 +916,9 @@ class zactra
      */
     static function arrangeFAQS($data)
     {
-        $faqs = str_replace('Q:', '<br><br><b>Q: ', $data);
-        $faqs = str_replace('?', '?</b><br/>', $faqs);
-        return $faqs;
+      $faqs = str_replace('Q:', '<br><br><b>Q: ', $data);
+      $faqs = str_replace('?', '?</b><br/>', $faqs);
+      return $faqs;
     }
 
     /**
@@ -1145,7 +964,6 @@ class zactra
 
          return $translate->key;
        }
-
 
      }
 

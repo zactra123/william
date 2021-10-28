@@ -51,7 +51,7 @@
                   <div class="col-md-12">
                     <input class="form-control bank_logo_class file-box" type="file" name="logo" id="bank_logo" tabindex="3" />
                   </div>
-                  <div class="col-md-12 mt-3"><input type="checkbox" value="true" name="bank[no_logo]" /> <span class="ml-2">{{ zactra::translate_lang('NO LOGO') }}</span></div>
+                  <div class="col-md-12 mt-3"><input type="checkbox" value="{{ zactra::translate_lang('true') }}" name="bank[no_logo]" /> <span class="ml-2">{{ zactra::translate_lang('NO LOGO') }}</span></div>
                 </div>
                 <div class="col-md-8 pt-3">
                   <div class="col-md-12">
@@ -127,7 +127,7 @@
                     </div>
                     @endif
                     @if($type == 'executive_address')
-                    <div class="col-md-3 executive_copied mb-3"><input type="checkbox" value="true" name="bank_address[{{$type}}][copied]" /> {{ zactra::translate_lang('Copy Parent Executive Contact') }}</div>
+                    <div class="col-md-3 executive_copied mb-3"><input type="checkbox" value="{{ zactra::translate_lang('true') }}" name="bank_address[{{$type}}][copied]" /> {{ zactra::translate_lang('Copy Parent Executive Contact') }}</div>
                     <div class="form-group col-sm-3">
                       {!! Form::text("bank_address[{$type}][name]", null, ["class"=>"form-control", "placeholder"=>"Executive Name"]) !!}
                     </div>

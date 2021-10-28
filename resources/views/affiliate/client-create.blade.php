@@ -46,19 +46,19 @@
                 </div>
                 <form action="" id="chat_form">
                     <p class="text-white">You can write your questions on our online portal. Our experts will help you find answers to your questions.</p>
-                    <input type="text" placeholder="Your full name">
+                    <input type="text" placeholder="{{ zactra::translate_lang('Your full name') }}">
                     <div class="contact">
                         <label for="email" class="email-label">
-                            <input type="email" id="email" placeholder="E-mail Address">
+                            <input type="email" id="email" placeholder="{{ zactra::translate_lang('E-mail Address') }}">
                         </label>
                         <p class="text-white">or</p>
                         <label for="phone" class="phone-label">
-                            <input type="tel" id="phone" disabled placeholder="Phone Number">
+                            <input type="tel" id="phone" disabled placeholder="{{ zactra::translate_lang('Phone Number') }}">
                         </label>
                     </div>
-                    <textarea placeholder="write your message" cols="30" rows="10"></textarea>
+                    <textarea placeholder="{{ zactra::translate_lang('write your message') }}" cols="30" rows="10"></textarea>
                     <div class="form-submit">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="{{ zactra::translate_lang('Submit') }}">
                     </div>
                 </form>
             </div>

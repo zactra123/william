@@ -144,7 +144,7 @@
 															<textarea class="form-control" rows="5" name="notes" id=""></textarea>
 														</div>
 														<div class="form-group text-right">
-															<input type="submit" value="Add" class="ms-ua-submit btn btn-primary">
+															<input type="submit" value="{{ zactra::translate_lang('Add') }}" class="ms-ua-submit btn btn-primary">
 														</div>
 													</form>
 												</div>

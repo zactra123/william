@@ -40,7 +40,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<textarea class="form-control" name="message" required placeholder="write your message"></textarea>
+								<textarea class="form-control" name="message" required placeholder="{{ zactra::translate_lang('write your message') }}"></textarea>
 							</div>
 							<div class="form-group">
 								<input type="submit" value="{{ zactra::translate_lang('Submit') }}" class="ms-ua-submit">
@@ -66,10 +66,10 @@
 				<div class="ms-ua-box">
 					<form>
 						<div class="form-group">
-							<textarea class=" form-control textinput" placeholder="Type message.." name="message"></textarea>
+							<textarea class=" form-control textinput" placeholder="{{ zactra::translate_lang('Type message...') }}" name="message"></textarea>
 						</div>
 						<div class="form-group">
-							<input clas type="submit" value="Send" class="ms-ua-submit">
+							<input clas type="submit" value="{{ zactra::translate_lang('Send') }}" class="ms-ua-submit">
 						</div>
 					</form>
 				</div>

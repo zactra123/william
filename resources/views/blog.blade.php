@@ -21,7 +21,7 @@
 						<div class="col-md-12">
 							<div class="Search Results"></div>
 							<form class="p-r" action="" method="GET">
-								<input type="text" value="" required="" class="blog-search-field shadow-sm" placeholder="Search tags,keywords" name="query" />
+								<input type="text" value="" required="" class="blog-search-field shadow-sm" placeholder="{{ zactra::translate_lang('Search tags,keywords') }}" name="query" />
 							</form>
 							<div class="mt-5 shadow-sm px-4 py-4">
 								<h4 class="h6">{{ zactra::translate_lang('Most Viewed Blogs') }}</h4>

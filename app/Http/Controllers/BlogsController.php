@@ -30,17 +30,14 @@ class BlogsController extends Controller
     public function store(Request $request)
     {
         if(empty($request['attach'])){
-          return redirect()->back()
-              ->withInput()
-              ->with('error', 'Please upload both files');
+          return redirect()->back()->withInput()->with('error', 'Please upload both files');
         }
         $titleImage  = $request->file("attach");
         $imageExtension = [ 'png', 'jpg', 'jpeg'];
 
         $titleImageExtension = strtolower($titleImage->getClientOriginalExtension());
         if (!in_array($titleImageExtension, $imageExtension)) {
-            return redirect()->back()
-                ->with('error', 'Please upload the correct file format (PNG, JPG)');
+            return redirect()->back()->with('error', 'Please upload the correct file format (PNG, JPG)');
         }
 
         $path = "image/blog/";
@@ -59,6 +56,7 @@ class BlogsController extends Controller
         Blog::create($data);
         return redirect()->route('blog.index');
     }
+    
     public function edit($id)
     {
         $blog = Blog::whereId($id)->first();
@@ -75,8 +73,7 @@ class BlogsController extends Controller
 
             $titleImageExtension = strtolower($titleImage->getClientOriginalExtension());
             if (!in_array($titleImageExtension, $imageExtension)) {
-                return redirect()->back()
-                    ->with('error', 'Please upload the correct file format (PNG, JPG)');
+                return redirect()->back()->with('error', 'Please upload the correct file format (PNG, JPG)');
             }
             $path = "image/blog/";
             $titleImageName =  "title_image_".date("Y_m_d_h_m_s").".".$titleImageExtension;

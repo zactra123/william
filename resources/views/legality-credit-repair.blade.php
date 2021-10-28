@@ -1,8 +1,10 @@
-@extends('layouts.layout1') @section('meta')
+@extends('layouts.layout1')
+@section('meta')
 <title>{{ zactra::translate_lang('Is Repair Legal in All 50 States? Prudent Credit Solutions') }}</title>
 <meta name="description" content="Credit repair is a legal way to improve damaged credit history and raise credit score. It's a federally protect right. Get more information on our website." />
 <meta name="keywords" content="is credit repair legal, fair credit reporting act (fcra), credit repair organizations act croa" />
-@endsection @section('content')
+@endsection
+@section('content')
 <section class="mt-5 pt-5">
   {{-- <img class="background-image" src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
   <div class="container header-banner mt-5"></div>

@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="form-group">
-            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}" required autocomplete="phone_number" placeholder="Phone Number">
+            <input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ !empty(old('phone_number')) ? old('phone_number') : (!empty($client->clientDetails) ? $client->clientDetails->phone_number: "") }}" required autocomplete="phone_number" placeholder="{{ zactra::translate_lang('Phone Number') }}">
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

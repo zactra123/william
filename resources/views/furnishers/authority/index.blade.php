@@ -58,7 +58,7 @@
 													<div class="col-md-3">
 													</div>
 													<div class="col-md-6 p-1">
-														<input class="form-control go-to-page" type="text" id="" name="page_number" placeholder="PAGE #">
+														<input class="form-control go-to-page" type="text" id="" name="page_number" placeholder="{{ zactra::translate_lang('PAGE #') }}">
 													</div>
 													<div class="col-md-3 p-1 pl-2">
 														<button class="form-control btn btn-primary go-to" id="">{{ zactra::translate_lang('GO TO') }}</button>

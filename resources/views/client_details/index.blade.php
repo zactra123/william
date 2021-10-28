@@ -69,7 +69,7 @@
                 <div class="card-body d-flex flex-column">
                     <form class="quick-post-form">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Brave New World" />
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ zactra::translate_lang('Brave New World') }}" />
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="10" placeholder="{{ zactra::translate_lang('Words can be like X-rays if you use them properly...') }}"></textarea>

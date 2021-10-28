@@ -131,9 +131,23 @@
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             <nav id="navbar" class="navbar">
               <ul>
-                @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.nav_bar_client') @elseif(Auth::user()->role == 'affiliate') @include('helpers.urls.nav_bar_affiliate') @elseif(Auth::user()->role == 'super admin')
-                @include('helpers.urls.nav_bar_owner') @elseif(Auth::user()->role == 'admin') @include('helpers.urls.nav_bar_admin') @elseif(Auth::user()->role == 'receptionist') @include('helpers.urls.nav_bar_receptionist')
-                @elseif(Auth::user()->role == 'seo') @include('helpers.urls.nav_bar_seo') @endif @else @include('helpers.urls.nav_bar_guest') @endif
+                @if(Auth::user())
+                  @if(Auth::user()->role == 'client')
+                    @include('helpers.urls.nav_bar_client')
+                  @elseif(Auth::user()->role == 'affiliate')
+                    @include('helpers.urls.nav_bar_affiliate')
+                  @elseif(Auth::user()->role == 'super admin')
+                    @include('helpers.urls.nav_bar_owner')
+                  @elseif(Auth::user()->role == 'admin')
+                    @include('helpers.urls.nav_bar_admin')
+                  @elseif(Auth::user()->role == 'receptionist')
+                    @include('helpers.urls.nav_bar_receptionist')
+                  @elseif(Auth::user()->role == 'seo')
+                    @include('helpers.urls.nav_bar_seo')
+                  @endif
+                @else
+                  @include('helpers.urls.nav_bar_guest')
+                @endif
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -142,11 +156,11 @@
         </header>
       </div>
     </section>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container my-5">
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="col-md-2 col-lg-2 col-sm-12 col-12"></div>
@@ -220,10 +234,10 @@
             <div class="col-lg-4 col-md-6">
               <div class="footer-info">
                 <h3>{{ zactra::translate_lang('Credit Repair') }}</h3>
-                {{ zactra::site('address') }}<br />
-                <br />
-                <strong>{{ zactra::translate_lang('Phone:') }}</strong> {{ zactra::site('phone') }}<br />
-                <strong>{{ zactra::translate_lang('Email:') }}</strong> {{ zactra::site('email') }}<br />
+                {{ zactra::site('address') }}<br>
+                <br>
+                <strong>{{ zactra::translate_lang('Phone:') }}</strong> {{ zactra::site('phone') }}<br>
+                <strong>{{ zactra::translate_lang('Email:') }}</strong> {{ zactra::site('email') }}<br>
                 <div class="social-links mt-3">
                   <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                   <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -244,7 +258,7 @@
               </ul>
             </div>
             <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Other Links</h4>
+              <h4>{{ zactra::translate_lang('Other Links') }}</h4>
               <ul>
                 <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('credit.repair') }}">{{ zactra::translate_lang('Credit Repair Resources') }} </a></li>
                 <li><i class="bx bx-chevron-right"></i> <a class="fs-16" href="{{ route('legalityCreditRepair') }}">{{ zactra::translate_lang('Legality Credit Repair') }}</a></li>
@@ -314,11 +328,11 @@
            @endif
          });
     </script>
-    <input type="hidden" id="contact_form_error_text" value="Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова." />
-    <input type="hidden" id="contact_error_mail_text" value="The email field is not filled or contains an error" />
-    <input type="hidden" id="contact_error_phone_text" value="Поле номер телефона содержит ошибку" />
-    <input type="hidden" id="contact_error_basic_text" value="Name field is empty or contains an error" />
-    <input type="hidden" id="contact_success_send_text" value="Форма успешна отправлена" />
+    <input type="hidden" id="contact_form_error_text" value="{{ zactra::translate_lang('Одно или несколько полей содержать ошибку, пожалуйста проверьте и попробуйте снова.') }}" />
+    <input type="hidden" id="contact_error_mail_text" value="{{ zactra::translate_lang('The email field is not filled or contains an error') }}" />
+    <input type="hidden" id="contact_error_phone_text" value="{{ zactra::translate_lang('Поле номер телефона содержит ошибку') }}" />
+    <input type="hidden" id="contact_error_basic_text" value="{{ zactra::translate_lang('Name field is empty or contains an error') }}" />
+    <input type="hidden" id="contact_success_send_text" value="{{ zactra::translate_lang('Форма успешна отправлена') }}" />
     <p class="description" id="contact_description">
       {{ zactra::translate_lang('Click on input to change the contact method') }}
     </p>

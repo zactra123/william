@@ -851,52 +851,51 @@
 					<div class="form row">
 						<div class="form-group col-md-6">
 							<label for="fname">{{ zactra::translate_lang('First Name') }}</label>
-							<input type="text" class="form-control" value="donal" id="fname" placeholder="First Name" />
+							<input type="text" class="form-control" value="{{ zactra::translate_lang('donal') }}" id="fname" placeholder="{{ zactra::translate_lang('First Name') }}" />
 						</div>
 						<div class="form-group col-md-6">
 							<label for="lname">{{ zactra::translate_lang('Last Name') }}</label>
-							<input type="text" class="form-control" value="trump" id="lname" placeholder="Last Name" />
+							<input type="text" class="form-control" value="{{ zactra::translate_lang('trump') }}" id="lname" placeholder="{{ zactra::translate_lang('Last Name') }}" />
 						</div>
 						<div class="form-group col-md-6">
 							<label for="email">{{ zactra::translate_lang('Email Address') }}</label>
-							<input type="email" class="form-control" value="demomail@gmail.com" id="email" placeholder="Email" />
+							<input type="email" class="form-control" value="{{ zactra::translate_lang('demomail@gmail.com') }}" id="email" placeholder="{{ zactra::translate_lang('Email') }}" />
 						</div>
 						<div class="form-group col-md-6">
 							<label for="phonenum">{{ zactra::translate_lang('Phone Number') }}</label>
-							<input type="text" class="form-control" value="+91-434-3433" id="phonenum" placeholder="Phone Number" />
+							<input type="text" class="form-control" value="{{ zactra::translate_lang('+91-434-3433') }}" id="phonenum" placeholder="{{ zactra::translate_lang('Phone Number') }}" />
 						</div>
 						<div class="form-group col-md-12">
 							<label for="address">{{ zactra::translate_lang('Full Address') }}</label>
-							<input type="text" class="form-control" value="555 Main St,
-                    Salt Lake City" id="address" placeholder="1234 Main St" />
+							<input type="text" class="form-control" value="{{ zactra::translate_lang('555 Main St, Salt Lake City') }}" id="address" placeholder="{{ zactra::translate_lang('1234 Main St') }}" />
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="ssn">{{ zactra::translate_lang('Social Security Number') }}</label>
-							<input type="text" value="078-07-1123" class="form-control" id="ssn" placeholder="Social Security Number" />
+							<input type="text" value="{{ zactra::translate_lang('078-07-1123') }}" class="form-control" id="ssn" placeholder="{{ zactra::translate_lang('Social Security Number') }}" />
 						</div>
 						<div class="form-group col-md-6">
 							<label for="referred">{{ zactra::translate_lang('Referred By') }}</label>
-							<input type="text" class="form-control" value="James Bond" id="referred" />
+							<input type="text" class="form-control" value="{{ zactra::translate_lang('James Bond') }}" id="referred" />
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="dob">{{ zactra::translate_lang('Date Of Birth') }}</label>
-							<input type="date" class="form-control" value="1999-04-13" id="dob" />
+							<input type="date" class="form-control" value="{{ zactra::translate_lang('1999-04-13') }}" id="dob" />
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="gender">{{ zactra::translate_lang('Gender') }}</label>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender" id="male" value="male" checked="checked" />
+								<input class="form-check-input" type="radio" name="gender" id="male" value="{{ zactra::translate_lang('male') }}" checked="checked" />
 								<label class="form-check-label" for="male">{{ zactra::translate_lang('Male') }}</label>
-								<input class="form-check-input" type="radio" name="gender" id="female" value="female" />
+								<input class="form-check-input" type="radio" name="gender" id="female" value="{{ zactra::translate_lang('female') }}" />
 								<label class="form-check-label" for="female">{{ zactra::translate_lang('Female') }}</label>
 							</div>
 						</div>
 					</div>
 
-					<button type="submit" value="Update" class="btn btn-primary">
+					<button type="submit" value="{{ zactra::translate_lang('Update') }}" class="btn btn-primary">
 						{{ zactra::translate_lang('Update') }}
 					</button>
 				</form>
@@ -940,12 +939,10 @@
 						<h3>{{ zactra::translate_lang('Equifax Credentials') }}</h3>
 						<li>{{ zactra::translate_lang('Login:') }} {{isset($client->credentials->eq_login)?$client->credentials->eq_login: "N/A"}}</li>
 						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->eq_password)?$client->credentials->eq_password:"N\A"}}</li>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
 <div class="col-sm-9">
@@ -960,12 +957,10 @@
 						<li>{{ zactra::translate_lang('Password:') }} {{isset($client->credentials->ex_password)?$client->credentials->ex_password:"N\A"}}</li>
 						<li>{{ zactra::translate_lang('Answer:') }} {{isset($client->credentials->ex_question)?$client->credentials->ex_question:"N\A"}}</li>
 						<li>{{ zactra::translate_lang('Pin Number:') }} {{isset($client->credentials->ex_pin)?$client->credentials->ex_pin:"N\A"}}</li>
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
 <div class="col-sm-9">

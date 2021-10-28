@@ -648,7 +648,7 @@
         {!! Form::open(['route'=>['adminRec.sendEmail'],'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form--label-align-right', "id" => "send_email"]) !!}
           @csrf
         <div class="form-group">
-          <input type="text" name="subject" class="form-control" placeholder="SUBJECT" />
+          <input type="text" name="subject" class="form-control" placeholder="{{ zactra::translate_lang('SUBJECT') }}" />
           <input type="hidden" name="client" class="form-control" value="{{$client->id}}" />
         </div>
         <div class="form-group">
@@ -660,7 +660,7 @@
         </div>
 
         <div class="form-group">
-          <input type="submit" value="SEND" class="btn btn-primary" />
+          <input type="submit" value="{{ zactra::translate_lang('SEND') }}" class="btn btn-primary" />
         </div>
         {!! Form::close() !!}
       </div>

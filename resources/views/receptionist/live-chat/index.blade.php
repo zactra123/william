@@ -120,10 +120,10 @@
                     <div class="row">
                       <div class="col-sm-6 form-group">
                         <input type="hidden" name="direct" value="1" id="direct-to-user" disabled />
-                        <input type="submit" value="Reply Directly To The Client" id="direct-answer" class="ms-ua-submit hidden btn btn-primary mt-4" />
+                        <input type="submit" value="{{ zactra::translate_lang('Reply Directly To The Client') }}" id="direct-answer" class="ms-ua-submit hidden btn btn-primary mt-4" />
                       </div>
                       <div class="col-sm-6 form-group text-right">
-                        <input type="submit" value="Send message" class="ms-ua-submit btn btn-primary mt-4" />
+                        <input type="submit" value="{{ zactra::translate_lang('Send message') }}" class="ms-ua-submit btn btn-primary mt-4" />
                       </div>
                     </div>
                   </div>

@@ -172,7 +172,7 @@
         </div>
       </div>
       <div class="col mt-5">
-        <input type="submit" value="Save" class="ms-ua-submit" />
+        <input type="submit" value="{{ zactra::translate_lang('Save') }}" class="ms-ua-submit" />
       </div>
       {!! Form::close() !!}
     </div>

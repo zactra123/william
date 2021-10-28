@@ -2079,7 +2079,7 @@
                             <div class="col-md-3 mmb-5">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" placeholder="Price $" class="form-control collection" id="utility_s_co_price_val_last" title="{{ zactra::translate_lang('Price') }}">
+                                        <input type="text" placeholder="{{ zactra::translate_lang('Price $') }}" class="form-control collection" id="utility_s_co_price_val_last" title="{{ zactra::translate_lang('Price') }}">
                                     </div>
                                 </div>
                                 {!! $errors->first('fraud_alerts', '<p class="help-block">:message</p>') !!}

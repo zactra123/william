@@ -1,14 +1,11 @@
 @extends('layouts.layout1')
-
 @section('meta')
 <title>{{ zactra::translate_lang('Credit Resources - the most popular resources to improve your score') }}</title>
 <meta name="description" content="Credit Resources help keep your credit in tip-top shape. We offer resources that will help you - Mint, AnnualCreditReport.com, NerdWallet, CreditKarma.">
 <meta name="keywords" content="monitor your credit report, does credit karma monitor your credit, mint banking, online service mint, AnnualCreditReport, NerdWallet, CreditKarma">
 @endsection
-
 @section('content')
 <section class="text-page pt-5 mt-5">
-	{{-- <img class="background-image" src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
 	<div class="container header-banner mt-5">
 	</div>
 	<div class="container">
@@ -22,7 +19,7 @@
 					a trusted reputation and track history proven to help is vital. Here are some popular resources
 					that will get the job done right for you') }}
 				</p>
-				<h2 class="mt-5"> <b>{{ zactra::translate_lang('Phone') }}Mint</b> </h2>
+				<h2 class="mt-5"> <b>{{ zactra::translate_lang('Mint') }}</b> </h2>
 				<p class="text-justify mt-3">
 					{{ zactra::translate_lang('Mint is an online software that helps you budget your money, monitor your credit, and
 					help you find opportunities to improve your finances. Furthermore, they provide you with

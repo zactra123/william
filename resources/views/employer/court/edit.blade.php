@@ -221,7 +221,7 @@
 <div class="container mmap-0">
 	<div class="row pull-right">
 		<div class="col text-right mmap-0">
-			<input type="submit" value="Save" class="ms-ua-submit mb-5 btn btn-primary pull-right" />
+			<input type="submit" value="{{ zactra::translate_lang('Save') }}" class="ms-ua-submit mb-5 btn btn-primary pull-right" />
 		</div>
 		{!! Form::close() !!}
 	</div>

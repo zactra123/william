@@ -1,8 +1,10 @@
-@extends('layouts.layout1') @section('meta')
+@extends('layouts.layout1')
+@section('meta')
 <title>{{ zactra::translate_lang('4 Helpful Tips on How to Get an Excellent Credit Score') }}</title>
 <meta name="description" content="How to improve credit score and keep it in healthy shape? Follow these four tips, you won’t have to worry about your credit ever going down the drain." />
 <meta name="keywords" content="free credit repair services, monitor your credit score" />
-@endsection @section('content')
+@endsection
+@section('content')
 <section class="header text-page">
   {{-- <img class="background-image" src="{{asset("images/new/header-background.jpg")}}" alt="background"> --}}
   <div class="container header-banner"></div>

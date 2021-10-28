@@ -82,10 +82,10 @@
 								<div class="col-md-12 col-lg-12 col-sm-12 col-12">
 									<div class="row">
 										<div class="col-md-6 col-lg-6 col-sm-12 col-12">
-											<input type="text" class="form-control mmb-5" name="client[tu_dis_login]" placeholder="Username">
+											<input type="text" class="form-control mmb-5" name="client[tu_dis_login]" placeholder="{{ zactra::translate_lang('Username') }}">
 										</div>
 										<div class="col-md-6 col-lg-6 col-sm-12 col-12">
-											<input type="password" class="form-control mmb-5" name="client[tu_dis_password]" placeholder="Password">
+											<input type="password" class="form-control mmb-5" name="client[tu_dis_password]" placeholder="{{ zactra::translate_lang('Password') }}">
 										</div>
 									</div>
 								</div>

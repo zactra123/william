@@ -25,7 +25,7 @@
 											<input id="phone_number" type="text" class="form-control phone" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" placeholder="{{ zactra::translate_lang('Phone number') }}">
 										</div>
 										<div class="form-group row m-1">
-											<input placeholder="Call date" name='call_date' class="form-control" type="text" id="date">
+											<input placeholder="{{ zactra::translate_lang('Call date') }}" name='call_date' class="form-control" type="text" id="date">
 										</div>
 										<div class="form-group row m-1">
 											<textarea name="question" id=""></textarea>

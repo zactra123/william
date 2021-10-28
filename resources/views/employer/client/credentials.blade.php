@@ -89,7 +89,7 @@
             </div>
           </div>
         @endif
-        <div class="col"><input type="submit" value="Submit" class="ms-ua-submit" /></div>
+        <div class="col"><input type="submit" value="{{ zactra::translate_lang('Submit') }}" class="ms-ua-submit" /></div>
         {!! Form::close() !!}
       </div>
     </div>

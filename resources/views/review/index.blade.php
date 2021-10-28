@@ -7,8 +7,8 @@
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="card p-3">
           <div class="row pl-5 justify-content-center">
-            <img src="https://user-images.trustpilot.com/default/v1/73x73.png" width="30" alt=""> <span class="ml-3 pt-1"><a class="fs-20" href="{{ route('web.review.create') }}">{{ zactra::translate_lang('Write a review') }}</a> </span>
-            <span class="ml-4 pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+            <img src="https://user-images.trustpilot.com/default/v1/73x73.png" width="30" alt="{{ zactra::translate_lang('image') }}" /> <span class="ml-3 pt-1"><a class="fs-20" href="{{ route('web.review.create') }}">{{ zactra::translate_lang('Write a review') }}</a> </span>
+            <span class="ml-4 pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
           </div>
         </div>
       </div>
@@ -18,8 +18,7 @@
       <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="card p-3 mt-4">
           <span class="fs-18">{{ zactra::translate_lang('Total Reviews') }} (<span class="bold">{{ isset($total) ? $total : '' }}</span>)</span>
-          <hr>
-
+          <hr />
           <div class="row">
             <div class="col-md-2 text-center">
               <span>{{ zactra::translate_lang('Excellent') }}</span>
@@ -100,57 +99,45 @@
               <span>{{ zactra::decimal($badper,2) }} {{ zactra::translate_lang('%') }}</span>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
-
-        @foreach ($review as $key => $value)
+    @foreach ($review as $key => $value)
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+        <div class="card px-5 py-3 mt-3">
           <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-              <div class="card px-5 py-3 mt-3">
-                <div class="row">
-                  @if ($value->rating=='5')
-                    <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
-                  @elseif($value->rating=='4')
-                    <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span><span class="pt-2 ml-1"><i class="fa fa-star"></i></span>
-                  @elseif($value->rating=='3')
-                    <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
-                    <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                  @elseif($value->rating=='2')
-                    <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i>  </span>
-                    <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                  @elseif($value->rating=='1')
-                    <span class="pt-2" style="color:yellow;"><i class="fa fa-star"></i> </span>
-                    <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                  @endif
-                </div>
-                <div class="row mt-2">
-                  <strong>{{ ucfirst($value->name) }},</strong>&nbsp; on {{ zactra::convertDay($value->created_by) }}
-                </div>
-
-                <div class="row mt-2">
-                  {{ $value->review }}
-                </div>
-
-              </div>
-            </div>
+            @if ($value->rating=='5')
+              <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+            @elseif($value->rating=='4')
+              <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span><span class="pt-2 ml-1"><i class="fa fa-star"></i></span>
+            @elseif($value->rating=='3')
+              <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+              <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+            @elseif($value->rating=='2')
+              <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
+              <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+            @elseif($value->rating=='1')
+              <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> </span>
+              <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+            @endif
           </div>
-        @endforeach
-
-      <div class="row pull-right mt-3 mb-3">
-        <div class="col-md-12">
-          {{ $review->links() }}
+          <div class="row mt-2"><strong>{{ ucfirst($value->name) }},</strong>&nbsp; on {{ zactra::convertDay($value->created_by) }}</div>
+          <div class="row mt-2">
+            {{ $value->review }}
+          </div>
         </div>
       </div>
-      @endif
+    </div>
+    @endforeach
+    <div class="row pull-right mt-3 mb-3">
+      <div class="col-md-12">
+        {{ $review->links() }}
+      </div>
+    </div>
+    @endif
   </div>
-
 </div>
 
-<style media="screen">
-
-
-</style>
+<style media="screen"></style>
 @endsection

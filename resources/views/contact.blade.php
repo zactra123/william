@@ -72,8 +72,6 @@
 						the upward trend of a growing credit score! With us, you have a fighting chance to get our credit
 						back into tip-top shape!') }}
 					</p>
-
-
 					<p class="who-font fs-14" style="text-align: justify">
 						{{ zactra::translate_lang('Have a question or want a free review of your financial profile to determine whether we
 						can help? Contact us through our contact information detailed below:') }}
@@ -89,16 +87,16 @@
 								<div class="col-md-12">
 									<div class="row">
 										<div class="col-md-6">
-											<input class="form-control" name="name" type="text" placeholder="Your name..." required>
+											<input class="form-control" name="name" type="text" placeholder="{{ zactra::translate_lang('Your name...') }}" required>
 										</div>
 										<div class="col-md-6">
-											<input class="form-control" name="email" type="email" placeholder="Email..." required>
+											<input class="form-control" name="email" type="email" placeholder="{{ zactra::translate_lang('Email...') }}" required>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-12 mt-4">
-									<textarea class="form-control" name="messages" id="" rows=7 required placeholder="Write Message...."></textarea>
-									<input type="submit" class="button pull-right btn btn-info mt-4 mb-5" value="Send Messages">
+									<textarea class="form-control" name="messages" id="" rows=7 required placeholder="{{ zactra::translate_lang('Write Message....') }}"></textarea>
+									<input type="submit" class="button pull-right btn btn-info mt-4 mb-5" value="{{ zactra::translate_lang('Send Messages') }}">
 								</div>
 							</div>
 						</form>

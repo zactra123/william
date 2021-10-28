@@ -26,7 +26,7 @@
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-12 text-right">
-							<input type="submit" value="Add" class="ms-ua-submit btnsub btn btn-primary mb-5 pull-right" data-url="{{ url('/') }}">
+							<input type="submit" value="{{ zactra::translate_lang('Add') }}" class="ms-ua-submit btnsub btn btn-primary mb-5 pull-right" data-url="{{ url('/') }}">
 						</div>
 					</div>
 					{!! Form::close() !!}

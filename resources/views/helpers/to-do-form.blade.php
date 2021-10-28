@@ -73,7 +73,7 @@
   @endforeach
   <div class="form-group row mb-0 font">
     <div class="col-md-12 text-right">
-      <input type="submit" value="Update" class="ms-ua-submit btn btn-primary" />
+      <input type="submit" value="{{ zactra::translate_lang('Update') }}" class="ms-ua-submit btn btn-primary" />
     </div>
   </div>
   {!! Form::close() !!}
