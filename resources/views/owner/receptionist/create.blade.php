@@ -1,6 +1,8 @@
-@extends('owner.layouts.app') @section('title')
+@extends('owner.layouts.app')
+@section('title')
 <title>{{ zactra::translate_lang('Receptionist') }}</title>
-@endsection @section('body')
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
@@ -63,7 +65,8 @@
     </div>
   </div>
 </div>
-@endsection @section('js')
+@endsection
+@section('js')
 <script src="{{ asset('js/lib/jquery.validate.min.js?v=2') }}" defer></script>
 <script src="{{ asset('js/lib/jquery.mask.min.js?v=2') }}" defer></script>
 <script src="{{ asset('js/site/owner/receptionists.js') }}"></script>

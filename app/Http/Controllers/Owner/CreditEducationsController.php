@@ -64,7 +64,6 @@ class CreditEducationsController extends Controller
             'sub_content' => $content['sub_content'],
             'content'=>$content['content'],
         ]);
-
         return redirect('owner/credit-education')->with('success','You successfully store educations!');
     }
 

@@ -121,11 +121,11 @@ span {
   									@if($logos->checkUrlAttribute())
   									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{$logos->getUrlAttribute()}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
   									@else
-  									@if($logos->no_logo)
-  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-  									@else
-  									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
-  									@endif
+    									@if($logos->no_logo)
+    									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/no_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+    									@else
+    									  <a href="{{route("admins.bank.edit", $logos->id)}}"><img class="card-img-top banks-card" src="{{asset('images/default_bank_logos.png')}}" onclick="location.href='{{route("admins.bank.edit", $logos->id)}}'" alt="Card image cap"></a>
+    									@endif
   									@endif
 									@else
   									@if($logos->no_logo)
@@ -151,8 +151,8 @@ span {
 				<div class="container">
 					<?php $alphas = range("A", "Z"); ?>
 					<ul class="pagination alphabetical">
-						<li class=" {{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">ALL</a></li>
-						<li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
+						<li class=" {{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type])}}">{{ zactra::translate_lang('ALL') }}</a></li>
+						<li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' => "#"])}}">{{ zactra::translate_lang('#') }}</a></li>
 						@foreach($alphas as $alpha)
 						<li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a href="{{ route('admins.bank.missing', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>
 						@endforeach

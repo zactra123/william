@@ -1,6 +1,8 @@
-@extends('owner.layouts.app') @section('title')
+@extends('owner.layouts.app')
+@section('title')
 <title>{{ zactra::translate_lang('Slogans') }}</title>
-@endsection @section('body')
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>

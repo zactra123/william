@@ -3,7 +3,6 @@
 <title>{{ zactra::translate_lang('Eductions') }}</title>
 @endsection
 @section('body')
-{{-- @include('helpers.breadcrumbs', ['title'=> "CREDIT EDUCATION", 'route' => ["Home"=> '/owner',"UPDATE EDUCATION" => "#"]]) --}}
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>

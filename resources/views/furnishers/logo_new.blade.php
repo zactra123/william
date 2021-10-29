@@ -58,7 +58,7 @@
 											</div>
 										</div>
 										{{-- <ul class="pagination alphabetical ">
-                                          <li class="{{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
+                    <li class="{{empty(request()->character) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type])}}">ALL</a></li>
 										<li class="{{!empty(request()->character) && request()->character == '#' ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' => "#"])}}">#</a></li>
 										@foreach($alphas as $alpha)
 										<li class=" {{!empty(request()->character) && request()->character == strtolower($alpha) ? "active":""}}"><a href="{{ route('admins.bank.show', ['type'=> request()->type, 'character' =>  strtolower($alpha)])}}">{{$alpha}}</a></li>

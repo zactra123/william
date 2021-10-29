@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                   <div class="row my-2">
                     <div class="col-md-12">
-                      <strong class="mb-2">{{ zactra::translate_lang('Title:') }}</strong>
+                      <strong class="mb-2 fs-18">{{ zactra::translate_lang('Title:') }}</strong>
                     </div>
                     <div class="col-md-12">
                       {{$value->title}}
@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                   <div class="row my-2">
                     <div class="col-md-12">
-                      <strong class="mb-2">{{ zactra::translate_lang('Url:') }}</strong>
+                      <strong class="mb-2 fs-18">{{ zactra::translate_lang('Url:') }}</strong>
                     </div>
                     <div class="col-md-12">
                       {{$value->url}}
@@ -48,7 +48,7 @@
                 <div class="col-md-12">
                   <div class="row my-2">
                     <div class="col-md-12">
-                      <strong class="mb-2">{{ zactra::translate_lang('Category number:') }}</strong>
+                      <strong class="mb-2 fs-18">{{ zactra::translate_lang('Category number:') }}</strong>
                     </div>
                     <div class="col-md-12">
                       {{$value->category}}
@@ -58,7 +58,7 @@
                 <div class="col-md-12">
                   <div class="row my-4">
                     <div class="col-md-12">
-                      <strong class="mb-2">{{ zactra::translate_lang('Sub Content:') }}</strong>
+                      <strong class="mb-2 fs-18">{{ zactra::translate_lang('Sub Content:') }}</strong>
                     </div>
                     <div class="col-md-12">
                       {!! $value->sub_content !!}
@@ -68,7 +68,7 @@
                 <div class="col-md-12">
                   <div class="row my-4">
                     <div class="col-md-12">
-                      <strong class="mb-2">{{ zactra::translate_lang('Content:') }}</strong>
+                      <strong class="mb-2 fs-18">{{ zactra::translate_lang('Content:') }}</strong>
                     </div>
                     <div class="col-md-12">
                       {!! $value->content !!}

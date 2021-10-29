@@ -27,7 +27,7 @@
                 <div class="col-md-12 col-sm-12">
                   <div class="album">
                     <div class="container">
-                      {!! Form::select('affiliates', ["" => "SELECT STATE", "judicial" =>"JUDICIAL","non_judicial" =>"NON JUDICIAL", "all" =>"ALL STATES" ], request()->type, ['class'=>'selectize']); !!}
+                      {!! Form::select('affiliates', ["" =>"SELECT STATE", "judicial" =>"JUDICIAL","non_judicial" =>"NON JUDICIAL", "all" =>"ALL STATES" ], request()->type, ['class'=>'selectize']); !!}
                     </div>
                   </div>
                 </div>

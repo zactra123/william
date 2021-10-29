@@ -18,7 +18,7 @@
             {!! Form::select("states", [""=>"FILTER BY STATE"] + $states, request()->states, ['class'=>' form-control mmb-5 selectize-single state'] ); !!}
           </div>
           <div class="col-md-3">
-            <span class="ml-3"> <input class="form-check-input mt-2" type="checkbox" name="no_logo" {{ request()->no_logo ? 'checked' : '' }}> <label for="checkbox" class="mt-1"> Without Logo</label></span>
+            <span class="ml-3"> <input class="form-check-input mt-2" type="checkbox" name="no_logo" {{ request()->no_logo ? 'checked' : '' }}> <label for="checkbox" class="mt-1">{{ zactra::translate_lang('Without Logo') }}</label></span>
             <input type="submit" value="{{ zactra::translate_lang('Search') }}" class="btn btn-primary" style="float: right;" />
           </div>
         </div>

@@ -1,6 +1,8 @@
-@extends('owner.layouts.app') @section('title')
+@extends('owner.layouts.app')
+@section('title')
 <title>{{ zactra::translate_lang('Slogans') }}</title>
-@endsection @section('body')
+@endsection
+@section('body')
 <div class="breadcrumb-header justify-content-between">
   <div>
     <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
@@ -12,7 +14,6 @@
     </nav>
   </div>
 </div>
-
 <div class="container mmap-0">
   <div class="row row-sm">
     <div class="col-md-12 col-sm-12 col-12">
@@ -26,7 +27,7 @@
             <table class="table table-responsive">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">{{ zactra::translate_lang('#') }}</th>
                   <th scope="col">{{ zactra::translate_lang('Author') }}</th>
                   <th scope="col">{{ zactra::translate_lang('Slogan') }}</th>
                   <th scope="col">{{ zactra::translate_lang('Action') }}</th>
@@ -63,7 +64,8 @@
     </div>
   </div>
 </div>
-@endsection @section('js')
+@endsection
+@section('js')
 <script>
   $(document).ready(function () {
     $(".delete").on("click", function (e) {
