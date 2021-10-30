@@ -1,19 +1,21 @@
 <!-- main-sidebar opened -->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="main-sidebar app-sidebar sidebar-scroll">
+  <!-- /logo -->
   <div class="main-sidebar-header">
-    <a class="desktop-logo logo-light active" href="{{url('/owner')}}" class="text-center mx-auto"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo"></a>
-    <a class="desktop-logo icon-logo active"href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon"></a>
-    <a class="desktop-logo logo-dark active" href="{{url('/owner')}}"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
-    <a class="logo-icon mobile-logo icon-dark active" href="{{url('/owner')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
-  </div><!-- /logo -->
-
+    <a class="desktop-logo logo-light active" href="{{url('/')}}" class="text-center mx-auto"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo"></a>
+    <a class="desktop-logo icon-logo active"href="{{url('/')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon"></a>
+    <a class="desktop-logo logo-dark active" href="{{url('/')}}"><img src="https://prudentscores.com/images/new/logo.png" class="main-logo dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
+    <a class="logo-icon mobile-logo icon-dark active" href="{{url('/')}}"><img src="{{URL::asset('/icons/apple-icon-180x180.png')}}" class="logo-icon dark-theme" alt="{{ zactra::translate_lang('logo') }}"></a>
+  </div>
+  <!-- /logo -->
+  <!-- /user -->
   <div class="main-sidebar-loggedin text-center">
     <div class="app-sidebar__user">
       <div class="dropdown user-pro-body text-center">
         <div class="user-pic">
           @if (isset(Auth::user()->photo))
-            <img src="{{ Auth::user()->photo }}" alt="Profile Image" class="rounded-circle mCS_img_loaded">
+            <img src="{{ Auth::user()->photo }}" alt="{{ zactra::translate_lang('Profile Image') }}" class="rounded-circle mCS_img_loaded">
           @else
             <img src="https://mpng.subpng.com/20180411/rzw/kisspng-user-profile-computer-icons-user-interface-mystique-5aceb0245aa097.2885333015234949483712.jpg" alt="{{ zactra::translate_lang('user-img') }}" class="rounded-circle mCS_img_loaded">
           @endif
@@ -24,24 +26,25 @@
         </div>
       </div>
     </div>
-  </div><!-- /user -->
+  </div>
+  <!-- /user -->
   <div class="sidebar-navs">
     <ul class="nav  nav-pills-circle">
-      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reports" aria-describedby="tooltip365540">
+      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ zactra::translate_lang('Reports') }}" aria-describedby="tooltip365540">
         <a class="nav-link text-center m-2" href="{{ route('owner.reports.index')}}"><i class="las la-poll"></i>
         </a>
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Messages">
+      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ zactra::translate_lang('Messages') }}">
         <a class="nav-link text-center m-2" href="{{ url('owner/message')}}">
           <i class="fe fe-clipboard"></i>
         </a>
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Clients">
+      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ zactra::translate_lang('Clients') }}">
         <a class="nav-link text-center m-2" href="{{ route('owner.client.index')}}">
           <i class="fe fe-user"></i>
         </a>
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+      <li class="nav-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ zactra::translate_lang('Logout') }}">
         <a href="{{ route('logout') }}" class="nav-link text-center m-2">
           <i class="fe fe-power"></i>
         </a>

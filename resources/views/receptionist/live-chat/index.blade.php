@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-12 d-inline-flex">
         <div class="list-group center-block list-group-horizontal">
-          <a class="list-group-item   {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >{{ zactra::translate_lang('My Messages') }}
+          <a class="list-group-item {{Request()->all ? "" : "active"}}" href="{{route("receptionist.liveChat.index")}}" >{{ zactra::translate_lang('My Messages') }}
             @if(array_sum($unreads))
               <span class="badge badge-notify text-white" id="userUnreds">{{array_sum($unreads)}}</span>
             @endif
