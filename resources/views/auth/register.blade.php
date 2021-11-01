@@ -8,7 +8,7 @@
 <section class="py-5 container mmt-80">
 	<div class="row justify-content-center">
 		<div class="col-md-7 col-sm-12 col-12">
-			<div class="px-4 py-4">
+			<div class="px-4 py-4 mmt-45 ovpad">
 				<h1 class="fs-25 bold theme-color-dark">{{ zactra::translate_lang('Sign Up') }}</h1>
 				<p>{{ zactra::translate_lang('New here? Please enter following information to get register!') }}</p>
 				<br>
@@ -113,12 +113,12 @@
 							</label>
 						</div>
 						<div class="basic-button login-box text-center">
-							<input class="login" type="submit" value="Next" name="">
+							<input class="login" type="submit" value="{{ zactra::translate_lang('Next') }}" name="">
 						</div>
 					</form>
 					<div class="">
 						<p class="pt-4 fs-12 text-center">
-							<strong class="fs-18 text-black">{{ zactra::translate_lang('Already have an account?') }} <a class="fs-20 theme-color-dark" href="{{route('login')}}">{{ zactra::translate_lang('Sign In') }}</a></strong>
+							<strong class="fs-18 text-black mmsf-14">{{ zactra::translate_lang('Already have an account?') }} <a class="fs-20 theme-color-dark" href="{{route('login')}}">{{ zactra::translate_lang('Sign In') }}</a></strong>
 						</p>
 					</div>
 					<div data-id="2" class="register_form additional-reg none">

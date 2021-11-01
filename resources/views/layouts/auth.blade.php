@@ -54,6 +54,26 @@
         .mmt-90 {
           margin-top: 60px !important;
         }
+        .mmt-45{
+          margin-top: 45px !important;
+        }
+        .ovpad{
+          overflow-x: hidden !important;
+          padding-left: 0px !important;
+        }
+        .mmb-20{
+          margin-bottom: 20px;
+        }
+        .mmsf-14{
+          font-size: 14px !important;
+        }
+        .mrp-0{
+          padding: 0px !important;
+        }
+        .mwrb{
+          width: 15.88rem !important;
+          text-align: center !important;
+        }
       }
     </style>
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />

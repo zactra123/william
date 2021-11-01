@@ -84,9 +84,9 @@
 					@enderror
 				</div>
 			</div>
-			<div class="col-md-12 text-center">
-				<div class="basic-button">
-					<input class="login" type="submit" value="{{ zactra::translate_lang('Register') }}" name="">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12 mrp-0 text-center">
+				<div class="basic-button mwrb">
+					<input class="login mwrb" type="submit" value="{{ zactra::translate_lang('Register') }}" name="">
 				</div>
 			</div>
 		</div>

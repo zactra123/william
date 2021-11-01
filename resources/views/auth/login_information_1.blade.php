@@ -1,22 +1,21 @@
 @extends('layouts.auth')
-
 @section('content')
 <br>
 <section class="py-5 container">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
 			<div class="px-4 py-4 login-form-border register_form">
-				{{-- @if ($message = Session::get('success'))
-                <div class="w-25 alert alert-success alert-block flash">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ $message }}</strong>
-			</div>
+			{{-- @if ($message = Session::get('success'))
+	      <div class="w-25 alert alert-success alert-block flash">
+	        <button type="button" class="close" data-dismiss="alert">×</button>
+	        <strong>{{ $message }}</strong>
+				</div>
 			@endif
 			@if ($message = Session::get('error'))
-			<div class="w-25 alert alert-danger alert-block flash">
-				<button type="button" class="close" data-dismiss="alert">×</button>
-				<strong>{{ $message }}</strong>
-			</div>
+				<div class="w-25 alert alert-danger alert-block flash">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<strong>{{ $message }}</strong>
+				</div>
 			@endif --}}
 
 			<h1 class="fs-25 bold theme-color-dark">{{ zactra::translate_lang('Rest Login information') }}</h1>
@@ -56,7 +55,7 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<div class="basic-button">
-						<input type="submit" value="NEXT STEP" class="login">
+						<input type="submit" value="{{ zactra::translate_lang('NEXT STEP') }}" class="login">
 					</div>
 				</div>
 			</div>
@@ -70,12 +69,9 @@
 </section>
 <script>
 	$(document).ready(function() {
-
 		$(".ssn").mask("999-99-9999");
 		$(".ein").mask("99-9999999");
-
 		$.validator.addMethod("one_option", function(value, element) {
-
 			return $("[name='" + element.name + "']").length < 2;
 		}, "Please choose one of the options");
 
