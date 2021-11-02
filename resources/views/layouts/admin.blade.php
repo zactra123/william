@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    {{-- Meta data --}} @yield('meta') @if (!trim($__env->yieldContent('meta')))
+    {{-- Meta data --}}
+    @yield('meta')
+    @if (!trim($__env->yieldContent('meta')))
     <title>{{ zactra::translate_lang('Prudent Credit Solutions') }}</title>
-    @endif {{-- Meta data END --}}
+    @endif
+    {{-- Meta data END --}}
     <script type="application/ld+json">
       {
           "@context": "http:\/\/schema.org",
@@ -111,8 +114,8 @@
                 <a href="{{ route('register') }}" class="text-white">
                   <span class="fs-12">{{ zactra::translate_lang(' / Sign up') }}</span>
                 </a>
-                @endif {{--
-                <div class="dropdown">
+                @endif
+                {{-- <div class="dropdown">
                   <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     My Account
                   </a>
@@ -121,8 +124,7 @@
                       Logout
                     </a>
                   </div>
-                </div>
-                --}}
+                </div> --}}
               </div>
             </div>
           </div>
@@ -141,9 +143,23 @@
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             <nav id="navbar" class="navbar">
               <ul>
-                @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.nav_bar_client') @elseif(Auth::user()->role == 'affiliate') @include('helpers.urls.nav_bar_affiliate') @elseif(Auth::user()->role == 'super admin')
-                @include('helpers.urls.nav_bar_owner') @elseif(Auth::user()->role == 'admin') @include('helpers.urls.nav_bar_admin') @elseif(Auth::user()->role == 'receptionist') @include('helpers.urls.nav_bar_receptionist')
-                @elseif(Auth::user()->role == 'seo') @include('helpers.urls.nav_bar_seo') @endif @else @include('helpers.urls.nav_bar_guest') @endif
+                @if(Auth::user())
+                  @if(Auth::user()->role == 'client')
+                    @include('helpers.urls.nav_bar_client')
+                  @elseif(Auth::user()->role == 'affiliate')
+                    @include('helpers.urls.nav_bar_affiliate')
+                  @elseif(Auth::user()->role == 'super admin')
+                    @include('helpers.urls.nav_bar_owner')
+                  @elseif(Auth::user()->role == 'admin')
+                    @include('helpers.urls.nav_bar_admin')
+                  @elseif(Auth::user()->role == 'receptionist')
+                    @include('helpers.urls.nav_bar_receptionist')
+                  @elseif(Auth::user()->role == 'seo')
+                    @include('helpers.urls.nav_bar_seo')
+                  @endif
+                @else
+                  @include('helpers.urls.nav_bar_guest')
+                @endif
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -152,9 +168,7 @@
         </header>
       </div>
     </section>
-
     @yield('content')
-
     <div class="modal fade" id="partner_with_us" role="dialog">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

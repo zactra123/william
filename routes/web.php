@@ -195,7 +195,6 @@ Route::group(['prefix'=> 'admin'], function(){
   Route::delete('message/{id}','MessagesController@destroy')->name('admin.message.destroy');
   Route::post('message/user/data','MessagesController@userData')->name('admin.message.userData');
 
-
 });
 
 Route::group(['prefix'=> 'receptionist'], function(){

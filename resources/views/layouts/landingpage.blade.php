@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/new_style.min.css?v='.env('ASSET_VERSION') ) }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    {{--
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
-    --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" /> --}}
     <style media="screen">
       .ls-hidden {
         display: none;
@@ -54,10 +52,7 @@
                   <a href="tel:1-844-337-8336" class="text-white">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g clip-path="url(#clip0)">
-                        <path
-                          d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z"
-                          stroke="#F63664"
-                        />
+                        <path d="M15.211 12.0959L15.211 12.0959C15.5591 12.444 15.593 13.0923 15.1982 13.5547L13.6958 15.0571L14.0494 15.4106L13.6958 15.0571C13.4164 15.3365 12.9957 15.4989 12.4075 15.5C11.815 15.5011 11.087 15.3365 10.262 14.9979C8.61368 14.3215 6.67373 12.9897 4.83361 11.1496C2.99511 9.31111 1.68312 7.37195 1.01613 5.72352C0.682302 4.8985 0.51903 4.16846 0.516845 3.57296C0.514679 2.9826 0.669224 2.56066 0.931037 2.28244L2.44127 0.772212C2.78934 0.424138 3.4376 0.390257 3.90003 0.784977L6.12011 3.00506C6.66783 3.55277 6.42264 4.4444 5.76841 4.6457L5.76837 4.64557L5.75736 4.64924C4.82893 4.95867 4.15311 5.99896 4.47707 7.0143C4.71217 7.97414 5.41799 8.98186 6.23202 9.78559C7.05219 10.5954 8.06536 11.2801 8.98397 11.5098L8.98393 11.5099L8.99675 11.5128C9.94071 11.7226 11.0062 11.2092 11.334 10.2259L11.3341 10.2259L11.3375 10.2148C11.5388 9.56058 12.4304 9.31539 12.9781 9.86309L15.211 12.0959Z" stroke="#F63664" />
                       </g>
                       <defs>
                         <clipPath id="clip0">
@@ -69,10 +64,7 @@
                   </a>
                   <a href="mailto:info@prudentscores.com" class="ml-4 text-white">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z"
-                        fill="#F63664"
-                      />
+                      <path d="M13.9779 2.13989H2.02209C0.90713 2.13989 0 3.04702 0 4.16198V11.8377C0 12.9527 0.90713 13.8598 2.02209 13.8598H13.9779C15.0929 13.8598 16 12.9527 16 11.8377V4.16198C16 3.04702 15.0929 2.13989 13.9779 2.13989ZM13.662 3.44424L8 7.81807L2.338 3.44424H13.662ZM13.9779 12.5555H2.02209C1.62635 12.5555 1.30435 12.2335 1.30435 11.8378V4.29398L7.6013 9.15833C7.7187 9.24902 7.85939 9.29433 8 9.29433C8.14061 9.29433 8.2813 9.24902 8.3987 9.15833L14.6957 4.29398V11.8377C14.6957 12.2335 14.3737 12.5555 13.9779 12.5555Z" fill="#F63664" />
                     </svg>
                     <span class="fs-12">{{ zactra::translate_lang('info@prudentscores.com') }}</span>
                   </a>
@@ -114,11 +106,24 @@
           <div class="col-md-8 col-sm-12 col-12">
             <nav id="navbar" class="navbar">
               <ul class="msw-100">
-                @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.nav_bar_client') @elseif(Auth::user()->role == 'affiliate') @include('helpers.urls.nav_bar_affiliate') @elseif(Auth::user()->role == 'super admin')
-                @include('helpers.urls.nav_bar_owner') @elseif(Auth::user()->role == 'admin') @include('helpers.urls.nav_bar_admin') @elseif(Auth::user()->role == 'receptionist') @include('helpers.urls.nav_bar_receptionist')
-                @elseif(Auth::user()->role == 'seo') @include('helpers.urls.nav_bar_seo') @endif @else @include('helpers.urls.nav_bar_guest') @endif {{--
-                <i class="fa fa-bars mobile-nav-toggle ls-hidden text-right" style="color: black;"></i>
-                --}}
+                @if(Auth::user())
+                  @if(Auth::user()->role == 'client')
+                    @include('helpers.urls.nav_bar_client')
+                  @elseif(Auth::user()->role == 'affiliate')
+                    @include('helpers.urls.nav_bar_affiliate')
+                  @elseif(Auth::user()->role == 'super admin')
+                    @include('helpers.urls.nav_bar_owner')
+                  @elseif(Auth::user()->role == 'admin')
+                    @include('helpers.urls.nav_bar_admin')
+                  @elseif(Auth::user()->role == 'receptionist')
+                    @include('helpers.urls.nav_bar_receptionist')
+                @elseif(Auth::user()->role == 'seo')
+                  @include('helpers.urls.nav_bar_seo')
+                @endif
+              @else
+                @include('helpers.urls.nav_bar_guest')
+              @endif
+                {{-- <i class="fa fa-bars mobile-nav-toggle ls-hidden text-right" style="color: black;"></i> --}}
               </ul>
             </nav>
             <!-- .navbar -->
@@ -175,7 +180,6 @@
       </div>
     </section>
     <!-- End Hero -->
-
     <main id="main">
       <!-- ======= About Section ======= -->
       <section id="about" class="about">
@@ -203,7 +207,6 @@
         </div>
       </section>
       <!-- End About Section -->
-
       <!-- ======= Counts Section ======= -->
       <section id="counts" class="counts py-5">
         <div class="container" data-aos="fade-up">
@@ -221,7 +224,7 @@
                 <i class="fa fa-journal-richtext"></i>
                 <span data-purecounter-start="0" data-purecounter-end="34608" data-purecounter-duration="1" class="purecounter"></span>
                 <p>{{ zactra::translate_lang('The number of') }} <strong>{{ zactra::translate_lang('inaccuracies') }}</strong>{{ zactra::translate_lang('removed or corrected as of today.') }}</p>
-                {{-- <a href="#">Find out more &raquo;</a> --}}
+                {{-- <a href="#">{{ zactra::translate_lang('Find out more') }} &raquo;</a> --}}
               </div>
             </div>
             <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch">
@@ -229,7 +232,7 @@
                 <i class="fa fa-people"></i>
                 <span data-purecounter-start="0" data-purecounter-end="17" data-purecounter-duration="1" class="purecounter"></span>
                 <p>{{ zactra::translate_lang('The number of') }} <strong>{{ zactra::translate_lang('Credit Experts') }}</strong>{{ zactra::translate_lang('to Serve you.') }}</p>
-                {{-- <a href="#">Find out more &raquo;</a> --}}
+                {{-- <a href="#">{{ zactra::translate_lang('Find out more') }} &raquo;</a> --}}
               </div>
             </div>
           </div>
@@ -240,14 +243,7 @@
       <section id="why-us" class="why-us section-bg">
         <div class="container-fluid" data-aos="fade-up">
           <div class="row">
-            <div
-              class="col-lg-5 align-items-stretch"
-              style="background-image: url({{ asset('/images/video-img2.png') }});background-repeat: no-repeat;background-size: auto;"
-              data-aos="zoom-in"
-              data-aos-delay="100"
-              data-toggle="modal"
-              data-target="#exampleModalCenter"
-            >
+            <div class="col-lg-5 align-items-stretch" style="background-image: url({{ asset('/images/video-img2.png') }});background-repeat: no-repeat;background-size: auto;"  data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#exampleModalCenter">
               {{-- <a href="https://prudentscores.com/images/howItWorks.mp4" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a> --}}
               <span class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></span>
               <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -295,41 +291,43 @@
             <p>{{ zactra::translate_lang('Trusted for over 15 years') }}</p>
           </div>
           <div class="row mb-5 pr-3">
-            @if (isset($reviews)) @foreach ($reviews as $key => $value)
-            <div class="col-lg-4 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-              <div class="row">
-                <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                  <div class="px-4 {{ $key != '2' ? 'reviewborder' : '' }}">
-                    <div class="row">
-                      @if ($value->rating=='5')
-                      <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
-                      @elseif($value->rating=='4')
-                      <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span><span class="pt-2 ml-1"><i class="fa fa-star"></i></span>
-                      @elseif($value->rating=='3')
-                      <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
-                      <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                      @elseif($value->rating=='2')
-                      <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
-                      <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                      @elseif($value->rating=='1')
-                      <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> </span>
-                      <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
-                      @endif
-                    </div>
-                    <div class="row mt-2">
-                      <strong>{{ ucfirst($value->name) }}</strong>
-                    </div>
-                    <div class="row mt-2">
-                      {{ zactra::convertDay($value->created_by) }}
-                    </div>
-                    <div class="row mt-2">
-                      " {{ zactra::limit_words($value->review,200)}} "
+            @if (isset($reviews))
+              @foreach ($reviews as $key => $value)
+              <div class="col-lg-4 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="row">
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                    <div class="px-4 {{ $key != '2' ? 'reviewborder' : '' }}">
+                      <div class="row">
+                        @if ($value->rating=='5')
+                          <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+                        @elseif($value->rating=='4')
+                          <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span><span class="pt-2 ml-1"><i class="fa fa-star"></i></span>
+                        @elseif($value->rating=='3')
+                          <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @elseif($value->rating=='2')
+                          <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @elseif($value->rating=='1')
+                          <span class="pt-2" style="color: yellow;"><i class="fa fa-star"></i> </span>
+                          <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
+                        @endif
+                      </div>
+                      <div class="row mt-2">
+                        <strong>{{ ucfirst($value->name) }}</strong>
+                      </div>
+                      <div class="row mt-2">
+                        {{ zactra::convertDay($value->created_by) }}
+                      </div>
+                      <div class="row mt-2">
+                        " {{ zactra::limit_words($value->review,200)}} "
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            @endforeach @endif
+              @endforeach
+            @endif
             <div class="col-md-12 mt-4">
               <div class="row pull-right">
                 <a href="{{ route('review.list') }}"><button type="button" class="revirewmorebtn" name="button">{{ zactra::translate_lang('More Reviews') }}</button></a>
@@ -338,7 +336,6 @@
           </div>
         </div>
       </section>
-
       <!-- ======= Services Section ======= -->
       <section id="services" class="services">
         <div class="container" data-aos="fade-up">

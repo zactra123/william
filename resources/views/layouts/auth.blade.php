@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    {{-- Meta data --}} @yield('meta') @if (!trim($__env->yieldContent('meta')))
+    {{-- Meta data --}}
+    @yield('meta')
+    @if (!trim($__env->yieldContent('meta')))
     <title>{{ zactra::translate_lang('Prudent Credit Solutions') }}</title>
-    @endif {{-- Meta data END --}} {{-- Canonical url --}}
+    @endif
+    {{-- Meta data END --}}
+    {{-- Canonical url --}}
     <link rel="canonical" href="{{ url()->current() }}" />
 
     {{-- Fav Icon --}}
@@ -31,9 +35,7 @@
     {{-- Fav Icon END --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <link href="{{asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
-    {{--
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js?v='.env('ASSET_VERSION') ) }}"></script>
 
@@ -120,8 +122,7 @@
                   <span class="fs-12">{{ zactra::translate_lang(' / Sign up') }}</span>
                 </a>
                 @endif
-                {{--
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                   <a class="btn dropdown-toggle fs-12" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     My Account
                   </a>
@@ -131,8 +132,7 @@
                       Logout
                     </a>
                   </div>
-                </div>
-                --}}
+                </div> --}}
               </div>
             </div>
           </div>
@@ -163,9 +163,7 @@
         </header>
       </div>
     </section>
-
     @yield('content')
-
     <div class="modal fade" id="partner_with_us" role="dialog">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -179,7 +177,8 @@
         </div>
       </div>
     </div>
-    @include('helpers.chat') @if(Auth::user() && Auth::user()->role == 'client')
+    @include('helpers.chat')
+    @if(Auth::user() && Auth::user()->role == 'client')
     <footer class="footer-section">
       <div class="copy-right text-center">
         <div class="container">
@@ -187,9 +186,10 @@
         </div>
       </div>
     </footer>
-    @else @include('includes.footer') @endif {{--
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script>
-    --}}
+    @else
+      @include('includes.footer')
+    @endif
+    {{-- <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script> --}}
     <!--Alerts Script-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.1/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript">

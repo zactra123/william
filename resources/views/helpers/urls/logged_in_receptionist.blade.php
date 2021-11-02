@@ -2,10 +2,10 @@
 <li>
   <a href="{{ route('receptionist.liveChat.index')}}"> <span>{{ zactra::translate_lang('CHAT') }}</span>
     <span class="pl-1">
-        <i class="fa fa-envelope" aria-hidden="true"></i>
+      <i class="fa fa-envelope" aria-hidden="true"></i>
     </span>
     @if(!empty($all_unreads))
-        <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
+      <span id="allMessageCount" class="pl-1"> {{array_sum(Auth::user()->unreads(["type" => "to"]))}}</span>
     @endif
   </a>
 </li>

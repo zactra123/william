@@ -11,27 +11,27 @@ use Auth;
 
 class ReviewController extends Controller
 {
-    /**
-     * Reviews List
-     */
+  /**
+   * Reviews List
+   */
     public function index()
     {
         $reviews = reviews::orderby("id", "desc")->paginate(10);
         return view("owner.review.index", compact("reviews"));
     }
 
-    /**
-     * Delete Review
-     */
+  /**
+   * Delete Review
+   */
     public function delete($id)
     {
         $review = reviews::where("id", $id)->delete();
         return back()->with("success", "You successfully delete review");
     }
 
-    /**
-     * Show Review on Home Page
-     */
+  /**
+   * Show Review on Home Page
+   */
     public function show($id)
     {
         reviews::where("id", $id)->update([
@@ -40,9 +40,9 @@ class ReviewController extends Controller
         return back()->with("success", "You successfully show review on home page!");
     }
 
-    /**
-     * Hide Review on Home Page
-     */
+  /**
+   * Hide Review on Home Page
+   */
     public function hide($id)
     {
         reviews::where("id", $id)->update([

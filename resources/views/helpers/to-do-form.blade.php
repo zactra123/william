@@ -80,44 +80,44 @@
 </div>
 
 <script>
-    $("#select-account").selectize();
+  $("#select-account").selectize();
 </script>
 <script>
   $(document).ready(function () {
-      $(document).delegate(".delete", "click", function (e) {
-          e.preventDefault();
-          var id = $(this).data("id");
-          var token = $("meta[name='csrf-token']").attr("content");
-          bootbox.confirm({
-              title: "Destroy To Do?",
-              message: "Do you really want to delete record?",
-              buttons: {
-                  cancel: {
-                      label: '<i class="fa fa-times"></i> Cancel',
-                      className: "btn-success",
-                  },
-                  confirm: {
-                      label: '<i class="fa fa-check"></i> Confirm',
-                      className: "btn-danger",
-                  },
+    $(document).delegate(".delete", "click", function (e) {
+      e.preventDefault();
+      var id = $(this).data("id");
+      var token = $("meta[name='csrf-token']").attr("content");
+      bootbox.confirm({
+        title: "Destroy To Do?",
+        message: "Do you really want to delete record?",
+        buttons: {
+          cancel: {
+            label: '<i class="fa fa-times"></i> Cancel',
+            className: "btn-success",
+          },
+          confirm: {
+            label: '<i class="fa fa-check"></i> Confirm',
+            className: "btn-danger",
+          },
+        },
+        callback: function (result) {
+          console.log("This was logged in the callback: " + result);
+          if (result) {
+            $.ajax({
+              url: "/receptionist/dispute/" + id,
+              type: "DELETE",
+              data: {
+                id: id,
+                _token: token,
               },
-              callback: function (result) {
-                  console.log("This was logged in the callback: " + result);
-                  if (result) {
-                      $.ajax({
-                          url: "/receptionist/dispute/" + id,
-                          type: "DELETE",
-                          data: {
-                              id: id,
-                              _token: token,
-                          },
-                          success: function () {
-                              console.log("it Works");
-                          },
-                      });
-                  }
+              success: function () {
+                console.log("it Works");
               },
-          });
+            });
+          }
+        },
       });
+    });
   });
 </script>
