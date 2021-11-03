@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-{{-- @include('helpers.breadcrumbs', ['title'=> "AFFILIATES", 'route' => ["Home"=> '/owner',"AFFILIATES LIST" => "#"]]) --}}
 <section class="ms-user-account">
   <div class="container">
     <div class="row">
