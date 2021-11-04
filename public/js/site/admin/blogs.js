@@ -37,7 +37,7 @@ $(document).ready(function() {
     });
     $('#date').click(function () {
         this.type='date';
-    })  ;
+    });
     $('#date').blur(function () {
         if(this.value==''){this.type='text'};
     });

@@ -1,8 +1,8 @@
 @extends('layouts.layout1')
 @section('meta')
 <title>{{ zactra::translate_lang('Prudent Credit Solutions: News Room') }}</title>
-<meta name="description" content="We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.">
-<meta name="keywords" content="credit repair blogs, list of credit repair blogs, credit repair strategies blogs, credit repair companies blog, credit repair business blog">
+<meta name="description" content="{{ zactra::translate_lang('We resolve inaccuracies with - Bankruptcy, Mortgage Negatives, Late Payment Remarks, Student Loans, Fraud Accounts, Charge Offs, Mixed Files, ChexSystems.') }}">
+<meta name="keywords" content="{{ zactra::translate_lang('credit repair blogs, list of credit repair blogs, credit repair strategies blogs, credit repair companies blog, credit repair business blog') }}">
 @endsection
 @section('content')
 <br>
@@ -26,7 +26,6 @@
 							<div class="mt-5 shadow-sm px-4 py-4">
 								<h4 class="h6">{{ zactra::translate_lang('Most Viewed Blogs') }}</h4>
 								<div class="latest-products mt-4"></div>
-								{{-- <p  class="text-danger">This section is under development</p> --}}
 								@foreach ($mostviewes as $key1 => $value1)
 								<div class="row mb-4">
 									<div class="col-md-4">
@@ -61,7 +60,8 @@
 										<h5 class="card-title text-info">{{strtoupper($value->title)}}</h5>
 									</div>
 									<div class="col-md-6 text-right text-primary">
-										<i class="fa fa-eye"></i> @if ($value->visited=="")
+										<i class="fa fa-eye"></i>
+										@if ($value->visited=="")
 										0
 										@else
 										{{ $value->visited }}

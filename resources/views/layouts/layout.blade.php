@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @yield('meta') @if (!trim($__env->yieldContent('meta')))
+    @yield('meta')
+    @if (!trim($__env->yieldContent('meta')))
     <title>{{ zactra::translate_lang('Prudent Credit Solutions') }}</title>
     @endif
-
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -206,11 +206,24 @@
         <nav class="navbar navbar-inverse hidden-sm hidden-xs">
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav mr-1">
-              @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.nav_bar_client') @elseif(Auth::user()->role == 'affiliate') @include('helpers.urls.nav_bar_affiliate') @elseif(Auth::user()->role == 'super admin')
-              @include('helpers.urls.nav_bar_owner') @elseif(Auth::user()->role == 'admin') @include('helpers.urls.nav_bar_admin') @elseif(Auth::user()->role == 'receptionist') @include('helpers.urls.nav_bar_receptionist')
-              @elseif(Auth::user()->role == 'seo') @include('helpers.urls.nav_bar_seo') @endif @else @include('helpers.urls.nav_bar_guest') @endif
+              @if(Auth::user())
+                @if(Auth::user()->role == 'client')
+                  @include('helpers.urls.nav_bar_client')
+                @elseif(Auth::user()->role == 'affiliate')
+                  @include('helpers.urls.nav_bar_affiliate')
+                @elseif(Auth::user()->role == 'super admin')
+                  @include('helpers.urls.nav_bar_owner')
+                @elseif(Auth::user()->role == 'admin')
+                  @include('helpers.urls.nav_bar_admin')
+                @elseif(Auth::user()->role == 'receptionist')
+                  @include('helpers.urls.nav_bar_receptionist')
+                @elseif(Auth::user()->role == 'seo')
+                  @include('helpers.urls.nav_bar_seo')
+                @endif
+              @else
+                @include('helpers.urls.nav_bar_guest')
+              @endif
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
               @if (Route::has('login')) @auth
               <li class="dropdown menu-item sign-hide">
@@ -293,8 +306,15 @@
         </div>
       </div>
     </div>
-    {{--@include('helpers.chat-box')--}} @auth @if(Auth::user()->role == 'client' || Auth::user()->role == 'affiliate') @include('helpers.chat-box') @endif @else @include('helpers.chat-box') @endif @if(Auth::user() && Auth::user()->role ==
-    'client')
+    {{--@include('helpers.chat-box')--}}
+    @auth
+      @if(Auth::user()->role == 'client' || Auth::user()->role == 'affiliate')
+      @include('helpers.chat-box')
+    @endif
+  @else
+    @include('helpers.chat-box')
+  @endif
+  @if(Auth::user() && Auth::user()->role == 'client')
     <footer class="footer-section">
       <div class="copy-right text-center">
         <div class="container">
@@ -414,23 +434,32 @@
       <span class="close-menu"><i class="fa fa-times" aria-hidden="true"></i></span>
 
       <ul class="menu-wrapper">
-        @if(Auth::user()) @if(Auth::user()->role == 'client') @include('helpers.urls.logged_in_client') @elseif((Auth::user()->role == 'affiliate')) @include('helpers.urls.logged_in_affiliate')
-        <li>
-          <a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('NOME') }}</a>
-        </li>
-        @include('helpers.urls.logged_in_affiliate') @elseif((Auth::user()->role == 'admin'))
-        <li>
-          <a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('HOME') }}</a>
-        </li>
-        @include('helpers.urls.logged_in_admin') @elseif((Auth::user()->role == 'receptionist'))
-        <li class="menu-item"><a href="{{ url('receptionist/message') }}"> {{ zactra::translate_lang('HOME') }}</a></li>
-        @include('helpers.urls.logged_in_receptionist') @elseif((Auth::user()->role == 'seo'))
-        <li class="menu-item"><a href="{{ url('admins/blogs') }}"> {{ zactra::translate_lang('HOME') }}</a></li>
-        @include('helpers.urls.logged_in_seo') @else
-        <li>
-          <a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('HOME') }}</a>
-        </li>
-        @include('helpers.urls.logged_in_owner') @endif
+        @if(Auth::user())
+        @if(Auth::user()->role == 'client')
+          @include('helpers.urls.logged_in_client')
+        @elseif((Auth::user()->role == 'affiliate'))
+          @include('helpers.urls.logged_in_affiliate')
+          <li>
+            <a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('NOME') }}</a>
+          </li>
+        @include('helpers.urls.logged_in_affiliate')
+        @elseif((Auth::user()->role == 'admin'))
+          <li>
+            <a href="{{ url('/affiliate') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('HOME') }}</a>
+          </li>
+          @include('helpers.urls.logged_in_admin')
+        @elseif((Auth::user()->role == 'receptionist'))
+          <li class="menu-item"><a href="{{ url('receptionist/message') }}"> {{ zactra::translate_lang('HOME') }}</a></li>
+          @include('helpers.urls.logged_in_receptionist')
+        @elseif((Auth::user()->role == 'seo'))
+          <li class="menu-item"><a href="{{ url('admins/blogs') }}"> {{ zactra::translate_lang('HOME') }}</a></li>
+          @include('helpers.urls.logged_in_seo')
+        @else
+          <li>
+            <a href="{{ url('/owner') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('HOME') }}</a>
+          </li>
+          @include('helpers.urls.logged_in_owner')
+        @endif
 
         <li class="menu-item sign-hide">
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ zactra::translate_lang('LOG OUT') }}<i class="fa fa-power-off"></i></a>
@@ -438,7 +467,8 @@
             @csrf
           </form>
         </li>
-        @else @include('helpers.urls.nav_bar_guest')
+        @else
+          @include('helpers.urls.nav_bar_guest')
         <li>
           <a href="{{ route('login') }}"><img src="{{asset('images/user.png')}}" alt="" />{{ zactra::translate_lang('Login') }}</a> {{--
         </li>

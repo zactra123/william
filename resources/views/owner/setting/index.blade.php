@@ -203,7 +203,7 @@
 	                <label class="form-label">{{ zactra::translate_lang('Address') }}</label>
 	              </div>
 	              <div class="col-md-9">
-	                <textarea class="form-control" name="address" rows="2" placeholder="{{ zactra::translate_lang('Address') }}">{{ Auth::user()->address }}</textarea>
+	                <textarea class="form-control" name="address" rows="5" placeholder="{{ zactra::translate_lang('Address') }}">{{ Auth::user()->address }}</textarea>
 	              </div>
 	            </div>
 	          </div>
@@ -253,50 +253,51 @@
 	          </div>
 	        </form>
 	      </div>
-	      <div class="card">
-	        <div class="card-body">
-	          <div class="mb-4 main-content-label">{{ zactra::translate_lang('Change Password') }}</div>
-	          <form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
-	            @csrf
-	            <div class="form-group">
-	              <div class="row">
-	                <div class="col-md-3">
-	                  <label class="form-label">{{ zactra::translate_lang('Old Password') }}</label>
-	                </div>
-	                <div class="col-md-9">
-	                  <input type="password" class="form-control" name="oldpassword" placeholder="{{ zactra::translate_lang('Old Password') }}" value="" required />
-	                </div>
-	              </div>
-	            </div>
-	            <div class="form-group">
-	              <div class="row">
-	                <div class="col-md-3">
-	                  <label class="form-label">{{ zactra::translate_lang('New Password') }}</label>
-	                </div>
-	                <div class="col-md-9">
-	                  <input type="password" class="form-control" name="newpassword" placeholder="{{ zactra::translate_lang('New Password') }}" value="" required />
-	                </div>
-	              </div>
-	            </div>
-	            <div class="form-group">
-	              <div class="row">
-	                <div class="col-md-3">
-	                  <label class="form-label">{{ zactra::translate_lang('Confrim Password') }}</label>
-	                </div>
-	                <div class="col-md-9">
-	                  <input type="password" class="form-control" name="confirmpassword" placeholder="{{ zactra::translate_lang('Confrim Password') }}" value="" required />
-	                </div>
-	              </div>
-	            </div>
-	            <div class="card-footer text-right">
-	              <button type="submit" class="btn btn-primary waves-effect waves-light pull-right">{{ zactra::translate_lang('Update Password') }}</button>
-	            </div>
-	          </form>
-	        </div>
-	      </div>
 	      <div class="col-md-4"></div>
 	      <!-- /Col -->
 	    </div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="mb-4 main-content-label">{{ zactra::translate_lang('Change Password') }}</div>
+					<form class="form-horizontal" action="{{ route('update.owner.password') }}" method="post">
+						@csrf
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3">
+									<label class="form-label">{{ zactra::translate_lang('Old Password') }}</label>
+								</div>
+								<div class="col-md-9">
+									<input type="password" class="form-control" name="oldpassword" placeholder="{{ zactra::translate_lang('Old Password') }}" value="" required />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3">
+									<label class="form-label">{{ zactra::translate_lang('New Password') }}</label>
+								</div>
+								<div class="col-md-9">
+									<input type="password" class="form-control" name="newpassword" placeholder="{{ zactra::translate_lang('New Password') }}" value="" required />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-3">
+									<label class="form-label">{{ zactra::translate_lang('Confrim Password') }}</label>
+								</div>
+								<div class="col-md-9">
+									<input type="password" class="form-control" name="confirmpassword" placeholder="{{ zactra::translate_lang('Confrim Password') }}" value="" required />
+								</div>
+							</div>
+						</div>
+						<div class="card-footer text-right">
+							<button type="submit" class="btn btn-primary waves-effect waves-light pull-right">{{ zactra::translate_lang('Update Password') }}</button>
+						</div>
+					</form>
+				</div>
+			</div>
 	  </div>
 	</div>
 

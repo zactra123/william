@@ -17,7 +17,8 @@
     <div class="row">
       <div class="col-md-12 col-sm-12">
         <div class="ms-ua-form">
-          {!! Form::open(['route' => "owner.affiliate.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!} @csrf
+          {!! Form::open(['route' => "owner.affiliate.pricing", 'method' => 'POST','files' => 'true','enctype'=>'multipart/form-data', 'class' => 'm-form m-form label-align-right', 'id'=>'bankInformation']) !!}
+          @csrf
           <div id="price-list">
             @include('owner.affiliate.pricing._form', ["pricing" =>$default_price_list, "default" => $default_price_list])
           </div>

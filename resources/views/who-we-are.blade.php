@@ -1,8 +1,10 @@
-@extends('layouts.layout1') @section('meta')
+@extends('layouts.layout1')
+@section('meta')
 <title>{{ zactra::translate_lang('Prudent Credit Solutions - leader in credit repair industry Who We Are?') }}</title>
 <meta name="description" content="Prudent Credit Solutions helps dispute and correct inaccuracies on credit reports, improve credit history, achieve reasonable credit-fitness goals." />
 <meta name="keywords" content="top credit repair companies, credit repair companies near me, best credit repair services, fast credit repair, improving credit ratings" />
-@endsection @section('content')
+@endsection
+@section('content')
 <div class="p-r">
   <section style="background:url({{ asset('/images/page-name.jpg') }}); min-height:250px; filter:brightness(0.5)"></section>
   <div class="innet-div-about">
@@ -16,7 +18,7 @@
       <div class="feature-box bmargin">
         <div class="image-holder"><img width="100%" src="{{asset('images/3.jpg')}}" alt="" class="img-responsive" /></div>
         <div class="clearfix"></div>
-        <br />
+        <br>
         <h4 class="ubuntu" id="c-text2">{{ zactra::translate_lang('Clarity') }}</h4>
         <p>{{ zactra::translate_lang('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.') }}</p>
       </div>
@@ -25,7 +27,7 @@
       <div class="feature-box bmargin">
         <div class="image-holder"><img width="100%" src="{{asset('images/1.jpg')}}" alt="" class="img-responsive" /></div>
         <div class="clearfix"></div>
-        <br />
+        <br>
         <h4 class="ubuntu" id="c-text2">{{ zactra::translate_lang('Insight') }}</h4>
         <p>{{ zactra::translate_lang('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.') }}</p>
       </div>
@@ -34,7 +36,7 @@
       <div class="feature-box bmargin">
         <div class="image-holder"><img width="100%" src="{{asset('images/05.jpg')}}" alt="" class="img-responsive" /></div>
         <div class="clearfix"></div>
-        <br />
+        <br>
         <h4 class="ubuntu" id="c-text2">{{ zactra::translate_lang('Strategy') }}</h4>
         <p>{{ zactra::translate_lang('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.') }}</p>
       </div>
@@ -43,7 +45,7 @@
     <div class="col-md-3">
       <div class="feature-box15 bmargin px-2" style="border: 3px solid #37c6f5;">
         <div class="clearfix"></div>
-        <br />
+        <br>
         <div class="col-xs-12">
           <h4 class="paddtop1 dosis font-weight-2 lspace-sm">{{ zactra::translate_lang('What we do') }} <span class="text-orange-2">{{ zactra::translate_lang('For You!') }}</span></h4>
           <p class="text-justify">{{ zactra::translate_lang('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.') }}</p>
@@ -62,7 +64,7 @@
       </div>
       <div class="row pt-5 pb-4 justify-content-center">
         <div class="col-md-6">
-          <hr />
+          <hr>
         </div>
       </div>
       <div class="row">
@@ -92,7 +94,8 @@
   </div>
 </section>
 <section></section>
-@endsection @section('scripts')
+@endsection
+@section('scripts')
 <style media="screen">
   header.box-shadow {
     box-shadow: none !important;

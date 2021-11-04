@@ -41,7 +41,7 @@
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
-            <textarea name="article" rows="5" cols="40" class="form-control tinymce-editor">{{$blog->article}}</textarea>
+            <textarea name="article" rows="8" cols="40" class="form-control tinymce-editor">{{$blog->article}}</textarea>
           </div>
         </div>
         <div class="row mt-3">

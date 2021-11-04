@@ -153,7 +153,8 @@
         </div>
       </div>
     </div>
-    @include('helpers.chat') @if(Auth::user() && Auth::user()->role == 'client')
+    @include('helpers.chat')
+    @if(Auth::user() && Auth::user()->role == 'client')
     <footer class="footer-section">
       <div class="copy-right text-center">
         <div class="container">
@@ -161,7 +162,9 @@
         </div>
       </div>
     </footer>
-    @else @include('includes.footer') @endif {{--
+    @else
+      @include('includes.footer')
+    @endif {{--
     <script src="http://code.jquery.com/jquery-1.10.1.min.js" charset="utf-8"></script>
     --}}
     <!--Alerts Script-->
