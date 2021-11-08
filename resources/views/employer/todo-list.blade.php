@@ -8,7 +8,7 @@
     <h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/owner') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('/admins') }}">{{ zactra::translate_lang('Dashboard') }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ zactra::translate_lang('To Do List') }}</li>
       </ol>
     </nav>
@@ -22,22 +22,22 @@
         <form>
           <div class="row">
             @if(auth()->user()->role=='receptionist')
-            <div class="col-md-4 col-sm-12 col-12 mmb-5">
-              <div class="">
-                <select class="form-control" name="admin" id="gender">
-                  <option disabled="disabled" selected="selected" class="p-5 m-5">{{ zactra::translate_lang('Admin') }}</option>
-                  @foreach($admins as $id => $value)
-                  <option value="{{$id}}" class="p-5 m-5">{{$value}}</option>
-                  @endforeach
-                </select>
+              <div class="col-md-4 col-sm-12 col-12 mmb-5">
+                <div class="">
+                  <select class="form-control" name="admin" id="gender">
+                    <option disabled="disabled" selected="selected" class="p-5 m-5">{{ zactra::translate_lang('Admin') }}</option>
+                    @foreach($admins as $id => $value)
+                    <option value="{{$id}}" class="p-5 m-5">{{$value}}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="col-md-2 col-sm-12 col-12 pt-2 mmb-5">
-              <input type="checkbox" class="" name="assign" placeholder="{{ zactra::translate_lang('To Do Title') }}" />
-              {{ zactra::translate_lang('Assigned') }}
-            </div>
+              <div class="col-md-2 col-sm-12 col-12 pt-2 mmb-5">
+                <input type="checkbox" class="" name="assign" placeholder="{{ zactra::translate_lang('To Do Title') }}" />
+                {{ zactra::translate_lang('Assigned') }}
+              </div>
             @else
-            <div class="col-md-6 col-sm-6 col-6"></div>
+              <div class="col-md-6 col-sm-6 col-6"></div>
             @endif
             <div class="col-md-5 col-sm-12 col-12 mmb-5">
               <input type="text" name="title" class="form-control" placeholder="{{ zactra::translate_lang('To Do Title') }}" />

@@ -263,6 +263,7 @@ Route::group(["prefix"=>"furnishers"], function(){
 
   Route::get('delete/authority/{id}','AuthoritiesController@delete_authority')->name('admin.delete.authority');
   Route::resource('blogs', 'BlogsController')->names('blog');
+  Route::get('/blogs/destroy/{id}', 'BlogsController@blog_destroy')->name('blog.destroy');
   Route::post('/blogs/upload_tinymce_images', 'BlogsController@upload_tinymce_images');
 
 

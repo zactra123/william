@@ -1,4 +1,5 @@
-@extends('layouts.layout') @section('content')
+@extends('layouts.layout')
+@section('content')
 <style>
   :root {
     --jumbotron-padding-y: 3rem;
@@ -39,7 +40,6 @@
     }
   }
 </style>
-
 @include('helpers.breadcrumbs', ['title'=> "BLOG", 'route' => ["Home"=> '/admins/blogs',"BLOG" => "#"]])
 <section class="ms-user-account">
   <div class="container">

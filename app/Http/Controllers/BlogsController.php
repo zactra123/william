@@ -56,7 +56,7 @@ class BlogsController extends Controller
         Blog::create($data);
         return redirect()->route('blog.index');
     }
-    
+
     public function edit($id)
     {
         $blog = Blog::whereId($id)->first();
@@ -113,6 +113,20 @@ class BlogsController extends Controller
         return redirect()->route('blog.index');
 
     }
+
+    /**
+     * Blog Destroy
+     */
+     public function blog_destroy($id)
+     {
+       $delete = Blog::find($id);
+       if(file_exists($delete->first()->path)){
+           unlink($delete->first()->path);
+       }
+       $delete->delete();
+
+       return redirect()->route('blog.index')->with('success','You successfully delete blog!');
+     }
 
     public function upload_tinymce_images(Request $request)
     {

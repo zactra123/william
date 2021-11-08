@@ -288,14 +288,7 @@ class ClientsController extends Controller
             $mime = $file->getMimeType();
         }
         $user = User::find($client);
-        $data = [
-            'user'=>$user,
-            'subject'=>$subject,
-            'description'=>$description,
-            'path'=>$path,
-            'as'=>$as,
-            'mime'=> $mime
-        ];
+        $data = ['user'=>$user, 'subject'=>$subject, 'description'=>$description, 'path'=>$path, 'as'=>$as, 'mime'=> $mime];
 
         Mail::send(new SendMailClient($data));
         return redirect(route('adminRec.client.profile', $user->id));
@@ -318,10 +311,7 @@ class ClientsController extends Controller
 
 
         dd('asdad');
-
-
         return view('todo.client', compact('client'));
-
 
         $pdf = $pdf->setPaper('a4', 'portrait');
 
@@ -338,7 +328,6 @@ class ClientsController extends Controller
         $clientId = $request->client_id;
         $bureau = $request->bureau;
         $client = User::where('id', $clientId)->first();
-
 
         if ($client->credentials->ex_present() && $bureau == "EXLOGIN") {
             ScrapeReports::dispatch($client, [], 'experian_login');
@@ -365,51 +354,85 @@ class ClientsController extends Controller
         $day = date('d', strtotime($date));
 
         switch (($year - 4) % 12) {
-            case  0: $zodiacYear = 'Rat'; break;
-            case  1: $zodiacYear = 'Ox'; break;
-            case  2: $zodiacYear = 'Tiger'; break;
-            case  3: $zodiacYear = 'Rabbit'; break;
-            case  4: $zodiacYear = 'Dragon'; break;
-            case  5: $zodiacYear = 'Snake'; break;
-            case  6: $zodiacYear = 'Horse'; break;
-            case  7: $zodiacYear = 'Goat'; break;
-            case  8: $zodiacYear = 'Monkey'; break;
-            case  9: $zodiacYear = 'Rooster'; break;
-            case 10: $zodiacYear = 'Dog'; break;
-            case 11: $zodiacYear = 'Pig'; break;
+            case  0: $zodiacYear = 'Rat';
+              break;
+            case  1: $zodiacYear = 'Ox';
+              break;
+            case  2: $zodiacYear = 'Tiger';
+              break;
+            case  3: $zodiacYear = 'Rabbit';
+              break;
+            case  4: $zodiacYear = 'Dragon';
+              break;
+            case  5: $zodiacYear = 'Snake';
+              break;
+            case  6: $zodiacYear = 'Horse';
+              break;
+            case  7: $zodiacYear = 'Goat';
+              break;
+            case  8: $zodiacYear = 'Monkey';
+              break;
+            case  9: $zodiacYear = 'Rooster';
+              break;
+            case 10: $zodiacYear = 'Dog';
+              break;
+            case 11: $zodiacYear = 'Pig';
+              break;
         }
 
-        if     ( ( $month == 3 && $day > 20 ) || ( $month == 4 && $day < 20 ) ) { $zodiacMonth = "Aries";}
-        elseif ( ( $month == 4 && $day > 19 ) || ( $month == 5 && $day < 21 ) ) { $zodiacMonth = "Taurus";}
-        elseif ( ( $month == 5 && $day > 20 ) || ( $month == 6 && $day < 21 ) ) { $zodiacMonth = "Gemini";}
-        elseif ( ( $month == 6 && $day > 20 ) || ( $month == 7 && $day < 23 ) ) { $zodiacMonth = "Cancer";}
-        elseif ( ( $month == 7 && $day > 22 ) || ( $month == 8 && $day < 23 ) ) { $zodiacMonth = "Leo";}
-        elseif ( ( $month == 8 && $day > 22 ) || ( $month == 9 && $day < 23 ) ) { $zodiacMonth = "Virgo";}
-        elseif ( ( $month == 9 && $day > 22 ) || ( $month == 10 && $day < 23 ) ) { $zodiacMonth = "Libra";}
-        elseif ( ( $month == 10 && $day > 22 ) || ( $month == 11 && $day < 22 ) ) { $zodiacMonth = "Scorpio";}
-        elseif ( ( $month == 11 && $day > 21 ) || ( $month == 12 && $day < 22 ) ) { $zodiacMonth = "Sagittarius";}
-        elseif ( ( $month == 12 && $day > 21 ) || ( $month == 1 && $day < 20 ) ) { $zodiacMonth = "Capricorn";}
-        elseif ( ( $month == 1 && $day > 19 ) || ( $month == 2 && $day < 19 ) ) { $zodiacMonth = "Aquarius";}
-        elseif ( ( $month == 2 && $day > 18 ) || ( $month == 3 && $day < 21 ) ) { $zodiacMonth = "Pisces";}
+        if ( ( $month == 3 && $day > 20 ) || ( $month == 4 && $day < 20 ) ) {
+          $zodiacMonth = "Aries";
+        } elseif ( ( $month == 4 && $day > 19 ) || ( $month == 5 && $day < 21 ) ) {
+           $zodiacMonth = "Taurus";
+        } elseif ( ( $month == 5 && $day > 20 ) || ( $month == 6 && $day < 21 ) ) {
+           $zodiacMonth = "Gemini";
+         } elseif ( ( $month == 6 && $day > 20 ) || ( $month == 7 && $day < 23 ) ) {
+           $zodiacMonth = "Cancer";
+         } elseif ( ( $month == 7 && $day > 22 ) || ( $month == 8 && $day < 23 ) ) {
+           $zodiacMonth = "Leo";
+         } elseif ( ( $month == 8 && $day > 22 ) || ( $month == 9 && $day < 23 ) ) {
+           $zodiacMonth = "Virgo";
+         } elseif ( ( $month == 9 && $day > 22 ) || ( $month == 10 && $day < 23 ) ) {
+           $zodiacMonth = "Libra";
+         } elseif ( ( $month == 10 && $day > 22 ) || ( $month == 11 && $day < 22 ) ) {
+           $zodiacMonth = "Scorpio";
+         } elseif ( ( $month == 11 && $day > 21 ) || ( $month == 12 && $day < 22 ) ) {
+           $zodiacMonth = "Sagittarius";
+         } elseif ( ( $month == 12 && $day > 21 ) || ( $month == 1 && $day < 20 ) ) {
+           $zodiacMonth = "Capricorn";
+         } elseif ( ( $month == 1 && $day > 19 ) || ( $month == 2 && $day < 19 ) ) {
+           $zodiacMonth = "Aquarius";
+         } elseif ( ( $month == 2 && $day > 18 ) || ( $month == 3 && $day < 21 ) ) {
+           $zodiacMonth = "Pisces";
+         }
 
-        if     ( $month == 1  ) { $zodiacStone = "Garnet";}
-        elseif ( $month == 2 ) { $zodiacStone = "Amethyst";}
-        elseif ( $month == 3  ){ $zodiacStone = "Aquamarine, Bloodstone";}
-        elseif ( $month == 4  ) { $zodiacStone = "Diamond";}
-        elseif ( $month == 5  ) { $zodiacStone = "Emerald";}
-        elseif ( $month == 6  ) { $zodiacStone = "Pearl, Moonstone, Alexandrite	";}
-        elseif ( $month == 7  ) { $zodiacStone = "Ruby";}
-        elseif ( $month == 8  ) { $zodiacStone = "Pperidot, Spinel";}
-        elseif ( $month == 9  ) { $zodiacStone = "Sapphire";}
-        elseif ( $month == 10  )  { $zodiacStone = "Opal, Tourmaline";}
-        elseif ( $month == 11 ) { $zodiacStone = "Topaz, Citrine";}
-        elseif( $month == 12 ) { $zodiacStone = "Turquoise, Zircon, Tanzanite";}
+        if ( $month == 1  ) {
+          $zodiacStone = "Garnet";
+        } elseif ( $month == 2 ) {
+          $zodiacStone = "Amethyst";
+        } elseif ( $month == 3  ){
+          $zodiacStone = "Aquamarine, Bloodstone";
+        } elseif ( $month == 4  ) {
+          $zodiacStone = "Diamond";
+        } elseif ( $month == 5  ) {
+          $zodiacStone = "Emerald";
+        } elseif ( $month == 6  ) {
+          $zodiacStone = "Pearl, Moonstone, Alexandrite	";
+        } elseif ( $month == 7  ) {
+          $zodiacStone = "Ruby";
+        } elseif ( $month == 8  ) {
+          $zodiacStone = "Pperidot, Spinel";
+        } elseif ( $month == 9  ) {
+          $zodiacStone = "Sapphire";
+        } elseif ( $month == 10  )  {
+          $zodiacStone = "Opal, Tourmaline";
+        } elseif ( $month == 11 ) {
+          $zodiacStone = "Topaz, Citrine";
+        } elseif( $month == 12 ) {
+          $zodiacStone = "Turquoise, Zircon, Tanzanite";
+        }
 
-        return [
-            "month"=>$zodiacMonth,
-            "year"=>$zodiacYear,
-            "stone"=>$zodiacStone
-        ];
+        return ["month"=>$zodiacMonth, "year"=>$zodiacYear, "stone"=>$zodiacStone];
 
     }
 
