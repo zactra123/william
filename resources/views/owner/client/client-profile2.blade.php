@@ -49,9 +49,7 @@
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
   }
-</style>
 
-<style>
   .disput-progress {
     width: 100%;
     position: relative;
@@ -454,19 +452,18 @@
 					</div>
 				</div>
 
-				<!-- <img src="assets/images/trump.jpg" alt="">
-                <div class="info">
-                    <h5>Client No: 01</h5>
-                    <h3><a href="#">Donal Trump</a></h3>
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
-                </div>-->
+				{{-- <img src="assets/images/trump.jpg" alt="">
+        <div class="info">
+          <h5>Client No: 01</h5>
+          <h3><a href="#">Donal Trump</a></h3>
+          <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div> --}}
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 upload_file">
 						<input type="file" name="inp-drvl[]" id="inp-drvl" multiple accept="image/*" />
 						<label for="inp-drvl" class="btn-3"><span>{{ zactra::translate_lang('select File') }}</span></label>
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12">
-
 						@if(!empty($client->clientAttachments()))
   						@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
     						@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
@@ -479,37 +476,36 @@
     						@endif
   						@endif
 						@endif
-
-						{{-- <img type="file" src="a.png" width="100" name="img-drvl" id="img-drvl"/>--}}
-						{{-- <img type="file" src="a.png" width="100" name="img-sose" id="img-sose" />--}}
+						{{-- <img type="file" src="a.png" width="100" name="img-drvl" id="img-drvl"/>
+						<img type="file" src="a.png" width="100" name="img-sose" id="img-sose" /> --}}
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6"></div>
 				</div>
 			</div>
 			<ul class="categories">
-				<li title="PHONE NUMBER">
+				<li title="{{ zactra::translate_lang('PHONE NUMBER') }}">
 					<i class="fa fa-phone fa-fw" aria-hidden="true"></i>
 					<a href="{{$client->clientDetails->phone_number}}"> {{$client->clientDetails->phone_number}}
 					</a>
 				</li>
-				<li title="EMAIL ADDRESS">
+				<li title="{{ zactra::translate_lang('EMAIL ADDRESS') }}">
 					<i class="fa fa-envelope fa-fw"></i>
 					<a href="mailto:{{$client->email}}"> {{$client->email}}
 					</a>
 				</li>
-				<li title="FULL ADDRESS">
+				<li title="{{ zactra::translate_lang('FULL ADDRESS') }}">
 					<i class="fa fa-map fa-fw"></i> {{$client->clientDetails->address}}
 				</li>
-				<li title="DATE OF BIRTH"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}} <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
-				<li title="SOCIAL SECURITY NUMBER">
+				<li title="{{ zactra::translate_lang('DATE OF BIRTH') }}"><i class="fa fa-calendar fa-fw"></i> {{date("m/d/Y", strtotime($client->clientDetails->dob))}} <img src="/images/age.jpg" width="25px"> {{date("Y")- date("Y",strtotime($client->clientDetails->dob))}}</li>
+				<li title="{{ zactra::translate_lang('SOCIAL SECURITY NUMBER') }}">
 					<i class="fa fa-shield fa-fw"></i> {{$client->clientDetails->ssn}}
 				</li>
 				@if($client->clientDetails->referred_by != null)
-				<li title="REFERRED BY">
+				<li title="{{ zactra::translate_lang('REFERRED BY') }}">
 					<i class="fa fa-user fa-fw"></i> {{$client->clientDetails->referred_by}}
 				</li>
 				@endif
-				<li title="GENDER">
+				<li title="{{ zactra::translate_lang('GENDER') }}">
 					@if($client->clientDetails->sex == 'M')
 		        <img src="/images/male.png" width="20px"> {{ zactra::translate_lang('Male') }}
 					@elseif($client->clientDetails->sex == 'F')
@@ -523,31 +519,25 @@
 						<i class="fa fa-pencil-square-o fa-fw"></i> {{ zactra::translate_lang('Edit Profile') }}
 					</a>
 				</li>
-
 				@if(!empty($client->clientAttachments()))
-				@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
-				@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
-				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
-				@else
-				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
+  				@if(!empty($client->clientAttachments()->where('category', "DL")->first()))
+    				@if($client->clientAttachments()->where('category', "DL")->first()->type == 'jpg')
+    		      <li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
+    				@else
+    		      <li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "DL")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
+    				@endif
+  				@endif
+  				@if(!empty($client->clientAttachments()->where('category', "SS")->first()))
+    				@if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
+    				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
+    				@else
+    				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
+    				@endif
+  				@endif
 				@endif
-				@endif
-				@if(!empty($client->clientAttachments()->where('category', "SS")->first()))
-				@if($client->clientAttachments()->where('category', "SS")->first()->type == 'jpg')
-				<li> <img src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download>{{ zactra::translate_lang('Download') }}</a></li>
-				@else
-				<li> <embed src="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" width="250"><a href="{{asset(str_replace("var/www/prudent/public/",'', $client->clientAttachments()->where('category', "SS")->first()->path))}}" download> {{ zactra::translate_lang('Download') }}</a></li>
-				@endif
-				@endif
-				@endif
-
-
 			</ul>
-
-
 		</aside>
 	</div>
-
 	<div class="col-sm-9">
 		<section id="contents">
 			<div class="welcome">
@@ -573,7 +563,6 @@
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
-
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ex_logo_1.png')}}" width="120"></a>
 											<ul class="dropdown-menu">
@@ -586,11 +575,9 @@
 												<li> <a class="dropdown-item" href="https://usa.experian.com/#/registration?offer=at_fcras100&br=exp&dAuth=true">{{ zactra::translate_lang('MEMBERSHIP SIGNUP') }}</a></li>
 												<div class="dropdown-divider"></div>
 												<li> <a class="dropdown-item" href="#experian" data-toggle="modal">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
-
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
-
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/tu_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
@@ -606,7 +593,6 @@
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
-
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/in_logo_2.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
@@ -616,7 +602,6 @@
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
-
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/cs_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
@@ -645,14 +630,11 @@
 											<ul class="dropdown-menu">
 												<li> <a class="dropdown-item" href="https://consumer.risk.lexisnexis.com/request" target="_blank">{{ zactra::translate_lang('ORDER CONSUMER REPORT') }} </a></li>
 												<li> <a class="dropdown-item" href="https://optout.lexisnexis.com/" target="_blank">{{ zactra::translate_lang('OPT OUT') }}</a></li>
-
 												<div class="dropdown-divider"></div>
 												<li> <a class="dropdown-item" href="#">{{ zactra::translate_lang('LOGIN CREDENTIALS') }} </a></li>
-
 											</ul>
 										</li>
 										<div class="dropdown-divider"></div>
-
 										<li class="dropdown-submenu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="report_access" src="{{asset('images/report_access/ss_logo_1.png')}}" width="140"></a>
 											<ul class="dropdown-menu">
@@ -672,10 +654,7 @@
 												<li><a class="dropdown-item" href="http://www.ventura.courts.ca.gov/CivilCaseSearch/" target="_blank">{{ zactra::translate_lang('VENTURA COUNTY') }} </a></li>
 											</ul>
 										</li>
-
 									</ul>
-
-
 								</div>
 								<p>
 									{{ zactra::translate_lang('Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -693,11 +672,11 @@
 						<div class="col-md-6">
 							<div class="chart-container" id="pdf-container">
 								<div class="boxheading">
-									<h3>CREDIT REPORTS</h3>
+									<h3>{{ zactra::translate_lang('CREDIT REPORTS') }}</h3>
 								</div>
 								<div class="upload_file">
 									<input type="file" name="inp-pdf[]" id="inp-pdf" multiple accept=".pdf" />
-									<label for="inp-pdf" class="btn-3"><span style="width: 100%; text-align: center;">Select PDF File</span></label>
+									<label for="inp-pdf" class="btn-3"><span style="width: 100%; text-align: center;">{{ zactra::translate_lang('Select PDF File') }}</span></label>
 								</div>
 
 								<div class="col-6 mt20">
@@ -715,7 +694,6 @@
 								<div class="boxheading">
 									<h3>{{ zactra::translate_lang('DISPUTE PROGRESS') }}</h3>
 								</div>
-
 								<div class="disput-progress d-flex flex-sm-row flex-column">
 									<div class="progress p1 mr-auto p-2" data="90">
 										<svg>
@@ -730,36 +708,34 @@
 										</div>
 									</div>
 								</div>
-								<!-- <div class="row p20">
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <div class="progress blue">
-                                                            <span class="progress-left">
-                                      <span class="progress-bar"></span>
-                                                            </span>
-                                                            <span class="progress-right">
-                                      <span class="progress-bar"></span>
-                                                            </span>
-                                                            <div class="progress-value">10</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <div class="progress yellow">
-                                                            <span class="progress-left">
-                                      <span class="progress-bar"></span>
-                                                            </span>
-                                                            <span class="progress-right">
-                                      <span class="progress-bar"></span>
-                                                            </span>
-                                                            <div class="progress-value">8</div>
-                                                        </div>
-                                                    </div>
-
-                                                </div> -->
+  								{{-- <div class="row p20">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="progress blue">
+                            <span class="progress-left">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">10</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="progress yellow">
+                            <span class="progress-left">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <span class="progress-right">
+                            <span class="progress-bar"></span>
+                            </span>
+                            <div class="progress-value">8</div>
+                        </div>
+                    </div>
+                </div> --}}
 								<h4 class="text-center">{{ zactra::translate_lang('Uploaded Documents VS Processed') }}</h4>
 							</div>
 						</div>
 					</div>
-
 					<div class="row mt50">
 						<div class="col-md-6">
 							<div class="chart-container">
@@ -869,7 +845,6 @@
 							<label for="address">{{ zactra::translate_lang('Full Address') }}</label>
 							<input type="text" class="form-control" value="{{ zactra::translate_lang('555 Main St, Salt Lake City') }}" id="address" placeholder="{{ zactra::translate_lang('1234 Main St') }}" />
 						</div>
-
 						<div class="form-group col-md-6">
 							<label for="ssn">{{ zactra::translate_lang('Social Security Number') }}</label>
 							<input type="text" value="{{ zactra::translate_lang('078-07-1123') }}" class="form-control" id="ssn" placeholder="{{ zactra::translate_lang('Social Security Number') }}" />
@@ -878,12 +853,10 @@
 							<label for="referred">{{ zactra::translate_lang('Referred By') }}</label>
 							<input type="text" class="form-control" value="{{ zactra::translate_lang('James Bond') }}" id="referred" />
 						</div>
-
 						<div class="form-group col-md-6">
 							<label for="dob">{{ zactra::translate_lang('Date Of Birth') }}</label>
 							<input type="date" class="form-control" value="{{ zactra::translate_lang('1999-04-13') }}" id="dob" />
 						</div>
-
 						<div class="form-group col-md-6">
 							<label for="gender">{{ zactra::translate_lang('Gender') }}</label>
 							<div class="form-check form-check-inline">
@@ -894,7 +867,6 @@
 							</div>
 						</div>
 					</div>
-
 					<button type="submit" value="{{ zactra::translate_lang('Update') }}" class="btn btn-primary">
 						{{ zactra::translate_lang('Update') }}
 					</button>
@@ -927,7 +899,6 @@
 		</div>
 	</div>
 </div>
-
 
 <div class="col-sm-9">
 	<div class="tab-content">
@@ -982,7 +953,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
 
@@ -1000,7 +970,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
 

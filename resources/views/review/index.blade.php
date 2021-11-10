@@ -122,7 +122,9 @@
               <span class="pt-2"><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i><i class="fa fa-star ml-1"></i></span>
             @endif
           </div>
-          <div class="row mt-2"><strong>{{ ucfirst($value->name) }},</strong>&nbsp; on {{ zactra::convertDay($value->created_by) }}</div>
+          <div class="row mt-2">
+            <strong>{{ ucfirst($value->name) }},</strong>&nbsp; on {{ zactra::convertDay($value->created_at) }}
+          </div>
           <div class="row mt-2">
             {{ $value->review }}
           </div>
@@ -138,6 +140,5 @@
     @endif
   </div>
 </div>
-
 <style media="screen"></style>
 @endsection

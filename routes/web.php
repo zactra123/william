@@ -286,7 +286,7 @@ Route::group(["prefix"=>"furnishers"], function(){
   Route::post('client/profile/todo', 'Employer\TodosController@clientToDo')->name('adminRec.client.todo');
   Route::put('client/todo/{todoId}', 'Employer\TodosController@clientToDoUpdate')->name('adminRec.client.todoUpdate');
   Route::get('client/todo/details', 'Employer\TodosController@toDodetails');
-
+  Route::get('/destroy/todo/list/{id}','Employer\TodosController@destroy_todolist')->name('adminRec.toDolist.destroy');
 
 });
 

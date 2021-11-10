@@ -25,23 +25,23 @@
         @method("PUT")
         <div class="row">
           <div class="col-md-6 mmb-5">
-            <input type="text" name="title" value="{{$blog->title}}" class="form-control" placeholder="{{ zactra::translate_lang('Title') }}" />
+            <input type="text" name="title" value="{{ $blog->title }}" class="form-control" placeholder="{{ zactra::translate_lang('Title') }}" />
           </div>
           <div class="col-md-6">
-            <input type="text" name="url" value="{{$blog->url}}" class="form-control" placeholder="{{ zactra::translate_lang('Url') }}" />
+            <input type="text" name="url" value="{{ $blog->url }}" class="form-control" placeholder="{{ zactra::translate_lang('Url') }}" />
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-6 mmb-5">
-            <input type="file" name="attach" value="{{$blog->path}}" class="form-control" placeholder="{{ zactra::translate_lang('Title Image') }}" />
+            <input type="file" name="attach" value="{{ $blog->path }}" class="form-control" placeholder="{{ zactra::translate_lang('Title Image') }}" />
           </div>
           <div class="col-md-6">
-            <input type="date" name="published_date" value="{{$blog->published_date}}" class="form-control" placeholder="{{ zactra::translate_lang('Date Published') }}" id="date" />
+            <input type="date" name="published_date" value="{{ $blog->published_date }}" class="form-control" placeholder="{{ zactra::translate_lang('Date Published') }}" id="date" />
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
-            <textarea name="article" rows="8" cols="40" class="form-control tinymce-editor">{{$blog->article}}</textarea>
+            <textarea name="article" rows="8" cols="40" class="form-control tinymce-editor">{{ $blog->article }}</textarea>
           </div>
         </div>
         <div class="row mt-3">

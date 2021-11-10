@@ -317,7 +317,7 @@
                         <strong>{{ ucfirst($value->name) }}</strong>
                       </div>
                       <div class="row mt-2">
-                        {{ zactra::convertDay($value->created_by) }}
+                        {{ zactra::convertDay($value->created_at) }}
                       </div>
                       <div class="row mt-2">
                         " {{ zactra::limit_words($value->review,200)}} "

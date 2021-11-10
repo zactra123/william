@@ -33,7 +33,6 @@ class TodosController extends Controller
 
     public function toDoList(Request $request)
     {
-
         if(auth()->user()->role=='receptionist'){
             $admins = User::where('role', 'admin')->get()->pluck('full_name', 'id')->toArray();
             if($request->title != null && $request->admin != null && $request->assign == "on"){
@@ -138,21 +137,16 @@ class TodosController extends Controller
         }
         dd($exAccount);
 
-
-
-
-
-
     }
 
     public function disputeDestroy($id)
     {
-        try {
-            $todoId = Disputable::where('id', $id)->first()->todo_id;
-            Disputable::where('id', $id)->delete();
-            if(empty(Disputable::where('todo_id', $todoId)->first())){
-                Todo::where('id', $todoId)->delete();
-            }
+      try {
+          $todoId = Disputable::where('id', $id)->first()->todo_id;
+          Disputable::where('id', $id)->delete();
+          if(empty(Disputable::where('todo_id', $todoId)->first())){
+              Todo::where('id', $todoId)->delete();
+            } 
 
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'msg' => $e->getMessage()]);
@@ -162,4 +156,12 @@ class TodosController extends Controller
 
     }
 
+    /**
+     * Delete ToDo List
+     */
+     public function destroy_todolist($id)
+     {
+       Todo::where('id',$id)->delete();
+       return back()->with('success','You successfully delete a todo from list!');
+     }
 }

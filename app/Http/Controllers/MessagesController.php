@@ -44,10 +44,7 @@ class MessagesController extends Controller
         if (empty($message)) {
             return Response::json(["error" => "Not Found"], 404);
         }
-        $data= [
-            "message" => $message,
-            "note" => $note
-        ];
+        $data= ["message" => $message,"note" => $note];
 
         return Response::json($data);
     }
@@ -93,15 +90,12 @@ class MessagesController extends Controller
             'phone_number' => $request->phone_number,
             'title'=> strtoupper($request->title),
             'description' => $request->description,
-
         ];
 
         $validation = Validator::make($insertArr, [
             'title' => ['required'],
             'description'=> ['required'],
             'phone_number'=> ['required'],
-
-
         ]);
         if ($validation->fails()) {
             return Response::json(["error"=>"All fields are required"], 400);
@@ -110,7 +104,6 @@ class MessagesController extends Controller
             $insertArr['user_id']= Auth::user()->id;
             $insertArr['email'] = $request->email?$request->email:null;
             $insertArr["call_date"] = $request->date . " " . $request->time;
-
 
             $messageHistory = Message::where('id', $request->id)->first()->toArray();
             $messageHistory['message_id'] = $messageHistory['id'];
@@ -149,8 +142,9 @@ class MessagesController extends Controller
     public function messageCompleted(Request $request)
     {
         $messageId = $request->id;
-        Message::where('id', $messageId)
-            ->update(['completed' => 1]);
+        Message::where('id', $messageId)->update([
+          'completed' => 1
+        ]);
 
         return response()->json(['status' => 'success']);
 
@@ -166,7 +160,6 @@ class MessagesController extends Controller
             'user_id' => ['required'],
             'message_id' => ['required'],
             'notes'=> ['required', 'string'],
-
         ]);
 
         if ($validation->fails()) {

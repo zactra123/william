@@ -87,7 +87,9 @@
                 </td>
                 <td>
                   <meta name="csrf-token" content="{{ csrf_token() }}" />
-                  <button class="btn delete" data-id="{{ $todo->id}}"><i class="fa fa-trash text-danger"></i></button>
+                  <button class="btn">
+                    <a href="{{ route('adminRec.toDolist.destroy',$todo->id) }}" onclick="return confirm('Are You Sure?')"><i class="fa fa-trash text-danger"></i></a>
+                  </button>
                 </td>
                 @endif
               </tr>
