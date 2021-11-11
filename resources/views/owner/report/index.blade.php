@@ -3,7 +3,7 @@
 <title>{{ zactra::translate_lang('Reports') }}</title>
 @endsection
 @section('body')
-  <div class="breadcrumb-header justify-content-between">
+<div class="breadcrumb-header justify-content-between">
 	<div>
 		<h4 class="content-title mb-2">{{ zactra::translate_lang('Hi, welcome back!') }}</h4>
 		<nav aria-label="breadcrumb">
@@ -54,9 +54,9 @@
 															</div>
 														</div>
 														<div class="row mt-4">
-															<dov class=" col-lg-12 text-right">
+															<div class=" col-lg-12 text-right">
 																<button class="btn btn-primary text-white">{{ zactra::translate_lang('Get Report') }}</button>
-															</dov>
+															</div>
 														</div>
 													</div>
 											</div>
@@ -79,7 +79,7 @@
 													<table class="table text-md-nowrap">
 														<thead>
 															<tr>
-																<th scope="col">#</th>
+																<th scope="col">{{ zactra::translate_lang('#') }}</th>
 																<th scope="col">{{ zactra::translate_lang('First Name') }}</th>
 																<th scope="col">{{ zactra::translate_lang('Last Name') }}</th>
 																<th scope="col">{{ zactra::translate_lang('Email') }}</th>
@@ -89,20 +89,22 @@
 														</thead>
 														<tbody>
 															@if (count($users)>0)
-  															@foreach ($users as $key => $value)
-    															<tr>
-    																<th scope="row">{{ $key+1 }}</th>
-    																<td>{{ $value->first_name }}</td>
-    																<td>{{ $value->last_name }}</td>
-    																<td>{{ $value->email }}</td>
-    																<td>@if (empty($value->email_verified_at))
-    																	<span class="badge badge-danger">{{ zactra::translate_lang('Not Verified') }} </span>
-    																	@else
-    																	<span class="badge badge-success">{{ zactra::translate_lang('Verified') }} </span>
-    																	@endif</td>
-    																<td>{{ zactra::convertDay($value->created_at )}}</td>
-    															</tr>
-  															@endforeach
+															@foreach ($users as $key => $value)
+															<tr>
+																<th scope="row">{{ $key+1 }}</th>
+																<td>{{ $value->first_name }}</td>
+																<td>{{ $value->last_name }}</td>
+																<td>{{ $value->email }}</td>
+																<td>
+																	@if (empty($value->email_verified_at))
+																	<span class="badge badge-danger">{{ zactra::translate_lang('Not Verified') }} </span>
+																	@else
+																	<span class="badge badge-success">{{ zactra::translate_lang('Verified') }} </span>
+																	@endif
+																</td>
+																<td>{{ zactra::convertDay($value->created_at )}}</td>
+															</tr>
+															@endforeach
 															@else
 															@endif
 														</tbody>

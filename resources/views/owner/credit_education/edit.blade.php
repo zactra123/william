@@ -15,7 +15,7 @@
   </div>
 </div>
 <section class="ms-user-account">
-  <div class="container">
+  <div class="container mmap-0">
     <div class="row">
       <div class="col-md-1 col-sm-12"></div>
       <div class="col-md-10 col-sm-10">
@@ -27,9 +27,7 @@
                 <p>{{ zactra::translate_lang('Please enter followiing information to edit education') }}</p>
               </div>
               <div class="card-body">
-                {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!}
-                @method('PUT')
-                @csrf
+                {!! Form::open(['route' => ['owner.credit.education.update', $content->url], 'method' => 'POST', 'class' => 'm-form m-form--label-align-right']) !!} @method('PUT') @csrf
                 <div class="form-group row font">
                   {{ Form::text('content[title]', $content->title, ['class' => 'form-control m-input', 'placeholder' => 'Title', 'required']) }}
                 </div>

@@ -36,7 +36,7 @@
                         <thead>
                           <tr>
                             <th>{{ zactra::translate_lang('#') }}</th>
-                            <th scope="col">{{ zactra::translate_lang('url') }}</th>
+                            <th scope="col">{{ zactra::translate_lang('Url') }}</th>
                             <th scope="col">{{ zactra::translate_lang('Title') }}</th>
                             <th scope="col">{{ zactra::translate_lang('Sub Content') }}</th>
                             <th scope="col">{{ zactra::translate_lang('Action') }}</th>
